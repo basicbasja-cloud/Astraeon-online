@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#111827">
+    <meta name="theme-color" content="#0b1421">
     <meta name="description" content="ASTRAEON — 2.5D action RPG set across worlds beyond the Astral Veil.">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>ASTRAEON — Worlds Beyond the Veil</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="icon" href="./icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="preload" as="image" href="./assets/astral-outpost.webp" type="image/webp">
+    <link rel="stylesheet" href="./style.css?v=5">
   </head>
   <body>
     <div id="app"></div>
-    <script src="./game.js"></script>
+    <script src="./game.js?v=5"></script>
     <script>
       if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
         window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
