@@ -162,3 +162,194 @@ canvas { display: block; width: 100%; height: 100%; background: #122636; touch-a
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Astral polish: tactile controls, layered glass HUD and a painted world entry. */
+:root {
+  --panel-glass: #0c1829d9;
+  --edge-soft: #c1dae333;
+  --glow-teal: #7fe8df;
+  --gold-light: #f5d99c;
+}
+.game { background: radial-gradient(ellipse at 50% 35%, #20384a, #0b1421 78%); }
+.top {
+  border-bottom-color: #c4d8df25;
+  background: linear-gradient(180deg, #101b2df5, #0c1725ed);
+  box-shadow: 0 7px 24px #03091366;
+  backdrop-filter: blur(14px);
+}
+.brand { text-shadow: 0 0 22px #e3bd6c40; }
+.top-actions button {
+  border-color: #8da9bd55;
+  background: linear-gradient(155deg, #304961, #182a40);
+  box-shadow: inset 0 1px #ffffff12, 0 2px 8px #0003;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+.top-actions button:active { transform: translateY(1px) scale(.96); border-color: var(--gold-light); }
+.stage { background: radial-gradient(ellipse at 50% 24%, #294b5a, #111a2b 72%); }
+.stage::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(180deg, #07101d24, transparent 27%, transparent 72%, #07101d44),
+    radial-gradient(ellipse at center, transparent 48%, #070d19a6 125%);
+}
+canvas { position: relative; z-index: 0; }
+.hud, .mission {
+  border-color: #c4e0e244;
+  background: linear-gradient(145deg, #132338ed, #101929e6);
+  box-shadow: inset 0 1px #ffffff0b, 0 12px 30px #02081378;
+  backdrop-filter: blur(14px) saturate(1.15);
+}
+.identity { text-shadow: 0 1px 12px #f1d69d44; }
+.meter { border: 1px solid #bdd2d021; box-shadow: inset 0 1px 4px #0009; }
+.meter i { box-shadow: 0 0 11px #ed867b90; transition: width .25s ease; }
+.meter.energy i { box-shadow: 0 0 11px #68dce0aa; }
+.meter.xp i { box-shadow: 0 0 10px #efcf8b77; }
+.mission { border-left: 2px solid #dcb36f; }
+.mission strong { text-shadow: 0 0 13px #dfba7355; }
+.actions {
+  border-top-color: #b6d0df33;
+  background: linear-gradient(180deg, #142237f6, #0c1726fc);
+  box-shadow: 0 -8px 25px #03081255;
+  backdrop-filter: blur(14px);
+}
+.slot {
+  position: relative;
+  overflow: hidden;
+  border-color: #8aa0ba80;
+  border-radius: 13px;
+  background: linear-gradient(155deg, #3b526c, #192b42 78%);
+  box-shadow: inset 0 1px #ffffff16, inset 0 -2px #050d193b, 0 4px 10px #0004;
+  transition: transform .13s ease, filter .13s ease, border-color .13s ease;
+}
+.slot::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: .28;
+  pointer-events: none;
+  background: linear-gradient(130deg, #ffffff1c, transparent 42%);
+}
+.slot:active { transform: translateY(2px) scale(.94); filter: brightness(1.18); }
+.slot b { position: relative; z-index: 1; text-shadow: 0 1px 8px #e2d6b688; }
+.slot small { position: relative; z-index: 1; }
+.slot[data-action="attack"] {
+  border-color: #f3ce85;
+  background: linear-gradient(155deg, #9c7140, #4b3026 80%);
+  box-shadow: inset 0 1px #fff4cd40, 0 0 16px #d89f4e20, 0 4px 10px #0005;
+}
+.slot[data-action="skill4"] { box-shadow: inset 0 1px #ffffff20, 0 0 14px #75dce833, 0 4px 10px #0005; }
+.slot[data-action="dodge"] { background: linear-gradient(155deg, #386b78, #1b3547 80%); }
+.slot.cooling { filter: saturate(.35); }
+.window {
+  border-color: #bfd4e15e;
+  background: linear-gradient(150deg, #17263cf7, #0d1a2cf5);
+  box-shadow: inset 0 1px #ffffff12, 0 28px 80px #000c;
+  backdrop-filter: blur(20px);
+}
+.window header {
+  border-bottom-color: #b2d0e034;
+  background: linear-gradient(100deg, #263c56f5, #1a2c43f5);
+}
+.window header h2 { text-shadow: 0 0 16px #e5be7655; }
+.close { border-radius: 9px; transition: background .15s ease, transform .15s ease; }
+.close:hover { background: #ffffff12; transform: rotate(4deg); }
+.card {
+  border-color: #7893a644;
+  background: linear-gradient(145deg, #253b54, #172a40);
+  box-shadow: inset 0 1px #ffffff0c, 0 5px 14px #02071324;
+  transition: border-color .18s ease, transform .18s ease, background .18s ease;
+}
+.card:hover { border-color: #c8ac7180; transform: translateY(-1px); background: linear-gradient(145deg, #2b435b, #1b3047); }
+.card.selected { box-shadow: 0 0 18px #e7c67a20, inset 0 1px #fff2; }
+.btn {
+  border-color: #f0cf8a;
+  background: linear-gradient(145deg, #efd08f, #b47f46);
+  box-shadow: inset 0 1px #fff8d988, 0 5px 14px #0004;
+  transition: transform .13s ease, filter .13s ease;
+}
+.btn:active { transform: translateY(1px) scale(.98); filter: brightness(1.1); }
+.btn.alt { background: linear-gradient(145deg, #3a6078, #24394f); }
+.creation {
+  isolation: isolate;
+  background: linear-gradient(90deg, #091321d9 0%, #0c172bb5 43%, #0b172144 100%),
+    linear-gradient(0deg, #08101ccc, transparent 70%),
+    url('./assets/astral-outpost.webp') center 43% / cover no-repeat;
+}
+.creation::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(ellipse at 71% 34%, #83f6ef28, transparent 30%),
+    linear-gradient(90deg, #08121d30, transparent 78%);
+  animation: veil-breathe 8s ease-in-out infinite alternate;
+}
+.creation .sheet {
+  position: relative;
+  border-color: #d0e5e45c;
+  background: linear-gradient(145deg, #14263bec, #0d192bea);
+  box-shadow: inset 0 1px #ffffff18, 0 28px 90px #020712ba, 0 0 50px #62c9ce10;
+  backdrop-filter: blur(18px) saturate(1.15);
+  animation: sheet-arrive .6s cubic-bezier(.2,.8,.2,1) both;
+}
+.hero-preview {
+  position: absolute;
+  z-index: 1;
+  right: max(20px, calc(50% - 610px));
+  bottom: 3vh;
+  width: min(22vw, 250px);
+  aspect-ratio: 3 / 2;
+  background: url('./assets/hero-atlas.webp') 0 0 / 400% 400% no-repeat;
+  filter: drop-shadow(0 18px 16px #000a) drop-shadow(0 0 18px #74e5dd49);
+  pointer-events: none;
+  animation: hero-idle 1.05s steps(1) infinite, hero-float 3.1s ease-in-out infinite;
+}
+.creation h1 { text-shadow: 0 0 25px #e1bd7950; }
+.creation .tag { border-color: #e0bd7e80; background: #bf985219; }
+.creation .field select, .creation .field input {
+  border-color: #8caabd77;
+  background: #091727d9;
+  box-shadow: inset 0 2px 7px #0005;
+}
+.creation .field select:focus, .creation .field input:focus { border-color: #86e2e3; box-shadow: 0 0 0 3px #81e2df18; }
+.creation .notification {
+  border-left-color: #84e2df;
+  border-radius: 0 8px 8px 0;
+  background: linear-gradient(90deg, #285267b8, #19354a80);
+}
+.creation #create { min-height: 48px; padding-inline: 20px; font-size: 1rem; }
+.toast { border-color: #ecd18f; background: linear-gradient(145deg, #1c3548f5, #0d1c2cf5); box-shadow: 0 8px 26px #0008, 0 0 18px #d9b66620; backdrop-filter: blur(10px); }
+.mobile-controls .joystick-base { border-color: #dcf6f199; background: radial-gradient(circle, #29495cbb, #102233b8); box-shadow: inset 0 0 24px #07131c88, 0 7px 22px #0007; backdrop-filter: blur(5px); }
+.joystick-knob { border-color: #e7ffff; background: radial-gradient(circle at 36% 27%, #d0ffff, #75b6bd 38%, #345268 82%); box-shadow: inset 0 1px #fff9, 0 3px 12px #000a, 0 0 16px #7ce2df33; }
+@keyframes veil-breathe { from { opacity: .6; } to { opacity: 1; } }
+@keyframes sheet-arrive { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes hero-idle {
+  0%, 24% { background-position: 0 0; }
+  25%, 49% { background-position: 33.333% 0; }
+  50%, 74% { background-position: 66.666% 0; }
+  75%, 100% { background-position: 100% 0; }
+}
+@keyframes hero-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+@media (max-width: 520px) and (orientation: portrait) {
+  .creation { align-items: end; background-position: center, center, 62% center; }
+  .hero-preview { display: none; }
+  .creation .sheet { width: min(440px, 100%); padding: 16px; border-radius: 16px 16px 10px 10px; }
+  .creation h1 { font-size: 1.72rem; }
+  .creation .grid { gap: 7px; }
+  .creation .field { margin: 6px 0; }
+  .creation .caption { margin-bottom: 0; }
+}
+@media (orientation: landscape) and (max-height: 540px) {
+  .creation { align-items: center; background-position: center, center, 62% center; }
+  .hero-preview { right: 5px; bottom: 0; width: 19vw; opacity: .58; }
+  .creation .sheet { width: min(660px, 94vw); padding: 12px 18px; }
+  .creation .field { margin: 6px 0; }
+  .creation .grid { gap: 8px; }
+  .creation .notification { margin: 7px 0; padding: 6px 9px; }
+  .creation p { margin: 7px 0; }
+}
