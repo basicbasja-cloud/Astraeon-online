@@ -58,3 +58,7 @@ Original built-in ImageGen art and edits of this project's own sheets. Format co
 | ranger-walk-v1.webp | exec-158f16d9-e3e5-4d4a-9733-2a84de6c28f1.png |
 
 Environment brief: original Shenzhou mill, farmhouse, caravan camp, willow/bamboo, broken stone and lantern shrine; quiet hand-painted meadow, woodland, dirt path and stone materials; camera and light matched to the existing game. Ruin props include two wall orientations, rubble, braziers, moonseal, altar, pillar and chest. Walking briefs preserve the existing detailed warrior/mage/ranger identity with eight stride phases in eight authored directions. Runtime deliberately uses the accepted base atlas for two rear directions where the extended sheets did not retain the required facing. UI vectors in icons.js and water/noise audio are original code-created material.
+
+## Golden Town Scene paving — 2026-09-30
+
+`assets/town-limestone-v1.webp` replaces town paving with original built-in ImageGen art, source `exec-62028e7a-c750-49b6-b7c6-c07773324e19.png`. No third-party reference pixels were supplied. PNG-to-WebP conversion changes format/compression only. The original remains outside the checkout under `/workspace/generated_images`. This refines an existing material; it does not add a building or decorative asset family. The material must pass actual runtime style, lighting, projection and scale review.

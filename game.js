@@ -11,7 +11,7 @@ const CHAPTERS=[
  {zone:3,title:'III · สัญญาณเหนือราง',boss:'Dawn Engine',story:'เครื่องจักร Helion ส่งสัญญาณผิดปกติมาจากใจกลางสถานี',reward:'Dawn Circuit'},
  {zone:4,title:'IV · หัวใจแห่งรอยแยก',boss:'Astral Echo',story:'เข้าสู่ Verge แล้วปิดรอยแยกก่อนโลกทั้งห้าซ้อนทับกัน',reward:'Veilheart'}
 ];
-const NPCS=[{x:10.5,y:15,name:'Guild Registrar',kind:'guild',symbol:'✦'},{x:19.8,y:16,name:'Artisan',kind:'craft',symbol:'⚒'},{x:23,y:17.5,name:'Merchant',kind:'market',symbol:'✧'},{x:16,y:22.5,name:'Gatekeeper',kind:'travel',symbol:'◇'},{x:10,y:20.5,name:'Housing Keeper',kind:'housing',symbol:'⌂'},{x:12.3,y:18.5,name:'Quest Board',kind:'journal',symbol:'📜'}];
+const NPCS=[{x:10.5,y:15,name:'Guild Registrar',kind:'guild',symbol:'✦'},{x:19.8,y:16,name:'Artisan',kind:'craft',symbol:'⚒'},{x:23.6,y:20,name:'Merchant',kind:'market',symbol:'✧'},{x:16,y:22.5,name:'Gatekeeper',kind:'travel',symbol:'◇'},{x:10,y:24,name:'Housing Keeper',kind:'housing',symbol:'⌂'},{x:12.3,y:18.5,name:'Quest Board',kind:'journal',symbol:'📜'}];
 const RECIPES=[{name:'Healing Flask',cost:{herb:2,shard:1},result:'potion'},{name:'Astral Blade',cost:{ore:4,shard:2},result:'blade'},{name:'Warden Plate',cost:{ore:6,shard:3},result:'plate'},{name:'Field Rations',cost:{herb:1,ore:1},result:'ration'},{name:'Spirit Charm',cost:{herb:2,shard:2},result:'charm'}];
 const $=s=>document.querySelector(s), el=document.getElementById('app');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -192,7 +192,7 @@ function drawMiniMap(){
  dot(S.x,S.y,'#fff',3);g.strokeStyle='#65e7e7';g.lineWidth=1.5;g.beginPath();g.arc(gap+S.x*sx,gap+S.y*sy,5,0,Math.PI*2);g.stroke();$('#mini-label').textContent=dungeon?'Moonveil · '+(dungeon.wave+1)+'/4':ZONES[S.zone].mapName;
 }
 
-function drawGround(w,h){if(!groundPattern)groundPattern=ctx.createPattern(groundArt,'repeat');groundPattern.setTransform(new DOMMatrix().translate(iso(0,0).x,iso(0,0).y).scale(1.35*view.zoom));ctx.fillStyle=groundPattern;ctx.fillRect(0,0,w,h);let t=['#b4a97622','#225b3866','#cbad6150','#164b5aa8','#443260ad'][S.zone];ctx.fillStyle=t;ctx.fillRect(0,0,w,h);if(S.zone===0){let p=iso(14.5,14),glow=ctx.createRadialGradient(p.x,p.y,35,p.x,p.y,360);glow.addColorStop(0,'#efd3a52a');glow.addColorStop(1,'#efd3a500');ctx.fillStyle=glow;ctx.fillRect(p.x-370,p.y-370,740,740)}}
+function drawGround(w,h){if(!groundPattern){const material=document.createElement('canvas');material.width=groundArt.naturalWidth;material.height=groundArt.naturalHeight;const g=material.getContext('2d');g.fillStyle='#798368';g.fillRect(0,0,material.width,material.height);g.globalAlpha=.75;g.drawImage(groundArt,0,0);groundPattern=ctx.createPattern(material,'repeat')}groundPattern.setTransform(new DOMMatrix().translate(iso(0,0).x,iso(0,0).y).scale(1.35*view.zoom));ctx.fillStyle=groundPattern;ctx.fillRect(0,0,w,h);let t=['#b4a97622','#225b3866','#cbad6150','#164b5aa8','#443260ad'][S.zone];ctx.fillStyle=t;ctx.fillRect(0,0,w,h);if(S.zone===0){let p=iso(14.5,14),glow=ctx.createRadialGradient(p.x,p.y,35,p.x,p.y,360);glow.addColorStop(0,'#efd3a52a');glow.addColorStop(1,'#efd3a500');ctx.fillStyle=glow;ctx.fillRect(p.x-370,p.y-370,740,740)}}
 
 function draw(dt=.016){
 if(!S||!ctx)return;
@@ -318,7 +318,7 @@ const direction=window.AstraeonCombat.normalize(aim.x-S.x,aim.y-S.y),turn=Math.a
 // Opposite-facing attacks turn during anticipation rather than releasing behind the model.
 if(turn>.12)def.castTime=Math.max(def.castTime,.2+turn/profile.turnSpeed);
 if(!combat.start(def,S,aim,now))return;playerTransform.face(direction.x,direction.y,motion.FacingMode.Aim);
-S.energy-=def.cost;comboStep=nextCombo;comboUntil=now+1.2;attackCD=now+def.castTime+def.activeTime+def.recovery;playerAnim={...playerAnim,state:def.animation,started:now,until:attackCD,duration:attackCD-now};if(id!=='attack')toast(def.name);refreshUI();
+S.energy-=def.cost;comboStep=nextCombo;comboUntil=now+1.2;attackCD=now+def.castTime+def.activeTime+def.recovery;playerAnim={...playerAnim,state:def.animation,started:now,until:attackCD,duration:attackCD-now,impactAt:def.castTime/(attackCD-now)};if(id!=='attack')toast(def.name);refreshUI();
 }
 function nodeMovement(def,a){if(!def.movement)return;const sign=def.movement==='backstep'?-1:1;for(let i=0;i<5;i++)move(a.direction.x*.12*sign,a.direction.y*.12*sign)}
 function applyContact(m,d,a,damage){const before={x:m.x,y:m.y};const status=nodes.contact(d,m,now);if(status.ignite&&m.hp>0)hit(m,6,'#ffb878');if(status.burn)m.burnUntil=status.burn;if(status.slow)m.slowUntil=status.slow;
@@ -335,7 +335,7 @@ function applyContact(m,d,a,damage){const before={x:m.x,y:m.y};const status=node
 function resolveCombat(dt){
  for(const burst of playerBursts){if(burst.target?.hp>0){burst.x=burst.target.x;burst.y=burst.target.y}if(now<burst.at)continue;for(const m of mobs)if(m.hp>0&&distance(m,burst)<burst.radius&&window.AstraeonNavigation.clear(burst,m,isBlocked))hit(m,burst.damage,burst.color);fx.push({kind:'ring',x:burst.x,y:burst.y,color:burst.color,life:.4,maxLife:.4})}playerBursts=playerBursts.filter(b=>now<b.at);
  const active=combat.active;if(active&&!active.resolved){active.origin.x=S.x;active.origin.y=S.y}
- if(active&&!active.resolved&&now>=active.impact&&Math.abs(motion.wrap(Math.atan2(active.direction.y,active.direction.x)-playerTransform.rotation))>.035){active.impact+=dt;active.end+=dt;attackCD=active.end;playerAnim.until=active.end;playerAnim.duration=active.end-playerAnim.started}
+ if(active&&!active.resolved&&now>=active.impact&&Math.abs(motion.wrap(Math.atan2(active.direction.y,active.direction.x)-playerTransform.rotation))>.035){active.impact+=dt;active.end+=dt;attackCD=active.end;playerAnim.until=active.end;playerAnim.duration=active.end-playerAnim.started;playerAnim.impactAt=(active.impact-playerAnim.started)/playerAnim.duration}
  for(const e of combat.tick(now,dt,mobs,isBlocked)){
   const a=e.action,d=e.projectile?.def||a.def;
   if(e.type==='blocked'){spark(e.projectile.x,e.projectile.y,'#e5d2ad',4,18);continue}

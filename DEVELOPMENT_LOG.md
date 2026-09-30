@@ -45,3 +45,11 @@
 - Pure, subpath smoke, real Node gameplay, live responsive iframe and fresh-Ranger expedition QA passed with no runtime/resource errors; detailed scope and performance limits are in AUDIT.md and PERFORMANCE.md. Public acceptance remains blocked until the environment draft's network settings are applied.
 
 - Final camp QA found the inherited menu allowed resting remotely; camp rest/cooking now require the actual cleared caravan site. Six journey checks passed, including camp tuning and walking back to town before crafting. Supply accounting now handles loot discovered naturally during contract combat without expecting a second award.
+
+## RO1-inspired sprite and Golden Town direction reset — 2026-09-30
+
+- Paused content expansion. Kept three richly painted hero classes as the mainline presentation and removed the optional low-poly renderer from the client. Preserved the unapproved technical experiment outside the checkout; it is not shipped or accepted as character art.
+- Defined separate pending Golden Sprite Character and Golden Town Scene gates. Ragnarok Online 1 guides town planning and presentation; ASTRAEON lore, Tier-1 skills, Nodes and manual combat remain intact.
+- Rebuilt the central court with a fountain focal point, grouped Consortium/market services, perimeter seating and purposeful courtyard vegetation. Relocated the existing shrine into its connected western courtyard. Added explicit avenue/street/service/field hierarchy and stone-to-dirt transition at the existing Caravan Gate.
+- Replaced flat screen-axis paving with original painted limestone transformed into world coordinates, integrated ground edges/wear and shared soft contact shadows. Added fountain collision and retained accessible service approaches.
+- Passed pure, regular-client subpath, town-interaction and connected-expedition regression locally. No new gameplay content or actor families were added. Door clearance, visual approval, public browser access and physical-device performance remain open.

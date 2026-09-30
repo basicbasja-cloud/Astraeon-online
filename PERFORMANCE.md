@@ -59,3 +59,7 @@ Serial local headless Chromium, DPR 1, default quality; eight-second sample wind
 | Field with player attacks and hostile combat | 50–56 / 33.3–33.4 | 59–60 / 16.7–16.8 |
 
 The field sample used a fresh Mage, area Nodes and repeated attack input, with two actual kills and incoming damage; it is a short encounter, not sustained raid-load profiling. Desktop 60 FPS remains unmet in this cloud software-rendered browser. The larger town has a measurable rendering cost; further profiling is required. Phone-sized results are desktop Chromium viewport measurements, not Android/iOS hardware guarantees. Public performance measurement is blocked by the environment network policy. Reports and screenshots are external task artifacts under `/workspace/setup-checks/public-production/`.
+
+## Golden Town consolidation sample — 2026-09-30
+
+Serial headless Chromium, DPR 1, default quality, painted Mage at the actual fountain court with moving NPCs. Each viewport used an eight-second window after 3.5 seconds of warmup. Desktop 1280×720 measured 49–52 FPS, p95 33.4 ms; portrait 390×844 measured 60 FPS, p95 16.7–16.8 ms. No runtime errors were reported. These are local cloud measurements without sustained player VFX, not physical-phone or public-build acceptance. The desktop 60 FPS target remains open. The replacement paving adds approximately 319 KB to core precaching; its composition is cached once, with visible-region blits retained.

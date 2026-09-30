@@ -8,6 +8,10 @@ Phone: joystick left, action buttons right. Tap ground to walk, creature to sele
 
 Desktop: WASD/arrows move, Shift sprint, F attack, Space dodge, 1–4 class skills, Q flask, E interact, Tab cycle nearby targets. Click-to-move is also available. Character menu in town can switch between Warrior, Mage and Ranger for training while keeping progression. More → Preferences selects quality and sound. Sound begins after an interaction, in accordance with browser audio rules.
 
+## Visual consolidation
+
+Content expansion is paused. The central Wayfarer court is the Golden Scene candidate: a quieter fountain plaza, coherent entrances and market frontage, world-aligned painted limestone and distinct circulation widths. Ragnarok Online 1 guides current presentation and town planning. Warrior, Mage and Ranger retain painted directional sprites; the low-poly prototype is excluded from the live client. **Golden Sprite Character and Golden Town Scene approval are pending.** See [GOLDEN_SCENE.md](./GOLDEN_SCENE.md).
+
 ## Current work
 
 One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.
@@ -18,7 +22,7 @@ The city benchmark has a larger 44 × 40 footprint, widened main avenues, neighb
 
 ## Limits
 
-This is local simulation. Guild, party, market, housing and sparring are local features. There is no live multiplayer or account sync. The 22-class registry and legacy maps are retained for compatibility, not evidence of 22 completed classes or five polished regions. Moonveil has three connected chambers and a guardian court with collidable walls and gates. Directional views cover the circle in 45° steps; this is painted 2.5D art, not a skinned 3D model. Richer action/death animations, directional art consistency, audio composition and mobile hardware performance must pass further inspection before calling the slice production-ready.
+This is local simulation. Guild, party, market, housing and sparring are local features. There is no live multiplayer or account sync. The 22-class registry and legacy maps are retained for compatibility, not evidence of 22 completed classes or five polished regions. Moonveil has three connected chambers and a guardian court with collidable walls and gates. The regular game retains painted directional actors. Richer action/death animations, directional art consistency, audio composition and mobile hardware performance must pass further inspection before calling the slice production-ready.
 
 See AUDIT.md, ARCHITECTURE.md, STYLE_GUIDE.md, CONTENT_GUIDE.md, ASSET_LICENSES.md, PERFORMANCE.md and DEVELOPMENT_LOG.md. `qa.html` tests actual desktop/portrait/landscape/tablet CSS viewports in the same game instance.
 
