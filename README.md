@@ -11,8 +11,8 @@ Desktop controls: WASD or arrow keys to move, click the ground to walk, click an
 ## Prototype systems
 
 - 14 playable races, 22 starting classes, two advanced paths per class, and character origins.
-- Classic MMORPG-style isometric camera and click-to-move combat, with animated 16-frame hero and wolf atlases, enemy targeting, three-hit attack combo, dodge with brief invulnerability, guard, healing, class skill, burst attacks, and enemy encounters.
-- Five distinct maps: the safe Shenzhou capital hub, Moonbamboo forest, Goldenfield grassland, Helion magitech rail yard, and the Veyr ruins. Each has its own road layout, architecture, foliage, animated landmark, and glowing walk-through exits; the Quest Board and NPC services are in the city.
+- Elevated 3/4 MMORPG camera with classic click-to-move combat, animated 16-frame hero and wolf atlases, enemy targeting, three-hit attack combo, dodge with brief invulnerability, guard, healing, class skill, burst attacks, and enemy encounters.
+- Five distinct maps: the safe Shenzhou capital hub, Moonbamboo forest, Goldenfield grassland, Helion magitech rail yard, and the Veyr ruins. Wayfarer Square now has a readable central fountain plaza, four surrounding civic blocks, crossing cobblestone streets, lit market stalls, plaza lamps, clustered services, and gates aligned to the main roads. Each map has its own architecture, foliage, animated landmark, and glowing walk-through exits.
 - Contract board, Astral Gate travel, level and rank progression, loot, equipment, crafting, NPC market, housing, camp, professions, reputation, personal guild, sparring arena, and a solo boss encounter.
 - Skill Weaving composer with Core, Form, Motion, Delivery, Energy, Modifier, Trigger, and Cost Rule nodes.
 - Installable web app shell with an offline cache for the game and art. Saves remain in the browser's local storage and do not sync between devices.
