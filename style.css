@@ -414,3 +414,27 @@ canvas { position: relative; z-index: 0; }
   .actions { transform: scale(.9); transform-origin: bottom right; }
   .mobile-controls { width: 88px; height: 88px; }
 }
+/* Production pass: explicit small-screen layouts and feedback. */
+.slot.cooling{filter:saturate(.55);background-image:linear-gradient(to top,#071420bc var(--cooldown,100%),transparent var(--cooldown,100%)),radial-gradient(circle at 38% 26%,#526f85,#21394a)}
+.slot[data-remaining]:not([data-remaining=""])::after{content:attr(data-remaining);position:absolute;inset:0;display:grid;place-items:center;font:800 13px system-ui;color:#fff2d2;text-shadow:0 2px 4px #000}
+.slot{position:relative;transition:border-color .15s,box-shadow .15s,filter .15s}
+.slot:focus-visible,.top button:focus-visible,.btn:focus-visible{outline:2px solid #b3efdd;outline-offset:3px}
+@media (max-width:700px),(orientation:landscape) and (max-height:540px){
+ .controls{display:none}.mobile-controls{display:block}.actions{transform:none}
+ .hud{padding:8px}.hud .hudline:last-of-type,.meter.xp{display:none}
+ .mission{top:112px;font-size:11px;padding:7px;width:190px}.mission strong{display:block;max-height:30px;overflow:hidden}.mission p{font-size:10px;line-height:1.25;margin:4px 0 0}
+ .minimap-wrap{width:96px}.minimap-wrap canvas{width:86px;height:78px}
+ .toast{max-width:calc(100% - 28px);font-size:12px}
+}
+@media (orientation:landscape) and (max-height:540px){
+ .game{grid-template-rows:38px minmax(0,1fr)}.top{min-height:38px;padding:3px 8px}.top-actions button{min-height:30px}
+ .hud{top:5px;width:164px}.identity{font-size:11px}.identity small{font-size:9px}.hudline{font-size:9px}.meter{height:4px}
+ .mission{top:95px;width:164px;max-height:48px}.mission p{display:none}
+ .minimap-wrap{top:5px;width:88px}.minimap-wrap canvas{width:78px;height:64px}
+ .actions{display:grid;position:absolute;right:10px;bottom:10px;grid-template-columns:repeat(3,46px);grid-template-rows:repeat(3,46px);width:148px;gap:5px;background:none;border:0;padding:0}
+ .slot{width:46px;min-width:46px;height:46px;border-radius:50%}.slot small{display:none}.slot b{font-size:20px}
+ .mobile-controls{width:92px;height:92px;bottom:15px;left:15px}.toast{bottom:162px}
+}
+@media(max-width:380px) and (orientation:portrait){
+ .hud{width:184px}.actions{width:160px;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(3,48px);transform:none}.slot{width:48px;min-width:48px;height:48px}.mission{width:175px}.mobile-controls{width:90px;height:90px}
+}

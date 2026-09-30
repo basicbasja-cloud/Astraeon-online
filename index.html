@@ -11,13 +11,18 @@
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="icon" href="./icon.svg" type="image/svg+xml">
     <link rel="preload" as="image" href="./assets/astral-outpost.webp" type="image/webp">
-    <link rel="stylesheet" href="./style.css?v=18">
+    <link rel="stylesheet" href="./style.css?v=19">
   </head>
   <body>
     <div id="app"></div>
-    <script src="./world-content.js?v=18"></script>
-    <script src="./scene.js?v=18"></script>
-    <script src="./game.js?v=18"></script>
+    <script src="./world-content.js?v=19"></script>
+    <script src="./scene.js?v=19"></script>
+    <script src="./input.js?v=19"></script>
+    <script src="./atlas-metadata.js?v=19"></script>
+    <script src="./animation.js?v=19"></script>
+    <script src="./combat.js?v=19"></script>
+    <script src="./world-systems.js?v=19"></script>
+    <script src="./game.js?v=19"></script>
     <script>
       if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
         window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));

@@ -12,7 +12,24 @@ window.AstraeonContent = Object.freeze({
     fountain:{rect:[790,512,360,512],anchor:[.5,.87]},
     cart:{rect:[1150,512,386,512],anchor:[.5,.84]}
   },
+  secondaryAtlas:{
+    planter:{rect:[25,75,365,375],anchor:[.5,.95]},bench:{rect:[410,72,340,395],anchor:[.5,.96]},crates:{rect:[770,88,410,365],anchor:[.5,.96]},board:{rect:[1160,10,376,452],anchor:[.5,.97]},
+    bamboo:{rect:[0,466,380,523],anchor:[.55,.97]},arch:{rect:[350,477,453,522],anchor:[.5,.98]},terrace:{rect:[775,531,474,460],anchor:[.5,.97]},pillar:{rect:[1200,489,330,515],anchor:[.5,.98]}
+  },
   townObjects: [
+    {id:'planter-a',pack:'secondary',art:'planter',x:11,y:12,w:100,h:103},
+    {id:'planter-b',pack:'secondary',art:'planter',x:18.2,y:12,w:100,h:103},
+    {id:'planter-c',pack:'secondary',art:'planter',x:11,y:20.5,w:91,h:94},
+    {id:'planter-d',pack:'secondary',art:'planter',x:18,y:22,w:91,h:94},
+    {id:'bench-a',pack:'secondary',art:'bench',x:10,y:18,w:88,h:102},
+    {id:'bench-b',pack:'secondary',art:'bench',x:17.4,y:18,w:88,h:102},
+    {id:'market-crates',pack:'secondary',art:'crates',x:23,y:18.2,w:85,h:76},
+    {id:'guild-board',pack:'secondary',art:'board',x:12.3,y:18.5,w:72,h:87},
+    {id:'west-house',art:'shop',x:-2,y:15,w:207,h:270,building:true},
+    {id:'east-house',art:'shop',x:32,y:15.4,w:207,h:270,building:true},
+    {id:'north-house',art:'guild',x:7,y:1,w:230,h:266,building:true},
+    {id:'east-garden',art:'tree',x:33,y:24,w:147,h:178,tree:true},
+    {id:'west-garden',art:'tree',x:-3,y:24,w:147,h:178,tree:true},
     {id:'guild-hall',art:'guild',x:8,y:15,w:254,h:292,building:true},
     {id:'market-shop',art:'shop',x:22,y:15.4,w:225,h:294,building:true},
     {id:'moon-shrine',art:'shrine',x:7,y:24,w:225,h:250,building:true},
