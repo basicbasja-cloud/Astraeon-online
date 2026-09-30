@@ -438,3 +438,21 @@ canvas { position: relative; z-index: 0; }
 @media(max-width:380px) and (orientation:portrait){
  .hud{width:184px}.actions{width:160px;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(3,48px);transform:none}.slot{width:48px;min-width:48px;height:48px}.mission{width:175px}.mobile-controls{width:90px;height:90px}
 }
+/* Cohesive pictograms and compact world-first HUD. */
+.top-actions button{display:flex;align-items:center;justify-content:center;gap:6px}
+.top-actions svg{width:17px;height:17px;flex-shrink:0;color:#e4c991}
+.slot b{display:grid;place-items:center}.slot svg{width:23px;height:23px}
+.mission{text-align:left;color:var(--ink);font:inherit;cursor:pointer;transition:border-color .15s}.mission:hover{border-color:#dfc692}
+.encounter{position:absolute;z-index:3;top:12px;left:50%;transform:translateX(-50%);width:min(320px,38vw);padding:9px 13px;border:1px solid #b39b735e;border-radius:10px;background:#15212be8;box-shadow:0 4px 24px #0004;color:#eedbbe;text-align:center}
+.encounter[hidden]{display:none}.encounter strong{display:block;font:700 13px system-ui}.encounter small{font:600 10px system-ui;color:#bfa99b;margin-left:8px}.encounter .meter{height:7px;margin:6px 0;background:#342a32}.encounter .meter i{background:linear-gradient(90deg,#ae5577,#e59999)}.encounter>span{font:11px system-ui;color:#cebdaf}
+@media(max-width:700px),(orientation:landscape) and (max-height:540px){
+ .top-actions button span{display:none}.top-actions svg{width:20px;height:20px}.slot svg{width:26px;height:26px}
+ .hud{width:min(194px,calc(100% - 123px));padding:7px 9px}.identity{font-size:11px}.identity small{font-size:9px;line-height:1.2;margin-bottom:4px}.hudline{font-size:9px}.meter{height:4px;margin:3px 0 5px}
+ .mission{top:112px;width:min(194px,calc(100% - 123px));height:32px;padding:7px 9px;font-size:10px}.mission strong{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mission p,.mission small,.mission-progress{display:none}
+ .encounter{top:112px;width:min(250px,80vw);padding:8px 11px}.encounter strong{font-size:12px}.boss-active .mission{display:none}
+ .actions{gap:6px}.slot{border-width:1px}.slot[data-action="attack"]{box-shadow:inset 0 2px #ffeca83a,0 3px 14px #0006}.toast{padding:8px 12px}
+}
+@media (orientation:landscape) and (max-height:540px){
+ .mission{top:91px;height:28px;width:164px}.encounter{top:8px;width:min(240px,32vw);padding:6px 10px}.encounter .meter{margin:4px 0}.encounter>span{font-size:10px}.slot svg{width:23px;height:23px}
+}
+.transition-overlay{position:fixed;z-index:50;inset:0;display:grid;place-items:center;background:#0b1625dd;color:#e5d1a4;font:600 16px system-ui;letter-spacing:.03em;backdrop-filter:blur(4px)}

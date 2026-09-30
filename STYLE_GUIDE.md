@@ -4,7 +4,7 @@
 The first benchmark is Wayfarer Market in Shenzhou. This establishes the visual standard for one region before other civilizations expand.
 
 ## Camera and scale
-Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Streets are predominantly screen horizontal/vertical with restrained diagonal depth. Forward/inverse projection must remain paired. Feet are the sprite anchor. Player height: 64–76 screen pixels on desktop, readable at phone size. Service buildings: 180–280 screen pixels wide; trees 90–160 pixels tall.
+Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Streets are predominantly screen horizontal/vertical with restrained diagonal depth. Forward/inverse projection must remain paired. Feet are the sprite anchor. Player height: approximately 90–105 screen pixels on desktop, readable at phone size. Service buildings: 180–280 screen pixels wide; trees 90–160 pixels tall.
 
 ## Characters
 Anime/storybook proportions, readable head and weapon silhouette, navy/cream traveler outfit with restrained gold trim. Warrior, Mage and Ranger use distinct kits. No universal color-swapped character as a final class treatment. Movement uses distance-driven animation; attacks use anticipation, impact and recovery.
@@ -29,3 +29,13 @@ Short directional weapon trails, clear telegraphs conforming to ground projectio
 
 ## Asset acceptance
 Original/legally usable art only. Transparent atlas sprites use declared cells and feet/base anchors. Check alpha, cell clipping, silhouettes, gameplay-distance readability and alignment in runtime. Never approve the final look solely from a generated image.
+
+## Directional character style
+
+Preserve the original richly painted, rounded character volumes, detailed armor, hair, robes and cloth. Front, back, left, right and diagonal views must depict the same identity. Avoid blocky low-poly substitutes. Runtime actors use eight authored views around the circle, without image mirroring. Review each archetype at gameplay scale as well as in the directional gallery.
+
+## Shenzhou outdoor / ruin benchmark
+
+Goldenfield: warm ochre paths, sage meadow flowers, willow silhouettes, jade/timber farm buildings and caravan services. Moonbamboo: cooler dense foliage, bamboo groves, old stone and a lantern-lit shrine. Moonveil: quieter stone ground, visible room thresholds, layered wall segments, braziers and a contrasting moonseal. Roads must connect landmarks and exits; decorations must respect collision footprints. Main action/navigation icons are original SVG outlines rather than platform emoji.
+
+Reject new animation frames that point in the wrong direction even when their detail looks attractive. Retain accepted rear views until consistent replacements are available. Grounded frame crops and distance-based gait do not substitute for skeletal foot placement.

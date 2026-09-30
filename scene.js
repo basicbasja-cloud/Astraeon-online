@@ -3,6 +3,7 @@
 'use strict';
 const content=window.AstraeonContent, atlas=new Image();atlas.src='./assets/town-atlas-v1.webp';
 const secondary=new Image();secondary.src='./assets/secondary-atlas-v1.webp';
+const whenReady=Promise.all([atlas,secondary].map(image=>image.complete&&image.naturalWidth?Promise.resolve():new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Cannot load town artwork'))})));
 const hash=n=>{let x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)};
 const stoneColors=['#bfb297','#cec1a4','#a79e88','#d0c3a7'];
 // Static authored paving is cached once, then translated with the camera.
@@ -17,6 +18,7 @@ function ground(ctx,iso,t){
  const origin=iso(0,0);ctx.drawImage(terrainCache,origin.x-500,origin.y-100);
 }
 function prop(ctx,o,iso,player,time){
+ if(o.pack==='outdoor'||o.pack==='ruin')return window.AstraeonEnvironment.drawProp(ctx,o,iso,player,time);
  const sheet=o.pack==='secondary'?secondary:atlas;if(!sheet.complete||!sheet.naturalWidth)return false;
  const a=(o.pack==='secondary'?content.secondaryAtlas:content.atlas)[o.art],p=iso(o.x,o.y),left=p.x-o.w*a.anchor[0],top=p.y-o.h*a.anchor[1];
  if(left>ctx.canvas.clientWidth||left+o.w<0||top>ctx.canvas.clientHeight||top+o.h<0)return true;
@@ -30,5 +32,5 @@ function prop(ctx,o,iso,player,time){
  ctx.restore();return true;
 }
 function flowerBeds(ctx,iso){for(const [x,y] of [[11,12],[17.8,12],[11,19.5],[18,22]]){let p=iso(x,y);ctx.save();ctx.fillStyle='#395f3e';ctx.beginPath();ctx.ellipse(p.x,p.y,30,13,0,0,Math.PI*2);ctx.fill();for(let i=0;i<9;i++){let xx=p.x+(hash(i+x)*2-1)*25,yy=p.y+(hash(i+y)*2-1)*8;ctx.fillStyle=i%2?'#e9b0a1':'#f3dea0';ctx.beginPath();ctx.arc(xx,yy-3,2,0,Math.PI*2);ctx.fill()}ctx.restore()}}
-window.AstraeonScene={ground,prop,flowerBeds,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
+window.AstraeonScene={whenReady,ground,prop,flowerBeds,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
 })();

@@ -24,5 +24,19 @@ Baseline: GitHub `0657fa4a6efbdcf75ab042b23c36e45bec897966` (Pages run 19 succee
 ## Priority and engine decision
 Preserve the working gameplay loop and saves. Establish one city benchmark with properly anchored original painted assets, authored roads, layered depth sorting and occlusion, and camera correction before content expansion. Canvas2D can validate this art/scale/combat slice without destroying current systems. A WebGL migration is not yet justified by a measured renderer bottleneck; record this limitation and reassess after the benchmark. This does not claim the current renderer fulfills the eventual 3D environment requirement.
 
-## Current visual gate
-FAILED: primitive town architecture/trees, transparent roof half, sparse composition, repeating terrain, four-frame locomotion and static NPC crowd. No production-ready claim.
+## Original visual gate
+FAILED at the audit baseline: primitive town architecture/trees, transparent roof half, sparse composition, repeating terrain, four-frame locomotion and static NPC crowd. No production-ready claim.
+
+## Directional pass status — 2026-09-30
+
+Continuous world-space transforms, smooth heading changes, analog speed, aim-aligned impacts/projectiles and eight-direction painted archetype/enemy/guardian artwork are implemented. Moonveil now has three connected rooms and a boss court, with collidable walls and gated progression. Existing local progression and save format are preserved.
+
+The original audit table above records the starting state. This pass does not close the full production gate: animation transitions and atlas consistency need further polish; regular enemy locomotion has two poses; terrain elevation, a complete online adapter, streaming and real phone performance remain outstanding. The renderer remains painted Canvas2D 2.5D.
+
+## Connected Shenzhou pass — 2026-09-30
+
+Field and forest now use distinct painted materials, authored roads, layered trees/camps/mill/shrine props, useful exploration markers and a collidable four-room painted ruin. Replaced primitive active dungeon walls/floor and default-field block geometry. Main controls use original SVG icons, the phone quest strip is collapsible, and the dungeon minimap matches its authored rooms.
+
+A fresh Ranger completed the field contract, one-time supply claim, natural forest/shrine route, all four rooms, guardian phases and three attacks, reward return, armor crafting/equipment and persistent reload through real UI input. Resolved unreachable gates, arrival-target cancellation, obstacle pursuit and wall-crossing projectiles. Save normalization and failed zone-load retry preserve progress.
+
+Full production gate remains open: painted 2.5D eight-view characters are not a skinned 3D pipeline, two rear walking directions retain the shorter accepted cycle, dedicated action/reaction/death transitions and atlas consistency need art work, terrain elevation/interiors and real mobile measurements are absent, and social/economy features remain local. No five-region expansion or live MMO completion is claimed.

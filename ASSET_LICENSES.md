@@ -27,3 +27,34 @@ Generated with the built-in ImageGen for this project from original textual brie
 | secondary-atlas-v1.webp | Planter, bench, crates, notice board, bamboo, ruin arch, terrace, pillar; exec-949dfe95-0c9d-4ad1-8de3-19fe4c75610e.png |
 
 PNG→WebP preserves alpha; source extraction/ground anchors are in atlas-metadata.js/world-content.js. Audio in world-systems.js is original synthesized oscillator/noise material and an original pentatonic sequence, with no samples from another game.
+
+## Directional artwork — 2026-09-30
+
+Built-in ImageGen edits of the project’s original atlases, preserving the previous painted character design. Lossless WebP copies retain transparency; `directional-metadata.js` declares source rectangles. No external model or third-party character artwork is used.
+
+| Asset | Generated source |
+|---|---|
+| warrior-directional-v1.webp | exec-b6c73faa-7798-4fbc-b959-7a3d2ecf0fc5.png |
+| mage-directional-v1.webp | exec-764d1e2c-6de8-42a5-a3cf-27362b252108.png |
+| ranger-directional-v1.webp | exec-466bf877-e6a7-4134-a358-b55e5144aa24.png |
+| boss-directional-v1.webp | exec-62e132f9-111d-4182-b99a-a114962a96e4.png |
+| meadow-directional-v1.webp | exec-a84bd012-eebf-4869-9961-de856e2f5321.png |
+| forest-directional-v1.webp | exec-2ab2efd2-9183-44dc-8e5b-6fab6fa03fa4.png |
+
+## Shenzhou environment and walking sheets — 2026-09-30
+
+Original built-in ImageGen art and edits of this project's own sheets. Format conversion preserves transparency; environment and directional metadata record source rectangles. Runtime source-silhouette clipping separates neighboring sprites; original image files are preserved. Walk copies use quality-90 alpha WebP; terrain uses quality-88 WebP. Original PNGs remain in the task's generated_images directory. No third-party art/audio references were used.
+
+| Runtime asset | Generated source |
+|---|---|
+| outdoor-atlas-v1.webp | exec-d3c03079-501e-4a1d-b457-764955845578.png |
+| ruin-atlas-v1.webp | exec-2449ee31-8a48-4902-a010-1b4879a006c1.png |
+| meadow-ground-v1.webp | exec-11740bcd-3357-42e5-b02b-938f9b2c05c6.png |
+| forest-ground-v1.webp | exec-527ba276-6264-4f7f-8f3c-3e4cd7e2ad66.png |
+| ruin-ground-v1.webp | exec-c4e70d3b-6b68-4eb7-95b4-0314316c2d6f.png |
+| path-ground-v1.webp | exec-e5c318c5-cf5f-4049-9bdc-345c082e99bf.png |
+| warrior-walk-v1.webp | exec-9c15937d-6c73-437a-92da-9b22601c9388.png |
+| mage-walk-v1.webp | exec-b5d936ee-91fa-41b6-8408-8a200783daf4.png |
+| ranger-walk-v1.webp | exec-158f16d9-e3e5-4d4a-9733-2a84de6c28f1.png |
+
+Environment brief: original Shenzhou mill, farmhouse, caravan camp, willow/bamboo, broken stone and lantern shrine; quiet hand-painted meadow, woodland, dirt path and stone materials; camera and light matched to the existing game. Ruin props include two wall orientations, rubble, braziers, moonseal, altar, pillar and chest. Walking briefs preserve the existing detailed warrior/mage/ranger identity with eight stride phases in eight authored directions. Runtime deliberately uses the accepted base atlas for two rear directions where the extended sheets did not retain the required facing. UI vectors in icons.js and water/noise audio are original code-created material.
