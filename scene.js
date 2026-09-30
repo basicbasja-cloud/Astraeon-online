@@ -4,10 +4,21 @@
 const content=window.AstraeonContent, atlas=new Image();atlas.src='./assets/town-atlas-v1.webp';
 const paving=new Image();paving.src='./assets/town-limestone-v1.webp';
 const secondary=new Image();secondary.src='./assets/secondary-atlas-v1.webp';
-const whenReady=Promise.all([atlas,secondary,paving].map(image=>image.complete&&image.naturalWidth?Promise.resolve():new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Cannot load town artwork'))})));
+const hall=new Image();hall.src='./assets/consortium-hall-v2.webp';
+const whenReady=Promise.all([atlas,secondary,paving,hall].map(image=>image.complete&&image.naturalWidth?Promise.resolve():new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Cannot load town artwork'))})));
 const hash=n=>{let x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)};
 // World-aligned material courses share the same projection as architecture and actors.
-let terrainCache=null;
+let terrainCache=null,vergePattern=null;
+function verge(ctx,iso,image){
+ if(!vergePattern){
+  const material=document.createElement('canvas');material.width=384;material.height=384;const g=material.getContext('2d');
+  g.fillStyle='#859074';g.fillRect(0,0,384,384);g.globalAlpha=.44;g.filter='blur(.7px)';g.drawImage(image,0,0,384,384);
+  vergePattern=ctx.createPattern(material,'repeat');
+ }
+ const origin=iso(0,0),zoom=window.AstraeonView.zoom,unit=8/384;
+ vergePattern.setTransform(new DOMMatrix([48*unit*zoom,7*unit*zoom,-10*unit*zoom,31*unit*zoom,origin.x,origin.y]));
+ ctx.fillStyle=vergePattern;ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
+}
 function polygon(g,points,p){g.beginPath();points.forEach(([x,y],i)=>{const q=p(x,y);i?g.lineTo(q.x,q.y):g.moveTo(q.x,q.y)});g.closePath()}
 function corridor(g,road,p){
  for(let i=1;i<road.points.length;i++){
@@ -22,17 +33,31 @@ function ground(ctx,iso,t){
   const mask=document.createElement('canvas');mask.width=2900;mask.height=2100;const m=mask.getContext('2d');m.fillStyle='#fff';
   for(const road of content.townRoads.filter(r=>!['service','field'].includes(r.role)))corridor(m,road,p);
   polygon(m,content.goldenScene.plaza,p);m.fill();
+  // The hall's shallow front steps open onto a connected forecourt, not a grass gap.
+  polygon(m,[[6.6,14.8],[9.8,14.8],[10.8,17.6],[7.2,17.6]],p);m.fill();
   // One limestone family, small value changes, staggered joints, no screen-axis checkerboard.
   const stones=document.createElement('canvas');stones.width=2900;stones.height=2100;const s=stones.getContext('2d');s.fillStyle='#a49c85';s.fillRect(0,0,2900,2100);
   const paint=s.createPattern(paving,'repeat'),unit=4/paving.naturalWidth;
   paint.setTransform(new DOMMatrix([48*unit,7*unit,-10*unit,31*unit,500,100]));s.fillStyle=paint;s.fillRect(0,0,2900,2100);
   s.globalCompositeOperation='destination-in';s.drawImage(mask,0,0);
-  // Soft dust apron beneath the hard material edge, followed by restrained drainage/wear.
-  g.save();g.filter='blur(4px)';g.globalAlpha=.28;g.drawImage(stones,0,0);g.restore();g.drawImage(stones,0,0);
+  // Soil accumulation surrounds the stone. A softened alpha edge seats paving in the verge.
+  const apron=document.createElement('canvas');apron.width=2900;apron.height=2100;const ag=apron.getContext('2d');
+  ag.drawImage(mask,0,0);ag.globalCompositeOperation='source-in';ag.fillStyle='#b09e7b';ag.fillRect(0,0,2900,2100);
+  g.save();g.filter='blur(8px)';g.globalAlpha=.55;g.drawImage(apron,0,0);g.restore();
+  g.save();g.filter='blur(.45px)';g.drawImage(stones,0,0);g.restore();
   g.strokeStyle='#776f542f';g.lineWidth=2;polygon(g,content.goldenScene.plaza,p);g.stroke();g.strokeStyle='#ded4b537';g.lineWidth=.8;g.stroke();
   for(const road of content.townRoads){
    if(['service','field'].includes(road.role)){
     const dirt=document.createElement('canvas');dirt.width=2900;dirt.height=2100;const d=dirt.getContext('2d');d.fillStyle='#aa967477';corridor(d,road,p);g.save();g.filter='blur(3px)';g.drawImage(dirt,0,0);g.restore();
+   }
+   // Shallow side drainage follows street edges, never cuts through the open court.
+   if(!['service','field'].includes(road.role))for(let j=1;j<road.points.length;j++){
+    const a=road.points[j-1],b=road.points[j],dx=b[0]-a[0],dy=b[1]-a[1],n=Math.hypot(dx,dy),nx=-dy/n,ny=dx/n;
+    for(const side of [-1,1])for(let i=0;i<n*3;i++){
+     const f=i/(n*3),x=a[0]+dx*f+nx*(road.width/2-.07)*side,y=a[1]+dy*f+ny*(road.width/2-.07)*side;
+     if(x>9.6&&x<19.6&&y>12&&y<20.7)continue;
+     const q=p(x,y),end=p(x+dx/n*.24,y+dy/n*.24);g.strokeStyle='#655e492e';g.lineWidth=1.6;g.beginPath();g.moveTo(q.x,q.y);g.lineTo(end.x,end.y);g.stroke();
+    }
    }
    for(let j=1;j<road.points.length;j++){
     const a=road.points[j-1],b=road.points[j],dx=b[0]-a[0],dy=b[1]-a[1],n=Math.hypot(dx,dy),nx=-dy/n,ny=dx/n;
@@ -44,15 +69,19 @@ function ground(ctx,iso,t){
    }
   }
   // Designed foot traffic from the Consortium threshold to the fountain and market.
-  for(const [x,y,rx,ry] of [[10.8,15.8,54,27],[14.5,18.6,85,24],[20.3,17.7,65,24]]){const q=p(x,y);g.save();g.translate(q.x,q.y);g.scale(1,ry/rx);const wear=g.createRadialGradient(0,0,0,0,0,rx);wear.addColorStop(0,'#87795816');wear.addColorStop(1,'#87795800');g.fillStyle=wear;g.fillRect(-rx,-rx,rx*2,rx*2);g.restore()}
+  for(const [x,y,rx,ry] of [[10.8,15.8,54,27],[14.5,18.6,85,24],[20.3,17.7,65,24],[24,20,60,25],[40.9,16.1,95,35]]){const q=p(x,y);g.save();g.translate(q.x,q.y);g.scale(1,ry/rx);const wear=g.createRadialGradient(0,0,0,0,0,rx);wear.addColorStop(0,'#87795825');wear.addColorStop(1,'#87795800');g.fillStyle=wear;g.fillRect(-rx,-rx,rx*2,rx*2);g.restore()}
+  // Earth under the existing tree clusters, rather than a tree pasted onto stone/grass.
+  for(const o of content.townObjects.filter(o=>o.tree)){
+   const q=p(o.x,o.y),r=o.w*.23;g.save();g.translate(q.x,q.y);g.scale(1,.55);const soil=g.createRadialGradient(0,0,3,0,0,r);soil.addColorStop(0,'#75694f66');soil.addColorStop(.55,'#89795735');soil.addColorStop(1,'#89795700');g.fillStyle=soil;g.fillRect(-r,-r,r*2,r*2);g.restore();
+  }
  }
  window.AstraeonView.drawCache(ctx,terrainCache,iso(0,0),500,100);
 }
 function prop(ctx,o,iso,player,time){
  if(o.pack!=='outdoor'&&o.pack!=='ruin'){const zoom=window.AstraeonView?.zoom||1;o={...o,w:o.w*zoom,h:o.h*zoom}}
  if(o.pack==='outdoor'||o.pack==='ruin')return window.AstraeonEnvironment.drawProp(ctx,o,iso,player,time);
- const sheet=o.pack==='secondary'?secondary:atlas;if(!sheet.complete||!sheet.naturalWidth)return false;
- const a=(o.pack==='secondary'?content.secondaryAtlas:content.atlas)[o.art],p=iso(o.x,o.y),left=p.x-o.w*a.anchor[0],top=p.y-o.h*a.anchor[1];
+ const sheet=o.id==='guild-hall'?hall:o.pack==='secondary'?secondary:atlas;if(!sheet.complete||!sheet.naturalWidth)return false;
+ const a=o.id==='guild-hall'?{rect:[0,0,hall.naturalWidth,hall.naturalHeight],anchor:[.4,.91]}:(o.pack==='secondary'?content.secondaryAtlas:content.atlas)[o.art],p=iso(o.x,o.y),left=p.x-o.w*a.anchor[0],top=p.y-o.h*a.anchor[1];
  if(left>ctx.canvas.clientWidth||left+o.w<0||top>ctx.canvas.clientHeight||top+o.h<0)return true;
  let alpha=1,hero=iso(player.x,player.y);
  if((o.tree||o.building||o.art==='stall'||o.art==='cart')&&hero.x>left+o.w*.18&&hero.x<left+o.w*.83&&hero.y<p.y-10&&hero.y>top+o.h*.15)alpha=.36;
@@ -64,5 +93,5 @@ function prop(ctx,o,iso,player,time){
  ctx.restore();return true;
 }
 function flowerBeds(ctx,iso){for(const [x,y] of [[11,12],[17.8,12],[11,19.5],[18,22]]){let p=iso(x,y);ctx.save();ctx.fillStyle='#395f3e';ctx.beginPath();ctx.ellipse(p.x,p.y,30,13,0,0,Math.PI*2);ctx.fill();for(let i=0;i<9;i++){let xx=p.x+(hash(i+x)*2-1)*25,yy=p.y+(hash(i+y)*2-1)*8;ctx.fillStyle=i%2?'#e9b0a1':'#f3dea0';ctx.beginPath();ctx.arc(xx,yy-3,2,0,Math.PI*2);ctx.fill()}ctx.restore()}}
-window.AstraeonScene={whenReady,ground,prop,flowerBeds,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
+window.AstraeonScene={whenReady,verge,ground,prop,flowerBeds,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
 })();

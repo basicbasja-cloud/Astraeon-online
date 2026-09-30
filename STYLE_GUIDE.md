@@ -6,7 +6,7 @@ The first benchmark is Wayfarer Court and its guild/market approaches in Shenzho
 ## Camera and scale
 Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Forward/inverse projection and input share `world-view.js`; feet are the sprite anchor.
 
-The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **Public Pages has been inspected live at desktop, tablet and both phone orientations; art approval remains pending.** Revisit these relationships during further public comparisons rather than treating the numbers as permanent.
+The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **The prior v26 public build was inspected at desktop, tablet and both phone orientations; v27 public inspection and art approval remain pending.** Revisit these relationships during further public comparisons rather than treating the numbers as permanent.
 
 | Relationship | Benchmark convention |
 |---|---|
@@ -14,8 +14,8 @@ The earlier 90–105 pixel player / 180–280 pixel building guideline produced 
 | Ordinary creature | Approximately 0.7–1.4 H; species silhouette determines the value |
 | Guardian | Approximately 2.5 H |
 | House | Approximately 3.85–4.25 H wide, 5.75–6.35 H tall |
-| Service hall | Approximately 6 H wide, 6.9 H tall |
-| Primary civic landmark | Approximately 7.1 H wide, 8.2 H tall; larger than service buildings |
+| Consortium Hall | Refined candidate approximately 6.8 H wide, 6.2 H tall; open doorway approximately 1.3 H |
+| Primary landmark | Consortium Hall: broad facade, open threshold and connected forecourt; the smaller fountain supports the court |
 | Gate | Approximately 5.2 H wide, 6.5 H tall |
 | Tree | Mature border trees approximately 3.3 H tall; saplings may be smaller |
 | Market stall / cart | Current market counter / cart approximately 2.1 / 1.6 H wide; leave approach space on road side |
@@ -68,4 +68,6 @@ Modern combat comes from directional attacks, cast/hit effects, weapon trails, t
 
 ## Golden Town Scene gate
 
-Content expansion is paused until Golden Sprite Character and Golden Town Scene are both approved in the deployed game. GOLDEN_SCENE.md defines Wayfarer Court: the fountain focal point, Consortium and market clusters, the gate route, shared architectural palette, world-aligned paving and one visible humanoid baseline. Roads, buildings and planting must define connected spaces. Door clearance, source perspective and final illustrated charm remain review items. The unavailable Photo 1 attachment was not inspected; repository artwork supplies the working reference.
+Content expansion is paused until Golden Sprite Character and Golden Town Scene are both approved in the deployed game. GOLDEN_SCENE.md defines Wayfarer Court: the primary Consortium landmark, smaller fountain focal point and market cluster, the gate route, shared architectural palette, world-aligned paving and one visible humanoid baseline. Roads, buildings and planting must define connected spaces. Door clearance, source perspective and final illustrated charm remain review items. The unavailable Photo 1 attachment was not inspected; repository artwork supplies the working reference.
+
+Golden Warrior calibration uses reviewed boot contacts and one 70-pixel visible body height across directions and locomotion sheets, preserving overhead weapon reach. Separate hit/death poses use four cardinal views; diagonal reactions select the nearest view. Do not broaden this into outfit or Node sprite permutations. Other class refinements wait for the first in-scene art review.

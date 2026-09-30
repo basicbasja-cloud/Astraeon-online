@@ -62,3 +62,14 @@ Environment brief: original Shenzhou mill, farmhouse, caravan camp, willow/bambo
 ## Golden Town Scene paving — 2026-09-30
 
 `assets/town-limestone-v1.webp` replaces town paving with original built-in ImageGen art, source `exec-62028e7a-c750-49b6-b7c6-c07773324e19.png`. No third-party reference pixels were supplied. PNG-to-WebP conversion changes format/compression only. The original remains outside the checkout under `/workspace/generated_images`. This refines an existing material; it does not add a building or decorative asset family. The material must pass actual runtime style, lighting, projection and scale review.
+
+## Golden recovery refinements — 2026-09-30
+
+Built-in ImageGen edits used only this project’s original town and Warrior atlases. No Ragnarok pixels, third-party assets or external model were used. Source PNGs remain in `/workspace/generated_images`; PNG-to-WebP conversion preserves transparency. Runtime metadata extracts source rectangles and registers foot contacts without repainting the artwork.
+
+| Runtime asset | Original generated source | Scope |
+|---|---|---|
+| consortium-hall-v2.webp | exec-40562902-6a17-4c60-a790-7bc328ad3b74.png | Replacement of the existing hall with open doorway and shallow stairs |
+| warrior-reactions-v2.webp | exec-6bc13191-c39d-4e40-8c34-87064f4e357f.png | Eight hit/death frames, four cardinal views of the same canonical Warrior |
+
+The earlier 24-pose reaction candidate `exec-5cfd575c-08f4-42ff-bc89-fe0cdc441e78.png` failed direction/coverage review and is excluded from the client. Slash/dodge feedback in `combat-vfx.js` is original code-created geometry. Town verge shading reuses the existing ground art; no additional decorative asset pack was produced.

@@ -2,11 +2,15 @@
 
 Content expansion is paused. **Golden Town Scene approval: pending. Golden Sprite Character approval: pending.** Ragnarok Online 1 guides current presentation and town planning; painted sprites are the mainline character direction. Do not add maps, classes, skill sets, NPC families, buildings or districts until both gates pass in the deployed game.
 
+## Town concept
+
+A Shenzhou frontier town whose Consortium court gathers adventurers and trade onto the eastern road to Goldenfield. The Consortium Hall is the primary civic landmark. Its entrance opens onto Wayfarer Court; the fountain is the smaller meeting point. Warrior is the first Golden Sprite Character. The other two existing archetypes remain available without expanding their asset scope.
+
 ## Composition
 
-The benchmark is the central fountain court, its Consortium entrance, one shop frontage, one market counter, two seating edges and a west courtyard tree cluster. The fountain is the primary focal point; the Consortium threshold is secondary. The adventurer sits in the open foreground. The market supports the right edge rather than filling the centre. Trees frame edges and entrances rather than filling every gap.
+The benchmark is the central fountain court, its Consortium entrance, one shop frontage, one market counter, two seating edges and a west courtyard tree cluster. The broad Consortium facade and open entrance establish the primary landmark; the fountain is the smaller court focal point. The adventurer sits in the open foreground. The market supports the right edge rather than filling the centre. Trees frame edges and entrances rather than filling every gap.
 
-Removed two excess central planters, the duplicate centre-market canopy and the loose guild cart. Benches now occupy the court's edges. Crates, merchant, counter and cart form one market service cluster. Housing staff move to their approach rather than standing in the court. Two guards follow its perimeter; one customer circulates at the market. There are three ambient routes, not five overlapping central circuits.
+Removed two excess central planters, the duplicate centre-market canopy and the loose guild cart. Benches now occupy the court's edges. Crates, merchant, counter and cart form one market service cluster. The Registrar and Quest Board share the hall forecourt. The Artisan works beside the existing workshop, the Housing Keeper at the residential approach and the Gatekeeper beside the Caravan Gate. Two guards follow its perimeter; one customer circulates at the market. There are three ambient routes, not five overlapping central circuits.
 
 The existing shrine moves into the western garden/courtyard connected by the service path. Existing surrounding trees supply its Spirit/Qi context. This relocates existing content; it does not generate a new district or asset family. The shrine remains part of Shenzhou's culture and stops competing with the central fountain.
 
@@ -20,12 +24,12 @@ The limestone paint replaces flat screen-aligned checker paving. A shared affine
 
 ## Circulation and scale
 
-Use one visible painted humanoid as the relative 1.0 baseline. Calibrate player and NPC artwork by visible feet-to-head size, not atlas cell width: approximately 70 pixels before responsive zoom. The atlas presentation scalar 76 is **not** a promise of a 76-pixel visible height.
+Use one visible painted humanoid as the relative 1.0 baseline. Calibrate player and NPC artwork by visible feet-to-head size, not atlas cell width: 70 pixels for the Golden Warrior before responsive zoom, registered to visible boot contacts across idle and locomotion sheets. The atlas presentation scalar 76 is **not** a promise of a 76-pixel visible height.
 
 | Relationship | Current candidate |
 |---|---|
-| Main avenue | 3.8 ground units, limestone; terminates at the court's north/south mouths |
-| Secondary street | 2.6 units, shared stone; joins the open court east/west |
+| Main avenue | 3.8 ground units, limestone; Consortium forecourt → court → market frontage → eastern Caravan Gate |
+| Secondary street | 2.6 units, shared stone; north/south court mouths and the western approach |
 | Gate-to-field continuation | Main eastern stone street ends at the Caravan Gate; 1.9-unit dirt route continues beyond it |
 | Service path | 1.1 units, warm worn soil; serves the market/back courtyard |
 | Plaza | Authored six-sided court about 9.6 × 8.2 units; perimeter circulation around the basin |
@@ -35,14 +39,24 @@ Use one visible painted humanoid as the relative 1.0 baseline. Calibrate player 
 
 The fountain now blocks movement. Players and pathfinding must route around its basin instead of standing inside the artwork. Building entrances and market interactions remain accessible through actual input. Roof fade keeps the player readable when passing behind architecture. Broad contact gradients replace hard elliptical stamps under town props.
 
-This scale system is provisional. Door openings, first-floor proportions and painted perspective still need close visual acceptance; the current original guild entrance is near the humanoid's visible height and needs more architectural clearance before this can be called final. Do not solve that by scaling every asset or shrinking the whole world. Preserve the open court, main/secondary/service distinction and benchmark ratios while re-authoring any deficient opening.
+The hall artwork has been refined with a taller open double doorway, shallow steps and a clearer ground-floor facade, preserving the existing jade-roof/timber/plaster vocabulary. It is registered to the front steps and connected to an authored limestone forecourt. The door opening is roughly 1.3 Warrior heights in the candidate; visual clearance and perspective still require public review. This is a replacement for the existing hall, not a new building. Camera, city bounds, collision footprints and surrounding asset sizes retain their existing contracts.
 
 ## Golden Sprite Character integration and review
 
-Warrior, Mage and Ranger use the existing richly painted directional atlases. Eight authored front/side/rear/diagonal views preserve hair, cape, costume and weapon identity without image mirroring. Continuous movement/aim controls facing; presentation chooses the nearest authored angle. Distance-based gait and actual impact timing support manual combat. Existing hit/cast effects, trails, telegraphs and authored Node behaviors provide variation without additional hero sheets. The live game includes no low-poly character path.
+Warrior, Mage and Ranger use the existing richly painted directional atlases. Eight authored front/side/rear/diagonal views preserve hair, cape, costume and weapon identity without image mirroring. Continuous movement/aim controls facing; presentation chooses the nearest authored angle. Distance-based gait and actual impact timing support manual combat. The Golden Warrior now has separate painted hit and fallen poses in four reviewed cardinal views; diagonals select the nearest view without mirroring. Idle, movement, attacks and dodge retain eight views, including the existing two-pose rear walking fallback. Boot-contact registration and per-direction body calibration prevent sheet changes from altering apparent stature. Reusable slash ribbons, a bright contact edge and ground-projected dodge dust modernize feedback; existing cast effects, telegraphs and single-layer Node behaviors retain their scope. The live game includes no low-poly character path.
 
 Scope is 3–4 hero sets; preserve and refine the three existing sets before considering another. The attachment could not be opened, so the repository's original painted art is the working benchmark. Richer transitions, consistent rear cycles and illustrated charm at gameplay distance remain art review criteria.
 
 For each deployed comparison, use a fresh cache and capture the court, Consortium approach, market frontage, city gate, field transition and four viewport sizes. Move, turn, attack and dodge the actual sprite hero. Compare visible scales, material detail frequency, focal hierarchy, light/shadow direction, entrances and ground edges with the previous pass. Inspect each class inside the actual town, not only in an atlas gallery. Both gates require user visual approval and public in-game inspection. Local screenshots and functional passes are supporting evidence only.
 
-Public access was restored during this pass. The deployed game was opened in fresh Chromium and inspected at desktop, tablet and both phone orientations; normal input verified fountain blocking, guild/market access, walking through the gate into the field, targeting, attack, skill and dodge. The deployed v26 scripts/cache were verified with no runtime/resource errors. A fresh Ranger also completed the whole live expedition through camp, dungeon and guardian, returned, crafted and reloaded successfully. A fresh Mage town inspection found no console/runtime/resource errors. This completes functional/public inspection for this candidate, not either art approval. Doorway clearance and architecture perspective remain open alongside final visual review.
+### Previous v26 public evidence
+
+Public access was restored during the previous pass. The deployed game was opened in fresh Chromium and inspected at desktop, tablet and both phone orientations; normal input verified fountain blocking, guild/market access, walking through the gate into the field, targeting, attack, skill and dodge. The deployed v26 scripts/cache were verified with no runtime/resource errors. A fresh Ranger also completed the whole live expedition through camp, dungeon and guardian, returned, crafted and reloaded successfully. A fresh Mage town inspection found no console/runtime/resource errors. This completes functional/public inspection for this candidate, not either art approval. Doorway clearance and architecture perspective remain open alongside final visual review.
+
+## Recovery candidate — v27
+
+The recovery began from clean commit `abd713e`, confirmed against remote `main`. The first incomplete milestone was the in-scene Golden Character/Golden Town review, not additional content. Replaced only the existing hall artwork and added eight Warrior reaction frames; the rejected 24-frame reaction candidate is excluded. No class, region, district, building, quest, NPC family or decorative pack was added.
+
+Town grass now uses a quieter world-aligned version of the existing material. Soil aprons, softened paving edges, shallow side drainage, traffic wear and soil at tree roots integrate the street surfaces. Service NPCs were relocated to existing facilities; physical access and the connected expedition are regression targets.
+
+Public Pages browsing currently fails with proxy HTTP 403 / `ERR_TUNNEL_CONNECTION_FAILED`; GitHub repository and Actions access remain available through the connector. Previous v26 public evidence does not approve v27. Local screenshots, successful deployment and functional tests are supporting evidence only. Both art gates remain pending until the deployed candidate is inspected and approved.

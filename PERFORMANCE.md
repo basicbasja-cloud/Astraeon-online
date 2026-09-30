@@ -63,3 +63,9 @@ The field sample used a fresh Mage, area Nodes and repeated attack input, with t
 ## Golden Town consolidation sample — 2026-09-30
 
 Serial headless Chromium, DPR 1, default quality, painted Mage at the actual fountain court with moving NPCs. Each viewport used an eight-second window after 3.5 seconds of warmup. Desktop 1280×720 measured 49–52 FPS, p95 33.4 ms; portrait 390×844 measured 60 FPS, p95 16.7–16.8 ms. No runtime errors were reported. These are local cloud measurements without sustained player VFX, not physical-phone or public-build acceptance. The desktop 60 FPS target remains open. The replacement paving adds approximately 319 KB to core precaching; its composition is cached once, with visible-region blits retained.
+
+## Golden recovery — v27
+
+The existing hall replacement and Warrior reaction sheet add approximately 848 KiB compressed to core precaching. No additional building or character family is introduced. Source-space Warrior contacts and body calibration reuse the existing source extraction/silhouette cache. Ground toning is cached once; the 2900 × 2100 paving cache and visible-region blits remain. Town contact shadows now use two small ground-projected radial gradients rather than hard ellipse stamps. Slash/dodge feedback reuses code-created geometry and Node colors.
+
+Local functional and four-viewport visual review passed. No new FPS or physical-device guarantee is claimed. Public visual inspection is blocked by the current proxy policy, and both art gates remain pending.

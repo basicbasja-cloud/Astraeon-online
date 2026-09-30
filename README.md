@@ -10,7 +10,7 @@ Desktop: WASD/arrows move, Shift sprint, F attack, Space dodge, 1–4 class skil
 
 ## Visual consolidation
 
-Content expansion is paused. The central Wayfarer court is the Golden Scene candidate: a quieter fountain plaza, coherent entrances and market frontage, world-aligned painted limestone and distinct circulation widths. Ragnarok Online 1 guides current presentation and town planning. Warrior, Mage and Ranger retain painted directional sprites; the low-poly prototype is excluded from the live client. **Golden Sprite Character and Golden Town Scene approval are pending.** See [GOLDEN_SCENE.md](./GOLDEN_SCENE.md).
+Content expansion is paused. The central Wayfarer court is the Golden Scene candidate: the primary Consortium Hall and its open forecourt, a smaller fountain meeting point, coherent market frontage, world-aligned painted limestone and distinct circulation widths. Ragnarok Online 1 guides current presentation and town planning. Warrior is the first Golden Character, with registered locomotion and distinct painted hit/death poses. Warrior, Mage and Ranger retain painted directional sprites; the low-poly prototype is excluded from the live client. **Golden Sprite Character and Golden Town Scene approval are pending.** See [GOLDEN_SCENE.md](./GOLDEN_SCENE.md).
 
 ## Current work
 
@@ -22,7 +22,7 @@ The city benchmark has a larger 44 × 40 footprint, widened main avenues, neighb
 
 ## Limits
 
-This is local simulation. Guild, party, market, housing and sparring are local features. There is no live multiplayer or account sync. The 22-class registry and legacy maps are retained for compatibility, not evidence of 22 completed classes or five polished regions. Moonveil has three connected chambers and a guardian court with collidable walls and gates. The regular game retains painted directional actors. Richer action/death animations, directional art consistency, audio composition and mobile hardware performance must pass further inspection before calling the slice production-ready.
+This is local simulation. Guild, party, market, housing and sparring are local features. There is no live multiplayer or account sync. The 22-class registry and legacy maps are retained for compatibility, not evidence of 22 completed classes or five polished regions. Moonveil has three connected chambers and a guardian court with collidable walls and gates. The regular game retains painted directional actors. Richer transitions beyond the Warrior reaction refinement, directional art consistency, audio composition and mobile hardware performance must pass further inspection before calling the slice production-ready.
 
 See AUDIT.md, ARCHITECTURE.md, STYLE_GUIDE.md, CONTENT_GUIDE.md, ASSET_LICENSES.md, PERFORMANCE.md and DEVELOPMENT_LOG.md. `qa.html` tests actual desktop/portrait/landscape/tablet CSS viewports in the same game instance.
 
@@ -37,3 +37,5 @@ Start `python3 -m http.server 8001 --bind 127.0.0.1` from this directory. Pass `
 Run `python3 tests/skill_nodes.py --url http://127.0.0.1:8001` for compatible one-node selection, reload and actual node effects across all three starting classes. Use a server rooted in the parent directory to validate `/Astraeon-online/` asset and service-worker paths.
 
 Production QA target: https://basicbasja-cloud.github.io/Astraeon-online/ . Commit/push significant changes, confirm the matching Pages deployment succeeds, then play the public build with a fresh browser context and inspect screenshots/console across viewports. A successful workflow or localhost test alone does not close visual acceptance.
+
+Run `python3 tests/golden_scene.py --url http://127.0.0.1:8001` for a fresh Warrior court review through normal input: circulation, eight movement headings, directional attacks, existing skills, dodge, all relocated services and the physical gate/field threshold. It captures four viewports at each approach. Golden approvals remain pending; see GOLDEN_SCENE.md for current public-access limits.
