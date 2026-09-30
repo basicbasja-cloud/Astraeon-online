@@ -62,6 +62,8 @@ Reject new animation frames that point in the wrong direction even when their de
 
 ## Current RO1-inspired production direction
 
+Use [RAGNAROK_REFERENCE.md](./RAGNAROK_REFERENCE.md) for the inspected sources and production techniques. Classic RO combines directional sprites with textured 3D terrain/models, navigation data and shared camera/lighting. ASTRAEON adapts those spatial relationships to its fixed-camera painted Canvas2D presentation. Our soft painted artwork and manual action feedback are ASTRAEON decisions; they are not claims about RO's original pixel-art workflow.
+
 Ragnarok Online 1 is the primary presentation and town-planning reference. ASTRAEON retains original lore, parallel power paradigms and manual action combat. Use painted directional sprites as the mainline character presentation. Preserve the rich Warrior, Mage and Ranger art; keep scope to 3–4 hero sets, with no fourth set before the existing style passes review. Exclude the low-poly prototype from the live client. Continuous simulated facing selects eight authored views; this is not continuously articulated 3D.
 
 Modern combat comes from directional attacks, cast/hit effects, weapon trails, telegraphs, auras and restrained contact feedback. Single-layer Nodes vary gameplay and VFX, rather than requiring character sheets per Node. Do not mass-generate new sprite sets or multiply outfits to solve a visual-cohesion problem.
@@ -71,3 +73,14 @@ Modern combat comes from directional attacks, cast/hit effects, weapon trails, t
 Content expansion is paused until Golden Sprite Character and Golden Town Scene are both approved in the deployed game. GOLDEN_SCENE.md defines Wayfarer Court: the primary Consortium landmark, smaller fountain focal point and market cluster, the gate route, shared architectural palette, world-aligned paving and one visible humanoid baseline. Roads, buildings and planting must define connected spaces. Door clearance, source perspective and final illustrated charm remain review items. The unavailable Photo 1 attachment was not inspected; repository artwork supplies the working reference.
 
 Golden Warrior calibration uses reviewed boot contacts and one 70-pixel visible body height across directions and locomotion sheets, preserving overhead weapon reach. Separate hit/death poses use four cardinal views; diagonal reactions select the nearest view. Do not broaden this into outfit or Node sprite permutations. Other class refinements wait for the first in-scene art review.
+
+## Reference-derived construction rules
+
+- Place routes, plaza boundaries, footprints and door approaches before decorative detail. Buildings shape the edges of connected public space; every service needs a clear approach and departure.
+- Keep one projected ground convention for materials, collision, props, actors and effects. The current basis is `(48,7)` / `(-10,31)`. Review each building's painted base against it; screen rotation or mirroring cannot create a new facade viewpoint.
+- Separate art anchors, occupied ground, entrances and roof occlusion. The top of a sprite is not its depth origin. Current whole-sprite sorting/fading is an approximation that needs review around large footprints.
+- Keep stone, soil, drainage, wear and planting tied to use. Review ground detail below actor contrast. Shared colour grading cannot repair inconsistent perspective or painted light.
+- Preserve canonical face/hair, costume construction, sword handedness and cape fastening across views. Approve key poses before increasing frame counts; record per-frame boot contacts and standing body scale separately from weapon reach.
+- Keep attack/cast effects aligned to actual contact timing. Repair the Warrior rear gait/defective stride before adding costumes or classes. Four-cardinal reactions remain a reviewed compromise, not eight unique reaction views.
+
+Landmark hierarchy must pass from arrival, court, hall and phone views. The reused `north-house` civic facade is a potential competitor to the primary hall; its nominal dimensions alone neither approve nor reject the composition. See the focused repair table in the reference study.

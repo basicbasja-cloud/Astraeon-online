@@ -1,5 +1,13 @@
 # Development log
 
+## 2026-09-30 — Ragnarok reference research and production application
+
+- Inspected pinned roBrowser terrain/world/navigation/model/sprite code, BrowEdit object/lightmap documentation, ActEditor direction/anchor controls and rAthena guides/warps for four towns. Recorded source-confirmed behavior separately from ASTRAEON recommendations in RAGNAROK_REFERENCE.md. Public iRO Wiki access returned proxy HTTP 403; no fresh official screenshot survey or original studio workflow is claimed.
+- Applied route-first placement, paired entrance/footprint/art registration, shared projected ground, coherent material/light and bounded Warrior pose-production rules to STYLE_GUIDE.md, CONTENT_GUIDE.md and GOLDEN_SCENE.md.
+- Added an original source-generated ground-plan diagnostic and regeneration tool. The diagram distinguishes collision blocks from painted anchors and services. Corrected earlier prose: current guard routes patrol the court, not the Caravan Gate.
+- The plan exposed southeast service/stone route points inside the residence collision footprint. Added paired road/footprint repair to the next Golden layout brief; existing navigation success does not validate painted-road placement.
+- Identified the focused next repair order without expanding content: hall hierarchy/frontage, forecourt readability, rear gait defects, functional circulation and material/occlusion refinement. Runtime v27 and both pending visual gates retain their current status.
+
 ## 2026-09-30 — Audit and production scope
 - Audited the existing static Canvas2D client and live Pages build.
 - Preserved inventory, saves, menus, quests and campaign rules.

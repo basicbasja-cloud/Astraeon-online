@@ -12,6 +12,8 @@ Desktop: WASD/arrows move, Shift sprint, F attack, Space dodge, 1–4 class skil
 
 Content expansion is paused. The central Wayfarer court is the Golden Scene candidate: the primary Consortium Hall and its open forecourt, a smaller fountain meeting point, coherent market frontage, world-aligned painted limestone and distinct circulation widths. Ragnarok Online 1 guides current presentation and town planning. Warrior is the first Golden Character, with registered locomotion and distinct painted hit/death poses. Warrior, Mage and Ranger retain painted directional sprites; the low-poly prototype is excluded from the live client. **Golden Sprite Character and Golden Town Scene approval are pending.** See [GOLDEN_SCENE.md](./GOLDEN_SCENE.md).
 
+The [Ragnarok reference study](./RAGNAROK_REFERENCE.md) documents inspected map/sprite formats, four town navigation examples and their application to original ASTRAEON placement, terrain and Warrior production. It distinguishes source evidence from design recommendations. The [authored ground plan](./docs/reference/wayfarer-plan.svg) shows current roads, collision footprints, art anchors and services; regenerate with `node tools/reference-plan.cjs`.
+
 ## Current work
 
 One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.
