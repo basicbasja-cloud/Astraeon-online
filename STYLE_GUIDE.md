@@ -6,7 +6,7 @@ The first benchmark is Wayfarer Court and its guild/market approaches in Shenzho
 ## Camera and scale
 Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Forward/inverse projection and input share `world-view.js`; feet are the sprite anchor.
 
-The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **Public Pages visual acceptance remains pending: the environment proxy currently blocks the public host.** Revisit these relationships after public inspection rather than treating the numbers as permanent.
+The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **Public Pages has been inspected live at desktop, tablet and both phone orientations; art approval remains pending.** Revisit these relationships during further public comparisons rather than treating the numbers as permanent.
 
 | Relationship | Benchmark convention |
 |---|---|
