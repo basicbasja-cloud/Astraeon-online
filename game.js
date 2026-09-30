@@ -11,7 +11,7 @@ const CHAPTERS=[
  {zone:3,title:'III · สัญญาณเหนือราง',boss:'Dawn Engine',story:'เครื่องจักร Helion ส่งสัญญาณผิดปกติมาจากใจกลางสถานี',reward:'Dawn Circuit'},
  {zone:4,title:'IV · หัวใจแห่งรอยแยก',boss:'Astral Echo',story:'เข้าสู่ Verge แล้วปิดรอยแยกก่อนโลกทั้งห้าซ้อนทับกัน',reward:'Veilheart'}
 ];
-const NPCS=[{x:10.5,y:12,name:'Guild Registrar',kind:'guild',symbol:'✦'},{x:18.5,y:12,name:'Artisan',kind:'craft',symbol:'⚒'},{x:10.5,y:16.5,name:'Merchant',kind:'market',symbol:'✧'},{x:18.5,y:16.5,name:'Gatekeeper',kind:'travel',symbol:'◇'},{x:11.5,y:19,name:'Housing Keeper',kind:'housing',symbol:'⌂'},{x:16.5,y:19,name:'Quest Board',kind:'journal',symbol:'📜'}];
+const NPCS=[{x:10.5,y:12,name:'Guild Registrar',kind:'guild',symbol:'✦'},{x:19.5,y:12.5,name:'Artisan',kind:'craft',symbol:'⚒'},{x:22,y:16,name:'Merchant',kind:'market',symbol:'✧'},{x:18.5,y:18,name:'Gatekeeper',kind:'travel',symbol:'◇'},{x:9.5,y:19,name:'Housing Keeper',kind:'housing',symbol:'⌂'},{x:15.5,y:20,name:'Quest Board',kind:'journal',symbol:'📜'}];
 const CORES=[['Slash',12,14,'melee'],['Thrust',14,16,'melee'],['Smash',18,20,'melee'],['Shot',13,17,'ranged'],['Beam',18,23,'ranged'],['Barrier',0,15,'defense'],['Heal',0,18,'heal'],['Summon',12,25,'ranged'],['Dash',10,16,'melee'],['Seal',14,17,'ranged']];
 const FORMS=[['Single',0,0],['Cone',4,11],['Line',3,9],['Wave',5,13],['Field',3,16]];
 const MOTIONS=[['Still',0,0],['Dash',2,10],['Leap',3,12],['Backstep',1,8],['Teleport',4,18]];
@@ -30,10 +30,14 @@ sprites.hero.src='./assets/hero-atlas.webp';sprites.wolf.src='./assets/astral-wo
 const sceneArt=new Image();sceneArt.src='./assets/astral-outpost.webp';
 const groundArt=new Image();groundArt.src='./assets/grassland-ground.webp';let groundPattern=null;
 let playerAnim={state:'idle',started:0,until:0,facing:1},screenShake=0,ambient=[];
-// Higher 3/4 camera elevation than a flat diamond projection: closer to a classic RO field view.
-const W=30,H=27,TW=56,TH=40;
+// Raised 3/4 camera: streets run primarily across/down the screen, as in a town view.
+// Keep the forward and inverse transforms paired so tap-to-move stays accurate.
+const W=30,H=27,TW=48,TH=31,SHEAR_X=-10,SHEAR_Y=7;
+const project=(x,y)=>({x:x*TW+y*SHEAR_X,y:x*SHEAR_Y+y*TH});
+const unproject=(sx,sy)=>{const det=TW*TH-SHEAR_X*SHEAR_Y;return{x:(sx*TH-SHEAR_X*sy)/det,y:(TW*sy-SHEAR_Y*sx)/det}};
+const centerCamera=()=>{const p=project(S.x,S.y);camera.x=p.x;camera.y=p.y};
 const MAP_LAYOUTS=[
-{road:'capital',blocks:[{x:3,y:4,w:5,h:4,type:'hall'},{x:21,y:3,w:4,h:4,type:'shop'},{x:24,y:10,w:3,h:3,type:'inn'},{x:4,y:21,w:5,h:4,type:'temple'}],trees:[[2,2],[26,2],[2,25],[27,25],[8,5],[12,5],[25,7],[26,18],[22,23],[9,23],[3,12],[4,17],[21,6],[24,21],[6,5]]},
+{road:'capital',blocks:[{x:3,y:7,w:5,h:4,type:'hall'},{x:22,y:7,w:4,h:4,type:'shop'},{x:24,y:17,w:3,h:3,type:'inn'},{x:4,y:21,w:5,h:4,type:'temple'}],trees:[[2,2],[26,2],[2,25],[27,25],[8,5],[12,5],[25,5],[27,14],[22,23],[9,23],[3,13],[4,17],[20,6],[25,22],[6,5]]},
 {road:'forest',blocks:[{x:3,y:3,w:5,h:4,type:'shrine'},{x:22,y:4,w:4,h:5,type:'pagoda'},{x:21,y:20,w:5,h:4,type:'shrine'}],trees:[[2,2],[7,3],[11,5],[18,4],[26,2],[2,8],[6,10],[23,10],[27,8],[4,17],[8,21],[19,17],[24,18],[27,24],[3,25],[12,23],[20,24]]},
 {road:'field',blocks:[{x:3,y:3,w:5,h:4,type:'inn'},{x:22,y:3,w:4,h:5,type:'windmill'},{x:3,y:20,w:6,h:4,type:'barn'},{x:22,y:20,w:5,h:4,type:'inn'}],trees:[[2,2],[10,4],[17,3],[27,2],[2,8],[7,10],[22,11],[27,8],[2,24],[9,23],[18,23],[27,24],[5,16],[25,17]]},
 {road:'rail',blocks:[{x:3,y:3,w:6,h:4,type:'depot'},{x:21,y:3,w:5,h:5,type:'tower'},{x:3,y:20,w:5,h:4,type:'depot'},{x:22,y:19,w:5,h:5,type:'observatory'}],trees:[[2,2],[27,2],[2,25],[27,25],[9,8],[20,9],[9,18],[19,18],[5,14],[25,14]]},
@@ -75,8 +79,8 @@ actions.querySelectorAll('[data-action]').forEach(b=>{const id=b.dataset.action;
 }
 function resize(){if(!canvas)return;let r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);ctx.setTransform(d,0,0,d,0,0)}
 const dims=()=>({w:canvas.clientWidth,h:canvas.clientHeight});
-function iso(x,y,z=0){let {w,h}=dims();return{x:(x-y)*TW/2+w/2-camera.x,y:(x+y)*TH/2+h*.34-camera.y-z}}
-function reverse(px,py){let {w,h}=dims(),a=(px-w/2+camera.x)/(TW/2),b=(py-h*.34+camera.y)/(TH/2);return{x:(a+b)/2,y:(b-a)/2}}
+function iso(x,y,z=0){let {w,h}=dims(),p=project(x,y);return{x:p.x+w/2-camera.x,y:p.y+h*.5-camera.y-z}}
+function reverse(px,py){let {w,h}=dims();return unproject(px-w/2+camera.x,py-h*.5+camera.y)}
 const TERRAIN=[['#648a64','#6c9469','#779b70','#5d805e'],['#47734f','#508057','#5a8c5d','#416b4c'],['#8e945e','#a3a165','#b2a46a','#818c58'],['#3d6874','#446f7b','#4a7580','#3c6272'],['#584f77','#625985','#6a6087','#574f77']];
 function trail(x,y){
 const road=layout().road;
@@ -88,7 +92,8 @@ return Math.abs(Math.hypot(x-14.5,y-14)-7)<1.1||Math.abs(x-14.5)<1.2;
 }
 function tile(x,y,detail=true){
 const p=iso(x,y),hash=((x*73856093)^(y*19349663))>>>0,tones=TERRAIN[S.zone],stone=trail(x,y),plaza=S.zone===0&&Math.abs(x-14.5)<=3.6&&Math.abs(y-14)<=3.6;
-ctx.beginPath();ctx.moveTo(p.x,p.y-TH/2);ctx.lineTo(p.x+TW/2,p.y);ctx.lineTo(p.x,p.y+TH/2);ctx.lineTo(p.x-TW/2,p.y);ctx.closePath();
+const a=iso(x-.5,y-.5),b=iso(x+.5,y-.5),c=iso(x+.5,y+.5),d=iso(x-.5,y+.5);
+ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineTo(c.x,c.y);ctx.lineTo(d.x,d.y);ctx.closePath();
 ctx.fillStyle=plaza?['#a69b78','#aea37e','#a99c79'][hash%3]:stone?(S.zone===0?['#a29770','#b1a47b','#a99e77'][hash%3]:['#888677','#94917c','#898a78'][hash%3]):tones[hash%tones.length];ctx.fill();
 ctx.strokeStyle=ctx.fillStyle;ctx.lineWidth=1.6;ctx.stroke();if(!detail)return;ctx.save();ctx.clip();
 if(stone){ctx.fillStyle=plaza?'#e4d5a022':'#d5dfd322';ctx.beginPath();ctx.ellipse(p.x+(hash%23)-11,p.y+(hash%11)-5,8,2.4,(hash%7)*.2,0,Math.PI*2);ctx.fill()}
@@ -127,7 +132,7 @@ ctx.fillStyle='#62564b';ctx.fillRect(p.x-2,p.y-26,4,25);ctx.fillStyle='#c4a776';
 ctx.save();ctx.shadowBlur=13+7*pulse;ctx.shadowColor='#ffca73';ctx.fillStyle=`rgba(255,213,139,${.65+.25*pulse})`;ctx.beginPath();ctx.arc(p.x,p.y-29,5,0,Math.PI*2);ctx.fill();ctx.restore();
 ctx.strokeStyle='#d6bd8a';ctx.lineWidth=1;ctx.beginPath();ctx.arc(p.x,p.y-29,8,Math.PI,Math.PI*2);ctx.stroke()
 }
-for(const [x,y,cloth] of [[8.2,13.4,'#bd765b'],[21,14.6,'#598d89']]){
+for(const [x,y,cloth] of [[18.8,10.8,'#bd765b'],[21.5,14.2,'#598d89'],[24,14.4,'#bd765b']]){
 const p=iso(x,y),wave=Math.sin(now*1.8+x)*2;ctx.fillStyle='#07121c77';ctx.beginPath();ctx.ellipse(p.x,p.y+3,25,8,0,0,Math.PI*2);ctx.fill();
 ctx.fillStyle='#6c4a35';ctx.fillRect(p.x-18,p.y-20,36,18);ctx.fillStyle='#d4b27a';ctx.fillRect(p.x-21,p.y-22,42,4);
 ctx.fillStyle=cloth;ctx.beginPath();ctx.moveTo(p.x-24,p.y-22);ctx.lineTo(p.x-18,p.y-42+wave);ctx.lineTo(p.x+18,p.y-42-wave);ctx.lineTo(p.x+24,p.y-22);ctx.closePath();ctx.fill();
@@ -182,7 +187,7 @@ if(!S||!ctx)return;
 const {w,h}=dims();ctx.clearRect(0,0,w,h);
 const bg=ctx.createLinearGradient(0,0,0,h);bg.addColorStop(0,['#203c37','#22382d','#404236','#112b38','#241c3c'][S.zone]);bg.addColorStop(.54,'#172832');bg.addColorStop(1,'#0b1320');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
 ctx.save();
-const desiredX=(S.x-S.y)*TW/2,desiredY=(S.x+S.y)*TH/2;camera.x+=(desiredX-camera.x)*.08;camera.y+=(desiredY-camera.y)*.08;
+const desired=project(S.x,S.y);camera.x+=(desired.x-camera.x)*.08;camera.y+=(desired.y-camera.y)*.08;
 screenShake=Math.max(0,screenShake-.9);if(screenShake)ctx.translate((Math.random()-.5)*screenShake,(Math.random()-.5)*screenShake);
 const haze=ctx.createRadialGradient(w*.5,h*.2,8,w*.5,h*.22,Math.max(w,h)*.7);haze.addColorStop(0,['#b3dda422','#d6d9a322','#e2d28b22','#66d8e222','#b19af322'][S.zone]);haze.addColorStop(1,'#07111c00');ctx.fillStyle=haze;ctx.fillRect(0,0,w,h);
 if(groundArt.complete&&groundArt.naturalWidth)drawGround(w,h);else{const corners=[reverse(0,0),reverse(w,0),reverse(0,h),reverse(w,h)],minX=Math.floor(Math.min(...corners.map(p=>p.x)))-2,maxX=Math.ceil(Math.max(...corners.map(p=>p.x)))+2,minY=Math.floor(Math.min(...corners.map(p=>p.y)))-2,maxY=Math.ceil(Math.max(...corners.map(p=>p.y)))+2;for(let sum=minX+minY;sum<=maxX+maxY;sum++){const from=Math.max(minX,sum-maxY),to=Math.min(maxX,sum-minY);for(let x=from;x<=to;x++){const y=sum-x;tile(x,y,x>=0&&x<W&&y>=0&&y<H)}}}drawArena();
@@ -195,7 +200,7 @@ const mapTitle=ZONES[S.zone].mapName;ctx.save();ctx.textAlign='center';ctx.font=
  drawAmbient();drawThreats();
 if(selectedEnemy&&selectedEnemy.hp>0){const p=iso(selectedEnemy.x,selectedEnemy.y);ctx.strokeStyle='#f6d58c';ctx.lineWidth=2;ctx.shadowBlur=10;ctx.shadowColor='#f6d58c';ctx.beginPath();ctx.ellipse(p.x,p.y+2,24,9,0,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0}
 const people=[...PINES.map(([x,y])=>({x,y,tree:true})),...(S.zone===0?NPCS:[]).map(n=>({x:n.x,y:n.y,npc:n})),...mobs.map(m=>({x:m.x,y:m.y,mob:m})),{x:S.x,y:S.y,player:true}];
-people.sort((a,b)=>(a.x+a.y)-(b.x+b.y));
+people.sort((a,b)=>(a.x*SHEAR_Y+a.y*TH)-(b.x*SHEAR_Y+b.y*TH));
 for(const o of people){const p=iso(o.x,o.y);if(o.tree){drawTree(o.x,o.y);continue}
 if(o.player){const moving=playerAnim.state==='run',row=playerAnim.state==='attack'?2:playerAnim.state==='dodge'?3:moving?1:0,elapsed=now-playerAnim.started,frame=row===2?clamp(Math.floor(elapsed*10),0,3):row===3?clamp(Math.floor(elapsed*14),0,3):Math.floor(now*(moving?11:5))%4,bob=row===0?Math.sin(now*3)*2:0;ctx.fillStyle='#05101c9c';ctx.beginPath();ctx.ellipse(p.x,p.y+2,19,7,0,0,Math.PI*2);ctx.fill();ctx.save();if(now<(S.invulnUntil||0))ctx.globalAlpha=.42+.32*Math.sin(now*34);const cls=S.cls,filter=cls>=12&&cls<=16?'hue-rotate(150deg) saturate(1.3)':cls===3||cls===4?'hue-rotate(-20deg)':'none';if(!sprite(sprites.hero,row,frame,p.x,p.y+bob,68,78,playerAnim.facing<0,1,filter))actor(p.x,p.y,'#ad754c',CLASS[S.cls][4],S.name,1);ctx.restore();if(now<(S.guard||0)){ctx.strokeStyle='#a8e6f0aa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(p.x,p.y-28,29,39,0,0,Math.PI*2);ctx.stroke()}label(S.name,p.x,p.y-82,'#f3dfb1');continue}
 if(o.npc){actor(o.x,o.y,'#497c8d',o.npc.symbol,o.npc.name,.78);continue}
@@ -216,15 +221,15 @@ const at=reverse(x,y);target={x:clamp(at.x,1,W-2),y:clamp(at.y,1,H-2)}
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 function enemy(x,y,type=0,elite=false,boss=false){let maxHp=boss?110+S.zone*45+S.lv*20:(38+S.zone*11+S.lv*5)*(elite?1.75:1);return {x,y,homeX:x,homeY:y,hp:maxHp,maxHp,name:boss?CHAPTERS[Math.max(0,S.zone-1)].boss:ZONES[S.zone].enemies[type],type,elite,boss,attack:now+1.8+Math.random(),windup:null,phase:0,animState:'idle',animStarted:now,animUntil:0,deadAt:0}}
 function spawn(){if(!S)return;mobs=[];if(ZONES[S.zone].safe)return;for(let i=0;i<7;i++){let [x,y]=SPAWN_POINTS[(i+S.zone*2)%SPAWN_POINTS.length];if(!isBlocked(x,y))mobs.push(enemy(x,y,i%2,i===5))}}
-function startDungeon(chapter){if(dungeon)return toast('กำลังสำรวจดันเจียนอยู่');if(chapter<0||chapter>=CHAPTERS.length)return;const c=CHAPTERS[chapter];if(chapter>campaign())return toast('ผ่านบทก่อนหน้าเพื่อปลดล็อก');if(S.lv<ZONES[c.zone].level)return toast(`ต้อง Level ${ZONES[c.zone].level}`);close();S.zone=c.zone;S.x=14.5;S.y=15.5;S.hp=S.maxHp;S.energy=S.maxEnergy;S.discovered=Array.from(new Set([...(S.discovered||[]),c.zone]));camera.x=(S.x-S.y)*TW/2;camera.y=(S.x+S.y)*TH/2;selectedEnemy=null;target=null;dungeon={chapter,wave:0,next:0};spawnWave();refreshUI();save();toast(`${c.title} · ประตูผนึกปิดแล้ว`)}
+function startDungeon(chapter){if(dungeon)return toast('กำลังสำรวจดันเจียนอยู่');if(chapter<0||chapter>=CHAPTERS.length)return;const c=CHAPTERS[chapter];if(chapter>campaign())return toast('ผ่านบทก่อนหน้าเพื่อปลดล็อก');if(S.lv<ZONES[c.zone].level)return toast(`ต้อง Level ${ZONES[c.zone].level}`);close();S.zone=c.zone;S.x=14.5;S.y=15.5;S.hp=S.maxHp;S.energy=S.maxEnergy;S.discovered=Array.from(new Set([...(S.discovered||[]),c.zone]));centerCamera();selectedEnemy=null;target=null;dungeon={chapter,wave:0,next:0};spawnWave();refreshUI();save();toast(`${c.title} · ประตูผนึกปิดแล้ว`)}
 function spawnWave(){if(!dungeon)return;const wave=dungeon.wave;mobs=[];selectedEnemy=null;if(wave>0){S.hp=Math.min(S.maxHp,S.hp+30);S.energy=Math.min(S.maxEnergy,S.energy+20)}const spots=[[11,11],[19,12],[11,19],[19,19],[14.5,9]];if(wave===3){mobs.push(enemy(14.5,10,1,true,true));screenShake=7;toast(`บอส ${CHAPTERS[dungeon.chapter].boss} ปรากฏตัว!`)}else{for(let i=0;i<2+wave;i++){let [x,y]=spots[(i+wave)%spots.length];mobs.push(enemy(x,y,(i+wave)%2,wave===2&&i===0))}toast(`ห้อง ${wave+1}/3 · กำจัดศัตรูเพื่อเปิดผนึก`)}dungeon.next=0;refreshUI();save()}
 function finishDungeon(){let chapter=dungeon.chapter,c=CHAPTERS[chapter],first=!S.chapters.includes(chapter);if(first)S.chapters.push(chapter);S.bossKills=(S.bossKills||0)+1;S.gold+=65+chapter*25;S.inventory.shard+=4+chapter;S.inventory.potion+=2;gainXP(45+chapter*25);S.reputation+=12;S.journal.unshift(`${first?'เนื้อเรื่องสำเร็จ':'พิชิตอีกครั้ง'}: ${c.title} · ${c.reward}`);S.mail.unshift(`${c.reward} · ดันเจียน ${c.title}`);S.equipment.relic=c.reward;dungeon=null;spawn();refreshUI();save();screenShake=12;spark(S.x,S.y,'#f5d38d',42,80);toast(`พิชิต ${c.boss}! +Relic, +Gold, +XP, +2 Flask`)}
 function hurtPlayer(amount,source){if(now<(S.invulnUntil||0))return;let dmg=amount;if(S.guard&&now<S.guard){dmg=Math.max(1,Math.floor(dmg*.3));S.guard=0}if(S.equipment.armor==='Warden Plate')dmg=Math.max(1,dmg-2);S.hp=Math.max(0,S.hp-dmg);fx.push({kind:'popup',text:`−${dmg}`,x:S.x,y:S.y,z:55,color:'#ff7b94',life:.65,maxLife:.65});spark(S.x,S.y,'#ff788c',9,28);screenShake=Math.max(screenShake,6);if(S.hp===0){const wasDungeon=!!dungeon;dungeon=null;S.hp=Math.ceil(S.maxHp*.65);S.energy=S.maxEnergy;S.zone=0;S.x=14.5;S.y=18;S.gold=Math.max(0,S.gold-8);spawn();target=null;selectedEnemy=null;toast(wasDungeon?'พ่ายแพ้ในดันเจียน · กลับเมืองและลองใหม่':'บาดเจ็บ · กลับเมืองและเสีย 8 gold')}else if(source?.boss)toast(`หลบวงเตือนของ ${source.name} ด้วย Dodge!`);refreshUI();save()}
 function loop(t){if(!S)return;let dt=Math.min((t-last)/1000||.016,.05);last=t;now=t/1000;update(dt);draw();requestAnimationFrame(loop)}
 function update(dt){
-if(windowName)return;let beforeX=S.x,beforeY=S.y,vx=0,vy=0;
-if(keys.has('w')||keys.has('ArrowUp')||keys.has('up')){vx-=1;vy-=1}if(keys.has('s')||keys.has('ArrowDown')||keys.has('down')){vx+=1;vy+=1}if(keys.has('a')||keys.has('ArrowLeft')||keys.has('left')){vx-=1;vy+=1}if(keys.has('d')||keys.has('ArrowRight')||keys.has('right')){vx+=1;vy-=1}
-vx+=touchMove.x+touchMove.y;vy+=touchMove.y-touchMove.x;
+if(windowName)return;let beforeX=S.x,beforeY=S.y,sx=touchMove.x,sy=touchMove.y;
+if(keys.has('w')||keys.has('ArrowUp')||keys.has('up'))sy-=1;if(keys.has('s')||keys.has('ArrowDown')||keys.has('down'))sy+=1;if(keys.has('a')||keys.has('ArrowLeft')||keys.has('left'))sx-=1;if(keys.has('d')||keys.has('ArrowRight')||keys.has('right'))sx+=1;
+let {x:vx,y:vy}=unproject(sx,sy);
 if(vx||vy){target=null;let n=Math.hypot(vx,vy);move(vx/n*dt*3.5,vy/n*dt*3.5)}else if(target){if(target.enemy){if(target.enemy.hp<=0)target=null;else{target.x=target.enemy.x;target.y=target.enemy.y}}if(target){let dx=target.x-S.x,dy=target.y-S.y,n=Math.hypot(dx,dy),reach=target.enemy?2:target.npc?2.2:target.exit?1.2:.3;if(n>reach){let step=Math.min(n-reach,dt*3.1),ox=S.x,oy=S.y,side=target.detourSide||1;if(target.detourUntil>now)move(-dy/n*step*side,dx/n*step*side);else move(dx/n*step,dy/n*step);if(Math.hypot(S.x-ox,S.y-oy)<step*.2){target.detourSide=target.detourSide?-target.detourSide:(dx+dy>0?1:-1);target.detourUntil=now+1.25;move(-dy/n*step*target.detourSide,dx/n*step*target.detourSide)}}else{if(target.exit)changeMap(target.exit);else if(target.npc)interact(target.npc);else if(target.enemy)action('attack');target=null}}}
 if(heldAction==='attack'&&now>=attackCD)action('attack');if(S.autoBattle&&!windowName&&!vx&&!vy&&!touchMove.x&&!touchMove.y){let foe=nearest(40);if(foe){selectedEnemy=foe;let d=distance(S,foe);if(foe.boss&&foe.windup&&distance(S,foe.windup)<foe.windup.radius+.35&&now>=(S.guard||0)&&foe.windup.end-now<.35&&S.energy>=10)action('skill2');if(d>2.1&&!target)target={x:foe.x,y:foe.y,enemy:foe};else if(d<=2.7&&now>=attackCD){if(S.energy>=30&&mobs.filter(m=>m.hp>0&&distance(m,foe)<3.5).length>1)action('skill4');else action('attack')}}if(S.hp<S.maxHp*.32&&S.inventory.potion>0)action('potion');else if(S.hp<S.maxHp*.55&&S.energy>=15)action('skill3')}
 for(let m of mobs){if(m.hp<=0)continue;let d=distance(S,m),ranged=m.type===1&&!m.boss,reach=ranged?3.8:m.boss?2.4:1.6;
@@ -233,7 +238,7 @@ for(let m of mobs){if(m.hp<=0)continue;let d=distance(S,m),ranged=m.type===1&&!m
  if(d<reach+.4&&now>m.attack){m.windup={x:ranged?S.x+(Math.random()-.5)*.4:m.boss?S.x:m.x,y:ranged?S.y+(Math.random()-.5)*.4:m.boss?S.y:m.y,radius:m.boss?(m.phase?2.5:2.15):ranged?1.1:m.elite?1.8:1.35,end:now+(m.boss?.95:ranged?.82:.6)};m.animState='attack';m.animStarted=now;m.animUntil=m.windup.end+.2}
  if(m.boss&&m.hp<m.maxHp*.5&&!m.phase){m.phase=1;screenShake=11;spark(m.x,m.y,'#ff8db8',32,80);toast(`${m.name} เข้าสู่ระยะ 2 · วงโจมตีกว้างขึ้น!`);for(let i=0;i<2;i++){let ex=m.x+(i?3:-3),ey=m.y+2;if(!isBlocked(ex,ey))mobs.push(enemy(ex,ey,i))}}
 }
-let moved=Math.hypot(S.x-beforeX,S.y-beforeY)>.001;if(moved){let side=(S.x-beforeX)-(S.y-beforeY);if(Math.abs(side)>.001)playerAnim.facing=side<0?-1:1}if(now>=playerAnim.until)playerAnim.state=moved?'run':'idle';
+let moved=Math.hypot(S.x-beforeX,S.y-beforeY)>.001;if(moved){let side=project(S.x-beforeX,S.y-beforeY).x;if(Math.abs(side)>.001)playerAnim.facing=side<0?-1:1}if(now>=playerAnim.until)playerAnim.state=moved?'run':'idle';
 S.energy=Math.min(S.maxEnergy,S.energy+dt*2.7);fx.forEach(f=>{f.life-=dt;if(f.vx!==undefined){f.x+=f.vx*dt;f.y+=f.vy*dt;f.z=Math.max(0,(f.z||0)-18*dt);f.vx*=.94;f.vy*=.94}});fx=fx.filter(f=>f.life>0);
 if(dungeon){if(!mobs.some(m=>m.hp>0)){if(!dungeon.next)dungeon.next=now+1.6;if(now>=dungeon.next){if(dungeon.wave===3)finishDungeon();else{dungeon.wave++;spawnWave()}}}}else if(!ZONES[S.zone].safe&&mobs.filter(m=>m.hp>0).length<3&&now>spawnCD){spawnCD=now+12;let points=SPAWN_POINTS.filter(([x,y])=>!isBlocked(x,y)&&distance(S,{x,y})>7&&mobs.every(m=>m.hp<=0||distance(m,{x,y})>2.8));if(points.length){let [x,y]=points[0],n=mobs.length;mobs.push(enemy(x,y,n%2))}}
 if(now>uiTick){uiTick=now+.25;refreshUI();drawMiniMap()}
@@ -248,7 +253,7 @@ function action(id){
 if(!S||windowName)return;
 if(id==='interact'){let n=NPCS.find(n=>distance(S,n)<2.5);if(n)interact(n);else toast('เข้าใกล้ NPC เพื่อคุย');return}
 if(id==='potion'){if(S.inventory.potion<1){toast('ไม่มี Healing Flask');return}S.inventory.potion--;S.hp=Math.min(S.maxHp,S.hp+45);toast('Healing Flask +45 HP');refreshUI();save();return}
-if(id==='dodge'){if(now<dodgeCD)return;let sx=touchMove.x,sy=touchMove.y;if(!sx&&!sy){if(keys.has('w')||keys.has('ArrowUp'))sy--;if(keys.has('s')||keys.has('ArrowDown'))sy++;if(keys.has('a')||keys.has('ArrowLeft'))sx--;if(keys.has('d')||keys.has('ArrowRight'))sx++}let dx=sx+sy,dy=sy-sx;if(!dx&&!dy&&selectedEnemy){dx=S.x-selectedEnemy.x;dy=S.y-selectedEnemy.y}if(!dx&&!dy)dy=1;let n=Math.hypot(dx,dy);dx/=n;dy/=n;dodgeCD=now+2.8;S.invulnUntil=now+.48;playerAnim.state='dodge';playerAnim.started=now;playerAnim.until=now+.34;playerAnim.facing=(dx-dy)<0?-1:1;for(let i=0;i<4;i++){move(dx*.48,dy*.48);fx.push({kind:'ring',x:S.x,y:S.y,z:4,color:'#8be1e5',life:.32,maxLife:.32})}target=null;toast('หลบหลีก');save();return}
+if(id==='dodge'){if(now<dodgeCD)return;let sx=touchMove.x,sy=touchMove.y;if(!sx&&!sy){if(keys.has('w')||keys.has('ArrowUp'))sy--;if(keys.has('s')||keys.has('ArrowDown'))sy++;if(keys.has('a')||keys.has('ArrowLeft'))sx--;if(keys.has('d')||keys.has('ArrowRight'))sx++}let {x:dx,y:dy}=unproject(sx,sy);if(!dx&&!dy&&selectedEnemy){dx=S.x-selectedEnemy.x;dy=S.y-selectedEnemy.y}if(!dx&&!dy)dy=1;let n=Math.hypot(dx,dy);dx/=n;dy/=n;dodgeCD=now+2.8;S.invulnUntil=now+.48;playerAnim.state='dodge';playerAnim.started=now;playerAnim.until=now+.34;playerAnim.facing=project(dx,dy).x<0?-1:1;for(let i=0;i<4;i++){move(dx*.48,dy*.48);fx.push({kind:'ring',x:S.x,y:S.y,z:4,color:'#8be1e5',life:.32,maxLife:.32})}target=null;toast('หลบหลีก');save();return}
 if(id==='skill2'){if(S.energy<10)return toast('พลังไม่พอ');S.energy-=10;S.guard=now+3;fx.push({kind:'ring',x:S.x,y:S.y,z:15,color:'#8be1e5',life:.65,maxLife:.65});spark(S.x,S.y,'#8be1e5',10,28);toast('Guard: ลดความเสียหายครั้งถัดไป');refreshUI();save();return}
 if(id==='skill3'){if(S.energy<15)return toast('พลังไม่พอ');S.energy-=15;S.hp=Math.min(S.maxHp,S.hp+24+S.lv*2);fx.push({kind:'ring',x:S.x,y:S.y,z:22,color:'#7ae4b9',life:.7,maxLife:.7});spark(S.x,S.y,'#a4f5cd',12,26);toast('ฟื้นฟู HP');refreshUI();save();return}
 if(now<attackCD)return;const ranged=[3,5,12,13,14,15,16,17,18,20,21].includes(S.cls),range=id==='attack'?(ranged?5.1:2.6):5.8;let m=nearest(range);if(!m){toast('ไม่มีศัตรูในระยะ — แตะศัตรูเพื่อวิ่งเข้าโจมตี');return}
@@ -262,9 +267,9 @@ S.weaponMastery++;S.skillMastery+=id==='attack'?0:1;let victims=splash?mobs.filt
 function interact(n){target=null;open(n.kind)}
 function changeMap(exit){
 if(!exit)return;
-S.zone=exit.to;S.x=exit.arrival[0];S.y=exit.arrival[1];S.discovered=Array.from(new Set([...(S.discovered||[]),S.zone]));selectedEnemy=null;target=null;spawn();camera.x=(S.x-S.y)*TW/2;camera.y=(S.x+S.y)*TH/2;screenShake=0;fx.push({kind:'ring',x:S.x,y:S.y,z:5,color:ZONES[S.zone].accent,life:.55,maxLife:.55});refreshUI();save();toast(`เข้าสู่ ${ZONES[S.zone].mapName}`)
+S.zone=exit.to;S.x=exit.arrival[0];S.y=exit.arrival[1];S.discovered=Array.from(new Set([...(S.discovered||[]),S.zone]));selectedEnemy=null;target=null;spawn();centerCamera();screenShake=0;fx.push({kind:'ring',x:S.x,y:S.y,z:5,color:ZONES[S.zone].accent,life:.55,maxLife:.55});refreshUI();save();toast(`เข้าสู่ ${ZONES[S.zone].mapName}`)
 }
-function travelTo(z){if(!ZONES[z])return;if(dungeon)return toast('ออกจากดันเจียนผ่านเมนู Dungeon ก่อน');if(S.zone===z){close();return}if(S.gold<5){toast('ต้องมี 5 gold สำหรับ Astral Gate');return}S.gold-=5;S.zone=z;S.x=14.5;S.y=z===0?18:14.5;S.discovered=Array.from(new Set([...(S.discovered||[]),z]));selectedEnemy=null;target=null;spawn();camera.x=(S.x-S.y)*TW/2;camera.y=(S.x+S.y)*TH/2;save();close();toast(`เดินทางถึง ${ZONES[z].mapName}`);refreshUI()}
+function travelTo(z){if(!ZONES[z])return;if(dungeon)return toast('ออกจากดันเจียนผ่านเมนู Dungeon ก่อน');if(S.zone===z){close();return}if(S.gold<5){toast('ต้องมี 5 gold สำหรับ Astral Gate');return}S.gold-=5;S.zone=z;S.x=14.5;S.y=z===0?18:14.5;S.discovered=Array.from(new Set([...(S.discovered||[]),z]));selectedEnemy=null;target=null;spawn();centerCamera();save();close();toast(`เดินทางถึง ${ZONES[z].mapName}`);refreshUI()}
 function open(name){heldAction=null;touchMove={x:0,y:0};windowName=name;let m=$('#modal');m.hidden=false;renderWindow()}
 function close(){windowName=null;$('#modal').hidden=true}
 const card=(title,text,extra='')=>`<div class="card"><h3>${title}</h3><p>${text}</p>${extra}</div>`;
