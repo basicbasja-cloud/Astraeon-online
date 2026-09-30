@@ -361,6 +361,8 @@ canvas { position: relative; z-index: 0; }
 .minimap-wrap { position: absolute; z-index: 3; top: 14px; right: 15px; width: 156px; padding: 7px; border: 1px solid #dfd4aa9c; border-radius: 8px; background: #142438df; color: #f6e7bc; box-shadow: 0 10px 28px #0710189c; text-align: center; backdrop-filter: blur(8px); }
 .minimap-wrap canvas { width: 140px; height: 126px; border: 1px solid #d8c68a66; border-radius: 3px; }
 .minimap-wrap span { display: block; overflow: hidden; margin-top: 3px; font: 700 10px system-ui; letter-spacing: .09em; text-overflow: ellipsis; white-space: nowrap; }
+.auto-btn { position: absolute; z-index: 4; top: 180px; right: 15px; min-height: 32px; padding: 5px 12px; border: 1px solid #a5b8b5a8; border-radius: 18px; background: #102332dd; color: #d9e9e5; font: 800 11px system-ui; letter-spacing: .05em; box-shadow: 0 4px 12px #0008; }
+.auto-btn.active { border-color: #f0d08b; background: #675135e8; color: #fff0ca; box-shadow: 0 0 16px #d6a65b66; }
 .mission { top: 169px; left: 15px; right: auto; width: 290px; max-width: 35vw; border-left: 2px solid #dcb36f; }
 .mission small { display: block; margin-top: 4px; color: #a8d4d4; font-size: .7rem; line-height: 1.25; }
 .mission-progress { height: 4px; margin-top: 7px; border-radius: 4px; background: #09202a; }
@@ -380,6 +382,7 @@ canvas { position: relative; z-index: 0; }
   .minimap-wrap { top: 8px; right: max(8px, var(--safe-right)); width: 112px; padding: 4px; }
   .minimap-wrap canvas { width: 102px; height: 92px; }
   .minimap-wrap span { font-size: 8px; }
+  .auto-btn { top: 132px; right: max(8px, var(--safe-right)); min-height: 29px; padding: 4px 9px; font-size: 9px; }
   .actions { position: absolute; z-index: 5; right: max(10px, var(--safe-right)); bottom: max(12px, var(--safe-bottom)); display: grid; width: 176px; grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(3, 52px); justify-content: end; gap: 5px; padding: 0; overflow: visible; border: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
   .slot { width: 52px; min-width: 52px; height: 52px; border-width: 2px; border-radius: 50%; background: radial-gradient(circle at 38% 26%, #6b83a0, #233954 74%); box-shadow: inset 0 2px #ffffff35, 0 4px 12px #0009; }
   .slot b { font-size: 1.35rem; }
@@ -401,6 +404,7 @@ canvas { position: relative; z-index: 0; }
   .mission { top: 118px; width: 195px; }
   .minimap-wrap { top: 5px; width: 105px; }
   .minimap-wrap canvas { width: 95px; height: 82px; }
+  .auto-btn { top: 115px; }
   .actions { bottom: max(8px, var(--safe-bottom)); right: max(8px, var(--safe-right)); width: 174px; }
   .mobile-controls { bottom: max(15px, var(--safe-bottom)); width: 95px; height: 95px; }
   .toast { bottom: 170px; }
