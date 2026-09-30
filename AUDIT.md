@@ -22,7 +22,7 @@ Baseline: GitHub `0657fa4a6efbdcf75ab042b23c36e45bec897966` (Pages run 19 succee
 | Online | No network simulation | PREPARE boundary only | Social/economy are local simulations; no live MMO claims |
 
 ## Priority and engine decision
-Preserve the working gameplay loop and saves. Establish one city benchmark with properly anchored original painted assets, authored roads, layered depth sorting and occlusion, and camera correction before content expansion. Canvas2D can validate this art/scale/combat slice without destroying current systems. A WebGL migration is not yet justified by a measured renderer bottleneck; record this limitation and reassess after the benchmark. This does not claim the current renderer fulfills the eventual 3D environment requirement.
+Preserve the working gameplay loop and saves. Establish one city benchmark with properly anchored original painted assets, authored roads, layered depth sorting and occlusion, and camera correction before content expansion. Canvas2D can validate this art/scale/combat slice without destroying current systems. A WebGL migration is not yet justified by a measured renderer bottleneck; record this limitation and reassess after the benchmark. The current RO1-inspired production direction uses painted sprites and authored 2.5D spaces; a renderer migration is not a prerequisite for this benchmark.
 
 ## Original visual gate
 FAILED at the audit baseline: primitive town architecture/trees, transparent roof half, sparse composition, repeating terrain, four-frame locomotion and static NPC crowd. No production-ready claim.
@@ -39,7 +39,7 @@ Field and forest now use distinct painted materials, authored roads, layered tre
 
 A fresh Ranger completed the field contract, one-time supply claim, natural forest/shrine route, all four rooms, guardian phases and three attacks, reward return, armor crafting/equipment and persistent reload through real UI input. Resolved unreachable gates, arrival-target cancellation, obstacle pursuit and wall-crossing projectiles. Save normalization and failed zone-load retry preserve progress.
 
-Full production gate remains open: painted 2.5D eight-view characters are not a skinned 3D pipeline, two rear walking directions retain the shorter accepted cycle, dedicated action/reaction/death transitions and atlas consistency need art work, terrain elevation/interiors and real mobile measurements are absent, and social/economy features remain local. No five-region expansion or live MMO completion is claimed.
+Full production gate remains open: two rear walking directions retain the shorter accepted cycle, dedicated action/reaction/death transitions and atlas consistency need art work, terrain elevation/interiors and real mobile measurements are absent, and social/economy features remain local. No five-region expansion or live MMO completion is claimed.
 
 ## Scale and canonical skill audit — 2026-09-30
 

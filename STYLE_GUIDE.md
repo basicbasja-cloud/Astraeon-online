@@ -1,7 +1,7 @@
 # ASTRAEON visual standard
 
 ## Scope
-The first benchmark is Wayfarer Market in Shenzhou. This establishes the visual standard for one region before other civilizations expand.
+The first benchmark is Wayfarer Court and its guild/market approaches in Shenzhou. This establishes the visual standard for one region before other civilizations expand.
 
 ## Camera and scale
 Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Forward/inverse projection and input share `world-view.js`; feet are the sprite anchor.
@@ -10,17 +10,17 @@ The earlier 90–105 pixel player / 180–280 pixel building guideline produced 
 
 | Relationship | Benchmark convention |
 |---|---|
-| Humanoid baseline H | 76 presentation units before camera zoom; NPCs 0.94 H |
-| Ordinary creature | 0.68–1.25 H; species silhouette determines the value |
-| Guardian | 2.32 H |
-| House | Approximately 3.55–3.9 H wide, 5.3–5.8 H tall |
-| Service hall | Approximately 5.5 H wide, 6.3 H tall |
-| Primary civic landmark | Approximately 6.6 H wide, 7.5 H tall; larger than service buildings |
-| Gate | Approximately 4.8 H wide, 6 H tall |
-| Tree | Mature border trees approximately 2.7 H tall; saplings may be smaller |
-| Market stall / cart | Approximately 2–2.3 H wide; leave approach space on road side |
+| Humanoid baseline H | Visible player feet-to-head height, approximately 70 pixels before camera zoom; calibrate NPCs by visible bounds |
+| Ordinary creature | Approximately 0.7–1.4 H; species silhouette determines the value |
+| Guardian | Approximately 2.5 H |
+| House | Approximately 3.85–4.25 H wide, 5.75–6.35 H tall |
+| Service hall | Approximately 6 H wide, 6.9 H tall |
+| Primary civic landmark | Approximately 7.1 H wide, 8.2 H tall; larger than service buildings |
+| Gate | Approximately 5.2 H wide, 6.5 H tall |
+| Tree | Mature border trees approximately 3.3 H tall; saplings may be smaller |
+| Market stall / cart | Current market counter / cart approximately 2.1 / 1.6 H wide; leave approach space on road side |
 | Door / counter | Judge visible human clearance around 1.1–1.4 H / waist height; source artwork remains the constraint |
-| Main avenue / branch | 3.1–3.6 / 1.5–1.6 world units across, versus humanoid body width approximately 0.5 world unit |
+| Main avenue / street / service | 3.8 / 2.6 / 1.1 world units across, versus humanoid body width approximately 0.5 world unit |
 
 Town bounds are 44 × 40 world units, versus the former 30 × 27. The central square, north civic terrace, market, east gate, west residential and southeast crafting neighborhoods form distinct anchors. Collision footprints expand with the architecture; paths and NPC approaches remain open. Do not assume sprite width equals traversable footprint.
 
@@ -58,7 +58,7 @@ Preserve the original richly painted, rounded character volumes, detailed armor,
 
 Goldenfield: warm ochre paths, sage meadow flowers, willow silhouettes, jade/timber farm buildings and caravan services. Moonbamboo: cooler dense foliage, bamboo groves, old stone and a lantern-lit shrine. Moonveil: quieter stone ground, visible room thresholds, layered wall segments, braziers and a contrasting moonseal. Roads must connect landmarks and exits; decorations must respect collision footprints. Main action/navigation icons are original SVG outlines rather than platform emoji.
 
-Reject new animation frames that point in the wrong direction even when their detail looks attractive. Retain accepted rear views until consistent replacements are available. Grounded frame crops and distance-based gait do not substitute for skeletal foot placement.
+Reject new animation frames that point in the wrong direction even when their detail looks attractive. Retain accepted rear views until consistent replacements are available. Grounded frame crops and distance-based gait still require consistent authored foot poses.
 
 ## Current RO1-inspired production direction
 

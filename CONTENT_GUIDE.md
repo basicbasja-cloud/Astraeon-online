@@ -1,5 +1,7 @@
 # Content authoring
 
+Current production gate: stop content expansion until Golden Sprite Character and Golden Town Scene are approved in the deployed game. Refine the three existing painted Warrior/Mage/Ranger sets and Wayfarer Court; do not add maps, classes, districts, NPC families or decorative asset families. Ragnarok Online 1 is the presentation/planning reference; ASTRAEON remains original. Express Node variation through existing gameplay/VFX rather than new character sheets. See GOLDEN_SCENE.md.
+
 1. Follow STYLE_GUIDE.md. Use original or explicitly licensed material and update ASSET_LICENSES.md.
 2. Place props with Cartesian x/y ground coordinates, explicit dimensions and foot anchors. Mark trees/buildings for occlusion fading. Surround civic buildings with service NPCs, paths and useful detail.
 3. Atlas entries must specify source rectangles and ground anchors. Inspect actual output, not just the source sheet. Transparent RGB colors can be misleading: validate alpha and rendered edges.
