@@ -1,5 +1,5 @@
-const CACHE = 'astraeon-static-v5';
-const FILES = ['./', './index.html', './style.css', './style.css?v=5', './game.js', './game.js?v=5', './manifest.webmanifest', './icon.svg', './assets/astral-outpost.webp', './assets/hero-atlas.webp', './assets/astral-wolf.webp'];
+const CACHE = 'astraeon-static-v6';
+const FILES = ['./', './index.html', './style.css', './style.css?v=6', './game.js', './game.js?v=6', './manifest.webmanifest', './icon.svg', './assets/astral-outpost.webp', './assets/hero-atlas.webp', './assets/astral-wolf.webp'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
