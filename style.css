@@ -456,3 +456,8 @@ canvas { position: relative; z-index: 0; }
  .mission{top:91px;height:28px;width:164px}.encounter{top:8px;width:min(240px,32vw);padding:6px 10px}.encounter .meter{margin:4px 0}.encounter>span{font-size:10px}.slot svg{width:23px;height:23px}
 }
 .transition-overlay{position:fixed;z-index:50;inset:0;display:grid;place-items:center;background:#0b1625dd;color:#e5d1a4;font:600 16px system-ui;letter-spacing:.03em;backdrop-filter:blur(4px)}
+
+.window .grid.skill-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.skill-card{display:flex;flex-direction:column;gap:9px}.skill-card p{margin:0;line-height:1.55}.node-options{display:flex;flex-wrap:wrap;gap:6px}.node-options .selected{background:#715a32;border-color:#dbc38a;color:#fff1cc}.node-description{padding:10px;background:#0b162555;border:1px solid #bda16b30;border-radius:7px}.node-description p{font-size:12px;margin-top:6px;color:#c3cdbd}
+@media(max-width:600px){.window .grid.skill-cards{grid-template-columns:1fr}.node-options .btn{min-height:40px;padding:8px 12px}}
+
+.game.menu-open .actions,.game.menu-open .mobile-controls,.game.menu-open .toast{visibility:hidden;pointer-events:none}

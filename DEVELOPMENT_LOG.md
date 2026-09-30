@@ -34,3 +34,14 @@
 - Fresh-Ranger UI run passed all five journey checks including all guardian attacks, crafting/equipment and reload. Final regression/performance evidence is recorded in PERFORMANCE.md. Further production art, elevation, network simulation and real-device gates remain open.
 
 - Final inspection corrected first-clear guidance to stay in Shenzhou, aligned contract/forest creature names with the authored region, and verified returning saves still expose their legacy maps/chapters. Raised the desktop guardian HUD to keep more of the actor visible. Added adjacent-wall muzzle collision coverage.
+
+## Scale benchmark and canonical Tier-1 skills — 2026-09-30
+
+- Published the connected Shenzhou work as c7e4a73 and confirmed its successful matching Pages run. Public browser access then failed at the environment proxy; saved precise network additions and continued independent QA without claiming public acceptance.
+- Replaced the old absolute player/building scale guideline with human-relative relationships. Enlarged town bounds, landmarks, service buildings and trees, widened main roads, added neighborhood anchors, rebalanced small props and actor dimensions, paired responsive zoom with accurate world-space input, and preserved painted direction views.
+- Removed active Advanced Paths/free-form composition; authored twelve starting-class Base Skills and compatibility for six attacks with nine single-layer Nodes. Added locked-area pulses, meaningful contact mechanics, different resource recovery rhythms, selected-target facing during movement and reverse gait.
+- Migrated saves to v3 while retaining legacy progress/archived fields. Added v25 core scripts/cache and kept all resource paths repository-relative.
+- Fixed the portrait skill menu after screenshot inspection exposed combat controls overlapping cards; verified node selection and persistence through actual phone-sized UI input. Cropped cached-road draws to the visible source region.
+- Pure, subpath smoke, real Node gameplay, live responsive iframe and fresh-Ranger expedition QA passed with no runtime/resource errors; detailed scope and performance limits are in AUDIT.md and PERFORMANCE.md. Public acceptance remains blocked until the environment draft's network settings are applied.
+
+- Final camp QA found the inherited menu allowed resting remotely; camp rest/cooking now require the actual cleared caravan site. Six journey checks passed, including camp tuning and walking back to town before crafting. Supply accounting now handles loot discovered naturally during contract combat without expecting a second award.

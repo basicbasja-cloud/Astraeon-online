@@ -30,7 +30,7 @@ for(const [zone,points] of [[meadow,[[2,2],[10,4],[17,3],[27,2],[2,8],[7,10],[22
 const zones={1:forest,2:meadow};
 let roadCache=null,cachedZone=null;
 function pathStroke(g,points,project,width,color){g.strokeStyle=color;g.lineWidth=width;g.beginPath();points.forEach(([x,y],i)=>{const p=project(x,y);i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y)});g.stroke()}
-function terrain(ctx,iso,key){const image=sheets[key];if(!image)return;let cache=patterns.get(ctx);if(!cache){cache={};patterns.set(ctx,cache)}const pattern=cache[key]??=ctx.createPattern(image,'repeat'),origin=iso(0,0),scale=key==='stone'?.7:.72;pattern.setTransform(new DOMMatrix().translate(origin.x,origin.y).scale(scale));ctx.save();if(key==='stone'){ctx.fillStyle='#818577';ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);ctx.globalAlpha=.55}ctx.fillStyle=pattern;ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);ctx.restore()}
+function terrain(ctx,iso,key){const image=sheets[key];if(!image)return;let cache=patterns.get(ctx);if(!cache){cache={};patterns.set(ctx,cache)}const pattern=cache[key]??=ctx.createPattern(image,'repeat'),origin=iso(0,0),scale=(key==='stone'?.7:.72)*(window.AstraeonView?.zoom||1);pattern.setTransform(new DOMMatrix().translate(origin.x,origin.y).scale(scale));ctx.save();if(key==='stone'){ctx.fillStyle='#818577';ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);ctx.globalAlpha=.55}ctx.fillStyle=pattern;ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);ctx.restore()}
 function ground(ctx,iso,zone){const data=zones[zone];if(!data)return false;terrain(ctx,iso,zone===1?'forest':'meadow');
  if(cachedZone!==zone){cachedZone=zone;roadCache=document.createElement('canvas');roadCache.width=2200;roadCache.height=1500;const g=roadCache.getContext('2d'),project=(x,y)=>({x:x*48-y*10+430,y:x*7+y*31+160});g.lineCap='round';g.lineJoin='round';
   for(const road of data.roads){for(const [add,color] of [[26,zone===1?'#273e3024':'#5a693c20'],[10,'#867a5830'],[0,zone===1?'#91866b66':'#bb9f7770']])pathStroke(g,road.points,project,road.width*29+add,color)}
@@ -41,9 +41,9 @@ function ground(ctx,iso,zone){const data=zones[zone];if(!data)return false;terra
   // Local wear, leaf litter and path-side clearings break up the repeating base material.
   for(const o of data.objects.filter(o=>o.building||o.art==='camp')){const p=project(o.x,o.y),r=o.w*.58,glow=g.createRadialGradient(p.x,p.y,5,p.x,p.y,r);glow.addColorStop(0,zone===1?'#837b6366':'#bd9f7066');glow.addColorStop(1,'#ae956000');g.fillStyle=glow;g.fillRect(p.x-r,p.y-r,r*2,r*2)}
  }
- const p=iso(0,0);ctx.drawImage(roadCache,p.x-430,p.y-160);return true;
+ window.AstraeonView.drawCache(ctx,roadCache,iso(0,0),430,160);return true;
 }
-function drawProp(ctx,o,iso,player,time){const sheet=sheets[o.pack],entry=window.AstraeonEnvironmentMetadata[o.pack]?.[o.art];if(!sheet||!entry)return false;const p=iso(o.x,o.y),left=p.x-o.w*entry.anchor[0],top=p.y-o.h*entry.anchor[1],width=ctx.canvas.clientWidth,height=ctx.canvas.clientHeight;
+function drawProp(ctx,o,iso,player,time){const zoom=window.AstraeonView?.zoom||1;o={...o,w:o.w*zoom,h:o.h*zoom};const sheet=sheets[o.pack],entry=window.AstraeonEnvironmentMetadata[o.pack]?.[o.art];if(!sheet||!entry)return false;const p=iso(o.x,o.y),left=p.x-o.w*entry.anchor[0],top=p.y-o.h*entry.anchor[1],width=ctx.canvas.clientWidth,height=ctx.canvas.clientHeight;
  if(left>width+20||left+o.w<-20||top>height+20||top+o.h<-20)return true;
  const hero=iso(player.x,player.y),obstructs=(o.tree||o.building)&&hero.x>left+o.w*.15&&hero.x<left+o.w*.86&&hero.y<p.y-8&&hero.y>top+o.h*.16;
  ctx.save();ctx.globalAlpha=obstructs?.38:1;ctx.fillStyle='#152b252e';ctx.beginPath();ctx.ellipse(p.x+6,p.y+2,o.w*.28,o.w*.08,-.12,0,Math.PI*2);ctx.fill();

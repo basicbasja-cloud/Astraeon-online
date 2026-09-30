@@ -1,7 +1,7 @@
 const test=require('node:test');
 const assert=require('node:assert/strict');
 global.window={};
-require('../character-motion.js');require('../combat.js');
+require('../character-motion.js');require('../skill-nodes.js');require('../combat.js');
 const {CharacterTransform,wrap,cameraMovement,FacingMode}=window.AstraeonMotion;
 const {contains,Timeline,compile}=window.AstraeonCombat;
 const inverse=(x,y)=>({x:(31*x+10*y)/1558,y:(48*y-7*x)/1558});
@@ -90,10 +90,10 @@ test('supply discoveries award once and remain claimed after save reload',()=>{
 require('../save-state.js');
 test('legacy saves retain progression and class IDs while missing fields gain safe defaults',()=>{
  const legacy={name:'Returning hero',cls:20,gold:200,inventory:{ore:9},equipment:{weapon:'Astral Blade'},chapters:[0,1],discovered:[0,1,3],futureProgress:{relics:8}};
- const state=window.AstraeonSave.normalize(legacy);assert.equal(state.cls,20);assert.equal(state.inventory.ore,9);assert.equal(state.inventory.potion,0);assert.deepEqual(state.chapters,[0,1]);assert.deepEqual(state.futureProgress,{relics:8});assert.equal(state.equipment.weapon,'Astral Blade');assert.equal(state.equipment.armor,'Adventurer Garb');assert.equal(state.saveVersion,2);assert.deepEqual(window.AstraeonSave.normalize(JSON.parse(JSON.stringify(state))),state);
+ const state=window.AstraeonSave.normalize(legacy);assert.equal(state.cls,20);assert.equal(state.inventory.ore,9);assert.equal(state.inventory.potion,0);assert.deepEqual(state.chapters,[0,1]);assert.deepEqual(state.futureProgress,{relics:8});assert.equal(state.equipment.weapon,'Astral Blade');assert.equal(state.equipment.armor,'Adventurer Garb');assert.equal(state.saveVersion,3);assert.deepEqual(window.AstraeonSave.normalize(JSON.parse(JSON.stringify(state))),state);
 });
 test('malformed save values cannot create invalid HUD indices, resources or coordinates',()=>{
- const state=window.AstraeonSave.normalize({name:'Hero',cls:90,race:-8,lv:-2,inventory:{ore:-5},hp:Infinity,maxHp:NaN,x:NaN,y:100,quest:{id:80},mail:[{},'letter']});assert.equal(state.cls,21);assert.equal(state.race,0);assert.equal(state.lv,1);assert.equal(state.inventory.ore,0);assert.equal(state.hp,100);assert.equal(state.x,14.5);assert.equal(state.y,25);assert.equal(state.quest,null);assert.deepEqual(state.mail,['letter']);assert.equal(window.AstraeonSave.normalize([]),null);
+ const state=window.AstraeonSave.normalize({name:'Hero',cls:90,race:-8,lv:-2,inventory:{ore:-5},hp:Infinity,maxHp:NaN,x:NaN,y:100,quest:{id:80},mail:[{},'letter']});assert.equal(state.cls,21);assert.equal(state.race,0);assert.equal(state.lv,1);assert.equal(state.inventory.ore,0);assert.equal(state.hp,100);assert.equal(state.x,14.5);assert.equal(state.y,38);assert.equal(state.quest,null);assert.deepEqual(state.mail,['letter']);assert.equal(window.AstraeonSave.normalize([]),null);
 });
 require('../navigation.js');
 test('click navigation routes through authored passages without crossing walls or cutting corners',()=>{
@@ -110,4 +110,24 @@ test('player projectiles stop at walls before damaging a target behind them',()=
 
 test('projectile muzzle offset cannot skip a thin adjacent wall',()=>{
  const timeline=new Timeline(),def=compile('ranger','attack');timeline.start(def,{x:0,y:0},{x:3,y:0},0);const events=timeline.tick(.3,.3,[{x:1,y:0,hp:10}],x=>x>=.15&&x<=.35);assert.ok(events.some(e=>e.type==='blocked'));assert.ok(!events.some(e=>e.type==='projectileHit'));assert.equal(timeline.projectiles.length,0);
+});
+
+require('../world-view.js');
+test('responsive projection and inverse pair remain exact in all viewports',()=>{
+ for(const [width,height] of [[1280,720],[390,844],[844,390],[768,1024]])for(const [x,y] of [[14.5,18],[42,16],[7,35]]){const camera={x:510,y:640},p=window.AstraeonView.screen(x,y,0,camera,width,height),q=window.AstraeonView.world(p.x,p.y,camera,width,height);assert.ok(Math.abs(x-q.x)<1e-9);assert.ok(Math.abs(y-q.y)<1e-9)}
+ assert.equal(window.AstraeonView.limits(0).w,44);assert.equal(window.AstraeonView.limits(1).w,30);
+});
+test('single-layer nodes preserve base identity, targeting and class-specific compatibility',()=>{
+ for(const cls of ['warrior','mage','ranger'])for(const slot of ['skill1','skill2','skill3','skill4']){const base=compile(cls,slot);for(const node of window.AstraeonSkillNodes.compatibility[base.id]||[]){const d=compile(cls,slot,1,node);assert.equal(d.id,base.id);assert.equal(d.shape,base.shape);assert.equal(d.cost,base.cost);assert.equal(d.range,base.range);assert.equal(d.node,node)}}
+ assert.equal(compile('warrior','skill1',1,'plasma').node,undefined);assert.equal(compile('mage','skill4',1,['fire','gravity']).node,undefined);assert.equal(compile('ranger','skill1',1,{name:'Old freeform',nodes:{core:6}}).effect,undefined);
+ assert.deepEqual(window.AstraeonSkillNodes.normalize({'tempest':'gravity','rising-edge':'plasma','arrow-rain':['ice','fire']}),{'tempest':'gravity'});
+ assert.deepEqual(window.AstraeonSkillNodes.normalize(JSON.parse('{"__proto__":"fire","constructor":"qi","toString":"void","tempest":"ice"}')),{'tempest':'ice'});
+});
+test('node contact models distinguish burn ignition, frost, shocks, pull, Qi and plasma',()=>{
+ const model=window.AstraeonSkillNodes,enemy={hp:50,burnUntil:9,frost:.6,frostUntil:9};
+ assert.ok(model.contact(compile('mage','skill4',1,'fire'),enemy,5).ignite);assert.ok(model.contact(compile('mage','skill4',1,'ice'),enemy,5).freeze);assert.ok(!model.contact(compile('mage','skill4',1,'ice'),{...enemy,boss:true},5).freeze);
+ assert.ok(model.contact(compile('mage','skill4',1,'lightning'),enemy,5).shock);assert.ok(model.contact(compile('warrior','skill4',1,'gravity'),enemy,5).pull);assert.equal(model.contact(compile('warrior','skill1',1,'qi'),enemy,5).restore,4);assert.ok(model.contact(compile('ranger','skill1',1,'plasma'),enemy,5).heat);
+});
+test('Tempest pulses stay at the authored target and clear when a zone changes',()=>{
+ const timeline=new Timeline(),def=compile('mage','skill4',1,'ice');timeline.start(def,{x:0,y:0},{x:5,y:0},0);const first=timeline.tick(.7,.1,[]);assert.equal(first.filter(e=>e.type==='impact').length,1);assert.equal(timeline.fields.length,1);timeline.cancel();const pulses=timeline.tick(3,.1,[]).filter(e=>e.type==='pulse');assert.equal(pulses.length,2);assert.ok(pulses.every(e=>e.action.center.x===5));assert.equal(timeline.fields.length,0);timeline.start(def,{x:0,y:0},{x:5,y:0},9);timeline.tick(10,.1,[]);timeline.clear();assert.equal(timeline.fields.length,0);
 });

@@ -40,3 +40,21 @@ Field and forest now use distinct painted materials, authored roads, layered tre
 A fresh Ranger completed the field contract, one-time supply claim, natural forest/shrine route, all four rooms, guardian phases and three attacks, reward return, armor crafting/equipment and persistent reload through real UI input. Resolved unreachable gates, arrival-target cancellation, obstacle pursuit and wall-crossing projectiles. Save normalization and failed zone-load retry preserve progress.
 
 Full production gate remains open: painted 2.5D eight-view characters are not a skinned 3D pipeline, two rear walking directions retain the shorter accepted cycle, dedicated action/reaction/death transitions and atlas consistency need art work, terrain elevation/interiors and real mobile measurements are absent, and social/economy features remain local. No five-region expansion or live MMO completion is claimed.
+
+## Scale and canonical skill audit — 2026-09-30
+
+The master production brief supersedes historical scale and progression assumptions. Local runtime comparison found humanoids too large beside doors, civic buildings too small, roads compressed, and the original composer/Advanced Path controls inconsistent with current scope.
+
+Corrected the related system: 44 × 40 town footprint, neighborhood anchors, wider avenue/branches, enlarged service architecture and dominant civic terrace, smaller human-relative actors, scaled terrain/props, paired inverse input and responsive camera framing. Plaza, market, Consortium approach and caravan gate were inspected in local browser screenshots; the city benchmark remains provisional until public inspection. Painted directional characters are retained, without blocky replacements or a false claim of skinned 3D.
+
+Three starting classes retain twelve Base Skills. Six attack skills accept authored compatibility from nine Nodes with real burn/frost/chain/pull/resource/heal/disruption/backstep/heat mechanics. Tempest and Arrow Rain pulse in locked areas. Removed active free-form composition and Advanced Path evolution. Save v3 retains old progression and archived legacy fields. Phone menu review found and fixed action controls covering the skill cards; menus now hide combat overlays and portrait cards use one column.
+
+Evidence: 42 pure checks; 44 Chromium smoke checks under `/Astraeon-online/`; 10 actual UI/Node gameplay checks; six fresh-Ranger journey checks passed, including actual cleared-camp rest/Node tuning and a physical return to town before crafting/reload. No runtime or failed-resource errors. Additional town service/gate and live QA iframe checks confirmed all four viewport sizes, v25 cache and repository-subpath SW scope. See PERFORMANCE.md for measured limits. Raw screenshots/reports are external task artifacts under `/workspace/setup-checks/public-production/`.
+
+### Deployment / public acceptance
+
+The earlier connected pass was committed/pushed as `c7e4a73313f8b4d0291682a6a1333051f51b5ad7`; [Pages run 24](https://github.com/basicbasja-cloud/Astraeon-online/actions/runs/36707426745) completed successfully for that exact commit. Significant changes in this pass must likewise be pushed and matched to a successful Pages run.
+
+The current environment can read GitHub HTML and push using injected HTTPS Git proxy authentication. The public Pages host and API host are denied by the environment proxy (HTTPS CONNECT HTTP 403; Chromium `ERR_TUNNEL_CONNECTION_FAILED`). This is a network prerequisite, not evidence of a broken deployment or missing token. Required domain additions are saved in the cloud environment draft; saving the draft does not apply runtime access.
+
+**Public browser gameplay, public screenshots and public visual comparison are blocked, not passed.** Once the network settings are applied, open the public URL in a fresh browser context, confirm v25, play movement/combat/services/camp/dungeon, review plaza/market/gate/field/ruin and both phone orientations, inspect console/resources and compare screenshots. Local evidence and successful Pages workflows do not close this gate. Full production animation, architectural details, elevation, real-device performance and online simulation also remain open.

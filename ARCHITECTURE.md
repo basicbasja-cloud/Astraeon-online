@@ -4,6 +4,8 @@ Static, dependency-free browser client. Canvas2D paints an affine high-angle wor
 
 | Module | Actual responsibility |
 |---|---|
+| world-view.js | Shared projection/inverse, responsive zoom/framing, human-relative actor dimensions and zone bounds |
+| skill-nodes.js | Authored compatibility, single-node application/normalization and pure contact status model |
 | world-content.js | Authored Shenzhou props, roads, atlas regions, walker routes, five-region identity plan |
 | input.js | Keyboard device bindings → action names and movement axes |
 | combat.js | Pure ability definitions/compiler, cast/active/recovery timeline, cooldowns, world-space hit shapes, swept projectile collisions |
@@ -33,4 +35,12 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 2; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v24). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 3; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v25). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+
+## Base Skills and single-layer Nodes
+
+Twelve starting-class skills are deliberately authored in `combat.js`; six attack skills accept explicit compatible nodes from `skill-nodes.js`. A save stores one string per Base Skill ID in `skillNodes`. The compiler retains base targeting, cost, cooldown, shape and class identity. Invalid, nested or incompatible choices are discarded during normalization. Old `techniques`, `active`, `path` and unknown progress fields survive save migration, but the old free-form compiler and Advanced Path controls are inactive. Existing bonuses are not stripped from returning saves.
+
+Tempest and Arrow Rain each lock an authored area and pulse three times. Published fields survive ordinary cast recovery/cancel and clear on zone/class changes. Fire burns and ignites; Ice builds frost and freezes ordinary foes; Lightning chains through clear sight lines and briefly shocks; Gravity pulls with collision checks; Qi restores Resolve on contact; Spirit heals inside the area; Void delays ordinary enemy attacks; Wind backsteps after projectile release; Plasma follows a marked foe before its delayed burst. Bosses resist freeze/shock/disruption and have reduced pull.
+
+Warrior combos earn Resolve on contact; Mage Mana recovers faster between casts; Ranger Focus recovers faster while stationary. Selected targets preserve facing while moving, including reverse gait when backing away. This does not add dedicated strafe animation art. Tuning is available in town or at an actual nearby camp after clearing nearby foes. Menus pause simulation. No skill trees, advanced evolutions or online authority are implemented.

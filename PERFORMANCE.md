@@ -43,3 +43,19 @@ Guardian measurements were collected separately after reaching its court through
 | guardian-phase2 | 390×844 | 60–60 | 16.8–16.8 |
 
 A separate completion/access browser check passed: first-clear guidance stays within Shenzhou (three destinations / one dungeon), while returning saves with later legacy progress retain five destinations and four chapter entries. All tested resource and runtime error lists were empty.
+
+## Scale / Base Skill pass — 2026-09-30
+
+The expanded town paving cache is now 2900 × 2100 (24.4 MB raw RGBA). Road caches draw only the source region intersecting the viewport before scaling, retaining full composition. Props remain culled; actor art retains its painted source extraction. Core scripts/art use service worker v25; subpath scope and resource loading passed browser QA.
+
+42 pure checks, 44 repository-subpath browser checks and 10 UI/Node gameplay checks passed without runtime/resource errors. Normal gameplay verified burn, freeze buildup, pull displacement, shock, delayed attacks, actual Spirit healing, Resolve return, Plasma burst damage and Wind retreat. Six fresh-Ranger journey checks completed the connected dungeon/boss loop, actual cleared-camp rest/Node tuning, a physical return to town, crafting and reload. Phone skill menus were inspected and exercised after fixing overlay occlusion and the one-column layout. These checks do not establish public visual acceptance.
+
+Serial local headless Chromium, DPR 1, default quality; eight-second sample windows after warmup:
+
+| Scene | Desktop 1280 × 720 FPS / p95 ms | Phone viewport 390 × 844 FPS / p95 ms |
+|---|---|---|
+| Plaza with ambient walkers | 45–49 / 33.4 | 59–60 / 16.7–16.8 |
+| Market with ambient walkers | 48–49 / 33.4 | 60 / 16.7–16.8 |
+| Field with player attacks and hostile combat | 50–56 / 33.3–33.4 | 59–60 / 16.7–16.8 |
+
+The field sample used a fresh Mage, area Nodes and repeated attack input, with two actual kills and incoming damage; it is a short encounter, not sustained raid-load profiling. Desktop 60 FPS remains unmet in this cloud software-rendered browser. The larger town has a measurable rendering cost; further profiling is required. Phone-sized results are desktop Chromium viewport measurements, not Android/iOS hardware guarantees. Public performance measurement is blocked by the environment network policy. Reports and screenshots are external task artifacts under `/workspace/setup-checks/public-production/`.

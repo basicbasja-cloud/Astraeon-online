@@ -4,7 +4,27 @@
 The first benchmark is Wayfarer Market in Shenzhou. This establishes the visual standard for one region before other civilizations expand.
 
 ## Camera and scale
-Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Streets are predominantly screen horizontal/vertical with restrained diagonal depth. Forward/inverse projection must remain paired. Feet are the sprite anchor. Player height: approximately 90–105 screen pixels on desktop, readable at phone size. Service buildings: 180–280 screen pixels wide; trees 90–160 pixels tall.
+Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Forward/inverse projection and input share `world-view.js`; feet are the sprite anchor.
+
+The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **Public Pages visual acceptance remains pending: the environment proxy currently blocks the public host.** Revisit these relationships after public inspection rather than treating the numbers as permanent.
+
+| Relationship | Benchmark convention |
+|---|---|
+| Humanoid baseline H | 76 presentation units before camera zoom; NPCs 0.94 H |
+| Ordinary creature | 0.68–1.25 H; species silhouette determines the value |
+| Guardian | 2.32 H |
+| House | Approximately 3.55–3.9 H wide, 5.3–5.8 H tall |
+| Service hall | Approximately 5.5 H wide, 6.3 H tall |
+| Primary civic landmark | Approximately 6.6 H wide, 7.5 H tall; larger than service buildings |
+| Gate | Approximately 4.8 H wide, 6 H tall |
+| Tree | Mature border trees approximately 2.7 H tall; saplings may be smaller |
+| Market stall / cart | Approximately 2–2.3 H wide; leave approach space on road side |
+| Door / counter | Judge visible human clearance around 1.1–1.4 H / waist height; source artwork remains the constraint |
+| Main avenue / branch | 3.1–3.6 / 1.5–1.6 world units across, versus humanoid body width approximately 0.5 world unit |
+
+Town bounds are 44 × 40 world units, versus the former 30 × 27. The central square, north civic terrace, market, east gate, west residential and southeast crafting neighborhoods form distinct anchors. Collision footprints expand with the architecture; paths and NPC approaches remain open. Do not assume sprite width equals traversable footprint.
+
+Camera zoom is 0.92 on wide desktop, 0.96 on tablet/landscape, and 1.0 in tall portrait. The player ground anchor sits at 55% of viewport height (56% in portrait), exposing more forward space. UI controls scale independently. Benchmark screenshots show architecture extending outside the viewport and the player remaining identifiable beside doors and stalls. Door/window/stair details are still painted into source assets, so architectural acceptance requires visual review rather than a pixel formula alone.
 
 ## Characters
 Anime/storybook proportions, readable head and weapon silhouette, navy/cream traveler outfit with restrained gold trim. Warrior, Mage and Ranger use distinct kits. No universal color-swapped character as a final class treatment. Movement uses distance-driven animation; attacks use anticipation, impact and recovery.

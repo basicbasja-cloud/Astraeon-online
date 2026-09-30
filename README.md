@@ -12,7 +12,9 @@ Desktop: WASD/arrows move, Shift sprint, F attack, Space dodge, 1–4 class skil
 
 One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.
 
-Original Shenzhou architecture, marketplace/plaza/gate props, paired high-angle camera and full-screen terrain; three illustrated eight-direction character atlases with continuous world-space facing; contact-timed combat, swept projectiles, combo, dodge immunity and recovery, burn/slow/knockback and compiled skill nodes; eight monster species and an evolving Moonveil encounter; existing loot, crafting, shop, quest and save systems; ambient walkers and gradual atmospheric changes; generated WebAudio soundtrack/feedback.
+Original Shenzhou architecture, marketplace/plaza/gate props, paired high-angle camera and full-screen terrain; three illustrated eight-direction character atlases with continuous world-space facing; contact-timed combat, swept projectiles, combo, dodge immunity and recovery, three Tier-1 resource rhythms and authored Base Skills with one compatible gameplay-changing Node; eight monster species and an evolving Moonveil encounter; existing loot, crafting, shop, quest and save systems; ambient walkers and gradual atmospheric changes; generated WebAudio soundtrack/feedback.
+
+The city benchmark has a larger 44 × 40 footprint, widened main avenues, neighborhood anchors and architecture sized relative to a humanoid baseline. Skills can be tuned in town or at a cleared camp. Advanced Path evolution and the free-form composer are inactive; legacy progress remains saved.
 
 ## Limits
 
@@ -26,4 +28,8 @@ Serve this directory with a static web server. There is no dependency install or
 
 ## Validation
 
-Run `node --test tests/motion.test.cjs` for movement/combat geometry. With the static server running, run `python3 tests/browser_smoke.py`; this requires Python Playwright and Chromium at `/usr/bin/chromium`. Disposable browser contexts check controls, class attacks, directional views, progression, saves and responsive layout. Outputs default to `/tmp/astraeon-qa`. Run `python3 tests/vertical_slice.py` for a complete new-Ranger town-to-boss journey through normal UI input, then crafting and save reload. It writes artifacts to `/tmp/astraeon-slice-qa`. Neither browser suite adds runtime mutation hooks.
+Start `python3 -m http.server 8001 --bind 127.0.0.1` from this directory. Pass `--url http://127.0.0.1:8001` to browser suites (their fallback port is 8000). Run `node --test tests/motion.test.cjs` for movement/combat geometry. With the static server running, run `python3 tests/browser_smoke.py`; this requires Python Playwright and Chromium at `/usr/bin/chromium`. Disposable browser contexts check controls, class attacks, directional views, progression, saves and responsive layout. Outputs default to `/tmp/astraeon-qa`. Run `python3 tests/vertical_slice.py` for a complete new-Ranger town-to-boss journey through normal UI input, including a cleared camp and Node tuning, then crafting and save reload. It writes artifacts to `/tmp/astraeon-slice-qa`. Neither browser suite adds runtime mutation hooks.
+
+Run `python3 tests/skill_nodes.py --url http://127.0.0.1:8001` for compatible one-node selection, reload and actual node effects across all three starting classes. Use a server rooted in the parent directory to validate `/Astraeon-online/` asset and service-worker paths.
+
+Production QA target: https://basicbasja-cloud.github.io/Astraeon-online/ . Commit/push significant changes, confirm the matching Pages deployment succeeds, then play the public build with a fresh browser context and inspect screenshots/console across viewports. A successful workflow or localhost test alone does not close visual acceptance.

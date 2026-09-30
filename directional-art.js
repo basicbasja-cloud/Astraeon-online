@@ -20,7 +20,7 @@ function pose(state,t,progress,impactAt=.45){
 }
 function frame(ctx,iso,t,key,row,column,width,state,progress,time=0){
  const image=sheets[key],meta=window.AstraeonDirectionalMetadata?.[key];if(!image||!meta)return false;
- const cols=meta.cols,cellW=image.naturalWidth/cols,cellH=image.naturalHeight/8,bounds=meta.frames[row*cols+column]||[column*cellW,row*cellH,cellW,cellH],foot=iso(t.position.x,t.position.y,t.position.z*35),unit=width/cellW;
+ const cols=meta.cols,cellW=image.naturalWidth/cols,cellH=image.naturalHeight/8,bounds=meta.frames[row*cols+column]||[column*cellW,row*cellH,cellW,cellH],foot=iso(t.position.x,t.position.y,t.position.z*35),unit=width/cellW*(window.AstraeonView?.zoom||1);
  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
  if(state==='hit')ctx.globalAlpha*=.72+.28*Math.sin(progress*Math.PI);
  if(state==='death')ctx.globalAlpha*=Math.max(0,1-progress);
@@ -33,15 +33,16 @@ function humanoid(ctx,iso,t,{archetype='warrior',state=t.state,time=0,progress=0
  const row=directionRow(t.rotation),walking=['walk','run','sprint','start'].includes(state)&&t.speed>.02;
  // Keep the accepted rear poses where the extended sheet drifted toward a side/front view.
  const extended=walking&&row!==4&&row!==5;
- let stride=Math.floor(t.gait*8)%8;
+ const backward=(t.velocity?.x||0)*t.facingDirection.x+(t.velocity?.y||0)*t.facingDirection.y<-.05;
+ let stride=Math.floor((backward?8-t.gait*8%8:t.gait*8))%8;
  if(archetype==='warrior'&&stride===6)stride=5; // The sixth generated stride contains a neighboring sword fragment.
- frame(ctx,iso,t,extended?`${archetype}-walk`:archetype,row,extended?stride:pose(state,t,progress,impactAt),103*scale,state,progress,time);
+ frame(ctx,iso,t,extended?`${archetype}-walk`:archetype,row,extended?stride:pose(state,t,progress,impactAt),(window.AstraeonView?.scale.humanoid||103)*scale,state,progress,time);
  const facing=t.facingDirection;return {RightHand:[t.position.x+facing.y*.22,t.position.y-facing.x*.22,t.position.z+1.2],LeftHand:[t.position.x-facing.y*.22,t.position.y+facing.x*.22,t.position.z+1.2],Back:[t.position.x-facing.x*.2,t.position.y-facing.y*.2,t.position.z+1.2],Hip:[t.position.x,t.position.y,t.position.z+.8]};
 }
 function monster(ctx,iso,t,entity,time){
  const state=entity.hp<=0?'death':entity.animUntil>time?entity.animState:t.state,progress=Math.min(1,(time-(entity.hp<=0?entity.deadAt:entity.animStarted||0))/.9),column=(8-directionRow(t.rotation))%8;
- if(entity.boss){let row=0;if(['walk','run','start'].includes(state)&&t.speed>.02)row=1+Math.floor(t.gait*2)%2;else if(state==='attack')row=progress<.45?3:4;else if(state==='cast')row=5;else if(state==='hit')row=6;else if(state==='death')row=7;return frame(ctx,iso,t,'boss',row,column,150,state,progress,time)}
- const species=entity.species||0,row=(species%4)*2+(state==='attack'||state==='cast'?1:0),width=(species===6?115:species===3?100:85)*(entity.elite?1.15:1);
+ if(entity.boss){let row=0;if(['walk','run','start'].includes(state)&&t.speed>.02)row=1+Math.floor(t.gait*2)%2;else if(state==='attack')row=progress<.45?3:4;else if(state==='cast')row=5;else if(state==='hit')row=6;else if(state==='death')row=7;return frame(ctx,iso,t,'boss',row,column,window.AstraeonView?.scale.boss||150,state,progress,time)}
+ const species=entity.species||0,row=(species%4)*2+(state==='attack'||state==='cast'?1:0),width=(window.AstraeonView?.scale.monster[species]||(species===6?115:species===3?100:85))*(entity.elite?1.15:1);
  return frame(ctx,iso,t,species<4?'meadow':'forest',row,column,width,state,progress,time);
 }
 window.AstraeonDirectionalArt={ready,ensure,humanoid,monster,directionRow,pose,sheets,views:8};

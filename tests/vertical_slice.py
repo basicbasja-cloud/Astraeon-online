@@ -2,7 +2,7 @@
 No runtime setters, teleport hooks, damage cheats or seeded high-level stats.
 Run against the static server; artifacts are written outside the checkout.
 """
-import argparse,json,math,time
+import argparse,json,math,time,re
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:8000');parser.add_argument('--output',default='/tmp/astraeon-slice-qa');args=parser.parse_args();out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
@@ -14,7 +14,7 @@ with sync_playwright() as p:
  def elapsed(seconds):
   start=snap()['time'];page.wait_for_function('(time)=>AstraeonQA.snapshot().time>=time',arg=start+seconds,timeout=20000)
  def point(x,y):
-  s=snap();r=page.locator('#world').bounding_box();return r['x']+x*48-y*10+r['width']/2-s['camera']['x'],r['y']+x*7+y*31+r['height']/2-s['camera']['y']
+  s=snap();r=page.locator('#world').bounding_box();v=s['view'];return r['x']+r['width']/2+(x*48-y*10-s['camera']['x'])*v['zoom'],r['y']+r['height']*v['anchorY']+(x*7+y*31-s['camera']['y'])*v['zoom']
  def click(x,y):
   px,py=point(x,y);r=page.locator('#world').bounding_box();assert r['x']<px<r['x']+r['width'] and r['y']<py<r['y']+r['height'],('target outside viewport',x,y,px,py);page.mouse.click(px,py)
  def walk(x,y,reach=.5):
@@ -45,11 +45,16 @@ with sync_playwright() as p:
    if state['hp']<state['maxHp']*.55 and state['inventory']['potion']>0:page.keyboard.press('q')
    elif state['hp']<state['maxHp']*.7 and state['energy']>=18:page.keyboard.press('3')
   raise AssertionError(('combat deadline',snap()))
- page.locator('[data-open="journal"]').click();page.locator('[data-quest="2"]').click();initial=snap()['save'];assert initial['quest']['id']==2
- walk(22,16);click(27.5,14);page.wait_for_function('AstraeonQA.snapshot().save.zone===2');field=fight_until(lambda s:s['save']['clears']>=1);assert field['save']['lv']>=2;assert field['save']['quest'] is None;page.screenshot(path=str(out/'goldenfield.png'));pass_check('new adventurer gate, field combat and contract rewards',{'level':field['save']['lv'],'kills':field['save']['kills'],'clears':field['save']['clears']})
+ page.locator('[data-open="journal"]').click();contract_reward=int(re.search(r'(\d+) gold',page.locator('[data-quest="2"]').locator('..').inner_text()).group(1));page.locator('[data-quest="2"]').click();initial=snap()['save'];assert initial['quest']['id']==2
+ walk(22,17.8);walk(30,16);walk(38,16);click(42,16);page.wait_for_function('AstraeonQA.snapshot().save.zone===2')
+ field=fight_until(lambda s:s['save']['clears']>=1);assert field['save']['lv']>=2;assert field['save']['quest'] is None;page.screenshot(path=str(out/'goldenfield.png'));pass_check('new adventurer gate, field combat and contract rewards',{'level':field['save']['lv'],'kills':field['save']['kills'],'clears':field['save']['clears']})
  # Follow the caravan branch instead of teleporting to the supply cache.
- walk(14.5,12);walk(14,17);walk(9.5,19);gold=snap()['save']['gold'];click(10.6,23.1);page.wait_for_function('AstraeonQA.snapshot().save.worldClaims?.["caravan-cache"]===true');after=snap()['save'];assert after['gold']==gold+12;click(10.6,23.1);elapsed(.1);assert snap()['save']['gold']==after['gold'];pass_check('world supply chest awards once',{'gold_added':12,'claim_saved':True})
- walk(14,17);walk(14.5,8);click(14.5,2);page.wait_for_function('AstraeonQA.snapshot().save.zone===1');walk(16.5,19);walk(14.5,14);walk(14.5,11.5,reach=.35);page.screenshot(path=str(out/'moonbamboo.png'));page.keyboard.press('e');page.wait_for_function('AstraeonQA.snapshot().dungeon?.wave===0');pass_check('natural forest route and shrine entry',{'zone':1,'entry':'world interaction'})
+ walk(14.5,12);walk(14,17);walk(9.5,19);before_chest=snap()['save'];gold=before_chest['gold'];click(10.6,23.1);page.wait_for_function('AstraeonQA.snapshot().save.worldClaims?.["caravan-cache"]===true');after=snap()['save'];assert after['gold']==initial['gold']+(after['kills']-initial['kills'])*8+contract_reward+12,(initial,after)
+ if not before_chest.get('worldClaims',{}).get('caravan-cache'):assert after['gold']==gold+12+(after['kills']-before_chest['kills'])*8 and after['inventory']['potion']==before_chest['inventory']['potion']+1
+ click(10.6,23.1);elapsed(.1);duplicate=snap()['save'];assert duplicate['gold']==after['gold']+(duplicate['kills']-after['kills'])*8;assert duplicate['inventory']['potion']==after['inventory']['potion'];pass_check('world supply chest awards once',{'gold_added':12,'claim_saved':True})
+ # Prepare at the actual cleared caravan camp, then tune one Ranger node there.
+ fight_until(lambda s:all(e['hp']<=0 or math.hypot(e['transform']['position']['x']-10.5,e['transform']['position']['y']-22)>8.4 for e in s['enemies']));click(10.5,22);page.wait_for_selector('#camp-rest');before_camp=snap()['save'];page.locator('#camp-rest').click();rested=snap()['save'];assert rested['camp']==before_camp['camp']+1 and rested['gold']==before_camp['gold']-8;assert rested['hp']==rested['maxHp'];page.screenshot(path=str(out/'caravan-camp.png'));page.locator('[data-open="skills"]').click();page.locator('[data-node-skill="arrow-rain"][data-node="spirit"]').click();assert snap()['save']['skillNodes']['arrow-rain']=='spirit';page.keyboard.press('Escape');walk(14,17);page.locator('[data-open="skills"]').click();assert page.locator('[data-node-skill="arrow-rain"][data-node="ice"]').is_disabled();page.keyboard.press('Escape');page.locator('[data-open="systems"]').click();page.locator('[data-nav="camp"]').click();assert page.locator('#camp-rest').is_disabled();page.keyboard.press('Escape');pass_check('safe world camp restores supplies and permits node tuning',{'camp_uses':rested['camp'],'cost':8,'saved_node':'spirit','field_tuning_disabled':True})
+ walk(14.5,8);click(14.5,2);page.wait_for_function('AstraeonQA.snapshot().save.zone===1');walk(16.5,19);walk(14.5,14);walk(14.5,11.5,reach=.35);page.screenshot(path=str(out/'moonbamboo.png'));page.keyboard.press('e');page.wait_for_function('AstraeonQA.snapshot().dungeon?.wave===0');pass_check('natural forest route and shrine entry',{'zone':1,'entry':'world interaction'})
  rewards_before=snap()['save'];rooms=[]
  page.evaluate("window.encounterSamples=[];window.collectEncounter=true;const sample=()=>{if(!collectEncounter)return;const s=AstraeonQA.snapshot();if(s.dungeon?.wave===3){const b=s.enemies.find(e=>e.boss);if(b)encounterSamples.push({time:s.time,hp:b.hp,phase:b.phase,shape:b.windup?.shape,attack:b.windup?.name,hazards:s.hazards.length})}requestAnimationFrame(sample)};requestAnimationFrame(sample)")
  for wave in range(4):
@@ -59,8 +64,10 @@ with sync_playwright() as p:
   else:assert fought['dungeon'] is None
  page.evaluate('collectEncounter=false');samples=page.evaluate('encounterSamples');saved=snap()['save'];assert saved['bossKills']==1;assert 0 in saved['chapters'];assert saved['equipment']['relic']=='Moonveil Sigil';assert saved['gold']>=rewards_before['gold']+65;assert abs(saved['x']-14.5)<.1 and abs(saved['y']-9.5)<.1;assert {0,1}.issubset({s['phase'] for s in samples});assert any(s['attack'] for s in samples),samples
  page.screenshot(path=str(out/'shrine-return.png'));pass_check('four rooms, boss phases, relic reward and safe return',{'rooms':rooms,'boss_phases':sorted({s['phase'] for s in samples}),'telegraphs':sorted({s['attack'] for s in samples if s['attack']}),'boss_kills':1,'relic':saved['equipment']['relic']})
+ # Return along the forest road to town before crafting and save reload.
+ walk(16.5,19);walk(14.5,22);click(14.5,24);page.wait_for_function('AstraeonQA.snapshot().save.zone===0');walk(14.5,10);walk(14.5,18);page.screenshot(path=str(out/'town-return.png'))
  # Material rewards support actual crafting/equipment, followed by persistent reload.
- assert saved['inventory']['ore']>=6,saved['inventory'];page.locator('[data-open="systems"]').click();page.locator('[data-nav="craft"]').click();page.locator('[data-craft="2"]').click();assert snap()['save']['inventory']['plate']==1;page.keyboard.press('Escape');page.locator('[data-open="inventory"]').click();page.locator('[data-item="plate"]').click();page.keyboard.press('Escape');assert snap()['save']['equipment']['armor']=='Warden Plate';before=snap()['save'];page.reload(wait_until='networkidle');page.wait_for_selector('#world');after=snap()['save'];assert before['gold']==after['gold'];assert before['inventory']==after['inventory'];assert before['equipment']==after['equipment'];assert after['worldClaims']['caravan-cache'];assert after['chapters']==before['chapters'];pass_check('crafted equipment, first clear and world claims survive reload',{'armor':after['equipment']['armor'],'save_version':after['saveVersion']})
+ assert saved['inventory']['ore']>=6,saved['inventory'];page.locator('[data-open="systems"]').click();page.locator('[data-nav="craft"]').click();page.locator('[data-craft="2"]').click();assert snap()['save']['inventory']['plate']==1;page.keyboard.press('Escape');page.locator('[data-open="inventory"]').click();page.locator('[data-item="plate"]').click();page.keyboard.press('Escape');assert snap()['save']['equipment']['armor']=='Warden Plate';before=snap()['save'];page.reload(wait_until='networkidle');page.wait_for_selector('#world');after=snap()['save'];assert before['gold']==after['gold'];assert before['inventory']==after['inventory'];assert before['equipment']==after['equipment'];assert after['worldClaims']['caravan-cache'];assert after['skillNodes']==before['skillNodes'];assert after['chapters']==before['chapters'];pass_check('crafted equipment, first clear and world claims survive reload',{'armor':after['equipment']['armor'],'save_version':after['saveVersion']})
  context.close();browser.close()
 report={'checks':checks,'runtime_errors':errors,'resource_errors':resources};(out/'report.json').write_text(json.dumps(report,indent=2));assert not errors and not resources,report
 print(json.dumps({'passed':len(checks),'runtime_errors':errors,'resource_errors':resources,'artifacts':str(out)},indent=2))
