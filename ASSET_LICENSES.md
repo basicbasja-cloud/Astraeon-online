@@ -77,3 +77,23 @@ The earlier 24-pose reaction candidate `exec-5cfd575c-08f4-42ff-bc89-fe0cdc441e7
 ## Reference application — 2026-10-01 / v28
 
 No new runtime art or third-party pixels were added. The smaller northern frontage reuses the existing town shop; motion, paving borders/wear and contact shadows are original code. Three ImageGen edits using only the original Warrior failed alternating-foot/direction/identity review and are excluded: `exec-f2c55ae0-95d5-4676-903b-80aa8a897584.png`, `exec-3f8a666e-3dc0-4014-b6c7-f0ca3f9909e9.png`, `exec-af5a2a13-ec7c-4bd0-bdce-d4c1cbf19e98.png`. Originals remain outside the checkout in `/workspace/generated_images`; no failed sheet is loaded or precached.
+
+## Wayfarer / Warrior v29 replacement source
+
+`assets/source/wayfarer-district-atlas-v1.png` is original AI-generated artwork created for this ASTRAEON pass: blacksmith, inn, shrine and cottage. Its imported WebP sprites are `wayfarer-{forge,inn,shrine,cottage}-v1.webp`. No reference-game assets were used. `tools/import-town-kit.py` records the reviewed crops and removes saturated red matte fringes.
+
+`warrior-walk-v2.webp` is rebuilt by `tools/build-warrior-walk.py` from this project's existing original Warrior directional costume artwork and authored two-leg geometry/textures. `warrior-gait.js` is its generated registration/contact metadata. `warrior-torso-v1.webp` preserves the stable original costume, cape and weapon silhouette independently of the re-authored legs. The attempted generated walk replacement was rejected and is not shipped.
+
+## World pipeline v3
+
+`authoring/golden-proof.blend` and `authoring/wayfarer-court.blend` contain original
+procedural geometry authored by the bundled Blender scripts. The latter imports
+this project's current placements for review; it does not import a Ragnarok map.
+Native JSON exports contain ASTRAEON geometry and metadata. The research catalog
+is user-supplied guidance; referenced projects are not runtime dependencies.
+
+The six `warrior-{walk,run,sprint}[-torso]-v3.webp` assets derive from the original
+painted ASTRAEON Warrior costume and newly authored limb/contact geometry in
+`tools/build-locomotion-v3.py`. They are proof candidates, not replacements for
+mainline combat art. No Ragnarok art, maps, textures or proprietary resources are
+included. Canvas2D remains the renderer; no PixiJS or Three.js dependency is shipped.

@@ -14,7 +14,23 @@ Content expansion is paused. The central Wayfarer court is the Golden Scene cand
 
 The [Ragnarok reference study](./RAGNAROK_REFERENCE.md) documents inspected map/sprite formats, four town navigation examples and their application to original ASTRAEON placement, terrain and Warrior production. It distinguishes source evidence from design recommendations. The [authored ground plan](./docs/reference/wayfarer-plan.svg) shows current roads, collision footprints, art anchors and services; regenerate with `node tools/reference-plan.cjs`.
 
+The v29 implementation adds opaque architectural layers with authored roof/ground masks, original blacksmith/inn/shrine/cottage replacements, connected district paving and a rebuilt eight-direction Warrior gait with world-space stance-foot rendering. Local gameplay and visual captures are recorded in [the v29 review evidence](./docs/review/golden-v29.md); public/device acceptance is still separate.
+
 ## Current work
+
+The [master world plan](./MASTER_PLAN.md) integrates the v3 pipeline and supplied
+[research guidance](./RESEARCH-SOURCES.md). Canvas2D and the current painted art
+remain the runtime baseline. Open [the Golden proof](./proof.html) for the limited
+Blender-authored structural test and contact inspector. Full-town changes and
+content expansion remain gated by the Golden reviews.
+
+The [painted native-data preview](./index.html?world=court-v3) loads current town
+placements and footprints from Blender-exported JSON while retaining the existing
+Canvas renderer, art and gameplay. It is an opt-in migration review; the normal
+game keeps its current data path.
+
+See [the v3 review evidence and commands](./docs/review/v3/README.md) for native
+export parity, gameplay/visibility/contact checks, screenshots and playback video.
 
 One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.
 

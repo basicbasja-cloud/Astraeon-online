@@ -45,8 +45,8 @@ function ground(ctx,iso,zone){const data=zones[zone];if(!data)return false;terra
 }
 function drawProp(ctx,o,iso,player,time){const zoom=window.AstraeonView?.zoom||1;o={...o,w:o.w*zoom,h:o.h*zoom};const sheet=sheets[o.pack],entry=window.AstraeonEnvironmentMetadata[o.pack]?.[o.art];if(!sheet||!entry)return false;const p=iso(o.x,o.y),left=p.x-o.w*entry.anchor[0],top=p.y-o.h*entry.anchor[1],width=ctx.canvas.clientWidth,height=ctx.canvas.clientHeight;
  if(left>width+20||left+o.w<-20||top>height+20||top+o.h<-20)return true;
- const hero=iso(player.x,player.y),obstructs=(o.tree||o.building)&&hero.x>left+o.w*.15&&hero.x<left+o.w*.86&&hero.y<p.y-8&&hero.y>top+o.h*.16;
- ctx.save();ctx.globalAlpha=obstructs?.38:1;ctx.save();ctx.translate(p.x+6*zoom,p.y+3*zoom);ctx.scale(1,.36);const contact=ctx.createRadialGradient(0,0,0,0,0,o.w*.3);contact.addColorStop(0,'#152b2548');contact.addColorStop(1,'#152b2500');ctx.fillStyle=contact;ctx.fillRect(-o.w*.3,-o.w*.3,o.w*.6,o.w*.6);ctx.restore();
+
+ ctx.save();ctx.globalAlpha=1;ctx.save();ctx.translate(p.x+6*zoom,p.y+3*zoom);ctx.scale(1,.36);const contact=ctx.createRadialGradient(0,0,0,0,0,o.w*.3);contact.addColorStop(0,'#152b2548');contact.addColorStop(1,'#152b2500');ctx.fillStyle=contact;ctx.fillRect(-o.w*.3,-o.w*.3,o.w*.6,o.w*.6);ctx.restore();
  const sway=o.tree?Math.sin(time*.6+o.x)*.8:0;ctx.drawImage(sheet,...entry.rect,left+sway,top,o.w,o.h);
  if(o.art==='brazier'||o.art==='camp'){const x=p.x+(o.art==='camp'?-o.w*.22:0),y=p.y-o.h*(o.art==='camp'?.2:.63),r=o.art==='camp'?16:25;const glow=ctx.createRadialGradient(x,y,0,x,y,r);glow.addColorStop(0,`rgba(255,191,89,${.12+.05*Math.sin(time*4+o.x)})`);glow.addColorStop(1,'rgba(255,190,90,0)');ctx.fillStyle=glow;ctx.fillRect(x-r,y-r,r*2,r*2)}
  ctx.restore();return true;

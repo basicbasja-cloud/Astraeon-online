@@ -1,5 +1,11 @@
 # Ragnarok Online reference study → ASTRAEON production
 
+The 2026-10-01 [master plan](MASTER_PLAN.md) integrates this study with the supplied
+[research catalog](RESEARCH-SOURCES.md) and Blender/native-JSON pipeline. It retains
+Canvas2D, current painted art and the Golden content freeze. Claims below retain
+their pinned-source and v27/v28 baseline scope; catalog recommendations do not
+constitute a fresh inspection of NostalRO or the newer roBrowser repository.
+
 Research date: 2026-09-30. ASTRAEON baseline: `19311a08f7e26d9b08165384bf1a5f92a78ed4ce` (v27). Scope: **one painted Warrior inside Wayfarer Court**. Both Golden approvals remain pending; content expansion remains frozen.
 
 ## What the evidence establishes

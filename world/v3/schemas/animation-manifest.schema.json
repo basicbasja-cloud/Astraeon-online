@@ -1,0 +1,587 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://astraeon.local/world/v3/animation-manifest.schema.json",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 3
+    },
+    "actor": {
+      "type": "string"
+    },
+    "directions": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "string"
+      }
+    },
+    "anchorSpace": {
+      "const": "frame-pixel"
+    },
+    "distanceUnit": {
+      "const": "world-unit"
+    },
+    "clips": {
+      "type": "object",
+      "properties": {
+        "walk": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "cycleDistance": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "duty": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 1
+            },
+            "lift": {
+              "type": "number"
+            },
+            "lead": {
+              "type": "number"
+            },
+            "clip": {
+              "type": "string"
+            },
+            "torso": {
+              "type": "string"
+            },
+            "bodyPitch": {
+              "type": "number"
+            },
+            "atlas": {
+              "type": "string"
+            },
+            "phases": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "type": "string"
+              }
+            },
+            "frames": {
+              "type": "array",
+              "minItems": 64,
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "phase": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 1
+                  },
+                  "durationMs": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "footAnchorX": {
+                    "type": "number"
+                  },
+                  "footAnchorY": {
+                    "type": "number"
+                  },
+                  "bodyAnchor": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "bodyClipY": {
+                    "type": "number"
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "leg": {
+                          "enum": [
+                            "left",
+                            "right"
+                          ]
+                        },
+                        "hip": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "knee": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "foot": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "stance": {
+                          "type": "boolean"
+                        },
+                        "gaitPhase": {
+                          "type": "number",
+                          "minimum": 0,
+                          "exclusiveMaximum": 1
+                        }
+                      },
+                      "required": [
+                        "leg",
+                        "hip",
+                        "knee",
+                        "foot",
+                        "stance",
+                        "gaitPhase"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "attachments": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "phase",
+                  "durationMs",
+                  "footAnchorX",
+                  "footAnchorY",
+                  "bodyAnchor",
+                  "bodyClipY",
+                  "contacts",
+                  "events",
+                  "attachments"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "speed",
+            "cycleDistance",
+            "duty",
+            "lift",
+            "lead",
+            "clip",
+            "torso",
+            "bodyPitch",
+            "atlas",
+            "phases",
+            "frames"
+          ],
+          "additionalProperties": false
+        },
+        "run": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "cycleDistance": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "duty": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 1
+            },
+            "lift": {
+              "type": "number"
+            },
+            "lead": {
+              "type": "number"
+            },
+            "clip": {
+              "type": "string"
+            },
+            "torso": {
+              "type": "string"
+            },
+            "bodyPitch": {
+              "type": "number"
+            },
+            "atlas": {
+              "type": "string"
+            },
+            "phases": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "type": "string"
+              }
+            },
+            "frames": {
+              "type": "array",
+              "minItems": 64,
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "phase": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 1
+                  },
+                  "durationMs": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "footAnchorX": {
+                    "type": "number"
+                  },
+                  "footAnchorY": {
+                    "type": "number"
+                  },
+                  "bodyAnchor": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "bodyClipY": {
+                    "type": "number"
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "leg": {
+                          "enum": [
+                            "left",
+                            "right"
+                          ]
+                        },
+                        "hip": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "knee": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "foot": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "stance": {
+                          "type": "boolean"
+                        },
+                        "gaitPhase": {
+                          "type": "number",
+                          "minimum": 0,
+                          "exclusiveMaximum": 1
+                        }
+                      },
+                      "required": [
+                        "leg",
+                        "hip",
+                        "knee",
+                        "foot",
+                        "stance",
+                        "gaitPhase"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "attachments": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "phase",
+                  "durationMs",
+                  "footAnchorX",
+                  "footAnchorY",
+                  "bodyAnchor",
+                  "bodyClipY",
+                  "contacts",
+                  "events",
+                  "attachments"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "speed",
+            "cycleDistance",
+            "duty",
+            "lift",
+            "lead",
+            "clip",
+            "torso",
+            "bodyPitch",
+            "atlas",
+            "phases",
+            "frames"
+          ],
+          "additionalProperties": false
+        },
+        "sprint": {
+          "type": "object",
+          "properties": {
+            "speed": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "cycleDistance": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "duty": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 1
+            },
+            "lift": {
+              "type": "number"
+            },
+            "lead": {
+              "type": "number"
+            },
+            "clip": {
+              "type": "string"
+            },
+            "torso": {
+              "type": "string"
+            },
+            "bodyPitch": {
+              "type": "number"
+            },
+            "atlas": {
+              "type": "string"
+            },
+            "phases": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "type": "string"
+              }
+            },
+            "frames": {
+              "type": "array",
+              "minItems": 64,
+              "maxItems": 64,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "phase": {
+                    "type": "number",
+                    "minimum": 0,
+                    "exclusiveMaximum": 1
+                  },
+                  "durationMs": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "footAnchorX": {
+                    "type": "number"
+                  },
+                  "footAnchorY": {
+                    "type": "number"
+                  },
+                  "bodyAnchor": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "bodyClipY": {
+                    "type": "number"
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "leg": {
+                          "enum": [
+                            "left",
+                            "right"
+                          ]
+                        },
+                        "hip": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "knee": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "foot": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "stance": {
+                          "type": "boolean"
+                        },
+                        "gaitPhase": {
+                          "type": "number",
+                          "minimum": 0,
+                          "exclusiveMaximum": 1
+                        }
+                      },
+                      "required": [
+                        "leg",
+                        "hip",
+                        "knee",
+                        "foot",
+                        "stance",
+                        "gaitPhase"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "attachments": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "phase",
+                  "durationMs",
+                  "footAnchorX",
+                  "footAnchorY",
+                  "bodyAnchor",
+                  "bodyClipY",
+                  "contacts",
+                  "events",
+                  "attachments"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "speed",
+            "cycleDistance",
+            "duty",
+            "lift",
+            "lead",
+            "clip",
+            "torso",
+            "bodyPitch",
+            "atlas",
+            "phases",
+            "frames"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "walk",
+        "run",
+        "sprint"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "actor",
+    "directions",
+    "anchorSpace",
+    "distanceUnit",
+    "clips"
+  ],
+  "additionalProperties": false
+}

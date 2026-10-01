@@ -5,7 +5,17 @@ const content=window.AstraeonContent, atlas=new Image();atlas.src='./assets/town
 const paving=new Image();paving.src='./assets/town-limestone-v1.webp';
 const secondary=new Image();secondary.src='./assets/secondary-atlas-v1.webp';
 const hall=new Image();hall.src='./assets/consortium-hall-v2.webp';
-const whenReady=Promise.all([atlas,secondary,paving,hall].map(image=>image.complete&&image.naturalWidth?Promise.resolve():new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Cannot load town artwork'))})));
+const district=Object.fromEntries(['forge','inn','shrine','cottage'].map(key=>{const image=new Image();image.src=`./assets/wayfarer-${key}-v1.webp`;return [key,image]}));
+const whenReady=Promise.all([atlas,secondary,paving,hall,...Object.values(district)].map(image=>image.complete&&image.naturalWidth?Promise.resolve():new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Cannot load town artwork'))})));
+let blueHall=null;
+function civicArtwork(){
+ if(blueHall)return blueHall;
+ blueHall=document.createElement('canvas');blueHall.width=hall.naturalWidth;blueHall.height=hall.naturalHeight;
+ const g=blueHall.getContext('2d');g.drawImage(hall,0,0);const image=g.getImageData(0,0,blueHall.width,blueHall.height),d=image.data;
+ // A material palette conversion preserves the painted roof-plane lighting.
+ for(let i=0;i<d.length;i+=4){const r=d[i],green=d[i+1],b=d[i+2];if(d[i+3]&&green>r*1.12&&b>r*.92&&green>b*.98&&green-r>14){d[i]=green*.64;d[i+1]=green*.83;d[i+2]=Math.min(255,green*1.08)}}
+ g.putImageData(image,0,0);return blueHall;
+}
 const hash=n=>{let x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)};
 // World-aligned material courses share the same projection as architecture and actors.
 let terrainCache=null,vergePattern=null;
@@ -29,7 +39,7 @@ function corridor(g,road,p){
 }
 function ground(ctx,iso,t){
  if(!terrainCache){
-  terrainCache=document.createElement('canvas');terrainCache.width=4000;terrainCache.height=2100;const g=terrainCache.getContext('2d'),p=(x,y)=>{const q=window.AstraeonView.project(x,y);return{x:q.x+1450,y:q.y+100}};
+  terrainCache=document.createElement('canvas');terrainCache.width=4000;terrainCache.height=2100;const g=terrainCache.getContext('2d'),p=(x,y,z=0)=>{const q=window.AstraeonView.project(x,y);return{x:q.x+1450,y:q.y+100-z}};
   const mask=document.createElement('canvas');mask.width=4000;mask.height=2100;const m=mask.getContext('2d');m.fillStyle='#fff';
   for(const road of content.townRoads.filter(r=>!['service','field'].includes(r.role)))corridor(m,road,p);
   polygon(m,content.goldenScene.plaza,p);m.fill();
@@ -69,7 +79,7 @@ function ground(ctx,iso,t){
     for(const side of [-1,1])for(let i=0;i<n*3;i++){
      const f=i/(n*3),x=a[0]+dx*f+nx*(road.width/2-.07)*side,y=a[1]+dy*f+ny*(road.width/2-.07)*side;
      if(x>9.6&&x<19.6&&y>12&&y<20.7)continue;
-     const q=p(x,y),end=p(x+dx/n*.24,y+dy/n*.24);g.strokeStyle='#655e492e';g.lineWidth=1.6;g.beginPath();g.moveTo(q.x,q.y);g.lineTo(end.x,end.y);g.stroke();
+     const q=p(x,y),end=p(x+dx/n*.30,y+dy/n*.30);g.strokeStyle='#756c58';g.lineWidth=2;g.beginPath();g.moveTo(q.x,q.y+1.8);g.lineTo(end.x,end.y+1.8);g.stroke();g.strokeStyle='#d9ccac';g.lineWidth=2;g.beginPath();g.moveTo(q.x,q.y);g.lineTo(end.x,end.y);g.stroke();g.strokeStyle='#655e492e';g.lineWidth=1.6;g.beginPath();g.moveTo(q.x,q.y);g.lineTo(end.x,end.y);g.stroke();
     }
    }
    for(let j=1;j<road.points.length;j++){
@@ -87,27 +97,33 @@ function ground(ctx,iso,t){
   for(const o of content.townObjects.filter(o=>o.tree)){
    const q=p(o.x,o.y),r=o.w*.23;g.save();g.translate(q.x,q.y);g.scale(1,.55);const soil=g.createRadialGradient(0,0,3,0,0,r);soil.addColorStop(0,'#75694f66');soil.addColorStop(.55,'#89795735');soil.addColorStop(1,'#89795700');g.fillStyle=soil;g.fillRect(-r,-r,r*2,r*2);g.restore();
   }
+  window.AstraeonTownStructure.ground(g,p);
  }
  window.AstraeonView.drawCache(ctx,terrainCache,iso(0,0),1450,100);
 }
 function prop(ctx,o,iso,player,time){
  if(o.pack!=='outdoor'&&o.pack!=='ruin'){const zoom=window.AstraeonView?.zoom||1;o={...o,w:o.w*zoom,h:o.h*zoom}}
  if(o.pack==='outdoor'||o.pack==='ruin')return window.AstraeonEnvironment.drawProp(ctx,o,iso,player,time);
- const sheet=o.id==='guild-hall'?hall:o.pack==='secondary'?secondary:atlas;if(!sheet.complete||!sheet.naturalWidth)return false;
- const a=o.id==='guild-hall'?{rect:[0,0,hall.naturalWidth,hall.naturalHeight],anchor:[.4,.91]}:(o.pack==='secondary'?content.secondaryAtlas:content.atlas)[o.art],p=iso(o.x,o.y),left=p.x-o.w*a.anchor[0],top=p.y-o.h*a.anchor[1];
+ const sheet=o.pack==='district'?district[o.art]:o.id==='guild-hall'?hall:o.pack==='secondary'?secondary:atlas;if(!sheet.complete||!sheet.naturalWidth)return false;
+ const a=o.pack==='district'?{rect:[0,0,sheet.naturalWidth,sheet.naturalHeight],anchor:[o.art==='shrine'?.42:o.art==='inn'?.43:.5,.94]}:o.id==='guild-hall'?{rect:[0,0,hall.naturalWidth,hall.naturalHeight],anchor:[.4,.91]}:(o.pack==='secondary'?content.secondaryAtlas:content.atlas)[o.art],p=iso(o.x,o.y),left=p.x-o.w*a.anchor[0],top=p.y-o.h*a.anchor[1];
  if(left>ctx.canvas.clientWidth||left+o.w<0||top>ctx.canvas.clientHeight||top+o.h<0)return true;
- let alpha=1,hero=iso(player.x,player.y);
- if((o.tree||o.building||o.art==='stall'||o.art==='cart')&&hero.x>left+o.w*.18&&hero.x<left+o.w*.83&&hero.y<p.y-10&&hero.y>top+o.h*.15)alpha=.36;
- ctx.save();ctx.globalAlpha=alpha;ctx.save();
+ ctx.save();ctx.save();
  const block=content.townBlocks.find(b=>b.id===o.id);
- if(block){
-  // Ground shade uses the actual occupied volume, not the atlas's empty canvas.
-  const q=iso(block.x+block.w/2,block.y+block.h*.7),xx=iso(block.x+block.w/2+1,block.y+block.h*.7),yy=iso(block.x+block.w/2,block.y+block.h*.7+1);
-  ctx.transform(xx.x-q.x,xx.y-q.y,yy.x-q.x,yy.y-q.y,q.x,q.y);
-  ctx.scale(block.w*.63,block.h*.62);const shade=ctx.createRadialGradient(.18,.18,0,.18,.18,1);shade.addColorStop(0,'#293c3266');shade.addColorStop(.55,'#293c322e');shade.addColorStop(1,'#293c3200');ctx.fillStyle=shade;ctx.fillRect(-1,-1,2.5,2.5);
- }else{ctx.translate(p.x+9,p.y+6);ctx.scale(1,.3);const contact=ctx.createRadialGradient(0,0,o.w*.04,0,0,o.w*.32);contact.addColorStop(0,'#28372c38');contact.addColorStop(1,'#28372c00');ctx.fillStyle=contact;ctx.fillRect(-o.w*.34,-o.w*.34,o.w*.68,o.w*.68)}ctx.restore();
+ if(block&&!o.structuralLayer||block&&o.structuralLayer.name==='rear-wall'){
+  // Tight contact follows the art anchor, separate from broad cached cast geometry.
+  ctx.translate(p.x+4,p.y+3);ctx.scale(1,.32);
+  const shade=ctx.createRadialGradient(0,0,0,0,0,o.w*.28);shade.addColorStop(0,'#293c323c');shade.addColorStop(1,'#293c3200');ctx.fillStyle=shade;ctx.fillRect(-o.w*.28,-o.w*.28,o.w*.56,o.w*.56);
+ }else if(!o.structuralLayer||o.structuralLayer.name==='trunk'){ctx.translate(p.x+9,p.y+6);ctx.scale(1,.3);const contact=ctx.createRadialGradient(0,0,o.w*.04,0,0,o.w*.32);contact.addColorStop(0,'#28372c38');contact.addColorStop(1,'#28372c00');ctx.fillStyle=contact;ctx.fillRect(-o.w*.34,-o.w*.34,o.w*.68,o.w*.68)}ctx.restore();
  const sway=o.tree?Math.sin(time*.7+o.x)*.8:0;
- ctx.drawImage(sheet,...a.rect,left+sway,top,o.w,o.h);
+ if(o.structuralLayer){
+  const [x0,y0,x1,y1]=o.structuralLayer.region;
+  ctx.save();ctx.beginPath();
+  const shape=o.structuralLayer.polygon,hole=o.structuralLayer.exclude;
+  const outline=points=>{points.forEach(([x,y],i)=>{i?ctx.lineTo(left+x*o.w,top+y*o.h):ctx.moveTo(left+x*o.w,top+y*o.h)});ctx.closePath()};
+  if(shape)outline(shape);else ctx.rect(left+x0*o.w,top+y0*o.h,(x1-x0)*o.w,(y1-y0)*o.h);
+  if(hole){ctx.clip();ctx.beginPath();ctx.rect(left,top,o.w,o.h);outline(hole)}ctx.clip('evenodd');
+  ctx.drawImage(o.id==='guild-hall'?civicArtwork():sheet,...a.rect,left+sway,top,o.w,o.h);ctx.restore();
+ }else ctx.drawImage(o.id==='guild-hall'?civicArtwork():sheet,...a.rect,left+sway,top,o.w,o.h);
  if(o.art==='fountain'){ctx.globalAlpha=.3;ctx.strokeStyle='#b9f9ed';ctx.lineWidth=1;for(let k=0;k<2;k++){ctx.beginPath();ctx.ellipse(p.x,p.y-25,18+((time*9+k*15)%28),5+((time*2+k*4)%8),0,0,Math.PI*2);ctx.stroke()}}
  if(o.art==='stall'){ctx.globalAlpha=.55;ctx.fillStyle='#ffe1a0';let q=.65+.35*Math.sin(time*2+o.x);ctx.shadowColor='#ffd37b';ctx.shadowBlur=6*q;ctx.beginPath();ctx.arc(p.x+o.w*.33,p.y-o.h*.43,2.5,0,Math.PI*2);ctx.fill()}
  ctx.restore();return true;
