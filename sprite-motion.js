@@ -6,8 +6,7 @@ function sample(state,progress,impactAt=.45,gait=0,speed=0){
  let x=0,lift=0,lean=0,stretch=1;
  const p=clamp(progress),contact=Math.max(.08,Math.min(.85,impactAt));
  if(['walk','run','sprint','start'].includes(state)&&speed>.02){
-  const cycle=gait*Math.PI*2,weight=Math.min(1,speed/2.3);
-  lift=(1-Math.cos(cycle*2))*.5*weight;lean=Math.sin(cycle)*.012*weight;
+  // Raw registered art owns the gait. No root bob, lean or scale correction.
  }else if(state==='attack'){
   if(p<contact){x=-1.3*smooth(p/contact);lean=-.025*smooth(p/contact)}
   else{const settle=smooth((p-contact)/(1-contact));x=3.2*(1-settle);lean=.035*(1-settle)}

@@ -172,13 +172,13 @@ with sync_playwright() as p:
     passed('gate services and physical stone-to-field transition', {'zone': 2})
 
     page.evaluate('navigator.serviceWorker.ready')
-    assert 'astraeon-static-v28' in page.evaluate('caches.keys()')
+    assert 'astraeon-static-v29' in page.evaluate('caches.keys()')
     saved = snap()['save']
     page.reload(wait_until='networkidle')
     page.wait_for_selector('#world')
     assert snap()['save']['name'] == saved['name']
     assert snap()['save']['zone'] == saved['zone']
-    passed('v28 cache and save continuity', {'cache': 'v28'})
+    passed('v29 cache and save continuity', {'cache': 'v29'})
     context.close()
     browser.close()
 

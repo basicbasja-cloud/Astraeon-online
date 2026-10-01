@@ -44,16 +44,16 @@ class CharacterTransform {
   this.gait+=walked/stride;
   for(let i=0;i<2;i++){
    const side=i?1:-1,phase=(this.gait+i*.5)%1;
-   const rest={x:p.x+right.x*side*.19,y:p.y+right.y*side*.19,z:0};
+   const rest={x:p.x+right.x*side*.10,y:p.y+right.y*side*.10,z:0};
    let foot=this.feet[i];
    if(!foot){foot=this.feet[i]={...rest,phase,swing:false,from:rest,to:rest};continue}
    if(!moving){
     // Replant after stopping, turning, knockback, or dodge; never translate a stance foot with the root.
     const k=1-Math.exp(-14*dt);foot.x+=(rest.x-foot.x)*k;foot.y+=(rest.y-foot.y)*k;foot.z*=1-k;foot.swing=false;foot.phase=phase;continue;
    }
-   const swing=phase>=.55;
+   const swing=phase>=.5;
    if(swing&&!foot.swing){foot.from={x:foot.x,y:foot.y};foot.to={x:rest.x+dir.x*stride*.725,y:rest.y+dir.y*stride*.725};}
-   if(swing){const t=(phase-.55)/.45,s=t*t*(3-2*t);foot.x=foot.from.x+(foot.to.x-foot.from.x)*s;foot.y=foot.from.y+(foot.to.y-foot.from.y)*s;foot.z=Math.sin(t*Math.PI)*.18}
+   if(swing){const t=(phase-.5)/.5,s=t*t*(3-2*t);foot.x=foot.from.x+(foot.to.x-foot.from.x)*s;foot.y=foot.from.y+(foot.to.y-foot.from.y)*s;foot.z=Math.sin(t*Math.PI)*.18}
    // During stance, x/y are deliberately unchanged in world coordinates.
    if(foot.swing&&!swing){foot.x=foot.to.x;foot.y=foot.to.y;foot.z=0}foot.swing=swing;foot.phase=phase;
   }

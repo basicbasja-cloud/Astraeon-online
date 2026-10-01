@@ -14,6 +14,8 @@ Content expansion is paused. The central Wayfarer court is the Golden Scene cand
 
 The [Ragnarok reference study](./RAGNAROK_REFERENCE.md) documents inspected map/sprite formats, four town navigation examples and their application to original ASTRAEON placement, terrain and Warrior production. It distinguishes source evidence from design recommendations. The [authored ground plan](./docs/reference/wayfarer-plan.svg) shows current roads, collision footprints, art anchors and services; regenerate with `node tools/reference-plan.cjs`.
 
+The v29 implementation adds opaque architectural layers with authored roof/ground masks, original blacksmith/inn/shrine/cottage replacements, connected district paving and a rebuilt eight-direction Warrior gait with world-space stance-foot rendering. Local gameplay and visual captures are recorded in [the v29 review evidence](./docs/review/golden-v29.md); public/device acceptance is still separate.
+
 ## Current work
 
 One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.

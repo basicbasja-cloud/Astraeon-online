@@ -2,7 +2,7 @@
 (() => {
 'use strict';
 function shadow(ctx,iso,t,radius=.4,alpha=.24){
- const p=t.position,foot=iso(p.x,p.y),x=iso(p.x+1,p.y),y=iso(p.x,p.y+1);
+ const p=t.position,foot=iso(p.x,p.y,(p.z||0)*35),x=iso(p.x+1,p.y,(p.z||0)*35),y=iso(p.x,p.y+1,(p.z||0)*35);
  ctx.save();ctx.transform(x.x-foot.x,x.y-foot.y,y.x-foot.x,y.y-foot.y,foot.x,foot.y);
  // Shared upper-left sun; diffuse cast shadow and tight contact stay on the ground.
  for(const [dx,dy,r,opacity] of [[.14,.16,radius*1.55,alpha*.6],[0,0,radius*.75,alpha]]){
