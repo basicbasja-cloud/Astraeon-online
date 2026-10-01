@@ -73,3 +73,7 @@ Built-in ImageGen edits used only this project’s original town and Warrior atl
 | warrior-reactions-v2.webp | exec-6bc13191-c39d-4e40-8c34-87064f4e357f.png | Eight hit/death frames, four cardinal views of the same canonical Warrior |
 
 The earlier 24-pose reaction candidate `exec-5cfd575c-08f4-42ff-bc89-fe0cdc441e78.png` failed direction/coverage review and is excluded from the client. Slash/dodge feedback in `combat-vfx.js` is original code-created geometry. Town verge shading reuses the existing ground art; no additional decorative asset pack was produced.
+
+## Reference application — 2026-10-01 / v28
+
+No new runtime art or third-party pixels were added. The smaller northern frontage reuses the existing town shop; motion, paving borders/wear and contact shadows are original code. Three ImageGen edits using only the original Warrior failed alternating-foot/direction/identity review and are excluded: `exec-f2c55ae0-95d5-4676-903b-80aa8a897584.png`, `exec-3f8a666e-3dc0-4014-b6c7-f0ca3f9909e9.png`, `exec-af5a2a13-ec7c-4bd0-bdce-d4c1cbf19e98.png`. Originals remain outside the checkout in `/workspace/generated_images`; no failed sheet is loaded or precached.

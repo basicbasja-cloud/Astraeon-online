@@ -38,8 +38,8 @@ with sync_playwright() as p:
         s = snap()
         r = page.locator('#world').bounding_box()
         v = s['view']
-        return (r['x'] + r['width']/2 + (x*48-y*10-s['camera']['x'])*v['zoom'],
-                r['y'] + r['height']*v['anchorY'] + (x*7+y*31-s['camera']['y']-lift)*v['zoom'])
+        return (r['x'] + r['width']/2 + (x*v['basis']['xx']+y*v['basis']['yx']-s['camera']['x'])*v['zoom'],
+                r['y'] + r['height']*v['anchorY'] + (x*v['basis']['xy']+y*v['basis']['yy']-s['camera']['y']-lift)*v['zoom'])
 
     def click(x, y, lift=0):
         px, py = point(x, y, lift)
@@ -172,13 +172,13 @@ with sync_playwright() as p:
     passed('gate services and physical stone-to-field transition', {'zone': 2})
 
     page.evaluate('navigator.serviceWorker.ready')
-    assert 'astraeon-static-v27' in page.evaluate('caches.keys()')
+    assert 'astraeon-static-v28' in page.evaluate('caches.keys()')
     saved = snap()['save']
     page.reload(wait_until='networkidle')
     page.wait_for_selector('#world')
     assert snap()['save']['name'] == saved['name']
     assert snap()['save']['zone'] == saved['zone']
-    passed('v27 cache and save continuity', {'cache': 'v27'})
+    passed('v28 cache and save continuity', {'cache': 'v28'})
     context.close()
     browser.close()
 

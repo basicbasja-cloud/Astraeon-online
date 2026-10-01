@@ -30,11 +30,7 @@ for(let x=0;x<=44;x+=2) out+=`<path d="M${xy(x,0)}L${xy(x,40)}" stroke="#ffffff0
 for(let y=0;y<=40;y+=2) out+=`<path d="M${xy(0,y)}L${xy(44,y)}" stroke="#ffffff0a"/>`;
 for(const r of c.townRoads) out+=`<polyline points="${points(r.points)}" fill="none" stroke="${colors[r.role]}" stroke-width="${r.width*unit}" stroke-linejoin="round" stroke-linecap="round"/>`;
 out+=`<polygon points="${points(c.goldenScene.plaza)}" fill="#c4b99b" stroke="#eee0b6"/>`;
-// The present forecourt is authored in scene.js; extract its literal polygon.
-const scene = fs.readFileSync(path.join(root, 'scene.js'), 'utf8');
-const forecourt = scene.match(/polygon\(m,(\[\[6\.6,14\.8\].*?\]\]),p\);m\.fill\(\);/);
-if (!forecourt) throw new Error('Forecourt authoring changed; update reference extraction.');
-out+=`<polygon points="${points(JSON.parse(forecourt[1]))}" fill="#c4b99b" stroke="#eee0b6"/>`;
+for(const court of c.forecourts)out+=`<polygon points="${points(court.points)}" fill="#c4b99b" stroke="#eee0b6"/>`;
 for(const b of c.townBlocks) out+=`<rect x="${ox+b.x*unit}" y="${oy+b.y*unit}" width="${b.w*unit}" height="${b.h*unit}" fill="${b.kind==='fountain'?'#447f8a':'#192d32'}" stroke="#ec9b8877"/>`;
 out+=`<polyline points="${points(c.goldenScene.axis)}" fill="none" stroke="#f4d681" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow)"/>`;
 for(const o of c.townObjects){
@@ -60,7 +56,7 @@ const notes=[
  ['Gold dots: functional services'],
  ['White dot: fresh Warrior spawn'],
  ['Dashed gold: intended primary axis'],
- ['Cyan loops: current court guards'],
+ ['Cyan loops: gate patrols'],
  ['Pink loop: current market customer'],
  ['',false],
  ['SERVICE POSITIONS',true],
@@ -71,12 +67,12 @@ const notes=[
  ['Keep fountain perimeter traversable.'],
  ['Pair facade, footprint and entrance edits.'],
  ['An art anchor is not a door or footprint.'],
- ['Guard loops currently serve the court.'],
+ ['Guard loops serve the gate checkpoint.'],
  ['Inspect facade hierarchy in gameplay.'],
  ['Both Golden approvals remain pending.']
 ];
 notes.forEach(([s,bold],i)=>{out+=label(823,119+i*23,s,bold?'sub':'note');});
-out+=label(46,841,'Generated from world-content.js, scene.js and game.js · regenerate: node tools/reference-plan.cjs','sub');
+out+=label(46,841,'Generated from world-content.js and game.js · regenerate: node tools/reference-plan.cjs','sub');
 out+=`</svg>\n`;
 const target=path.join(root,'docs/reference/wayfarer-plan.svg');
 fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,out);

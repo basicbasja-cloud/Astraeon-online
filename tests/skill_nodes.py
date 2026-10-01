@@ -9,7 +9,7 @@ with sync_playwright() as p:
   context=browser.new_context(viewport={'width':1280,'height':800});page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)));page.on('response',lambda r:http.append(f'{r.status} {r.url}') if r.status>=400 else None);page.goto(args.url+'/index.html?qa=1',wait_until='networkidle');page.locator('#newclass').select_option(str(cls));page.locator('#create').click();page.wait_for_selector('#world');return context,page
  def snap(page):return page.evaluate('AstraeonQA.snapshot()')
  def point(page,x,y):
-  s=snap(page);r=page.locator('#world').bounding_box();v=s['view'];return r['x']+r['width']/2+(x*48-y*10-s['camera']['x'])*v['zoom'],r['y']+r['height']*v['anchorY']+(x*7+y*31-s['camera']['y'])*v['zoom']
+  s=snap(page);r=page.locator('#world').bounding_box();v=s['view'];return r['x']+r['width']/2+(x*v['basis']['xx']+y*v['basis']['yx']-s['camera']['x'])*v['zoom'],r['y']+r['height']*v['anchorY']+(x*v['basis']['xy']+y*v['basis']['yy']-s['camera']['y'])*v['zoom']
  def equip(page,skill,node):
   page.locator('[data-open="skills"]').click();page.locator(f'[data-node-skill="{skill}"][data-node="{node}"]').click();assert snap(page)['save']['skillNodes'][skill]==node;page.keyboard.press('Escape')
  def field(page,y=20):

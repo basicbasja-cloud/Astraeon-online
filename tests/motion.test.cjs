@@ -4,7 +4,8 @@ global.window={};
 require('../character-motion.js');require('../skill-nodes.js');require('../combat.js');
 const {CharacterTransform,wrap,cameraMovement,FacingMode}=window.AstraeonMotion;
 const {contains,Timeline,compile}=window.AstraeonCombat;
-const inverse=(x,y)=>({x:(31*x+10*y)/1558,y:(48*y-7*x)/1558});
+require('../world-view.js');
+const inverse=window.AstraeonView.inverse;
 for(const degrees of [0,17,45,90,135,180,225,247,270,315,359]){
  const angle=degrees*Math.PI/180,dir={x:Math.cos(angle),y:Math.sin(angle)};
  test(`world heading ${degrees}° converges with bounded rotation and forward hit geometry`,()=>{
@@ -26,7 +27,7 @@ test('camera-relative input preserves arbitrary angles, diagonal normalization a
  for(const angle of [0,.3,.7,1.4,2.7,4.2,6.2])for(const magnitude of [.15,.4,1]){
   const x=Math.cos(angle)*magnitude,y=Math.sin(angle)*magnitude,v=cameraMovement(x,y,inverse);
   assert.ok(Math.abs(Math.hypot(v.x,v.y)-magnitude)<1e-9);
-  const screen={x:v.x*48-v.y*10,y:v.x*7+v.y*31};
+  const screen=window.AstraeonView.project(v.x,v.y);
   assert.ok(Math.abs(wrap(Math.atan2(screen.y,screen.x)-angle))<1e-9);
  }
  assert.equal(cameraMovement(.04,.02,inverse).magnitude,0);
@@ -113,6 +114,24 @@ test('projectile muzzle offset cannot skip a thin adjacent wall',()=>{
 });
 
 require('../world-view.js');
+require('../world-content.js');
+require('../sprite-motion.js');
+test('painted town corridors, including their full width, clear occupied ground',()=>{
+ const content=window.AstraeonContent;
+ for(const road of content.townRoads)for(let i=1;i<road.points.length;i++){
+  const a=road.points[i-1],b=road.points[i],count=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])*20);
+  for(let j=0;j<=count;j++){const x=a[0]+(b[0]-a[0])*j/count,y=a[1]+(b[1]-a[1])*j/count;
+   for(const block of content.townBlocks){const dx=Math.max(block.x-.2-x,0,x-(block.x+block.w+.2)),dy=Math.max(block.y-.2-y,0,y-(block.y+block.h+.2));
+    assert.ok(Math.hypot(dx,dy)>=road.width/2-.001,`${road.role} at ${x},${y} intersects ${block.id}`);
+   }
+  }
+ }
+});
+test('painted attack motion anticipates contact and settles during recovery',()=>{
+ const {sample,actionPose}=window.AstraeonSpriteMotion;
+ for(const impact of [.2,.45,.7]){assert.ok(sample('attack',impact*.8,impact).x<0);assert.ok(sample('attack',impact,impact).x>0);assert.equal(sample('attack',1,impact).x,0);assert.equal(sample('attack',1,impact).lean,0);assert.equal(actionPose('attack',impact*.5,impact),3);assert.equal(actionPose('attack',impact,impact),4);assert.equal(actionPose('attack',1,impact),0)}
+ for(let phase=0;phase<1;phase+=.01){const motion=sample('walk',0,.45,phase,3);assert.ok(motion.lift>=0&&motion.lift<=1.001);assert.ok(Math.abs(motion.lean)<=.012)}
+});
 test('responsive projection and inverse pair remain exact in all viewports',()=>{
  for(const [width,height] of [[1280,720],[390,844],[844,390],[768,1024]])for(const [x,y] of [[14.5,18],[42,16],[7,35]]){const camera={x:510,y:640},p=window.AstraeonView.screen(x,y,0,camera,width,height),q=window.AstraeonView.world(p.x,p.y,camera,width,height);assert.ok(Math.abs(x-q.x)<1e-9);assert.ok(Math.abs(y-q.y)<1e-9)}
  assert.equal(window.AstraeonView.limits(0).w,44);assert.equal(window.AstraeonView.limits(1).w,30);

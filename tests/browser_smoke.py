@@ -37,7 +37,7 @@ with sync_playwright() as p:
   elapsed(page,.2)
   end=snapshot(page);vx=mid['player']['velocity']['x'];vy=mid['player']['velocity']['y'];assert math.hypot(vx,vy)>3.3,mid['player']
   x=sum(1 if key=='d' else -1 if key=='a' else 0 for key in keys);y=sum(1 if key=='s' else -1 if key=='w' else 0 for key in keys)
-  expected=math.atan2(48*y-7*x,31*x+10*y)
+  basis=mid['view']['basis'];expected=math.atan2(basis['xx']*y-basis['xy']*x,basis['yy']*x-basis['yx']*y)
   assert abs(angular(mid['player']['rotation'],expected))<.04,(mid['player'],expected)
   assert end['player']['speed']==0,('stopped speed',end['player'])
   elapsed(page,.5);settled=snapshot(page)['player'];assert abs(angular(settled['rotation'],settled['desiredRotation']))<.04,settled
@@ -60,12 +60,15 @@ with sync_playwright() as p:
   page.screenshot(path=str(output/'mobile-portrait.png'));context.close();return {'slow_speed':slow['speed'],'full_speed':fast['speed'],'analog_angles':len(headings)}
  check('mobile analog magnitude and circular input',mobile_case)
  def dodge_case():
-  context,page=new_page(fixture());page.keyboard.down('w');page.keyboard.down('d');elapsed(page,.12);page.keyboard.press('Space');start=snapshot(page);page.keyboard.up('w');page.keyboard.up('d');elapsed(page,.12);end=snapshot(page)
-  dx=end['player']['position']['x']-start['player']['position']['x'];dy=end['player']['position']['y']-start['player']['position']['y'];assert dx>0 and dy<0,('dodge direction',dx,dy);assert end['animation']['state']=='dodge',('dodge state',start,end);context.close();return {'world_delta':[dx,dy]}
+  context,page=new_page(fixture());page.keyboard.down('w');page.keyboard.down('d');elapsed(page,.12)
+  page.evaluate("""()=>{window.dodgeSamples=[];addEventListener('keydown',function collect(e){if(e.code!=='Space')return;removeEventListener('keydown',collect);const start=AstraeonQA.snapshot().time;const record=()=>{dodgeSamples.push(AstraeonQA.snapshot());if(AstraeonQA.snapshot().time-start<.65)requestAnimationFrame(record)};requestAnimationFrame(record)})}""")
+  page.keyboard.press('Space');page.keyboard.up('w');page.keyboard.up('d');page.wait_for_function('dodgeSamples.length>1&&dodgeSamples.at(-1).time-dodgeSamples[0].time>.6')
+  samples=page.evaluate('dodgeSamples');active=[s for s in samples if s['animation']['state']=='dodge'];assert len(active)>=2,'dodge animation not observed';start,end=active[0],active[-1]
+  dx=end['player']['position']['x']-start['player']['position']['x'];dy=end['player']['position']['y']-start['player']['position']['y'];basis=end['view']['basis'];sx=basis['xx']*dx+basis['yx']*dy;sy=basis['xy']*dx+basis['yy']*dy;assert sx>0 and sy<0,('screen dodge direction',sx,sy);assert samples[-1]['animation']['state']!='dodge','dodge did not recover';context.close();return {'world_delta':[dx,dy],'screen_delta':[sx,sy],'active_samples':len(active),'recovery_observed':True}
  check('diagonal dodge',dodge_case)
  def attack_case(cls,degrees):
   context,page=new_page(fixture(cls=cls));a=math.radians(degrees);dx=math.cos(a)*4;dy=math.sin(a)*4;snap=snapshot(page);r=page.locator('#world').bounding_box();origin=snap['player']['position'];cam=snap['camera']
-  v=snap['view'];px=r['width']/2+((origin['x']+dx)*48-(origin['y']+dy)*10-cam['x'])*v['zoom'];py=r['height']*v['anchorY']+((origin['x']+dx)*7+(origin['y']+dy)*31-cam['y'])*v['zoom'];page.mouse.move(r['x']+px,r['y']+py)
+  v=snap['view'];px=r['width']/2+((origin['x']+dx)*v['basis']['xx']+(origin['y']+dy)*v['basis']['yx']-cam['x'])*v['zoom'];py=r['height']*v['anchorY']+((origin['x']+dx)*v['basis']['xy']+(origin['y']+dy)*v['basis']['yy']-cam['y'])*v['zoom'];page.mouse.move(r['x']+px,r['y']+py)
   page.evaluate("""()=>{window.attackSamples=[];addEventListener('keydown',function collect(e){if(e.key!=='f')return;removeEventListener('keydown',collect);const start=AstraeonQA.snapshot().time;const record=()=>{const s=AstraeonQA.snapshot();attackSamples.push({time:s.time,player:s.player,action:s.action,projectiles:s.projectiles});if(s.time-start<1.4)requestAnimationFrame(record)};requestAnimationFrame(record)})}""")
   page.keyboard.press('f')
   page.wait_for_function('attackSamples.length>1&&attackSamples.at(-1).time-attackSamples[0].time>1.3')
@@ -84,12 +87,12 @@ with sync_playwright() as p:
   sizes=[]
   for width,height in [(1280,720),(390,844),(844,390),(768,1024)]:
    page.set_viewport_size({'width':width,'height':height});elapsed(page,.15);s=snapshot(page);assert s['save']['name']==initial['save']['name'];assert s['player']['position']==initial['player']['position'];assert s['player']['rotation']==initial['player']['rotation'];assert s['time']>initial['time'];sizes.append([width,height]);page.screenshot(path=str(output/f'viewport-{width}-{height}.png'))
-  page.evaluate('navigator.serviceWorker.ready');assert page.evaluate('navigator.serviceWorker.controller!==null');assert 'astraeon-static-v27' in page.evaluate('caches.keys()')
+  page.evaluate('navigator.serviceWorker.ready');assert page.evaluate('navigator.serviceWorker.controller!==null');assert 'astraeon-static-v28' in page.evaluate('caches.keys()')
   page.reload(wait_until='networkidle');page.wait_for_selector('#world');assert snapshot(page)['save']['name']==initial['save']['name']
-  context.close();return {'viewports':sizes,'service_worker':'v27','legacy_save_reload':'passed'}
+  context.close();return {'viewports':sizes,'service_worker':'v28','legacy_save_reload':'passed'}
  check('responsive state continuity, service worker, and legacy saves',responsive)
  def gallery():
-  context,page=new_page(fixture());result=page.evaluate('''()=>{const canvas=document.createElement('canvas');canvas.width=1120;canvas.height=450;canvas.id='direction-gallery';document.body.replaceChildren(canvas);const ctx=canvas.getContext('2d');ctx.fillStyle='#1d3038';ctx.fillRect(0,0,1120,450);const hashes=[];for(let row=0;row<3;row++)for(let col=0;col<8;col++){const a=col*Math.PI/4,t=new AstraeonMotion.CharacterTransform(0,0,a);t.tick(0,0,1/60);const iso=(x,y,z=0)=>({x:col*140+70+x*48,y:row*150+125+y*31+x*7-z});AstraeonCharacters.humanoid(ctx,iso,t,{archetype:['warrior','mage','ranger'][row],time:0,scale:1.2});ctx.fillStyle='#e8d6b4';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(col*45+'°',col*140+70,row*150+145);hashes.push(Array.from(ctx.getImageData(col*140,row*150,140,130).data).reduce((h,v)=>(h*31+v)>>>0,0))}return {data:canvas.toDataURL(),hashes}}''')
+  context,page=new_page(fixture());result=page.evaluate('''()=>{const canvas=document.createElement('canvas');canvas.width=1120;canvas.height=450;canvas.id='direction-gallery';document.body.replaceChildren(canvas);const ctx=canvas.getContext('2d');ctx.fillStyle='#1d3038';ctx.fillRect(0,0,1120,450);const hashes=[];for(let row=0;row<3;row++)for(let col=0;col<8;col++){const a=col*Math.PI/4,facing=AstraeonView.inverse(Math.cos(a),Math.sin(a)),t=new AstraeonMotion.CharacterTransform(0,0,Math.atan2(facing.y,facing.x));t.tick(0,0,1/60);const iso=(x,y,z=0)=>({x:col*140+70+x*48,y:row*150+125+y*31+x*7-z});AstraeonCharacters.humanoid(ctx,iso,t,{archetype:['warrior','mage','ranger'][row],time:0,scale:1.2});ctx.fillStyle='#e8d6b4';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(col*45+'°',col*140+70,row*150+145);hashes.push(Array.from(ctx.getImageData(col*140,row*150,140,130).data).reduce((h,v)=>(h*31+v)>>>0,0))}return {data:canvas.toDataURL(),hashes}}''')
   hashes=result['hashes'];assert all(len(set(hashes[row*8:row*8+8]))==8 for row in range(3)),hashes
   (output/'direction-gallery.png').write_bytes(base64.b64decode(result['data'].split(',')[1]));context.close();return {'distinct_renders_per_class':8}
  check('illustrated front, back, side, and diagonal views',gallery)
@@ -97,14 +100,14 @@ with sync_playwright() as p:
   context,page=new_page(fixture());result=page.evaluate("""()=>{const canvas=document.createElement('canvas');canvas.width=1120;canvas.height=450;document.body.replaceChildren(canvas);const ctx=canvas.getContext('2d');ctx.fillStyle='#1d3038';ctx.fillRect(0,0,1120,450);const hashes=[];for(let row=0;row<3;row++)for(let col=0;col<8;col++){const t=new AstraeonMotion.CharacterTransform(0,0,0);t.speed=3;t.gait=col/8;t.state='walk';const iso=(x,y,z=0)=>({x:col*140+70+x*48,y:row*150+125+y*31+x*7-z});AstraeonDirectionalArt.humanoid(ctx,iso,t,{archetype:['warrior','mage','ranger'][row],state:'walk',time:0,scale:1.2});hashes.push(Array.from(ctx.getImageData(col*140,row*150,140,130).data).reduce((h,v)=>(h*31+v)>>>0,0))}return {data:canvas.toDataURL(),hashes,headCoverage:Array.from({length:24},(_,i)=>{const pixels=ctx.getImageData((i%8)*140+15,Math.floor(i/8)*150+10,110,50).data;let count=0;for(let n=0;n<pixels.length;n+=4)if(pixels[n]>90&&pixels[n+1]>60)count++;return count})}}""")
   assert all(count>20 for count in result['headCoverage']),result['headCoverage']
   distinct=[len(set(result['hashes'][row*8:row*8+8])) for row in range(3)]
-  assert distinct==[7,8,8],result['hashes']
+  assert distinct==[8,8,8],result['hashes']
   (output/'walk-gallery.png').write_bytes(base64.b64decode(result['data'].split(',')[1]));context.close();return {'stride_phases':8,'distinct_renders_per_class':distinct,'rear_view_policy':'accepted two-pose rear cycle retained'}
  check('extended painted stride cycles',walk_gallery)
  def golden_registration():
   context,page=new_page(fixture(cls=0));result=page.evaluate("""()=>{
    const canvas=document.createElement('canvas');canvas.width=200;canvas.height=150;const ctx=canvas.getContext('2d');
    function bounds(row,state,gait=0){
-    ctx.clearRect(0,0,200,150);const t=new AstraeonMotion.CharacterTransform(0,0,Math.PI/2-row*Math.PI/4);t.speed=state==='walk'?3:0;t.gait=gait;t.state=state;
+    ctx.clearRect(0,0,200,150);const heading=Math.PI/2-row*Math.PI/4,facing=AstraeonView.inverse(Math.cos(heading),Math.sin(heading)),t=new AstraeonMotion.CharacterTransform(0,0,Math.atan2(facing.y,facing.x));t.speed=state==='walk'?3:0;t.gait=gait;t.state=state;
     AstraeonDirectionalArt.humanoid(ctx,(x,y,z=0)=>({x:100+x*48-y*10,y:130+x*7+y*31-z}),t,{archetype:'warrior',state,progress:.2});
     const pixels=ctx.getImageData(0,0,200,150).data;let left=200,right=-1,top=150,bottom=-1;
     for(let y=0;y<150;y++)for(let x=0;x<200;x++)if(pixels[(y*200+x)*4+3]>128){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y)}

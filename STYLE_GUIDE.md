@@ -6,7 +6,7 @@ The first benchmark is Wayfarer Court and its guild/market approaches in Shenzho
 ## Camera and scale
 Normal Cartesian ground coordinates; elevation is separate. Raised orthographic-like three-quarter view. Terrain extends beyond the viewport. Forward/inverse projection and input share `world-view.js`; feet are the sprite anchor.
 
-The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **The prior v26 public build was inspected at desktop, tablet and both phone orientations; v27 public inspection and art approval remain pending.** Revisit these relationships during further public comparisons rather than treating the numbers as permanent.
+The earlier 90–105 pixel player / 180–280 pixel building guideline produced miniature architecture. Replace it with the following provisional human-relative system, inspected in local gameplay at desktop, tablet, phone portrait and landscape. **The prior v26 public build was inspected at desktop, tablet and both phone orientations; v28 public inspection and art approval remain pending.** Revisit these relationships during further public comparisons rather than treating the numbers as permanent.
 
 | Relationship | Benchmark convention |
 |---|---|
@@ -64,7 +64,7 @@ Reject new animation frames that point in the wrong direction even when their de
 
 Use [RAGNAROK_REFERENCE.md](./RAGNAROK_REFERENCE.md) for the inspected sources and production techniques. Classic RO combines directional sprites with textured 3D terrain/models, navigation data and shared camera/lighting. ASTRAEON adapts those spatial relationships to its fixed-camera painted Canvas2D presentation. Our soft painted artwork and manual action feedback are ASTRAEON decisions; they are not claims about RO's original pixel-art workflow.
 
-Ragnarok Online 1 is the primary presentation and town-planning reference. ASTRAEON retains original lore, parallel power paradigms and manual action combat. Use painted directional sprites as the mainline character presentation. Preserve the rich Warrior, Mage and Ranger art; keep scope to 3–4 hero sets, with no fourth set before the existing style passes review. Exclude the low-poly prototype from the live client. Continuous simulated facing selects eight authored views; this is not continuously articulated 3D.
+Ragnarok Online 1 is the primary presentation and town-planning reference. ASTRAEON retains original lore, parallel power paradigms and manual action combat. Use painted directional sprites as the mainline character presentation. Preserve the rich Warrior, Mage and Ranger art; keep scope to 3–4 hero sets, with no fourth set before the existing style passes review. Exclude the low-poly prototype from the live client. Continuous simulated facing projected through the camera selects eight authored views; this is not continuously articulated 3D.
 
 Modern combat comes from directional attacks, cast/hit effects, weapon trails, telegraphs, auras and restrained contact feedback. Single-layer Nodes vary gameplay and VFX, rather than requiring character sheets per Node. Do not mass-generate new sprite sets or multiply outfits to solve a visual-cohesion problem.
 
@@ -77,10 +77,16 @@ Golden Warrior calibration uses reviewed boot contacts and one 70-pixel visible 
 ## Reference-derived construction rules
 
 - Place routes, plaza boundaries, footprints and door approaches before decorative detail. Buildings shape the edges of connected public space; every service needs a clear approach and departure.
-- Keep one projected ground convention for materials, collision, props, actors and effects. The current basis is `(48,7)` / `(-10,31)`. Review each building's painted base against it; screen rotation or mirroring cannot create a new facade viewpoint.
+- Keep one projected ground convention for materials, collision, props, actors and effects. The current basis is `(48,14)` / `(-32,22)`. Review each building's painted base against it; screen rotation or mirroring cannot create a new facade viewpoint.
 - Separate art anchors, occupied ground, entrances and roof occlusion. The top of a sprite is not its depth origin. Current whole-sprite sorting/fading is an approximation that needs review around large footprints.
 - Keep stone, soil, drainage, wear and planting tied to use. Review ground detail below actor contrast. Shared colour grading cannot repair inconsistent perspective or painted light.
 - Preserve canonical face/hair, costume construction, sword handedness and cape fastening across views. Approve key poses before increasing frame counts; record per-frame boot contacts and standing body scale separately from weapon reach.
 - Keep attack/cast effects aligned to actual contact timing. Repair the Warrior rear gait/defective stride before adding costumes or classes. Four-cardinal reactions remain a reviewed compromise, not eight unique reaction views.
 
-Landmark hierarchy must pass from arrival, court, hall and phone views. The reused `north-house` civic facade is a potential competitor to the primary hall; its nominal dimensions alone neither approve nor reject the composition. See the focused repair table in the reference study.
+Landmark hierarchy must pass from arrival, court, hall and phone views. The existing `north-house` now uses a smaller shop facade from the existing atlas, leaving the Consortium as the only large civic hall. Review all approaches rather than accepting nominal dimensions alone.
+
+## Applied motion and town pass — v28
+
+Ground axes now follow the painted foundation planes. Town, outdoor paths, dungeon stone, telegraphs, depth sorting and inverse input share the same basis; the camera remains fixed. Four existing entrance forecourts use the shared limestone. The court has a quieter value grouping, projected border and restrained fountain meeting rings. Full road width plus human clearance must remain outside occupied footprints.
+
+Actor motion pivots around registered feet: restrained speed-dependent rise/lean while walking, anticipation before contact, a short contact lunge, return to idle during recovery and small cast/dodge/hit weight changes. These are presentation adjustments, not new limb frames. Warrior uses seven accepted extended stride keys at even cadence; north/northwest retain two authored poses. Three new rear-walk candidates failed identity/alternating-foot review and are excluded. Art acceptance stays pending.

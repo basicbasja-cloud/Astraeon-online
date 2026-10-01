@@ -19,11 +19,11 @@ Town scale and collision footprints live in `world-content.js`; responsive actor
 
 ## Existing-town placement pass
 
-Before changing an existing building, record role/frontage, occupied ground, entrance/clear approach, source anchor, projected dimensions, occlusion and shared material/light family. Edit the corresponding `townObjects`, `townBlocks`, road edge and service position together as needed. Functional NPC positions live in `game.js`; the hall forecourt polygon currently lives in `scene.js`. They are not all contained in one building record.
+Before changing an existing building, record role/frontage, occupied ground, entrance/clear approach, source anchor, projected dimensions, occlusion and shared material/light family. Edit the corresponding `townObjects`, `townBlocks`, road edge and service position together as needed. Functional NPC positions live in `game.js`; the four forecourt polygons live in `world-content.js`. They are not all contained in one building record.
 
-Review the hall → court → market → Caravan Gate route first. Keep the fountain perimeter and exit mouth open. Register frontages against projected base outlines. Do not rotate a painted facade in screen space to change which street it faces. Narrow dirt routes lead to services/courtyards; stone secondary streets remain distinct from the main avenue. Court patrol routes in `world-content.js` currently contain two guards; previous prose describing gate patrols did not match these routes.
+Review the hall → court → market → Caravan Gate route first. Keep the fountain perimeter and exit mouth open. Register frontages against projected base outlines. Do not rotate a painted facade in screen space to change which street it faces. Narrow dirt routes lead to services/courtyards; stone secondary streets remain distinct from the main avenue. Two existing guards now patrol at the gate; one customer circulates at the market. Review reachable routes and leave the central court quiet.
 
-The reference plan reveals a current conflict: service point `(31,26)` and southern stone-connector point `(30,29)` lie inside the residence block `(27,25,5.5,4.6)`. Repair road and footprint placement together, accounting for full corridor width and human clearance. Navigation finding an alternate route does not make the painted street coherent.
+The v27 reference plan exposed roads inside the residence footprint. In v28 the residence/art/service were moved together, the southern street runs at y=28.6, the service route approaches along y=28.7, and the shrine route reaches its front around the occupied volume. A pure regression samples every road segment against every footprint with 0.2-unit human clearance, including full corridor width and round end caps. This verifies authored rectangles, not the painted facade perspective.
 
 ## Golden Warrior replacement pass
 

@@ -14,7 +14,7 @@ with sync_playwright() as p:
  def elapsed(seconds):
   start=snap()['time'];page.wait_for_function('(time)=>AstraeonQA.snapshot().time>=time',arg=start+seconds,timeout=20000)
  def point(x,y):
-  s=snap();r=page.locator('#world').bounding_box();v=s['view'];return r['x']+r['width']/2+(x*48-y*10-s['camera']['x'])*v['zoom'],r['y']+r['height']*v['anchorY']+(x*7+y*31-s['camera']['y'])*v['zoom']
+  s=snap();r=page.locator('#world').bounding_box();v=s['view'];return r['x']+r['width']/2+(x*v['basis']['xx']+y*v['basis']['yx']-s['camera']['x'])*v['zoom'],r['y']+r['height']*v['anchorY']+(x*v['basis']['xy']+y*v['basis']['yy']-s['camera']['y'])*v['zoom']
  def click(x,y):
   px,py=point(x,y);r=page.locator('#world').bounding_box();assert r['x']<px<r['x']+r['width'] and r['y']<py<r['y']+r['height'],('target outside viewport',x,y,px,py);page.mouse.click(px,py)
  def walk(x,y,reach=.5):
@@ -30,13 +30,15 @@ with sync_playwright() as p:
     elapsed(.2);continue # Allow the final death pose/reward transition to finish.
    position=s['player']['position'];enemy=min(alive,key=lambda e:math.hypot(e['transform']['position']['x']-position['x'],e['transform']['position']['y']-position['y']));target=enemy['transform']['position'];distance=math.hypot(target['x']-position['x'],target['y']-position['y'])
    px,py=point(target['x'],target['y']-.35);rect=page.locator('#world').bounding_box()
-   if not (rect['x']+20<px<rect['x']+rect['width']-20 and rect['y']+20<py<rect['y']+rect['height']-35):
+   def visible_ground(px,py):
+    return rect['x']+20<px<rect['x']+rect['width']-20 and rect['y']+20<py<rect['y']+rect['height']-35 and page.evaluate('([x,y])=>document.elementFromPoint(x,y)?.id==="world"',[px,py])
+   if not visible_ground(px,py):
     # Use authored road waypoints when the intended enemy is outside the visible world.
     roads=[(14,17),(14.5,8),(14.5,21)] if s['save']['zone']==2 else [(14.5,14),(14.5,9.5)]
     candidates=[]
     for waypoint in roads:
      wx,wy=point(*waypoint)
-     if rect['x']+20<wx<rect['x']+rect['width']-20 and rect['y']+20<wy<rect['y']+rect['height']-35 and math.hypot(waypoint[0]-position['x'],waypoint[1]-position['y'])>.7:candidates.append(waypoint)
+     if visible_ground(wx,wy) and math.hypot(waypoint[0]-position['x'],waypoint[1]-position['y'])>.7:candidates.append(waypoint)
     assert candidates,('no visible road waypoint',position,target)
     waypoint=min(candidates,key=lambda point:math.hypot(point[0]-target['x'],point[1]-target['y']))
     click(*waypoint);elapsed(2);continue
@@ -53,7 +55,7 @@ with sync_playwright() as p:
  if not before_chest.get('worldClaims',{}).get('caravan-cache'):assert after['gold']==gold+12+(after['kills']-before_chest['kills'])*8 and after['inventory']['potion']==before_chest['inventory']['potion']+1
  click(10.6,23.1);elapsed(.1);duplicate=snap()['save'];assert duplicate['gold']==after['gold']+(duplicate['kills']-after['kills'])*8;assert duplicate['inventory']['potion']==after['inventory']['potion'];pass_check('world supply chest awards once',{'gold_added':12,'claim_saved':True})
  # Prepare at the actual cleared caravan camp, then tune one Ranger node there.
- fight_until(lambda s:all(e['hp']<=0 or math.hypot(e['transform']['position']['x']-10.5,e['transform']['position']['y']-22)>8.4 for e in s['enemies']));click(10.5,22);page.wait_for_selector('#camp-rest');before_camp=snap()['save'];page.locator('#camp-rest').click();rested=snap()['save'];assert rested['camp']==before_camp['camp']+1 and rested['gold']==before_camp['gold']-8;assert rested['hp']==rested['maxHp'];page.screenshot(path=str(out/'caravan-camp.png'));page.locator('[data-open="skills"]').click();page.locator('[data-node-skill="arrow-rain"][data-node="spirit"]').click();assert snap()['save']['skillNodes']['arrow-rain']=='spirit';page.keyboard.press('Escape');walk(14,17);page.locator('[data-open="skills"]').click();assert page.locator('[data-node-skill="arrow-rain"][data-node="ice"]').is_disabled();page.keyboard.press('Escape');page.locator('[data-open="systems"]').click();page.locator('[data-nav="camp"]').click();assert page.locator('#camp-rest').is_disabled();page.keyboard.press('Escape');pass_check('safe world camp restores supplies and permits node tuning',{'camp_uses':rested['camp'],'cost':8,'saved_node':'spirit','field_tuning_disabled':True})
+ fight_until(lambda s:all(e['hp']<=0 or math.hypot(e['transform']['position']['x']-10.5,e['transform']['position']['y']-22)>8.4 for e in s['enemies']));elapsed(.4);walk(11,20.8);page.keyboard.press('e');page.wait_for_selector('#camp-rest');before_camp=snap()['save'];page.locator('#camp-rest').click();rested=snap()['save'];assert rested['camp']==before_camp['camp']+1 and rested['gold']==before_camp['gold']-8;assert rested['hp']==rested['maxHp'];page.screenshot(path=str(out/'caravan-camp.png'));page.locator('[data-open="skills"]').click();page.locator('[data-node-skill="arrow-rain"][data-node="spirit"]').click();assert snap()['save']['skillNodes']['arrow-rain']=='spirit';page.keyboard.press('Escape');walk(14,17);page.locator('[data-open="skills"]').click();assert page.locator('[data-node-skill="arrow-rain"][data-node="ice"]').is_disabled();page.keyboard.press('Escape');page.locator('[data-open="systems"]').click();page.locator('[data-nav="camp"]').click();assert page.locator('#camp-rest').is_disabled();page.keyboard.press('Escape');pass_check('safe world camp restores supplies and permits node tuning',{'camp_uses':rested['camp'],'cost':8,'saved_node':'spirit','field_tuning_disabled':True})
  walk(14.5,8);click(14.5,2);page.wait_for_function('AstraeonQA.snapshot().save.zone===1');walk(16.5,19);walk(14.5,14);walk(14.5,11.5,reach=.35);page.screenshot(path=str(out/'moonbamboo.png'));page.keyboard.press('e');page.wait_for_function('AstraeonQA.snapshot().dungeon?.wave===0');pass_check('natural forest route and shrine entry',{'zone':1,'entry':'world interaction'})
  rewards_before=snap()['save'];rooms=[]
  page.evaluate("window.encounterSamples=[];window.collectEncounter=true;const sample=()=>{if(!collectEncounter)return;const s=AstraeonQA.snapshot();if(s.dungeon?.wave===3){const b=s.enemies.find(e=>e.boss);if(b)encounterSamples.push({time:s.time,hp:b.hp,phase:b.phase,shape:b.windup?.shape,attack:b.windup?.name,hazards:s.hazards.length})}requestAnimationFrame(sample)};requestAnimationFrame(sample)")

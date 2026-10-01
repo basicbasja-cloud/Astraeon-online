@@ -69,3 +69,13 @@ Serial headless Chromium, DPR 1, default quality, painted Mage at the actual fou
 The existing hall replacement and Warrior reaction sheet add approximately 848 KiB compressed to core precaching. No additional building or character family is introduced. Source-space Warrior contacts and body calibration reuse the existing source extraction/silhouette cache. Ground toning is cached once; the 2900 × 2100 paving cache and visible-region blits remain. Town contact shadows now use two small ground-projected radial gradients rather than hard ellipse stamps. Slash/dodge feedback reuses code-created geometry and Node colors.
 
 Local functional and four-viewport visual review passed. No new FPS or physical-device guarantee is claimed. Public visual inspection is blocked by the current proxy policy, and both art gates remain pending.
+
+## Reference application — v28 / 2026-10-01
+
+Shared projection and material matrices replace independent screen-aligned ground conventions. The town cache is 4000 × 2100 (33.6 MB raw RGBA); the current outdoor road cache is 3000 × 1800 (21.6 MB raw). Temporary masks/material canvases increase construction memory until collected. Visible-region blits, prop culling, core-only precache and on-demand zone loading remain. No new runtime artwork was added; foot-pivot motion uses the existing registered sheets and source-silhouette cache.
+
+44 pure geometry/motion/Node checks, nine fresh-Warrior town checks, ten Node gameplay checks and 45 smoke checks across the full run and corrected dodge rerun passed. The Pages-style repository subpath also passed asset/service-worker v28/save continuity checks. Four viewport captures include court, hall, market, workshop, gate and field threshold. These functional results do not approve the public art or establish physical-phone performance.
+
+The revised projection also passes the six-check fresh-Ranger UI expedition through camp, forest, four rooms, both guardian phases, return, crafting and reload, with no runtime/resource errors. This is regression evidence for the existing route, not new content or class balance approval.
+
+Serial headless Chromium after 2.5 seconds warmup, DPR 1/default quality, eight-second windows in the actual Warrior court: desktop 1280 × 720 measured 41–42 FPS / p95 33.4 ms; portrait 390 × 844 measured 56–58 FPS / p95 16.7–16.8 ms. The desktop target remains unmet in this software-rendered cloud browser. These are local idle/walker measurements, not physical-phone or sustained combat guarantees. The short gameplay video was recorded separately after the measurements. Raw evidence: `/tmp/astraeon-v28/review/performance.json`.

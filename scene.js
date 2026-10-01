@@ -16,7 +16,7 @@ function verge(ctx,iso,image){
   vergePattern=ctx.createPattern(material,'repeat');
  }
  const origin=iso(0,0),zoom=window.AstraeonView.zoom,unit=8/384;
- vergePattern.setTransform(new DOMMatrix([48*unit*zoom,7*unit*zoom,-10*unit*zoom,31*unit*zoom,origin.x,origin.y]));
+ vergePattern.setTransform(new DOMMatrix(window.AstraeonView.materialTransform(unit,origin,zoom)));
  ctx.fillStyle=vergePattern;ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
 }
 function polygon(g,points,p){g.beginPath();points.forEach(([x,y],i)=>{const q=p(x,y);i?g.lineTo(q.x,q.y):g.moveTo(q.x,q.y)});g.closePath()}
@@ -29,26 +29,39 @@ function corridor(g,road,p){
 }
 function ground(ctx,iso,t){
  if(!terrainCache){
-  terrainCache=document.createElement('canvas');terrainCache.width=2900;terrainCache.height=2100;const g=terrainCache.getContext('2d'),p=(x,y)=>({x:x*48-y*10+500,y:x*7+y*31+100});
-  const mask=document.createElement('canvas');mask.width=2900;mask.height=2100;const m=mask.getContext('2d');m.fillStyle='#fff';
+  terrainCache=document.createElement('canvas');terrainCache.width=4000;terrainCache.height=2100;const g=terrainCache.getContext('2d'),p=(x,y)=>{const q=window.AstraeonView.project(x,y);return{x:q.x+1450,y:q.y+100}};
+  const mask=document.createElement('canvas');mask.width=4000;mask.height=2100;const m=mask.getContext('2d');m.fillStyle='#fff';
   for(const road of content.townRoads.filter(r=>!['service','field'].includes(r.role)))corridor(m,road,p);
   polygon(m,content.goldenScene.plaza,p);m.fill();
-  // The hall's shallow front steps open onto a connected forecourt, not a grass gap.
-  polygon(m,[[6.6,14.8],[9.8,14.8],[10.8,17.6],[7.2,17.6]],p);m.fill();
+  // Door landings and service approaches belong to the same public ground as roads.
+  for(const court of content.forecourts){polygon(m,court.points,p);m.fill()}
   // One limestone family, small value changes, staggered joints, no screen-axis checkerboard.
-  const stones=document.createElement('canvas');stones.width=2900;stones.height=2100;const s=stones.getContext('2d');s.fillStyle='#a49c85';s.fillRect(0,0,2900,2100);
+  const stones=document.createElement('canvas');stones.width=4000;stones.height=2100;const s=stones.getContext('2d');s.fillStyle='#a49c85';s.fillRect(0,0,4000,2100);
   const paint=s.createPattern(paving,'repeat'),unit=4/paving.naturalWidth;
-  paint.setTransform(new DOMMatrix([48*unit,7*unit,-10*unit,31*unit,500,100]));s.fillStyle=paint;s.fillRect(0,0,2900,2100);
+  paint.setTransform(new DOMMatrix(window.AstraeonView.materialTransform(unit,{x:1450,y:100})));s.fillStyle=paint;s.fillRect(0,0,4000,2100);
+  // A quiet limestone court has its own scale and value grouping, within one family.
+  s.save();polygon(s,content.goldenScene.plaza,p);s.clip();s.fillStyle='#d1c6aa';s.globalAlpha=.3;s.fillRect(0,0,4000,2100);s.globalAlpha=1;
+  // Projected ashlar border and a restrained meeting-ring give the square a public identity.
+  s.lineJoin='round';s.lineWidth=9;s.strokeStyle='#8a80693d';polygon(s,content.goldenScene.plaza,p);s.stroke();
+  s.lineWidth=3;s.strokeStyle='#e5d9bd80';s.stroke();
+  const basin=content.townObjects.find(o=>o.id==='astral-fountain');
+  for(const radius of [1.65,1.82]){polygon(s,Array.from({length:64},(_,i)=>[basin.x+Math.cos(i/64*Math.PI*2)*radius,basin.y+Math.sin(i/64*Math.PI*2)*radius]),p);s.lineWidth=radius===1.65?4:1.5;s.strokeStyle=radius===1.65?'#81785e55':'#eee0bf80';s.stroke()}
+  s.restore();
+  // Broad, clipped wear varies this connected material without pasted texture patches.
+  s.save();s.globalCompositeOperation='multiply';
+  for(const [x,y,r,tint] of [[8.8,15.9,90,'#dbcfb9'],[22.5,17,100,'#dcd3bb'],[39.9,16.1,120,'#c8b99a'],[14.5,18,110,'#ece5d6']]){
+   const q=p(x,y);s.save();s.translate(q.x,q.y);s.scale(1,.55);const wash=s.createRadialGradient(0,0,0,0,0,r);wash.addColorStop(0,tint);wash.addColorStop(1,'#ffffff');s.fillStyle=wash;s.fillRect(-r,-r,r*2,r*2);s.restore();
+  }s.restore();
   s.globalCompositeOperation='destination-in';s.drawImage(mask,0,0);
   // Soil accumulation surrounds the stone. A softened alpha edge seats paving in the verge.
-  const apron=document.createElement('canvas');apron.width=2900;apron.height=2100;const ag=apron.getContext('2d');
-  ag.drawImage(mask,0,0);ag.globalCompositeOperation='source-in';ag.fillStyle='#b09e7b';ag.fillRect(0,0,2900,2100);
+  const apron=document.createElement('canvas');apron.width=4000;apron.height=2100;const ag=apron.getContext('2d');
+  ag.drawImage(mask,0,0);ag.globalCompositeOperation='source-in';ag.fillStyle='#b09e7b';ag.fillRect(0,0,4000,2100);
   g.save();g.filter='blur(8px)';g.globalAlpha=.55;g.drawImage(apron,0,0);g.restore();
   g.save();g.filter='blur(.45px)';g.drawImage(stones,0,0);g.restore();
   g.strokeStyle='#776f542f';g.lineWidth=2;polygon(g,content.goldenScene.plaza,p);g.stroke();g.strokeStyle='#ded4b537';g.lineWidth=.8;g.stroke();
   for(const road of content.townRoads){
    if(['service','field'].includes(road.role)){
-    const dirt=document.createElement('canvas');dirt.width=2900;dirt.height=2100;const d=dirt.getContext('2d');d.fillStyle='#aa967477';corridor(d,road,p);g.save();g.filter='blur(3px)';g.drawImage(dirt,0,0);g.restore();
+    const dirt=document.createElement('canvas');dirt.width=4000;dirt.height=2100;const d=dirt.getContext('2d');d.fillStyle='#aa967477';corridor(d,road,p);g.save();g.filter='blur(3px)';g.drawImage(dirt,0,0);g.restore();
    }
    // Shallow side drainage follows street edges, never cuts through the open court.
    if(!['service','field'].includes(road.role))for(let j=1;j<road.points.length;j++){
@@ -75,7 +88,7 @@ function ground(ctx,iso,t){
    const q=p(o.x,o.y),r=o.w*.23;g.save();g.translate(q.x,q.y);g.scale(1,.55);const soil=g.createRadialGradient(0,0,3,0,0,r);soil.addColorStop(0,'#75694f66');soil.addColorStop(.55,'#89795735');soil.addColorStop(1,'#89795700');g.fillStyle=soil;g.fillRect(-r,-r,r*2,r*2);g.restore();
   }
  }
- window.AstraeonView.drawCache(ctx,terrainCache,iso(0,0),500,100);
+ window.AstraeonView.drawCache(ctx,terrainCache,iso(0,0),1450,100);
 }
 function prop(ctx,o,iso,player,time){
  if(o.pack!=='outdoor'&&o.pack!=='ruin'){const zoom=window.AstraeonView?.zoom||1;o={...o,w:o.w*zoom,h:o.h*zoom}}
@@ -85,7 +98,14 @@ function prop(ctx,o,iso,player,time){
  if(left>ctx.canvas.clientWidth||left+o.w<0||top>ctx.canvas.clientHeight||top+o.h<0)return true;
  let alpha=1,hero=iso(player.x,player.y);
  if((o.tree||o.building||o.art==='stall'||o.art==='cart')&&hero.x>left+o.w*.18&&hero.x<left+o.w*.83&&hero.y<p.y-10&&hero.y>top+o.h*.15)alpha=.36;
- ctx.save();ctx.globalAlpha=alpha;ctx.save();ctx.translate(p.x+9,p.y+6);ctx.scale(1,.3);const contact=ctx.createRadialGradient(0,0,o.w*.04,0,0,o.w*.32);contact.addColorStop(0,'#28372c38');contact.addColorStop(1,'#28372c00');ctx.fillStyle=contact;ctx.fillRect(-o.w*.34,-o.w*.34,o.w*.68,o.w*.68);ctx.restore();
+ ctx.save();ctx.globalAlpha=alpha;ctx.save();
+ const block=content.townBlocks.find(b=>b.id===o.id);
+ if(block){
+  // Ground shade uses the actual occupied volume, not the atlas's empty canvas.
+  const q=iso(block.x+block.w/2,block.y+block.h*.7),xx=iso(block.x+block.w/2+1,block.y+block.h*.7),yy=iso(block.x+block.w/2,block.y+block.h*.7+1);
+  ctx.transform(xx.x-q.x,xx.y-q.y,yy.x-q.x,yy.y-q.y,q.x,q.y);
+  ctx.scale(block.w*.63,block.h*.62);const shade=ctx.createRadialGradient(.18,.18,0,.18,.18,1);shade.addColorStop(0,'#293c3266');shade.addColorStop(.55,'#293c322e');shade.addColorStop(1,'#293c3200');ctx.fillStyle=shade;ctx.fillRect(-1,-1,2.5,2.5);
+ }else{ctx.translate(p.x+9,p.y+6);ctx.scale(1,.3);const contact=ctx.createRadialGradient(0,0,o.w*.04,0,0,o.w*.32);contact.addColorStop(0,'#28372c38');contact.addColorStop(1,'#28372c00');ctx.fillStyle=contact;ctx.fillRect(-o.w*.34,-o.w*.34,o.w*.68,o.w*.68)}ctx.restore();
  const sway=o.tree?Math.sin(time*.7+o.x)*.8:0;
  ctx.drawImage(sheet,...a.rect,left+sway,top,o.w,o.h);
  if(o.art==='fountain'){ctx.globalAlpha=.3;ctx.strokeStyle='#b9f9ed';ctx.lineWidth=1;for(let k=0;k<2;k++){ctx.beginPath();ctx.ellipse(p.x,p.y-25,18+((time*9+k*15)%28),5+((time*2+k*4)%8),0,0,Math.PI*2);ctx.stroke()}}
