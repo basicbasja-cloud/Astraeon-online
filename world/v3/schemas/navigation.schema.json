@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://astraeon.local/world/v3/navigation.schema.json",
+  "type": "object",
+  "properties": {
+    "actorRadius": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "cellSize": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  },
+  "required": [
+    "actorRadius",
+    "cellSize"
+  ],
+  "additionalProperties": false
+}

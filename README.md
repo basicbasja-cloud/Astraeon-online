@@ -18,6 +18,20 @@ The v29 implementation adds opaque architectural layers with authored roof/groun
 
 ## Current work
 
+The [master world plan](./MASTER_PLAN.md) integrates the v3 pipeline and supplied
+[research guidance](./RESEARCH-SOURCES.md). Canvas2D and the current painted art
+remain the runtime baseline. Open [the Golden proof](./proof.html) for the limited
+Blender-authored structural test and contact inspector. Full-town changes and
+content expansion remain gated by the Golden reviews.
+
+The [painted native-data preview](./index.html?world=court-v3) loads current town
+placements and footprints from Blender-exported JSON while retaining the existing
+Canvas renderer, art and gameplay. It is an opt-in migration review; the normal
+game keeps its current data path.
+
+See [the v3 review evidence and commands](./docs/review/v3/README.md) for native
+export parity, gameplay/visibility/contact checks, screenshots and playback video.
+
 One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.
 
 Original Shenzhou architecture, marketplace/plaza/gate props, paired high-angle camera and full-screen terrain; three illustrated eight-direction character atlases with continuous world-space facing; contact-timed combat, swept projectiles, combo, dodge immunity and recovery, three Tier-1 resource rhythms and authored Base Skills with one compatible gameplay-changing Node; eight monster species and an evolving Moonveil encounter; existing loot, crafting, shop, quest and save systems; ambient walkers and gradual atmospheric changes; generated WebAudio soundtrack/feedback.

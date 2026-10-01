@@ -31,7 +31,7 @@ function draw(ctx,iso,t,image,meta,registration,row,column,unit,foot,left,torso)
  }
  for(const leg of legs){segment(leg.source.hip,leg.source.knee,leg.hip,leg.knee,9);segment(leg.source.knee,leg.source.foot,leg.knee,leg.foot,10)}
  // The painted torso, hair, sword and cape keep their stable registered silhouette.
- if(torso)ctx.drawImage(torso,0,row*192,192,192,origin.x,origin.y,192*unit,192*unit);
+ if(torso){const cell=registration.cellSize||192;ctx.drawImage(torso,0,row*cell,cell,cell,origin.x,origin.y,cell*unit,cell*unit)}
  else{ctx.save();ctx.beginPath();ctx.rect(origin.x,origin.y,bounds[2]*unit,current.bodyClipY*unit);ctx.clip();ctx.drawImage(image,...bounds,origin.x,origin.y,bounds[2]*unit,bounds[3]*unit);ctx.restore()}
  return true;
 }

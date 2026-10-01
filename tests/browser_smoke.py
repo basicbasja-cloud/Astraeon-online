@@ -5,7 +5,7 @@ Artifacts are written outside the checkout by default.
 import argparse,base64,hashlib,json,math
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:8000');parser.add_argument('--output',default='/tmp/astraeon-qa');parser.add_argument('--only',default='');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:8000');parser.add_argument('--output',default='/tmp/astraeon-qa');parser.add_argument('--only',default='');parser.add_argument('--world',default='');args=parser.parse_args()
 output=Path(args.output);output.mkdir(parents=True,exist_ok=True)
 checks=[];failures=[];errors=[];http_errors=[]
 def check(name,fn):
@@ -25,7 +25,7 @@ with sync_playwright() as p:
   if save:
    context.add_init_script(f'if(!localStorage.getItem("astraeon-iso-v1"))localStorage.setItem("astraeon-iso-v1",{json.dumps(json.dumps(save))})')
   page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)));page.on('response',lambda r:http_errors.append(f'{r.status} {r.url}') if r.status>=400 else None)
-  page.goto(args.url+'/index.html?qa=1',wait_until='networkidle');page.wait_for_function('document.querySelector("#world")||document.querySelector("#create")');return context,page
+  page.goto(args.url+'/index.html?qa=1'+('&world='+args.world if args.world else ''),wait_until='networkidle');page.wait_for_function('document.querySelector("#world")||document.querySelector("#create")');return context,page
  context,page=new_page();page.locator('#newname').fill('Directional QA');page.locator('#create').click();page.wait_for_selector('#world');elapsed(page,.1);base=snapshot(page)['save'];context.close()
  def fixture(**updates):return {**base,**updates}
  def keyboard_case(keys):
@@ -87,9 +87,9 @@ with sync_playwright() as p:
   sizes=[]
   for width,height in [(1280,720),(390,844),(844,390),(768,1024)]:
    page.set_viewport_size({'width':width,'height':height});elapsed(page,.15);s=snapshot(page);assert s['save']['name']==initial['save']['name'];assert s['player']['position']==initial['player']['position'];assert s['player']['rotation']==initial['player']['rotation'];assert s['time']>initial['time'];sizes.append([width,height]);page.screenshot(path=str(output/f'viewport-{width}-{height}.png'))
-  page.evaluate('navigator.serviceWorker.ready');assert page.evaluate('navigator.serviceWorker.controller!==null');assert 'astraeon-static-v29' in page.evaluate('caches.keys()')
+  page.evaluate('navigator.serviceWorker.ready');assert page.evaluate('navigator.serviceWorker.controller!==null');assert 'astraeon-static-v30' in page.evaluate('caches.keys()')
   page.reload(wait_until='networkidle');page.wait_for_selector('#world');assert snapshot(page)['save']['name']==initial['save']['name']
-  context.close();return {'viewports':sizes,'service_worker':'v29','legacy_save_reload':'passed'}
+  context.close();return {'viewports':sizes,'service_worker':'v30','legacy_save_reload':'passed'}
  check('responsive state continuity, service worker, and legacy saves',responsive)
  def gallery():
   context,page=new_page(fixture());result=page.evaluate('''()=>{const canvas=document.createElement('canvas');canvas.width=1120;canvas.height=450;canvas.id='direction-gallery';document.body.replaceChildren(canvas);const ctx=canvas.getContext('2d');ctx.fillStyle='#1d3038';ctx.fillRect(0,0,1120,450);const hashes=[];for(let row=0;row<3;row++)for(let col=0;col<8;col++){const a=col*Math.PI/4,facing=AstraeonView.inverse(Math.cos(a),Math.sin(a)),t=new AstraeonMotion.CharacterTransform(0,0,Math.atan2(facing.y,facing.x));t.tick(0,0,1/60);const iso=(x,y,z=0)=>({x:col*140+70+x*48,y:row*150+125+y*31+x*7-z});AstraeonCharacters.humanoid(ctx,iso,t,{archetype:['warrior','mage','ranger'][row],time:0,scale:1.2});ctx.fillStyle='#e8d6b4';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(col*45+'°',col*140+70,row*150+145);hashes.push(Array.from(ctx.getImageData(col*140,row*150,140,130).data).reduce((h,v)=>(h*31+v)>>>0,0))}return {data:canvas.toDataURL(),hashes}}''')

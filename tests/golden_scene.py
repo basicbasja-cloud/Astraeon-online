@@ -12,6 +12,7 @@ from playwright.sync_api import sync_playwright
 parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:8001')
 parser.add_argument('--output', default='/tmp/astraeon-golden-qa')
+parser.add_argument('--world', default='')
 args = parser.parse_args()
 out = Path(args.output)
 out.mkdir(parents=True, exist_ok=True)
@@ -23,7 +24,7 @@ with sync_playwright() as p:
     page = context.new_page()
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.on('response', lambda r: resources.append(f'{r.status} {r.url}') if r.status >= 400 else None)
-    page.goto(args.url.rstrip('/') + '/index.html?qa=1', wait_until='networkidle')
+    page.goto(args.url.rstrip('/') + '/index.html?qa=1' + ('&world='+args.world if args.world else ''), wait_until='networkidle')
     page.locator('#newname').fill('Golden Warrior')
     page.locator('#create').click()
     page.wait_for_selector('#world')
@@ -172,13 +173,13 @@ with sync_playwright() as p:
     passed('gate services and physical stone-to-field transition', {'zone': 2})
 
     page.evaluate('navigator.serviceWorker.ready')
-    assert 'astraeon-static-v29' in page.evaluate('caches.keys()')
+    assert 'astraeon-static-v30' in page.evaluate('caches.keys()')
     saved = snap()['save']
     page.reload(wait_until='networkidle')
     page.wait_for_selector('#world')
     assert snap()['save']['name'] == saved['name']
     assert snap()['save']['zone'] == saved['zone']
-    passed('v29 cache and save continuity', {'cache': 'v29'})
+    passed('v30 cache and save continuity', {'cache': 'v30'})
     context.close()
     browser.close()
 

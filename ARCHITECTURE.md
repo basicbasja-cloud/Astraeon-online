@@ -2,6 +2,30 @@
 
 Static, dependency-free browser client. Canvas2D paints an affine high-angle world with original illustrated assets; DOM/CSS owns menus and responsive controls. It is a local action RPG slice, not a networked MMORPG.
 
+The [master plan](MASTER_PLAN.md) governs the v3 integration. Canvas2D remains the
+renderer. `world/v3/spatial.js` compiles Blender-exported native JSON into shared
+solids, navigation, overhead regions, shadow volumes and portal approaches.
+`world/v3/canvas-world.js` consumes it in the bounded `proof.html` scene, with cached
+terrain, geometry and shadows and the same projected ground depth for actors.
+`tools/export-world-v3.py` exports edited Blender files without rebuilding them.
+The proof is separate from the main town pending spatial/art acceptance.
+
+`boot.js` loads existing classic scripts in order. The `world=court-v3` review URL
+imports `world/v3/wayfarer-court.json` before modules capture content; its adapter
+derives painted placements, rectangular occupancy, road centerlines and forecourts
+from the authored manifest. The same existing Canvas renderer and gameplay modules
+then run. Default play retains legacy content. This adapter does not yet migrate
+NPC interactions, walkers or all source-art masks, and rejects rotated/polygon
+solids. The Blender parent transform binds each placement and its footprint/forecourt.
+
+The v29 mainline Warrior already uses the rebuilt eight-direction walk atlas and
+`warrior-rig.js` to render visible leg segments against tracked world foot contacts.
+The shorter rear fallback below applies to Mage/Ranger and historical Warrior
+baselines. The v3 proof adds distinct walk/run/sprint atlases, duty/stride strategies,
+timing, body/foot anchors, contacts, events and attachment records; these are review
+candidates. Mainline locomotion migration is pending. Service-worker cache v30
+includes the proof. Historical sections below retain their baseline context.
+
 | Module | Actual responsibility |
 |---|---|
 | world-view.js | Shared projection/inverse, responsive zoom/framing, human-relative actor dimensions and zone bounds |

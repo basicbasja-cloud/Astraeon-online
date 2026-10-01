@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://astraeon.local/world/v3/terrain.schema.json",
+  "type": "object",
+  "properties": {
+    "bounds": {
+      "type": "object",
+      "properties": {
+        "minX": {
+          "type": "number"
+        },
+        "minY": {
+          "type": "number"
+        },
+        "maxX": {
+          "type": "number"
+        },
+        "maxY": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "minX",
+        "minY",
+        "maxX",
+        "maxY"
+      ],
+      "additionalProperties": false
+    },
+    "elevation": {
+      "type": "number"
+    },
+    "material": {
+      "type": "string"
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "primary",
+              "forecourt",
+              "service",
+              "plaza",
+              "market",
+              "residential",
+              "field"
+            ]
+          },
+          "polygon": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "objectId": {
+            "type": "string"
+          },
+          "centerline": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "width": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "legacyRole": {
+            "enum": [
+              "avenue",
+              "street",
+              "service",
+              "field"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "role",
+          "polygon"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "bounds",
+    "elevation",
+    "material",
+    "surfaces"
+  ],
+  "additionalProperties": false
+}
