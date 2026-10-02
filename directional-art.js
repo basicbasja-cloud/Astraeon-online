@@ -25,9 +25,9 @@ function frame(ctx,iso,t,key,row,column,width,state,progress,time=0,impactAt=.45
  const unit=(registration?70*(width/76)/registration.heights[row]:width/cellW)*(window.AstraeonView?.zoom||1),anchor=registration?.anchors[row*cols+column];
  const left=anchor?-anchor[0]*unit:(bounds[0]-column*cellW-cellW/2)*unit;
  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
- const movement=window.AstraeonSpriteMotion.sample(state,progress,impactAt,t.gait||0,t.speed||0),heading=t.facingDirection||{x:1,y:0},screenHeading=window.AstraeonView.project(heading.x,heading.y).x,sign=Math.sign(screenHeading)||1,zoom=window.AstraeonView?.zoom||1;
+ const movement=window.AstraeonSpriteMotion.sample(state,progress,impactAt,t.gait||0,t.speed||0),heading=t.facingDirection||{x:1,y:0},screenHeading=window.AstraeonView.project(heading.x,heading.y),length=Math.hypot(screenHeading.x,screenHeading.y)||1,dx=screenHeading.x/length,dy=screenHeading.y/length,zoom=window.AstraeonView?.zoom||1;
  // Animate around planted feet rather than stretching the entire sheet from its centre.
- ctx.translate(foot.x+movement.x*sign*zoom,foot.y-movement.lift*zoom);ctx.rotate(movement.lean*sign);ctx.scale(1,movement.stretch);ctx.translate(-foot.x,-foot.y);
+ ctx.translate(foot.x+movement.x*dx*zoom,foot.y+movement.x*dy*zoom-movement.lift*zoom);ctx.rotate(movement.lean*dx);ctx.scale(1,movement.stretch);ctx.translate(-foot.x,-foot.y);
  if(state==='hit')ctx.globalAlpha*=.72+.28*Math.sin(progress*Math.PI);
  if(state==='death')ctx.globalAlpha*=Math.max(0,Math.min(1,(1-progress)/.35));
  const nativeClip=/^warrior-(walk|run|sprint)-v3$/.test(key);

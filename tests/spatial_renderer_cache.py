@@ -9,6 +9,15 @@ from playwright.sync_api import sync_playwright
 ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-depth-cache');args=ap.parse_args();out=Path(args.output);out.mkdir(parents=True,exist_ok=True);reports=[];errors=[]
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=b.new_page(viewport={'width':1280,'height':800});page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None);page.goto(args.url+'/index.html?qa=1');page.locator('#create').click();page.wait_for_function('AstraeonQA.snapshot().renderer.frames>10')
+ # A full camera-facing quad can lean its head into a wall even when its feet
+ # stand in front. Require real upright world height while retaining the exact
+ # illustration size at the gameplay projection.
+ upright=page.evaluate('''()=>{const v=AstraeonSpatialView,a=v.actors.get('player'),p=a.mesh.geometry.attributes.position.array,project=([x,y,z])=>{const q=AstraeonView.project(x,y);return [q.x,q.y-z*35]},vs=Array.from({length:4},(_,i)=>Array.from(p.slice(i*3,i*3+3)));return {vertices:vs,projected:vs.map(project)}}''')
+ vs=upright['vertices'];projected=upright['projected']
+ for bottom,top in [(0,3),(1,2)]:
+  assert all(abs(vs[bottom][axis]-vs[top][axis])<1e-6 for axis in [0,1]),'Actor height must not lean into a wall'
+  assert abs((vs[top][2]-vs[bottom][2])*35-256)<1e-4
+ assert abs(projected[1][0]-projected[0][0]-256)<1e-4 and abs(projected[1][1]-projected[0][1])<1e-4
  def compare(name):
   sample=page.evaluate(r'''()=>{const v=AstraeonSpatialView;const software=v.stats.software;v.stats.software=true;v.end();const cached=v.canvas.toDataURL(),before=v.snapshot();v.stats.software=false;v.end();const direct=v.canvas.toDataURL();
 const THREE=AstraeonSpatialRenderer.THREE,original=[...v.actors.values()].map(a=>[a,a.mesh.material]);

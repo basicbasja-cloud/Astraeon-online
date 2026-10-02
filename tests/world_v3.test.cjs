@@ -40,3 +40,18 @@ test('stance feet retain their absolute planted elevation while climbing',()=>{
  for(let i=0;i<160;i++){const before=t.snapshot();const x=t.position.x+.02;t.tick(x,0,.016,{groundAt,elevation:groundAt(x,0)});for(let j=0;j<2;j++)if(!before.feet[j].swing&&!t.feet[j].swing){assert.equal(t.feet[j].groundZ,before.feet[j].groundZ);assert.equal(t.feet[j].x,before.feet[j].x);grounded++}}
  assert(grounded>100);assert(t.position.z>.5);assert(t.feet.some(f=>f.groundZ>.4));
 });
+test('town stair contacts meet the visible tread tops and the shrine entry',()=>{
+ const data=require('../world/v3/wayfarer-spatial.json'),w=spatial.compile(data);
+ for(const [id,prefix,count] of [['guild-hall','civic-processional-step-',4],['moon-shrine','shrine-step-',3]]){
+  const object=data.objects.find(o=>o.id===id);
+  for(let j=0;j<count;j++){
+   const step=object.parts.find(p=>p.id===prefix+j),xs=step.vertices.map(v=>v[0]),ys=step.vertices.map(v=>v[1]),height=Math.max(...step.vertices.map(v=>v[2]));
+   const x=(Math.min(...xs)+Math.max(...xs))/2,y=(Math.min(...ys)+Math.max(...ys))/2;
+   assert(!w.blocked(x,y),'tread must be approachable '+step.id);
+   assert(Math.abs(w.elevationAt(x,y)-height)<.00001,'feet sink into '+step.id);
+  }
+ }
+ const shrine=data.objects.find(o=>o.id==='moon-shrine'),entry=shrine.portals.find(p=>p.id==='moon-shrine-entrance'),door=shrine.parts.find(p=>p.id==='moon-shrine-door');
+ assert(Math.abs(entry.anchor[0]-door.vertices.reduce((sum,v)=>sum+v[0],0)/door.vertices.length)<.00001,'main approach must face its actual door');
+ assert(Math.abs(entry.anchor[2]-w.elevationAt(...entry.anchor))<.00001,'entry height must agree with its tread');
+});

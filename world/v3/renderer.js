@@ -103,10 +103,12 @@ class SpatialRenderer{
   // the same double-sided policy as the authored geometry and picking floor.
   const shadow=new THREE.Mesh(shadowGeo,new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1}));this.scene.add(shadow);
   this.staticNodes=[...this.scene.children];
-  // Billboard bases are dual vectors of the project's existing affine camera.
-  // Both have constant camera depth, preserving illustrations without skewing.
-  const r=new THREE.Vector3(48,-32,0),u=new THREE.Vector3(-14,-22,35),rr=r.dot(r),uu=u.dot(u),ru=r.dot(u),den=rr*uu-ru*ru;
-  this.right=r.clone().multiplyScalar(uu).addScaledVector(u,-ru).divideScalar(den);this.up=u.clone().multiplyScalar(rr).addScaledVector(r,-ru).divideScalar(den);this.toward=r.clone().cross(u).negate().normalize();
+  // Upright illustrated planes: a pixel of height is real vertical world
+  // height, not a camera-facing lean into the wall behind the actor. The XY
+  // right vector has zero projected vertical displacement. These bases retain
+  // the artwork's screen shape while its head/feet participate in spatial depth.
+  const {xx,xy,yx,yy}=V.basis,det=xx*yy-yx*xy;
+  this.right=new THREE.Vector3(yy/det,-xy/det,0);this.up=new THREE.Vector3(0,0,1/35);
   this.raycaster=new THREE.Raycaster();
   const floor={position:[],normal:[],uv:[],color:[]};
   appendMesh(floor,groundMesh);
@@ -141,7 +143,7 @@ class SpatialRenderer{
   this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();this.camera.updateMatrixWorld();
   for(const a of this.actors.values())a.mesh.visible=a.shadow.visible=false;
  }
- actor(id,t,draw,{alpha=1,radius=.4}={}){
+ actor(id,t,draw,{alpha=1,shadowAlpha=alpha,radius=.4}={}){
   const assemblyStarted=performance.now();
   const screen=V.project(t.position.x,t.position.y),sx=this.width/2+(screen.x-this.focus.x)*this.zoom,sy=this.height*this.anchorY+(screen.y-this.focus.y-(t.position.z||0)*35)*this.zoom;
   if(sx< -150||sx>this.width+150||sy< -80||sy>this.height+230)return;
@@ -160,7 +162,7 @@ class SpatialRenderer{
   let sockets;this.assemblingActor=true;try{sockets=draw(a.ctx,iso)}finally{this.assemblingActor=false;a.ctx.restore();V.zoom=prior}
   const b=this.shadowBounds,tx=Math.floor((p.x-b.minX)/(b.maxX-b.minX)*1024),ty=Math.floor((p.y-b.minY)/(b.maxY-b.minY)*1024),shade=tx>=0&&tx<1024&&ty>=0&&ty<1024?this.shadowPixels[(ty*1024+tx)*4+3]/255:0;
   a.mesh.material.color.setRGB(1-shade*.4,1-shade*.35,1-shade*.3);
-  a.tex.needsUpdate=true;a.mesh.position.set(p.x,p.y,p.z||0);a.mesh.visible=true;a.shadow.position.set(p.x+.08,p.y+.08,(p.z||0)+.035);a.shadow.visible=alpha>.05;
+  a.tex.needsUpdate=true;a.mesh.position.set(p.x,p.y,p.z||0);a.mesh.visible=true;a.shadow.position.set(p.x+.08,p.y+.08,(p.z||0)+.035);a.shadow.material.opacity=.22*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
   this.assemblyMs+=performance.now()-assemblyStarted;return sockets;
  }
  cachedWorld(){

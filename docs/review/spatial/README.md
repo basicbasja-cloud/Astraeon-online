@@ -1,5 +1,9 @@
 # Golden spatial migration — acceptance remains open
 
+The v35 records below are retained as history. See [v36 handoff evidence](v36/README.md)
+and the repository's `CURRENT_HANDOFF.md` for the newer saved scene, actor-depth,
+stair contacts and eight-direction reaction work. Golden acceptance remains open.
+
 Default `index.html` now plays the saved Blender-authored Wayfarer environment,
 using original materials and directional illustrated actors in one Three.js
 WebGL depth buffer. This is an implementation change to the existing game.

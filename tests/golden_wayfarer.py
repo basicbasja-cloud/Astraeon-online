@@ -5,7 +5,7 @@ Screens and video are visual evidence to inspect, not automated art approval.
 import argparse,base64,json,math,time
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--motion-series',action='store_true',help='Capture actual rendered actor crops throughout each ordinary gait sample');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion'],default='all');args=ap.parse_args()
+ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--motion-series',action='store_true',help='Capture actual rendered actor crops throughout each ordinary gait sample');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion','spatial','reactions'],default='all');args=ap.parse_args()
 out=Path(args.output);out.mkdir(parents=True,exist_ok=True);errors=[];resources=[];evidence=[]
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
@@ -33,7 +33,16 @@ with sync_playwright() as p:
      return {q,screen:[r.x+px,r.y+py],inside:px>30&&px<r.width-30&&py>50&&py<r.height-40,element:document.elementFromPoint(r.x+px,r.y+py)?.id,pick:AstraeonSpatialView.pickActor(px,py),distance:Math.hypot(q.x-s.player.position.x,q.y-s.player.position.y)}})
     .filter(p=>p.inside&&p.element==='world'&&!p.pick?.startsWith('service/')&&p.distance>.2).at(-1);
    }""",candidates)
-   assert selected,('no clickable waypoint',x,y,route,snap()['player']['position'])
+   if not selected:
+    # An NPC's real silhouette can cover the last ground waypoint. Complete
+    # only a short, straight authored route using normal keyboard movement.
+    current=snap()['player']['position'];assert len(route)==1 and math.hypot(x-current['x'],y-current['y'])<2.6,('no clickable waypoint',x,y,route,current)
+    choice=page.evaluate("""g=>{const p=AstraeonQA.snapshot().player.position,dx=g[0]-p.x,dy=g[1]-p.y;return [['d'],['s','d'],['s'],['s','a'],['a'],['w','a'],['w'],['w','d']].map(keys=>{const v=AstraeonMotion.cameraMovement(keys.includes('d')?1:keys.includes('a')?-1:0,keys.includes('s')?1:keys.includes('w')?-1:0,AstraeonView.inverse);return {keys,score:(v.x*dx+v.y*dy)/Math.hypot(dx,dy)}}).sort((a,b)=>b.score-a.score)[0]}""",[x,y])
+    page.evaluate("""({goal,keys})=>{let start=null,best=Infinity;window.keyboardLegDone=false;const observe=()=>{const s=AstraeonQA.snapshot();start??=s.time;const d=Math.hypot(s.player.position.x-goal[0],s.player.position.y-goal[1]);if(d<.33||d>best+.025||s.time-start>.7){for(const key of keys)dispatchEvent(new KeyboardEvent('keyup',{key,bubbles:true}));removeEventListener('astraeon-frame',observe);keyboardLegDone=true}best=Math.min(best,d)};addEventListener('astraeon-frame',observe)}""",{'goal':[x,y],'keys':choice['keys']})
+    for key in choice['keys']:page.keyboard.down(key)
+    page.wait_for_function('keyboardLegDone',timeout=10000)
+    for key in choice['keys']:page.keyboard.up(key)
+    continue
    q=selected['q'];last_click=selected;page.mouse.click(*selected['screen']);
    try:page.wait_for_function('(g)=>Math.hypot(AstraeonQA.snapshot().save.x-g[0],AstraeonQA.snapshot().save.y-g[1])<.4||!document.querySelector("#modal").hidden',arg=[q['x'],q['y']],timeout=12000)
    except Exception:pass
@@ -48,6 +57,9 @@ with sync_playwright() as p:
    if args.capture_scale:page.evaluate('AstraeonSpatialView.renderer.setPixelRatio(AstraeonSpatialView.stats.pixelRatio)')
   page.set_viewport_size({'width':1280,'height':800});elapsed(.2)
  capture('arrival')
+ if args.phase in ['all','spatial']:
+  for name,xy in [('shrine-stair-base',(29.96,13.1)),('shrine-tread',(29.96,12.35)),('hall-stair-base',(21.8,17.2)),('hall-tread',(21.8,16.45)),('hall-terrace',(21.8,15.3)),('gate-front',(6.95,24.6)),('gate-under-arch',(6.95,22)),('gate-behind',(6.95,20.6)),('tree-front',(27.3,14.3)),('tree-behind',(25.4,11.1))]:
+   walk(*xy);capture(name,False);evidence.append({'spatial_case':name,'player':snap()['player']});print('SPATIAL',name,flush=True)
  if args.phase in ['all','districts']:
   for stop in snap()['town']['route'][1:]:
    walk(*stop['position']);capture(stop['name'].lower().replace(' ','-'));evidence.append({'stop':stop['name'],'position':snap()['player']['position']});print('CAPTURE',stop['name'],flush=True)
@@ -105,6 +117,23 @@ with sync_playwright() as p:
   elapsed(.3);capture('turn-stop',False)
   for degrees in [0,45,90,135,180,225,270,315]:
    walk(19.8,24.3);a=math.radians(degrees);page.mouse.move(*point(19.8+math.cos(a)*3,24.3+math.sin(a)*3));page.keyboard.press('f');elapsed(.22);page.screenshot(path=str(out/f'attack-{degrees}.png'));elapsed(.7)
+ if args.phase in ['all','reactions']:
+  for row,name in enumerate(['S','SE','E','NE','N','NW','W','SW']):
+   walk(19.8,24.3);position=snap()['player']['position'];angle=math.pi/2-row*math.pi/4
+   direction=page.evaluate('(a)=>AstraeonView.inverse(Math.cos(a),Math.sin(a))',angle);length=math.hypot(direction['x'],direction['y'])
+   page.mouse.move(*point(position['x']+direction['x']/length*3,position['y']+direction['y']/length*3));page.keyboard.press('f');elapsed(.9)
+   actual=page.evaluate('AstraeonDirectionalArt.directionRow(AstraeonQA.snapshot().player.rotation)');assert actual==row,(name,actual,snap()['player'])
+   page.locator('[data-open="systems"]').click();page.locator('[data-nav="pvp"]').click()
+   # Observe hit/death caused by the real sparring encounter. No HP, actor,
+   # pose, facing, save or clock setter is used to manufacture these states.
+   page.evaluate("""()=>{window.reactionFrames=[];window.reactionDone=false;let last=-1,dead=false;const observe=()=>{const s=AstraeonQA.snapshot(),state=s.animation.state,p=s.player.position,v=AstraeonSpatialView;dead||=s.save.hp===0;if(dead&&s.save.hp>0){reactionDone=true;removeEventListener('astraeon-frame',observe);return}if(!['hit','death'].includes(state)||s.time>s.animation.until||s.time-last<.045)return;last=s.time;const c=document.createElement('canvas');c.width=200;c.height=180;const g=c.getContext('2d'),x=v.width/2+(p.x*48-p.y*32-v.focus.x)*v.zoom,y=v.height*v.anchorY+(p.x*14+p.y*22-v.focus.y-p.z*35)*v.zoom,buffer=v.renderer.getDrawingBufferSize(new AstraeonSpatialRenderer.THREE.Vector2());g.drawImage(v.canvas,(x-100)*buffer.x/v.width,(y-135)*buffer.y/v.height,200*buffer.x/v.width,180*buffer.y/v.height,0,0,200,180);const shadow=v.actors.get('player').shadow;reactionFrames.push({time:s.time,state,progress:(s.time-s.animation.started)/s.animation.duration,direction:AstraeonDirectionalArt.directionRow(s.player.rotation),player:s.player,shadow:{visible:shadow.visible,opacity:shadow.material.opacity},image:c.toDataURL()})};addEventListener('astraeon-frame',observe)}""")
+   page.locator('#pvp-start').click();page.wait_for_function('reactionDone',timeout=180000)
+   frames=page.evaluate('reactionFrames');folder=out/'reaction-series'/name;folder.mkdir(parents=True,exist_ok=True)
+   for i,frame in enumerate(frames):(folder/f'{i:03d}.png').write_bytes(base64.b64decode(frame.pop('image').split(',')[1]))
+   (folder/'frames.json').write_text(json.dumps(frames,indent=2))
+   assert {f['state'] for f in frames}=={'hit','death'} and all(f['direction']==row for f in frames),(name,frames)
+   assert all(not f['shadow']['visible'] and f['shadow']['opacity']==0 for f in frames if f['state']=='death' and f['progress']>=1)
+   evidence.append({'reaction_direction':name,'states':['hit','death'],'rendered_frames':len(frames),'normal_respawn':snap()['save']['hp']>0});print('REACTIONS',name,flush=True)
  # Approach the gate from town, then use its actual authored field threshold.
  walk(6.95,24.6);capture('gate-departure');exit=next(e for e in snap()['town']['transitions'] if e['to']==2);click(exit['x'],exit['y'],17);page.wait_for_function('AstraeonQA.snapshot().save.zone===2',timeout=20000);capture('field-threshold')
  saved=snap()['save'];page.reload(wait_until='networkidle');page.wait_for_selector('#world');assert snap()['save']['name']==saved['name'] and snap()['save']['zone']==2

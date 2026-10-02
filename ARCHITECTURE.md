@@ -15,11 +15,14 @@ lightweight navigation and elevation. Runtime rendering does not draw building
 cards in the native town or maintain a separate collision coordinate list.
 
 `world/v3/renderer.js` batches static meshes by material, uses authored UVs and
-original material atlases, and draws alpha-tested camera-facing actor quads with
+original material atlases, and draws alpha-tested upright illustrated actor quads with
 depth tests and depth writes. The fixed camera shares the Cartesian ground basis
 with gameplay. Ground clicks raycast authored navigation surfaces; actor/service
-picks use the visible depth solution and actor alpha. A hidden ramp follows the
-visual civic stairs, avoiding expensive mesh physics. Baked cast shadows and
+picks use the visible depth solution and actor alpha. The quad's vertical axis
+is world Z, so a character standing before a doorway does not lean into its wall.
+Hidden contact rectangles follow the actual civic and shrine tread tops; the
+earlier continuous ramps remain inactive source references. This avoids expensive
+mesh physics while keeping feet above the visible steps. Baked cast shadows and
 world-space contact shadows replace real-time shadow maps.
 
 The Golden Warrior uses `world/v3/locomotion.js` and the existing painterly rig,

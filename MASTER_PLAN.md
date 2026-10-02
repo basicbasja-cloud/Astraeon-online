@@ -51,14 +51,16 @@ export directly. Do not maintain replacement runtime town coordinates.
 
 `world/v3/renderer.js` batches static geometry by material and integrates painted
 actors into shared depth. Navigation derives lightweight footprints and walkable
-surfaces from the same source. A hidden navigation ramp follows the civic stairs;
+surfaces from the same source. Hidden contact rectangles follow the civic and
+shrine tread tops, retaining the old ramps as inactive source references;
 this is visual/navigation separation, not expensive mesh physics. Bridges and
 raised surfaces are included in ground picking and contact elevation.
 
 `world/v3/locomotion.js` supplies distinct walk/run/sprint contact strategies,
 start/stop/turn settling and absolute planted-foot elevations. Action sprites and
 animation registration remain 2D and manifest driven. The existing action and
-reaction states require full visual review. Sixteen original hit/death poses now
+reaction states require full visual review. Actor quads remain upright in world
+space, and action offsets follow their full projected facing direction. Sixteen original hit/death poses now
 cover all eight directions, with source bounds, silhouette outlines and anchors
 in the same animation manifest; nearest-cardinal fallback has been removed.
 
