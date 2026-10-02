@@ -32,6 +32,7 @@ def export(scene):
   for o in collection.objects:
    if o.type=='MESH':
     part={'id':o.name,'role':o['role'],'shadow':bool(o['shadow']),'material':o.data.materials[0].name,'vertices':vertices(o),'faces':[list(p.vertices) for p in o.data.polygons]}
+    if o.get('render_visible') is not None:part['visible']=bool(o['render_visible'])
     if uv(o):part['uvs']=uv(o)
     parts.append(part)
    elif o.get('kind')=='presentation':

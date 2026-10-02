@@ -4,6 +4,7 @@ Run against authoring/wayfarer-spatial.blend. Does not recreate town placement.
 import bpy,bmesh,json,math,runpy
 from pathlib import Path
 from mathutils import Vector
+if any(o.get('street_orientation_applied') for o in bpy.data.objects):raise RuntimeError('This baseline refinement predates the saved street-facing homes. Edit the current scene or use targeted tools; do not regenerate it.')
 ROOT=Path(__file__).resolve().parents[1];kit=runpy.run_path(str(ROOT/'tools/blender-v3-kit.py'))
 kit['materials'].update({m.name:m for m in bpy.data.materials})
 def box(c,id,p,size,mat,parent=None,role='decorative'):

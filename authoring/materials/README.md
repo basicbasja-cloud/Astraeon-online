@@ -12,3 +12,8 @@ textures or other proprietary game material is included.
 
 `assets/town-limestone-v1.webp` remains the project's existing original paving.
 Author UVs in Blender; the exporter preserves face-corner UVs and transforms.
+
+`wayfarer-foliage-v1.png` preserves the completed 2026-10-01 original foliage
+cutout unchanged. It is a leaf cluster, not a painted whole-tree card. Authored
+crossed canopy planes use its alpha-tested leaf edges in the shared depth
+buffer; existing spatial trunks, branches and shadow volumes are retained.

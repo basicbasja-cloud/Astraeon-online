@@ -52,7 +52,7 @@ function material(name,definition){
    atlasTextures.set(tileKey,t);
   }map=atlasTextures.get(tileKey);
  }
- const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide});
+ const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide,alphaTest:spec?.alphaCutoff||0});
  materialCache.set(key,m);return m;
 }
 function appendMesh(batch,part){
@@ -129,11 +129,16 @@ class SpatialRenderer{
  begin(camera,w,h,zoom,anchorY){
   this.frameStarted=performance.now();this.assemblyMs=0;
   if(!this.renderer)return;this.active=true;this.canvas.hidden=false;
-  this.width=w;this.height=h;this.zoom=zoom;this.anchorY=anchorY;this.focus={...camera};
-  const cx=camera.x,cy=camera.y,s=zoom;
+  this.width=w;this.height=h;this.zoom=zoom;this.anchorY=anchorY;
+  if(this.canvas.clientWidth!==w||this.canvas.clientHeight!==h||this.lastSize!==w+'x'+h){this.renderer.setSize(w,h,false);this.lastSize=w+'x'+h}
+  // Reusing rasterized geometry must translate by whole device pixels. Snap
+  // only the software camera to its actual (possibly odd-sized) drawing
+  // buffer grid; simulation, navigation and the hardware camera remain smooth.
+  const size=this.renderer.getDrawingBufferSize(new THREE.Vector2()),gridX=zoom*size.x/w,gridY=zoom*size.y/h;
+  this.focus=this.stats.software?{x:Math.round(camera.x*gridX)/gridX,y:Math.round(camera.y*gridY)/gridY}:{...camera};
+  const cx=this.focus.x,cy=this.focus.y,s=zoom;
   this.camera.projectionMatrix.set(96*s/w,-64*s/w,0,-2*cx*s/w,-28*s/h,-44*s/h,70*s/h,2*cy*s/h+1-2*anchorY,-.0056,-.0084,-.00752,.25,0,0,0,1);
   this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();this.camera.updateMatrixWorld();
-  if(this.canvas.clientWidth!==w||this.canvas.clientHeight!==h||this.lastSize!==w+'x'+h){this.renderer.setSize(w,h,false);this.lastSize=w+'x'+h}
   for(const a of this.actors.values())a.mesh.visible=a.shadow.visible=false;
  }
  actor(id,t,draw,{alpha=1,radius=.4}={}){
@@ -163,7 +168,7 @@ class SpatialRenderer{
   let c=this.staticCache;
   if(!c||c.key!==key){
    if(c){c.target.dispose();c.material.dispose();c.quad.geometry.dispose()}
-   const target=new THREE.WebGLRenderTarget(size.x+padPixels*2,size.y+padPixels*2,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:true});target.depthTexture=new THREE.DepthTexture(target.width,target.height,THREE.UnsignedIntType);
+   const target=new THREE.WebGLRenderTarget(size.x+padPixels*2,size.y+padPixels*2,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:true});target.texture.colorSpace=THREE.SRGBColorSpace;target.depthTexture=new THREE.DepthTexture(target.width,target.height,THREE.UnsignedIntType);
    const material=new THREE.ShaderMaterial({uniforms:{colorMap:{value:target.texture},depthMap:{value:target.depthTexture},viewSize:{value:new THREE.Vector2(w,h)},cacheSize:{value:new THREE.Vector2(cw,ch)},offset:{value:new THREE.Vector2(pad,pad)}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',fragmentShader:'uniform sampler2D colorMap;uniform sampler2D depthMap;uniform vec2 viewSize,cacheSize,offset;varying vec2 vUv;void main(){vec2 p=(vUv*viewSize+offset)/cacheSize;gl_FragColor=texture2D(colorMap,p);gl_FragDepth=texture2D(depthMap,p).r;\n#include <colorspace_fragment>\n}',depthTest:true,depthWrite:true,depthFunc:THREE.AlwaysDepth,toneMapped:false});
    const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),material);quad.frustumCulled=false;const scene=new THREE.Scene();scene.add(quad);c=this.staticCache={key,target,material,quad,scene,camera:new THREE.Camera(),focus:null};
   }
@@ -192,7 +197,13 @@ class SpatialRenderer{
    if(!hit.object.visible||hit.object===this.navFloor)continue;
    const id=hit.object.name;
    if(id.startsWith('actor/')){const a=this.actors.get(id.slice(6));if(!a||!hit.uv)continue;const px=Math.min(255,Math.max(0,Math.floor(hit.uv.x*256))),py=Math.min(255,Math.max(0,Math.floor((1-hit.uv.y)*256)));if(a.ctx.getImageData(px,py,1,1).data[3]<26)continue;return id.slice(6)}
-   if(id.startsWith('static/'))return 'object/'+hit.object.userData.owners[hit.faceIndex];
+   if(id.startsWith('static/')){
+    const m=hit.object.material;if(m.alphaTest&&hit.uv&&m.map.image){
+     if(!m.userData.alphaPixels){const image=m.map.image,ctx=image.getContext('2d');m.userData.alphaPixels={data:ctx.getImageData(0,0,image.width,image.height).data,width:image.width,height:image.height}}
+     const p=m.userData.alphaPixels,u=((hit.uv.x%1)+1)%1,v=((hit.uv.y%1)+1)%1,x=Math.min(p.width-1,Math.floor(u*p.width)),y=Math.min(p.height-1,Math.floor((1-v)*p.height));
+     if(p.data[(y*p.width+x)*4+3]/255<m.alphaTest)continue;
+    }return 'object/'+hit.object.userData.owners[hit.faceIndex];
+   }
   }return null;
  }
  snapshot(){return {...this.stats,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite}))};}

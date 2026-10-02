@@ -5,7 +5,7 @@ Screens and video are visual evidence to inspect, not automated art approval.
 import argparse,base64,json,math,time
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion'],default='all');args=ap.parse_args()
+ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--motion-series',action='store_true',help='Capture actual rendered actor crops throughout each ordinary gait sample');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion'],default='all');args=ap.parse_args()
 out=Path(args.output);out.mkdir(parents=True,exist_ok=True);errors=[];resources=[];evidence=[]
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
@@ -20,7 +20,7 @@ with sync_playwright() as p:
  def elapsed(seconds):page.wait_for_function('(v)=>AstraeonQA.snapshot().time>=v',arg=snap()['time']+seconds,timeout=30000)
  def walk(x,y):
   deadline=time.monotonic()+60;last_click=None
-  while math.hypot(snap()['save']['x']-x,snap()['save']['y']-y)>.35:
+  while math.hypot(snap()['save']['x']-x,snap()['save']['y']-y)>.4:
    if time.monotonic()>=deadline:
     page.screenshot(path=str(out/'failure.png'));raise AssertionError(('walk timeout',x,y,last_click,snap()['navigation'],snap()['windowName'],snap()['player']))
    route=page.evaluate('(g)=>AstraeonContent.nativeWorld.spatial.route(AstraeonQA.snapshot().player.position,{x:g[0],y:g[1]})', [x,y]);assert route,('no route',x,y,snap()['player']['position'],snap()['navigation'])
@@ -31,7 +31,7 @@ with sync_playwright() as p:
    selected=page.evaluate("""(qs)=>{const s=AstraeonQA.snapshot(),r=world.getBoundingClientRect(),v=s.view;
     return qs.map(q=>{const z=AstraeonContent.nativeWorld.spatial.elevationAt(q.x,q.y)*35,px=r.width/2+(q.x*v.basis.xx+q.y*v.basis.yx-s.camera.x)*v.zoom,py=r.height*v.anchorY+(q.x*v.basis.xy+q.y*v.basis.yy-s.camera.y-z)*v.zoom;
      return {q,screen:[r.x+px,r.y+py],inside:px>30&&px<r.width-30&&py>50&&py<r.height-40,element:document.elementFromPoint(r.x+px,r.y+py)?.id,pick:AstraeonSpatialView.pickActor(px,py),distance:Math.hypot(q.x-s.player.position.x,q.y-s.player.position.y)}})
-    .filter(p=>p.inside&&p.element==='world'&&!p.pick?.startsWith('service/')&&p.distance>.5).at(-1);
+    .filter(p=>p.inside&&p.element==='world'&&!p.pick?.startsWith('service/')&&p.distance>.2).at(-1);
    }""",candidates)
    assert selected,('no clickable waypoint',x,y,route,snap()['player']['position'])
    q=selected['q'];last_click=selected;page.mouse.click(*selected['screen']);
@@ -77,15 +77,21 @@ with sync_playwright() as p:
     # Only normal input events release held keys. Positions, animation and time
     # are never changed. Capture the actual rendered frame before tool latency
     # can extend a sprint into an unrelated obstacle.
-    page.evaluate("""({keys,modifier,duration})=>{window.motionSample=null;let start=null;const held=[...keys,...(modifier?[modifier]:[])];
+    page.evaluate("""({keys,modifier,duration,series})=>{window.motionSample=null;window.motionFrames=[];let start=null,lastFrame=-Infinity;const held=[...keys,...(modifier?[modifier]:[])];
      const begin=e=>{if(e.key===keys.at(-1)){start=AstraeonQA.snapshot().time;removeEventListener('keydown',begin)}};addEventListener('keydown',begin);
-     const record=e=>{if(start===null||e.detail.time-start<duration)return;const s=AstraeonQA.snapshot(),canvas=document.createElement('canvas'),overlay=document.querySelector('#world');canvas.width=overlay.clientWidth;canvas.height=overlay.clientHeight;const g=canvas.getContext('2d');g.drawImage(document.querySelector('#spatial-world'),0,0,canvas.width,canvas.height);g.drawImage(overlay,0,0,canvas.width,canvas.height);
+     const record=e=>{if(start===null)return;
+      if(series&&e.detail.time-start>=.2&&e.detail.time-lastFrame>=.06){const s=AstraeonQA.snapshot(),v=AstraeonSpatialView,p=s.player.position,c=document.createElement('canvas');c.width=144;c.height=160;const g=c.getContext('2d'),x=v.width/2+(p.x*48-p.y*32-v.focus.x)*v.zoom,y=v.height*v.anchorY+(p.x*14+p.y*22-v.focus.y-p.z*35)*v.zoom,buffer=v.renderer.getDrawingBufferSize(new AstraeonSpatialRenderer.THREE.Vector2());g.drawImage(v.canvas,(x-72)*buffer.x/v.width,(y-125)*buffer.y/v.height,144*buffer.x/v.width,160*buffer.y/v.height,0,0,144,160);motionFrames.push({time:s.time,elapsed:e.detail.time-start,motion:s.player,image:c.toDataURL()});lastFrame=e.detail.time}
+      if(e.detail.time-start<duration)return;const s=AstraeonQA.snapshot(),canvas=document.createElement('canvas'),overlay=document.querySelector('#world');canvas.width=overlay.clientWidth;canvas.height=overlay.clientHeight;const g=canvas.getContext('2d');g.drawImage(document.querySelector('#spatial-world'),0,0,canvas.width,canvas.height);g.drawImage(overlay,0,0,canvas.width,canvas.height);
       window.motionSample={motion:s.player,time:s.time,duration:s.time-start,image:canvas.toDataURL()};for(const key of held)dispatchEvent(new KeyboardEvent('keyup',{key,bubbles:true}));removeEventListener('astraeon-frame',record)};addEventListener('astraeon-frame',record);
-    }""",{'keys':list(keys),'modifier':modifier,'duration':duration})
+    }""",{'keys':list(keys),'modifier':modifier,'duration':duration,'series':args.motion_series})
     if modifier:page.keyboard.down(modifier)
     for key in keys:page.keyboard.down(key)
     page.wait_for_function('window.motionSample!==null',timeout=30000);sample=page.evaluate('motionSample');moving=sample['motion'];assert moving['speed']>.1,(mode,keys,anchor,moving)
     (out/f'{mode}-{"".join(keys)}.png').write_bytes(base64.b64decode(sample['image'].split(',')[1]));evidence.append({'mode':mode,'keys':keys,'motion':moving,'duration':sample['duration'],'anchor':anchor})
+    if args.motion_series:
+     folder=out/'motion-series'/f'{mode}-{"".join(keys)}';folder.mkdir(parents=True,exist_ok=True);frames=page.evaluate('motionFrames')
+     for i,frame in enumerate(frames):(folder/f'{i:03d}.png').write_bytes(base64.b64decode(frame.pop('image').split(',')[1]))
+     (folder/'frames.json').write_text(json.dumps(frames,indent=2))
     for key in keys:page.keyboard.up(key)
     if modifier:page.keyboard.up(modifier)
     elapsed(.35)

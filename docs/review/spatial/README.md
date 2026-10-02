@@ -39,6 +39,36 @@ GI, volumetrics, external runtime CDN or mesh physics are required. The browser
 consumes Blender mesh data directly through the existing native JSON contract;
 glTF is not required to retain authoring fidelity.
 
+## Continued implementation after the checkpoint
+
+Checkpoint `5b2011c` preserves the complete spatial migration before these edits.
+Six existing residential masses now have different street-facing orientations;
+their centres, original meshes, details and attached service transforms remain
+in the saved scene. Authored entrance paths connect them to existing lanes.
+`tools/orient-wayfarer-homes.py` edits the current scene once, without rebuilding
+it. The earlier bulk refinement refuses to overwrite these later saved edits.
+
+Existing completed foliage artwork now supplies alpha-tested leaf clusters on
+crossed spatial canopy planes. Original trunks, branches and invisible low-cost
+shadow proxies remain in Blender. This is not a whole-tree billboard; transparent
+leaf gaps transmit both scene depth and interaction rays. Market awnings retain
+their original cloth geometry and are excluded from vegetation conversion.
+
+Software WebGL reuses static scene color **and depth**, writes that depth into
+the same actor framebuffer, and redraws when the camera leaves its padded region.
+The software camera aligns to actual drawing-buffer pixels to avoid pan blur;
+simulation and hardware camera movement retain their existing precision. Cache
+color uses sRGB storage. `tests/spatial_renderer_cache.py` compares actual cached
+and direct frames and actor visibility masks during arrival, ordinary traversal
+and odd-sized phone viewports. Small color rasterization differences are recorded;
+these checks do not certify art quality or physical-device performance.
+
+Actual ordinary-input review after the orientation edits traversed all districts,
+opened all eight services, sampled all 24 walk/run/sprint headings, attacked,
+travelled through the gate and reloaded the save. `--motion-series` records actual
+rendered actor crops across a gait, with observer snapshots; it does not place,
+advance or pose the character. Contact sheets are visual evidence, not approval.
+
 ## Legacy asset migration classification
 
 | Class | Assets and purpose |

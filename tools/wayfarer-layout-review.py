@@ -9,8 +9,9 @@ roles=[('caravan-gate','West Gate',(7,27)),('astral-fountain','Central Plaza',(2
 def polygon(points,fill,stroke='none'):
  return '<polygon points="'+ ' '.join(f'{x*13:.2f},{y*13:.2f}' for x,y in points)+f'" fill="{fill}" stroke="{stroke}" stroke-width="1"/>'
 def position(o):
- if o.get('presentation'):return o['presentation']['position']
- points=next(p['vertices'][:4] for p in o['parts'] if p['id']==o['id']+'-walls');return [round(sum(v[i] for v in points)/4,3) for i in range(3)]
+ body=next((p for p in o['parts'] if p['id']==o['id']+'-walls'),None)
+ if body:return [round(sum(v[i] for v in body['vertices'])/len(body['vertices']),3) for i in range(3)]
+ return o['presentation']['position']
 def label(x,y,name):return f'<text x="{x*13}" y="{y*13}" text-anchor="middle" class="label">{html.escape(name)}</text>'
 def panel(actual):
  out=['<svg viewBox="0 0 572 540" role="img">'];out.append('<rect width="572" height="540" fill="#38747c"/>')
