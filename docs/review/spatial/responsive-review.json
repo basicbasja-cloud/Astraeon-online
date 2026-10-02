@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "responsive state continuity, service worker, and legacy saves",
+      "result": "passed",
+      "evidence": {
+        "viewports": [
+          [
+            1280,
+            720
+          ],
+          [
+            390,
+            844
+          ],
+          [
+            844,
+            390
+          ],
+          [
+            768,
+            1024
+          ]
+        ],
+        "service_worker": "v35",
+        "legacy_save_reload": "passed"
+      }
+    }
+  ],
+  "failures": [],
+  "runtime_errors": [],
+  "http_errors": []
+}

@@ -69,6 +69,31 @@ travelled through the gate and reloaded the save. `--motion-series` records actu
 rendered actor crops across a gait, with observer snapshots; it does not place,
 advance or pose the character. Contact sheets are visual evidence, not approval.
 
+## Current plaza and verification
+
+The saved plaza now includes a circulation ring, compass inlays and an original
+winged celestial fountain sculpture with thin authored water arcs. These are
+additions to the existing scene; earlier geometry remains available. Geometry
+face lighting now uses the same Blender-authored sun direction, strength and
+ambient level as the shadow volumes. Cache version 35 delivers this iteration.
+
+`town-review.json` records the current complete ordinary-input town run: nine
+arrival/district views, eight services, 24 locomotion headings, basic attacks,
+gate transition and save reload, with no runtime or resource errors.
+`responsive-review.json` records four viewports and the active v35 service worker.
+`offline-review.json` records an offline reload and ordinary player movement in
+the current spatial town, preserving the saved character.
+`depth-cache-review.json` compares the current source under cached and direct
+rendering. `software-performance.json` measured about 51.8 FPS in a five-second
+idle arrival sample in cloud SwiftShader at 0.5 pixel ratio, with one static cache
+fill and 16 dynamic draw calls. This limited sample is not a traversal benchmark
+or a physical-device performance claim. Screenshots are from the actual game.
+The earlier traversal video is preserved; the current recording is separate.
+
+The public Pages request still fails at the cloud CONNECT proxy with HTTP 403.
+A reachable deployment of the active branch is needed for the remaining live
+review. Local checks and captured motion do not constitute final Golden approval.
+
 ## Legacy asset migration classification
 
 | Class | Assets and purpose |

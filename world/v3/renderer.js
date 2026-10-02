@@ -8,8 +8,8 @@ const V=window.AstraeonView;
 const palette={stone:'#afa084',stoneLight:'#e0cc9e',cream:'#d4c29d',plaster:'#ebd5af',slate:'#345e80',blue:'#305d7c',gold:'#c49a48',wood:'#67432d',timber:'#5c3924',oak:'#9c6b3d',leaf:'#4b713a',leafLight:'#709143',grass:'#84926c',paving:'#c7b999',terracotta:'#b96d45',teal:'#447970',iron:'#465354',glass:'#496f78',clothBlue:'#4a83ad',clothOchre:'#e2b368',clothRose:'#bd7773',water:'#559ea8',flowers:'#d58b92',soil:'#aa9873'};
 const materialCache=new Map();
 const atlasTextures=new Map(),atlasImages=new Map(),textureLoads=[];
-function texture(name){
- const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');g.fillStyle=palette[name]||'#b6a57f';g.fillRect(0,0,256,256);
+function texture(name,color){
+ const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');g.fillStyle=palette[name]||(color?new THREE.Color().setRGB(...color).getStyle():'#b6a57f');g.fillRect(0,0,256,256);
  const random=(i)=>{const v=Math.sin(i*127.1+name.length*69.3)*43758.5453;return v-Math.floor(v)};
  // Original small painted material swatches: directional brush grain, weathered
  // ashlar, overlapped roof courses and timber grain; no perspective building cards.
@@ -40,7 +40,7 @@ function texture(name){
 }
 function material(name,definition){
  const spec=definition?.texture,key=name+JSON.stringify(spec||'');if(materialCache.has(key))return materialCache.get(key);
- let map=texture(name);
+ let map=texture(name,definition?.color);
  if(spec){
   const tileKey=spec.file+'/'+spec.tile;
   if(!atlasTextures.has(tileKey)){
@@ -55,12 +55,12 @@ function material(name,definition){
  const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide,alphaTest:spec?.alphaCutoff||0});
  materialCache.set(key,m);return m;
 }
-function appendMesh(batch,part){
- const vs=part.vertices;
+function appendMesh(batch,part,lighting){
+ const vs=part.vertices,sun=lighting?new THREE.Vector3(-lighting.sun.cast[0],-lighting.sun.cast[1],1).normalize():new THREE.Vector3(-.34,-.45,.82).normalize(),ambient=lighting?.ambient??.8,strength=lighting?.sun.strength??.23;
  for(const [faceIndex,face] of part.faces.entries()){
   const a=new THREE.Vector3(...vs[face[0]]),b=new THREE.Vector3(...vs[face[1]]),c=new THREE.Vector3(...vs[face[2]]),normal=b.clone().sub(a).cross(c.clone().sub(a)).normalize();
   const axis=Math.abs(normal.z)>.65?'xy':Math.abs(normal.x)>Math.abs(normal.y)?'yz':'xz';
-  const sun=new THREE.Vector3(-.34,-.45,.82).normalize(),shade=.80+Math.max(0,normal.dot(sun))*.23;
+  const shade=ambient+Math.max(0,normal.dot(sun))*strength;
   for(let j=1;j<face.length-1;j++)batch.owners?.push(part.objectId||part.id||'terrain');
   for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],uv=part.uvs?.[faceIndex]?.[face.indexOf(i)];batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(shade,shade*.99,shade*.96);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
  }
@@ -72,7 +72,7 @@ class SpatialRenderer{
   this.entityIds=new WeakMap();this.nextEntityId=0;
   this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#bbc9b2');
   this.camera=new THREE.Camera();this.camera.matrixAutoUpdate=false;this.camera.matrixWorld.identity();this.camera.matrixWorldInverse.identity();
-  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',key=name;if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],owners:[]});appendMesh(batches.get(key),part)};
+  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',key=name;if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],owners:[]});appendMesh(batches.get(key),part,source.lighting)};
   const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id});
