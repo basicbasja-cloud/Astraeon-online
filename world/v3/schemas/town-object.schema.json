@@ -446,6 +446,10 @@
           "tint": {
             "type": "number"
           },
+          "kind": {
+            "type": "string",
+            "enum": ["craft", "guild", "housing", "inn", "market", "shrine", "travel"]
+          },
           "route": {
             "type": "array",
             "minItems": 2,

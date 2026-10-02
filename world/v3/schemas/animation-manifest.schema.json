@@ -658,6 +658,63 @@
             ],
             "additionalProperties": false
           }
+        },
+        "fallTransition": {
+          "type": "object",
+          "properties": {
+            "motionEnd": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 0.65
+            },
+            "blendStart": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 0.65
+            },
+            "blendEnd": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 0.65
+            },
+            "profiles": {
+              "type": "array",
+              "minItems": 8,
+              "maxItems": 8,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "direction": {
+                    "enum": ["S", "SE", "E", "NE", "N", "NW", "W", "SW"]
+                  },
+                  "rotationDegrees": {
+                    "type": "number"
+                  },
+                  "scale": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    }
+                  },
+                  "offset": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": ["direction", "rotationDegrees", "scale", "offset"],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": ["motionEnd", "blendStart", "blendEnd", "profiles"],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -665,7 +722,8 @@
         "clip",
         "cols",
         "rows",
-        "frames"
+        "frames",
+        "fallTransition"
       ],
       "additionalProperties": false
     }

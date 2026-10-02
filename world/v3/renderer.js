@@ -69,6 +69,7 @@ function geometry(batch){const g=new THREE.BufferGeometry();for(const [name,size
 class SpatialRenderer{
  constructor(source){
   this.source=source;this.actors=new Map();this.stats={backend:'three-webgl',frames:0,frameMs:0};this.active=false;
+  this.cameraProfile=V.cameraProfile;this.perspectiveMode=!!this.cameraProfile;this.projectionReady=false;
   this.entityIds=new WeakMap();this.nextEntityId=0;
   this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#bbc9b2');
   this.camera=new THREE.Camera();this.camera.matrixAutoUpdate=false;this.camera.matrixWorld.identity();this.camera.matrixWorldInverse.identity();
@@ -107,7 +108,7 @@ class SpatialRenderer{
   // height, not a camera-facing lean into the wall behind the actor. The XY
   // right vector has zero projected vertical displacement. These bases retain
   // the artwork's screen shape while its head/feet participate in spatial depth.
-  const {xx,xy,yx,yy}=V.basis,det=xx*yy-yx*xy;
+  const {xx,xy,yx,yy}=this.cameraProfile?.basis||V.basis,det=xx*yy-yx*xy;
   this.right=new THREE.Vector3(yy/det,-xy/det,0);this.up=new THREE.Vector3(0,0,1/35);
   this.raycaster=new THREE.Raycaster();
   const floor={position:[],normal:[],uv:[],color:[]};
@@ -137,15 +138,31 @@ class SpatialRenderer{
   // only the software camera to its actual (possibly odd-sized) drawing
   // buffer grid; simulation, navigation and the hardware camera remain smooth.
   const size=this.renderer.getDrawingBufferSize(new THREE.Vector2()),gridX=zoom*size.x/w,gridY=zoom*size.y/h;
-  this.focus=this.stats.software?{x:Math.round(camera.x*gridX)/gridX,y:Math.round(camera.y*gridY)/gridY}:{...camera};
+  this.focus=this.stats.software&&!this.perspectiveMode?{x:Math.round(camera.x*gridX)/gridX,y:Math.round(camera.y*gridY)/gridY}:{...camera};
+  if(this.perspectiveMode){
+   const playerWorld=V.inverse(camera.x,camera.y);
+   // At the west gate, frame the destination beyond the player; the bias
+   // eases away as the player reaches the central plaza.
+   this.focus.x+=Math.max(0,Math.min(1,(17-playerWorld.x)/10))*320/zoom;
+  }
   const cx=this.focus.x,cy=this.focus.y,s=zoom;
-  this.camera.projectionMatrix.set(96*s/w,-64*s/w,0,-2*cx*s/w,-28*s/h,-44*s/h,70*s/h,2*cy*s/h+1-2*anchorY,-.0056,-.0084,-.00752,.25,0,0,0,1);
-  this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();this.camera.updateMatrixWorld();
+  if(this.perspectiveMode){
+   const b=this.cameraProfile.basis,d=this.cameraProfile.depth,focus=V.inverse(cx,cy),w0=1-d.x*focus.x-d.y*focus.y,n=1-2*anchorY,hx=2*s/w,hy=2*s/h;
+   // The long-lens denominator varies with ground depth and height; the local
+   // axes stay aligned with input and the existing spatial artwork.
+   this.camera.projectionMatrix.set(
+    hx*b.xx,hx*b.yx,0,-hx*cx,
+    n*d.x-hy*b.xy,n*d.y-hy*b.yy,n*d.z+hy*35,n*w0+hy*cy,
+    1.1*d.x,1.1*d.y,1.1*d.z,1.1*w0-.6,
+    d.x,d.y,d.z,w0
+   );
+  }else this.camera.projectionMatrix.set(96*s/w,-64*s/w,0,-2*cx*s/w,-28*s/h,-44*s/h,70*s/h,2*cy*s/h+1-2*anchorY,-.0056,-.0084,-.00752,.25,0,0,0,1);
+  this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();this.camera.updateMatrixWorld();this.projectionReady=true;
   for(const a of this.actors.values())a.mesh.visible=a.shadow.visible=false;
  }
  actor(id,t,draw,{alpha=1,shadowAlpha=alpha,radius=.4}={}){
   const assemblyStarted=performance.now();
-  const screen=V.project(t.position.x,t.position.y),sx=this.width/2+(screen.x-this.focus.x)*this.zoom,sy=this.height*this.anchorY+(screen.y-this.focus.y-(t.position.z||0)*35)*this.zoom;
+  const screen=this.perspectiveMode?this.worldToScreen(t.position.x,t.position.y,t.position.z||0):V.project(t.position.x,t.position.y),sx=this.perspectiveMode?screen.x:this.width/2+(screen.x-this.focus.x)*this.zoom,sy=this.perspectiveMode?screen.y:this.height*this.anchorY+(screen.y-this.focus.y-(t.position.z||0)*35)*this.zoom;
   if(sx< -150||sx>this.width+150||sy< -80||sy>this.height+230)return;
   let a=this.actors.get(id);
   if(!a){
@@ -189,9 +206,10 @@ class SpatialRenderer{
   r.render(c.scene,c.camera);const background=this.scene.background;this.scene.background=null;r.autoClear=false;
   const visibility=this.staticNodes.map(o=>o.visible);try{for(const o of this.staticNodes)o.visible=false;r.render(this.scene,this.camera)}finally{this.staticNodes.forEach((o,i)=>o.visible=visibility[i]);this.scene.background=background;r.autoClear=true}
  }
- end(){const started=performance.now();this.renderer.info.reset();if(this.stats.software)this.cachedWorld();else this.renderer.render(this.scene,this.camera);this.stats.frames++;this.stats.frameMs=this.stats.frameMs*.95+(performance.now()-started)*.05;this.stats.assemblyMs=this.assemblyMs;this.stats.totalMs=performance.now()-this.frameStarted;this.stats.calls=this.renderer.info.render.calls;this.stats.triangles=this.renderer.info.render.triangles;this.stats.textures=this.renderer.info.memory.textures;this.stats.staticDepthCache=!!this.stats.software;}
+ end(){const started=performance.now();this.renderer.info.reset();if(this.stats.software&&!this.perspectiveMode)this.cachedWorld();else this.renderer.render(this.scene,this.camera);this.stats.frames++;this.stats.frameMs=this.stats.frameMs*.95+(performance.now()-started)*.05;this.stats.assemblyMs=this.assemblyMs;this.stats.totalMs=performance.now()-this.frameStarted;this.stats.calls=this.renderer.info.render.calls;this.stats.triangles=this.renderer.info.render.triangles;this.stats.textures=this.renderer.info.memory.textures;this.stats.staticDepthCache=!!this.stats.software&&!this.perspectiveMode;}
  hide(){if(this.canvas)this.canvas.hidden=true;this.active=false;}
  idFor(entity,prefix){if(!this.entityIds.has(entity))this.entityIds.set(entity,prefix+'/'+(++this.nextEntityId));return this.entityIds.get(entity)}
+ worldToScreen(x,y,z=0){const p=new THREE.Vector3(x,y,z).project(this.camera);return{x:(p.x+1)*this.width/2,y:(1-p.y)*this.height/2,depth:p.z}}
  screenRay(x,y){const near=new THREE.Vector3(x/this.width*2-1,1-y/this.height*2,-1).unproject(this.camera),far=new THREE.Vector3(x/this.width*2-1,1-y/this.height*2,1).unproject(this.camera);this.raycaster.set(near,far.sub(near).normalize());return this.raycaster}
  screenToWorld(x,y){const hit=this.screenRay(x,y).intersectObject(this.navFloor,false)[0];return hit?{x:hit.point.x,y:hit.point.y}:null}
  pickActor(x,y){
