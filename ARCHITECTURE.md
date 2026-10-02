@@ -28,6 +28,15 @@ absolute stance contact elevations. Combat, skills, inventory, quests and saves
 retain their existing responsibilities. Golden animation and art approval remain
 open; implementation and test passes are not visual acceptance.
 
+The [production scalability phase](MASTER_PLAN.md#production-scalability-requirement--mandatory-golden-foundation-deliverable)
+is a required Golden Foundation deliverable after Wayfarer acceptance and before
+full production of City 2. Extract proven engine/world systems and component-level
+environment kits while keeping layout, unique landmarks, palette, NPCs, lore and
+quests in city content. Keep solutions local during the current visual iteration;
+this requirement does not authorize premature framework abstraction. New cities
+must use the same exporter, renderer, shared-depth 2D actors, navigation,
+collision, NPC/portal framework and material loader through a city template.
+
 `?renderer=canvas` and `?world=court-legacy` retain migration/comparison paths.
 `proof.html` and the older review reports remain historical structural evidence.
 The following baseline notes describe earlier versions where explicitly dated;
