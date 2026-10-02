@@ -19,6 +19,7 @@ const groundPolygons={
  civic:[[.06,.82],[.58,.69],[.96,.83],[.45,.98]]
 };
 const metadata=Object.fromEntries(C.townObjects.filter(o=>o.building||o.tree).map(o=>{
+ if(C.structures?.[o.id])return [o.id,C.structures[o.id]];
  const b=C.townBlocks.find(b=>b.id===o.id),roof=roofMasks[o.id==='guild-hall'?'civic':o.art];
  return [o.id,{district:district(o.id),groundPolygon:groundPolygons[o.id==='guild-hall'?'civic':o.art],renderAnchor:o.id==='guild-hall'?[.4,.91]:o.pack==='district'?[o.art==='shrine'?.42:o.art==='inn'?.43:.5,.94]:[.48,.94],footprint:b?{x:b.x,y:b.y,w:b.w,h:b.h}:null,entrance:[o.x,o.y],light:[-.7,-.6],collision:b||null,
  layers:o.tree?[{name:'trunk',region:[0,.62,1,1],depth:[o.x,o.y]},{name:'canopy',region:[0,0,1,.62],depth:[o.x+.35,o.y+.45]}]:[
@@ -29,7 +30,11 @@ const metadata=Object.fromEntries(C.townObjects.filter(o=>o.building||o.tree).ma
 const layerCache=new WeakMap();
 function layers(objects){if(layerCache.has(objects))return layerCache.get(objects);const result=objects.flatMap(o=>{
  const m=metadata[o.id];return m?m.layers.map(layer=>({x:layer.depth[0],y:layer.depth[1],prop:{...o,structuralLayer:layer,structure:m}})):[{x:o.x,y:o.y,prop:o}];
-});layerCache.set(objects,result);return result}
+});
+ for(const part of C.nativeWorld?.spatial.parts||[])if(part.objectId.startsWith('town-wall-')){
+  const [x,y]=part.footprint.reduce((sum,v)=>[sum[0]+v[0]/part.footprint.length,sum[1]+v[1]/part.footprint.length],[0,0]);result.push({x,y,prop:{pack:'native-masonry',part}});
+ }
+ layerCache.set(objects,result);return result}
 function face(ctx,iso,points,height,fill,stroke='#6e6354'){
  ctx.beginPath();points.forEach(([x,y,z=height],i)=>{const p=iso(x,y,z);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=.65*V.zoom;ctx.stroke()}
 }
@@ -42,6 +47,10 @@ function platform(ctx,iso,b,height=7){
  for(let i=0;i<w;i+=.6){const a=iso(x+i,y+h,height),z=iso(x+i,y+h,0);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(z.x,z.y);ctx.strokeStyle='#645d4f';ctx.stroke()}
 }
 function ground(ctx,iso){
+ if(C.nativeWorld){
+  ctx.beginPath();for(const shadow of C.nativeWorld.spatial.shadowPolygons){shadow.polygon.forEach(([x,y],i)=>{const p=iso(x,y);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)});ctx.closePath()}
+  ctx.fillStyle='#25382e23';ctx.fill();return;
+ }
  for(const o of C.townObjects.filter(o=>o.building)){
   const m=metadata[o.id],points=m?.groundPolygon;if(!points)continue;
   const p=iso(o.x,o.y),[ax,ay]=m.renderAnchor;
@@ -54,6 +63,7 @@ function ground(ctx,iso){
 }
 const entrances=C.townObjects.filter(o=>o.building&&metadata[o.id]?.footprint);
 function elevationAt(x,y){
+ if(C.nativeWorld)return C.nativeWorld.spatial.elevationAt(x,y);
  let elevation=0;
  for(const o of entrances){
   if(Math.abs(x-o.x)>.65||y<o.y-.28||y>o.y+.55)continue;

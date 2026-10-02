@@ -3,9 +3,11 @@ Blender, save, then: blender -b authoring/golden-proof.blend --python tools/expo
 The same exporter is usable by future towns; it contains no object-specific IDs.
 """
 import bpy,json
+from mathutils import Vector
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def vertices(o):return [[round(v,5) for v in o.matrix_world@p.co] for p in o.data.vertices]
+def uv(o):return [[[round(v,5) for v in o.data.uv_layers.active.data[i].uv] for i in p.loop_indices] for p in o.data.polygons] if o.data.uv_layers.active else None
 def export(scene):
  bpy.context.view_layer.update();objects=[];terrain=None
  for collection in bpy.data.collections:
@@ -13,26 +15,45 @@ def export(scene):
   if not family:continue
   if family=='terrain':
    ground=next(o for o in collection.objects if o.type=='MESH' and not o.get('surface_role'));vs=vertices(ground)
-   terrain={'bounds':{'minX':min(v[0] for v in vs),'minY':min(v[1] for v in vs),'maxX':max(v[0] for v in vs),'maxY':max(v[1] for v in vs)},'elevation':max(v[2] for v in vs),'material':ground.data.materials[0].name,'surfaces':[]}
+   terrain={'bounds':{'minX':min(v[0] for v in vs),'minY':min(v[1] for v in vs),'maxX':max(v[0] for v in vs),'maxY':max(v[1] for v in vs)},'elevation':max(v[2] for v in vs),'material':ground.data.materials[0].name,'vertices':vs,'faces':[list(p.vertices) for p in ground.data.polygons],'surfaces':[]}
+   if scene.get('world_bounds_json'):terrain['bounds']=json.loads(scene['world_bounds_json'])
+   if uv(ground):terrain['uvs']=uv(ground)
+   if ground.get('outline_vertex_indices'):terrain['walkablePolygon']=[vs[i][:2] for i in json.loads(ground['outline_vertex_indices'])]
    for o in collection.objects:
     if o.type=='MESH' and o.get('surface_role'):
-     points=[v[:2] for v in vertices(o)];surface={'id':o.name,'role':o['surface_role'],'polygon':points}
+     vs=vertices(o);points=[v[:2] for v in vs];surface={'id':o.name,'role':o['surface_role'],'polygon':points,'vertices':vs,'faces':[list(p.vertices) for p in o.data.polygons],'material':o.data.materials[0].name,'walkable':o.get('walkable',o['surface_role'] not in ('water',)),'visible':bool(o.get('render_visible',True))}
      if o.get('object_id'):surface['objectId']=o['object_id']
+     if uv(o):surface['uvs']=uv(o)
      if o.get('road_segment'):
       surface['centerline']=[[(points[0][i]+points[3][i])/2 for i in range(2)],[(points[1][i]+points[2][i])/2 for i in range(2)]];surface['width']=sum((points[0][i]-points[3][i])**2 for i in range(2))**.5;surface['legacyRole']=o['legacy_role']
      terrain['surfaces'].append(surface)
    continue
-  parts=[];portals=[];lights=[];presentation=None
+  parts=[];portals=[];lights=[];services=[];walkers=[];presentation=None
   for o in collection.objects:
-   if o.type=='MESH':parts.append({'id':o.name,'role':o['role'],'shadow':bool(o['shadow']),'material':o.data.materials[0].name,'vertices':vertices(o),'faces':[list(p.vertices) for p in o.data.polygons]})
-   elif o.get('kind')=='presentation':presentation={'sprite':json.loads(o['data_json']),'position':[round(v,5) for v in o.matrix_world.translation],'footprintReview':o['footprint_review']}
+   if o.type=='MESH':
+    part={'id':o.name,'role':o['role'],'shadow':bool(o['shadow']),'material':o.data.materials[0].name,'vertices':vertices(o),'faces':[list(p.vertices) for p in o.data.polygons]}
+    if uv(o):part['uvs']=uv(o)
+    parts.append(part)
+   elif o.get('kind')=='presentation':
+    presentation={'sprite':json.loads(o['data_json']),'position':[round(v,5) for v in o.matrix_world.translation],'footprintReview':o['footprint_review']}
+    if o.get('structure_json'):presentation['structure']=json.loads(o['structure_json'])
    elif o.get('kind')=='portal':
-    approach=bpy.data.objects[o['approach_id']];portals.append({'id':o.name,'anchor':list(o.matrix_world.translation),'approach':list(approach.matrix_world.translation),'range':o.get('range',1)})
+    approach=bpy.data.objects[o['approach_id']];p={'id':o.name,'anchor':list(o.matrix_world.translation),'approach':list(approach.matrix_world.translation),'range':o.get('range',1)}
+    if o.get('transition_json'):p['transition']=json.loads(o['transition_json'])
+    portals.append(p)
    elif o.get('kind')=='light':lights.append({'id':o.name,'position':list(o.matrix_world.translation),'radius':o['radius'],'color':o['color']})
+   elif o.get('kind')=='service':services.append({'id':o.name,**json.loads(o['data_json']),'position':list(o.matrix_world.translation)})
+   elif o.get('kind')=='walker':walkers.append({'id':o.name,**json.loads(o['data_json']),'route':[[round(v,5) for v in (o.matrix_world@Vector(p))][:2] for p in json.loads(o['route_json'])]})
   record={'id':collection.name,'family':family,'parts':parts,'portals':portals,'lights':lights}
   if presentation:record['presentation']=presentation
+  if services:record['services']=services
+  if walkers:record['walkers']=walkers
   objects.append(record)
  objects.sort(key=lambda o:o['id'])
- return {'version':3,'id':scene['world_id'],'source':str(Path(bpy.data.filepath).relative_to(ROOT)),'units':'world-unit','terrain':terrain,'navigation':{'actorRadius':scene['navigation_radius'],'cellSize':scene['navigation_cell_size']},'lighting':{'sun':{'cast':[scene['sun_cast_x'],scene['sun_cast_y']],'strength':scene['sun_strength']},'ambient':scene['ambient']},'objects':objects,'spawn':json.loads(scene['spawn_json']),'route':json.loads(scene['route_json'])}
+ data={'version':3,'id':scene['world_id'],'source':str(Path(bpy.data.filepath).relative_to(ROOT)),'units':'world-unit','terrain':terrain,'navigation':{'actorRadius':scene['navigation_radius'],'cellSize':scene['navigation_cell_size']},'lighting':{'sun':{'cast':[scene['sun_cast_x'],scene['sun_cast_y']],'strength':scene['sun_strength']},'ambient':scene['ambient']},'objects':objects,'spawn':json.loads(scene['spawn_json']),'route':json.loads(scene['route_json'])}
+ for prop,key in [('layout_id','layoutId'),('safe_spawn_json','safeSpawn'),('districts_json','districts')]:
+  if scene.get(prop):data[key]=scene[prop] if prop=='layout_id' else json.loads(scene[prop])
+ data['materials']={m.name:{'color':list(m.diffuse_color[:3]),**({'texture':json.loads(m['texture_json'])} if m.get('texture_json') else {})} for m in bpy.data.materials if m.name in {p['material'] for o in objects for p in o['parts']}|{terrain['material']}|{s['material'] for s in terrain['surfaces']}}
+ return data
 if __name__=='__main__':
- data=export(bpy.context.scene);output=ROOT/'world/v3'/(data['id']+'.json');output.write_text(json.dumps(data,indent=2)+'\n');print('Exported',len(data['objects']),'objects from',data['source'],'to',output)
+ data=export(bpy.context.scene);output=ROOT/'world/v3'/(data['id']+'.json');output.write_text((json.dumps(data,separators=(',',':')) if data['id']=='wayfarer-spatial' else json.dumps(data,indent=2))+'\n');print('Exported',len(data['objects']),'objects from',data['source'],'to',output)

@@ -2,7 +2,9 @@
 
 The 2026-10-01 [master plan](MASTER_PLAN.md) integrates this study with the supplied
 [research catalog](RESEARCH-SOURCES.md) and Blender/native-JSON pipeline. It retains
-Canvas2D, current painted art and the Golden content freeze. Claims below retain
+2D painterly actors and the Golden content freeze. The later user amendment
+makes Blender-authored spatial geometry and shared-depth Three.js the current
+environment architecture; Canvas-era recommendations below retain historical scope. Claims below retain
 their pinned-source and v27/v28 baseline scope; catalog recommendations do not
 constitute a fresh inspection of NostalRO or the newer roBrowser repository.
 
@@ -14,7 +16,7 @@ Ragnarok Online's useful principle is the coordination of **directional sprite a
 
 The inspected community client loads terrain surfaces, model placements, walkability, lights and sprite animation as separate but connected data. Sprite direction incorporates camera direction; sprite brightness samples the ground shadow map; sprite parts use animation offsets and attachment positions. These mechanisms explain how different asset types can belong to one space. [S1–S7]
 
-ASTRAEON keeps its richly painted sprites and Canvas2D world. It should reproduce the spatial relationships through world-aligned materials, registered feet, explicit ground footprints, consistent perspective, depth ordering, contact shadows and readable routes. This does not require changing the live hero to 3D or migrating engines before the Golden Scene passes.
+ASTRAEON keeps its richly painted directional sprites inside a lightweight spatial world. The current architecture uses authored environment meshes, shared depth, registered feet, explicit navigation footprints, contact shadows and readable routes. Characters remain 2D. This is an ASTRAEON architectural decision informed by the observed separation, not a reproduction of Ragnarok content.
 
 **Evidence boundary:** roBrowser is a community client implementation; BrowEdit and ActEditor are community tools; rAthena is a community server implementation with converted guide dialogue. They provide inspectable technical evidence, not Gravity's internal art direction or original studio workflow. The archived roBrowser is useful for classic-format behavior, not a recommendation to adopt its dependencies. The city guide examples describe their particular script versions, not every historical or regional client. In particular, a `pre-re` path does not prove the earliest Payon layout.
 

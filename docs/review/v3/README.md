@@ -1,6 +1,10 @@
-# World pipeline v3 — local review candidate
+# World pipeline v3 — historical Canvas review
 
-This pass integrates the supplied master pipeline and research guidance into
+The reports below record the earlier Canvas integration. Current default play uses
+`wayfarer-spatial.blend` and shared-depth Three.js, governed by the updated
+[master plan](../../../MASTER_PLAN.md). These reports do not approve that migration.
+
+The historical pass integrates the supplied master pipeline and research guidance into
 [the master plan](../../../MASTER_PLAN.md). Canvas2D remains the browser renderer.
 No Ragnarok assets, maps, proprietary content or new engine dependency are included.
 Golden Town and Golden Character approval remain open; content expansion is paused.

@@ -1,30 +1,37 @@
 # Runtime architecture
 
-Static, dependency-free browser client. Canvas2D paints an affine high-angle world with original illustrated assets; DOM/CSS owns menus and responsive controls. It is a local action RPG slice, not a networked MMORPG.
+The default Wayfarer runtime renders the Blender-authored spatial environment
+with vendored Three.js and painterly directional 2D actors in the same WebGL depth
+buffer. DOM/CSS owns menus and responsive controls. Canvas assembles actor textures,
+renders UI/effects and retains legacy zones. This is a local action RPG slice.
 
-The [master plan](MASTER_PLAN.md) governs the v3 integration. Canvas2D remains the
-renderer. `world/v3/spatial.js` compiles Blender-exported native JSON into shared
-solids, navigation, overhead regions, shadow volumes and portal approaches.
-`world/v3/canvas-world.js` consumes it in the bounded `proof.html` scene, with cached
-terrain, geometry and shadows and the same projected ground depth for actors.
-`tools/export-world-v3.py` exports edited Blender files without rebuilding them.
-The proof is separate from the main town pending spatial/art acceptance.
+The [master plan](MASTER_PLAN.md) incorporates the user's spatial architecture
+amendment. `authoring/wayfarer-spatial.blend` exports meshes, UVs, materials,
+walkable surfaces, solids, parented services, patrols, lights and portals through
+`tools/export-world-v3.py`. Default boot imports `world/v3/wayfarer-spatial.json`
+before gameplay modules capture content; `world/v3/town-import.js` adapts the
+same records to existing simulation consumers. `world/v3/spatial.js` compiles
+lightweight navigation and elevation. Runtime rendering does not draw building
+cards in the native town or maintain a separate collision coordinate list.
 
-`boot.js` loads existing classic scripts in order. The `world=court-v3` review URL
-imports `world/v3/wayfarer-court.json` before modules capture content; its adapter
-derives painted placements, rectangular occupancy, road centerlines and forecourts
-from the authored manifest. The same existing Canvas renderer and gameplay modules
-then run. Default play retains legacy content. This adapter does not yet migrate
-NPC interactions, walkers or all source-art masks, and rejects rotated/polygon
-solids. The Blender parent transform binds each placement and its footprint/forecourt.
+`world/v3/renderer.js` batches static meshes by material, uses authored UVs and
+original material atlases, and draws alpha-tested camera-facing actor quads with
+depth tests and depth writes. The fixed camera shares the Cartesian ground basis
+with gameplay. Ground clicks raycast authored navigation surfaces; actor/service
+picks use the visible depth solution and actor alpha. A hidden ramp follows the
+visual civic stairs, avoiding expensive mesh physics. Baked cast shadows and
+world-space contact shadows replace real-time shadow maps.
 
-The v29 mainline Warrior already uses the rebuilt eight-direction walk atlas and
-`warrior-rig.js` to render visible leg segments against tracked world foot contacts.
-The shorter rear fallback below applies to Mage/Ranger and historical Warrior
-baselines. The v3 proof adds distinct walk/run/sprint atlases, duty/stride strategies,
-timing, body/foot anchors, contacts, events and attachment records; these are review
-candidates. Mainline locomotion migration is pending. Service-worker cache v30
-includes the proof. Historical sections below retain their baseline context.
+The Golden Warrior uses `world/v3/locomotion.js` and the existing painterly rig,
+with separate manifest-driven walk/run/sprint strategies, one-foot settling and
+absolute stance contact elevations. Combat, skills, inventory, quests and saves
+retain their existing responsibilities. Golden animation and art approval remain
+open; implementation and test passes are not visual acceptance.
+
+`?renderer=canvas` and `?world=court-legacy` retain migration/comparison paths.
+`proof.html` and the older review reports remain historical structural evidence.
+The following baseline notes describe earlier versions where explicitly dated;
+they do not supersede the current spatial architecture.
 
 | Module | Actual responsibility |
 |---|---|

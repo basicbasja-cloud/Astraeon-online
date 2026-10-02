@@ -203,6 +203,7 @@ canvas { position: relative; z-index: 0; }
   backdrop-filter: blur(14px) saturate(1.15);
 }
 .identity { text-shadow: 0 1px 12px #f1d69d44; }
+.spatial-stage .hud,.spatial-stage .mission { backdrop-filter: none; }
 .meter { border: 1px solid #bdd2d021; box-shadow: inset 0 1px 4px #0009; }
 .meter i { box-shadow: 0 0 11px #ed867b90; transition: width .25s ease; }
 .meter.energy i { box-shadow: 0 0 11px #68dce0aa; }

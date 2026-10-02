@@ -63,6 +63,21 @@
                 "minimum": 0
               }
             }
+          },
+          "uvs": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
           }
         },
         "required": [
@@ -103,6 +118,38 @@
           "range": {
             "type": "number",
             "exclusiveMinimum": 0
+          },
+          "transition": {
+            "type": "object",
+            "properties": {
+              "to": {
+                "enum": [
+                  1,
+                  2
+                ]
+              },
+              "label": {
+                "type": "string"
+              },
+              "glyph": {
+                "type": "string"
+              },
+              "arrival": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "to",
+              "label",
+              "glyph",
+              "arrival"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [
@@ -192,6 +239,141 @@
             "h"
           ],
           "additionalProperties": false
+        },
+        "structure": {
+          "type": "object",
+          "properties": {
+            "district": {
+              "type": "string"
+            },
+            "groundPolygon": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "minItems": 3,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "renderAnchor": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            },
+            "entrance": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            },
+            "light": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            },
+            "layers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "depth": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "polygon": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "minItems": 3,
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "exclude": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "minItems": 3,
+                        "items": {
+                          "type": "array",
+                          "minItems": 2,
+                          "maxItems": 2,
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "visibility": {
+                    "enum": [
+                      "selective-overhead"
+                    ]
+                  }
+                },
+                "required": [
+                  "name",
+                  "region",
+                  "depth"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "district",
+            "renderAnchor",
+            "entrance",
+            "light",
+            "layers"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -200,6 +382,88 @@
         "footprintReview"
       ],
       "additionalProperties": false
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "guild",
+              "craft",
+              "market",
+              "travel",
+              "housing",
+              "journal",
+              "inn",
+              "shrine"
+            ]
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "position": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "symbol",
+          "position"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "walkers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "pace": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "tint": {
+            "type": "number"
+          },
+          "route": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "required": [
+          "id",
+          "pace",
+          "tint",
+          "route"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [

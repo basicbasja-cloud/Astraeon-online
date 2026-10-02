@@ -573,6 +573,101 @@
         "sprint"
       ],
       "additionalProperties": false
+    },
+    "reactions": {
+      "type": "object",
+      "properties": {
+        "atlas": {
+          "const": "assets/warrior-reactions-v3.webp"
+        },
+        "clip": {
+          "const": "warrior-reactions-v3"
+        },
+        "cols": {
+          "const": 2
+        },
+        "rows": {
+          "const": 8
+        },
+        "frames": {
+          "type": "array",
+          "minItems": 16,
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "properties": {
+              "direction": {
+                "enum": [
+                  "S",
+                  "SE",
+                  "E",
+                  "NE",
+                  "N",
+                  "NW",
+                  "W",
+                  "SW"
+                ]
+              },
+              "state": {
+                "enum": [
+                  "hit",
+                  "death"
+                ]
+              },
+              "rect": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "anchor": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              },
+              "outline": {
+                "type": "array",
+                "minItems": 3,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              },
+              "standingHeight": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "direction",
+              "state",
+              "rect",
+              "anchor",
+              "outline",
+              "standingHeight"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "atlas",
+        "clip",
+        "cols",
+        "rows",
+        "frames"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -581,7 +676,8 @@
     "directions",
     "anchorSpace",
     "distanceUnit",
-    "clips"
+    "clips",
+    "reactions"
   ],
   "additionalProperties": false
 }

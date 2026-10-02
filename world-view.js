@@ -8,7 +8,7 @@ const determinant=basis.xx*basis.yy-basis.yx*basis.xy;
 const project=(x,y)=>({x:x*basis.xx+y*basis.yx,y:x*basis.xy+y*basis.yy});
 const inverse=(x,y)=>({x:(basis.yy*x-basis.yx*y)/determinant,y:(basis.xx*y-basis.xy*x)/determinant});
 const materialTransform=(unit,origin,zoom=1)=>[basis.xx*unit*zoom,basis.xy*unit*zoom,basis.yx*unit*zoom,basis.yy*unit*zoom,origin.x,origin.y];
-const framing=(width,height)=>({zoom:width/height<.8?1:width>1000?.92:.96,anchorY:width/height<.8?.56:.55});
+const framing=(width,height)=>window.AstraeonView?.zone===0?({zoom:width/height<.8?.98:width>1000?.82:.9,anchorY:width/height<.8?.62:.72}):({zoom:width/height<.8?1:width>1000?.92:.96,anchorY:width/height<.8?.56:.55});
 const limits=zone=>zone===0?{w:44,h:40}:{w:30,h:27};
 function screen(x,y,z,camera,width,height){const p=project(x,y),v=framing(width,height);return{x:width/2+(p.x-camera.x)*v.zoom,y:height*v.anchorY+(p.y-camera.y-z)*v.zoom}}
 function world(x,y,camera,width,height){const v=framing(width,height);return inverse((x-width/2)/v.zoom+camera.x,(y-height*v.anchorY)/v.zoom+camera.y)}

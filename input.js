@@ -6,6 +6,7 @@ class ActionInput {
  key(value,pressed){const k=value.toLowerCase();pressed?this.keys.add(k):this.keys.delete(k);return pressed?this.bindings[k]:null}
  move(touch={x:0,y:0}){const has=(a,b)=>this.keys.has(a)||this.keys.has(b);return{x:touch.x+Number(has('d','arrowright'))-Number(has('a','arrowleft')),y:touch.y+Number(has('s','arrowdown'))-Number(has('w','arrowup'))}}
  get sprint(){return this.keys.has('shift')}
+ get walk(){return this.keys.has('alt')}
  clear(){this.keys.clear()}
 }
 window.AstraeonInput={ActionInput};

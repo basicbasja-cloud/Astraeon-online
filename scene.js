@@ -19,6 +19,8 @@ function civicArtwork(){
 const hash=n=>{let x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)};
 // World-aligned material courses share the same projection as architecture and actors.
 let terrainCache=null,vergePattern=null;
+const visibility=new Map();
+const visibilitySnapshot=()=>[...visibility].map(([id,s])=>({id,alpha:s.alpha,overlap:s.overlap}));
 function verge(ctx,iso,image){
  if(!vergePattern){
   const material=document.createElement('canvas');material.width=384;material.height=384;const g=material.getContext('2d');
@@ -40,6 +42,11 @@ function corridor(g,road,p){
 function ground(ctx,iso,t){
  if(!terrainCache){
   terrainCache=document.createElement('canvas');terrainCache.width=4000;terrainCache.height=2100;const g=terrainCache.getContext('2d'),p=(x,y,z=0)=>{const q=window.AstraeonView.project(x,y);return{x:q.x+1450,y:q.y+100-z}};
+  for(const space of content.spaces||[]){
+   polygon(g,space.polygon,p);g.fillStyle=space.role==='yard'?'#a08c67bb':space.role==='garden'?'#6c7e5966':'#66815155';g.fill();
+   g.lineWidth=space.role==='garden'?5:3;g.strokeStyle=space.role==='yard'?'#b6a18499':'#b8b39a99';g.stroke();
+   g.lineWidth=1;g.strokeStyle='#58614977';g.stroke();
+  }
   const mask=document.createElement('canvas');mask.width=4000;mask.height=2100;const m=mask.getContext('2d');m.fillStyle='#fff';
   for(const road of content.townRoads.filter(r=>!['service','field'].includes(r.role)))corridor(m,road,p);
   polygon(m,content.goldenScene.plaza,p);m.fill();
@@ -59,7 +66,7 @@ function ground(ctx,iso,t){
   s.restore();
   // Broad, clipped wear varies this connected material without pasted texture patches.
   s.save();s.globalCompositeOperation='multiply';
-  for(const [x,y,r,tint] of [[8.8,15.9,90,'#dbcfb9'],[22.5,17,100,'#dcd3bb'],[39.9,16.1,120,'#c8b99a'],[14.5,18,110,'#ece5d6']]){
+  for(const court of content.forecourts){const [x,y]=court.points.reduce((a,p)=>[a[0]+p[0]/court.points.length,a[1]+p[1]/court.points.length],[0,0]),r=90,tint='#dbcfb9';
    const q=p(x,y);s.save();s.translate(q.x,q.y);s.scale(1,.55);const wash=s.createRadialGradient(0,0,0,0,0,r);wash.addColorStop(0,tint);wash.addColorStop(1,'#ffffff');s.fillStyle=wash;s.fillRect(-r,-r,r*2,r*2);s.restore();
   }s.restore();
   s.globalCompositeOperation='destination-in';s.drawImage(mask,0,0);
@@ -73,15 +80,6 @@ function ground(ctx,iso,t){
    if(['service','field'].includes(road.role)){
     const dirt=document.createElement('canvas');dirt.width=4000;dirt.height=2100;const d=dirt.getContext('2d');d.fillStyle='#aa967477';corridor(d,road,p);g.save();g.filter='blur(3px)';g.drawImage(dirt,0,0);g.restore();
    }
-   // Shallow side drainage follows street edges, never cuts through the open court.
-   if(!['service','field'].includes(road.role))for(let j=1;j<road.points.length;j++){
-    const a=road.points[j-1],b=road.points[j],dx=b[0]-a[0],dy=b[1]-a[1],n=Math.hypot(dx,dy),nx=-dy/n,ny=dx/n;
-    for(const side of [-1,1])for(let i=0;i<n*3;i++){
-     const f=i/(n*3),x=a[0]+dx*f+nx*(road.width/2-.07)*side,y=a[1]+dy*f+ny*(road.width/2-.07)*side;
-     if(x>9.6&&x<19.6&&y>12&&y<20.7)continue;
-     const q=p(x,y),end=p(x+dx/n*.30,y+dy/n*.30);g.strokeStyle='#756c58';g.lineWidth=2;g.beginPath();g.moveTo(q.x,q.y+1.8);g.lineTo(end.x,end.y+1.8);g.stroke();g.strokeStyle='#d9ccac';g.lineWidth=2;g.beginPath();g.moveTo(q.x,q.y);g.lineTo(end.x,end.y);g.stroke();g.strokeStyle='#655e492e';g.lineWidth=1.6;g.beginPath();g.moveTo(q.x,q.y);g.lineTo(end.x,end.y);g.stroke();
-    }
-   }
    for(let j=1;j<road.points.length;j++){
     const a=road.points[j-1],b=road.points[j],dx=b[0]-a[0],dy=b[1]-a[1],n=Math.hypot(dx,dy),nx=-dy/n,ny=dx/n;
     for(let i=0;i<n*9;i++)for(const side of [-1,1]){
@@ -91,8 +89,8 @@ function ground(ctx,iso,t){
     }
    }
   }
-  // Designed foot traffic from the Consortium threshold to the fountain and market.
-  for(const [x,y,rx,ry] of [[10.8,15.8,54,27],[14.5,18.6,85,24],[20.3,17.7,65,24],[24,20,60,25],[40.9,16.1,95,35]]){const q=p(x,y);g.save();g.translate(q.x,q.y);g.scale(1,ry/rx);const wear=g.createRadialGradient(0,0,0,0,0,rx);wear.addColorStop(0,'#87795825');wear.addColorStop(1,'#87795800');g.fillStyle=wear;g.fillRect(-rx,-rx,rx*2,rx*2);g.restore()}
+  // Traffic wear follows authored services, never the superseded court coordinates.
+  for(const entry of content.services||[]){const q=p(entry.x,entry.y),rx=48;g.save();g.translate(q.x,q.y);g.scale(1,.45);const wear=g.createRadialGradient(0,0,0,0,0,rx);wear.addColorStop(0,'#87795825');wear.addColorStop(1,'#87795800');g.fillStyle=wear;g.fillRect(-rx,-rx,rx*2,rx*2);g.restore()}
   // Earth under the existing tree clusters, rather than a tree pasted onto stone/grass.
   for(const o of content.townObjects.filter(o=>o.tree)){
    const q=p(o.x,o.y),r=o.w*.23;g.save();g.translate(q.x,q.y);g.scale(1,.55);const soil=g.createRadialGradient(0,0,3,0,0,r);soil.addColorStop(0,'#75694f66');soil.addColorStop(.55,'#89795735');soil.addColorStop(1,'#89795700');g.fillStyle=soil;g.fillRect(-r,-r,r*2,r*2);g.restore();
@@ -102,6 +100,16 @@ function ground(ctx,iso,t){
  window.AstraeonView.drawCache(ctx,terrainCache,iso(0,0),1450,100);
 }
 function prop(ctx,o,iso,player,time){
+ if(o.pack==='native-masonry'){
+  const vs=o.part.vertices,faces=o.part.faces.map(indices=>({indices,points:indices.map(i=>iso(vs[i][0],vs[i][1],vs[i][2]*35))}));
+  faces.sort((a,b)=>a.indices.reduce((s,i)=>s+14*vs[i][0]+22*vs[i][1]+30*vs[i][2],0)/a.indices.length-b.indices.reduce((s,i)=>s+14*vs[i][0]+22*vs[i][1]+30*vs[i][2],0)/b.indices.length);
+  for(const face of faces){const ps=face.points,area=ps.reduce((s,p,i)=>s+p.x*ps[(i+1)%ps.length].y-ps[(i+1)%ps.length].x*p.y,0);if(area>=0)continue;
+   const top=face.indices.every(i=>vs[i][2]>.01);ctx.beginPath();ps.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle=top?'#d6c6a6':'#9c947f';ctx.fill();ctx.lineWidth=.7*window.AstraeonView.zoom;ctx.strokeStyle='#746f60';ctx.stroke();
+   if(!top){const low=face.indices.filter(i=>vs[i][2]<.01);if(low.length===2){const a=vs[low[0]],b=vs[low[1]],n=Math.hypot(b[0]-a[0],b[1]-a[1]);for(let row=1;row<3;row++){const p=iso(a[0],a[1],row*.95/3*35),q=iso(b[0],b[1],row*.95/3*35);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}
+    for(let d=.55;d<n;d+=.55){const f=d/n,p=iso(a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f),q=iso(a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,.95*35);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}
+   }
+  }return true;
+ }
  if(o.pack!=='outdoor'&&o.pack!=='ruin'){const zoom=window.AstraeonView?.zoom||1;o={...o,w:o.w*zoom,h:o.h*zoom}}
  if(o.pack==='outdoor'||o.pack==='ruin')return window.AstraeonEnvironment.drawProp(ctx,o,iso,player,time);
  const sheet=o.pack==='district'?district[o.art]:o.id==='guild-hall'?hall:o.pack==='secondary'?secondary:atlas;if(!sheet.complete||!sheet.naturalWidth)return false;
@@ -122,12 +130,23 @@ function prop(ctx,o,iso,player,time){
   const outline=points=>{points.forEach(([x,y],i)=>{i?ctx.lineTo(left+x*o.w,top+y*o.h):ctx.moveTo(left+x*o.w,top+y*o.h)});ctx.closePath()};
   if(shape)outline(shape);else ctx.rect(left+x0*o.w,top+y0*o.h,(x1-x0)*o.w,(y1-y0)*o.h);
   if(hole){ctx.clip();ctx.beginPath();ctx.rect(left,top,o.w,o.h);outline(hole)}ctx.clip('evenodd');
+  if(o.structuralLayer.visibility==='selective-overhead'){
+   const playerFoot=iso(player.x,player.y),layer=o.structuralLayer,depth=(x,y)=>14*x+22*y;
+   const inside=(x,y)=>{if(x<x0||x>x1||y<y0||y>y1)return false;return !shape||window.AstraeonSpatialV3.pointIn({x,y},shape)};
+   const overlap=depth(...layer.depth)>depth(player.x,player.y)&&[[0,62],[-8,45],[8,45]].some(([dx,dy])=>inside((playerFoot.x+dx*window.AstraeonView.zoom-left)/o.w,(playerFoot.y-dy*window.AstraeonView.zoom-top)/o.h));
+   const key=o.id+'/'+layer.name,prior=visibility.get(key)||{alpha:1,time:time-.05},dt=Math.min(.1,Math.max(0,time-prior.time));
+   const alpha=prior.alpha+((overlap?.23:1)-prior.alpha)*(1-Math.exp(-14*dt));visibility.set(key,{alpha,time,overlap});ctx.globalAlpha*=alpha;
+  }
   ctx.drawImage(o.id==='guild-hall'?civicArtwork():sheet,...a.rect,left+sway,top,o.w,o.h);ctx.restore();
  }else ctx.drawImage(o.id==='guild-hall'?civicArtwork():sheet,...a.rect,left+sway,top,o.w,o.h);
  if(o.art==='fountain'){ctx.globalAlpha=.3;ctx.strokeStyle='#b9f9ed';ctx.lineWidth=1;for(let k=0;k<2;k++){ctx.beginPath();ctx.ellipse(p.x,p.y-25,18+((time*9+k*15)%28),5+((time*2+k*4)%8),0,0,Math.PI*2);ctx.stroke()}}
  if(o.art==='stall'){ctx.globalAlpha=.55;ctx.fillStyle='#ffe1a0';let q=.65+.35*Math.sin(time*2+o.x);ctx.shadowColor='#ffd37b';ctx.shadowBlur=6*q;ctx.beginPath();ctx.arc(p.x+o.w*.33,p.y-o.h*.43,2.5,0,Math.PI*2);ctx.fill()}
+ if(!o.structuralLayer||['frontage','span'].includes(o.structuralLayer.name))for(const emitter of (content.lights||[]).filter(l=>l.objectId===o.id)){
+  const lamp=iso(...emitter.position.slice(0,2),emitter.position[2]*35),r=12*window.AstraeonView.zoom;
+  ctx.globalAlpha=.34+.025*Math.sin(time*3.1);const halo=ctx.createRadialGradient(lamp.x,lamp.y,0,lamp.x,lamp.y,r);halo.addColorStop(0,emitter.color+'bb');halo.addColorStop(1,emitter.color+'00');ctx.fillStyle=halo;ctx.fillRect(lamp.x-r,lamp.y-r,r*2,r*2);
+ }
  ctx.restore();return true;
 }
 function flowerBeds(ctx,iso){for(const [x,y] of [[11,12],[17.8,12],[11,19.5],[18,22]]){let p=iso(x,y);ctx.save();ctx.fillStyle='#395f3e';ctx.beginPath();ctx.ellipse(p.x,p.y,30,13,0,0,Math.PI*2);ctx.fill();for(let i=0;i<9;i++){let xx=p.x+(hash(i+x)*2-1)*25,yy=p.y+(hash(i+y)*2-1)*8;ctx.fillStyle=i%2?'#e9b0a1':'#f3dea0';ctx.beginPath();ctx.arc(xx,yy-3,2,0,Math.PI*2);ctx.fill()}ctx.restore()}}
-window.AstraeonScene={whenReady,verge,ground,prop,flowerBeds,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
+window.AstraeonScene={whenReady,verge,ground,prop,flowerBeds,visibilitySnapshot,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
 })();

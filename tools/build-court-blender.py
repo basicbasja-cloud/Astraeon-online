@@ -6,7 +6,7 @@ import bpy,json,subprocess,math,runpy
 from mathutils import Vector
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-source=json.loads(subprocess.check_output(['node','-e',"global.window={};require('./world-view.js');require('./world-content.js');require('./town-structure.js');console.log(JSON.stringify({content:window.AstraeonContent,metadata:window.AstraeonTownStructure.metadata}))"],cwd=ROOT));C=source['content']
+source=json.loads(subprocess.check_output(['node','-e',"global.window={};require('./world-view.js');eval(require('fs').readFileSync(0,'utf8'));require('./town-structure.js');console.log(JSON.stringify({content:window.AstraeonContent,metadata:window.AstraeonTownStructure.metadata}))"],cwd=ROOT,input=subprocess.check_output(['git','show','f610aef:world-content.js'],cwd=ROOT)));C=source['content']
 helpers=runpy.run_path(str(ROOT/'tools/blender-v3-kit.py'))
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 for c in list(bpy.data.collections):bpy.data.collections.remove(c)

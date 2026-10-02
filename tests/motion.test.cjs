@@ -116,14 +116,13 @@ test('projectile muzzle offset cannot skip a thin adjacent wall',()=>{
 require('../world-view.js');
 require('../world-content.js');
 require('../sprite-motion.js');
-test('painted town corridors, including their full width, clear occupied ground',()=>{
- const content=window.AstraeonContent;
- for(const road of content.townRoads)for(let i=1;i<road.points.length;i++){
-  const a=road.points[i-1],b=road.points[i],count=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])*20);
-  for(let j=0;j<=count;j++){const x=a[0]+(b[0]-a[0])*j/count,y=a[1]+(b[1]-a[1])*j/count;
-   for(const block of content.townBlocks){const dx=Math.max(block.x-.2-x,0,x-(block.x+block.w+.2)),dy=Math.max(block.y-.2-y,0,y-(block.y+block.h+.2));
-    assert.ok(Math.hypot(dx,dy)>=road.width/2-.001,`${road.role} at ${x},${y} intersects ${block.id}`);
-   }
+require('../world/v3/spatial.js');require('../world/v3/town-import.js');
+window.AstraeonContent=window.AstraeonTownImportV3.content(require('../world/v3/wayfarer-court.json'),window.AstraeonContent);
+test('Golden streets clear physical foundations across their authored width',()=>{
+ const content=window.AstraeonContent,spatial=window.AstraeonSpatialV3;
+ for(const road of content.townRoads){const [a,b]=road.points,dx=b[0]-a[0],dy=b[1]-a[1],n=Math.hypot(dx,dy);
+  for(let d=.4;d<n-.4;d+=.15)for(let side=-1;side<=1;side+=.5){const p={x:a[0]+dx*d/n-dy/n*road.width*.5*side,y:a[1]+dy*d/n+dx/n*road.width*.5*side};
+   for(const solid of content.nativeWorld.spatial.solids)assert(!spatial.touches(p,solid.footprint,.18),`${road.role} at ${p.x},${p.y} intersects ${solid.id}`);
   }
  }
 });
