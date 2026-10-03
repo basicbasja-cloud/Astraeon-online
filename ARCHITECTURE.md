@@ -16,8 +16,10 @@ cards in the native town or maintain a separate collision coordinate list.
 
 `world/v3/renderer.js` batches static meshes by material, uses authored UVs and
 original material atlases, and draws alpha-tested upright illustrated actor quads with
-depth tests and depth writes. The fixed camera shares the Cartesian ground basis
-with gameplay. Ground clicks raycast authored navigation surfaces; actor/service
+depth tests and depth writes. The default classic Ragnarok camera uses a 15-degree
+perspective lens, 50-degree downward pitch, yaw zero, zoom 125 and centered smooth
+follow. Mouse orbit/tilt/zoom controls update the basis shared with gameplay.
+Ground clicks raycast authored navigation surfaces; actor/service
 picks use the visible depth solution and actor alpha. The quad's vertical axis
 is world Z, so a character standing before a doorway does not lean into its wall.
 Hidden contact rectangles follow the actual civic and shrine tread tops; the
@@ -25,9 +27,11 @@ earlier continuous ramps remain inactive source references. This avoids expensiv
 mesh physics while keeping feet above the visible steps. Baked cast shadows and
 world-space contact shadows replace real-time shadow maps.
 
-The Golden Warrior uses `world/v3/locomotion.js` and the existing painterly rig,
-with separate manifest-driven walk/run/sprint strategies, one-foot settling and
-absolute stance contact elevations. Combat, skills, inventory, quests and saves
+The Golden Warrior uses `world/v3/locomotion.js` for simulation and the new
+`warrior-painted-locomotion.json` for eight-direction/eight-frame full-body
+walk/run/sprint playback. Artwork uses shared scale and foot baselines; no
+procedural limbs are overlaid on the new locomotion frames. Older contact/rig
+paths remain for comparison and other states. Combat, skills, inventory, quests and saves
 retain their existing responsibilities. Golden animation and art approval remain
 open; implementation and test passes are not visual acceptance.
 

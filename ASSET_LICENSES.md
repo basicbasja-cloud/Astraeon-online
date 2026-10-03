@@ -84,6 +84,18 @@ No new runtime art or third-party pixels were added. The smaller northern fronta
 
 `warrior-walk-v2.webp` is rebuilt by `tools/build-warrior-walk.py` from this project's existing original Warrior directional costume artwork and authored two-leg geometry/textures. `warrior-gait.js` is its generated registration/contact metadata. `warrior-torso-v1.webp` preserves the stable original costume, cape and weapon silhouette independently of the re-authored legs. The attempted generated walk replacement was rejected and is not shipped.
 
+## Original painted v4 continuation - 2026-10-03
+
+The three `assets/warrior-{walk,run,sprint}-v4.webp` atlases contain original
+full-body illustrations generated for this project from its original Warrior
+reference. Sources, separately authored SW/NW/W repairs, registration and
+intermediate provenance are retained in `authoring/characters/painted-v4`.
+The final shipped strips supersede both temporary complete run-pose repairs.
+No Ragnarok character pixels are used. `assets/wayfarer-rock-v4.webp` is original
+generated material artwork; its untouched source and provenance are in
+`authoring/materials`. New architecture and props are authored source geometry.
+Research references inform techniques and composition, not imported game assets.
+
 ## World pipeline v3
 
 `authoring/golden-proof.blend` and `authoring/wayfarer-court.blend` contain original

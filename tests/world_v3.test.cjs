@@ -36,8 +36,9 @@ test('stationary turns replant one foot while retaining the other support',()=>{
 test('spatial town routes, water boundaries, stairs and mesh-owned services agree',()=>{
  require('../world-content.js');require('../world/v3/town-import.js');const data=require('../world/v3/wayfarer-spatial.json'),content=window.AstraeonTownImportV3.content(data,window.AstraeonContent),w=content.nativeWorld.spatial;
  let start={x:data.spawn[0],y:data.spawn[1]};for(const stop of data.route){const goal={x:stop.position[0],y:stop.position[1]},path=w.route(start,goal);assert(path,stop.name);for(const point of path)assert(!w.blocked(point.x,point.y));start=goal}
- assert(w.blocked(2,25),'Water must not be walkable');for(let y=23;y<29;y+=.1)assert(!w.blocked(6.95,y),'Gate bridge must remain open');
- assert(w.elevationAt(21.8,15)>.4);assert(w.elevationAt(21.8,16.5)>.2);assert(w.elevationAt(21.8,17.1)<.03);
+ assert(w.blocked(2,25),'Water must not be walkable');const arrival=data.route.find(p=>p.name==='Arrival').position,avenue=data.route.find(p=>p.name==='South avenue').position;
+ assert(window.AstraeonNavigation.clear({x:arrival[0],y:arrival[1]},{x:avenue[0],y:avenue[1]},w.blocked),'Gate passage must remain open');
+ const hall=data.objects.find(o=>o.id==='guild-hall').portals[0];assert(Math.abs(w.elevationAt(...hall.approach)-hall.approach[2])<.001,'Hall terrace contacts must match the authored entrance');
  assert.equal(content.services.length,8);const board=content.services.find(s=>s.kind==='journal');assert.equal(board.objectId,'guild-board');for(const service of content.services)assert(!w.blocked(service.x,service.y),service.id);
 });
 test('stance feet retain their absolute planted elevation while climbing',()=>{

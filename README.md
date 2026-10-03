@@ -1,59 +1,52 @@
-# ASTRAEON — Worlds Beyond the Veil
+# ASTRAEON - Worlds Beyond the Veil
 
-Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice production pass. GitHub Pages serves static files. Open the game in a browser; no native client or account is required. Progress saves on that browser/device.
+Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice production pass. Progress saves in the current browser. The playable world uses authored 3D scenery and illustrated directional characters.
+
+## Current build
+
+Wayfarer v43 uses the saved Blender town, exported meshes, materials, navigation, stairs, services and portals in a shared Three.js depth buffer. The concept pass reauthors the Consortium Hall, public streets, fountain monument, district buildings, market, gardens, fortified river banks and street furniture. The source is `authoring/wayfarer-spatial.blend`; its matching runtime export is `world/v3/wayfarer-spatial.json`.
+
+The town camera follows the classic Ragnarok community reference: 15-degree vertical perspective lens, 50-degree downward pitch, yaw zero, zoom 125 and centered smooth follow. These are roBrowser implementation values, not independently verified Gravity client settings. The earlier concept framing remains available at `?camera=concept38`.
+
+Warrior walk, run and sprint now each have eight complete illustrated frames in eight directions. Full-body art replaces procedural locomotion limb overlays. Source sheets, repairs, registration and previews are preserved in `authoring/characters/painted-v4`. Hit/death artwork and combat timing retain their existing paths.
+
+See [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [v43 visual review](docs/review/wayfarer-v43/README.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
 
 ## Play
 
-Phone: joystick left, action buttons right. Tap ground to walk, creature to select/pursue, and glowing exits to change zones. Portrait and landscape have dedicated layouts; rotation preserves the live session.
+Desktop: WASD/arrows move, Alt walks, Shift sprints, F attacks, Space dodges, 1-4 use class skills, Q uses the flask, E interacts and Tab cycles nearby targets. Click ground to navigate, actors to interact and exits to change zones. Character training can switch Warrior, Mage and Ranger while retaining progression.
 
-Desktop: WASD/arrows move, Shift sprint, F attack, Space dodge, 1–4 class skills, Q flask, E interact, Tab cycle nearby targets. Click-to-move is also available. Character menu in town can switch between Warrior, Mage and Ranger for training while keeping progression. More → Preferences selects quality and sound. Sound begins after an interaction, in accordance with browser audio rules.
+Town camera: wheel zoom; right-drag rotates; Shift-right-drag tilts; Ctrl-right-drag zooms. Double-right-click resets yaw, with Shift resets tilt and with Ctrl resets zoom. Camera gestures do not issue movement commands.
 
-## Visual consolidation
+Phone: left joystick and action buttons, with tap navigation and interactions. Portrait, landscape and tablet layouts preserve the live session. More > Preferences controls quality and sound.
 
-Content expansion is paused. The central Wayfarer court is the Golden Scene candidate: the primary Consortium Hall and its open forecourt, a smaller fountain meeting point, coherent market frontage, world-aligned painted limestone and distinct circulation widths. The v28 pass aligns ground with painted building planes, fixes roads crossing collision footprints, shares entrance forecourts and moves existing guards to the gate. Ragnarok Online 1 guides current presentation and town planning. Warrior is the first Golden Character, with camera-correct directions, registered locomotion, contact-timed weight changes and distinct painted hit/death poses. Warrior, Mage and Ranger retain painted directional sprites; the low-poly prototype is excluded from the live client. **Golden Sprite Character and Golden Town Scene approval are pending.** See [GOLDEN_SCENE.md](./GOLDEN_SCENE.md).
-
-The [Ragnarok reference study](./RAGNAROK_REFERENCE.md) documents inspected map/sprite formats, four town navigation examples and their application to original ASTRAEON placement, terrain and Warrior production. It distinguishes source evidence from design recommendations. The [authored ground plan](./docs/reference/wayfarer-plan.svg) shows current roads, collision footprints, art anchors and services; regenerate with `node tools/reference-plan.cjs`.
-
-The v29 implementation adds opaque architectural layers with authored roof/ground masks, original blacksmith/inn/shrine/cottage replacements, connected district paving and a rebuilt eight-direction Warrior gait with world-space stance-foot rendering. Local gameplay and visual captures are recorded in [the v29 review evidence](./docs/review/golden-v29.md); public/device acceptance is still separate.
-
-## Current work
-
-The [master world plan](./MASTER_PLAN.md) integrates the v3 pipeline and supplied
-[research guidance](./RESEARCH-SOURCES.md). Canvas2D and the current painted art
-remain the runtime baseline. Open [the Golden proof](./proof.html) for the limited
-Blender-authored structural test and contact inspector. Full-town changes and
-content expansion remain gated by the Golden reviews.
-
-The [painted native-data preview](./index.html?world=court-v3) loads current town
-placements and footprints from Blender-exported JSON while retaining the existing
-Canvas renderer, art and gameplay. It is an opt-in migration review; the normal
-game keeps its current data path.
-
-See [the v3 review evidence and commands](./docs/review/v3/README.md) for native
-export parity, gameplay/visibility/contact checks, screenshots and playback video.
-
-One connected Shenzhou route: Wayfarer town → Goldenfield Crossroads → Moonbamboo Trail → four-room Moonveil dungeon and guardian. Painted field/forest terrain, authored roads and landmarks, herb/supply interactions, safe camps, wall-aware click pursuit, distinct enemy attacks and matching boss warnings. New players see this region; returning saves retain access to their legacy discoveries.
-
-Original Shenzhou architecture, marketplace/plaza/gate props, paired high-angle camera and full-screen terrain; three illustrated eight-direction character atlases with continuous world-space facing; contact-timed combat, swept projectiles, combo, dodge immunity and recovery, three Tier-1 resource rhythms and authored Base Skills with one compatible gameplay-changing Node; eight monster species and an evolving Moonveil encounter; existing loot, crafting, shop, quest and save systems; ambient walkers and gradual atmospheric changes; generated WebAudio soundtrack/feedback.
-
-The city benchmark has a larger 44 × 40 footprint, widened main avenues, neighborhood anchors and architecture sized relative to a humanoid baseline. Skills can be tuned in town or at a cleared camp. Advanced Path evolution and the free-form composer are inactive; legacy progress remains saved.
-
-## Limits
-
-This is local simulation. Guild, party, market, housing and sparring are local features. There is no live multiplayer or account sync. The 22-class registry and legacy maps are retained for compatibility, not evidence of 22 completed classes or five polished regions. Moonveil has three connected chambers and a guardian court with collidable walls and gates. The regular game retains painted directional actors. Dedicated rear locomotion frames, directional art consistency, audio composition and mobile hardware performance must pass further inspection before calling the slice production-ready.
-
-See AUDIT.md, ARCHITECTURE.md, STYLE_GUIDE.md, CONTENT_GUIDE.md, ASSET_LICENSES.md, PERFORMANCE.md and DEVELOPMENT_LOG.md. `qa.html` tests actual desktop/portrait/landscape/tablet CSS viewports in the same game instance.
+The connected route remains Wayfarer > Goldenfield Crossroads > Moonbamboo Trail > four-room Moonveil dungeon and guardian. Existing quests, supply discoveries, loot, crafting, class resources, Base Skills with one compatible Node, combat and saves are retained.
 
 ## Local run
 
-Serve this directory with a static web server. There is no dependency install or build step. HTTPS/localhost is required for service workers. No proprietary Ragnarok assets or maps are used.
+No build step or npm install is required. Serve the checkout with a static server:
 
-## Validation
+```powershell
+python -m http.server 8011 --bind 127.0.0.1
+```
 
-Start `python3 -m http.server 8001 --bind 127.0.0.1` from this directory. Pass `--url http://127.0.0.1:8001` to browser suites (their fallback port is 8000). Run `node --test tests/motion.test.cjs` for movement/combat geometry. With the static server running, run `python3 tests/browser_smoke.py`; this requires Python Playwright and Chromium at `/usr/bin/chromium`. Disposable browser contexts check controls, class attacks, directional views, progression, saves and responsive layout. Outputs default to `/tmp/astraeon-qa`. Run `python3 tests/vertical_slice.py` for a complete new-Ranger town-to-boss journey through normal UI input, including a cleared camp and Node tuning, then crafting and save reload. It writes artifacts to `/tmp/astraeon-slice-qa`. Neither browser suite adds runtime mutation hooks.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Runtime cache version is 43.
 
-Run `python3 tests/skill_nodes.py --url http://127.0.0.1:8001` for compatible one-node selection, reload and actual node effects across all three starting classes. Use a server rooted in the parent directory to validate `/Astraeon-online/` asset and service-worker paths.
+## Verification
 
-Production QA target: https://basicbasja-cloud.github.io/Astraeon-online/ . Commit/push significant changes, confirm the matching Pages deployment succeeds, then play the public build with a fresh browser context and inspect screenshots/console across viewports. A successful workflow or localhost test alone does not close visual acceptance.
+```powershell
+node --test tests/*.test.cjs
+python tools/validate-world-v3.py
+$env:ASTRAEON_BROWSER='C:\Program Files\Google\Chrome\Application\chrome.exe'
+python tests/ragnarok_camera.py --output camera-review
+python tests/golden_wayfarer.py --phase all --motion-series --output town-review
+python tests/spatial_renderer_cache.py --output cache-review
+```
 
-Run `python3 tests/golden_scene.py --url http://127.0.0.1:8001` for a fresh Warrior court review through normal input: circulation, eight movement headings, directional attacks, existing skills, dodge, all relocated services and the physical gate/field threshold. It captures four viewports at each approach. Golden approvals remain pending; see GOLDEN_SCENE.md for current public-access limits.
+The browser tools require Python Playwright. Set `ASTRAEON_BROWSER` to a local Chrome/Chromium executable; the Windows checks use hardware D3D11. Saved Blender/export parity is checked by `tools/check-blender-export-v3.py` inside Blender or through the documented bpy runner in the current handoff.
+
+Review uses ordinary gameplay input, read-only snapshots and actual screenshots. Fixed-position capture tools use disposable saves strictly for art comparison. Unit tests and exported geometry do not certify artwork quality, physical-device performance or Golden approval.
+
+## Scope
+
+This is a local simulation. There is no live multiplayer, account sync or production MMO server. Mage/Ranger locomotion and broader skill-art polish remain separate work. Historical Canvas/proof paths and older review reports are comparison evidence; default town gameplay uses the spatial renderer. No proprietary Ragnarok maps, sprites or textures are included.

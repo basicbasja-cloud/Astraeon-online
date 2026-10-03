@@ -1,199 +1,68 @@
-# ASTRAEON cloud-task handoff — 2026-10-02
+# ASTRAEON local handoff - 2026-10-03
 
-## Checkpoint and execution boundary
+## Checkpoint
 
-- Active branch: `codex/world-pipeline-v3-proof`.
-- Remote: `https://github.com/basicbasja-cloud/Astraeon-online.git`.
-- Previous committed HEAD: `bf1b49b0792092e31caf222e3f694ad8e2d20b8c`.
-- This handoff is included in the new checkpoint commit. Read its SHA with
-  `git log -1 --format=%H`; the SHA cannot be embedded in its own commit.
-- The user explicitly stopped implementation to transfer tasks. No new
-  implementation, asset generation, source regeneration or review run was
-  started after that instruction. Existing work and recordings are preserved.
-- **Golden Wayfarer Master Plan remains unfinished. This is not project
-  completion or Golden approval.** Resume from this saved state in the new task.
+- Branch: `codex/world-pipeline-v3-proof`; remote: `https://github.com/basicbasja-cloud/Astraeon-online.git`.
+- Starting HEAD: `f3dd31635719c8fa2fad4796169445071f89c2f8`. This local continuation has not been pushed or deployed. Read the current local commit with `git log -1 --format=%H`.
+- Cache version: **43**. Default town camera: **classic Ragnarok reference**.
+- Golden Wayfarer acceptance and the mandatory later productionization phase remain open. This checkpoint does not release City 2 production.
 
-## Latest implementation state
+## Authoritative source
 
-Default gameplay uses the actual saved Blender spatial town in a lightweight
-Three.js scene. Illustrated directional actors participate in that same scene
-and depth buffer. Canvas/whole-building sprites remain explicit migration
-fallbacks, not the target environment. Existing simulation, quests, combat,
-inventory, saves and progression are retained. Cache version is now **36**.
+`authoring/wayfarer-spatial.blend` matches `world/v3/wayfarer-spatial.json` (101 object records). Existing services, stairs, gameplay and transitions remain in the current source. Original weak architecture is retained as hidden reference geometry. Do not rebuild this scene from historical builder scripts.
 
-The authoritative environment is `authoring/wayfarer-spatial.blend`; its current
-matching export is `world/v3/wayfarer-spatial.json`. Native object IDs, geometry,
-navigation, elevations, services, passages, portals and lighting originate in
-the saved scene. Do not re-create the town from historical builder scripts.
+The town uses vendored Three.js with illustrated upright world quads in the same depth buffer. Canvas assembles actor textures and renders UI/effects; other zones retain their established renderer. Source meshes, walkable contacts, solids, service anchors and portals feed existing navigation and simulation.
 
-The concept hierarchy is gate → avenue → fountain plaza → Consortium Hall,
-with distinct market, inn, forge, shrine and residential districts. Existing
-street-facing residential rotations, gardens and approach paths are preserved;
-homes do not all face one direction. Spatial foliage and software color/depth
-caching already exist. Actor artwork remains 2D painterly directional sprites.
+## Implemented concept pass
 
-## Completed in this cloud task
+- Hall: nave, aisles, unequal towers, bell lantern, pointed windows, rose compass, portal, blue slate and gold roof detailing.
+- Connected public paving, grass courts, garden/canal edges, larger winged fountain monument, balconies, awnings and facade details.
+- Eight individually composed district buildings, three market stalls, raised curtain walls, ten watchtowers, banners, outward-facing rocky banks and original painted rock material.
+- Eight planted civic trees, five flower courts, fifteen street lamps, six benches and twelve shrub groups.
+- Fixed the Residential review waypoint; Hall terrace approach is at the actual 0.455 contact height. Moved the southwest lodge after a playtest found it obscuring the Artisan.
+- Final overview caught lamps in the canals and bridge geometry left at the obsolete western gate. Lamps now stand on the banks; deck, parapets and piers match the existing southern contact surface. Final normal-input crossing passed.
+- Compatible static materials batch together. Direct perspective rendering uses antialiasing. Legacy software caching keeps its pixel-grid raster policy; animated water and transparent shadow receivers composite each frame, preserving direct-render colors and depth.
 
-Earlier checkpoints already preserve the spatial migration (`5b2011c`),
-street-facing homes and foliage/depth caching (`1327194`), authored fountain,
-plaza and lighting (`c7d40c5`), and required deferred productionization amendment
-(`bf1b49b`). Do not repeat these phases or the bounded renderer comparison.
+## Camera
 
-Work newly preserved by this checkpoint:
+`world-view.js` defaults to 15-degree vertical FOV, 50-degree downward pitch, yaw 0, zoom 125 and centered follow. Reference: roBrowserLegacy Camera, Camera preferences and Renderer source, linked in `research/wayfarer-applied.md`. This is community evidence rather than an independent Gravity-client audit.
 
-- Targeted edits to the existing Blender scene: open stone forge/hearth,
-  chimney connection and wall tools; maritime inn sign; shrine entrance trim,
-  rose glass and bell. Original source meshes remain, with conflicting older
-  details retained as hidden references. No building family was regenerated.
-- Shrine stairs/landing and portal approach aligned to the original entrance.
-  Seven hidden lightweight walkable contact surfaces now use the actual tops
-  of the four Hall and three Shrine treads. Earlier continuous stair ramps
-  remain source references, excluded from runtime walkability. Portal height
-  agrees with its tread. Source/export parity was checked after the final edit.
-- Truly upright actor quads: their top/bottom share world XY, retaining the
-  original screen image while avoiding heads leaning into walls behind them.
-- Death contact-shadow fade follows the illustrated body fade.
-- Directional action offsets now follow both projected heading axes.
-- Cache v36 and QA additions: real-input spatial traversal, eight-direction
-  sparring hit/death/respawn, stair/nav checks and upright-quad assertions.
-- Master Plan and architecture notes updated to describe the current state.
-- Raw review files, videos, Blender backups and original attachments archived
-  unchanged for transfer, with byte hashes and ZIP integrity verification.
+Wheel zoom steps 15 within 65-325. Right-drag rotates, Shift-right-drag tilts, Ctrl-right-drag zooms; double-right-click resets the corresponding parameter. Tilt is bounded at 89 degrees to avoid an upright-sprite projection singularity. Map-unit scale and smoothing are adapted to this game. Rays, input, sprite direction and visible picking share the current orientation. Earlier camera profiles remain explicit URL comparisons.
 
-## Partially completed and known problems
+## Warrior animation
 
-1. **Warrior death/fall transition remains unfinished.** The current reaction
-   atlas has one hit and one collapsed death pose per direction. Runtime
-   switches immediately to the collapsed pose, then fades it; there are no
-   authored intermediate fall frames. The corrected shadow fade does not solve
-   that visual pop. Hit recoil and all other core states still require visual
-   acceptance at gameplay scale, including elevation and occlusion.
-2. Eight-direction real sparring capture completed with 558 rendered actor
-   frames, hit/death states and normal respawn in every direction. The complete
-   new eight-direction sequence has not yet received frame-by-frame visual
-   review. Functional results are not animation approval.
-3. Spatial thresholds were exercised under ordinary input. The case named
-   `hall-landing` stopped on the top tread at Z=.44, short of the terrace at
-   Z=.45. The repository spatial QA target was subsequently moved farther onto
-   the terrace (Y=15.3), but that revised case has not been rerun. Review feet
-   and body transitions both up and down the actual treads in all gaits.
-4. Town geometry now has spatial structure and distinct families, but some
-   materials/frontages/clutter still read as simple blockout compared with the
-   approved concept. Continue concept/layout comparison and actual playable
-   review of district identity, road composition, grounding, density,
-   occlusion, palette and controlled building variation.
-5. Current v36 traversal performance, responsive/offline regression and
-   physical-device performance are not certified. Historical v35 cloud idle
-   sample was about 51.8 FPS for five seconds at SwiftShader pixel ratio .5;
-   that is neither a v36 traversal benchmark nor mobile/hardware acceptance.
-6. Live Pages inspection remained blocked by managed CONNECT proxy HTTP 403
-   at `https://basicbasja-cloud.github.io/Astraeon-online/`. Do not bypass the
-   network policy. Pushing this branch does not merge main or demonstrate a
-   reviewed Pages deployment. A reachable deployment is still needed for live
-   review. No unresolved gameplay failure was observed in the completed v36
-   service/reaction runs, but broader acceptance remains open.
+`world/v3/warrior-painted-locomotion.json` registers walk/run/sprint: 8 directions x 8 chronological complete-body frames each. Runtime atlases are `assets/warrior-{walk,run,sprint}-v4.webp`. No procedural legs or additional flight bob are added to these frames. Movement simulation remains separate.
 
-All three pillars remain required: concept-true Wayfarer, excellent Blender
-spatial authorship with lightweight execution, and correct 2D character
-animation. Production kits and the city-authoring template are mandatory
-**after** Golden acceptance and **before** City 2. Do not prematurely extract
-unstable Wayfarer solutions or begin City 2 now.
+Sources and reproducible registration are in `authoring/characters/painted-v4/README.md`. A seven-direction sprint source needed a separate SW strip. Temporary complete run-pose repairs were subsequently replaced by full new NW strips for all modes and a full W sprint strip. Both intermediate and final provenance are preserved. Existing eight-direction reactions, fall transition, attacks and skills remain.
 
-## Test status at the stop boundary
+## Research
 
-These are the most recent completed checks; no new implementation checks were
-started for handoff:
+`research/ragnarok-community-repositories.txt` inventories 58 entries from the public community catalog. `research/wayfarer-applied.md` records inspected client, renderer, file-format, authoring and server references, Gravity's RO3 announcements and Tree of Savior, Albion and CrossCode comparisons. The inventory is broader than the directly inspected source subset; do not claim every repository or the proprietary RO3 engine was audited.
 
-| Check | Result / limit |
-|---|---|
-| `node tests/motion.test.cjs` | 44/44 passing |
-| `node tests/world_v3.test.cjs` | 17/17 passing, including final stair/portal checks |
-| `node tests/golden_pipeline.test.cjs` | 3/3 passing |
-| `python tools/validate-world-v3.py` | Native schemas passing |
-| Saved Blender export parity | Passing after final tread/source changes |
-| JS syntax and edited Python compile | Passing |
-| v36 eight services + travel/reload | Passing; no runtime/resource errors |
-| v36 cached/direct shared depth | Passing arrival, pan and two odd phone sizes; new upright-quad assertions were added afterward and have not been rerun |
-| Actual tread/gate/canopy review | Ten captured cases; no runtime/resource errors; terrace limitation above |
-| Actual eight-direction hit/death/respawn | All eight completed; no runtime/resource errors; visual acceptance pending |
-| Full updated browser smoke, v36 offline/responsive, traversal benchmark | Not rerun; prior v35 evidence is historical |
+## Verified evidence
 
-No known unresolved failing automated check is claimed. Earlier temporary
-frontage scripts stopped when an NPC silhouette covered the final floor click;
-the review harness now uses ordinary keyboard movement for a nearby final route
-point. No position, HP, facing or simulation-time setter is used. Earlier failed
-captures remain archived. Counts, including the historical 46 checks, must never
-be treated as final approval.
+- 67 Node tests pass; public scene/animation schemas pass.
+- Saved source/export parity and shared parent transform checks pass after the final authored edit.
+- Normal-input camera test checks defaults, independent physical perspective equivalence, orbit, tilt, zoom, resets and rotated ground navigation.
+- Complete town playtest: 8 stair/gate cases, all 8 districts in desktop/portrait/landscape/tablet viewports, all 8 services, walk/run/sprint in 8 headings, turns, attacks, hit/death/respawn in 8 directions, field transition and save reload; no runtime/resource errors.
+- Final service replay after furniture passes. Legacy cache/direct comparisons pass at arrival, after pan, odd portrait dimensions and landscape, including identical actor depth masks.
+- Representative evidence is in `docs/review/wayfarer-v43`; full local artifacts remain in `C:/Users/Lenovo/AppData/Local/Temp/astraeon-local-preparation`.
 
-## Exact next implementation step in the new task
+Hardware captures use Chrome D3D11 / Radeon 780M. Record observed renderer timings as local measurements, not universal FPS or phone certification. The complete gameplay run precedes final material/furniture-only polish; the final source has additional parity/schema/unit checks, service replay and still review.
 
-First inspect `docs/review/spatial/v36/astraeon-eight-reactions-report.json` and
-extract the corresponding raw reaction archives. Review the actual eight
-direction frame sequences/video, then **author and integrate a real 2D
-manifest-driven Warrior fall transition between standing and the existing
-collapsed death artwork**, preserving the original reaction sources and the
-directional character pipeline. No image-generation or asset job is pending.
-Validate it through the existing ordinary sparring flow in the actual spatial
-town. Continue the unfinished Golden loop afterward; do not start another proof
-or rebuild the town. Also rerun the revised terrace case and new upright-quad
-assertions before interpreting those additions as verified.
+## Windows tooling
 
-## Commands for the next task
+Local preview: `http://127.0.0.1:8011`. Server is rooted at this checkout.
 
-Run from the repository root. **These commands are documented for continuation;
-they were not used to regenerate anything during handoff.**
+Official Blender 4.3.2 application hit a Windows SideBySide startup failure. The source was opened, edited, saved and exported with official bpy 4.3.0 using the matching bundled Python 3.11:
 
-```sh
-cd /workspace/Astraeon-online
-# Export the current saved scene only; do not rerun a historical town builder.
-blender -b authoring/wayfarer-spatial.blend --python tools/export-world-v3.py
-blender -b authoring/wayfarer-spatial.blend --python tools/check-blender-export-v3.py
-python tools/validate-world-v3.py
-node tests/motion.test.cjs
-node tests/world_v3.test.cjs
-node tests/golden_pipeline.test.cjs
-
-# Run the local browser build in a separate terminal.
-python3 -m http.server 8011
-
-# Existing QA phases use ordinary input and read-only observations.
-PLAYWRIGHT_BROWSERS_PATH=/tmp/astraeon-playwright python tests/golden_wayfarer.py --url http://127.0.0.1:8011 --phase reactions --output /tmp/astraeon-next-reactions --video
-PLAYWRIGHT_BROWSERS_PATH=/tmp/astraeon-playwright python tests/golden_wayfarer.py --url http://127.0.0.1:8011 --phase spatial --output /tmp/astraeon-next-spatial
-PLAYWRIGHT_BROWSERS_PATH=/tmp/astraeon-playwright python tests/spatial_renderer_cache.py --url http://127.0.0.1:8011 --output /tmp/astraeon-next-depth
+```powershell
+$env:PYTHONPATH='C:\Users\Lenovo\AppData\Local\AstraeonTools\bpy43'
+& 'C:\Users\Lenovo\AppData\Local\AstraeonTools\blender-4.3.2-windows-x64\4.3\python\bin\python.exe' tools/run-bpy-task.py authoring/wayfarer-spatial.blend tools/check-blender-export-v3.py
 ```
 
-Current cloud has Blender 4.3.2, Node 24, Python Playwright, system Chromium
-(`/usr/bin/chromium`), Pillow/numpy and ffmpeg. A new task must check its own
-tool/dependency availability; ephemeral paths/processes do not transfer through
-Git. Check browser scripts' launch options before installing a duplicate browser.
+Original clone source backup: `C:/Users/Lenovo/AppData/Local/Temp/astraeon-local-preparation/wayfarer-f3dd316.blend`. The saved current source is authoritative; targeted `reauthor/refine` scripts document this pass.
 
-Do **not** rerun `tools/author-wayfarer-spatial.py`,
-`tools/rebuild-wayfarer-golden.py`, bulk `tools/refine-wayfarer-spatial.py`, or
-`tools/orient-wayfarer-homes.py` to obtain an export. The targeted
-`tools/refine-wayfarer-frontages.py` changes are already applied to the saved
-scene; it is preserved for provenance, not a prerequisite to export.
+## Remaining quality work
 
-## Files to inspect first
-
-1. This handoff, `MASTER_PLAN.md`, and the current sections of `ARCHITECTURE.md`.
-2. `docs/review/spatial/v36/README.md`, reports, archives and
-   `preservation-manifest.json`; older `docs/review/spatial/README.md` retains
-   earlier iteration history and limits.
-3. `authoring/wayfarer-spatial.blend`, `world/v3/wayfarer-spatial.json`,
-   `tools/refine-wayfarer-frontages.py` and `tools/export-world-v3.py`.
-4. `world/v3/renderer.js`, `directional-art.js`, `sprite-motion.js`,
-   `warrior-rig.js`, `world/v3/locomotion.js`,
-   `world/v3/warrior-animation.json`, and
-   `authoring/characters/warrior-reactions-v3.png`.
-5. `tests/golden_wayfarer.py`, `tests/spatial_renderer_cache.py`,
-   `tests/world_v3.test.cjs`, and `tests/browser_smoke.py`.
-6. `tools/wayfarer-layout-review.html` and
-   `tools/building-family-sheet.html` for actual concept-role and family review.
-
-The approved concept images remain visual authority. Attachment ZIP preserves
-the original uploaded text/research; research is guidance, while user master
-implementation prompts and steering amendments are requests/constraints.
-Existing source art/materials/animation/export/test files remain in their
-original paths. Ignored `.blend1` backups are additionally archived; caches
-and backups were not deleted. No reset, revert, discard, cleanup or destructive
-regeneration was performed.
+Golden visual approval is pending. Prioritize additional architectural sculpting and district character, civilian variety, rear/action consistency for other classes, richer skill visuals and real phone performance. Keep comparing the playable views to the supplied concept. Do not equate test passes with concept fidelity or call the local simulation a completed MMO. After accepted Wayfarer, complete the required reusable tools/kits and city-template productionization before full City 2 work.

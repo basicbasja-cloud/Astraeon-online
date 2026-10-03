@@ -2,20 +2,20 @@
 Read-only snapshots and native route queries guide clicks; no save edits/teleports.
 Screens and video are visual evidence to inspect, not automated art approval.
 """
-import argparse,base64,json,math,time
+import argparse,base64,json,math,time,os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--motion-series',action='store_true',help='Capture actual rendered actor crops throughout each ordinary gait sample');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion','spatial','reactions'],default='all');args=ap.parse_args()
 out=Path(args.output);out.mkdir(parents=True,exist_ok=True);errors=[];resources=[];evidence=[]
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
+ b=p.chromium.launch(executable_path=os.environ.get('ASTRAEON_BROWSER','/usr/bin/chromium'),headless=True,args=['--no-sandbox','--enable-gpu','--use-angle=d3d11'])
  options={'viewport':{'width':1280,'height':800}}
  if args.video:options.update(record_video_dir=str(out/'video'),record_video_size={'width':1280,'height':800})
  context=b.new_context(**options);page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)));page.on('response',lambda r:resources.append(str(r.status)+' '+r.url) if r.status>=400 else None)
  page.goto(args.url.rstrip('/')+'/index.html?qa=1',wait_until='networkidle');page.locator('#newname').fill('Golden Warrior');page.locator('#create').click();page.wait_for_selector('#world');page.wait_for_timeout(500)
  def snap():return page.evaluate('AstraeonQA.snapshot()')
  def point(x,y,lift=0):
-  s=snap();r=page.locator('#world').bounding_box();v=s['view'];lift+=page.evaluate('(p)=>AstraeonContent.nativeWorld.spatial.elevationAt(...p)',[x,y])*35;return (r['x']+r['width']/2+(x*v['basis']['xx']+y*v['basis']['yx']-s['camera']['x'])*v['zoom'],r['y']+r['height']*v['anchorY']+(x*v['basis']['xy']+y*v['basis']['yy']-s['camera']['y']-lift)*v['zoom'])
+  r=page.locator('#world').bounding_box();q=page.evaluate('([x,y,lift])=>AstraeonSpatialView.worldToScreen(x,y,AstraeonContent.nativeWorld.spatial.elevationAt(x,y)+lift/35)',[x,y,lift]);return (r['x']+q['x'],r['y']+q['y'])
  def click(x,y,lift=0):page.mouse.click(*point(x,y,lift))
  def elapsed(seconds):page.wait_for_function('(v)=>AstraeonQA.snapshot().time>=v',arg=snap()['time']+seconds,timeout=30000)
  def walk(x,y):
@@ -29,7 +29,7 @@ with sync_playwright() as p:
     n=math.ceil(math.hypot(q['x']-previous['x'],q['y']-previous['y'])/2)
     candidates.extend({'x':previous['x']+(q['x']-previous['x'])*i/max(1,n),'y':previous['y']+(q['y']-previous['y'])*i/max(1,n)} for i in range(1,n+1));previous=q
    selected=page.evaluate("""(qs)=>{const s=AstraeonQA.snapshot(),r=world.getBoundingClientRect(),v=s.view;
-    return qs.map(q=>{const z=AstraeonContent.nativeWorld.spatial.elevationAt(q.x,q.y)*35,px=r.width/2+(q.x*v.basis.xx+q.y*v.basis.yx-s.camera.x)*v.zoom,py=r.height*v.anchorY+(q.x*v.basis.xy+q.y*v.basis.yy-s.camera.y-z)*v.zoom;
+    return qs.map(q=>{const p=AstraeonSpatialView.worldToScreen(q.x,q.y,AstraeonContent.nativeWorld.spatial.elevationAt(q.x,q.y)),px=p.x,py=p.y;
      return {q,screen:[r.x+px,r.y+py],inside:px>30&&px<r.width-30&&py>50&&py<r.height-40,element:document.elementFromPoint(r.x+px,r.y+py)?.id,pick:AstraeonSpatialView.pickActor(px,py),distance:Math.hypot(q.x-s.player.position.x,q.y-s.player.position.y)}})
     .filter(p=>p.inside&&p.element==='world'&&!p.pick?.startsWith('service/')&&p.distance>.2).at(-1);
    }""",candidates)
@@ -58,7 +58,7 @@ with sync_playwright() as p:
   page.set_viewport_size({'width':1280,'height':800});elapsed(.2)
  capture('arrival')
  if args.phase in ['all','spatial']:
-  for name,xy in [('shrine-stair-base',(29.96,13.1)),('shrine-tread',(29.96,12.35)),('hall-stair-base',(21.8,17.2)),('hall-tread',(21.8,16.45)),('hall-terrace',(21.8,15.3)),('gate-front',(6.95,24.6)),('gate-under-arch',(6.95,22)),('gate-behind',(6.95,20.6)),('tree-front',(27.3,14.3)),('tree-behind',(25.4,11.1))]:
+  for name,xy in [('shrine-stair-base',(42.16,13.25)),('shrine-tread',(42.16,12.74)),('hall-stair-base',(27.8,14.5)),('hall-tread',(27.8,13.91)),('hall-terrace',(27.8,12.5)),('gate-front',(27,47.1)),('gate-under-arch',(27,44.8)),('gate-behind',(27,42.2))]:
    walk(*xy);capture(name,False);evidence.append({'spatial_case':name,'player':snap()['player']});print('SPATIAL',name,flush=True)
  if args.phase in ['all','districts']:
   for stop in snap()['town']['route'][1:]:
@@ -69,14 +69,14 @@ with sync_playwright() as p:
    npc=next(n for n in snap()['npcs'] if n['name']==name)['transform']['position']
    approach=page.evaluate('''n=>{const w=AstraeonContent.nativeWorld.spatial,start=AstraeonQA.snapshot().player.position;return w.navCells.filter(p=>p.walkable&&Math.hypot(p.x-n.x,p.y-n.y)>2.3&&Math.hypot(p.x-n.x,p.y-n.y)<3.2).sort((a,b)=>Math.hypot(a.x-n.x,a.y-n.y-2.8)-Math.hypot(b.x-n.x,b.y-n.y-2.8)).find(p=>w.route(start,p))}''',npc);assert approach,('no service approach',name)
    walk(approach['x'],approach['y'])
-   picked=page.evaluate('''({n,name})=>{const s=AstraeonQA.snapshot(),r=world.getBoundingClientRect(),v=s.view,service=AstraeonContent.services.find(p=>p.name===name),expected=service.kind==='journal'?'object/'+service.objectId:'service/'+service.id,z=AstraeonContent.nativeWorld.spatial.elevationAt(n.x,n.y)*35,px=r.width/2+(n.x*v.basis.xx+n.y*v.basis.yx-s.camera.x)*v.zoom,py=r.height*v.anchorY+(n.x*v.basis.xy+n.y*v.basis.yy-s.camera.y-z)*v.zoom;
+   picked=page.evaluate('''({n,name})=>{const s=AstraeonQA.snapshot(),r=world.getBoundingClientRect(),v=s.view,service=AstraeonContent.services.find(p=>p.name===name),expected=service.kind==='journal'?'object/'+service.objectId:'service/'+service.id,p=AstraeonSpatialView.worldToScreen(n.x,n.y,AstraeonContent.nativeWorld.spatial.elevationAt(n.x,n.y)),px=p.x,py=p.y;
     for(const dy of [35,45,55,25,65,15])for(const dx of [0,6,-6,12,-12,18,-18]){const x=px+dx*v.zoom,y=py-dy*v.zoom;if(AstraeonSpatialView.pickActor(x,y)===expected)return {screen:[r.x+x,r.y+y],expected}}
     return {expected,root:[px,py],picks:[25,35,45,55,65].map(h=>AstraeonSpatialView.pickActor(px,py-h*v.zoom))};}''',{'n':npc,'name':name})
    if 'screen' not in picked:page.screenshot(path=str(out/'service-occlusion-failure.png'));raise AssertionError(('service hidden',name,picked,snap()['player']['position']))
    page.mouse.click(*picked['screen']);page.wait_for_selector('#modal:not([hidden])');evidence.append({'service':name,'title':page.locator('#window-title').inner_text()});page.keyboard.press('Escape');print('SERVICE',name,flush=True)
  # Raw motion in open plaza: three modes, 8 headings, then reversals/turns.
  if args.phase in ['all','motion']:
-  walk(19.8,24.3)
+  walk(27,29)
   for mode,modifier in [('walk','Alt'),('run',None),('sprint','Shift')]:
    for keys in [('s',),('s','d'),('d',),('w','d'),('w',),('w','a'),('a',),('s','a')]:
     duration={'walk':1.61,'run':1.23,'sprint':1.11}[mode]
@@ -92,7 +92,7 @@ with sync_playwright() as p:
     page.evaluate("""({keys,modifier,duration,series})=>{window.motionSample=null;window.motionFrames=[];let start=null,lastFrame=-Infinity;const held=[...keys,...(modifier?[modifier]:[])];
      const begin=e=>{if(e.key===keys.at(-1)){start=AstraeonQA.snapshot().time;removeEventListener('keydown',begin)}};addEventListener('keydown',begin);
      const record=e=>{if(start===null)return;
-      if(series&&e.detail.time-start>=.2&&e.detail.time-lastFrame>=.06){const s=AstraeonQA.snapshot(),v=AstraeonSpatialView,p=s.player.position,c=document.createElement('canvas');c.width=144;c.height=160;const g=c.getContext('2d'),x=v.width/2+(p.x*48-p.y*32-v.focus.x)*v.zoom,y=v.height*v.anchorY+(p.x*14+p.y*22-v.focus.y-p.z*35)*v.zoom,buffer=v.renderer.getDrawingBufferSize(new AstraeonSpatialRenderer.THREE.Vector2());g.drawImage(v.canvas,(x-72)*buffer.x/v.width,(y-125)*buffer.y/v.height,144*buffer.x/v.width,160*buffer.y/v.height,0,0,144,160);motionFrames.push({time:s.time,elapsed:e.detail.time-start,motion:s.player,image:c.toDataURL()});lastFrame=e.detail.time}
+      if(series&&e.detail.time-start>=.2&&e.detail.time-lastFrame>=.06){const s=AstraeonQA.snapshot(),v=AstraeonSpatialView,p=s.player.position,c=document.createElement('canvas');c.width=144;c.height=160;const g=c.getContext('2d'),q=v.worldToScreen(p.x,p.y,p.z),x=q.x,y=q.y,buffer=v.renderer.getDrawingBufferSize(new AstraeonSpatialRenderer.THREE.Vector2());g.drawImage(v.canvas,(x-72)*buffer.x/v.width,(y-125)*buffer.y/v.height,144*buffer.x/v.width,160*buffer.y/v.height,0,0,144,160);motionFrames.push({time:s.time,elapsed:e.detail.time-start,motion:s.player,image:c.toDataURL()});lastFrame=e.detail.time}
       if(e.detail.time-start<duration)return;const s=AstraeonQA.snapshot(),canvas=document.createElement('canvas'),overlay=document.querySelector('#world');canvas.width=overlay.clientWidth;canvas.height=overlay.clientHeight;const g=canvas.getContext('2d');g.drawImage(document.querySelector('#spatial-world'),0,0,canvas.width,canvas.height);g.drawImage(overlay,0,0,canvas.width,canvas.height);
       window.motionSample={motion:s.player,time:s.time,duration:s.time-start,image:canvas.toDataURL()};for(const key of held)dispatchEvent(new KeyboardEvent('keyup',{key,bubbles:true}));removeEventListener('astraeon-frame',record)};addEventListener('astraeon-frame',record);
     }""",{'keys':list(keys),'modifier':modifier,'duration':duration,'series':args.motion_series})
@@ -108,7 +108,7 @@ with sync_playwright() as p:
     if modifier:page.keyboard.up(modifier)
     elapsed(.35)
    print('LOCOMOTION',mode,flush=True)
-  walk(19.8,24.3)
+  walk(27,29)
   for keys in [('d',),('d','w'),('w',),('s',),('a',),('d',)]:
    for key in keys:page.keyboard.down(key)
    elapsed(.4)
@@ -116,17 +116,17 @@ with sync_playwright() as p:
    elapsed(.1)
   elapsed(.3);capture('turn-stop',False)
   for degrees in [0,45,90,135,180,225,270,315]:
-   walk(19.8,24.3);a=math.radians(degrees);page.mouse.move(*point(19.8+math.cos(a)*3,24.3+math.sin(a)*3));page.keyboard.press('f');elapsed(.22);page.screenshot(path=str(out/f'attack-{degrees}.png'));elapsed(.7)
+   walk(27,29);a=math.radians(degrees);page.mouse.move(*point(27+math.cos(a)*3,29+math.sin(a)*3));page.keyboard.press('f');elapsed(.22);page.screenshot(path=str(out/f'attack-{degrees}.png'));elapsed(.7)
  if args.phase in ['all','reactions']:
   for row,name in enumerate(['S','SE','E','NE','N','NW','W','SW']):
-   walk(19.8,24.3);position=snap()['player']['position'];angle=math.pi/2-row*math.pi/4
+   walk(27,29);position=snap()['player']['position'];angle=math.pi/2-row*math.pi/4
    direction=page.evaluate('(a)=>AstraeonView.inverse(Math.cos(a),Math.sin(a))',angle);length=math.hypot(direction['x'],direction['y'])
    page.mouse.move(*point(position['x']+direction['x']/length*3,position['y']+direction['y']/length*3));page.keyboard.press('f');elapsed(.9)
    actual=page.evaluate('AstraeonDirectionalArt.directionRow(AstraeonQA.snapshot().player.rotation)');assert actual==row,(name,actual,snap()['player'])
    page.locator('[data-open="systems"]').click();page.locator('[data-nav="pvp"]').click()
    # Observe hit/death caused by the real sparring encounter. No HP, actor,
    # pose, facing, save or clock setter is used to manufacture these states.
-   page.evaluate("""()=>{window.reactionFrames=[];window.reactionDone=false;let last=-1,dead=false;const observe=()=>{const s=AstraeonQA.snapshot(),state=s.animation.state,p=s.player.position,v=AstraeonSpatialView;dead||=s.save.hp===0;if(dead&&s.save.hp>0){reactionDone=true;removeEventListener('astraeon-frame',observe);return}if(!['hit','death'].includes(state)||s.time>s.animation.until||s.time-last<.045)return;last=s.time;const c=document.createElement('canvas');c.width=200;c.height=180;const g=c.getContext('2d'),x=v.width/2+(p.x*48-p.y*32-v.focus.x)*v.zoom,y=v.height*v.anchorY+(p.x*14+p.y*22-v.focus.y-p.z*35)*v.zoom,buffer=v.renderer.getDrawingBufferSize(new AstraeonSpatialRenderer.THREE.Vector2());g.drawImage(v.canvas,(x-100)*buffer.x/v.width,(y-135)*buffer.y/v.height,200*buffer.x/v.width,180*buffer.y/v.height,0,0,200,180);const shadow=v.actors.get('player').shadow;reactionFrames.push({time:s.time,state,progress:(s.time-s.animation.started)/s.animation.duration,direction:AstraeonDirectionalArt.directionRow(s.player.rotation),player:s.player,shadow:{visible:shadow.visible,opacity:shadow.material.opacity},image:c.toDataURL()})};addEventListener('astraeon-frame',observe)}""")
+   page.evaluate("""()=>{window.reactionFrames=[];window.reactionDone=false;let last=-1,dead=false;const observe=()=>{const s=AstraeonQA.snapshot(),state=s.animation.state,p=s.player.position,v=AstraeonSpatialView;dead||=s.save.hp===0;if(dead&&s.save.hp>0){reactionDone=true;removeEventListener('astraeon-frame',observe);return}if(!['hit','death'].includes(state)||s.time>s.animation.until||s.time-last<.045)return;last=s.time;const c=document.createElement('canvas');c.width=200;c.height=180;const g=c.getContext('2d'),q=v.worldToScreen(p.x,p.y,p.z),x=q.x,y=q.y,buffer=v.renderer.getDrawingBufferSize(new AstraeonSpatialRenderer.THREE.Vector2());g.drawImage(v.canvas,(x-100)*buffer.x/v.width,(y-135)*buffer.y/v.height,200*buffer.x/v.width,180*buffer.y/v.height,0,0,200,180);const shadow=v.actors.get('player').shadow;reactionFrames.push({time:s.time,state,progress:(s.time-s.animation.started)/s.animation.duration,direction:AstraeonDirectionalArt.directionRow(s.player.rotation),player:s.player,shadow:{visible:shadow.visible,opacity:shadow.material.opacity},image:c.toDataURL()})};addEventListener('astraeon-frame',observe)}""")
    page.locator('#pvp-start').click();page.wait_for_function('reactionDone',timeout=180000)
    frames=page.evaluate('reactionFrames');folder=out/'reaction-series'/name;folder.mkdir(parents=True,exist_ok=True)
    for i,frame in enumerate(frames):(folder/f'{i:03d}.png').write_bytes(base64.b64decode(frame.pop('image').split(',')[1]))
@@ -135,7 +135,7 @@ with sync_playwright() as p:
    assert all(not f['shadow']['visible'] and f['shadow']['opacity']==0 for f in frames if f['state']=='death' and f['progress']>=1)
    evidence.append({'reaction_direction':name,'states':['hit','death'],'rendered_frames':len(frames),'normal_respawn':snap()['save']['hp']>0});print('REACTIONS',name,flush=True)
  # Approach the gate from town, then use its actual authored field threshold.
- walk(6.95,24.6);capture('gate-departure');exit=next(e for e in snap()['town']['transitions'] if e['to']==2);click(exit['x'],exit['y'],17);page.wait_for_function('AstraeonQA.snapshot().save.zone===2',timeout=20000);capture('field-threshold')
+ walk(27,47.1);capture('gate-departure');exit=next(e for e in snap()['town']['transitions'] if e['to']==2);click(exit['x'],exit['y'],17);page.wait_for_function('AstraeonQA.snapshot().save.zone===2',timeout=20000);capture('field-threshold')
  saved=snap()['save'];page.reload(wait_until='networkidle');page.wait_for_selector('#world');assert snap()['save']['name']==saved['name'] and snap()['save']['zone']==2
  # Live review telemetry, not physical-device certification.
  report={'layout':snap()['town']['layout'],'evidence':evidence,'runtime_errors':errors,'resource_errors':resources}

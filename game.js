@@ -200,7 +200,7 @@ function drawGround(w,h){if(!groundPattern){const material=document.createElemen
 
 function draw(dt=.016){
 if(!S||!ctx)return;
-view.zone=dungeon?-1:S.zone;const {w,h}=dims();view.zoom=view.framing(w,h).zoom;ctx.clearRect(0,0,w,h);
+view.zone=dungeon?-1:S.zone;view.advanceCamera(dt,camera);const {w,h}=dims();view.zoom=view.framing(w,h).zoom;ctx.clearRect(0,0,w,h);
 const spatial=S.zone===0&&!dungeon?window.AstraeonSpatialView:null;if(!spatial)window.AstraeonSpatialView?.hide();
 if(!spatial){const bg=ctx.createLinearGradient(0,0,0,h);bg.addColorStop(0,['#203c37','#22382d','#404236','#112b38','#241c3c'][S.zone]);bg.addColorStop(.54,'#172832');bg.addColorStop(1,'#0b1320');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);}
 ctx.save();
@@ -244,7 +244,7 @@ function drawActorLabels(labels){
  }ctx.restore();
 }
 function pointer(e){
-if(windowName)return;
+if(windowName||e.button===2)return;
 const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,mobRadius=e.pointerType==='touch'?42:24;const spatial=S.zone===0&&!dungeon&&window.AstraeonSpatialView?.active?window.AstraeonSpatialView:null,picked=spatial?.pickActor(x,y);
 const door=dungeon?.cleared&&window.AstraeonDungeon.rooms[dungeon.wave].door;if(door){const p=iso(door.x,door.y);if(Math.hypot(p.x-x,p.y-y)<45){target={x:door.x,y:door.y,dungeonDoor:true};if(distance(S,door)<2.3)enterNextRoom();return}}
 

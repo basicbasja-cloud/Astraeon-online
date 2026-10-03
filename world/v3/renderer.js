@@ -6,7 +6,9 @@
 import * as THREE from '../../vendor/three/three.module.min.js';
 const V=window.AstraeonView;
 const palette={stone:'#afa084',stoneLight:'#e0cc9e',cream:'#d4c29d',plaster:'#ebd5af',slate:'#345e80',blue:'#305d7c',gold:'#c49a48',wood:'#67432d',timber:'#5c3924',oak:'#9c6b3d',leaf:'#4b713a',leafLight:'#709143',grass:'#84926c',paving:'#c7b999',terracotta:'#b96d45',teal:'#447970',iron:'#465354',glass:'#496f78',clothBlue:'#4a83ad',clothOchre:'#e2b368',clothRose:'#bd7773',water:'#559ea8',flowers:'#d58b92',soil:'#aa9873'};
+Object.assign(palette,{civicIvory:'#e8daba',civicShadow:'#b8b9a8',civicSlate:'#254c72',civicSlateLight:'#36678d',civicGlass:'#345c73',civicGlassLight:'#75b6c5',civicGold:'#d9b35e',civicDoor:'#493021',streetIvory:'#dfcda5',streetSlate:'#345e80',streetOchre:'#c78f50',statueIvory:'#eee3c9',gardenGrass:'#82936a'});
 const materialCache=new Map();
+Object.assign(palette,{bankStone:'#7d8785',bankStoneLight:'#a3a99b',wallStone:'#b8b1a0',wallCap:'#d8c9aa',roofMoss:'#3c6b60',roofClay:'#aa6240',roofBlue:'#345f80'});
 const atlasTextures=new Map(),atlasImages=new Map(),textureLoads=[];
 function texture(name,color){
  const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');g.fillStyle=palette[name]||(color?new THREE.Color().setRGB(...color).getStyle():'#b6a57f');g.fillRect(0,0,256,256);
@@ -15,12 +17,12 @@ function texture(name,color){
  // ashlar, overlapped roof courses and timber grain; no perspective building cards.
  for(let i=0;i<3100;i++){g.fillStyle=random(i)>.45?'#fff1ce':'#302c21';g.globalAlpha=.025+random(i+1)*.07;g.fillRect(random(i+2)*256,random(i+3)*256,1+random(i+4)*7,.5+random(i+5)*2)}
  g.globalAlpha=1;
- if(['cream','stone','stoneLight','paving'].includes(name)){
+ if(['cream','stone','stoneLight','paving','civicIvory','civicShadow','streetIvory','wallStone','wallCap','bankStone','bankStoneLight'].includes(name)){
   for(let row=0;row<8;row++)for(let col=-1;col<5;col++){
    const x=col*64+(row%2)*32,y=row*32;g.fillStyle=`rgba(69,62,44,${.09+random(row*11+col)*.07})`;g.fillRect(x,y,64,1.3);g.fillRect(x,y,1.2,32);
    g.fillStyle='#fff1ce3b';g.fillRect(x+2,y+2,61,1);g.strokeStyle='#74674a20';g.beginPath();g.moveTo(x+7,y+29);g.lineTo(x+28,y+27+random(row+col)*3);g.stroke();
   }
- }else if(['slate','blue','terracotta','teal'].includes(name)){
+ }else if(['slate','blue','terracotta','teal','civicSlate','civicSlateLight','streetSlate','roofMoss','roofClay','roofBlue'].includes(name)){
   for(let row=0;row<13;row++)for(let col=-1;col<12;col++){
    const x=col*24+(row%2)*12,y=row*20;g.fillStyle='#111e2c48';g.fillRect(x,y,24,2);g.fillRect(x,y,1,20);g.fillStyle='#ffebbc35';g.fillRect(x+2,y+3,21,1.5);g.fillStyle='#ffebbc12';g.fillRect(x+4,y+4,17,10);
   }
@@ -73,11 +75,11 @@ class SpatialRenderer{
   this.entityIds=new WeakMap();this.nextEntityId=0;
   this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#bbc9b2');
   this.camera=new THREE.Camera();this.camera.matrixAutoUpdate=false;this.camera.matrixWorld.identity();this.camera.matrixWorldInverse.identity();
-  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',key=name;if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],owners:[]});appendMesh(batches.get(key),part,source.lighting)};
+  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',spec=source.materials[name]?.texture,key=spec?JSON.stringify(spec):name;if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],owners:[]});appendMesh(batches.get(key),part,source.lighting)};
   const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id});
-  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;this.scene.add(mesh)}
+  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=name==='water';this.scene.add(mesh)}
   this.whenReady=Promise.all(textureLoads);
   const spatial=window.AstraeonContent?.nativeWorld?.id===source.id?window.AstraeonContent.nativeWorld.spatial:window.AstraeonSpatialV3.compile(source);this.spatial=spatial;
   // Static authored sun shadow atlas: one draw, no dynamic shadow map or PBR.
@@ -102,8 +104,9 @@ class SpatialRenderer{
   const shadowGeo=new THREE.BufferGeometry();shadowGeo.setAttribute('position',new THREE.Float32BufferAttribute(shadowPositions,3));shadowGeo.setAttribute('uv',new THREE.Float32BufferAttribute(shadowUVs,2));shadowGeo.computeBoundingSphere();
   // The inherited screen basis reflects winding. Receiver decals must follow
   // the same double-sided policy as the authored geometry and picking floor.
-  const shadow=new THREE.Mesh(shadowGeo,new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1}));this.scene.add(shadow);
-  this.staticNodes=[...this.scene.children];
+  const shadow=new THREE.Mesh(shadowGeo,new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1}));shadow.userData.cacheDynamic=true;this.scene.add(shadow);
+  this.dynamicNodes=this.scene.children.filter(o=>o.userData.cacheDynamic);
+  this.staticNodes=this.scene.children.filter(o=>!o.userData.cacheDynamic);
   // Upright illustrated planes: a pixel of height is real vertical world
   // height, not a camera-facing lean into the wall behind the actor. The XY
   // right vector has zero projected vertical displacement. These bases retain
@@ -118,13 +121,16 @@ class SpatialRenderer{
  }
  mount(overlay){
   this.overlay=overlay;
-  try{this.renderer=new THREE.WebGLRenderer({antialias:false,alpha:false,powerPreference:'low-power'});}catch(error){throw new Error('Spatial world requires WebGL: '+error.message)}
+  V.mountCameraControls(overlay);
+  // The legacy software cache retains its original pixel-grid raster policy.
+  // Perspective profiles render directly with antialiasing.
+  try{this.renderer=new THREE.WebGLRenderer({antialias:this.perspectiveMode,alpha:false,powerPreference:'high-performance'});}catch(error){throw new Error('Spatial world requires WebGL: '+error.message)}
   const gl=this.renderer.getContext(),debug=gl.getExtension('WEBGL_debug_renderer_info'),device=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):'';
   this.stats.device=device;this.stats.software=/SwiftShader|llvmpipe|software/i.test(device);this.stats.pixelRatio=this.stats.software?.75:Math.min(devicePixelRatio||1,1.5);
   // Software WebGL is fill-rate limited in headless/VM browsers. Keep the real
   // device budget independent; neither path relies on expensive anisotropic filtering.
   if(this.stats.software)this.stats.pixelRatio=.5;
-  for(const m of materialCache.values()){m.map.anisotropy=1;m.map.minFilter=THREE.LinearMipmapNearestFilter;m.map.needsUpdate=true}
+  for(const m of materialCache.values()){m.map.anisotropy=this.stats.software?1:Math.min(4,this.renderer.capabilities.getMaxAnisotropy());m.map.minFilter=THREE.LinearMipmapLinearFilter;m.map.needsUpdate=true}
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.setPixelRatio(this.stats.pixelRatio);
   this.renderer.info.autoReset=false;
   this.canvas=this.renderer.domElement;this.canvas.id='spatial-world';this.canvas.setAttribute('aria-hidden','true');this.canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';overlay.before(this.canvas);overlay.style.background='transparent';overlay.parentElement.classList.add('spatial-stage');this.active=true;
@@ -132,6 +138,9 @@ class SpatialRenderer{
  begin(camera,w,h,zoom,anchorY){
   this.frameStarted=performance.now();this.assemblyMs=0;
   if(!this.renderer)return;this.active=true;this.canvas.hidden=false;
+  // Slow shared current, rather than a completely static tiled river.
+  const water=materialCache.get('water'+JSON.stringify(this.source.materials.water?.texture||''));
+  if(water?.map){const time=performance.now()/1000;water.map.offset.set(time*.004,time*.002)}
   this.width=w;this.height=h;this.zoom=zoom;this.anchorY=anchorY;
   if(this.canvas.clientWidth!==w||this.canvas.clientHeight!==h||this.lastSize!==w+'x'+h){this.renderer.setSize(w,h,false);this.lastSize=w+'x'+h}
   // Reusing rasterized geometry must translate by whole device pixels. Snap
@@ -139,21 +148,16 @@ class SpatialRenderer{
   // buffer grid; simulation, navigation and the hardware camera remain smooth.
   const size=this.renderer.getDrawingBufferSize(new THREE.Vector2()),gridX=zoom*size.x/w,gridY=zoom*size.y/h;
   this.focus=this.stats.software&&!this.perspectiveMode?{x:Math.round(camera.x*gridX)/gridX,y:Math.round(camera.y*gridY)/gridY}:{...camera};
-  if(this.perspectiveMode){
-   const playerWorld=V.inverse(camera.x,camera.y);
-   // At the west gate, frame the destination beyond the player; the bias
-   // eases away as the player reaches the central plaza.
-   this.focus.x+=Math.max(0,Math.min(1,(17-playerWorld.x)/10))*320/zoom;
-  }
   const cx=this.focus.x,cy=this.focus.y,s=zoom;
   if(this.perspectiveMode){
    const b=this.cameraProfile.basis,d=this.cameraProfile.depth,focus=V.inverse(cx,cy),w0=1-d.x*focus.x-d.y*focus.y,n=1-2*anchorY,hx=2*s/w,hy=2*s/h;
    // The long-lens denominator varies with ground depth and height; the local
    // axes stay aligned with input and the existing spatial artwork.
+   const ro=this.cameraProfile.kind==='ragnarok',far=1000,near=1,za=ro?(far+near)/(far-near):1.1,zb=ro?2*far*near/(far-near)/(this.cameraProfile.zoom/2):.6;
    this.camera.projectionMatrix.set(
     hx*b.xx,hx*b.yx,0,-hx*cx,
     n*d.x-hy*b.xy,n*d.y-hy*b.yy,n*d.z+hy*35,n*w0+hy*cy,
-    1.1*d.x,1.1*d.y,1.1*d.z,1.1*w0-.6,
+    za*d.x,za*d.y,za*d.z,za*w0-zb,
     d.x,d.y,d.z,w0
    );
   }else this.camera.projectionMatrix.set(96*s/w,-64*s/w,0,-2*cx*s/w,-28*s/h,-44*s/h,70*s/h,2*cy*s/h+1-2*anchorY,-.0056,-.0084,-.00752,.25,0,0,0,1);
@@ -179,6 +183,7 @@ class SpatialRenderer{
   let sockets;this.assemblingActor=true;try{sockets=draw(a.ctx,iso)}finally{this.assemblingActor=false;a.ctx.restore();V.zoom=prior}
   const b=this.shadowBounds,tx=Math.floor((p.x-b.minX)/(b.maxX-b.minX)*1024),ty=Math.floor((p.y-b.minY)/(b.maxY-b.minY)*1024),shade=tx>=0&&tx<1024&&ty>=0&&ty<1024?this.shadowPixels[(ty*1024+tx)*4+3]/255:0;
   a.mesh.material.color.setRGB(1-shade*.4,1-shade*.35,1-shade*.3);
+  if(this.cameraProfile?.kind==='ragnarok'){a.mesh.rotation.z=-this.cameraProfile.yaw*Math.PI/180;const scale=Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(50*Math.PI/180);a.mesh.scale.set(scale,scale,1)}
   a.tex.needsUpdate=true;a.mesh.position.set(p.x,p.y,p.z||0);a.mesh.visible=true;a.shadow.position.set(p.x+.08,p.y+.08,(p.z||0)+.035);a.shadow.material.opacity=.22*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
   this.assemblyMs+=performance.now()-assemblyStarted;return sockets;
  }
@@ -187,18 +192,20 @@ class SpatialRenderer{
   let c=this.staticCache;
   if(!c||c.key!==key){
    if(c){c.target.dispose();c.material.dispose();c.quad.geometry.dispose()}
-   const target=new THREE.WebGLRenderTarget(size.x+padPixels*2,size.y+padPixels*2,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,depthBuffer:true});target.texture.colorSpace=THREE.SRGBColorSpace;target.depthTexture=new THREE.DepthTexture(target.width,target.height,THREE.UnsignedIntType);
+   const gl=r.getContext(),samples=r.capabilities.isWebGL2?gl.getParameter(gl.SAMPLES):0;
+   const target=new THREE.WebGLRenderTarget(size.x+padPixels*2,size.y+padPixels*2,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter,depthBuffer:true,samples});target.texture.colorSpace=THREE.SRGBColorSpace;target.depthTexture=new THREE.DepthTexture(target.width,target.height,THREE.UnsignedIntType);
    const material=new THREE.ShaderMaterial({uniforms:{colorMap:{value:target.texture},depthMap:{value:target.depthTexture},viewSize:{value:new THREE.Vector2(w,h)},cacheSize:{value:new THREE.Vector2(cw,ch)},offset:{value:new THREE.Vector2(pad,pad)}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',fragmentShader:'uniform sampler2D colorMap;uniform sampler2D depthMap;uniform vec2 viewSize,cacheSize,offset;varying vec2 vUv;void main(){vec2 p=(vUv*viewSize+offset)/cacheSize;gl_FragColor=texture2D(colorMap,p);gl_FragDepth=texture2D(depthMap,p).r;\n#include <colorspace_fragment>\n}',depthTest:true,depthWrite:true,depthFunc:THREE.AlwaysDepth,toneMapped:false});
    const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),material);quad.frustumCulled=false;const scene=new THREE.Scene();scene.add(quad);c=this.staticCache={key,target,material,quad,scene,camera:new THREE.Camera(),focus:null};
   }
   const dx=c.focus?(this.focus.x-c.focus.x)*this.zoom:Infinity,dy=c.focus?(this.focus.y-c.focus.y)*this.zoom:Infinity;
   if(!c.focus||Math.max(Math.abs(dx),Math.abs(dy))>pad-40){
-   const matrix=this.camera.projectionMatrix.clone(),actors=[...this.actors.values()].map(a=>[a,a.mesh.visible,a.shadow.visible]);
+   const matrix=this.camera.projectionMatrix.clone(),actors=[...this.actors.values()].map(a=>[a,a.mesh.visible,a.shadow.visible]),surfaces=this.dynamicNodes.map(o=>[o,o.visible]);
    try{
     for(const [a] of actors)a.mesh.visible=a.shadow.visible=false;
+    for(const [o] of surfaces)o.visible=false;
     this.camera.projectionMatrix.set(96*this.zoom/cw,-64*this.zoom/cw,0,-2*this.focus.x*this.zoom/cw,-28*this.zoom/ch,-44*this.zoom/ch,70*this.zoom/ch,2*this.focus.y*this.zoom/ch+1-2*(h*this.anchorY+py)/ch,-.0056,-.0084,-.00752,.25,0,0,0,1);
     r.setRenderTarget(c.target);r.render(this.scene,this.camera);c.focus={...this.focus};this.stats.cacheUpdates=(this.stats.cacheUpdates||0)+1;
-   }finally{this.camera.projectionMatrix.copy(matrix);for(const [a,visible,shadow] of actors){a.mesh.visible=visible;a.shadow.visible=shadow}r.setRenderTarget(null)}
+   }finally{this.camera.projectionMatrix.copy(matrix);for(const [a,visible,shadow] of actors){a.mesh.visible=visible;a.shadow.visible=shadow}for(const [o,visible] of surfaces)o.visible=visible;r.setRenderTarget(null)}
   }
   c.material.uniforms.offset.value.set(px+(this.focus.x-c.focus.x)*this.zoom,py-(this.focus.y-c.focus.y)*this.zoom);
   // The cached static depth is written into the SAME framebuffer as actor
@@ -226,7 +233,7 @@ class SpatialRenderer{
    }
   }return null;
  }
- snapshot(){return {...this.stats,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite}))};}
+ snapshot(){return {...this.stats,cameraProfile:this.cameraProfile?structuredClone(this.cameraProfile):null,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite}))};}
 }
 window.AstraeonSpatialRenderer={SpatialRenderer,THREE};
 if(window.AstraeonContent?.nativeWorld?.id==='wayfarer-spatial'&&new URLSearchParams(location.search).get('renderer')!=='canvas')window.AstraeonSpatialView=new SpatialRenderer(window.AstraeonContent.nativeWorld.spatial.scene);

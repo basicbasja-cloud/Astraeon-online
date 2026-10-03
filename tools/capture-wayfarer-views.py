@@ -4,6 +4,7 @@ Example: python3 tools/capture-wayfarer-views.py --views arrival,avenue,plaza
 Requires the local game server and Playwright/Chromium already used for review.
 """
 import argparse
+import os
 import json
 from pathlib import Path
 
@@ -23,17 +24,17 @@ VIEWS = {
     'shrine': (43, 16),
     'residential': (38, 39),
     'town-edge': (34, 44),
+    'overview': (27, 23.5),
 }
 
 
-def capture(url, output, names):
+def capture(url, output, names, zoom=None):
     output.mkdir(parents=True, exist_ok=True)
     records = []
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(
-            executable_path='/usr/bin/chromium', headless=True,
-            args=['--no-sandbox', '--enable-webgl', '--use-gl=angle',
-                  '--use-angle=swiftshader'])
+            executable_path=os.environ.get('ASTRAEON_BROWSER', '/usr/bin/chromium'), headless=True,
+            args=['--no-sandbox', '--enable-webgl', '--enable-gpu', '--use-angle=d3d11'])
         context = browser.new_context(viewport={'width': 1280, 'height': 800},
                                       device_scale_factor=1)
         first = context.new_page()
@@ -59,6 +60,9 @@ def capture(url, output, names):
                 'document.getElementById("world") && window.AstraeonQA && '
                 'window.AstraeonQA.snapshot().renderer', timeout=60000)
             page.wait_for_timeout(450)
+            if zoom is not None:
+                rect=page.locator('#world').bounding_box();pointer_x=rect['x']+rect['width']/2;pointer_y=rect['y']+rect['height']/2
+                page.keyboard.down('Control');page.mouse.move(pointer_x,pointer_y);page.mouse.down(button='right');page.mouse.move(pointer_x,pointer_y-(zoom-125)/1.5,steps=8);page.mouse.up(button='right');page.keyboard.up('Control');page.wait_for_timeout(800)
             snap = page.evaluate('window.AstraeonQA.snapshot()')
             image = output / (name + '.png')
             page.screenshot(path=str(image))
@@ -68,6 +72,8 @@ def capture(url, output, names):
                       'actors': len(snap['renderer']['actors']),
                       'renderCalls': snap['renderer']['calls'],
                       'frameMs': round(snap['renderer']['frameMs'], 2),
+                      'device': snap['renderer'].get('device'),
+                      'camera': snap['renderer'].get('cameraProfile'),
                       'errors': errors, 'image': str(image)}
             records.append(record)
             print(json.dumps(record), flush=True)
@@ -78,11 +84,13 @@ def capture(url, output, names):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--url', default='http://127.0.0.1:8014/?qa=1&camera=tilt55')
+    parser.add_argument('--url', default='http://127.0.0.1:8011/?qa=1')
     parser.add_argument('--output', type=Path, default=Path('/tmp/wayfarer-golden-views'))
     parser.add_argument('--views', default=','.join(VIEWS))
+    parser.add_argument('--zoom', type=float, help='Use ordinary Ctrl-right-drag zoom for a still review (65–325)')
     args = parser.parse_args()
     names = args.views.split(',')
     if any(name not in VIEWS for name in names):
         parser.error('Unknown view; choose from ' + ', '.join(VIEWS))
-    capture(args.url, args.output, names)
+    if args.zoom is not None and not 65<=args.zoom<=325:parser.error('Zoom must be within classic RO limits, 65–325')
+    capture(args.url, args.output, names,args.zoom)

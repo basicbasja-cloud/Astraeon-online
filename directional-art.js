@@ -4,9 +4,20 @@
 (() => {
 'use strict';
 const sheets={},pending={},silhouettes={},reactionDirections=['S','SE','E','NE','N','NW','W','SW'];
-let fallTransition=null;
-function load(key){if(sheets[key])return Promise.resolve();return pending[key]??=new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{sheets[key]=image;resolve()};image.onerror=()=>{delete pending[key];reject(new Error(`Cannot load ${key} directional art`))};image.src=`./assets/${key.endsWith('-v3')?key:key==='warrior-torso'?'warrior-torso-v1':key==='warrior-walk'?'warrior-walk-v2':key==='warrior-reactions'?'warrior-reactions-v2':key+(key.endsWith('-walk')?'-v1':'-directional-v1')}.webp`})}
-const ready=Promise.all(['warrior','mage','ranger','warrior-walk','mage-walk','ranger-walk','warrior-reactions-v3','warrior-torso',...['walk','run','sprint'].map(mode=>`warrior-${mode}-v3`)].map(load));
+let fallTransition=null,paintedLocomotion=null;
+function load(key){if(sheets[key])return Promise.resolve();return pending[key]??=new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{sheets[key]=image;resolve()};image.onerror=()=>{delete pending[key];reject(new Error(`Cannot load ${key} directional art`))};image.src=`./assets/${/-v[34]$/.test(key)?key:key==='warrior-torso'?'warrior-torso-v1':key==='warrior-walk'?'warrior-walk-v2':key==='warrior-reactions'?'warrior-reactions-v2':key+(key.endsWith('-walk')?'-v1':'-directional-v1')}.webp`})}
+const ready=Promise.all(['warrior','mage','ranger','mage-walk','ranger-walk','warrior-reactions-v3'].map(load));
+function configurePaintedLocomotion(data){
+ if(data?.version!==4||data.directions?.join(',')!==reactionDirections.join(','))throw Error('Invalid painted locomotion directions');
+ for(const [mode,clip] of Object.entries(data.clips)){
+  if(!['walk','run','sprint'].includes(mode)||clip.cols!==8||clip.rows!==8||clip.frames?.length!==64||clip.heights?.length!==8||clip.heights.some(h=>!Number.isFinite(h)||h<=0))throw Error('Invalid full-body strip '+mode);
+  for(let i=0;i<64;i++){const f=clip.frames[i];if(f.direction!==reactionDirections[i>>3]||f.phase!==i%8/8||f.rect.length!==4||f.anchor.length!==2||![...f.rect,...f.anchor].every(Number.isFinite)||f.rect[0]<0||f.rect[1]<0||f.rect[2]<=0||f.rect[3]<=0||f.anchor.some((a,j)=>a<0||a>f.rect[j+2]))throw Error('Invalid painted registration '+mode+'/'+i)}
+  window.AstraeonDirectionalMetadata[clip.clip]={cols:8,rows:8,frames:clip.frames.map(f=>f.rect)};
+  window.AstraeonHeroRegistration[clip.clip]={anchors:clip.frames.map(f=>f.anchor),heights:clip.heights};
+ }
+ if(!data.clips.walk||!data.clips.run)throw Error('Missing painted walk/run');
+ paintedLocomotion=data.clips;return Promise.all(Object.values(data.clips).map(c=>load(c.clip)));
+}
 function configureReactions(data){
  if(!data||data.rows!==8||data.cols!==2||data.frames.length!==16)throw Error('Warrior needs eight authored hit/death views');
  for(let i=0;i<16;i++){const f=data.frames[i];if(f.direction!==reactionDirections[i>>1]||f.state!==(i%2?'death':'hit'))throw Error('Reaction view order is invalid')}
@@ -66,8 +77,9 @@ function humanoid(ctx,iso,t,{archetype='warrior',state=t.state,time=0,progress=0
  const cycle=((((backward?-1:1)*t.gait)%1)+1)%1;
  const stride=Math.floor(cycle*4);
  const warriorStride=(state==='run'||state==='sprint'?[1,2,1,2]:[0,1,0,2])[stride];
+ const painted=walking&&archetype==='warrior'&&paintedLocomotion?.[t.activeStrategy||(['run','sprint'].includes(state)?state:'walk')];
  if(falling)fallingReaction(ctx,iso,t,row,(window.AstraeonView?.scale.humanoid||103)*scale,progress);
- else frame(ctx,iso,t,reaction?'warrior-reactions-v3':extended?`${archetype}-walk`:archetype,row,reaction?(state==='death'?1:0):walking&&archetype==='warrior'?warriorStride:extended?Math.floor(cycle*8):pose(state,t,progress,impactAt),(window.AstraeonView?.scale.humanoid||103)*scale,state,progress,time,impactAt);
+ else frame(ctx,iso,t,painted?painted.clip:reaction?'warrior-reactions-v3':extended?`${archetype}-walk`:archetype,row,painted?Math.floor(cycle*8):reaction?(state==='death'?1:0):walking&&archetype==='warrior'?warriorStride:extended?Math.floor(cycle*8):pose(state,t,progress,impactAt),(window.AstraeonView?.scale.humanoid||103)*scale,state,progress,time,impactAt);
  const facing=t.facingDirection;return {RightHand:[t.position.x+facing.y*.22,t.position.y-facing.x*.22,t.position.z+1.2],LeftHand:[t.position.x-facing.y*.22,t.position.y+facing.x*.22,t.position.z+1.2],Back:[t.position.x-facing.x*.2,t.position.y-facing.y*.2,t.position.z+1.2],Hip:[t.position.x,t.position.y,t.position.z+.8]};
 }
 function monster(ctx,iso,t,entity,time){
@@ -76,5 +88,5 @@ function monster(ctx,iso,t,entity,time){
  const species=entity.species||0,row=(species%4)*2+(state==='attack'||state==='cast'?1:0),width=(window.AstraeonView?.scale.monster[species]||(species===6?115:species===3?100:85))*(entity.elite?1.15:1);
  return frame(ctx,iso,t,species<4?'meadow':'forest',row,column,width,state,progress,time);
 }
-window.AstraeonDirectionalArt={ready,ensure,configureReactions,humanoid,monster,directionRow,pose,sheets,views:8};
+window.AstraeonDirectionalArt={ready,ensure,configureReactions,configurePaintedLocomotion,humanoid,monster,directionRow,pose,sheets,views:8};
 })();

@@ -17,3 +17,13 @@ Author UVs in Blender; the exporter preserves face-corner UVs and transforms.
 cutout unchanged. It is a leaf cluster, not a painted whole-tree card. Authored
 crossed canopy planes use its alpha-tested leaf edges in the shared depth
 buffer; existing spatial trunks, branches and shadow volumes are retained.
+
+## River rock v4 - 2026-10-03
+
+`wayfarer-rock-v4-source.png` preserves original built-in ImageGen output
+`exec-955651a6-c6e1-4d4f-bed8-65b268673cd1`. The request was an opaque seamless
+square hand-painted river-cliff swatch: pale slate/limestone fractures, muted
+sage moss and sparse ochre lichen, flat orthographic material, no text, objects
+or directional cast shadow. `assets/wayfarer-rock-v4.webp` is a 1024-pixel
+compressed copy. The saved Blender material catalog assigns it to the modeled
+river banks and outcrops. Civic stone/slate reuse the existing original v1 tiles.

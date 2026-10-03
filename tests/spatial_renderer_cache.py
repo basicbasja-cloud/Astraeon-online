@@ -1,14 +1,15 @@
-"""Compare cached/direct shared-depth pixels at the same actual rendered frame.
+"""Compare the legacy orthographic software cache/direct shared-depth pixels.
+The default Ragnarok perspective camera uses direct rendering, tested separately.
 Only renderer mode changes; ordinary input drives the game. No position/time setters.
 """
-import argparse,base64,io,json,math,time
+import argparse,base64,io,json,math,time,os
 from pathlib import Path
 import numpy as np
 from PIL import Image
 from playwright.sync_api import sync_playwright
 ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-depth-cache');args=ap.parse_args();out=Path(args.output);out.mkdir(parents=True,exist_ok=True);reports=[];errors=[]
 with sync_playwright() as p:
- b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=b.new_page(viewport={'width':1280,'height':800});page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None);page.goto(args.url+'/index.html?qa=1');page.locator('#create').click();page.wait_for_function('AstraeonQA.snapshot().renderer.frames>10')
+ b=p.chromium.launch(executable_path=os.environ.get('ASTRAEON_BROWSER','/usr/bin/chromium'),args=['--no-sandbox']);page=b.new_page(viewport={'width':1280,'height':800});page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None);page.goto(args.url+'/index.html?qa=1&camera=legacy');page.locator('#create').click();page.wait_for_function('AstraeonQA.snapshot().renderer.frames>10')
  # A full camera-facing quad can lean its head into a wall even when its feet
  # stand in front. Require real upright world height while retaining the exact
  # illustration size at the gameplay projection.
@@ -39,6 +40,9 @@ for(let y=Math.max(0,Math.floor((sy-224*v.zoom)*scale));y<Math.min(size.y,(sy+32
    raw=base64.b64decode(sample.pop(mode).split(',')[1]);(out/f'{name}-{mode}.png').write_bytes(raw);a=np.asarray(Image.open(io.BytesIO(raw)).convert('RGB'));masks.append((a[:,:,0]>150)&(a[:,:,1]<50)&(a[:,:,2]>150))
   disagreement=int(np.count_nonzero(masks[0]!=masks[1]));union=int(np.count_nonzero(masks[0]|masks[1]));assert union>100 and disagreement<=union*.03+10,(name,disagreement,union)
   reports.append({'name':name,'mean_pixel_delta':mean,'p95_pixel_delta':p95,'actor_region_deltas':actor_deltas,'cache_updates':sample['before'].get('cacheUpdates'),'depth_mask_disagreement':disagreement,'actor_mask_pixels':union})
+ # Exercise the actual cache-mode begin() as well as end(): it snaps the
+ # camera to the drawing-buffer grid, including odd viewport dimensions.
+ page.evaluate('AstraeonSpatialView.stats.software=true');page.wait_for_timeout(150)
  compare('arrival')
  # Follow ordinary route clicks far enough to cross a cache boundary. A timed
  # keypress can hit the forge and never move the camera beyond its padded cache.

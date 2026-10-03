@@ -51,10 +51,10 @@ def export(scene):
   if walkers:record['walkers']=walkers
   objects.append(record)
  objects.sort(key=lambda o:o['id'])
- data={'version':3,'id':scene['world_id'],'source':str(Path(bpy.data.filepath).relative_to(ROOT)),'units':'world-unit','terrain':terrain,'navigation':{'actorRadius':scene['navigation_radius'],'cellSize':scene['navigation_cell_size']},'lighting':{'sun':{'cast':[scene['sun_cast_x'],scene['sun_cast_y']],'strength':scene['sun_strength']},'ambient':scene['ambient']},'objects':objects,'spawn':json.loads(scene['spawn_json']),'route':json.loads(scene['route_json'])}
+ data={'version':3,'id':scene['world_id'],'source':Path(bpy.data.filepath).relative_to(ROOT).as_posix(),'units':'world-unit','terrain':terrain,'navigation':{'actorRadius':scene['navigation_radius'],'cellSize':scene['navigation_cell_size']},'lighting':{'sun':{'cast':[scene['sun_cast_x'],scene['sun_cast_y']],'strength':scene['sun_strength']},'ambient':scene['ambient']},'objects':objects,'spawn':json.loads(scene['spawn_json']),'route':json.loads(scene['route_json'])}
  for prop,key in [('layout_id','layoutId'),('safe_spawn_json','safeSpawn'),('districts_json','districts')]:
   if scene.get(prop):data[key]=scene[prop] if prop=='layout_id' else json.loads(scene[prop])
  data['materials']={m.name:{'color':list(m.diffuse_color[:3]),**({'texture':json.loads(m['texture_json'])} if m.get('texture_json') else {})} for m in bpy.data.materials if m.name in {p['material'] for o in objects for p in o['parts']}|{terrain['material']}|{s['material'] for s in terrain['surfaces']}}
  return data
 if __name__=='__main__':
- data=export(bpy.context.scene);output=ROOT/'world/v3'/(data['id']+'.json');output.write_text((json.dumps(data,separators=(',',':')) if data['id']=='wayfarer-spatial' else json.dumps(data,indent=2))+'\n');print('Exported',len(data['objects']),'objects from',data['source'],'to',output)
+ data=export(bpy.context.scene);output=ROOT/'world/v3'/(data['id']+'.json');temporary=output.with_suffix('.json.tmp');temporary.write_text((json.dumps(data,separators=(',',':')) if data['id']=='wayfarer-spatial' else json.dumps(data,indent=2))+'\n');temporary.replace(output);print('Exported',len(data['objects']),'objects from',data['source'],'to',output)
