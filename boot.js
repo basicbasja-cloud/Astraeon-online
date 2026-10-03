@@ -2,7 +2,7 @@
  * imports native court data before consumers capture town content. */
 (async()=>{
 'use strict';
-const version='43';
+const version='47';
 function load(files){return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=file+'?v='+version;script.async=false;script.onload=resolve;script.onerror=()=>reject(Error('Could not load '+file));document.body.appendChild(script)})))}
 try{
  await load(['icons.js','world-view.js','world-content.js']);
@@ -11,7 +11,7 @@ try{
  }
  await load(['environment-metadata.js','environment.js','town-structure.js','scene.js','input.js','character-motion.js','directional-metadata.js','hero-registration.js','warrior-gait.js','world/v3/locomotion.js','world/v3/warrior-registration.js','sprite-motion.js','warrior-rig.js','directional-art.js','character-renderer.js','animation.js','skill-nodes.js','combat.js','navigation.js','exploration.js','enemy-combat.js','dungeon.js','world-systems.js','save-state.js','combat-vfx.js']);
  const animation=await fetch('world/v3/warrior-animation.json?v='+version);if(!animation.ok)throw Error('Could not load Warrior animation');const animationData=await animation.json();window.AstraeonLocomotionV3.configure(animationData);window.AstraeonDirectionalArt.configureReactions(animationData.reactions);
- const painted=await fetch('world/v3/warrior-painted-locomotion.json?v='+version);if(!painted.ok)throw Error('Could not load full-body Warrior animation');await window.AstraeonDirectionalArt.configurePaintedLocomotion(await painted.json());
+ const painted=await fetch('world/v3/warrior-painted-locomotion.json?v='+version);if(!painted.ok)throw Error('Could not load full-body Warrior animation');const paintedData=await painted.json();window.AstraeonLocomotionV3.configurePainted(paintedData);await window.AstraeonDirectionalArt.configurePaintedLocomotion(paintedData);
  await import('./world/v3/renderer.js?v='+version);
  if(window.AstraeonSpatialView)await window.AstraeonSpatialView.whenReady;
  await load(['game.js']);

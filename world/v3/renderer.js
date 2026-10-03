@@ -5,17 +5,18 @@
  */
 import * as THREE from '../../vendor/three/three.module.min.js';
 const V=window.AstraeonView;
-const palette={stone:'#afa084',stoneLight:'#e0cc9e',cream:'#d4c29d',plaster:'#ebd5af',slate:'#345e80',blue:'#305d7c',gold:'#c49a48',wood:'#67432d',timber:'#5c3924',oak:'#9c6b3d',leaf:'#4b713a',leafLight:'#709143',grass:'#84926c',paving:'#c7b999',terracotta:'#b96d45',teal:'#447970',iron:'#465354',glass:'#496f78',clothBlue:'#4a83ad',clothOchre:'#e2b368',clothRose:'#bd7773',water:'#559ea8',flowers:'#d58b92',soil:'#aa9873'};
+const palette={stone:'#aaa99b',stoneLight:'#e0cc9e',cream:'#d4c29d',plaster:'#ebd5af',slate:'#345e80',blue:'#305d7c',gold:'#c49a48',wood:'#67432d',timber:'#5c3924',oak:'#9c6b3d',leaf:'#4b713a',leafLight:'#709143',grass:'#84a564',paving:'#cec7b4',terracotta:'#b96d45',teal:'#447970',iron:'#465354',glass:'#496f78',clothBlue:'#4a83ad',clothOchre:'#e2b368',clothRose:'#bd7773',water:'#559ea8',flowers:'#d58b92',soil:'#aa9873'};
 Object.assign(palette,{civicIvory:'#e8daba',civicShadow:'#b8b9a8',civicSlate:'#254c72',civicSlateLight:'#36678d',civicGlass:'#345c73',civicGlassLight:'#75b6c5',civicGold:'#d9b35e',civicDoor:'#493021',streetIvory:'#dfcda5',streetSlate:'#345e80',streetOchre:'#c78f50',statueIvory:'#eee3c9',gardenGrass:'#82936a'});
 const materialCache=new Map();
-Object.assign(palette,{bankStone:'#7d8785',bankStoneLight:'#a3a99b',wallStone:'#b8b1a0',wallCap:'#d8c9aa',roofMoss:'#3c6b60',roofClay:'#aa6240',roofBlue:'#345f80'});
+Object.assign(palette,{bankStone:'#7d8785',bankStoneLight:'#a3a99b',wallStone:'#b8b1a0',wallCap:'#d8c9aa',roofMoss:'#3c6b60',roofClay:'#aa6240',roofBlue:'#345f80',foliageCutout:'#4e7b3d'});
 const atlasTextures=new Map(),atlasImages=new Map(),textureLoads=[];
+const occludingOwners={value:new THREE.Vector4(0,0,0,0)};
 function texture(name,color){
  const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');g.fillStyle=palette[name]||(color?new THREE.Color().setRGB(...color).getStyle():'#b6a57f');g.fillRect(0,0,256,256);
  const random=(i)=>{const v=Math.sin(i*127.1+name.length*69.3)*43758.5453;return v-Math.floor(v)};
  // Original small painted material swatches: directional brush grain, weathered
  // ashlar, overlapped roof courses and timber grain; no perspective building cards.
- for(let i=0;i<3100;i++){g.fillStyle=random(i)>.45?'#fff1ce':'#302c21';g.globalAlpha=.025+random(i+1)*.07;g.fillRect(random(i+2)*256,random(i+3)*256,1+random(i+4)*7,.5+random(i+5)*2)}
+ for(let i=0;i<220;i++){g.fillStyle=random(i)>.45?'#fff1ce':'#302c21';g.globalAlpha=.015+random(i+1)*.025;g.fillRect(random(i+2)*256,random(i+3)*256,12+random(i+4)*24,4+random(i+5)*9)}
  g.globalAlpha=1;
  if(['cream','stone','stoneLight','paving','civicIvory','civicShadow','streetIvory','wallStone','wallCap','bankStone','bankStoneLight'].includes(name)){
   for(let row=0;row<8;row++)for(let col=-1;col<5;col++){
@@ -55,56 +56,121 @@ function material(name,definition){
   }map=atlasTextures.get(tileKey);
  }
  const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide,alphaTest:spec?.alphaCutoff||0});
+ // The authored material palette carries the large shapes. Texture retains
+ // quiet brush/course cues; broad world-space variation avoids tile-sized noise.
+ {
+  const painted=spec&&name!=='bannerSilk';
+  const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=name==='water'?.18:spec?.alphaCutoff ? .68 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24;
+  m.onBeforeCompile=shader=>{
+   shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.occludingOwners=occludingOwners;
+   shader.vertexShader='attribute float ownerId;varying float paintOwner;varying vec3 paintPosition;\n'+shader.vertexShader;
+   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\npaintOwner=ownerId;paintPosition=(modelMatrix*vec4(position,1.0)).xyz;');
+   shader.fragmentShader='varying float paintOwner;uniform vec4 occludingOwners;varying vec3 paintPosition;uniform vec3 paintBase;uniform float paintDetail;\n'+shader.fragmentShader;
+   if(painted)shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
+    float wash=1.0+0.035*sin(paintPosition.x*0.49+sin(paintPosition.y*0.27))*sin(paintPosition.y*0.38+paintPosition.z*0.41);
+    diffuseColor.rgb=mix(paintBase,diffuseColor.rgb,paintDetail)*wash;`);
+   shader.fragmentShader=shader.fragmentShader.replace('#include <alphahash_fragment>',`if(paintOwner>0.5 && (abs(paintOwner-occludingOwners.x)<0.1||abs(paintOwner-occludingOwners.y)<0.1||abs(paintOwner-occludingOwners.z)<0.1||abs(paintOwner-occludingOwners.w)<0.1))discard;
+    #include <alphahash_fragment>`);
+  };m.customProgramCacheKey=()=> 'painterly-material-v47/'+!!painted;
+ }
  materialCache.set(key,m);return m;
 }
 function appendMesh(batch,part,lighting){
  const vs=part.vertices,sun=lighting?new THREE.Vector3(-lighting.sun.cast[0],-lighting.sun.cast[1],1).normalize():new THREE.Vector3(-.34,-.45,.82).normalize(),ambient=lighting?.ambient??.8,strength=lighting?.sun.strength??.23;
  for(const [faceIndex,face] of part.faces.entries()){
   const a=new THREE.Vector3(...vs[face[0]]),b=new THREE.Vector3(...vs[face[1]]),c=new THREE.Vector3(...vs[face[2]]),normal=b.clone().sub(a).cross(c.clone().sub(a)).normalize();
+  if((part.walkable||/slate|terracotta|roof/i.test(part.material||''))&&normal.z<0)normal.negate();
   const axis=Math.abs(normal.z)>.65?'xy':Math.abs(normal.x)>Math.abs(normal.y)?'yz':'xz';
-  const shade=ambient+Math.max(0,normal.dot(sun))*strength;
+  const lit=Math.max(0,normal.dot(sun)),shade=ambient+lit*strength;
   for(let j=1;j<face.length-1;j++)batch.owners?.push(part.objectId||part.id||'terrain');
-  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],uv=part.uvs?.[faceIndex]?.[face.indexOf(i)];batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(shade,shade*.99,shade*.96);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
+  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],uv=part.uvs?.[faceIndex]?.[face.indexOf(i)];batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(shade*(.93+.07*lit),shade*(.97+.03*lit),shade*(1.04-.08*lit));batch.ownerId?.push(part.ownerNumber||0);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
  }
 }
-function geometry(batch){const g=new THREE.BufferGeometry();for(const [name,size] of [['position',3],['normal',3],['uv',2],['color',3]])g.setAttribute(name,new THREE.Float32BufferAttribute(batch[name],size));g.computeBoundingSphere();return g}
+function geometry(batch){const g=new THREE.BufferGeometry();for(const [name,size] of [['position',3],['normal',3],['uv',2],['color',3],['ownerId',1],['feather',1]])if(batch[name])g.setAttribute(name,new THREE.Float32BufferAttribute(batch[name],size));g.computeBoundingSphere();return g}
+function featherMaterial(base,key){
+ const m=base.clone(),compile=base.onBeforeCompile;m.transparent=true;m.depthWrite=false;m.forceSinglePass=true;
+ m.onBeforeCompile=shader=>{compile?.(shader);shader.vertexShader='attribute float feather;varying float edgeOpacity;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nedgeOpacity=feather;');shader.fragmentShader='varying float edgeOpacity;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <alphatest_fragment>','diffuseColor.a*=smoothstep(0.0,1.0,edgeOpacity);\n#include <alphatest_fragment>')};
+ m.customProgramCacheKey=()=> 'painterly-feather-v47/'+key;return m;
+}
+function boundarySegments(polygons,visit){
+ for(const polygon of polygons){
+  const area=polygon.reduce((s,a,i)=>{const b=polygon[(i+1)%polygon.length];return s+a[0]*b[1]-b[0]*a[1]},0),sign=area>0?1:-1;
+  for(let i=0;i<polygon.length;i++){
+   const a=polygon[i],b=polygon[(i+1)%polygon.length],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy),n=[dy/length*sign,-dx/length*sign],steps=Math.ceil(length/.65);
+   for(let j=0;j<steps;j++){const p=[a[0]+dx*j/steps,a[1]+dy*j/steps],q=[a[0]+dx*(j+1)/steps,a[1]+dy*(j+1)/steps],probe={x:(p[0]+q[0])/2+n[0]*.035,y:(p[1]+q[1])/2+n[1]*.035};
+    if(polygons.some(other=>other!==polygon&&window.AstraeonSpatialV3.pointIn(probe,other)))continue;
+    visit(p,q,n);
+   }
+  }
+ }
+}
 class SpatialRenderer{
  constructor(source){
-  this.source=source;this.actors=new Map();this.stats={backend:'three-webgl',frames:0,frameMs:0};this.active=false;
+  this.source=source;this.actors=new Map();this.spriteTextures=new Map();this.stats={backend:'three-webgl',frames:0,frameMs:0};this.active=false;
   this.cameraProfile=V.cameraProfile;this.perspectiveMode=!!this.cameraProfile;this.projectionReady=false;
   this.entityIds=new WeakMap();this.nextEntityId=0;
   this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#bbc9b2');
   this.camera=new THREE.Camera();this.camera.matrixAutoUpdate=false;this.camera.matrixWorld.identity();this.camera.matrixWorldInverse.identity();
-  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',spec=source.materials[name]?.texture,key=spec?JSON.stringify(spec):name;if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],owners:[]});appendMesh(batches.get(key),part,source.lighting)};
-  const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
+  this.buildingNumbers=new Map();this.occluderGroups=[];this.fadedOwners=new Set();this.fadeMeshes=new Map();
+  for(const o of source.objects){
+   if(o.family==='vegetation'||!o.parts.some(p=>p.visible!==false&&p.role==='solid'&&p.vertices.some(v=>v[2]>2)))continue;
+   const id=this.buildingNumbers.size+1;this.buildingNumbers.set(o.id,id);
+   const triangles=[],box=new THREE.Box3();for(const p of o.parts.filter(p=>p.visible!==false)){
+    const vertices=p.vertices.map(v=>new THREE.Vector3(...v));for(const v of vertices)box.expandByPoint(v);
+    for(const f of p.faces)for(let i=1;i<f.length-1;i++)triangles.push([vertices[f[0]],vertices[f[i]],vertices[f[i+1]]]);
+   }this.occluderGroups.push({id,owner:o.id,box,triangles});
+  }
+  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',spec=source.materials[name]?.texture,key=name+JSON.stringify(spec||'');if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],ownerId:[],owners:[]});appendMesh(batches.get(key),part,source.lighting)};
+  const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
-  for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id});
+  for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
   for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=name==='water';this.scene.add(mesh)}
   this.whenReady=Promise.all(textureLoads);
   const spatial=window.AstraeonContent?.nativeWorld?.id===source.id?window.AstraeonContent.nativeWorld.spatial:window.AstraeonSpatialV3.compile(source);this.spatial=spatial;
+  // Blend only the exposed union boundary of low paving. Internal strip and
+  // junction edges remain opaque, and these visual verges never change paths.
+  const paving=terrain.surfaces.filter(s=>s.walkable&&s.material==='paving'&&s.vertices&&Math.max(...s.vertices.map(v=>v[2]))<.10),edge={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]},size=source.materials.paving?.texture?.worldSize||4;
+  boundarySegments(paving.map(s=>s.polygon),(a,b,n)=>{
+   const outer=[a[0]+n[0]*.52,a[1]+n[1]*.52],probe=[(a[0]+b[0])/2+n[0]*.45,(a[1]+b[1])/2+n[1]*.45];
+   if(!window.AstraeonSpatialV3.pointIn({x:probe[0],y:probe[1]},terrain.walkablePolygon)||spatial.blocked(...probe,.02))return;
+   const v=[[...a,spatial.elevationAt(...a)+.010],[...b,spatial.elevationAt(...b)+.010],[b[0]+n[0]*.52,b[1]+n[1]*.52,terrain.elevation+.011],[...outer,terrain.elevation+.011]];
+   appendMesh(edge,{vertices:v,faces:[[0,1,2,3]],material:'paving',walkable:true,uvs:[v.map(p=>[p[0]/size,p[1]/size])]},source.lighting);
+   edge.feather.push(1,1,0,1,0,0);
+  });
+  if(edge.position.length){const verge=new THREE.Mesh(geometry(edge),featherMaterial(material('paving',source.materials.paving),'paving'));verge.name='static/paving-verges';this.scene.add(verge)}
+  // A quiet, shallow shoreline ribbon softens the water/rock contact without
+  // painting over the cliff silhouette or the usable bridge thresholds.
+  const water=terrain.surfaces.find(s=>s.material==='water'),shore={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]};
+  if(water)boundarySegments([terrain.walkablePolygon],(a,b,n)=>{
+   const z=water.vertices[0][2]+.013,points=[[a[0]+n[0]*1.35,a[1]+n[1]*1.35,z],[b[0]+n[0]*1.35,b[1]+n[1]*1.35,z],[b[0]+n[0]*2.4,b[1]+n[1]*2.4,z],[a[0]+n[0]*2.4,a[1]+n[1]*2.4,z]];
+   if(!window.AstraeonSpatialV3.pointIn({x:points[0][0],y:points[0][1]},water.polygon))return;
+   appendMesh(shore,{vertices:points,faces:[[0,1,2,3]],walkable:true},source.lighting);shore.feather.push(.45,.45,0,.45,0,0);
+  });
+  if(shore.position.length){const ribbon=new THREE.Mesh(geometry(shore),featherMaterial(new THREE.MeshBasicMaterial({color:'#b8d9ce',vertexColors:true,side:THREE.DoubleSide}),'shore'));ribbon.name='static/shoreline';this.scene.add(ribbon)}
   // Static authored sun shadow atlas: one draw, no dynamic shadow map or PBR.
-  const c=document.createElement('canvas');c.width=c.height=1024;const g=c.getContext('2d'),b=terrain.bounds,sx=1024/(b.maxX-b.minX),sy=1024/(b.maxY-b.minY);
-  g.fillStyle='#23352f';g.globalAlpha=source.lighting.sun.strength;g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();
-  this.shadowPixels=g.getImageData(0,0,1024,1024).data;this.shadowBounds=b;
+  this.shadowSize=2048;const c=document.createElement('canvas');c.width=c.height=this.shadowSize;const g=c.getContext('2d'),b=terrain.bounds,sx=this.shadowSize/(b.maxX-b.minX),sy=this.shadowSize/(b.maxY-b.minY);
+  g.fillStyle='#3a4464';g.globalAlpha=source.lighting.sun.strength;g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();
+  // Soft local depth at building feet supplements the directional cast atlas.
+  // One combined stroke avoids repeatedly darkening intersecting foundations.
+  g.save();g.filter='blur(3px)';g.strokeStyle='#273449';g.globalAlpha=.22;g.lineWidth=.40*(sx+sy)/2;g.lineJoin='round';g.beginPath();
+  for(const solid of spatial.solids){if(solid.visible===false||solid.base>.8||solid.height<1.4)continue;solid.footprint.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.stroke();g.restore();
+  this.shadowPixels=g.getImageData(0,0,this.shadowSize,this.shadowSize).data;this.shadowBounds=b;
   const tex=new THREE.CanvasTexture(c);tex.flipY=false;tex.colorSpace=THREE.SRGBColorSpace;
   // Project the static atlas onto the authored walkable elevations. A flat
   // decal disappears beneath terraces and cannot ground their architecture.
   const shadowPositions=[],shadowUVs=[],shadowVertex=(x,y,z)=>{shadowPositions.push(x,y,z);shadowUVs.push((x-b.minX)/(b.maxX-b.minX),(y-b.minY)/(b.maxY-b.minY))};
-  // Receivers follow the land outline; a bounds rectangle would project a
-  // floating shadow sheet over the water outside the defended bank.
-  const receive=part=>{for(const face of part.faces)for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=part.vertices[i];shadowVertex(v[0],v[1],v[2]+.028)}};
-  receive(groundMesh);
-  if(terrain.walkablePolygon)for(const surface of terrain.surfaces.filter(s=>s.walkable&&s.vertices?.some(v=>!window.AstraeonSpatialV3.pointIn({x:v[0],y:v[1]},terrain.walkablePolygon))))receive(surface);
-  const raised=terrain.surfaces.filter(s=>s.walkable&&s.vertices?.some(v=>v[2]>terrain.elevation+.1)).flatMap(s=>s.vertices);
-  if(raised.length){const minX=Math.min(...raised.map(v=>v[0])),maxX=Math.max(...raised.map(v=>v[0])),minY=Math.min(...raised.map(v=>v[1])),maxY=Math.max(...raised.map(v=>v[1]));
-   for(let y=minY;y<maxY;y+=.25)for(let x=minX;x<maxX;x+=.25){if(spatial.elevationAt(x+.125,y+.125)<terrain.elevation+.03)continue;
-    for(const [dx,dy] of [[0,0],[.25,0],[.25,.25],[0,0],[.25,.25],[0,.25]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.028);
-   }
+  // One receiver per occupied floor cell, at the highest authored contact.
+  // Overlaid ground/road receivers caused depth fighting and doubled opacity
+  // at street junctions after the larger-town material pass.
+  const land=[terrain.walkablePolygon,...terrain.surfaces.filter(s=>s.walkable).map(s=>s.polygon)].filter(Boolean),cell=.5;
+  for(let y=b.minY;y<b.maxY;y+=cell)for(let x=b.minX;x<b.maxX;x+=cell){
+   if(!land.some(p=>window.AstraeonSpatialV3.pointIn({x:x+cell/2,y:y+cell/2},p)))continue;
+   for(const [dx,dy] of [[0,0],[cell,0],[cell,cell],[0,0],[cell,cell],[0,cell]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.015);
   }
   const shadowGeo=new THREE.BufferGeometry();shadowGeo.setAttribute('position',new THREE.Float32BufferAttribute(shadowPositions,3));shadowGeo.setAttribute('uv',new THREE.Float32BufferAttribute(shadowUVs,2));shadowGeo.computeBoundingSphere();
   // The inherited screen basis reflects winding. Receiver decals must follow
   // the same double-sided policy as the authored geometry and picking floor.
-  const shadow=new THREE.Mesh(shadowGeo,new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1}));shadow.userData.cacheDynamic=true;this.scene.add(shadow);
+  const shadow=new THREE.Mesh(shadowGeo,new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true}));shadow.userData.cacheDynamic=true;this.scene.add(shadow);
   this.dynamicNodes=this.scene.children.filter(o=>o.userData.cacheDynamic);
   this.staticNodes=this.scene.children.filter(o=>!o.userData.cacheDynamic);
   // Upright illustrated planes: a pixel of height is real vertical world
@@ -132,6 +198,9 @@ class SpatialRenderer{
   if(this.stats.software)this.stats.pixelRatio=.5;
   for(const m of materialCache.values()){m.map.anisotropy=this.stats.software?1:Math.min(4,this.renderer.capabilities.getMaxAnisotropy());m.map.minFilter=THREE.LinearMipmapLinearFilter;m.map.needsUpdate=true}
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.setPixelRatio(this.stats.pixelRatio);
+  // Decode/upload all complete strips before the first movement. Shared atlases
+  // avoid a new canvas texture upload every time an actor changes a frame.
+  for(const image of Object.values(window.AstraeonDirectionalArt.sheets))this.spriteTexture(image);
   this.renderer.info.autoReset=false;
   this.canvas=this.renderer.domElement;this.canvas.id='spatial-world';this.canvas.setAttribute('aria-hidden','true');this.canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';overlay.before(this.canvas);overlay.style.background='transparent';overlay.parentElement.classList.add('spatial-stage');this.active=true;
  }
@@ -174,18 +243,54 @@ class SpatialRenderer{
    const geo=new THREE.BufferGeometry(),positions=[];
    for(const [x,y] of [[-128,-32],[128,-32],[128,224],[-128,224]])positions.push(...this.right.clone().multiplyScalar(x).addScaledVector(this.up,y).toArray());
    geo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute([0,0,1,0,1,1,0,1],2));geo.setIndex([0,1,2,0,2,3]);geo.computeBoundingSphere();
-   const mat=new THREE.MeshBasicMaterial({map:tex,alphaTest:.10,transparent:true,depthWrite:true,side:THREE.DoubleSide,forceSinglePass:true});const mesh=new THREE.Mesh(geo,mat);mesh.name='actor/'+id;this.scene.add(mesh);
+   const mat=new THREE.MeshBasicMaterial({map:tex,alphaTest:.18,transparent:true,depthWrite:true,side:THREE.DoubleSide,forceSinglePass:true});const mesh=new THREE.Mesh(geo,mat);mesh.name='actor/'+id;this.scene.add(mesh);
    const shadow=new THREE.Mesh(new THREE.CircleGeometry(radius,20),new THREE.MeshBasicMaterial({color:'#23352f',transparent:true,opacity:.22,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true}));shadow.scale.set(1,1.1,1);this.scene.add(shadow);
    a={canvas,ctx,tex,mesh,shadow};this.actors.set(id,a);
   }
   const p=t.position,prior=V.zoom;V.zoom=1;a.ctx.clearRect(0,0,256,256);a.ctx.save();a.ctx.globalAlpha=alpha;
   const iso=(x,y,z=0)=>{const q=V.project(x-p.x,y-p.y);return{x:128+q.x,y:224+q.y-z+(p.z||0)*35}};
-  let sockets;this.assemblingActor=true;try{sockets=draw(a.ctx,iso)}finally{this.assemblingActor=false;a.ctx.restore();V.zoom=prior}
-  const b=this.shadowBounds,tx=Math.floor((p.x-b.minX)/(b.maxX-b.minX)*1024),ty=Math.floor((p.y-b.minY)/(b.maxY-b.minY)*1024),shade=tx>=0&&tx<1024&&ty>=0&&ty<1024?this.shadowPixels[(ty*1024+tx)*4+3]/255:0;
+  let sockets;this.paintedFrame=null;this.assemblingActor=true;try{sockets=draw(a.ctx,iso)}finally{this.assemblingActor=false;a.ctx.restore();V.zoom=prior}
+  const frame=this.paintedFrame;
+  if(frame){
+   const {image,bounds,unit,left,top}=frame,[x,y,w,h]=bounds,uv=a.mesh.geometry.attributes.uv,pos=a.mesh.geometry.attributes.position;
+   const coords=[[left,top-h*unit],[left+w*unit,top-h*unit],[left+w*unit,top],[left,top]];
+   for(let i=0;i<4;i++){const [dx,dy]=coords[i],v=this.right.clone().multiplyScalar(dx).addScaledVector(this.up,dy);pos.setXYZ(i,v.x,v.y,v.z)}
+   uv.setXY(0,x/image.width,1-(y+h)/image.height);uv.setXY(1,(x+w)/image.width,1-(y+h)/image.height);uv.setXY(2,(x+w)/image.width,1-y/image.height);uv.setXY(3,x/image.width,1-y/image.height);
+   pos.needsUpdate=uv.needsUpdate=true;a.mesh.geometry.computeBoundingSphere();a.mesh.material.map=this.spriteTexture(image);a.mesh.material.opacity=alpha;a.directFrame=true;
+  }else{
+   if(a.directFrame){const pos=a.mesh.geometry.attributes.position;[[-128,-32],[128,-32],[128,224],[-128,224]].forEach(([x,y],i)=>{const v=this.right.clone().multiplyScalar(x).addScaledVector(this.up,y);pos.setXYZ(i,v.x,v.y,v.z)});pos.needsUpdate=true;a.mesh.geometry.attributes.uv.array.set([0,0,1,0,1,1,0,1]);a.mesh.geometry.attributes.uv.needsUpdate=true;a.mesh.geometry.computeBoundingSphere()}
+   a.directFrame=false;a.mesh.material.map=a.tex;a.mesh.material.opacity=1;a.tex.needsUpdate=true;
+  }
+  const b=this.shadowBounds,tx=Math.floor((p.x-b.minX)/(b.maxX-b.minX)*this.shadowSize),ty=Math.floor((p.y-b.minY)/(b.maxY-b.minY)*this.shadowSize),shade=tx>=0&&tx<this.shadowSize&&ty>=0&&ty<this.shadowSize?this.shadowPixels[(ty*this.shadowSize+tx)*4+3]/255:0;
   a.mesh.material.color.setRGB(1-shade*.4,1-shade*.35,1-shade*.3);
-  if(this.cameraProfile?.kind==='ragnarok'){a.mesh.rotation.z=-this.cameraProfile.yaw*Math.PI/180;const scale=Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(50*Math.PI/180);a.mesh.scale.set(scale,scale,1)}
-  a.tex.needsUpdate=true;a.mesh.position.set(p.x,p.y,p.z||0);a.mesh.visible=true;a.shadow.position.set(p.x+.08,p.y+.08,(p.z||0)+.035);a.shadow.material.opacity=.22*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
+  if(this.cameraProfile?.kind==='ragnarok'){a.mesh.rotation.z=-this.cameraProfile.yaw*Math.PI/180;const scale=Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(46*Math.PI/180);a.mesh.scale.set(scale,scale,1)}
+  const offset=frame?.contact?this.plantedSpriteOffset(t,frame):new THREE.Vector3();if(!frame?.contact)t.paintedStance=null;
+  a.mesh.position.set(p.x+offset.x,p.y+offset.y,(p.z||0)+offset.z);a.mesh.visible=true;a.shadow.position.set(p.x+offset.x+.08,p.y+offset.y+.08,(p.z||0)+.035);a.shadow.material.opacity=.22*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
+  if(frame?.contact?.stance&&t.paintedStance){const c=frame.contact,local=this.right.clone().multiplyScalar((c.sole[0]-c.anchor[0])*frame.unit).addScaledVector(this.up,-(c.sole[1]-c.anchor[1])*frame.unit);a.mesh.updateMatrixWorld();const sole=local.applyMatrix4(a.mesh.matrixWorld);a.paintedContact={key:t.paintedStance.key,expected:t.paintedStance.point.toArray(),actual:sole.toArray(),error:sole.distanceTo(t.paintedStance.point)}}else a.paintedContact=null;
   this.assemblyMs+=performance.now()-assemblyStarted;return sockets;
+ }
+ plantedSpriteOffset(t,frame){
+  const c=frame.contact,p=t.position,dx=(c.sole[0]-c.anchor[0])*frame.unit,dy=(c.sole[1]-c.anchor[1])*frame.unit;
+  const yaw=this.cameraProfile?.kind==='ragnarok'?-this.cameraProfile.yaw*Math.PI/180:0,scale=this.cameraProfile?.kind==='ragnarok'?Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(46*Math.PI/180):1;
+  const local=this.right.clone().multiplyScalar(dx*scale).applyAxisAngle(new THREE.Vector3(0,0,1),yaw).addScaledVector(this.up,-dy);
+  const phaseKey=c.clip+'/'+c.row+'/'+Math.floor(t.gait)+'/'+c.support;
+  if(!c.stance){if(t.paintedStance&&!t.paintedStance.airborne){t.paintedStance.airborne=true;t.paintedStance.airborneAt=t.gait}const fade=t.paintedStance?Math.max(0,1-(t.gait-t.paintedStance.airborneAt)*8):0;return t.paintedStance?.offset?.clone().multiplyScalar(fade)||new THREE.Vector3()}
+  if(t.paintedStance?.phaseKey!==phaseKey||t.paintedStance.airborne){
+   const ground=V.inverse(dx,dy),key=phaseKey+'/'+(t.paintedContactSerial=(t.paintedContactSerial||0)+1);t.paintedStance={key,phaseKey,point:new THREE.Vector3(p.x+ground.x,p.y+ground.y,this.spatial.elevationAt(p.x+ground.x,p.y+ground.y)),offset:new THREE.Vector3()};
+  }
+  const offset=t.paintedStance.point.clone().sub(new THREE.Vector3(p.x,p.y,p.z||0)).sub(local);
+  // A broken/missing contact cannot pull the illustrated body through a wall.
+  // Grounded source boots vary by up to a quarter unit around the anchor.
+  // Preserve that registration plus the authored floor-level difference.
+  const verticalLimit=.35+Math.abs(t.paintedStance.point.z-(p.z||0));
+  offset.x=Math.max(-.7,Math.min(.7,offset.x));offset.y=Math.max(-.7,Math.min(.7,offset.y));offset.z=Math.max(-verticalLimit,Math.min(verticalLimit,offset.z));
+  t.paintedStance.offset=offset.clone();return offset;
+ }
+ spriteTexture(image){
+  if(!this.spriteTextures.has(image)){const tex=new THREE.Texture(image);tex.colorSpace=THREE.SRGBColorSpace;tex.generateMipmaps=false;tex.minFilter=THREE.LinearFilter;tex.magFilter=THREE.LinearFilter;tex.needsUpdate=true;
+   const mask=document.createElement('canvas'),scale=Math.min(1,1024/Math.max(image.width,image.height));mask.width=Math.ceil(image.width*scale);mask.height=Math.ceil(image.height*scale);const ctx=mask.getContext('2d',{willReadFrequently:true});ctx.drawImage(image,0,0,mask.width,mask.height);tex.userData.alphaPixels={width:mask.width,height:mask.height,data:ctx.getImageData(0,0,mask.width,mask.height).data};
+   this.spriteTextures.set(image,tex);this.renderer?.initTexture(tex)}
+  return this.spriteTextures.get(image);
  }
  cachedWorld(){
   const r=this.renderer,pad=192,ratio=r.getPixelRatio(),w=this.width,h=this.height,size=r.getDrawingBufferSize(new THREE.Vector2()),padPixels=Math.round(pad*ratio),cw=w*(size.x+padPixels*2)/size.x,ch=h*(size.y+padPixels*2)/size.y,px=(cw-w)/2,py=(ch-h)/2,key=[w,h,ratio,this.zoom,this.anchorY].join('/');
@@ -213,7 +318,33 @@ class SpatialRenderer{
   r.render(c.scene,c.camera);const background=this.scene.background;this.scene.background=null;r.autoClear=false;
   const visibility=this.staticNodes.map(o=>o.visible);try{for(const o of this.staticNodes)o.visible=false;r.render(this.scene,this.camera)}finally{this.staticNodes.forEach((o,i)=>o.visible=visibility[i]);this.scene.background=background;r.autoClear=true}
  }
- end(){const started=performance.now();this.renderer.info.reset();if(this.stats.software&&!this.perspectiveMode)this.cachedWorld();else this.renderer.render(this.scene,this.camera);this.stats.frames++;this.stats.frameMs=this.stats.frameMs*.95+(performance.now()-started)*.05;this.stats.assemblyMs=this.assemblyMs;this.stats.totalMs=performance.now()-this.frameStarted;this.stats.calls=this.renderer.info.render.calls;this.stats.triangles=this.renderer.info.render.triangles;this.stats.textures=this.renderer.info.memory.textures;this.stats.staticDepthCache=!!this.stats.software&&!this.perspectiveMode;}
+ updateOcclusion(){
+  this.fadedOwners.clear();const ids=[],player=this.actors.get('player'),hit=new THREE.Vector3();
+  if(this.perspectiveMode&&player?.mesh.visible){for(const height of [.85,1.65]){
+   const p=player.mesh.position.clone();p.z+=height;const screen=this.worldToScreen(p.x,p.y,p.z),ray=this.screenRay(screen.x,screen.y).ray,max=ray.origin.distanceTo(p)-.03;
+   for(const group of this.occluderGroups){const entry=ray.intersectBox(group.box,hit);if(!entry||ray.origin.distanceTo(entry)>=max)continue;
+    if(group.triangles.some(([a,b,c])=>ray.intersectTriangle(a,b,c,false,hit)&&ray.origin.distanceTo(hit)<max)){
+     if(!ids.includes(group.id)&&ids.length<4){ids.push(group.id);this.fadedOwners.add(group.owner)}
+    }
+   }
+  }}
+  occludingOwners.value.set(...Array.from({length:4},(_,i)=>ids[i]||0));this.stats.fadedBuildings=[...this.fadedOwners];
+  for(const meshes of this.fadeMeshes.values())for(const mesh of meshes)mesh.visible=false;
+  for(const owner of [...this.fadedOwners].slice(0,4)){
+   if(!this.fadeMeshes.has(owner)){
+    const batches=new Map(),object=this.source.objects.find(o=>o.id===owner),meshes=[];
+    for(const part of object.parts.filter(p=>p.visible!==false)){
+     if(!batches.has(part.material))batches.set(part.material,{position:[],normal:[],uv:[],color:[],ownerId:[]});
+     appendMesh(batches.get(part.material),part,this.source.lighting);
+    }
+    for(const [name,batch] of batches){const original=material(name,this.source.materials[name]),m=original.clone();m.onBeforeCompile=original.onBeforeCompile;m.customProgramCacheKey=original.customProgramCacheKey;m.transparent=true;m.opacity=.16;m.depthWrite=false;m.alphaTest=0;
+     const mesh=new THREE.Mesh(geometry(batch),m);mesh.name='fade/'+owner;mesh.userData.cacheDynamic=true;this.scene.add(mesh);meshes.push(mesh);
+    }this.fadeMeshes.set(owner,meshes);
+   }
+   for(const mesh of this.fadeMeshes.get(owner))mesh.visible=true;
+  }
+ }
+ end(){const started=performance.now();this.updateOcclusion();this.renderer.info.reset();if(this.stats.software&&!this.perspectiveMode)this.cachedWorld();else this.renderer.render(this.scene,this.camera);this.stats.frames++;this.stats.frameMs=this.stats.frameMs*.95+(performance.now()-started)*.05;this.stats.assemblyMs=this.assemblyMs;this.stats.totalMs=performance.now()-this.frameStarted;this.stats.calls=this.renderer.info.render.calls;this.stats.triangles=this.renderer.info.render.triangles;this.stats.textures=this.renderer.info.memory.textures;this.stats.staticDepthCache=!!this.stats.software&&!this.perspectiveMode;}
  hide(){if(this.canvas)this.canvas.hidden=true;this.active=false;}
  idFor(entity,prefix){if(!this.entityIds.has(entity))this.entityIds.set(entity,prefix+'/'+(++this.nextEntityId));return this.entityIds.get(entity)}
  worldToScreen(x,y,z=0){const p=new THREE.Vector3(x,y,z).project(this.camera);return{x:(p.x+1)*this.width/2,y:(1-p.y)*this.height/2,depth:p.z}}
@@ -223,8 +354,10 @@ class SpatialRenderer{
   for(const hit of this.screenRay(x,y).intersectObjects(this.scene.children,false)){
    if(!hit.object.visible||hit.object===this.navFloor)continue;
    const id=hit.object.name;
-   if(id.startsWith('actor/')){const a=this.actors.get(id.slice(6));if(!a||!hit.uv)continue;const px=Math.min(255,Math.max(0,Math.floor(hit.uv.x*256))),py=Math.min(255,Math.max(0,Math.floor((1-hit.uv.y)*256)));if(a.ctx.getImageData(px,py,1,1).data[3]<26)continue;return id.slice(6)}
+   if(id.startsWith('actor/')){const a=this.actors.get(id.slice(6));if(!a||!hit.uv)continue;const mask=a.directFrame?a.mesh.material.map.userData.alphaPixels:null,w=mask?.width||256,h=mask?.height||256,px=Math.min(w-1,Math.max(0,Math.floor(hit.uv.x*w))),py=Math.min(h-1,Math.max(0,Math.floor((1-hit.uv.y)*h)));if((mask?mask.data[(py*w+px)*4+3]:a.ctx.getImageData(px,py,1,1).data[3])<26)continue;return id.slice(6)}
    if(id.startsWith('static/')){
+    if(!hit.object.userData.owners)continue; // Derived verges/shoreline carry no interactions.
+    if(this.fadedOwners.has(hit.object.userData.owners[hit.faceIndex]))continue;
     const m=hit.object.material;if(m.alphaTest&&hit.uv&&m.map.image){
      if(!m.userData.alphaPixels){const image=m.map.image,ctx=image.getContext('2d');m.userData.alphaPixels={data:ctx.getImageData(0,0,image.width,image.height).data,width:image.width,height:image.height}}
      const p=m.userData.alphaPixels,u=((hit.uv.x%1)+1)%1,v=((hit.uv.y%1)+1)%1,x=Math.min(p.width-1,Math.floor(u*p.width)),y=Math.min(p.height-1,Math.floor((1-v)*p.height));
@@ -233,7 +366,7 @@ class SpatialRenderer{
    }
   }return null;
  }
- snapshot(){return {...this.stats,cameraProfile:this.cameraProfile?structuredClone(this.cameraProfile):null,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite}))};}
+ snapshot(){return {...this.stats,cameraProfile:this.cameraProfile?structuredClone(this.cameraProfile):null,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite,paintedContact:a.paintedContact}))};}
 }
 window.AstraeonSpatialRenderer={SpatialRenderer,THREE};
 if(window.AstraeonContent?.nativeWorld?.id==='wayfarer-spatial'&&new URLSearchParams(location.search).get('renderer')!=='canvas')window.AstraeonSpatialView=new SpatialRenderer(window.AstraeonContent.nativeWorld.spatial.scene);

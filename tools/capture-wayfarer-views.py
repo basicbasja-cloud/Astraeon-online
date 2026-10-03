@@ -48,10 +48,16 @@ def capture(url, output, names, zoom=None):
         template = first.evaluate('window.AstraeonQA.snapshot().save')
         first.close()
         for name in names:
-            x, y = VIEWS[name]
+            x, y = (v*2 for v in VIEWS[name])
+            route=json.loads(Path('world/v3/wayfarer-spatial.json').read_text(encoding='utf-8'))['route']
+            stop=next((a for a in route if a['name'].lower()==name),None)
+            if stop:x,y=stop['position']
+            if name=="hall-terrace":x,y=54,24
+            if name=="hall-axis":x,y=54,42
             page = context.new_page()
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
+            page.on('console', lambda message: errors.append(message.text) if message.type=='error' else None)
             state = {**template, 'x': x, 'y': y}
             page.add_init_script('localStorage.setItem("astraeon-iso-v1",'
                                  'JSON.stringify(' + json.dumps(state) + '))')

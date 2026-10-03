@@ -19,7 +19,7 @@ with sync_playwright() as p:
         assert max(q['pixelError'] for q in result)<.001,result
         assert max(q['depthError'] for q in result)<.000001,result
         return result
-    c=snapshot()['renderer']['cameraProfile'];assert c['kind']=='ragnarok' and c['fov']==15 and c['pitch']==50 and c['yaw']==0 and c['zoom']==125,c
+    c=snapshot()['renderer']['cameraProfile'];assert c['kind']=='ragnarok' and c['fov']==15 and c['pitch']==46 and c['yaw']==0 and c['zoom']==125,c
     checks={'default':lens_check()};before=snapshot()['player']['position'];r=page.locator('#world').bounding_box();x=r['x']+r['width']*.5;y=r['y']+r['height']*.55
     def drag(dx,dy,modifier=None):
         if modifier:page.keyboard.down(modifier)
@@ -36,7 +36,7 @@ with sync_playwright() as p:
     assert q and math.hypot(q['n']['x']-q['hit']['x'],q['n']['y']-q['hit']['y'])<.001,q
     page.mouse.click(r['x']+q['screen']['x'],r['y']+q['screen']['y']);page.wait_for_function('(q)=>Math.hypot(AstraeonQA.snapshot().player.position.x-q.x,AstraeonQA.snapshot().player.position.y-q.y)<.4',arg=q['n'])
     checks['picking']=q;page.screenshot(path=str(args.output/'orbit-picking.png'))
-    for modifier,key,value in [(None,'yaw',0),('Shift','pitch',50),('Control','zoom',125)]:
+    for modifier,key,value in [(None,'yaw',0),('Shift','pitch',46),('Control','zoom',125)]:
         if modifier:page.keyboard.down(modifier)
         page.mouse.click(x,y,button='right',click_count=2,delay=100)
         if modifier:page.keyboard.up(modifier)

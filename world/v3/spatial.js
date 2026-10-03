@@ -27,18 +27,24 @@ function compile(scene){
  validate(scene);const parts=scene.objects.flatMap(o=>o.parts.map(p=>({...p,objectId:o.id,family:o.family,footprint:hull(p.vertices.map(v=>v.slice(0,2))),height:Math.max(...p.vertices.map(v=>v[2])),base:Math.min(...p.vertices.map(v=>v[2]))}))),solids=parts.filter(p=>p.role==='solid'),overheads=parts.filter(p=>p.role==='overhead');
  const bounds=scene.terrain.bounds,radius=scene.navigation.actorRadius;
  for(const p of solids)p.bounds={minX:Math.min(...p.footprint.map(v=>v[0])),maxX:Math.max(...p.footprint.map(v=>v[0])),minY:Math.min(...p.footprint.map(v=>v[1])),maxY:Math.max(...p.footprint.map(v=>v[1]))};
+ // Broad phase for the expanded town. Query only nearby geometry, including
+ // boundary cells and radius overlap; exact polygon/contact tests stay unchanged.
+ const bucketSize=8,index=items=>{const buckets=new Map();for(const item of items){const b=item.bounds;for(let y=Math.floor(b.minY/bucketSize);y<=Math.floor(b.maxY/bucketSize);y++)for(let x=Math.floor(b.minX/bucketSize);x<=Math.floor(b.maxX/bucketSize);x++){const key=x+','+y;if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(item)}}return buckets};
+ const nearby=(buckets,x,y,r=0)=>{const result=new Set();for(let by=Math.floor((y-r)/bucketSize);by<=Math.floor((y+r)/bucketSize);by++)for(let bx=Math.floor((x-r)/bucketSize);bx<=Math.floor((x+r)/bucketSize);bx++)for(const p of buckets.get(bx+','+by)||[])result.add(p);return result};
+ const solidIndex=index(solids);
  const floorPolygons=scene.terrain.walkablePolygon?[scene.terrain.walkablePolygon,...scene.terrain.surfaces.filter(s=>s.walkable).map(s=>s.polygon)]:null;
  const onLand=(x,y)=>!floorPolygons||floorPolygons.some(poly=>pointIn({x,y},poly));
- const blocked=(x,y,r=radius)=>x<bounds.minX+r||x>bounds.maxX-r||y<bounds.minY+r||y>bounds.maxY-r||!onLand(x,y)||solids.some(p=>x>=p.bounds.minX-r&&x<=p.bounds.maxX+r&&y>=p.bounds.minY-r&&y<=p.bounds.maxY+r&&touches({x,y},p.footprint,r));
+ const blocked=(x,y,r=radius)=>x<bounds.minX+r||x>bounds.maxX-r||y<bounds.minY+r||y>bounds.maxY-r||!onLand(x,y)||[...nearby(solidIndex,x,y,r)].some(p=>x>=p.bounds.minX-r&&x<=p.bounds.maxX+r&&y>=p.bounds.minY-r&&y<=p.bounds.maxY+r&&touches({x,y},p.footprint,r));
  const portalMap=scene.objects.flatMap(o=>(o.portals||[]).map(p=>({...p,objectId:o.id,range:p.range||1})));
  const navCells=[];for(let y=bounds.minY+.5;y<bounds.maxY;y+=scene.navigation.cellSize)for(let x=bounds.minX+.5;x<bounds.maxX;x+=scene.navigation.cellSize)navCells.push({x,y,walkable:!blocked(x,y)});
  const shadowPolygons=parts.filter(p=>p.shadow).map(p=>({id:p.id,polygon:hull(p.vertices.map(v=>[v[0]+scene.lighting.sun.cast[0]*v[2],v[1]+scene.lighting.sun.cast[1]*v[2]]))}));
  const floorTriangles=scene.terrain.surfaces.filter(s=>s.walkable&&s.vertices&&s.faces).flatMap(s=>s.faces.flatMap(f=>f.slice(1,-1).map((_,i)=>[s.vertices[f[0]],s.vertices[f[i+1]],s.vertices[f[i+2]]])));
- const elevationAt=(x,y)=>{let height=scene.terrain.elevation;for(const t of floorTriangles){const h=triangleHeight(x,y,...t);if(h!==null)height=Math.max(height,h)}return height};
+ const floorIndex=index(floorTriangles.map(t=>({t,bounds:{minX:Math.min(...t.map(v=>v[0])),maxX:Math.max(...t.map(v=>v[0])),minY:Math.min(...t.map(v=>v[1])),maxY:Math.max(...t.map(v=>v[1]))}})));
+ const elevationAt=(x,y)=>{let height=scene.terrain.elevation;for(const {t} of nearby(floorIndex,x,y)){const h=triangleHeight(x,y,...t);if(h!==null)height=Math.max(height,h)}return height};
  return {scene,parts,solids,overheads,portals:portalMap,navCells,shadowPolygons,blocked,
   elevationAt,
   interactionAt:(x,y)=>portalMap.find(p=>Math.hypot(x-p.approach[0],y-p.approach[1])<=p.range),
-  route:(start,goal)=>window.AstraeonNavigation.route(start,goal,blocked,{bounds,reach:.26}),
+  route:(start,goal)=>window.AstraeonNavigation.route(start,goal,blocked,{bounds,reach:.26,step:bounds.maxX-bounds.minX>80?1:.5}),
   bounds};
 }
 window.AstraeonSpatialV3={compile,validate,hull,pointIn,touches};

@@ -15,7 +15,7 @@ class CharacterTransform {
  }
  face(x,y,mode=FacingMode.Target){if(Math.hypot(x,y)<1e-6)return;this.desiredRotation=Math.atan2(y,x);this.mode=mode}
  snapFacing(x,y,mode=FacingMode.Locked){this.face(x,y,mode);this.rotation=this.desiredRotation;this.angularVelocity=0;this.facingDirection={x:Math.cos(this.rotation),y:Math.sin(this.rotation)}}
- teleport(x,y,z=0){this.position={x,y,z};this.velocity={x:0,y:0};this.speed=0;this.feet=[null,null];this.gait=0}
+ teleport(x,y,z=0){this.position={x,y,z};this.velocity={x:0,y:0};this.speed=0;this.feet=[null,null];this.gait=0;this.paintedStance=null}
  tick(x,y,dt,{archetype='warrior',action=null,sprint=false,elevation=0}={}){
   if(dt<=0)return;
   const dx=x-this.position.x,dy=y-this.position.y,walked=Math.hypot(dx,dy);

@@ -5,13 +5,13 @@
 'use strict';
 const sheets={},pending={},silhouettes={},reactionDirections=['S','SE','E','NE','N','NW','W','SW'];
 let fallTransition=null,paintedLocomotion=null;
-function load(key){if(sheets[key])return Promise.resolve();return pending[key]??=new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{sheets[key]=image;resolve()};image.onerror=()=>{delete pending[key];reject(new Error(`Cannot load ${key} directional art`))};image.src=`./assets/${/-v[34]$/.test(key)?key:key==='warrior-torso'?'warrior-torso-v1':key==='warrior-walk'?'warrior-walk-v2':key==='warrior-reactions'?'warrior-reactions-v2':key+(key.endsWith('-walk')?'-v1':'-directional-v1')}.webp`})}
+function load(key){if(sheets[key])return Promise.resolve();return pending[key]??=new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{sheets[key]=image;resolve()};image.onerror=()=>{delete pending[key];reject(new Error(`Cannot load ${key} directional art`))};image.src=`./assets/${/-v\d+$/.test(key)?key:key==='warrior-torso'?'warrior-torso-v1':key==='warrior-walk'?'warrior-walk-v2':key==='warrior-reactions'?'warrior-reactions-v2':key+(key.endsWith('-walk')?'-v1':'-directional-v1')}.webp`})}
 const ready=Promise.all(['warrior','mage','ranger','mage-walk','ranger-walk','warrior-reactions-v3'].map(load));
 function configurePaintedLocomotion(data){
  if(data?.version!==4||data.directions?.join(',')!==reactionDirections.join(','))throw Error('Invalid painted locomotion directions');
  for(const [mode,clip] of Object.entries(data.clips)){
-  if(!['walk','run','sprint'].includes(mode)||clip.cols!==8||clip.rows!==8||clip.frames?.length!==64||clip.heights?.length!==8||clip.heights.some(h=>!Number.isFinite(h)||h<=0))throw Error('Invalid full-body strip '+mode);
-  for(let i=0;i<64;i++){const f=clip.frames[i];if(f.direction!==reactionDirections[i>>3]||f.phase!==i%8/8||f.rect.length!==4||f.anchor.length!==2||![...f.rect,...f.anchor].every(Number.isFinite)||f.rect[0]<0||f.rect[1]<0||f.rect[2]<=0||f.rect[3]<=0||f.anchor.some((a,j)=>a<0||a>f.rect[j+2]))throw Error('Invalid painted registration '+mode+'/'+i)}
+  if(!['walk','run','sprint'].includes(mode)||clip.cols!==8||clip.rows!==8||clip.frames?.length!==64||clip.heights?.length!==8||clip.heights.some(h=>!Number.isFinite(h)||h<=0)||!(clip.cycleDistance>0)||!(clip.duty>0&&clip.duty<1))throw Error('Invalid full-body strip '+mode);
+  for(let i=0;i<64;i++){const f=clip.frames[i];if(f.direction!==reactionDirections[i>>3]||f.phase!==i%8/8||f.rect.length!==4||f.anchor.length!==2||![...f.rect,...f.anchor].every(Number.isFinite)||f.rect[0]<0||f.rect[1]<0||f.rect[2]<=0||f.rect[3]<=0||f.anchor.some((a,j)=>a<0||a>f.rect[j+2])||f.sole?.length!==2||!f.sole.every(Number.isFinite)||f.sole.some((a,j)=>a<0||a>f.rect[j+2])||typeof f.stance!=='boolean'||![0,1].includes(f.support))throw Error('Invalid painted registration '+mode+'/'+i)}
   window.AstraeonDirectionalMetadata[clip.clip]={cols:8,rows:8,frames:clip.frames.map(f=>f.rect)};
   window.AstraeonHeroRegistration[clip.clip]={anchors:clip.frames.map(f=>f.anchor),heights:clip.heights};
  }
@@ -40,6 +40,13 @@ function frame(ctx,iso,t,key,row,column,width,state,progress,time=0,impactAt=.45
  const cols=meta.cols,cellW=image.naturalWidth/cols,cellH=image.naturalHeight/(meta.rows||8),bounds=meta.frames[row*cols+column]||[column*cellW,row*cellH,cellW,cellH],foot=iso(t.position.x,t.position.y,(t.position.z+(key.endsWith('-v3')?t.flight||0:0))*35),registration=window.AstraeonHeroRegistration?.[key];
  const unit=(registration?70*(width/76)/registration.heights[row]:width/cellW)*(window.AstraeonView?.zoom||1),anchor=registration?.anchors[row*cols+column];
  const left=anchor?-anchor[0]*unit:(bounds[0]-column*cellW-cellW/2)*unit;
+ // Registered complete frames can be sampled directly from a shared GPU atlas.
+ // Keep Canvas composition for action transforms, silhouette clips and fall blends.
+ const spatial=window.AstraeonSpatialView;
+ if(spatial?.assemblingActor&&!meta.outlines&&['idle','turn','stop','walk','run','sprint','start'].includes(state)){
+  const clip=Object.values(paintedLocomotion||{}).find(c=>c.clip===key),contact=clip?.frames[row*cols+column];
+  spatial.paintedFrame={image,bounds,unit,left,top:(anchor?.[1]??bounds[3])*unit,contact:contact?.sole?{...contact,clip:key,row,anchor}:null};return true;
+ }
  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
  const movement=window.AstraeonSpriteMotion.sample(state,progress,impactAt,t.gait||0,t.speed||0),heading=t.facingDirection||{x:1,y:0},screenHeading=window.AstraeonView.project(heading.x,heading.y),length=Math.hypot(screenHeading.x,screenHeading.y)||1,dx=screenHeading.x/length,dy=screenHeading.y/length,zoom=window.AstraeonView?.zoom||1;
  // Animate around planted feet rather than stretching the entire sheet from its centre.
@@ -65,7 +72,11 @@ function fallingReaction(ctx,iso,t,row,width,progress){
  ctx.save();ctx.globalAlpha*=deathAlpha;reactionPose(ctx,iso,t,row,0,width,1-crossfade,p,progress);reactionPose(ctx,iso,t,row,1,width,crossfade);ctx.restore();
 }
 function humanoid(ctx,iso,t,{archetype='warrior',state=t.state,time=0,progress=0,scale=1,impactAt=.45}={}){
- const row=directionRow(t.rotation),walking=['walk','run','sprint','start'].includes(state)&&t.speed>.02;
+ const walking=['walk','run','sprint','start'].includes(state)&&t.speed>.02;
+ // A movement sprite faces its actual travel immediately. Smoothed world turns
+ // remain available for aiming/actions, but cannot show a backward stride at takeoff.
+ const heading=walking&&t.mode==='movement'&&Math.hypot(t.velocity?.x||0,t.velocity?.y||0)>.02?Math.atan2(t.velocity.y,t.velocity.x):t.rotation;
+ const row=directionRow(heading);
  // Hit and death use the same eight authored views as world facing.
  const reaction=archetype==='warrior'&&(state==='hit'||state==='death');
  const falling=archetype==='warrior'&&state==='death'&&fallTransition;
@@ -73,7 +84,7 @@ function humanoid(ctx,iso,t,{archetype='warrior',state=t.state,time=0,progress=0
  // all eight views. Keep each stride in that sheet so the knees, boots, cloak
  // and torso change together instead of compositing procedural lower legs.
  const extended=walking&&archetype!=='warrior'&&row!==4&&row!==5;
- const backward=(t.velocity?.x||0)*t.facingDirection.x+(t.velocity?.y||0)*t.facingDirection.y<-.05;
+ const backward=t.mode!=='movement'&&(t.velocity?.x||0)*t.facingDirection.x+(t.velocity?.y||0)*t.facingDirection.y<-.05;
  const cycle=((((backward?-1:1)*t.gait)%1)+1)%1;
  const stride=Math.floor(cycle*4);
  const warriorStride=(state==='run'||state==='sprint'?[1,2,1,2]:[0,1,0,2])[stride];

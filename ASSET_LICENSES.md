@@ -2,6 +2,10 @@
 
 No Ragnarok intellectual property is included. All assets below are original generated art for ASTRAEON. No third-party texture/model/audio pack is presently used. Generated-art provenance is tracked here; this is not a claim that third-party game art is licensed.
 
+## Runtime library
+
+The current town uses vendored Three.js modules in `vendor/three`, under the MIT license preserved at `vendor/three/LICENSE`. This is a rendering library, separate from generated artwork provenance. Canvas remains in use for UI/actions and other zones.
+
 | Asset | Origin | Use / status |
 |---|---|---|
 | astral-outpost.webp | Original project image generation, pre-audit repository asset | Character creation key art |
@@ -108,4 +112,18 @@ The six `warrior-{walk,run,sprint}[-torso]-v3.webp` assets derive from the origi
 painted ASTRAEON Warrior costume and newly authored limb/contact geometry in
 `tools/build-locomotion-v3.py`. They are proof candidates, not replacements for
 mainline combat art. No Ragnarok art, maps, textures or proprietary resources are
-included. Canvas2D remains the renderer; no PixiJS or Three.js dependency is shipped.
+included. That historical proof used Canvas2D; the current town ships the vendored Three.js dependency documented above, with Canvas retained for UI/actions and other zones.
+
+## Wayfarer scale and movement correction — 2026-10-03
+
+All new materials and character art are original built-in ImageGen outputs; no Ragnarok art pixels are included. PNG/WebP processing only normalizes full-body source frames, records registration/boot points and compresses assets.
+
+| Runtime asset | Preserved original source |
+|---|---|
+| wayfarer-materials-v44.webp | authoring/materials/wayfarer-materials-v44-source.png; exec-fcd27dcc-6ae8-4187-9e3c-a853687faa43.png |
+| wayfarer-lawn-v44.webp | authoring/materials/wayfarer-lawn-v44-source.png; exec-c82ad2c4-9247-43e2-91cd-023bfba01e69.png |
+| wayfarer-details-v44.webp | authoring/materials/wayfarer-details-v44-source.png; exec-56825fd8-b34b-4c09-a507-bc4c16c2b00f.png |
+| warrior-run-v5.webp | authoring/characters/painted-v44/warrior-run-seven-directions-source.png (exec-d33f5bea-4fcb-47fe-8f49-41e9d0d9808d.png) and warrior-run-W-source.png (exec-326d3770-bbf1-4871-828a-37157d7c98fe.png) |
+| wayfarer-banner-v44.svg | Original project vector art: blue cloth and gold compass heraldry |
+
+Landmarks, houses, new lanterns, blossoms and river strata are original meshes in the saved Blender source. Shared trees and material tiles are reusable vegetation/surface components; the twelve new frontage lots are assembled from architectural parts.

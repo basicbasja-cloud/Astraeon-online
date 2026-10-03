@@ -1,13 +1,13 @@
 /* Shared world projection, responsive framing and human-relative scale. */
 (() => {
 'use strict';
-const scale=Object.freeze({humanoid:76,npc:.94,boss:176,monster:[66,83,52,77,58,84,95,71]});
+const scale=Object.freeze({humanoid:92,npc:.94,boss:176,monster:[66,83,52,77,58,84,95,71]});
 // Ground axes match the painted front and side foundation planes.
 const legacyBasis=Object.freeze({xx:48,xy:14,yx:-32,yy:22});
 // Controlled long-lens study: local ground/height ratios correspond to
 // approximately 55/60/65 degrees of downward pitch at similar actor height.
 const townCameras=Object.freeze({
- ragnarok:{kind:'ragnarok',fov:15,pitch:50,yaw:0,zoom:125,basis:{xx:35/Math.cos(50*Math.PI/180),xy:0,yx:0,yy:35*Math.tan(50*Math.PI/180)},depth:{x:0,y:-Math.cos(50*Math.PI/180)/62.5,z:-Math.sin(50*Math.PI/180)/62.5}},
+ ragnarok:{kind:'ragnarok',fov:15,pitch:46,yaw:0,zoom:125,basis:{xx:35/Math.cos(46*Math.PI/180),xy:0,yx:0,yy:35*Math.tan(46*Math.PI/180)},depth:{x:0,y:-Math.cos(46*Math.PI/180)/62.5,z:-Math.sin(46*Math.PI/180)/62.5}},
  concept38:{basis:{xx:47,xy:12,yx:-25,yy:25},depth:{x:-.002,y:-.008,z:-.007}},
  concept45:{basis:{xx:49,xy:13,yx:-26,yy:33},depth:{x:-.002,y:-.008,z:-.009}},
  civic:{basis:{xx:49,xy:0,yx:0,yy:31},depth:{x:0,y:-.009,z:-.008}},
@@ -18,7 +18,7 @@ const townCameras=Object.freeze({
 });
 const cameraChoice=new URLSearchParams(globalThis.location?.search||'').get('camera');
 const cameraProfile=cameraChoice==='legacy'?null:structuredClone(townCameras[cameraChoice]||townCameras.ragnarok);
-const cameraTarget={pitch:50,yaw:0,zoom:125};
+const cameraTarget={pitch:46,yaw:0,zoom:125};
 const currentBasis=()=>cameraProfile&&window.AstraeonView?.zone===0?cameraProfile.basis:legacyBasis;
 const project=(x,y)=>{const b=currentBasis();return{x:x*b.xx+y*b.yx,y:x*b.xy+y*b.yy}};
 const inverse=(x,y)=>{const b=currentBasis(),det=b.xx*b.yy-b.yx*b.xy;return{x:(b.yy*x-b.yx*y)/det,y:(b.xx*y-b.xy*x)/det}};
@@ -40,7 +40,7 @@ function mountCameraControls(canvas){
  canvas.addEventListener('contextmenu',e=>{if(active())e.preventDefault()});
  canvas.addEventListener('wheel',e=>{if(!active())return;e.preventDefault();cameraTarget.zoom=Math.max(65,Math.min(325,cameraTarget.zoom+Math.sign(e.deltaY)*15))},{passive:false});
  canvas.addEventListener('pointerdown',e=>{if(e.button!==2||!active())return;e.preventDefault();
-  const now=performance.now();if(now-lastDown<350){if(e.shiftKey)cameraTarget.pitch=50;else if(e.ctrlKey)cameraTarget.zoom=125;else cameraTarget.yaw=0}lastDown=now;
+  const now=performance.now();if(now-lastDown<350){if(e.shiftKey)cameraTarget.pitch=46;else if(e.ctrlKey)cameraTarget.zoom=125;else cameraTarget.yaw=0}lastDown=now;
   drag={id:e.pointerId,x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);
  });
  canvas.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;

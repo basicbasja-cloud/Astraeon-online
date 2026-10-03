@@ -89,7 +89,7 @@ angle 230 degrees (interpreted as 50 degrees downward in our Z-up convention),
 yaw zero, zoom 125, a 15-degree vertical perspective lens, and smooth follow.
 This is not independent verification of Gravity's proprietary client defaults.
 
-The default town now uses those lens/orientation values, centered follow and
+The default town uses the 15-degree lens and controls, with a user-directed shallower 46-degree downward pitch, centered follow and
 zoom/2 camera distance in our map units. It supports 15-step wheel zoom (65–325),
 right-drag yaw, Shift-right-drag tilt, Ctrl-right-drag zoom and the corresponding
 double-right-click resets. The vertical limit is 89 rather than 90 degrees to
@@ -100,3 +100,17 @@ rows and keyboard input all follow the current orientation. Camera gestures
 must not start click navigation. A normal-input test compares the projection
 against an independent Three PerspectiveCamera and exercises the gestures and
 rotated click navigation.
+
+## Movement and town-scale recheck — 2026-10-03
+
+The [current community entity renderer](https://github.com/MrAntares/roBrowserLegacy/blob/master/src/Renderer/Entity/EntityRender.js) derives walking frame cadence from accumulated distance and action delay. Its internal-unit conversion is client-specific; Astraeon uses measured art registration and its own world-unit stride lengths instead of importing that numerical constant. The [GAT specification](https://ragnarokresearchlab.github.io/file-formats/gat/) describes map dimensions in navigation tiles. These are not directly interchangeable with Astraeon world units, so the expanded town is not claimed to reproduce a proprietary town size.
+
+Applied recheck: expand land area fourfold, preserve a civic hierarchy and connected district streets, keep the classic community camera lens/control reference, replace an incomplete running cycle, and verify the actual rendered soles and complete RAF intervals. The supplied concept is an atmosphere/composition reference rather than a strict layout.
+
+## RO3 visual comparison — 2026-10-04
+
+The publisher's [RO3 site](https://ro3global.com/) links its [May 27 developer diary](https://club.joymaker.com/article/170403/?from=web). The diary discusses PC experience and combat improvements. Its embedded video could not play in the review browser (YouTube error 153); no claim is made that this footage was watched. [Gravity's issuer release](https://www.globenewswire.com/news-release/2025/10/27/3174382/0/en/RAGNAROK-3-Chinese-Title-%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B43-Received-an-ISBN-Code-by-Chinese-Government.html) identifies the official RO3 channels.
+
+Actual published town screenshots were inspected in [GameSpark's report of Gravity's first full gameplay trailer](https://www.gamespark.jp/article/2025/07/31/155611.html), credited to the official trailer. This secondary source supplies visual frames only; technical camera/engine specifications still rely on inspected primary community sources above. The Geffen frame shows broad, readable stone masses, restrained cool stone, warm sunlight, recognizable civic arches, clear cast shadows and clustered planting around routes. Those are visual inferences, applied through original ASTRAEON meshes/materials: stronger civic architecture, grouped planting, deeper commercial/residential facades, quieter painterly colors and soft street/water transitions.
+
+The published frame is only 600 by 338 pixels. It cannot establish native game resolution, texture dimensions, texel density or the final shipping renderer. No RO3 pixels or proprietary files are included in ASTRAEON. The supplied concept retains priority for ASTRAEON identity; it is used for atmosphere and placement logic rather than reproduced as a fixed geometric diagram.

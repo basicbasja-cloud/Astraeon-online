@@ -8,6 +8,7 @@ const profiles={
  sprint:{speed:4.1,cycleDistance:1.95,duty:.38,lift:.32,lead:.81,clip:'warrior-sprint-v3',torso:'warrior-sprint-torso-v3',bodyPitch:6}
 };
 function configure(manifest){for(const mode of ['walk','run','sprint']){const clip=manifest.clips[mode];if(!clip||clip.cycleDistance<=0||clip.duty<=0||clip.duty>=1||clip.frames.length!==64)throw Error('Invalid locomotion manifest '+mode);profiles[mode]={...clip}}}
+function configurePainted(manifest){for(const mode of ['walk','run','sprint']){const clip=manifest.clips[mode];if(!(clip.cycleDistance>0)||!(clip.duty>0&&clip.duty<1))throw Error('Missing painted stride/contact timing '+mode);profiles[mode]={...profiles[mode],cycleDistance:clip.cycleDistance,duty:clip.duty,clip:clip.clip}}}
 class Locomotion extends window.AstraeonMotion.CharacterTransform{
  constructor(...args){super(...args);this.strategy='walk';this.activeStrategy='walk';this.profile=profiles.walk;this.flight=0;this.posePitch=0;this.settlingFoot=null}
  tick(x,y,dt,options={}){
@@ -17,7 +18,7 @@ class Locomotion extends window.AstraeonMotion.CharacterTransform{
   super.tick(x,y,dt,options);
   this.posePitch+=((this.speed>.02&&!options.action?this.profile.bodyPitch:0)-this.posePitch)*(1-Math.exp(-14*dt));
  }
- setStrategy(name){if(!profiles[name])throw Error('Unknown locomotion '+name);this.strategy=name}
+ setStrategy(name){if(!profiles[name])throw Error('Unknown locomotion '+name);this.strategy=name;if(this.golden&&name!==this.activeStrategy){this.activeStrategy=name;this.profile=profiles[name]}}
  teleport(...args){super.teleport(...args);this.settlingFoot=null;this.flight=0;this.posePitch=0}
  settleFeet(dt){
   const p=this.position,f=this.facingDirection,right={x:f.y,y:-f.x};
@@ -56,5 +57,5 @@ class Locomotion extends window.AstraeonMotion.CharacterTransform{
  }
  snapshot(){const {frames,...profile}=this.profile;return {...super.snapshot(),feet:this.feet.map(f=>f?{x:f.x,y:f.y,z:f.z,groundZ:f.groundZ,swing:f.swing}:null),gait:this.gait,strategy:this.strategy,activeStrategy:this.activeStrategy,profile,flight:this.flight}}
 }
-window.AstraeonLocomotionV3={profiles,Locomotion,configure};
+window.AstraeonLocomotionV3={profiles,Locomotion,configure,configurePainted};
 })();
