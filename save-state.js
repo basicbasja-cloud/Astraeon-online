@@ -8,7 +8,8 @@ function normalize(raw){
  const state={...raw,saveVersion:3};
  for(const [key,fallback,min,max] of [['race',0,0,13],['cls',0,0,21],['path',-1,-1,1],['lv',1,1,999],['zone',0,0,4]])state[key]=Math.floor(number(raw[key],fallback,min,max));
  state.name=raw.name.slice(0,24);state.maxHp=number(raw.maxHp,100,1);state.hp=number(raw.hp,state.maxHp,0,state.maxHp);state.maxEnergy=number(raw.maxEnergy,60,1);state.energy=number(raw.energy,state.maxEnergy,0,state.maxEnergy);
- state.x=number(raw.x,14.5,1,state.zone===0?42:28);state.y=number(raw.y,18,1,state.zone===0?38:25);state.origin=text(raw.origin,'Guildborn');state.rank=text(raw.rank,'Copper');state.profession=text(raw.profession,'Untrained');
+ const townBounds=window.AstraeonContent?.nativeWorld?.spatial?.bounds;
+ state.x=number(raw.x,14.5,1,state.zone===0?(townBounds?.maxX??44)-2:28);state.y=number(raw.y,18,1,state.zone===0?(townBounds?.maxY??40)-2:25);state.origin=text(raw.origin,'Guildborn');state.rank=text(raw.rank,'Copper');state.profession=text(raw.profession,'Untrained');
  for(const key of ['xp','gold','kills','clears','profXP','reputation','house','pvpWins','camp','skillMastery','weaponMastery','bossKills'])state[key]=number(raw[key],key==='gold'?50:0);
  const inventory=raw.inventory&&typeof raw.inventory==='object'?raw.inventory:{};state.inventory={...inventory};for(const key of ['herb','ore','shard','potion','ration','blade','charm','plate'])state.inventory[key]=Math.floor(number(inventory[key],0));
  const gear=raw.equipment&&typeof raw.equipment==='object'?raw.equipment:{};state.equipment={...gear,weapon:text(gear.weapon,'Traveler Blade'),armor:text(gear.armor,'Adventurer Garb'),relic:text(gear.relic,'None')};

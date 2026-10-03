@@ -1,7 +1,7 @@
 /* Ambient presentation. Does not own progression, combat or inventory. */
 (() => {
 'use strict';
-const qualityPresets={low:{dpr:1,particles:12,walkers:3},medium:{dpr:1.5,particles:24,walkers:7},high:{dpr:2,particles:36,walkers:7}};
+const qualityPresets={low:{dpr:1,particles:12,walkers:4},medium:{dpr:1.5,particles:24,walkers:10},high:{dpr:2,particles:36,walkers:10}};
 class AmbientLife {
  constructor(defs){this.actors=defs.map((d,i)=>({...d,x:d.route[0][0],y:d.route[0][1],waypoint:1,distance:0,pause:i*.5,moving:false,transform:new window.AstraeonMotion.CharacterTransform(d.route[0][0],d.route[0][1]),kind:d.kind||(i<2?'guild':i===4?'craft':'market')}))}
  tick(dt,time){for(const a of this.actors){if(a.pause>0){a.pause-=dt;a.moving=false;a.transform.tick(a.x,a.y,dt);continue}let [x,y]=a.route[a.waypoint],dx=x-a.x,dy=y-a.y,n=Math.hypot(dx,dy);if(n<.1){a.waypoint=(a.waypoint+1)%a.route.length;a.pause=2+(a.waypoint%3)*1.4;a.moving=false;a.transform.tick(a.x,a.y,dt);continue}const step=Math.min(n,a.pace*dt);a.x+=dx/n*step;a.y+=dy/n*step;a.distance+=step;a.moving=true;a.transform.tick(a.x,a.y,dt)}}
