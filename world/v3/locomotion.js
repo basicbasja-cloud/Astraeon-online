@@ -18,8 +18,8 @@ class Locomotion extends window.AstraeonMotion.CharacterTransform{
   super.tick(x,y,dt,options);
   this.posePitch+=((this.speed>.02&&!options.action?this.profile.bodyPitch:0)-this.posePitch)*(1-Math.exp(-14*dt));
  }
- setStrategy(name){if(!profiles[name])throw Error('Unknown locomotion '+name);this.strategy=name;if(this.golden&&name!==this.activeStrategy){this.activeStrategy=name;this.profile=profiles[name]}}
- teleport(...args){super.teleport(...args);this.settlingFoot=null;this.flight=0;this.posePitch=0}
+ setStrategy(name){if(!profiles[name])throw Error('Unknown locomotion '+name);this.strategy=name}
+ teleport(...args){super.teleport(...args);this.settlingFoot=null;this.flight=0;this.posePitch=0;this.strategyTransition=null}
  settleFeet(dt){
   const p=this.position,f=this.facingDirection,right={x:f.y,y:-f.x};
   const rests=[-1,1].map(side=>({x:p.x+right.x*side*.1,y:p.y+right.y*side*.1}));
@@ -38,11 +38,20 @@ class Locomotion extends window.AstraeonMotion.CharacterTransform{
  updateFeet(walked,dt,action){
   if(this.golden===false){this.locomotionClip=null;return super.updateFeet(walked,dt,action)}
   const moving=this.speed>.02&&!action;
-  // Change strategy at the next contact so a mid-swing speed change never snaps an ankle.
-  const previous=this.gait%1,next=(this.gait+walked/this.profile.cycleDistance)%1;
-  if(this.strategy!==this.activeStrategy&&(!moving||next<previous||previous<.5&&next>=.5)){this.activeStrategy=this.strategy;this.profile=profiles[this.strategy]}
+  // Requests do not replace the active clip mid-stride. Split displacement at
+  // the exact half-cycle boundary, then spend only the remainder in the new
+  // stride. These are declared contact phases, not proof of painted feet.
+  let remaining=walked;
+  if(this.strategy!==this.activeStrategy){
+   const starting=this.state==='start',toContact=(.5-this.gait%.5)*this.profile.cycleDistance;
+   if(!moving||starting||remaining+1e-10>=toContact){
+    if(moving&&!starting){this.gait+=toContact/this.profile.cycleDistance;remaining=Math.max(0,remaining-toContact)}
+    this.strategyTransition={from:this.activeStrategy,to:this.strategy,gait:this.gait,reason:!moving?'stationary':starting?'start':'contact',remainingDistance:remaining};
+    this.activeStrategy=this.strategy;this.profile=profiles[this.strategy];
+   }
+  }
   const profile=this.profile,p=this.position,f=this.facingDirection,right={x:f.y,y:-f.x},dir=moving?{x:this.velocity.x/this.speed,y:this.velocity.y/this.speed}:f;
-  this.gait+=walked/profile.cycleDistance;this.locomotionClip=profile.clip;
+  this.gait+=remaining/profile.cycleDistance;this.locomotionClip=profile.clip;
   if(!moving){this.settleFeet(dt);this.flight=0;return}
   if(this.settlingFoot!==null){this.settlingFoot=null;for(const foot of this.feet)if(foot){foot.swing=false;foot.z=0;delete foot.replant}}
   for(let i=0;i<2;i++){
@@ -55,7 +64,7 @@ class Locomotion extends window.AstraeonMotion.CharacterTransform{
   }
   this.flight=moving&&this.feet.every(f=>f.swing)?Math.min(...this.feet.map(f=>f.z))*.25:0;
  }
- snapshot(){const {frames,...profile}=this.profile;return {...super.snapshot(),feet:this.feet.map(f=>f?{x:f.x,y:f.y,z:f.z,groundZ:f.groundZ,swing:f.swing}:null),gait:this.gait,strategy:this.strategy,activeStrategy:this.activeStrategy,profile,flight:this.flight}}
+ snapshot(){const {frames,...profile}=this.profile;return {...super.snapshot(),feet:this.feet.map(f=>f?{x:f.x,y:f.y,z:f.z,groundZ:f.groundZ,swing:f.swing}:null),gait:this.gait,strategy:this.strategy,activeStrategy:this.activeStrategy,strategyTransition:this.strategyTransition?{...this.strategyTransition}:null,profile,flight:this.flight}}
 }
 window.AstraeonLocomotionV3={profiles,Locomotion,configure,configurePainted};
 })();

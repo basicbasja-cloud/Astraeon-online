@@ -37,3 +37,48 @@ test('every ambient patrol segment, including its closing leg, clears exact scen
   assert(window.AstraeonNavigation.clear({x:a[0],y:a[1]},{x:b[0],y:b[1]},world.blocked),actor.id+' / '+i);
  }
 });
+test('raised civic precinct has physical boundaries and three usable tread flights',()=>{
+ assert(world.elevationAt(54,33)>1.4);assert(world.elevationAt(54,40)<.1);
+ assert(world.blocked(38,35),'retaining edge needs a physical barrier');
+ for(const [x,top,bottom] of [[54,35,39.3],[26.3,35,38.7],[74,33.3,37]]){
+  let previous=world.elevationAt(x,bottom);
+  for(let y=bottom;y>=top-.1;y-=.08){assert(!world.blocked(x,y),'stair axis must stay clear');const h=world.elevationAt(x,y);assert(h>=previous-.01&&h-previous<.21,'tread contact must rise by one step');previous=h}
+  assert(previous>1.4);assert(world.route({x,y:bottom},{x,y:top-1}));
+ }
+});
+test('visible river bank has no open seams above the waterline',()=>{
+ const parts=scene.objects.flatMap(o=>o.parts).filter(p=>p.id.startsWith('bank-v49-')&&p.visible!==false);
+ assert(parts.length>100,'continuous bank must be present');
+ const water=scene.terrain.surfaces.find(s=>s.role==='water'),waterZ=water.vertices[0][2],edges=new Map();
+ const key=v=>v.map(n=>n.toFixed(4)).join('/');
+ for(const p of parts){
+  assert(Math.min(...p.vertices.map(v=>v[2]))<waterZ,'rock feet must extend below water');
+  for(const f of p.faces)for(let i=0;i<f.length;i++){
+   const a=p.vertices[f[i]],b=p.vertices[f[(i+1)%f.length]],k=[key(a),key(b)].sort().join('|');
+   const e=edges.get(k)||{count:0,a,b};e.count++;edges.set(k,e);
+  }
+ }
+ for(const e of edges.values()){
+  assert(e.count<=2,'bank must not overlap itself');
+  if(e.count===1)assert(e.a[2]<waterZ&&e.b[2]<waterZ||Math.abs(e.a[2])<.001&&Math.abs(e.b[2])<.001,'open edge inside exposed cliff face');
+ }
+});
+
+test('merchant court entrances climb their actual floor without crossing retaining solids',()=>{
+ assert(world.elevationAt(82,58)>.7);assert(world.elevationAt(70,59)<.1);
+ assert(world.blocked(73,63),'retaining edge must prevent a sideways height jump');
+ for(const [a,b] of [[[70.4,59],[74,59]],[[70.4,67],[74,67]],[[88.5,52.4],[88.5,56]],[[79,81.6],[79,78]]]){
+  let height=world.elevationAt(...a);
+  for(let i=1;i<=48;i++){
+   const x=a[0]+(b[0]-a[0])*i/48,y=a[1]+(b[1]-a[1])*i/48,h=world.elevationAt(x,y);
+   assert(!world.blocked(x,y),'market approach must be walkable: '+[x,y]);
+   assert(h>=height-.01&&h-height<.15,'market tread must rise by at most one step');height=h;
+  }
+  assert(height>.7);assert(world.route({x:a[0],y:a[1]},{x:b[0],y:b[1]}));
+ }
+ for(const id of ['market-spices','market-textiles','market-supplies','food-market']){
+  const counter=scene.objects.find(o=>o.id===id).parts.find(p=>p.id===id+'-counter');
+  const center=counter.vertices.reduce((a,v)=>[a[0]+v[0]/counter.vertices.length,a[1]+v[1]/counter.vertices.length],[0,0]);
+  assert(Math.abs(Math.min(...counter.vertices.map(v=>v[2]))+.045-world.elevationAt(...center))<.01,id+' counter must follow its court floor');
+ }
+});

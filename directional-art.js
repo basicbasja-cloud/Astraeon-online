@@ -43,9 +43,10 @@ function frame(ctx,iso,t,key,row,column,width,state,progress,time=0,impactAt=.45
  // Registered complete frames can be sampled directly from a shared GPU atlas.
  // Keep Canvas composition for action transforms, silhouette clips and fall blends.
  const spatial=window.AstraeonSpatialView;
+ if(spatial?.assemblingActor)spatial.sampledPose={clip:key,row,column,bounds};
  if(spatial?.assemblingActor&&!meta.outlines&&['idle','turn','stop','walk','run','sprint','start'].includes(state)){
   const clip=Object.values(paintedLocomotion||{}).find(c=>c.clip===key),contact=clip?.frames[row*cols+column];
-  spatial.paintedFrame={image,bounds,unit,left,top:(anchor?.[1]??bounds[3])*unit,contact:contact?.sole?{...contact,clip:key,row,anchor}:null};return true;
+  spatial.paintedFrame={image,key,row,column,bounds,unit,left,top:(anchor?.[1]??bounds[3])*unit,contact:contact?.sole?{...contact,clip:key,row,anchor}:null};return true;
  }
  ctx.save();ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
  const movement=window.AstraeonSpriteMotion.sample(state,progress,impactAt,t.gait||0,t.speed||0),heading=t.facingDirection||{x:1,y:0},screenHeading=window.AstraeonView.project(heading.x,heading.y),length=Math.hypot(screenHeading.x,screenHeading.y)||1,dx=screenHeading.x/length,dy=screenHeading.y/length,zoom=window.AstraeonView?.zoom||1;
@@ -80,15 +81,18 @@ function humanoid(ctx,iso,t,{archetype='warrior',state=t.state,time=0,progress=0
  // Hit and death use the same eight authored views as world facing.
  const reaction=archetype==='warrior'&&(state==='hit'||state==='death');
  const falling=archetype==='warrior'&&state==='death'&&fallTransition;
- // The approved directional Warrior sheet contains complete painted bodies in
+ // The current illustrated Warrior sheet contains complete painted bodies in
  // all eight views. Keep each stride in that sheet so the knees, boots, cloak
  // and torso change together instead of compositing procedural lower legs.
- const extended=walking&&archetype!=='warrior'&&row!==4&&row!==5;
+ const extended=walking&&archetype!=='warrior';
  const backward=t.mode!=='movement'&&(t.velocity?.x||0)*t.facingDirection.x+(t.velocity?.y||0)*t.facingDirection.y<-.05;
- const cycle=((((backward?-1:1)*t.gait)%1)+1)%1;
+ const painted=walking&&archetype==='warrior'&&paintedLocomotion?.[t.activeStrategy||(['run','sprint'].includes(state)?state:'walk')];
+ // Mage/Ranger's .95-unit simulation cycle hid passing poses at running speed.
+ // Ambient Warriors instead use the selected Warrior clip's authored span.
+ const gait=archetype==='warrior'&&t.activeStrategy?t.gait:Number.isFinite(t.distance)?t.distance/(painted?.cycleDistance||2.1):t.gait||0;
+ const cycle=((((backward?-1:1)*gait)%1)+1)%1;
  const stride=Math.floor(cycle*4);
  const warriorStride=(state==='run'||state==='sprint'?[1,2,1,2]:[0,1,0,2])[stride];
- const painted=walking&&archetype==='warrior'&&paintedLocomotion?.[t.activeStrategy||(['run','sprint'].includes(state)?state:'walk')];
  if(falling)fallingReaction(ctx,iso,t,row,(window.AstraeonView?.scale.humanoid||103)*scale,progress);
  else frame(ctx,iso,t,painted?painted.clip:reaction?'warrior-reactions-v3':extended?`${archetype}-walk`:archetype,row,painted?Math.floor(cycle*8):reaction?(state==='death'?1:0):walking&&archetype==='warrior'?warriorStride:extended?Math.floor(cycle*8):pose(state,t,progress,impactAt),(window.AstraeonView?.scale.humanoid||103)*scale,state,progress,time,impactAt);
  const facing=t.facingDirection;return {RightHand:[t.position.x+facing.y*.22,t.position.y-facing.x*.22,t.position.z+1.2],LeftHand:[t.position.x-facing.y*.22,t.position.y+facing.x*.22,t.position.z+1.2],Back:[t.position.x-facing.x*.2,t.position.y-facing.y*.2,t.position.z+1.2],Hip:[t.position.x,t.position.y,t.position.z+.8]};

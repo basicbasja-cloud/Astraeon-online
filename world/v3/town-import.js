@@ -12,7 +12,7 @@ function content(scene,baseline){
  const forecourts=scene.terrain.surfaces.filter(s=>['forecourt','market'].includes(s.role)).map(s=>({id:s.objectId||s.id,points:s.polygon}));
  const townRoads=scene.terrain.surfaces.filter(s=>s.centerline).map(s=>({role:s.legacyRole,points:s.centerline,width:s.width}));
  const plaza=scene.terrain.surfaces.find(s=>s.role==='plaza');
- const services=scene.objects.flatMap(o=>(o.services||[]).map(s=>({id:s.id,name:s.name,kind:s.kind,symbol:s.symbol,x:s.position[0],y:s.position[1],objectId:o.id})));
+ const services=scene.objects.flatMap(o=>(o.services||[]).map(s=>({id:s.id,name:s.name,kind:s.kind,symbol:s.symbol,x:s.position[0],y:s.position[1],objectId:o.id,...(s.archetype?{archetype:s.archetype}:{})})));
  const walkers=scene.objects.flatMap(o=>o.walkers||[]);
  const structures=Object.fromEntries(scene.objects.filter(o=>o.presentation?.structure).map(o=>{const p=o.presentation,s=structuredClone(p.structure);s.entrance=s.entrance.map((v,i)=>v+p.position[i]);s.layers=s.layers.map(l=>({...l,depth:l.depth.map((v,i)=>v+p.position[i])}));return [o.id,s]}));
  const transitions=scene.objects.flatMap(o=>o.portals.filter(p=>p.transition).map(p=>({zone:0,x:p.anchor[0],y:p.anchor[1],...p.transition,returnArrival:p.approach.slice(0,2)})));

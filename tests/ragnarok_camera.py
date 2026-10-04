@@ -13,7 +13,7 @@ with sync_playwright() as p:
         # Compare with a standard Three PerspectiveCamera in that convention;
         # this also catches an incorrect lens, depth denominator or orbit sign.
         result=page.evaluate('''()=>{const T=AstraeonSpatialRenderer.THREE,v=AstraeonSpatialView,c=v.cameraProfile,f=AstraeonView.inverse(v.focus.x,v.focus.y),pitch=c.pitch*Math.PI/180,yaw=c.yaw*Math.PI/180,d=c.zoom/2;
-          const camera=new T.PerspectiveCamera(c.fov,v.width/v.height,1,1000);camera.up.set(0,0,1);camera.position.set(-f.x-Math.cos(pitch)*Math.sin(yaw)*d,f.y+Math.cos(pitch)*Math.cos(yaw)*d,Math.sin(pitch)*d);camera.lookAt(-f.x,f.y,0);camera.updateMatrixWorld();
+          const z=v.focus.z||0,camera=new T.PerspectiveCamera(c.fov,v.width/v.height,1,1000);camera.up.set(0,0,1);camera.position.set(-f.x-Math.cos(pitch)*Math.sin(yaw)*d,f.y+Math.cos(pitch)*Math.cos(yaw)*d,z+Math.sin(pitch)*d);camera.lookAt(-f.x,f.y,z);camera.updateMatrixWorld();
           const samples=[[f.x,f.y,0],[f.x+3,f.y+5,0],[f.x-4,f.y-7,2],[f.x+2,f.y-1,6]];
           return samples.map(([x,y,z])=>{const actual=v.worldToScreen(x,y,z),q=new T.Vector3(-x,y,z).project(camera);return {pixelError:Math.hypot(actual.x-(q.x+1)*v.width/2,actual.y-(1-q.y)*v.height/2),depthError:Math.abs(actual.depth-q.z)}})}''')
         assert max(q['pixelError'] for q in result)<.001,result
@@ -41,6 +41,18 @@ with sync_playwright() as p:
         page.mouse.click(x,y,button='right',click_count=2,delay=100)
         if modifier:page.keyboard.up(modifier)
         page.wait_for_timeout(750);assert abs(snapshot()['renderer']['cameraProfile'][key]-value)<.02,(key,snapshot()['renderer']['cameraProfile'])
-    checks['reset']=lens_check();page.screenshot(path=str(args.output/'reset.png'));assert not errors,errors
+    checks['reset']=lens_check();page.screenshot(path=str(args.output/'reset.png'))
+    # Reach the raised civic precinct with ordinary clicks and compare the
+    # elevated follow against the independent physical camera, including rays.
+    for attempt in range(80):
+        state=snapshot();pos=state['player']['position']
+        if math.hypot(pos['x']-54,pos['y']-33)<.4:break
+        step=page.evaluate('''()=>{const w=AstraeonContent.nativeWorld.spatial,v=AstraeonSpatialView,p=AstraeonQA.snapshot().player.position,route=w.route(p,{x:54,y:33});if(!route)return null;
+          const a=route.find(q=>Math.hypot(q.x-p.x,q.y-p.y)>.12)||route.at(-1),d=Math.hypot(a.x-p.x,a.y-p.y),t=Math.min(1,3/d),q={x:p.x+(a.x-p.x)*t,y:p.y+(a.y-p.y)*t};return {q,screen:v.worldToScreen(q.x,q.y,w.elevationAt(q.x,q.y))}}''')
+        assert step,'No raised precinct route';page.mouse.click(r['x']+step['screen']['x'],r['y']+step['screen']['y'])
+        page.wait_for_function('(q)=>Math.hypot(AstraeonQA.snapshot().player.position.x-q.x,AstraeonQA.snapshot().player.position.y-q.y)<.4',arg=step['q'],timeout=15000)
+    else:raise AssertionError('Raised precinct walk did not finish')
+    page.wait_for_timeout(600);assert snapshot()['camera']['z']>1.4
+    checks['raised-floor']=lens_check();page.screenshot(path=str(args.output/'raised-floor.png'));assert not errors,errors
     (args.output/'report.json').write_text(json.dumps({'checks':checks,'errors':errors,'camera':snapshot()['renderer']['cameraProfile']},indent=2));b.close()
 print('PASS classic RO camera defaults, physical lens, orbit, tilt, zoom, reset and click navigation')

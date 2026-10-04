@@ -8,6 +8,7 @@ const V=window.AstraeonView;
 const palette={stone:'#aaa99b',stoneLight:'#e0cc9e',cream:'#d4c29d',plaster:'#ebd5af',slate:'#345e80',blue:'#305d7c',gold:'#c49a48',wood:'#67432d',timber:'#5c3924',oak:'#9c6b3d',leaf:'#4b713a',leafLight:'#709143',grass:'#84a564',paving:'#cec7b4',terracotta:'#b96d45',teal:'#447970',iron:'#465354',glass:'#496f78',clothBlue:'#4a83ad',clothOchre:'#e2b368',clothRose:'#bd7773',water:'#559ea8',flowers:'#d58b92',soil:'#aa9873'};
 Object.assign(palette,{civicIvory:'#e8daba',civicShadow:'#b8b9a8',civicSlate:'#254c72',civicSlateLight:'#36678d',civicGlass:'#345c73',civicGlassLight:'#75b6c5',civicGold:'#d9b35e',civicDoor:'#493021',streetIvory:'#dfcda5',streetSlate:'#345e80',streetOchre:'#c78f50',statueIvory:'#eee3c9',gardenGrass:'#82936a'});
 const materialCache=new Map();
+Object.assign(palette,{cityPaving:'#c9c2ac',avenuePaving:'#beb6a2'});
 Object.assign(palette,{bankStone:'#7d8785',bankStoneLight:'#a3a99b',wallStone:'#b8b1a0',wallCap:'#d8c9aa',roofMoss:'#3c6b60',roofClay:'#aa6240',roofBlue:'#345f80',foliageCutout:'#4e7b3d'});
 const atlasTextures=new Map(),atlasImages=new Map(),textureLoads=[];
 const occludingOwners={value:new THREE.Vector4(0,0,0,0)};
@@ -18,7 +19,32 @@ function texture(name,color){
  // ashlar, overlapped roof courses and timber grain; no perspective building cards.
  for(let i=0;i<220;i++){g.fillStyle=random(i)>.45?'#fff1ce':'#302c21';g.globalAlpha=.015+random(i+1)*.025;g.fillRect(random(i+2)*256,random(i+3)*256,12+random(i+4)*24,4+random(i+5)*9)}
  g.globalAlpha=1;
- if(['cream','stone','stoneLight','paving','civicIvory','civicShadow','streetIvory','wallStone','wallCap','bankStone','bankStoneLight'].includes(name)){
+ if(name==='avenuePaving'){
+  // Rounded, broad cobbles distinguish through streets from civic flagstones.
+  // Quiet color shifts and shallow seams keep the playable route readable.
+  for(let row=0;row<6;row++){
+   let x=-48+(row%2)*22;const y=row*256/6;
+   for(let col=0;col<8;col++){
+    const width=[43,47,39,46][(row+col)%4],gap=1.8;
+    g.beginPath();g.roundRect(x+gap,y+gap,width-gap*2,256/6-gap*2,7);
+    g.fillStyle=`rgba(${random(row*23+col)>.48?'255,244,218':'75,70,57'},0.06)`;g.fill();g.strokeStyle='#655f503b';g.lineWidth=1.2;g.stroke();
+    g.strokeStyle='#fff0d628';g.beginPath();g.moveTo(x+8,y+3);g.lineTo(x+width-8,y+3);g.stroke();x+=width;
+   }
+  }
+ }else if(name==='cityPaving'){
+  // Broad dressed flagstones, at a readable person-relative scale. Unequal
+  // lengths and softened corners avoid the miniature, perfectly regular grid.
+  const lengths=[61,71,56,68];
+  for(let row=0;row<4;row++){
+   let x=-256+(row%2)*31;const y=row*64;
+   for(let col=0;col<13;col++){
+    const width=lengths[(row+col)%4],cut=3+random(row*19+col)*3;
+    g.beginPath();g.moveTo(x+cut,y+1.5);g.lineTo(x+width-cut,y+1.5);g.lineTo(x+width-1.5,y+cut);g.lineTo(x+width-1.5,y+64-cut);g.lineTo(x+width-cut,y+62.5);g.lineTo(x+cut,y+62.5);g.lineTo(x+1.5,y+64-cut);g.lineTo(x+1.5,y+cut);g.closePath();
+    g.fillStyle=`rgba(${random(row*17+col)>.5?'255,245,222':'81,76,61'},0.065)`;g.fill();g.strokeStyle='#6b6a5635';g.lineWidth=1.5;g.stroke();
+    g.fillStyle='#fff5dd30';g.fillRect(x+cut,y+2,width-cut*2,1.2);x+=width;
+   }
+  }
+ }else if(['cream','stone','stoneLight','paving','civicIvory','civicShadow','streetIvory','wallStone','wallCap','bankStone','bankStoneLight'].includes(name)){
   for(let row=0;row<8;row++)for(let col=-1;col<5;col++){
    const x=col*64+(row%2)*32,y=row*32;g.fillStyle=`rgba(69,62,44,${.09+random(row*11+col)*.07})`;g.fillRect(x,y,64,1.3);g.fillRect(x,y,1.2,32);
    g.fillStyle='#fff1ce3b';g.fillRect(x+2,y+2,61,1);g.strokeStyle='#74674a20';g.beginPath();g.moveTo(x+7,y+29);g.lineTo(x+28,y+27+random(row+col)*3);g.stroke();
@@ -56,11 +82,14 @@ function material(name,definition){
   }map=atlasTextures.get(tileKey);
  }
  const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide,alphaTest:spec?.alphaCutoff||0});
+ // MSAA coverage softens cutout foliage silhouettes while retaining depth.
+ if(spec?.alphaCutoff)m.alphaToCoverage=true;
+ if(name==='riverFoam'){m.transparent=true;m.depthWrite=false;m.forceSinglePass=true}
  // The authored material palette carries the large shapes. Texture retains
  // quiet brush/course cues; broad world-space variation avoids tile-sized noise.
  {
   const painted=spec&&name!=='bannerSilk';
-  const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=name==='water'?.18:spec?.alphaCutoff ? .68 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24;
+  const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=name==='water'?.18:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24;
   m.onBeforeCompile=shader=>{
    shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.occludingOwners=occludingOwners;
    shader.vertexShader='attribute float ownerId;varying float paintOwner;varying vec3 paintPosition;\n'+shader.vertexShader;
@@ -81,9 +110,9 @@ function appendMesh(batch,part,lighting){
   const a=new THREE.Vector3(...vs[face[0]]),b=new THREE.Vector3(...vs[face[1]]),c=new THREE.Vector3(...vs[face[2]]),normal=b.clone().sub(a).cross(c.clone().sub(a)).normalize();
   if((part.walkable||/slate|terracotta|roof/i.test(part.material||''))&&normal.z<0)normal.negate();
   const axis=Math.abs(normal.z)>.65?'xy':Math.abs(normal.x)>Math.abs(normal.y)?'yz':'xz';
-  const lit=Math.max(0,normal.dot(sun)),shade=ambient+lit*strength;
+  const lit=Math.max(0,normal.dot(sun));
   for(let j=1;j<face.length-1;j++)batch.owners?.push(part.objectId||part.id||'terrain');
-  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],uv=part.uvs?.[faceIndex]?.[face.indexOf(i)];batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(shade*(.93+.07*lit),shade*(.97+.03*lit),shade*(1.04-.08*lit));batch.ownerId?.push(part.ownerNumber||0);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
+  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],corner=face.indexOf(i),uv=part.uvs?.[faceIndex]?.[corner],bake=part.bakedLighting?.[faceIndex]?.[corner],sunlit=lit*(bake?.[1]??1),fill=ambient*(bake?.[0]??1),direct=sunlit*strength;batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(fill*.88+direct*1.12,fill*.96+direct*1.05,fill*1.04+direct*.86);batch.ownerId?.push(part.ownerNumber||0);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
  }
 }
 function geometry(batch){const g=new THREE.BufferGeometry();for(const [name,size] of [['position',3],['normal',3],['uv',2],['color',3],['ownerId',1],['feather',1]])if(batch[name])g.setAttribute(name,new THREE.Float32BufferAttribute(batch[name],size));g.computeBoundingSphere();return g}
@@ -124,24 +153,24 @@ class SpatialRenderer{
   const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
-  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=name==='water';this.scene.add(mesh)}
-  this.whenReady=Promise.all(textureLoads);
+  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name);this.scene.add(mesh)}
   const spatial=window.AstraeonContent?.nativeWorld?.id===source.id?window.AstraeonContent.nativeWorld.spatial:window.AstraeonSpatialV3.compile(source);this.spatial=spatial;
   // Blend only the exposed union boundary of low paving. Internal strip and
   // junction edges remain opaque, and these visual verges never change paths.
-  const paving=terrain.surfaces.filter(s=>s.walkable&&s.material==='paving'&&s.vertices&&Math.max(...s.vertices.map(v=>v[2]))<.10),edge={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]},size=source.materials.paving?.texture?.worldSize||4;
+  const edgeMaterial=source.materials.cityPaving?'cityPaving':'paving',paving=terrain.surfaces.filter(s=>s.walkable&&['paving','cityPaving'].includes(s.material)&&s.vertices&&Math.max(...s.vertices.map(v=>v[2]))<.10),edge={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]},size=source.materials.paving?.texture?.worldSize||4;
   boundarySegments(paving.map(s=>s.polygon),(a,b,n)=>{
    const outer=[a[0]+n[0]*.52,a[1]+n[1]*.52],probe=[(a[0]+b[0])/2+n[0]*.45,(a[1]+b[1])/2+n[1]*.45];
    if(!window.AstraeonSpatialV3.pointIn({x:probe[0],y:probe[1]},terrain.walkablePolygon)||spatial.blocked(...probe,.02))return;
    const v=[[...a,spatial.elevationAt(...a)+.010],[...b,spatial.elevationAt(...b)+.010],[b[0]+n[0]*.52,b[1]+n[1]*.52,terrain.elevation+.011],[...outer,terrain.elevation+.011]];
-   appendMesh(edge,{vertices:v,faces:[[0,1,2,3]],material:'paving',walkable:true,uvs:[v.map(p=>[p[0]/size,p[1]/size])]},source.lighting);
+   appendMesh(edge,{vertices:v,faces:[[0,1,2,3]],material:edgeMaterial,walkable:true,uvs:[v.map(p=>[p[0]/size,p[1]/size])]},source.lighting);
    edge.feather.push(1,1,0,1,0,0);
   });
-  if(edge.position.length){const verge=new THREE.Mesh(geometry(edge),featherMaterial(material('paving',source.materials.paving),'paving'));verge.name='static/paving-verges';this.scene.add(verge)}
+  if(edge.position.length){const verge=new THREE.Mesh(geometry(edge),featherMaterial(material(edgeMaterial,source.materials[edgeMaterial]),edgeMaterial));verge.name='static/paving-verges';this.scene.add(verge)}
   // A quiet, shallow shoreline ribbon softens the water/rock contact without
   // painting over the cliff silhouette or the usable bridge thresholds.
   const water=terrain.surfaces.find(s=>s.material==='water'),shore={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]};
-  if(water)boundarySegments([terrain.walkablePolygon],(a,b,n)=>{
+  const shorePolygons=[terrain.walkablePolygon,...terrain.surfaces.filter(s=>s.walkable&&s.role==='green'&&s.material==='grass').map(s=>s.polygon)];
+  if(water)boundarySegments(shorePolygons,(a,b,n)=>{
    const z=water.vertices[0][2]+.013,points=[[a[0]+n[0]*1.35,a[1]+n[1]*1.35,z],[b[0]+n[0]*1.35,b[1]+n[1]*1.35,z],[b[0]+n[0]*2.4,b[1]+n[1]*2.4,z],[a[0]+n[0]*2.4,a[1]+n[1]*2.4,z]];
    if(!window.AstraeonSpatialV3.pointIn({x:points[0][0],y:points[0][1]},water.polygon))return;
    appendMesh(shore,{vertices:points,faces:[[0,1,2,3]],walkable:true},source.lighting);shore.feather.push(.45,.45,0,.45,0,0);
@@ -149,13 +178,26 @@ class SpatialRenderer{
   if(shore.position.length){const ribbon=new THREE.Mesh(geometry(shore),featherMaterial(new THREE.MeshBasicMaterial({color:'#b8d9ce',vertexColors:true,side:THREE.DoubleSide}),'shore'));ribbon.name='static/shoreline';this.scene.add(ribbon)}
   // Static authored sun shadow atlas: one draw, no dynamic shadow map or PBR.
   this.shadowSize=2048;const c=document.createElement('canvas');c.width=c.height=this.shadowSize;const g=c.getContext('2d'),b=terrain.bounds,sx=this.shadowSize/(b.maxX-b.minX),sy=this.shadowSize/(b.maxY-b.minY);
-  g.fillStyle='#3a4464';g.globalAlpha=source.lighting.sun.strength;g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();
+  g.fillStyle='#3a4464';g.globalAlpha=source.lighting.sun.strength;g.filter='blur(2px)';g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();g.filter='none';
   // Soft local depth at building feet supplements the directional cast atlas.
   // One combined stroke avoids repeatedly darkening intersecting foundations.
   g.save();g.filter='blur(3px)';g.strokeStyle='#273449';g.globalAlpha=.22;g.lineWidth=.40*(sx+sy)/2;g.lineJoin='round';g.beginPath();
   for(const solid of spatial.solids){if(solid.visible===false||solid.base>.8||solid.height<1.4)continue;solid.footprint.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.stroke();g.restore();
   this.shadowPixels=g.getImageData(0,0,this.shadowSize,this.shadowSize).data;this.shadowBounds=b;
   const tex=new THREE.CanvasTexture(c);tex.flipY=false;tex.colorSpace=THREE.SRGBColorSpace;
+  // A source-matched native bake uses the real caster triangles and each
+  // floor elevation. Its alpha already contains sun strength and local AO.
+  // The geometric atlas above remains the fallback for worlds without a bake.
+  if(source.lighting.groundShadow){
+   const bake=source.lighting.groundShadow;
+   textureLoads.push(new Promise((resolve,reject)=>{
+    const image=new Image();image.onload=()=>{
+     g.save();g.setTransform(1,0,0,1,0,0);g.globalAlpha=1;g.filter='none';g.clearRect(0,0,c.width,c.height);
+     g.fillStyle='#3a4464';g.fillRect(0,0,c.width,c.height);g.globalCompositeOperation='destination-in';g.drawImage(image,0,0,c.width,c.height);g.restore();
+     this.shadowPixels=g.getImageData(0,0,c.width,c.height).data;tex.needsUpdate=true;resolve();
+    };image.onerror=()=>reject(new Error('Could not load native ground shadows: '+bake.file));image.src=new URL('../../'+bake.file,import.meta.url).href;
+   }));
+  }
   // Project the static atlas onto the authored walkable elevations. A flat
   // decal disappears beneath terraces and cannot ground their architecture.
   const shadowPositions=[],shadowUVs=[],shadowVertex=(x,y,z)=>{shadowPositions.push(x,y,z);shadowUVs.push((x-b.minX)/(b.maxX-b.minX),(y-b.minY)/(b.maxY-b.minY))};
@@ -163,6 +205,13 @@ class SpatialRenderer{
   // Overlaid ground/road receivers caused depth fighting and doubled opacity
   // at street junctions after the larger-town material pass.
   const land=[terrain.walkablePolygon,...terrain.surfaces.filter(s=>s.walkable).map(s=>s.polygon)].filter(Boolean),cell=.5;
+  // Actor casts share the building sun and stop at authored land boundaries.
+  // A floor mask prevents a bridge-edge silhouette floating over the river.
+  const mask=document.createElement('canvas');mask.width=mask.height=this.shadowSize;const mg=mask.getContext('2d');mg.fillStyle='#fff';
+  for(const polygon of land){mg.beginPath();polygon.forEach(([x,y],i)=>i?mg.lineTo((x-b.minX)*sx,(y-b.minY)*sy):mg.moveTo((x-b.minX)*sx,(y-b.minY)*sy));mg.closePath();mg.fill()}
+  this.shadowLand=new THREE.CanvasTexture(mask);this.shadowLand.flipY=false;
+  this.shadowLand.generateMipmaps=false;this.shadowLand.minFilter=THREE.LinearFilter;
+  const contact=document.createElement('canvas');contact.width=contact.height=64;const cg=contact.getContext('2d'),gradient=cg.createRadialGradient(32,32,3,32,32,32);gradient.addColorStop(0,'rgba(255,255,255,1)');gradient.addColorStop(.45,'rgba(255,255,255,.65)');gradient.addColorStop(1,'rgba(255,255,255,0)');cg.fillStyle=gradient;cg.fillRect(0,0,64,64);this.contactTexture=new THREE.CanvasTexture(contact);
   for(let y=b.minY;y<b.maxY;y+=cell)for(let x=b.minX;x<b.maxX;x+=cell){
    if(!land.some(p=>window.AstraeonSpatialV3.pointIn({x:x+cell/2,y:y+cell/2},p)))continue;
    for(const [dx,dy] of [[0,0],[cell,0],[cell,cell],[0,0],[cell,cell],[0,cell]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.015);
@@ -184,6 +233,7 @@ class SpatialRenderer{
   appendMesh(floor,groundMesh);
   for(const s of terrain.surfaces.filter(s=>s.walkable&&s.vertices))appendMesh(floor,s);
   this.navFloor=new THREE.Mesh(geometry(floor),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));this.navFloor.updateMatrixWorld();
+  this.whenReady=Promise.all(textureLoads);
  }
  mount(overlay){
   this.overlay=overlay;
@@ -201,6 +251,7 @@ class SpatialRenderer{
   // Decode/upload all complete strips before the first movement. Shared atlases
   // avoid a new canvas texture upload every time an actor changes a frame.
   for(const image of Object.values(window.AstraeonDirectionalArt.sheets))this.spriteTexture(image);
+  this.warmFadeMeshes();
   this.renderer.info.autoReset=false;
   this.canvas=this.renderer.domElement;this.canvas.id='spatial-world';this.canvas.setAttribute('aria-hidden','true');this.canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';overlay.before(this.canvas);overlay.style.background='transparent';overlay.parentElement.classList.add('spatial-stage');this.active=true;
  }
@@ -210,6 +261,8 @@ class SpatialRenderer{
   // Slow shared current, rather than a completely static tiled river.
   const water=materialCache.get('water'+JSON.stringify(this.source.materials.water?.texture||''));
   if(water?.map){const time=performance.now()/1000;water.map.offset.set(time*.004,time*.002)}
+  const cascade=materialCache.get('riverCascade'+JSON.stringify(this.source.materials.riverCascade?.texture||''));
+  if(cascade?.map)cascade.map.offset.y=performance.now()/1000*.35;
   this.width=w;this.height=h;this.zoom=zoom;this.anchorY=anchorY;
   if(this.canvas.clientWidth!==w||this.canvas.clientHeight!==h||this.lastSize!==w+'x'+h){this.renderer.setSize(w,h,false);this.lastSize=w+'x'+h}
   // Reusing rasterized geometry must translate by whole device pixels. Snap
@@ -219,19 +272,19 @@ class SpatialRenderer{
   this.focus=this.stats.software&&!this.perspectiveMode?{x:Math.round(camera.x*gridX)/gridX,y:Math.round(camera.y*gridY)/gridY}:{...camera};
   const cx=this.focus.x,cy=this.focus.y,s=zoom;
   if(this.perspectiveMode){
-   const b=this.cameraProfile.basis,d=this.cameraProfile.depth,focus=V.inverse(cx,cy),w0=1-d.x*focus.x-d.y*focus.y,n=1-2*anchorY,hx=2*s/w,hy=2*s/h;
+   const b=this.cameraProfile.basis,d=this.cameraProfile.depth,focus=V.inverse(cx,cy),cz=this.focus.z||0,w0=1-d.x*focus.x-d.y*focus.y-d.z*cz,n=1-2*anchorY,hx=2*s/w,hy=2*s/h;
    // The long-lens denominator varies with ground depth and height; the local
    // axes stay aligned with input and the existing spatial artwork.
    const ro=this.cameraProfile.kind==='ragnarok',far=1000,near=1,za=ro?(far+near)/(far-near):1.1,zb=ro?2*far*near/(far-near)/(this.cameraProfile.zoom/2):.6;
    this.camera.projectionMatrix.set(
     hx*b.xx,hx*b.yx,0,-hx*cx,
-    n*d.x-hy*b.xy,n*d.y-hy*b.yy,n*d.z+hy*35,n*w0+hy*cy,
+    n*d.x-hy*b.xy,n*d.y-hy*b.yy,n*d.z+hy*35,n*w0+hy*(cy-35*cz),
     za*d.x,za*d.y,za*d.z,za*w0-zb,
     d.x,d.y,d.z,w0
    );
   }else this.camera.projectionMatrix.set(96*s/w,-64*s/w,0,-2*cx*s/w,-28*s/h,-44*s/h,70*s/h,2*cy*s/h+1-2*anchorY,-.0056,-.0084,-.00752,.25,0,0,0,1);
   this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();this.camera.updateMatrixWorld();this.projectionReady=true;
-  for(const a of this.actors.values())a.mesh.visible=a.shadow.visible=false;
+  for(const a of this.actors.values())a.mesh.visible=a.shadow.visible=a.cast.visible=false;
  }
  actor(id,t,draw,{alpha=1,shadowAlpha=alpha,radius=.4}={}){
   const assemblyStarted=performance.now();
@@ -244,12 +297,33 @@ class SpatialRenderer{
    for(const [x,y] of [[-128,-32],[128,-32],[128,224],[-128,224]])positions.push(...this.right.clone().multiplyScalar(x).addScaledVector(this.up,y).toArray());
    geo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute([0,0,1,0,1,1,0,1],2));geo.setIndex([0,1,2,0,2,3]);geo.computeBoundingSphere();
    const mat=new THREE.MeshBasicMaterial({map:tex,alphaTest:.18,transparent:true,depthWrite:true,side:THREE.DoubleSide,forceSinglePass:true});const mesh=new THREE.Mesh(geo,mat);mesh.name='actor/'+id;this.scene.add(mesh);
-   const shadow=new THREE.Mesh(new THREE.CircleGeometry(radius,20),new THREE.MeshBasicMaterial({color:'#23352f',transparent:true,opacity:.22,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true}));shadow.scale.set(1,1.1,1);this.scene.add(shadow);
-   a={canvas,ctx,tex,mesh,shadow};this.actors.set(id,a);
+   const shadow=new THREE.Mesh(new THREE.PlaneGeometry(radius*2.5,radius*2.5),new THREE.MeshBasicMaterial({map:this.contactTexture,color:'#253344',transparent:true,opacity:.17,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true}));shadow.scale.set(1,1.1,1);shadow.name='contact/'+id;this.scene.add(shadow);
+   const grid=6,castGeo=new THREE.BufferGeometry(),indices=[];
+   castGeo.setAttribute('position',new THREE.BufferAttribute(new Float32Array((grid+1)**2*3),3));castGeo.setAttribute('uv',new THREE.BufferAttribute(new Float32Array((grid+1)**2*2),2));
+   for(let y=0;y<grid;y++)for(let x=0;x<grid;x++){const k=y*(grid+1)+x;indices.push(k,k+1,k+grid+2,k,k+grid+2,k+grid+1)}castGeo.setIndex(indices);
+   const castMat=new THREE.MeshBasicMaterial({map:tex,color:'#354363',transparent:true,opacity:.24,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true});
+   const castUniforms={land:{value:this.shadowLand},bounds:{value:new THREE.Vector4(this.shadowBounds.minX,this.shadowBounds.minY,this.shadowBounds.maxX-this.shadowBounds.minX,this.shadowBounds.maxY-this.shadowBounds.minY)},texel:{value:new THREE.Vector2(1/256,1/256)},uvBounds:{value:new THREE.Vector4(0,0,1,1)}};
+   castMat.onBeforeCompile=shader=>{
+    Object.assign(shader.uniforms,{shadowLand:castUniforms.land,shadowBounds:castUniforms.bounds,shadowTexel:castUniforms.texel,shadowUvBounds:castUniforms.uvBounds});
+    shader.vertexShader='varying vec2 shadowGround;\n'+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nshadowGround=(modelMatrix*vec4(position,1.0)).xy;');
+    shader.fragmentShader='varying vec2 shadowGround;uniform sampler2D shadowLand;uniform vec4 shadowBounds,shadowUvBounds;uniform vec2 shadowTexel;\n'+shader.fragmentShader;
+    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`vec2 groundUv=(shadowGround-shadowBounds.xy)/shadowBounds.zw;
+     if(any(lessThan(groundUv,vec2(0.0)))||any(greaterThan(groundUv,vec2(1.0)))||texture2D(shadowLand,groundUv).a<0.5)discard;
+     vec2 low=shadowUvBounds.xy+shadowTexel*.5,high=shadowUvBounds.zw-shadowTexel*.5;
+     float coverage=texture2D(map,clamp(vMapUv,low,high)).a*.4;
+     coverage+=texture2D(map,clamp(vMapUv+vec2(shadowTexel.x*1.5,0.0),low,high)).a*.15;
+     coverage+=texture2D(map,clamp(vMapUv-vec2(shadowTexel.x*1.5,0.0),low,high)).a*.15;
+     coverage+=texture2D(map,clamp(vMapUv+vec2(0.0,shadowTexel.y*1.5),low,high)).a*.15;
+     coverage+=texture2D(map,clamp(vMapUv-vec2(0.0,shadowTexel.y*1.5),low,high)).a*.15;
+     diffuseColor.a*=coverage;`);
+   };castMat.customProgramCacheKey=()=> 'authored-actor-cast-v54';
+   const cast=new THREE.Mesh(castGeo,castMat);cast.name='cast/'+id;this.scene.add(cast);
+   a={canvas,ctx,tex,mesh,shadow,cast,castUniforms,castGrid:grid};this.actors.set(id,a);
   }
   const p=t.position,prior=V.zoom;V.zoom=1;a.ctx.clearRect(0,0,256,256);a.ctx.save();a.ctx.globalAlpha=alpha;
   const iso=(x,y,z=0)=>{const q=V.project(x-p.x,y-p.y);return{x:128+q.x,y:224+q.y-z+(p.z||0)*35}};
-  let sockets;this.paintedFrame=null;this.assemblingActor=true;try{sockets=draw(a.ctx,iso)}finally{this.assemblingActor=false;a.ctx.restore();V.zoom=prior}
+  let sockets;this.paintedFrame=null;this.sampledPose=null;this.assemblingActor=true;try{sockets=draw(a.ctx,iso)}finally{this.assemblingActor=false;a.ctx.restore();V.zoom=prior}
   const frame=this.paintedFrame;
   if(frame){
    const {image,bounds,unit,left,top}=frame,[x,y,w,h]=bounds,uv=a.mesh.geometry.attributes.uv,pos=a.mesh.geometry.attributes.position;
@@ -262,29 +336,31 @@ class SpatialRenderer{
    a.directFrame=false;a.mesh.material.map=a.tex;a.mesh.material.opacity=1;a.tex.needsUpdate=true;
   }
   const b=this.shadowBounds,tx=Math.floor((p.x-b.minX)/(b.maxX-b.minX)*this.shadowSize),ty=Math.floor((p.y-b.minY)/(b.maxY-b.minY)*this.shadowSize),shade=tx>=0&&tx<this.shadowSize&&ty>=0&&ty<this.shadowSize?this.shadowPixels[(ty*this.shadowSize+tx)*4+3]/255:0;
-  a.mesh.material.color.setRGB(1-shade*.4,1-shade*.35,1-shade*.3);
+  a.mesh.material.color.setRGB(1-shade*.38,1-shade*.32,1-shade*.22);
   if(this.cameraProfile?.kind==='ragnarok'){a.mesh.rotation.z=-this.cameraProfile.yaw*Math.PI/180;const scale=Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(46*Math.PI/180);a.mesh.scale.set(scale,scale,1)}
-  const offset=frame?.contact?this.plantedSpriteOffset(t,frame):new THREE.Vector3();if(!frame?.contact)t.paintedStance=null;
-  a.mesh.position.set(p.x+offset.x,p.y+offset.y,(p.z||0)+offset.z);a.mesh.visible=true;a.shadow.position.set(p.x+offset.x+.08,p.y+offset.y+.08,(p.z||0)+.035);a.shadow.material.opacity=.22*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
-  if(frame?.contact?.stance&&t.paintedStance){const c=frame.contact,local=this.right.clone().multiplyScalar((c.sole[0]-c.anchor[0])*frame.unit).addScaledVector(this.up,-(c.sole[1]-c.anchor[1])*frame.unit);a.mesh.updateMatrixWorld();const sole=local.applyMatrix4(a.mesh.matrixWorld);a.paintedContact={key:t.paintedStance.key,expected:t.paintedStance.point.toArray(),actual:sole.toArray(),error:sole.distanceTo(t.paintedStance.point)}}else a.paintedContact=null;
+  // Registered whole frames travel continuously; freezing a boot would also
+  // freeze the pelvis until the next pose and create visible hold/snap motion.
+  a.mesh.position.set(p.x,p.y,p.z||0);a.mesh.visible=true;a.shadow.position.set(p.x+.04,p.y+.04,(p.z||0)+.035);a.shadow.material.opacity=.17*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
+  this.projectActorShadow(a,p,shadowAlpha,shade);
+  a.motionSample={root:[p.x,p.y,p.z||0],renderedRoot:a.mesh.position.toArray(),speed:t.speed,frame:this.sampledPose};
   this.assemblyMs+=performance.now()-assemblyStarted;return sockets;
  }
- plantedSpriteOffset(t,frame){
-  const c=frame.contact,p=t.position,dx=(c.sole[0]-c.anchor[0])*frame.unit,dy=(c.sole[1]-c.anchor[1])*frame.unit;
-  const yaw=this.cameraProfile?.kind==='ragnarok'?-this.cameraProfile.yaw*Math.PI/180:0,scale=this.cameraProfile?.kind==='ragnarok'?Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(46*Math.PI/180):1;
-  const local=this.right.clone().multiplyScalar(dx*scale).applyAxisAngle(new THREE.Vector3(0,0,1),yaw).addScaledVector(this.up,-dy);
-  const phaseKey=c.clip+'/'+c.row+'/'+Math.floor(t.gait)+'/'+c.support;
-  if(!c.stance){if(t.paintedStance&&!t.paintedStance.airborne){t.paintedStance.airborne=true;t.paintedStance.airborneAt=t.gait}const fade=t.paintedStance?Math.max(0,1-(t.gait-t.paintedStance.airborneAt)*8):0;return t.paintedStance?.offset?.clone().multiplyScalar(fade)||new THREE.Vector3()}
-  if(t.paintedStance?.phaseKey!==phaseKey||t.paintedStance.airborne){
-   const ground=V.inverse(dx,dy),key=phaseKey+'/'+(t.paintedContactSerial=(t.paintedContactSerial||0)+1);t.paintedStance={key,phaseKey,point:new THREE.Vector3(p.x+ground.x,p.y+ground.y,this.spatial.elevationAt(p.x+ground.x,p.y+ground.y)),offset:new THREE.Vector3()};
+ projectActorShadow(a,root,alpha,shade){
+  a.cast.visible=alpha>.05;if(!a.cast.visible)return;
+  a.mesh.updateMatrixWorld();const positions=a.mesh.geometry.attributes.position,sourceUV=a.mesh.geometry.attributes.uv,pos=a.cast.geometry.attributes.position,uv=a.cast.geometry.attributes.uv,grid=a.castGrid,cast=this.source.lighting.sun.cast;
+  const corners=[0,1,2,3].map(i=>new THREE.Vector3().fromBufferAttribute(positions,i).applyMatrix4(a.mesh.matrixWorld));
+  for(let y=0;y<=grid;y++)for(let x=0;x<=grid;x++){
+   const u=x/grid,v=y/grid,i=y*(grid+1)+x,low=corners[0].clone().lerp(corners[1],u),high=corners[3].clone().lerp(corners[2],u),point=low.lerp(high,v);
+   let floor=root.z||0,px,py;
+   // Project along the sun onto the local authored elevation, including stairs.
+   for(let pass=0;pass<3;pass++){const height=Math.max(0,point.z-floor);px=point.x+cast[0]*height;py=point.y+cast[1]*height;floor=this.spatial.elevationAt(px,py)}
+   pos.setXYZ(i,px,py,floor+.025);
+   uv.setXY(i,THREE.MathUtils.lerp(sourceUV.getX(0),sourceUV.getX(1),u),THREE.MathUtils.lerp(sourceUV.getY(0),sourceUV.getY(3),v));
   }
-  const offset=t.paintedStance.point.clone().sub(new THREE.Vector3(p.x,p.y,p.z||0)).sub(local);
-  // A broken/missing contact cannot pull the illustrated body through a wall.
-  // Grounded source boots vary by up to a quarter unit around the anchor.
-  // Preserve that registration plus the authored floor-level difference.
-  const verticalLimit=.35+Math.abs(t.paintedStance.point.z-(p.z||0));
-  offset.x=Math.max(-.7,Math.min(.7,offset.x));offset.y=Math.max(-.7,Math.min(.7,offset.y));offset.z=Math.max(-verticalLimit,Math.min(verticalLimit,offset.z));
-  t.paintedStance.offset=offset.clone();return offset;
+  pos.needsUpdate=uv.needsUpdate=true;a.cast.geometry.computeBoundingSphere();
+  const map=a.mesh.material.map;a.cast.material.map=map;a.cast.material.opacity=.24*alpha*(1-shade*.6);
+  a.castUniforms.texel.value.set(1/map.image.width,1/map.image.height);
+  a.castUniforms.uvBounds.value.set(sourceUV.getX(0),sourceUV.getY(0),sourceUV.getX(2),sourceUV.getY(2));
  }
  spriteTexture(image){
   if(!this.spriteTextures.has(image)){const tex=new THREE.Texture(image);tex.colorSpace=THREE.SRGBColorSpace;tex.generateMipmaps=false;tex.minFilter=THREE.LinearFilter;tex.magFilter=THREE.LinearFilter;tex.needsUpdate=true;
@@ -304,19 +380,58 @@ class SpatialRenderer{
   }
   const dx=c.focus?(this.focus.x-c.focus.x)*this.zoom:Infinity,dy=c.focus?(this.focus.y-c.focus.y)*this.zoom:Infinity;
   if(!c.focus||Math.max(Math.abs(dx),Math.abs(dy))>pad-40){
-   const matrix=this.camera.projectionMatrix.clone(),actors=[...this.actors.values()].map(a=>[a,a.mesh.visible,a.shadow.visible]),surfaces=this.dynamicNodes.map(o=>[o,o.visible]);
+   const matrix=this.camera.projectionMatrix.clone(),actors=[...this.actors.values()].map(a=>[a,a.mesh.visible,a.shadow.visible,a.cast.visible]),surfaces=this.dynamicNodes.map(o=>[o,o.visible]);
    try{
-    for(const [a] of actors)a.mesh.visible=a.shadow.visible=false;
+    for(const [a] of actors)a.mesh.visible=a.shadow.visible=a.cast.visible=false;
     for(const [o] of surfaces)o.visible=false;
     this.camera.projectionMatrix.set(96*this.zoom/cw,-64*this.zoom/cw,0,-2*this.focus.x*this.zoom/cw,-28*this.zoom/ch,-44*this.zoom/ch,70*this.zoom/ch,2*this.focus.y*this.zoom/ch+1-2*(h*this.anchorY+py)/ch,-.0056,-.0084,-.00752,.25,0,0,0,1);
     r.setRenderTarget(c.target);r.render(this.scene,this.camera);c.focus={...this.focus};this.stats.cacheUpdates=(this.stats.cacheUpdates||0)+1;
-   }finally{this.camera.projectionMatrix.copy(matrix);for(const [a,visible,shadow] of actors){a.mesh.visible=visible;a.shadow.visible=shadow}for(const [o,visible] of surfaces)o.visible=visible;r.setRenderTarget(null)}
+   }finally{this.camera.projectionMatrix.copy(matrix);for(const [a,visible,shadow,cast] of actors){a.mesh.visible=visible;a.shadow.visible=shadow;a.cast.visible=cast}for(const [o,visible] of surfaces)o.visible=visible;r.setRenderTarget(null)}
   }
   c.material.uniforms.offset.value.set(px+(this.focus.x-c.focus.x)*this.zoom,py-(this.focus.y-c.focus.y)*this.zoom);
   // The cached static depth is written into the SAME framebuffer as actor
   // quads. This is a color/depth reuse optimization, not an actor overlay.
   r.render(c.scene,c.camera);const background=this.scene.background;this.scene.background=null;r.autoClear=false;
   const visibility=this.staticNodes.map(o=>o.visible);try{for(const o of this.staticNodes)o.visible=false;r.render(this.scene,this.camera)}finally{this.staticNodes.forEach((o,i)=>o.visible=visibility[i]);this.scene.background=background;r.autoClear=true}
+ }
+ prepareFadeMeshes(owner){
+  if(this.fadeMeshes.has(owner))return;
+  const batches=new Map(),object=this.source.objects.find(o=>o.id===owner),meshes=[];
+  for(const part of object.parts.filter(p=>p.visible!==false)){
+   if(!batches.has(part.material))batches.set(part.material,{position:[],normal:[],uv:[],color:[],ownerId:[]});
+   appendMesh(batches.get(part.material),part,this.source.lighting);
+  }
+  for(const [name,batch] of batches){const original=material(name,this.source.materials[name]),m=original.clone();m.onBeforeCompile=original.onBeforeCompile;m.customProgramCacheKey=original.customProgramCacheKey;m.transparent=true;m.opacity=.16;m.depthWrite=false;m.alphaTest=0;
+   const mesh=new THREE.Mesh(geometry(batch),m);mesh.name='fade/'+owner;mesh.userData.cacheDynamic=true;mesh.visible=false;this.scene.add(mesh);meshes.push(mesh);
+  }this.fadeMeshes.set(owner,meshes);
+ }
+ warmFadeMeshes(){
+  // Build and upload reveal geometry/programs during loading, rather than at
+  // the first movement under a gate or behind a facade.
+  for(const group of this.occluderGroups)this.prepareFadeMeshes(group.owner);
+  const meshes=[...this.fadeMeshes.values()].flat(),gl=this.renderer.getContext(),target=new THREE.WebGLRenderTarget(256,256,{samples:this.renderer.capabilities.isWebGL2?gl.getParameter(gl.SAMPLES):0}),camera=new THREE.Camera(),b=this.source.terrain.bounds,w=b.maxX-b.minX+8,h=b.maxY-b.minY+35,cx=(b.maxX+b.minX)/2,cy=(b.maxY+b.minY)/2;
+  // Match the gameplay framebuffer's output color space/MSAA so warming does
+  // not compile a different offscreen-only shader variant.
+  target.texture.colorSpace=THREE.SRGBColorSpace;
+  // Rasterize actual walls/roofs. An identity camera clips the entire town;
+  // some drivers defer a fragment variant until it produces real fragments.
+  camera.projectionMatrix.set(2/w,0,0,-2*cx/w,0,-2/h,1/h,2*cy/h,0,-.002,-.004,0,0,0,0,1);
+  try{
+   for(const mesh of meshes){mesh.visible=true;mesh.frustumCulled=false}
+   this.renderer.setRenderTarget(target);this.renderer.render(this.scene,camera);
+   // Exercise the masked static path as well as the transparent replacement.
+   // Some drivers specialize the all-zero uniform branch on its first draw;
+   // warming only replacement meshes leaves the first real reveal expensive.
+   occludingOwners.value.set(...Array.from({length:4},(_,i)=>this.occluderGroups[i]?.id||0));
+   this.renderer.render(this.scene,camera);
+   this.renderer.setRenderTarget(null);this.renderer.render(this.scene,camera);
+   gl.finish();
+  }finally{
+   occludingOwners.value.set(0,0,0,0);
+   this.renderer.setRenderTarget(null);target.dispose();
+   for(const mesh of meshes){mesh.visible=false;mesh.frustumCulled=true}
+  }
+  this.dynamicNodes=this.scene.children.filter(o=>o.userData.cacheDynamic);
  }
  updateOcclusion(){
   this.fadedOwners.clear();const ids=[],player=this.actors.get('player'),hit=new THREE.Vector3();
@@ -331,20 +446,11 @@ class SpatialRenderer{
   occludingOwners.value.set(...Array.from({length:4},(_,i)=>ids[i]||0));this.stats.fadedBuildings=[...this.fadedOwners];
   for(const meshes of this.fadeMeshes.values())for(const mesh of meshes)mesh.visible=false;
   for(const owner of [...this.fadedOwners].slice(0,4)){
-   if(!this.fadeMeshes.has(owner)){
-    const batches=new Map(),object=this.source.objects.find(o=>o.id===owner),meshes=[];
-    for(const part of object.parts.filter(p=>p.visible!==false)){
-     if(!batches.has(part.material))batches.set(part.material,{position:[],normal:[],uv:[],color:[],ownerId:[]});
-     appendMesh(batches.get(part.material),part,this.source.lighting);
-    }
-    for(const [name,batch] of batches){const original=material(name,this.source.materials[name]),m=original.clone();m.onBeforeCompile=original.onBeforeCompile;m.customProgramCacheKey=original.customProgramCacheKey;m.transparent=true;m.opacity=.16;m.depthWrite=false;m.alphaTest=0;
-     const mesh=new THREE.Mesh(geometry(batch),m);mesh.name='fade/'+owner;mesh.userData.cacheDynamic=true;this.scene.add(mesh);meshes.push(mesh);
-    }this.fadeMeshes.set(owner,meshes);
-   }
+   this.prepareFadeMeshes(owner);
    for(const mesh of this.fadeMeshes.get(owner))mesh.visible=true;
   }
  }
- end(){const started=performance.now();this.updateOcclusion();this.renderer.info.reset();if(this.stats.software&&!this.perspectiveMode)this.cachedWorld();else this.renderer.render(this.scene,this.camera);this.stats.frames++;this.stats.frameMs=this.stats.frameMs*.95+(performance.now()-started)*.05;this.stats.assemblyMs=this.assemblyMs;this.stats.totalMs=performance.now()-this.frameStarted;this.stats.calls=this.renderer.info.render.calls;this.stats.triangles=this.renderer.info.render.triangles;this.stats.textures=this.renderer.info.memory.textures;this.stats.staticDepthCache=!!this.stats.software&&!this.perspectiveMode;}
+ end(){const started=performance.now();this.updateOcclusion();this.stats.occlusionMs=performance.now()-started;const renderStarted=performance.now();this.renderer.info.reset();if(this.stats.software&&!this.perspectiveMode)this.cachedWorld();else this.renderer.render(this.scene,this.camera);this.stats.renderMs=performance.now()-renderStarted;this.stats.frames++;this.stats.frameMs=this.stats.frameMs*.95+(performance.now()-started)*.05;this.stats.assemblyMs=this.assemblyMs;this.stats.totalMs=performance.now()-this.frameStarted;this.stats.calls=this.renderer.info.render.calls;this.stats.triangles=this.renderer.info.render.triangles;this.stats.textures=this.renderer.info.memory.textures;this.stats.staticDepthCache=!!this.stats.software&&!this.perspectiveMode;}
  hide(){if(this.canvas)this.canvas.hidden=true;this.active=false;}
  idFor(entity,prefix){if(!this.entityIds.has(entity))this.entityIds.set(entity,prefix+'/'+(++this.nextEntityId));return this.entityIds.get(entity)}
  worldToScreen(x,y,z=0){const p=new THREE.Vector3(x,y,z).project(this.camera);return{x:(p.x+1)*this.width/2,y:(1-p.y)*this.height/2,depth:p.z}}
@@ -366,7 +472,7 @@ class SpatialRenderer{
    }
   }return null;
  }
- snapshot(){return {...this.stats,cameraProfile:this.cameraProfile?structuredClone(this.cameraProfile):null,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite,paintedContact:a.paintedContact}))};}
+ snapshot(){return {...this.stats,cameraProfile:this.cameraProfile?structuredClone(this.cameraProfile):null,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite,motionSample:a.motionSample}))};}
 }
 window.AstraeonSpatialRenderer={SpatialRenderer,THREE};
 if(window.AstraeonContent?.nativeWorld?.id==='wayfarer-spatial'&&new URLSearchParams(location.search).get('renderer')!=='canvas')window.AstraeonSpatialView=new SpatialRenderer(window.AstraeonContent.nativeWorld.spatial.scene);

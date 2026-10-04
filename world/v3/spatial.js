@@ -10,14 +10,17 @@ function triangleHeight(x,y,a,b,c){const den=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])
 function validateGeometry(p){
  if(!p.vertices?.length||!p.faces?.length||p.vertices.some(v=>v.length!==3||v.some(n=>!Number.isFinite(n)))||p.faces.some(f=>f.length<3||f.some(i=>!Number.isInteger(i)||i<0||i>=p.vertices.length)))throw Error('Invalid mesh geometry '+(p.id||'terrain'));
  if(p.uvs&&(p.uvs.length!==p.faces.length||p.uvs.some((uvs,i)=>uvs.length!==p.faces[i].length||uvs.some(uv=>uv.length!==2||!uv.every(Number.isFinite)))))throw Error('Invalid authored UVs '+(p.id||'terrain'));
+ if(p.bakedLighting&&(p.bakedLighting.length!==p.faces.length||p.bakedLighting.some((corners,i)=>corners.length!==p.faces[i].length||corners.some(pair=>pair.length!==2||pair.some(n=>!Number.isFinite(n)||n<0||n>1)))))throw Error('Invalid baked lighting '+(p.id||'terrain'));
 }
 function validate(scene){
  if(scene.version!==3||!scene.terrain||!scene.navigation||!scene.lighting||!Array.isArray(scene.objects))throw Error('Invalid world v3 contract');
  const bounds=scene.terrain.bounds;if(!bounds||![bounds.minX,bounds.minY,bounds.maxX,bounds.maxY,scene.terrain.elevation,scene.navigation.actorRadius,scene.navigation.cellSize,...scene.lighting.sun.cast].every(Number.isFinite)||bounds.maxX<=bounds.minX||bounds.maxY<=bounds.minY||scene.navigation.actorRadius<=0||scene.navigation.cellSize<=0)throw Error('Invalid terrain/navigation/lighting');
+ const bake=scene.lighting.groundShadow;if(bake&&(!/^assets\/[a-zA-Z0-9_-]+\.png$/.test(bake.file)||!Number.isInteger(bake.resolution)||bake.resolution<64||bake.resolution>4096||!/^[a-f0-9]{64}$/.test(bake.geometryDigest)||bake.strengthIncluded!==true))throw Error('Invalid native ground shadow bake');
  if(scene.terrain.vertices)validateGeometry(scene.terrain);for(const surface of scene.terrain.surfaces||[])if(surface.vertices)validateGeometry(surface);
  const ids=new Set(),parts=new Set();for(const o of scene.objects){if(ids.has(o.id)||!o.family||!o.parts?.length)throw Error('Invalid or duplicate object '+o.id);ids.add(o.id);for(const p of o.parts){if(parts.has(p.id)||!['solid','overhead','decorative'].includes(p.role))throw Error('Invalid mesh '+p.id);parts.add(p.id);validateGeometry(p)}
   for(const portal of o.portals||[])if(!portal.anchor?.every(Number.isFinite)||!portal.approach?.every(Number.isFinite)||portal.anchor.length!==3||portal.approach.length!==3)throw Error('Invalid portal '+o.id);
   for(const service of o.services||[])if(service.position?.length!==3||!service.position.every(Number.isFinite)||!['guild','craft','market','travel','housing','journal','inn','shrine'].includes(service.kind))throw Error('Invalid service '+o.id);
+  for(const actor of [...(o.services||[]),...(o.walkers||[])])if(actor.archetype!==undefined&&!['warrior','mage','ranger'].includes(actor.archetype))throw Error('Invalid authored character family '+o.id);
   for(const walker of o.walkers||[])if(!walker.route?.length||walker.route.some(p=>p.length!==2||!p.every(Number.isFinite))||!(walker.pace>0))throw Error('Invalid walker '+o.id);
   for(const layer of o.presentation?.structure?.layers||[])if(layer.depth?.length!==2||!layer.depth.every(Number.isFinite)||layer.region?.length!==4||!layer.region.every(Number.isFinite))throw Error('Invalid painted part '+o.id);
  }

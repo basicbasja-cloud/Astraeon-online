@@ -25,10 +25,15 @@ VIEWS = {
     'residential': (38, 39),
     'town-edge': (34, 44),
     'overview': (27, 23.5),
+    'hall-skyline': (36.5, 4.5),
+    'river-bank': (6.5, 26.5),
+    'river-falls': (7.25, 34.5),
+    'gate-spillways': (21, 42.5),
+    'hall-processional-view': (27, 40),
 }
 
 
-def capture(url, output, names, zoom=None):
+def capture(url, output, names, zoom=None, yaw=0, pitch=None):
     output.mkdir(parents=True, exist_ok=True)
     records = []
     with sync_playwright() as playwright:
@@ -69,6 +74,12 @@ def capture(url, output, names, zoom=None):
             if zoom is not None:
                 rect=page.locator('#world').bounding_box();pointer_x=rect['x']+rect['width']/2;pointer_y=rect['y']+rect['height']/2
                 page.keyboard.down('Control');page.mouse.move(pointer_x,pointer_y);page.mouse.down(button='right');page.mouse.move(pointer_x,pointer_y-(zoom-125)/1.5,steps=8);page.mouse.up(button='right');page.keyboard.up('Control');page.wait_for_timeout(800)
+            if yaw:
+                rect=page.locator('#world').bounding_box();px=rect['x']+rect['width']/2;py=rect['y']+rect['height']/2
+                page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px-yaw*rect['width']/720,py,steps=8);page.mouse.up(button='right');page.wait_for_timeout(800)
+            if pitch is not None:
+                rect=page.locator('#world').bounding_box();px=rect['x']+rect['width']/2;py=rect['y']+rect['height']/2
+                page.keyboard.down('Shift');page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px,py+(pitch-46)*rect['height']/300,steps=8);page.mouse.up(button='right');page.keyboard.up('Shift');page.wait_for_timeout(800)
             snap = page.evaluate('window.AstraeonQA.snapshot()')
             image = output / (name + '.png')
             page.screenshot(path=str(image))
@@ -76,6 +87,7 @@ def capture(url, output, names, zoom=None):
                       'actual': [snap['save']['x'], snap['save']['y']],
                       'layout': snap['town']['layout'],
                       'actors': len(snap['renderer']['actors']),
+                      'actorArtwork': {a['id']: a.get('motionSample', {}).get('frame') for a in snap['renderer']['actors']},
                       'renderCalls': snap['renderer']['calls'],
                       'frameMs': round(snap['renderer']['frameMs'], 2),
                       'device': snap['renderer'].get('device'),
@@ -94,9 +106,12 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, default=Path('/tmp/wayfarer-golden-views'))
     parser.add_argument('--views', default=','.join(VIEWS))
     parser.add_argument('--zoom', type=float, help='Use ordinary Ctrl-right-drag zoom for a still review (65–325)')
+    parser.add_argument('--yaw',type=float,default=0,help='Use ordinary right-drag orbit for architecture review')
+    parser.add_argument('--pitch',type=float,help='Optional ordinary Shift-right-drag; default gameplay pitch remains 46')
     args = parser.parse_args()
     names = args.views.split(',')
     if any(name not in VIEWS for name in names):
         parser.error('Unknown view; choose from ' + ', '.join(VIEWS))
     if args.zoom is not None and not 65<=args.zoom<=325:parser.error('Zoom must be within classic RO limits, 65–325')
-    capture(args.url, args.output, names,args.zoom)
+    if args.pitch is not None and not 10<=args.pitch<=89:parser.error('Pitch must be within gameplay limits, 10–89')
+    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch)

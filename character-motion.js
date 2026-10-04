@@ -58,7 +58,7 @@ class CharacterTransform {
    if(foot.swing&&!swing){foot.x=foot.to.x;foot.y=foot.to.y;foot.z=0}foot.swing=swing;foot.phase=phase;
   }
  }
- snapshot(){return{position:{...this.position},rotation:this.rotation,desiredRotation:this.desiredRotation,facingDirection:{...this.facingDirection},velocity:{...this.velocity},angularVelocity:this.angularVelocity,mode:this.mode,speed:this.speed,state:this.state,distance:this.distance,feet:this.feet.map(f=>f?{x:f.x,y:f.y,z:f.z,swing:f.swing}:null)}}
+ snapshot(){return{position:{...this.position},rotation:this.rotation,desiredRotation:this.desiredRotation,facingDirection:{...this.facingDirection},velocity:{...this.velocity},angularVelocity:this.angularVelocity,mode:this.mode,speed:this.speed,state:this.state,stateTime:this.stateTime,transition:this.transition,distance:this.distance,feet:this.feet.map(f=>f?{x:f.x,y:f.y,z:f.z,swing:f.swing}:null)}}
 }
 // Convert camera-relative axes using the inverse ground projection, retain analog magnitude.
 function cameraMovement(x,y,unproject){const magnitude=Math.min(1,Math.hypot(x,y));if(magnitude<.08)return{x:0,y:0,magnitude:0};const v=unproject(x,y),n=Math.hypot(v.x,v.y);return{x:v.x/n*magnitude,y:v.y/n*magnitude,magnitude}}

@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 global.window={};require('../world-content.js');require('../world-view.js');require('../world/v3/spatial.js');require('../world/v3/town-import.js');window.AstraeonContent=window.AstraeonTownImportV3.content(require('../world/v3/wayfarer-court.json'),window.AstraeonContent);require('../town-structure.js');require('../directional-metadata.js');require('../hero-registration.js');require('../warrior-gait.js');require('../sprite-motion.js');
-test('all eight directions retain an opposite leg contact half a cycle later',()=>{
+test('legacy contact metadata swaps supports half a cycle later in eight directions',()=>{
  const data=window.AstraeonHeroRegistration['warrior-walk'];
  for(let row=0;row<8;row++)for(let frame=0;frame<4;frame++){
   const left=data.frames[row*8+frame],right=data.frames[row*8+frame+4];

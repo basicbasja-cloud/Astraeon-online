@@ -2,12 +2,24 @@
 Blender, save, then: blender -b authoring/golden-proof.blend --python tools/export-world-v3.py
 The same exporter is usable by future towns; it contains no object-specific IDs.
 """
-import bpy,json
+import bpy,json,hashlib
 from mathutils import Vector
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+
+def shadow_geometry_digest(data):
+ # Shadow bakes are invalidated by edited casters, floor contacts or sunlight.
+ # Vertex AO and NPC presentation are independent of this geometric bake.
+ geometry={'sun':data['lighting']['sun'],'terrain':{k:data['terrain'].get(k) for k in ('bounds','elevation','vertices','faces','walkablePolygon')},
+           'floors':[{k:s.get(k) for k in ('vertices','faces','walkable','polygon')} for s in data['terrain']['surfaces'] if s.get('walkable')],
+           'casters':[{k:p.get(k) for k in ('id','vertices','faces','visible','material')} for o in data['objects'] for p in o['parts'] if p.get('shadow') and p.get('visible') is not False],
+           'cutouts':{k:v.get('texture',{}).get('alphaCutoff') for k,v in data['materials'].items()}}
+ return hashlib.sha256(json.dumps(geometry,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def vertices(o):return [[round(v,5) for v in o.matrix_world@p.co] for p in o.data.vertices]
 def uv(o):return [[[round(v,5) for v in o.data.uv_layers.active.data[i].uv] for i in p.loop_indices] for p in o.data.polygons] if o.data.uv_layers.active else None
+def baked_lighting(o):
+ layer=o.data.color_attributes.get('BakedTownLight')
+ return [[[round(v,4) for v in layer.data[i].color[:2]] for i in p.loop_indices] for p in o.data.polygons] if layer else None
 def export(scene):
  bpy.context.view_layer.update();objects=[];terrain=None
  for collection in bpy.data.collections:
@@ -34,6 +46,7 @@ def export(scene):
     part={'id':o.name,'role':o['role'],'shadow':bool(o['shadow']),'material':o.data.materials[0].name,'vertices':vertices(o),'faces':[list(p.vertices) for p in o.data.polygons]}
     if o.get('render_visible') is not None:part['visible']=bool(o['render_visible'])
     if uv(o):part['uvs']=uv(o)
+    if baked_lighting(o):part['bakedLighting']=baked_lighting(o)
     parts.append(part)
    elif o.get('kind')=='presentation':
     presentation={'sprite':json.loads(o['data_json']),'position':[round(v,5) for v in o.matrix_world.translation],'footprintReview':o['footprint_review']}
@@ -55,6 +68,10 @@ def export(scene):
  for prop,key in [('layout_id','layoutId'),('safe_spawn_json','safeSpawn'),('districts_json','districts')]:
   if scene.get(prop):data[key]=scene[prop] if prop=='layout_id' else json.loads(scene[prop])
  data['materials']={m.name:{'color':list(m.diffuse_color[:3]),**({'texture':json.loads(m['texture_json'])} if m.get('texture_json') else {})} for m in bpy.data.materials if m.name in {p['material'] for o in objects for p in o['parts']}|{terrain['material']}|{s['material'] for s in terrain['surfaces']}}
+ if scene.get('ground_shadow_bake_json'):
+  bake=json.loads(scene['ground_shadow_bake_json'])
+  if bake['geometryDigest']==shadow_geometry_digest(data):data['lighting']['groundShadow']=bake
+  else:print('Ground shadow bake is stale; export uses geometric fallback until rebaked',flush=True)
  return data
 if __name__=='__main__':
  data=export(bpy.context.scene);output=ROOT/'world/v3'/(data['id']+'.json');temporary=output.with_suffix('.json.tmp');temporary.write_text((json.dumps(data,separators=(',',':')) if data['id']=='wayfarer-spatial' else json.dumps(data,indent=2))+'\n');temporary.replace(output);print('Exported',len(data['objects']),'objects from',data['source'],'to',output)

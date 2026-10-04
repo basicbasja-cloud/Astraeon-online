@@ -81,6 +81,23 @@
           },
           "visible": {
             "type": "boolean"
+          },
+          "bakedLighting": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
           }
         },
         "required": [
@@ -419,6 +436,14 @@
             "items": {
               "type": "number"
             }
+          },
+          "archetype": {
+            "type": "string",
+            "enum": [
+              "warrior",
+              "mage",
+              "ranger"
+            ]
           }
         },
         "required": [
@@ -448,7 +473,15 @@
           },
           "kind": {
             "type": "string",
-            "enum": ["craft", "guild", "housing", "inn", "market", "shrine", "travel"]
+            "enum": [
+              "craft",
+              "guild",
+              "housing",
+              "inn",
+              "market",
+              "shrine",
+              "travel"
+            ]
           },
           "route": {
             "type": "array",
@@ -461,6 +494,14 @@
                 "type": "number"
               }
             }
+          },
+          "archetype": {
+            "type": "string",
+            "enum": [
+              "warrior",
+              "mage",
+              "ranger"
+            ]
           }
         },
         "required": [

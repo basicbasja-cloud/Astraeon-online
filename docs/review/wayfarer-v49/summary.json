@@ -1,0 +1,80 @@
+{
+  "candidate": true,
+  "historicalCheckpoint": true,
+  "supersededBy": "docs/review/pause-2026-10-04/summary.json",
+  "runtimeCache": 62,
+  "townLayout": "wayfarer-concept-terraced-town-v49",
+  "visualAcceptance": false,
+  "locomotionAcceptance": false,
+  "nodeTestsPassed": 94,
+  "publicSchemas": "PASS62",
+  "savedSourceParity": "PASS62; shared Hall transform and stale-bake invalidation pass",
+  "geometry": {
+    "objects": 118,
+    "bakedCorners": 337231,
+    "bakedMeshes": 8251
+  },
+  "files": {
+    "blend": {
+      "path": "authoring/wayfarer-spatial.blend",
+      "bytes": 7718228,
+      "sha256": "9fe1cc050324e7732cf32bb93ea0b86d1bca79902bd9a6483c00786a2cbbb242"
+    },
+    "world": {
+      "path": "world/v3/wayfarer-spatial.json",
+      "bytes": 24028342,
+      "sha256": "a9886cb2fcb646f9fbefc90a875be048ba49b3effb280429fca71da1ffa6725f"
+    },
+    "renderer": {
+      "path": "world/v3/renderer.js",
+      "bytes": 48759,
+      "sha256": "10749807082c266ae9dac9fa76b8939d7a636bf32bf65d020e6bfc5efa375bbc"
+    },
+    "actorAdapter": {
+      "path": "animation.js",
+      "bytes": 1049,
+      "sha256": "4982f16baf8a606355fe1dff4548f9549099a2191b5a78827598c6a83672a1af"
+    }
+  },
+  "lighting": {
+    "sun": {
+      "cast": [
+        0.62,
+        -0.4
+      ],
+      "strength": 0.72
+    },
+    "ambient": 0.36,
+    "groundShadow": {
+      "file": "assets/wayfarer-ground-shadow-v54.png",
+      "resolution": 1024,
+      "geometryDigest": "9b32b5b16061c548922fbf912a64e6414c26957fc51eb1fc8225bd1af92f62e7",
+      "strengthIncluded": true,
+      "sunSamples": 4,
+      "contactSamples": 4,
+      "alphaCutoutCanopies": "original-alpha-tested"
+    }
+  },
+  "gameplay": {
+    "cache": 59,
+    "spatialCases": 13,
+    "errors": [],
+    "resourceErrors": [],
+    "scope": "59 stairs/gates/field/save coverage retained for unchanged ground lots/navigation.62 attic geometry is overhead only;94Node/schema/source parity pass. Actual62 still review and isolated62 performance recorded."
+  },
+  "references": {
+    "identityLayoutArchitecture": "Approved original Wayfarer concept",
+    "primaryPresentation": "Local RO3 Prontera screenshots",
+    "animationFeel": "Supplied RO3 video reviewed at quarter speed; robe limits exact contact measurements"
+  },
+  "limits": [
+    "Town architecture/composition/presentation remains below visual acceptance.",
+    "No new character art installed. Existing loops fail visible alternation/weapon/crop/root gates.",
+    "75 tests and continuous root motion never approve anatomical gait.",
+    "Desktop Radeon780M/Chrome D3D11 performance is not phone certification.",
+    "Atlas/GIF evidence and instrumented gameplay capture have different scopes."
+  ],
+  "latestGeometry": "12 recessed attic bays, structural gables and roof crowns; lower footprints/entry anchors retained",
+  "locomotionDiagnosis": "../locomotion-v61/summary.json",
+  "cosmetics": "Not implemented; original appearance/attachment/ownership contract recorded in research/character-locomotion-and-cosmetics.md"
+}

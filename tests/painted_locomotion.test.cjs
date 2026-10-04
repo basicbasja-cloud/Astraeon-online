@@ -3,7 +3,7 @@ const manifest=require('../world/v3/warrior-painted-locomotion.json');
 global.window={AstraeonDirectionalMetadata:{},AstraeonHeroRegistration:{},AstraeonView:{project:(x,y)=>({x,y}),zoom:1,scale:{humanoid:76}},AstraeonSpriteMotion:{sample:()=>({x:0,lift:0,lean:0,stretch:1})}};
 global.Image=class{constructor(){this.naturalWidth=this.naturalHeight=2560}set src(value){this.url=value;queueMicrotask(()=>this.onload())}};
 require('../directional-art.js');
-test('all authored modes play eight distinct complete frames, including rear views',async()=>{
+test('all authored modes select eight distinct atlas rectangles, including rear views',async()=>{
  await window.AstraeonDirectionalArt.configurePaintedLocomotion(manifest);
  for(const mode of ['walk','run','sprint'])for(let row=0;row<8;row++){
   const crops=[],ctx={save(){},restore(){},translate(){},rotate(){},scale(){},drawImage(image,...args){assert(image.url.includes(manifest.clips[mode].clip));crops.push(args.slice(0,4).join(','))}};
@@ -18,4 +18,19 @@ test('malformed registration is rejected before it can crop another body or divi
  for(const mutate of [c=>c.frames[0].sole[1]=Infinity,c=>c.frames[0].support='left',c=>c.frames[0].stance=1,c=>c.duty=0]){
   const bad=structuredClone(manifest);mutate(bad.clips.run);assert.throws(()=>window.AstraeonDirectionalArt.configurePaintedLocomotion(bad));
  }
+});
+test('Mage and Ranger sample all eight rear atlas columns at distance-driven cadence',async()=>{
+ await window.AstraeonDirectionalArt.ready;
+ for(const archetype of ['mage','ranger']){
+  window.AstraeonDirectionalMetadata[archetype+'-walk']={cols:8,rows:8,frames:[]};
+  for(let row=0;row<8;row++){
+   const poses=[];window.AstraeonSpatialView={assemblingActor:true};
+   for(let phase=0;phase<8;phase++){
+    window.AstraeonDirectionalArt.humanoid({},()=>({x:0,y:0}),{rotation:Math.PI/2-row*Math.PI/4,state:'run',speed:3.5,gait:99,distance:2.1*(phase+.1)/8,position:{x:0,y:0,z:0},facingDirection:{x:0,y:1}},{archetype});
+    const f=window.AstraeonSpatialView.paintedFrame;assert.equal(f.row,row);assert.equal(f.key,archetype+'-walk');poses.push(f.column);
+   }
+   assert.deepEqual(poses,[0,1,2,3,4,5,6,7]);
+  }
+ }
+ delete window.AstraeonSpatialView;
 });

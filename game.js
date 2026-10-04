@@ -40,7 +40,7 @@ const worldLimits=()=>view.limits(dungeon?1:S?.zone||0);
 const routeBounds=()=>{const {w,h}=worldLimits();return {minX:1,maxX:w-2,minY:1,maxY:h-2}};
 const project=view.project;
 const unproject=view.inverse;
-const centerCamera=()=>{combat.clear();playerBursts=[];view.zone=S.zone;const p=project(S.x,S.y);camera.x=p.x;camera.y=p.y;playerTransform.teleport(S.x,S.y,elevationAt(S.x,S.y));playerTransform.mode=motion.FacingMode.Movement;dodgeMotion=null;aimPoint=null};
+const centerCamera=()=>{combat.clear();playerBursts=[];view.zone=S.zone;const p=project(S.x,S.y);camera.x=p.x;camera.y=p.y;camera.z=elevationAt(S.x,S.y);playerTransform.teleport(S.x,S.y,camera.z);playerTransform.mode=motion.FacingMode.Movement;dodgeMotion=null;aimPoint=null};
 const MAP_LAYOUTS=[
 {road:'capital',blocks:window.AstraeonContent.townBlocks,trees:[]},
 {road:'forest',blocks:[{x:3,y:3,w:5,h:4,type:'shrine'},{x:22,y:4,w:4,h:5,type:'pagoda'},{x:21,y:20,w:5,h:4,type:'shrine'}],trees:[[2,2],[7,3],[11,5],[18,4],[26,2],[2,8],[6,10],[23,10],[27,8],[4,17],[8,21],[19,17],[24,18],[27,24],[3,25],[12,23],[20,24]]},
@@ -93,7 +93,7 @@ actions.querySelectorAll('[data-action]').forEach(b=>{const id=b.dataset.action;
 }
 function resize(){if(!canvas)return;let r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,quality.dpr);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);ctx.setTransform(d,0,0,d,0,0);view.zoom=view.framing(r.width,r.height).zoom}
 const dims=()=>({w:canvas.clientWidth,h:canvas.clientHeight});
-function iso(x,y,z=0){const {w,h}=dims();return view.screen(x,y,z,camera,w,h)}
+function iso(x,y,z=elevationAt(x,y)*35){const {w,h}=dims();return view.screen(x,y,z,camera,w,h)}
 function reverse(px,py){const {w,h}=dims();return S.zone===0&&!dungeon&&window.AstraeonSpatialView?.active?window.AstraeonSpatialView.screenToWorld(px,py)||view.world(px,py,camera,w,h):view.world(px,py,camera,w,h)}
 const TERRAIN=[['#648a64','#6c9469','#779b70','#5d805e'],['#47734f','#508057','#5a8c5d','#416b4c'],['#8e945e','#a3a165','#b2a46a','#818c58'],['#3d6874','#446f7b','#4a7580','#3c6272'],['#584f77','#625985','#6a6087','#574f77']];
 function trail(x,y){
@@ -205,9 +205,11 @@ const spatial=S.zone===0&&!dungeon?window.AstraeonSpatialView:null;if(!spatial)w
 if(!spatial){const bg=ctx.createLinearGradient(0,0,0,h);bg.addColorStop(0,['#203c37','#22382d','#404236','#112b38','#241c3c'][S.zone]);bg.addColorStop(.54,'#172832');bg.addColorStop(1,'#0b1320');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);}
 ctx.save();
 const desired=project(S.x,S.y),follow=1-Math.exp(-10*dt);camera.x+=(desired.x-camera.x)*follow;camera.y+=(desired.y-camera.y)*follow;
+// Follow the actual floor on terraces; flight/combat lifts do not bob the camera.
+camera.z=(camera.z||0)+(elevationAt(S.x,S.y)-(camera.z||0))*follow;
 if(spatial)spatial.begin(camera,w,h,view.zoom,view.framing(w,h).anchorY);
 screenShake=Math.max(0,screenShake-.9);if(screenShake)ctx.translate((Math.random()-.5)*screenShake,(Math.random()-.5)*screenShake);
-const haze=ctx.createRadialGradient(w*.5,h*.2,8,w*.5,h*.22,Math.max(w,h)*.7);haze.addColorStop(0,['#b3dda422','#d6d9a322','#e2d28b22','#66d8e222','#b19af322'][S.zone]);haze.addColorStop(1,'#07111c00');ctx.fillStyle=haze;ctx.fillRect(0,0,w,h);
+const haze=ctx.createRadialGradient(w*.5,h*.2,8,w*.5,h*.22,Math.max(w,h)*.7);haze.addColorStop(0,spatial?'#f6deb20c':['#b3dda422','#d6d9a322','#e2d28b22','#66d8e222','#b19af322'][S.zone]);haze.addColorStop(1,'#07111c00');ctx.fillStyle=haze;ctx.fillRect(0,0,w,h);
 if(!spatial){if(dungeon)window.AstraeonDungeon.ground(ctx,iso);else if(S.zone===0)window.AstraeonScene.verge(ctx,iso,groundArt);else if(!window.AstraeonEnvironment.ground(ctx,iso,S.zone))drawGround(w,h);}
 const palettes={temple:['#53687a','#b38c6b'],hall:['#526b78','#85a1a0'],shop:['#655e66','#ad846b'],tower:['#3d5b70','#82a4ab'],shrine:['#5c7569','#bd786a'],pagoda:['#42586d','#b55f56'],inn:['#685c4b','#c28a4d'],windmill:['#786447','#d4b66a'],barn:['#70553f','#aa7042'],depot:['#405b69','#6faeb1'],observatory:['#354b66','#8aa7c0'],ruin:['#49435f','#8e7fd0'],obelisk:['#383854','#9c8bdd']};
 
@@ -222,8 +224,8 @@ const actorLabels=[];
 people.sort((a,b)=>(a.x*SHEAR_Y+a.y*TH)-(b.x*SHEAR_Y+b.y*TH));
 for(const o of people){const elevation=o.player?playerTransform.position.z:o.npc?actorTransform(o.npc).position.z:o.mob?actorTransform(o.mob).position.z:0,p=iso(o.x,o.y,elevation*35);if(o.wall){window.AstraeonDungeon.wall(ctx,o.wall,iso);continue}if(o.block){const b=o.block,q=palettes[b.type]||palettes.temple;box(b.x,b.y,b.w,b.h,b.height||65,q[0],q[1]);continue}if(o.prop){window.AstraeonScene.prop(ctx,o.prop,iso,S,now);continue}if(o.tree){drawTree(o.x,o.y);continue}
 if(o.player){ctx.save();if(now<(S.invulnUntil||0))ctx.globalAlpha=.62+.22*Math.sin(now*34);playerSockets=spatial?spatial.actor('player',playerTransform,(g,p)=>animations.player(g,S.cls,playerAnim,playerTransform,p,now,S.equipment),{alpha:ctx.globalAlpha,shadowAlpha:ctx.globalAlpha*(playerAnim.state==='death'?clamp((1-(now-playerAnim.started)/playerAnim.duration)/.35,0,1):1)}):animations.player(ctx,S.cls,playerAnim,playerTransform,iso,now,S.equipment);ctx.restore();if(now<(S.guard||0)){ctx.strokeStyle='#a8e6f0aa';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(p.x,p.y-32,29,39,0,0,Math.PI*2);ctx.stroke()}actorLabels.unshift({text:S.name,x:p.x,y:p.y-82*view.zoom,color:'#f3dfb1'});continue}
-if(o.walker){const a=o.walker;if(spatial)spatial.actor('walker/'+a.id,actorTransform(a),(g,p)=>animations.npc(g,a.kind,actorTransform(a),p,now));else animations.npc(ctx,a.kind,actorTransform(a),iso,now);continue}
-if(o.npc){const n=o.npc;if(n.kind!=='journal'){if(spatial)spatial.actor('service/'+n.id,actorTransform(n),(g,p)=>animations.npc(g,n.kind,actorTransform(n),p,now));else animations.npc(ctx,n.kind,actorTransform(n),iso,now);}if(distance(S,n)<6.5)actorLabels.push({text:n.name,x:p.x,y:p.y-(n.kind==='journal'?74:78)*view.zoom,color:'#dff4ef'});continue}
+if(o.walker){const a=o.walker;if(spatial)spatial.actor('walker/'+a.id,actorTransform(a),(g,p)=>animations.npc(g,a.kind,actorTransform(a),p,now,a.archetype));else animations.npc(ctx,a.kind,actorTransform(a),iso,now,a.archetype);continue}
+if(o.npc){const n=o.npc;if(n.kind!=='journal'){if(spatial)spatial.actor('service/'+n.id,actorTransform(n),(g,p)=>animations.npc(g,n.kind,actorTransform(n),p,now,n.archetype));else animations.npc(ctx,n.kind,actorTransform(n),iso,now,n.archetype);}if(distance(S,n)<6.5)actorLabels.push({text:n.name,x:p.x,y:p.y-(n.kind==='journal'?74:78)*view.zoom,color:'#dff4ef'});continue}
  const m=o.mob,dead=m.hp<=0,fade=dead?clamp(1-(now-(m.deadAt||now))/1.1,0,1):1;ctx.save();ctx.globalAlpha=fade;if(spatial)spatial.actor(spatial.idFor(m,'mob'),actorTransform(m),(g,p)=>animations.monster(g,m,actorTransform(m),p,now),{alpha:fade,radius:m.boss?.7:.4});else animations.monster(ctx,m,actorTransform(m),iso,now);ctx.restore();if(!dead){let width=m.boss?76:40,x=p.x-width/2,y=p.y-(m.boss?180:view.scale.monster[m.species||0]+9)*view.zoom;ctx.fillStyle='#160f20cc';ctx.fillRect(x,y,width,7);ctx.fillStyle=m.boss?'#f6bd6d':'#de6685';ctx.fillRect(x+1,y+1,(width-2)*m.hp/m.maxHp,5);if(selectedEnemy===m||m.boss)label(m.name,p.x,y-6,m.boss?'#f5d38c':'#f4d98e')}}
 if(spatial)spatial.end();
 drawActorLabels(actorLabels);
@@ -272,7 +274,7 @@ let frameCosts={};
 function loop(t){if(!S)return;const tickStart=performance.now();const frameMs=last?t-last:16.67;let rawDt=Math.min(frameMs/1000,.25);last=t;let dt=windowName||transitionPending||document.hidden?0:rawDt;if(hitStop>0){hitStop-=rawDt;dt=0}const substeps=Math.max(1,Math.ceil(dt/(1/60))),stepDt=dt/substeps;for(let step=0;step<substeps;step++){now+=stepDt;update(stepDt)}if(windowName){playerTransform.tick(S.x,S.y,rawDt,{archetype:animations.archetype(S.cls),elevation:elevationAt(S.x,S.y),groundAt:elevationAt});syncActors(rawDt)}const drawStart=performance.now();draw(rawDt);frameCosts={intervalMs:frameMs,updateMs:drawStart-tickStart,drawMs:performance.now()-drawStart};if(location.search.includes('qa=1'))window.dispatchEvent(new CustomEvent('astraeon-frame',{detail:{time:now}}));if(!document.hidden)qaFrames.push(frameMs);if(qaFrames.length>180)qaFrames.shift();if(location.search.includes('qa=1')&&t>qaNext){qaNext=t+1000;const values=[...qaFrames].sort((a,b)=>a-b);parent.postMessage({type:'astraeon-qa',fps:Math.round(1000/(qaFrames.reduce((a,b)=>a+b,0)/qaFrames.length)),p95:values[Math.floor(values.length*.95)]?.toFixed(1),x:S.x.toFixed(2),y:S.y.toFixed(2),hp:S.hp,zone:S.zone,state:playerAnim.state,actors:mobs.filter(m=>m.hp>0).length,projectiles:combat.projectiles.length},location.origin)}requestAnimationFrame(loop)}
 function update(dt){
 if(windowName||dt===0)return;atmosphere.tick(dt);life.tick(dt,now);audio.tick(now,S.zone,dungeon,S,atmosphere.weather);if(S.hp<=0){playerTransform.tick(S.x,S.y,dt,{action:'death',archetype:animations.archetype(S.cls),elevation:elevationAt(S.x,S.y),groundAt:elevationAt});syncActors(dt);if(now>=deathUntil)respawnPlayer();return}let beforeX=S.x,beforeY=S.y;const {x:sx,y:sy}=input.move(touchMove);
-let {x:vx,y:vy}=motion.cameraMovement(sx,sy,unproject);const movingSpeed=animations.archetype(S.cls)==='warrior'?(input.walk?1.3:input.sprint?4.1:2.7):(input.sprint?4.6:3.5),actionSpeed=combat.active&&animations.archetype(S.cls)==='warrior'?0:combat.active?.def.animation==='cast'?.3:combat.active?.45:1;
+let {x:vx,y:vy}=motion.cameraMovement(sx,sy,unproject);const movingSpeed=animations.archetype(S.cls)==='warrior'?(input.walk?1.3:input.sprint?4.1:2.7):(input.walk?1.3:input.sprint?4.6:3.5),actionSpeed=combat.active&&animations.archetype(S.cls)==='warrior'?0:combat.active?.def.animation==='cast'?.3:combat.active?.45:1;
 if(dodgeMotion){move(dodgeMotion.x*dt*5.2,dodgeMotion.y*dt*5.2);if(now>=dodgeMotion.end)dodgeMotion=null;vx=vy=0}else 
 if(vx||vy){target=null;move(vx*dt*movingSpeed*actionSpeed,vy*dt*movingSpeed*actionSpeed)}else if(target)stepTarget(dt,actionSpeed);
 if(heldAction==='attack'&&now>=attackCD)action('attack');
