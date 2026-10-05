@@ -1,166 +1,138 @@
-# ASTRAEON continuation checkpoint — 2026-10-05
+# ASTRAEON continuation checkpoint — 2026-10-05 / source67
 
 ## Workspace and authority
 
-The user explicitly resumed from the October 4 handoff on branch
-`codex/world-pipeline-v3-proof`. Current cloud checkout: `/workspace/Astraeon-online`.
+Active branch: `codex/world-pipeline-v3-proof`.
+Cloud checkout: `/workspace/Astraeon-online`.
 Origin: `https://github.com/basicbasja-cloud/Astraeon-online.git`.
-Parent checkpoint: `1b0fca4355c7380f2e44e132edb90dc298d702ec`.
-The commit containing this document is the continuation checkpoint; obtain its ID
-from Git history. Development is active; the prior pause/shutdown instruction is
-superseded by the user's continuation. No shutdown or new deployment was requested.
+Parent checkpoint: `91565428a5fd91acb524cbc9e19e1c404f4af5ac`.
+The commit containing this document is the new checkpoint; obtain its ID from Git
+history. The user resumed development and asked to keep pursuing building
+exterior detail, texture quality and lighting/shading against `RO3 Ref/`.
+Development remains active. No deployment, merge or shutdown was requested.
 
-**Town acceptance=false. Locomotion acceptance=false. Cosmetics implemented=false.**
-Technical checks do not override the user's rejection of town presentation or
-painted body movement. This is a bounded town architecture and render-clarity pass.
+**Town accepted=false. Locomotion accepted=false. Cosmetics implemented=false.**
+Technical checks do not override the user's visual or painted-movement rejection.
+This is a completed exterior/material/light iteration with review evidence.
 
-Review: `docs/review/wayfarer-v65/README.md` and `summary.json`. The complete prior
-handoff, reference research, geometry history, animation diagnosis and held-art
-restrictions are preserved in `docs/review/wayfarer-v65/previous-handoff.md`.
-The original pause metadata/raw gait ZIP manifests remain in
-`docs/review/pause-2026-10-04/`; no held character art was installed.
+Review: `docs/review/wayfarer-v67/README.md` and `summary.json`.
+The preceding complete handoff is `docs/review/wayfarer-v67/previous-handoff.md`;
+it links the full earlier reference research, character diagnosis, gait ZIP
+manifests and held-study restrictions. No held character art was installed.
 
-## Reference requirements and latest steering
+## Reference requirements
 
-- Approved `concept art.png` controls original identity, macro layout, districts,
-  architecture and Hall hierarchy above water. Keep the Hall massive relative to
-  people; preserve playable terraces and waterfalls.
-- All ten local `RO3 Ref/` images were inspected. They control the presentation
-  comparison: deep roof/facade forms, painterly values, daylight/contact shade,
-  functional density and person-relative travel. No proprietary assets were copied.
-  Their low image resolution is not an output-resolution target.
-- Town work precedes full-body animation replacement. Broader building depth,
-  Hall composition, density/life and painterly finish remain below acceptance.
-- The user asked why the ordinary gameplay screenshot looked low resolution.
-  `world/v3/renderer.js` forced software WebGL to pixel ratio 0.5, stretching a
-  half-size world behind the sharp DOM HUD. Runtime revision66 removes that
-  reduction: software uses native CSS pixels; hardware follows device density
-  up to 1.5×, with a minimum of 1×. Pixel ratio is no longer secretly lowered for
-  software performance. Existing sprite art still limits anatomy/detail.
+- Approved `concept art.png` owns original identity, layout, districts and Hall
+  hierarchy above water. Preserve playable terraces and waterfalls.
+- All ten local `RO3 Ref/` images were inspected this pass. Layered eaves/trim,
+  tile courses, recessed openings, warm sun/cool shade and functional street
+  density guide presentation. No proprietary assets or texture pixels were copied.
+- Source67 advances exterior finish; silhouette variety, blank gable panels,
+  broader civic composition and richer street life remain below acceptance.
+- Native resolution is mandatory. Source66 removed the forced .5 software pixel
+  ratio behind the sharp HUD. Revision67 keeps software at 1× CSS resolution and
+  hardware at least 1×, following density up to 1.5×. Never lower resolution or
+  loosen performance assertions solely to make a report pass.
 
 ## Exact saved state
 
-Native source: `authoring/wayfarer-spatial.blend`.
+Native: `authoring/wayfarer-spatial.blend`.
 Export: `world/v3/wayfarer-spatial.json`.
 Layout: `wayfarer-concept-terraced-town-v49`, 119 objects.
-Saved architecture/frontage source pass: **65**; grounded flora remains **64**.
-Boot, index and service-worker cache/precache versions: **66**, consistently aligned.
+Architecture/exterior/material/corner-bake source pass: **67**.
+Frontage opening/cross-gable source remains **65**; grounded flora remains **64**.
+Boot, page and service-worker cache/precache versions: **67**, aligned.
 
-- Corner bake65: 385,113 corners / 9,865 meshes / 16.3 seconds.
-- Ground bake65: 1024², 615,909 land / 327,474 shadowed pixels / 88.1 seconds.
-- Ground atlas: historical `assets/wayfarer-ground-shadow-v54.png` filename retained.
-- Export includes valid ground-shadow metadata for geometry digest
-  `20d2c9cd129bb7ec0b1b953e99f5fb30bb93744868e68ddd5a5c043cc8b5efb2`.
-- Original foliage alpha participates in native casts; no stale bake was restored.
-- Lighting sun .72 / cool ambient .36 / cast vector (.62, -.40) retained.
+- Corner bake67: 412,417 corners / 10,916 meshes / 24.2 seconds.
+- Ground bake67: 1536², 1,386,159 land / 738,243 shadowed pixels / 179.0 seconds.
+- Ground atlas retains historical `assets/wayfarer-ground-shadow-v54.png` name.
+- Valid ground digest:
+  `a1bc4697a60a3980e9c2346b70d287f1e2a9245e7305c5885cbef15e14df4b6e`.
+- Original foliage alpha participates in casts; no stale bake was restored.
+- Sun .68 / ambient .40 / unchanged cast (.62, -.40).
+  Native optional ambientColor=(.80,.92,1.10), sun.color=(1.15,1.04,.84).
+- Native AO authoring: 16 samples / .42 strength / 1.6-unit radius.
+  The bake tools retain prior defaults for sources without those settings.
 
-Do not reconstruct the town by rerunning historical builders. Source save,
-export and lighting mutations must be sequential. Do not overlap them with
+Save/export, corner and floor mutations must be sequential and must not overlap
 browser review or isolated performance. Geometry edits invalidate both bakes.
+Do not reconstruct the town by rerunning historical builders.
 
-## Source65 architecture
+## Exterior/material work
 
-`tools/author-frontage-families-v65.py` operates on the saved flora64 town.
-It replaces twelve existing frontage window envelopes and competing small
-windows/dormers with larger openings, splayed reveals, recessed glazing,
-mullions/transoms and projecting sills. Residential shutters remain
-frontage detail. One cross gable per lot meets a real cut in the original curved
-roof, preserving the surviving roof planes' UV mapping and baseline shape.
-Related home/merchant/workshop limewash and warm clay/cool slate colors create
-family variation using the existing original atlases.
+`tools/author-exterior-craft-v67.py` works on the saved frontage65 town and replaces
+only its own `exterior-v67-*` meshes. Twelve frontages gain layered eave beads,
+rafter ends, ridge caps, side cornices/knee braces, sills/louvers and dressed-stone
+entrances with arched wood leaves and ironwork. Twenty-two other existing lots
+gain framing following the actual wall polygons. 316 roof faces now map tile
+courses down their slopes; curved main roofs use continuous arc distance.
 
-New meshes are children of existing placement roots with overhead roles.
-The comparison against source64 preserves all terrain/walkable floor data,
-navigation, spawn/review routes, service/presentation/portal anchors, civilian
-patrol routes and every solid's geometry. See `native-preservation.json`.
-Visible triangles: 231,062 versus source64's 232,620; materials 61 versus 53.
-This is eight more material batches, not a measured performance improvement.
-Roof baselines are stored on source meshes for repeatable replacement.
-Re-running this authoring script requires fresh corner and ground bakes.
+The new lower jamb/arch projection is <=.16 units, inside the existing .18-unit
+collision margin. QA caught a deeper first draft; it was narrowed and both bakes
+were rerun. Final `decor-clearance.json` checks all new low vertices under a
+2.3-unit body-height assumption. New pieces preserve every existing floor,
+solid geometry/visibility, navigation, spawn/route, service/presentation/light/
+portal anchor, district and civilian patrol contract against source65.
 
-## Verification and evidence
+Original material master/provenance:
+`authoring/materials/wayfarer-exteriors-v67-source.png` and adjacent JSON.
+Runtime: `assets/wayfarer-exteriors-v67.webp`, lossless pixel-identical encoding.
+Actual 1254² atlas / four 627² tiles: clay, slate, oak and limestone. Better painting,
+UV direction and retained contrast improve quality; no increased source pixel
+count over v44 is claimed. Native materials carry measured meanLinearRGB and
+paletteDetail. The shader applies texture variation relative to that linear mean
+to the existing palette; older materials/foliage keep their previous behavior.
+Tiles retain independent mip chains. Runtime floor shadows use the native bake's
+actual 1536² size; the 2048² geometric approximation remains the fallback.
 
-The review README and summary record scoped outcomes, including partial replay
-evidence and failures. The isolated native-resolution cloud SwiftShader check
-failed the performance gate: 1.74 FPS / p95 and maximum 883.3 ms, drawing buffer
-1280×666 at ratio1, runtime errors[]. Only 11 moving pairs were sampled, too few
-for continuity certification. The >55 FPS / p95<25 ms / max<80 ms assertions were
-not loosened and native resolution was retained. Physical devices are unverified.
-Revision66 cache migration and offline saved-character reload passed (92 requests).
-The 13 civic/shrine/Hall/gate cases completed before a too-close market waypoint
-failed. Corrected native-resolution replay completed all four market flights plus
-field transition/save reload, then failed final telemetry sampled from an inactive
-field renderer. The helper now samples the town before departure. These partial
-logs are preserved and are not described as full-script passes.
-Eight ordinary-input service checks completed across the initial seven-service
-replay and a focused Luna shrine retry. The initial long shrine approach timed
-out while still moving; its partial report is retained. The focused retry passed,
-including the native town drawing buffer (1280×666, ratio1), actual field transition
-and saved-character reload. Runtime/resource errors are empty. See
-`services-report.json` and `shrine-retry.json`.
-95 individual Node checks, public schemas and saved Blender/export parity passed.
-The parity check also verifies Hall parent transform propagation and deliberately
-invalidates the bake after an unsaved Hall move; its stale-bake diagnostic is expected.
-All checks must use Blender `--python-exit-code 1` to expose Python failures.
+Visible triangles: 244,256 vs 231,062 (+5.71%). Visible parts: 15,588 vs 14,537.
+61 visible materials remain (67 including hidden-mesh materials). No new
+per-frame raycasting, dynamic shadow pass or PBR pipeline was added. Counts do
+not establish physical-device performance.
 
-The managed Node24 default runner reported only file wrappers. Use
-`tools/run-node-checks.py`, which runs six independent files with isolation disabled
-and records all 95 registered tests. Do not report six wrappers as 95 assertions.
-Browser QA now supports Linux SwiftShader and Windows D3D11.
-Market replay bases are beyond the first tread by more than arrival tolerance;
-previous overly close bases stopped on a tread and falsely failed descent.
-Expanded-town travel timeouts use authored route length and a bounded allowance
-for observed RAF intervals longer than the existing 250 ms simulation-delta cap.
-Gameplay speed/clock and performance assertions were not changed.
+## Verification and limitations
 
-Still architecture reviews at zoom160/yaw25 used capture ratio1.5 and do not
-establish FPS. `arrival-native.png` is ordinary gameplay with no capture override
-following the resolution fix. Isolated sound-on software timings cannot certify
-hardware desktop or phone performance. Never lower resolution or loosen performance
-assertions solely to make a report pass.
+- All 95 individual Node checks, four public schemas and saved Blender/export
+  parity passed. The parity test deliberately moves the Hall in RAM, confirms
+  stale-ground invalidation and does not save; its stale-bake diagnostic is expected.
+- Native preservation, low-trim clearance and lossless texture encoding passed.
+- Six matched stills: residential, market, inn, plaza, civic approach and gate,
+  zoom160/yaw25/pitch46 with explicit 1.5× capture ratio (1920×999). Same camera/
+  ratio as source65 comparison stills. Review save-position fixtures, not traversal
+  or FPS evidence. All errors[].
+- Wider native Hall view: distance325/yaw−25/pitch≈64.88, ratio1; roofs/upper
+  architecture inspected, lowest facade cropped. Distance65 initially produced a
+  close-up; that attempt is not used as wider-Hall evidence.
+- Ordinary-input Merchant, Artisan and Housing Keeper services all opened. Field
+  departure and saved-character reload passed. Desktop/portrait/landscape/tablet
+  snapshots; town 1280×666 / ratio1, runtime errors[] and resource errors[]. Other
+  five services and every stair were not all replayed this pass. Native contracts
+  and pure checks passed; source65's scoped wider replays remain in the prior review.
+- Revision67 migration/offline reload passed: 93 precached requests, every source
+  material present, ground PNG decoded offline at 1536². Fresh test-character
+  name/class/zone/position/level/XP/inventory/equipment retained. No user browser
+  state was changed.
+- Isolated sound-on native SwiftShader performance **failed**: 1.62 FPS,
+  p95=max 733.3 ms, 1280×666 / ratio1, errors[]. Thresholds remain >55 FPS /
+  p95<25 ms / max<80 ms. Only 11 player samples / 10 moving pairs, zero held roots:
+  insufficient to certify continuity or painted anatomy/contact. No hardware
+  desktop/phone certification. Failed assertion and raw data are preserved.
 
-## Locomotion and next work
+Use Blender `--python-exit-code 1`. On this managed Node24 host the default runner
+reports file wrappers; `python3 tools/run-node-checks.py` exposes all 95 registered
+tests in six independent invocations. Browser helpers support Linux SwiftShader
+and Windows D3D11. Run visual/service/cache replays serially; isolated timing must
+have no concurrent browser or source-authoring work.
 
-No production character art, animation state, speed, save key or progression
-contract changed. The Warrior still has incorrect leg alternation/body registration,
-weapon continuity and some squat/hopping poses. Mage/Ranger still reuse their
-walk atlases for all speeds. Runtime root continuity does not validate painted
-contacts or anatomy. All v50/v51/v52/v53/v63 studies remain held/unapproved.
-Read the full diagnosis and shared-source-root pipeline in the archived handoff
-and `research/character-locomotion-and-cosmetics.md` before any character work.
+## Continue
 
-Continue town structure and composition against concept/RO3 first. Inspect actual
-native-resolution gameplay and normal-speed motion. Deeper roof/façade family
-forms, Hall hierarchy/framing and functional density remain open; avoid substituting
-noisy texture detail for architecture. Then build coherent full-body action strips
-with one shared source root/scale and measured painted contacts, inspect every
-heading/mode/transition, and integrate only after approval. Cosmetics wait for
-stable original body animation; ownership/payment systems remain unimplemented.
+Prioritize the user's next town feedback. Continue source-owned exterior forms,
+blank gables/civic composition and person-relative functional detail using the
+concept plus RO3 comparisons; keep the budget and native-resolution limitation
+visible. Source67 is reviewable, not accepted. Full-body painted locomotion,
+weapon/body registration, Mage/Ranger mode-specific art and cosmetics remain
+unfinished. Do not install held gait studies or redirect this task into character
+art before the user's town priority is satisfied.
 
-Preserve users' existing saves/progression and unrelated files/apps. No subagents
-were authorized or used. The prior handoff explicitly authorizes pushing repo
-changes; no new thread or PR was requested.
-
-## Tools and restart
-
-No npm/build/install step is required. Current loopback preview:
-`http://127.0.0.1:8011/`. Recreate after environment restart:
-
-```sh
-python3 -m http.server 8011 --bind 127.0.0.1
-python3 tools/run-node-checks.py
-python3 tools/validate-world-v3.py
-blender -b authoring/wayfarer-spatial.blend --python-exit-code 1 --python tools/check-blender-export-v3.py
-python3 tests/golden_wayfarer.py --phase spatial --output /tmp/astraeon-spatial65
-python3 tests/golden_wayfarer.py --phase services --output /tmp/astraeon-services65
-python3 tests/cache_resume.py --output /tmp/astraeon-cache66
-python3 tests/movement_performance.py --output /tmp/astraeon-performance66.json
-```
-
-Cloud Python3.12 / Node24 / Chromium151 `/usr/bin/chromium` / Blender4.3.2.
-Playwright, jsonschema and PIL are available. Network/loopback browser calls need
-network permission in this managed environment. Linux uses SwiftShader with
-`--no-sandbox --enable-gpu --use-angle=swiftshader --enable-unsafe-swiftshader`;
-Windows uses D3D11 through `ASTRAEON_BROWSER`. The agent-browser CLI is unavailable;
-existing Python Playwright tools perform review. Original Windows bpy fallback
-and alpha preparation/bake commands are preserved in the archived handoff.
+The existing loopback static server on port8011 remains available. No npm/build
+step is needed; Python, Blender, Chromium and Playwright are already installed.

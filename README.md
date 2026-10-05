@@ -4,13 +4,13 @@ Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice 
 
 ## Current build
 
-Wayfarer source65 uses the saved Blender town, exported meshes, materials, navigation, stairs, services and portals in a shared Three.js depth buffer. The approved concept guides original identity, macro layout, districts and landmark hierarchy, adapted into playable terraces above water. This continuation replaces the twelve existing frontage window envelopes with larger splayed openings, recessed glazing and projecting sills; coherent cross gables meet actual openings in the roof planes. Home, merchant and workshop finishes have distinct related colors. Ground footprints, streets, services and patrols retain their source64 contracts. Both native lighting bakes are current. The source is `authoring/wayfarer-spatial.blend`; its matching runtime export is `world/v3/wayfarer-spatial.json`.
+Wayfarer source67 uses the saved Blender town, exported meshes, materials, navigation, stairs, services and portals in a shared Three.js depth buffer. The approved concept guides original identity, macro layout, districts and landmark hierarchy. This continuation follows RO3 exterior references with layered eaves, rafter ends, ridge caps, wall joinery and dressed-stone entrances on existing lots. Original flat clay/slate, oak and limestone textures retain more surface detail through palette-relative shading; roof courses now follow the roof slopes. Warm daylight, cooler fill and refreshed corner/floor bakes give the trim and recesses depth. Floors, collision, navigation, services and patrols retain their source65 contracts. The source is `authoring/wayfarer-spatial.blend`; its matching runtime export is `world/v3/wayfarer-spatial.json`.
 
 The town camera uses a 15-degree vertical perspective lens, 46-degree downward pitch, yaw zero, zoom 125 and centered smooth follow. The lens/control reference comes from roBrowser; the shallower pitch is an ASTRAEON choice following user feedback. These are not independently verified Gravity client settings. The earlier concept framing remains available at `?camera=concept38`.
 
 Warrior retains the shipped eight-direction illustrated walk/run/sprint strips and contact-queued strategy transitions. Painted leg alternation, body/root registration, weapons and gait closure remain unaccepted; the diagnosis and held studies are in the current handoff. Mage and Ranger still reuse their existing walk atlases across movement modes. Full frames sample shared GPU textures, while action/fall composition retains Canvas. This town pass installs no replacement character art or cosmetics.
 
-See [the source65 review](docs/review/wayfarer-v65/README.md), [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
+See [the source67 review](docs/review/wayfarer-v67/README.md), [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
 
 ## Play
 
@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 66. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 67. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 ## Verification
 

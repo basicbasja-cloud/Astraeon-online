@@ -13,7 +13,8 @@ from mathutils.bvhtree import BVHTree
 ROOT=Path(__file__).resolve().parents[1];scene=bpy.context.scene
 exporter=runpy.run_path(str(ROOT/'tools/export-world-v3.py'))
 data=exporter['export'](scene);digest=exporter['shadow_geometry_digest'](data)
-bounds=data['terrain']['bounds'];size=1024
+bounds=data['terrain']['bounds'];size=int(scene.get('ground_shadow_resolution',1024))
+assert 64<=size<=4096
 
 def tree_from(parts):
  vertices=[];triangles=[]

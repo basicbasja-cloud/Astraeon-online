@@ -85,34 +85,35 @@ function material(name,definition){
  // MSAA coverage softens cutout foliage silhouettes while retaining depth.
  if(spec?.alphaCutoff)m.alphaToCoverage=true;
  if(name==='riverFoam'){m.transparent=true;m.depthWrite=false;m.forceSinglePass=true}
- // The authored material palette carries the large shapes. Texture retains
- // quiet brush/course cues; broad world-space variation avoids tile-sized noise.
+ // Normalize new painted swatches around their linear mean: tile seams and
+ // grain retain contrast while the authored palette still owns the building hue.
+ // Older atlases retain their existing mix and foliage/cutout behavior.
  {
   const painted=spec&&name!=='bannerSilk';
-  const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=name==='water'?.18:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24;
+  const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=spec?.paletteDetail??(name==='water'?.18:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24),mean=spec?.meanLinearRGB;
   m.onBeforeCompile=shader=>{
-   shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.occludingOwners=occludingOwners;
+   shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.paintMean={value:new THREE.Vector3(...(mean||[1,1,1]))};shader.uniforms.occludingOwners=occludingOwners;
    shader.vertexShader='attribute float ownerId;varying float paintOwner;varying vec3 paintPosition;\n'+shader.vertexShader;
    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\npaintOwner=ownerId;paintPosition=(modelMatrix*vec4(position,1.0)).xyz;');
-   shader.fragmentShader='varying float paintOwner;uniform vec4 occludingOwners;varying vec3 paintPosition;uniform vec3 paintBase;uniform float paintDetail;\n'+shader.fragmentShader;
+   shader.fragmentShader='varying float paintOwner;uniform vec4 occludingOwners;varying vec3 paintPosition;uniform vec3 paintBase;uniform vec3 paintMean;uniform float paintDetail;\n'+shader.fragmentShader;
    if(painted)shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
     float wash=1.0+0.035*sin(paintPosition.x*0.49+sin(paintPosition.y*0.27))*sin(paintPosition.y*0.38+paintPosition.z*0.41);
-    diffuseColor.rgb=mix(paintBase,diffuseColor.rgb,paintDetail)*wash;`);
+    ${mean?'vec3 variation=clamp(diffuseColor.rgb/paintMean,vec3(0.45),vec3(1.6));diffuseColor.rgb=paintBase*mix(vec3(1.0),variation,paintDetail)*wash;':'diffuseColor.rgb=mix(paintBase,diffuseColor.rgb,paintDetail)*wash;'} `);
    shader.fragmentShader=shader.fragmentShader.replace('#include <alphahash_fragment>',`if(paintOwner>0.5 && (abs(paintOwner-occludingOwners.x)<0.1||abs(paintOwner-occludingOwners.y)<0.1||abs(paintOwner-occludingOwners.z)<0.1||abs(paintOwner-occludingOwners.w)<0.1))discard;
     #include <alphahash_fragment>`);
-  };m.customProgramCacheKey=()=> 'painterly-material-v47/'+!!painted;
+  };m.customProgramCacheKey=()=> 'painterly-material-v67/'+!!painted+'/'+!!mean;
  }
  materialCache.set(key,m);return m;
 }
 function appendMesh(batch,part,lighting){
- const vs=part.vertices,sun=lighting?new THREE.Vector3(-lighting.sun.cast[0],-lighting.sun.cast[1],1).normalize():new THREE.Vector3(-.34,-.45,.82).normalize(),ambient=lighting?.ambient??.8,strength=lighting?.sun.strength??.23;
+ const vs=part.vertices,sun=lighting?new THREE.Vector3(-lighting.sun.cast[0],-lighting.sun.cast[1],1).normalize():new THREE.Vector3(-.34,-.45,.82).normalize(),ambient=lighting?.ambient??.8,strength=lighting?.sun.strength??.23,fillTone=lighting?.ambientColor||[.88,.96,1.04],sunTone=lighting?.sun.color||[1.12,1.05,.86];
  for(const [faceIndex,face] of part.faces.entries()){
   const a=new THREE.Vector3(...vs[face[0]]),b=new THREE.Vector3(...vs[face[1]]),c=new THREE.Vector3(...vs[face[2]]),normal=b.clone().sub(a).cross(c.clone().sub(a)).normalize();
   if((part.walkable||/slate|terracotta|roof/i.test(part.material||''))&&normal.z<0)normal.negate();
   const axis=Math.abs(normal.z)>.65?'xy':Math.abs(normal.x)>Math.abs(normal.y)?'yz':'xz';
   const lit=Math.max(0,normal.dot(sun));
   for(let j=1;j<face.length-1;j++)batch.owners?.push(part.objectId||part.id||'terrain');
-  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],corner=face.indexOf(i),uv=part.uvs?.[faceIndex]?.[corner],bake=part.bakedLighting?.[faceIndex]?.[corner],sunlit=lit*(bake?.[1]??1),fill=ambient*(bake?.[0]??1),direct=sunlit*strength;batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(fill*.88+direct*1.12,fill*.96+direct*1.05,fill*1.04+direct*.86);batch.ownerId?.push(part.ownerNumber||0);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
+  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],corner=face.indexOf(i),uv=part.uvs?.[faceIndex]?.[corner],bake=part.bakedLighting?.[faceIndex]?.[corner],sunlit=lit*(bake?.[1]??1),fill=ambient*(bake?.[0]??1),direct=sunlit*strength;batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(fill*fillTone[0]+direct*sunTone[0],fill*fillTone[1]+direct*sunTone[1],fill*fillTone[2]+direct*sunTone[2]);batch.ownerId?.push(part.ownerNumber||0);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
  }
 }
 function geometry(batch){const g=new THREE.BufferGeometry();for(const [name,size] of [['position',3],['normal',3],['uv',2],['color',3],['ownerId',1],['feather',1]])if(batch[name])g.setAttribute(name,new THREE.Float32BufferAttribute(batch[name],size));g.computeBoundingSphere();return g}
@@ -177,7 +178,7 @@ class SpatialRenderer{
   });
   if(shore.position.length){const ribbon=new THREE.Mesh(geometry(shore),featherMaterial(new THREE.MeshBasicMaterial({color:'#b8d9ce',vertexColors:true,side:THREE.DoubleSide}),'shore'));ribbon.name='static/shoreline';this.scene.add(ribbon)}
   // Static authored sun shadow atlas: one draw, no dynamic shadow map or PBR.
-  this.shadowSize=2048;const c=document.createElement('canvas');c.width=c.height=this.shadowSize;const g=c.getContext('2d'),b=terrain.bounds,sx=this.shadowSize/(b.maxX-b.minX),sy=this.shadowSize/(b.maxY-b.minY);
+  this.shadowSize=source.lighting.groundShadow?.resolution||2048;const c=document.createElement('canvas');c.width=c.height=this.shadowSize;const g=c.getContext('2d'),b=terrain.bounds,sx=this.shadowSize/(b.maxX-b.minX),sy=this.shadowSize/(b.maxY-b.minY);
   g.fillStyle='#3a4464';g.globalAlpha=source.lighting.sun.strength;g.filter='blur(2px)';g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();g.filter='none';
   // Soft local depth at building feet supplements the directional cast atlas.
   // One combined stroke avoids repeatedly darkening intersecting foundations.

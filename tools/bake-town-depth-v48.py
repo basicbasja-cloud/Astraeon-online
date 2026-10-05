@@ -34,7 +34,9 @@ for o in occluders:
     o.data.calc_loop_triangles();faces.extend(tuple(base+i for i in t.vertices) for t in o.data.loop_triangles)
 tree=BVHTree.FromPolygons(vertices,faces,all_triangles=True)
 sun=Vector((-scene['sun_cast_x'],-scene['sun_cast_y'],1)).normalized()
-samples=[(math.sqrt((i+.5)/8)*math.cos(i*2.399963),math.sqrt((i+.5)/8)*math.sin(i*2.399963),math.sqrt(1-(i+.5)/8)) for i in range(8)]
+sample_count=int(scene.get('bake_ao_samples',8));ao_strength=float(scene.get('bake_ao_strength',.35));ao_radius=float(scene.get('bake_ao_radius',1.5))
+assert 1<=sample_count<=64 and 0<=ao_strength<=1 and 0<ao_radius<=10
+samples=[(math.sqrt((i+.5)/sample_count)*math.cos(i*2.399963),math.sqrt((i+.5)/sample_count)*math.sin(i*2.399963),math.sqrt(1-(i+.5)/sample_count)) for i in range(sample_count)]
 count=0;start=time.monotonic()
 for index,o in enumerate(meshes):
     data=o.data;old=data.color_attributes.get('BakedTownLight')
@@ -50,9 +52,9 @@ for index,o in enumerate(meshes):
             point=point.lerp(center,.025)+normal*.04
             occ=0
             for x,y,z in samples:
-                hit=tree.ray_cast(point,tangent*x+other*y+normal*z,1.5)
-                if hit[0] is not None:occ+=max(0,1-hit[3]/1.5)
-            ao=1-.35*occ/len(samples)
+                hit=tree.ray_cast(point,tangent*x+other*y+normal*z,ao_radius)
+                if hit[0] is not None:occ+=max(0,1-hit[3]/ao_radius)
+            ao=1-ao_strength*occ/len(samples)
             visible=1.0 if normal.dot(sun)<=0 or tree.ray_cast(point,sun,100)[0] is None else .12
             layer.data[li].color=(ao,visible,0,1);count+=1
     if index%700==0:print('BAKE',index,'/',len(meshes),'corners',count,flush=True)

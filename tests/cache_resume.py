@@ -55,6 +55,12 @@ with sync_playwright() as p:
     assert version['name'] == current_cache, version
     for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/wayfarer-spatial.json']:
         assert any(url.endswith('/' + filename + '?v=' + current_version) for url in version['urls']), filename
+    world = json.loads((ROOT / 'world/v3/wayfarer-spatial.json').read_text())
+    art = {material['texture']['file'] for material in world['materials'].values()
+           if material.get('texture')}
+    art.add(world['lighting']['groundShadow']['file'])
+    for filename in art:
+        assert any(url.endswith('/' + filename) for url in version['urls']), ('uncached town material', filename)
     before = page.evaluate('AstraeonQA.snapshot().save')
     context.set_offline(True)
     page.reload(wait_until='networkidle')
@@ -63,10 +69,18 @@ with sync_playwright() as p:
     after = page.evaluate('AstraeonQA.snapshot().save')
     for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment']:
         assert field in before and after[field] == before[field], (field, before.get(field), after.get(field))
+    ground = world['lighting']['groundShadow']
+    ground_size = page.evaluate('''async file=>{
+      const response=await fetch(file);
+      const image=await createImageBitmap(await response.blob());
+      const size=[image.width,image.height];image.close();return size;
+    }''', ground['file'])
+    assert ground_size == [ground['resolution']] * 2, ('stale offline shadow atlas', ground_size, ground)
     page.screenshot(path=str(args.output / 'offline-town.png'))
     report = {'cache': version['name'], 'precachedRequests': len(version['urls']),
               'legacyCacheRemoved': True, 'offlineTownLoaded': True,
-              'savedCharacterRetained': True, 'errors': errors}
+              'savedCharacterRetained': True, 'townMaterialFiles': sorted(art),
+              'offlineGroundSize': ground_size, 'errors': errors}
     (args.output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     browser.close()
     assert not errors, errors
