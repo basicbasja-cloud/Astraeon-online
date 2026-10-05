@@ -11,7 +11,7 @@
     "e20dd3d",
     "159403e"
   ],
-  "status": "browser_verification_in_progress",
+  "status": "complete_with_software_performance_failure",
   "townGoldenAccepted": false,
   "locomotionAccepted": false,
   "cosmeticsImplemented": false,
@@ -89,7 +89,8 @@
         "districts",
         "safeSpawn"
       ],
-      "plantContactCheck": "native Blender check-ro3-street-v69.py"
+      "plantContactCheck": "native Blender check-ro3-street-v69.py",
+      "evidenceValidity": "Later city-detail check preserves exact preceding walkable floor/solid geometry; plant relocations and joint grass are decorative and nonsolid."
     }
   },
   "geometry": {
@@ -151,9 +152,115 @@
     "criteriaFile": "visual-test.json",
     "userGoldenAccepted": false
   },
-  "ordinaryInputServices": "pending",
-  "offlineCache": "pending",
-  "soundOnPerformance": "pending",
+  "ordinaryInputServices": {
+    "status": "passed",
+    "evidence": [
+      {
+        "service": "Merchant",
+        "title": "Marketplace"
+      },
+      {
+        "service": "Artisan",
+        "title": "Crafting"
+      },
+      {
+        "service": "Housing Keeper",
+        "title": "Housing"
+      }
+    ],
+    "fieldTransition": true,
+    "savedCharacterReload": true,
+    "runtimeErrors": [],
+    "resourceErrors": [],
+    "reportFile": "services/report.json",
+    "initialAttempt": "first-attempt.log records a timeout whose later failure capture shows arrival within .4; rerun uses one atomic live-position snapshot, unchanged .4 arrival tolerance and bounded deadline",
+    "firstAttemptLog": "services/first-attempt.log"
+  },
+  "offlineCache": {
+    "status": "passed",
+    "cache": "astraeon-static-v74",
+    "precachedRequests": 106,
+    "legacyCacheRemoved": true,
+    "offlineTownLoaded": true,
+    "savedCharacterRetained": true,
+    "townMaterialFiles": [
+      "assets/wayfarer-aged-pavers-v69.webp",
+      "assets/wayfarer-banner-v44.svg",
+      "assets/wayfarer-brick-v69.webp",
+      "assets/wayfarer-cascade-v1.svg",
+      "assets/wayfarer-curb-stone-v69.webp",
+      "assets/wayfarer-details-v44.webp",
+      "assets/wayfarer-exteriors-v67.webp",
+      "assets/wayfarer-foliage-v69.webp",
+      "assets/wayfarer-ground-shadow-v54.png",
+      "assets/wayfarer-lawn-v44.webp",
+      "assets/wayfarer-limewash-v69.webp",
+      "assets/wayfarer-nature-v1.webp",
+      "assets/wayfarer-patina-v69.webp",
+      "assets/wayfarer-planting-grass-v69.webp",
+      "assets/wayfarer-prop-cloth-v69.webp",
+      "assets/wayfarer-prop-metal-v69.webp",
+      "assets/wayfarer-prop-paper-v69.webp",
+      "assets/wayfarer-prop-petal-v69.webp",
+      "assets/wayfarer-prop-rind-v69.webp",
+      "assets/wayfarer-river-foam-v1.svg",
+      "assets/wayfarer-rock-v4.webp",
+      "assets/wayfarer-tree-bark-v69.webp"
+    ],
+    "offlineGroundSize": [
+      1536,
+      1536
+    ],
+    "errors": [],
+    "reportFile": "cache/report.json"
+  },
+  "soundOnPerformance": {
+    "status": "failed",
+    "fps": 1.3433236813039204,
+    "p95Ms": 866.5999999999985,
+    "maxMs": 866.5999999999985,
+    "samples": 9,
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "cssWidth": 1280,
+      "cssHeight": 666,
+      "pixelRatio": 1
+    },
+    "startupMs": 46200.542819002294,
+    "startupTimeoutMs": 120000,
+    "runtimeErrors": [],
+    "gatesUnchanged": {
+      "fpsGreaterThan": 55,
+      "p95MsLessThan": 25,
+      "maxMsLessThan": 80,
+      "playerMovingPairsGreaterThan": 100,
+      "frozenBodyFrames": 0
+    },
+    "playerObserved": {
+      "samples": 9,
+      "movingFrames": 8,
+      "frozenBodyFrames": 0,
+      "columns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "clips": [
+        "warrior-run-v5"
+      ]
+    },
+    "gaitContinuityCertified": false,
+    "physicalGpuVerified": false,
+    "reportFile": "performance.json",
+    "note": "Nine software-rendered samples with eight moving player pairs do not certify gait continuity. FPS/frame thresholds were not relaxed; physical-device validation remains open."
+  },
   "remaining": [
     "User town Golden acceptance",
     "Broader civic carving/tracery",
@@ -183,5 +290,6 @@
     "groundedPlantingGrassIslands": 27,
     "texturedPreviouslyPlainMaterials": 18,
     "goodsStations": 27
-  }
+  },
+  "reviewCommit": "f49aa95"
 }

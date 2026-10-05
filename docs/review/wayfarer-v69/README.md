@@ -1,115 +1,122 @@
-# RO3 town edges, aged paving and planted streets — source69
+# RO3 town edges and continuous aged paving — source 69
 
 The curb follows the edge of the building zone. Houses own stone bases and
-private paving; shared rectangular street stones have worn joints and selected
-grassy patches. Rounded trees and grounded planting use original detailed art.
-The supplied RO3 04_08_45/39/34 references guide these relationships; no reference
-pixels or models are imported.
+private paving; street and building-side walks share aged rectangular stones.
+Grass follows foundation margins and selected mortar joints. Trees, planting
+and small city props use original textured artwork.
 
-Branch: `codex/world-pipeline-v3-proof`. Parent source68: `27c65c1`.
-Completed checkpoints `079f8f9` (curb/grass/house lots), `4aefbd7` (tree volume),
-and `9bc6773` (coherent rectangular road paving) are pushed to origin. Final
-city-detail source `e20dd3d` and pad-removal correction `159403e` are pushed;
-review evidence is in `summary.json`.
-Native authoring remains pass69; boot/page/static cache is74.
+The separate stone-image pads looked stamped onto the road because their joints
+and local stone scale conflicted with the underlying paving. All 20 pads are
+removed. The current town keeps one continuous worn-stone material, with 160
+native three-blade grass tufts rooted in actual authored mortar/crack joints.
+There are no stone-image overlays in the current scene or precache.
 
-`comparison.html` contains native before/after images, the supplied reference and
-six final views. `visual-test.json` records the scoped agent review. **Town Golden
-accepted=false; locomotion accepted=false; cosmetics implemented=false.** The
-agent review does not imply user acceptance or physical-device performance.
+Branch: `codex/world-pipeline-v3-proof`. Parent source 68: `27c65c1`.
+Pushed source checkpoints: `079f8f9` (house lots, curb and grass), `4aefbd7`
+(tree volume), `9bc6773` (rectangular road paving), `e20dd3d` (city textures and
+planting) and `159403e` (pad removal and integrated joint grass).
+Native authoring remains pass 69; boot/page/static cache is 74.
 
-## Resulting source
+The six native views pass the scoped agent review in `visual-test.json`.
+`comparison.html` provides matched before/after images and the supplied reference.
+`summary.json` records code, source, browser and performance outcomes.
+**Town Golden accepted=false; locomotion accepted=false; cosmetics implemented=false.**
+Agent screenshot review does not establish user acceptance or device performance.
 
-- All37 ordinary houses have two staggered bevelled plinth courses and a cap,
-  with490 private apron sections,420 stone rims and70 entrance gaps. Twenty
-  planned sections crossing steps/slopes were omitted. Aprons rise.055 and rims
-  .105. These910 native surfaces are walkable. The source68 house envelopes,
-  density increase13.1%, one infill and tiered fountain remain.
-- 629 bevelled stone street curbs (.12rise/.30width) outline the outside of the
-  through-road union. Crossings, services, doors and steps remain open. Curbs
-  separate the street from building-side paving. Roads, stairs and house aprons
-  share aged rectangular stone art and world UV scale8, with native road tone
-  slightly darker. The fine hexagon-like road repeat has been removed.
-- 308 foundation grass strips and2464 rooted three-blade clumps follow house
-  and paving margins.244 strips are fitted outside private rims;199 were widened
-  toward.58–.82. Sixty-eight irregular roadside strips grow onto building-side
-  paving. Their final shared1254² painted grass artwork has soft organic edges.
-- The20 separate stone-image pads were removed after the user identified their
-  stamped appearance. Continuous aged stone remains, with160 native three-blade
-  grass tufts rooted in actual mortar/crack joints in20 selected building-side
-  regions. Actual floor UV sampling verifies every root. There are no stone-image
-  overlays in the current city; walkable floors and collision remain unchanged.
-- Five inherited flower beds and22 orphan ground-flower groups are relocated to
-  grounded planting islands on building-side curb edges. Raised flower boxes,
-  formal fountain beds, owned entrances and nearby building-edge flowers remain.
-  Twenty-seven painted grass islands tie the relocated flowers to their planting
-  space. A separate native refit follows subtle paving slopes at every plant
-  vertex instead of leaving a flat island floating above the ground.
-- Trees have264 bark-textured trunk/branch parts,608 bowed leaf layers and280
-  rounded crown tops. Original roots, trunks, branches, placement frames and
-  collision remain. Crown extents are checked against preceding visible foliage;
-  original-alpha leaf shadows are rebaked.
-- Pierced main facades add147 recessed side/rear windows;11 formerly plain wings
-  add64.455 original windows remain:666 windows/5994 unobstructed outward rays.
-  Original hidden wall cores retain collision. All37 houses have weathered walls,
-  base patina, lanterns, raised flowers, gutters and drains. Fourteen wing gables
-  have timber relief. Twenty-seven goods stations have explicit native proxies.
-- Eighteen formerly plain materials gain original shared metal wear, cloth
-  weave, petal veins, produce rind, paper fiber or appropriate existing stone,
-  glass and water art. Ordinary visible city surfaces have native textures;
-  remaining plain colors serve fire/light. Native hues and geometry lighting are
-  retained. Editable PNG masters and provenance live under `authoring/materials/`.
-  Aged paving, planting grass and foliage are1254²; new prop surfaces,
-  bark, curb stone and masonry are1024². Per-texture4× anisotropy preserves oblique
-  detail. Gameplay buffers retain the existing resolution policy.
-- Native `texture.alphaBlend` supports soft grass/patina. Building reveal uses
-  hidden tall collision cores to qualify houses and visible facade triangles to
-  reveal the player; the home fixture records faded owner `frontage-riverside`.
+## Saved source
 
-## Evidence and costs
+- All 37 ordinary houses have two staggered bevelled plinth courses and a cap,
+  490 apron sections, 420 rims and 70 entrance gaps. Twenty planned sections
+  crossing steps/slopes were omitted. These 910 native surfaces are walkable;
+  aprons rise .055 and rims .105. Source 68 house envelopes, its 13.1% density
+  increase, one infill and tiered planted fountain remain.
+- 629 bevelled stone curb blocks (.12 rise, .30 width) bound building-side zones
+  outside the through-road union. Crossings, services, doors and steps stay open.
+  Streets, stairs and house aprons share rectangular stone art and world UV
+  scale 8. The fine hexagon-like repeat is removed; the road tone is slightly darker.
+- 308 foundation grass strips and 2,464 three-blade clumps follow private margins.
+  Of those strips, 244 fit outside private rims and 199 widen toward .58–.82.
+  Another 68 roadside strips creep onto the building-side paving beyond the curb.
+  Shared painted grass has transparent, organic edges.
+- The 160 new joint tufts occupy 20 selected building-side regions. Independent
+  floor and authored-UV sampling verifies every root. They preserve existing
+  walkable floors, collision and navigation.
+- Five inherited flower beds and 22 orphan ground-flower groups move into 27
+  grounded grass islands along building-side curb edges. Raised flower boxes,
+  formal fountain beds, owned entrances and adjoining shop displays remain.
+  A native refit follows paving slopes at 3,913 plant/grass vertices, correcting
+  up to .022995 height. The city-detail check preserves 39,674 preceding parts
+  and accounts for the 431 moved plant parts.
+- Trees retain original roots, placement and collision. They have 264 textured
+  bark parts, 608 bowed leaf layers and 280 rounded crown tops. Crown extents
+  fit preceding visible canopy bounds. Original-alpha leaf casts are rebaked.
+- 147 new main-house windows and 64 windows in 11 formerly plain wings join
+  455 retained windows: 666 windows with 5,994 clear outward pane rays.
+  Houses have weathered walls/base patina, lanterns, upper flowers and drains;
+  14 wing gables have timber relief. The 27 goods stations fit native proxies.
+- Eighteen formerly plain city materials gain shared metal wear, cloth weave,
+  petal veins, rind, paper fiber or appropriate stone/glass/water art. Only
+  intentional fire/light colors remain plain. Paving, grass and leaf artwork
+  is 1254²; prop surfaces, bark, curb and masonry are 1024². Lossless WebPs,
+  editable PNG masters and provenance are under `assets/` and `authoring/materials/`.
+  No RO3 pixels or models are imported. Native per-texture anisotropy is 4×.
+- Native alpha blending preserves grass/patina margins. House reveal qualifies
+  tall hidden collision cores and raycasts visible facade triangles. The home
+  fixture reveals the player behind `frontage-riverside`.
 
-`summary.json` records final outcomes, exact bake data and browser limitations.
-`native-authoring.json` records saved Blender parameters and scene review data.
+## Evidence and practical limits
 
-- `contact.json`:229376 quarter-unit samples,416 occupancy changes from27 goods
-  colliders and7595 elevation changes from910 house surfaces/629 curb surfaces;
-  zero unexpected changes.64501 low facade/accessory vertices fit occupied ground.
-  Moving human height remains70*(92/76)/35≈2.42105 world units.
-- `city-detail-check.json`:decorative paving/planting contacts, exact preservation
-  of existing walkable floors and solids, relocated plant groups and material
-  coverage. `curb-grass-check.json`:68 strips/272 vertices contact native ground.
-  `tree-crown-check.json`:608 layers/280 tops,39217 preceding nonfoliage parts
-  retained by the tree step and bounded crown extents.
-- Main147/1323 rays, retained455/4095 rays and wings64/576 rays are separately
-  recorded in `street-geometry.json`, `aperture-clearance.json` and
-  `wing-clearance.json`. `house-life-check.json` records37 dressed houses and
-  27 goods stations/1936 vertices fitting their native proxies.
-- `traversal.json`:17 destinations and10 patrol loops clear, without route repair.
-  Original navigation, spawn, actors, services, lights, portals and walkers remain.
-- 95 individual Node checks across six files, four public schemas and saved
-  Blender/export parity are recorded alongside ordinary services, field exit,
-  save reload and offline cache evidence. No FPS thresholds are relaxed.
-- `geometry-budget.json` distinguishes object geometry from terrain/decorative
-  surface geometry. Additional facade relief and crown geometry have a measurable
-  cost; those counts do not establish FPS.
+The six final views use native 1280×666 buffers at pixel ratio 1, in a 1280×800
+DOM, with camera distance 160, yaw 25° and pitch 46°. Source 68 before views use
+the same camera and resolution. `curb-tree-trial/` records the earlier tiny-cobble
+trial. Screenshots establish appearance; `services/` checks ordinary input separately.
 
-Final views use native1280×666/1× buffers in a1280×800 DOM, distance160/yaw25°/
-pitch46°. Source68 before views use the same camera/resolution. `curb-tree-trial/`
-is the earlier hexagon-like-road trial, before the later path/planting corrections.
-Fixtures establish appearance; `services/` checks ordinary input separately.
-`performance.json` is isolated sound-on timing with unchanged frame/FPS gates.
-Software timing does not certify physical hardware or painted gait continuity.
+- `city-detail-check.json`: no stone pads, 160 independently checked joint roots,
+  368 ground contacts, 187 new decorative surfaces and exact preceding floor/
+  solid preservation. `curb-grass-check.json`: 68 strips and 272 grounded vertices.
+- `contact.json`: 229,376 quarter-unit samples, 416 occupancy changes explained
+  by 27 goods colliders and 7,595 elevation changes explained by 910 house/629
+  curb surfaces; no unexpected changes. It covers 64,501 low exterior vertices.
+- `traversal.json`: 17 reachable destinations and 10 clear patrol loops, without
+  route repair. Actors, services, lights, portals and navigation remain intact.
+  Moving human height stays 70*(92/76)/35≈2.42105 world units.
+- `street-geometry.json`, `aperture-clearance.json` and `wing-clearance.json`
+  record new, retained and wing-window rays. `house-life-check.json` records
+  dressed houses and 1,936 goods-station vertices contained by native proxies.
+- `unit-tests.log`: 95 individual passing Node checks across six files.
+  `schemas.log`: four public schemas pass. `parity.log`: saved Blender/export
+  parity and shared transforms pass; the RAM-only Hall move deliberately
+  invalidates its test bake and produces the expected stale-bake diagnostic.
+- `geometry-budget.json` separates object triangles from terrain/decorative
+  triangles. Source 69 has 457,394 visible object triangles and another 22,012
+  terrain triangles. These counts do not establish FPS.
+- `native-authoring.json`, `corner-final.log` and `floor.log` record the saved
+  lighting and bakes. The floor atlas is 1536² with original-alpha foliage casts.
+  `bake-index-check.json` records 4,096 matching full/indexed land comparisons.
+
+Ordinary Merchant, Artisan and Housing Keeper interactions, field exit and saved
+character reload pass with zero runtime/resource errors. Cache 74 migration and
+offline reload pass with 106 precached requests and the current 1536² floor atlas.
+The first service attempt timed out; the successful retry reads one live position
+snapshot with unchanged arrival tolerance and travel deadline. Both logs remain.
+
+Isolated sound-on SwiftShader timing **fails**: 1.3433 FPS, p95/max 866.6 ms and
+only nine samples/eight moving player pairs. No frozen pairs were observed in
+that small sample. The unchanged gates require >55 FPS, p95 <25 ms, max <80 ms
+and >100 moving pairs. Physical GPU performance and gait continuity are unverified.
+Exact outcomes are in `summary.json` and `performance.json`. User Golden acceptance,
+broader civic carving, functional street goods and painted gait/anatomy remain open.
 
 ## Continue from the saved source
 
-Use `authoring/wayfarer-spatial.blend`; historical migrations are not a town
-rebuild recipe. All authoring changes are saved and exported into
-`world/v3/wayfarer-spatial.json`. Once-only scene guards are intentional. Original
-art masters and read-only checks make each step reviewable.
+Authority is `authoring/wayfarer-spatial.blend`; export is
+`world/v3/wayfarer-spatial.json`. Historical once-only migrations are not a rebuild
+recipe. Preserve their guards and the original art masters. Current parameters
+and migration order are also in `CURRENT_HANDOFF.md`.
 
-Geometry/light edits require sequential source save/export, corner bake,
-original-alpha preparation and floor bake. The corner baker excludes vegetation;
-leaf-only edits require the original-alpha floor bake. The ground baker indexes
-nearby land polygons, with4096 full/indexed containment comparisons matching, and
-precomputes UV projections checked against authored triangle corners. Do not
-mutate source or bake during browser review/timing. Keep server8011 active.
+Use Blender `--python-exit-code 1`. Geometry/light edits require sequential
+source save/export, corner bake, original-alpha preparation and floor bake.
+The corner baker excludes vegetation; leaf-only edits need the alpha-aware floor
+bake. Removing an unused material also changes the shadow digest, so the final
+pad-removal step includes a fresh floor bake. Do not mutate or bake during browser
+review or isolated timing. Keep the development server on port 8011 running.

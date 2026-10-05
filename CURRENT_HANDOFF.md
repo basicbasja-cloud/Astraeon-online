@@ -21,8 +21,13 @@ be consistent across the city. Original artwork implements the observed structur
 The scoped agent review does not establish user Golden acceptance, painted gait/
 anatomy acceptance or physical-device FPS. Exact final evidence and limitations:
 `docs/review/wayfarer-v69/README.md`, `summary.json`, `visual-test.json`,
-`comparison.html` and `native/`. Browser review/ordinary-input checks are underway
-at this working checkpoint; final reports will replace this pending status.
+`comparison.html` and `native/`. All six native screenshots pass the scoped agent review with zero runtime errors.
+Ordinary Merchant/Artisan/Housing Keeper interactions, field exit and saved-character
+reload pass. Cache74 migration/offline saved-character reload passes (106 requests, current
+1536² floor atlas). Isolated sound-on SwiftShader timing fails:1.3433FPS,
+p95/max866.6ms,9 samples/8 moving player pairs and0 observed frozen pairs.
+Unchanged gates are>55FPS/<25ms p95/<80ms max/>100 moving pairs. Physical GPU
+performance and gait continuity remain unverified. Final reports are complete.
 
 ## Saved source
 
@@ -124,8 +129,12 @@ Geometry/light edits require sequential save/export, corner bake, original-alpha
 preparation and floor bake. The corner baker excludes vegetation; leaf-only edits
 need alpha-aware floor rebake. No source mutations/bakes during browser review or
 isolated timing. Captures use ordinary camera controls at160/25°/46°, native
-1280×666/1× in1280×800 DOM. Fixtures establish appearance; ordinary services,
-field exit, save reload and offline cache are checked separately. Startup waiting
+1280×666/1× in1280×800 DOM. Fixtures establish appearance. Ordinary Merchant/Artisan/Housing Keeper service
+interactions, field exit, saved-character reload and offline cache all pass
+separately, with zero runtime/resource errors. Four responsive arrival sizes
+are captured. The first service attempt timed out; its later capture showed
+arrival within.4. The harness now reads both live coordinates in one snapshot;
+arrival tolerance/travel deadline stay unchanged, and the rerun passes. Startup waiting
 may be extended for software shader preparation; FPS/frame assertions stay fixed.
 
 Broader civic carving/tracery, functional street goods, painted full-body gait/

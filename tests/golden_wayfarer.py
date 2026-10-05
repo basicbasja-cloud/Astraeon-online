@@ -33,9 +33,14 @@ with sync_playwright() as p:
   # game input, simulation clock, travel speed and performance gates stay intact.
   slowdown=max(1,min(4,page.evaluate('AstraeonQA.performance().intervalMs')/250))
   deadline=time.monotonic()+max(90,length/1.3+45)*slowdown;last_click=None
-  while math.hypot(snap()['save']['x']-x,snap()['save']['y']-y)>.4:
+  while True:
+   # Observe both coordinates in one live snapshot. Separate cross-process
+   # reads can straddle movement frames and manufacture a position the actor
+   # never occupied; the arrival tolerance and travel deadline stay unchanged.
+   observed=snap();current=observed['player']['position']
+   if math.hypot(current['x']-x,current['y']-y)<=.4:break
    if time.monotonic()>=deadline:
-    page.screenshot(path=str(out/'failure.png'));raise AssertionError(('walk timeout',x,y,last_click,snap()['navigation'],snap()['windowName'],snap()['player']))
+    page.screenshot(path=str(out/'failure.png'));raise AssertionError(('walk timeout',x,y,last_click,observed['navigation'],observed['windowName'],observed['player']))
    route=page.evaluate('(g)=>AstraeonContent.nativeWorld.spatial.route(AstraeonQA.snapshot().player.position,{x:g[0],y:g[1]})', [x,y]);assert route,('no route',x,y,snap()['player']['position'],snap()['navigation'])
    candidates=[];previous=snap()['player']['position']
    for q in route:
@@ -57,7 +62,7 @@ with sync_playwright() as p:
     for key in choice['keys']:page.keyboard.up(key)
     continue
    q=selected['q'];last_click=selected;page.mouse.click(*selected['screen']);
-   try:page.wait_for_function('(g)=>Math.hypot(AstraeonQA.snapshot().save.x-g[0],AstraeonQA.snapshot().save.y-g[1])<.4||!document.querySelector("#modal").hidden',arg=[q['x'],q['y']],timeout=12000)
+   try:page.wait_for_function('(g)=>{const p=AstraeonQA.snapshot().player.position;return Math.hypot(p.x-g[0],p.y-g[1])<.4||!document.querySelector("#modal").hidden}',arg=[q['x'],q['y']],timeout=12000)
    except Exception:pass
    if page.locator('#modal').is_visible():page.keyboard.press('Escape')
   elapsed(.2)
