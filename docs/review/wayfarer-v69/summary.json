@@ -1,0 +1,187 @@
+{
+  "sourcePass": 69,
+  "runtimeCacheVersion": 74,
+  "branch": "codex/world-pipeline-v3-proof",
+  "sourceCommit": "159403e1822148f3e256706fc1812b8b94cd16b7",
+  "parentSource68Commit": "27c65c19c84c2055ef3513627b1e9aa7a4aa3dc1",
+  "pushedSourceSteps": [
+    "079f8f9",
+    "4aefbd7",
+    "9bc6773",
+    "e20dd3d",
+    "159403e"
+  ],
+  "status": "browser_verification_in_progress",
+  "townGoldenAccepted": false,
+  "locomotionAccepted": false,
+  "cosmeticsImplemented": false,
+  "physicalGpuVerified": false,
+  "gaitContinuityCertified": false,
+  "sourceChecks": {
+    "nodeTests": 95,
+    "nodeFailures": 0,
+    "publicSchemasPassed": 4,
+    "savedBlenderExportParity": true,
+    "decorativeGroundAndJointContacts": {
+      "sourcePass": 69,
+      "stoneImagePads": 0,
+      "removedStonePads": 20,
+      "integratedGrassRegions": 20,
+      "jointGrassClumps": 160,
+      "relocatedBeds": 5,
+      "relocatedOrphanGroundFlowerGroups": 22,
+      "plantingGrassIslands": 27,
+      "contactChecks": 368,
+      "newDecorativeSurfaces": 187,
+      "walkableFloorsAndOriginalSolidsPreserved": true,
+      "unchangedParts": 39674,
+      "movedPlantParts": 431,
+      "updatedPlainMaterialCount": 18,
+      "remainingPlainVisibleMaterials": [
+        "forgeEmber",
+        "forgeHotCore",
+        "lanternGlow",
+        "marketAmber"
+      ],
+      "currentFloorBake": {
+        "file": "assets/wayfarer-ground-shadow-v54.png",
+        "resolution": 1536,
+        "geometryDigest": "42897b830bf164683dab302f6b16ea5e43cc40b8e98c261992d9f72942120302",
+        "strengthIncluded": true,
+        "sunSamples": 4,
+        "contactSamples": 4,
+        "alphaCutoutCanopies": "original-alpha-tested",
+        "maxCutoutIntersections": 8,
+        "cutoutIntersectionLimit": 256
+      }
+    },
+    "traversal": {
+      "pass": true,
+      "destinations": 17,
+      "patrols": 10
+    },
+    "contact": {
+      "sourcePass": 69,
+      "baseline": "source68",
+      "bodyHeight": 2.4210526315789473,
+      "samples": 229376,
+      "blockedChanges": 416,
+      "unexpectedBlockedChanges": 0,
+      "elevationChanges": 7595,
+      "unexpectedElevationChanges": 0,
+      "newHouseFloorSurfaces": 910,
+      "newRoadCurbSurfaces": 629,
+      "newFloorSurfaces": 1539,
+      "newGroundColliders": 27,
+      "checkedLowFacadeParts": 8162,
+      "checkedLowFacadeVertices": 64501,
+      "violations": [],
+      "preserved": [
+        "all original solid vertices",
+        "services",
+        "actors",
+        "lights",
+        "portals",
+        "walkers",
+        "navigation",
+        "spawn",
+        "route",
+        "districts",
+        "safeSpawn"
+      ],
+      "plantContactCheck": "native Blender check-ro3-street-v69.py"
+    }
+  },
+  "geometry": {
+    "baseline": "source68",
+    "before": {
+      "visibleParts": 21018,
+      "visibleTriangles": 273780,
+      "visibleMaterials": 57,
+      "allParts": 24454,
+      "visibleFloorSurfaces": 204,
+      "visibleFloorTriangles": 1062
+    },
+    "after": {
+      "visibleParts": 36594,
+      "visibleTriangles": 457394,
+      "visibleMaterials": 63,
+      "allParts": 40105,
+      "visibleFloorSurfaces": 1998,
+      "visibleFloorTriangles": 22012,
+      "walkableFloorSurfaces": 1742,
+      "decorativeFloorSurfaces": 256
+    },
+    "triangleIncreasePercent": 67.0663,
+    "note": "Object triangle costs and terrain floor triangle costs are reported separately."
+  },
+  "worldExportBytes": 52533214,
+  "floorBake": {
+    "file": "assets/wayfarer-ground-shadow-v54.png",
+    "resolution": 1536,
+    "geometryDigest": "42897b830bf164683dab302f6b16ea5e43cc40b8e98c261992d9f72942120302",
+    "strengthIncluded": true,
+    "sunSamples": 4,
+    "contactSamples": 4,
+    "alphaCutoutCanopies": "original-alpha-tested",
+    "maxCutoutIntersections": 8,
+    "cutoutIntersectionLimit": 256
+  },
+  "nativeVisualReview": {
+    "status": "passed",
+    "views": [
+      "avenue",
+      "frontage-shop",
+      "frontage-home",
+      "market",
+      "inn",
+      "plaza"
+    ],
+    "runtimeErrors": 0,
+    "renderResolution": [
+      1280,
+      666
+    ],
+    "pixelRatio": 1,
+    "camera": {
+      "distance": 160,
+      "yaw": 25,
+      "pitch": 46
+    },
+    "criteriaFile": "visual-test.json",
+    "userGoldenAccepted": false
+  },
+  "ordinaryInputServices": "pending",
+  "offlineCache": "pending",
+  "soundOnPerformance": "pending",
+  "remaining": [
+    "User town Golden acceptance",
+    "Broader civic carving/tracery",
+    "Functional street goods",
+    "Painted gait/anatomy acceptance",
+    "Physical-device FPS validation"
+  ],
+  "provenance": "Original game art and native meshes; supplied local RO3 images guide proportions, construction and planting relationships. No RO3 pixels or models imported.",
+  "features": {
+    "ordinaryHouses": 37,
+    "windows": 666,
+    "clearPaneRays": 5994,
+    "newHouseWalkableSurfaces": 910,
+    "streetCurbBlocks": 629,
+    "foundationGrassStrips": 308,
+    "foundationGrassClumps": 2464,
+    "roadsideGrassStrips": 68,
+    "barkParts": 264,
+    "curvedLeafLayers": 608,
+    "roundedCrownTops": 280,
+    "removedStoneImagePads": 20,
+    "currentStoneImagePads": 0,
+    "integratedJointGrassClumps": 160,
+    "integratedRegions": 20,
+    "relocatedFlowerBeds": 5,
+    "relocatedOrphanGroundFlowerGroups": 22,
+    "groundedPlantingGrassIslands": 27,
+    "texturedPreviouslyPlainMaterials": 18,
+    "goodsStations": 27
+  }
+}

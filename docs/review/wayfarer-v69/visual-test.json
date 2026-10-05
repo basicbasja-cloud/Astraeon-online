@@ -1,0 +1,102 @@
+{
+  "sourcePass": 69,
+  "runtimeCacheVersion": 74,
+  "status": "passed",
+  "reviewer": "Codex agent native gameplay screenshot review",
+  "scope": "Continuous aged rectangular paving without stone-image pads; grass in authored mortar joints, purposeful planting, building-zone curbs, house bases and rounded trees",
+  "townGoldenAccepted": false,
+  "nativeBuffer": [
+    1280,
+    666
+  ],
+  "pixelRatio": 1,
+  "camera": {
+    "distance": 160,
+    "yaw": 25,
+    "pitch": 46
+  },
+  "referenceFiles": [
+    "RO3 Ref/ChatGPT Image Oct 4, 2026, 04_08_45 PM.jpg",
+    "RO3 Ref/ChatGPT Image Oct 4, 2026, 04_08_39 PM.jpg",
+    "RO3 Ref/ChatGPT Image Oct 4, 2026, 04_08_34 PM.jpg"
+  ],
+  "criteria": [
+    {
+      "criterion": "Continuous aged rectangular road without overlapping stone-image pads",
+      "status": "pass",
+      "views": [
+        "avenue",
+        "frontage-shop",
+        "frontage-home",
+        "market",
+        "inn",
+        "plaza"
+      ],
+      "evidence": "Native avenue capture: one consistent stone scale and joint pattern; former small white stone islands absent."
+    },
+    {
+      "criterion": "Curb bounds the building-side zone; planted margins and private house bases belong to the adjoining lots",
+      "status": "pass",
+      "views": [
+        "avenue",
+        "frontage-shop",
+        "market",
+        "inn"
+      ],
+      "evidence": "Raised curbs remain along the street boundary. Private plinths/aprons anchor the houses; edge grass and planted shop displays sit inside building-side space."
+    },
+    {
+      "criterion": "Weathered facades, private bases and accessories remain readable; the foreground house reveals the player",
+      "status": "pass",
+      "views": [
+        "frontage-shop",
+        "frontage-home"
+      ],
+      "evidence": "Recessed windows, projecting timber, flower boxes, sills, doors and plinths remain visible. Home capture records faded owner frontage-riverside and a visible player."
+    },
+    {
+      "criterion": "City material detail remains consistent at native resolution",
+      "status": "pass",
+      "views": [
+        "avenue",
+        "frontage-shop",
+        "frontage-home",
+        "market",
+        "inn"
+      ],
+      "evidence": "Roof tiles, dressed masonry, timber, awnings and paving retain readable detail. Remaining untextured native materials are intentional light/fire colors, independently checked in city-detail-check.json."
+    },
+    {
+      "criterion": "Trees have full crowns and readable leaf/bark detail without oversized crossing geometry",
+      "status": "pass",
+      "views": [
+        "avenue",
+        "market",
+        "inn"
+      ],
+      "evidence": "Bowed leaf layers and rounded tops read as crowns. Visible extents stay within the preceding canopy bounds verified in tree-crown-check.json; existing roots and collisions are retained."
+    },
+    {
+      "criterion": "Tiered planted fountain retains its construction and material detail in the coherent paving context",
+      "status": "pass",
+      "views": [
+        "plaza"
+      ],
+      "evidence": "Raised stone basin, sculpted central statue, flowing water, four formal beds and surrounding benches remain readable. Court stones share the same scale as adjoining walks."
+    }
+  ],
+  "limitations": [
+    "Scoped agent screenshot review does not imply user Golden acceptance.",
+    "Screenshot fixtures do not prove traversal; ordinary-input services and field transition are verified separately.",
+    "Visual pass does not imply FPS acceptance or physical-device certification."
+  ],
+  "viewsReviewed": [
+    "avenue",
+    "frontage-shop",
+    "frontage-home",
+    "market",
+    "inn",
+    "plaza"
+  ],
+  "runtimeErrors": 0
+}

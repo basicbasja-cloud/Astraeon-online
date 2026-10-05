@@ -1,0 +1,109 @@
+{
+  "sourcePass": 69,
+  "runtimeCacheVersion": 70,
+  "status": "passed",
+  "reviewer": "Codex agent native gameplay screenshot review",
+  "scope": "RO3 building-zone curb placement, irregular foundation/sidewalk grass, house-owned paving and facade relief, original material detail and rounded trees; retained town density and fountain",
+  "townGoldenAccepted": false,
+  "nativeBuffer": [
+    1280,
+    666
+  ],
+  "pixelRatio": 1,
+  "camera": {
+    "distance": 160,
+    "yaw": 25,
+    "pitch": 46
+  },
+  "referenceFiles": [
+    "RO3 Ref/ChatGPT Image Oct 4, 2026, 04_08_45 PM.jpg",
+    "RO3 Ref/ChatGPT Image Oct 4, 2026, 04_08_39 PM.jpg",
+    "RO3 Ref/ChatGPT Image Oct 4, 2026, 04_08_34 PM.jpg"
+  ],
+  "criteria": [
+    {
+      "criterion": "Curb separates building-side paving from through-road",
+      "status": "passed",
+      "evidence": [
+        "native/avenue.png",
+        "curb-grass-check.json",
+        "contact.json"
+      ],
+      "observation": "A low bevelled stone course outlines the outer edge of rectangular building-side paving against rounded road cobbles; open cross streets remain continuous."
+    },
+    {
+      "criterion": "Rounded textured trees at native resolution",
+      "status": "passed",
+      "evidence": [
+        "trial-before-tree-crowns.png",
+        "native/avenue.png",
+        "tree-crown-check.json"
+      ],
+      "observation": "Curved side leaf layers and rounded tops fill the visible crossed-card gaps. Distinct leaf clusters and grooved bark remain visible; crown extents fit the existing canopy, and original roots, trunks, branches and collision are preserved."
+    },
+    {
+      "criterion": "Houses own raised bases and paving; foundation greenery follows edges",
+      "status": "passed",
+      "evidence": [
+        "native/frontage-home.png",
+        "native/frontage-shop.png",
+        "street-geometry.json",
+        "house-life-check.json"
+      ],
+      "observation": "Two low staggered stone courses, entrance gaps and paving aprons ground the houses. Soft irregular grass ribbons, rooted clumps and flowers sit along the plinth and paving margins. Upper sills, shutters, recessed side windows, drains, lanterns and goods give facades depth."
+    },
+    {
+      "criterion": "Material readability and player visibility",
+      "status": "passed",
+      "evidence": [
+        "native/frontage-home.png",
+        "native/frontage-shop.png",
+        "native/avenue.png"
+      ],
+      "observation": "Rectangular flagstone joints, worn curb caps, brick courses, tiled roofs and leaf clusters are distinguishable at native1\u00d7. Warm light and cool cast shade describe the house relief. The foreground riverside house fades to reveal the player, with its collider retained."
+    },
+    {
+      "criterion": "Retained street enclosure and planted fountain",
+      "status": "passed",
+      "evidence": [
+        "native/market.png",
+        "native/inn.png",
+        "native/plaza.png",
+        "native-authoring.json"
+      ],
+      "observation": "House fronts and roofs enclose the streets while entrances, stairs and court remain open. The original tiered lobed fountain, falling water, winged statue, raised flower beds and benches retain their native composition."
+    },
+    {
+      "criterion": "No native review runtime errors or unexpected contacts",
+      "status": "passed",
+      "evidence": [
+        "native/views.json",
+        "contact.json",
+        "traversal.json",
+        "aperture-clearance.json",
+        "wing-clearance.json",
+        "street-geometry.json"
+      ],
+      "observation": "All six native views load without runtime errors. 666 windows pass5994 outward pane rays; quarter-unit floor/collision differences are exactly explained by the new walkable lot/curb meshes and goods colliders;17 destinations and10 patrols remain clear."
+    }
+  ],
+  "limitations": [
+    "Scoped agent screenshot review does not imply user Golden acceptance.",
+    "Screenshot fixtures do not prove traversal; ordinary-input services and field transition are verified separately.",
+    "Visual pass does not imply FPS acceptance or physical-device certification."
+  ],
+  "viewsReviewed": [
+    "avenue",
+    "frontage-shop",
+    "frontage-home",
+    "market",
+    "inn",
+    "plaza"
+  ],
+  "historicalCheckpoint": "4aefbd7 before user path-shape and planting corrections",
+  "userFeedbackAfterReview": [
+    "Tiny hexagon-like road repeat clashes with rectangular brick walks",
+    "Add localized grass and uneven paving joints",
+    "Flowers belong at believable building/path/grass edges"
+  ]
+}
