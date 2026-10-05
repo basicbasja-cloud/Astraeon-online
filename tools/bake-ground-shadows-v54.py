@@ -29,6 +29,20 @@ cache_path=os.environ.get('ASTRAEON_SHADOW_ALPHA_CACHE')
 alpha_cache=json.loads(Path(cache_path).read_text()) if cache_path else {}
 for info in alpha_cache.values():info['pixels']=zlib.decompress(base64.b64decode(info['alpha']))
 vertices=[];triangles=[];cutouts=[]
+def alpha_triangle(points,uvs,spec):
+ # Precompute the affine UV projection once per triangle, rather than creating
+ # vectors and solving barycentrics at every transparent ray intersection.
+ a,b,c=points;ab=[b[i]-a[i] for i in range(3)];ac=[c[i]-a[i] for i in range(3)]
+ d00=sum(v*v for v in ab);d01=sum(x*y for x,y in zip(ab,ac));d11=sum(v*v for v in ac);den=d00*d11-d01*d01
+ assert den>1e-15,'Degenerate alpha caster triangle'
+ vb=[(d11*ab[i]-d01*ac[i])/den for i in range(3)];wb=[(d00*ac[i]-d01*ab[i])/den for i in range(3)]
+ gradients=[]
+ for axis in (0,1):
+  g=[vb[i]*(uvs[1][axis]-uvs[0][axis])+wb[i]*(uvs[2][axis]-uvs[0][axis]) for i in range(3)]
+  offset=uvs[0][axis]-sum(g[i]*a[i] for i in range(3));gradients.append((*g,offset))
+  assert all(abs(sum(g[i]*point[i] for i in range(3))+offset-uv[axis])<1e-8 for point,uv in zip(points,uvs))
+ info=alpha_cache[spec['file']];cols,rows=spec['grid'];tile=spec['tile']
+ return (*gradients,info['pixels'],*info['size'],cols,rows,tile%cols,tile//cols,spec['alphaCutoff']*255)
 for p in casters:
  base=len(vertices);vertices.extend(p['vertices']);spec=data['materials'][p['material']].get('texture',{})
  for fi,face in enumerate(p['faces']):
@@ -36,27 +50,27 @@ for p in casters:
    indices=[face[0],face[i],face[i+1]];triangles.append(tuple(base+j for j in indices))
    if spec.get('alphaCutoff'):
     assert spec['file'] in alpha_cache,'Run prepare-shadow-alpha.py and set ASTRAEON_SHADOW_ALPHA_CACHE'
-    cutouts.append((spec,[p['uvs'][fi][j] for j in (0,i,i+1)]))
+    cutouts.append(alpha_triangle([p['vertices'][j] for j in indices],[p['uvs'][fi][j] for j in (0,i,i+1)],spec))
    else:cutouts.append(None)
 caster_tree=BVHTree.FromPolygons(vertices,triangles,all_triangles=True)
+max_cutout_steps=0;cutout_step_limit=256
 def cast_ray(origin,direction,distance):
+ global max_cutout_steps
  travelled=0
- for _ in range(48):
+ for step in range(cutout_step_limit):
+  max_cutout_steps=max(max_cutout_steps,step)
   hit,normal,index,length=caster_tree.ray_cast(origin,direction,distance-travelled)
   if hit is None:return None
   cutout=cutouts[index]
   if cutout:
-   spec,uvs=cutout;a,b,c=[Vector(vertices[j]) for j in triangles[index]]
-   v0=b-a;v1=c-a;v2=hit-a;d00=v0.dot(v0);d01=v0.dot(v1);d11=v1.dot(v1);d20=v2.dot(v0);d21=v2.dot(v1);den=d00*d11-d01*d01
-   v=(d11*d20-d01*d21)/den;w=(d00*d21-d01*d20)/den;u=1-v-w
-   tx=sum(weight*uv[0] for weight,uv in zip((u,v,w),uvs))%1;ty=sum(weight*uv[1] for weight,uv in zip((u,v,w),uvs))%1
-   cols,rows=spec['grid'];tile=spec['tile'];info=alpha_cache[spec['file']];width,height=info['size']
-   px=min(width-1,int((tile%cols+tx)*width/cols));py=min(height-1,int((tile//cols+1-ty)*height/rows))
-   if info['pixels'][py*width+px]/255>=spec['alphaCutoff']:return travelled+length
+   gu,gv,pixels,width,height,cols,rows,col,row,cutoff=cutout
+   tx=(gu[0]*hit.x+gu[1]*hit.y+gu[2]*hit.z+gu[3])%1;ty=(gv[0]*hit.x+gv[1]*hit.y+gv[2]*hit.z+gv[3])%1
+   px=min(width-1,int((col+tx)*width/cols));py=min(height-1,int((row+1-ty)*height/rows))
+   if pixels[py*width+px]>=cutoff:return travelled+length
    travelled+=length+.002;origin=hit+direction*.002
    if travelled>=distance:return None
   else:return travelled+length
- raise RuntimeError('Cutout ray exceeds 48 intersections')
+ raise RuntimeError('Cutout ray exceeds '+str(cutout_step_limit)+' intersections after '+str(travelled)+' world units')
 floors=[s for s in data['terrain']['surfaces'] if s.get('walkable') and s.get('vertices')]
 floor_tree=tree_from(floors)
 land=[data['terrain']['walkablePolygon']]+[s['polygon'] for s in floors]
@@ -102,6 +116,7 @@ for iy in range(size):
 image=bpy.data.images.new('Wayfarer native ground shadows v54',width=size,height=size,alpha=True)
 image.pixels.foreach_set(pixels);image.file_format='PNG';image.filepath_raw=str(ROOT/'assets/wayfarer-ground-shadow-v54.png');image.save()
 metadata={'file':'assets/wayfarer-ground-shadow-v54.png','resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':4,'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}
+metadata.update(maxCutoutIntersections=max_cutout_steps,cutoutIntersectionLimit=cutout_step_limit)
 scene['ground_shadow_bake_json']=json.dumps(metadata,separators=(',',':'))
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'authoring/wayfarer-spatial.blend'),compress=True)
 # Export only when this task is run after active gameplay reviews have ended.
