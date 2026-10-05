@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Wayfarer facade comparison — source68</title>
+<style>
+body{margin:0;padding:24px;background:#111d27;color:#eee0c6;font:16px system-ui;line-height:1.5}
+h1{font:28px Georgia;margin:0 0 12px}select{padding:8px;background:#243847;color:#eee0c6;border:1px solid #819084;border-radius:6px}
+.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}figure{margin:0}img{width:100%;display:block;border:1px solid #55706d;cursor:zoom-in}figcaption{margin:8px 0;color:#b9ccc7}a{color:#f4cc8b}.note{max-width:1000px}@media(max-width:900px){.panels{grid-template-columns:1fr}}
+</style>
+<h1>RO3 hard reference / original Wayfarer facades</h1>
+<p class="note">Original ASTRAEON civic hierarchy remains; house envelopes and the fountain court change intentionally. Source67 and source68 use the same gameplay camera (distance160 / yaw25 / pitch46) and explicit 1.5× still buffer. The RO3 image illustrates the architectural target; it is a different location and camera. Click any image to inspect its full size.</p>
+<label>Frontage family <select id="family"><option value="market">Market</option><option value="residential">Residential</option><option value="plaza">Fountain</option></select></label>
+<div class="panels">
+<figure><a id="refLink"><img id="ref" alt="RO3 architectural reference"></a><figcaption id="refCaption"></figcaption></figure>
+<figure><a id="beforeLink"><img id="before" alt="Source67 fixed-camera view"></a><figcaption>Source67: preceding facade baseline.</figcaption></figure>
+<figure><a id="afterLink"><img id="after" alt="Source68 fixed-camera view"></a><figcaption>Source68: 37 house envelopes, denser street edges and tiered planted fountain.</figcaption></figure>
+</div>
+<p class="note">37 ordinary envelopes, 13.1% more occupied house ground and a planted tiered fountain. Native-resolution views are available in the review. Scoped visual checks are separate from user Golden acceptance and physical-device performance.</p>
+<p><a href="README.md">Review and checks</a></p>
+<script>
+function update(){const family=document.querySelector('#family').value;const ref=family==='plaza'?'04_08_20':family==='market'?'04_08_45':'04_08_34';const paths={ref:'../../../RO3%20Ref/ChatGPT%20Image%20Oct%204,%202026,%20'+ref+'%20PM.jpg',before:'../wayfarer-v67/'+family+'.png',after:family+'.png'};for(const [id,path] of Object.entries(paths)){document.getElementById(id).src=path;document.getElementById(id+'Link').href=path;document.getElementById(id+'Link').target='_blank'}document.getElementById('refCaption').textContent='RO3 '+ref+': '+(family==='plaza'?'tiered fountain, planted corners and seating.':family==='market'?'shop framing, panes and entrance.':'steep gable, attic shutters and entrance.')}document.querySelector('#family').addEventListener('change',update);update();
+</script>

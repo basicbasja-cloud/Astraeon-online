@@ -1,7 +1,17 @@
 # Wayfarer research applied — 3 October 2026
 
+**Active authority, 2026-10-05/source68:** RO3 is the hard reference for exteriors,
+scale, texture/shading, building density and the fountain. All36 preceding
+ordinary house envelopes plus one new street house use the facade kit. Occupied
+house ground grows13.1%; public squares stay open. The fountain gains tiered
+pools, a scalloped rim, raised planted corners, green benches and walkable steps.
+Original ASTRAEON identity and civic hierarchy remain. Review and checks are in
+[the source68 review](../docs/review/wayfarer-v68/README.md). User Golden approval
+and locomotion/art acceptance remain open.
+
+
 This is an implementation record for the existing branch, not Golden acceptance.
-The supplied Wayfarer concept remains the visual authority. No Ragnarok client
+The supplied Wayfarer concept owns original identity and civic hierarchy; the active RO3 directive above controls exterior/density/fountain presentation. No Ragnarok client
 assets, map files, costumes, names or proprietary animation data were imported.
 
 ## Reference coverage

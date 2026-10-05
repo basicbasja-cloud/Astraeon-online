@@ -1,0 +1,255 @@
+{
+  "parentCommit": "79af03d6def470022defcdf828bd056401751656",
+  "branch": "codex/world-pipeline-v3-proof",
+  "sourcePass": 68,
+  "runtimeCacheVersion": 68,
+  "townAccepted": false,
+  "locomotionAccepted": false,
+  "cosmeticsImplemented": false,
+  "scopedVisualTest": {
+    "sourcePass": 68,
+    "status": "passed",
+    "reviewer": "Codex agent gameplay screenshot review",
+    "scope": "ordinary house exteriors and scale, street enclosure, original material readability/shading, tiered planted water fountain",
+    "townGoldenAccepted": false,
+    "criteria": [
+      {
+        "criterion": "House construction and character-relative entrances",
+        "status": "passed",
+        "evidence": [
+          "residential.png",
+          "market.png",
+          "inn.png",
+          "native/frontage-home.png"
+        ],
+        "observation": "Stout two-storey timber framing, tall wood entrances, small-paned upper openings, cut dormers or shuttered front gables; actor draw scale unchanged."
+      },
+      {
+        "criterion": "RO3 street enclosure with open public courts",
+        "status": "passed",
+        "evidence": [
+          "avenue.png",
+          "residential.png",
+          "native/avenue.png",
+          "gate.png",
+          "hall-axis.png"
+        ],
+        "observation": "Several house fronts/roof volumes enclose gameplay street views; main approach, gate and civic squares keep usable open ground. Occupied house area grows13.1% without inferring a proprietary map count."
+      },
+      {
+        "criterion": "Texture readability and directional depth",
+        "status": "passed",
+        "evidence": [
+          "native/avenue.png",
+          "native/frontage-home.png"
+        ],
+        "observation": "Clay courses and timber grain remain readable at1\u00d7; sun casts, eave/reveal shade and grounded contacts are present; no adjacent-tile mip bleed observed."
+      },
+      {
+        "criterion": "RO3 tiered planted fountain composition",
+        "status": "passed",
+        "evidence": [
+          "plaza.png",
+          "native/plaza.png"
+        ],
+        "observation": "Scalloped outer pool, raised circular inner water and sculpted original plinth/statue, four corner beds/green benches, two physical walkable steps and broad falling water sheets."
+      },
+      {
+        "criterion": "No geometric glazing/contact/runtime violations",
+        "status": "passed",
+        "evidence": [
+          "aperture-clearance.json",
+          "decor-clearance.json",
+          "traversal.json",
+          "views.json",
+          "native/views.json"
+        ],
+        "observation": "4,095 pane rays/455 windows clear; low decorative contact check clear;17 reachable route/service destinations and ten clear patrol loops; all review views have no runtime errors."
+      }
+    ],
+    "limitations": [
+      "Screenshot fixtures do not prove traversal; ordinary input is recorded separately.",
+      "Owner fading near the player is existing visibility behavior.",
+      "User Golden approval, broader civic/art detail, anatomy/gait and physical-device performance remain open.",
+      "Performance is separately tested; visual pass does not imply FPS acceptance."
+    ]
+  },
+  "authoring": {
+    "ordinaryHouseEnvelopes": 37,
+    "primaryFrontages": 12,
+    "otherExistingEnvelopes": 24,
+    "newStreetHouses": 1,
+    "rootedTreeRelocations": 5,
+    "houseFootprintArea": {
+      "before": 955.6875,
+      "after": 1080.8125,
+      "increasePercent": 13.092668890196846
+    },
+    "fountain": {
+      "reference": "04_08_20",
+      "originalStatue": "retained celestial figure with authored cloth folds",
+      "outerProfile": "four lobed rim",
+      "outerRadius": 3.2,
+      "innerRadius": 1.52,
+      "waterLevels": [
+        0.73,
+        1.22
+      ],
+      "raisedBeds": 4,
+      "benches": 4,
+      "cascades": 4,
+      "walkableSteps": [
+        0.12,
+        0.24
+      ],
+      "ripples": "source-defined shader metadata"
+    },
+    "atlasSize": [
+      1254,
+      1254
+    ],
+    "tileSize": [
+      627,
+      627
+    ],
+    "originalArtwork": true,
+    "cornerBakeCorners": 484592,
+    "cornerBakeMeshes": 16568,
+    "cornerBakeSeconds": 33.2,
+    "groundBakeLandPixels": 1386159,
+    "groundBakeShadowedPixels": 806702,
+    "groundBakeSeconds": 214.7,
+    "groundShadow": {
+      "file": "assets/wayfarer-ground-shadow-v54.png",
+      "resolution": 1536,
+      "geometryDigest": "eec4901a6e95394fcc64dfcd7dfbf663cc399e5c390d226be80df395694b6051",
+      "strengthIncluded": true,
+      "sunSamples": 4,
+      "contactSamples": 4,
+      "alphaCutoutCanopies": "original-alpha-tested"
+    },
+    "geometry": {
+      "source67": {
+        "visibleParts": 15588,
+        "visibleTriangles": 244256,
+        "visibleMaterials": 61,
+        "allParts": 19944
+      },
+      "source68": {
+        "visibleParts": 21018,
+        "visibleTriangles": 273780,
+        "visibleMaterials": 57,
+        "allParts": 24454
+      }
+    }
+  },
+  "checks": {
+    "nodeChecks": 95,
+    "nodeFailures": 0,
+    "publicSchemas": "passed",
+    "savedBlenderExportParity": "passed",
+    "paneRays": 4095,
+    "windows": 455,
+    "lowDetailContact": "passed at2.3-unit body-height assumption",
+    "groundSamples": 229376,
+    "groundSamplesChanged": 2695,
+    "floorHeightSamplesChanged": 1340,
+    "reachableDestinations": 17,
+    "clearPatrolLoops": 10,
+    "matchedStillViews": 7,
+    "nativeStillViews": 3,
+    "stillErrors": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "services": {
+      "status": "complete",
+      "layout": "wayfarer-concept-terraced-town-v49",
+      "evidence": [
+        {
+          "service": "Merchant",
+          "title": "Marketplace"
+        },
+        {
+          "service": "Artisan",
+          "title": "Crafting"
+        },
+        {
+          "service": "Housing Keeper",
+          "title": "Housing"
+        }
+      ],
+      "fieldTransition": true,
+      "savedCharacterReload": true,
+      "renderResolution": {
+        "width": 1280,
+        "height": 666,
+        "cssWidth": 1280,
+        "cssHeight": 666,
+        "pixelRatio": 1
+      },
+      "runtime_errors": [],
+      "resource_errors": []
+    },
+    "cache": {
+      "cache": "astraeon-static-v68",
+      "precachedRequests": 93,
+      "legacyCacheRemoved": true,
+      "offlineTownLoaded": true,
+      "savedCharacterRetained": true,
+      "townMaterialFiles": [
+        "assets/wayfarer-banner-v44.svg",
+        "assets/wayfarer-cascade-v1.svg",
+        "assets/wayfarer-details-v44.webp",
+        "assets/wayfarer-exteriors-v67.webp",
+        "assets/wayfarer-foliage-v1.webp",
+        "assets/wayfarer-ground-shadow-v54.png",
+        "assets/wayfarer-lawn-v44.webp",
+        "assets/wayfarer-materials-v44.webp",
+        "assets/wayfarer-nature-v1.webp",
+        "assets/wayfarer-river-foam-v1.svg",
+        "assets/wayfarer-rock-v4.webp"
+      ],
+      "offlineGroundSize": [
+        1536,
+        1536
+      ],
+      "errors": []
+    }
+  },
+  "performance": {
+    "status": "failed",
+    "sound": "on",
+    "fps": 1.7414707512071559,
+    "p95Ms": 700,
+    "maxMs": 700,
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "cssWidth": 1280,
+      "cssHeight": 666,
+      "pixelRatio": 1
+    },
+    "samples": 11,
+    "movingPairs": 10,
+    "frozenRenderedBodyPairs": 0,
+    "continuityCertified": false,
+    "physicalDevicesVerified": false,
+    "errors": []
+  },
+  "remaining": [
+    "User Golden visual approval",
+    "Broader civic carving/tracery and functional street goods",
+    "Painted full-body gait/anatomy and held-art restrictions",
+    "Physical-device profiling and FPS acceptance"
+  ]
+}

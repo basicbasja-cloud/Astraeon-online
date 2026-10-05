@@ -67,6 +67,7 @@ function texture(name,color){
  }
  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;return t;
 }
+const waterTime={value:0};
 function material(name,definition){
  const spec=definition?.texture,key=name+JSON.stringify(spec||'');if(materialCache.has(key))return materialCache.get(key);
  let map=texture(name,definition?.color);
@@ -93,15 +94,27 @@ function material(name,definition){
   const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=spec?.paletteDetail??(name==='water'?.18:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24),mean=spec?.meanLinearRGB;
   m.onBeforeCompile=shader=>{
    shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.paintMean={value:new THREE.Vector3(...(mean||[1,1,1]))};shader.uniforms.occludingOwners=occludingOwners;
+   if(spec?.ripple){shader.uniforms.waterTime=waterTime;shader.uniforms.rippleSettings={value:new THREE.Vector3(spec.ripple.frequency,spec.ripple.speed,spec.ripple.amplitude)}}
    shader.vertexShader='attribute float ownerId;varying float paintOwner;varying vec3 paintPosition;\n'+shader.vertexShader;
    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\npaintOwner=ownerId;paintPosition=(modelMatrix*vec4(position,1.0)).xyz;');
    shader.fragmentShader='varying float paintOwner;uniform vec4 occludingOwners;varying vec3 paintPosition;uniform vec3 paintBase;uniform vec3 paintMean;uniform float paintDetail;\n'+shader.fragmentShader;
+   if(spec?.ripple){
+    shader.vertexShader='varying vec2 nativeWaterUV;\n'+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nnativeWaterUV=uv;');
+    shader.fragmentShader='varying vec2 nativeWaterUV;uniform float waterTime;uniform vec3 rippleSettings;\n'+shader.fragmentShader;
+   }
    if(painted)shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
     float wash=1.0+0.035*sin(paintPosition.x*0.49+sin(paintPosition.y*0.27))*sin(paintPosition.y*0.38+paintPosition.z*0.41);
     ${mean?'vec3 variation=clamp(diffuseColor.rgb/paintMean,vec3(0.45),vec3(1.6));diffuseColor.rgb=paintBase*mix(vec3(1.0),variation,paintDetail)*wash;':'diffuseColor.rgb=mix(paintBase,diffuseColor.rgb,paintDetail)*wash;'} `);
+   if(spec?.ripple)shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+    float radial=length((nativeWaterUV-vec2(.5))*${spec.worldSize});
+    float rings=sin(radial*rippleSettings.x-waterTime*rippleSettings.y);
+    float crossing=sin(nativeWaterUV.x*58.0+waterTime*.65)*sin(nativeWaterUV.y*45.0-waterTime*.43);
+    diffuseColor.rgb*=1.0+rippleSettings.z*(rings+.35*crossing);
+    diffuseColor.rgb+=vec3(.035,.055,.06)*pow(max(0.0,rings),12.0);`);
    shader.fragmentShader=shader.fragmentShader.replace('#include <alphahash_fragment>',`if(paintOwner>0.5 && (abs(paintOwner-occludingOwners.x)<0.1||abs(paintOwner-occludingOwners.y)<0.1||abs(paintOwner-occludingOwners.z)<0.1||abs(paintOwner-occludingOwners.w)<0.1))discard;
     #include <alphahash_fragment>`);
-  };m.customProgramCacheKey=()=> 'painterly-material-v67/'+!!painted+'/'+!!mean;
+  };m.customProgramCacheKey=()=> 'painterly-material-v68/'+!!painted+'/'+!!mean+'/'+!!spec?.ripple;
  }
  materialCache.set(key,m);return m;
 }
@@ -154,7 +167,7 @@ class SpatialRenderer{
   const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
-  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name);this.scene.add(mesh)}
+  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name)||!!source.materials[name]?.texture?.ripple;this.scene.add(mesh)}
   const spatial=window.AstraeonContent?.nativeWorld?.id===source.id?window.AstraeonContent.nativeWorld.spatial:window.AstraeonSpatialV3.compile(source);this.spatial=spatial;
   // Blend only the exposed union boundary of low paving. Internal strip and
   // junction edges remain opaque, and these visual verges never change paths.
@@ -257,7 +270,7 @@ class SpatialRenderer{
   this.canvas=this.renderer.domElement;this.canvas.id='spatial-world';this.canvas.setAttribute('aria-hidden','true');this.canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';overlay.before(this.canvas);overlay.style.background='transparent';overlay.parentElement.classList.add('spatial-stage');this.active=true;
  }
  begin(camera,w,h,zoom,anchorY){
-  this.frameStarted=performance.now();this.assemblyMs=0;
+  this.frameStarted=performance.now();this.assemblyMs=0;waterTime.value=this.frameStarted/1000;
   if(!this.renderer)return;this.active=true;this.canvas.hidden=false;
   // Slow shared current, rather than a completely static tiled river.
   const water=materialCache.get('water'+JSON.stringify(this.source.materials.water?.texture||''));

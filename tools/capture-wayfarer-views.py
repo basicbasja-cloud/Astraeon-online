@@ -23,6 +23,8 @@ VIEWS = {
     'blacksmith': (13, 31.5),
     'shrine': (43, 16),
     'residential': (38, 39),
+    'frontage-shop': (34.4, 25.3),
+    'frontage-home': (40, 39.5),
     'town-edge': (34, 44),
     'overview': (27, 23.5),
     'hall-skyline': (36.5, 4.5),

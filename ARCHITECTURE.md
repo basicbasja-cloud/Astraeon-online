@@ -85,7 +85,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 3; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v67, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 3; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v68, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Base Skills and single-layer Nodes
 
@@ -132,3 +132,28 @@ Material batches include the material name as well as its texture specification,
 Paving feathers derive only from exposed low-floor union boundaries; internal segment/junction seams remain opaque. The shallow shoreline ribbon and calmer water palette soften the rock/water contact. These visual meshes do not affect navigation or interaction picking. Buildings intersecting the actual player sightline fade to smooth 16% transparency, while collision and cast shadows stay intact; up to four owners can fade simultaneously. Vegetation alpha cutouts retain their existing depth/picking policy.
 
 Contact registration uses the lowest substantial brown-boot band and reviewed directional support/flight exceptions, excluding sword/cape tips. A landing after flight starts a new contact generation; the old point is never resumed across an airborne interval. Flight offsets decay once over the first airborne frame interval and stay released, avoiding repeated root pops at each new flight frame.
+
+
+### Strict RO3 exterior, density and fountain source68
+
+The saved native town has37 ordinary house envelopes: twelve primary frontages,
+24 other existing house/inn/workshop lots and one added approach house. Shared
+`ro3-facade-kit-v68.py` defines pierced timber facades, nine-light windows and
+steep clay roof variants. Ground details fit actual traced front edges; awnings
+clear raised approach terrain. `plan-ro3-density-v68.py` produces a source plan
+that preserves roads, service access and patrol legs. Occupied house ground
+increases13.1%; five rooted tree groups move as complete units.
+
+The fountain is native physical geometry with tiered pools, a scalloped rim,
+planted corners, green seating and two walkable terrain steps. Optional native
+`texture.ripple` metadata drives a quiet shared shader clock and authored local
+water UVs. No object-specific replacement collider or dynamic shadow/PBR pass
+is introduced. Original material tile mips, actor registration and native
+software resolution remain. Corner/floor bakes must follow geometry edits
+sequentially. Ground bake invalidation and saved source/export parity stay active.
+
+The review records intentional collision/floor changes, low-detail contacts,
+pane clearance, actual service/field/save flow, offline cache and isolated timing.
+Scoped exterior visual review is separate from user Golden acceptance and
+physical-device performance. Boot/page/cache versions are68; original diffuse
+artwork retains its67 filename. See `docs/review/wayfarer-v68/`.
