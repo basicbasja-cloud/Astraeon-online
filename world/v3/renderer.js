@@ -76,15 +76,16 @@ function material(name,definition){
   if(!atlasTextures.has(tileKey)){
    // Separate tile mip chains prevent adjacent atlas materials bleeding into
    // repeated lawns/roofs at gameplay distance. Artwork and authored UVs stay intact.
-   const t=new THREE.Texture();t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=1;
+   const t=new THREE.Texture();t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=spec.anisotropy||1;
    if(!atlasImages.has(spec.file))atlasImages.set(spec.file,new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Could not load world material: '+spec.file));image.src=new URL('../../'+spec.file,import.meta.url).href}));
    textureLoads.push(atlasImages.get(spec.file).then(image=>{const [cols,rows]=spec.grid,w=image.naturalWidth/cols,h=image.naturalHeight/rows,c=document.createElement('canvas');c.width=Math.round(w);c.height=Math.round(h);c.getContext('2d').drawImage(image,(spec.tile%cols)*w,Math.floor(spec.tile/cols)*h,w,h,0,0,c.width,c.height);t.image=c;t.needsUpdate=true}));
    atlasTextures.set(tileKey,t);
   }map=atlasTextures.get(tileKey);
  }
- const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide,alphaTest:spec?.alphaCutoff||0});
+ const m=new THREE.MeshBasicMaterial({map,vertexColors:true,side:THREE.DoubleSide,alphaTest:spec?.alphaCutoff||0,transparent:!!spec?.alphaBlend,depthWrite:!spec?.alphaBlend});
  // MSAA coverage softens cutout foliage silhouettes while retaining depth.
- if(spec?.alphaCutoff)m.alphaToCoverage=true;
+ if(spec?.alphaCutoff&&!spec?.alphaBlend)m.alphaToCoverage=true;
+ if(spec?.alphaBlend)m.forceSinglePass=true;
  if(name==='riverFoam'){m.transparent=true;m.depthWrite=false;m.forceSinglePass=true}
  // Normalize new painted swatches around their linear mean: tile seams and
  // grain retain contrast while the authored palette still owns the building hue.
@@ -156,7 +157,9 @@ class SpatialRenderer{
   this.camera=new THREE.Camera();this.camera.matrixAutoUpdate=false;this.camera.matrixWorld.identity();this.camera.matrixWorldInverse.identity();
   this.buildingNumbers=new Map();this.occluderGroups=[];this.fadedOwners=new Set();this.fadeMeshes=new Map();
   for(const o of source.objects){
-   if(o.family==='vegetation'||!o.parts.some(p=>p.visible!==false&&p.role==='solid'&&p.vertices.some(v=>v[2]>2)))continue;
+   // Pierced facades use a hidden physical core and separate visible shells.
+   // Keep the owning building eligible for reveal; ray tests use visible meshes.
+   if(o.family==='vegetation'||!o.parts.some(p=>p.role==='solid'&&p.vertices.some(v=>v[2]>2))||!o.parts.some(p=>p.visible!==false))continue;
    const id=this.buildingNumbers.size+1;this.buildingNumbers.set(o.id,id);
    const triangles=[],box=new THREE.Box3();for(const p of o.parts.filter(p=>p.visible!==false)){
     const vertices=p.vertices.map(v=>new THREE.Vector3(...v));for(const v of vertices)box.expandByPoint(v);
@@ -169,13 +172,13 @@ class SpatialRenderer{
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
   for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name)||!!source.materials[name]?.texture?.ripple;this.scene.add(mesh)}
   const spatial=window.AstraeonContent?.nativeWorld?.id===source.id?window.AstraeonContent.nativeWorld.spatial:window.AstraeonSpatialV3.compile(source);this.spatial=spatial;
-  // Blend only the exposed union boundary of low paving. Internal strip and
-  // junction edges remain opaque, and these visual verges never change paths.
-  const edgeMaterial=source.materials.cityPaving?'cityPaving':'paving',paving=terrain.surfaces.filter(s=>s.walkable&&['paving','cityPaving'].includes(s.material)&&s.vertices&&Math.max(...s.vertices.map(v=>v[2]))<.10),edge={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]},size=source.materials.paving?.texture?.worldSize||4;
+  // Keep the masonry boundary crisp. A narrow contact feather joins exposed
+  // paving to planted ground; internal junctions remain opaque and continuous.
+  const edgeMaterial=source.materials.cityPaving?'cityPaving':'paving',paving=terrain.surfaces.filter(s=>s.walkable&&['paving','cityPaving'].includes(s.material)&&s.vertices&&Math.max(...s.vertices.map(v=>v[2]))<.10),edge={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]},size=source.materials[edgeMaterial]?.texture?.worldSize||4,vergeWidth=.10;
   boundarySegments(paving.map(s=>s.polygon),(a,b,n)=>{
-   const outer=[a[0]+n[0]*.52,a[1]+n[1]*.52],probe=[(a[0]+b[0])/2+n[0]*.45,(a[1]+b[1])/2+n[1]*.45];
+   const outer=[a[0]+n[0]*vergeWidth,a[1]+n[1]*vergeWidth],probe=[(a[0]+b[0])/2+n[0]*vergeWidth*.85,(a[1]+b[1])/2+n[1]*vergeWidth*.85];
    if(!window.AstraeonSpatialV3.pointIn({x:probe[0],y:probe[1]},terrain.walkablePolygon)||spatial.blocked(...probe,.02))return;
-   const v=[[...a,spatial.elevationAt(...a)+.010],[...b,spatial.elevationAt(...b)+.010],[b[0]+n[0]*.52,b[1]+n[1]*.52,terrain.elevation+.011],[...outer,terrain.elevation+.011]];
+   const v=[[...a,spatial.elevationAt(...a)+.010],[...b,spatial.elevationAt(...b)+.010],[b[0]+n[0]*vergeWidth,b[1]+n[1]*vergeWidth,terrain.elevation+.011],[...outer,terrain.elevation+.011]];
    appendMesh(edge,{vertices:v,faces:[[0,1,2,3]],material:edgeMaterial,walkable:true,uvs:[v.map(p=>[p[0]/size,p[1]/size])]},source.lighting);
    edge.feather.push(1,1,0,1,0,0);
   });

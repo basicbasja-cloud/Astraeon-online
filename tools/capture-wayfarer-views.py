@@ -47,13 +47,13 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
         context = browser.new_context(viewport={'width': 1280, 'height': 800},
                                       device_scale_factor=1)
         first = context.new_page()
-        first.goto(url, wait_until='domcontentloaded', timeout=60000)
-        first.locator('#create').wait_for(timeout=60000)
+        first.goto(url, wait_until='domcontentloaded', timeout=120000)
+        first.locator('#create').wait_for(timeout=120000)
         first.locator('#newname').fill('Golden Warrior')
-        first.locator('#create').click()
+        first.locator('#create').click(timeout=120000)
         first.wait_for_function(
             'document.getElementById("world") && window.AstraeonQA && '
-            'window.AstraeonQA.snapshot().renderer', timeout=60000)
+            'window.AstraeonQA.snapshot().renderer', timeout=120000)
         template = first.evaluate('window.AstraeonQA.snapshot().save')
         first.close()
         for name in names:
@@ -70,10 +70,10 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
             state = {**template, 'x': x, 'y': y}
             page.add_init_script('localStorage.setItem("astraeon-iso-v1",'
                                  'JSON.stringify(' + json.dumps(state) + '))')
-            page.goto(url, wait_until='domcontentloaded', timeout=60000)
+            page.goto(url, wait_until='domcontentloaded', timeout=120000)
             page.wait_for_function(
                 'document.getElementById("world") && window.AstraeonQA && '
-                'window.AstraeonQA.snapshot().renderer', timeout=60000)
+                'window.AstraeonQA.snapshot().renderer', timeout=120000)
             page.wait_for_timeout(450)
             if zoom is not None:
                 rect=page.locator('#world').bounding_box();pointer_x=rect['x']+rect['width']/2;pointer_y=rect['y']+rect['height']/2
@@ -94,6 +94,7 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                       'actual': [snap['save']['x'], snap['save']['y']],
                       'layout': snap['town']['layout'],
                       'actors': len(snap['renderer']['actors']),
+                      'fadedBuildings': snap['renderer'].get('fadedBuildings', []),
                       'actorArtwork': {a['id']: a.get('motionSample', {}).get('frame') for a in snap['renderer']['actors']},
                       'renderCalls': snap['renderer']['calls'],
                       'frameMs': round(snap['renderer']['frameMs'], 2),

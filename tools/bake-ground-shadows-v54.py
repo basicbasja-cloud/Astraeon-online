@@ -60,6 +60,13 @@ def cast_ray(origin,direction,distance):
 floors=[s for s in data['terrain']['surfaces'] if s.get('walkable') and s.get('vertices')]
 floor_tree=tree_from(floors)
 land=[data['terrain']['walkablePolygon']]+[s['polygon'] for s in floors]
+# Only test nearby lot polygons outside the main land outline. This keeps the
+# exact point-in-polygon result while avoiding a full town scan for every pixel.
+land_buckets={};bucket_size=8
+for poly in land[1:]:
+ for by in range(math.floor(min(p[1] for p in poly)/bucket_size),math.floor(max(p[1] for p in poly)/bucket_size)+1):
+  for bx in range(math.floor(min(p[0] for p in poly)/bucket_size),math.floor(max(p[0] for p in poly)/bucket_size)+1):
+   land_buckets.setdefault((bx,by),[]).append(poly)
 def inside(x,y,poly):
  result=False
  for a,b in zip(poly,poly[-1:]+poly[:-1]):
@@ -75,7 +82,7 @@ for iy in range(size):
  y=bounds['minY']+(iy+.5)/size*(bounds['maxY']-bounds['minY'])
  for ix in range(size):
   x=bounds['minX']+(ix+.5)/size*(bounds['maxX']-bounds['minX'])
-  if not any(inside(x,y,p) for p in land):continue
+  if not inside(x,y,land[0]) and not any(inside(x,y,p) for p in land_buckets.get((math.floor(x/bucket_size),math.floor(y/bucket_size)),())):continue
   occupied+=1
   hit=floor_tree.ray_cast(Vector((x,y,100)),Vector((0,0,-1)),200)
   z=max(data['terrain']['elevation'],hit[0].z if hit[0] is not None else data['terrain']['elevation'])
