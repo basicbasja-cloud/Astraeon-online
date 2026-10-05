@@ -1,0 +1,18 @@
+SPATIAL civic-lower-approach
+SPATIAL civic-processional-tread
+SPATIAL civic-upper-court
+SPATIAL civic-west-flight
+SPATIAL civic-east-flight
+SPATIAL shrine-stair-base
+SPATIAL shrine-tread
+SPATIAL hall-stair-base
+SPATIAL hall-tread
+SPATIAL hall-terrace
+SPATIAL gate-front
+SPATIAL gate-under-arch
+SPATIAL gate-behind
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/golden_wayfarer.py", line 73, in <module>
+    assert abs(samples[2]['z']-samples[0]['z'])<.05,(name,samples)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('west-north', [{'x': 70.18633784188941, 'y': 59.22530437121118, 'z': 0.025}, {'x': 73.6902284898907, 'y': 59.01830116628452, 'z': 0.765}, {'x': 70.72027443480366, 'y': 59.001781158014275, 'z': 0.16499999999999998}])

@@ -1,0 +1,14 @@
+SERVICE Guild Registrar
+SERVICE Quest Board
+SERVICE Merchant
+SERVICE Artisan
+SERVICE Housing Keeper
+SERVICE Gatekeeper
+SERVICE The Seafarer's Host
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/golden_wayfarer.py", line 86, in <module>
+    walk(approach['x'],approach['y'])
+  File "/workspace/Astraeon-online/tests/golden_wayfarer.py", line 31, in walk
+    page.screenshot(path=str(out/'failure.png'));raise AssertionError(('walk timeout',x,y,last_click,snap()['navigation'],snap()['windowName'],snap()['player']))
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('walk timeout', 85.5, 30, {'q': {'x': 85.25, 'y': 35.5}, 'screen': [1206.4590578080129, 234.64399563125875], 'inside': True, 'element': 'world', 'pick': 'object/frontage-market-arcade', 'distance': 15.883489393067746}, {'x': 85.83337257194069, 'y': 35.30554295994042, 'path': [{'x': 84, 'y': 42}, {'x': 85, 'y': 41}, {'x': 85.83337257194069, 'y': 35.30554295994042}], 'pathIndex': 0, 'reach': 0.3, 'npc': None}, None, {'position': {'x': 82.44120022112922, 'y': 41.88009232470233, 'z': 0.025}, 'rotation': 0.07677189126981437, 'desiredRotation': 0.07677189126981437, 'facingDirection': {'x': 0.9970544855015788, 'y': 0.07669649888477327}, 'velocity': {'x': 2.6920471108539346, 'y': 0.20708054698886258}, 'angularVelocity': 0, 'mode': 'movement', 'speed': 2.6999999999996707, 'state': 'run', 'stateTime': 4.216666666666657, 'transition': 1, 'distance': 368.1677625202513, 'feet': [{'x': 82.05290644371581, 'y': 41.950518994212224, 'z': 0.15318875658631384, 'groundZ': 0.025, 'swing': True}, {'x': 82.66423363988618, 'y': 41.796953319911175, 'z': 0, 'groundZ': 0.025, 'swing': False}], 'gait': 204.53764584458884, 'strategy': 'run', 'activeStrategy': 'run', 'strategyTransition': {'from': 'walk', 'to': 'run', 'gait': 198.1626458445874, 'reason': 'start', 'remainingDistance': 0.04499999999999451}, 'profile': {'speed': 2.7, 'cycleDistance': 1.8, 'duty': 0.375, 'lift': 0.21, 'lead': 0.77, 'clip': 'warrior-run-v5', 'torso': 'warrior-run-torso-v3', 'bodyPitch': 3, 'atlas': 'assets/warrior-run-v3.webp', 'phases': ['left-contact', 'left-down', 'passing', 'left-push', 'right-contact', 'right-down', 'passing', 'right-push']}, 'flight': 0})

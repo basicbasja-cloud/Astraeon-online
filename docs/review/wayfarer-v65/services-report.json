@@ -1,0 +1,53 @@
+{
+  "scope": "Eight ordinary-input service checks across the initial replay and focused shrine retry. The initial full replay timed out en route to the shrine; it is not a full-script pass.",
+  "completedServices": 8,
+  "evidence": [
+    {
+      "service": "Guild Registrar",
+      "title": "Adventurers\u2019 Guild"
+    },
+    {
+      "service": "Quest Board",
+      "title": "Contract Board"
+    },
+    {
+      "service": "Merchant",
+      "title": "Marketplace"
+    },
+    {
+      "service": "Artisan",
+      "title": "Crafting"
+    },
+    {
+      "service": "Housing Keeper",
+      "title": "Housing"
+    },
+    {
+      "service": "Gatekeeper",
+      "title": "Astral Gate"
+    },
+    {
+      "service": "The Seafarer's Host",
+      "title": "The Seafarer's Rest"
+    },
+    {
+      "service": "Luna Attendant",
+      "title": "Luna Shrine"
+    }
+  ],
+  "fieldTransition": true,
+  "savedCharacterReload": true,
+  "renderResolution": {
+    "width": 1280,
+    "height": 666,
+    "cssWidth": 1280,
+    "cssHeight": 666,
+    "pixelRatio": 1
+  },
+  "runtime_errors": [],
+  "resource_errors": [],
+  "runs": [
+    "services-partial.json",
+    "shrine-retry.json"
+  ]
+}

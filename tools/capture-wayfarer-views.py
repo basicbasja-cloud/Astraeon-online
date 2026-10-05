@@ -33,13 +33,15 @@ VIEWS = {
 }
 
 
-def capture(url, output, names, zoom=None, yaw=0, pitch=None):
+def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None):
     output.mkdir(parents=True, exist_ok=True)
     records = []
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(
             executable_path=os.environ.get('ASTRAEON_BROWSER', '/usr/bin/chromium'), headless=True,
-            args=['--no-sandbox', '--enable-webgl', '--enable-gpu', '--use-angle=d3d11'])
+            args=['--no-sandbox', '--enable-webgl', '--enable-gpu'] +
+                 (['--use-angle=d3d11'] if os.name == 'nt' else
+                  ['--use-angle=swiftshader', '--enable-unsafe-swiftshader']))
         context = browser.new_context(viewport={'width': 1280, 'height': 800},
                                       device_scale_factor=1)
         first = context.new_page()
@@ -80,6 +82,9 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None):
             if pitch is not None:
                 rect=page.locator('#world').bounding_box();px=rect['x']+rect['width']/2;py=rect['y']+rect['height']/2
                 page.keyboard.down('Shift');page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px,py+(pitch-46)*rect['height']/300,steps=8);page.mouse.up(button='right');page.keyboard.up('Shift');page.wait_for_timeout(800)
+            if capture_scale is not None:
+                page.evaluate('(ratio)=>AstraeonSpatialView.renderer.setPixelRatio(ratio)', capture_scale)
+                page.wait_for_timeout(450)
             snap = page.evaluate('window.AstraeonQA.snapshot()')
             image = output / (name + '.png')
             page.screenshot(path=str(image))
@@ -92,6 +97,8 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None):
                       'frameMs': round(snap['renderer']['frameMs'], 2),
                       'device': snap['renderer'].get('device'),
                       'camera': snap['renderer'].get('cameraProfile'),
+                      'captureScale': capture_scale,
+                      'renderResolution': page.evaluate('({width:AstraeonSpatialView.canvas.width,height:AstraeonSpatialView.canvas.height,pixelRatio:AstraeonSpatialView.renderer.getPixelRatio()})'),
                       'errors': errors, 'image': str(image)}
             records.append(record)
             print(json.dumps(record), flush=True)
@@ -108,10 +115,13 @@ if __name__ == '__main__':
     parser.add_argument('--zoom', type=float, help='Use ordinary Ctrl-right-drag zoom for a still review (65–325)')
     parser.add_argument('--yaw',type=float,default=0,help='Use ordinary right-drag orbit for architecture review')
     parser.add_argument('--pitch',type=float,help='Optional ordinary Shift-right-drag; default gameplay pitch remains 46')
+    parser.add_argument('--capture-scale', type=float,
+                        help='Still-image pixel ratio, independent of the runtime performance policy')
     args = parser.parse_args()
     names = args.views.split(',')
     if any(name not in VIEWS for name in names):
         parser.error('Unknown view; choose from ' + ', '.join(VIEWS))
     if args.zoom is not None and not 65<=args.zoom<=325:parser.error('Zoom must be within classic RO limits, 65–325')
     if args.pitch is not None and not 10<=args.pitch<=89:parser.error('Pitch must be within gameplay limits, 10–89')
-    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch)
+    if args.capture_scale is not None and not .5<=args.capture_scale<=3:parser.error('Capture scale must be within .5–3')
+    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale)

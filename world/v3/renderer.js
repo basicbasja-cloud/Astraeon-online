@@ -238,14 +238,14 @@ class SpatialRenderer{
  mount(overlay){
   this.overlay=overlay;
   V.mountCameraControls(overlay);
-  // The legacy software cache retains its original pixel-grid raster policy.
+  // Render the world at least at CSS resolution, including software WebGL.
   // Perspective profiles render directly with antialiasing.
   try{this.renderer=new THREE.WebGLRenderer({antialias:this.perspectiveMode,alpha:false,powerPreference:'high-performance'});}catch(error){throw new Error('Spatial world requires WebGL: '+error.message)}
   const gl=this.renderer.getContext(),debug=gl.getExtension('WEBGL_debug_renderer_info'),device=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):'';
-  this.stats.device=device;this.stats.software=/SwiftShader|llvmpipe|software/i.test(device);this.stats.pixelRatio=this.stats.software?.75:Math.min(devicePixelRatio||1,1.5);
-  // Software WebGL is fill-rate limited in headless/VM browsers. Keep the real
-  // device budget independent; neither path relies on expensive anisotropic filtering.
-  if(this.stats.software)this.stats.pixelRatio=.5;
+  this.stats.device=device;this.stats.software=/SwiftShader|llvmpipe|software/i.test(device);
+  // Do not silently stretch a half-resolution world behind a sharp UI. Software
+  // renderers use native CSS pixels; hardware also follows HiDPI up to 1.5x.
+  this.stats.pixelRatio=this.stats.software?1:Math.max(1,Math.min(devicePixelRatio||1,1.5));
   for(const m of materialCache.values()){m.map.anisotropy=this.stats.software?1:Math.min(4,this.renderer.capabilities.getMaxAnisotropy());m.map.minFilter=THREE.LinearMipmapLinearFilter;m.map.needsUpdate=true}
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.setPixelRatio(this.stats.pixelRatio);
   // Decode/upload all complete strips before the first movement. Shared atlases

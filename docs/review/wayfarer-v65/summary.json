@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-05",
+  "branch": "codex/world-pipeline-v3-proof",
+  "parentCommit": "1b0fca4355c7380f2e44e132edb90dc298d702ec",
+  "sourcePass": 65,
+  "cacheVersion": 66,
+  "layout": "wayfarer-concept-terraced-town-v49",
+  "objectCount": 119,
+  "townAccepted": false,
+  "locomotionAccepted": false,
+  "cosmeticsImplemented": false,
+  "runtimeResolution": {
+    "softwarePixelRatio": 1,
+    "hardwarePixelRatioMinimum": 1,
+    "hardwarePixelRatioMaximum": 1.5,
+    "forcedHalfResolutionRemoved": true
+  },
+  "geometryDigest": "20d2c9cd129bb7ec0b1b953e99f5fb30bb93744868e68ddd5a5c043cc8b5efb2",
+  "checks": {
+    "node": {
+      "individualTests": 95,
+      "failures": 0
+    },
+    "schemas": "passed",
+    "savedBlenderExportParity": "passed",
+    "hallTransformAndStaleBakeInvalidation": "passed",
+    "nativePreservation": "passed",
+    "spatialReplay": {
+      "passedCases": 13,
+      "renderRatio": 0.5,
+      "evidence": "spatial-partial.log",
+      "scope": "Civic/shrine/Hall stairs and gate traversal completed on final source65; the same run then stopped on an overly close market-base test waypoint. This is partial replay evidence, not a full-script pass."
+    },
+    "marketReplay": {
+      "passedFlights": 4,
+      "renderRatio": 1,
+      "fieldTransitionAndCharacterReload": "passed",
+      "evidence": "market-native.log",
+      "runnerStatus": "final telemetry failed after behavioral assertions",
+      "scope": "All four ascent/descent checks and field/reload assertions completed; the added resolution telemetry was incorrectly sampled after the spatial renderer became inactive in the field. Fixed to sample town before departure; subsequent service replay verifies that correction."
+    },
+    "cacheMigrationOfflineSave": "passed",
+    "performance": {
+      "passed": false,
+      "fps": 1.7434005026804786,
+      "p95Ms": 883.3000000000029,
+      "maxMs": 883.3000000000029,
+      "renderResolution": {
+        "width": 1280,
+        "height": 666,
+        "cssWidth": 1280,
+        "cssHeight": 666,
+        "pixelRatio": 1
+      },
+      "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "runtimeErrors": [],
+      "playerMovingFrames": 11,
+      "playerFrozenBodyFrames": 0,
+      "scope": "Isolated sound-on cloud software WebGL. Fails >55 FPS / p95<25ms / max<80ms target and has too few movement frames for continuity certification. Native resolution retained. Physical desktop/phone performance is unverified."
+    },
+    "serviceReplay": {
+      "completedServices": 8,
+      "renderRatio": 1,
+      "evidence": "services-report.json",
+      "runnerStatus": "Initial replay timed out after seven services; focused shrine retry passed, including native town-buffer verification, field transition and reload.",
+      "runtimeErrors": [],
+      "resourceErrors": [],
+      "remainingService": null,
+      "scope": "Ordinary input throughout. Focused shrine retry uses actual authored route length and a bounded deadline allowance for RAF intervals exceeding the existing 250ms simulation-delta cap; gameplay clock/speed and performance assertions remain unchanged.",
+      "focusedShrineRetry": "passed",
+      "fieldTransitionAndSaveReload": "passed",
+      "nativeResolutionVerified": true
+    }
+  },
+  "files": [
+    {
+      "path": "authoring/wayfarer-spatial.blend",
+      "bytes": 9050049,
+      "sha256": "9ab7deead471d4abab095289193429ff56985f851cf9a0c906ddb32ec0cff50c"
+    },
+    {
+      "path": "world/v3/wayfarer-spatial.json",
+      "bytes": 27887851,
+      "sha256": "8fc190734d9c0f65da1d5cd8b9896cad880f19ad8f2bf803a70c0cc1f66e7c75"
+    },
+    {
+      "path": "assets/wayfarer-ground-shadow-v54.png",
+      "bytes": 151529,
+      "sha256": "2b82c4b9bc6d6179eec9c7a6aeb7fe942681db9d169256c339a7f2db2fc62c39"
+    },
+    {
+      "path": "world/v3/renderer.js",
+      "bytes": 48363,
+      "sha256": "e65c354e1e28303000dbf3ef4614a2d0288edcd9ba5a5658a3fbdcd72f10a5ec"
+    },
+    {
+      "path": "boot.js",
+      "bytes": 2441,
+      "sha256": "5811b60557a53418106d5b0b3b1bd513719799a86607c980ffe0c78baf2f6527"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1110,
+      "sha256": "2f6c05c02545d1834bb0d553d466d570a071b7c80dd946dda2a453ef9595bd83"
+    },
+    {
+      "path": "sw.js",
+      "bytes": 3575,
+      "sha256": "552b808f5391fdbda2ccbc59051b826e0156dfaaccdc7e44aea6008979e25dd7"
+    }
+  ]
+}
