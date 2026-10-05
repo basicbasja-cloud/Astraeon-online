@@ -195,7 +195,7 @@ class SpatialRenderer{
   if(shore.position.length){const ribbon=new THREE.Mesh(geometry(shore),featherMaterial(new THREE.MeshBasicMaterial({color:'#b8d9ce',vertexColors:true,side:THREE.DoubleSide}),'shore'));ribbon.name='static/shoreline';this.scene.add(ribbon)}
   // Static authored sun shadow atlas: one draw, no dynamic shadow map or PBR.
   this.shadowSize=source.lighting.groundShadow?.resolution||2048;const c=document.createElement('canvas');c.width=c.height=this.shadowSize;const g=c.getContext('2d'),b=terrain.bounds,sx=this.shadowSize/(b.maxX-b.minX),sy=this.shadowSize/(b.maxY-b.minY);
-  g.fillStyle='#3a4464';g.globalAlpha=source.lighting.sun.strength;g.filter='blur(2px)';g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();g.filter='none';
+  g.fillStyle=source.lighting.shadowColor||'#3a4464';g.globalAlpha=source.lighting.sun.strength;g.filter='blur(2px)';g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();g.filter='none';
   // Soft local depth at building feet supplements the directional cast atlas.
   // One combined stroke avoids repeatedly darkening intersecting foundations.
   g.save();g.filter='blur(3px)';g.strokeStyle='#273449';g.globalAlpha=.22;g.lineWidth=.40*(sx+sy)/2;g.lineJoin='round';g.beginPath();
@@ -210,7 +210,7 @@ class SpatialRenderer{
    textureLoads.push(new Promise((resolve,reject)=>{
     const image=new Image();image.onload=()=>{
      g.save();g.setTransform(1,0,0,1,0,0);g.globalAlpha=1;g.filter='none';g.clearRect(0,0,c.width,c.height);
-     g.fillStyle='#3a4464';g.fillRect(0,0,c.width,c.height);g.globalCompositeOperation='destination-in';g.drawImage(image,0,0,c.width,c.height);g.restore();
+     g.fillStyle=source.lighting.shadowColor||'#3a4464';g.fillRect(0,0,c.width,c.height);g.globalCompositeOperation='destination-in';g.drawImage(image,0,0,c.width,c.height);g.restore();
      this.shadowPixels=g.getImageData(0,0,c.width,c.height).data;tex.needsUpdate=true;resolve();
     };image.onerror=()=>reject(new Error('Could not load native ground shadows: '+bake.file));image.src=new URL('../../'+bake.file,import.meta.url).href;
    }));

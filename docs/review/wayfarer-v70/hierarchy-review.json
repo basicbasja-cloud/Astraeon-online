@@ -1,0 +1,57 @@
+{
+  "sourcePass": 70,
+  "cache": 75,
+  "agentVisualPass": true,
+  "scope": [
+    "avenue",
+    "plaza"
+  ],
+  "criteria": {
+    "visibleGrayBuildingZoneCurb": "pass; raised .20 with dark vertical fascia",
+    "streetVsBuildingWalk": "pass; irregular medium cobbles vs rectangular flagstones",
+    "warmth": "pass; warm roof/wall highlights with neutral warm fill",
+    "castShade": "pass; softened down-left gray-green shade, retained contact occlusion"
+  },
+  "remaining": "Tree forms, green margins and facade relief continue in next step. Full town acceptance remains false.",
+  "nativeCapture": "1280x666 drawing buffer, pixel ratio1; fixed saved positions, ordinary camera controls; no image enlargement",
+  "checks": {
+    "schemas": 4,
+    "nodeTests": 95,
+    "nativeContacts": 432,
+    "originalPartsPreserved": 40105,
+    "originalSolidsPreserved": 506
+  },
+  "lighting": {
+    "sun": {
+      "cast": [
+        -0.42,
+        0.55
+      ],
+      "strength": 0.65,
+      "color": [
+        1.18,
+        1.05,
+        0.79
+      ],
+      "angularRadius": 0.018
+    },
+    "ambient": 0.44,
+    "ambientColor": [
+      1.04,
+      1.0,
+      0.9
+    ],
+    "shadowColor": "#514d44",
+    "groundShadow": {
+      "file": "assets/wayfarer-ground-shadow-v54.png",
+      "resolution": 1536,
+      "geometryDigest": "f55c767faf1f81f11b9917a730ac99d3db0107534c64eab4a8605400ecd69e2e",
+      "strengthIncluded": true,
+      "sunSamples": 8,
+      "contactSamples": 4,
+      "alphaCutoutCanopies": "original-alpha-tested",
+      "maxCutoutIntersections": 10,
+      "cutoutIntersectionLimit": 256
+    }
+  }
+}

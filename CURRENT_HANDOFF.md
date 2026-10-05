@@ -1,3 +1,11 @@
+# ASTRAEON source70 hierarchy checkpoint / cache75
+
+Branch `codex/world-pipeline-v3-proof`. Native source70 now separates public cobbles from rectangular building walks, raises 629 curbs to .20 (618 widen to .40), and adds darker native curb fascias. Warm fill/sun and eight-ray down-left casts replace cool blue shade. Native avenue/plaza trial and 432 ground/joint contacts pass. 95 Node checks and four schemas pass. Continue the prepared town composition migration for layered conifers, larger owned green margins and facade relief, then perform the complete native/browser review. Town Golden accepted=false; physical GPU performance remains unverified. Keep server8011 alive.
+
+Details/evidence: `docs/review/wayfarer-v70/hierarchy-review.json`, `hierarchy-check.json`, `hierarchy-trial/`. Original solids, house envelopes, services and routes remain; curb floors were deliberately changed. Commit and push each completed step.
+
+Previous complete checkpoint:
+
 # ASTRAEON continuation checkpoint — 2026-10-05 / source69, cache74
 
 Workspace `/workspace/Astraeon-online`, branch `codex/world-pipeline-v3-proof`.

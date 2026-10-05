@@ -89,7 +89,11 @@ def inside(x,y,poly):
 
 cast=data['lighting']['sun']['cast'];sun=Vector((-cast[0],-cast[1],1)).normalized()
 right=sun.cross(Vector((0,0,1))).normalized();up=right.cross(sun).normalized()
-directions=[(sun+right*x*.006+up*y*.006).normalized() for x,y in [(-1,-1),(1,-1),(1,1),(-1,1)]]
+angular=data['lighting']['sun'].get('angularRadius')
+if angular is None:directions=[(sun+right*x*.006+up*y*.006).normalized() for x,y in [(-1,-1),(1,-1),(1,1),(-1,1)]]
+else:
+ assert 0<angular<=.05
+ directions=[(sun+right*math.cos(k*math.tau/8)*angular+up*math.sin(k*math.tau/8)*angular).normalized() for k in range(8)]
 contact=[Vector((x,y,.60)).normalized() for x,y in [(.8,0),(-.8,0),(0,.8),(0,-.8)]]
 pixels=[1.0,1.0,1.0,0.0]*(size*size);start=time.monotonic();occupied=0;shadowed=0
 for iy in range(size):
@@ -115,7 +119,7 @@ for iy in range(size):
  if iy%128==0:print('GROUND BAKE',iy,'/',size,'seconds',round(time.monotonic()-start,1),flush=True)
 image=bpy.data.images.new('Wayfarer native ground shadows v54',width=size,height=size,alpha=True)
 image.pixels.foreach_set(pixels);image.file_format='PNG';image.filepath_raw=str(ROOT/'assets/wayfarer-ground-shadow-v54.png');image.save()
-metadata={'file':'assets/wayfarer-ground-shadow-v54.png','resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':4,'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}
+metadata={'file':'assets/wayfarer-ground-shadow-v54.png','resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':len(directions),'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}
 metadata.update(maxCutoutIntersections=max_cutout_steps,cutoutIntersectionLimit=cutout_step_limit)
 scene['ground_shadow_bake_json']=json.dumps(metadata,separators=(',',':'))
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'authoring/wayfarer-spatial.blend'),compress=True)
