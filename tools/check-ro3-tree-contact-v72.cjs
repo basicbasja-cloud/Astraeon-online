@@ -1,0 +1,4 @@
+/* Measure actual native trunk bases against the same floor sampler as actors. */
+const fs=require('fs');global.window={};require('../navigation.js');require('../world/v3/spatial.js');const w=JSON.parse(fs.readFileSync(process.argv[2])),s=window.AstraeonSpatialV3.compile(w),contacts={};
+for(const o of w.objects)if(o.family==='vegetation')for(const p of o.parts)if(p.role==='solid'&&(/-root$|-trunk$/.test(p.id))){const x=p.vertices.reduce((v,a)=>v+a[0],0)/p.vertices.length,y=p.vertices.reduce((v,a)=>v+a[1],0)/p.vertices.length,base=Math.min(...p.vertices.map(v=>v[2])),floor=s.elevationAt(x,y);contacts[p.id]={position:[x,y],base,floor,offset:base-floor};}
+fs.writeFileSync(process.argv[3],JSON.stringify(contacts,null,2)+'\n');console.log(Object.keys(contacts).length+' native tree contacts measured');

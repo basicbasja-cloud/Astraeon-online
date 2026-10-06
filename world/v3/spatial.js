@@ -35,14 +35,16 @@ function compile(scene){
  const bucketSize=8,index=items=>{const buckets=new Map();for(const item of items){const b=item.bounds;for(let y=Math.floor(b.minY/bucketSize);y<=Math.floor(b.maxY/bucketSize);y++)for(let x=Math.floor(b.minX/bucketSize);x<=Math.floor(b.maxX/bucketSize);x++){const key=x+','+y;if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(item)}}return buckets};
  const nearby=(buckets,x,y,r=0)=>{const result=new Set();for(let by=Math.floor((y-r)/bucketSize);by<=Math.floor((y+r)/bucketSize);by++)for(let bx=Math.floor((x-r)/bucketSize);bx<=Math.floor((x+r)/bucketSize);bx++)for(const p of buckets.get(bx+','+by)||[])result.add(p);return result};
  const solidIndex=index(solids);
- const floorPolygons=scene.terrain.walkablePolygon?[scene.terrain.walkablePolygon,...scene.terrain.surfaces.filter(s=>s.walkable).map(s=>s.polygon)]:null;
- const onLand=(x,y)=>!floorPolygons||floorPolygons.some(poly=>pointIn({x,y},poly));
+ const floorTriangles=scene.terrain.surfaces.filter(s=>s.walkable&&s.vertices&&s.faces).flatMap(s=>s.faces.flatMap(f=>f.slice(1,-1).map((_,i)=>[s.vertices[f[0]],s.vertices[f[i+1]],s.vertices[f[i+2]]])));
+ const floorIndex=index(floorTriangles.map(t=>({t,bounds:{minX:Math.min(...t.map(v=>v[0])),maxX:Math.max(...t.map(v=>v[0])),minY:Math.min(...t.map(v=>v[1])),maxY:Math.max(...t.map(v=>v[1]))}})));
+ // Closed curb bands and clipped paving can have holes or disconnected pieces.
+ // Their native faces determine ground coverage; a cached outline cannot fill holes.
+ const legacyFloorPolygons=scene.terrain.surfaces.filter(s=>s.walkable&&!(s.vertices&&s.faces)).map(s=>s.polygon);
+ const onLand=(x,y)=>!scene.terrain.walkablePolygon||pointIn({x,y},scene.terrain.walkablePolygon)||legacyFloorPolygons.some(poly=>pointIn({x,y},poly))||[...nearby(floorIndex,x,y)].some(({t})=>triangleHeight(x,y,...t)!==null);
  const blocked=(x,y,r=radius)=>x<bounds.minX+r||x>bounds.maxX-r||y<bounds.minY+r||y>bounds.maxY-r||!onLand(x,y)||[...nearby(solidIndex,x,y,r)].some(p=>x>=p.bounds.minX-r&&x<=p.bounds.maxX+r&&y>=p.bounds.minY-r&&y<=p.bounds.maxY+r&&touches({x,y},p.footprint,r));
  const portalMap=scene.objects.flatMap(o=>(o.portals||[]).map(p=>({...p,objectId:o.id,range:p.range||1})));
  const navCells=[];for(let y=bounds.minY+.5;y<bounds.maxY;y+=scene.navigation.cellSize)for(let x=bounds.minX+.5;x<bounds.maxX;x+=scene.navigation.cellSize)navCells.push({x,y,walkable:!blocked(x,y)});
  const shadowPolygons=parts.filter(p=>p.shadow).map(p=>({id:p.id,polygon:hull(p.vertices.map(v=>[v[0]+scene.lighting.sun.cast[0]*v[2],v[1]+scene.lighting.sun.cast[1]*v[2]]))}));
- const floorTriangles=scene.terrain.surfaces.filter(s=>s.walkable&&s.vertices&&s.faces).flatMap(s=>s.faces.flatMap(f=>f.slice(1,-1).map((_,i)=>[s.vertices[f[0]],s.vertices[f[i+1]],s.vertices[f[i+2]]])));
- const floorIndex=index(floorTriangles.map(t=>({t,bounds:{minX:Math.min(...t.map(v=>v[0])),maxX:Math.max(...t.map(v=>v[0])),minY:Math.min(...t.map(v=>v[1])),maxY:Math.max(...t.map(v=>v[1]))}})));
  const elevationAt=(x,y)=>{let height=scene.terrain.elevation;for(const {t} of nearby(floorIndex,x,y)){const h=triangleHeight(x,y,...t);if(h!==null)height=Math.max(height,h)}return height};
  return {scene,parts,solids,overheads,portals:portalMap,navCells,shadowPolygons,blocked,
   elevationAt,

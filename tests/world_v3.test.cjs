@@ -67,3 +67,8 @@ test('town stair contacts meet the visible tread tops and the shrine entry',()=>
  assert(Math.abs(entry.anchor[0]-door.vertices.reduce((sum,v)=>sum+v[0],0)/door.vertices.length)<.00001,'main approach must face its actual door');
  assert(Math.abs(entry.anchor[2]-w.elevationAt(...entry.anchor))<.00001,'entry height must agree with its tread');
 });
+test('native floor faces preserve a closed band hole outside the main land outline',()=>{
+ const data=structuredClone(source);data.objects=[];data.terrain.bounds={minX:0,minY:0,maxX:8,maxY:8};data.terrain.walkablePolygon=[[0,0],[1,0],[1,1],[0,1]];
+ data.terrain.surfaces=[{id:'closed-band',role:'forecourt',material:'paving',walkable:true,polygon:[[2,2],[7,2],[7,7],[2,7]],vertices:[[2,2,.2],[7,2,.2],[7,7,.2],[2,7,.2],[3,3,.2],[6,3,.2],[6,6,.2],[3,6,.2]],faces:[[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]]}];
+ const world=spatial.compile(data);assert(!world.blocked(2.5,4));assert.equal(world.elevationAt(2.5,4),.2);assert(world.blocked(4,4),'the native band hole must not become phantom walkable ground');assert(world.blocked(7.5,4));
+});

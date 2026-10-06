@@ -37,7 +37,7 @@ def export(scene):
      if o.get('object_id'):surface['objectId']=o['object_id']
      if uv(o):surface['uvs']=uv(o)
      if o.get('road_segment'):
-      surface['centerline']=[[(points[0][i]+points[3][i])/2 for i in range(2)],[(points[1][i]+points[2][i])/2 for i in range(2)]];surface['width']=sum((points[0][i]-points[3][i])**2 for i in range(2))**.5;surface['legacyRole']=o['legacy_role']
+      surface['centerline']=json.loads(o['centerline_json']) if o.get('centerline_json') else [[(points[0][i]+points[3][i])/2 for i in range(2)],[(points[1][i]+points[2][i])/2 for i in range(2)]];surface['width']=o['road_width'] if o.get('road_width') else sum((points[0][i]-points[3][i])**2 for i in range(2))**.5;surface['legacyRole']=o['legacy_role']
      terrain['surfaces'].append(surface)
    continue
   parts=[];portals=[];lights=[];services=[];walkers=[];presentation=None

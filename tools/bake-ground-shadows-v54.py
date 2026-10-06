@@ -73,14 +73,9 @@ def cast_ray(origin,direction,distance):
  raise RuntimeError('Cutout ray exceeds '+str(cutout_step_limit)+' intersections after '+str(travelled)+' world units')
 floors=[s for s in data['terrain']['surfaces'] if s.get('walkable') and s.get('vertices')]
 floor_tree=tree_from(floors)
-land=[data['terrain']['walkablePolygon']]+[s['polygon'] for s in floors]
-# Only test nearby lot polygons outside the main land outline. This keeps the
-# exact point-in-polygon result while avoiding a full town scan for every pixel.
-land_buckets={};bucket_size=8
-for poly in land[1:]:
- for by in range(math.floor(min(p[1] for p in poly)/bucket_size),math.floor(max(p[1] for p in poly)/bucket_size)+1):
-  for bx in range(math.floor(min(p[0] for p in poly)/bucket_size),math.floor(max(p[0] for p in poly)/bucket_size)+1):
-   land_buckets.setdefault((bx,by),[]).append(poly)
+land=data['terrain']['walkablePolygon']
+# Native floor triangles preserve holes and disconnected closed curb bands.
+# A vertex list from a triangulated mesh is not a polygon boundary.
 def inside(x,y,poly):
  result=False
  for a,b in zip(poly,poly[-1:]+poly[:-1]):
@@ -100,9 +95,9 @@ for iy in range(size):
  y=bounds['minY']+(iy+.5)/size*(bounds['maxY']-bounds['minY'])
  for ix in range(size):
   x=bounds['minX']+(ix+.5)/size*(bounds['maxX']-bounds['minX'])
-  if not inside(x,y,land[0]) and not any(inside(x,y,p) for p in land_buckets.get((math.floor(x/bucket_size),math.floor(y/bucket_size)),())):continue
-  occupied+=1
   hit=floor_tree.ray_cast(Vector((x,y,100)),Vector((0,0,-1)),200)
+  if not inside(x,y,land) and hit[0] is None:continue
+  occupied+=1
   z=max(data['terrain']['elevation'],hit[0].z if hit[0] is not None else data['terrain']['elevation'])
   origin=Vector((x,y,z+.045))
   sun_occ=sum(cast_ray(origin,d,100) is not None for d in directions)/len(directions)
