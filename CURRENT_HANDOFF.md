@@ -7,6 +7,8 @@ Origin: `https://github.com/basicbasja-cloud/Astraeon-online.git`.
 Keep the existing localhost8011 development server alive (PID2201 at handoff).
 No PR, deployment, merge or further implementation was requested.
 
+Full user-request record and status matrix: [REQUESTS_AND_STATUS.md](REQUESTS_AND_STATUS.md).
+
 ## Saved native state
 
 Authority: `authoring/wayfarer-spatial.blend`; saved export:
