@@ -20,7 +20,11 @@ portals, lighting and animation. Full production of a second major town stays
 frozen until Wayfarer passes Golden acceptance and the required productionization
 pass below is complete.
 
-## Concept layout authority
+## Current capital authority — 6 October 2026
+
+The latest user direction supersedes the fixed concept layout below. Expand and reorganize Wayfarer as one regional capital with geometric streets, a royal ceremonial axis, greater housing density and substantial civic landmarks. Prontera supplies scale, block placement and street-hierarchy reference; Wayfarer retains its own geometric blueprint. The original concept supplies the theme, and all ten RO3 reference images remain the hard visual target. The current implementation keeps generous public streets beside close frontages, adds two inward-facing owned courts and orients ten nearby buildings toward the fountain square. The active reviewed plan is `docs/review/wayfarer-capital-v75/plan.json`; the native Blender scene remains the geometry authority. This expands the existing city and does not authorize a separate second-city production pass.
+
+## Historical concept layout authority
 
 The latest supplied Wayfarer concept image governs district relationships. Adapt
 its geometry to the fixed gameplay camera while retaining these relationships:

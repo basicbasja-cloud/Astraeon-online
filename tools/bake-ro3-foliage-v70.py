@@ -43,9 +43,10 @@ def ray(origin,direction,distance):
  raise RuntimeError('Foliage ray exceeds 256 transparent intersections')
 cast=world['lighting']['sun']['cast'];sun=Vector((-cast[0],-cast[1],1)).normalized();right=sun.cross(Vector((0,0,1))).normalized();up=right.cross(sun).normalized();angular=world['lighting']['sun']['angularRadius'];directions=[(sun+right*math.cos(k*math.tau/4)*angular+up*math.sin(k*math.tau/4)*angular).normalized() for k in range(4)]
 samples=[(.55,0,.835),(-.55,0,.835),(0,.55,.835),(0,-.55,.835)]
+exported_parts={part['id'] for owner in world['objects'] for part in owner['parts']}
 count=0;shadowed=0;start=time.monotonic();minimum=1.;maximum=0.;mesh_count=0
 for o in bpy.data.objects:
- if not o.get('conifer_v70'):continue
+ if not o.get('conifer_v70') or o.name not in exported_parts:continue
  data=o.data;old=data.color_attributes.get('BakedTownLight')
  if old:data.color_attributes.remove(old)
  layer=data.color_attributes.new(name='BakedTownLight',type='FLOAT_COLOR',domain='CORNER');mesh_count+=1

@@ -167,7 +167,7 @@ class SpatialRenderer{
    }this.occluderGroups.push({id,owner:o.id,box,triangles});
   }
   // A material batch spanning the whole town defeats camera-frustum culling.
-  // Group opaque parts in 16m cells; keep blended water/foliage ordering intact.
+  // Group opaque parts in 32m cells; keep blended water/foliage ordering intact.
   // Each part retains its complete geometry, lighting, UVs and picking owners.
   const batches=new Map(),add=(part)=>{
    if(part.visible===false)return;
@@ -210,11 +210,13 @@ class SpatialRenderer{
   if(shore.position.length){const ribbon=new THREE.Mesh(geometry(shore),featherMaterial(new THREE.MeshBasicMaterial({color:'#b8d9ce',vertexColors:true,side:THREE.DoubleSide}),'shore'));ribbon.name='static/shoreline';this.scene.add(ribbon)}
   // Static authored sun shadow atlas: one draw, no dynamic shadow map or PBR.
   this.shadowSize=source.lighting.groundShadow?.resolution||2048;const c=document.createElement('canvas');c.width=c.height=this.shadowSize;const g=c.getContext('2d'),b=terrain.bounds,sx=this.shadowSize/(b.maxX-b.minX),sy=this.shadowSize/(b.maxY-b.minY);
+  if(!source.lighting.groundShadow){
   g.fillStyle=source.lighting.shadowColor||'#3a4464';g.globalAlpha=source.lighting.sun.strength;g.filter='blur(2px)';g.beginPath();for(const s of spatial.shadowPolygons){s.polygon.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.fill();g.filter='none';
   // Soft local depth at building feet supplements the directional cast atlas.
   // One combined stroke avoids repeatedly darkening intersecting foundations.
   g.save();g.filter='blur(3px)';g.strokeStyle='#273449';g.globalAlpha=.22;g.lineWidth=.40*(sx+sy)/2;g.lineJoin='round';g.beginPath();
   for(const solid of spatial.solids){if(solid.visible===false||solid.base>.8||solid.height<1.4)continue;solid.footprint.forEach(([x,y],i)=>i?g.lineTo((x-b.minX)*sx,(y-b.minY)*sy):g.moveTo((x-b.minX)*sx,(y-b.minY)*sy));g.closePath()}g.stroke();g.restore();
+  }
   this.shadowPixels=g.getImageData(0,0,this.shadowSize,this.shadowSize).data;this.shadowBounds=b;
   const tex=new THREE.CanvasTexture(c);tex.flipY=false;tex.colorSpace=THREE.SRGBColorSpace;
   // A source-matched native bake uses the real caster triangles and each
@@ -232,7 +234,11 @@ class SpatialRenderer{
   }
   // Project the static atlas onto the authored walkable elevations. A flat
   // decal disappears beneath terraces and cannot ground their architecture.
-  const shadowPositions=[],shadowUVs=[],shadowVertex=(x,y,z)=>{shadowPositions.push(x,y,z);shadowUVs.push((x-b.minX)/(b.maxX-b.minX),(y-b.minY)/(b.maxY-b.minY))};
+  const shadowChunks=new Map(),shadowVertex=(x,y,z,key)=>{
+   if(!shadowChunks.has(key))shadowChunks.set(key,{position:[],uv:[]});
+   const chunk=shadowChunks.get(key);chunk.position.push(x,y,z);
+   chunk.uv.push((x-b.minX)/(b.maxX-b.minX),(y-b.minY)/(b.maxY-b.minY));
+  };
   // One receiver per occupied floor cell, at the highest authored contact.
   // Overlaid ground/road receivers caused depth fighting and doubled opacity
   // at street junctions after the larger-town material pass.
@@ -264,12 +270,15 @@ class SpatialRenderer{
   const contact=document.createElement('canvas');contact.width=contact.height=64;const cg=contact.getContext('2d'),gradient=cg.createRadialGradient(32,32,3,32,32,32);gradient.addColorStop(0,'rgba(255,255,255,1)');gradient.addColorStop(.45,'rgba(255,255,255,.65)');gradient.addColorStop(1,'rgba(255,255,255,0)');cg.fillStyle=gradient;cg.fillRect(0,0,64,64);this.contactTexture=new THREE.CanvasTexture(contact);
   for(let y=b.minY;y<b.maxY;y+=cell)for(let x=b.minX;x<b.maxX;x+=cell){
    if(!spatial.containsGround(x+cell/2,y+cell/2))continue;
-   for(const [dx,dy] of [[0,0],[cell,0],[cell,cell],[0,0],[cell,cell],[0,cell]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.015);
+   for(const [dx,dy] of [[0,0],[cell,0],[cell,cell],[0,0],[cell,cell],[0,cell]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.015,Math.floor(x/16)+","+Math.floor(y/16));
   }
-  const shadowGeo=new THREE.BufferGeometry();shadowGeo.setAttribute('position',new THREE.Float32BufferAttribute(shadowPositions,3));shadowGeo.setAttribute('uv',new THREE.Float32BufferAttribute(shadowUVs,2));shadowGeo.computeBoundingSphere();
-  // The inherited screen basis reflects winding. Receiver decals must follow
-  // the same double-sided policy as the authored geometry and picking floor.
-  const shadow=new THREE.Mesh(shadowGeo,new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true}));shadow.userData.cacheDynamic=true;this.scene.add(shadow);
+  // Keep the same half-meter contacts, atlas resolution, UVs and opacity;
+  // partition receivers so a capital does not submit every offscreen floor.
+  const shadowMaterial=new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true});
+  for(const [key,chunk] of shadowChunks){
+   const shadowGeo=new THREE.BufferGeometry();shadowGeo.setAttribute('position',new THREE.Float32BufferAttribute(chunk.position,3));shadowGeo.setAttribute('uv',new THREE.Float32BufferAttribute(chunk.uv,2));shadowGeo.computeBoundingSphere();
+   const shadow=new THREE.Mesh(shadowGeo,shadowMaterial);shadow.name='floor-shadow/'+key;shadow.userData.cacheDynamic=true;this.scene.add(shadow);
+  }
   this.dynamicNodes=this.scene.children.filter(o=>o.userData.cacheDynamic);
   this.staticNodes=this.scene.children.filter(o=>!o.userData.cacheDynamic);
   // Upright illustrated planes: a pixel of height is real vertical world

@@ -1,76 +1,75 @@
 # User requests and current status
 
-Updated 6 October 2026. The user resumed implementation toward the `RO3 Ref`
-standard and then identified patchy floor rendering in the plaza screenshot.
-The previous source72 stop was honored at that time; it no longer pauses work.
+Updated 6 October 2026. Continue on `codex/world-pipeline-v3-proof` until the
+RO3 baseline is met. The earlier source72 pause is historical. No PR, merge or
+deployment is requested; push verified checkpoints to the existing branch.
 
-## Current outcome
+## Current implementation
 
-Working branch: `codex/world-pipeline-v3-proof`. Source74 floor correction is pushed through `acd8fd3`; eleven native views
-confirm coherent public stone and exact rendering with view culling.
-Authority remains the saved Blender town and its matching JSON export.
+The active native source75 is one reorganized geometric regional capital, with
+172 homes (37 preserved assemblies, 135 detailed additions), 97 homes in inner
+neighborhoods, three new civic landmarks and the original Hall/fountain. Closely
+spaced paired street frontages and shared back courts address the user's latest
+request for real neighborhoods. Typical visible building gaps are .80 world units, compared
+with 3.84 world units in the first capital draft. District streets are 9 world units, the circuit 10 and cross streets 8; royal axes
+remain 14/12 world units. Continuous curbs wrap shared inhabited building blocks and define
+the edge of the walking paths. Eighteen local residents join the original ten;
+per-frame actor budgets are unchanged.
 
-The current native floor had two visible problems: coplanar rectangular backing
-under the enlarged plaza, and inconsistent paving on public forecourts. Source74
-removes 645.841m² of duplicate backing and fits public/private paving to closed
-zone boundaries. Public stone has continuous world UVs and a shared tint.
-Original art, full resolution, stairs, houses, plants, actors and gameplay stay
-intact. Overall acceptance remains open. The active scope is now expansion into the
-regional capital: original layout, Prontera-scale ambition, concept-art theme,
-and hard RO3 quality throughout the city and its water/cliff defenses.
+RO3 Ref remains the hard target for scale, density, exterior detail, materials,
+planting, curb ownership, warm lighting and overall visual quality. Prontera’s map now also informs block placement and street hierarchy, following
+the latest steering; Wayfarer keeps its own blueprint. The original
+concept supplies the theme. A house count, blueprint or geometry check is not
+visual acceptance.
 
-## Consolidated requirements
+Authority: `authoring/wayfarer-spatial.blend`, with its matching
+`world/v3/wayfarer-spatial.json`. Bounds are 256 × 288 with 54,848 square world units of contiguous
+land. Council Chambers, Grand Archive and Trade Exchange support the ceremonial
+Hall–fountain axis. The native shoreline has defended walls, cliff courses,
+waterline detail and bridge foundations. Original services, field destinations,
+actor artwork, gameplay pace, camera defaults and progression semantics remain.
+Source74's continuous public-floor correction is already pushed as `7b72b3f`.
 
-| ID | Requirement | Current work / verification | Remaining evidence |
+## Requirements and evidence
+
+| IDs | Requirement | Current implementation | Acceptance still required |
 | --- | --- | --- | --- |
-| R01 | Correct branch and continuation | Correct branch; work resumed and checkpoints pushed | Complete current review |
-| R02 | Fix blur; retain clear resolution | Native1280×800/1280×666 ratio 1; original artwork and1536² shadows | Final native screenshots |
-| R03 | Hard reference all ten RO3 images | Reference review covers architecture, scale, paving, planting, composition and shading | Complete matching district sweep; user Golden acceptance |
-| R04 | Detailed house exteriors and wings |37 houses preserve recessed windows, timber relief, steep roofs and wing details | Final frontage/residential inspection |
-| R05 | Aged textures and useful accessories | Original weathered materials and27 goods stations retained | Final accessory and contact-shade inspection |
-| R06 | Buildings own grounded private space | Closed zone edges, foundations and rectangular private paving; floor ownership check passes | Final entrance/lot images |
-| R07 | RO3 scale and density |37 houses and prior density increase preserved through enlarged plaza | Whole-town visual comparison |
-| R08 | RO3 fountain and square | Tiered water, four beds/benches; fountain centered at[54,52.75] | New lit plaza image |
-| R09 | Grass at buildings, roads and selected joints | Foundation clumps, curb margins and selected rooted joint grass retained | Final distribution/contact inspection |
-| R10 | Natural paving; road/lot distinction | Public irregular stone and private aged rectangles; continuous world UVs | Final floor images |
-| R11 | Remove random PNG-like floor pads | No restored image pads; duplicate plaza backing removed natively | Final overlap/seam review |
-| R12 | Sensible flowers/props and consistent quality |58 stranded flower groups rehomed into eleven owned clusters; all 798 parts verified | Final district sweep |
-| R13 | Visible quality curbs at building edges | Seven textured/bevelled meshes define 19 logical closed boundaries | Final edge legibility review |
-| R14 | Correct curb conflicts throughout town | Two curb/stair crossings repaired; expanded-town and boundary checks pass | Final native stair images |
-| R15 | Closed loops around coherent building zones |19 loops; no open ends, intersections or public-path overlap | Final block composition review |
-| R16 | Curved larger plaza and symmetric cross |538.194m² rounded court (+65.64%);8m symmetric approaches | Final lit plaza/axis images |
-| R17 | Better integrated trees and foliage |64 trees retained; two whole groups moved off stairs onto flat margins with .015m embed | Final root/foliage inspection |
-| R18 | Warm RO3 light and shade | Architecture/alpha foliage refreshed; source74 floor bake fresh at 1536², sun8/contact4 | Final lit reference comparison |
-| R19 | Continue until visual test passes | Current schemas/parity,96 Node checks and native floor checks pass | Final captures, browser services/cache and isolated performance; no overall visual pass yet |
-| R20 | Push each completed step | Three source73 implementation checkpoints pushed | Push current verified floor step and final evidence |
-| R21 | All requests and status report | Current report plus preserved historical report/transcript | Update with final current results |
-| R22 | Fix random floor from current screenshot |639 flat floors checked; coplanar backing removed; UV/zone ownership passes | Browser-only native capture retry |
+| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Existing branch and native source retained; reports maintained | Push verified current work |
+| R02 | Sharp native rendering | 1280 × 666 playfield at ratio1; no resolution reduction | Final native captures and physical-device check |
+| R03, R19 | All ten RO3 images are the hard baseline; continue to acceptance | Per-reference review criteria in capital evidence | Rendered visual sweep; overall acceptance remains open |
+| R04, R05 | Detailed, aged exteriors, wings and useful accessories | Original 37 assemblies preserved; 135 component-built additions share native facade kit/materials | Street and civic inspection |
+| R06, R13–R15 | Owned building areas, visible curbs, closed loops without conflicts | Shared private paving, 42 boundary loops across 40 owned blocks; native curb faces checked | Native sidewalk/entrance views |
+| R07 | RO3 scale and density | 172 homes; paired frontages; 97 inner homes; .80 world units typical gap | Ordinary neighborhood walking |
+| R08, R16 | Fountain, larger rounded square and symmetric approaches | Original tiered fountain at [128,144], rounded court and ceremonial cross | Lit plaza/axis views |
+| R09, R12, R17 | Grounded, purposeful grass/flowers/props/trees | Owned planting retained; 78 trees grounded and clear of streets/solids | Root, planting and accessory inspection |
+| R10, R11, R22 | Natural public stone, distinct private rectangles, no random floor pads | Continuous world-space public UVs; derived private blocks; zero public/private overlap | Floor seam inspection |
+| R18 | Warm RO3 casts and contact shade | Full architecture, original-alpha foliage and source-matched 4096² ground lighting complete | Native light/shadow comparison |
+| R23 | Expand the same town into a royal regional capital | Integrated formal blueprint, four gates, ceremonial axes and three substantial new civic buildings | Current playable views |
+| R24 | Water/cliff/wall/foundations match city quality efficiently | Native detailed shoreline; shared materials, spatial batches and culled shadow receivers | Perimeter inspection and unchanged performance gate |
 
-| R23 | Expand this city into the regional capital | Original capital plan and native expansion active; Prontera is a loose scale reference | Expanded districts, navigation, source/export and native views |
-| R24 | Same visual quality for water, cliffs, walls and foundations, with efficient rendering | Shared materials, native detail and spatial culling planned | Native edge views and resource measurements |
+## Current verification boundary
 
-## Current verification
+Saved native/export parity passes, including shared Hall transforms and bake
+invalidation. The independent source check preserves 280,145 original transformed
+vertices and 211,953 UV faces; public/private overlap is zero. All 78 tree roots
+are grounded and clear of solids/roads; gardens do not overlap roads. All 904 cliff
+faces point outward and 226 waterline faces upward. All 26 destinations and 28
+complete patrols are clear. The current suite passes 96 individual checks across six files; four public
+schemas pass.
 
-- All 96 individual Node checks pass.
-- Four public schemas pass on source74.
-- Saved Blender/export parity and shared Hall transform/bake invalidation pass.
-- Seventeen destinations and ten patrols pass without repairs.
-- Independent floor check verifies 639 surfaces and 35,359 UV corners; maximum
-  rounding coverage difference .000231m²; residual plaza backing .00000506m².
-- All architecture, plants, actors/services, stairs and unplanned floors preserved.
-- Floor bake uses original cutout alpha,1536², sun8/contact4; cache versions 81.
-- Native capture initially exceeded startup deadline during concurrent validation;
-  browser-only retry underway. No gameplay/visual/performance gates are weakened.
+Native street/civic/perimeter inspection, ordinary service/neighborhood walking,
+field/save reload, cache82 migration/offline reload and isolated sound-on
+performance are being completed. Historical 136-home captures and the 140-home
+gap patch are diagnostics, not current visual acceptance. The cloud machine has
+no physical GPU. Retain the existing native-resolution, FPS/frame-time and
+moving-frame gates and report its actual result. Warrior artwork acceptance
+remains separate and open.
 
-Ordinary services, field transition/save reload, cache migration/offline reload
-and isolated sound-on performance remain pending. Cloud SwiftShader does not
-certify physical-GPU performance or user Golden approval. Historical results
-remain available but are not reused as current acceptance.
-
-Evidence: [source74 floor](docs/review/wayfarer-v74/README.md),
-[source73 finishing](docs/review/wayfarer-v72/resumed/README.md),
-[current handoff](CURRENT_HANDOFF.md). Historical paused report:
-[record](docs/review/wayfarer-v72/PAUSED_REQUESTS_AND_STATUS.md).
+Evidence: [capital review](docs/review/wayfarer-capital-v75/README.md),
+[RO3 criteria](docs/review/wayfarer-capital-v75/ro3-review.md),
+[current handoff](CURRENT_HANDOFF.md),
+[source74 floor correction](docs/review/wayfarer-v74/README.md).
+Historical paused report: [record](docs/review/wayfarer-v72/PAUSED_REQUESTS_AND_STATUS.md).
 
 ## Complete request transcript in chronological order
 
@@ -157,3 +156,48 @@ The initial resolution question included the town screenshot supplied in this ch
 38. and water and cliff side detail like wall and under wall should be same quatily as the city but have some technic to reduce the resource use, because that zone player not care like city but the beautiful is to keep for not looking left out.
 
 39. also our standard is same RO3 ref is our ultimate goal hard ref
+
+40. Not like this, we should expand the old town and re organize them to be like real city
+
+41. it messy make it more geometric since it capital city of region it should feel royal and impactful
+
+42. and the city plan blue print too make it feel royal and respectful
+
+43. and add the big building to support that feel too.
+
+The active source75 blueprint supersedes the annex and organic layouts: one
+integrated geometric capital, ceremonial axis, formal gardens and three large
+civic buildings. All 37 existing houses are reorganized, with 135 new component-built houses. Native implementation is saved; final verification is in progress and RO3 remains the hard target.
+
+44. User allowed higher housing density with Prontera as a soft reference, while retaining the original concept theme; then requested continuing the work. The first native source75 draft had 136 houses: all 37 existing assemblies reorganized and 99 component-built additions. The ceremonial avenues and major civic forecourts remain open. Verification is in progress; RO3 remains the hard visual target.
+
+45. User found the city soulless and lonely in playable screenshots, then identified excessive building gaps. The active refinement concentrates homes along neighborhood streets, narrows secondary streets to 4–5 m, keeps ceremonial axes broad, and adds local resident routes. There are 140 homes (37 preserved originals, 103 additions); 51 new modules move, including 32 transferred from the perimeter. New density lighting and browser review are pending.
+
+46. User clarified that characters must walk through real neighborhoods, using Prontera/RO3 gameplay screenshots as the reference. The preceding narrow-street revision organizes continuous street-facing rows and shared back courts, with 172 homes and 118 homes in the inner neighborhoods. Median visible facade gaps were .80 world units.
+47. User requested small building gaps and curbs around residential/building areas to form the edge of walking paths. Shared owned-block paving and continuous curb boundaries replace individual island aprons inside neighborhoods.
+48. User reaffirmed RO3 Ref as a hard reference. It governs street scale, density, curb placement, materials and final visual quality; Prontera's map remains a soft scale reference and Wayfarer retains an original blueprint. Lighting and playable verification of this revision are pending.
+
+49. Continue the work until we meet the baseline. RO3 remains the hard target; continue actual rendered inspection and ordinary playable verification without treating structural checks as visual approval.
+
+50. Please look at ro1 prontera for the example of blueprint and building placement plan, as i can see right now the steets look so narrow and you have to recheck all ro3 ref or the scale, please hard ref it. All ten RO3 references were re-inspected. The current revision keeps 172 complete houses, uses 8–10-unit public streets, removes five redundant through lanes and reorganizes 163 whole assemblies. Close frontage gaps and shared back courts remain; actors and building models are not rescaled.
+
+Two owned inward-facing courts now give selected blocks their own purpose.
+Artisans’ Court turns three complete homes/shops toward a shared well, craft
+tables, noticeboard, benches and planting. Willow Court turns four frontages
+toward a gathering well and planted seating. Main public widths remain 8–10
+world units. Two existing local residents walk court routes; the total remains
+28 and per-frame actor budgets are unchanged. Both courts are ordinary reachable
+route destinations and are included in the service/neighborhood walking review.
+
+51. Can some area have like a area zone of their own like not face the street but face their own zone for some feature to be there. Initially implemented two owned courtyards with nine inward-facing complete models, shared features, side-passage entry and local resident routes; the later square revision leaves seven courtyard-facing models.
+
+The square now has ten complete nearby building frontages oriented toward the
+fountain plaza, with doors, awnings and accessories moving together. Three
+neighboring assemblies shift slightly to keep full visible gaps and street
+clearance. Two edge homes join the square frontage; Artisans’ Court keeps three
+inward-facing models and Willow Court keeps four. Trees and lamps are grounded
+clear of the revised buildings, and one existing local resident walks the
+square perimeter. Lighting and playable evidence are being refreshed again
+for this latest native geometry.
+
+52. Can you change the building near square plaza to be face with the plaza so it look more like a plaza center of life. Ten nearby complete frontages now face the fountain square, with three neighboring assemblies shifted to preserve clearance and an existing resident routed around the square. Both owned courts remain.

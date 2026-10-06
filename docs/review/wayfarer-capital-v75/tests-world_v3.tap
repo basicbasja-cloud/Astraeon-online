@@ -1,0 +1,28 @@
+✔ Warrior fall transition covers all eight reactions before the death fade (6.771733ms)
+✔ gate collision contains pillars, not overhead span or passage (10.045131ms)
+✔ authored route and entrances are reachable with actor clearance (52.84948ms)
+✔ one edited mesh moves visuals, collision, navigation and shadow together (12.313781ms)
+✔ roof/canopy are selective layers and remain independent shadow casters (3.403501ms)
+✔ shared schema rejects invalid/duplicate mesh identifiers and invalid indices (1.69343ms)
+✔ baked lighting must align with every face corner and contain bounded factors (8.157977ms)
+✔ walk simulation displacement, duty and foot metadata agree in all eight directions (36.454523ms)
+✔ run simulation displacement, duty and foot metadata agree in all eight directions (81.290765ms)
+✔ sprint simulation displacement, duty and foot metadata agree in all eight directions (58.32724ms)
+✔ three locomotion strategies have separate atlas geometry, stride and duty (4.80041ms)
+✔ simulation contact metadata cancels root travel at the gameplay projection and scale (0.473993ms)
+✔ start, stop, turn and strategy changes settle without teleports (1.086232ms)
+✔ default Golden import derives services, patrols, masks and polygons from the authored town (38.889128ms)
+✔ off-grid movement destinations remain reachable around an obstacle (63.872109ms)
+✔ stationary turns replant one foot while retaining the other support (3.802378ms)
+✔ spatial town routes, water boundaries, stairs and mesh-owned services agree (16024.603641ms)
+✔ stance feet retain their absolute planted elevation while climbing (1.990982ms)
+✔ town stair contacts meet the visible tread tops and the shrine entry (4457.669786ms)
+✔ native floor faces preserve a closed band hole outside the main land outline (1.790195ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20895.094097

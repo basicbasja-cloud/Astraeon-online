@@ -5,7 +5,7 @@ Screens and video are visual evidence to inspect, not automated art approval.
 import argparse,base64,json,math,time,os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--motion-series',action='store_true',help='Capture actual rendered actor crops throughout each ordinary gait sample');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion','spatial','market','reactions'],default='all');ap.add_argument('--modes',default='walk,run,sprint');ap.add_argument('--archetype',choices=['warrior','mage','ranger'],default='warrior');ap.add_argument('--service-names',help='Comma-separated existing service names for a focused ordinary-input retry');ap.add_argument('--startup-timeout-ms',type=int,default=120000,help='Browser startup deadline, independent of gameplay tolerances');args=ap.parse_args()
+ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011');ap.add_argument('--output',default='/tmp/astraeon-golden-rebuild');ap.add_argument('--video',action='store_true');ap.add_argument('--motion-series',action='store_true',help='Capture actual rendered actor crops throughout each ordinary gait sample');ap.add_argument('--capture-scale',type=float,default=0,help='Optional still-image device pixel ratio; motion/performance retain runtime policy');ap.add_argument('--phase',choices=['all','districts','services','motion','spatial','market','reactions'],default='all');ap.add_argument('--modes',default='walk,run,sprint');ap.add_argument('--archetype',choices=['warrior','mage','ranger'],default='warrior');ap.add_argument('--service-names',help='Comma-separated existing service names for a focused ordinary-input retry');ap.add_argument('--startup-timeout-ms',type=int,default=120000,help='Browser startup deadline, independent of gameplay tolerances');ap.add_argument('--travel-mode',choices=['run','sprint'],default='run',help='Ordinary Shift input for long service/district journeys; game speed is unchanged');ap.add_argument('--neighborhoods',action='store_true',help='Include real walking through both sides of capital neighborhood streets during service verification');args=ap.parse_args()
 out=Path(args.output);out.mkdir(parents=True,exist_ok=True);errors=[];resources=[];evidence=[]
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=os.environ.get('ASTRAEON_BROWSER','/usr/bin/chromium'),headless=True,args=['--no-sandbox','--enable-gpu']+(['--use-angle=d3d11'] if os.name=='nt' else ['--use-angle=swiftshader','--enable-unsafe-swiftshader']))
@@ -21,7 +21,7 @@ with sync_playwright() as p:
   r=page.locator('#world').bounding_box();q=page.evaluate('([x,y,lift])=>AstraeonSpatialView.worldToScreen(x,y,AstraeonContent.nativeWorld.spatial.elevationAt(x,y)+lift/35)',[x,y,lift]);return (r['x']+q['x'],r['y']+q['y'])
  def click(x,y,lift=0):page.mouse.click(*point(x,y,lift))
  def elapsed(seconds):page.wait_for_function('(v)=>AstraeonQA.snapshot().time>=v',arg=snap()['time']+seconds,timeout=30000)
- def walk(x,y):
+ def walk_route(x,y):
   start=snap()['player']['position']
   if math.hypot(x-start['x'],y-start['y'])<=.4:elapsed(.2);return
   initial_route=page.evaluate('(g)=>AstraeonContent.nativeWorld.spatial.route(AstraeonQA.snapshot().player.position,{x:g[0],y:g[1]})',[x,y])
@@ -66,6 +66,11 @@ with sync_playwright() as p:
    except Exception:pass
    if page.locator('#modal').is_visible():page.keyboard.press('Escape')
   elapsed(.2)
+ def walk(x,y):
+  if args.travel_mode=='sprint':page.keyboard.down('Shift')
+  try:walk_route(x,y)
+  finally:
+   if args.travel_mode=='sprint':page.keyboard.up('Shift')
  def capture(name,responsive=True):
   for w,h in ([(1280,800),(390,844),(844,390),(768,1024)] if responsive else [(1280,800)]):
    page.set_viewport_size({'width':w,'height':h});elapsed(.16)
@@ -95,7 +100,23 @@ with sync_playwright() as p:
   service_names=['Guild Registrar','Quest Board','Merchant','Artisan','Housing Keeper','Gatekeeper',"The Seafarer's Host",'Luna Attendant']
   requested=args.service_names.split(',') if args.service_names else service_names
   assert set(requested)<=set(service_names),('unknown services',requested)
-  for name in requested:
+  pending=[{'service':name} for name in requested]
+  if args.neighborhoods:
+   assert 'capital' in snap()['town']['layout']
+   pending += [{'neighborhood':name,'position':xy} for name,xy in [('south-commons-north',[80,192]),('south-commons-middle',[80,201]),('south-commons-south',[80,208]),('willow-north',[176,192]),('willow-middle',[176,201]),('willow-south',[176,208]),('artisan-court',[104.8,165.2]),('willow-court',[154.5,200]),('plaza-north-frontages',[128,132]),('plaza-life-south',[128,150])]]
+  while pending:
+   if args.neighborhoods:
+    current=snap();player=current['player']['position'];npcpositions={n['name']:n['transform']['position'] for n in current['npcs']}
+    def distance_to(case):
+     goal=case.get('position')
+     if goal is None:
+      n=npcpositions[case['service']];goal=[n['x'],n['y']]
+     return math.hypot(goal[0]-player['x'],goal[1]-player['y'])
+    case=min(pending,key=distance_to);pending.remove(case)
+   else:case=pending.pop(0)
+   if 'neighborhood' in case:
+    walk(*case['position']);capture(case['neighborhood'],False);evidence.append({'neighborhood':case['neighborhood'],'player':snap()['player']});checkpoint();print('NEIGHBORHOOD',case['neighborhood'],flush=True);continue
+   name=case['service']
    npc=next(n for n in snap()['npcs'] if n['name']==name)['transform']['position']
    approach=page.evaluate('''n=>{const w=AstraeonContent.nativeWorld.spatial,start=AstraeonQA.snapshot().player.position;return w.navCells.filter(p=>p.walkable&&Math.hypot(p.x-n.x,p.y-n.y)>2.3&&Math.hypot(p.x-n.x,p.y-n.y)<3.2).sort((a,b)=>Math.hypot(a.x-n.x,a.y-n.y-2.8)-Math.hypot(b.x-n.x,b.y-n.y-2.8)).find(p=>w.route(start,p))}''',npc);assert approach,('no service approach',name)
    walk(approach['x'],approach['y'])
@@ -198,6 +219,6 @@ with sync_playwright() as p:
  exit=next(e for e in snap()['town']['transitions'] if e['to']==2);click(exit['x'],exit['y'],17);page.wait_for_function('AstraeonQA.snapshot().save.zone===2',timeout=20000);capture('field-threshold')
  saved=snap()['save'];page.reload(wait_until='networkidle');page.wait_for_selector('#world');assert snap()['save']['name']==saved['name'] and snap()['save']['zone']==2
  # Live review telemetry, not physical-device certification.
- report={'status':'complete','layout':snap()['town']['layout'],'evidence':evidence,'fieldTransition':True,'savedCharacterReload':True,'renderResolution':size,'runtime_errors':errors,'resource_errors':resources}
+ report={'status':'complete','travelMode':args.travel_mode,'neighborhoods':args.neighborhoods,'layout':snap()['town']['layout'],'evidence':evidence,'fieldTransition':True,'savedCharacterReload':True,'renderResolution':size,'runtime_errors':errors,'resource_errors':resources}
  (out/'report.json').write_text(json.dumps(report,indent=2));context.close();b.close();assert not errors and not resources,report
  print('REVIEW ARTIFACTS',out,flush=True)

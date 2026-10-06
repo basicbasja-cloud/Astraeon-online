@@ -42,7 +42,7 @@ test('stationary turns replant one foot while retaining the other support',()=>{
 test('spatial town routes, water boundaries, stairs and mesh-owned services agree',()=>{
  require('../world-content.js');require('../world/v3/town-import.js');const data=require('../world/v3/wayfarer-spatial.json'),content=window.AstraeonTownImportV3.content(data,window.AstraeonContent),w=content.nativeWorld.spatial;
  let start={x:data.spawn[0],y:data.spawn[1]};for(const stop of data.route){const goal={x:stop.position[0],y:stop.position[1]},path=w.route(start,goal);assert(path,stop.name);for(const point of path)assert(!w.blocked(point.x,point.y));start=goal}
- assert(w.blocked(2,25),'Water must not be walkable');const arrival=data.route.find(p=>p.name==='Arrival').position,avenue=data.route.find(p=>p.name==='South avenue').position;
+ assert(w.blocked(2,25),'Water must not be walkable');const arrival=data.route.find(p=>p.name==='Arrival').position,avenue=data.route.find(p=>p.name=== (data.layoutId==='wayfarer-regional-capital-v75'?'Gate avenue':'South avenue')).position;
  assert(window.AstraeonNavigation.clear({x:arrival[0],y:arrival[1]},{x:avenue[0],y:avenue[1]},w.blocked),'Gate passage must remain open');
  const hall=data.objects.find(o=>o.id==='guild-hall').portals[0];assert(Math.abs(w.elevationAt(...hall.approach)-hall.approach[2])<.001,'Hall terrace contacts must match the authored entrance');
  assert.equal(content.services.length,8);const board=content.services.find(s=>s.kind==='journal');assert.equal(board.objectId,'guild-board');for(const service of content.services)assert(!w.blocked(service.x,service.y),service.id);
@@ -64,7 +64,10 @@ test('town stair contacts meet the visible tread tops and the shrine entry',()=>
   }
  }
  const shrine=data.objects.find(o=>o.id==='moon-shrine'),entry=shrine.portals.find(p=>p.id==='moon-shrine-entrance'),door=shrine.parts.find(p=>p.id==='moon-shrine-door');
- assert(Math.abs(entry.anchor[0]-door.vertices.reduce((sum,v)=>sum+v[0],0)/door.vertices.length)<.00001,'main approach must face its actual door');
+ // Blender stores positions as float32; the larger capital coordinates have
+ // a wider ULP, followed by the export's five-decimal vertex rounding.
+ const coordinateTolerance=Math.max(.00001,Math.abs(entry.anchor[0])*2**-23)+.000005;
+ assert(Math.abs(entry.anchor[0]-door.vertices.reduce((sum,v)=>sum+v[0],0)/door.vertices.length)<coordinateTolerance,'main approach must face its actual door');
  assert(Math.abs(entry.anchor[2]-w.elevationAt(...entry.anchor))<.00001,'entry height must agree with its tread');
 });
 test('native floor faces preserve a closed band hole outside the main land outline',()=>{

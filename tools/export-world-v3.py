@@ -32,7 +32,7 @@ def export(scene):
    if uv(ground):terrain['uvs']=uv(ground)
    if ground.get('outline_vertex_indices'):terrain['walkablePolygon']=[vs[i][:2] for i in json.loads(ground['outline_vertex_indices'])]
    for o in collection.objects:
-    if o.type=='MESH' and o.get('surface_role'):
+    if o.type=='MESH' and o.get('surface_role') and not o.get('export_reference_only'):
      vs=vertices(o);points=[v[:2] for v in vs];surface={'id':o.name,'role':o['surface_role'],'polygon':points,'vertices':vs,'faces':[list(p.vertices) for p in o.data.polygons],'material':o.data.materials[0].name,'walkable':o.get('walkable',o['surface_role'] not in ('water',)),'visible':bool(o.get('render_visible',True))}
      if o.get('object_id'):surface['objectId']=o['object_id']
      if uv(o):surface['uvs']=uv(o)
@@ -42,6 +42,7 @@ def export(scene):
    continue
   parts=[];portals=[];lights=[];services=[];walkers=[];presentation=None
   for o in collection.objects:
+   if o.get('export_reference_only'):continue
    if o.type=='MESH':
     part={'id':o.name,'role':o['role'],'shadow':bool(o['shadow']),'material':o.data.materials[0].name,'vertices':vertices(o),'faces':[list(p.vertices) for p in o.data.polygons]}
     if o.get('render_visible') is not None:part['visible']=bool(o['render_visible'])

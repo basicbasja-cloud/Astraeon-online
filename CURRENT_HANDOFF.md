@@ -1,82 +1,120 @@
-# ASTRAEON — capital expansion active
+# ASTRAEON — regional capital source75
 
-The user resumed work on 6 October 2026 to meet the ten `RO3 Ref` images, then
-identified random floor patches in the current plaza capture. Work is authorized
-on `codex/world-pipeline-v3-proof`, in `/workspace/Astraeon-online`, with completed
-steps pushed to the existing remote. No PR, merge or deployment is requested.
+Updated 6 October 2026 (Asia/Bangkok). Work is authorized on
+`codex/world-pipeline-v3-proof`; complete and push the existing branch.
+No PR, merge or deployment is requested. The earlier source72 pause is historical.
 
-## Latest direction
+## Current direction and source
 
-Expand this same city into the regional capital. Prontera informs scale and
-district variety only; its blueprint must not be copied. The original concept
-art supplies the theme rather than a fixed layout. The user explicitly confirmed
-that RO3 remains the hard ultimate quality reference. Water, cliffs, walls and
-under-wall foundations must have matching visual quality, with bounded geometry,
-shared materials and view culling to reduce their resource cost. This is an
-expansion of Wayfarer, not production of a second city.
-
-## Current saved state
+Expand and reorganize the same Wayfarer town into one geometric regional capital.
+Prontera informs scale, block placement and street hierarchy; Wayfarer retains
+its own royal geometric blueprint. The latest steering rejects alley-width public streets.
+The original concept supplies the theme, and all ten `RO3 Ref` images remain the
+hard ultimate visual target. The user rejected both a separate old-town annex
+and the subsequent irregular street plan, then requested royal impact, formal
+geometry, substantial civic buildings and greater housing density.
 
 Authority: `authoring/wayfarer-spatial.blend`; matching export:
-`world/v3/wayfarer-spatial.json`. The layout ID remains
-`wayfarer-concept-terraced-town-v49`, bounds 112×128, 120 collections, 37 ordinary
-houses, 62 conifers and two broadleaf accents. Existing actor art, scale, pace,
-camera defaults, gameplay and saves are retained.
+`world/v3/wayfarer-spatial.json`. Active layout: `wayfarer-regional-capital-v75`,
+256 × 288 world bounds, 54,848 square world units contiguous city land, 278 exported objects,
+172 houses (37 original assemblies reorganized, 135 detailed component-built
+additions), 78 trees and three new civic landmarks. The original Hall heads the
+ceremonial axis; Council Chambers, Grand Archive and Trade Exchange support it.
+Warm timber/plaster/clay housing retains the concept theme; civic stone, blue
+roofs and gold establish the hierarchy. Four cardinal gates serve formal avenues.
+Both original field destinations and all eight services retain their identities.
+Actor art, gameplay pace, camera defaults and save semantics are unchanged.
 
-Source73 finishing repairs two curb/stair crossings, rehomes 58 flower groups
-into eleven house-owned clusters and grounds two complete trees on flat private
-margins with .015m root embed. Nineteen closed curb loops remain. Architecture,
-original-alpha foliage and original 1536² floor lighting were refreshed.
+The continuous floor correction is already pushed through `7b72b3f` (source74,
+cache81). The expanded city retains world-space public irregular stone and closed
+private rectangular paving, now clipped against actual streets, gardens and
+raised contacts. There are 423 planned floor meshes and 42 closed curb boundary loops, plus the retained stairs and newly authored entrance contacts.
+Native cliffs, waterline detail, defended walls and bridge foundations complete
+the enlarged shoreline. Archived legacy meshes are excluded from export and bakes.
 
-Source74 removes 645.841m² of duplicate backing underneath the actual plaza and
-four approaches. All 639 flat paving surfaces follow closed private zones, with
-continuous world-space irregular public stone and rectangular private paving.
-Stairs and fountain steps retain their geometry/materials. Native geometry is
-corrected directly; there are no runtime replacement pads. Floor shadows have
-been rebaked at 1536², eight sun/four contact samples with original cutout alpha.
-Page, loader and service-worker versions are 81.
+## Verification
 
-## Verification and remaining work
+Final export SHA256: `4faa2cb8c9cf3e84f9373adcaa35d61b092d3b47c8891a3be49ea746cd10ca75`.
 
-Current evidence: `docs/review/wayfarer-v74/` and
-`docs/review/wayfarer-v72/resumed/`. All 96 Node checks, four public schemas and
-saved Blender/export parity pass. Seventeen destinations and ten patrols pass.
-The independent floor check verifies coverage, heights, 35,359 UV corners and
-public/private ownership, preserving all architecture/plants/actors/services.
-The stale-bake line in parity.log follows its intentional test caster move;
-the unmodified saved source has a source-matched ground bake.
 
-Eleven native browser views pass exhaustive-versus-culled pixel comparison with
-zero differences and no page errors. Their inspected floor is continuous. Static
-spatial batches reduce submitted triangles by 59.06% in the measured movement
-view without lowering quality. The unchanged performance gate still fails on
-cloud SwiftShader (0.876 FPS, six frames); physical-GPU certification is open.
-Ordinary services, field/save reload and offline migration will be rechecked on
-the expanded capital. No overall Golden acceptance is claimed.
+Evidence: `docs/review/wayfarer-capital-v75/`.
+The independent assembly/floor check passes: 280,145 original transformed
+vertices and 211,953 UV faces preserved; zero public/private overlap; all 78 tree
+roots grounded with .015-world-unit embed and clear of nonvegetation solids/avenues;
+formal gardens do not overlap roads. All 904 cliff faces point outward and all
+226 native waterline faces point upward; their vertices/UVs are retained. The
+shared-block check finds 426 outward curb faces across 40 owned blocks. All
+26 destinations and 28 complete patrols are reachable/clear. The current suite has 96 passing individual checks across six files, and four
+public schemas pass.
 
-Keep the localhost8011 server alive (PID1277 in this session). Use one browser
-at a time. Capture at 1280×800 with 1280×666 scene, ratio 1, comparison zoom 160,
-yaw 25°, pitch 46°. Default camera stays 15° fov, 46° pitch, yaw 0, zoom 125.
+The user clarified that smaller gaps alone were insufficient: characters must
+walk through real neighborhoods matching the RO3 gameplay reference. The active
+plan has continuous street-facing rows, paired frontages and shared back courts.
+It reorganizes 163 complete movable modules into larger inhabited blocks,
+keeping all 172 homes from the preceding draft. There are 97 homes in the inner neighborhoods (49 before), with
+a median visible facade gap of .80 world units (3.84 world units before). All 37 original house
+assemblies retain their indexed shape and UVs. RO3 Ref is the hard target for
+street scale, density, curb placement, materials and overall visual quality.
+
+Continuous owned-block paving and curbs define the walking-street edges;
+individual island aprons are removed within the neighborhoods. Secondary roads
+are at least 8 world units, district streets 9 and the circuit 10, with
+ceremonial axes 14/12. Five redundant through lanes are removed. Eighteen local residents join
+the original ten; per-frame actor budgets are unchanged. Geometry and all patrol routes pass on the final export. Full architecture,
+original-alpha foliage and 4096² ground lighting have been rebaked after the
+plaza changes, and saved native/export parity passes. Native
+street/civic/perimeter views, ordinary service
+and neighborhood walking, offline/save migration and current performance still
+need to finish. Cache82 is an unpublished draft. Historical 136-home views are in
+`before-density/`; the intermediate 140-home captures are diagnostic only.
+
+Golden visual acceptance remains open. Cloud SwiftShader on two CPUs
+cannot certify physical-GPU performance. The source74 performance gate failed;
+the source75 result must be recorded without weakening the native-resolution,
+FPS/frame-time or moving-frame gates. Existing Warrior painted-leg, weapon and
+registration acceptance is also open and separate from this city pass.
 
 ## Safe continuation
 
-Do not rerun one-shot native author scripts on their completed versions. The
-source73 planting and source74 floor scripts are guarded. Offline Shapely 2.1.2
-is in `/tmp/astraeon-curb-geometry`; set `PYTHONPATH` for planners/checkers. It
-cannot be imported by Blender's different Python ABI; plan outside Blender,
-then apply with its native companion.
+Do not rerun the initial one-shot author or regenerate occupied lots. The reviewed
+`plan.json` is the current planning authority; `blueprint.png` is a planning map,
+not a gameplay capture. Edit that plan, derive native floor geometry with
+`prepare-wayfarer-capital-geometry-v75.py`, then use the guarded native refiners.
+`draw-wayfarer-capital-v75.py` redraws the existing reviewed lots. Rejected annex
+and organic plans are diagnostic history and never the active source.
 
-Floor verification: `tools/check-ro3-public-floor-v74.py --before` requires the
-pre74 export. Reproduce it with `git show 29a0411:world/v3/wayfarer-spatial.json`
-redirected to a temporary JSON file, then pass that path. The current session
-also has `/tmp/astraeon-floor73-before/wayfarer-spatial.json`.
-The committed plan and report remain in the source74 evidence directory.
+Offline Shapely 2.1.2 is at `/tmp/astraeon-curb-geometry`; set `PYTHONPATH` for
+planners/checkers. Its ABI differs from Blender's Python: prepare geometry outside
+Blender, then apply with the native companion. New decorative component joins
+retain original component vertex groups; collision cores stay separate.
 
-For fresh floor shadows, prepare original alpha via `prepare-shadow-alpha.py`,
-then set `ASTRAEON_SHADOW_ALPHA_CACHE` when running `bake-ground-shadows-v54.py`
-inside Blender. Repeat architecture/foliage bakes only after their geometry or
-lighting changes. Preserve sun, cutout alpha and original resolution/sample counts.
+After geometry changes, run architecture, foliage and ground lighting serially
+with Blender. Prepare original cutout alpha using `prepare-shadow-alpha.py`, then
+set `ASTRAEON_SHADOW_ALPHA_CACHE` for foliage and floor bakes. Optional
+`ASTRAEON_BAKE_COLLECTIONS` limits architecture receivers but still builds the BVH
+from every active architectural caster. Use a full bake when changed casts can
+affect neighboring receivers. Check saved native/export parity after baking.
 
-The inherited pause is [historical evidence](docs/review/wayfarer-v72/PAUSED_HANDOFF.md),
-not the current authorization. Previous Warrior leg/art acceptance remains open
-and is separate from this town pass.
+Use one browser at a time. Start the local server with output redirected to a file
+so an unread PTY cannot stall it. Review at 1280 × 800, scene 1280 × 666, ratio1,
+zoom160/yaw25°/pitch46°; preserve default gameplay camera settings. Capture
+fixtures are only for visual inspection; ordinary service/field verification uses
+real keyboard/click input. `golden_wayfarer.py --travel-mode sprint` holds normal
+Shift input during long journeys and does not alter simulation speed or tolerances.
+
+Two owned inward-facing courts now give selected blocks their own purpose.
+Artisans’ Court turns three complete homes/shops toward a shared well, craft
+tables, noticeboard, benches and planting. Willow Court turns four frontages
+toward a gathering well and planted seating. Main public widths remain 8–10
+world units. Two existing local residents walk court routes; the total remains
+28 and per-frame actor budgets are unchanged. Both courts are ordinary reachable
+route destinations and are included in the service/neighborhood walking review.
+
+The square now has ten complete nearby building frontages oriented toward the
+fountain plaza, with doors, awnings and accessories moving together. Three
+neighboring assemblies shift slightly to keep full visible gaps and street
+clearance. Two edge homes join the square frontage; Artisans’ Court keeps three
+inward-facing models and Willow Court keeps four. Trees and lamps are grounded
+clear of the revised buildings, and one existing local resident walks the
+square perimeter. Final lighting and saved native/export parity are complete. Playable evidence
+is being captured for this latest native geometry.

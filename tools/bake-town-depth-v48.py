@@ -3,7 +3,7 @@
 Uses Blender's documented BVHTree. Stored AO/sun factors ship as vertex colors;
 there is no new per-frame raycast or screen-space effect in gameplay.
 """
-import bpy,math,runpy,json,time,bmesh
+import bpy,math,runpy,json,time,bmesh,os
 from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 from pathlib import Path
@@ -23,7 +23,7 @@ meshes=[];occluders=[]
 for c in bpy.data.collections:
     if not c.get('family') or c['family'] in ('terrain','vegetation'):continue
     for o in c.objects:
-        if o.type!='MESH' or not o.get('render_visible',True):continue
+        if o.type!='MESH' or o.get('export_reference_only') or not o.get('render_visible',True):continue
         mat=o.data.materials[0].name.lower()
         if any(k in mat for k in ('leaf','foliage','flower','glass','cloth','silk','water')):continue
         meshes.append(o)
@@ -37,6 +37,8 @@ sun=Vector((-scene['sun_cast_x'],-scene['sun_cast_y'],1)).normalized()
 sample_count=int(scene.get('bake_ao_samples',8));ao_strength=float(scene.get('bake_ao_strength',.35));ao_radius=float(scene.get('bake_ao_radius',1.5))
 assert 1<=sample_count<=64 and 0<=ao_strength<=1 and 0<ao_radius<=10
 samples=[(math.sqrt((i+.5)/sample_count)*math.cos(i*2.399963),math.sqrt((i+.5)/sample_count)*math.sin(i*2.399963),math.sqrt(1-(i+.5)/sample_count)) for i in range(sample_count)]
+selected_collections=set(filter(None,os.environ.get('ASTRAEON_BAKE_COLLECTIONS','').split(',')))
+if selected_collections:meshes=[o for o in meshes if any(c.name in selected_collections for c in o.users_collection)]
 count=0;start=time.monotonic()
 for index,o in enumerate(meshes):
     data=o.data;old=data.color_attributes.get('BakedTownLight')

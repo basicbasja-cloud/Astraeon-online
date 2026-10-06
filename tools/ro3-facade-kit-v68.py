@@ -21,12 +21,13 @@ class FacadeKit:
         self.awning_rise = 0
 
 
-    def mesh(self, name, points, faces, mat, shadow=True):
+    def mesh(self, name, points, faces, mat, shadow=True, *, recalculate_normals=True):
         data = bpy.data.meshes.new(self.prefix + name)
         data.from_pydata(points, [], faces)
         bm = bmesh.new()
         bm.from_mesh(data)
-        bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+        if recalculate_normals:
+            bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
         bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4])
         bm.to_mesh(data)
         bm.free()

@@ -4,13 +4,13 @@ Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice 
 
 ## Current build
 
-Wayfarer source74 continues the saved Blender town against the ten supplied RO3 references. The town retains 37 detailed houses, a larger rounded fountain plaza, symmetric approaches and closed building-zone curbs. Current finishing work grounds two complete trees, rehomes 58 flower groups into owned margins, fixes curb/stair contacts, removes duplicate plaza floor backing and aligns continuous public stone with private rectangular lot paving. Architecture and original-alpha foliage lighting are refreshed; floor shadows are rebaked after floor edits at their original 1536² resolution. Source: `authoring/wayfarer-spatial.blend`; export: `world/v3/wayfarer-spatial.json`. Final browser review is in progress; Golden acceptance remains open.
+Wayfarer source75 expands the same town into one geometric regional capital: 172 houses (37 preserved assemblies reorganized, 135 new component-built homes), a ceremonial Hall–fountain–south-gate axis, Council Chambers, Grand Archive and Trade Exchange. Warm timber, plaster and clay roofs retain the concept theme; Prontera informs scale, block placement and street hierarchy, while the ten RO3 references remain the hard quality target. Defended cliff banks, waterline detail, bridge foundations and formal gardens complete the perimeter. Source: `authoring/wayfarer-spatial.blend`; export: `world/v3/wayfarer-spatial.json`. Final native lighting and export parity pass; browser verification is in progress. Golden acceptance remains open.
 
 The town camera uses a 15-degree vertical perspective lens, 46-degree downward pitch, yaw zero, zoom 125 and centered smooth follow. The lens/control reference comes from roBrowser; the shallower pitch is an ASTRAEON choice following user feedback. These are not independently verified Gravity client settings. The earlier concept framing remains available at `?camera=concept38`.
 
 Warrior retains the shipped eight-direction illustrated walk/run/sprint strips and contact-queued strategy transitions. Painted leg alternation, body/root registration, weapons and gait closure remain unaccepted; the diagnosis and held studies are in the current handoff. Mage and Ranger still reuse their existing walk atlases across movement modes. Full frames sample shared GPU textures, while action/fall composition retains Canvas. This town pass installs no replacement character art or cosmetics.
 
-See [the current floor correction](docs/review/wayfarer-v74/README.md), [the source73 finishing evidence](docs/review/wayfarer-v72/resumed/README.md), [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
+See [the capital evidence](docs/review/wayfarer-capital-v75/README.md), [the floor correction](docs/review/wayfarer-v74/README.md), [the source73 finishing evidence](docs/review/wayfarer-v72/resumed/README.md), [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
 
 ## Play
 
@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 81. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 82. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 ## Verification
 
@@ -39,12 +39,17 @@ python tools/run-node-checks.py
 python tools/validate-world-v3.py
 $env:ASTRAEON_BROWSER='C:\Program Files\Google\Chrome\Application\chrome.exe'
 python tests/ragnarok_camera.py --output camera-review
-python tests/golden_wayfarer.py --phase all --motion-series --output town-review
+python tests/golden_wayfarer.py --phase services --neighborhoods --travel-mode sprint --startup-timeout-ms 300000 --output town-review
 python tests/cache_resume.py --output cache-review
 python tests/movement_performance.py --output performance-review.json
 ```
 
 The browser tools require Python Playwright. Set `ASTRAEON_BROWSER` to a local Chrome/Chromium executable; Windows checks use D3D11 and Linux cloud checks use SwiftShader. Cloud software timings do not certify physical-device performance. The Node helper runs each file separately and reports all individual checks. Saved Blender/export parity is checked by `tools/check-blender-export-v3.py` inside Blender or through the documented bpy runner in the current handoff.
+
+Use the service/neighborhood phase above for the capital. The older `all`,
+`spatial`, `market` and `districts` itineraries contain source74 town coordinates;
+their captures are historical and need a capital itinerary before reuse. Motion
+artwork review remains a separate phase.
 
 Review uses ordinary gameplay input, read-only snapshots and actual screenshots. Fixed-position capture tools use disposable saves strictly for art comparison. Unit tests and exported geometry do not certify artwork quality, physical-device performance or Golden approval.
 

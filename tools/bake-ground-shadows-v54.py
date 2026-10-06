@@ -1,6 +1,6 @@
 """Bake native building casts and local floor contact depth from the saved city.
 
-Uses actual visible caster triangles, four nearby sun directions and
+Uses actual visible caster triangles, authored nearby sun directions and
 four short contact rays. Foliage rays sample the original cutout alpha rather
 than baking rectangular cards as solid tree canopies. It does not alter
 models, navigation, UVs or actor artwork. Repeat after any geometry/light edit.
@@ -112,9 +112,10 @@ for iy in range(size):
   pixels[((size-1-iy)*size+ix)*4+3]=opacity
   if opacity>.01:shadowed+=1
  if iy%128==0:print('GROUND BAKE',iy,'/',size,'seconds',round(time.monotonic()-start,1),flush=True)
-image=bpy.data.images.new('Wayfarer native ground shadows v54',width=size,height=size,alpha=True)
-image.pixels.foreach_set(pixels);image.file_format='PNG';image.filepath_raw=str(ROOT/'assets/wayfarer-ground-shadow-v54.png');image.save()
-metadata={'file':'assets/wayfarer-ground-shadow-v54.png','resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':len(directions),'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}
+bake_file='assets/wayfarer-ground-shadow-v'+str(scene.get('capital_version',54))+'.png'
+image=bpy.data.images.new('Wayfarer native ground shadows',width=size,height=size,alpha=True)
+image.pixels.foreach_set(pixels);image.file_format='PNG';image.filepath_raw=str(ROOT/bake_file);image.save()
+metadata={'file':bake_file,'resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':len(directions),'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}
 metadata.update(maxCutoutIntersections=max_cutout_steps,cutoutIntersectionLimit=cutout_step_limit)
 scene['ground_shadow_bake_json']=json.dumps(metadata,separators=(',',':'))
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'authoring/wayfarer-spatial.blend'),compress=True)
