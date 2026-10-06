@@ -1,0 +1,104 @@
+TAP version 13
+# Subtest: expanded town supports long trips between opposite districts and arrival
+ok 1 - expanded town supports long trips between opposite districts and arrival
+  ---
+  duration_ms: 215.94944
+  type: 'test'
+  ...
+# Subtest: nearby collision/elevation queries agree with exact full geometry scans
+not ok 2 - nearby collision/elevation queries agree with exact full geometry scans
+  ---
+  duration_ms: 73.142438
+  type: 'test'
+  location: '/workspace/Astraeon-online/tests/expanded_town.test.cjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    broad phase at 107.61000000000013,55.809999999999945
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/workspace/Astraeon-online/tests/expanded_town.test.cjs:18:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: full-width streets and individually owned frontage lots remain free of building intersections
+ok 3 - full-width streets and individually owned frontage lots remain free of building intersections
+  ---
+  duration_ms: 406.66913
+  type: 'test'
+  ...
+# Subtest: every ambient patrol segment, including its closing leg, clears exact scene geometry
+ok 4 - every ambient patrol segment, including its closing leg, clears exact scene geometry
+  ---
+  duration_ms: 8.063005
+  type: 'test'
+  ...
+# Subtest: raised civic precinct has physical boundaries and three usable tread flights
+not ok 5 - raised civic precinct has physical boundaries and three usable tread flights
+  ---
+  duration_ms: 13.588529
+  type: 'test'
+  location: '/workspace/Astraeon-online/tests/expanded_town.test.cjs:40:1'
+  failureType: 'testCodeFailure'
+  error: 'tread contact must rise by one step'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (/workspace/Astraeon-online/tests/expanded_town.test.cjs:45:126)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: visible river bank has no open seams above the waterline
+ok 6 - visible river bank has no open seams above the waterline
+  ---
+  duration_ms: 65.283062
+  type: 'test'
+  ...
+# Subtest: merchant court entrances climb their actual floor without crossing retaining solids
+not ok 7 - merchant court entrances climb their actual floor without crossing retaining solids
+  ---
+  duration_ms: 10.543114
+  type: 'test'
+  location: '/workspace/Astraeon-online/tests/expanded_town.test.cjs:67:1'
+  failureType: 'testCodeFailure'
+  error: 'market tread must rise by at most one step'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (/workspace/Astraeon-online/tests/expanded_town.test.cjs:75:4)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 4
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6679.465497

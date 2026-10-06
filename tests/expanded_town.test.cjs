@@ -11,7 +11,10 @@ test('expanded town supports long trips between opposite districts and arrival',
 });
 test('nearby collision/elevation queries agree with exact full geometry scans',()=>{
  const bounds=scene.terrain.bounds,r=scene.navigation.actorRadius;
- const onLand=(x,y)=>[scene.terrain.walkablePolygon,...scene.terrain.surfaces.filter(s=>s.walkable).map(s=>s.polygon)].some(p=>window.AstraeonSpatialV3.pointIn({x,y},p));
+ // Native faces preserve closed bands, holes and disconnected paving. A mesh's
+ // vertex list is not its outline; use an independent full scan of its faces.
+ const floors=scene.terrain.surfaces.filter(s=>s.walkable).flatMap(s=>s.vertices&&s.faces?s.faces.map(f=>f.map(i=>s.vertices[i].slice(0,2))):[s.polygon]);
+ const onLand=(x,y)=>[scene.terrain.walkablePolygon,...floors].some(p=>window.AstraeonSpatialV3.pointIn({x,y},p));
  for(let i=0;i<360;i++){
   const x=((i*31.13)%bounds.maxX),y=((i*17.73)%bounds.maxY);
   const exact=x<bounds.minX+r||x>bounds.maxX-r||y<bounds.minY+r||y>bounds.maxY-r||!onLand(x,y)||world.solids.some(p=>window.AstraeonSpatialV3.touches({x,y},p.footprint,r));
