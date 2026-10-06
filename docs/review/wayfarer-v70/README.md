@@ -1,8 +1,9 @@
-# RO3 town composition review — source70 / cache76
+# RO3 town composition review — source70 / cache77
 
 Branch `codex/world-pipeline-v3-proof`; source `authoring/wayfarer-spatial.blend`.
-The curb/paving/lighting step was pushed as `a445c16`. The town composition source
-and full native review continue in this checkpoint.
+The curb/paving/lighting step was pushed as `a445c16`. The town composition step was pushed as `dc73fc1`. Eight inherited civic-garden
+trees then received the same bough/shade treatment; the final full native and
+browser review verifies that last change.
 
 The ten supplied `RO3 Ref` images guide the whole town: public vs building-side
 stone, curb height/profile, facade relief, roof palette, scale/density, planted
@@ -17,7 +18,7 @@ artwork is packaged losslessly at its actual1254² dimensions, with editable mas
 - Warm sun [1.18,1.05,.79], neutral warm fill [1.04,1,.90], strength .65/fill .44,
   down-left review-camera casts and eight rays at angular radius .018 replace
   the cool blue tint. Native eave/foundation contact shading remains.
-- 54 rooted trees use eight tapered tiers of curved, textured boughs; two civic
+- 62 rooted trees use eight tapered tiers of curved, textured boughs; two civic
   broadleaf accents remain. Original trunks/collision/placement frames stay. Original-alpha ray baking supplies self-shade between branch tiers, with no new per-frame rays. The first pale-tree native trial was rejected and retained in `tree-light-trial/`.
   Six safe owned grass beds and42 broader verge strips stay outside through-roads,
   solids and service approaches. Six inherited grass strips retract within their
