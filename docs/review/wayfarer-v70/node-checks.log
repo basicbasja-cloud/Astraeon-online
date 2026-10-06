@@ -1,0 +1,143 @@
+✔ expanded town supports long trips between opposite districts and arrival (129.535566ms)
+✔ nearby collision/elevation queries agree with exact full geometry scans (182.175237ms)
+✔ full-width streets and individually owned frontage lots remain free of building intersections (323.301993ms)
+✔ every ambient patrol segment, including its closing leg, clears exact scene geometry (4.021014ms)
+✔ raised civic precinct has physical boundaries and three usable tread flights (3.158755ms)
+✔ visible river bank has no open seams above the waterline (45.640945ms)
+✔ merchant court entrances climb their actual floor without crossing retaining solids (7.305727ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 701.967516
+✔ legacy contact metadata swaps supports half a cycle later in eight directions (1.706089ms)
+✔ opaque architecture layers cover the source exactly once and carry independent depths (32.014343ms)
+✔ raw walk playback adds no root bob, lean or stretch (0.307713ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 72.0228
+✔ walk→run queues at a contact and conserves displacement at 30Hz (5.351015ms)
+✔ walk→sprint queues at a contact and conserves displacement at 30Hz (1.110101ms)
+✔ run→walk queues at a contact and conserves displacement at 30Hz (0.529618ms)
+✔ run→sprint queues at a contact and conserves displacement at 30Hz (0.234903ms)
+✔ sprint→walk queues at a contact and conserves displacement at 30Hz (0.303036ms)
+✔ sprint→run queues at a contact and conserves displacement at 30Hz (0.246752ms)
+✔ walk→run queues at a contact and conserves displacement at 60Hz (0.351029ms)
+✔ walk→sprint queues at a contact and conserves displacement at 60Hz (0.432782ms)
+✔ run→walk queues at a contact and conserves displacement at 60Hz (0.411059ms)
+✔ run→sprint queues at a contact and conserves displacement at 60Hz (0.424639ms)
+✔ sprint→walk queues at a contact and conserves displacement at 60Hz (0.267011ms)
+✔ sprint→run queues at a contact and conserves displacement at 60Hz (0.616278ms)
+✔ walk→run queues at a contact and conserves displacement at 120Hz (0.23213ms)
+✔ walk→sprint queues at a contact and conserves displacement at 120Hz (0.197558ms)
+✔ run→walk queues at a contact and conserves displacement at 120Hz (0.171908ms)
+✔ run→sprint queues at a contact and conserves displacement at 120Hz (0.128814ms)
+✔ sprint→walk queues at a contact and conserves displacement at 120Hz (0.17911ms)
+✔ sprint→run queues at a contact and conserves displacement at 120Hz (0.188233ms)
+✔ a cancelled request keeps the active gait; stationary requests apply on the next tick (0.395986ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31.916616
+✔ world heading 0° converges with bounded rotation and forward hit geometry (6.166052ms)
+✔ dodge/attack-independent aim 0° (0.739262ms)
+✔ world heading 17° converges with bounded rotation and forward hit geometry (3.484415ms)
+✔ dodge/attack-independent aim 17° (0.312841ms)
+✔ world heading 45° converges with bounded rotation and forward hit geometry (0.295064ms)
+✔ dodge/attack-independent aim 45° (0.197608ms)
+✔ world heading 90° converges with bounded rotation and forward hit geometry (1.617345ms)
+✔ dodge/attack-independent aim 90° (0.116766ms)
+✔ world heading 135° converges with bounded rotation and forward hit geometry (0.161753ms)
+✔ dodge/attack-independent aim 135° (0.240242ms)
+✔ world heading 180° converges with bounded rotation and forward hit geometry (0.223817ms)
+✔ dodge/attack-independent aim 180° (0.165679ms)
+✔ world heading 225° converges with bounded rotation and forward hit geometry (0.204888ms)
+✔ dodge/attack-independent aim 225° (0.122475ms)
+✔ world heading 247° converges with bounded rotation and forward hit geometry (0.173561ms)
+✔ dodge/attack-independent aim 247° (0.123997ms)
+✔ world heading 270° converges with bounded rotation and forward hit geometry (0.201343ms)
+✔ dodge/attack-independent aim 270° (0.140601ms)
+✔ world heading 315° converges with bounded rotation and forward hit geometry (0.174332ms)
+✔ dodge/attack-independent aim 315° (0.11318ms)
+✔ world heading 359° converges with bounded rotation and forward hit geometry (0.189996ms)
+✔ dodge/attack-independent aim 359° (34.294635ms)
+✔ camera-relative input preserves arbitrary angles, diagonal normalization and analog speed (0.904041ms)
+✔ stance feet remain planted in world space while the root moves (0.610489ms)
+✔ teleport resets contacts without inventing movement; elevation is separate (1.137542ms)
+✔ turning uses the shortest path across 359° / 0° (0.266101ms)
+✔ movement distance and gait are independent of update rate (0.819824ms)
+✔ projectile collision uses swept travel and respects facing (0.483057ms)
+✔ authored dungeon rooms unlock through contiguous traversable passages (4.449729ms)
+✔ boss sweep excludes the rear, charge lanes exclude safe flanks, and seals lock their target (0.381364ms)
+✔ swept hostile travel catches contact between frames and misses a dodge beside the lane (0.109154ms)
+✔ supply discoveries award once and remain claimed after save reload (0.241563ms)
+✔ legacy saves retain progression and class IDs while missing fields gain safe defaults (1.077512ms)
+✔ malformed save values cannot create invalid HUD indices, resources or coordinates (0.203897ms)
+✔ click navigation routes through authored passages without crossing walls or cutting corners (22.619741ms)
+✔ click navigation can approach a sealed gate within the interaction radius (2.633133ms)
+✔ player projectiles stop at walls before damaging a target behind them (0.266561ms)
+✔ projectile muzzle offset cannot skip a thin adjacent wall (0.168534ms)
+✔ Golden streets clear physical foundations across their authored width (175.972215ms)
+✔ painted attack motion anticipates contact and settles during recovery (0.862228ms)
+✔ responsive projection and inverse pair remain exact in all viewports (0.36561ms)
+✔ single-layer nodes preserve base identity, targeting and class-specific compatibility (0.801958ms)
+✔ node contact models distinguish burn ignition, frost, shocks, pull, Qi and plasma (0.295645ms)
+✔ Tempest pulses stay at the authored target and clear when a zone changes (0.248424ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 44
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 318.49322
+✔ all authored modes select eight distinct atlas rectangles, including rear views (4.044799ms)
+✔ malformed registration is rejected before it can crop another body or divide by zero (36.980079ms)
+✔ Mage and Ranger sample all eight rear atlas columns at distance-driven cadence (2.089435ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.994119
+✔ Warrior fall transition covers all eight reactions before the death fade (2.245661ms)
+✔ gate collision contains pillars, not overhead span or passage (4.118039ms)
+✔ authored route and entrances are reachable with actor clearance (3.920752ms)
+✔ one edited mesh moves visuals, collision, navigation and shadow together (4.819846ms)
+✔ roof/canopy are selective layers and remain independent shadow casters (33.789054ms)
+✔ shared schema rejects invalid/duplicate mesh identifiers and invalid indices (1.21562ms)
+✔ baked lighting must align with every face corner and contain bounded factors (3.954202ms)
+✔ walk simulation displacement, duty and foot metadata agree in all eight directions (21.133463ms)
+✔ run simulation displacement, duty and foot metadata agree in all eight directions (21.241696ms)
+✔ sprint simulation displacement, duty and foot metadata agree in all eight directions (13.213621ms)
+✔ three locomotion strategies have separate atlas geometry, stride and duty (0.474194ms)
+✔ simulation contact metadata cancels root travel at the gameplay projection and scale (0.35877ms)
+✔ start, stop, turn and strategy changes settle without teleports (0.772923ms)
+✔ default Golden import derives services, patrols, masks and polygons from the authored town (48.533816ms)
+✔ off-grid movement destinations remain reachable around an obstacle (14.995323ms)
+✔ stationary turns replant one foot while retaining the other support (1.227588ms)
+✔ spatial town routes, water boundaries, stairs and mesh-owned services agree (8528.498924ms)
+✔ stance feet retain their absolute planted elevation while climbing (1.126085ms)
+✔ town stair contacts meet the visible tread tops and the shrine entry (5999.727283ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14713.816931
