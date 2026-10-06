@@ -34,7 +34,7 @@ Source74's continuous public-floor correction is already pushed as `7b72b3f`.
 
 | IDs | Requirement | Current implementation | Acceptance still required |
 | --- | --- | --- | --- |
-| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Existing branch and native source retained; reports maintained | Push verified current work |
+| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Native city checkpoint `2466611` pushed to existing branch; reports maintained | Complete and push final browser evidence |
 | R02 | Sharp native rendering | 1280 × 666 playfield at ratio1; no resolution reduction | Final native captures and physical-device check |
 | R03, R19 | All ten RO3 images are the hard baseline; continue to acceptance | Per-reference review criteria in capital evidence | Rendered visual sweep; overall acceptance remains open |
 | R04, R05 | Detailed, aged exteriors, wings and useful accessories | Original 37 assemblies preserved; 135 component-built additions share native facade kit/materials | Street and civic inspection |
@@ -201,3 +201,11 @@ square perimeter. Lighting and playable evidence are being refreshed again
 for this latest native geometry.
 
 52. Can you change the building near square plaza to be face with the plaza so it look more like a plaza center of life. Ten nearby complete frontages now face the fountain square, with three neighboring assemblies shifted to preserve clearance and an existing resident routed around the square. Both owned courts remain.
+
+The actual-door audit found one retained infill home whose model front differed
+from its placement heading. Its whole assembly rotates clockwise to face the
+square and shifts .4 world units for roof clearance. Original indexed shape and
+UVs remain. `frontageOffset` records that model’s geometric front, and the source
+check verifies all ten actual door-plane directions. Final lighting and saved native/export parity pass. Browser
+evidence is being captured for this corrected source. The first checkpoint’s
+views are historical in `diagnostics/pre-entry-correction/`.

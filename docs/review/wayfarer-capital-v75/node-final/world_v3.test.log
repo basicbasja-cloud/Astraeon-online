@@ -2,121 +2,121 @@ TAP version 13
 # Subtest: Warrior fall transition covers all eight reactions before the death fade
 ok 1 - Warrior fall transition covers all eight reactions before the death fade
   ---
-  duration_ms: 3.172041
+  duration_ms: 6.300362
   type: 'test'
   ...
 # Subtest: gate collision contains pillars, not overhead span or passage
 ok 2 - gate collision contains pillars, not overhead span or passage
   ---
-  duration_ms: 5.996765
+  duration_ms: 6.897491
   type: 'test'
   ...
 # Subtest: authored route and entrances are reachable with actor clearance
 ok 3 - authored route and entrances are reachable with actor clearance
   ---
-  duration_ms: 6.607744
+  duration_ms: 11.519308
   type: 'test'
   ...
 # Subtest: one edited mesh moves visuals, collision, navigation and shadow together
 ok 4 - one edited mesh moves visuals, collision, navigation and shadow together
   ---
-  duration_ms: 6.538146
+  duration_ms: 9.744825
   type: 'test'
   ...
 # Subtest: roof/canopy are selective layers and remain independent shadow casters
 ok 5 - roof/canopy are selective layers and remain independent shadow casters
   ---
-  duration_ms: 2.564655
+  duration_ms: 3.541617
   type: 'test'
   ...
 # Subtest: shared schema rejects invalid/duplicate mesh identifiers and invalid indices
 ok 6 - shared schema rejects invalid/duplicate mesh identifiers and invalid indices
   ---
-  duration_ms: 1.4455
+  duration_ms: 2.292496
   type: 'test'
   ...
 # Subtest: baked lighting must align with every face corner and contain bounded factors
 ok 7 - baked lighting must align with every face corner and contain bounded factors
   ---
-  duration_ms: 10.76642
+  duration_ms: 5.615834
   type: 'test'
   ...
 # Subtest: walk simulation displacement, duty and foot metadata agree in all eight directions
 ok 8 - walk simulation displacement, duty and foot metadata agree in all eight directions
   ---
-  duration_ms: 28.773624
+  duration_ms: 35.830216
   type: 'test'
   ...
 # Subtest: run simulation displacement, duty and foot metadata agree in all eight directions
 ok 9 - run simulation displacement, duty and foot metadata agree in all eight directions
   ---
-  duration_ms: 32.63966
+  duration_ms: 43.256592
   type: 'test'
   ...
 # Subtest: sprint simulation displacement, duty and foot metadata agree in all eight directions
 ok 10 - sprint simulation displacement, duty and foot metadata agree in all eight directions
   ---
-  duration_ms: 50.895308
+  duration_ms: 31.409128
   type: 'test'
   ...
 # Subtest: three locomotion strategies have separate atlas geometry, stride and duty
 ok 11 - three locomotion strategies have separate atlas geometry, stride and duty
   ---
-  duration_ms: 1.034302
+  duration_ms: 0.896533
   type: 'test'
   ...
 # Subtest: simulation contact metadata cancels root travel at the gameplay projection and scale
 ok 12 - simulation contact metadata cancels root travel at the gameplay projection and scale
   ---
-  duration_ms: 0.584803
+  duration_ms: 0.702856
   type: 'test'
   ...
 # Subtest: start, stop, turn and strategy changes settle without teleports
 ok 13 - start, stop, turn and strategy changes settle without teleports
   ---
-  duration_ms: 2.175692
+  duration_ms: 2.182612
   type: 'test'
   ...
 # Subtest: default Golden import derives services, patrols, masks and polygons from the authored town
 ok 14 - default Golden import derives services, patrols, masks and polygons from the authored town
   ---
-  duration_ms: 35.146867
+  duration_ms: 32.147368
   type: 'test'
   ...
 # Subtest: off-grid movement destinations remain reachable around an obstacle
 ok 15 - off-grid movement destinations remain reachable around an obstacle
   ---
-  duration_ms: 55.963771
+  duration_ms: 38.36956
   type: 'test'
   ...
 # Subtest: stationary turns replant one foot while retaining the other support
 ok 16 - stationary turns replant one foot while retaining the other support
   ---
-  duration_ms: 2.313162
+  duration_ms: 2.122072
   type: 'test'
   ...
 # Subtest: spatial town routes, water boundaries, stairs and mesh-owned services agree
 ok 17 - spatial town routes, water boundaries, stairs and mesh-owned services agree
   ---
-  duration_ms: 8247.533257
+  duration_ms: 10429.135236
   type: 'test'
   ...
 # Subtest: stance feet retain their absolute planted elevation while climbing
 ok 18 - stance feet retain their absolute planted elevation while climbing
   ---
-  duration_ms: 2.227548
+  duration_ms: 4.445269
   type: 'test'
   ...
 # Subtest: town stair contacts meet the visible tread tops and the shrine entry
 ok 19 - town stair contacts meet the visible tread tops and the shrine entry
   ---
-  duration_ms: 2970.5211
+  duration_ms: 5602.309494
   type: 'test'
   ...
 # Subtest: native floor faces preserve a closed band hole outside the main land outline
 ok 20 - native floor faces preserve a closed band hole outside the main land outline
   ---
-  duration_ms: 6.495866
+  duration_ms: 2.21821
   type: 'test'
   ...
 1..20
@@ -127,4 +127,4 @@ ok 20 - native floor faces preserve a closed band hole outside the main land out
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 11525.552987
+# duration_ms 16301.900215

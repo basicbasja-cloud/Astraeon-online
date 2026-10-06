@@ -27,9 +27,11 @@ RO3 references remain the hard visual target.
 
 Authority is `authoring/wayfarer-spatial.blend`, with matching export
 `world/v3/wayfarer-spatial.json`. Export SHA256:
-`4faa2cb8c9cf3e84f9373adcaa35d61b092d3b47c8891a3be49ea746cd10ca75`.
+`a4933847937f633ef9a27751c9ca306f3684f1b41f24b42409e8e5d382397850`.
 `plan.json` and `native-plan.json` record the reviewed planning and native derived
 geometry. `blueprint.png` is a planning map, not a gameplay screenshot.
+
+Implementation checkpoint: [`2466611`](https://github.com/basicbasja-cloud/Astraeon-online/commit/246661150bc4f08108b6103677f56f46833e3907), pushed to `codex/world-pipeline-v3-proof`.
 
 ## Verification index
 
@@ -71,3 +73,11 @@ This cloud environment uses SwiftShader and has no physical GPU. Report its
 actual result without lowering resolution or weakening FPS/frame-time and
 moving-frame thresholds. Physical-device performance and overall Golden/RO3
 acceptance remain open; existing Warrior artwork acceptance is separate.
+
+The actual-door audit found one retained infill home whose model front differed
+from its placement heading. Its whole assembly rotates clockwise to face the
+square and shifts .4 world units for roof clearance. Original indexed shape and
+UVs remain. `frontageOffset` records that model’s geometric front, and the source
+check verifies all ten actual door-plane directions. Final lighting and saved native/export parity pass. Browser
+evidence is being captured for this corrected source. The first checkpoint’s
+views are historical in `diagnostics/pre-entry-correction/`.

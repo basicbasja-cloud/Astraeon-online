@@ -58,7 +58,19 @@ plaza_frontages=[]
 if p.get('plazaFrontageRefinement'):
  for name in p['plazaFrontageRefinement']['frontages']:
   lot=next(l for l in p['lots'] if l['id']==name);dx=128-lot['center'][0];dy=144-lot['center'][1]
-  assert -math.sin(lot['angle'])*dx+math.cos(lot['angle'])*dy>0,('frontage faces away from the square',name)
+  heading=lot['angle']+lot.get('frontageOffset',0)
+  assert -math.sin(heading)*dx+math.cos(heading)*dy>0,('frontage faces away from the square',name)
+  # The legacy infill's root heading did not describe its geometric door.
+  # Measure the thin horizontal axis of the actual leaf instead of trusting it.
+  door=next(a for a in objects[name]['parts'] if a['id'].endswith('-door-leaf'))
+  vs=door['vertices']
+  extent=[max(v[i] for v in vs)-min(v[i] for v in vs) for i in range(2)]
+  center=[sum(v[i] for v in vs)/len(vs) for i in range(2)]
+  axis=0 if extent[0]<extent[1] else 1
+  assert extent[axis]<extent[1-axis]/3,('door has no clear frontage plane',name)
+  normal=[0,0];normal[axis]=1 if center[axis]>lot['center'][axis] else -1
+  expected=[-math.sin(heading),math.cos(heading)]
+  assert sum(normal[i]*expected[i] for i in range(2))>.999,('actual door direction differs from planned plaza frontage',name,normal,expected)
   plaza_frontages.append(name)
 physical=[]
 for owner in s['objects']:
@@ -107,6 +119,6 @@ if p.get('neighborhoodRefinement'):
 report={'layout':s['layoutId'],'houses':len(house_ids),'existingHouses':37,'newHouses':p['newHouses'],'landmarks':len(p['landmarks']),'preservedAssemblyVertices':vertices,'preservedUVFaces':uvfaces,'maximumTransformError':max_error,'publicPrivateOverlapArea':overlap,'serviceIDsPreserved':len(services),'transitionIDsPreserved':len(portals),'treeCount':len(tree_checks),'treeRootAndSolidClearance':True,'gardenRoadOverlapArea':park_road_overlap,'outwardCliffFaces':cliff_faces,'upwardWaterlineFaces':foam_faces,'outwardOwnedCurbFaces':curb_faces,'sharedOwnedBlocks':len(p.get('ownedBlocks',[])),'pass':True}
 if street_scale:report['streetScale']=street_scale
 if court_checks:report['courtyards']=court_checks
-if plaza_frontages:report['plazaFacingFrontages']=plaza_frontages
+if plaza_frontages:report['plazaFacingFrontages']=plaza_frontages;report['actualPlazaDoorDirectionsVerified']=True
 report['sourceSHA256']=hashlib.sha256((ROOT/'world/v3/wayfarer-spatial.json').read_bytes()).hexdigest()
 (out/'assembly-and-floor-parity.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))

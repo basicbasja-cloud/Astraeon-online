@@ -162,7 +162,7 @@ artwork retains its67 filename. See `docs/review/wayfarer-v68/`.
 
 The current native layout `wayfarer-regional-capital-v75` has 256 × 288 world bounds, 54,848 square world units of contiguous city land, 172 houses, 78 trees and three new civic landmarks. All 37 original house assemblies retain their indexed geometry and UVs after rigid relocation. Existing services and both field destinations retain their identities. Native public/private paving is clipped against actual streets, gardens and retained raised contacts; public irregular stone uses continuous world UVs. Original gates are preserved as authoring references and replaced by wider native passages in the same service collections.
 
-Decorative components in newly built houses are joined by material, role and shadow policy while original component vertex groups remain available for editing. Collision cores stay separate. Runtime opaque batches use 32 m spatial cells; half-meter floor-shadow contacts share a material in 16 m receiver chunks. The 4096² native floor atlas maintains ground texel density at the larger extent, with original eight sun/four contact samples and cutout canopy alpha. These mechanisms bound submission work without changing actor art, gameplay speed or native drawing resolution.
+Decorative components in newly built houses are joined by material, role and shadow policy while original component vertex groups remain available for editing. Collision cores stay separate. Runtime opaque batches use 32-world-unit spatial cells; half-unit floor-shadow contacts share a material in 16-unit receiver chunks. The 4096² native floor atlas supports the larger extent, with original eight sun/four contact samples and cutout canopy alpha. These mechanisms bound submission work without changing actor art, gameplay speed or native drawing resolution.
 
 The neighborhood refinement organizes 172 homes into continuous street-facing rows and shared back courts. Whole native roof/awning envelopes constrain placement, with small side passages instead of large isolated plot gaps. Owned paving fills inhabited street-defined blocks; continuous closed curb boundaries mark street/sidewalk edges, including garden/court holes. Explicit outward curb winding avoids closed-mesh normal inference on open faces. Existing civic/service precincts and their raised contacts remain authoritative. Eighteen additional native residents use local street circuits; runtime per-frame actor budgets are unchanged.
 
@@ -174,3 +174,9 @@ with native shared wells, seating, planting and craft features. Court and square
 resident loops reuse existing actors. Derived floor contacts and complete rigid
 assembly transforms remain authoritative; world units are not claimed as
 recovered RO3 metre measurements.
+
+Retained models can have a geometric front that differs from their root heading.
+The square’s legacy infill records `frontageOffset` independently from its
+assembly rotation. The source checker measures the actual thin axis and outward
+side of every plaza door leaf, rather than treating placement metadata as proof
+of a facing entrance. Original parts, UVs and indexed faces remain rigidly moved.

@@ -34,7 +34,7 @@ for l in lots:
  else:
   w,dep=l['width'],l['depth'];poly=translate(rotate(box(-w/2,-dep/2,w/2,dep/2),l['angle']*180/math.pi,origin=(0,0)),xoff=l['center'][0],yoff=l['center'][1]);d.polygon([xy(v) for v in poly.exterior.coords],fill='#ba794f' if l['existing'] else '#c48f60',outline='#6e503b');
   # Frontage marker makes street-facing orientation inspectable.
-  x,y=l['center'];fx,fy=-math.sin(l['angle']),math.cos(l['angle']);d.line([xy((x,y)),xy((x+fx*dep*.65,y+fy*dep*.65))],fill='#f1d3a2',width=2)
+  x,y=l['center'];fx,fy=-math.sin(l['angle']+l.get('frontageOffset',0)),math.cos(l['angle']+l.get('frontageOffset',0));d.line([xy((x,y)),xy((x+fx*dep*.65,y+fy*dep*.65))],fill='#f1d3a2',width=2)
 # Ordered avenues and parterres give the plan a dignified ceremonial rhythm.
 for park in plan['parks']:
  if park.get('wallGarden'):continue

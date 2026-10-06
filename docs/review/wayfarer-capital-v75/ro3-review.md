@@ -48,38 +48,35 @@ buildings, planting, foundations and nearby people. A physical GPU is unavailabl
 in this cloud environment; its measured software-renderer result must be reported
 without relaxing performance gates. Warrior artwork acceptance remains separate.
 
-## Current rendered findings
+## Actual entrance correction
 
-The four current `native-streets/` images were inspected at their native
-1280 × 800 resolution against the residential/commercial references. Multiple
-closely spaced two-storey houses enclose each broad public road. Complete
-original shop models, awnings, window boxes, varied clay roof masses, chimneys
-and recessed timber openings supply frontage variation. Shared rectangular
-paving and continuous curbs bound the inhabited areas, while irregular public
-stone continues through the junctions without randomly overlapping floor pads.
-All four views include nearby residents. The eastern/right-hand views reveal
-simpler rear/side gables as well as richer fronts; these must not be mistaken
-for an assertion that every facade matches the final artistic target.
+The first rendered sweep found that `ro3-infill-approach-1` retained a west-facing
+door despite a south-facing placement heading. The complete retained assembly
+now rotates 90 degrees clockwise and shifts .4 world units west, with its
+indexed geometry, UVs and entrance contacts preserved. A `frontageOffset` records
+its legacy model’s geometric front independently from its assembly rotation.
+The independent check now verifies actual door planes for all ten square-facing
+frontages, as well as their intended headings and whole visible envelopes.
 
-The current wide Artisans’ Court scene was inspected at native 1920 × 666.
-Three frontages enclose its shared well, worktables, noticeboard, benches and
-planting. Its rectangular private paving connects through side passages to
-public stone; the fountain remains visible as the adjacent civic center.
-Changing the two edge homes to face the square retains the owned court’s
-remaining frontage and purpose. The wide camera is inspection evidence;
-ordinary default-camera walking is checked separately.
+The preceding checkpoint’s captures and review are retained in
+`diagnostics/pre-entry-correction/`; they are historical comparison evidence.
+Full architecture, original-alpha foliage and ground lighting are being refreshed
+after this correction. Fresh native views and ordinary walking will verify the
+corrected immutable source before the final report.
 
-Every inspected manifest records export SHA256
-`4faa2cb8c9cf3e84f9373adcaa35d61b092d3b47c8891a3be49ea746cd10ca75`.
-All four street views and Artisans’ Court have zero browser errors and zero
-pixel/channel difference between culled and exhaustive rendering. Street
-submission falls from roughly 1.424 million triangles to 78,098–127,076.
-This establishes culling fidelity for these views, not a full performance pass.
+## Corrected-source rendered findings
 
-Willow Court was inspected at native 1920 × 666. Varied complete houses
-enclose its well, seating and planter edges, with side passages connecting to
-the wider streets. Its foreground `capital-residential-071` fades through the
-existing character-occlusion behavior; the building remains present. Four
-nearby actors are recorded. Its culling comparison also has zero pixel/channel
-difference and no browser errors (175,609 submitted triangles versus
-1,431,917 exhaustive).
+The wide fountain-plaza scene was inspected at native 1920 × 666,
+zoom325/yaw25/pitch64.88. Private rectangular paving and closed curbs define
+the surrounding frontage blocks and Artisans’ Court, while irregular public
+stone runs continuously around the retained fountain. Nearby roofs, facades,
+planted edges and the visible market civic edge establish the broader capital
+context. The northern entry row is beyond this camera’s upper edge; the
+street-level north-frontage view and independent actual-door-plane check
+verify those entrances separately. Three nearby actors are recorded.
+
+This corrected capture records source SHA256
+`a4933847937f633ef9a27751c9ca306f3684f1b41f24b42409e8e5d382397850`,
+zero browser errors and zero culling pixel/channel difference, with 288,389
+submitted triangles versus 1,423,797 exhaustive. This is a wide inspection
+view, not a claim that default-camera square views show all ten facades.
