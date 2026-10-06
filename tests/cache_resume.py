@@ -14,6 +14,7 @@ from playwright.sync_api import sync_playwright
 parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:8011')
 parser.add_argument('--output', type=Path, default=Path('/tmp/astraeon-cache-resume'))
+parser.add_argument('--startup-timeout-ms', type=int, default=120000, help='Bounded online/offline startup deadline')
 args = parser.parse_args()
 args.output.mkdir(parents=True, exist_ok=True)
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,10 +39,10 @@ with sync_playwright() as p:
       const old=await caches.open(cache);
       await old.put('./boot.js?v='+version,new Response('stale boot'));
     }''', {'cache': previous_cache, 'version': previous_version})
-    page.goto(args.url.rstrip('/') + '/index.html?qa=1', wait_until='networkidle')
+    page.goto(args.url.rstrip('/') + '/index.html?qa=1', wait_until='networkidle', timeout=args.startup_timeout_ms)
     page.locator('#newname').fill('Cache Resume')
-    page.locator('#create').click()
-    page.wait_for_selector('#world')
+    page.locator('#create').click(timeout=args.startup_timeout_ms)
+    page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
     page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().time>1')
     page.evaluate('navigator.serviceWorker.ready')
     page.wait_for_function('navigator.serviceWorker.controller')
@@ -63,8 +64,8 @@ with sync_playwright() as p:
         assert any(url.endswith('/' + filename) for url in version['urls']), ('uncached town material', filename)
     before = page.evaluate('AstraeonQA.snapshot().save')
     context.set_offline(True)
-    page.reload(wait_until='networkidle')
-    page.wait_for_selector('#world')
+    page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
+    page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
     page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().time>1')
     after = page.evaluate('AstraeonQA.snapshot().save')
     for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment']:

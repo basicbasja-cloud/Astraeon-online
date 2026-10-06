@@ -1,90 +1,71 @@
-# User requests and status report
+# User requests and current status
 
-Recorded 6 October 2026 (Asia/Bangkok). Covers all task requests visible in this
-chat, including repeated push instructions and the latest stop/report requests.
-Implementation remains paused. This update documents the work; it does not resume
-geometry edits, bakes or visual testing.
+Updated 6 October 2026. The user resumed implementation toward the `RO3 Ref`
+standard and then identified patchy floor rendering in the plaza screenshot.
+The previous source72 stop was honored at that time; it no longer pauses work.
 
 ## Current outcome
 
-All implementation through source72 is committed and pushed as `deda35b` on
-`codex/world-pipeline-v3-proof`. Native source and JSON export are saved. The
-latest plaza/curb geometry and traversal checks pass, but the requested complete
-RO3 visual result is **not yet verified or accepted**. Lighting bakes are stale,
-cache remains78, and current native browser review is pending.
+Working branch: `codex/world-pipeline-v3-proof`. Source73 finishing steps are
+pushed through `29a0411`; source74 floor correction is saved and being reviewed.
+Authority remains the saved Blender town and its matching JSON export.
 
-Authority: `authoring/wayfarer-spatial.blend` and `world/v3/wayfarer-spatial.json`.
-Continuation instructions: [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md).
-Current evidence: [source72 review](docs/review/wayfarer-v72/README.md) and
-[machine-readable status](docs/review/wayfarer-v72/status.json).
-Historical source69/70/71 reports describe earlier snapshots, not current visual
-acceptance. An earlier screenshot pass missed curb-placement problems identified
-by the user and was superseded by those corrections.
+The current native floor had two visible problems: coplanar rectangular backing
+under the enlarged plaza, and inconsistent paving on public forecourts. Source74
+removes 645.841m² of duplicate backing and fits public/private paving to closed
+zone boundaries. Public stone has continuous world UVs and a shared tint.
+Original art, full resolution, stairs, houses, plants, actors and gameplay stay
+intact. Final browser review and acceptance remain in progress.
 
-## Consolidated requirements and status
+## Consolidated requirements
 
-“Implemented, review pending” means work is saved, not that it visually matches
-RO3. Numeric counts below describe authored work and checks; they do not establish
-reference fidelity. No overall completion percentage is claimed.
-
-| ID | Your requirement | Saved work and present status | What remains |
+| ID | Requirement | Current work / verification | Remaining evidence |
 | --- | --- | --- | --- |
-| R01 | Use `codex/world-pipeline-v3-proof`, prepare the workspace and continue the handoff. | Completed: correct branch/workspace, native save/export and handoff available. Development server8011 was kept alive at the last verified check. | Wait for an explicit continuation; implementation is paused. |
-| R02 | Investigate bad resolution and maintain clear visual quality. | Native1280×800 view with1280×666 scene at pixel ratio1 retained; no deliberate resolution downgrade. Historical original texture art is1024²/1254² and the ground atlas1536². | Current apparent sharpness has not been established by a source72 capture. The user's initial blur concern is not closed solely by keeping buffer dimensions. |
-| R03 | Hard reference all aspects of the town to `RO3 Ref`, including placement, color, architecture, scale and overall composition. | Implemented in successive native passes using the ten supplied reference images; original art/assets were authored. | Compare every final district view against those references; no source72 visual acceptance yet. |
-| R04 | Add detailed building exteriors and facades; eliminate flat houses and plain wings. | All37 ordinary houses retained; historical additions include666 total windows,436 facade band/diamond parts,124 shutters, wing windows/timber relief, weathered walls and base patina. Source72 preserves that detail while moving five whole house groups. | Inspect every frontage/wing at final scale, especially any house still reading as flat. Counts alone do not prove visual quality. |
-| R05 | Make house textures aged and rendered, with proper exterior accessories. | Saved wall/brick/limewash/patina textures, lanterns, upper flowers, drains and27 goods stations; shared prop material work covers metal, cloth, petals, rind and paper. | Final weathering, accessory placement and contact-shade review after fresh bakes. |
-| R06 | Buildings must own grounded space, brick edges, foundations and building-side paving rather than sit loosely on the floor. | Houses retain bevelled plinth courses/caps; native private aprons fit the revised blocks. Source72 replaces old lot rims with shared closed building-zone boundaries. | Final grounding and public/private transition review, including door/service approaches. |
-| R07 | Match RO3 building scale and density. | Earlier source68 recorded a13.1% density increase and one infill. Current37 ordinary houses retain dimensions; five are repositioned to fit the larger plaza without dropping house count. | Confirm current spatial density and scale visually against RO3 after the plaza enlargement. Historical density work is not a current acceptance result. |
-| R08 | Match the water fountain and its town-square setting to RO3. | Native tiered fountain retains celestial figure, water levels, four cascades, four formal beds and four benches. Whole group is centered at[54,52.75]; benches received sage color in earlier work. | Review fountain detail, water appearance, scale and court composition in the final lit scene. |
-| R09 | Grass at building and road edges should make the city lively; selected paving joints may have grass. | Source72 fits308 foundation strips/2464 clumps,160 actual-mortar tufts,20 new soft curb-margin strips and four civic green islands. | Inspect natural distribution, edge softness, texture cohesion and floor contact throughout town. Grass is understood from the user's clarification; “glass” in the original request meant grass. |
-| R10 | Walkways should have natural irregularity rather than perfect brick alignment or a dense hexagon repeat. | The earlier fine hexagon-like repeat was replaced. Public streets/court use larger irregular rounded stones; private building paving/stairs use aged rectangular stone. Actual-joint grass was refitted for source72. | Verify stone scale, variation, sharpness and the road-versus-lot distinction at final viewing distance. |
-| R11 | Remove the random PNG-like uneven pads and make wear blend smoothly. | All20 separate stone-image pads were removed in source69; integrated floor materials and native joint grass remain. Source72 does not restore those pads. | Check final floors for any remaining visual seams or stamped appearance. |
-| R12 | Every flower/prop must have a sensible place, with matching texture quality across the city. |27 ground flower groups follow nearby house owners and private curb margins; formal fountain beds and owned displays remain. Shared textures were added to formerly plain city materials. | Full visual sweep for isolated flowers, mismatched materials or accessories stranded by later layout edits. |
-| R13 | Curbs must be clearly visible, high quality and placed at the building-zone edge. | Seven final native curb meshes use textured stone, dark fascias,0.36m width,0.20m rise and0.035m bevel. Old conflicting independent courses/rims are hidden and nonwalkable. | Verify clear legibility, material quality and correct side of every road in screenshots. |
-| R14 | Fix curb conflicts in the plaza and all other areas. | Source72 independent native checker passes with no public-path overlap, curb/solid-volume overlap or curb intersection. Eighteen retaining-wall parts fit the widened Hall opening. | Final native visual review plus final saved-source parity check; automated geometry checks are narrower than whole-town visual acceptance. |
-| R15 | Curbs must form closed loops around coherent building areas; redesign the blueprint if necessary. | Blueprint redesigned: three shared district blocks plus four civic islands produce seven meshes and19 logical closed outline loops. Native boundary topology has zero open ends. Flush entrance crossings retain continuous boundaries. | Review whether every resulting block reads as a coherent building zone to the player. |
-| R16 | Make curved plaza curbs, a larger plaza and a beautiful symmetric road cross. | Rounded court28×19.5m with3m corner radius; footprint538.194m² versus324.915m² (+65.64%). All four approaches are8m wide with matching opposing lengths; fountain recentered. Civic planted islands are cut out of actual paving. | Final lit screenshots of the curve transitions, cross symmetry and usable open space. |
-| R17 | Improve trees, curb/grass/tree texture quality and integrate them with the town. |62 conifers use textured curved branch tiers; two broadleaf accents retained. Five full tree groups and owned beds move with the blueprint. All64 trunk contacts measured. | Visually inspect foliage/shade and two inherited contact outliers; moved roots preserve earlier offsets, which does not prove all roots are correct. |
-| R18 | Match RO3's warmer lighting and shading. | Warm sun[1.18,1.05,0.79], warm fill[1.04,1,0.90], strengths0.65/0.44 and soft cast/contact-shade settings retained. Source72 bake code now respects actual floor holes. | Source72 architecture, foliage and floor bakes have not run. Current floor atlas is stale; export uses geometric fallback. Final warm-light comparison remains open. |
-| R19 | Continue until the visual test passes. | Partial: current geometry/world/traversal checks pass. Earlier visual review was superseded by user corrections. | This requirement remains unfinished. Fresh bakes, native district captures, reference comparisons and corrections are required after the user resumes. |
-| R20 | Push each completed step and keep Git updated; stop, write a handoff and push all. | Completed for the paused snapshot: all implementation pushed as `deda35b`; remote matched and working tree was clean. Stop/handoff honored. This report is a subsequent documentation-only checkpoint. | Continue pushing each completed step after work resumes. |
-| R21 | Write all requests and a status report. | This document includes the consolidated requirements, evidence, unfinished work and the complete chronological request transcript below. | No implementation change is implied by this reporting request. |
+| R01 | Correct branch and continuation | Correct branch; work resumed and checkpoints pushed | Complete current review |
+| R02 | Fix blur; retain clear resolution | Native1280×800/1280×666 ratio 1; original artwork and1536² shadows | Final native screenshots |
+| R03 | Hard reference all ten RO3 images | Reference review covers architecture, scale, paving, planting, composition and shading | Complete matching district sweep; user Golden acceptance |
+| R04 | Detailed house exteriors and wings |37 houses preserve recessed windows, timber relief, steep roofs and wing details | Final frontage/residential inspection |
+| R05 | Aged textures and useful accessories | Original weathered materials and27 goods stations retained | Final accessory and contact-shade inspection |
+| R06 | Buildings own grounded private space | Closed zone edges, foundations and rectangular private paving; floor ownership check passes | Final entrance/lot images |
+| R07 | RO3 scale and density |37 houses and prior density increase preserved through enlarged plaza | Whole-town visual comparison |
+| R08 | RO3 fountain and square | Tiered water, four beds/benches; fountain centered at[54,52.75] | New lit plaza image |
+| R09 | Grass at buildings, roads and selected joints | Foundation clumps, curb margins and selected rooted joint grass retained | Final distribution/contact inspection |
+| R10 | Natural paving; road/lot distinction | Public irregular stone and private aged rectangles; continuous world UVs | Final floor images |
+| R11 | Remove random PNG-like floor pads | No restored image pads; duplicate plaza backing removed natively | Final overlap/seam review |
+| R12 | Sensible flowers/props and consistent quality |58 stranded flower groups rehomed into eleven owned clusters; all 798 parts verified | Final district sweep |
+| R13 | Visible quality curbs at building edges | Seven textured/bevelled meshes define 19 logical closed boundaries | Final edge legibility review |
+| R14 | Correct curb conflicts throughout town | Two curb/stair crossings repaired; expanded-town and boundary checks pass | Final native stair images |
+| R15 | Closed loops around coherent building zones |19 loops; no open ends, intersections or public-path overlap | Final block composition review |
+| R16 | Curved larger plaza and symmetric cross |538.194m² rounded court (+65.64%);8m symmetric approaches | Final lit plaza/axis images |
+| R17 | Better integrated trees and foliage |64 trees retained; two whole groups moved off stairs onto flat margins with .015m embed | Final root/foliage inspection |
+| R18 | Warm RO3 light and shade | Architecture/alpha foliage refreshed; source74 floor bake fresh at 1536², sun8/contact4 | Final lit reference comparison |
+| R19 | Continue until visual test passes | Current schemas/parity,96 Node checks and native floor checks pass | Final captures, browser services/cache and isolated performance; no overall visual pass yet |
+| R20 | Push each completed step | Three source73 implementation checkpoints pushed | Push current verified floor step and final evidence |
+| R21 | All requests and status report | Current report plus preserved historical report/transcript | Update with final current results |
+| R22 | Fix random floor from current screenshot |639 flat floors checked; coplanar backing removed; UV/zone ownership passes | Browser-only native capture retry |
 
-## Verification report for the paused source72 snapshot
+## Current verification
 
-| Check | Result | Evidence / limit |
-| --- | --- | --- |
-| Native save and JSON export | Completed | `patrol-author.log` confirms both after seven native route repairs. |
-| Closed boundaries / geometry conflicts | Passed | `boundary-check.json`:19 logical loops, zero open ends, zero public-path overlaps, zero curb/solid-volume overlaps, zero curb intersection area. |
-| World tests | Passed | `world-tests.log`:20 pass,0 fail, including actual floor-face containment and a closed-band hole fixture. |
-| Destination and patrol traversal | Passed | `traversal.json`:17 reachable destinations,10 clear patrols, no additional repairs required. |
-| Tree-floor contacts | Measured; visual review pending |64 contacts; five moved roots keep prior offsets within0.00001m. Inherited offsets at plaza-oak-east-root(-0.525m) and garden-v4-tree-7-trunk(-1.03826m) require inspection. |
-| Public schemas | Earlier source72 snapshot passed | Four passed earlier; final saved snapshot still needs a rerun. |
-| Blender/export parity | Pending | No final source72 parity check recorded. |
-| Architecture / foliage / floor lighting | Stale | Source71 atlas is historical; no source72 rebakes. |
-| Cache | Pending update and test | Remains78; stable source72 needs a coordinated bump and migration/offline checks. |
-| Native browser visual review | Pending | No final source72 district screenshots or accepted visual test. |
-| Ordinary services, field transition, save reload | Historical pass only | Merchant/Artisan/Housing Keeper checks passed on source70; rerun for source72. |
-| Performance | Current snapshot unverified | Prior isolated SwiftShader result failed; do not reuse it as a source72 measurement or physical-GPU result. |
-| User visual acceptance | Not obtained | No user Golden acceptance; source72 visual requirements remain open. |
+- All 96 individual Node checks pass.
+- Four public schemas pass on source74.
+- Saved Blender/export parity and shared Hall transform/bake invalidation pass.
+- Seventeen destinations and ten patrols pass without repairs.
+- Independent floor check verifies 639 surfaces and 35,359 UV corners; maximum
+  rounding coverage difference .000231m²; residual plaza backing .00000506m².
+- All architecture, plants, actors/services, stairs and unplanned floors preserved.
+- Floor bake uses original cutout alpha,1536², sun8/contact4; cache versions80.
+- Native capture initially exceeded startup deadline during concurrent validation;
+  browser-only retry underway. No gameplay/visual/performance gates are weakened.
 
-No new tests, geometry changes or bakes were performed to prepare this report.
+Ordinary services, field transition/save reload, cache migration/offline reload
+and isolated sound-on performance remain pending. Cloud SwiftShader does not
+certify physical-GPU performance or user Golden approval. Historical results
+remain available but are not reused as current acceptance.
 
-## Remaining work when you resume
-
-1. Check final schemas and saved Blender/export parity; inspect tree-contact outliers.
-2. Bake architecture, then foliage, then floor shadows, keeping original alpha and resolution.
-3. Update cache78→79 together and verify migration/offline reload.
-4. Capture all ten native district views and compare against all ten RO3 references.
-   Review facade depth, scale/density, house-owned space, street/lot distinction,
-   closed and curved curbs, fountain/cross composition, grass/flower ownership,
-   texture cohesion, trees and warm lighting. Correct failures and capture again.
-5. Verify ordinary services, field transition/save reload and isolated performance.
-6. Push each completed step. Claim a visual pass only with current evidence;
-   user acceptance and physical-GPU verification must be recorded separately.
-
-The commands and guarded native-authoring sequence are in `CURRENT_HANDOFF.md`.
+Evidence: [source74 floor](docs/review/wayfarer-v74/README.md),
+[source73 finishing](docs/review/wayfarer-v72/resumed/README.md),
+[current handoff](CURRENT_HANDOFF.md). Historical paused report:
+[record](docs/review/wayfarer-v72/PAUSED_REQUESTS_AND_STATUS.md).
 
 ## Complete request transcript in chronological order
 
@@ -158,3 +139,10 @@ The initial resolution question included the town screenshot supplied in this ch
 33. Please stop, all write a handoff and push all
 
 34. now write all my request, and status report
+
+
+34. read this and continue to work, I want it to meet the RO3 Ref standard .
+
+35. also you can use all tools and skills if needed to make it perfect.
+
+36. why the floor is random ? can we fix it ?

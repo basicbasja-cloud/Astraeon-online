@@ -9,8 +9,8 @@ from playwright.sync_api import sync_playwright
 ap=argparse.ArgumentParser();ap.add_argument('--url',default='http://127.0.0.1:8011/?qa=1');ap.add_argument('--output',type=Path,default=Path('docs/review/wayfarer-v48/performance.json'));ap.add_argument('--startup-timeout-ms',type=int,default=30000);args=ap.parse_args()
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=os.environ.get('ASTRAEON_BROWSER',r'C:\Program Files\Google\Chrome\Application\chrome.exe' if os.name=='nt' else '/usr/bin/chromium'),headless=True,args=['--no-sandbox','--enable-gpu']+(['--use-angle=d3d11'] if os.name=='nt' else ['--use-angle=swiftshader','--enable-unsafe-swiftshader']))
- page=b.new_page(viewport={'width':1280,'height':800});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
- started=time.monotonic();page.goto(args.url);page.locator('#newname').fill('Sound-on performance');page.locator('#create').click(timeout=args.startup_timeout_ms);page.wait_for_function('window.AstraeonQA?.performance',timeout=args.startup_timeout_ms);startup_ms=(time.monotonic()-started)*1000;page.wait_for_timeout(3000)
+ page=b.new_page(viewport={'width':1280,'height':800});page.set_default_timeout(args.startup_timeout_ms);errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
+ started=time.monotonic();page.goto(args.url,wait_until='domcontentloaded');page.locator('#newname').fill('Sound-on performance');page.locator('#create').click(timeout=args.startup_timeout_ms);page.wait_for_function('window.AstraeonQA?.performance',timeout=args.startup_timeout_ms);startup_ms=(time.monotonic()-started)*1000;page.wait_for_timeout(3000)
  page.evaluate('''()=>{window.costs=[];window.addEventListener('astraeon-frame',()=>{const q=AstraeonQA.performance();costs.push({intervalMs:q.intervalMs,updateMs:q.updateMs,drawMs:q.drawMs,occlusionMs:q.renderer.occlusionMs,renderMs:q.renderer.renderMs,assemblyMs:q.renderer.assemblyMs,actors:[...AstraeonSpatialView.actors].filter(([,a])=>a.mesh.visible&&a.motionSample).map(([id,a])=>({id,...structuredClone(a.motionSample)}))})})}''')
  page.keyboard.down('w');page.wait_for_timeout(6500);page.keyboard.up('w')
  samples=page.evaluate('costs');intervals=sorted(s['intervalMs'] for s in samples);previous={};actors={}
@@ -27,7 +27,7 @@ with sync_playwright() as p:
  slow_frames=[{'index':i,'intervalMs':s['intervalMs'],'updateMs':s['updateMs'],'drawMs':s['drawMs'],'previousUpdateMs':samples[i-1]['updateMs'] if i else None,'previousDrawMs':samples[i-1]['drawMs'] if i else None,'previousOcclusionMs':samples[i-1]['occlusionMs'] if i else None,'previousRenderMs':samples[i-1]['renderMs'] if i else None,'previousAssemblyMs':samples[i-1]['assemblyMs'] if i else None} for i,s in enumerate(samples) if s['intervalMs']>30]
  resolution=page.evaluate('({width:AstraeonSpatialView.canvas.width,height:AstraeonSpatialView.canvas.height,cssWidth:AstraeonSpatialView.width,cssHeight:AstraeonSpatialView.height,pixelRatio:AstraeonSpatialView.renderer.getPixelRatio()})')
  report={'sound':'on','fps':1000/(sum(intervals)/len(intervals)),'p95Ms':intervals[int(len(intervals)*.95)],'maxMs':max(intervals),'updateMs':sum(s['updateMs'] for s in samples)/len(samples),'drawMs':sum(s['drawMs'] for s in samples)/len(samples),'actors':actors,'slowFrames':slow_frames,'device':page.evaluate('AstraeonQA.performance().renderer.device'),'renderResolution':resolution,'errors':errors}
- report.update(startupMs=startup_ms,startupTimeoutMs=args.startup_timeout_ms,samples=len(samples))
+ report.update(startupMs=startup_ms,startupTimeoutMs=args.startup_timeout_ms,samples=len(samples),renderer=page.evaluate('AstraeonQA.performance().renderer'))
  args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report));b.close()
  assert not errors
  assert resolution['width']>=resolution['cssWidth'] and resolution['height']>=resolution['cssHeight'],resolution

@@ -34,3 +34,8 @@ The existing closed-band fixture checks the shared coverage query. Page, loader
 and service-worker cache versions are all 79. Final screenshots, browser cache/
 services and isolated performance remain pending.
 No visual acceptance, deployment or physical-GPU result is claimed.
+
+The user subsequently identified random rectangular plaza patches in the native
+image. The source73 captures are superseded diagnostic evidence. Source74 fixes
+coplanar plaza backing and public/private paving ownership; see
+[the floor correction](../../wayfarer-v74/README.md).

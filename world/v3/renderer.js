@@ -8,7 +8,7 @@ const V=window.AstraeonView;
 const palette={stone:'#aaa99b',stoneLight:'#e0cc9e',cream:'#d4c29d',plaster:'#ebd5af',slate:'#345e80',blue:'#305d7c',gold:'#c49a48',wood:'#67432d',timber:'#5c3924',oak:'#9c6b3d',leaf:'#4b713a',leafLight:'#709143',grass:'#84a564',paving:'#cec7b4',terracotta:'#b96d45',teal:'#447970',iron:'#465354',glass:'#496f78',clothBlue:'#4a83ad',clothOchre:'#e2b368',clothRose:'#bd7773',water:'#559ea8',flowers:'#d58b92',soil:'#aa9873'};
 Object.assign(palette,{civicIvory:'#e8daba',civicShadow:'#b8b9a8',civicSlate:'#254c72',civicSlateLight:'#36678d',civicGlass:'#345c73',civicGlassLight:'#75b6c5',civicGold:'#d9b35e',civicDoor:'#493021',streetIvory:'#dfcda5',streetSlate:'#345e80',streetOchre:'#c78f50',statueIvory:'#eee3c9',gardenGrass:'#82936a'});
 const materialCache=new Map();
-Object.assign(palette,{cityPaving:'#c9c2ac',avenuePaving:'#beb6a2'});
+Object.assign(palette,{cityPaving:'#c9c2ac'});
 Object.assign(palette,{bankStone:'#7d8785',bankStoneLight:'#a3a99b',wallStone:'#b8b1a0',wallCap:'#d8c9aa',roofMoss:'#3c6b60',roofClay:'#aa6240',roofBlue:'#345f80',foliageCutout:'#4e7b3d'});
 const atlasTextures=new Map(),atlasImages=new Map(),textureLoads=[];
 const occludingOwners={value:new THREE.Vector4(0,0,0,0)};

@@ -35,7 +35,7 @@ VIEWS = {
 }
 
 
-def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None):
+def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None, startup_timeout_ms=120000):
     output.mkdir(parents=True, exist_ok=True)
     records = []
     with sync_playwright() as playwright:
@@ -47,13 +47,14 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
         context = browser.new_context(viewport={'width': 1280, 'height': 800},
                                       device_scale_factor=1)
         first = context.new_page()
-        first.goto(url, wait_until='domcontentloaded', timeout=120000)
-        first.locator('#create').wait_for(timeout=120000)
+        first.set_default_timeout(startup_timeout_ms)
+        first.goto(url, wait_until='domcontentloaded', timeout=startup_timeout_ms)
+        first.locator('#create').wait_for(timeout=startup_timeout_ms)
         first.locator('#newname').fill('Golden Warrior')
-        first.locator('#create').click(timeout=120000)
+        first.locator('#create').click(timeout=startup_timeout_ms)
         first.wait_for_function(
             'document.getElementById("world") && window.AstraeonQA && '
-            'window.AstraeonQA.snapshot().renderer', timeout=120000)
+            'window.AstraeonQA.snapshot().renderer', timeout=startup_timeout_ms)
         template = first.evaluate('window.AstraeonQA.snapshot().save')
         first.close()
         for name in names:
@@ -64,16 +65,17 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
             if name=="hall-terrace":x,y=54,24
             if name=="hall-axis":x,y=54,42
             page = context.new_page()
+            page.set_default_timeout(startup_timeout_ms)
             errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.on('console', lambda message: errors.append(message.text) if message.type=='error' else None)
             state = {**template, 'x': x, 'y': y}
             page.add_init_script('localStorage.setItem("astraeon-iso-v1",'
                                  'JSON.stringify(' + json.dumps(state) + '))')
-            page.goto(url, wait_until='domcontentloaded', timeout=120000)
+            page.goto(url, wait_until='domcontentloaded', timeout=startup_timeout_ms)
             page.wait_for_function(
                 'document.getElementById("world") && window.AstraeonQA && '
-                'window.AstraeonQA.snapshot().renderer', timeout=120000)
+                'window.AstraeonQA.snapshot().renderer', timeout=startup_timeout_ms)
             page.wait_for_timeout(450)
             if zoom is not None:
                 rect=page.locator('#world').bounding_box();pointer_x=rect['x']+rect['width']/2;pointer_y=rect['y']+rect['height']/2
@@ -120,6 +122,8 @@ if __name__ == '__main__':
     parser.add_argument('--pitch',type=float,help='Optional ordinary Shift-right-drag; default gameplay pitch remains 46')
     parser.add_argument('--capture-scale', type=float,
                         help='Still-image pixel ratio, independent of the runtime performance policy')
+    parser.add_argument('--startup-timeout-ms', type=int, default=120000,
+                        help='Bounded browser startup deadline; capture quality is unchanged')
     args = parser.parse_args()
     names = args.views.split(',')
     if any(name not in VIEWS for name in names):
@@ -127,4 +131,4 @@ if __name__ == '__main__':
     if args.zoom is not None and not 65<=args.zoom<=325:parser.error('Zoom must be within classic RO limits, 65–325')
     if args.pitch is not None and not 10<=args.pitch<=89:parser.error('Pitch must be within gameplay limits, 10–89')
     if args.capture_scale is not None and not .5<=args.capture_scale<=3:parser.error('Capture scale must be within .5–3')
-    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale)
+    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale,args.startup_timeout_ms)
