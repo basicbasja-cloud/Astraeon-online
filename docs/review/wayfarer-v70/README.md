@@ -49,3 +49,8 @@ Final native visual decisions and browser results are recorded in `visual-test.j
 and `summary.json` after capture. Agent scope review is separate from user Golden
 acceptance. Software SwiftShader cannot establish physical-GPU performance or
 painted gait acceptance. The development server8011 stays alive.
+
+The user identified curb overlaps after the eight-view review. The earlier
+visual pass missed those placement conflicts. Source71 corrects the whole-town
+public path union and adjacent verges; see `../wayfarer-v71/`. Cache77 ordinary
+services, field transition and save reload passed before that correction.

@@ -1,26 +1,23 @@
-# ASTRAEON source70 / cache77 continuation checkpoint
+# ASTRAEON source71 / cache78 curb correction in progress
 
-Branch `codex/world-pipeline-v3-proof`, workspace `/workspace/Astraeon-online`.
-Curb/paving/warm-light step pushed as `a445c16`; town-detail step as `dc73fc1`.
-All eight inherited civic-garden trees now use the same tapered, textured boughs
-and original-alpha self-shade:62 evergreens total, two retained broadleaf accents.
-The saved Blender source, export and floor-shadow atlas are current.
+Workspace `/workspace/Astraeon-online`, branch `codex/world-pipeline-v3-proof`.
+Source70 steps pushed as `a445c16`, `dc73fc1`, `678b8d2`. Its ordinary Merchant,
+Artisan and Housing Keeper input, field transition and save reload pass.
+The user identified curb-placement conflicts after the source70 native review;
+that earlier visual pass missed them and is marked needs_correction.
 
-Final eight-view native visual review passes with zero runtime errors.
-Final ordinary services/save,
-cache77/offline and isolated sound-on performance checks follow the captures.
-Native geometry/contact/window/nav checks,95 Node checks, four schemas and
-Blender/export parity pass. The final62-tree delta also passes19 world tests.
-Town Golden accepted=false; physical-GPU performance and painted gait acceptance
-remain unverified. Evidence: `docs/review/wayfarer-v70/`.
-
-506 original solids, services, navigation, house envelopes and actors remain.
-629 curbs deliberately change floor height/width;6 foundation strips retract
-within their footprint and38 clumps follow the taller curb. Rejected stone-image
-pads remain absent. Native1× screenshots use1280×666 world buffers.
+Source71 clips native curbs against133 public path/court/stair footprints and
+neighboring curb courses:31 blocks trimmed,103 suppressed,526 active curbs.
+Six public-area verge strips suppressed; older verge floor-contact fits follow.
+Source and export saved, current1536² floor shadow rebaked, cache78 configured.
+Independent boundary/contact and source parity checks pass. Native plaza and
+avenue confirm the curb correction. Ten inherited ground-flower groups now
+need relocation from public paths to owned building edges, then final captures
+and browser checks. No user Golden or physical-GPU acceptance claimed.
+Evidence: `docs/review/wayfarer-v71/`; source70 evidence remains historical.
 
 Keep server8011 alive. Commit and push each completed step. No deploy, merge,
-PR or shutdown requested. Run architecture corner bake, then foliage alpha bake
-(`ASTRAEON_SHADOW_ALPHA_CACHE` from `tools/prepare-shadow-alpha.py`), then floor
-shadow bake after new caster geometry. Ground bakes must stay current. The
-parity test's RAM-only Hall movement intentionally emits a stale-bake warning.
+PR or shutdown requested. New caster geometry needs corner/foliage alpha bake
+then floor-shadow bake. Verge-only nonsolid/noncasting edits preserve the floor
+bake if its geometry digest remains current. The parity probe's RAM-only Hall
+shift intentionally emits a stale-bake warning; it is never saved.
