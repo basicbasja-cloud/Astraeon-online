@@ -1,4 +1,11 @@
-# ASTRAEON handoff — source72 paused at user request
+# ASTRAEON handoff — source72 continuation active
+
+The user resumed work on 6 October 2026 and requested the `RO3 Ref` standard.
+Current continuation evidence is in `docs/review/wayfarer-v72/resumed/`.
+Native stair/curb contacts, 58 stranded flower groups and two tree contacts have
+been repaired. All 96 Node checks and 17 destination/ten patrol checks pass.
+Fresh lighting bakes and final browser/visual review are next. The pause record
+below describes the inherited snapshot, not the current authorization or status.
 
 Updated 2026-10-06. The user requested: “Please stop, all write a handoff and push all”.
 Implementation has stopped. All current work is saved for continuation on
