@@ -1,0 +1,145 @@
+{
+  "sound": "on",
+  "fps": 0.8759507715666384,
+  "p95Ms": 1283.300000000003,
+  "maxMs": 1283.300000000003,
+  "updateMs": 11.100000000093132,
+  "drawMs": 19.899999999984477,
+  "actors": {
+    "walker/customer-1": {
+      "samples": 6,
+      "movingFrames": 0,
+      "frozenBodyFrames": 0,
+      "columns": [
+        0
+      ],
+      "clips": [
+        "mage"
+      ]
+    },
+    "service/gatekeeper": {
+      "samples": 6,
+      "movingFrames": 0,
+      "frozenBodyFrames": 0,
+      "columns": [
+        0
+      ],
+      "clips": [
+        "warrior"
+      ]
+    },
+    "player": {
+      "samples": 6,
+      "movingFrames": 5,
+      "frozenBodyFrames": 0,
+      "columns": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7
+      ],
+      "clips": [
+        "warrior-run-v5"
+      ]
+    }
+  },
+  "slowFrames": [
+    {
+      "index": 0,
+      "intervalMs": 1149.8999999999942,
+      "updateMs": 15,
+      "drawMs": 31.300000000279397,
+      "previousUpdateMs": null,
+      "previousDrawMs": null,
+      "previousOcclusionMs": null,
+      "previousRenderMs": null,
+      "previousAssemblyMs": null
+    },
+    {
+      "index": 1,
+      "intervalMs": 1000,
+      "updateMs": 11.200000000186265,
+      "drawMs": 20.299999999813735,
+      "previousUpdateMs": 15,
+      "previousDrawMs": 31.300000000279397,
+      "previousOcclusionMs": 6.599999999627471,
+      "previousRenderMs": 8.200000000186265,
+      "previousAssemblyMs": 10.399999999906868
+    },
+    {
+      "index": 2,
+      "intervalMs": 1016.6000000000058,
+      "updateMs": 10.5,
+      "drawMs": 15.399999999906868,
+      "previousUpdateMs": 11.200000000186265,
+      "previousDrawMs": 20.299999999813735,
+      "previousOcclusionMs": 4.399999999906868,
+      "previousRenderMs": 3.7999999998137355,
+      "previousAssemblyMs": 8.600000000093132
+    },
+    {
+      "index": 3,
+      "intervalMs": 1266.699999999997,
+      "updateMs": 7.600000000093132,
+      "drawMs": 14.600000000093132,
+      "previousUpdateMs": 10.5,
+      "previousDrawMs": 15.399999999906868,
+      "previousOcclusionMs": 1.1000000000931323,
+      "previousRenderMs": 3.8999999999068677,
+      "previousAssemblyMs": 8.000000000465661
+    },
+    {
+      "index": 4,
+      "intervalMs": 1133.199999999997,
+      "updateMs": 12.800000000279397,
+      "drawMs": 18.899999999906868,
+      "previousUpdateMs": 7.600000000093132,
+      "previousDrawMs": 14.600000000093132,
+      "previousOcclusionMs": 0.7000000001862645,
+      "previousRenderMs": 5.899999999906868,
+      "previousAssemblyMs": 6.199999999720603
+    },
+    {
+      "index": 5,
+      "intervalMs": 1283.300000000003,
+      "updateMs": 9.5,
+      "drawMs": 18.899999999906868,
+      "previousUpdateMs": 12.800000000279397,
+      "previousDrawMs": 18.899999999906868,
+      "previousOcclusionMs": 0.6000000000931323,
+      "previousRenderMs": 9.600000000093132,
+      "previousAssemblyMs": 5
+    }
+  ],
+  "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "renderResolution": {
+    "width": 1280,
+    "height": 666,
+    "cssWidth": 1280,
+    "cssHeight": 666,
+    "pixelRatio": 1
+  },
+  "errors": [],
+  "startupMs": 73019.74390299983,
+  "startupTimeoutMs": 240000,
+  "samples": 6,
+  "renderer": {
+    "backend": "three-webgl",
+    "frames": 10,
+    "frameMs": 57.13724682264745,
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "software": true,
+    "pixelRatio": 1,
+    "fadedBuildings": [],
+    "occlusionMs": 0.6000000000931323,
+    "renderMs": 5.699999999720603,
+    "assemblyMs": 10.700000000186265,
+    "totalMs": 17.399999999906868,
+    "calls": 169,
+    "triangles": 230526,
+    "textures": 45,
+    "staticDepthCache": false
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "scenario": "Ordinary W input for 6500ms; sound on; default gameplay camera; isolated browser",
+  "limits": {
+    "fpsGreaterThan": 55,
+    "p95MsLessThan": 25,
+    "maxMsLessThan": 80,
+    "playerMovingPairsGreaterThan": 100,
+    "frozenPairs": 0
+  },
+  "baseline": {
+    "fps": 0.7556979626382917,
+    "p95Ms": 1500,
+    "maxMs": 1500,
+    "samples": 5,
+    "startupMs": 71472.97303100003,
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "cssWidth": 1280,
+      "cssHeight": 666,
+      "pixelRatio": 1
+    }
+  },
+  "candidate": {
+    "fps": 0.8759507715666384,
+    "p95Ms": 1283.300000000003,
+    "maxMs": 1283.300000000003,
+    "samples": 6,
+    "startupMs": 73019.74390299983,
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "cssWidth": 1280,
+      "cssHeight": 666,
+      "pixelRatio": 1
+    }
+  },
+  "submission": {
+    "baselineTriangles": 563143,
+    "candidateTriangles": 230526,
+    "reductionPercent": 59.06439394612026,
+    "baselineCalls": 70,
+    "candidateCalls": 169
+  },
+  "currentPerformanceGate": "failed",
+  "physicalGPUVerification": "not performed",
+  "note": "These short software runs contain only five/six frames. Do not treat their FPS difference as a statistically established speedup. Culling reduces submitted geometry; plaza same-state native frame comparison has zero differing pixels. Other views are in progress."
+}

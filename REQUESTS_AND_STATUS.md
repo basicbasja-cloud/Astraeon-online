@@ -6,8 +6,8 @@ The previous source72 stop was honored at that time; it no longer pauses work.
 
 ## Current outcome
 
-Working branch: `codex/world-pipeline-v3-proof`. Source73 finishing steps are
-pushed through `29a0411`; source74 floor correction is saved and being reviewed.
+Working branch: `codex/world-pipeline-v3-proof`. Source74 floor correction is pushed through `acd8fd3`; eleven native views
+confirm coherent public stone and exact rendering with view culling.
 Authority remains the saved Blender town and its matching JSON export.
 
 The current native floor had two visible problems: coplanar rectangular backing
@@ -15,7 +15,9 @@ under the enlarged plaza, and inconsistent paving on public forecourts. Source74
 removes 645.841m² of duplicate backing and fits public/private paving to closed
 zone boundaries. Public stone has continuous world UVs and a shared tint.
 Original art, full resolution, stairs, houses, plants, actors and gameplay stay
-intact. Final browser review and acceptance remain in progress.
+intact. Overall acceptance remains open. The active scope is now expansion into the
+regional capital: original layout, Prontera-scale ambition, concept-art theme,
+and hard RO3 quality throughout the city and its water/cliff defenses.
 
 ## Consolidated requirements
 
@@ -44,6 +46,9 @@ intact. Final browser review and acceptance remain in progress.
 | R21 | All requests and status report | Current report plus preserved historical report/transcript | Update with final current results |
 | R22 | Fix random floor from current screenshot |639 flat floors checked; coplanar backing removed; UV/zone ownership passes | Browser-only native capture retry |
 
+| R23 | Expand this city into the regional capital | Original capital plan and native expansion active; Prontera is a loose scale reference | Expanded districts, navigation, source/export and native views |
+| R24 | Same visual quality for water, cliffs, walls and foundations, with efficient rendering | Shared materials, native detail and spatial culling planned | Native edge views and resource measurements |
+
 ## Current verification
 
 - All 96 individual Node checks pass.
@@ -53,7 +58,7 @@ intact. Final browser review and acceptance remain in progress.
 - Independent floor check verifies 639 surfaces and 35,359 UV corners; maximum
   rounding coverage difference .000231m²; residual plaza backing .00000506m².
 - All architecture, plants, actors/services, stairs and unplanned floors preserved.
-- Floor bake uses original cutout alpha,1536², sun8/contact4; cache versions80.
+- Floor bake uses original cutout alpha,1536², sun8/contact4; cache versions 81.
 - Native capture initially exceeded startup deadline during concurrent validation;
   browser-only retry underway. No gameplay/visual/performance gates are weakened.
 
@@ -146,3 +151,9 @@ The initial resolution question included the town screenshot supplied in this ch
 35. also you can use all tools and skills if needed to make it perfect.
 
 36. why the floor is random ? can we fix it ?
+
+37. before improvement more, I want this city to be capital city of the region so can we expand the city to be like a prontera size, i also attached the prontera map, but we will not copy prontera blueprint but we will soft ref from them, but the theme is the concept art same, but not hard ref anymore just a theme
+
+38. and water and cliff side detail like wall and under wall should be same quatily as the city but have some technic to reduce the resource use, because that zone player not care like city but the beautiful is to keep for not looking left out.
+
+39. also our standard is same RO3 ref is our ultimate goal hard ref

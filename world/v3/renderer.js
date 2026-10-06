@@ -166,7 +166,22 @@ class SpatialRenderer{
     for(const f of p.faces)for(let i=1;i<f.length-1;i++)triangles.push([vertices[f[0]],vertices[f[i]],vertices[f[i+1]]]);
    }this.occluderGroups.push({id,owner:o.id,box,triangles});
   }
-  const batches=new Map(),add=(part)=>{if(part.visible===false)return;const name=part.material||'paving',spec=source.materials[name]?.texture,key=name+JSON.stringify(spec||'');if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],ownerId:[],owners:[]});appendMesh(batches.get(key),part,source.lighting)};
+  // A material batch spanning the whole town defeats camera-frustum culling.
+  // Group opaque parts in 16m cells; keep blended water/foliage ordering intact.
+  // Each part retains its complete geometry, lighting, UVs and picking owners.
+  const batches=new Map(),add=(part)=>{
+   if(part.visible===false)return;
+   const name=part.material||'paving',spec=source.materials[name]?.texture;
+   let cell='';
+   if(!spec?.alphaBlend&&!['water','riverFoam','riverCascade'].includes(name)){
+    let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+    for(const [x,y] of part.vertices){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y)}
+    cell=maxX-minX>32||maxY-minY>32?'/wide/'+(part.id||'terrain'):'/cell/'+Math.floor((minX+maxX)/32)+','+Math.floor((minY+maxY)/32);
+   }
+   const key=name+JSON.stringify(spec||'')+cell;
+   if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],ownerId:[],owners:[]});
+   appendMesh(batches.get(key),part,source.lighting);
+  };
   const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});

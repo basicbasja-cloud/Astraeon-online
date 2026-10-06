@@ -32,10 +32,12 @@ VIEWS = {
     'river-falls': (7.25, 34.5),
     'gate-spillways': (21, 42.5),
     'hall-processional-view': (27, 40),
+    'tree-oak-contact': (32.6, 31),
+    'tree-garden-contact': (13.15, 18.75),
 }
 
 
-def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None, startup_timeout_ms=120000):
+def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None, startup_timeout_ms=120000, verify_culling=False):
     output.mkdir(parents=True, exist_ok=True)
     records = []
     with sync_playwright() as playwright:
@@ -90,6 +92,32 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                 page.evaluate('(ratio)=>AstraeonSpatialView.renderer.setPixelRatio(ratio)', capture_scale)
                 page.wait_for_timeout(450)
             snap = page.evaluate('window.AstraeonQA.snapshot()')
+            culling = None
+            if verify_culling:
+                # Render the exact same state twice: exhaustive static submission
+                # versus the ordinary frustum. Restore flags before the screenshot.
+                culling = page.evaluate('''()=>{
+                  const v=AstraeonSpatialView,r=v.renderer,gl=r.getContext();
+                  const nodes=v.scene.children.filter(n=>n.name.startsWith('static/'));
+                  const flags=nodes.map(n=>n.frustumCulled),size=v.canvas.width*v.canvas.height*4;
+                  const full=new Uint8Array(size),culled=new Uint8Array(size);
+                  let exhaustive,ordinary;
+                  try {
+                    nodes.forEach(n=>n.frustumCulled=false);r.info.reset();r.render(v.scene,v.camera);
+                    gl.readPixels(0,0,v.canvas.width,v.canvas.height,gl.RGBA,gl.UNSIGNED_BYTE,full);
+                    exhaustive={calls:r.info.render.calls,triangles:r.info.render.triangles};
+                    nodes.forEach((n,i)=>n.frustumCulled=flags[i]);r.info.reset();r.render(v.scene,v.camera);
+                    gl.readPixels(0,0,v.canvas.width,v.canvas.height,gl.RGBA,gl.UNSIGNED_BYTE,culled);
+                    ordinary={calls:r.info.render.calls,triangles:r.info.render.triangles};
+                  } finally { nodes.forEach((n,i)=>n.frustumCulled=flags[i]); }
+                  let differentPixels=0,maxChannelDifference=0;
+                  for(let i=0;i<size;i+=4){let different=false;for(let k=0;k<4;k++){
+                    const d=Math.abs(full[i+k]-culled[i+k]);different ||= d>0;
+                    maxChannelDifference=Math.max(maxChannelDifference,d);
+                  }if(different)differentPixels++;}
+                  return {exhaustive,ordinary,differentPixels,maxChannelDifference,width:v.canvas.width,height:v.canvas.height};
+                }''')
+                assert culling['differentPixels'] == 0, (name, 'Frustum culling changes visible pixels', culling)
             image = output / (name + '.png')
             page.screenshot(path=str(image))
             record = {'name': name, 'requested': [x, y],
@@ -105,6 +133,7 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                       'captureScale': capture_scale,
                       'renderResolution': page.evaluate('({width:AstraeonSpatialView.canvas.width,height:AstraeonSpatialView.canvas.height,pixelRatio:AstraeonSpatialView.renderer.getPixelRatio()})'),
                       'errors': errors, 'image': str(image)}
+            if culling is not None: record['cullingVerification'] = culling
             records.append(record)
             print(json.dumps(record), flush=True)
             page.close()
@@ -124,6 +153,8 @@ if __name__ == '__main__':
                         help='Still-image pixel ratio, independent of the runtime performance policy')
     parser.add_argument('--startup-timeout-ms', type=int, default=120000,
                         help='Bounded browser startup deadline; capture quality is unchanged')
+    parser.add_argument('--verify-culling', action='store_true',
+                        help='Compare exact native frame pixels with/without static frustum culling')
     args = parser.parse_args()
     names = args.views.split(',')
     if any(name not in VIEWS for name in names):
@@ -131,4 +162,4 @@ if __name__ == '__main__':
     if args.zoom is not None and not 65<=args.zoom<=325:parser.error('Zoom must be within classic RO limits, 65–325')
     if args.pitch is not None and not 10<=args.pitch<=89:parser.error('Pitch must be within gameplay limits, 10–89')
     if args.capture_scale is not None and not .5<=args.capture_scale<=3:parser.error('Capture scale must be within .5–3')
-    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale,args.startup_timeout_ms)
+    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale,args.startup_timeout_ms,args.verify_culling)
