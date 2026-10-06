@@ -4,7 +4,8 @@ The user resumed work on 6 October 2026 and requested the `RO3 Ref` standard.
 Current continuation evidence is in `docs/review/wayfarer-v72/resumed/`.
 Native stair/curb contacts, 58 stranded flower groups and two tree contacts have
 been repaired. All 96 Node checks and 17 destination/ten patrol checks pass.
-Fresh lighting bakes and final browser/visual review are next. The pause record
+Architecture, foliage and floor lighting bakes are fresh; final schemas and native
+export parity pass. Cache is 79. Final browser/visual review is in progress. The pause record
 below describes the inherited snapshot, not the current authorization or status.
 
 Updated 2026-10-06. The user requested: “Please stop, all write a handoff and push all”.

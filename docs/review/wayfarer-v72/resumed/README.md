@@ -23,5 +23,14 @@ flat parcel margins; their roots embed .015m into the actual floor. An independe
 export check confirms all 798 transformed parts retain geometry, UVs, materials
 and artwork, with no unplanned part edits or actor/service/navigation changes.
 All 96 individual Node checks pass, and all 17 destinations and ten patrols remain
-clear. Lighting, final screenshots, services/cache and performance are pending.
+clear. Architecture (834,526 corners), original-alpha foliage (186 meshes,
+63,488 corners) and the original-resolution floor bake are now fresh. The floor
+atlas remains 1536² with eight sun and four contact samples; its source-matched
+digest is exported. Final public schemas and saved Blender/export parity pass.
+
+Shadow receiver coverage and actor-shadow alpha now use the actual native floor
+faces, preserving holes and disconnected bands in the same way as navigation.
+The existing closed-band fixture checks the shared coverage query. Page, loader
+and service-worker cache versions are all 79. Final screenshots, browser cache/
+services and isolated performance remain pending.
 No visual acceptance, deployment or physical-GPU result is claimed.

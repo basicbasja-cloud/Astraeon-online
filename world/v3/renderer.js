@@ -221,16 +221,34 @@ class SpatialRenderer{
   // One receiver per occupied floor cell, at the highest authored contact.
   // Overlaid ground/road receivers caused depth fighting and doubled opacity
   // at street junctions after the larger-town material pass.
-  const land=[terrain.walkablePolygon,...terrain.surfaces.filter(s=>s.walkable).map(s=>s.polygon)].filter(Boolean),cell=.5;
+  const cell=.5;
   // Actor casts share the building sun and stop at authored land boundaries.
   // A floor mask prevents a bridge-edge silhouette floating over the river.
   const mask=document.createElement('canvas');mask.width=mask.height=this.shadowSize;const mg=mask.getContext('2d');mg.fillStyle='#fff';
-  for(const polygon of land){mg.beginPath();polygon.forEach(([x,y],i)=>i?mg.lineTo((x-b.minX)*sx,(y-b.minY)*sy):mg.moveTo((x-b.minX)*sx,(y-b.minY)*sy));mg.closePath();mg.fill()}
+  // A triangulated mesh's vertex list is not an outline. Draw its actual
+  // faces so disconnected ground and closed-band holes match navigation.
+  // Normalize winding before one union fill; opposing source normals must
+  // not cancel overlapping walkable faces in the alpha mask.
+  mg.beginPath();
+  const maskPolygon=polygon=>{
+   const area=polygon.reduce((sum,a,i)=>{const q=polygon[(i+1)%polygon.length];return sum+a[0]*q[1]-q[0]*a[1]},0);
+   if(Math.abs(area)<1e-9)return;
+   const points=area<0?[...polygon].reverse():polygon;
+   points.forEach(([x,y],i)=>i?mg.lineTo((x-b.minX)*sx,(y-b.minY)*sy):mg.moveTo((x-b.minX)*sx,(y-b.minY)*sy));mg.closePath();
+  };
+  if(terrain.walkablePolygon)maskPolygon(terrain.walkablePolygon);
+  else maskPolygon([[b.minX,b.minY],[b.maxX,b.minY],[b.maxX,b.maxY],[b.minX,b.maxY]]);
+  for(const surface of terrain.surfaces.filter(s=>s.walkable)){
+   if(surface.vertices&&surface.faces){
+    for(const face of surface.faces)for(let i=1;i<face.length-1;i++)maskPolygon([surface.vertices[face[0]],surface.vertices[face[i]],surface.vertices[face[i+1]]]);
+   }else maskPolygon(surface.polygon);
+  }
+  mg.fill();
   this.shadowLand=new THREE.CanvasTexture(mask);this.shadowLand.flipY=false;
   this.shadowLand.generateMipmaps=false;this.shadowLand.minFilter=THREE.LinearFilter;
   const contact=document.createElement('canvas');contact.width=contact.height=64;const cg=contact.getContext('2d'),gradient=cg.createRadialGradient(32,32,3,32,32,32);gradient.addColorStop(0,'rgba(255,255,255,1)');gradient.addColorStop(.45,'rgba(255,255,255,.65)');gradient.addColorStop(1,'rgba(255,255,255,0)');cg.fillStyle=gradient;cg.fillRect(0,0,64,64);this.contactTexture=new THREE.CanvasTexture(contact);
   for(let y=b.minY;y<b.maxY;y+=cell)for(let x=b.minX;x<b.maxX;x+=cell){
-   if(!land.some(p=>window.AstraeonSpatialV3.pointIn({x:x+cell/2,y:y+cell/2},p)))continue;
+   if(!spatial.containsGround(x+cell/2,y+cell/2))continue;
    for(const [dx,dy] of [[0,0],[cell,0],[cell,cell],[0,0],[cell,cell],[0,cell]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.015);
   }
   const shadowGeo=new THREE.BufferGeometry();shadowGeo.setAttribute('position',new THREE.Float32BufferAttribute(shadowPositions,3));shadowGeo.setAttribute('uv',new THREE.Float32BufferAttribute(shadowUVs,2));shadowGeo.computeBoundingSphere();

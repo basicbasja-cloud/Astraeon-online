@@ -47,7 +47,7 @@ function compile(scene){
  const shadowPolygons=parts.filter(p=>p.shadow).map(p=>({id:p.id,polygon:hull(p.vertices.map(v=>[v[0]+scene.lighting.sun.cast[0]*v[2],v[1]+scene.lighting.sun.cast[1]*v[2]]))}));
  const elevationAt=(x,y)=>{let height=scene.terrain.elevation;for(const {t} of nearby(floorIndex,x,y)){const h=triangleHeight(x,y,...t);if(h!==null)height=Math.max(height,h)}return height};
  return {scene,parts,solids,overheads,portals:portalMap,navCells,shadowPolygons,blocked,
-  elevationAt,
+  elevationAt,containsGround:onLand,
   interactionAt:(x,y)=>portalMap.find(p=>Math.hypot(x-p.approach[0],y-p.approach[1])<=p.range),
   route:(start,goal)=>window.AstraeonNavigation.route(start,goal,blocked,{bounds,reach:.26,step:bounds.maxX-bounds.minX>80?1:.5}),
   bounds};
