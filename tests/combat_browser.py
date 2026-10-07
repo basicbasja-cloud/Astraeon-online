@@ -136,7 +136,12 @@ try:
             assert after['gold']>before['gold'] and after['quest']['progress']>before['quest']['progress']
             passed('ordinary combat death awards Base/Job EXP, loot and quest credit',{'cls':cls})
             # Existing enemy damage/death/respawn orchestration is retained.
-            dev(page,'d.setCurrentHP(1)')
+            # Reload a disposable low-HP fixture beside an existing field spawn.
+            # The earlier kill may have removed every nearby enemy.
+            death_fixture={**after,'currentHP':1,'hp':1,'zone':2,'x':17,'y':22,'invulnUntil':0,'guard':0}
+            page.evaluate('(fixture)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(fixture))',death_fixture)
+            page.reload(wait_until='load')
+            page.wait_for_selector('#world')
             page.wait_for_function('AstraeonQA.snapshot().animation.state==="death"',timeout=60000)
             assert snapshot(page)['currentHP']==0
             page.wait_for_function('AstraeonQA.snapshot().save.zone===0&&AstraeonQA.snapshot().save.currentHP>0',timeout=60000)
