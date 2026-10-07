@@ -2,15 +2,14 @@
 (() => {
 'use strict';
 function legacyModifiers(state,config=window.AstraeonProgressionConfig){
- const gear=state.equipment||{},equipmentModifiers=[];
- for(const key of ['weapon','armor'])if(Object.hasOwn(config.legacyEquipment[key],gear[key]))equipmentModifiers.push(config.legacyEquipment[key][gear[key]]);
- if(typeof gear.relic==='string'&&gear.relic!=='None')equipmentModifiers.push(config.legacyEquipment.relic);
+ const equipmentModifiers=window.AstraeonItemEquipment.modifiers(state.itemInventory,state.equippedItems);
  return {equipmentModifiers,passiveModifiers:state.party?.length?[config.legacyParty]:[]};
 }
 function attach(state,options={}){
  const getClassId=()=>options.classId??window.AstraeonSkillDefinitions.classIdFor(state);
  let runtime={equipmentModifiers:[],passiveModifiers:[],temporaryEffectModifiers:[]},lastSignature;
- const build=()=>{const legacy=legacyModifiers(state,options.config);return {equipmentModifiers:[...legacy.equipmentModifiers,...runtime.equipmentModifiers],passiveModifiers:[...legacy.passiveModifiers,...runtime.passiveModifiers],temporaryEffectModifiers:runtime.temporaryEffectModifiers}};
+ const items=window.AstraeonItemState.create(state,{catalog:options.itemCatalog,requirements:options.equipmentRequirements,onChange:(inventory,equipment)=>{const mods=build(inventory,equipment);character.setModifiers(mods);lastSignature=JSON.stringify([getClassId(),mods])}});
+ const build=(inventory=items.getInventory(),equipment=items.getEquipment())=>({equipmentModifiers:[...window.AstraeonItemEquipment.modifiers(inventory,equipment,options.itemCatalog),...runtime.equipmentModifiers],passiveModifiers:[...(state.party?.length?[(options.config||window.AstraeonProgressionConfig).legacyParty]:[]),...runtime.passiveModifiers],temporaryEffectModifiers:runtime.temporaryEffectModifiers});
  const character=window.AstraeonCharacter.create(state,{...options,getClassId,modifiers:build()});
  function recalculate(){const mods=build(),signature=JSON.stringify([getClassId(),mods]);if(signature!==lastSignature){character.setModifiers(mods);lastSignature=signature}return character.getDerivedStats()}
  let actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(state.actionLoadout);
@@ -38,6 +37,8 @@ function attach(state,options={}){
   Object.defineProperty(state,key,descriptor);
  }
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
+  ...items,
+  useConsumable(id){const d=(options.itemCatalog||window.AstraeonItemDefinitions).getDefinition(id);if(d?.kind!=='consumable'||!d.effects)return Object.freeze({ok:false,code:'NOT_CONSUMABLE'});if(!['restoreHP','restoreSP'].every(key=>d.effects[key]===undefined||Number.isFinite(d.effects[key])&&d.effects[key]>=0))return Object.freeze({ok:false,code:'INVALID_ITEM_EFFECT'});const hp=character.getValue('currentHP')+(d.effects.restoreHP||0),sp=character.getValue('currentSP')+(d.effects.restoreSP||0);if(!Number.isFinite(hp)||!Number.isFinite(sp))return Object.freeze({ok:false,code:'INVALID_ITEM_EFFECT'});const result=items.consumeStack(id,1);if(!result.ok)return result;character.setCurrentHP(hp);character.setCurrentSP(sp);return result},
   getClassId,getSkillTree:()=>window.AstraeonSkillDefinitions.trees[getClassId()]||null,
   getActionLoadout:()=>state.actionLoadout,
   getLoadout:()=>state.actionLoadout,getSlot:slot=>loadouts.getSlot(actionLoadout,slot),

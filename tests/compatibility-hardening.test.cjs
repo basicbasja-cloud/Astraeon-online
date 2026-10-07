@@ -1,12 +1,12 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 global.window={};
-for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','player-state','save-state'])require('../'+file+'.js');
+for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','player-state','save-state'])require('../'+file+'.js');
 const S=window.AstraeonSave,Ch=window.AstraeonCharacter;
 const tuned=cost=>{const c=structuredClone(window.AstraeonProgressionConfig);c.primary.pointCost=cost;return c};
-test('future schema rejects before mutation and snapshot cannot downgrade',()=>{const raw={saveVersion:5,name:'future',unknown:{keep:true}},before=structuredClone(raw);assert.throws(()=>S.normalize(raw),e=>e.code==='UNSUPPORTED_SAVE_VERSION'&&e.supportedVersion===4);assert.throws(()=>S.snapshot(raw),S.UnsupportedSaveError);assert.deepEqual(raw,before)});
+test('future schema rejects before mutation and snapshot cannot downgrade',()=>{const raw={saveVersion:6,name:'future',unknown:{keep:true}},before=structuredClone(raw);assert.throws(()=>S.normalize(raw),e=>e.code==='UNSUPPORTED_SAVE_VERSION'&&e.supportedVersion===5);assert.throws(()=>S.snapshot(raw),S.UnsupportedSaveError);assert.deepEqual(raw,before)});
 test('future schema is guarded even before name validation',()=>assert.throws(()=>S.normalize({saveVersion:99}),S.UnsupportedSaveError));
-test('current version and legacy saves remain supported',()=>{for(const version of [undefined,1,2,3,4])assert.equal(S.normalize({saveVersion:version,name:'valid'}).saveVersion,4)});
+test('current version and legacy saves remain supported',()=>{for(const version of [undefined,1,2,3,4,5])assert.equal(S.normalize({saveVersion:version,name:'valid'}).saveVersion,5)});
 test('allocation records actual Stat expenditure separate from Skill expenditure',()=>{const c=Ch.create({statPoints:12,skillPoints:9},{config:tuned(3)});c.allocateStat('STR',2);const s=c.snapshot();assert.equal(s.statPoints,6);assert.equal(s.statPointSpending,6);assert.equal(s.skillPoints,9);assert.deepEqual(s.skillPointSpending,{})});
 test('changed cost after reload cannot mint refund',()=>{const c=Ch.create({statPoints:10});c.allocateStat('STR',3);const restored=Ch.create(c.snapshot(),{config:tuned(5)});assert.equal(restored.resetStats().statPoints,10);assert.equal(restored.snapshot().statPointSpending,0);assert.equal(restored.resetStats().statPoints,10)});
 test('lower cost after reload does not erase actual paid amount',()=>{const c=Ch.create({statPoints:12},{config:tuned(3)});c.allocateStat('VIT',2);const restored=Ch.create(c.snapshot(),{config:tuned(1)});assert.equal(restored.resetStats().statPoints,12)});

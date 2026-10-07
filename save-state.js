@@ -3,7 +3,7 @@
 'use strict';
 const number=(value,fallback,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isFinite(value)?Math.max(min,Math.min(max,value)):fallback;
 const text=(value,fallback)=>typeof value==='string'?value:fallback;
-const version=4;
+const version=5;
  class UnsupportedSaveError extends Error{
   constructor(saveVersion){super(`Save version ${saveVersion} requires a newer game (supported: ${version}).`);this.name='UnsupportedSaveError';this.code='UNSUPPORTED_SAVE_VERSION';this.saveVersion=saveVersion;this.supportedVersion=version}
  }
@@ -35,6 +35,7 @@ function normalize(raw){
  for(const key of ['xp','gold','kills','clears','profXP','reputation','house','pvpWins','camp','skillMastery','weaponMastery','bossKills'])state[key]=number(raw[key],key==='gold'?50:0);
  const inventory=raw.inventory&&typeof raw.inventory==='object'?raw.inventory:{};state.inventory={...inventory};for(const key of ['herb','ore','shard','potion','ration','blade','charm','plate'])state.inventory[key]=Math.floor(number(inventory[key],0));
  const gear=raw.equipment&&typeof raw.equipment==='object'?raw.equipment:{};state.equipment={...gear,weapon:text(gear.weapon,'Traveler Blade'),armor:text(gear.armor,'Adventurer Garb'),relic:text(gear.relic,'None')};
+ window.AstraeonItemState.installMirrors(state,window.AstraeonItemState.migrate(state));
  for(const key of ['mail','journal','party'])state[key]=Array.isArray(raw[key])?raw[key].filter(v=>typeof v==='string'):[];
  state.discovered=Array.isArray(raw.discovered)?raw.discovered.filter(v=>Number.isInteger(v)&&v>=0&&v<=4):[0];state.chapters=Array.isArray(raw.chapters)?raw.chapters.filter(v=>Number.isInteger(v)&&v>=0&&v<=3):[];
  state.techniques=Array.isArray(raw.techniques)?raw.techniques.filter(v=>v&&typeof v==='object'&&typeof v.name==='string').slice(-6):[];state.active=Math.floor(number(raw.active,0,0,Math.max(0,state.techniques.length-1)));

@@ -169,7 +169,7 @@ try:
             passed('reload preserves core/skills/Node/world/gear and Stat ledger refunds once',{'cls':cls})
             context.close()
 
-        future={'saveVersion':5,'name':'Future fixture','unknown':{'preserved':True},'inventory':{'token':7}}
+        future={'saveVersion':6,'name':'Future fixture','unknown':{'preserved':True},'inventory':{'token':7}}
         context,page=open_page('/',future)
         page.wait_for_selector('[data-save-error="UNSUPPORTED_SAVE_VERSION"]')
         original=page.evaluate('localStorage.getItem("astraeon-iso-v1")')
