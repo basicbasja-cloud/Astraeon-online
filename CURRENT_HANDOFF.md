@@ -21,7 +21,8 @@ then native parity/lighting and fresh gameplay captures. Continue service and
 neighborhood walking, field/save/cache/offline and sound-on performance checks.
 Do not rerun one-shot authors or regenerate saved art for streaming.
 
-Active priority: baseline profiling -> chunked spawn boot/runtime streaming ->
+Baseline profiling is complete; evidence and measured secondary costs are in
+mobile-streaming/README.md and baseline-mobile-detailed.json. Active priority: chunked spawn boot/runtime streaming ->
 bounded on-demand caching -> mobile/emulated acceptance. Physical iPhone Safari
 is pending unless actually available. After sufficient available-environment
 acceptance, resume the above World point automatically. No new art/layout work
