@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 84. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 85. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -40,10 +40,20 @@ save version 4. Legacy saves migrate through compatibility adapters. Open
 [the system contract and compatibility notes](docs/CORE_SPINE_PROGRESSION.md).
 This foundation does not complete the whole Core Spine patch.
 
+The Base skill tree extension supports Swordsman (the existing Warrior adapter)
+and Mage: immutable definitions, Job/prerequisite/rank gates, Skill Point spend,
+debug paid refunds, automatic passive modifiers and persisted ranks. The same
+harness now supports skill inspection, learning, rank-up, eight-slot assignment
+and compatible Nodes. New characters start unlearned/unassigned; returning saves
+retain the documented fixed-button compatibility. Existing four buttons bridge
+slots 1–4; production learning UI and controls for slots 5–8 remain future work.
+See [the skill architecture and compatibility contract](docs/CORE_SPINE_SKILL_TREE.md).
+
 ## Verification
 
 ```powershell
 python tools/run-node-checks.py
+python tests/skill_tree_browser.py --url http://127.0.0.1:8011
 python tests/progression_browser.py --url http://127.0.0.1:8011
 python tools/validate-world-v3.py
 $env:ASTRAEON_BROWSER='C:\Program Files\Google\Chrome\Application\chrome.exe'

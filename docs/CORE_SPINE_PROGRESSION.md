@@ -2,7 +2,8 @@
 
 This implements the progression/stat/save portion of Core Spine only. The
 authoritative design remains `ASTRAEON_Backbone_Release_Roadmap_EN_v0.4.md`.
-Combat's full staged damage pipeline, skill trees, action loadouts, item instances
+The [Base skill tree extension](CORE_SPINE_SKILL_TREE.md) now builds on this contract.
+Combat's full staged damage pipeline, complete action loadouts, item instances
 and the rest of 0.0.1 remain future tasks. No Advanced Jobs are implemented.
 
 ## Boundaries and API
@@ -31,7 +32,8 @@ EXP, levels, point additions and allocations require safe integers. Allocation
 amounts must be positive; the default cost is one point per stat increment.
 Unknown stats, non-finite values, overspending and exceeding the allocation cap
 throw without spending points. Reset refunds allocated increments once.
-Skill Points are a persistent unspent pool; this task introduces no skill tree.
+Skill Points are the persistent unspent pool shared with the Base skill tree
+extension. That extension adds atomic learning/refund operations to this controller.
 
 Level setters adjust the unspent pool by the configured reward difference. They
 clear that track's EXP only when its level changes. Repeating the same setter
@@ -112,6 +114,6 @@ python tests/cache_resume.py --url http://127.0.0.1:8011
 ```
 
 Browser checks support `ASTRAEON_BROWSER` or `--browser`; reports/screenshots are
-written outside the checkout. Boot/page/service-worker version 84 loads the new
+written outside the checkout. Boot/page/service-worker version 85 loads the new
 modules together and precaches them, preventing cached code/schema mismatches.
 No character, world, lighting, renderer or production UI artwork was changed.
