@@ -1,5 +1,45 @@
 # ASTRAEON — capital architecture revision 76
 
+## Current verified checkpoint — original neighborhoods v80, 7 October 2026
+
+Same working branch codex/world-pipeline-v3-proof. Original World art task ACTIVE;
+full RO3 visual acceptance remains OPEN. Do not reset/discard existing work.
+SourceSHA256:b999c59228786b93f4f6be9c5836f24cb38e108c7c1bd60000cab11414236f85.
+NativeSHA256:77f5a7e0c89a18032f08443d881a2b8047f1c569d8779c2a5455ecbea2f8e5ee.
+Cache95, immutable generation wayfarer-b999c5922878. Camera45/35/135/FOV15.
+
+Recovered v79 now applied and verified:280.056m² extra owned green,168 sparse
+three-blade roots,16 formal crown variants, full1254² original painted foliage,
+warmer clay. Twelve new houses have four actual roof/massing designs, and ten
+unequal-spaced owned garden trees bring total94. All37 original assemblies,
+old doors/solids/terrain/nav/gameplay, original84 tree contacts, and retained
+new-house ground uses remain exact. Net v80 addition16,906 visible triangles.
+Do NOT rerun one-shot author/partition/dormer corrections; their saved flags
+are applied. All8 new dormer windows clear actual main roofs by at least11.5cm.
+
+All13 native stages,96 existing Node tests,5 streaming tests,8 ordinary gameplay
+captures/culling comparisons and camera controls PASS. Exact transport preserves
+960,430 authored draw triangles /34,640,961 attributes;75 chunks,24 active images.
+Full fresh4096 floor light was baked with8 sun+4 contact samples and full original
+alpha. Compact independently verified v79 baseline makes declared delta repeatable.
+Mobile WebKit iPhone13 emulation cold15079.30ms/warm12873.50ms,34 unloads/23 reloads;
+no monolithic load or browser errors. Cache95 migration/offline original4096 floor,
+save/progression retention and ordinary touch field-return PASS. Physical iPhone
+Safari remains PENDING. No native/browser jobs remain running.
+
+Evidence:docs/review/wayfarer-capital-v80/checkpoint.json and unique-neighborhoods/
+visual-review.json. Eight actual city scene captures and mobile/offline/return
+images were manually inspected against RO3 house01:40/03:35 and street00:50.
+This is a verified improvement, not complete RO3 art acceptance. Next original
+World action: larger upper glazing proportions and varied facade detail on
+selected new houses, plus connected planted ingress along real property edges.
+Keep clear2.2m door approaches, public streets, uses and closed patrols. Do not
+randomly rotate every building or scatter props as a substitute for architecture.
+Keep authoring/native/source/light/stream/cache/evidence synchronized.
+
+Full pre-v80 v79 backup:/tmp/astraeon-before-unique-homes-v80/; pushed v78 backup:
+/tmp/astraeon-before-painted-landscape-v79/. Earlier checkpoints preserved below.
+
 ## Current verified checkpoint — selected frontage placement v78, 7 October2026
 
 Same working branch codex/world-pipeline-v3-proof. Starting checkpoint3cc2c65

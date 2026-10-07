@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tools/check-capital-unique-neighborhoods-v80.py", line 40, in <module>
+    crown=MultiPoint([v[:2] for v in leafvs]).convex_hull;assert not crown.intersects(roofzone) and not crown.intersects(oldcrowns),a['id']
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: capital-garden-tree-v80-00

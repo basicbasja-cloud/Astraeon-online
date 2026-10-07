@@ -129,7 +129,12 @@ for owner in s['objects']:
  tree_checks.append({'id':owner['id'],'rootEmbed':embed})
 new_trees={n for n in p.get('streetDepthRefinement',{}).get('newOwners',[]) if n.startswith('capital-street-tree-v77-')}
 assert {a['id'] for a in tree_checks if a['id'].startswith('capital-street-tree-v77-')}==new_trees
-assert len(tree_checks)==78+len(new_trees),len(tree_checks)
+garden_trees=set(p.get('uniqueNeighborhoodRefinement',{}).get('treeOwners',[]))
+assert {a['id'] for a in tree_checks if a['id'].startswith('capital-garden-tree-v80-')}==garden_trees
+if garden_trees:
+ assert p['uniqueNeighborhoodRefinement']['revision']==80
+ assert garden_trees=={a['id'] for a in p['uniqueNeighborhoodRefinement']['trees']}
+assert len(tree_checks)==78+len(new_trees)+len(garden_trees),len(tree_checks)
 assert not tree_errors,tree_errors
 land=Polygon(p['land']);cliff_faces=0;foam_faces=0
 for owner in s['objects']:
