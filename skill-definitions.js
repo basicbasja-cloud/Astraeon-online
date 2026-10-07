@@ -38,5 +38,6 @@ for(const classId of ['swordsman','mage']){
 }
 // Legacy class indices are an adapter, never an assumption in the tree algorithms.
 function classIdFor(raw){return raw.cls===0?'swordsman':raw.cls===12?'mage':null}
-window.AstraeonSkillDefinitions=freeze({definitions,trees,classIdFor});
+function getDefinition(id){return typeof id==='string'&&Object.hasOwn(definitions,id)?definitions[id]:null}
+window.AstraeonSkillDefinitions=freeze({definitions,trees,classIdFor,getDefinition});
 })();

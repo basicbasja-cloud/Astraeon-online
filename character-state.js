@@ -8,6 +8,7 @@ function normalize(raw={},config=window.AstraeonProgressionConfig){
  const c=config.progression,primary=config.primary;
  const state={baseLevel:sane(raw.baseLevel,c.base.initialLevel,1,c.storedLevelLimit),baseExp:sane(raw.baseExp,0),baseJobLevel:sane(raw.baseJobLevel,c.job.initialLevel,1,c.job.cap),baseJobExp:sane(raw.baseJobExp,0),statPoints:sane(raw.statPoints,c.base.initialPoints),skillPoints:sane(raw.skillPoints,c.job.initialPoints)};
  for(const key of primary.keys)state[key]=sane(raw[key],primary.initial,primary.initial,primary.cap);
+ Object.assign(state,window.AstraeonSkillTree.normalize(raw));
  state.resourceBase={maxHP:Number.isFinite(raw.resourceBase?.maxHP)?raw.resourceBase.maxHP:0,maxSP:Number.isFinite(raw.resourceBase?.maxSP)?raw.resourceBase.maxSP:0};
  return state;
 }
@@ -15,19 +16,30 @@ function create(raw={},options={}){
  const config=stats.freeze(structuredClone(options.config||window.AstraeonProgressionConfig));
  let state=normalize(raw,config),modifiers=stats.freeze(structuredClone(options.modifiers||{}));
  const conversionHooks=Object.freeze([...(options.conversionHooks||[])]);
+ const getClassId=options.getClassId||(()=>options.classId??window.AstraeonSkillDefinitions.classIdFor(raw));
  const derive=(next,mods=modifiers)=>{
   for(const key of Object.keys(mods))if(!['equipmentModifiers','passiveModifiers','temporaryEffectModifiers'].includes(key))throw new TypeError(`Unknown modifier group: ${key}`);
-  return stats.calculate({baseLevel:next.baseLevel,primaryStats:Object.fromEntries(config.primary.keys.map(key=>[key,next[key]])),characterBase:next.resourceBase,equipmentModifiers:mods.equipmentModifiers,passiveModifiers:mods.passiveModifiers,temporaryEffectModifiers:mods.temporaryEffectModifiers,conversionHooks},config);
+  return stats.calculate({baseLevel:next.baseLevel,primaryStats:Object.fromEntries(config.primary.keys.map(key=>[key,next[key]])),characterBase:next.resourceBase,equipmentModifiers:mods.equipmentModifiers,passiveModifiers:[...(mods.passiveModifiers||[]),...window.AstraeonSkillTree.passiveModifiers(next.learnedSkills,getClassId())],temporaryEffectModifiers:mods.temporaryEffectModifiers,conversionHooks},config);
  };
  let derived=derive(state);
  const clampResource=(value,max)=>{if(!Number.isFinite(value))throw new RangeError('Resource must be finite');return Math.max(0,Math.min(max,value))};
  let currentHP=clampResource(Number.isFinite(raw.currentHP)?raw.currentHP:derived.maxHP,derived.maxHP),currentSP=clampResource(Number.isFinite(raw.currentSP)?raw.currentSP:derived.maxSP,derived.maxSP);
  const commit=next=>{const calculated=derive(next);state=next;derived=calculated;currentHP=Math.min(currentHP,derived.maxHP);currentSP=Math.min(currentSP,derived.maxSP)};
- const snapshot=()=>stats.freeze({...state,resourceBase:{...state.resourceBase},currentHP,currentSP,maxHP:derived.maxHP,maxSP:derived.maxSP});
+ const snapshot=()=>stats.freeze({...state,learnedSkills:{...state.learnedSkills},skillPointSpending:{...state.skillPointSpending},resourceBase:{...state.resourceBase},currentHP,currentSP,maxHP:derived.maxHP,maxSP:derived.maxSP});
  const grant=(track,amount)=>{const result=p.grant(state,track,amount,config.progression);commit(result.state);return {...result,state:snapshot()}};
  const set=(track,level)=>{commit(p.setLevel(state,track,level,config.progression));return snapshot()};
  const addPoints=(track,amount)=>{commit(p.addPoints(state,track,amount));return snapshot()};
+ const skillTransition=result=>{if(!result.ok)return result;commit(result.state);return stats.freeze({...result,state:snapshot()})};
  return Object.freeze({
+  getSkillRank:id=>Object.hasOwn(state.learnedSkills,id)?state.learnedSkills[id]:0,
+  getLearnedSkills:()=>stats.freeze({...state.learnedSkills}),
+  getPassiveSkillModifiers:()=>window.AstraeonSkillTree.passiveModifiers(state.learnedSkills,getClassId()),
+  canLearnSkill:id=>window.AstraeonSkillTree.canLearnSkill(state,getClassId(),id),
+  learnSkill:id=>skillTransition(window.AstraeonSkillTree.learn(state,getClassId(),id,'learn')),
+  rankUpSkill:id=>skillTransition(window.AstraeonSkillTree.learn(state,getClassId(),id,'rank')),
+  canRefundSkill:id=>window.AstraeonSkillTree.canRefundSkill(state,id),
+  resetSkills:()=>skillTransition(window.AstraeonSkillTree.reset(state)),
+  getAvailableSkills:()=>stats.freeze((window.AstraeonSkillDefinitions.trees[getClassId()]?.skillIds||[]).map(id=>({definition:window.AstraeonSkillDefinitions.definitions[id],rank:state.learnedSkills[id]||0,learning:window.AstraeonSkillTree.canLearnSkill(state,getClassId(),id)}))),
   snapshot,getValue(key){if(key==='currentHP')return currentHP;if(key==='currentSP')return currentSP;if(key==='maxHP'||key==='maxSP')return derived[key];if(progressionKeys.includes(key)||config.primary.keys.includes(key))return state[key];if(key==='resourceBase')return stats.freeze({...state.resourceBase});throw new TypeError('Unknown character field')},
   getPrimaryStats:()=>stats.freeze(Object.fromEntries(config.primary.keys.map(key=>[key,state[key]]))),getDerivedStats:()=>derived,
   getBaseExpRequirement:(level=state.baseLevel)=>p.getBaseExpRequirement(level,config.progression),getJobExpRequirement:(level=state.baseJobLevel)=>p.getJobExpRequirement(level,config.progression),
