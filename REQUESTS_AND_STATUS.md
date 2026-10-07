@@ -322,3 +322,9 @@ and5 streaming contracts pass. Physical iPhone Safari PENDING. Remaining
 infrastructure checks: court-legacy, camera, transient browser failure, finish
 service/neighborhood walk. Then automatically resume original plaza enclosure
 planning and the additional RO3 daylight/fine grass/natural ingress request.
+
+Available-environment mobile gate completed:8 services/10 neighborhood stops,
+field/save flow, court-legacy Canvas, current camera and503 retries pass.
+Physical iPhone Safari PENDING, overall optimization PARTIAL; exact preserved
+World task automatically RESUMED. Native inset16/RO3 lighting and natural grass
+are active next. No art was changed during optimization.

@@ -37,12 +37,21 @@ Node checks and5 streaming contracts pass. Exact next infrastructure action:
 finish service/neighborhood walking, court-legacy, camera and transient failure
 checks; update available-environment acceptance and resume original World work.
 See mobile-streaming/README.md.
-Active priority: chunked spawn boot/runtime streaming ->
-bounded on-demand caching -> mobile/emulated acceptance. Physical iPhone Safari
-is pending unless actually available. After sufficient available-environment
-acceptance, resume the above World point automatically. No new art/layout work
-during this interruption. Baseline/development evidence belongs in
- docs/review/wayfarer-capital-v76/mobile-streaming/.
+Available-environment mobile gate PASS; overall optimization PARTIAL because
+physical iPhone Safari remains PENDING.8 services/10 neighborhood stops,
+ordinary field entry+saved reload, court-legacy Canvas boot/walk, current camera
+controls/aspect/inverse, and actual HTTP503 chunk retries all pass. All sampled
+owned geometry bytes independently match loaded manifests; repeat visits exact.
+See mobile-streaming/README.md for objective metrics, scope and physical URL.
+
+Original World task RESUMED automatically. Exact action: inset16 needs13,125
+unfeathered faces; retained91-lawn boundary union has no micro-holes. Improve
+curve tessellation without increasing12,500 guard, apply second6-unit inset,
+then native RO3 daylight/paving/grass-blade and rooted stone-joint ingress pass.
+Refresh original-alpha lighting/native parity, regenerate exact streamed chunks,
+bump cache version and compare actual gameplay with supplied RO3 frames.
+Current authored recovery source remains e97f4333/native59118c before these
+new edits. Retain archival source-specific evidence; no art acceptance claimed.
 
 
 ## Active continuation after the audit

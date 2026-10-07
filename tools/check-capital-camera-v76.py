@@ -1,8 +1,8 @@
 """Exercise the selected camera through ordinary mouse controls and resets."""
-import json, hashlib
+import json, hashlib, argparse
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-R=Path(__file__).resolve().parents[1];O=R/'docs/review/wayfarer-capital-v76/property-frontages/camera-controls';O.mkdir(exist_ok=True)
+R=Path(__file__).resolve().parents[1];ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,default=R/'docs/review/wayfarer-capital-v76/property-frontages/camera-controls');args=ap.parse_args();O=args.output;O.mkdir(parents=True,exist_ok=True)
 fixture=json.loads((R/'docs/review/wayfarer-capital-v75/before-density/views/fixture-save.json').read_text());fixture.update(x=128,y=150)
 errors=[];records=[]
 with sync_playwright() as p:
@@ -14,6 +14,7 @@ with sync_playwright() as p:
     page.wait_for_function('document.getElementById("world") && window.AstraeonQA?.snapshot().renderer')
     baseline=page.evaluate('AstraeonView.cameraBaseline')
     def sample(name):
+        page.wait_for_function('!window.AstraeonWorldStreaming?.zone || AstraeonWorldStreaming.readyForMovement')
         record=page.evaluate('''()=>{
           const v=AstraeonSpatialView,a=v.actors.get('player'),g=a.mesh.geometry,p=g.attributes.position,uv=g.attributes.uv;
           a.mesh.updateWorldMatrix(true,false);

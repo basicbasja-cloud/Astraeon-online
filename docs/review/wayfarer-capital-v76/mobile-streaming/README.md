@@ -148,3 +148,32 @@ time, crashes and sustained frame pacing. Do not clear an existing player's
 save. Cloud/software timing and emulation cannot satisfy physical-device FPS,
 thermal or Safari memory-pressure gates. All authored materials, geometry and
 art resolution remain intact; visual RO3 acceptance is still pending.
+
+## Optimization acceptance and automatic World resume
+
+Available-environment gate: PASS. Overall optimization acceptance: PARTIAL
+solely because physical iPhone Safari FPS/thermal/memory-pressure validation is
+PENDING. All8 current services and10 neighborhood stops open/reach through
+normal input, original field entry and saved-character reload pass at1280-wide
+native CSS resolution; no page or resource errors. Court-legacy remains the
+original Canvas diagnostic and passes ordinary boot/walk. The current55°/20°
+camera, orbit/tilt/distance/reset, sprite aspect and ground inverse pass. A real
+HTTP server injects two503 spawn-chunk failures; the actual SW/runtime retries
+twice, installs unique meshes and reaches play with no lingering failure or
+page error. Compact966,013-character gameplay metadata parse24.3ms in this
+fault run, versus original monolithic isolated parse1,503.8ms. Largest critical
+asset is2,100,118 bytes (original authored street texture), versus original
+95,574,459-byte monolithic world request. No texture or geometry downgrade.
+Memory ownership audit independently totals every loaded manifest: all sampled
+owned geometry bytes match, and repeat visits match exactly. Browser/GPU/texture
+memory beyond those owned buffers remains a real-device measurement limitation.
+
+Version89 is publicly served at the recorded URL. Checkpoint0a681b3 preserved
+the verified mobile loop, field and audit evidence. Original World task is
+resumed automatically: the inset16 planner currently needs13,125 unfeathered
+faces versus its12,500 limit. The existing feathered91-lawns mask itself has no
+micro-holes; boundaries are retained exactly. Improve curve tessellation/count
+accounting while retaining the original budget, then apply the recorded second
+six-unit inset. Follow with reference-informed native daylight/paving and fine
+grass rooted near the actual stone seams, fresh source-matched bakes, transport
+regeneration and gameplay comparison. Hard RO3 art acceptance remains PENDING.
