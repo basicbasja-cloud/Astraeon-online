@@ -51,6 +51,9 @@ they do not supersede the current spatial architecture.
 
 | Module | Actual responsibility |
 |---|---|
+| progression-config.js + progression.js | Frozen tunable definitions and independent pure Base/Job EXP, level and point transitions |
+| stats.js + character-state.js | Deterministic derived modifier pipeline and private validated primary/progression/resource state |
+| player-state.js | Current gear/party adapters and legacy field accessors into authoritative character state |
 | world-view.js | Shared projection/inverse, responsive zoom/framing, human-relative actor dimensions and zone bounds |
 | skill-nodes.js | Authored compatibility, single-node application/normalization and pure contact status model |
 | world-content.js | Authored Shenzhou props, identified collision footprints, entrance forecourts, roads, atlas regions and walker routes |
@@ -70,14 +73,14 @@ they do not supersede the current spatial architecture.
 | icons.js | Original SVG control/navigation symbols |
 | scene.js | Cached authored paving, original environment sprites, depth fade and animated fountain/lamps |
 | world-systems.js | Ambient walkers, gradual atmosphere parameters, quality presets and original WebAudio synthesis |
-| game.js | Existing local state/progression/menu integration, movement, enemy AI, reactions, save, camera and presentation orchestration |
+| game.js | Existing menus, progression adapters, movement, enemy AI, reactions, save, camera and presentation orchestration |
 | qa.html | Same live iframe in four actual CSS viewport sizes; frame timing and state samples through validated postMessage |
 
 ## Coordinate contract
 Ground uses ordinary Cartesian x/y with separate z elevation. The authored town includes stairs and terraces. Its shared camera profile governs perspective projection, floor rays, actor directions and camera-relative input; world-space scenery and upright actors share one depth buffer. Other zones retain the paired affine projection and projected-depth sorting. The camera starts at the player and follows with exponential time-based smoothing.
 
 ## Simulation boundary
-`combat.js` has no renderer, DOM, audio, storage or clock dependency. Caller supplies simulation time, action origin, aim and entities, then consumes contact/release events. Paused menus and hidden tabs freeze simulation time. Dodge can cancel an action; cooldowns remain spent. Impact presentation does not determine damage timing. Enemy attack geometry, navigation, save defaults and world claims now have independent pure modules. Movement/AI/progression orchestration still lives inside `game.js`; moving them into an `IGameSimulation` adapter is outstanding. No server-authority or prediction claim.
+`combat.js` has no renderer, DOM, audio, storage or clock dependency. Caller supplies simulation time, action origin, aim and entities, then consumes contact/release events. Paused menus and hidden tabs freeze simulation time. Dodge can cancel an action; cooldowns remain spent. Impact presentation does not determine damage timing. Enemy attack geometry, navigation, save defaults and world claims now have independent pure modules. Progression/stat authority now lives in the [Core Spine foundation modules](docs/CORE_SPINE_PROGRESSION.md). Movement/AI orchestration still lives inside `game.js`; moving those into an `IGameSimulation` adapter is outstanding. No server-authority or prediction claim.
 
 ## Historical archetype animation contract (current Warrior below)
 Three original archetypes each have eight authored directions and six poses: idle, two locomotion strides, anticipation, contact and crouched reaction. The guardian has eight poses per direction; regular enemies have idle and attack views. Runtime yaw is continuous and smoothly follows movement, target or aim; presentation projects facing through the ground camera and chooses the closest screen-space 45° view without horizontal mirroring. Gait phase follows traveled distance. Three additional walk sheets provide eight stride phases for six directions; north and northwest keep the accepted two-pose rear cycle because the extended sheets drifted toward side/front views. Warrior omits the corrupted stride and distributes seven accepted keys evenly across a cycle, avoiding a repeated hold. Cached source-silhouette paths clip neighboring cell pieces without repainting the original artwork. Source bounds exclude neighboring atlas fragments and align visible feet. Golden Warrior registration now uses source-space boot contacts and stable 70-pixel visible body scale. Sixteen original hit/death frames cover all eight directions without cardinal fallback. The manifest drives a per-direction 2D fall transform on the hit pose, crossfades to the original collapsed artwork, then holds it before its final fade.
@@ -85,7 +88,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 3; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v68, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 4; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v84, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Base Skills and single-layer Nodes
 

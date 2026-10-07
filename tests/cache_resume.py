@@ -32,6 +32,15 @@ with sync_playwright() as p:
         args=['--no-sandbox', '--enable-gpu'] + (['--use-angle=d3d11'] if os.name == 'nt'
              else ['--use-angle=swiftshader', '--enable-unsafe-swiftshader']))
     context = browser.new_context(viewport={'width': 1280, 'height': 800})
+    # Apply disposable fixtures on the next document, after the previous game's
+    # pagehide autosave. Writing localStorage immediately before reload races it.
+    context.add_init_script('''
+      if(location.protocol==='http:'||location.protocol==='https:'){
+        const fixture=sessionStorage.getItem('astraeon-cache-test-fixture');
+        if(fixture){localStorage.setItem('astraeon-iso-v1',fixture);
+          sessionStorage.removeItem('astraeon-cache-test-fixture');}
+      }
+    ''')
     page = context.new_page()
     page.set_default_timeout(60000)
     page.on('pageerror', lambda error: errors.append(str(error)))
@@ -55,7 +64,9 @@ with sync_playwright() as p:
     }''')
     assert previous_cache not in version['keys'], version
     assert version['name'] == current_cache, version
-    for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/wayfarer-spatial.json']:
+    for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/wayfarer-spatial.json',
+                     'progression-config.js', 'progression.js', 'stats.js', 'character-state.js',
+                     'player-state.js', 'save-state.js']:
         assert any(url.endswith('/' + filename + '?v=' + current_version) for url in version['urls']), filename
     world = json.loads((ROOT / 'world/v3/wayfarer-spatial.json').read_text())
     art = {material['texture']['file'] for material in world['materials'].values()
@@ -70,8 +81,9 @@ with sync_playwright() as p:
         # Seed an isolated source74 save, then let the ordinary load path move
         # it to the reorganized city's arrival while retaining progression.
         legacy = {**before, 'worldLayout': 'wayfarer-concept-terraced-town-v49', 'x': 54, 'y': 58}
-        page.evaluate('(save)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(save))', legacy)
+        page.evaluate('(save)=>sessionStorage.setItem("astraeon-cache-test-fixture",JSON.stringify(save))', legacy)
         page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
+        page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
         page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
         before = page.evaluate('AstraeonQA.snapshot().save')
         for field in ['name', 'cls', 'zone', 'lv', 'xp', 'inventory', 'equipment']:
@@ -85,8 +97,9 @@ with sync_playwright() as p:
         # progression rather than leaving the character inside a new building.
         revised = {**before, 'x': 217.74, 'y': 220.0925}
         assert page.evaluate('p=>AstraeonContent.nativeWorld.spatial.blocked(p.x,p.y)', revised)
-        page.evaluate('(save)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(save))', revised)
+        page.evaluate('(save)=>sessionStorage.setItem("astraeon-cache-test-fixture",JSON.stringify(save))', revised)
         page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
+        page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
         page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
         before = page.evaluate('AstraeonQA.snapshot().save')
         for field in ['name','cls','zone','lv','xp','inventory','equipment','gold','house','guild','quest','skillNodes']:
@@ -99,7 +112,9 @@ with sync_playwright() as p:
     page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
     page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().time>1')
     after = page.evaluate('AstraeonQA.snapshot().save')
-    for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment']:
+    for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment',
+                  'baseLevel', 'baseExp', 'baseJobLevel', 'baseJobExp', 'statPoints', 'skillPoints',
+                  'STR', 'AGI', 'VIT', 'INT', 'DEX', 'LUK', 'maxHP', 'maxSP', 'resourceBase']:
         assert field in before and after[field] == before[field], (field, before.get(field), after.get(field))
     ground = world['lighting']['groundShadow']
     ground_size = page.evaluate('''async file=>{
