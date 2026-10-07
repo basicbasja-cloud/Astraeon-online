@@ -5,8 +5,10 @@ authoritative design remains `ASTRAEON_Backbone_Release_Roadmap_EN_v0.4.md`.
 The [Base skill tree extension](CORE_SPINE_SKILL_TREE.md) now builds on this contract.
 The [staged Combat Resolution foundation](CORE_SPINE_COMBAT.md) now consumes
 these stats. The [eight-slot Action Loadout foundation](CORE_SPINE_ACTION_LOADOUT.md)
-adds behavior, persistence and cooldown contracts. Item instances and the rest
-of 0.0.1 remain future tasks. No Advanced Jobs are implemented.
+adds behavior, persistence and cooldown contracts. The
+[item instance / inventory / equipment foundation](CORE_SPINE_ITEMS.md) now
+adds canonical ownership and version 5 migration. The remaining 0.0.1 systems
+are future tasks. No Advanced Jobs are implemented.
 
 ## Boundaries and API
 
@@ -18,7 +20,7 @@ of 0.0.1 remain future tasks. No Advanced Jobs are implemented.
   passive and temporary effect groups. No DOM, storage, RNG or clock input.
 - `character-state.js`: private authoritative state, validated spending and
   resource clamps. Returned snapshots and definitions are frozen.
-- `player-state.js`: adapter for legacy string equipment, companion HP and
+- `player-state.js`: adapter for canonical equipment modifiers, companion HP and
   gameplay fields. `game.js` orchestrates existing gameplay through this adapter.
 - `save-state.js`: versioned pure normalization, migration and serialization.
 - `tools/progression.html`: plain developer presentation using the shared API.
@@ -28,7 +30,7 @@ of 0.0.1 remain future tasks. No Advanced Jobs are implemented.
 `addStatPoints`, `addSkillPoints`, `allocateStat`, `resetStats`, `getPrimaryStats`,
 `getDerivedStats`, `setCurrentHP`, `setCurrentSP`, `setModifiers` and `snapshot`.
 `AstraeonPlayer.attach(save)` exposes these same operations on a persistent
-game save. It recalculates legacy equipment/party changes before operations.
+game save. It recalculates canonical equipment/party changes before operations.
 
 EXP, levels, point additions and allocations require safe integers. Allocation
 amounts must be positive; the default cost is one point per stat increment.
@@ -38,7 +40,7 @@ the additive `statPointSpending` ledger; current pointCost never recalculates a
 historical refund. Missing v4/earlier ledgers migrate with historical initial=1,
 cost=1; invalid explicit ledgers receive zero credit. See the
 [combat foundation compatibility notes](CORE_SPINE_COMBAT.md) for migration and
-future-save protection. Save versions above 4 cannot load or overwrite storage.
+future-save protection. Save versions above 5 cannot load or overwrite storage.
 Skill Points are the persistent unspent pool shared with the Base skill tree
 extension. That extension adds atomic learning/refund operations to this controller.
 
@@ -67,7 +69,11 @@ for player damage. ASPD/cast have separate future helpers; playable timing,
 resilience and weight mechanics remain unchanged.
 Existing Warden Plate mitigation and ability timing remain in the playable game.
 
-## Save version 4 and compatibility
+## Progression fields introduced in version 4; current save version 5
+
+Version 5 adds canonical item stacks, stable instances/serial, equipped references
+and historical item archives. See [item migration](CORE_SPINE_ITEMS.md); the
+following progression/resource compatibility contract remains unchanged.
 
 Version 4 identifies authoritative progression/stat/resource fields:
 `baseLevel`, `baseExp`, `baseJobLevel`, `baseJobExp`, `statPoints`, `skillPoints`,
@@ -122,6 +128,6 @@ python tests/cache_resume.py --url http://127.0.0.1:8011
 ```
 
 Browser checks support `ASTRAEON_BROWSER` or `--browser`; reports/screenshots are
-written outside the checkout. Boot/page/service-worker version 86 loads the new
+written outside the checkout. Boot/page/service-worker version 88 loads the new
 modules together and precaches them, preventing cached code/schema mismatches.
 No character, world, lighting, renderer or production UI artwork was changed.

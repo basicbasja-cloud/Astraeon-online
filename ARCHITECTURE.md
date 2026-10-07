@@ -54,6 +54,7 @@ they do not supersede the current spatial architecture.
 | progression-config.js + progression.js | Frozen tunable definitions and independent pure Base/Job EXP, level and point transitions |
 | stats.js + character-state.js | Deterministic derived modifier pipeline and private validated primary/progression/resource state |
 | player-state.js | Current gear/party adapters and legacy field accessors into authoritative character state |
+| item-definitions.js + item-inventory.js + item-equipment.js + item-state.js | Frozen item data, canonical stacks/instances, stable serials, equipment validation, migration and craft/trade transactions |
 | skill-definitions.js + skill-tree.js | Immutable Swordsman/Mage Base definitions and trees; pure rank, Job/prerequisite, paid spend/refund and passive evaluation |
 | action-loadout.js | Pure eight-slot configuration, canonical normalization, validated assignment and immutable clear/swap/move transitions |
 | action-runtime.js | Explicit-time slot eligibility, transient action/group/global cooldowns, owned preparations and atomic launch/resource commit |
@@ -93,7 +94,20 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 4; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v87, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v88, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+
+## Item ownership and equipment
+
+`item-definitions.js` holds frozen existing content. `item-inventory.js` owns pure
+definition-ID stack and monotonic instance transitions; `item-equipment.js`
+validates owned references and compiles the existing Stats modifier language.
+`item-state.js` privately controls both states and plans craft/trade/reward
+transactions. Player attaches this controller to Character resources/Stats.
+Combat receives its ordinary derived snapshot. Legacy counters/names are
+compatibility views; game mutations use canonical APIs. Version 5 migration
+imports old ownership once and preserves history without invented item effects.
+All four modules are precached together. See [contracts](docs/CORE_SPINE_ITEMS.md)
+and [verification report](docs/CORE_SPINE_ITEMS_REPORT.md).
 
 ## Base Skills and single-layer Nodes
 

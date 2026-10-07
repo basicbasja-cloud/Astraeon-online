@@ -70,8 +70,17 @@ only the eight-slot behavior/persistence/cooldown foundation, not Patch 0.0.1.
 
 ## Verification
 
+The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
+definition-ID stacks, stable non-stack instances and equipped instance references.
+Existing crafting, merchant, rewards and consumables use the shared canonical API.
+Save version is **5**, migrated deterministically from earlier saves; cache version
+is **88**. `/tools/inventory.html` provides an isolated developer sandbox.
+See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
+UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
+
 ```powershell
 python tools/run-node-checks.py
+python tests/inventory_browser.py --url http://127.0.0.1:8011
 python tests/action_loadout_browser.py --url http://127.0.0.1:8011
 python tests/combat_browser.py --url http://127.0.0.1:8011
 python tests/skill_tree_browser.py --url http://127.0.0.1:8011

@@ -1,0 +1,208 @@
+# Patch 0.0.1 item instance / inventory / equipment foundation
+
+This contract extends Progression, Stats, Skill Tree, Combat Resolution and the
+eight-slot Action Loadout. The Backbone release roadmap remains authoritative.
+This is one Core Spine foundation; **Patch 0.0.1 is not complete**.
+
+## Responsibilities
+
+| Module | Responsibility |
+| --- | --- |
+| `item-definitions.js` | Deeply frozen existing content, stable lookup, legacy mappings, recipes and merchant prices |
+| `item-inventory.js` | Pure immutable stack/instance transitions, serial allocation, normalization and carried weight |
+| `item-equipment.js` | Pure instance/definition/slot validation, equipment transitions and modifier compilation |
+| `item-state.js` | Private canonical ownership, migration, compatibility views and atomic craft/trade/reward plans |
+| `player-state.js` | Item controller attachment, Character modifier integration and resource consumables |
+| `save-state.js` | Version 5 normalization, historical migration and persistent serialization |
+| `game.js`, `exploration.js` | Contained adapters for existing gameplay and presentation |
+| `tools/inventory.html`, `tools/inventory-harness.js` | Isolated developer presentation, no item formulas or validation |
+
+Definitions, owned objects, equipment references and displayed names are separate.
+Core operations have no DOM, clock, RNG, storage or rendering dependency.
+
+## Definition and ownership contract
+
+Definitions have `id`, `name`, localization `key`, `kind`, `stackable`, `maxStack`,
+`equipmentSlots`, `weight`, `modifiers`, `requirements`, `tags` and `metadata`.
+Current authored resource effects use `effects`. Lookup uses stable definition ID,
+never displayed name. Unknown IDs return null. All nested authored data is frozen.
+Kinds are data: a future non-stack object can be owned without being equipment.
+
+```json
+{
+  "itemInventory": {
+    "stacks": {"herb": 3, "ore": 2},
+    "instances": {
+      "item-1": {"instanceId": "item-1", "definitionId": "astral-blade", "metadata": {}}
+    },
+    "nextItemSerial": 2,
+    "history": {}
+  },
+  "equippedItems": {"weapon": "item-1", "armor": null, "relic": null},
+  "itemHistory": {"inventory": {}, "equipment": {}}
+}
+```
+
+Stack quantities are positive safe integers keyed by definition ID; zero removes
+the entry. Stackables have no instance ID. Instances contain identity, definition
+reference and cloned JSON-compatible metadata, never a full definition, derived
+stats or random roll. Metadata accepts finite numbers, strings, booleans, null,
+arrays and plain objects; cycles/functions/non-finite values reject atomically.
+Future enhancement/affix/binding/provenance fields can use metadata without
+replacing identity; none of those systems is executable now.
+
+Creation allocates `item-N` from the persisted monotonic serial and increments it
+once. Deletion never lowers the serial. Normalization raises the serial above the
+highest observed valid-format ID, including quarantined malformed instances.
+Allocation refuses exhausted safe-integer space; it never wraps or reuses IDs.
+
+Normalization quarantines unknown or malformed stacks/instances in inventory
+history and excludes them from effects/weight/operations. Duplicate or mismatched
+equipment references normalize to null, first valid slot wins. Presence of
+canonical `itemInventory` always takes precedence over legacy counters, even
+when the canonical value needs repair. It never triggers a second legacy import.
+
+## Shared authoritative API
+
+`AstraeonPlayer.attach(state)` exposes:
+
+- `getInventory()`, `getQuantity(id)`, `getInstance(instanceId)`, `getHistory()`.
+- `canAddStack(id, amount)`, `addStack(id, amount)`,
+  `canRemoveStack(id, amount)`, `removeStack(id, amount)`, `consumeStack(id, amount)`.
+- `createItemInstance(id, metadata)`, `deleteItemInstance(instanceId)`.
+- `getEquipment()`, `getEquipped(slot)`, `canEquip(instanceId, slot)`,
+  `equip(instanceId, slot)`, `unequip(slot)`.
+- `getEquipmentModifiers()`, `getEquipmentEffects()`, `getCarriedWeight()`.
+- `reward(stackMap)`, `craft(recipeId)`, `buy(id, amount)`, `sell(id, amount)`,
+  `useConsumable(id)`, `acquireEquipment(id, slot, options)`.
+
+Mutations return frozen `{ok:true, ...}` or `{ok:false, code}` results. Unknown
+definition, non-stack misuse, nonpositive/fractional/unsafe quantity, insufficient
+ownership, overflow and configured maxStack reject before committing. Invalid
+instance metadata does not consume a serial. Equipped deletion rejects
+`ITEM_EQUIPPED`; unequip first. Replacing equipment retains the old instance.
+
+Current slots are `weapon`, `armor`, `relic`. Equip verifies instance ownership,
+known definition, equipment kind, supported target slot and no second-slot use.
+An injected synchronous `equipmentRequirements(requirements, instance, slot)`
+must return exactly true; false or exceptions reject. Production requirements
+are empty. No class/level/primary-stat restriction has been invented.
+
+The private controller publishes frozen canonical getters. Legacy `inventory`
+is a derived read-only counter view. Legacy `equipment` presents names; its
+bounded historical setter routes recognized names through canonical acquisition
+and equip, reuses owned objects, and repeated selection creates nothing. Unknown
+names are archived and have no effects. Production adapters exclusively mutate
+the canonical API. These are trusted local APIs, not server authentication.
+
+## Stats, Combat and resource safety
+
+```mermaid
+flowchart LR
+  I[Owned instance IDs] --> E[Validated equipped IDs]
+  E --> D[Frozen ItemDefinitions]
+  D --> M[Existing equipmentModifiers group]
+  M --> S[AstraeonStats]
+  S --> C[Derived snapshot in Combat Resolution]
+```
+
+Item modifiers use the existing `primary`, `add`, `multiply` language. The item
+modules neither calculate derived values nor introduce formulas. Player compiles
+currently equipped definitions once, followed by explicit runtime equipment
+modifiers; learned passives, party modifiers and temporary groups keep their
+existing boundaries. `progression-config.js` legacyEquipment data is retained for
+historical compatibility but no longer adds a second contribution.
+
+Character validates/derives proposed modifiers before item commit and remains
+the HP/SP authority. Raising maxima does not heal; lowering maxima clamps current
+resources. Failed modifier validation preserves items/equipment/resources.
+Repeating equip/unequip replaces the group, never accumulates it. Save capacity
+normalization excludes transient modifiers and does not bake equipment into
+resourceBase. Combat consumes the usual derived snapshot without resolver edits.
+
+Warden Plate's existing incoming flat reduction of 2 is definition data forwarded
+through the existing enemy damage adapter. Its existing DEF +2 reaches Stats.
+This retains current incoming orchestration; it is not a new status/mitigation
+framework. Current production gear does not add HP/SP; injected unit fixtures
+prove primary, percentage and resource-maximum modifiers without adding content.
+
+## Save version 5 and deterministic migration
+
+Version **5** is deliberate: ownership now includes stable non-stack identity,
+a persisted allocator and equipment references rather than independent counters
+and strings. This is a schema-generation change. The version increments exactly
+once; storage key remains `astraeon-iso-v1`. Versions above 5 reject before
+normalization/boot/autosave and preserve unsupported bytes. Versions 4 and earlier
+retain the existing Progression/Stats/Skill/Loadout migrations before item import.
+
+Legacy materials/consumables map to the same canonical definition-ID quantities.
+`blade`, `plate`, `charm` counters become that many distinct instances in fixed
+mapping order. Equipped known names reuse an existing matching owned instance;
+they do not grant another copy of a crafted item. A known equipped-only object
+is imported once with `legacyEquippedOnly:true`; the compatibility crafted-gear
+counter excludes this marker to preserve its original value. This represents
+existing equipped ownership. Traveler Blade/Adventurer Garb become the two
+existing starter owned objects. Explicit None creates nothing.
+
+Known chapter relic names map explicitly. Unknown historical equipment is retained
+in `itemHistory.equipment` and compatibility presentation, with no instance or
+invented modifier. Unknown inventory keys and equipment slots survive in history.
+Raw old data is archived once; current compatibility counters always project
+canonical quantities. Legacy integer normalization retains prior Save semantics.
+
+Migration IDs/order are deterministic. Subsequent normalization/save/load sees
+canonical presence and never reimports counters/strings, grants rewards, advances
+serial or changes equipped identity. Progression, ledgers, ranks, Nodes, eight
+slots, currency, quests, world claims and historical fields remain supported.
+
+To avoid allocating unbounded legacy gear counters, import rejects more than
+10,000 counted non-stack objects with `ITEM_MIGRATION_LIMIT`. This is a technical
+import guard, not a gameplay capacity/weight rule. Boot blocks overwrite and
+preserves the original save for a future importer; nothing is silently truncated.
+
+## Existing gameplay transactions
+
+Recipes use definition-ID inputs/outputs. Craft plans all material removals and
+the output before commit. Stack output adds quantity; equipment output creates a
+unique instance with recipe provenance. Insufficient input or output overflow
+consumes nothing and advances no serial. Profession XP increments on success only.
+
+Merchant prices remain the existing provisional prices; controller data is
+authoritative. Buying/selling validates amount, current currency, total price,
+currency bounds and the item plan before committing item state then currency.
+Rejected item/currency conditions preserve both. Current merchant handles stacks.
+
+Potion restores 45 HP and Ration restores 20 SP through clamped Character setters
+after consuming exactly one canonical quantity. Effects are validated before debit.
+Potion remains separate from eight skill slots; no Action Item/cooldown system is
+introduced. Camp cooking/shrine offering retain their separate current effects
+while consuming canonical Ration/Herb. Loot, quest, discovery and dungeon stack
+rewards use canonical reward batches; chapter gear creates/equips an owned instance.
+Existing EXP, gold, quest credit, death and travel behavior remains in the game.
+
+## Provisional content, weight and tooling
+
+Only 14 existing definitions are adapted: Herb, Ore, Relic Shards, Healing Flask,
+Field Rations, Traveler Blade, Astral Blade, Adventurer Garb, Warden Plate,
+Spirit Charm, Moonveil Sigil, Sunstone Crest, Dawn Circuit and Veilheart.
+Astral Blade retains ATK/MATK +6, known relics retain +3, Warden retains DEF +2
+and incoming reduction 2. Five recipes and four merchant entries retain current
+inputs/output/prices. These values do not certify final balance or catalogue.
+
+Weights are explicitly zero/unconfigured. Pure carriedWeight sums stack count ×
+definition weight plus each owned instance once, including equipped objects.
+Derived carryWeight capacity remains Stats data; no encumbrance, slowdown,
+inventory slot cap, expansion, bank or pickup capacity policy is implemented.
+
+Open `/tools/inventory.html` for definition/stacks/instance/serial/equipment/
+modifier/derived/save inspection and add/remove/create/delete/equip/unequip/save/
+reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolated
+from playable storage. Migration inspection does not replace the sandbox state.
+Exact `?dev=1` extends the existing live development adapter with these item APIs;
+ordinary URLs expose no progression/combat/item harness mutation globals.
+Boot/page/SW version **88** imports and precaches all four modules together.
+
+See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
+identity/ownership/equipment foundation only. Production UI, Action Items, boxes,
+full gear slots, final content/balance, rarity, affixes, enhancement, sockets,
+binding, durability, encumbrance and server authority remain future work.

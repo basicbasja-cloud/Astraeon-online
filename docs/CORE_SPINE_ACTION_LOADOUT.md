@@ -176,7 +176,9 @@ cost/cooldown. Existing respawn HP/SP restoration and death penalty remain; no
 new resource awards are introduced. Reload resetting transient clocks is an
 explicit 0.0.1 policy, not offline persistence.
 
-Save version remains **4**, key `astraeon-iso-v1`. Skill Runtime's existing
+Current save version is **5** after the [item foundation](CORE_SPINE_ITEMS.md)
+schema change; this loadout extension originally shipped additively in version 4.
+Key remains `astraeon-iso-v1`. Skill Runtime's existing
 normalizeLoadout delegates to the pure model: exactly eight dense slots, known
 assignable actives only, first valid duplicate occurrence wins, remainder empty.
 Wrong-class IDs stay dormant. A known but unlearned stored ID is retained safely
@@ -191,9 +193,10 @@ Basic Attack is outside the eight slots, requires no learned rank and retains
 its Timeline cooldown/combo/contact resource behavior. Potion retains its separate
 utility action, inventory decrement and healing. Input exports separateActions
 identities for attack, potion, dodge and interact as a later item/input extension
-boundary; there are no item instances, new potion cooldown rules or full item
-action framework. Backbone's later combat-item/scroll/weapon slot types remain
-future Item/Inventory work. One active skill configuration is sufficient; future
+boundary. The item foundation now adds owned instances and canonical Potion
+consumption; new potion cooldown rules and a full item action framework remain
+future work. Backbone's later combat-item/scroll/weapon slot types remain future
+action adapters. One active skill configuration is sufficient; future
 presets can supply a new configuration through the same transition boundary.
 
 Returning saves with legacySkillControls:true get authored fixed actions in
@@ -225,5 +228,5 @@ bindings are retained; no production controls or labels for 5–8 are added.
 Run the commands in README, including `tests/action_loadout_browser.py`. The
 [verification report](CORE_SPINE_ACTION_LOADOUT_REPORT.md) records checkpoints,
 all regression counts, disposable Swordsman/Mage smoke and remaining scope.
-Boot/page/SW version 87 precaches both new core modules and supports offline
+Boot/page/SW version 88 precaches the action and item core modules and supports offline
 saved-character boot. No visual acceptance is inferred from these checks.

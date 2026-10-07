@@ -139,8 +139,10 @@ minimum. These future helpers do not alter any playable animation timing.
 
 ## Save protection and actual Stat refunds
 
-Save version remains 4 with additive statPointSpending, an independent integer
-Stat expenditure total. Skill Point accounting keeps its separate existing map.
+The combat extension originally added statPointSpending in version 4; current
+save version is 5 for [canonical item ownership](CORE_SPINE_ITEMS.md). The
+independent integer Stat expenditure total remains unchanged. Skill Point
+accounting keeps its separate existing map.
 Allocation commits primary value, unspent balance and exact cost into the ledger
 atomically. Reset refunds the stored expenditure, zeros it and resets stats;
 repeated reset cannot refund twice. Reopening with a tuned pointCost preserves
@@ -154,7 +156,7 @@ ledger. This is local compatibility accounting, not protection against a manuall
 forged save or a final respec economy. A future schema changing the historical
 stat baseline must author its own migration rather than reinterpret this rule.
 
-Save.normalize and snapshot reject saveVersion > 4 with UnsupportedSaveError.
+Save.normalize and snapshot reject saveVersion > 5 with UnsupportedSaveError.
 Normal boot displays the unsupported-save path and returns before character
 creation, mount, autosave or pagehide/visibility save listeners are registered.
 Original storage bytes remain untouched, including across reload. No production
@@ -170,7 +172,7 @@ Normal URLs expose neither CombatDev nor ProgressionDev mutation APIs.
 
 Run the documented static server, full Node suite, combat_browser.py,
 skill_tree_browser.py, progression_browser.py, cache_resume.py and world validator.
-Cache/boot/page version 86 includes the three combat modules for offline boot.
+Cache/boot/page version 88 includes the three combat modules for offline boot.
 Browser tests cover the actual playable classes, ranked Node contacts, passive
 stats, deterministic miss/dodge/crit/defense, HP/death/respawn, progression/rewards,
 save parity and future-save preservation. See CORE_SPINE_COMBAT_REPORT.md for the

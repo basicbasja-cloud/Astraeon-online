@@ -1,5 +1,9 @@
 # Patch 0.0.1 Base skill tree minimum
 
+Current save/cache versions are 5/88 after the
+[Item / Inventory / Equipment foundation](CORE_SPINE_ITEMS.md). Learning, ranks,
+paid ledgers, Nodes and loadout contracts below retain their existing behavior.
+
 This extends the stable [progression/stat/save foundation](CORE_SPINE_PROGRESSION.md).
 The authority is `ASTRAEON_Backbone_Release_Roadmap_EN_v0.4.md`. This is only the
 Base skill tree portion of Core Spine. Patch 0.0.1 is still incomplete.
@@ -85,8 +89,9 @@ their rank effects is future content work. No arbitrary node graph exists.
 
 ## Persistence and migration
 
-Save version stays **4**: this is an additive extension with defaults, not a
-replacement schema. The browser save key remains `astraeon-iso-v1`.
+The skill extension originally shipped additively in version **4**. Current
+save version is **5** for canonical item ownership; skill fields and migrations
+retain this contract. The browser save key remains `astraeon-iso-v1`.
 
 ```js
 learnedSkills: { 'rising-edge': 3 },        // ID -> rank, no copied definitions
@@ -165,5 +170,5 @@ of browser automation. The skill browser test uses disposable contexts, ordinary
 creation/input for both classes, shared developer mutations, live ranked Node
 execution, save/reload, returning-save compatibility and the isolated harness.
 Cache checks also preserve learned ranks, paid costs, passive state and assigned
-Nodes while offline. Boot/page/SW use version **86** and precache all skill modules
+Nodes while offline. Boot/page/SW use version **88** and precache all skill modules
 along with the [staged Combat Resolution extension](CORE_SPINE_COMBAT.md).
