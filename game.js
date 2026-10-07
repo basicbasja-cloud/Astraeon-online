@@ -17,11 +17,20 @@ const RECIPES=[{name:'Healing Flask',cost:{herb:2,shard:1},result:'potion'},{nam
 const $=s=>document.querySelector(s), el=document.getElementById('app');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-let S=null;try{S=window.AstraeonSave.normalize(JSON.parse(localStorage.getItem('astraeon-iso-v1')))}catch{};if(S&&!S.name)S=null;
+let S=null;try{S=window.AstraeonSave.normalize(JSON.parse(localStorage.getItem('astraeon-iso-v1')))}catch(error){if(error.code==='UNSUPPORTED_SAVE_VERSION'){el.setAttribute('role','alert');el.dataset.saveError=error.code;el.textContent=error.message+' Your saved character has been preserved. Open it with a newer game.';return}};if(S&&!S.name)S=null;
 let player=S?window.AstraeonPlayer.attach(S):null;
 let canvas,ctx,windowName=null,toastTimer=0,keys=new Set(),target=null,selectedEnemy=null,last=0,now=0,attackCD=0,dodgeCD=0,spawnCD=0,comboStep=0,comboUntil=0,heldAction=null,touchMove={x:0,y:0},fx=[],mobs=[],camera={x:0,y:0},dungeon=null,uiTick=0,saveTick=0;
 const groundArt=new Image();groundArt.src='./assets/grassland-ground.webp';let groundPattern=null;
 let hostileShots=[],hazards=[],playerBursts=[],nodeEvents=[];
+const combatResolver=window.AstraeonCombatResolution,combatRuntime=window.AstraeonCombatRuntime,combatRng=combatRuntime.productionRng();
+const combatInspect=new URLSearchParams(location.search).get('dev')==='1'||new URLSearchParams(location.search).get('qa')==='1';
+let combatTestPolicy=null;const combatResults=[];
+if(new URLSearchParams(location.search).get('dev')==='1')window.AstraeonCombatDev=Object.freeze({
+ inspect:(input,rolls,config)=>combatResolver.resolveAttack(input,{rng:combatRuntime.sequenceRng(rolls),config}),
+ results:()=>structuredClone(combatResults),
+ // Disposable local verification only: overlays combat input, never saved actor definitions.
+ setPolicy:policy=>{combatTestPolicy=policy===null?null:structuredClone(policy);combatResults.length=0}
+});
 const nodes=window.AstraeonSkillNodes;
 const threats=window.AstraeonEnemyCombat;
 const groundReady=new Promise((resolve,reject)=>{groundArt.onload=resolve;groundArt.onerror=()=>reject(new Error('Cannot load ground artwork'))});
@@ -327,7 +336,7 @@ function move(dx,dy){let nx=S.x+dx,ny=S.y+dy;if(!isBlocked(nx,S.y))S.x=nx;if(!is
 function nearest(range){let a=mobs.filter(m=>m.hp>0&&distance(S,m)<range).sort((a,b)=>distance(S,a)-distance(S,b));return selectedEnemy&&a.includes(selectedEnemy)?selectedEnemy:a[0]}
 function gainXP(v){const result=player.grantBaseExp(v);player.grantJobExp(Math.floor(v*window.AstraeonProgressionConfig.progression.activityJobExpRatio));if(result.levelsGained){S.hp=S.maxHp;S.energy=S.maxEnergy;toast(`Level ${S.lv}! HP และพลังฟื้นเต็ม`)}if(S.clears>=5)S.rank='Silver';else if(S.clears>=2)S.rank='Iron'}
 function kill(m){audio.play('loot');m.hp=0;m.deadAt=now;m.animState='hit';m.animStarted=now;m.animUntil=now+.6;screenShake=Math.max(screenShake,m.boss?12:5);spark(m.x,m.y,'#b8a8ff',m.boss?34:15,m.boss?75:46);if(m.name==='Arena Sparring AI'){S.pvpWins++;S.gold+=10;toast('ชนะคู่ซ้อม! +10 gold')}if(m.name==='Astral Echo'&&!dungeon){S.inventory.shard+=3;S.gold+=50;toast('Astral Echo defeated! +3 shards, +50 gold')}S.kills++;S.gold+=4+S.zone*2;S.inventory.ore+=(S.kills%3===0?1:0);S.inventory.herb+=(S.kills%2===0?1:0);if(S.kills%4===0)S.inventory.shard++;gainXP((m.boss?25:7)+S.zone*3);if(S.quest&&CONTRACTS[S.quest.id]?.zone===S.zone){S.quest.progress++;if(S.quest.progress>=CONTRACTS[S.quest.id].target){let q=CONTRACTS[S.quest.id];S.gold+=q.reward;S.inventory.shard+=2;S.clears++;S.reputation+=5;gainXP(q.xp);S.journal.unshift(`สำเร็จ: ${q.title}`);S.quest=null;toast(`Contract สำเร็จ! +${q.reward} gold, +${q.xp} XP, +2 shards`)}else toast(`เป้าหมาย ${S.quest.progress}/${CONTRACTS[S.quest.id].target}`)}else toast(`กำจัด ${m.name} · +gold / XP`);refreshUI();save()}
-function hit(m,dmg,color='#f3cb8c'){if(m.hp<=0)return;hitStop=.035;audio.play('hit');m.hp=Math.max(0,m.hp-dmg);if(!m.boss||!m.windup&&!m.charge){m.animState='hit';m.animStarted=now;m.animUntil=now+(m.boss?.14:.24)}m.flashUntil=now+.12;fx.push({kind:'popup',text:`−${dmg}`,x:m.x,y:m.y,z:38,color,life:.58,maxLife:.58});spark(m.x,m.y,color,8,36);if(m.hp===0)kill(m);else{refreshUI();save()}}
+function hit(m,dmg,color='#f3cb8c',resolution=null){if(m.hp<=0)return;const applied=combatResolver.applyCombatResult(m.hp,resolution||{ok:true,finalDamage:dmg},m.maxHp);if(!applied.ok)return;hitStop=.035;audio.play('hit');m.hp=applied.hpAfter;if(!m.boss||!m.windup&&!m.charge){m.animState='hit';m.animStarted=now;m.animUntil=now+(m.boss?.14:.24)}m.flashUntil=now+.12;fx.push({kind:'popup',text:`−${dmg}`,x:m.x,y:m.y,z:38,color,life:.58,maxLife:.58});spark(m.x,m.y,color,8,36);if(m.hp===0)kill(m);else{refreshUI();save()}}
 function runtimeAction(id,combo=1){
  const archetype=animations.archetype(S.cls),base=window.AstraeonCombat.definitions[archetype][id];
  if(id==='attack')return window.AstraeonCombat.compile(archetype,id,combo);
@@ -375,8 +384,15 @@ function resolveCombat(dt){
   const origin=a||{origin:{x:S.x,y:S.y},center:e.target,direction:e.projectile.dir};
   const victims=e.target?[e.target]:mobs.filter(m=>m.hp>0&&window.AstraeonCombat.contains(d,a.origin,a.direction,m,d.shape==='circle'?a.origin:a.center)&&window.AstraeonNavigation.clear(d.shape==='ground'?a.center:a.origin,m,isBlocked));
   if(a&&e.type!=='pulse')nodeMovement(d,a);
-  const derived=player.getDerivedStats(),base=animations.archetype(S.cls)==='mage'?derived.magicATK:derived.physicalATK,damage=Math.floor(base*d.damage);
-  for(const m of victims){hit(m,damage,d.color);applyContact(m,d,origin,damage);if(animations.archetype(S.cls)==='warrior'&&d.cost===0)S.energy=Math.min(S.maxEnergy,S.energy+2)}
+  const derived=player.getDerivedStats(),damageType=animations.archetype(S.cls)==='mage'?'magical':'physical';
+  for(const m of victims){
+   const request=combatRuntime.buildInput({attackerLevel:S.baseLevel,attackerStats:derived,defenderLevel:ZONES[S.zone].level,defenderStats:m.combatStats,action:d,damageType});
+   if(combatTestPolicy){Object.assign(request.attacker.stats={...request.attacker.stats},combatTestPolicy.attackerStats);Object.assign(request.defender.stats={...request.defender.stats},combatTestPolicy.defenderStats);Object.assign(request.action,combatTestPolicy.action)}
+   const result=combatResolver.resolveAttack(request,{rng:combatTestPolicy?.rolls?combatRuntime.sequenceRng(combatTestPolicy.rolls):combatRng,config:combatTestPolicy?.config});
+   if(combatInspect){combatResults.push({target:m.name,hpBefore:m.hp,result});if(combatResults.length>64)combatResults.shift()}
+   if(!result.ok||result.finalDamage===0)continue;
+   hit(m,result.finalDamage,d.color,result);if(result.statusCandidates.length)applyContact(m,d,origin,result.finalDamage);if(animations.archetype(S.cls)==='warrior'&&d.cost===0)S.energy=Math.min(S.maxEnergy,S.energy+2)
+  }
   if(d.tags.includes('spirit')&&a&&window.AstraeonCombat.contains(d,a.origin,a.direction,S,d.shape==='circle'?a.origin:a.center)){const before=S.hp;S.hp=Math.min(S.maxHp,S.hp+5);spark(S.x,S.y,d.color,5,14);if(location.search.includes('qa=1'))nodeEvents.push({time:now,skill:d.id,node:'spirit',healed:S.hp-before})}
   const center=e.target||(d.shape==='ground'?a?.center:a?.origin)||S;fx.push({kind:d.shape==='ground'||d.shape==='circle'?'ring':'slash',x:center.x,y:center.y,z:22,direction:e.projectile?.dir||a?.direction||playerTransform.facingDirection,color:d.color,life:.34,maxLife:.34});
   if(!victims.length)audio.play(d.animation==='cast'?'cast':'arrow');if(victims.length)screenShake=Math.max(screenShake,d.id==='blade-combo'?3:4);if(e.type!=='pulse'){S.weaponMastery++;if(d.cost)S.skillMastery++}save()
