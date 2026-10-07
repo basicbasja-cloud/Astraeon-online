@@ -14,7 +14,7 @@ function attach(state,options={}){
  function recalculate(){const mods=build(),signature=JSON.stringify([getClassId(),mods]);if(signature!==lastSignature){character.setModifiers(mods);lastSignature=signature}return character.getDerivedStats()}
  const getItemResources=()=>{recalculate();return Object.fromEntries(['currentHP','currentSP','maxHP','maxSP'].map(key=>[key,character.getValue(key)]))};
  const itemRuntime=window.AstraeonActionItemRuntime.create({getInventory:items.getInventory,getQuantity:items.getQuantity,getResources:getItemResources,commit:(id,inventory,plan)=>items.consumeStackWithEffect(id,1,inventory,()=>{if(JSON.stringify(getItemResources())!==JSON.stringify(plan.resourceBefore))return false;character.setCurrentResources(plan.resourceAfter);return true})},{catalog:options.itemCatalog,config:options.itemActionConfig,restrictions:options.itemRestrictions});
- const {consumeStackWithEffect,...itemMethods}=items;
+ const {consumeStackWithEffect,commitRewards,...itemMethods}=items;
  let actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(state.actionLoadout);
  let legacySkillControls=state.legacySkillControls===true;
  const loadouts=window.AstraeonActionLoadout;
@@ -41,6 +41,16 @@ function attach(state,options={}){
  }
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
   ...itemMethods,
+  commitMonsterRewards(resolution,profileId,contracts=[]){
+   recalculate();const rewards=window.AstraeonMonsterRewards.plan(state,resolution,profileId,contracts,(options.config||window.AstraeonProgressionConfig).progression.activityJobExpRatio);if(!rewards.ok)return rewards;
+   // These existing compatibility fields must be plain writable local state.
+   // All fallible planning is complete before the contained synchronous publisher.
+   for(const key of Object.keys(rewards.fields)){const d=Object.getOwnPropertyDescriptor(state,key);if(d?(!Object.hasOwn(d,'value')||!d.writable):!Object.isExtensible(state))return Object.freeze({ok:false,code:'INVALID_REWARD_STATE'})}
+   const progression=character.prepareRewards(rewards.baseExp,rewards.jobExp);if(!progression.ok)return progression;
+   const currencyBefore=state.gold,fields=structuredClone(rewards.fields);
+   const result=items.commitRewards(rewards.itemRewards,()=>{if(!character.commitPreparedRewards(progression))return false;Object.assign(state,fields);return true});
+   return result.ok?window.AstraeonItemDefinitions.freeze({...result,currencyBefore,currencyAfter:state.gold,currencyGranted:rewards.currencyGranted,baseExp:rewards.baseExp,jobExp:rewards.jobExp,baseLevelsGained:progression.baseLevelsGained,jobLevelsGained:progression.jobLevelsGained,questCredit:rewards.questCredit,completedQuest:rewards.completedQuest,killCredit:rewards.killCredit}):result;
+  },
   getActionItemState:itemRuntime.getState,prepareActionItem:itemRuntime.prepare,commitActionItem:itemRuntime.commit,requestActionItem:itemRuntime.request,getActionItemRuntime:itemRuntime.snapshot,resetActionItemCooldowns:itemRuntime.resetCooldowns,invalidatePreparedActionItems:itemRuntime.invalidatePrepared,
   useConsumable:(id,context)=>itemRuntime.request(id,context??options.getItemContext?.()??{now:0,intent:'inventory'}),
   getClassId,getSkillTree:()=>window.AstraeonSkillDefinitions.trees[getClassId()]||null,

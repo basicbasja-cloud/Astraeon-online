@@ -33,7 +33,20 @@ function create(raw={},options={}){
  const set=(track,level)=>{commit(p.setLevel(state,track,level,config.progression));return snapshot()};
  const addPoints=(track,amount)=>{commit(p.addPoints(state,track,amount));return snapshot()};
  const skillTransition=result=>{if(!result.ok)return result;commit(result.state);return stats.freeze({...result,state:snapshot()})};
+ const rewardPlans=new WeakMap();
+ function prepareRewards(baseExp,jobExp){
+  try{
+   const base=p.grant(state,'base',baseExp,config.progression),job=p.grant(base.state,'job',jobExp,config.progression),calculated=derive(job.state);
+   const plan=stats.freeze({ok:true,baseExp,jobExp,baseLevelsGained:base.levelsGained,jobLevelsGained:job.levelsGained});
+   rewardPlans.set(plan,{before:state,mods:JSON.stringify(modifiers),next:job.state,calculated});return plan;
+  }catch{return stats.freeze({ok:false,code:'INVALID_PROGRESSION_REWARD'})}
+ }
+ function commitPreparedRewards(plan){
+  const prepared=rewardPlans.get(plan);if(!prepared||prepared.before!==state||prepared.mods!==JSON.stringify(modifiers))return false;
+  state=prepared.next;derived=prepared.calculated;currentHP=plan.baseLevelsGained?derived.maxHP:Math.min(currentHP,derived.maxHP);currentSP=plan.baseLevelsGained?derived.maxSP:Math.min(currentSP,derived.maxSP);rewardPlans.delete(plan);return true;
+ }
  return Object.freeze({
+  prepareRewards,commitPreparedRewards,
   getSkillRank:id=>Object.hasOwn(state.learnedSkills,id)?state.learnedSkills[id]:0,
   getLearnedSkills:()=>stats.freeze({...state.learnedSkills}),
   getPassiveSkillModifiers:()=>window.AstraeonSkillTree.passiveModifiers(state.learnedSkills,getClassId()),

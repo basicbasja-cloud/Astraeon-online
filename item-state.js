@@ -65,6 +65,17 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
   canAddStack:(id,count)=>I.canAddStack(inventory,id,count,catalog),canRemoveStack:(id,count)=>I.canRemoveStack(inventory,id,count,catalog),
   addStack:(id,count)=>commit(I.addStack(inventory,id,count,catalog)),removeStack:(id,count)=>commit(I.removeStack(inventory,id,count,catalog)),consumeStack:(id,count=1)=>commit(I.consumeStack(inventory,id,count,catalog)),
   consumeStackWithEffect(id,count,expectedInventory,apply){if(expectedInventory!==inventory)return I.fail('STALE_PACKAGE');if(typeof apply!=='function')return I.fail('EFFECT_COMMIT_REJECTED');return commit(I.consumeStack(inventory,id,count,catalog),equipment,apply)},
+  commitRewards(rewards,apply){
+   if(!Array.isArray(rewards)||typeof apply!=='function')return I.fail('INVALID_REWARD_PACKAGE');
+   let next=inventory,units=0;const stackRewards=[],instanceRewards=[];
+   for(const reward of rewards){
+    const d=catalog.getDefinition(reward?.itemId),quantity=reward?.quantity;
+    if(!d||!Number.isSafeInteger(quantity)||quantity<=0)return I.fail('INVALID_ITEM_REWARD');
+    if(d.stackable){const before=I.getQuantity(next,d.id),r=I.addStack(next,d.id,quantity,catalog);if(!r.ok)return r;next=r.inventory;stackRewards.push({itemId:d.id,quantity,quantityBefore:before,quantityAfter:I.getQuantity(next,d.id)})}
+    else{units+=quantity;if(units>10000)return I.fail('REWARD_SIZE_LIMIT');for(let i=0;i<quantity;i++){const r=I.createInstance(next,d.id,{},catalog);if(!r.ok)return r;next=r.inventory;instanceRewards.push(r.instance)}}
+   }
+   return commit({ok:true,inventory:next,stackRewards,instanceRewards,serialBefore:inventory.nextItemSerial,serialAfter:next.nextItemSerial},equipment,apply);
+  },
   createItemInstance:(id,metadata={})=>commit(I.createInstance(inventory,id,metadata,catalog)),
   deleteItemInstance:id=>commit(I.deleteInstance(inventory,id,equipment,catalog)),
   canEquip:(id,slot)=>E.canEquip(inventory,equipment,id,slot,catalog,requirements),
