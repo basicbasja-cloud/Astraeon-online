@@ -5,8 +5,8 @@ const freeze=value=>{if(value&&typeof value==='object'){Object.values(value).for
 const definitions={};
 function define(id,name,kind,options={}){definitions[id]=freeze({id,name,key:`item.${id}`,kind,stackable:kind!=='equipment',maxStack:kind==='equipment'?1:Number.MAX_SAFE_INTEGER,equipmentSlots:[],weight:0,modifiers:[],requirements:{},tags:[kind],metadata:{balance:'provisional',weight:'unconfigured',source:'existing-prototype'},...options})}
 for(const [id,name] of [['herb','Herb'],['ore','Ore'],['shard','Relic Shards']])define(id,name,'material');
-define('potion','Healing Flask','consumable',{effects:{restoreHP:45}});
-define('ration','Field Rations','consumable',{effects:{restoreSP:20}});
+define('potion','Healing Flask','consumable',{effects:{restoreHP:45},actionItem:{actionKind:'resourceRestore',target:'self',cooldownGroup:'hp-potion',usableStates:['town','field','dungeon']}});
+define('ration','Field Rations','consumable',{effects:{restoreSP:20},actionItem:{actionKind:'resourceRestore',target:'self',cooldownGroup:'sp-potion',usableStates:['town','field','dungeon']}});
 define('traveler-blade','Traveler Blade','equipment',{equipmentSlots:['weapon']});
 define('astral-blade','Astral Blade','equipment',{equipmentSlots:['weapon'],modifiers:[{add:{physicalATK:6,magicATK:6}}]});
 define('adventurer-garb','Adventurer Garb','equipment',{equipmentSlots:['armor']});
