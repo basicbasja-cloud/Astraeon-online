@@ -22,7 +22,13 @@ neighborhood walking, field/save/cache/offline and sound-on performance checks.
 Do not rerun one-shot authors or regenerate saved art for streaming.
 
 Baseline profiling is complete; evidence and measured secondary costs are in
-mobile-streaming/README.md and baseline-mobile-detailed.json. Active priority: chunked spawn boot/runtime streaming ->
+mobile-streaming/README.md and baseline-mobile-detailed.json. First real-map chunk boot, exact draw/semantic transport checks and three
+streamed city captures now pass. SW87 uses a shell-only static cache and bounded
+on-demand world/assets caches. Runtime source and native authored files remain
+the recovery receipt hashes. Streaming/mobile acceptance is still pending.
+Exact next infrastructure action: browser traversal/unload/reload/memory, then
+cold/warm/offline and service/field/reveal checks. See mobile-streaming/README.md.
+Active priority: chunked spawn boot/runtime streaming ->
 bounded on-demand caching -> mobile/emulated acceptance. Physical iPhone Safari
 is pending unless actually available. After sufficient available-environment
 acceptance, resume the above World point automatically. No new art/layout work

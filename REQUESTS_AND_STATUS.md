@@ -300,3 +300,8 @@ is pending unless actually available. After sufficient available-environment
 acceptance, resume the above World point automatically. No new art/layout work
 during this interruption. Baseline/development evidence belongs in
  docs/review/wayfarer-capital-v76/mobile-streaming/.
+
+Mobile insertion: checkpointed initial real-capital chunk loading, exact draw and
+collision transport checks, and three streamed city captures. No art changes;
+mobile acceptance and repeated traversal/cache verification remain pending.
+Original RO3 task remains paused at the documented plaza planning guard.

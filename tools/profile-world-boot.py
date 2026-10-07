@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 
 p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:8011/?qa=1');p.add_argument('--output',type=Path,required=True);p.add_argument('--mobile',action='store_true');a=p.parse_args();a.output.parent.mkdir(parents=True,exist_ok=True)
 root=Path(__file__).resolve().parents[1]
-sw=(root/'sw.js').read_text();urls=re.findall(r"'([^']+)'",sw.split('const FILES =',1)[1].split(';',1)[0]) if 'const FILES =' in sw else []
+sw=(root/'sw.js').read_text();urls=json.loads(sw.split('const FILES =',1)[1].split(';',1)[0]) if 'const FILES =' in sw else []
 precache=[{'url':u,'bytes':(root/u.split('?')[0]).stat().st_size} for u in urls if (root/u.split('?')[0]).is_file()]
 with sync_playwright() as pw:
  b=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader','--enable-precise-memory-info'])
@@ -26,4 +26,4 @@ with sync_playwright() as pw:
  result.update({'url':a.url,'mobileEmulation':a.mobile,'uiReadyMs':ui_ms,'firstPlayableMs':first_ms,'errors':errors,'precache':precache,'precacheBytes':sum(x['bytes'] for x in precache),'physicalIPhone':'PENDING'})
  page.wait_for_timeout(2000)
  result['cache']=page.evaluate('''async()=>{const out=[];for(const name of await caches.keys()){const c=await caches.open(name);out.push({name,requests:(await c.keys()).map(r=>r.url)})}return out}''')
- a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'firstPlayableMs':first_ms,'uiReadyMs':ui_ms,'requests':len(result['resources']),'transferBytes':sum(r['transfer'] for r in result['resources']),'precacheBytes':result['precacheBytes'],'peakObservedHeap':max((m['heap'] for m in result['profile']['memory']),default=None),'json':result['profile']['json'],'stages':result['profile']['stages'],'errors':errors},indent=2),flush=True);b.close()
+ a.output.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({'firstPlayableMs':first_ms,'uiReadyMs':ui_ms,'requests':len(result['resources']),'transferBytes':sum(r['transfer'] for r in result['resources']),'encodedResourceBytes':sum(r['encoded'] for r in result['resources']),'precacheBytes':result['precacheBytes'],'peakObservedHeap':max((m['heap'] for m in result['profile']['memory']),default=None),'json':result['profile']['json'],'stages':result['profile']['stages'],'errors':errors},indent=2),flush=True);b.close()

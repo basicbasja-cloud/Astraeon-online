@@ -158,7 +158,8 @@ class SpatialRenderer{
   this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#bbc9b2');
   this.camera=new THREE.Camera();this.camera.matrixAutoUpdate=false;this.camera.matrixWorld.identity();this.camera.matrixWorldInverse.identity();
   this.buildingNumbers=new Map();this.occluderGroups=[];this.fadedOwners=new Set();this.fadeMeshes=new Map();
-  for(const o of source.objects){
+  if(source.streaming){this.chunkNodes=new Map();this.chunkManifests=new Map();for(const o of window.AstraeonWorldStreaming.zone.owners)if(o.number)this.buildingNumbers.set(o.id,o.number)}
+  if(!source.streaming)for(const o of source.objects){
    // Pierced facades use a hidden physical core and separate visible shells.
    // Keep the owning building eligible for reveal; ray tests use visible meshes.
    if(o.family==='vegetation'||!o.parts.some(p=>p.role==='solid'&&p.vertices.some(v=>v[2]>2))||!o.parts.some(p=>p.visible!==false))continue;
@@ -184,9 +185,9 @@ class SpatialRenderer{
    if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],ownerId:[],owners:[],...(opacity?{feather:[]}:{} )});
    appendMesh(batches.get(key),part,source.lighting);
   };
-  const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
-  for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
-  for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
+  const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};if(!source.streaming)add(groundMesh);
+  if(!source.streaming)for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
+  if(!source.streaming)for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
   // Translucent planted edges sit above opaque paving but below cast-shadow
   // receivers and actors; blending must not erase their contact shade.
   for(const [key,batch] of batches){const name=batch.material,base=material(name,source.materials?.[name]),mesh=new THREE.Mesh(geometry(batch),batch.feather?featherMaterial(base,name+'/native-opacity'):base);mesh.name='static/'+key;if(batch.feather&&name==='grass')mesh.renderOrder=-1;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name)||!!source.materials[name]?.texture?.ripple;this.scene.add(mesh)}
@@ -194,7 +195,7 @@ class SpatialRenderer{
   // Keep the masonry boundary crisp. A narrow contact feather joins exposed
   // paving to planted ground; internal junctions remain opaque and continuous.
   const edgeMaterial=source.materials.cityPaving?'cityPaving':'paving',paving=terrain.surfaces.filter(s=>s.walkable&&['paving','cityPaving'].includes(s.material)&&s.vertices&&Math.max(...s.vertices.map(v=>v[2]))<.10),edge={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]},size=source.materials[edgeMaterial]?.texture?.worldSize||4,vergeWidth=.10;
-  boundarySegments(paving.map(s=>s.polygon),(a,b,n)=>{
+  if(!source.streaming)boundarySegments(paving.map(s=>s.polygon),(a,b,n)=>{
    const outer=[a[0]+n[0]*vergeWidth,a[1]+n[1]*vergeWidth],probe=[(a[0]+b[0])/2+n[0]*vergeWidth*.85,(a[1]+b[1])/2+n[1]*vergeWidth*.85];
    if(!window.AstraeonSpatialV3.pointIn({x:probe[0],y:probe[1]},terrain.walkablePolygon)||spatial.blocked(...probe,.02))return;
    const v=[[...a,spatial.elevationAt(...a)+.010],[...b,spatial.elevationAt(...b)+.010],[b[0]+n[0]*vergeWidth,b[1]+n[1]*vergeWidth,terrain.elevation+.011],[...outer,terrain.elevation+.011]];
@@ -204,7 +205,7 @@ class SpatialRenderer{
   if(edge.position.length){const verge=new THREE.Mesh(geometry(edge),featherMaterial(material(edgeMaterial,source.materials[edgeMaterial]),edgeMaterial));verge.name='static/paving-verges';this.scene.add(verge)}
   // A quiet, shallow shoreline ribbon softens the water/rock contact without
   // painting over the cliff silhouette or the usable bridge thresholds.
-  const water=terrain.surfaces.find(s=>s.material==='water'),shore={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]};
+  const water=source.streaming?null:terrain.surfaces.find(s=>s.material==='water'),shore={position:[],normal:[],uv:[],color:[],ownerId:[],feather:[]};
   const shorePolygons=[terrain.walkablePolygon,...terrain.surfaces.filter(s=>s.walkable&&s.role==='green'&&s.material==='grass').map(s=>s.polygon)];
   if(water)boundarySegments(shorePolygons,(a,b,n)=>{
    const z=water.vertices[0][2]+.013,points=[[a[0]+n[0]*1.35,a[1]+n[1]*1.35,z],[b[0]+n[0]*1.35,b[1]+n[1]*1.35,z],[b[0]+n[0]*2.4,b[1]+n[1]*2.4,z],[a[0]+n[0]*2.4,a[1]+n[1]*2.4,z]];
@@ -272,13 +273,14 @@ class SpatialRenderer{
   this.shadowLand=new THREE.CanvasTexture(mask);this.shadowLand.flipY=false;
   this.shadowLand.generateMipmaps=false;this.shadowLand.minFilter=THREE.LinearFilter;
   const contact=document.createElement('canvas');contact.width=contact.height=64;const cg=contact.getContext('2d'),gradient=cg.createRadialGradient(32,32,3,32,32,32);gradient.addColorStop(0,'rgba(255,255,255,1)');gradient.addColorStop(.45,'rgba(255,255,255,.65)');gradient.addColorStop(1,'rgba(255,255,255,0)');cg.fillStyle=gradient;cg.fillRect(0,0,64,64);this.contactTexture=new THREE.CanvasTexture(contact);
-  for(let y=b.minY;y<b.maxY;y+=cell)for(let x=b.minX;x<b.maxX;x+=cell){
+  if(!source.streaming)for(let y=b.minY;y<b.maxY;y+=cell)for(let x=b.minX;x<b.maxX;x+=cell){
    if(!spatial.containsGround(x+cell/2,y+cell/2))continue;
    for(const [dx,dy] of [[0,0],[cell,0],[cell,cell],[0,0],[cell,cell],[0,cell]])shadowVertex(x+dx,y+dy,spatial.elevationAt(x+dx,y+dy)+.015,Math.floor(x/16)+","+Math.floor(y/16));
   }
   // Keep the same half-meter contacts, atlas resolution, UVs and opacity;
   // partition receivers so a capital does not submit every offscreen floor.
   const shadowMaterial=new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false,side:THREE.DoubleSide,forceSinglePass:true});
+  this.shadowMaterial=shadowMaterial;
   for(const [key,chunk] of shadowChunks){
    const shadowGeo=new THREE.BufferGeometry();shadowGeo.setAttribute('position',new THREE.Float32BufferAttribute(chunk.position,3));shadowGeo.setAttribute('uv',new THREE.Float32BufferAttribute(chunk.uv,2));shadowGeo.computeBoundingSphere();
    const shadow=new THREE.Mesh(shadowGeo,shadowMaterial);shadow.name='floor-shadow/'+key;shadow.userData.cacheDynamic=true;this.scene.add(shadow);
@@ -301,6 +303,61 @@ class SpatialRenderer{
   this.navFloor=new THREE.Mesh(geometry(floor),new THREE.MeshBasicMaterial({side:THREE.DoubleSide}));this.navFloor.updateMatrixWorld();
   this.whenReady=Promise.all(textureLoads);
  }
+ async addChunk(manifest,buffer){
+  if(this.chunkNodes.has(manifest.id))return;
+  if(manifest.sourceSHA256!==this.source.streaming.sourceSHA256)throw Error('Stale render chunk');
+  const started=textureLoads.length,nodes=[];
+  try{for(const batch of manifest.batches){
+   const g=new THREE.BufferGeometry();
+   for(const [name,a] of Object.entries(batch.attributes)){
+    if(!Number.isInteger(a.offset)||a.offset%4||!Number.isInteger(a.count)||a.count<0||a.offset+a.count*a.itemSize*4>buffer.byteLength)throw Error('Invalid chunk attribute');
+    g.setAttribute(name,new THREE.BufferAttribute(new Float32Array(buffer,a.offset,a.count*a.itemSize),a.itemSize));
+   }
+   const index=batch.index;if(index.offset%4||index.offset+index.count*4>buffer.byteLength)throw Error('Invalid chunk index');
+   g.setIndex(new THREE.BufferAttribute(new Uint32Array(buffer,index.offset,index.count),1));g.computeBoundingSphere();g.computeBoundingBox();
+   let m;if(batch.kind==='shadow')m=this.shadowMaterial;
+   else if(batch.kind==='shore')m=this.streamShoreMaterial??=featherMaterial(new THREE.MeshBasicMaterial({color:'#b8d9ce',vertexColors:true,side:THREE.DoubleSide}),'shore');
+   else{const base=material(batch.material,this.source.materials[batch.material]);if(batch.opacity){this.streamFeathers??=new Map();const key=batch.material+'/'+(batch.kind==='verge'?'verge':'native-opacity');if(!this.streamFeathers.has(key))this.streamFeathers.set(key,featherMaterial(base,batch.kind==='verge'?batch.material:batch.material+'/native-opacity'));m=this.streamFeathers.get(key)}else m=base}
+   const mesh=new THREE.Mesh(g,m);mesh.name=batch.kind==='shadow'?'floor-shadow/'+batch.key+'/'+manifest.id:'static/'+batch.key+'/'+manifest.id;
+   if(batch.opacity&&batch.material==='grass')mesh.renderOrder=-1;
+   mesh.userData.chunkId=manifest.id;mesh.userData.materialName=batch.material;mesh.userData.ownerRuns=batch.owners;
+   if(batch.kind==='static')mesh.userData.owners=batch.owners.flatMap(([count,owner])=>Array(count).fill(owner));
+   mesh.userData.cacheDynamic=batch.kind==='shadow'||['water','riverCascade'].includes(batch.material)||!!this.source.materials[batch.material]?.texture?.ripple;
+   nodes.push(mesh);
+  }
+  await Promise.all(textureLoads.slice(started));
+  this.chunkNodes.set(manifest.id,nodes);this.chunkManifests.set(manifest.id,manifest);for(const node of nodes)this.scene.add(node);
+  this.rebuildStreamOccluders();this.refreshStreamNodes();
+  }catch(error){for(const node of nodes)node.geometry.dispose();throw error}
+ }
+ removeChunk(id){
+  const nodes=this.chunkNodes.get(id);if(!nodes)return;
+  for(const node of nodes){this.scene.remove(node);node.geometry.dispose()}
+  this.chunkNodes.delete(id);this.chunkManifests.delete(id);this.rebuildStreamOccluders();this.refreshStreamNodes();
+ }
+ refreshStreamNodes(){this.dynamicNodes=this.scene.children.filter(o=>o.userData.cacheDynamic);this.staticNodes=this.scene.children.filter(o=>!o.userData.cacheDynamic);this.stats.loadedChunks=this.chunkNodes.size;this.stats.geometryCount=this.renderer?.info.memory.geometries||0;}
+ clearFadeMeshes(){for(const meshes of this.fadeMeshes.values())for(const mesh of meshes){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose()}this.fadeMeshes.clear();this.fadedOwners.clear();occludingOwners.value.set(0,0,0,0)}
+ rebuildStreamOccluders(){
+  // A group's ranges refer to chunk-owned buffers; dropping a chunk drops every
+  // corresponding reference. No full-world triangle or hidden reveal copies.
+  this.clearFadeMeshes();const groups=new Map();
+  const ownerByNumber=new Map([...this.buildingNumbers].map(([owner,id])=>[id,owner]));
+  for(const nodes of this.chunkNodes.values())for(const mesh of nodes){if(!mesh.userData.owners)continue;const positions=mesh.geometry.attributes.position,index=mesh.geometry.index,numbers=mesh.geometry.attributes.ownerId,vertex=new THREE.Vector3();
+   for(let t=0;t<index.count/3;t++){const id=numbers?.getX(index.getX(t*3))||0,owner=ownerByNumber.get(id);if(!owner)continue;if(!groups.has(owner))groups.set(owner,{id,owner,box:new THREE.Box3(),ranges:[]});const group=groups.get(owner),last=group.ranges.at(-1);if(last?.mesh===mesh&&last.start+last.count===t)last.count++;else group.ranges.push({mesh,start:t,count:1});for(let i=t*3;i<t*3+3;i++)group.box.expandByPoint(vertex.fromBufferAttribute(positions,index.getX(i)))}
+  }this.occluderGroups=[...groups.values()];
+ }
+ groupIntersects(group,ray,hit,max){
+  if(group.triangles)return group.triangles.some(([a,b,c])=>ray.intersectTriangle(a,b,c,false,hit)&&ray.origin.distanceTo(hit)<max);
+  const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3();
+  for(const {mesh,start,count} of group.ranges){const p=mesh.geometry.attributes.position,index=mesh.geometry.index;for(let i=start*3;i<(start+count)*3;i+=3){a.fromBufferAttribute(p,index.getX(i));b.fromBufferAttribute(p,index.getX(i+1));c.fromBufferAttribute(p,index.getX(i+2));if(ray.intersectTriangle(a,b,c,false,hit)&&ray.origin.distanceTo(hit)<max)return true}}
+  return false;
+ }
+ prepareStreamedFade(owner){
+  const batches=new Map();for(const group of this.occluderGroups.filter(g=>g.owner===owner))for(const {mesh,start,count} of group.ranges){const name=mesh.userData.materialName;if(!batches.has(name))batches.set(name,{position:[],normal:[],uv:[],color:[],ownerId:[]});const batch=batches.get(name),index=mesh.geometry.index;
+   for(const [attribute,values] of Object.entries(batch)){const a=mesh.geometry.attributes[attribute];if(!a)continue;for(let i=start*3;i<(start+count)*3;i++){const vertex=index.getX(i);for(let k=0;k<a.itemSize;k++)values.push(attribute==='ownerId'?0:a.array[vertex*a.itemSize+k])}}
+  }
+  const meshes=[];for(const [name,batch] of batches){const original=material(name,this.source.materials[name]),m=original.clone();m.onBeforeCompile=original.onBeforeCompile;m.customProgramCacheKey=original.customProgramCacheKey;m.transparent=true;m.opacity=.16;m.depthWrite=false;m.alphaTest=0;const mesh=new THREE.Mesh(geometry(batch),m);mesh.name='fade/'+owner;mesh.userData.cacheDynamic=true;mesh.visible=false;this.scene.add(mesh);meshes.push(mesh)}this.fadeMeshes.set(owner,meshes);this.refreshStreamNodes();
+ }
  mount(overlay){
   this.overlay=overlay;
   V.mountCameraControls(overlay);
@@ -316,8 +373,8 @@ class SpatialRenderer{
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.setPixelRatio(this.stats.pixelRatio);
   // Decode/upload all complete strips before the first movement. Shared atlases
   // avoid a new canvas texture upload every time an actor changes a frame.
-  for(const image of Object.values(window.AstraeonDirectionalArt.sheets))this.spriteTexture(image);
-  this.warmFadeMeshes();
+  if(!this.source.streaming)for(const image of Object.values(window.AstraeonDirectionalArt.sheets))this.spriteTexture(image);
+  if(!this.source.streaming)this.warmFadeMeshes();else this.renderer.compile(this.scene,this.camera);
   this.renderer.info.autoReset=false;
   this.canvas=this.renderer.domElement;this.canvas.id='spatial-world';this.canvas.setAttribute('aria-hidden','true');this.canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';overlay.before(this.canvas);overlay.style.background='transparent';overlay.parentElement.classList.add('spatial-stage');this.active=true;
  }
@@ -350,6 +407,11 @@ class SpatialRenderer{
    );
   }else this.camera.projectionMatrix.set(96*s/w,-64*s/w,0,-2*cx*s/w,-28*s/h,-44*s/h,70*s/h,2*cy*s/h+1-2*anchorY,-.0056,-.0084,-.00752,.25,0,0,0,1);
   this.camera.projectionMatrixInverse.copy(this.camera.projectionMatrix).invert();this.camera.updateMatrixWorld();this.projectionReady=true;
+  if(this.source.streaming){const frustum=new THREE.Frustum().setFromProjectionMatrix(this.camera.projectionMatrix),point=V.inverse(camera.x,camera.y),stream=window.AstraeonWorldStreaming;
+   const ready=stream.tick(frustum,point,b=>new THREE.Box3(new THREE.Vector3(...b.slice(0,3)),new THREE.Vector3(...b.slice(3,6))));
+   if(ready){this.completeCamera=this.camera.projectionMatrix.clone();this.completeFocus={...this.focus};stream.markFirstPlayable()}
+   else if(this.completeCamera){this.camera.projectionMatrix.copy(this.completeCamera);this.camera.projectionMatrixInverse.copy(this.completeCamera).invert();this.focus={...this.completeFocus}}
+  }
   for(const a of this.actors.values())a.mesh.visible=a.shadow.visible=a.cast.visible=false;
  }
  actor(id,t,draw,{alpha=1,shadowAlpha=alpha,radius=.4}={}){
@@ -462,6 +524,7 @@ class SpatialRenderer{
  }
  prepareFadeMeshes(owner){
   if(this.fadeMeshes.has(owner))return;
+  if(this.source.streaming)return this.prepareStreamedFade(owner);
   const batches=new Map(),object=this.source.objects.find(o=>o.id===owner),meshes=[];
   for(const part of object.parts.filter(p=>p.visible!==false)){
    if(!batches.has(part.material))batches.set(part.material,{position:[],normal:[],uv:[],color:[],ownerId:[]});
@@ -474,7 +537,7 @@ class SpatialRenderer{
  warmFadeMeshes(){
   // Build and upload reveal geometry/programs during loading, rather than at
   // the first movement under a gate or behind a facade.
-  for(const group of this.occluderGroups)this.prepareFadeMeshes(group.owner);
+  for(const group of (this.source.streaming?this.occluderGroups.slice(0,1):this.occluderGroups))this.prepareFadeMeshes(group.owner);
   const meshes=[...this.fadeMeshes.values()].flat(),gl=this.renderer.getContext(),target=new THREE.WebGLRenderTarget(256,256,{samples:this.renderer.capabilities.isWebGL2?gl.getParameter(gl.SAMPLES):0}),camera=new THREE.Camera(),b=this.source.terrain.bounds,w=b.maxX-b.minX+8,h=b.maxY-b.minY+35,cx=(b.maxX+b.minX)/2,cy=(b.maxY+b.minY)/2;
   // Match the gameplay framebuffer's output color space/MSAA so warming does
   // not compile a different offscreen-only shader variant.
@@ -504,7 +567,7 @@ class SpatialRenderer{
   if(this.perspectiveMode&&player?.mesh.visible){for(const height of [.85,1.65]){
    const p=player.mesh.position.clone();p.z+=height;const screen=this.worldToScreen(p.x,p.y,p.z),ray=this.screenRay(screen.x,screen.y).ray,max=ray.origin.distanceTo(p)-.03;
    for(const group of this.occluderGroups){const entry=ray.intersectBox(group.box,hit);if(!entry||ray.origin.distanceTo(entry)>=max)continue;
-    if(group.triangles.some(([a,b,c])=>ray.intersectTriangle(a,b,c,false,hit)&&ray.origin.distanceTo(hit)<max)){
+    if(this.groupIntersects(group,ray,hit,max)){
      if(!ids.includes(group.id)&&ids.length<4){ids.push(group.id);this.fadedOwners.add(group.owner)}
     }
    }
@@ -541,4 +604,4 @@ class SpatialRenderer{
  snapshot(){return {...this.stats,cameraProfile:this.cameraProfile?structuredClone(this.cameraProfile):null,actors:[...this.actors].filter(([,a])=>a.mesh.visible).map(([id,a])=>({id,position:a.mesh.position.toArray(),depthTest:a.mesh.material.depthTest,depthWrite:a.mesh.material.depthWrite,motionSample:a.motionSample}))};}
 }
 window.AstraeonSpatialRenderer={SpatialRenderer,THREE};
-if(window.AstraeonContent?.nativeWorld?.id==='wayfarer-spatial'&&new URLSearchParams(location.search).get('renderer')!=='canvas')window.AstraeonSpatialView=new SpatialRenderer(window.AstraeonContent.nativeWorld.spatial.scene);
+if(!window.AstraeonContent?.nativeWorld?.spatial.scene.streaming&&window.AstraeonContent?.nativeWorld?.id==='wayfarer-spatial'&&new URLSearchParams(location.search).get('renderer')!=='canvas')window.AstraeonSpatialView=new SpatialRenderer(window.AstraeonContent.nativeWorld.spatial.scene);
