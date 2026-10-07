@@ -1,5 +1,5 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
-global.window={};for(const file of ['progression-config','progression','stats','character-state'])require('../'+file+'.js');
+global.window={};for(const file of ['progression-config','progression','stats','skill-definitions','skill-tree','skill-runtime','character-state'])require('../'+file+'.js');
 const config=window.AstraeonProgressionConfig,calculate=window.AstraeonStats.calculate,create=window.AstraeonCharacter.create;
 test('allocation spends Stat Points and recalculates its derived dependency',()=>{const c=create({statPoints:5});const before=c.getDerivedStats();c.allocateStat('STR',2);assert.equal(c.snapshot().statPoints,3);assert.equal(c.snapshot().STR,3);assert.equal(c.getDerivedStats().physicalATK,before.physicalATK+4);assert.equal(c.getDerivedStats().carryWeight,before.carryWeight+60)});
 test('all six primary stats have the contract dependencies',()=>{const dependencies={STR:['physicalATK','carryWeight'],AGI:['ASPD','FLEE'],VIT:['maxHP','DEF','physicalResilience'],INT:['magicATK','maxSP','MDEF'],DEX:['HIT','castTimeModifier'],LUK:['CRIT','perfectDodge']};for(const [key,outputs] of Object.entries(dependencies)){const c=create({statPoints:1}),before=c.getDerivedStats();c.allocateStat(key);for(const output of outputs)assert.notEqual(c.getDerivedStats()[output],before[output])}});

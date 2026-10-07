@@ -7,6 +7,7 @@ const version=4;
 function backbone(raw,state){
  const canonical=window.AstraeonCharacter.normalize({...raw,baseLevel:number(raw.baseLevel,state.lv,1),baseExp:number(raw.baseExp,state.xp)});
  const modifiers=window.AstraeonPlayer.legacyModifiers(state);
+ modifiers.passiveModifiers.push(...window.AstraeonSkillTree.passiveModifiers(canonical.learnedSkills,window.AstraeonSkillDefinitions.classIdFor(state)));
  // No load-time EXP grants or retrospective point awards. Absent legacy pools start at zero.
  if(raw.saveVersion!==version&&!raw.legacyBackbone){
   state.legacyBackbone={};for(const key of ['saveVersion','lv','xp','hp','maxHp','energy','maxEnergy'])if(Object.hasOwn(raw,key))state.legacyBackbone[key]=raw[key];
@@ -35,6 +36,10 @@ function normalize(raw){
  state.techniques=Array.isArray(raw.techniques)?raw.techniques.filter(v=>v&&typeof v==='object'&&typeof v.name==='string').slice(-6):[];state.active=Math.floor(number(raw.active,0,0,Math.max(0,state.techniques.length-1)));
  state.quest=raw.quest&&Number.isInteger(raw.quest.id)&&raw.quest.id>=0&&raw.quest.id<5?{...raw.quest,progress:number(raw.quest.progress,0)}:null;state.guild=typeof raw.guild==='string'?raw.guild:null;
  state.skillNodes=window.AstraeonSkillNodes?.normalize(raw.skillNodes)||{};
+ state.actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(raw.actionLoadout);
+ // Old four-button saves keep their authored actions without granting learned ranks.
+ // New characters explicitly provide an empty eight-slot loadout and opt out.
+ state.legacySkillControls=typeof raw.legacySkillControls==='boolean'?raw.legacySkillControls:!Object.hasOwn(raw,'actionLoadout');
  state.worldClaims=raw.worldClaims&&typeof raw.worldClaims==='object'&&!Array.isArray(raw.worldClaims)?{...raw.worldClaims}:{};
  return backbone(raw,state);
 }
