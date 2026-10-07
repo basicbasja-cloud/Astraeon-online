@@ -172,7 +172,7 @@ Normal URLs expose neither CombatDev nor ProgressionDev mutation APIs.
 
 Run the documented static server, full Node suite, combat_browser.py,
 skill_tree_browser.py, progression_browser.py, cache_resume.py and world validator.
-Cache/boot/page version 89 includes the three combat modules for offline boot.
+Cache/boot/page version 90 includes the three combat modules for offline boot.
 Browser tests cover the actual playable classes, ranked Node contacts, passive
 stats, deterministic miss/dodge/crit/defense, HP/death/respawn, progression/rewards,
 save parity and future-save preservation. See CORE_SPINE_COMBAT_REPORT.md for the
@@ -187,3 +187,12 @@ reject without consumption. Item/function clocks are provisional, explicit-time
 and separate from skills. Existing Stats/Combat/Progression/ownership authorities
 and save version 5 remain intact; clocks are runtime-only. See the
 [verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.
+
+## Monster Loot integration extension
+
+The [Monster Loot contract](CORE_SPINE_MONSTER_LOOT.md) adds per-life exact-once
+monster rewards using the existing canonical ownership and Progression/Stats
+contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
+before synchronous publication. Existing formulas, learned skills, action slots,
+Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
+boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).

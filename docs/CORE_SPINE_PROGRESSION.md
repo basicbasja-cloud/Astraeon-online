@@ -128,7 +128,7 @@ python tests/cache_resume.py --url http://127.0.0.1:8011
 ```
 
 Browser checks support `ASTRAEON_BROWSER` or `--browser`; reports/screenshots are
-written outside the checkout. Boot/page/service-worker version 89 loads the new
+written outside the checkout. Boot/page/service-worker version 90 loads the new
 modules together and precaches them, preventing cached code/schema mismatches.
 No character, world, lighting, renderer or production UI artwork was changed.
 
@@ -141,3 +141,12 @@ reject without consumption. Item/function clocks are provisional, explicit-time
 and separate from skills. Existing Stats/Combat/Progression/ownership authorities
 and save version 5 remain intact; clocks are runtime-only. See the
 [verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.
+
+## Monster Loot integration extension
+
+The [Monster Loot contract](CORE_SPINE_MONSTER_LOOT.md) adds per-life exact-once
+monster rewards using the existing canonical ownership and Progression/Stats
+contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
+before synchronous publication. Existing formulas, learned skills, action slots,
+Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
+boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).

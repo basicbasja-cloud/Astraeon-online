@@ -97,13 +97,29 @@ are independent of learned skills, runtime-only and retained through same-sessio
 death/travel with ticket invalidation. Reload starts fresh clocks; save schema is
 still version 5. No Combat, animation, renderer or camera formulas change.
 
+## Monster death / loot boundary
+
+The [Monster Loot contract](docs/CORE_SPINE_MONSTER_LOOT.md) separates existing
+monster reward references, immutable authored tables, pure validation/injected-RNG
+resolution, owned runtime instance/life/death claims and canonical commit.
+`monster-rewards.js` plans currency/progression/quest adapters; Item State plans
+mixed stack/ItemInstance additions once. Player coordinates an owned prevalidated
+Character progression plan and plain currency/quest fields before ownership
+publication. `game.js` notifies HP-zero death and presents/saves successful results;
+its former parallel kill grants are removed. Claims are transient and exact-once;
+new life/registered replacement actors can reward again. Save version stays 5.
+Current prototype material cycles, gold, EXP, quest and direct-to-inventory
+behavior remain. Loot owns no AI, respawn timer, pickup presentation, final balance,
+capacity policy or Monster Box opening. Five new modules are precached with v90.
+See [verified handoff](docs/CORE_SPINE_MONSTER_LOOT_REPORT.md).
+
 ## Historical archetype animation contract (current Warrior below)
 Three original archetypes each have eight authored directions and six poses: idle, two locomotion strides, anticipation, contact and crouched reaction. The guardian has eight poses per direction; regular enemies have idle and attack views. Runtime yaw is continuous and smoothly follows movement, target or aim; presentation projects facing through the ground camera and chooses the closest screen-space 45° view without horizontal mirroring. Gait phase follows traveled distance. Three additional walk sheets provide eight stride phases for six directions; north and northwest keep the accepted two-pose rear cycle because the extended sheets drifted toward side/front views. Warrior omits the corrupted stride and distributes seven accepted keys evenly across a cycle, avoiding a repeated hold. Cached source-silhouette paths clip neighboring cell pieces without repainting the original artwork. Source bounds exclude neighboring atlas fragments and align visible feet. Golden Warrior registration now uses source-space boot contacts and stable 70-pixel visible body scale. Sixteen original hit/death frames cover all eight directions without cardinal fallback. The manifest drives a per-direction 2D fall transform on the hit pose, crossfades to the original collapsed artwork, then holds it before its final fade.
 
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v89, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v90, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 

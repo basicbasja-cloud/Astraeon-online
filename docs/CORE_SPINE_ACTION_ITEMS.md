@@ -231,9 +231,18 @@ resources, advance monotonic simulation time and reset item clocks.
 
 Live developer APIs require exact `dev=1`; normal URLs expose no intended mutation
 API. Pure module globals remain available to the loader, with private state
-contained. Boot/page/SW and developer imports use cache version **89** and
+contained. Boot/page/SW and developer imports use cache version **90** and
 precache all four new modules for offline saved-character boot.
 
 Run `tools/run-node-checks.py`, `tests/action_item_browser.py`, the existing item,
 Action Loadout, Combat, Skill Tree, Progression and cache suites, world-schema
 validation and `git diff --check`. See [verified handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md).
+
+## Monster Loot integration extension
+
+The [Monster Loot contract](CORE_SPINE_MONSTER_LOOT.md) adds per-life exact-once
+monster rewards using the existing canonical ownership and Progression/Stats
+contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
+before synchronous publication. Existing formulas, learned skills, action slots,
+Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
+boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).

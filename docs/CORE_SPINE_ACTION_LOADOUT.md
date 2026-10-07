@@ -229,7 +229,7 @@ bindings are retained; no production controls or labels for 5–8 are added.
 Run the commands in README, including `tests/action_loadout_browser.py`. The
 [verification report](CORE_SPINE_ACTION_LOADOUT_REPORT.md) records checkpoints,
 all regression counts, disposable Swordsman/Mage smoke and remaining scope.
-Boot/page/SW version 89 precaches the action and item core modules and supports offline
+Boot/page/SW version 90 precaches the action and item core modules and supports offline
 saved-character boot. No visual acceptance is inferred from these checks.
 
 ## Action Item execution extension
@@ -241,3 +241,12 @@ reject without consumption. Item/function clocks are provisional, explicit-time
 and separate from skills. Existing Stats/Combat/Progression/ownership authorities
 and save version 5 remain intact; clocks are runtime-only. See the
 [verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.
+
+## Monster Loot integration extension
+
+The [Monster Loot contract](CORE_SPINE_MONSTER_LOOT.md) adds per-life exact-once
+monster rewards using the existing canonical ownership and Progression/Stats
+contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
+before synchronous publication. Existing formulas, learned skills, action slots,
+Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
+boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).

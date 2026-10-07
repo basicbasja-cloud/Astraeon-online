@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 89. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 90. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -77,18 +77,29 @@ survive death/travel on the same timeline and reset on reload. The inventory
 harness now includes deterministic item-time controls. See
 [verified Action Item handoff](docs/CORE_SPINE_ACTION_ITEMS_REPORT.md).
 
+The [Monster Loot foundation](docs/CORE_SPINE_MONSTER_LOOT.md) connects registered
+monster deaths to validated immutable tables, injected RNG, pure resolution and
+owned per-life claims. Mixed stack/ItemInstance/gold rewards commit once through
+canonical ownership; Base/Job EXP and quest credit retain their existing
+separate authorities. Current direct-on-death rewards and prototype kill cycles
+are retained. No final drop balance, ground-loot UI, Monster Box opening or full
+Monster Lifecycle/AI is implemented. `/tools/monster-loot.html` is an isolated
+in-memory sandbox. See [verified loot handoff](docs/CORE_SPINE_MONSTER_LOOT_REPORT.md).
+Patch 0.0.1 and Core Spine remain incomplete.
+
 ## Verification
 
 The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **89**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **90**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/monster_loot_browser.py --url http://127.0.0.1:8011
 python tests/action_item_browser.py --url http://127.0.0.1:8011
 python tests/inventory_browser.py --url http://127.0.0.1:8011
 python tests/action_loadout_browser.py --url http://127.0.0.1:8011

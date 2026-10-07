@@ -201,7 +201,7 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **89** imports and precaches the item and Action Item modules together.
+Boot/page/SW version **90** imports and precaches the item and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
 identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, boxes,
@@ -217,3 +217,12 @@ reject without consumption. Item/function clocks are provisional, explicit-time
 and separate from skills. Existing Stats/Combat/Progression/ownership authorities
 and save version 5 remain intact; clocks are runtime-only. See the
 [verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.
+
+## Monster Loot integration extension
+
+The [Monster Loot contract](CORE_SPINE_MONSTER_LOOT.md) adds per-life exact-once
+monster rewards using the existing canonical ownership and Progression/Stats
+contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
+before synchronous publication. Existing formulas, learned skills, action slots,
+Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
+boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
