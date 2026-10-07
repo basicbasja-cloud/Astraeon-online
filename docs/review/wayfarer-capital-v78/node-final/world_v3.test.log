@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: Warrior fall transition covers all eight reactions before the death fade
+ok 1 - Warrior fall transition covers all eight reactions before the death fade
+  ---
+  duration_ms: 3.813402
+  type: 'test'
+  ...
+# Subtest: gate collision contains pillars, not overhead span or passage
+ok 2 - gate collision contains pillars, not overhead span or passage
+  ---
+  duration_ms: 7.232601
+  type: 'test'
+  ...
+# Subtest: authored route and entrances are reachable with actor clearance
+ok 3 - authored route and entrances are reachable with actor clearance
+  ---
+  duration_ms: 6.971857
+  type: 'test'
+  ...
+# Subtest: one edited mesh moves visuals, collision, navigation and shadow together
+ok 4 - one edited mesh moves visuals, collision, navigation and shadow together
+  ---
+  duration_ms: 6.202061
+  type: 'test'
+  ...
+# Subtest: roof/canopy are selective layers and remain independent shadow casters
+ok 5 - roof/canopy are selective layers and remain independent shadow casters
+  ---
+  duration_ms: 3.768381
+  type: 'test'
+  ...
+# Subtest: shared schema rejects invalid/duplicate mesh identifiers and invalid indices
+ok 6 - shared schema rejects invalid/duplicate mesh identifiers and invalid indices
+  ---
+  duration_ms: 2.118911
+  type: 'test'
+  ...
+# Subtest: baked lighting must align with every face corner and contain bounded factors
+ok 7 - baked lighting must align with every face corner and contain bounded factors
+  ---
+  duration_ms: 5.03269
+  type: 'test'
+  ...
+# Subtest: walk simulation displacement, duty and foot metadata agree in all eight directions
+ok 8 - walk simulation displacement, duty and foot metadata agree in all eight directions
+  ---
+  duration_ms: 33.170224
+  type: 'test'
+  ...
+# Subtest: run simulation displacement, duty and foot metadata agree in all eight directions
+ok 9 - run simulation displacement, duty and foot metadata agree in all eight directions
+  ---
+  duration_ms: 28.295345
+  type: 'test'
+  ...
+# Subtest: sprint simulation displacement, duty and foot metadata agree in all eight directions
+ok 10 - sprint simulation displacement, duty and foot metadata agree in all eight directions
+  ---
+  duration_ms: 18.557892
+  type: 'test'
+  ...
+# Subtest: three locomotion strategies have separate atlas geometry, stride and duty
+ok 11 - three locomotion strategies have separate atlas geometry, stride and duty
+  ---
+  duration_ms: 0.500903
+  type: 'test'
+  ...
+# Subtest: simulation contact metadata cancels root travel at the gameplay projection and scale
+ok 12 - simulation contact metadata cancels root travel at the gameplay projection and scale
+  ---
+  duration_ms: 1.682084
+  type: 'test'
+  ...
+# Subtest: start, stop, turn and strategy changes settle without teleports
+ok 13 - start, stop, turn and strategy changes settle without teleports
+  ---
+  duration_ms: 4.039769
+  type: 'test'
+  ...
+# Subtest: default Golden import derives services, patrols, masks and polygons from the authored town
+ok 14 - default Golden import derives services, patrols, masks and polygons from the authored town
+  ---
+  duration_ms: 26.240612
+  type: 'test'
+  ...
+# Subtest: off-grid movement destinations remain reachable around an obstacle
+ok 15 - off-grid movement destinations remain reachable around an obstacle
+  ---
+  duration_ms: 25.282722
+  type: 'test'
+  ...
+# Subtest: stationary turns replant one foot while retaining the other support
+ok 16 - stationary turns replant one foot while retaining the other support
+  ---
+  duration_ms: 4.234797
+  type: 'test'
+  ...
+# Subtest: spatial town routes, water boundaries, stairs and mesh-owned services agree
+ok 17 - spatial town routes, water boundaries, stairs and mesh-owned services agree
+  ---
+  duration_ms: 5468.289177
+  type: 'test'
+  ...
+# Subtest: stance feet retain their absolute planted elevation while climbing
+ok 18 - stance feet retain their absolute planted elevation while climbing
+  ---
+  duration_ms: 1.206376
+  type: 'test'
+  ...
+# Subtest: town stair contacts meet the visible tread tops and the shrine entry
+ok 19 - town stair contacts meet the visible tread tops and the shrine entry
+  ---
+  duration_ms: 1446.918804
+  type: 'test'
+  ...
+# Subtest: native floor faces preserve a closed band hole outside the main land outline
+ok 20 - native floor faces preserve a closed band hole outside the main land outline
+  ---
+  duration_ms: 1.625724
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7131.291736

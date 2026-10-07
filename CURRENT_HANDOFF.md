@@ -1,5 +1,56 @@
 # ASTRAEON — capital architecture revision 76
 
+## Current verified checkpoint — selected frontage placement v78, 7 October2026
+
+Same working branch codex/world-pipeline-v3-proof. Starting checkpoint3cc2c65
+remains preserved. The original World art task is ACTIVE; do not stop at this
+checkpoint. Full RO3 visual baseline remains OPEN.
+
+Current sourceSHA256:67c6ff1f94bdaaa8a278437306beab0b3d94026a106b77e436f93b660dba57d9.
+NativeSHA256:58a7b8c5519f37a1edb284404dd5cf6bd520313788db898c2997614c3491af4a.
+Boot/cache94, immutable generationwayfarer-67c6ff1f94bd.
+Nineteen actual owned fronts now have deliberately selected entry-gable, garden-
+hip, eave-gallery or artisan lean-to roofs, braces, blue/gold lamps and elevated
+herb pots. Two other plaza candidates were rejected for existing use conflicts.
+Added4,659 native triangles and38 slender collision posts, all outside2.2m door
+approaches and public roads. Original parts/solids/doors/gameplay/terrain are
+exact, except explicitly enlarged clay roof UVs2.4→3.4; original images/resolution
+remain byte-exact. Source74 preservation allows only that declared UV multiplier
+and still checks every original vertex/face and other UV.
+
+All11 native pipeline stages and96 individual Node tests PASS; full fresh4096
+ground bake also proves the repaired low-memory baker completed normally.
+Exact stream conversion PASS:935,370 authored draw triangles and33,715,851
+attribute values,75 chunks/24 active images. Five streaming tests PASS.
+Eight normal910×512 gameplay views each have0errors and0changed pixels between
+ordinary/exhaustive culling. Three ordinary-control camera studies are saved.
+WebKit iPhone13 emulation cold21322.06ms /warm10883.48ms,
+34unloads/23reloads, no monolithic boot, no visible missing chunks, duplicate
+geometry or blocked ordinary touch traversal. Physical iPhone Safari PENDING.
+Final cache/offline/field tests must be repeated on the upcoming current art
+source; v77 has prior verified results.
+
+Evidence:docs/review/wayfarer-capital-v78/checkpoint.json;frontage-placement/
+contains all native/bake/delta checks, owned-frontage-plan.svg, eight views and
+visual-review.json. Mobile evidence ismobile-streaming/ordinary-touch-v78/.
+
+Exact next original World action: use the reviewed camera candidate45°pitch /
+35°yaw /135distance /FOV15. It reveals front entrances/corners and adjacent
+properties, with more reference-like character framing. Do NOT blindly resize
+the entire map: local street/character proportions are plausible, global RO3
+dimensions are not established. Private paved aprons still have overly thin
+planted bands in artisan/merchant shots. The next v79 scripts propose bounded
+95cm inward growth of selected actual owned lawns, preserving paved doors/work
+bays/courts/closed routes, sparse new edge blades and16 formal park crown
+variants. New foliage candidate authoring/materials/wayfarer-conifer-v79-source.png
+is original host-native ImageGen art; its1254² RGBA lossless export is exact,
+alpha coverage.58367, original v70 source preserved. Candidate is NOT YET
+adopted in the runtime. Its provenance/prompt and draft v79 scripts are untracked
+continuation work and must be preserved. Do not rerun v78 one-shot author.
+Rebuild foliage/4096 floor light after v79 adoption, independent declared delta,
+native parity, exact stream/cache and normal gameplay/mobile before acceptance.
+
+
 ## Current verified checkpoint — street depth v77, 7 October 2026
 
 User requests larger, quieter paving and RO3 painted architectural character in

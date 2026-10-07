@@ -14,7 +14,16 @@ for o in old['objects']:
  current={m['id']:m for m in objects[o['id']]['parts']};a=math.cos(t['rotation']);b=math.sin(t['rotation']);bx,by,bz=t['before'];ax,ay,az=t['after']
  for m in o['parts']:
   n=current[m['id']];assert n['faces']==m['faces'],m['id']
-  if 'uvs' in m:assert n['uvs']==m['uvs'],m['id']+' original UV';uvfaces+=len(m['faces'])
+  if 'uvs' in m:
+   expected_uvs=m['uvs']
+   refinement=p.get('frontagePlacementRefinement',{})
+   if n['id'] in refinement.get('roofUVMeshes',[]):
+    assert n['material'] in ('roofClayWarm','roofClayRose','roofClayOchre')
+    assert refinement['revision']==78 and refinement['roofMaterialWorldSize']==3.4
+    expected_uvs=[[[v*refinement['roofUVFactor'] for v in uv] for uv in face] for face in expected_uvs]
+    assert max(abs(a-b) for face,other in zip(n['uvs'],expected_uvs) for uv,q in zip(face,other) for a,b in zip(uv,q))<.000021,m['id']+' declared roof UV'
+   else:assert n['uvs']==expected_uvs,m['id']+' original UV'
+   uvfaces+=len(m['faces'])
   assert len(n['vertices'])==len(m['vertices'])
   for v,q in zip(m['vertices'],n['vertices']):
    expected=[ax+a*(v[0]-bx)-b*(v[1]-by),ay+b*(v[0]-bx)+a*(v[1]-by),az+v[2]-bz];error=max(abs(x-y) for x,y in zip(expected,q));max_error=max(max_error,error);assert error<.0002,(m['id'],error);vertices+=1
