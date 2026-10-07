@@ -30,12 +30,21 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 83. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 84. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+
+The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
+EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
+save version 4. Legacy saves migrate through compatibility adapters. Open
+`http://127.0.0.1:8011/tools/progression.html` for the isolated developer harness;
+`?qa=1&dev=1` exposes the same APIs on a disposable playable character. See
+[the system contract and compatibility notes](docs/CORE_SPINE_PROGRESSION.md).
+This foundation does not complete the whole Core Spine patch.
 
 ## Verification
 
 ```powershell
 python tools/run-node-checks.py
+python tests/progression_browser.py --url http://127.0.0.1:8011
 python tools/validate-world-v3.py
 $env:ASTRAEON_BROWSER='C:\Program Files\Google\Chrome\Application\chrome.exe'
 python tests/ragnarok_camera.py --output camera-review

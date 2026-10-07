@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASTRAEON Core Spine developer harness</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<h1>Core Spine progression/stat harness</h1>
+<p>Developer sandbox. Uses its own save key (<code>astraeon-progression-dev-v1</code>).</p>
+<p id="status" role="status"></p>
+<table><tbody id="summary"></tbody></table>
+<p><label>Base EXP <input id="base-exp" type="number" value="100" min="0"></label> <button id="grant-base">+ Base EXP</button>
+<label>Job EXP <input id="job-exp" type="number" value="100" min="0"></label> <button id="grant-job">+ Job EXP</button></p>
+<p><label>Base Level <input id="base-level" type="number" value="1" min="1" max="60"></label> <button id="set-base">Set Base Level</button>
+<label>Job Level <input id="job-level" type="number" value="1" min="1" max="50"></label> <button id="set-job">Set Job Level</button></p>
+<p><label>Points <input id="points" type="number" value="1" min="0"></label> <button id="stat-points">Add Stat Points</button> <button id="skill-points">Add Skill Points</button></p>
+<p><label>Allocation amount <input id="allocation" type="number" value="1" min="1"></label></p>
+<div id="stats"></div>
+<p><button id="reset-stats">Reset stats</button></p>
+<p><label>Current HP <input id="hp" type="number" value="100"></label> <button id="set-hp">Set HP</button>
+<label>Current SP <input id="sp" type="number" value="60"></label> <button id="set-sp">Set SP</button></p>
+<p><button id="save">Save</button> <button id="reload">Reload saved state</button></p>
+<h2>Derived snapshot</h2><pre id="derived"></pre>
+<h2>Raw persistent state</h2><pre id="persistent"></pre>
+<script src="../skill-nodes.js?v=84"></script>
+<script src="../progression-config.js?v=84"></script>
+<script src="../progression.js?v=84"></script>
+<script src="../stats.js?v=84"></script>
+<script src="../character-state.js?v=84"></script>
+<script src="../player-state.js?v=84"></script>
+<script src="../save-state.js?v=84"></script>
+<script src="./progression-harness.js?v=84"></script>
+</html>
