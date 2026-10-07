@@ -11,6 +11,15 @@
 <p><label>Instance <select id="instance"></select></label> <label>Equipment slot <select id="slot"><option>weapon</option><option>armor</option><option>relic</option></select></label>
 <button id="delete-instance">Delete unequipped instance</button> <button id="equip">Equip</button> <button id="unequip">Unequip</button></p>
 <p><button id="save">Save</button> <button id="reload">Reload</button></p>
+<h2>Action Item execution (simulation seconds)</h2>
+<p><label>Consumable <select id="action-item"><option>potion</option><option>ration</option></select></label>
+<button id="give-consumable">Add selected consumable</button> <button id="use-consumable">Use selected</button>
+<button id="prepare-consumable">Prepare</button> <button id="commit-consumable">Commit prepared ticket</button></p>
+<p><label>HP <input id="item-hp" type="number" value="1"></label><label>SP <input id="item-sp" type="number" value="1"></label>
+<button id="set-item-resources">Set test resources</button> <button id="full-item-resources">Set full resources</button></p>
+<p><label>Time <input id="item-time" type="number" value="0"></label><button id="set-item-time">Set time</button>
+<label>Advance <input id="item-time-step" type="number" value="2"></label><button id="advance-item-time">Advance time</button><button id="reset-item-cooldowns">Clear item cooldowns</button></p>
+<pre id="action-item-state"></pre><pre id="action-item-result" aria-live="polite"></pre>
 <p><label>Historical/current migration fixture<br><textarea id="migration-input" rows="7" cols="100">{"saveVersion":4,"name":"Migration fixture","inventory":{"herb":3,"blade":1},"equipment":{"weapon":"Astral Blade","armor":"Adventurer Garb","relic":"None"}}</textarea></label>
 <button id="inspect-migration">Inspect migration (does not replace inventory)</button></p>
 <pre id="migration-result"></pre>
@@ -19,11 +28,11 @@
 <h2>Equipment / compiled modifiers / carried weight</h2><pre id="equipment"></pre>
 <h2>Derived Stats</h2><pre id="derived"></pre>
 <h2>Persistent snapshot</h2><pre id="persistent"></pre>
-<script src="../skill-nodes.js?v=88"></script><script src="../combat.js?v=88"></script>
-<script src="../progression-config.js?v=88"></script><script src="../progression.js?v=88"></script><script src="../stats.js?v=88"></script>
-<script src="../skill-definitions.js?v=88"></script><script src="../skill-tree.js?v=88"></script>
-<script src="../action-loadout.js?v=88"></script><script src="../skill-runtime.js?v=88"></script><script src="../action-runtime.js?v=88"></script>
-<script src="../character-state.js?v=88"></script><script src="../item-definitions.js?v=88"></script>
-<script src="../item-inventory.js?v=88"></script><script src="../item-equipment.js?v=88"></script><script src="../item-state.js?v=88"></script>
-<script src="../player-state.js?v=88"></script><script src="../save-state.js?v=88"></script><script src="inventory-harness.js?v=88"></script>
+<script src="../skill-nodes.js?v=89"></script><script src="../combat.js?v=89"></script>
+<script src="../progression-config.js?v=89"></script><script src="../progression.js?v=89"></script><script src="../stats.js?v=89"></script>
+<script src="../skill-definitions.js?v=89"></script><script src="../skill-tree.js?v=89"></script>
+<script src="../action-loadout.js?v=89"></script><script src="../skill-runtime.js?v=89"></script><script src="../action-runtime.js?v=89"></script>
+<script src="../character-state.js?v=89"></script><script src="../item-definitions.js?v=89"></script>
+<script src="../item-inventory.js?v=89"></script><script src="../item-equipment.js?v=89"></script><script src="../item-state.js?v=89"></script>
+<script src="../action-item-config.js?v=89"></script><script src="../item-effects.js?v=89"></script><script src="../action-item.js?v=89"></script><script src="../action-item-runtime.js?v=89"></script><script src="../player-state.js?v=89"></script><script src="../save-state.js?v=89"></script><script src="inventory-harness.js?v=89"></script>
 </html>
