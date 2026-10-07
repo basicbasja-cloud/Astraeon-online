@@ -60,15 +60,23 @@ VIEWS = {
     'artisan-court': (52.4,82.6),
     'willow-court': (77.25,100),
     'plaza-frontages': (64,66),
+    'merchant-frontage': (24,82.5),
+    'capital-tree-contact': (72.5,73.5),
 }
 
 
-def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None, startup_timeout_ms=120000, verify_culling=False, append=False, template_file=None, viewport_width=1280, scene_only=False, viewport_height=800):
+def capture(url, output, names, zoom=None, yaw=None, pitch=None, capture_scale=None, startup_timeout_ms=120000, verify_culling=False, append=False, template_file=None, viewport_width=1280, scene_only=False, viewport_height=800):
     output.mkdir(parents=True, exist_ok=True)
     records = json.loads((output/'views.json').read_text()) if append and (output/'views.json').exists() else []
     raw=Path('world/v3/wayfarer-spatial.json').read_bytes();source_hash=hashlib.sha256(raw).hexdigest()
     native=json.loads(raw);route=native['route'];layout=native['layoutId'];capital='capital' in layout
     architecture_revision=native.get('architectureRevision')
+    runtime_hashes={name:hashlib.sha256(Path(name).read_bytes()).hexdigest()
+                    for name in ('world-view.js','world/v3/renderer.js','boot.js')}
+    ground_bake=native.get('lighting',{}).get('groundShadow')
+    ground_hash=hashlib.sha256(Path(ground_bake['file']).read_bytes()).hexdigest() if ground_bake else None
+    doors=[{'owner':o['id'],'vertices':a['vertices']}
+           for o in native['objects'] for a in o['parts'] if a['id'].endswith('-door-leaf')]
     del raw,native  # The capture needs metadata, not a retained 89 MB mesh document.
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(
@@ -98,6 +106,9 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
             x, y = (v*2 for v in VIEWS[name])
             stop=next((a for a in route if a['name'].lower().replace(' ','-')==name),None)
             if stop:x,y=stop['position']
+            if capital and name=='plaza-frontages':
+                plaza=next((a for a in route if a['name'].lower()=='plaza'),None)
+                if plaza:x,y=plaza['position']
             if capital and name=="gate":x,y=18,144
             if capital and name=="avenue":x,y=128,176
             if capital and name=="hall-skyline":x,y=128,100
@@ -117,14 +128,17 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                 'window.AstraeonQA.snapshot().renderer', timeout=startup_timeout_ms)
             page.wait_for_timeout(450)
             if zoom is not None:
+                current_zoom=page.evaluate('AstraeonQA.snapshot().renderer.cameraProfile.zoom')
                 rect=page.locator('#world').bounding_box();pointer_x=rect['x']+rect['width']/2;pointer_y=rect['y']+rect['height']/2
-                page.keyboard.down('Control');page.mouse.move(pointer_x,pointer_y);page.mouse.down(button='right');page.mouse.move(pointer_x,pointer_y-(zoom-125)/1.5,steps=8);page.mouse.up(button='right');page.keyboard.up('Control');page.wait_for_timeout(800)
-            if yaw:
+                page.keyboard.down('Control');page.mouse.move(pointer_x,pointer_y);page.mouse.down(button='right');page.mouse.move(pointer_x,pointer_y-(zoom-current_zoom)/1.5,steps=8);page.mouse.up(button='right');page.keyboard.up('Control');page.wait_for_timeout(800)
+            if yaw is not None:
+                current_yaw=page.evaluate('AstraeonQA.snapshot().renderer.cameraProfile.yaw')
                 rect=page.locator('#world').bounding_box();px=rect['x']+rect['width']/2;py=rect['y']+rect['height']/2
-                page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px-yaw*rect['width']/720,py,steps=8);page.mouse.up(button='right');page.wait_for_timeout(800)
+                page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px-(yaw-current_yaw)*rect['width']/720,py,steps=8);page.mouse.up(button='right');page.wait_for_timeout(800)
             if pitch is not None:
+                current_pitch=page.evaluate('AstraeonQA.snapshot().renderer.cameraProfile.pitch')
                 rect=page.locator('#world').bounding_box();px=rect['x']+rect['width']/2;py=rect['y']+rect['height']/2
-                page.keyboard.down('Shift');page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px,py+(pitch-46)*rect['height']/300,steps=8);page.mouse.up(button='right');page.keyboard.up('Shift');page.wait_for_timeout(800)
+                page.keyboard.down('Shift');page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px,py+(pitch-current_pitch)*rect['height']/300,steps=8);page.mouse.up(button='right');page.keyboard.up('Shift');page.wait_for_timeout(800)
             if capture_scale is not None:
                 page.evaluate('(ratio)=>AstraeonSpatialView.renderer.setPixelRatio(ratio)', capture_scale)
                 page.wait_for_timeout(450)
@@ -167,6 +181,8 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
             record = {'name': name, 'requested': [x, y],
                       'viewport': {'width': viewport_width, 'height': viewport_height},
                       'sourceSHA256': source_hash,
+                      'runtimeSHA256': runtime_hashes,
+                      'groundShadowSHA256': ground_hash,
                       'architectureRevision': architecture_revision,
                       'actual': [snap['save']['x'], snap['save']['y']],
                       'layout': snap['town']['layout'],
@@ -199,6 +215,36 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                 minY:Math.min(...ys),maxY:Math.max(...ys),
                 height:Math.max(...ys)-Math.min(...ys)};
             }''')
+            record['playerAlphaScreenRect'] = page.evaluate('''()=>{
+              const v=AstraeonSpatialView,a=v.actors.get('player');
+              if(!a?.directFrame)return null;
+              const im=a.mesh.material.map.image,uv=a.mesh.geometry.attributes.uv;
+              const xs=[],ys=[];for(let i=0;i<uv.count;i++){xs.push(uv.getX(i));ys.push(1-uv.getY(i));}
+              const x=Math.round(Math.min(...xs)*im.width),y=Math.round(Math.min(...ys)*im.height);
+              const w=Math.round((Math.max(...xs)-Math.min(...xs))*im.width),h=Math.round((Math.max(...ys)-Math.min(...ys))*im.height);
+              const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+              const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(im,x,y,w,h,0,0,w,h);
+              const pixels=ctx.getImageData(0,0,w,h).data;let xa=w,xb=-1,ya=h,yb=-1;
+              for(let py=0;py<h;py++)for(let px=0;px<w;px++)if(pixels[(py*w+px)*4+3]>=16){xa=Math.min(xa,px);xb=Math.max(xb,px);ya=Math.min(ya,py);yb=Math.max(yb,py);}
+              if(xb<0)return null;
+              const p=a.mesh.geometry.attributes.position;a.mesh.updateWorldMatrix(true,false);
+              const corner=i=>a.mesh.localToWorld(a.mesh.position.clone().set(p.getX(i),p.getY(i),p.getZ(i)));
+              const base=corner(0),right=corner(1).sub(base),up=corner(3).sub(base),q=[];
+              for(const px of [xa,xb+1])for(const py of [ya,yb+1]){
+                const z=base.clone().addScaledVector(right,px/w).addScaledVector(up,1-py/h);q.push(v.worldToScreen(z.x,z.y,z.z));
+              }
+              const sx=q.map(p=>p.x),sy=q.map(p=>p.y);
+              return {minX:Math.min(...sx),maxX:Math.max(...sx),minY:Math.min(...sy),maxY:Math.max(...sy),height:Math.max(...sy)-Math.min(...sy),alphaThreshold:16};
+            }''')
+            nearby=sorted(doors,key=lambda a:sum((sum(v[i] for v in a['vertices'])/len(a['vertices'])-[x,y][i])**2 for i in (0,1)))[:8]
+            record['projectedNearbyDoors'] = page.evaluate('''doors=>doors.map(d=>{
+              const q=d.vertices.map(p=>AstraeonSpatialView.worldToScreen(...p)),xs=q.map(p=>p.x),ys=q.map(p=>p.y);
+              const zs=d.vertices.map(v=>v[2]),low=Math.min(...zs),high=Math.max(...zs),edges=[];
+              d.vertices.forEach((v,i)=>{if(Math.abs(v[2]-low)>.0001)return;
+                const j=d.vertices.findIndex(w=>Math.abs(w[2]-high)<.0001&&Math.hypot(w[0]-v[0],w[1]-v[1])<.0001);
+                if(j>=0)edges.push(Math.hypot(q[j].x-q[i].x,q[j].y-q[i].y));});
+              return {owner:d.owner,minX:Math.min(...xs),maxX:Math.max(...xs),minY:Math.min(...ys),maxY:Math.max(...ys),height:Math.max(...ys)-Math.min(...ys),verticalEdgeHeights:edges,meanVerticalEdgeHeight:edges.length?edges.reduce((a,b)=>a+b)/edges.length:null};
+            })''',nearby)
             if scene_image:record['sceneImage']=str(scene_image)
             if culling is not None: record['cullingVerification'] = culling
             records.append(record)
@@ -216,8 +262,8 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, default=Path('/tmp/wayfarer-golden-views'))
     parser.add_argument('--views', default=','.join(VIEWS))
     parser.add_argument('--zoom', type=float, help='Use ordinary Ctrl-right-drag zoom for a still review (65–325)')
-    parser.add_argument('--yaw',type=float,default=0,help='Use ordinary right-drag orbit for architecture review')
-    parser.add_argument('--pitch',type=float,help='Optional ordinary Shift-right-drag; default gameplay pitch remains 46')
+    parser.add_argument('--yaw',type=float,help='Absolute ordinary right-drag orbit; omit to keep the gameplay default')
+    parser.add_argument('--pitch',type=float,help='Absolute ordinary Shift-right-drag pitch; omit to keep the gameplay default')
     parser.add_argument('--capture-scale', type=float,
                         help='Still-image pixel ratio, independent of the runtime performance policy')
     parser.add_argument('--startup-timeout-ms', type=int, default=120000,

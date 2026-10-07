@@ -75,8 +75,47 @@ texture and sit7mm above the private paving, below the15mm shadow receivers.
 No collision obstacle, actor, runtime shadow effect or additional texture is
 introduced. The original source-matched4096² cast atlas remains valid.
 
-`beta-edge-check.json` verifies all158 actual door paths and zero public-road
+`beta-edge-check.json` verifies all 158 actual door paths and zero public-road
 overlap. An integrity digest preserves every other source field, including all
 building geometry/UVs, private paving, navigation, materials and lighting; only
 public UV density, its declared texture scale and the new groundcover are allowed
 to differ. The complete saved source remains subject to fresh gameplay inspection.
+
+
+## Resumed visual comparison — 7 October
+
+The checkpoint audit restored `d7f9f15`; its exact export hash is
+`ad5956f55b4a4d1fb00c665754f5bc28f13b001a7f1456bf0e6c3e01894155dc`.
+The subsequent frontage/landscape candidate at
+`8e5f2a85a48d84a75fabbae5e76bc96c714446a2eeaff4f0aa6db65745fab8ad`
+passed the complete source checks. Its captures are preserved in
+`property-frontages/diagnostics/before-plaza-enclosure/`; those captures establish
+what was inspected before the following corrections.
+
+- West street: continuous adjoining fronts now show varied entry/shop/work uses.
+  Door comparisons use actual projected vertical edges, not their angled screen
+  rectangles. At 910×512 the player alpha height is about41 pixels; nearby
+  vertical door edges are about43–51 pixels. These measurements do not establish
+  surveyed RO3 dimensions.
+- Merchant street: the first native timber color was too pale. Its final warmer,
+  darker authored color restores clearer facade contrast while preserving ivory
+  plaster and clay roofs. Broad/narrow and high/low buildings remain mixed.
+- Tree contact: the fuller native crown has overlapping illuminated/shaded boughs
+  and a grounded trunk, with original alpha textures. All 78 retain their physical
+  roots; crown detail adds no physics obstacle.
+- Fountain00:35 comparison: the old square had too much empty foreground, with
+  side properties outside the main walking view. Four complete side properties
+  now move 10 units inward, with joined terraces, entrance contacts and curbs.
+  All main road widths stay8/9/10/14/12; the existing plaza patrol is rerouted
+  around the closer fronts.
+- Latest user feedback: grass should blend with the stone blocks. The opaque
+  silhouette was still too abrupt. Native vertex opacity now gives each lawn a
+  narrow translucent edge, revealing the same rectangular private paving below.
+  Planting ownership, entrances, texture phase and native image resolution stay.
+
+The user authorizes a full city resize. The supplied local frames establish the
+visible plaza excess, but cannot establish the complete RO3 footprint. Tightening
+these fronts is a concrete local correction; a global percentage resize should
+not be inferred from an unsurveyed map. Current city bounds remain 256×288.
+Final captures and gameplay receipts must reference the newly rebaked source;
+this section does not grant visual acceptance before that inspection.

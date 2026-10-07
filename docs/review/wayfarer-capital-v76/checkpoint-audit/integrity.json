@@ -1,0 +1,34 @@
+{
+  "checkpoint": "d7f9f15978b0ca6347fe5f80302d147544bd4626",
+  "branch": "codex/world-pipeline-v3-proof",
+  "files": {
+    "authoring/wayfarer-spatial.blend": {
+      "SHA256": "b6bf486e4261bb6c247c4a2facaae8186d07aac7e96ce403ecbca4db3a09fbc3",
+      "identicalToGitCheckpoint": true
+    },
+    "world/v3/wayfarer-spatial.json": {
+      "SHA256": "ad5956f55b4a4d1fb00c665754f5bc28f13b001a7f1456bf0e6c3e01894155dc",
+      "identicalToGitCheckpoint": true
+    },
+    "tools/check-capital-density-v75.py": {
+      "SHA256": "d4607ea3b91d3c6d199dfa140f6be52ac70a84e515a8cbb6fc323387347ac594",
+      "identicalToGitCheckpoint": true
+    }
+  },
+  "nativeExportParity": true,
+  "reachableDestinations": 26,
+  "clearPatrols": 28,
+  "patrolRepairs": 0,
+  "publicSchemas": {
+    "pass": true,
+    "command": "python3 tools/validate-world-v3.py",
+    "exitCode": 0
+  },
+  "existingSourceMatchedNodeChecks": {
+    "tests": 96,
+    "failures": 0,
+    "rerunDuringAudit": false
+  },
+  "discardedExperimentArchived": "/tmp/astraeon-model-switch-plaza-experiment-20261007",
+  "RO3VisualAcceptance": "open"
+}

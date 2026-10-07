@@ -1,0 +1,956 @@
+[
+  {
+    "name": "merchant-frontage",
+    "requested": [
+      48,
+      165.0
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "sourceSHA256": "8e5f2a85a48d84a75fabbae5e76bc96c714446a2eeaff4f0aa6db65745fab8ad",
+    "runtimeSHA256": {
+      "world-view.js": "7dea1e2f9f44c2108b4ae94f80c7ebb6693650b3879bdf852e49de902e59c95f",
+      "world/v3/renderer.js": "f07b2842a6ced50f807fe616281d214b3d7577667a4f6c491c808e76cec3625f",
+      "boot.js": "6c810b87d5fd4aae287b1adb92cfb579fcb0234a3a81a947e763b595a54381cd"
+    },
+    "groundShadowSHA256": "bf5852ecb87f9333c1458644b48e463584f0a63cbc916ce89c2066d2ab2cd78a",
+    "architectureRevision": 76,
+    "actual": [
+      48,
+      165
+    ],
+    "layout": "wayfarer-regional-capital-v75",
+    "actors": 2,
+    "fadedBuildings": [],
+    "actorArtwork": {
+      "walker/shrine-road-pilgrim": {
+        "clip": "mage",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          36,
+          1267,
+          142,
+          172
+        ]
+      },
+      "player": {
+        "clip": "warrior",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          13,
+          1258,
+          173,
+          174
+        ]
+      }
+    },
+    "renderCalls": 135,
+    "renderTriangles": 60858,
+    "frameMs": 138.7,
+    "rendererTiming": {
+      "occlusionMs": 55.79999999701977,
+      "renderMs": 2718,
+      "assemblyMs": 11.799999997019768,
+      "totalMs": 4220.100000008941
+    },
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "camera": {
+      "kind": "ragnarok",
+      "fov": 15,
+      "pitch": 55,
+      "yaw": 20,
+      "zoom": 125,
+      "basis": {
+        "xx": 57.34064310022942,
+        "xy": 17.095938508467214,
+        "yx": -20.8702873021652,
+        "yy": 46.970705016398405
+      },
+      "depth": {
+        "x": -0.0031387951195041776,
+        "y": -0.008623768715132102,
+        "z": -0.013106432708623869
+      }
+    },
+    "captureScale": null,
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "pixelRatio": 1
+    },
+    "errors": [],
+    "image": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/merchant-frontage.png",
+    "playerGeometryScreenRect": {
+      "minX": 600.9724396185237,
+      "maxX": 658.6798577367898,
+      "minY": 274.9590125370291,
+      "maxY": 333,
+      "height": 58.04098746297092
+    },
+    "playerAlphaScreenRect": {
+      "minX": 600.9724396185237,
+      "maxX": 658.6798577367898,
+      "minY": 274.9590125370291,
+      "maxY": 332.67695679108226,
+      "height": 57.71794425405318,
+      "alphaThreshold": 16
+    },
+    "projectedNearbyDoors": [
+      {
+        "owner": "capital-market-060",
+        "minX": 353.40664492223664,
+        "maxX": 391.76724052204116,
+        "minY": 178.70596831634947,
+        "maxY": 296.46210531275335,
+        "height": 117.75613699640388,
+        "verticalEdgeHeights": [
+          65.69441255914336,
+          66.38299249224464,
+          65.68091204611555,
+          66.37104151744376
+        ],
+        "meanVerticalEdgeHeight": 66.03233965373683
+      },
+      {
+        "owner": "capital-market-030",
+        "minX": 950.728726390937,
+        "maxX": 982.0927120959693,
+        "minY": 140.16473659147098,
+        "maxY": 257.39431471381914,
+        "height": 117.22957812234816,
+        "verticalEdgeHeights": [
+          67.38192406506117,
+          66.5146269964283,
+          67.37934112102796,
+          66.51263017067285
+        ],
+        "meanVerticalEdgeHeight": 66.94713058829757
+      },
+      {
+        "owner": "capital-market-063",
+        "minX": 194.6734763103477,
+        "maxX": 244.460953780753,
+        "minY": 469.39763585843855,
+        "maxY": 590.5700893812663,
+        "height": 121.17245352282771,
+        "verticalEdgeHeights": [
+          61.343653345377156,
+          62.27174302837703,
+          61.31927127367177,
+          62.2499196174987
+        ],
+        "meanVerticalEdgeHeight": 61.796146816231165
+      },
+      {
+        "owner": "capital-neighborhood-026",
+        "minX": 545.9094409977463,
+        "maxX": 567.8364140208269,
+        "minY": -146.2271382010443,
+        "maxY": -42.05963927958858,
+        "height": 104.16749892145573,
+        "verticalEdgeHeights": [
+          69.6230023753913,
+          69.9352160063692,
+          69.61810087770917,
+          69.93095890890173
+        ],
+        "meanVerticalEdgeHeight": 69.77681954209285
+      },
+      {
+        "owner": "capital-neighborhood-028",
+        "minX": 1009.6545957918727,
+        "maxX": 1037.1832051751392,
+        "minY": -23.5173567928114,
+        "maxY": 82.0057402622647,
+        "height": 105.5230970550761,
+        "verticalEdgeHeights": [
+          69.77021820791458,
+          69.26921352598214,
+          69.7661889549205,
+          69.26550405638753
+        ],
+        "meanVerticalEdgeHeight": 69.51778118630119
+      },
+      {
+        "owner": "artisan-workshop",
+        "minX": 1160.0683865254744,
+        "maxX": 1246.5346900059578,
+        "minY": 788.9416727509291,
+        "maxY": 863.0473792378688,
+        "height": 74.10570648693965,
+        "verticalEdgeHeights": [
+          59.0360840540981,
+          59.648339175576034,
+          59.00025926467866,
+          59.61289220759592
+        ],
+        "meanVerticalEdgeHeight": 59.32439367548717
+      },
+      {
+        "owner": "capital-neighborhood-016",
+        "minX": 60.09451966630941,
+        "maxX": 130.1777610062065,
+        "minY": -316.45153451503535,
+        "maxY": -230.67303998498494,
+        "height": 85.77849453005041,
+        "verticalEdgeHeights": [
+          72.80645774275747,
+          73.23005925391499,
+          72.80695562849067,
+          73.22973040136021
+        ],
+        "meanVerticalEdgeHeight": 73.01830075663084
+      },
+      {
+        "owner": "inn-side-home",
+        "minX": 1698.120908110141,
+        "maxX": 1750.2099144805056,
+        "minY": 464.00723140799056,
+        "maxY": 565.7874299717918,
+        "height": 101.7801985638012,
+        "verticalEdgeHeights": [
+          76.61282993664436,
+          77.26174143171805,
+          76.63796620793092,
+          77.2862863023373
+        ],
+        "meanVerticalEdgeHeight": 76.94970596965766
+      }
+    ],
+    "sceneImage": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/merchant-frontage-scene.png",
+    "cullingVerification": {
+      "exhaustive": {
+        "calls": 3618,
+        "triangles": 1365118
+      },
+      "ordinary": {
+        "calls": 135,
+        "triangles": 60858
+      },
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "width": 1280,
+      "height": 666
+    }
+  },
+  {
+    "name": "willow-court",
+    "requested": [
+      154.5,
+      200
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "sourceSHA256": "8e5f2a85a48d84a75fabbae5e76bc96c714446a2eeaff4f0aa6db65745fab8ad",
+    "runtimeSHA256": {
+      "world-view.js": "7dea1e2f9f44c2108b4ae94f80c7ebb6693650b3879bdf852e49de902e59c95f",
+      "world/v3/renderer.js": "f07b2842a6ced50f807fe616281d214b3d7577667a4f6c491c808e76cec3625f",
+      "boot.js": "6c810b87d5fd4aae287b1adb92cfb579fcb0234a3a81a947e763b595a54381cd"
+    },
+    "groundShadowSHA256": "bf5852ecb87f9333c1458644b48e463584f0a63cbc916ce89c2066d2ab2cd78a",
+    "architectureRevision": 76,
+    "actual": [
+      154.5,
+      200
+    ],
+    "layout": "wayfarer-regional-capital-v75",
+    "actors": 3,
+    "fadedBuildings": [
+      "capital-residential-071"
+    ],
+    "actorArtwork": {
+      "walker/market-courier-1": {
+        "clip": "ranger",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          40,
+          1278,
+          125,
+          170
+        ]
+      },
+      "walker/capital-resident-10": {
+        "clip": "ranger",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          40,
+          1278,
+          125,
+          170
+        ]
+      },
+      "player": {
+        "clip": "warrior",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          13,
+          1258,
+          173,
+          174
+        ]
+      }
+    },
+    "renderCalls": 181,
+    "renderTriangles": 79568,
+    "frameMs": 6.78,
+    "rendererTiming": {
+      "occlusionMs": 4.5,
+      "renderMs": 12.900000005960464,
+      "assemblyMs": 24,
+      "totalMs": 41.80000001192093
+    },
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "camera": {
+      "kind": "ragnarok",
+      "fov": 15,
+      "pitch": 55,
+      "yaw": 20,
+      "zoom": 125,
+      "basis": {
+        "xx": 57.34064310022942,
+        "xy": 17.095938508467214,
+        "yx": -20.8702873021652,
+        "yy": 46.970705016398405
+      },
+      "depth": {
+        "x": -0.0031387951195041776,
+        "y": -0.008623768715132102,
+        "z": -0.013106432708623869
+      }
+    },
+    "captureScale": null,
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "pixelRatio": 1
+    },
+    "errors": [],
+    "image": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/willow-court.png",
+    "playerGeometryScreenRect": {
+      "minX": 600.9724396185233,
+      "maxX": 658.6798577367897,
+      "minY": 274.9590125370291,
+      "maxY": 333.0000000000012,
+      "height": 58.04098746297211
+    },
+    "playerAlphaScreenRect": {
+      "minX": 600.9724396185233,
+      "maxX": 658.6798577367897,
+      "minY": 274.9590125370291,
+      "maxY": 332.6769567910834,
+      "height": 57.717944254054316,
+      "alphaThreshold": 16
+    },
+    "projectedNearbyDoors": [
+      {
+        "owner": "capital-market-031-a",
+        "minX": 866.3270932154746,
+        "maxX": 928.8706895480458,
+        "minY": 189.21883360677646,
+        "maxY": 270.8321685048937,
+        "height": 81.61333489811722,
+        "verticalEdgeHeights": [
+          66.09778746984391,
+          66.1126401206815,
+          66.07931827318103,
+          66.09358269680135
+        ],
+        "meanVerticalEdgeHeight": 66.09583214012694
+      },
+      {
+        "owner": "district-southwest-lodge",
+        "minX": 466.3670656960908,
+        "maxX": 520.3813215113145,
+        "minY": 70.93419891910375,
+        "maxY": 156.66976498244875,
+        "height": 85.735566063345,
+        "verticalEdgeHeights": [
+          71.54315880972099,
+          71.21640951679852,
+          71.53220959624176,
+          71.20463247147802
+        ],
+        "meanVerticalEdgeHeight": 71.37410259855983
+      },
+      {
+        "owner": "capital-market-062-a",
+        "minX": 295.04831653988134,
+        "maxX": 359.1910242706531,
+        "minY": 299.40089811613217,
+        "maxY": 380.1322066564675,
+        "height": 80.7313085403353,
+        "verticalEdgeHeights": [
+          64.24837862196101,
+          64.8603544159413,
+          64.26534513358376,
+          64.87584231746068
+        ],
+        "meanVerticalEdgeHeight": 64.56248012223669
+      },
+      {
+        "owner": "frontage-cobbler",
+        "minX": 1034.4776871610313,
+        "maxX": 1065.8865008081711,
+        "minY": 368.597001739077,
+        "maxY": 478.10070137402965,
+        "height": 109.50369963495268,
+        "verticalEdgeHeights": [
+          66.73237744457121,
+          65.73585755690269,
+          66.72797968172802,
+          65.73181639468055
+        ],
+        "meanVerticalEdgeHeight": 66.23200776947061
+      },
+      {
+        "owner": "capital-residential-071",
+        "minX": 522.3418717769354,
+        "maxX": 599.0051275189351,
+        "minY": 642.7172668848737,
+        "maxY": 724.1437843424757,
+        "height": 81.42651745760202,
+        "verticalEdgeHeights": [
+          56.54331164281391,
+          55.77966097370303,
+          56.5115247599787,
+          55.745423772548904
+        ],
+        "meanVerticalEdgeHeight": 56.144980287261134
+      },
+      {
+        "owner": "capital-townhouse-087",
+        "minX": 1313.9776053021455,
+        "maxX": 1350.458813976835,
+        "minY": 187.0374435769521,
+        "maxY": 294.38664866910227,
+        "height": 107.34920509215016,
+        "verticalEdgeHeights": [
+          69.310632616847,
+          69.98695796366651,
+          69.32290173918146,
+          69.99915684585518
+        ],
+        "meanVerticalEdgeHeight": 69.65491229138753
+      },
+      {
+        "owner": "frontage-baker",
+        "minX": -89.77083600119798,
+        "maxX": -30.36717948853962,
+        "minY": 135.63821040153175,
+        "maxY": 257.41116840526223,
+        "height": 121.77295800373048,
+        "verticalEdgeHeights": [
+          79.97962047337684,
+          79.7487244858547,
+          79.99798056818112,
+          79.76862003006163
+        ],
+        "meanVerticalEdgeHeight": 79.87373638936857
+      },
+      {
+        "owner": "capital-workshop-056-a",
+        "minX": 1172.4076984360252,
+        "maxX": 1210.88924387927,
+        "minY": 745.5724003721051,
+        "maxY": 855.0056052244385,
+        "height": 109.43320485233335,
+        "verticalEdgeHeights": [
+          56.70624478188878,
+          58.240443278900614,
+          56.71989303515897,
+          58.25390067542468
+        ],
+        "meanVerticalEdgeHeight": 57.480120442843265
+      }
+    ],
+    "sceneImage": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/willow-court-scene.png",
+    "cullingVerification": {
+      "exhaustive": {
+        "calls": 3639,
+        "triangles": 1370602
+      },
+      "ordinary": {
+        "calls": 181,
+        "triangles": 79568
+      },
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "width": 1280,
+      "height": 666
+    }
+  },
+  {
+    "name": "artisan-court",
+    "requested": [
+      104.8,
+      165.2
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "sourceSHA256": "8e5f2a85a48d84a75fabbae5e76bc96c714446a2eeaff4f0aa6db65745fab8ad",
+    "runtimeSHA256": {
+      "world-view.js": "7dea1e2f9f44c2108b4ae94f80c7ebb6693650b3879bdf852e49de902e59c95f",
+      "world/v3/renderer.js": "f07b2842a6ced50f807fe616281d214b3d7577667a4f6c491c808e76cec3625f",
+      "boot.js": "6c810b87d5fd4aae287b1adb92cfb579fcb0234a3a81a947e763b595a54381cd"
+    },
+    "groundShadowSHA256": "bf5852ecb87f9333c1458644b48e463584f0a63cbc916ce89c2066d2ab2cd78a",
+    "architectureRevision": 76,
+    "actual": [
+      104.8,
+      165.2
+    ],
+    "layout": "wayfarer-regional-capital-v75",
+    "actors": 2,
+    "fadedBuildings": [],
+    "actorArtwork": {
+      "walker/capital-resident-06": {
+        "clip": "mage",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          36,
+          1267,
+          142,
+          172
+        ]
+      },
+      "player": {
+        "clip": "warrior",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          13,
+          1258,
+          173,
+          174
+        ]
+      }
+    },
+    "renderCalls": 133,
+    "renderTriangles": 67088,
+    "frameMs": 119.35,
+    "rendererTiming": {
+      "occlusionMs": 78.70000000298023,
+      "renderMs": 2308.2999999970198,
+      "assemblyMs": 15.400000005960464,
+      "totalMs": 3781.5999999940395
+    },
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "camera": {
+      "kind": "ragnarok",
+      "fov": 15,
+      "pitch": 55,
+      "yaw": 20,
+      "zoom": 125,
+      "basis": {
+        "xx": 57.34064310022942,
+        "xy": 17.095938508467214,
+        "yx": -20.8702873021652,
+        "yy": 46.970705016398405
+      },
+      "depth": {
+        "x": -0.0031387951195041776,
+        "y": -0.008623768715132102,
+        "z": -0.013106432708623869
+      }
+    },
+    "captureScale": null,
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "pixelRatio": 1
+    },
+    "errors": [],
+    "image": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/artisan-court.png",
+    "playerGeometryScreenRect": {
+      "minX": 600.9724396185238,
+      "maxX": 658.6798577367894,
+      "minY": 274.9590125370291,
+      "maxY": 333,
+      "height": 58.04098746297092
+    },
+    "playerAlphaScreenRect": {
+      "minX": 600.9724396185238,
+      "maxX": 658.6798577367894,
+      "minY": 274.9590125370291,
+      "maxY": 332.67695679108226,
+      "height": 57.71794425405318,
+      "alphaThreshold": 16
+    },
+    "projectedNearbyDoors": [
+      {
+        "owner": "capital-residential-052-b",
+        "minX": 572.1385742986531,
+        "maxX": 593.3594449738417,
+        "minY": -86.07329236634126,
+        "maxY": 18.752123977413383,
+        "height": 104.82541634375465,
+        "verticalEdgeHeights": [
+          68.9146229144434,
+          69.28875913062554,
+          68.90955706514019,
+          69.28437987273269
+        ],
+        "meanVerticalEdgeHeight": 69.09932974573546
+      },
+      {
+        "owner": "capital-residential-058-a",
+        "minX": 1104.9477690893173,
+        "maxX": 1178.5187376946478,
+        "minY": 263.71876602222653,
+        "maxY": 344.7582666713559,
+        "height": 81.03950064912937,
+        "verticalEdgeHeights": [
+          66.79419009238303,
+          66.51242506824026,
+          66.81509433970244,
+          66.53310570316245
+        ],
+        "meanVerticalEdgeHeight": 66.66370380087204
+      },
+      {
+        "owner": "district-northwest-lodge",
+        "minX": 428.9435212478538,
+        "maxX": 494.29276478513157,
+        "minY": 711.1996465108614,
+        "maxY": 789.226780027301,
+        "height": 78.02713351643956,
+        "verticalEdgeHeights": [
+          58.43860831015536,
+          57.587444801332,
+          58.40918618414734,
+          57.55589528564414
+        ],
+        "meanVerticalEdgeHeight": 57.99778364531971
+      },
+      {
+        "owner": "frontage-copper-shop",
+        "minX": 151.5905135900637,
+        "maxX": 191.32976034839822,
+        "minY": -2.5676901379401444,
+        "maxY": 104.66375972586926,
+        "height": 107.2314498638094,
+        "verticalEdgeHeights": [
+          72.39842292170978,
+          72.65286233743498,
+          72.38639540497375,
+          72.64174411620985
+        ],
+        "meanVerticalEdgeHeight": 72.5198561950821
+      },
+      {
+        "owner": "capital-townhouse-080",
+        "minX": -21.374401834891046,
+        "maxX": 29.508178281262403,
+        "minY": 243.34270714423693,
+        "maxY": 351.0886294990125,
+        "height": 107.74592235477556,
+        "verticalEdgeHeights": [
+          68.0578272174039,
+          68.36325016180388,
+          68.03589926005085,
+          68.342886386781
+        ],
+        "meanVerticalEdgeHeight": 68.1999657565099
+      },
+      {
+        "owner": "capital-workshop-057",
+        "minX": 1141.324914321614,
+        "maxX": 1178.4995270978966,
+        "minY": 696.9329005351318,
+        "maxY": 806.3479093648326,
+        "height": 109.41500882970081,
+        "verticalEdgeHeights": [
+          57.38813362114871,
+          58.85921387146823,
+          57.399453888817746,
+          58.8705269818487
+        ],
+        "meanVerticalEdgeHeight": 58.12933209082084
+      },
+      {
+        "owner": "capital-market-061-b",
+        "minX": -56.981442293502624,
+        "maxX": 23.727423509520307,
+        "minY": 570.4941491448571,
+        "maxY": 648.1755112787029,
+        "height": 77.68136213384571,
+        "verticalEdgeHeights": [
+          63.806794570910796,
+          62.603861588373256,
+          63.79468703724174,
+          62.58938108289339
+        ],
+        "meanVerticalEdgeHeight": 63.1986810698548
+      },
+      {
+        "owner": "capital-townhouse-092",
+        "minX": 285.65767314800956,
+        "maxX": 317.772636934347,
+        "minY": -204.55976571121965,
+        "maxY": -101.13890171659564,
+        "height": 103.42086399462401,
+        "verticalEdgeHeights": [
+          70.95222499531074,
+          71.12270618028887,
+          70.94403051952393,
+          71.11523362638262
+        ],
+        "meanVerticalEdgeHeight": 71.03354883037655
+      }
+    ],
+    "sceneImage": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/artisan-court-scene.png",
+    "cullingVerification": {
+      "exhaustive": {
+        "calls": 3620,
+        "triangles": 1365122
+      },
+      "ordinary": {
+        "calls": 133,
+        "triangles": 67088
+      },
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "width": 1280,
+      "height": 666
+    }
+  },
+  {
+    "name": "capital-tree-contact",
+    "requested": [
+      145.0,
+      147.0
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "sourceSHA256": "8e5f2a85a48d84a75fabbae5e76bc96c714446a2eeaff4f0aa6db65745fab8ad",
+    "runtimeSHA256": {
+      "world-view.js": "7dea1e2f9f44c2108b4ae94f80c7ebb6693650b3879bdf852e49de902e59c95f",
+      "world/v3/renderer.js": "f07b2842a6ced50f807fe616281d214b3d7577667a4f6c491c808e76cec3625f",
+      "boot.js": "6c810b87d5fd4aae287b1adb92cfb579fcb0234a3a81a947e763b595a54381cd"
+    },
+    "groundShadowSHA256": "bf5852ecb87f9333c1458644b48e463584f0a63cbc916ce89c2066d2ab2cd78a",
+    "architectureRevision": 76,
+    "actual": [
+      145,
+      147
+    ],
+    "layout": "wayfarer-regional-capital-v75",
+    "actors": 1,
+    "fadedBuildings": [],
+    "actorArtwork": {
+      "player": {
+        "clip": "warrior",
+        "row": 7,
+        "column": 0,
+        "bounds": [
+          13,
+          1258,
+          173,
+          174
+        ]
+      }
+    },
+    "renderCalls": 113,
+    "renderTriangles": 53234,
+    "frameMs": 95.77,
+    "rendererTiming": {
+      "occlusionMs": 20.5,
+      "renderMs": 1894.7999999970198,
+      "assemblyMs": 4.700000002980232,
+      "totalMs": 3395.5
+    },
+    "device": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "camera": {
+      "kind": "ragnarok",
+      "fov": 15,
+      "pitch": 55,
+      "yaw": 20,
+      "zoom": 125,
+      "basis": {
+        "xx": 57.34064310022942,
+        "xy": 17.095938508467214,
+        "yx": -20.8702873021652,
+        "yy": 46.970705016398405
+      },
+      "depth": {
+        "x": -0.0031387951195041776,
+        "y": -0.008623768715132102,
+        "z": -0.013106432708623869
+      }
+    },
+    "captureScale": null,
+    "renderResolution": {
+      "width": 1280,
+      "height": 666,
+      "pixelRatio": 1
+    },
+    "errors": [],
+    "image": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/capital-tree-contact.png",
+    "playerGeometryScreenRect": {
+      "minX": 600.9724396185238,
+      "maxX": 658.6798577367886,
+      "minY": 274.9590125370291,
+      "maxY": 333,
+      "height": 58.04098746297092
+    },
+    "playerAlphaScreenRect": {
+      "minX": 600.9724396185238,
+      "maxX": 658.6798577367886,
+      "minY": 274.9590125370291,
+      "maxY": 332.67695679108226,
+      "height": 57.71794425405318,
+      "alphaThreshold": 16
+    },
+    "projectedNearbyDoors": [
+      {
+        "owner": "capital-workshop-032-b",
+        "minX": 978.7844833425436,
+        "maxX": 1010.8908929518811,
+        "minY": 614.6183550021444,
+        "maxY": 723.9655762606612,
+        "height": 109.34722125851681,
+        "verticalEdgeHeights": [
+          58.79932471317149,
+          57.41152953210871,
+          58.79590629306662,
+          57.40871834917153
+        ],
+        "meanVerticalEdgeHeight": 58.10386972187958
+      },
+      {
+        "owner": "capital-workshop-034-a",
+        "minX": 140.67344906829177,
+        "maxX": 217.08736494973925,
+        "minY": 696.8536561745178,
+        "maxY": 772.7095782461201,
+        "height": 75.85592207160232,
+        "verticalEdgeHeights": [
+          57.144547720024015,
+          58.339582559805535,
+          57.16956767403499,
+          58.36184872115875
+        ],
+        "meanVerticalEdgeHeight": 57.753886668755825
+      },
+      {
+        "owner": "capital-residential-028-b",
+        "minX": 1182.654565462436,
+        "maxX": 1213.7517821284846,
+        "minY": -51.212450976271064,
+        "maxY": 54.02198603278722,
+        "height": 105.23443700905828,
+        "verticalEdgeHeights": [
+          71.30638118761263,
+          70.85047626748374,
+          71.2986989839299,
+          70.8429204068978
+        ],
+        "meanVerticalEdgeHeight": 71.07461921148102
+      },
+      {
+        "owner": "capital-residential-044-b",
+        "minX": 982.2474780006585,
+        "maxX": 1039.3601698293119,
+        "minY": -328.02181171588774,
+        "maxY": -245.030556741596,
+        "height": 82.99125497429173,
+        "verticalEdgeHeights": [
+          72.03410265782826,
+          72.18424516715999,
+          72.02859596357307,
+          72.17852421808269
+        ],
+        "meanVerticalEdgeHeight": 72.106367001661
+      },
+      {
+        "owner": "ro3-infill-approach-1",
+        "minX": 688.1256157812834,
+        "maxX": 740.3340057840683,
+        "minY": -430.3345670051642,
+        "maxY": -336.4222737291768,
+        "height": 93.9122932759874,
+        "verticalEdgeHeights": [
+          81.58529605802954,
+          81.57959368976462,
+          81.58229291534131,
+          81.57621496293699
+        ],
+        "meanVerticalEdgeHeight": 81.58084940651813
+      },
+      {
+        "owner": "capital-townhouse-082",
+        "minX": 1631.6803789377593,
+        "maxX": 1683.8977912759844,
+        "minY": 835.0626092783449,
+        "maxY": 944.48108583028,
+        "height": 109.4184765519351,
+        "verticalEdgeHeights": [
+          65.1748233044125,
+          66.33351650138891,
+          65.2130377053256,
+          66.3698593676842
+        ],
+        "meanVerticalEdgeHeight": 65.77280921970281
+      },
+      {
+        "owner": "capital-market-072",
+        "minX": -256.4153405416955,
+        "maxX": -179.89345100180145,
+        "minY": 1119.3275233359598,
+        "maxY": 1227.8981912454942,
+        "height": 108.57066790953445,
+        "verticalEdgeHeights": [
+          56.202552549987125,
+          55.97587161707587,
+          56.26058719855779,
+          56.03787365033453
+        ],
+        "meanVerticalEdgeHeight": 56.119221253988826
+      },
+      {
+        "owner": "capital-residential-075",
+        "minX": 1578.2645102796992,
+        "maxX": 1636.1669092360398,
+        "minY": 1207.932164704263,
+        "maxY": 1333.376589191795,
+        "height": 125.44442448753193,
+        "verticalEdgeHeights": [
+          56.86725429760804,
+          58.755601065203194,
+          56.92313229946015,
+          58.80674785218477
+        ],
+        "meanVerticalEdgeHeight": 57.83818387861404
+      }
+    ],
+    "sceneImage": "docs/review/wayfarer-capital-v76/property-frontages/diagnostics/before-plaza-enclosure/views/capital-tree-contact-scene.png",
+    "cullingVerification": {
+      "exhaustive": {
+        "calls": 3617,
+        "triangles": 1365046
+      },
+      "ordinary": {
+        "calls": 113,
+        "triangles": 53234
+      },
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "width": 1280,
+      "height": 666
+    }
+  }
+]

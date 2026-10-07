@@ -79,6 +79,11 @@
               }
             }
           },
+          "vertexOpacity": {
+            "type": "array",
+            "minItems": 3,
+            "items": { "type": "number", "minimum": 0, "maximum": 1 }
+          },
           "visible": {
             "type": "boolean"
           },

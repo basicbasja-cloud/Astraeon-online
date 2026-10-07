@@ -20,6 +20,11 @@ def uv(o):return [[[round(v,5) for v in o.data.uv_layers.active.data[i].uv] for 
 def baked_lighting(o):
  layer=o.data.color_attributes.get('BakedTownLight')
  return [[[round(v,4) for v in layer.data[i].color[:2]] for i in p.loop_indices] for p in o.data.polygons] if layer else None
+def vertex_opacity(o):
+ layer=o.data.attributes.get('SurfaceOpacity')
+ if not layer:return None
+ assert layer.domain=='POINT' and layer.data_type=='FLOAT',o.name
+ return [round(v.value,5) for v in layer.data]
 def export(scene):
  bpy.context.view_layer.update();objects=[];terrain=None
  for collection in bpy.data.collections:
@@ -48,6 +53,10 @@ def export(scene):
     if o.get('render_visible') is not None:part['visible']=bool(o['render_visible'])
     if uv(o):part['uvs']=uv(o)
     if baked_lighting(o):part['bakedLighting']=baked_lighting(o)
+    opacity=vertex_opacity(o)
+    if opacity is not None:
+     assert len(opacity)==len(part['vertices']) and all(0<=a<=1 for a in opacity),o.name
+     part['vertexOpacity']=opacity
     parts.append(part)
    elif o.get('kind')=='presentation':
     presentation={'sprite':json.loads(o['data_json']),'position':[round(v,5) for v in o.matrix_world.translation],'footprintReview':o['footprint_review']}

@@ -1,8 +1,36 @@
 # User requests and current status
 
-Updated7 October2026. Continue on `codex/world-pipeline-v3-proof` until the
-RO3 baseline is met. The earlier source72 pause is historical. No PR, merge or
-deployment is requested; push verified checkpoints to the existing branch.
+## Active continuation — 7 October 2026
+
+Checkpoint audit finished and the six-walker experiment was reverted. The original
+building-variety request resumed. Latest steering: local placement and tone should
+be very similar to the supplied RO3 gameplay, while retaining Wayfarer's own theme.
+Four current-source neighborhood views were inspected. A candidate adds varied
+frontage treatment to 46 properties and adjusts the existing palette/light colors.
+Latest steering also requires the RO3 camera baseline, more natural grass,
+closer light/scale and improved trees. The candidate replaces uniform lawn bands
+with curved planted pockets and gives 78 crowns fuller overlapping boughs,
+retaining roots, physical footprints and original textures. Four side properties
+now move 10 units inward to frame the square with continuous private terraces and
+curbs. Latest feedback: grass must blend into stone, and the city may be too wide.
+Native grass opacity now softens a 0.28-unit fringe over unchanged underlying
+stone. Overall map width cannot be measured from the local reference frames;
+plaza excess was directly visible and is being corrected. Cache 86 carries these
+changes. All13 refreshed lighting/source stages and camera controls pass; actual final
+gameplay capture, service walking, cache and performance review are running.
+Visual acceptance remains open. Evidence:
+`docs/review/wayfarer-capital-v76/property-frontages/`. No new push was requested.
+The user explicitly authorizes resizing the whole city when needed to meet the
+RO3 scale. That authorization includes reorganizing the current layout; no
+additional confirmation is needed before a reversible local implementation.
+
+
+Updated 7 October 2026 (Asia/Bangkok). The user requested a model-switch
+checkpoint audit, authorized reverting the unreviewed crowd experiment, and then
+asked to resume the original building-variety and neighborhood task using the
+supplied RO3 beta frames. The restored pushed city checkpoint is `d7f9f15`.
+Continue on `codex/world-pipeline-v3-proof`; RO3 visual acceptance remains open.
+No PR, merge or deployment is requested. See the revision 76 checkpoint audit.
 
 ## Current implementation
 
@@ -13,14 +41,15 @@ into larger buildings. Council, Archive and Exchange have different massing;
 public streets, plaza frontages and two inward-facing courts remain connected.
 The pre-lighting geometry review found94 inner-neighborhood homes and a median
 nearest visible gap of.96 world units, compared with3.84 in the first capital
-draft. Final source-matched checks and actual gameplay review remain pending.
+draft. Source-matched structural checks pass; the full visual and ordinary gameplay
+review remains pending.
 
 The user's52 decoded Prontera RO3 beta gameplay frames are now the primary hard
 visual reference for scale, materials, road edges, frontage and local adjacency.
 Their README does not establish a complete global plan. Wayfarer keeps its own
 geometric royal blueprint and original concept theme. A house count, architectural
 family count, blueprint or geometry pass is not visual acceptance. Architecture
-and foliage lighting finished; ground lighting resumed after the reference pause.
+and foliage lighting finished; ground lighting is complete for the restored source.
 The unchanged public street hierarchy is8-unit cross streets,9-unit district
 streets,10-unit circuit and14/12-unit ceremonial axes. Twenty-eight local residents
 and existing per-frame actor budgets remain.
@@ -30,14 +59,15 @@ Authority: `authoring/wayfarer-spatial.blend`, with its matching
 land. Council Chambers, Grand Archive and Trade Exchange support the ceremonial
 Hall–fountain axis. The native shoreline has defended walls, cliff courses,
 waterline detail and bridge foundations. Original services, field destinations,
-actor artwork, gameplay pace, camera defaults and progression semantics remain.
+actor artwork, gameplay pace and progression semantics remain. The active
+continuation calibrates new city camera defaults from the supplied gameplay.
 Source74's continuous public-floor correction is already pushed as `7b72b3f`.
 
 ## Requirements and evidence
 
 | IDs | Requirement | Current implementation | Acceptance still required |
 | --- | --- | --- | --- |
-| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Corrected city checkpoint `35d7f91` pushed to existing branch; reports maintained | Complete and push final browser evidence |
+| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Architecture revision 76 checkpoint `d7f9f15` pushed to existing branch; reports maintained | Complete and push final browser evidence |
 | R02 | Sharp native rendering | 1280 × 666 playfield at ratio1; no resolution reduction | Final native captures and physical-device check |
 | R03, R19 | RO3 beta gameplay frames are the primary hard baseline; continue to acceptance | Per-reference review criteria in capital evidence | Rendered visual sweep; overall acceptance remains open |
 | R04, R05 | Detailed, aged exteriors, wings and useful accessories | Original 37 assemblies preserved; 121 additions across nine massing families share native materials | Street and civic inspection |
@@ -54,7 +84,7 @@ Latest requirements are also tracked explicitly:
 
 | ID | Requirement | Current implementation | Remaining verification |
 | --- | --- | --- | --- |
-| R25 | RO1 placement principles and hard RO3 person-relative street scale | 172 intact models; 8–10-unit public streets; 14/12 ceremonial avenues | Ordinary walking and final visual acceptance |
+| R25 | RO1 placement principles and hard RO3 person-relative street scale | 158 buildings; 8–10-unit public streets; 14/12 ceremonial avenues | Ordinary walking and final visual acceptance |
 | R26 | Some buildings face their own feature area | Three frontages at Artisans’ Court, four at Willow Court; wells, seating, planting and craft features | Ordinary entry into both courts |
 | R27 | Nearby buildings face the fountain plaza | Ten actual door-plane directions verified; complete models and entrance contacts moved; updated casts | Ordinary plaza walking; overall art acceptance remains open |
 
@@ -69,7 +99,7 @@ complete patrols are clear. The current suite passes 96 individual checks across
 schemas pass.
 
 Native street/civic/perimeter inspection, ordinary service/neighborhood walking,
-field/save reload, cache83 migration/offline reload and isolated sound-on
+field/save reload, cache86 migration/offline reload and isolated sound-on
 performance are being completed. Historical 136-home captures and the 140-home
 gap patch are diagnostics, not current visual acceptance. The cloud machine has
 no physical GPU. Retain the existing native-resolution, FPS/frame-time and
@@ -242,3 +272,31 @@ Imported the two reference commits without discarding local work. Inspected all
 four chronological contact sheets and opened representative source frames at
 original resolution. The52 beta frames are now the primary RO3 gameplay visual
 reference. Resume the native review; do not infer a complete city plan from them.
+
+## Mobile infrastructure interruption — 7 October 2026
+
+User recovery request explicitly authorizes checkpoint commits and pushes on the
+existing branch, then profiling and streaming of the current real city. This
+supersedes earlier no-push instructions. No checkout/reset/clean/stash/restore
+was performed. Starting HEAD: d7f9f15978b0ca6347fe5f80302d147544bd4626.
+The recovery-source.json receipt records the preserved authored files.
+
+Original World resume point: first plaza inset (10 units), grass feathering,
+frontages/tone/trees and camera are saved; all 13 source stages pass for export
+e97f4333 and native59118c. Three gameplay captures and camera checks are preserved
+under property-frontages/diagnostics/plaza-inset10/. Actual plaza still looks too
+open; RO3 acceptance remains pending. The second six-unit inset is planning ONLY.
+Its planner stopped at the 12,500-face grass guard (plaza-inset16-planning.log);
+no native/export changes were applied. Preserve the unfinished iteration-2
+scripts. On resuming: inspect tessellation/count accounting before changing any
+guard, complete the second planner or choose a reference-supported correction,
+then native parity/lighting and fresh gameplay captures. Continue service and
+neighborhood walking, field/save/cache/offline and sound-on performance checks.
+Do not rerun one-shot authors or regenerate saved art for streaming.
+
+Active priority: baseline profiling -> chunked spawn boot/runtime streaming ->
+bounded on-demand caching -> mobile/emulated acceptance. Physical iPhone Safari
+is pending unless actually available. After sufficient available-environment
+acceptance, resume the above World point automatically. No new art/layout work
+during this interruption. Baseline/development evidence belongs in
+ docs/review/wayfarer-capital-v76/mobile-streaming/.

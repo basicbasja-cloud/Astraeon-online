@@ -7,6 +7,7 @@ import bpy,json,runpy
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];export=runpy.run_path(str(ROOT/'tools/export-world-v3.py'))['export'];data=export(bpy.context.scene)
 expected=json.loads((ROOT/'world/v3'/(data['id']+'.json')).read_text());assert data==expected,'Saved Blender source differs from committed export'
+del expected  # Parity is established; free the duplicate before the mutation export.
 if data['id'] in ['wayfarer-court','wayfarer-spatial']:
  before=next(o for o in data['objects'] if o['id']=='guild-hall');court=next(s for s in data['terrain']['surfaces'] if s.get('objectId')=='guild-hall');root=bpy.data.objects['guild-hall-placement'];root.location.x+=1;bpy.context.view_layer.update();changed=export(bpy.context.scene);after=next(o for o in changed['objects'] if o['id']=='guild-hall');moved_court=next(s for s in changed['terrain']['surfaces'] if s.get('objectId')=='guild-hall')
  if data['lighting'].get('groundShadow'):assert 'groundShadow' not in changed['lighting'],'Moving a caster must invalidate its floor shadow bake'

@@ -12,14 +12,23 @@ with sync_playwright() as p:
  page=b.new_page(viewport={'width':1280,'height':800});page.set_default_timeout(args.startup_timeout_ms);errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  started=time.monotonic();page.goto(args.url,wait_until='domcontentloaded');page.locator('#newname').fill('Sound-on performance');page.locator('#create').click(timeout=args.startup_timeout_ms);page.wait_for_function('window.AstraeonQA?.performance',timeout=args.startup_timeout_ms);startup_ms=(time.monotonic()-started)*1000;page.wait_for_timeout(3000)
  page.evaluate('''()=>{window.costs=[];window.addEventListener('astraeon-frame',()=>{const q=AstraeonQA.performance();costs.push({intervalMs:q.intervalMs,updateMs:q.updateMs,drawMs:q.drawMs,occlusionMs:q.renderer.occlusionMs,renderMs:q.renderer.renderMs,assemblyMs:q.renderer.assemblyMs,actors:[...AstraeonSpatialView.actors].filter(([,a])=>a.mesh.visible&&a.motionSample).map(([id,a])=>({id,...structuredClone(a.motionSample)}))})})}''')
- # The capital arrives on the west bridge: north input reaches its edge.
- # Follow its clear eastbound avenue for the same measurement duration.
+ # The capital arrives on the west bridge. Camera-relative D changes its
+ # world heading under orbit; ordinary ground clicks follow the same clear
+ # eastbound corridor independently of the selected camera baseline.
  layout=page.evaluate('AstraeonQA.snapshot().town.layout');key='d' if layout=='wayfarer-regional-capital-v75' else 'w'
- corridor=page.evaluate("""key=>{const w=AstraeonContent.nativeWorld.spatial,start=AstraeonQA.snapshot().player.position,axis=AstraeonMotion.cameraMovement(key==='d'?1:0,key==='w'?-1:0,AstraeonView.inverse),distance=2.7*6.75+.5;
+ corridor=page.evaluate("""({key,capital})=>{const w=AstraeonContent.nativeWorld.spatial,start=AstraeonQA.snapshot().player.position,axis=capital?{x:1,y:0}:AstraeonMotion.cameraMovement(key==='d'?1:0,key==='w'?-1:0,AstraeonView.inverse),distance=2.7*6.75+.5;
   let clear=true;for(let d=0;d<=distance;d+=.1)clear&&=!w.blocked(start.x+axis.x*d,start.y+axis.y*d,.5);
-  return {key,start,axis,distance,clear};}""",key)
+  return {key:capital?null:key,input:capital?'ordinary ground clicks':'keyboard',start,axis,distance,clear};}""",{'key':key,'capital':layout=='wayfarer-regional-capital-v75'})
  assert corridor['clear'],('performance input corridor is blocked',corridor)
- page.keyboard.down(key);page.wait_for_timeout(6500);page.keyboard.up(key)
+ if layout=='wayfarer-regional-capital-v75':
+  # Each next goal stays inside the ordinary playfield as the camera follows.
+  # No clock, speed, position or navigation setter is used.
+  for duration in (2200,2200,2100):
+   goal=page.evaluate("""()=>{const p=AstraeonQA.snapshot().player.position,q=AstraeonSpatialView.worldToScreen(p.x+9,p.y,p.z||0),r=AstraeonSpatialView.canvas.getBoundingClientRect();return {x:q.x+r.x,y:q.y+r.y,inside:q.x>0&&q.x<r.width&&q.y>0&&q.y<r.height}}""")
+   assert goal['inside'],('performance goal outside playfield',goal)
+   page.mouse.click(goal['x'],goal['y']);page.wait_for_timeout(duration)
+ else:
+  page.keyboard.down(key);page.wait_for_timeout(6500);page.keyboard.up(key)
  samples=page.evaluate('costs');intervals=sorted(s['intervalMs'] for s in samples);previous={};actors={}
  for sample in samples:
   for a in sample['actors']:

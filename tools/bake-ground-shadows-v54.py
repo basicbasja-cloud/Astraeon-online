@@ -112,7 +112,8 @@ for iy in range(size):
   pixels[((size-1-iy)*size+ix)*4+3]=opacity
   if opacity>.01:shadowed+=1
  if iy%128==0:print('GROUND BAKE',iy,'/',size,'seconds',round(time.monotonic()-start,1),flush=True)
-bake_file='assets/wayfarer-ground-shadow-v'+str(scene.get('capital_version',54))+'.png'
+bake_file=scene.get('ground_shadow_asset') or 'assets/wayfarer-ground-shadow-v'+str(scene.get('capital_version',54))+'.png'
+assert bake_file.startswith('assets/') and '..' not in Path(bake_file).parts and Path(bake_file).suffix=='.png'
 image=bpy.data.images.new('Wayfarer native ground shadows',width=size,height=size,alpha=True)
 image.pixels.foreach_set(pixels);image.file_format='PNG';image.filepath_raw=str(ROOT/bake_file);image.save()
 metadata={'file':bake_file,'resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':len(directions),'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}

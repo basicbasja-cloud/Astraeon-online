@@ -11,6 +11,7 @@ function validateGeometry(p){
  if(!p.vertices?.length||!p.faces?.length||p.vertices.some(v=>v.length!==3||v.some(n=>!Number.isFinite(n)))||p.faces.some(f=>f.length<3||f.some(i=>!Number.isInteger(i)||i<0||i>=p.vertices.length)))throw Error('Invalid mesh geometry '+(p.id||'terrain'));
  if(p.uvs&&(p.uvs.length!==p.faces.length||p.uvs.some((uvs,i)=>uvs.length!==p.faces[i].length||uvs.some(uv=>uv.length!==2||!uv.every(Number.isFinite)))))throw Error('Invalid authored UVs '+(p.id||'terrain'));
  if(p.bakedLighting&&(p.bakedLighting.length!==p.faces.length||p.bakedLighting.some((corners,i)=>corners.length!==p.faces[i].length||corners.some(pair=>pair.length!==2||pair.some(n=>!Number.isFinite(n)||n<0||n>1)))))throw Error('Invalid baked lighting '+(p.id||'terrain'));
+ if(p.vertexOpacity&&(p.vertexOpacity.length!==p.vertices.length||p.vertexOpacity.some(n=>!Number.isFinite(n)||n<0||n>1)))throw Error('Invalid vertex opacity '+(p.id||'terrain'));
 }
 function validate(scene){
  if(scene.version!==3||!scene.terrain||!scene.navigation||!scene.lighting||!Array.isArray(scene.objects))throw Error('Invalid world v3 contract');

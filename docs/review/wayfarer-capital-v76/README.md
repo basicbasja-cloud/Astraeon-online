@@ -2,8 +2,8 @@
 
 Resumed on 7 October 2026 UTC using the user's 52 decoded Prontera RO3 beta
 frames. See `prontera-beta-reference-manifest.json` and `prontera-beta-review.md`
-for reference provenance, observations and required comparisons. Ground lighting
-and final checks resumed; the local architecture checkpoint has not been pushed.
+for reference provenance, observations and required comparisons. The city checkpoint is pushed as `d7f9f15`. The model-switch audit restored its
+exact source; see `checkpoint-audit/README.md`. Visual acceptance remains open.
 
 The user rejected the repeated houses and civic roofs of revision 75. This pass
 authors distinct building silhouettes and rebalances selected occupied plots

@@ -76,7 +76,7 @@ function material(name,definition){
   if(!atlasTextures.has(tileKey)){
    // Separate tile mip chains prevent adjacent atlas materials bleeding into
    // repeated lawns/roofs at gameplay distance. Artwork and authored UVs stay intact.
-   const t=new THREE.Texture();t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=spec.anisotropy||1;
+   const t=new THREE.Texture();t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=spec.anisotropy||(name==='grass'?4:1);
    if(!atlasImages.has(spec.file))atlasImages.set(spec.file,new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Could not load world material: '+spec.file));image.src=new URL('../../'+spec.file,import.meta.url).href}));
    textureLoads.push(atlasImages.get(spec.file).then(image=>{const [cols,rows]=spec.grid,w=image.naturalWidth/cols,h=image.naturalHeight/rows,c=document.createElement('canvas');c.width=Math.round(w);c.height=Math.round(h);c.getContext('2d').drawImage(image,(spec.tile%cols)*w,Math.floor(spec.tile/cols)*h,w,h,0,0,c.width,c.height);t.image=c;t.needsUpdate=true}));
    atlasTextures.set(tileKey,t);
@@ -92,7 +92,9 @@ function material(name,definition){
  // Older atlases retain their existing mix and foliage/cutout behavior.
  {
   const painted=spec&&name!=='bannerSilk';
-  const base=palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=spec?.paletteDetail??(name==='water'?.18:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24),mean=spec?.meanLinearRGB;
+  // The legacy timber swatch must not override its revised native color.
+  // Lawn grain also needs enough contrast to read as planting at city distance.
+  const base=name==='timber'&&definition?.color?new THREE.Color().setRGB(...definition.color):palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=spec?.paletteDetail??(name==='water'?.18:name==='grass'?.72:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24),mean=spec?.meanLinearRGB;
   m.onBeforeCompile=shader=>{
    shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.paintMean={value:new THREE.Vector3(...(mean||[1,1,1]))};shader.uniforms.occludingOwners=occludingOwners;
    if(spec?.ripple){shader.uniforms.waterTime=waterTime;shader.uniforms.rippleSettings={value:new THREE.Vector3(spec.ripple.frequency,spec.ripple.speed,spec.ripple.amplitude)}}
@@ -127,7 +129,7 @@ function appendMesh(batch,part,lighting){
   const axis=Math.abs(normal.z)>.65?'xy':Math.abs(normal.x)>Math.abs(normal.y)?'yz':'xz';
   const lit=Math.max(0,normal.dot(sun));
   for(let j=1;j<face.length-1;j++)batch.owners?.push(part.objectId||part.id||'terrain');
-  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],corner=face.indexOf(i),uv=part.uvs?.[faceIndex]?.[corner],bake=part.bakedLighting?.[faceIndex]?.[corner],sunlit=lit*(bake?.[1]??1),fill=ambient*(bake?.[0]??1),direct=sunlit*strength;batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(fill*fillTone[0]+direct*sunTone[0],fill*fillTone[1]+direct*sunTone[1],fill*fillTone[2]+direct*sunTone[2]);batch.ownerId?.push(part.ownerNumber||0);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
+  for(let j=1;j<face.length-1;j++)for(const i of [face[0],face[j],face[j+1]]){const v=vs[i],corner=face.indexOf(i),uv=part.uvs?.[faceIndex]?.[corner],bake=part.bakedLighting?.[faceIndex]?.[corner],sunlit=lit*(bake?.[1]??1),fill=ambient*(bake?.[0]??1),direct=sunlit*strength;batch.position.push(...v);batch.normal.push(normal.x,normal.y,normal.z);batch.color.push(fill*fillTone[0]+direct*sunTone[0],fill*fillTone[1]+direct*sunTone[1],fill*fillTone[2]+direct*sunTone[2]);batch.ownerId?.push(part.ownerNumber||0);if(batch.feather&&part.vertexOpacity)batch.feather.push(part.vertexOpacity[i]);batch.uv.push(...(uv||[axis==='yz'?v[1]/2.4:v[0]/2.4,axis==='xy'?v[1]/2.4:v[2]/2.4]))}
  }
 }
 function geometry(batch){const g=new THREE.BufferGeometry();for(const [name,size] of [['position',3],['normal',3],['uv',2],['color',3],['ownerId',1],['feather',1]])if(batch[name])g.setAttribute(name,new THREE.Float32BufferAttribute(batch[name],size));g.computeBoundingSphere();return g}
@@ -178,14 +180,16 @@ class SpatialRenderer{
     for(const [x,y] of part.vertices){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y)}
     cell=maxX-minX>32||maxY-minY>32?'/wide/'+(part.id||'terrain'):'/cell/'+Math.floor((minX+maxX)/32)+','+Math.floor((minY+maxY)/32);
    }
-   const key=name+JSON.stringify(spec||'')+cell;
-   if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],ownerId:[],owners:[]});
+   const opacity=!!part.vertexOpacity,key=name+JSON.stringify(spec||'')+cell+(opacity?'/native-opacity':'');
+   if(!batches.has(key))batches.set(key,{material:name,position:[],normal:[],uv:[],color:[],ownerId:[],owners:[],...(opacity?{feather:[]}:{} )});
    appendMesh(batches.get(key),part,source.lighting);
   };
   const terrain=source.terrain,bounds=terrain.bounds,groundMesh={...terrain,walkable:true,vertices:terrain.vertices||[[bounds.minX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.minY,terrain.elevation],[bounds.maxX,bounds.maxY,terrain.elevation],[bounds.minX,bounds.maxY,terrain.elevation]],faces:terrain.faces||[[0,1,2,3]]};add(groundMesh);
   for(const s of terrain.surfaces)add({...s,material:s.material||'paving',vertices:s.vertices||s.polygon.map(p=>[...p,.018]),faces:s.faces||[s.polygon.map((_,i)=>i)]});
   for(const o of source.objects)for(const p of o.parts)add({...p,objectId:o.id,ownerNumber:this.buildingNumbers.get(o.id)||0});
-  for(const [key,batch] of batches){const name=batch.material,mesh=new THREE.Mesh(geometry(batch),material(name,source.materials?.[name]));mesh.name='static/'+key;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name)||!!source.materials[name]?.texture?.ripple;this.scene.add(mesh)}
+  // Translucent planted edges sit above opaque paving but below cast-shadow
+  // receivers and actors; blending must not erase their contact shade.
+  for(const [key,batch] of batches){const name=batch.material,base=material(name,source.materials?.[name]),mesh=new THREE.Mesh(geometry(batch),batch.feather?featherMaterial(base,name+'/native-opacity'):base);mesh.name='static/'+key;if(batch.feather&&name==='grass')mesh.renderOrder=-1;mesh.userData.owners=batch.owners;mesh.userData.cacheDynamic=['water','riverCascade'].includes(name)||!!source.materials[name]?.texture?.ripple;this.scene.add(mesh)}
   const spatial=window.AstraeonContent?.nativeWorld?.id===source.id?window.AstraeonContent.nativeWorld.spatial:window.AstraeonSpatialV3.compile(source);this.spatial=spatial;
   // Keep the masonry boundary crisp. A narrow contact feather joins exposed
   // paving to planted ground; internal junctions remain opaque and continuous.
@@ -286,7 +290,10 @@ class SpatialRenderer{
   // right vector has zero projected vertical displacement. These bases retain
   // the artwork's screen shape while its head/feet participate in spatial depth.
   const {xx,xy,yx,yy}=this.cameraProfile?.basis||V.basis,det=xx*yy-yx*xy;
-  this.right=new THREE.Vector3(yy/det,-xy/det,0);this.up=new THREE.Vector3(0,0,1/35);
+  this.actorBasisPitch=this.cameraProfile?.pitch||46;
+  // Use a canonical horizontal sprite axis. Runtime orbit supplies its yaw;
+  // deriving this axis from an already orbited default would rotate it twice.
+  this.right=this.cameraProfile?.kind==='ragnarok'?new THREE.Vector3(Math.cos(this.actorBasisPitch*Math.PI/180)/35,0,0):new THREE.Vector3(yy/det,-xy/det,0);this.up=new THREE.Vector3(0,0,1/35);
   this.raycaster=new THREE.Raycaster();
   const floor={position:[],normal:[],uv:[],color:[]};
   appendMesh(floor,groundMesh);
@@ -396,7 +403,7 @@ class SpatialRenderer{
   }
   const b=this.shadowBounds,tx=Math.floor((p.x-b.minX)/(b.maxX-b.minX)*this.shadowSize),ty=Math.floor((p.y-b.minY)/(b.maxY-b.minY)*this.shadowSize),shade=tx>=0&&tx<this.shadowSize&&ty>=0&&ty<this.shadowSize?this.shadowPixels[(ty*this.shadowSize+tx)*4+3]/255:0;
   a.mesh.material.color.setRGB(1-shade*.38,1-shade*.32,1-shade*.22);
-  if(this.cameraProfile?.kind==='ragnarok'){a.mesh.rotation.z=-this.cameraProfile.yaw*Math.PI/180;const scale=Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(46*Math.PI/180);a.mesh.scale.set(scale,scale,1)}
+  if(this.cameraProfile?.kind==='ragnarok'){a.mesh.rotation.z=-this.cameraProfile.yaw*Math.PI/180;const scale=Math.cos(this.cameraProfile.pitch*Math.PI/180)/Math.cos(this.actorBasisPitch*Math.PI/180);a.mesh.scale.set(scale,scale,1)}
   // Registered whole frames travel continuously; freezing a boot would also
   // freeze the pelvis until the next pose and create visible hold/snap motion.
   a.mesh.position.set(p.x,p.y,p.z||0);a.mesh.visible=true;a.shadow.position.set(p.x+.04,p.y+.04,(p.z||0)+.035);a.shadow.material.opacity=.17*shadowAlpha;a.shadow.visible=shadowAlpha>.05;
