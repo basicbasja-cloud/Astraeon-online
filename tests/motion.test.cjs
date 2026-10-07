@@ -88,7 +88,7 @@ test('supply discoveries award once and remain claimed after save reload',()=>{
  assert.ok(window.AstraeonExploration.claim(entry,state).ok);assert.equal(state.gold,22);assert.equal(state.inventory.potion,1);
  const reloaded=JSON.parse(JSON.stringify(state));assert.ok(!window.AstraeonExploration.claim(entry,reloaded).ok);assert.equal(reloaded.gold,22);
 });
-for(const file of ['progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','player-state','save-state'])require('../'+file+'.js');
+for(const file of ['progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+file+'.js');
 test('legacy saves retain progression and class IDs while missing fields gain safe defaults',()=>{
  const legacy={name:'Returning hero',cls:20,gold:200,inventory:{ore:9},equipment:{weapon:'Astral Blade'},chapters:[0,1],discovered:[0,1,3],futureProgress:{relics:8}};
  const state=window.AstraeonSave.normalize(legacy);assert.equal(state.cls,20);assert.equal(state.inventory.ore,9);assert.equal(state.inventory.potion,0);assert.deepEqual(state.chapters,[0,1]);assert.deepEqual(state.futureProgress,{relics:8});assert.equal(state.equipment.weapon,'Astral Blade');assert.equal(state.equipment.armor,'Adventurer Garb');assert.equal(state.saveVersion,5);assert.deepEqual(window.AstraeonSave.normalize(JSON.parse(JSON.stringify(state))),state);

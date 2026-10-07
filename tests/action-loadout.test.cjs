@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 global.window={};
-for(const file of ['input','skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','player-state','save-state'])require('../'+file+'.js');
+for(const file of ['input','skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+file+'.js');
 const L=window.AstraeonActionLoadout,S=window.AstraeonSave;
 function fixture(extra={}){const state=S.normalize({name:'loadout fixture',cls:0,baseJobLevel:20,skillPoints:50,actionLoadout:[],legacySkillControls:false,...extra}),p=window.AstraeonPlayer.attach(state);return {state,p}}
 function learnAll(p,cls=0){const ids=cls===0?['rising-edge','iron-guard','second-wind','jade-tempest']:['ember-bloom','frost-ward','aether-mend','tempest'];p.learnSkill(ids[0]);p.rankUpSkill(ids[0]);p.rankUpSkill(ids[0]);for(const id of ids.slice(1))p.learnSkill(id);return ids}

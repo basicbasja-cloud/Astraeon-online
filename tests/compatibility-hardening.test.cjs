@@ -1,7 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 global.window={};
-for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','player-state','save-state'])require('../'+file+'.js');
+for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+file+'.js');
 const S=window.AstraeonSave,Ch=window.AstraeonCharacter;
 const tuned=cost=>{const c=structuredClone(window.AstraeonProgressionConfig);c.primary.pointCost=cost;return c};
 test('future schema rejects before mutation and snapshot cannot downgrade',()=>{const raw={saveVersion:6,name:'future',unknown:{keep:true}},before=structuredClone(raw);assert.throws(()=>S.normalize(raw),e=>e.code==='UNSUPPORTED_SAVE_VERSION'&&e.supportedVersion===5);assert.throws(()=>S.snapshot(raw),S.UnsupportedSaveError);assert.deepEqual(raw,before)});

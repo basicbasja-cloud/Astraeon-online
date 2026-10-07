@@ -1,7 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 global.window={};
-for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','player-state','save-state','combat-resolution-config','combat-resolution','combat-runtime'])require('../'+file+'.js');
+for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state','combat-resolution-config','combat-resolution','combat-runtime'])require('../'+file+'.js');
 const C=window.AstraeonCombatResolution,R=window.AstraeonCombatRuntime,F=window.AstraeonCombatResolutionConfig;
 const sheet=()=>({physicalATK:100,magicATK:80,HIT:100,FLEE:0,CRIT:0,perfectDodge:0,DEF:0,MDEF:0});
 const fixture=()=>({attacker:{level:1,stats:sheet()},defender:{level:1,stats:sheet()},action:{damageType:'physical',coefficient:1},context:{mode:'pve'}});

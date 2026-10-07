@@ -12,6 +12,9 @@ function attach(state,options={}){
  const build=(inventory=items.getInventory(),equipment=items.getEquipment())=>({equipmentModifiers:[...window.AstraeonItemEquipment.modifiers(inventory,equipment,options.itemCatalog),...runtime.equipmentModifiers],passiveModifiers:[...(state.party?.length?[(options.config||window.AstraeonProgressionConfig).legacyParty]:[]),...runtime.passiveModifiers],temporaryEffectModifiers:runtime.temporaryEffectModifiers});
  const character=window.AstraeonCharacter.create(state,{...options,getClassId,modifiers:build()});
  function recalculate(){const mods=build(),signature=JSON.stringify([getClassId(),mods]);if(signature!==lastSignature){character.setModifiers(mods);lastSignature=signature}return character.getDerivedStats()}
+ const getItemResources=()=>{recalculate();return Object.fromEntries(['currentHP','currentSP','maxHP','maxSP'].map(key=>[key,character.getValue(key)]))};
+ const itemRuntime=window.AstraeonActionItemRuntime.create({getInventory:items.getInventory,getQuantity:items.getQuantity,getResources:getItemResources,commit:(id,inventory,plan)=>items.consumeStackWithEffect(id,1,inventory,()=>{if(JSON.stringify(getItemResources())!==JSON.stringify(plan.resourceBefore))return false;character.setCurrentResources(plan.resourceAfter);return true})},{catalog:options.itemCatalog,config:options.itemActionConfig,restrictions:options.itemRestrictions});
+ const {consumeStackWithEffect,...itemMethods}=items;
  let actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(state.actionLoadout);
  let legacySkillControls=state.legacySkillControls===true;
  const loadouts=window.AstraeonActionLoadout;
@@ -37,8 +40,9 @@ function attach(state,options={}){
   Object.defineProperty(state,key,descriptor);
  }
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
-  ...items,
-  useConsumable(id){const d=(options.itemCatalog||window.AstraeonItemDefinitions).getDefinition(id);if(d?.kind!=='consumable'||!d.effects)return Object.freeze({ok:false,code:'NOT_CONSUMABLE'});if(!['restoreHP','restoreSP'].every(key=>d.effects[key]===undefined||Number.isFinite(d.effects[key])&&d.effects[key]>=0))return Object.freeze({ok:false,code:'INVALID_ITEM_EFFECT'});const hp=character.getValue('currentHP')+(d.effects.restoreHP||0),sp=character.getValue('currentSP')+(d.effects.restoreSP||0);if(!Number.isFinite(hp)||!Number.isFinite(sp))return Object.freeze({ok:false,code:'INVALID_ITEM_EFFECT'});const result=items.consumeStack(id,1);if(!result.ok)return result;character.setCurrentHP(hp);character.setCurrentSP(sp);return result},
+  ...itemMethods,
+  getActionItemState:itemRuntime.getState,prepareActionItem:itemRuntime.prepare,commitActionItem:itemRuntime.commit,requestActionItem:itemRuntime.request,getActionItemRuntime:itemRuntime.snapshot,resetActionItemCooldowns:itemRuntime.resetCooldowns,invalidatePreparedActionItems:itemRuntime.invalidatePrepared,
+  useConsumable:(id,context)=>itemRuntime.request(id,context??options.getItemContext?.()??{now:0,intent:'inventory'}),
   getClassId,getSkillTree:()=>window.AstraeonSkillDefinitions.trees[getClassId()]||null,
   getActionLoadout:()=>state.actionLoadout,
   getLoadout:()=>state.actionLoadout,getSlot:slot=>loadouts.getSlot(actionLoadout,slot),
@@ -47,7 +51,7 @@ function attach(state,options={}){
   swapSlots:(a,b,context)=>commitLoadout(loadouts.swapSlots(actionLoadout,a,b),context),
   moveSkill:(from,to,context)=>commitLoadout(loadouts.moveSkill(actionLoadout,from,to),context),
   getActionSlotState:actionRuntime.getSlotState,prepareAction:actionRuntime.prepareAction,commitAction:actionRuntime.commitAction,requestAction:actionRuntime.requestAction,
-  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions:actionRuntime.invalidatePrepared,
+  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();return result.ok?itemRuntime.invalidatePrepared():result},
   canUseSkill:id=>window.AstraeonSkillRuntime.canUseSkill(character.getLearnedSkills(),getClassId(),id),
   isSkillAssigned:id=>!!window.AstraeonSkillDefinitions.getDefinition(id)&&actionLoadout.includes(id),
   setSkillNode(id,node){

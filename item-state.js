@@ -46,11 +46,16 @@ function legacyEquipment(inventory,equipment,history={},catalog=D){
 }
 function installMirrors(state,normalized,catalog=D){Object.assign(state,normalized);state.inventory=legacyInventory(state.itemInventory,state.itemHistory,catalog);state.equipment=legacyEquipment(state.itemInventory,state.equippedItems,state.itemHistory,catalog);return state}
 function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
- const initial=migrate(raw,catalog);let inventory=initial.itemInventory,equipment=initial.equippedItems,history=initial.itemHistory;
- function commit(result,nextEquipment=equipment){
+ const initial=migrate(raw,catalog);let inventory=initial.itemInventory,equipment=initial.equippedItems,history=initial.itemHistory,committing=false;
+ function commit(result,nextEquipment=equipment,beforePublish){
+  if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
   if(!result.ok)return result;const nextInventory=result.inventory||inventory;
-  try{onChange(nextInventory,nextEquipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
-  inventory=nextInventory;equipment=nextEquipment;return freeze({...result,inventory,equipment});
+  committing=true;
+  try{
+   try{onChange(nextInventory,nextEquipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
+   if(beforePublish){try{if(beforePublish()!==true)return I.fail('EFFECT_COMMIT_REJECTED')}catch{return I.fail('EFFECT_COMMIT_REJECTED')}}
+   inventory=nextInventory;equipment=nextEquipment;return freeze({...result,inventory,equipment});
+  }finally{committing=false}
  }
  const api={getInventory:()=>inventory,getEquipment:()=>equipment,getHistory:()=>history,
   getQuantity:id=>I.getQuantity(inventory,id),getInstance:id=>Object.hasOwn(inventory.instances,id)?inventory.instances[id]:null,
@@ -59,6 +64,7 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
   getEquipmentEffects:()=>E.effects(inventory,equipment,catalog),
   canAddStack:(id,count)=>I.canAddStack(inventory,id,count,catalog),canRemoveStack:(id,count)=>I.canRemoveStack(inventory,id,count,catalog),
   addStack:(id,count)=>commit(I.addStack(inventory,id,count,catalog)),removeStack:(id,count)=>commit(I.removeStack(inventory,id,count,catalog)),consumeStack:(id,count=1)=>commit(I.consumeStack(inventory,id,count,catalog)),
+  consumeStackWithEffect(id,count,expectedInventory,apply){if(expectedInventory!==inventory)return I.fail('STALE_PACKAGE');if(typeof apply!=='function')return I.fail('EFFECT_COMMIT_REJECTED');return commit(I.consumeStack(inventory,id,count,catalog),equipment,apply)},
   createItemInstance:(id,metadata={})=>commit(I.createInstance(inventory,id,metadata,catalog)),
   deleteItemInstance:id=>commit(I.deleteInstance(inventory,id,equipment,catalog)),
   canEquip:(id,slot)=>E.canEquip(inventory,equipment,id,slot,catalog,requirements),

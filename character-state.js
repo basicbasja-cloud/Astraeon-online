@@ -60,6 +60,7 @@ function create(raw={},options={}){
    commit(next);return snapshot();
   },
   setCurrentHP(value){currentHP=clampResource(value,derived.maxHP);return currentHP},setCurrentSP(value){currentSP=clampResource(value,derived.maxSP);return currentSP},
+  setCurrentResources(value){const hp=clampResource(value.currentHP,derived.maxHP),sp=clampResource(value.currentSP,derived.maxSP);currentHP=hp;currentSP=sp;return stats.freeze({currentHP,currentSP,maxHP:derived.maxHP,maxSP:derived.maxSP})},
   setModifiers(next){const copy=stats.freeze(structuredClone(next)),calculated=derive(state,copy);modifiers=copy;derived=calculated;currentHP=Math.min(currentHP,derived.maxHP);currentSP=Math.min(currentSP,derived.maxSP);return derived}
  });
 }
