@@ -1,7 +1,7 @@
 """Run each existing test file and report individual TAP checks, not file counts."""
-import subprocess,re,json,hashlib
+import subprocess,re,json,hashlib,os
 from pathlib import Path
-root=Path(__file__).resolve().parents[1];out=root/'docs/review/wayfarer-capital-v76/node-final';out.mkdir(exist_ok=True)
+root=Path(__file__).resolve().parents[1];out=root/os.environ.get('ASTRAEON_CAPITAL_REVIEW_DIR','docs/review/wayfarer-capital-v76')/'node-final';out.mkdir(exist_ok=True)
 files=['expanded_town','golden_pipeline','locomotion-transitions','motion','painted_locomotion','world_v3'];reports=[]
 for name in files:
  f='tests/'+name+'.test.cjs';r=subprocess.run(['node','--test-reporter=tap',f],cwd=root,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT);(out/(name+'.test.log')).write_text(r.stdout)

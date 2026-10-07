@@ -39,7 +39,9 @@ if p.get('ro3StreetScaleRefinement'):
 def region(arr):return unary_union([Polygon([a['vertices'][i][:2] for i in f]) for a in arr for f in a['faces']])
 public_region=region(public);private_region=region(private);overlap=public_region.intersection(private_region).area;assert overlap<.001
 public_uv_size=p.get('betaReferenceRefinement',{}).get('publicStoneWorldSize',8)
-assert public_uv_size in (8,3.2)
+if p.get('streetDepthRefinement'):
+ assert public_uv_size==p['streetDepthRefinement']['publicStoneWorldSize']==5.76
+else:assert public_uv_size in (8,3.2)
 assert s['materials']['publicTownStone']['texture']['worldSize']==public_uv_size
 for a in public:
  for f,uvs in zip(a['faces'],a['uvs']):
@@ -100,7 +102,12 @@ for owner in s['objects']:
   assert owner['id']==ingress['owner'] and not owner['portals'] and not owner['lights']
   assert {a['id'] for a in owner['parts']}=={a['id'] for a in ingress['pieces']}
   assert all(a['role']=='decorative' and not a.get('shadow') for a in owner['parts'])
-  assert sum(len(f)-2 for a in owner['parts'] for f in a['faces'])==ingress['triangles']<ingress['triangleBudget']
+  expected_triangles=ingress['triangles']
+  if p.get('streetDepthRefinement'):
+   depth=json.loads((ROOT/'docs/review/wayfarer-capital-v77/street-depth/plan.json').read_text())
+   assert depth['beforeSourceSHA256']=='1a4efa50e8cb607bb40d4c15d12d834131b8cd7ca6ed699858ce5826b2afb771'
+   expected_triangles-=3*depth['removedJointTufts']
+  assert sum(len(f)-2 for a in owner['parts'] for f in a['faces'])==expected_triangles<ingress['triangleBudget']
   continue
  trunk=next(a for a in owner['parts'] if a['role']=='solid');poly=MultiPoint([v[:2] for v in trunk['vertices']]).convex_hull
  bounds=poly.bounds
@@ -111,7 +118,9 @@ for owner in s['objects']:
  embed=height-min(v[2] for v in trunk['vertices'])
  if abs(embed-.015)>=.00004:tree_errors.append((owner['id'],'root embed',embed))
  tree_checks.append({'id':owner['id'],'rootEmbed':embed})
-assert len(tree_checks)==78,len(tree_checks)
+new_trees={n for n in p.get('streetDepthRefinement',{}).get('newOwners',[]) if n.startswith('capital-street-tree-v77-')}
+assert {a['id'] for a in tree_checks if a['id'].startswith('capital-street-tree-v77-')}==new_trees
+assert len(tree_checks)==78+len(new_trees),len(tree_checks)
 assert not tree_errors,tree_errors
 land=Polygon(p['land']);cliff_faces=0;foam_faces=0
 for owner in s['objects']:

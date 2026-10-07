@@ -81,4 +81,6 @@ const assets=writeJSON(folder+'assets.json',{version:1,assets:[...assetFiles].so
 const zone=writeJSON(folder+'zone.json',{version:1,id:source.id,sourceSHA256:sourceHash,cellSize,semantics,assets,owners,chunks:chunkRecords});
 writeJSON('world/v3/world-manifest.json',{version:1,defaultZone:source.id,zones:{[source.id]:zone}});
 const report={sourceSHA256:sourceHash,conversionSHA256:hash(Buffer.from(appendCode+boundaryCode)),chunks:chunkRecords.length,triangles:triangleCount,rawBytes,compressedBytes,semanticsBytes:semantics.bytes,zoneManifestBytes:zone.bytes,assetCount:assetFiles.size,sourceUnchanged:hash(read('world/v3/wayfarer-spatial.json'))===sourceHash};
-writeJSON('docs/review/wayfarer-capital-v76/mobile-streaming/chunk-build.json',report);console.log(JSON.stringify(report,null,2));
+const review=process.env.ASTRAEON_CAPITAL_REVIEW_DIR||'docs/review/wayfarer-capital-v76';
+fs.mkdirSync(new URL(review+'/mobile-streaming/',root),{recursive:true});
+writeJSON(review+'/mobile-streaming/chunk-build.json',report);console.log(JSON.stringify(report,null,2));

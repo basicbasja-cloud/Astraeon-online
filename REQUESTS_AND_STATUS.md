@@ -1,5 +1,61 @@
 # User requests and current status
 
+## Current verified checkpoint — street depth v77, 7 October 2026
+
+User requests larger, quieter paving and RO3 painted architectural character in
+Astraeon's own theme. This pass is complete and verified; full RO3 visual baseline
+is still NOT MET. Preserve this work. Recovery checkpoint4f6b275 was pushed before
+this pass. The same working branch remains codex/world-pipeline-v3-proof.
+
+Current sourceSHA256:461fc1142ab22989a3f8d3f3281924eebf7a0b5b714c110e7553c09ad2025275.
+NativeSHA256:9d109706c685e9a26b2d02f2ac218b9c493868aed34f4a5cebf8a0e35bfa84e3.
+Default/cache version93; immutable streamed generationwayfarer-461fc1142ab2.
+Paving is1.8× larger (native repeat5.76 vs3.2) with.58 grain contrast. Wall/clay
+roof grain is.56 and recessed glazing is deeper blue. Original image bytes and
+resolution remain intact. Six original tree/seat parklets add5,640 visible
+triangles, no additional image assets.398 joint tufts align with the enlarged real
+painted cracks; two without a suitable local crack were removed, all800 lawn
+tufts remain. All original building geometry, colliders, services, portals and the28
+original residents are exact. One of the8 plaza citizens has a declared small
+closing-leg turn around the southwest seat; total residents remain36.
+
+All native/light/delta/architecture/assembly/density/traversal/schema checks pass,
+as do96 individual existing Node tests and5 streaming contract tests. All26
+destinations are reachable and36 closed patrol loops have zero blocked samples.
+Exact transport verifies930,711 authored draw triangles /33,548,127 attributes
+and73,728 collision/elevation samples.75 chunks,24 static images, compressed
+geometry25,409,430B, decoded111,030,012B. Four source-matched gameplay views have
+zero browser errors and zero pixel changes with ordinary vs exhaustive culling.
+
+Current mobile WebKit: cold20,729.35ms /warm11,661.58ms,34 unloads /23 reloads;
+no full-world boot request, missing visible chunks, duplicate geometry or blocked
+player. Native full4096 ground atlas is verified offline and saved character
+survives cache migration/reload. Ordinary touch field entry releases all city
+geometry and returns/reloads correctly. Physical iPhone Safari remains PENDING.
+Public Pages was observed atversion92 before this new checkpoint push; do not
+assume93 deployed solely from a successful branch push.
+
+Evidence: docs/review/wayfarer-capital-v77/checkpoint.json;street-depth/ contains
+all bakes/checks, preserved failed logs, exact fixes, four view PNGs and
+visual-review.json. Ground save hit memory exhaustion during final JSON export,
+after the image/native metadata were saved. The recovered atlas is byte-exact
+SHA91b133d6441f2fcd3f70d50919065a4567ee87bf8addc1431225347263b05342 and digest
+bdb1e2bdfde4a46bb18890669939598391054a19fdeea2865f5d0af45ab400f1. The baker now
+uses a Float32 buffer and frees duplicate world/ray data. The new field test
+uses ordinary on-screen approach steps for the closer camera. Neither fix
+lowers production art quality.
+
+Exact next original World action: audit character-relative roof, window, door
+and street proportions against RO3 house01:40/03:35 and street00:50. Work on
+frontage-riverside[70.5898,200.3634],north-garden-house[88.54,199.0227] and nearby
+capital-townhouse-083/-085/-089. The west street still repeats tall gable masses;
+plan original contrasting roof/frontage silhouettes and meaningful owned use
+areas, preserving road/entrance clearances. Do not substitute more scattered
+NPCs or claim baseline met from counts. Whole-city resizing remains authorized
+when paired image evidence warrants it; do not blindly scale from a crop.
+Do not rerun one-shot author/visitor scripts. Read actual Git/status before
+resuming; archived v76 evidence remains tied to its prior source hashes.
+
 ## Latest visual feedback — 7 October 2026
 
 The user rejects the current flat, soulless feel versus RO3. Camera, warmer

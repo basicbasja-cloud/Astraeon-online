@@ -5,7 +5,8 @@ four short contact rays. Foliage rays sample the original cutout alpha rather
 than baking rectangular cards as solid tree canopies. It does not alter
 models, navigation, UVs or actor artwork. Repeat after any geometry/light edit.
 """
-import bpy,json,math,runpy,time,os,base64,zlib
+import bpy,json,math,runpy,time,os,base64,zlib,gc
+from array import array
 from pathlib import Path
 from mathutils import Vector
 from mathutils.bvhtree import BVHTree
@@ -90,7 +91,13 @@ else:
  assert 0<angular<=.05
  directions=[(sun+right*math.cos(k*math.tau/8)*angular+up*math.sin(k*math.tau/8)*angular).normalized() for k in range(8)]
 contact=[Vector((x,y,.60)).normalized() for x,y in [(.8,0),(-.8,0),(0,.8),(0,-.8)]]
-pixels=[1.0,1.0,1.0,0.0]*(size*size);start=time.monotonic();occupied=0;shadowed=0
+# Keep the same Float32 values Blender consumes while avoiding a 67-million
+# item Python list. The BVHs own their buffers; free the duplicate world and
+# construction lists before allocating the full-resolution image.
+floor_elevation=data['terrain']['elevation'];sun_strength=data['lighting']['sun']['strength']
+del data,casters,floors,vertices,triangles,alpha_cache
+gc.collect()
+pixels=array('f',[1.0,1.0,1.0,0.0])*(size*size);start=time.monotonic();occupied=0;shadowed=0
 for iy in range(size):
  y=bounds['minY']+(iy+.5)/size*(bounds['maxY']-bounds['minY'])
  for ix in range(size):
@@ -98,14 +105,14 @@ for iy in range(size):
   hit=floor_tree.ray_cast(Vector((x,y,100)),Vector((0,0,-1)),200)
   if not inside(x,y,land) and hit[0] is None:continue
   occupied+=1
-  z=max(data['terrain']['elevation'],hit[0].z if hit[0] is not None else data['terrain']['elevation'])
+  z=max(floor_elevation,hit[0].z if hit[0] is not None else floor_elevation)
   origin=Vector((x,y,z+.045))
   sun_occ=sum(cast_ray(origin,d,100) is not None for d in directions)/len(directions)
   ao=0
   for d in contact:
    hit=cast_ray(origin,d,1.4)
    if hit is not None:ao+=1-hit/1.4
-  direct=sun_occ*data['lighting']['sun']['strength'];local=ao/len(contact)*.18
+  direct=sun_occ*sun_strength;local=ao/len(contact)*.18
   opacity=direct+(1-direct)*local
   # Blender image buffers have a bottom-left origin. The PNG atlas is authored
   # top-left/minY to match the runtime's existing floor UV convention.
@@ -116,6 +123,12 @@ bake_file=scene.get('ground_shadow_asset') or 'assets/wayfarer-ground-shadow-v'+
 assert bake_file.startswith('assets/') and '..' not in Path(bake_file).parts and Path(bake_file).suffix=='.png'
 image=bpy.data.images.new('Wayfarer native ground shadows',width=size,height=size,alpha=True)
 image.pixels.foreach_set(pixels);image.file_format='PNG';image.filepath_raw=str(ROOT/bake_file);image.save()
+# Gameplay and the native scene reference the external atlas in bake metadata.
+# No mesh uses this temporary generated image datablock. Dispose its float
+# buffer and ray structures before native compression and the final export.
+bpy.data.images.remove(image)
+del pixels,cutouts,caster_tree,floor_tree
+gc.collect()
 metadata={'file':bake_file,'resolution':size,'geometryDigest':digest,'strengthIncluded':True,'sunSamples':len(directions),'contactSamples':4,'alphaCutoutCanopies':'original-alpha-tested'}
 metadata.update(maxCutoutIntersections=max_cutout_steps,cutoutIntersectionLimit=cutout_step_limit)
 scene['ground_shadow_bake_json']=json.dumps(metadata,separators=(',',':'))

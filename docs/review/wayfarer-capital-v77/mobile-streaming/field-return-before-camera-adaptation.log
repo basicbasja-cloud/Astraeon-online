@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/mobile_field_return.py", line 13, in <module>
+    gate(8.599998474121094,143.99998474121094);page.wait_for_function('AstraeonQA.snapshot().save.zone===2');page.wait_for_function('AstraeonWorldStreaming.loaded.size===0');field=page.evaluate('({save:AstraeonQA.snapshot().save,stream:AstraeonWorldStreaming.snapshot(),sceneReady:!!AstraeonScene.ready()})');assert field['sceneReady'];assert field['save']['name']==before['name'];assert any('town-atlas-v1.webp' in r for r in requests);page.screenshot(path=str(a.output/'field-mobile.png'))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tests/mobile_field_return.py", line 12, in gate
+    q=page.evaluate('''([x,y])=>{const s=AstraeonQA.snapshot(),r=world.getBoundingClientRect(),p=AstraeonView.screen(x,y,0,s.camera,r.width,r.height);return [p.x+r.x,p.y+r.y-17]}''',[x,y]);assert page.evaluate('p=>document.elementFromPoint(...p)?.id===\'world\'',q),q;page.touchscreen.tap(*q)
+                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [-3.8768319515884664, 314.9469093974186]

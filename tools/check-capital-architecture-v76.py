@@ -1,9 +1,9 @@
 """Check actual revised meshes, clear streets and retained entrance directions."""
-import json,hashlib,math,collections,statistics
+import json,hashlib,math,collections,statistics,os
 from pathlib import Path
 from shapely.geometry import Polygon,MultiPoint,LineString
 from shapely.ops import unary_union
-R=Path(__file__).resolve().parents[1];O=R/'docs/review/wayfarer-capital-v76';raw=(R/'world/v3/wayfarer-spatial.json').read_bytes();s=json.loads(raw);p=json.loads((O/'native-plan.json').read_text());objects={o['id']:o for o in s['objects']}
+R=Path(__file__).resolve().parents[1];O=R/os.environ.get('ASTRAEON_CAPITAL_REVIEW_DIR','docs/review/wayfarer-capital-v76');raw=(R/'world/v3/wayfarer-spatial.json').read_bytes();s=json.loads(raw);p=json.loads((O/'native-plan.json').read_text());objects={o['id']:o for o in s['objects']}
 assert len(p['lots'])==158 and p['existingHouses']==37 and p['newHouses']==121
 assert s.get('architectureRevision')==76
 changed=[l for l in p['lots'] if not l['existing']];types=collections.Counter(l['architectureType'] for l in changed);assert len(types)==9
