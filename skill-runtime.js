@@ -2,12 +2,9 @@
 (() => {
 'use strict';
 const content=window.AstraeonSkillDefinitions;
-const slotCount=8;
+const slotCount=window.AstraeonActionLoadout.slotCount;
 function normalizeLoadout(raw){
- return Array.from({length:slotCount},(_,i)=>{
-  const id=Array.isArray(raw)?raw[i]:null,d=content.getDefinition(id);
-  return d?.type==='active'&&d.loadoutAssignable?id:null;
- });
+ return window.AstraeonActionLoadout.normalize(raw);
 }
 function canUseSkill(learned,classId,id){const d=content.getDefinition(id);return !!(d&&d.classId===classId&&d.type==='active'&&(learned[id]||0)>0)}
 function compile(id,rank,node=null,combo=1){

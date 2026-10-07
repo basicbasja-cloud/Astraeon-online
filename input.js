@@ -9,5 +9,8 @@ class ActionInput {
  get walk(){return this.keys.has('alt')}
  clear(){this.keys.clear()}
 }
-window.AstraeonInput={ActionInput};
+const actionSlotIntent=slot=>Number.isSafeInteger(slot)&&slot>=0&&slot<8?`actionSlot${slot+1}`:null;
+const slotFromIntent=intent=>{const match=typeof intent==='string'?/^(?:actionSlot([1-8])|skill([1-4]))$/.exec(intent):null;return match?Number(match[1]||match[2])-1:null};
+// The four shipped key aliases remain. Slots 5–8 have system intents, no new UX keys.
+window.AstraeonInput=Object.freeze({ActionInput,actionSlotIntent,slotFromIntent,separateActions:Object.freeze({basicAttack:'attack',potion:'potion',dodge:'dodge',interact:'interact'})});
 })();

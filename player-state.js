@@ -15,6 +15,17 @@ function attach(state,options={}){
  function recalculate(){const mods=build(),signature=JSON.stringify([getClassId(),mods]);if(signature!==lastSignature){character.setModifiers(mods);lastSignature=signature}return character.getDerivedStats()}
  let actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(state.actionLoadout);
  let legacySkillControls=state.legacySkillControls===true;
+ const loadouts=window.AstraeonActionLoadout;
+ const actionRuntime=window.AstraeonActionRuntime.create({getLoadout:()=>actionLoadout,getClassId,getRank:character.getSkillRank,getNodes:()=>state.skillNodes||{},getCurrentHP:()=>character.getValue('currentHP'),getResource:()=>character.getValue('currentSP'),setResource:character.setCurrentSP,getLegacyAction:slot=>{
+  if(slot>=4||(!legacySkillControls&&getClassId()))return null;
+  const archetype=options.getLegacyArchetype?.()||window.AstraeonAnimation?.archetype(state.cls)||(state.cls===12?'mage':state.cls===3?'ranger':'warrior');
+  const base=window.AstraeonCombat.definitions[archetype]?.[`skill${slot+1}`];return base?window.AstraeonCombat.compile(archetype,`skill${slot+1}`,1,state.skillNodes?.[base.id]):null;
+ }},options.actionConfig);
+ const commitLoadout=(result,context)=>{
+  if(!result.ok||!result.changed)return result;
+  const runtimeResult=actionRuntime.configurationChanged(actionLoadout,result.loadout,context);if(!runtimeResult.ok)return runtimeResult;
+  actionLoadout=result.loadout;return Object.freeze({...result,...runtimeResult});
+ };
  Object.defineProperty(state,'actionLoadout',{enumerable:true,get:()=>Object.freeze([...actionLoadout])});
  Object.defineProperty(state,'legacySkillControls',{enumerable:true,get:()=>legacySkillControls});
  for(const key of ['learnedSkills','skillPointSpending','statPointSpending'])Object.defineProperty(state,key,{enumerable:true,get:()=>character.snapshot()[key]});
@@ -29,6 +40,13 @@ function attach(state,options={}){
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
   getClassId,getSkillTree:()=>window.AstraeonSkillDefinitions.trees[getClassId()]||null,
   getActionLoadout:()=>state.actionLoadout,
+  getLoadout:()=>state.actionLoadout,getSlot:slot=>loadouts.getSlot(actionLoadout,slot),
+  canAssignSkill:(slot,id)=>loadouts.canAssignSkill(actionLoadout,character.snapshot(),getClassId(),slot,id),
+  clearSlot:(slot,context)=>commitLoadout(loadouts.clearSlot(actionLoadout,character.snapshot(),getClassId(),slot),context),
+  swapSlots:(a,b,context)=>commitLoadout(loadouts.swapSlots(actionLoadout,a,b),context),
+  moveSkill:(from,to,context)=>commitLoadout(loadouts.moveSkill(actionLoadout,from,to),context),
+  getActionSlotState:actionRuntime.getSlotState,prepareAction:actionRuntime.prepareAction,commitAction:actionRuntime.commitAction,requestAction:actionRuntime.requestAction,
+  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions:actionRuntime.invalidatePrepared,
   canUseSkill:id=>window.AstraeonSkillRuntime.canUseSkill(character.getLearnedSkills(),getClassId(),id),
   isSkillAssigned:id=>!!window.AstraeonSkillDefinitions.getDefinition(id)&&actionLoadout.includes(id),
   setSkillNode(id,node){
@@ -36,14 +54,14 @@ function attach(state,options={}){
    state.skillNodes={...(state.skillNodes||{})};if(node===null)delete state.skillNodes[id];else state.skillNodes[id]=node;
    return Object.freeze({ok:true,skillId:id,node});
   },
-  assignSkill(slot,id){
-   if(!Number.isSafeInteger(slot)||slot<0||slot>=window.AstraeonSkillRuntime.slotCount)return Object.freeze({ok:false,code:'INVALID_SLOT'});
-   if(id!==null&&!api.canUseSkill(id))return Object.freeze({ok:false,code:'NOT_USABLE'});
-   if(id!==null&&actionLoadout.some((value,index)=>index!==slot&&value===id))return Object.freeze({ok:false,code:'ALREADY_ASSIGNED'});
-   actionLoadout=actionLoadout.map((value,index)=>index===slot?id:value);return Object.freeze({ok:true,slot,skillId:id});
+  assignSkill(slot,id,context){
+   const result=loadouts.assignSkill(actionLoadout,character.snapshot(),getClassId(),slot,id);
+   // Preserve the existing public error code; canAssignSkill exposes detailed causes.
+   if(!result.ok&&['UNKNOWN_SKILL','NOT_ASSIGNABLE','WRONG_CLASS','NOT_LEARNED'].includes(result.code))return Object.freeze({ok:false,code:'NOT_USABLE',reason:result.code});
+   return commitLoadout(result,context);
   },
   compileAction(slot,combo=1){if(!Number.isSafeInteger(slot)||slot<0||slot>=window.AstraeonSkillRuntime.slotCount)return null;const id=actionLoadout[slot];return api.canUseSkill(id)?window.AstraeonSkillRuntime.compile(id,character.getSkillRank(id),state.skillNodes?.[id],combo):null},
-  resetSkills(){recalculate();const result=character.resetSkills();if(result.ok){actionLoadout=Array(window.AstraeonSkillRuntime.slotCount).fill(null);legacySkillControls=false}return result},
+  resetSkills(){const safe=actionRuntime.invalidatePrepared();if(!safe.ok)return safe;recalculate();const result=character.resetSkills();if(result.ok){actionLoadout=loadouts.normalize(null);legacySkillControls=false}return result},
   setCurrentHP:character.setCurrentHP,setCurrentSP:character.setCurrentSP,
   setModifiers(value){
    for(const key of Object.keys(value))if(!Object.hasOwn(runtime,key))throw new TypeError(`Unknown modifier group: ${key}`);
