@@ -172,8 +172,18 @@ Normal URLs expose neither CombatDev nor ProgressionDev mutation APIs.
 
 Run the documented static server, full Node suite, combat_browser.py,
 skill_tree_browser.py, progression_browser.py, cache_resume.py and world validator.
-Cache/boot/page version 88 includes the three combat modules for offline boot.
+Cache/boot/page version 89 includes the three combat modules for offline boot.
 Browser tests cover the actual playable classes, ranked Node contacts, passive
 stats, deterministic miss/dodge/crit/defense, HP/death/respawn, progression/rewards,
 save parity and future-save preservation. See CORE_SPINE_COMBAT_REPORT.md for the
 verified checkpoint and limitations. Test passes make no visual acceptance claim.
+
+## Action Item execution extension
+
+The [Action Item contract](CORE_SPINE_ACTION_ITEMS.md) supplies validated current
+HP/SP effects, non-mutating prepare and exact-once atomic effect/debit execution.
+Potion/Ration remain canonical stacks outside learned slots 1–8. Full resources
+reject without consumption. Item/function clocks are provisional, explicit-time
+and separate from skills. Existing Stats/Combat/Progression/ownership authorities
+and save version 5 remain intact; clocks are runtime-only. See the
+[verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.

@@ -79,6 +79,7 @@ they do not supersede the current spatial architecture.
 | icons.js | Original SVG control/navigation symbols |
 | scene.js | Cached authored paving, original environment sprites, depth fade and animated fountain/lamps |
 | world-systems.js | Ambient walkers, gradual atmosphere parameters, quality presets and original WebAudio synthesis |
+| action-item-config.js + item-effects.js + action-item.js + action-item-runtime.js | Frozen executable consumables, validated resource previews, owned prepare/commit tickets and explicit-time item/function/global clocks |
 | game.js | Existing menus, progression adapters, movement, enemy AI, reactions, save, camera and presentation orchestration |
 | qa.html | Same live iframe in four actual CSS viewport sizes; frame timing and state samples through validated postMessage |
 
@@ -88,13 +89,21 @@ Ground uses ordinary Cartesian x/y with separate z elevation. The authored town 
 ## Simulation boundary
 `combat.js` has no renderer, DOM, audio, storage or clock dependency. Caller supplies simulation time, action origin, aim and entities, then consumes contact/release events. Paused menus and hidden tabs freeze simulation time. Dodge can cancel an action; cooldowns remain spent. Impact presentation does not determine damage timing. Enemy attack geometry, navigation, save defaults and world claims now have independent pure modules. Progression/stat authority now lives in the [Core Spine foundation modules](docs/CORE_SPINE_PROGRESSION.md). Movement/AI orchestration still lives inside `game.js`; moving those into an `IGameSimulation` adapter is outstanding. No server-authority or prediction claim.
 
+Current Potion input and Bag Potion/Ration use the separate
+[Action Item execution contract](docs/CORE_SPINE_ACTION_ITEMS.md). The private
+canonical inventory transaction and Character pair setter publish one debit and
+validated HP/SP effects synchronously; cooldowns follow success only. Item clocks
+are independent of learned skills, runtime-only and retained through same-session
+death/travel with ticket invalidation. Reload starts fresh clocks; save schema is
+still version 5. No Combat, animation, renderer or camera formulas change.
+
 ## Historical archetype animation contract (current Warrior below)
 Three original archetypes each have eight authored directions and six poses: idle, two locomotion strides, anticipation, contact and crouched reaction. The guardian has eight poses per direction; regular enemies have idle and attack views. Runtime yaw is continuous and smoothly follows movement, target or aim; presentation projects facing through the ground camera and chooses the closest screen-space 45° view without horizontal mirroring. Gait phase follows traveled distance. Three additional walk sheets provide eight stride phases for six directions; north and northwest keep the accepted two-pose rear cycle because the extended sheets drifted toward side/front views. Warrior omits the corrupted stride and distributes seven accepted keys evenly across a cycle, avoiding a repeated hold. Cached source-silhouette paths clip neighboring cell pieces without repainting the original artwork. Source bounds exclude neighboring atlas fragments and align visible feet. Golden Warrior registration now uses source-space boot contacts and stable 70-pixel visible body scale. Sixteen original hit/death frames cover all eight directions without cardinal fallback. The manifest drives a per-direction 2D fall transform on the hit pose, crossfades to the original collapsed artwork, then holds it before its final fade.
 
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v88, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v89, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 

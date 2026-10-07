@@ -128,6 +128,16 @@ python tests/cache_resume.py --url http://127.0.0.1:8011
 ```
 
 Browser checks support `ASTRAEON_BROWSER` or `--browser`; reports/screenshots are
-written outside the checkout. Boot/page/service-worker version 88 loads the new
+written outside the checkout. Boot/page/service-worker version 89 loads the new
 modules together and precaches them, preventing cached code/schema mismatches.
 No character, world, lighting, renderer or production UI artwork was changed.
+
+## Action Item execution extension
+
+The [Action Item contract](CORE_SPINE_ACTION_ITEMS.md) supplies validated current
+HP/SP effects, non-mutating prepare and exact-once atomic effect/debit execution.
+Potion/Ration remain canonical stacks outside learned slots 1–8. Full resources
+reject without consumption. Item/function clocks are provisional, explicit-time
+and separate from skills. Existing Stats/Combat/Progression/ownership authorities
+and save version 5 remain intact; clocks are runtime-only. See the
+[verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.

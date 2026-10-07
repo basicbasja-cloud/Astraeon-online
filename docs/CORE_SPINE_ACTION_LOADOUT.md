@@ -191,11 +191,12 @@ inventory/equipment/quests/world normalization remain intact.
 
 Basic Attack is outside the eight slots, requires no learned rank and retains
 its Timeline cooldown/combo/contact resource behavior. Potion retains its separate
-utility action, inventory decrement and healing. Input exports separateActions
-identities for attack, potion, dodge and interact as a later item/input extension
-boundary. The item foundation now adds owned instances and canonical Potion
-consumption; new potion cooldown rules and a full item action framework remain
-future work. Backbone's later combat-item/scroll/weapon slot types remain future
+utility action outside learned slots. Input exports separateActions identities
+for attack, potion, dodge and interact. The item foundation supplies canonical
+ownership; the [Action Item foundation](CORE_SPINE_ACTION_ITEMS.md) now supplies
+validated effects, owned prepare/commit tickets and independent function cooldowns
+for Potion/Ration. Final item controls and balance remain future work.
+Backbone's later combat-item/scroll/weapon slot types remain future
 action adapters. One active skill configuration is sufficient; future
 presets can supply a new configuration through the same transition boundary.
 
@@ -228,5 +229,15 @@ bindings are retained; no production controls or labels for 5–8 are added.
 Run the commands in README, including `tests/action_loadout_browser.py`. The
 [verification report](CORE_SPINE_ACTION_LOADOUT_REPORT.md) records checkpoints,
 all regression counts, disposable Swordsman/Mage smoke and remaining scope.
-Boot/page/SW version 88 precaches the action and item core modules and supports offline
+Boot/page/SW version 89 precaches the action and item core modules and supports offline
 saved-character boot. No visual acceptance is inferred from these checks.
+
+## Action Item execution extension
+
+The [Action Item contract](CORE_SPINE_ACTION_ITEMS.md) supplies validated current
+HP/SP effects, non-mutating prepare and exact-once atomic effect/debit execution.
+Potion/Ration remain canonical stacks outside learned slots 1–8. Full resources
+reject without consumption. Item/function clocks are provisional, explicit-time
+and separate from skills. Existing Stats/Combat/Progression/ownership authorities
+and save version 5 remain intact; clocks are runtime-only. See the
+[verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.

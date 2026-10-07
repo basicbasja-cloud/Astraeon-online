@@ -74,7 +74,7 @@ when the canonical value needs repair. It never triggers a second legacy import.
   `equip(instanceId, slot)`, `unequip(slot)`.
 - `getEquipmentModifiers()`, `getEquipmentEffects()`, `getCarriedWeight()`.
 - `reward(stackMap)`, `craft(recipeId)`, `buy(id, amount)`, `sell(id, amount)`,
-  `useConsumable(id)`, `acquireEquipment(id, slot, options)`.
+  `useConsumable(id, context?)`, `acquireEquipment(id, slot, options)`.
 
 Mutations return frozen `{ok:true, ...}` or `{ok:false, code}` results. Unknown
 definition, non-stack misuse, nonpositive/fractional/unsafe quantity, insufficient
@@ -173,9 +173,10 @@ currency bounds and the item plan before committing item state then currency.
 Rejected item/currency conditions preserve both. Current merchant handles stacks.
 
 Potion restores 45 HP and Ration restores 20 SP through clamped Character setters
-after consuming exactly one canonical quantity. Effects are validated before debit.
-Potion remains separate from eight skill slots; no Action Item/cooldown system is
-introduced. Camp cooking/shrine offering retain their separate current effects
+and one atomic canonical quantity debit. The [Action Item runtime](CORE_SPINE_ACTION_ITEMS.md)
+now validates effects and exact-once tickets and commits independent cooldowns.
+Full resources reject without consumption; both items stay outside eight skill slots.
+Camp cooking/shrine offering retain their separate current effects
 while consuming canonical Ration/Herb. Loot, quest, discovery and dungeon stack
 rewards use canonical reward batches; chapter gear creates/equips an owned instance.
 Existing EXP, gold, quest credit, death and travel behavior remains in the game.
@@ -200,9 +201,19 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **88** imports and precaches all four modules together.
+Boot/page/SW version **89** imports and precaches the item and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
-identity/ownership/equipment foundation only. Production UI, Action Items, boxes,
+identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, boxes,
 full gear slots, final content/balance, rarity, affixes, enhancement, sockets,
 binding, durability, encumbrance and server authority remain future work.
+
+## Action Item execution extension
+
+The [Action Item contract](CORE_SPINE_ACTION_ITEMS.md) supplies validated current
+HP/SP effects, non-mutating prepare and exact-once atomic effect/debit execution.
+Potion/Ration remain canonical stacks outside learned slots 1–8. Full resources
+reject without consumption. Item/function clocks are provisional, explicit-time
+and separate from skills. Existing Stats/Combat/Progression/ownership authorities
+and save version 5 remain intact; clocks are runtime-only. See the
+[verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.

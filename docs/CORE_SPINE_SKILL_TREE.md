@@ -1,7 +1,7 @@
 # Patch 0.0.1 Base skill tree minimum
 
-Current save/cache versions are 5/88 after the
-[Item / Inventory / Equipment foundation](CORE_SPINE_ITEMS.md). Learning, ranks,
+Current save/cache versions are 5/89 after the item ownership and
+[Action Item foundation](CORE_SPINE_ACTION_ITEMS.md). Learning, ranks,
 paid ledgers, Nodes and loadout contracts below retain their existing behavior.
 
 This extends the stable [progression/stat/save foundation](CORE_SPINE_PROGRESSION.md).
@@ -170,5 +170,15 @@ of browser automation. The skill browser test uses disposable contexts, ordinary
 creation/input for both classes, shared developer mutations, live ranked Node
 execution, save/reload, returning-save compatibility and the isolated harness.
 Cache checks also preserve learned ranks, paid costs, passive state and assigned
-Nodes while offline. Boot/page/SW use version **88** and precache all skill modules
+Nodes while offline. Boot/page/SW use version **89** and precache all skill modules
 along with the [staged Combat Resolution extension](CORE_SPINE_COMBAT.md).
+
+## Action Item execution extension
+
+The [Action Item contract](CORE_SPINE_ACTION_ITEMS.md) supplies validated current
+HP/SP effects, non-mutating prepare and exact-once atomic effect/debit execution.
+Potion/Ration remain canonical stacks outside learned slots 1–8. Full resources
+reject without consumption. Item/function clocks are provisional, explicit-time
+and separate from skills. Existing Stats/Combat/Progression/ownership authorities
+and save version 5 remain intact; clocks are runtime-only. See the
+[verification handoff](CORE_SPINE_ACTION_ITEMS_REPORT.md) for lifecycle evidence.
