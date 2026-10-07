@@ -83,3 +83,28 @@ After future native/export changes, regenerate transport with
 node --max-old-space-size=6000 tools/build-world-streaming.mjs, run
 node --max-old-space-size=4000 tools/check-world-streaming.mjs, and bump boot/index/
 SW cache version before gameplay evidence. Never accept stale transport.
+
+## Cache correctness checkpoint (version88)
+
+The existing save/cache test exposed two runtime-cache races: a queued write
+cloned a body after the client consumed it, and delete-before-replace briefly
+removed otherwise valid offline entries. The worker now retains response clones
+immediately, replaces entries atomically, and handles hits by updating an
+in-memory access inventory. Inventory accounting scans once rather than for
+every write. Assets and chunk cache byte/count limits remain enforced.
+
+`cache-resume/report.json` passes shell-only precache, on-demand authored
+materials/chunks, old-version removal, legacy-layout migration, same-layout
+blocked-position recovery and offline saved-character reload. The test fixture
+now runs once at document initialization so normal pagehide saves cannot
+overwrite an intended migration fixture. Original gameplay progress checks
+remain. The offline ground image is still4096x4096 and matches its preserved
+SHA256; compact semantics/source provenance are exact. No runtime errors.
+
+Unused Canvas-town building sheets now load only when an original field/legacy
+scene requires them. All original assets are retained. Authored material texture
+promises are awaited for every incoming chunk; failed textures/materials can
+be retried without installing partial geometry. Existing six Node regression
+files and four streaming contracts pass. Safari-engine WebKit cold boot works;
+ordinary traversal and field/service/reveal checks remain in progress. Physical
+iPhone Safari remains PENDING. Mobile acceptance is not yet declared.

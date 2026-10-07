@@ -305,3 +305,10 @@ Mobile insertion: checkpointed initial real-capital chunk loading, exact draw an
 collision transport checks, and three streamed city captures. No art changes;
 mobile acceptance and repeated traversal/cache verification remain pending.
 Original RO3 task remains paused at the documented plaza planning guard.
+
+Additional visual request received during mobile interruption: match RO3 lighting,
+screenshot tone and feel more closely; polish other elements, including grass
+particle/fine-blade detail and natural green ingress between paving stones along
+walk paths. Incorporate this into the original visual task immediately after the
+available-environment mobile gate. Keep camera comparison consistent, natural
+planting restrained and clear routes. Do not substitute streaming for this work.

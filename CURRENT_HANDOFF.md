@@ -23,10 +23,12 @@ Do not rerun one-shot authors or regenerate saved art for streaming.
 
 Baseline profiling is complete; evidence and measured secondary costs are in
 mobile-streaming/README.md and baseline-mobile-detailed.json. First real-map chunk boot, exact draw/semantic transport checks and three
-streamed city captures now pass. SW87 uses a shell-only static cache and bounded
+streamed city captures now pass. SW88 uses a shell-only static cache and bounded
 on-demand world/assets caches. Runtime source and native authored files remain
 the recovery receipt hashes. Streaming/mobile acceptance is still pending.
-Exact next infrastructure action: browser traversal/unload/reload/memory, then
+Offline saved-character reload, migration, current authored textures and ground
+bake now pass. Cache clone/overwrite races were fixed; see cache-resume evidence.
+WebKit Safari-engine cold boot works. Exact next infrastructure action: browser traversal/unload/reload/memory, then
 cold/warm/offline and service/field/reveal checks. See mobile-streaming/README.md.
 Active priority: chunked spawn boot/runtime streaming ->
 bounded on-demand caching -> mobile/emulated acceptance. Physical iPhone Safari
@@ -192,3 +194,10 @@ software-renderer limitations accurately.
 visual architecture sweep, then address findings against particular reference
 frames. Preserve source-specific historical images and never use earlier results
 as acceptance of changed geometry. No PR, merge or deployment is requested.
+
+Additional visual request received during mobile interruption: match RO3 lighting,
+screenshot tone and feel more closely; polish other elements, including grass
+particle/fine-blade detail and natural green ingress between paving stones along
+walk paths. Incorporate this into the original visual task immediately after the
+available-environment mobile gate. Keep camera comparison consistent, natural
+planting restrained and clear routes. Do not substitute streaming for this work.

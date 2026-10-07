@@ -70,7 +70,7 @@ function texture(name,color){
 const waterTime={value:0};
 function material(name,definition){
  const spec=definition?.texture,key=name+JSON.stringify(spec||'');if(materialCache.has(key))return materialCache.get(key);
- let map=texture(name,definition?.color);
+ let map=spec?null:texture(name,definition?.color);
  if(spec){
   const tileKey=spec.file+'/'+spec.tile;
   if(!atlasTextures.has(tileKey)){
@@ -78,7 +78,7 @@ function material(name,definition){
    // repeated lawns/roofs at gameplay distance. Artwork and authored UVs stay intact.
    const t=new THREE.Texture();t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=spec.anisotropy||(name==='grass'?4:1);
    if(!atlasImages.has(spec.file))atlasImages.set(spec.file,new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>reject(new Error('Could not load world material: '+spec.file));image.src=new URL('../../'+spec.file,import.meta.url).href}));
-   textureLoads.push(atlasImages.get(spec.file).then(image=>{const [cols,rows]=spec.grid,w=image.naturalWidth/cols,h=image.naturalHeight/rows,c=document.createElement('canvas');c.width=Math.round(w);c.height=Math.round(h);c.getContext('2d').drawImage(image,(spec.tile%cols)*w,Math.floor(spec.tile/cols)*h,w,h,0,0,c.width,c.height);t.image=c;t.needsUpdate=true}));
+   t.userData.ready=atlasImages.get(spec.file).then(image=>{const [cols,rows]=spec.grid,w=image.naturalWidth/cols,h=image.naturalHeight/rows,c=document.createElement('canvas');c.width=Math.round(w);c.height=Math.round(h);c.getContext('2d').drawImage(image,(spec.tile%cols)*w,Math.floor(spec.tile/cols)*h,w,h,0,0,c.width,c.height);t.image=c;t.needsUpdate=true}).catch(error=>{t.userData.loadFailed=true;atlasImages.delete(spec.file);throw error});textureLoads.push(t.userData.ready);
    atlasTextures.set(tileKey,t);
   }map=atlasTextures.get(tileKey);
  }
@@ -325,10 +325,10 @@ class SpatialRenderer{
    mesh.userData.cacheDynamic=batch.kind==='shadow'||['water','riverCascade'].includes(batch.material)||!!this.source.materials[batch.material]?.texture?.ripple;
    nodes.push(mesh);
   }
-  await Promise.all(textureLoads.slice(started));
+  await Promise.all([...textureLoads.slice(started),...nodes.map(node=>node.material.map?.userData.ready).filter(Boolean)]);
   this.chunkNodes.set(manifest.id,nodes);this.chunkManifests.set(manifest.id,manifest);for(const node of nodes)this.scene.add(node);
   this.rebuildStreamOccluders();this.refreshStreamNodes();
-  }catch(error){for(const node of nodes)node.geometry.dispose();throw error}
+  }catch(error){for(const node of nodes){node.geometry.dispose();const failed=node.material.map;if(failed?.userData.loadFailed){for(const [key,m] of materialCache)if(m.map===failed){materialCache.delete(key);m.dispose()}for(const [key,t] of atlasTextures)if(t===failed)atlasTextures.delete(key);for(const [key,m] of this.streamFeathers||[])if(m.map===failed){this.streamFeathers.delete(key);m.dispose()}failed.dispose()}}throw error}
  }
  removeChunk(id){
   const nodes=this.chunkNodes.get(id);if(!nodes)return;

@@ -1,12 +1,12 @@
 /* Presentation-only city renderer. Receives projection/state; never mutates combat. */
 (() => {
 'use strict';
-const content=window.AstraeonContent, atlas=new Image();atlas.src='./assets/town-atlas-v1.webp';
-const paving=new Image();paving.src='./assets/town-limestone-v1.webp';
-const secondary=new Image();secondary.src='./assets/secondary-atlas-v1.webp';
-const hall=new Image();hall.src='./assets/consortium-hall-v2.webp';
-const district=Object.fromEntries(['forge','inn','shrine','cottage'].map(key=>{const image=new Image();image.src=`./assets/wayfarer-${key}-v1.webp`;return [key,image]}));
-const whenReady=Promise.all([atlas,secondary,paving,hall,...Object.values(district)].map(image=>image.complete&&image.naturalWidth?Promise.resolve():new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Cannot load town artwork'))})));
+const content=window.AstraeonContent, atlas=new Image(),paving=new Image(),secondary=new Image(),hall=new Image();
+const district=Object.fromEntries(['forge','inn','shrine','cottage'].map(key=>[key,new Image()]));
+const artwork=[[atlas,'./assets/town-atlas-v1.webp'],[paving,'./assets/town-limestone-v1.webp'],[secondary,'./assets/secondary-atlas-v1.webp'],[hall,'./assets/consortium-hall-v2.webp'],...Object.entries(district).map(([key,image])=>[image,`./assets/wayfarer-${key}-v1.webp`])];
+let artworkReady;
+function ensure(zone=0){if(zone===0&&content.nativeWorld?.spatial.scene.streaming)return Promise.resolve();if(!artworkReady)artworkReady=Promise.all(artwork.map(([image,url])=>new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>{artworkReady=null;reject(new Error('Cannot load town artwork'))};image.src=url})));return artworkReady}
+const whenReady=content.nativeWorld?.spatial.scene.streaming?Promise.resolve():ensure();
 let blueHall=null;
 function civicArtwork(){
  if(blueHall)return blueHall;
@@ -148,5 +148,5 @@ function prop(ctx,o,iso,player,time){
  ctx.restore();return true;
 }
 function flowerBeds(ctx,iso){for(const [x,y] of [[11,12],[17.8,12],[11,19.5],[18,22]]){let p=iso(x,y);ctx.save();ctx.fillStyle='#395f3e';ctx.beginPath();ctx.ellipse(p.x,p.y,30,13,0,0,Math.PI*2);ctx.fill();for(let i=0;i<9;i++){let xx=p.x+(hash(i+x)*2-1)*25,yy=p.y+(hash(i+y)*2-1)*8;ctx.fillStyle=i%2?'#e9b0a1':'#f3dea0';ctx.beginPath();ctx.arc(xx,yy-3,2,0,Math.PI*2);ctx.fill()}ctx.restore()}}
-window.AstraeonScene={whenReady,verge,ground,prop,flowerBeds,visibilitySnapshot,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
+window.AstraeonScene={whenReady,ensure,verge,ground,prop,flowerBeds,visibilitySnapshot,objects:content.townObjects,ready:()=>atlas.complete&&atlas.naturalWidth};
 })();

@@ -44,25 +44,30 @@ with sync_playwright() as p:
     page.locator('#newname').fill('Cache Resume')
     page.locator('#create').click(timeout=args.startup_timeout_ms)
     page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
-    page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().time>1')
+    page.wait_for_function('document.getElementById("world") && window.AstraeonQA && AstraeonQA.snapshot().time>1')
     page.evaluate('navigator.serviceWorker.ready')
     page.wait_for_function('navigator.serviceWorker.controller')
     version = page.evaluate('''async()=>{
       const keys=await caches.keys();
       const name=keys.find(k=>k.startsWith('astraeon-static-'));
       const cache=await caches.open(name);
-      return {keys,name,urls:(await cache.keys()).map(r=>r.url)};
+      const allUrls=[];for(const key of keys)allUrls.push(...(await (await caches.open(key)).keys()).map(r=>r.url));return {keys,name,urls:(await cache.keys()).map(r=>r.url),allUrls};
     }''')
     assert previous_cache not in version['keys'], version
     assert version['name'] == current_cache, version
-    for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/wayfarer-spatial.json']:
+    for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/streaming.js']:
         assert any(url.endswith('/' + filename + '?v=' + current_version) for url in version['urls']), filename
     world = json.loads((ROOT / 'world/v3/wayfarer-spatial.json').read_text())
-    art = {material['texture']['file'] for material in world['materials'].values()
-           if material.get('texture')}
+    assert not any('/streamed/' in url or '/assets/' in url or 'wayfarer-spatial.json' in url for url in version['urls']), 'Static precache contains world assets'
+    assert not any('wayfarer-spatial.json' in url for url in version['allUrls']), 'Monolithic world cached'
+    art = set(page.evaluate("""()=>[...new Set([...AstraeonSpatialView.chunkNodes.values()].flat().map(m=>AstraeonSpatialView.source.materials[m.userData.materialName]?.texture?.file).filter(Boolean))]"""))
     art.add(world['lighting']['groundShadow']['file'])
+    page.wait_for_function("""async files=>{const urls=[];for(const name of await caches.keys())urls.push(...(await (await caches.open(name)).keys()).map(r=>r.url));return files.every(file=>urls.some(url=>url.endsWith('/'+file)))}""",arg=sorted(art),timeout=30000)
+    version['allUrls']=page.evaluate("""async()=>{const urls=[];for(const name of await caches.keys())urls.push(...(await (await caches.open(name)).keys()).map(r=>r.url));return urls}""")
+    (args.output/'cache-inventory.json').write_text(json.dumps({'version':version,'activeArt':sorted(art)},indent=2)+'\n')
     for filename in art:
-        assert any(url.endswith('/' + filename) for url in version['urls']), ('uncached town material', filename)
+        assert any(url.endswith('/' + filename) for url in version['allUrls']), ('uncached active town material', filename)
+    assert any('/streamed/' in url and url.endswith('.bin.gz') for url in version['allUrls']), 'No on-demand chunks cached'
     before = page.evaluate('AstraeonQA.snapshot().save')
     legacy_migration = None
     blocked_save_recovery = None
@@ -70,9 +75,9 @@ with sync_playwright() as p:
         # Seed an isolated source74 save, then let the ordinary load path move
         # it to the reorganized city's arrival while retaining progression.
         legacy = {**before, 'worldLayout': 'wayfarer-concept-terraced-town-v49', 'x': 54, 'y': 58}
-        page.evaluate('(save)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(save))', legacy)
+        page.add_init_script('if(!sessionStorage.getItem("cache-legacy-fixture")){localStorage.setItem("astraeon-iso-v1",'+json.dumps(json.dumps(legacy))+');sessionStorage.setItem("cache-legacy-fixture","done")}')
         page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
-        page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
+        page.wait_for_function('document.getElementById("world") && window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
         before = page.evaluate('AstraeonQA.snapshot().save')
         for field in ['name', 'cls', 'zone', 'lv', 'xp', 'inventory', 'equipment']:
             assert before[field] == legacy[field], ('legacy progress lost', field)
@@ -85,9 +90,9 @@ with sync_playwright() as p:
         # progression rather than leaving the character inside a new building.
         revised = {**before, 'x': 217.74, 'y': 220.0925}
         assert page.evaluate('p=>AstraeonContent.nativeWorld.spatial.blocked(p.x,p.y)', revised)
-        page.evaluate('(save)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(save))', revised)
+        page.add_init_script('if(!sessionStorage.getItem("cache-blocked-fixture")){localStorage.setItem("astraeon-iso-v1",'+json.dumps(json.dumps(revised))+');sessionStorage.setItem("cache-blocked-fixture","done")}')
         page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
-        page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
+        page.wait_for_function('document.getElementById("world") && window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
         before = page.evaluate('AstraeonQA.snapshot().save')
         for field in ['name','cls','zone','lv','xp','inventory','equipment','gold','house','guild','quest','skillNodes']:
             assert before[field] == revised[field], ('blocked save lost progression',field)
@@ -97,7 +102,7 @@ with sync_playwright() as p:
     context.set_offline(True)
     page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
     page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
-    page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().time>1')
+    page.wait_for_function('document.getElementById("world") && window.AstraeonQA && AstraeonQA.snapshot().time>1')
     after = page.evaluate('AstraeonQA.snapshot().save')
     for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment']:
         assert field in before and after[field] == before[field], (field, before.get(field), after.get(field))
@@ -108,14 +113,16 @@ with sync_playwright() as p:
       const size=[image.width,image.height];image.close();return size;
     }''', ground['file'])
     assert ground_size == [ground['resolution']] * 2, ('stale offline shadow atlas', ground_size, ground)
+    manifest = json.loads((ROOT/'world/v3/world-manifest.json').read_text())
+    zone = json.loads((ROOT/manifest['zones'][manifest['defaultZone']]['url']).read_text())
     offline_digests = page.evaluate("""async files=>{
       const result={};for(const [name,url] of Object.entries(files)){
         const response=await fetch(url);if(!response.ok)throw Error('Offline asset missing: '+url);
         const digest=await crypto.subtle.digest('SHA-256',await response.arrayBuffer());
         result[name]=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
       }return result;
-    }""", {'source': 'world/v3/wayfarer-spatial.json?v='+current_version, 'ground': ground['file']})
-    for name,filename in [('source','world/v3/wayfarer-spatial.json'),('ground',ground['file'])]:
+    }""", {'semantics': zone['semantics']['url'], 'ground': ground['file']})
+    for name,filename in [('semantics',zone['semantics']['url']),('ground',ground['file'])]:
         with (ROOT/filename).open('rb') as f:
             expected=hashlib.file_digest(f,'sha256').hexdigest()
         assert offline_digests[name]==expected,('stale offline content',name,offline_digests[name],expected)
@@ -125,9 +132,12 @@ with sync_playwright() as p:
               'savedCharacterRetained': True, 'townMaterialFiles': sorted(art),
               'legacyTownSaveMigration': legacy_migration,
               'sameLayoutBlockedSaveRecovery': blocked_save_recovery,
-              'offlineGroundSize': ground_size, 'offlineSourceSHA256': offline_digests['source'],
+              'offlineGroundSize': ground_size, 'offlineSemanticSHA256': offline_digests['semantics'],
+              'authoredSourceSHA256': zone['sourceSHA256'],
+              'onDemandWorldURLs': [u for u in version['allUrls'] if '/streamed/' in u],
+              'fullWorldAbsentFromCache': True,
               'offlineGroundSHA256': offline_digests['ground'], 'errors': errors}
     (args.output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     browser.close()
     assert not errors, errors
-print('PASS cache migration, versioned precache and offline saved-character reload', flush=True)
+print('PASS shell-only precache, on-demand chunk cache, migration and offline saved-character reload', flush=True)
