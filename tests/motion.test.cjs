@@ -88,10 +88,10 @@ test('supply discoveries award once and remain claimed after save reload',()=>{
  assert.ok(window.AstraeonExploration.claim(entry,state).ok);assert.equal(state.gold,22);assert.equal(state.inventory.potion,1);
  const reloaded=JSON.parse(JSON.stringify(state));assert.ok(!window.AstraeonExploration.claim(entry,reloaded).ok);assert.equal(reloaded.gold,22);
 });
-require('../save-state.js');
+for(const file of ['progression-config','progression','stats','character-state','player-state','save-state'])require('../'+file+'.js');
 test('legacy saves retain progression and class IDs while missing fields gain safe defaults',()=>{
  const legacy={name:'Returning hero',cls:20,gold:200,inventory:{ore:9},equipment:{weapon:'Astral Blade'},chapters:[0,1],discovered:[0,1,3],futureProgress:{relics:8}};
- const state=window.AstraeonSave.normalize(legacy);assert.equal(state.cls,20);assert.equal(state.inventory.ore,9);assert.equal(state.inventory.potion,0);assert.deepEqual(state.chapters,[0,1]);assert.deepEqual(state.futureProgress,{relics:8});assert.equal(state.equipment.weapon,'Astral Blade');assert.equal(state.equipment.armor,'Adventurer Garb');assert.equal(state.saveVersion,3);assert.deepEqual(window.AstraeonSave.normalize(JSON.parse(JSON.stringify(state))),state);
+ const state=window.AstraeonSave.normalize(legacy);assert.equal(state.cls,20);assert.equal(state.inventory.ore,9);assert.equal(state.inventory.potion,0);assert.deepEqual(state.chapters,[0,1]);assert.deepEqual(state.futureProgress,{relics:8});assert.equal(state.equipment.weapon,'Astral Blade');assert.equal(state.equipment.armor,'Adventurer Garb');assert.equal(state.saveVersion,4);assert.deepEqual(window.AstraeonSave.normalize(JSON.parse(JSON.stringify(state))),state);
 });
 test('malformed save values cannot create invalid HUD indices, resources or coordinates',()=>{
  const state=window.AstraeonSave.normalize({name:'Hero',cls:90,race:-8,lv:-2,inventory:{ore:-5},hp:Infinity,maxHp:NaN,x:NaN,y:100,quest:{id:80},mail:[{},'letter']});assert.equal(state.cls,21);assert.equal(state.race,0);assert.equal(state.lv,1);assert.equal(state.inventory.ore,0);assert.equal(state.hp,100);assert.equal(state.x,14.5);assert.equal(state.y,38);assert.equal(state.quest,null);assert.deepEqual(state.mail,['letter']);assert.equal(window.AstraeonSave.normalize([]),null);

@@ -3,9 +3,26 @@
 'use strict';
 const number=(value,fallback,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isFinite(value)?Math.max(min,Math.min(max,value)):fallback;
 const text=(value,fallback)=>typeof value==='string'?value:fallback;
+const version=4;
+function backbone(raw,state){
+ const canonical=window.AstraeonCharacter.normalize({...raw,baseLevel:number(raw.baseLevel,state.lv,1),baseExp:number(raw.baseExp,state.xp)});
+ const modifiers=window.AstraeonPlayer.legacyModifiers(state);
+ // No load-time EXP grants or retrospective point awards. Absent legacy pools start at zero.
+ if(raw.saveVersion!==version&&!raw.legacyBackbone){
+  state.legacyBackbone={};for(const key of ['saveVersion','lv','xp','hp','maxHp','energy','maxEnergy'])if(Object.hasOwn(raw,key))state.legacyBackbone[key]=raw[key];
+ }
+ if(!raw.resourceBase||!Number.isFinite(raw.resourceBase.maxHP)||!Number.isFinite(raw.resourceBase.maxSP)){
+  const baseline=window.AstraeonStats.calculate({baseLevel:canonical.baseLevel,primaryStats:canonical,...modifiers});
+  canonical.resourceBase={maxHP:number(raw.maxHP,state.maxHp,1)-baseline.maxHP,maxSP:number(raw.maxSP,state.maxEnergy,1)-baseline.maxSP};
+ }
+ const derived=window.AstraeonStats.calculate({baseLevel:canonical.baseLevel,primaryStats:canonical,characterBase:canonical.resourceBase,...modifiers});
+ Object.assign(state,canonical,{maxHP:derived.maxHP,maxSP:derived.maxSP,currentHP:number(raw.currentHP,state.hp,0,derived.maxHP),currentSP:number(raw.currentSP,state.energy,0,derived.maxSP)});
+ state.lv=state.baseLevel;state.xp=state.baseExp;state.hp=state.currentHP;state.maxHp=state.maxHP;state.energy=state.currentSP;state.maxEnergy=state.maxSP;
+ return state;
+}
 function normalize(raw){
  if(!raw||typeof raw!=='object'||Array.isArray(raw)||typeof raw.name!=='string'||!raw.name.trim())return null;
- const state={...raw,saveVersion:3};
+ const state={...raw,saveVersion:version};
  for(const [key,fallback,min,max] of [['race',0,0,13],['cls',0,0,21],['path',-1,-1,1],['lv',1,1,999],['zone',0,0,4]])state[key]=Math.floor(number(raw[key],fallback,min,max));
  state.name=raw.name.slice(0,24);state.maxHp=number(raw.maxHp,100,1);state.hp=number(raw.hp,state.maxHp,0,state.maxHp);state.maxEnergy=number(raw.maxEnergy,60,1);state.energy=number(raw.energy,state.maxEnergy,0,state.maxEnergy);
  const townBounds=window.AstraeonContent?.nativeWorld?.spatial?.bounds;
@@ -19,7 +36,9 @@ function normalize(raw){
  state.quest=raw.quest&&Number.isInteger(raw.quest.id)&&raw.quest.id>=0&&raw.quest.id<5?{...raw.quest,progress:number(raw.quest.progress,0)}:null;state.guild=typeof raw.guild==='string'?raw.guild:null;
  state.skillNodes=window.AstraeonSkillNodes?.normalize(raw.skillNodes)||{};
  state.worldClaims=raw.worldClaims&&typeof raw.worldClaims==='object'&&!Array.isArray(raw.worldClaims)?{...raw.worldClaims}:{};
- return state;
+ return backbone(raw,state);
 }
-window.AstraeonSave={normalize};
+// Serialize getters as ordinary canonical data; runtime effect groups belong to the controller.
+function snapshot(state){return normalize(JSON.parse(JSON.stringify(state)))}
+window.AstraeonSave=Object.freeze({version,normalize,snapshot});
 })();
