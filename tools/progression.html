@@ -30,18 +30,28 @@
 <h3>Definitions, ranks, prerequisites and learning gates</h3><pre id="skill-tree"></pre>
 <h3>Learned passive modifiers</h3><pre id="skill-passives"></pre>
 <h3>Eight action slots and compiled selected slot</h3><pre id="skill-loadout"></pre>
+<h2>Action execution sandbox (developer only)</h2>
+<p><label>Target slot (1–8) <input id="slot-target" type="number" value="8" min="1" max="8"></label>
+<button id="swap-slots">Swap selected/target</button> <button id="move-slot">Move to empty target</button></p>
+<p><label>Explicit time <input id="action-time" type="number" value="0" min="0" step="0.1"></label>
+<button id="set-action-time">Set time</button> <label>Advance <input id="time-step" type="number" value="10" min="0" step="0.1"></label>
+<button id="advance-action-time">Advance time</button> <button id="execute-slot">Execute selected slot</button>
+<button id="reset-cooldowns">Reset transient cooldowns</button></p>
+<pre id="action-runtime"></pre><pre id="action-result" aria-live="polite"></pre>
 <h2>Derived snapshot</h2><pre id="derived"></pre>
 <h2>Raw persistent state</h2><pre id="persistent"></pre>
-<script src="../skill-nodes.js?v=86"></script>
-<script src="../progression-config.js?v=86"></script>
-<script src="../progression.js?v=86"></script>
-<script src="../stats.js?v=86"></script>
-<script src="../combat.js?v=86"></script>
-<script src="../skill-definitions.js?v=86"></script>
-<script src="../skill-tree.js?v=86"></script>
-<script src="../skill-runtime.js?v=86"></script>
-<script src="../character-state.js?v=86"></script>
-<script src="../player-state.js?v=86"></script>
-<script src="../save-state.js?v=86"></script>
-<script src="./progression-harness.js?v=86"></script>
+<script src="../skill-nodes.js?v=87"></script>
+<script src="../progression-config.js?v=87"></script>
+<script src="../progression.js?v=87"></script>
+<script src="../stats.js?v=87"></script>
+<script src="../combat.js?v=87"></script>
+<script src="../skill-definitions.js?v=87"></script>
+<script src="../skill-tree.js?v=87"></script>
+<script src="../action-loadout.js?v=87"></script>
+<script src="../skill-runtime.js?v=87"></script>
+<script src="../action-runtime.js?v=87"></script>
+<script src="../character-state.js?v=87"></script>
+<script src="../player-state.js?v=87"></script>
+<script src="../save-state.js?v=87"></script>
+<script src="./progression-harness.js?v=87"></script>
 </html>

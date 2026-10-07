@@ -2,7 +2,7 @@
 (() => {
 'use strict';
 const key='astraeon-progression-dev-v1',$=id=>document.getElementById(id);
-let state,player;
+let state,player,timeline,testTime=0;
 function render(){
  const s=player.snapshot(),summary={baseLevel:s.baseLevel,baseExp:`${s.baseExp} / ${player.getBaseExpRequirement()||'CAP'}`,baseJobLevel:s.baseJobLevel,baseJobExp:`${s.baseJobExp} / ${player.getJobExpRequirement()||'CAP'}`,statPoints:s.statPoints,skillPoints:s.skillPoints,currentHP:`${s.currentHP} / ${s.maxHP}`,currentSP:`${s.currentSP} / ${s.maxSP}`};
  $('summary').replaceChildren(...Object.entries(summary).map(([name,value])=>{const row=document.createElement('tr'),label=document.createElement('th'),cell=document.createElement('td');label.textContent=name;cell.textContent=value;row.append(label,cell);return row}));
@@ -16,6 +16,7 @@ function render(){
  $('skill-tree').textContent=JSON.stringify({tree:player.getSkillTree(),skills:available},null,2);
  $('skill-passives').textContent=JSON.stringify(player.getPassiveSkillModifiers(),null,2);
  $('skill-loadout').textContent=JSON.stringify({slots:player.getActionLoadout(),runtime:player.compileAction(number('skill-slot')-1)},null,2);
+ $('action-time').value=String(testTime);$('action-runtime').textContent=JSON.stringify({now:testTime,cooldowns:player.getActionRuntime(),slots:Array.from({length:8},(_,slot)=>player.getActionSlotState(slot,{now:testTime,actionActive:!!timeline.active}))},null,2);
 }
 function renderNodes(){
  const id=$('skill-id').value,choices=window.AstraeonSkillNodes.compatibility[id]||[];
@@ -24,7 +25,7 @@ function renderNodes(){
 }
 function load(){
  const stored=localStorage.getItem(key);state=window.AstraeonSave.normalize(stored?JSON.parse(stored):{name:'Developer test',saveVersion:4});
- if(!state)throw Error('Invalid developer save');player=window.AstraeonPlayer.attach(state);render();
+ if(!state)throw Error('Invalid developer save');player=window.AstraeonPlayer.attach(state);timeline=new window.AstraeonCombat.Timeline();testTime=0;render();
 }
 function run(operation){try{const result=operation();render();$('status').textContent=result?.ok===false?JSON.stringify(result):'OK'}catch(error){$('status').textContent=error.message}}
 const number=id=>Number($(id).value);
@@ -39,8 +40,14 @@ const actions={
  'learn-skill':()=>player.learnSkill($('skill-id').value),'rank-skill':()=>player.rankUpSkill($('skill-id').value),
  'reset-skills':()=>player.resetSkills(),'assign-skill':()=>player.assignSkill(number('skill-slot')-1,$('skill-id').value),
  'clear-slot':()=>player.assignSkill(number('skill-slot')-1,null),'set-node':()=>player.setSkillNode($('skill-id').value,$('skill-node').value||null),
+ 'swap-slots':()=>player.swapSlots(number('skill-slot')-1,number('slot-target')-1),
+ 'move-slot':()=>player.moveSkill(number('skill-slot')-1,number('slot-target')-1),
+ 'set-action-time':()=>setTime(number('action-time')),'advance-action-time':()=>setTime(testTime+number('time-step')),
+ 'execute-slot':()=>{const result=player.requestAction(number('skill-slot')-1,{now:testTime,actionActive:!!timeline.active},action=>timeline.start(structuredClone(action),{x:0,y:0},{x:0,y:1},testTime,{externalCooldown:true}));$('action-result').textContent=JSON.stringify(result,null,2);return result},
+ 'reset-cooldowns':()=>player.resetActionCooldowns(),
  save:()=>localStorage.setItem(key,JSON.stringify(window.AstraeonSave.snapshot(state))),reload:load
 };
+function setTime(value){if(!Number.isFinite(value)||value<testTime)throw Error('Test time must advance monotonically');const dt=value-testTime;testTime=value;timeline.tick(testTime,dt,[]);return {ok:true}}
 for(const [id,action] of Object.entries(actions))$(id).onclick=()=>run(action);
 $('skill-class').onchange=()=>run(()=>{state.cls=number('skill-class');player.recalculate()});
 $('skill-id').onchange=renderNodes;

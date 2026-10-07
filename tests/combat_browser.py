@@ -39,6 +39,10 @@ try:
 
         def open_page(path='/?qa=1&dev=1', fixture=None):
             context = browser.new_context(viewport={'width':1280,'height':800})
+            context.add_init_script('''if(location.protocol==='http:'||location.protocol==='https:'){
+                const fixture=sessionStorage.getItem('astraeon-combat-test-fixture');
+                if(fixture){localStorage.setItem('astraeon-iso-v1',fixture);sessionStorage.removeItem('astraeon-combat-test-fixture');}
+            }''')
             if fixture is not None:
                 context.add_init_script('if(!localStorage.getItem("astraeon-iso-v1"))localStorage.setItem("astraeon-iso-v1",'+json.dumps(json.dumps(fixture))+')')
             page = context.new_page()
@@ -139,12 +143,14 @@ try:
             # Reload a disposable low-HP fixture beside an existing field spawn.
             # The earlier kill may have removed every nearby enemy.
             death_fixture={**after,'currentHP':1,'hp':1,'zone':2,'x':17,'y':22,'invulnUntil':0,'guard':0}
-            page.evaluate('(fixture)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(fixture))',death_fixture)
+            page.evaluate('(fixture)=>sessionStorage.setItem("astraeon-combat-test-fixture",JSON.stringify(fixture))',death_fixture)
             page.reload(wait_until='load')
             page.wait_for_selector('#world')
             page.wait_for_function('AstraeonQA.snapshot().animation.state==="death"',timeout=60000)
             assert snapshot(page)['currentHP']==0
             page.wait_for_function('AstraeonQA.snapshot().save.zone===0&&AstraeonQA.snapshot().save.currentHP>0',timeout=60000)
+            for key in ['actionLoadout','learnedSkills','skillPointSpending']:
+                assert snapshot(page)[key]==after[key],key
             passed('existing incoming damage, player death and town respawn work',{'cls':cls})
             page.locator('[data-open="character"]').click()
             dev(page,'d.addStatPoints(5);d.allocateStat("STR",2);const s=d.snapshot();d.setCurrentHP(s.maxHP);d.setCurrentSP(s.maxSP);d.save()')
