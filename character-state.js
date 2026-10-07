@@ -36,7 +36,8 @@ function create(raw={},options={}){
  const rewardPlans=new WeakMap();
  function prepareRewards(baseExp,jobExp){
   try{
-   const base=p.grant(state,'base',baseExp,config.progression),job=p.grant(base.state,'job',jobExp,config.progression),calculated=derive(job.state);
+   p.integer(baseExp,'Base EXP');p.integer(jobExp,'Job EXP');
+   const base=baseExp?p.grant(state,'base',baseExp,config.progression):{state,levelsGained:0},job=jobExp?p.grant(base.state,'job',jobExp,config.progression):{state:base.state,levelsGained:0},calculated=derive(job.state);
    const plan=stats.freeze({ok:true,baseExp,jobExp,baseLevelsGained:base.levelsGained,jobLevelsGained:job.levelsGained});
    rewardPlans.set(plan,{before:state,mods:JSON.stringify(modifiers),next:job.state,calculated});return plan;
   }catch{return stats.freeze({ok:false,code:'INVALID_PROGRESSION_REWARD'})}

@@ -27,7 +27,8 @@ function create(owner,{monsters=window.AstraeonMonsterDefinitions,tables=window.
   // Cache even a failed authored/RNG attempt: another call cannot reroll this death.
   a.attempt={deathId,result:fail('RESOLUTION_IN_PROGRESS')};busy=true;
   try{
-   const resolution=R.resolve(tables.getDefinition(a.definition.dropTableId),{...context,monsterInstanceId:a.instanceId,monsterDefinitionId:a.definition.id,deathId,lifeGeneration:a.life,killOrdinal:++ordinal},rng,{catalog});
+   const killOrdinal=a.definition.metadata?.fixture?ordinal+1:++ordinal;
+   const resolution=R.resolve(tables.getDefinition(a.definition.dropTableId),{...context,monsterInstanceId:a.instanceId,monsterDefinitionId:a.definition.id,deathId,lifeGeneration:a.life,killOrdinal},rng,{catalog});
    if(!resolution.ok){a.attempt.result=resolution;return resolution}
    const claim=freeze({ok:true,claimId:deathId,deathId,resolution,rewardProfileId:a.definition.rewardProfileId});
    claims.set(claim,{actor,life:a.life,epoch,used:false});a.claim=claim;a.attempt.result=claim;return claim;

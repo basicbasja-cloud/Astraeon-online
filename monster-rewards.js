@@ -12,8 +12,9 @@ function plan(state,resolution,profileId,contracts=[],ratio=window.AstraeonProgr
  let baseExp=profile.baseExp+profile.perZone*resolution.zone;
  const fields={kills:state.kills+(profile.killCredit?1:0),clears:state.clears,reputation:state.reputation,pvpWins:state.pvpWins+(profile.arenaWin?1:0)},itemRewards=[...resolution.itemRewards];
  let quest=state.quest?{...state.quest}:null,questCredit=0,completedQuest=null,journal=[...state.journal],questExp=0;
- if(profile.killCredit&&JSON.stringify(resolution.quest??null)!==JSON.stringify(quest))return fail('STALE_QUEST_CONTEXT');
- if(profile.killCredit&&quest){
+ // Credit only the quest active at death. Later quest changes do not erase loot.
+ // Concurrent pending deaths may advance the same quest's current progress.
+ if(profile.killCredit&&quest&&resolution.quest?.id===quest.id){
   const q=contracts[quest.id];if(!q||!int(quest.progress)||!int(q.target)||!int(q.reward)||!int(q.xp))return fail('INVALID_QUEST_REWARD');
   if(q.zone===resolution.zone){quest.progress++;questCredit=1;if(quest.progress>=q.target){completedQuest={...q};currencyGranted+=q.reward;questExp=q.xp;itemRewards.push({entryId:'quest-completion',itemId:'shard',quantity:2});fields.clears++;fields.reputation+=5;journal.unshift(`สำเร็จ: ${q.title}`);quest=null}}
  }
