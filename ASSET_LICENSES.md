@@ -1,6 +1,10 @@
 # Asset provenance
 
-No Ragnarok intellectual property is included. All assets below are original generated art for ASTRAEON. No third-party texture/model/audio pack is presently used. Generated-art provenance is tracked here; this is not a claim that third-party game art is licensed.
+No Ragnarok artwork is used in ASTRAEON's runtime assets. The production assets listed below are original generated art for ASTRAEON. No third-party texture/model/audio pack is presently used. Generated-art provenance is tracked here; this is not a claim that third-party game art is licensed.
+
+## Reference-only material
+
+The repository includes 52 frames extracted from the [Ragnarok Online 3 (Beta) Prontera City video](https://www.youtube.com/watch?v=RZ06YmcbxkU), stored under `RO3 Ref/Prontera_RO3_Beta_Reference/`. These images and contact sheets are visual research references only; they are not shipped or used as ASTRAEON runtime assets. This file does not assert rights or a license to use them. Source timestamps are recorded in `INDEX.csv` and `INDEX.json`.
 
 ## Runtime library
 
