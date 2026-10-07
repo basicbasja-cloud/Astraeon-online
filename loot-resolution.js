@@ -34,6 +34,7 @@ function resolve(table,context,rng,{catalog=D}={}){
  const checked=validate(table,{catalog});if(!checked.ok)return checked;
  if(!object(context)||!data(context)||!integer(context.zone)||!integer(context.killOrdinal,1)||!['deathId','monsterInstanceId','monsterDefinitionId'].every(k=>typeof context[k]==='string'&&context[k]))return fail('INVALID_CONTEXT','context');
  if(typeof rng?.next!=='function')return fail('INVALID_RNG','rng.next');
+ table=freeze(structuredClone(table));context=freeze(structuredClone(context));
  const rolls=[],itemRewards=[];
  function roll(entryId,purpose){const value=rng.next();if(!Number.isFinite(value)||value<0||value>=1)throw Error('INVALID_RNG');rolls.push({entryId,purpose,value});return value}
  try{

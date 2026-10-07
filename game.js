@@ -339,7 +339,7 @@ function move(dx,dy){let nx=S.x+dx,ny=S.y+dy;if(!isBlocked(nx,S.y))S.x=nx;if(!is
 function nearest(range){let a=mobs.filter(m=>m.hp>0&&distance(S,m)<range).sort((a,b)=>distance(S,a)-distance(S,b));return selectedEnemy&&a.includes(selectedEnemy)?selectedEnemy:a[0]}
 function gainXP(v){const result=player.grantBaseExp(v);player.grantJobExp(Math.floor(v*window.AstraeonProgressionConfig.progression.activityJobExpRatio));if(result.levelsGained){S.hp=S.maxHp;S.energy=S.maxEnergy;toast(`Level ${S.lv}! HP และพลังฟื้นเต็ม`)}if(S.clears>=5)S.rank='Silver';else if(S.clears>=2)S.rank='Iron'}
 function kill(m){
- const claim=loot.prepareDeath(m,{zone:S.zone,quest:S.quest?{...S.quest}:null},combatRuntime.productionRng());
+ const claim=loot.prepareDeath(m,player.getMonsterRewardContext(S.zone),combatRuntime.productionRng());
  const reward=claim.ok?loot.commit(claim):claim;if(!reward.ok)return reward;
  audio.play('loot');m.deadAt=now;m.animState='hit';m.animStarted=now;m.animUntil=now+.6;screenShake=Math.max(screenShake,m.boss?12:5);spark(m.x,m.y,'#b8a8ff',m.boss?34:15,m.boss?75:46);
  if(reward.baseLevelsGained)toast(`Level ${S.lv}! HP และพลังฟื้นเต็ม`);
@@ -465,10 +465,10 @@ if(new URLSearchParams(location.search).get('dev')==='1'){
  window.AstraeonMonsterLootDev=Object.freeze({
   snapshot:()=>loot?.snapshot(),inspect:id=>{const actor=mobs.find(m=>loot.inspect(m).monsterInstanceId===id);return actor?loot.inspect(actor):null},
   repeatDeath:id=>{const actor=mobs.find(m=>loot.inspect(m).monsterInstanceId===id);return actor?kill(actor):{ok:false,code:'UNKNOWN_MONSTER_INSTANCE'}},
-  prepareFixture:(id,rolls=[])=>{if(!window.AstraeonMonsterDefinitions.getDefinition(id)?.metadata?.fixture)return {ok:false,code:'NOT_FIXTURE'};fixtureActor={hp:1};const registered=loot.register(fixtureActor,id);if(!registered.ok)return registered;fixtureActor.hp=0;fixtureClaim=loot.prepareDeath(fixtureActor,{zone:S.zone,quest:S.quest?{...S.quest}:null},combatRuntime.sequenceRng(rolls));return fixtureClaim},
+  prepareFixture:(id,rolls=[])=>{if(!window.AstraeonMonsterDefinitions.getDefinition(id)?.metadata?.fixture)return {ok:false,code:'NOT_FIXTURE'};fixtureActor={hp:1};const registered=loot.register(fixtureActor,id);if(!registered.ok)return registered;fixtureActor.hp=0;fixtureClaim=loot.prepareDeath(fixtureActor,player.getMonsterRewardContext(S.zone),combatRuntime.sequenceRng(rolls));return fixtureClaim},
   commitFixture:()=>{const result=loot.commit(fixtureClaim);if(result.ok){refreshUI();save()}return result},
   duplicateFixture:()=>loot.commit(fixtureClaim),
-  newFixtureLife:(rolls=[])=>{if(!fixtureActor)return {ok:false,code:'NO_FIXTURE'};fixtureActor.hp=1;const result=loot.newLife(fixtureActor);if(!result.ok)return result;fixtureActor.hp=0;fixtureClaim=loot.prepareDeath(fixtureActor,{zone:S.zone,quest:S.quest?{...S.quest}:null},combatRuntime.sequenceRng(rolls));return fixtureClaim},
+  newFixtureLife:(rolls=[])=>{if(!fixtureActor)return {ok:false,code:'NO_FIXTURE'};fixtureActor.hp=1;const result=loot.newLife(fixtureActor);if(!result.ok)return result;fixtureActor.hp=0;fixtureClaim=loot.prepareDeath(fixtureActor,player.getMonsterRewardContext(S.zone),combatRuntime.sequenceRng(rolls));return fixtureClaim},
   inspectFixture:()=>fixtureActor?loot.inspect(fixtureActor):null,
   definitions:()=>({monsters:window.AstraeonMonsterDefinitions.definitions,tables:window.AstraeonDropTables.definitions}),validate:id=>window.AstraeonLootResolution.validateReference(id)
  });
