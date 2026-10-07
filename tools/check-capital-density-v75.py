@@ -19,7 +19,14 @@ for name in changed:
 def stats(items):
  neighborhood={name:Polygon(o['outline']) for name,o in items.items() if 50<o['center'][0]<206 and 82<o['center'][1]<239};near=[min(poly.distance(other) for owner,other in neighborhood.items() if owner!=name) for name,poly in neighborhood.items()]
  return {'homes':len(neighborhood),'medianNearestFacadeGap':statistics.median(near)}
-actors=[a for o in s['objects'] for a in o.get('walkers',[])];assert len(actors)==28
+actors=[a for o in s['objects'] for a in o.get('walkers',[])]
+life_path=R/'docs/review/wayfarer-capital-v76/property-frontages/plaza-life-authoring.json'
+life=json.loads(life_path.read_text()) if life_path.exists() else None
+if life:
+ assert life['beforeWalkerCount']==28 and life['newWalkerRecords']==8
+ assert len(actors)==p['ambientPopulation']==life['afterWalkerCount']==36
+ assert {a['id'] for a in actors if a['id'].startswith('capital-plaza-life-')}=={a['id'] for a in life['walkers']}
+else:assert len(actors)==28
 report={'sourceSHA256':hashlib.sha256(raw).hexdigest(),'beforeSHA256':base['sourceSHA256'],'beforeNeighborhood':stats(base['houses']),'afterNeighborhood':stats(now),'movedModules':len(refinement['moves']),'priorPerimeterTransfers':32,'infillHomes':len(refinement.get('added',[])),'houses':len(now),'ambientResidents':len(actors),'minimumChangedVisibleGap':min(a['visibleGap'] for a in gaps),'changedFrontages':gaps,'pass':True}
 if p.get('ro3StreetScaleRefinement'):report['streetScale']={k:refinement[k] for k in ('minimumPublicStreetWidth','districtStreetWidth','circuitWidth','ceremonialWidths','removedThroughLanes','buildingModelsRescaled')}
 (O/'density-review.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='changedFrontages'}))

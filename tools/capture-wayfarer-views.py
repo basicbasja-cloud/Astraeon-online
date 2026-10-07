@@ -126,6 +126,7 @@ def capture(url, output, names, zoom=None, yaw=None, pitch=None, capture_scale=N
             page.wait_for_function(
                 'document.getElementById("world") && window.AstraeonQA && '
                 'window.AstraeonQA.snapshot().renderer', timeout=startup_timeout_ms)
+            page.wait_for_function('!window.AstraeonWorldStreaming?.zone || AstraeonWorldStreaming.readyForMovement',timeout=startup_timeout_ms)
             page.wait_for_timeout(450)
             if zoom is not None:
                 current_zoom=page.evaluate('AstraeonQA.snapshot().renderer.cameraProfile.zoom')
@@ -139,9 +140,21 @@ def capture(url, output, names, zoom=None, yaw=None, pitch=None, capture_scale=N
                 current_pitch=page.evaluate('AstraeonQA.snapshot().renderer.cameraProfile.pitch')
                 rect=page.locator('#world').bounding_box();px=rect['x']+rect['width']/2;py=rect['y']+rect['height']/2
                 page.keyboard.down('Shift');page.mouse.move(px,py);page.mouse.down(button='right');page.mouse.move(px,py+(pitch-current_pitch)*rect['height']/300,steps=8);page.mouse.up(button='right');page.keyboard.up('Shift');page.wait_for_timeout(800)
+            targets={key:value for key,value in [('zoom',zoom),('yaw',yaw),('pitch',pitch)] if value is not None}
+            if targets:
+                # Ordinary drags can set different camera targets before their
+                # shared easing completes. Verify every final target together.
+                page.wait_for_function('(targets)=>Object.entries(targets).every(([key,n])=>Math.abs(AstraeonView.cameraProfile[key]-n)<.05)',arg=targets,timeout=startup_timeout_ms)
             if capture_scale is not None:
                 page.evaluate('(ratio)=>AstraeonSpatialView.renderer.setPixelRatio(ratio)', capture_scale)
                 page.wait_for_timeout(450)
+            # Geometry is transported separately from authoring now. A source
+            # label alone cannot prove the screenshot used the current meshes.
+            page.wait_for_function('!window.AstraeonWorldStreaming?.zone || AstraeonWorldStreaming.readyForMovement',timeout=startup_timeout_ms)
+            stream=page.evaluate('window.AstraeonWorldStreaming?.zone ? AstraeonWorldStreaming.snapshot() : null')
+            if stream:
+                assert stream['sourceSHA256']==source_hash, 'Rebuild current source transport before capturing'
+                assert not set(stream['required'])-set(stream['loaded']), 'Visible render chunks are missing'
             snap = page.evaluate('window.AstraeonQA.snapshot()')
             assert abs(snap['save']['x']-x)<.05 and abs(snap['save']['y']-y)<.05, (name,'Blocked capture fixture fell back to a different position',[x,y],snap['save']['x'],snap['save']['y'])
             culling = None
@@ -183,6 +196,7 @@ def capture(url, output, names, zoom=None, yaw=None, pitch=None, capture_scale=N
                       'sourceSHA256': source_hash,
                       'runtimeSHA256': runtime_hashes,
                       'groundShadowSHA256': ground_hash,
+                      'streaming': stream,
                       'architectureRevision': architecture_revision,
                       'actual': [snap['save']['x'], snap['save']['y']],
                       'layout': snap['town']['layout'],

@@ -55,9 +55,9 @@
         0.4000000059604645
       ],
       "after": [
-        0.47,
-        0.47,
-        0.415
+        0.44,
+        0.415,
+        0.355
       ]
     },
     "frontageGlazing": {
@@ -107,6 +107,30 @@
         0.285,
         0.075
       ]
+    },
+    "houseApronPaving": {
+      "before": [
+        0.5699999928474426,
+        0.5149999856948853,
+        0.4050000011920929
+      ],
+      "after": [
+        0.47,
+        0.445,
+        0.375
+      ]
+    },
+    "grass": {
+      "before": [
+        0.41999998688697815,
+        0.5099999904632568,
+        0.3199999928474426
+      ],
+      "after": [
+        0.16,
+        0.245,
+        0.085
+      ]
     }
   },
   "lighting": {
@@ -116,14 +140,14 @@
     },
     "ambient_color_json": {
       "before": "[1.04, 1.0, 0.9]",
-      "after": "[1.0, 1.015, 1.03]"
+      "after": "[1.015, 1.015, 1.015]"
     },
     "shadow_color": {
       "before": "#514d44",
-      "after": "#555766"
+      "after": "#454843"
     }
   },
-  "noTexturesOrGeometryChanged": true,
+  "noTexturesOrGeometryChanged": false,
   "cameraUnchanged": true,
   "visualAcceptance": "Pending gameplay comparison; palette is an authored choice, not a measured RO3 value",
   "iterations": [
@@ -140,6 +164,27 @@
         0.06
       ],
       "basis": "Source-matched 910x512 gameplay showed the unmasked native color too pale and gray beside RO3 01:40/03:35 timber."
+    },
+    {
+      "materials": {
+        "publicTownStone": [
+          0.44,
+          0.415,
+          0.355
+        ],
+        "houseApronPaving": [
+          0.47,
+          0.445,
+          0.375
+        ],
+        "grass": [
+          0.16,
+          0.245,
+          0.085
+        ]
+      },
+      "basis": "Warmer stone, neutral shadows and muted planted edges guided by RO3 street 00:50; gameplay acceptance pending."
     }
-  ]
+  ],
+  "originalTextureBytesUnchanged": true
 }

@@ -119,10 +119,14 @@ for o in objects.values():
     if o['id'] == 'capital-beta-frontage-groundcover': continue
     for a in o['parts']:
         if a['role'] == 'solid' and min(v[2] for v in a['vertices']) < 1:
-            feet.append(MultiPoint([v[:2] for v in a['vertices']]).convex_hull.buffer(.20))
+            footprint=MultiPoint([v[:2] for v in a['vertices']]).convex_hull
+            # Sixteen-sided rounded contacts remain outside the original .20
+            # clearance (the minimum radius is .21*cos(pi/16) > .20).
+            feet.append(footprint.buffer(.21,quad_segs=4) if previous else footprint.buffer(.20))
         low = [v[:2] for v in a['vertices'] if v[2] < 1.05]
         if len(low) >= 3 and a['material'] not in ('grass', 'leaf', 'flowerRose', 'vergeGroundcover', 'vergeGroundcoverShade'):
-            props.append(MultiPoint(low).convex_hull.buffer(.12))
+            footprint=MultiPoint(low).convex_hull
+            props.append(footprint.buffer(.126,quad_segs=4) if previous else footprint.buffer(.12))
 keepout = unary_union(entries + feet + props + [roads.buffer(.12)])
 green = region(old_lawns['pieces']).difference(keepout)
 for i, q in enumerate(patches):
@@ -134,12 +138,16 @@ for i, q in enumerate(green.geoms if hasattr(green, 'geoms') else [green]):
     if q.area < .8: continue
     block = next(j for j, b in enumerate(blocks) if Polygon(b['outer'], b['holes']).buffer(.0001).covers(q))
     pieces.append({'id': f'plaza-edge-lawn-{i:03}', 'block': block, 'material': 'grass', 'area': q.area, **mesh(q, .047)})
-assert sum(len(q['faces']) for q in pieces) < 12500
+assert sum(len(q['faces']) for q in pieces) < 12500,sum(len(q['faces']) for q in pieces)
 new_lawns = {**old_lawns, 'pieces': pieces, 'area': sum(q['area'] for q in pieces),
              'triangles': sum(len(q['faces']) for q in pieces), 'plazaEnclosureRevision': True,
              'previousCandidateArea': old_lawns['area']}
 pre_feather_lawns=None
 if previous:
+    new_lawns['contactTessellation']={'quadSegments':4,'footRadius':.21,'propRadius':.126,
+        'minimumFootRadius':.21*math.cos(math.pi/16),'retainedFootClearance':.20,
+        'minimumPropRadius':.126*math.cos(math.pi/16),'retainedPropClearance':.12,
+        'unfeatheredTriangleBudget':12500}
     new_lawns.pop('nativeEdgeOpacity',None);new_lawns.pop('edgeBlending',None)
     pre_feather_lawns=copy.deepcopy(new_lawns)
     new_lawns=runpy.run_path(str(R/'tools/plan-capital-grass-feather-v76.py'))['feather_plan'](new_lawns)

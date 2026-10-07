@@ -11,6 +11,10 @@ base_raw=subprocess.check_output(['git','show','d7f9f15:world/v3/wayfarer-spatia
 assert hashlib.sha256(base_raw).hexdigest()=='ad5956f55b4a4d1fb00c665754f5bc28f13b001a7f1456bf0e6c3e01894155dc'
 base=json.loads(base_raw);raw=(R/'world/v3/wayfarer-spatial.json').read_bytes();now=json.loads(raw)
 author=json.loads((O/'authoring.json').read_text());tone=json.loads((O/'tone.json').read_text())
+daylight_path=O/'ro3-daylight-authoring.json'
+daylight=json.loads(daylight_path.read_text()) if daylight_path.exists() else None
+life_path=O/'plaza-life-authoring.json'
+life=json.loads(life_path.read_text()) if life_path.exists() else None
 changed={p['id'] for p in author['properties']};assert len(changed)==46
 landscape=json.loads((O/'landscape-authoring.json').read_text())
 tree_parts={t['id']:set(t['parts']) for t in landscape['trees']};assert len(tree_parts)==78
@@ -55,7 +59,8 @@ if plaza:
 for key in base:
     if key not in ('objects','materials','lighting') and not (plaza and key=='terrain'):assert now[key]==base[key],key
 old_objects={o['id']:o for o in base['objects']};new_objects={o['id']:o for o in now['objects']}
-assert old_objects.keys()==new_objects.keys()
+assert new_objects.keys()-old_objects.keys()==({daylight['grassOwner']} if daylight else set())
+assert not old_objects.keys()-new_objects.keys()
 solids=doors=unmodified_parts=0;walkers=[]
 for name,old in old_objects.items():
     new=new_objects[name]
@@ -63,6 +68,7 @@ for name,old in old_objects.items():
         if key!='parts':
             expected=old[key]
             if plaza and key=='walkers':expected=[plaza['walker']['after'] if w['id']==plaza['walker']['id'] else w for w in expected]
+            if life and name==life['owner'] and key=='walkers':expected=expected+life['walkers']
             assert new[key]==expected,(name,key)
     for role in ('solid','door'):
         select=lambda p: p['role']=='solid' if role=='solid' else p['id'].endswith('-door-leaf')
@@ -99,18 +105,33 @@ for name,old in old_objects.items():
             else:assert before_parts==after_parts,name
             unmodified_parts+=len(old['parts'])-len(allowed)
     walkers.extend(new.get('walkers',[]))
-assert len(walkers)==28
-assert base['materials'].keys()==now['materials'].keys()
+assert len(walkers)==28+(life['newWalkerRecords'] if life else 0)
+assert len([a for a in walkers if not a['id'].startswith('capital-plaza-life-')])==28
+assert now['materials'].keys()-base['materials'].keys()==(daylight['newMaterials'].keys() if daylight else set())
+assert not base['materials'].keys()-now['materials'].keys()
 for name,old in base['materials'].items():
     expected=dict(old)
     if name in tone['materials']:
         expected['color']=tone['materials'][name]['after']
         assert all(abs(a-b)<1e-6 for a,b in zip(expected['color'],now['materials'][name]['color'])),name
         expected['color']=now['materials'][name]['color']
+    if daylight and name=='grass':
+        # Only the recorded grain normalization opts into the native palette;
+        # the original image, tile, world scale and UVs are independently kept.
+        assert old['texture']==daylight['materialsBefore'][name]['texture']
+        expected['texture']=daylight['materialsAfter'][name]['texture']
     assert expected==now['materials'][name],name
+if daylight:
+    for name,expected in daylight['newMaterials'].items():assert now['materials'][name]==expected,name
 assert base['lighting']['sun']['cast']==now['lighting']['sun']['cast']
-assert base['lighting']['sun']['strength']==now['lighting']['sun']['strength']
-assert base['lighting']['ambient']==now['lighting']['ambient']
+if daylight:
+    expected={k:v for k,v in daylight['lightingAfter'].items() if k!='groundShadow'}
+    assert expected=={k:v for k,v in now['lighting'].items() if k!='groundShadow'}
+    assert daylight['lightingBefore']['sun']['strength']==base['lighting']['sun']['strength']
+    assert daylight['lightingBefore']['ambient']==base['lighting']['ambient']
+else:
+    assert base['lighting']['sun']['strength']==now['lighting']['sun']['strength']
+    assert base['lighting']['ambient']==now['lighting']['ambient']
 assert now['lighting']['sun']['color']==json.loads(tone['lighting']['sun_color_json']['after'])
 assert now['lighting']['ambientColor']==json.loads(tone['lighting']['ambient_color_json']['after'])
 assert now['lighting']['shadowColor']==tone['lighting']['shadow_color']['after']
@@ -118,14 +139,14 @@ assert now['lighting']['groundShadow']['resolution']==base['lighting']['groundSh
 assert now['lighting']['groundShadow']['geometryDigest']!=base['lighting']['groundShadow']['geometryDigest']
 def triangles(source):return sum(len(f)-2 for o in source['objects'] for p in o['parts'] if p.get('visible',True) for f in p['faces'])
 extra=triangles(now)-triangles(base)
-assert extra==author['addedTriangles']+landscape['addedTriangles']+(plaza['additionalTriangles'] if plaza else 0)
+assert extra==author['addedTriangles']+landscape['addedTriangles']+(plaza['additionalTriangles'] if plaza else 0)+(daylight['grassTriangles'] if daylight else 0)
 assert 0<author['addedTriangles']<author['triangleBudget']
 assert 0<landscape['addedTriangles']<landscape['triangleBudget']
 report={'sourceSHA256':hashlib.sha256(raw).hexdigest(),'baselineSHA256':hashlib.sha256(base_raw).hexdigest(),
         'changedProperties':len(changed),'uses':dict(collections.Counter(p['use'] for p in author['properties'])),
         'unchangedOtherMeshParts':unmodified_parts,'preservedSolids':solids,'preservedDoorLeaves':doors,
-        'preservedWalkers':len(walkers),'publicAndPrivateFloorsExactlyPreserved':not bool(plaza),
-        'allAnchorsExactlyPreserved':not bool(plaza),'existingTextureSpecificationsExactlyPreserved':True,
+        'preservedWalkers':28,'totalWalkers':len(walkers),'publicAndPrivateFloorsExactlyPreserved':not bool(plaza),
+        'allAnchorsExactlyPreserved':not bool(plaza),'existingTextureSpecificationsExactlyPreserved':not bool(daylight),
         'addedStaticTriangles':extra,'staticTriangleIncreasePercent':round(extra/triangles(base)*100,3),
         'revisedTreeCrowns':len(tree_parts),'treeRootsAndAllOtherTreePartsExactlyPreserved':True,
         'floorAtlasResolution':4096,'exportBytes':len(raw),'pass':True,
@@ -134,4 +155,9 @@ if plaza:report['plazaEnclosure']={'translatedWholeProperties':len(moves),'priva
     'retainedRoadWidths':plaza['retainedRoadWidths'],'editedPublicFloors':plaza['editedPublicFloors'],
     'maximumTranslationRoundingError':max(translation_errors),
     'allOtherFloorsAndAnchorsExactlyPreserved':True,'reroutedExistingResident':plaza['walker']['id']}
+if daylight:report['daylight']={'lighting':expected,'nativeLawnGrainNormalization':True,
+    'allOriginalTextureBytesAndResolutionsRetained':daylight['originalTextureBytesExactlyPreserved'],
+    'addedDecorativeGrassTriangles':daylight['grassTriangles'],'additionalGameplayObstacles':0}
+if life:report['plazaActivity']={'newResidents':life['newWalkerRecords'],'allOriginalResidentRecordsPreserved':True,
+    'existingCharacterArtworkReused':True,'newImagesOrStaticTriangles':0}
 (O/'preservation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

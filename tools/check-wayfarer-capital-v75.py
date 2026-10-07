@@ -93,6 +93,15 @@ for owner in s['objects']:
   assert p.get('betaReferenceRefinement')
   assert all(a['role']=='decorative' and not a.get('shadow') and a['material']=='grass' and all(abs(v[2]-.047)<.00001 for v in a['vertices']) for a in owner['parts'])
   continue
+ if owner['id']=='capital-grass-ingress-v76':
+  # This explicitly planned decorative owner has no trunk or collision core.
+  # Its roots, native meshes, UVs and entrance clearances have a separate check.
+  ingress=json.loads((ROOT/'docs/review/wayfarer-capital-v76/property-frontages/grass-ingress-plan.json').read_text())
+  assert owner['id']==ingress['owner'] and not owner['portals'] and not owner['lights']
+  assert {a['id'] for a in owner['parts']}=={a['id'] for a in ingress['pieces']}
+  assert all(a['role']=='decorative' and not a.get('shadow') for a in owner['parts'])
+  assert sum(len(f)-2 for a in owner['parts'] for f in a['faces'])==ingress['triangles']<ingress['triangleBudget']
+  continue
  trunk=next(a for a in owner['parts'] if a['role']=='solid');poly=MultiPoint([v[:2] for v in trunk['vertices']]).convex_hull
  bounds=poly.bounds
  conflicts={name for name,body in physical if body.bounds[0]<bounds[2] and body.bounds[2]>bounds[0] and body.bounds[1]<bounds[3] and body.bounds[3]>bounds[1] and poly.intersection(body).area>.005}

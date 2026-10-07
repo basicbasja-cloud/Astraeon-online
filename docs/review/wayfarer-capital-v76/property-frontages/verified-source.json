@@ -1,73 +1,84 @@
 {
-  "sourceSHA256": "e97f4333ac193196cf61b68765f3218d9fc98d1c12433c03b875187f5c3ce114",
-  "nativeSHA256": "59118c5925570f6f674673ba975cf44defe3bf312f7f21639165fd741b332db6",
+  "sourceSHA256": "1a4efa50e8cb607bb40d4c15d12d834131b8cd7ca6ed699858ce5826b2afb771",
+  "nativeSHA256": "3afb39aef2fdfa9952aff49e71bf9a7f02d71f79f4517fef9d06acd04965fbac",
   "steps": [
     {
       "name": "building-light",
       "exitCode": 0,
-      "seconds": 186.8
+      "seconds": 201.2
     },
     {
       "name": "foliage-light",
       "exitCode": 0,
-      "seconds": 102.9
+      "seconds": 98.0
     },
     {
       "name": "ground-light",
       "exitCode": 0,
-      "seconds": 440.6
+      "seconds": 494.9
     },
     {
       "name": "native-parity",
       "exitCode": 0,
-      "seconds": 77.1
+      "seconds": 90.2
     },
     {
       "name": "geometry",
       "exitCode": 0,
-      "seconds": 14.3
+      "seconds": 13.8
     },
     {
       "name": "assembly",
       "exitCode": 0,
-      "seconds": 16.6
+      "seconds": 18.8
     },
     {
       "name": "density",
       "exitCode": 0,
-      "seconds": 17.0
+      "seconds": 16.3
     },
     {
       "name": "traversal",
       "exitCode": 0,
-      "seconds": 7.1
+      "seconds": 6.0
     },
     {
       "name": "schemas",
       "exitCode": 0,
-      "seconds": 150.7
+      "seconds": 150.6
     },
     {
       "name": "node-checks",
       "exitCode": 0,
-      "seconds": 12.7
+      "seconds": 17.7
     },
     {
       "name": "blueprint",
       "exitCode": 0,
-      "seconds": 8.6
+      "seconds": 8.4
     },
     {
       "name": "property-preservation",
       "exitCode": 0,
-      "seconds": 19.2
+      "seconds": 24.3
     },
     {
       "name": "landscape",
       "exitCode": 0,
-      "seconds": 15.6
+      "seconds": 18.3
+    },
+    {
+      "name": "grass-ingress",
+      "exitCode": 0,
+      "seconds": 19.7
+    },
+    {
+      "name": "plaza-life",
+      "exitCode": 0,
+      "seconds": 9.5
     }
   ],
   "visualAcceptance": "Pending gameplay inspection",
-  "additionalNativeMetadataParity": "plan-metadata-parity.log"
+  "lightingStagesReusedFrom": "a8872a1daf7caa5076e2fa2cf5f52b55a75597a833e85d4b01bd109717b216a3",
+  "lightingReuseProof": "plaza-life-check.json: full preceding export reconstructed byte for byte after removing only the eight declared residents; original bake hash verified"
 }

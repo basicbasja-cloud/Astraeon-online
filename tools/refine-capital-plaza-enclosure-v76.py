@@ -10,6 +10,8 @@ assert s.get('capital_natural_landscape')
 data=json.loads((O/'plaza-enclosure-plan.json').read_text())
 p,revision,lawns=data['plan'],data['revision'],data['lawns']
 assert s.get('capital_plaza_enclosure',0)==revision.get('iteration',1)-1,'Apply each inset once'
+previous_authoring=json.loads((O/'plaza-enclosure-authoring.json').read_text()) if revision.get('iteration',1)>1 else None
+if previous_authoring:assert previous_authoring.get('iteration',1)==revision['iteration']-1
 assert hashlib.sha256((R/'world/v3/wayfarer-spatial.json').read_bytes()).hexdigest()==revision['beforeSourceSHA256']
 exporter=runpy.run_path(str(R/'tools/export-world-v3.py'))
 before=exporter['export'](s)
@@ -107,7 +109,7 @@ if data.get('preFeatherLawns'):
 (O/'natural-lawns-plan.json').write_text(json.dumps(lawns,indent=2)+'\n')
 for name in ('native-plan.json','plan.json'):
     (O.parent/name).write_text(json.dumps(p,indent=2)+'\n')
-revision.update(additionalTriangles=curb_delta+revision.get('previousRevision',{}).get('additionalTriangles',0),grassTriangleChange=new_lawn_tris-old_lawn_tris,
+revision.update(additionalTriangles=curb_delta+(previous_authoring['additionalTriangles'] if previous_authoring else 0),grassTriangleChange=new_lawn_tris-old_lawn_tris,
                 triangleBudget=2000,unchangedObjectsVerified=len(old)-len(allowed),residentCount=28)
 (O/'plaza-enclosure-authoring.json').write_text(json.dumps(revision,indent=2)+'\n')
 bpy.ops.wm.save_as_mainfile(filepath=str(R/'authoring/wayfarer-spatial.blend'),compress=True)

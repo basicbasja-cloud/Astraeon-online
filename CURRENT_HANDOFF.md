@@ -1,6 +1,50 @@
 # ASTRAEON — capital architecture revision 76
 
-## Mobile infrastructure interruption — 7 October 2026
+## Latest visual feedback — 7 October 2026
+
+The user rejects the current flat, soulless feel versus RO3. Camera, warmer
+paving, grass and eight citizens are a verified checkpoint, not visual acceptance.
+Next original World work must address street-scale layering, meaningful owned
+frontage/feature areas, facade/window depth, stronger light-plane contrast and
+canopy/contact shadows. Compare specific RO3 scenes and create a bounded native
+street-detail pass; do not substitute additional scattered people for this work.
+Whole-city resizing remains authorized. Preserve the existing checkpoint before
+new native changes and keep the source/lighting/streamed transport synchronized.
+
+## Current state — RO3 refinement resumed, 7 October 2026
+
+This section supersedes the historical recovery/resume instructions below.
+Branch: codex/world-pipeline-v3-proof. Existing mobile gate passed on the preceding
+city; physical iPhone Safari remains PENDING. Original World work has resumed.
+
+Second plaza inset is APPLIED: four whole fronts16 units inward total, joined
+terraces/curbs and all entrances preserved. Rounded planting contacts were
+retessellated within the unchanged12,500 guard. Current93 lawns use14,177
+triangles, including8,386 feather triangles. Native warmer stone/neutral shadow
+lighting, original-image lawn normalization and1,200 small grounded grass tufts
+are authored and checked. The new gameplay camera is45°/10°/110, FOV15, selected
+from fresh ordinary-control paired studies. Eight original plaza citizens were
+added; all28 existing residents remain (36 total). No new character art, static
+triangles or collision objects were added for the activity.
+
+Current export SHA256: 1a4efa50e8cb607bb40d4c15d12d834131b8cd7ca6ed699858ce5826b2afb771
+Current native SHA256: 3afb39aef2fdfa9952aff49e71bf9a7f02d71f79f4517fef9d06acd04965fbac
+All15 native/source stages pass. The first three lighting stages are reused from
+the fully verifieda8872a1d source: plaza-life-check reconstructs that export byte
+for byte after removing only the eight declared citizens, and checks its bake.
+Transport regenerated and checked:75 chunks,25,237,098 compressed bytes,
+925,077 authored draw triangles/33,345,303 draw attribute values exact;
+73,728 collision/elevation samples exact. Cache92. All prior generations/evidence
+are retained. Latest captures run under property-frontages/ro3-plaza-life/.
+
+Next: inspect those fresh views, exercise the selected camera and current city
+through ordinary mobile traversal/field/save/offline checks, update acceptance,
+then commit/push a documented milestone. Do not rerun one-shot authors.
+Whole-city resizing/reorganization remains authorized if broader screenshots
+justify it. Native art/composition must be reviewed against the supplied RO3
+frames; passing counts or route tests alone does not claim artistic equivalence.
+
+## Historical mobile interruption — superseded by the current state above
 
 User recovery request explicitly authorizes checkpoint commits and pushes on the
 existing branch, then profiling and streaming of the current real city. This
@@ -217,3 +261,18 @@ particle/fine-blade detail and natural green ingress between paving stones along
 walk paths. Incorporate this into the original visual task immediately after the
 available-environment mobile gate. Keep camera comparison consistent, natural
 planting restrained and clear routes. Do not substitute streaming for this work.
+
+User reaffirmed whole-city resizing on7 October2026: if gameplay screenshots
+still do not meet RO3, estimate scale from local building/actor, street-width
+and adjacency relationships and resize/reorganize the whole city as needed.
+This remains authorized; no additional permission is required. Full map bounds
+are not established by the incomplete beta footage. Do not constrain the
+solution to the plaza inset if broader comparison warrants a city-wide change.
+
+### Camera angle steering — 7 October 2026
+
+The user explicitly reaffirmed that camera angle is important. Continue the RO3
+comparison with pitch, yaw and distance alongside city spacing; compare visible
+roof/façade balance, street depth and person-relative framing. Current55°/20°/125
+is a candidate calibration, not immutable or measured RO3 telemetry. Whole-city
+resize remains authorized if fresh screenshots justify it.

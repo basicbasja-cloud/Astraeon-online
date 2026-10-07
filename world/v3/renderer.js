@@ -94,7 +94,7 @@ function material(name,definition){
   const painted=spec&&name!=='bannerSilk';
   // The legacy timber swatch must not override its revised native color.
   // Lawn grain also needs enough contrast to read as planting at city distance.
-  const base=name==='timber'&&definition?.color?new THREE.Color().setRGB(...definition.color):palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=spec?.paletteDetail??(name==='water'?.18:name==='grass'?.72:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24),mean=spec?.meanLinearRGB;
+  const base=(name==='timber'||spec?.paletteNative)&&definition?.color?new THREE.Color().setRGB(...definition.color):palette[name]?new THREE.Color(palette[name]):definition?.color?new THREE.Color().setRGB(...definition.color):new THREE.Color('#b6a57f'),detail=spec?.paletteDetail??(name==='water'?.18:name==='grass'?.72:spec?.alphaCutoff ? .42 :/glass/i.test(name)?.48:/wood|oak|timber/i.test(name)?.30:/slate|roof|terracotta/i.test(name)?.32:.24),mean=spec?.meanLinearRGB;
   m.onBeforeCompile=shader=>{
    shader.uniforms.paintBase={value:base};shader.uniforms.paintDetail={value:detail};shader.uniforms.paintMean={value:new THREE.Vector3(...(mean||[1,1,1]))};shader.uniforms.occludingOwners=occludingOwners;
    if(spec?.ripple){shader.uniforms.waterTime=waterTime;shader.uniforms.rippleSettings={value:new THREE.Vector3(spec.ripple.frequency,spec.ripple.speed,spec.ripple.amplitude)}}

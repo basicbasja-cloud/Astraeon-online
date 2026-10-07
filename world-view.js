@@ -6,7 +6,7 @@ const scale=Object.freeze({humanoid:92,npc:.94,boss:176,monster:[66,83,52,77,58,
 const legacyBasis=Object.freeze({xx:48,xy:14,yx:-32,yy:22});
 // Calibrated against the supplied RO3 beta street/fountain frames. One default
 // drives initial projection, control targets and double-click resets.
-const cameraBaseline=Object.freeze({fov:15,pitch:55,yaw:20,zoom:125});
+const cameraBaseline=Object.freeze({fov:15,pitch:45,yaw:10,zoom:110});
 function ragnarokCamera({fov,pitch,yaw,zoom}){
  const p=pitch*Math.PI/180,a=yaw*Math.PI/180,c=Math.cos(p),s=Math.sin(p),ca=Math.cos(a),sa=Math.sin(a),distance=zoom/2;
  return {kind:'ragnarok',fov,pitch,yaw,zoom,basis:{xx:35*ca/c,xy:35*Math.tan(p)*sa,yx:-35*sa/c,yy:35*Math.tan(p)*ca},depth:{x:-c*sa/distance,y:-c*ca/distance,z:-s/distance}};
