@@ -69,7 +69,8 @@ with sync_playwright() as p:
     assert version['name'] == current_cache, version
     for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/wayfarer-spatial.json',
                      'progression-config.js', 'progression.js', 'stats.js', 'character-state.js',
-                     'player-state.js', 'save-state.js', 'skill-definitions.js', 'skill-tree.js', 'skill-runtime.js']:
+                     'player-state.js', 'save-state.js', 'skill-definitions.js', 'skill-tree.js', 'skill-runtime.js',
+                     'combat-resolution-config.js', 'combat-resolution.js', 'combat-runtime.js']:
         assert any(url.endswith('/' + filename + '?v=' + current_version) for url in version['urls']), filename
     world = json.loads((ROOT / 'world/v3/wayfarer-spatial.json').read_text())
     art = {material['texture']['file'] for material in world['materials'].values()
@@ -118,7 +119,7 @@ with sync_playwright() as p:
     for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment',
                   'baseLevel', 'baseExp', 'baseJobLevel', 'baseJobExp', 'statPoints', 'skillPoints',
                   'STR', 'AGI', 'VIT', 'INT', 'DEX', 'LUK', 'maxHP', 'maxSP', 'resourceBase',
-                  'learnedSkills', 'skillPointSpending', 'actionLoadout', 'skillNodes', 'legacySkillControls']:
+                  'learnedSkills', 'skillPointSpending', 'statPointSpending', 'actionLoadout', 'skillNodes', 'legacySkillControls']:
         assert field in before and after[field] == before[field], (field, before.get(field), after.get(field))
     assert page.evaluate('AstraeonProgressionDev.compileAction(0).node') == 'qi'
     ground = world['lighting']['groundShadow']

@@ -389,9 +389,10 @@ function resolveCombat(dt){
    const request=combatRuntime.buildInput({attackerLevel:S.baseLevel,attackerStats:derived,defenderLevel:ZONES[S.zone].level,defenderStats:m.combatStats,action:d,damageType});
    if(combatTestPolicy){Object.assign(request.attacker.stats={...request.attacker.stats},combatTestPolicy.attackerStats);Object.assign(request.defender.stats={...request.defender.stats},combatTestPolicy.defenderStats);Object.assign(request.action,combatTestPolicy.action)}
    const result=combatResolver.resolveAttack(request,{rng:combatTestPolicy?.rolls?combatRuntime.sequenceRng(combatTestPolicy.rolls):combatRng,config:combatTestPolicy?.config});
-   if(combatInspect){combatResults.push({target:m.name,hpBefore:m.hp,result});if(combatResults.length>64)combatResults.shift()}
+   const inspection=combatInspect?{target:m.name,hpBefore:m.hp,hpAfter:m.hp,result,hpApplication:combatResolver.applyCombatResult(m.hp,result,m.maxHp)}:null;
+   if(inspection){combatResults.push(inspection);if(combatResults.length>64)combatResults.shift()}
    if(!result.ok||result.finalDamage===0)continue;
-   hit(m,result.finalDamage,d.color,result);if(result.statusCandidates.length)applyContact(m,d,origin,result.finalDamage);if(animations.archetype(S.cls)==='warrior'&&d.cost===0)S.energy=Math.min(S.maxEnergy,S.energy+2)
+   hit(m,result.finalDamage,d.color,result);if(inspection)inspection.hpAfter=m.hp;if(result.statusCandidates.length)applyContact(m,d,origin,result.finalDamage);if(animations.archetype(S.cls)==='warrior'&&d.cost===0)S.energy=Math.min(S.maxEnergy,S.energy+2)
   }
   if(d.tags.includes('spirit')&&a&&window.AstraeonCombat.contains(d,a.origin,a.direction,S,d.shape==='circle'?a.origin:a.center)){const before=S.hp;S.hp=Math.min(S.maxHp,S.hp+5);spark(S.x,S.y,d.color,5,14);if(location.search.includes('qa=1'))nodeEvents.push({time:now,skill:d.id,node:'spirit',healed:S.hp-before})}
   const center=e.target||(d.shape==='ground'?a?.center:a?.origin)||S;fx.push({kind:d.shape==='ground'||d.shape==='circle'?'ring':'slash',x:center.x,y:center.y,z:22,direction:e.projectile?.dir||a?.direction||playerTransform.facingDirection,color:d.color,life:.34,maxLife:.34});
