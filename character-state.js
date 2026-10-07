@@ -8,6 +8,9 @@ function normalize(raw={},config=window.AstraeonProgressionConfig){
  const c=config.progression,primary=config.primary;
  const state={baseLevel:sane(raw.baseLevel,c.base.initialLevel,1,c.storedLevelLimit),baseExp:sane(raw.baseExp,0),baseJobLevel:sane(raw.baseJobLevel,c.job.initialLevel,1,c.job.cap),baseJobExp:sane(raw.baseJobExp,0),statPoints:sane(raw.statPoints,c.base.initialPoints),skillPoints:sane(raw.skillPoints,c.job.initialPoints)};
  for(const key of primary.keys)state[key]=sane(raw[key],primary.initial,primary.initial,primary.cap);
+ // v4 and earlier used initial=1, cost=1. Never infer a refund using today's tuned cost.
+ const historicalPaid=primary.keys.reduce((sum,key)=>sum+Math.max(0,state[key]-1),0);
+ state.statPointSpending=historicalPaid===0?0:Object.hasOwn(raw,'statPointSpending')?(Number.isSafeInteger(raw.statPointSpending)&&raw.statPointSpending>=0?raw.statPointSpending:0):historicalPaid;
  Object.assign(state,window.AstraeonSkillTree.normalize(raw));
  state.resourceBase={maxHP:Number.isFinite(raw.resourceBase?.maxHP)?raw.resourceBase.maxHP:0,maxSP:Number.isFinite(raw.resourceBase?.maxSP)?raw.resourceBase.maxSP:0};
  return state;
@@ -49,11 +52,11 @@ function create(raw={},options={}){
    p.integer(amount,'allocation',1);const cost=p.integer(amount*config.primary.pointCost,'allocation cost',1);
    if(cost>state.statPoints)throw new RangeError('Insufficient Stat Points');
    const value=p.integer(state[stat]+amount,stat,config.primary.initial,config.primary.cap);
-   commit({...state,[stat]:value,statPoints:state.statPoints-cost});return snapshot();
+   commit({...state,[stat]:value,statPoints:state.statPoints-cost,statPointSpending:p.integer(state.statPointSpending+cost,'stat expenditure')});return snapshot();
   },
   resetStats(){
-   const refund=config.primary.keys.reduce((total,key)=>total+(state[key]-config.primary.initial)*config.primary.pointCost,0);
-   const next={...state,statPoints:p.integer(state.statPoints+refund,'point balance')};for(const key of config.primary.keys)next[key]=config.primary.initial;
+   const refund=state.statPointSpending;
+   const next={...state,statPointSpending:0,statPoints:p.integer(state.statPoints+refund,'point balance')};for(const key of config.primary.keys)next[key]=config.primary.initial;
    commit(next);return snapshot();
   },
   setCurrentHP(value){currentHP=clampResource(value,derived.maxHP);return currentHP},setCurrentSP(value){currentSP=clampResource(value,derived.maxSP);return currentSP},

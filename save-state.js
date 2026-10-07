@@ -4,6 +4,9 @@
 const number=(value,fallback,min=0,max=Number.MAX_SAFE_INTEGER)=>Number.isFinite(value)?Math.max(min,Math.min(max,value)):fallback;
 const text=(value,fallback)=>typeof value==='string'?value:fallback;
 const version=4;
+ class UnsupportedSaveError extends Error{
+  constructor(saveVersion){super(`Save version ${saveVersion} requires a newer game (supported: ${version}).`);this.name='UnsupportedSaveError';this.code='UNSUPPORTED_SAVE_VERSION';this.saveVersion=saveVersion;this.supportedVersion=version}
+ }
 function backbone(raw,state){
  const canonical=window.AstraeonCharacter.normalize({...raw,baseLevel:number(raw.baseLevel,state.lv,1),baseExp:number(raw.baseExp,state.xp)});
  const modifiers=window.AstraeonPlayer.legacyModifiers(state);
@@ -22,6 +25,7 @@ function backbone(raw,state){
  return state;
 }
 function normalize(raw){
+ if(raw&&typeof raw==='object'&&raw.saveVersion>version)throw new UnsupportedSaveError(raw.saveVersion);
  if(!raw||typeof raw!=='object'||Array.isArray(raw)||typeof raw.name!=='string'||!raw.name.trim())return null;
  const state={...raw,saveVersion:version};
  for(const [key,fallback,min,max] of [['race',0,0,13],['cls',0,0,21],['path',-1,-1,1],['lv',1,1,999],['zone',0,0,4]])state[key]=Math.floor(number(raw[key],fallback,min,max));
@@ -45,5 +49,5 @@ function normalize(raw){
 }
 // Serialize getters as ordinary canonical data; runtime effect groups belong to the controller.
 function snapshot(state){return normalize(JSON.parse(JSON.stringify(state)))}
-window.AstraeonSave=Object.freeze({version,normalize,snapshot});
+window.AstraeonSave=Object.freeze({version,normalize,snapshot,UnsupportedSaveError});
 })();

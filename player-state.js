@@ -17,7 +17,7 @@ function attach(state,options={}){
  let legacySkillControls=state.legacySkillControls===true;
  Object.defineProperty(state,'actionLoadout',{enumerable:true,get:()=>Object.freeze([...actionLoadout])});
  Object.defineProperty(state,'legacySkillControls',{enumerable:true,get:()=>legacySkillControls});
- for(const key of ['learnedSkills','skillPointSpending'])Object.defineProperty(state,key,{enumerable:true,get:()=>character.snapshot()[key]});
+ for(const key of ['learnedSkills','skillPointSpending','statPointSpending'])Object.defineProperty(state,key,{enumerable:true,get:()=>character.snapshot()[key]});
  const keys=[...window.AstraeonCharacter.progressionKeys,...window.AstraeonProgressionConfig.primary.keys,'resourceBase','currentHP','currentSP','maxHP','maxSP'];
  const aliases={lv:'baseLevel',xp:'baseExp',hp:'currentHP',maxHp:'maxHP',energy:'currentSP',maxEnergy:'maxSP'};
  for(const [key,canonical] of [...keys.map(key=>[key,key]),...Object.entries(aliases)]){
