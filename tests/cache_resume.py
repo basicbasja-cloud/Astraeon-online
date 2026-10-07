@@ -49,11 +49,14 @@ with sync_playwright() as p:
       const old=await caches.open(cache);
       await old.put('./boot.js?v='+version,new Response('stale boot'));
     }''', {'cache': previous_cache, 'version': previous_version})
-    page.goto(args.url.rstrip('/') + '/index.html?qa=1', wait_until='networkidle', timeout=args.startup_timeout_ms)
+    page.goto(args.url.rstrip('/') + '/index.html?qa=1&dev=1', wait_until='networkidle', timeout=args.startup_timeout_ms)
     page.locator('#newname').fill('Cache Resume')
     page.locator('#create').click(timeout=args.startup_timeout_ms)
     page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
     page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().time>1')
+    page.evaluate('''()=>{const d=AstraeonProgressionDev;d.grantJobExp(30);d.addSkillPoints(4);
+      if(!d.learnSkill('rising-edge').ok||!d.learnSkill('sword-mastery').ok)throw Error('Skill fixture learning failed');
+      if(!d.assignSkill(0,'rising-edge').ok||!d.setSkillNode('rising-edge','qi').ok)throw Error('Skill fixture assignment failed');d.save();}''')
     page.evaluate('navigator.serviceWorker.ready')
     page.wait_for_function('navigator.serviceWorker.controller')
     version = page.evaluate('''async()=>{
@@ -66,7 +69,7 @@ with sync_playwright() as p:
     assert version['name'] == current_cache, version
     for filename in ['boot.js', 'style.css', 'world/v3/renderer.js', 'world/v3/wayfarer-spatial.json',
                      'progression-config.js', 'progression.js', 'stats.js', 'character-state.js',
-                     'player-state.js', 'save-state.js']:
+                     'player-state.js', 'save-state.js', 'skill-definitions.js', 'skill-tree.js', 'skill-runtime.js']:
         assert any(url.endswith('/' + filename + '?v=' + current_version) for url in version['urls']), filename
     world = json.loads((ROOT / 'world/v3/wayfarer-spatial.json').read_text())
     art = {material['texture']['file'] for material in world['materials'].values()
@@ -86,7 +89,7 @@ with sync_playwright() as p:
         page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
         page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
         before = page.evaluate('AstraeonQA.snapshot().save')
-        for field in ['name', 'cls', 'zone', 'lv', 'xp', 'inventory', 'equipment']:
+        for field in ['name', 'cls', 'zone', 'lv', 'xp', 'inventory', 'equipment', 'learnedSkills', 'skillPointSpending', 'actionLoadout', 'skillPoints']:
             assert before[field] == legacy[field], ('legacy progress lost', field)
         assert before['worldLayout'] == world['layoutId'], before['worldLayout']
         assert [before['x'], before['y']] == world['spawn'][:2], ('legacy arrival', before['x'], before['y'])
@@ -102,7 +105,7 @@ with sync_playwright() as p:
         page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
         page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
         before = page.evaluate('AstraeonQA.snapshot().save')
-        for field in ['name','cls','zone','lv','xp','inventory','equipment','gold','house','guild','quest','skillNodes']:
+        for field in ['name','cls','zone','lv','xp','inventory','equipment','gold','house','guild','quest','skillNodes','learnedSkills','skillPointSpending','actionLoadout','skillPoints']:
             assert before[field] == revised[field], ('blocked save lost progression',field)
         assert [before['x'],before['y']] == world['safeSpawn'][:2], ('blocked save did not recover',before['x'],before['y'])
         blocked_save_recovery = {'layout':world['layoutId'],'oldGap':[217.74,220.0925],
@@ -114,8 +117,10 @@ with sync_playwright() as p:
     after = page.evaluate('AstraeonQA.snapshot().save')
     for field in ['name', 'cls', 'zone', 'x', 'y', 'lv', 'xp', 'inventory', 'equipment',
                   'baseLevel', 'baseExp', 'baseJobLevel', 'baseJobExp', 'statPoints', 'skillPoints',
-                  'STR', 'AGI', 'VIT', 'INT', 'DEX', 'LUK', 'maxHP', 'maxSP', 'resourceBase']:
+                  'STR', 'AGI', 'VIT', 'INT', 'DEX', 'LUK', 'maxHP', 'maxSP', 'resourceBase',
+                  'learnedSkills', 'skillPointSpending', 'actionLoadout', 'skillNodes', 'legacySkillControls']:
         assert field in before and after[field] == before[field], (field, before.get(field), after.get(field))
+    assert page.evaluate('AstraeonProgressionDev.compileAction(0).node') == 'qi'
     ground = world['lighting']['groundShadow']
     ground_size = page.evaluate('''async file=>{
       const response=await fetch(file);

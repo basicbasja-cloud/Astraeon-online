@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ASTRAEON Core Spine developer harness</title>
 <link rel="icon" href="../icon.svg" type="image/svg+xml">
-<h1>Core Spine progression/stat harness</h1>
+<h1>Core Spine progression/stat/skill harness</h1>
 <p>Developer sandbox. Uses its own save key (<code>astraeon-progression-dev-v1</code>).</p>
 <p id="status" role="status"></p>
 <table><tbody id="summary"></tbody></table>
@@ -19,6 +19,17 @@
 <p><label>Current HP <input id="hp" type="number" value="100"></label> <button id="set-hp">Set HP</button>
 <label>Current SP <input id="sp" type="number" value="60"></label> <button id="set-sp">Set SP</button></p>
 <p><button id="save">Save</button> <button id="reload">Reload saved state</button></p>
+<h2>Base skill tree (developer only)</h2>
+<p><label>Class <select id="skill-class"><option value="0">Swordsman (legacy Warrior)</option><option value="12">Mage</option></select></label></p>
+<p><label>Skill <select id="skill-id"></select></label>
+<button id="learn-skill">Learn rank 1</button> <button id="rank-skill">Rank up</button>
+<button id="reset-skills">Debug reset/refund all skills</button></p>
+<p><label>Action slot (1–8) <input id="skill-slot" type="number" value="1" min="1" max="8"></label>
+<button id="assign-skill">Assign selected active</button> <button id="clear-slot">Clear slot</button></p>
+<p><label>Compatible Node <select id="skill-node"></select></label> <button id="set-node">Set Node</button></p>
+<h3>Definitions, ranks, prerequisites and learning gates</h3><pre id="skill-tree"></pre>
+<h3>Learned passive modifiers</h3><pre id="skill-passives"></pre>
+<h3>Eight action slots and compiled selected slot</h3><pre id="skill-loadout"></pre>
 <h2>Derived snapshot</h2><pre id="derived"></pre>
 <h2>Raw persistent state</h2><pre id="persistent"></pre>
 <script src="../skill-nodes.js?v=85"></script>

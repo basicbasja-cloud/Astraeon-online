@@ -16,6 +16,13 @@ function normalize(raw={}){
    skillPointSpending[id]=Number.isSafeInteger(spent)&&spent>=0&&spent<=ceiling?spent:0;
   }
  }
+ // Malformed imported dependency chains cannot activate skills or create refunds.
+ let changed=true;
+ while(changed){changed=false;for(const id of Object.keys(learnedSkills)){
+  if(content.getDefinition(id).prerequisites.some(p=>(learnedSkills[p.skillId]||0)<p.rank)){
+   delete learnedSkills[id];delete skillPointSpending[id];changed=true;
+  }
+ }}
  return {learnedSkills,skillPointSpending};
 }
 function validate(state){
@@ -25,6 +32,7 @@ function validate(state){
  for(const [id,rank] of Object.entries(state.learnedSkills)){
   const d=content.getDefinition(id),spent=state.skillPointSpending[id];
   if(!d||!Number.isSafeInteger(rank)||rank<1||rank>d.maxRank||!Number.isSafeInteger(spent)||spent<0||spent>d.skillPointCostPerRank.slice(0,rank).reduce((a,b)=>a+b,0))return false;
+  if(d.prerequisites.some(p=>(state.learnedSkills[p.skillId]||0)<p.rank))return false;
  }
  return Object.keys(state.skillPointSpending).every(id=>Object.hasOwn(state.learnedSkills,id));
 }

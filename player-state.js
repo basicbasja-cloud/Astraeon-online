@@ -30,7 +30,7 @@ function attach(state,options={}){
   getClassId,getSkillTree:()=>window.AstraeonSkillDefinitions.trees[getClassId()]||null,
   getActionLoadout:()=>state.actionLoadout,
   canUseSkill:id=>window.AstraeonSkillRuntime.canUseSkill(character.getLearnedSkills(),getClassId(),id),
-  isSkillAssigned:id=>actionLoadout.includes(id),
+  isSkillAssigned:id=>!!window.AstraeonSkillDefinitions.getDefinition(id)&&actionLoadout.includes(id),
   setSkillNode(id,node){
    if(!Object.hasOwn(window.AstraeonSkillNodes.compatibility,id)||(node!==null&&!window.AstraeonSkillNodes.compatibility[id].includes(node)))return Object.freeze({ok:false,code:'INCOMPATIBLE_NODE'});
    state.skillNodes={...(state.skillNodes||{})};if(node===null)delete state.skillNodes[id];else state.skillNodes[id]=node;
@@ -42,7 +42,7 @@ function attach(state,options={}){
    if(id!==null&&actionLoadout.some((value,index)=>index!==slot&&value===id))return Object.freeze({ok:false,code:'ALREADY_ASSIGNED'});
    actionLoadout=actionLoadout.map((value,index)=>index===slot?id:value);return Object.freeze({ok:true,slot,skillId:id});
   },
-  compileAction(slot,combo=1){const id=actionLoadout[slot];return api.canUseSkill(id)?window.AstraeonSkillRuntime.compile(id,character.getSkillRank(id),state.skillNodes?.[id],combo):null},
+  compileAction(slot,combo=1){if(!Number.isSafeInteger(slot)||slot<0||slot>=window.AstraeonSkillRuntime.slotCount)return null;const id=actionLoadout[slot];return api.canUseSkill(id)?window.AstraeonSkillRuntime.compile(id,character.getSkillRank(id),state.skillNodes?.[id],combo):null},
   resetSkills(){recalculate();const result=character.resetSkills();if(result.ok){actionLoadout=Array(window.AstraeonSkillRuntime.slotCount).fill(null);legacySkillControls=false}return result},
   setCurrentHP:character.setCurrentHP,setCurrentSP:character.setCurrentSP,
   setModifiers(value){
