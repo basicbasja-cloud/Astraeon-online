@@ -4,8 +4,9 @@ This implements the progression/stat/save portion of Core Spine only. The
 authoritative design remains `ASTRAEON_Backbone_Release_Roadmap_EN_v0.4.md`.
 The [Base skill tree extension](CORE_SPINE_SKILL_TREE.md) now builds on this contract.
 The [staged Combat Resolution foundation](CORE_SPINE_COMBAT.md) now consumes
-these stats. Complete action loadouts, item instances and the rest of 0.0.1
-remain future tasks. No Advanced Jobs are implemented.
+these stats. The [eight-slot Action Loadout foundation](CORE_SPINE_ACTION_LOADOUT.md)
+adds behavior, persistence and cooldown contracts. Item instances and the rest
+of 0.0.1 remain future tasks. No Advanced Jobs are implemented.
 
 ## Boundaries and API
 

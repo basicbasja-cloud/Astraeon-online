@@ -11,7 +11,7 @@ coefficient here is provisional. Nothing here declares the Core Spine complete.
 | combat-resolution-config.js | Frozen provisional defaults and pure override merger |
 | combat-resolution.js | Plain-data validation, staged immutable results, pure HP application and future timing helpers |
 | combat-runtime.js | Authorized action/stat snapshot adapter; injected sequence RNG and production RNG provider |
-| combat.js | Existing action definitions, Timeline, shape/projectile execution; unchanged |
+| combat.js | Existing definitions, Timeline and shape/projectile execution; skill launches now support an external cooldown owner |
 | game.js | Existing contacts, HP assignment, rewards, status effects, presentation and persistence |
 
 The resolver uses no DOM, storage, clock, Math.random, actor mutation or authored
@@ -39,6 +39,12 @@ const hp = AstraeonCombatResolution.applyCombatResult(currentHP, result, maxHP);
 ```
 
 ## Validation and normalized contracts
+
+The [Action Loadout extension](CORE_SPINE_ACTION_LOADOUT.md) now owns skill
+eligibility, explicit-time cooldowns and resource commit before this downstream
+adapter. `Timeline.start(...,{externalCooldown:true})` delegates only skill
+cooldowns; Basic Attack retains its Timeline clock. Resolver formulas, authored
+payloads and timing definitions remain unchanged.
 
 Both actors require a finite level >= 1 and a derived snapshot containing
 physicalATK, magicATK, HIT, FLEE, CRIT, perfectDodge, DEF and MDEF. These fields

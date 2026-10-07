@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 86. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 87. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -58,10 +58,21 @@ provisional; incoming enemy/status orchestration and animation timing retain the
 existing behavior. See [combat contracts](docs/CORE_SPINE_COMBAT.md) and
 [verification report](docs/CORE_SPINE_COMBAT_REPORT.md).
 
+All eight learned skill slots now share explicit-time eligibility, authored
+cooldowns and an atomic launch/resource commit. The existing controls use slots
+1–4; slots 5–8 execute through developer tooling. Basic Attack and Potion remain
+separate. In-combat configuration changes lock all eight slots; class changes
+retain incompatible assignments as dormant. Configuration survives transitions
+and reload, while cooldown timestamps are transient. See
+[Action Loadout contracts](docs/CORE_SPINE_ACTION_LOADOUT.md) and
+[verification report](docs/CORE_SPINE_ACTION_LOADOUT_REPORT.md). This completes
+only the eight-slot behavior/persistence/cooldown foundation, not Patch 0.0.1.
+
 ## Verification
 
 ```powershell
 python tools/run-node-checks.py
+python tests/action_loadout_browser.py --url http://127.0.0.1:8011
 python tests/combat_browser.py --url http://127.0.0.1:8011
 python tests/skill_tree_browser.py --url http://127.0.0.1:8011
 python tests/progression_browser.py --url http://127.0.0.1:8011

@@ -12,7 +12,7 @@ Base skill tree portion of Core Spine. Patch 0.0.1 is still incomplete.
 | Immutable Base Skill Tree | `skill-definitions.js`: class/tree IDs, skill IDs and prerequisite edges; Swordsman and Mage only |
 | Pure learning transitions | `skill-tree.js`: validation, next-rank transitions, paid-cost refund and persistent normalization |
 | Private persistent character state | `character-state.js`: owns learned ranks, paid ledger and the **existing** Skill Point balance; derives before committing a transition |
-| Runtime | `skill-runtime.js`: eight action slots, active usability, learned rank + authored combat action + optional existing Node |
+| Runtime | `skill-runtime.js`: active usability, learned rank + authored combat action + optional existing Node; configuration delegates to `action-loadout.js` |
 | Gameplay adapter | `player-state.js`: readonly persistent getters, class mapping, slot assignment, Node selection and passive recalculation |
 | Presentation | Existing four skill buttons use the adapter; the plain developer harness calls the same APIs |
 | Node augmentation | Unmodified `skill-nodes.js`; one compatible string per authored runtime skill ID |
@@ -134,18 +134,19 @@ points, learn/rank/reset, assign/clear, choose a compatible Node, and save/reloa
 No learning formula is implemented in the presentation.
 
 `/?qa=1&dev=1` enables these operations on a disposable playable character through
-`AstraeonProgressionDev`. Live assignment, Node mutation and debug reset are
-restricted to town or an existing safe camp with no active Timeline action.
+`AstraeonProgressionDev`. Node mutation and debug reset are restricted to town or
+an existing safe camp with no active Timeline action. Loadout edits reject an
+active Timeline; otherwise unsafe field edits trigger the full-slot cooldown
+documented in the [Action Loadout extension](CORE_SPINE_ACTION_LOADOUT.md).
 Ordinary URLs expose no developer mutation API.
 
-The repository originally had **four fixed skill buttons, not eight implemented
-Action Slots**. This task adds the eight-slot model/API and bridges its first
-four slots to the existing buttons without changing layout or styling. Slots
-5–8 are inspectable/assignable/compilable in developer tooling; final controls,
-items, weapon swaps, presets and in-combat full-slot cooldown changes remain
-separate Action Loadout work. In-combat configuration is currently rejected,
-so this task introduces no cooldown bypass via slot changes. The player's pure
-adapter has no clock/combat access; the live game enforces this safe boundary.
+The repository originally had **four fixed skill buttons**. The skill-tree
+foundation added eight persisted assignments. The subsequent Action Loadout
+extension now executes all eight through one eligibility/launch/commit path;
+slots 5–8 are callable through developer tooling. Final controls, items, weapon
+swaps and presets remain future work. In-combat edits impose a shared full-slot
+lock. The player's adapter accepts explicit time/combat context; the game supplies
+its simulation clock and safe-configuration policy.
 New characters' learning/assignment is developer-only until the owner approves
 production presentation. This work adds no final Skill UI or visual acceptance.
 
