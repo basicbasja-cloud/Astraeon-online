@@ -72,6 +72,7 @@ def export(scene):
  if scene.get('sun_angular_radius'):data['lighting']['sun']['angularRadius']=scene['sun_angular_radius']
  for prop,key in [('layout_id','layoutId'),('safe_spawn_json','safeSpawn'),('districts_json','districts')]:
   if scene.get(prop):data[key]=scene[prop] if prop=='layout_id' else json.loads(scene[prop])
+ if scene.get('architecture_revision'):data['architectureRevision']=int(scene['architecture_revision'])
  data['materials']={m.name:{'color':list(m.diffuse_color[:3]),**({'texture':json.loads(m['texture_json'])} if m.get('texture_json') else {})} for m in bpy.data.materials if m.name in {p['material'] for o in objects for p in o['parts']}|{terrain['material']}|{s['material'] for s in terrain['surfaces']}}
  if scene.get('ground_shadow_bake_json'):
   bake=json.loads(scene['ground_shadow_bake_json'])

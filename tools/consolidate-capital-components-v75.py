@@ -9,6 +9,10 @@ from collections import defaultdict
 from pathlib import Path
 from mathutils import Matrix
 ROOT=Path(__file__).resolve().parents[1];s=bpy.context.scene;assert s.get('capital_version')==75
+# Newly created children must have evaluated world matrices before parent-space
+# packing. Reading an updated root alongside stale child matrices moves parts
+# to the origin, despite the final placement root being correct.
+bpy.context.view_layer.update()
 before=0;after=0;components=0;donor_meshes=[]
 if True:
  for c in list(bpy.data.collections):

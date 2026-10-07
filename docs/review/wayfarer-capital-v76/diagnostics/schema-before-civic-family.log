@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tools/validate-world-v3.py", line 11, in <module>
+    for o in scene['objects']:validate('town-object.schema.json',o)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/validate-world-v3.py", line 7, in validate
+    schema=json.loads((ROOT/'world/v3/schemas'/name).read_text());jsonschema.Draft202012Validator.check_schema(schema);jsonschema.validate(data,schema)
+                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/jsonschema/validators.py", line 1332, in validate
+    raise error
+jsonschema.exceptions.ValidationError: 'guild' is not one of ['civic', 'vegetation', 'fortification', 'residential', 'market', 'inn', 'workshop', 'shrine']
+
+Failed validating 'enum' in schema['properties']['family']:
+    {'enum': ['civic',
+              'vegetation',
+              'fortification',
+              'residential',
+              'market',
+              'inn',
+              'workshop',
+              'shrine']}
+
+On instance['family']:
+    'guild'

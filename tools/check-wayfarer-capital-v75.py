@@ -3,11 +3,11 @@
 Uses the committed source74 export, compares every retained vertex and original
 UV corner, and measures native face unions rather than unordered vertex lists.
 """
-import json,math,subprocess,hashlib
+import json,math,subprocess,hashlib,os
 from pathlib import Path
 from shapely.geometry import Polygon,LineString,MultiPoint,Point
 from shapely.ops import unary_union
-ROOT=Path(__file__).resolve().parents[1];out=ROOT/'docs/review/wayfarer-capital-v75';p=json.loads((out/'native-plan.json').read_text());s=json.loads((ROOT/'world/v3/wayfarer-spatial.json').read_text());old=json.loads(subprocess.check_output(['git','show','7b72b3f:world/v3/wayfarer-spatial.json'],cwd=ROOT));objects={o['id']:o for o in s['objects']};max_error=0;vertices=0;uvfaces=0
+ROOT=Path(__file__).resolve().parents[1];out=ROOT/os.environ.get('ASTRAEON_CAPITAL_REVIEW_DIR','docs/review/wayfarer-capital-v75');p=json.loads((out/'native-plan.json').read_text());s=json.loads((ROOT/'world/v3/wayfarer-spatial.json').read_text());old=json.loads(subprocess.check_output(['git','show','7b72b3f:world/v3/wayfarer-spatial.json'],cwd=ROOT));objects={o['id']:o for o in s['objects']};max_error=0;vertices=0;uvfaces=0
 for o in old['objects']:
  t=p['transforms'].get(o['id'])
  if not t:continue
@@ -38,9 +38,12 @@ if p.get('ro3StreetScaleRefinement'):
  street_scale={'roadObjects':len(p['roads']),'nativePublicSegments':public_segments,'retainedGardenFootpaths':len(native_roads)-public_segments,'minimumPublicWidth':min(r['width'] for r in p['roads']),'districtWidth':9,'circuitWidth':10,'removedThroughLanes':revision['removedThroughLanes'],'nativeWidthsAndPolygonsMatch':True}
 def region(arr):return unary_union([Polygon([a['vertices'][i][:2] for i in f]) for a in arr for f in a['faces']])
 public_region=region(public);private_region=region(private);overlap=public_region.intersection(private_region).area;assert overlap<.001
+public_uv_size=p.get('betaReferenceRefinement',{}).get('publicStoneWorldSize',8)
+assert public_uv_size in (8,3.2)
+assert s['materials']['publicTownStone']['texture']['worldSize']==public_uv_size
 for a in public:
  for f,uvs in zip(a['faces'],a['uvs']):
-  for i,uv in zip(f,uvs):assert max(abs(uv[j]-a['vertices'][i][j]/8) for j in (0,1))<.00002
+  for i,uv in zip(f,uvs):assert max(abs(uv[j]-a['vertices'][i][j]/public_uv_size) for j in (0,1))<.00002
 roads=unary_union([LineString(a['centerline']).buffer(a['width']/2,cap_style=2,join_style=2) for a in p['roads']])
 park_road_overlap=unary_union([Polygon(a['polygon']) for a in p['parks']]).intersection(roads).area
 assert park_road_overlap<.001,('garden interrupts avenue',park_road_overlap)
@@ -86,6 +89,10 @@ for a in floors:
 tree_checks=[];tree_errors=[]
 for owner in s['objects']:
  if owner['family']!='vegetation':continue
+ if owner['id']=='capital-beta-frontage-groundcover':
+  assert p.get('betaReferenceRefinement')
+  assert all(a['role']=='decorative' and not a.get('shadow') and a['material']=='grass' and all(abs(v[2]-.047)<.00001 for v in a['vertices']) for a in owner['parts'])
+  continue
  trunk=next(a for a in owner['parts'] if a['role']=='solid');poly=MultiPoint([v[:2] for v in trunk['vertices']]).convex_hull
  bounds=poly.bounds
  conflicts={name for name,body in physical if body.bounds[0]<bounds[2] and body.bounds[2]>bounds[0] and body.bounds[1]<bounds[3] and body.bounds[3]>bounds[1] and poly.intersection(body).area>.005}

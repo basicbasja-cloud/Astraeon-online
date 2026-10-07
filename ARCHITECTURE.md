@@ -160,11 +160,11 @@ artwork retains its67 filename. See `docs/review/wayfarer-v68/`.
 
 ### Regional capital source75
 
-The current native layout `wayfarer-regional-capital-v75` has 256 × 288 world bounds, 54,848 square world units of contiguous city land, 172 houses, 78 trees and three new civic landmarks. All 37 original house assemblies retain their indexed geometry and UVs after rigid relocation. Existing services and both field destinations retain their identities. Native public/private paving is clipped against actual streets, gardens and retained raised contacts; public irregular stone uses continuous world UVs. Original gates are preserved as authoring references and replaced by wider native passages in the same service collections.
+The current native layout `wayfarer-regional-capital-v75` has 256 × 288 world bounds, 54,848 square world units of contiguous city land, 158 residential/commercial buildings, 78 trees and three new civic landmarks. All 37 original house assemblies retain their indexed geometry and UVs after rigid relocation. Existing services and both field destinations retain their identities. Native public/private paving is clipped against actual streets, gardens and retained raised contacts; public irregular stone uses continuous world UVs. Original gates are preserved as authoring references and replaced by wider native passages in the same service collections.
 
 Decorative components in newly built houses are joined by material, role and shadow policy while original component vertex groups remain available for editing. Collision cores stay separate. Runtime opaque batches use 32-world-unit spatial cells; half-unit floor-shadow contacts share a material in 16-unit receiver chunks. The 4096² native floor atlas supports the larger extent, with original eight sun/four contact samples and cutout canopy alpha. These mechanisms bound submission work without changing actor art, gameplay speed or native drawing resolution.
 
-The neighborhood refinement organizes 172 homes into continuous street-facing rows and shared back courts. Whole native roof/awning envelopes constrain placement, with small side passages instead of large isolated plot gaps. Owned paving fills inhabited street-defined blocks; continuous closed curb boundaries mark street/sidewalk edges, including garden/court holes. Explicit outward curb winding avoids closed-mesh normal inference on open faces. Existing civic/service precincts and their raised contacts remain authoritative. Eighteen additional native residents use local street circuits; runtime per-frame actor budgets are unchanged.
+The neighborhood refinement organizes continuous street-facing rows and shared back courts; the superseding architecture revision76 replaces repeated stock with nine families and consolidates fourteen paired plots into larger buildings. The former172-house draft organized its homes into continuous street-facing rows and shared back courts. Whole native roof/awning envelopes constrain placement, with small side passages instead of large isolated plot gaps. Owned paving fills inhabited street-defined blocks; continuous closed curb boundaries mark street/sidewalk edges, including garden/court holes. Explicit outward curb winding avoids closed-mesh normal inference on open faces. Existing civic/service precincts and their raised contacts remain authoritative. Eighteen additional native residents use local street circuits; runtime per-frame actor budgets are unchanged.
 
 The final street hierarchy uses 8-unit cross streets, 9-unit district spines,
 a 10-unit circuit and 14/12-unit ceremonial avenues. Five redundant through
@@ -180,3 +180,16 @@ The square’s legacy infill records `frontageOffset` independently from its
 assembly rotation. The source checker measures the actual thin axis and outward
 side of every plaza door leaf, rather than treating placement metadata as proof
 of a facing entrance. Original parts, UVs and indexed faces remain rigidly moved.
+
+### Distinct architecture revision76
+
+The city retains its layout ID because public streets, portal approaches, safe
+spawn and gameplay destinations remain unchanged. Native scene property
+`capital_architecture_revision=76` and source digests identify the replacement
+geometry. The121 newly authored buildings span nine massing families, alongside
+all37 originals. Fourteen paired plots become broader merchant, twin-gabled or
+covered-gallery buildings. The Council has a hipped palazzo and clock pavilion;
+the Archive a reading nave, low galleries and one stair tower; the Exchange a
+horizontal clay-roofed market hall, colonnade and belfry. Shared materials and
+editable component packing bound resources while complete silhouettes vary.
+See `docs/review/wayfarer-capital-v76/reference-and-design.md`.

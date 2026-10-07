@@ -1,15 +1,15 @@
 """Measure actual visible neighborhood frontage gaps and preserve proof outlines."""
-import argparse,json,hashlib,statistics
+import argparse,json,hashlib,statistics,os
 from pathlib import Path
 from shapely.geometry import MultiPoint,Polygon
-R=Path(__file__).resolve().parents[1];O=R/'docs/review/wayfarer-capital-v75';ap=argparse.ArgumentParser();ap.add_argument('--before',type=Path);args=ap.parse_args()
+R=Path(__file__).resolve().parents[1];O=R/os.environ.get('ASTRAEON_CAPITAL_REVIEW_DIR','docs/review/wayfarer-capital-v75');ap=argparse.ArgumentParser();ap.add_argument('--before',type=Path);args=ap.parse_args()
 def outlines(source,plan):
  owners={o['id']:o for o in source['objects']};result={}
  for l in plan['lots']:
   poly=MultiPoint([v[:2] for a in owners[l['id']]['parts'] if a.get('visible',True) for v in a['vertices']]).convex_hull
   result[l['id']]={'center':l['center'],'outline':list(poly.exterior.coords)[:-1]}
  return result
-basepath=O/'before-density/housing-footprints.json'
+basepath=R/'docs/review/wayfarer-capital-v75/before-density/housing-footprints.json'
 if args.before:
  raw=args.before.read_bytes();source=json.loads(raw);plan=json.loads((O/'before-density/plan.json').read_text());base={'sourceSHA256':hashlib.sha256(raw).hexdigest(),'houses':outlines(source,plan)};basepath.write_text(json.dumps(base,indent=2)+'\n');del raw,source
 base=json.loads(basepath.read_text());raw=(R/'world/v3/wayfarer-spatial.json').read_bytes();s=json.loads(raw);p=json.loads((O/'plan.json').read_text());now=outlines(s,p);polys={name:Polygon(o['outline']) for name,o in now.items()}

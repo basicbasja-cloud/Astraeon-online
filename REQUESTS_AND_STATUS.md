@@ -1,26 +1,29 @@
 # User requests and current status
 
-Updated 6 October 2026. Continue on `codex/world-pipeline-v3-proof` until the
+Updated7 October2026. Continue on `codex/world-pipeline-v3-proof` until the
 RO3 baseline is met. The earlier source72 pause is historical. No PR, merge or
 deployment is requested; push verified checkpoints to the existing branch.
 
 ## Current implementation
 
-The active native source75 is one reorganized geometric regional capital, with
-172 homes (37 preserved assemblies, 135 detailed additions), 97 homes in inner
-neighborhoods, three new civic landmarks and the original Hall/fountain. Closely
-spaced paired street frontages and shared back courts address the user's latest
-request for real neighborhoods. Typical visible building gaps are .80 world units, compared
-with 3.84 world units in the first capital draft. District streets are 9 world units, the circuit 10 and cross streets 8; royal axes
-remain 14/12 world units. Continuous curbs wrap shared inhabited building blocks and define
-the edge of the walking paths. Eighteen local residents join the original ten;
-per-frame actor budgets are unchanged.
+The active architecture revision76 addresses the user's rejection of repeated
+buildings:158 residential/commercial buildings, comprising37 retained originals
+and121 additions across nine families. Fourteen paired plots were consolidated
+into larger buildings. Council, Archive and Exchange have different massing;
+public streets, plaza frontages and two inward-facing courts remain connected.
+The pre-lighting geometry review found94 inner-neighborhood homes and a median
+nearest visible gap of.96 world units, compared with3.84 in the first capital
+draft. Final source-matched checks and actual gameplay review remain pending.
 
-RO3 Ref remains the hard target for scale, density, exterior detail, materials,
-planting, curb ownership, warm lighting and overall visual quality. Prontera’s map now also informs block placement and street hierarchy, following
-the latest steering; Wayfarer keeps its own blueprint. The original
-concept supplies the theme. A house count, blueprint or geometry check is not
-visual acceptance.
+The user's52 decoded Prontera RO3 beta gameplay frames are now the primary hard
+visual reference for scale, materials, road edges, frontage and local adjacency.
+Their README does not establish a complete global plan. Wayfarer keeps its own
+geometric royal blueprint and original concept theme. A house count, architectural
+family count, blueprint or geometry pass is not visual acceptance. Architecture
+and foliage lighting finished; ground lighting resumed after the reference pause.
+The unchanged public street hierarchy is8-unit cross streets,9-unit district
+streets,10-unit circuit and14/12-unit ceremonial axes. Twenty-eight local residents
+and existing per-frame actor budgets remain.
 
 Authority: `authoring/wayfarer-spatial.blend`, with its matching
 `world/v3/wayfarer-spatial.json`. Bounds are 256 × 288 with 54,848 square world units of contiguous
@@ -34,18 +37,26 @@ Source74's continuous public-floor correction is already pushed as `7b72b3f`.
 
 | IDs | Requirement | Current implementation | Acceptance still required |
 | --- | --- | --- | --- |
-| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Native city checkpoint `2466611` pushed to existing branch; reports maintained | Complete and push final browser evidence |
+| R01, R20, R21 | Correct branch, continuation, checkpoint pushes and complete report | Corrected city checkpoint `35d7f91` pushed to existing branch; reports maintained | Complete and push final browser evidence |
 | R02 | Sharp native rendering | 1280 × 666 playfield at ratio1; no resolution reduction | Final native captures and physical-device check |
-| R03, R19 | All ten RO3 images are the hard baseline; continue to acceptance | Per-reference review criteria in capital evidence | Rendered visual sweep; overall acceptance remains open |
-| R04, R05 | Detailed, aged exteriors, wings and useful accessories | Original 37 assemblies preserved; 135 component-built additions share native facade kit/materials | Street and civic inspection |
+| R03, R19 | RO3 beta gameplay frames are the primary hard baseline; continue to acceptance | Per-reference review criteria in capital evidence | Rendered visual sweep; overall acceptance remains open |
+| R04, R05 | Detailed, aged exteriors, wings and useful accessories | Original 37 assemblies preserved; 121 additions across nine massing families share native materials | Street and civic inspection |
 | R06, R13–R15 | Owned building areas, visible curbs, closed loops without conflicts | Shared private paving, 42 boundary loops across 40 owned blocks; native curb faces checked | Native sidewalk/entrance views |
-| R07 | RO3 scale and density | 172 homes; paired frontages; 97 inner homes; .80 world units typical gap | Ordinary neighborhood walking |
+| R07 | RO3 scale and density | 158 buildings;94 inner homes; pre-lighting median gap.96 world units | Ordinary neighborhood walking |
 | R08, R16 | Fountain, larger rounded square and symmetric approaches | Original tiered fountain at [128,144], rounded court and ceremonial cross | Lit plaza/axis views |
 | R09, R12, R17 | Grounded, purposeful grass/flowers/props/trees | Owned planting retained; 78 trees grounded and clear of streets/solids | Root, planting and accessory inspection |
 | R10, R11, R22 | Natural public stone, distinct private rectangles, no random floor pads | Continuous world-space public UVs; derived private blocks; zero public/private overlap | Floor seam inspection |
-| R18 | Warm RO3 casts and contact shade | Full architecture, original-alpha foliage and source-matched 4096² ground lighting complete | Native light/shadow comparison |
+| R18 | Warm RO3 casts and contact shade | Architecture and original-alpha foliage complete;4096² ground bake resumed | Native light/shadow comparison |
 | R23 | Expand the same town into a royal regional capital | Integrated formal blueprint, four gates, ceremonial axes and three substantial new civic buildings | Current playable views |
 | R24 | Water/cliff/wall/foundations match city quality efficiently | Native detailed shoreline; shared materials, spatial batches and culled shadow receivers | Perimeter inspection and unchanged performance gate |
+
+Latest requirements are also tracked explicitly:
+
+| ID | Requirement | Current implementation | Remaining verification |
+| --- | --- | --- | --- |
+| R25 | RO1 placement principles and hard RO3 person-relative street scale | 172 intact models; 8–10-unit public streets; 14/12 ceremonial avenues | Ordinary walking and final visual acceptance |
+| R26 | Some buildings face their own feature area | Three frontages at Artisans’ Court, four at Willow Court; wells, seating, planting and craft features | Ordinary entry into both courts |
+| R27 | Nearby buildings face the fountain plaza | Ten actual door-plane directions verified; complete models and entrance contacts moved; updated casts | Ordinary plaza walking; overall art acceptance remains open |
 
 ## Current verification boundary
 
@@ -58,7 +69,7 @@ complete patrols are clear. The current suite passes 96 individual checks across
 schemas pass.
 
 Native street/civic/perimeter inspection, ordinary service/neighborhood walking,
-field/save reload, cache82 migration/offline reload and isolated sound-on
+field/save reload, cache83 migration/offline reload and isolated sound-on
 performance are being completed. Historical 136-home captures and the 140-home
 gap patch are diagnostics, not current visual acceptance. The cloud machine has
 no physical GPU. Retain the existing native-resolution, FPS/frame-time and
@@ -209,3 +220,25 @@ UVs remain. `frontageOffset` records that model’s geometric front, and the sou
 check verifies all ten actual door-plane directions. Final lighting and saved native/export parity pass. Browser
 evidence is being captured for this corrected source. The first checkpoint’s
 views are historical in `diagnostics/pre-entry-correction/`.
+
+53. It doesn’t feel like ro3 ref, maybe because we reuse the same building again and again? Can we make new and efficiently the area that we use, not so dense but not so loose, so it make it feel like a real city, you can research the prontera on web or other capital city inreal world or game similar theme to use it for our ref
+
+Revision 75 is visually rejected for architectural repetition. Revision 76
+replaces the 135 repeated additions with 121 buildings across nine architectural
+families, consolidating fourteen paired plots into larger buildings (158 total,
+including the 37 originals). Three civic additions receive different massing.
+Research: official RO1 Prontera map/guide, Colmar tourist-office heritage,
+Blizzard’s Stormwind tour. RO3 remains the hard reference and native gameplay
+review is required; previous geometry passes are not visual acceptance.
+
+54. Pause now i have to add ref
+
+Paused on 7 October 2026 UTC. Stopped the review and active ground bake;
+preserved local changes. Await the new reference before continuing or pushing.
+
+55. Already add in https://github.com/basicbasja-cloud/Astraeon-online/tree/codex/world-pipeline-v3-proof/RO3%20Ref/Prontera_RO3_Beta_Reference please use it for ref
+
+Imported the two reference commits without discarding local work. Inspected all
+four chronological contact sheets and opened representative source frames at
+original resolution. The52 beta frames are now the primary RO3 gameplay visual
+reference. Resume the native review; do not infer a complete city plan from them.

@@ -1,3 +1,9 @@
+> Historical revision75 evidence: the user rejected its repeated house and civic
+> silhouettes. Active architecture work is in [revision76](../wayfarer-capital-v76/README.md).
+> Root `plan.json` / `native-plan.json` are compatibility aliases for the active
+> native plan; the revision75 planning checkpoint remains in commit35d7f91.
+> Images and reports below identify their own historical source hashes.
+
 # Wayfarer regional capital — source75 evidence
 
 The active capital expands and reorganizes the same Wayfarer town. Its original
@@ -31,7 +37,7 @@ Authority is `authoring/wayfarer-spatial.blend`, with matching export
 `plan.json` and `native-plan.json` record the reviewed planning and native derived
 geometry. `blueprint.png` is a planning map, not a gameplay screenshot.
 
-Implementation checkpoint: [`2466611`](https://github.com/basicbasja-cloud/Astraeon-online/commit/246661150bc4f08108b6103677f56f46833e3907), pushed to `codex/world-pipeline-v3-proof`.
+Corrected implementation checkpoint: [`35d7f91`](https://github.com/basicbasja-cloud/Astraeon-online/commit/35d7f910e4bb0e8848f37d34227858f6ffaf7508), pushed to `codex/world-pipeline-v3-proof`. The preceding `2466611` checkpoint is historical.
 
 ## Verification index
 
@@ -43,10 +49,11 @@ Implementation checkpoint: [`2466611`](https://github.com/basicbasja-cloud/Astra
 | `architecture-bake-wide.log`, `foliage-bake-wide.log`, `floor-bake-wide.log` | Full lighting refreshed after the final plaza changes; original foliage alpha and native 4096² ground atlas |
 | `native-parity.log` | Saved native/export parity, shared Hall transform propagation and stale-bake invalidation |
 | `node-final/report.json`, `schema.log` | 96 individual checks pass across six files; four public schemas pass |
+| `native-plaza/views.json` | Wide corrected fountain-plaza view, with zero culling differences |
 | `native-streets/views.json` | Four current native street views; culling versus exhaustive rendering differs by zero pixels |
 | `native-courts/`, `native-civic/`, `native-shore/`, `native-districts/` | Current rendered court, civic, perimeter and plaza inspection; manifests record source digest, camera, resolution and errors |
 | `services/` | Ordinary keyboard/click input through eight services and ten neighborhood/court/plaza stops, field travel and save reload |
-| `cache/` | Cache82, saved-character migration and actual offline reload |
+| `cache/` | Cache83, saved-character migration and actual offline reload |
 | `performance.json` | Isolated sound-on native-resolution measurement against the unchanged gate |
 
 The last browser stages are running; their completed reports, images and actual

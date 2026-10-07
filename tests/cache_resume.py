@@ -4,6 +4,7 @@ Creates only a test character via the ordinary UI. Does not alter a user's
 browser, progress, runtime state or production assets.
 """
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -64,6 +65,7 @@ with sync_playwright() as p:
         assert any(url.endswith('/' + filename) for url in version['urls']), ('uncached town material', filename)
     before = page.evaluate('AstraeonQA.snapshot().save')
     legacy_migration = None
+    blocked_save_recovery = None
     if world['layoutId'] == 'wayfarer-regional-capital-v75':
         # Seed an isolated source74 save, then let the ordinary load path move
         # it to the reorganized city's arrival while retaining progression.
@@ -77,6 +79,21 @@ with sync_playwright() as p:
         assert before['worldLayout'] == world['layoutId'], before['worldLayout']
         assert [before['x'], before['y']] == world['spawn'][:2], ('legacy arrival', before['x'], before['y'])
         legacy_migration = {'from': legacy['worldLayout'], 'to': before['worldLayout'], 'arrival': [before['x'], before['y']], 'progressRetained': True}
+    if world.get('architectureRevision') == 76:
+        # The same street layout now consolidates paired houses. A save in a
+        # former gap must use the ordinary blocked-position recovery, retaining
+        # progression rather than leaving the character inside a new building.
+        revised = {**before, 'x': 217.74, 'y': 220.0925}
+        assert page.evaluate('p=>AstraeonContent.nativeWorld.spatial.blocked(p.x,p.y)', revised)
+        page.evaluate('(save)=>localStorage.setItem("astraeon-iso-v1",JSON.stringify(save))', revised)
+        page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
+        page.wait_for_function('window.AstraeonQA && AstraeonQA.snapshot().renderer', timeout=args.startup_timeout_ms)
+        before = page.evaluate('AstraeonQA.snapshot().save')
+        for field in ['name','cls','zone','lv','xp','inventory','equipment','gold','house','guild','quest','skillNodes']:
+            assert before[field] == revised[field], ('blocked save lost progression',field)
+        assert [before['x'],before['y']] == world['safeSpawn'][:2], ('blocked save did not recover',before['x'],before['y'])
+        blocked_save_recovery = {'layout':world['layoutId'],'oldGap':[217.74,220.0925],
+                                 'safeArrival':[before['x'],before['y']],'progressRetained':True}
     context.set_offline(True)
     page.reload(wait_until='networkidle', timeout=args.startup_timeout_ms)
     page.wait_for_selector('#world', timeout=args.startup_timeout_ms)
@@ -91,12 +108,25 @@ with sync_playwright() as p:
       const size=[image.width,image.height];image.close();return size;
     }''', ground['file'])
     assert ground_size == [ground['resolution']] * 2, ('stale offline shadow atlas', ground_size, ground)
+    offline_digests = page.evaluate("""async files=>{
+      const result={};for(const [name,url] of Object.entries(files)){
+        const response=await fetch(url);if(!response.ok)throw Error('Offline asset missing: '+url);
+        const digest=await crypto.subtle.digest('SHA-256',await response.arrayBuffer());
+        result[name]=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+      }return result;
+    }""", {'source': 'world/v3/wayfarer-spatial.json?v='+current_version, 'ground': ground['file']})
+    for name,filename in [('source','world/v3/wayfarer-spatial.json'),('ground',ground['file'])]:
+        with (ROOT/filename).open('rb') as f:
+            expected=hashlib.file_digest(f,'sha256').hexdigest()
+        assert offline_digests[name]==expected,('stale offline content',name,offline_digests[name],expected)
     page.screenshot(path=str(args.output / 'offline-town.png'))
     report = {'cache': version['name'], 'precachedRequests': len(version['urls']),
               'legacyCacheRemoved': True, 'offlineTownLoaded': True,
               'savedCharacterRetained': True, 'townMaterialFiles': sorted(art),
               'legacyTownSaveMigration': legacy_migration,
-              'offlineGroundSize': ground_size, 'errors': errors}
+              'sameLayoutBlockedSaveRecovery': blocked_save_recovery,
+              'offlineGroundSize': ground_size, 'offlineSourceSHA256': offline_digests['source'],
+              'offlineGroundSHA256': offline_digests['ground'], 'errors': errors}
     (args.output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     browser.close()
     assert not errors, errors

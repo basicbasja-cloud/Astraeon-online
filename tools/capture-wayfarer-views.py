@@ -63,11 +63,12 @@ VIEWS = {
 }
 
 
-def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None, startup_timeout_ms=120000, verify_culling=False, append=False, template_file=None, viewport_width=1280, scene_only=False):
+def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None, startup_timeout_ms=120000, verify_culling=False, append=False, template_file=None, viewport_width=1280, scene_only=False, viewport_height=800):
     output.mkdir(parents=True, exist_ok=True)
     records = json.loads((output/'views.json').read_text()) if append and (output/'views.json').exists() else []
     raw=Path('world/v3/wayfarer-spatial.json').read_bytes();source_hash=hashlib.sha256(raw).hexdigest()
     native=json.loads(raw);route=native['route'];layout=native['layoutId'];capital='capital' in layout
+    architecture_revision=native.get('architectureRevision')
     del raw,native  # The capture needs metadata, not a retained 89 MB mesh document.
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(
@@ -75,7 +76,7 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
             args=['--no-sandbox', '--enable-webgl', '--enable-gpu'] +
                  (['--use-angle=d3d11'] if os.name == 'nt' else
                   ['--use-angle=swiftshader', '--enable-unsafe-swiftshader']))
-        context = browser.new_context(viewport={'width': viewport_width, 'height': 800},
+        context = browser.new_context(viewport={'width': viewport_width, 'height': viewport_height},
                                       device_scale_factor=1)
         if template_file:
             template=json.loads(template_file.read_text())
@@ -164,7 +165,9 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                 scene_image=output/(name+'-scene.png');scene_image.write_bytes(base64.b64decode(frame))
             page.screenshot(path=str(image))
             record = {'name': name, 'requested': [x, y],
+                      'viewport': {'width': viewport_width, 'height': viewport_height},
                       'sourceSHA256': source_hash,
+                      'architectureRevision': architecture_revision,
                       'actual': [snap['save']['x'], snap['save']['y']],
                       'layout': snap['town']['layout'],
                       'actors': len(snap['renderer']['actors']),
@@ -180,6 +183,22 @@ def capture(url, output, names, zoom=None, yaw=0, pitch=None, capture_scale=None
                       'captureScale': capture_scale,
                       'renderResolution': page.evaluate('({width:AstraeonSpatialView.canvas.width,height:AstraeonSpatialView.canvas.height,pixelRatio:AstraeonSpatialView.renderer.getPixelRatio()})'),
                       'errors': errors, 'image': str(image)}
+            # A projected geometry rectangle permits person-relative comparison
+            # across camera settings. It is not an alpha-tight artwork bound.
+            record['playerGeometryScreenRect'] = page.evaluate('''()=>{
+              const v=AstraeonSpatialView,a=v.actors.get('player');
+              if(!a)return null;
+              const p=a.mesh.geometry.attributes.position,q=[];
+              a.mesh.updateWorldMatrix(true,false);
+              for(let i=0;i<p.count;i++){
+                const w=a.mesh.position.clone().set(p.getX(i),p.getY(i),p.getZ(i));
+                a.mesh.localToWorld(w);q.push(v.worldToScreen(w.x,w.y,w.z));
+              }
+              const xs=q.map(p=>p.x),ys=q.map(p=>p.y);
+              return {minX:Math.min(...xs),maxX:Math.max(...xs),
+                minY:Math.min(...ys),maxY:Math.max(...ys),
+                height:Math.max(...ys)-Math.min(...ys)};
+            }''')
             if scene_image:record['sceneImage']=str(scene_image)
             if culling is not None: record['cullingVerification'] = culling
             records.append(record)
@@ -208,6 +227,7 @@ if __name__ == '__main__':
     parser.add_argument('--append', action='store_true', help='Append captures to an existing review manifest')
     parser.add_argument('--template-file', type=Path, help='Reuse an ordinary-UI character save for visual fixtures only')
     parser.add_argument('--width', type=int, default=1280, help='Viewport width; standard comparison remains 1280')
+    parser.add_argument('--height', type=int, default=800, help='Viewport height; use910×512 to compare the supplied beta frames')
     parser.add_argument('--scene-only', action='store_true', help='Also save the native WebGL frame without DOM HUD panels')
     args = parser.parse_args()
     names = args.views.split(',')
@@ -216,4 +236,5 @@ if __name__ == '__main__':
     if args.zoom is not None and not 65<=args.zoom<=325:parser.error('Zoom must be within classic RO limits, 65–325')
     if args.pitch is not None and not 10<=args.pitch<=89:parser.error('Pitch must be within gameplay limits, 10–89')
     if args.capture_scale is not None and not .5<=args.capture_scale<=3:parser.error('Capture scale must be within .5–3')
-    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale,args.startup_timeout_ms,args.verify_culling,args.append,args.template_file,args.width,args.scene_only)
+    if args.width<360 or args.height<360:parser.error('Viewport dimensions must be at least360 pixels')
+    capture(args.url, args.output, names,args.zoom,args.yaw,args.pitch,args.capture_scale,args.startup_timeout_ms,args.verify_culling,args.append,args.template_file,args.width,args.scene_only,args.height)

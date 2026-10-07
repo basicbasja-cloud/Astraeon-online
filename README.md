@@ -4,13 +4,13 @@ Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice 
 
 ## Current build
 
-Wayfarer source75 expands the same town into one geometric regional capital: 172 houses (37 preserved assemblies reorganized, 135 new component-built homes), a ceremonial Hall–fountain–south-gate axis, Council Chambers, Grand Archive and Trade Exchange. Warm timber, plaster and clay roofs retain the concept theme; Prontera informs scale, block placement and street hierarchy, while the ten RO3 references remain the hard quality target. Defended cliff banks, waterline detail, bridge foundations and formal gardens complete the perimeter. Source: `authoring/wayfarer-spatial.blend`; export: `world/v3/wayfarer-spatial.json`. Final native lighting and export parity pass; browser verification is in progress. Golden acceptance remains open.
+Wayfarer is one original geometric regional capital. Architecture revision76 responds to the rejected repeated-house draft: 158 residential/commercial buildings (37 preserved originals, 121 new buildings across nine families), fourteen paired plots consolidated into larger buildings, and distinct Council, Archive and Exchange silhouettes. The royal street hierarchy, two gathering courts, plaza-facing entries, warm timber/clay theme, defended cliff banks and waterline remain. The user's52 decoded Prontera RO3 beta frames are the primary gameplay visual reference for proportions, street edges, frontage and local adjacency; RO1 Prontera, Colmar and Stormwind research supplies additional composition examples. RO3 remains the hard visual target. Authority: `authoring/wayfarer-spatial.blend`, export: `world/v3/wayfarer-spatial.json`. Native geometry, fresh lighting and gameplay review are in progress; visual acceptance remains open.
 
 The town camera uses a 15-degree vertical perspective lens, 46-degree downward pitch, yaw zero, zoom 125 and centered smooth follow. The lens/control reference comes from roBrowser; the shallower pitch is an ASTRAEON choice following user feedback. These are not independently verified Gravity client settings. The earlier concept framing remains available at `?camera=concept38`.
 
 Warrior retains the shipped eight-direction illustrated walk/run/sprint strips and contact-queued strategy transitions. Painted leg alternation, body/root registration, weapons and gait closure remain unaccepted; the diagnosis and held studies are in the current handoff. Mage and Ranger still reuse their existing walk atlases across movement modes. Full frames sample shared GPU textures, while action/fall composition retains Canvas. This town pass installs no replacement character art or cosmetics.
 
-See [the capital evidence](docs/review/wayfarer-capital-v75/README.md), [the floor correction](docs/review/wayfarer-v74/README.md), [the source73 finishing evidence](docs/review/wayfarer-v72/resumed/README.md), [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
+See [the current capital evidence](docs/review/wayfarer-capital-v76/README.md), [the floor correction](docs/review/wayfarer-v74/README.md), [the source73 finishing evidence](docs/review/wayfarer-v72/resumed/README.md), [applied research](research/wayfarer-applied.md), [current handoff](CURRENT_HANDOFF.md), [architecture](ARCHITECTURE.md) and [master plan](MASTER_PLAN.md). Golden visual acceptance remains open; City 2 production stays gated by the master plan.
 
 ## Play
 
@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 82. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 83. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 ## Verification
 
@@ -55,4 +55,4 @@ Review uses ordinary gameplay input, read-only snapshots and actual screenshots.
 
 ## Scope
 
-This is a local simulation. There is no live multiplayer, account sync or production MMO server. Mage/Ranger locomotion and broader skill-art polish remain separate work. Historical Canvas/proof paths and older review reports are comparison evidence; default town gameplay uses the spatial renderer. No proprietary Ragnarok maps, sprites or textures are included.
+This is a local simulation. There is no live multiplayer, account sync or production MMO server. Mage/Ranger locomotion and broader skill-art polish remain separate work. Historical Canvas/proof paths and older review reports are comparison evidence; default town gameplay uses the spatial renderer. No proprietary Ragnarok maps, sprites or textures are used by the playable runtime. The user-supplied screenshots in `RO3 Ref/` are reference-only evidence; see `ASSET_LICENSES.md`.
