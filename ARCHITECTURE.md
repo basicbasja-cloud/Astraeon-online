@@ -60,6 +60,7 @@ they do not supersede the current spatial architecture.
 | skill-nodes.js | Authored compatibility, single-node application/normalization and pure contact status model |
 | world-content.js | Authored Shenzhou props, identified collision footprints, entrance forecourts, roads, atlas regions and walker routes |
 | input.js | Keyboard device bindings → action names and movement axes |
+| combat-resolution-config.js + combat-resolution.js + combat-runtime.js | Provisional pure staged damage, injected RNG, immutable results, separate HP/timing helpers and authorized action adapter |
 | combat.js | Pure ability definitions/compiler, cast/active/recovery timeline, cooldowns, world-space hit shapes, swept projectile collisions |
 | character-motion.js | Continuous position, yaw, facing modes, analog velocity, bounded turning, gait and stance contacts |
 | animation.js + directional-art.js + directional-metadata.js | Eight authored views, pose selection, explicit source bounds and ground anchoring |
@@ -90,7 +91,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 4; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v85, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 4; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v86, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Base Skills and single-layer Nodes
 
@@ -198,3 +199,12 @@ the Archive a reading nave, low galleries and one stair tower; the Exchange a
 horizontal clay-roofed market hall, colonnade and belfry. Shared materials and
 editable component packing bound resources while complete silhouettes vary.
 See `docs/review/wayfarer-capital-v76/reference-and-design.md`.
+
+## Staged combat foundation
+
+Player physical/magical Timeline contacts now consume the pure staged resolver.
+See [combat contracts](docs/CORE_SPINE_COMBAT.md) for stage order, provisional
+configuration, RNG draw policy, HP/status boundaries, skill integration and the
+retained incoming enemy/proc compatibility paths. Future saves are rejected
+before gameplay save listeners are installed. Additive Stat expenditure accounting
+preserves actual paid refunds across cost tuning. Patch 0.0.1 remains partial.

@@ -3,8 +3,9 @@
 This implements the progression/stat/save portion of Core Spine only. The
 authoritative design remains `ASTRAEON_Backbone_Release_Roadmap_EN_v0.4.md`.
 The [Base skill tree extension](CORE_SPINE_SKILL_TREE.md) now builds on this contract.
-Combat's full staged damage pipeline, complete action loadouts, item instances
-and the rest of 0.0.1 remain future tasks. No Advanced Jobs are implemented.
+The [staged Combat Resolution foundation](CORE_SPINE_COMBAT.md) now consumes
+these stats. Complete action loadouts, item instances and the rest of 0.0.1
+remain future tasks. No Advanced Jobs are implemented.
 
 ## Boundaries and API
 
@@ -31,7 +32,12 @@ game save. It recalculates legacy equipment/party changes before operations.
 EXP, levels, point additions and allocations require safe integers. Allocation
 amounts must be positive; the default cost is one point per stat increment.
 Unknown stats, non-finite values, overspending and exceeding the allocation cap
-throw without spending points. Reset refunds allocated increments once.
+throw without spending points. Reset refunds actual paid expenditure once from
+the additive `statPointSpending` ledger; current pointCost never recalculates a
+historical refund. Missing v4/earlier ledgers migrate with historical initial=1,
+cost=1; invalid explicit ledgers receive zero credit. See the
+[combat foundation compatibility notes](CORE_SPINE_COMBAT.md) for migration and
+future-save protection. Save versions above 4 cannot load or overwrite storage.
 Skill Points are the persistent unspent pool shared with the Base skill tree
 extension. That extension adds atomic learning/refund operations to this controller.
 
@@ -55,8 +61,9 @@ heal by itself. Existing gameplay Base level-ups still restore both resources.
 Default coefficients preserve the prior unallocated level-1 damage and resource
 capacities. They are provisional balance data. Melee/ranger damage consumes
 physicalATK, Mage damage consumes magicATK, and maxHP/maxSP drive current resource
-limits. HIT/FLEE/CRIT/ASPD/cast/DEF/MDEF/resilience/weight are ready as data; this
-task does not activate new accuracy, timing, mitigation or weight mechanics.
+limits. The staged combat extension consumes HIT/FLEE/CRIT/Perfect Dodge/DEF/MDEF
+for player damage. ASPD/cast have separate future helpers; playable timing,
+resilience and weight mechanics remain unchanged.
 Existing Warden Plate mitigation and ability timing remain in the playable game.
 
 ## Save version 4 and compatibility
@@ -114,6 +121,6 @@ python tests/cache_resume.py --url http://127.0.0.1:8011
 ```
 
 Browser checks support `ASTRAEON_BROWSER` or `--browser`; reports/screenshots are
-written outside the checkout. Boot/page/service-worker version 85 loads the new
+written outside the checkout. Boot/page/service-worker version 86 loads the new
 modules together and precaches them, preventing cached code/schema mismatches.
 No character, world, lighting, renderer or production UI artwork was changed.

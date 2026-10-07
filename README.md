@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 85. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 86. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -49,10 +49,20 @@ retain the documented fixed-button compatibility. Existing four buttons bridge
 slots 1–4; production learning UI and controls for slots 5–8 remain future work.
 See [the skill architecture and compatibility contract](docs/CORE_SPINE_SKILL_TREE.md).
 
+The staged combat foundation routes player physical/magical contacts through an
+immutable resolver with injected RNG, separate Perfect Dodge, CRIT, DEF/MDEF,
+penetration, resistance and mitigation. Open `tools/combat.html` for fixture
+inspection. Future saves are blocked without overwriting storage; Stat refunds
+retain actual paid expenditure across cost changes. All combat coefficients are
+provisional; incoming enemy/status orchestration and animation timing retain their
+existing behavior. See [combat contracts](docs/CORE_SPINE_COMBAT.md) and
+[verification report](docs/CORE_SPINE_COMBAT_REPORT.md).
+
 ## Verification
 
 ```powershell
 python tools/run-node-checks.py
+python tests/combat_browser.py --url http://127.0.0.1:8011
 python tests/skill_tree_browser.py --url http://127.0.0.1:8011
 python tests/progression_browser.py --url http://127.0.0.1:8011
 python tools/validate-world-v3.py

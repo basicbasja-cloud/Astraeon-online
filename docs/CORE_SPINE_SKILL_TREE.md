@@ -164,4 +164,5 @@ of browser automation. The skill browser test uses disposable contexts, ordinary
 creation/input for both classes, shared developer mutations, live ranked Node
 execution, save/reload, returning-save compatibility and the isolated harness.
 Cache checks also preserve learned ranks, paid costs, passive state and assigned
-Nodes while offline. Boot/page/SW use version **85** and precache all skill modules.
+Nodes while offline. Boot/page/SW use version **86** and precache all skill modules
+along with the [staged Combat Resolution extension](CORE_SPINE_COMBAT.md).
