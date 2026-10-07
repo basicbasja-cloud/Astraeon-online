@@ -23,13 +23,20 @@ Do not rerun one-shot authors or regenerate saved art for streaming.
 
 Baseline profiling is complete; evidence and measured secondary costs are in
 mobile-streaming/README.md and baseline-mobile-detailed.json. First real-map chunk boot, exact draw/semantic transport checks and three
-streamed city captures now pass. SW88 uses a shell-only static cache and bounded
+streamed city captures now pass. SW89 uses a shell-only static cache and bounded
 on-demand world/assets caches. Runtime source and native authored files remain
 the recovery receipt hashes. Streaming/mobile acceptance is still pending.
 Offline saved-character reload, migration, current authored textures and ground
 bake now pass. Cache clone/overwrite races were fixed; see cache-resume evidence.
-WebKit Safari-engine cold boot works. Exact next infrastructure action: browser traversal/unload/reload/memory, then
-cold/warm/offline and service/field/reveal checks. See mobile-streaming/README.md.
+WebKit Safari-engine six-leg ordinary touch traversal and cold/warm reload pass:
+51 unloads/31 reloads, repeated-location retained buffers exactly stable; physical
+iPhone remains PENDING. Chromium ordinary field-gate entry/return and zero city
+geometry in the field pass. Candidate3 server audit:33.47MB before readiness,
+18.12s observed gameplay,177MB sampled heap; no monolithic request. All96 original
+Node checks and5 streaming contracts pass. Exact next infrastructure action:
+finish service/neighborhood walking, court-legacy, camera and transient failure
+checks; update available-environment acceptance and resume original World work.
+See mobile-streaming/README.md.
 Active priority: chunked spawn boot/runtime streaming ->
 bounded on-demand caching -> mobile/emulated acceptance. Physical iPhone Safari
 is pending unless actually available. After sufficient available-environment

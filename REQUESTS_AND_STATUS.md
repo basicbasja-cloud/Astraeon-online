@@ -312,3 +312,13 @@ particle/fine-blade detail and natural green ingress between paving stones along
 walk paths. Incorporate this into the original visual task immediately after the
 available-environment mobile gate. Keep camera comparison consistent, natural
 planting restrained and clear routes. Do not substitute streaming for this work.
+
+Mobile checkpoint: available WebKit iPhone13 emulation passes cold/warm and
+six ordinary traversal legs,51 unloads/31 reloads, no duplicates or runtime
+errors, exact repeated-location owned geometry bytes. Chromium actual field
+gate release/return and offline save/migration checks pass. Candidate3 local
+HTTP-body audit33.47MB before readiness; no full map.96 existing Node checks
+and5 streaming contracts pass. Physical iPhone Safari PENDING. Remaining
+infrastructure checks: court-legacy, camera, transient browser failure, finish
+service/neighborhood walk. Then automatically resume original plaza enclosure
+planning and the additional RO3 daylight/fine grass/natural ingress request.

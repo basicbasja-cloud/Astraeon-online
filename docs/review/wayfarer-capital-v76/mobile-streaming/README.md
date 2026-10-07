@@ -108,3 +108,43 @@ be retried without installing partial geometry. Existing six Node regression
 files and four streaming contracts pass. Safari-engine WebKit cold boot works;
 ordinary traversal and field/service/reveal checks remain in progress. Physical
 iPhone Safari remains PENDING. Mobile acceptance is not yet declared.
+
+## Available-environment mobile evidence
+
+WebKit26.5 with iPhone13 emulation: cold26.47s, warm7.87s; six ordinary
+touch journeys through the real capital,51 unloads and31 reloads, no blocked
+actor samples, missing visible chunks at checkpoints, duplicate chunk meshes or
+runtime errors. Retained buffers peaked60,382,120 bytes, then returned to the
+exact same60,382,120 bytes at the plaza and30,269,852 bytes at arrival on
+repeat visits. Shared texture growth settled at44 during these two passes.
+These are buffer ownership measurements, not a physical Safari memory report.
+WebKit's emulation reports Apple GPU; the host remains Linux/cloud, not iPhone.
+
+Chromium iPhone13/SwiftShader candidate3: first observed gameplay18.12s,
+renderer mount1.49s, observed sampled JS heap177.0MB. Shell precache2,383,616
+bytes. A disposable server counted every HTTP response body write, including SW
+install/runtime traffic:33,467,533 bytes and98 requests before the runtime's
+spawn-visible-ready marker. It counted the same bytes before the first observed
+gameplay frame. No monolithic world request. The preserved baseline did not use
+this server audit, so its page-transfer numbers are not directly comparable.
+Original detailed boot70.39s/mount49.34s/observed heap1,118.5MB; original shell
+precache139,617,220 bytes. Physical network timing and HTTP header bytes are
+outside this body accounting. Spawn still10/75 chunks,2,090,118 compressed
+bytes/8,284,388 decoded bytes. Timing varies with the cloud renderer.
+
+The ordinary mobile field-gate check passes: original field artwork is deferred
+until needed, city decoded geometry reaches zero in the field, return reloads
+10 exact chunks, character/gold preserved, no runtime errors. Offline/save checks
+passed separately. Five streaming contracts now include the lazy diagnostic
+nav grid. All96 original Node checks pass individually. Service/neighborhood
+walking, camera/reveal checks and transient browser-failure checks are ongoing.
+
+Physical iPhone Safari: PENDING. On the published branch build, check a fresh
+load at https://basicbasja-cloud.github.io/Astraeon-online/ , retain the saved
+character on a warm reload, walk arrival -> plaza -> both neighborhoods ->
+arrival repeatedly, enter/return from Goldenfield, and inspect sunlight,
+plants, occlusion and collisions. Record Safari/device/iOS, network, cold/warm
+time, crashes and sustained frame pacing. Do not clear an existing player's
+save. Cloud/software timing and emulation cannot satisfy physical-device FPS,
+thermal or Safari memory-pressure gates. All authored materials, geometry and
+art resolution remain intact; visual RO3 acceptance is still pending.

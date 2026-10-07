@@ -44,10 +44,14 @@ function compile(scene){
  const onLand=(x,y)=>!scene.terrain.walkablePolygon||pointIn({x,y},scene.terrain.walkablePolygon)||legacyFloorPolygons.some(poly=>pointIn({x,y},poly))||[...nearby(floorIndex,x,y)].some(({t})=>triangleHeight(x,y,...t)!==null);
  const blocked=(x,y,r=radius)=>x<bounds.minX+r||x>bounds.maxX-r||y<bounds.minY+r||y>bounds.maxY-r||!onLand(x,y)||[...nearby(solidIndex,x,y,r)].some(p=>x>=p.bounds.minX-r&&x<=p.bounds.maxX+r&&y>=p.bounds.minY-r&&y<=p.bounds.maxY+r&&touches({x,y},p.footprint,r));
  const portalMap=scene.objects.flatMap(o=>(o.portals||[]).map(p=>({...p,objectId:o.id,range:p.range||1})));
- const navCells=[];if(!scene.streaming)for(let y=bounds.minY+.5;y<bounds.maxY;y+=scene.navigation.cellSize)for(let x=bounds.minX+.5;x<bounds.maxX;x+=scene.navigation.cellSize)navCells.push({x,y,walkable:!blocked(x,y)});
+ // The grid is a diagnostic/public API, not the route solver. Preserve it
+ // lazily so navigation overlays and existing checks still see the real city
+ // without making ordinary streaming boot construct the entire grid.
+ let navCells;const navigationCells=()=>{if(!navCells){navCells=[];for(let y=bounds.minY+.5;y<bounds.maxY;y+=scene.navigation.cellSize)for(let x=bounds.minX+.5;x<bounds.maxX;x+=scene.navigation.cellSize)navCells.push({x,y,walkable:!blocked(x,y)})}return navCells};
+ if(!scene.streaming)navigationCells();
  const shadowPolygons=parts.filter(p=>p.shadow).map(p=>({id:p.id,polygon:hull(p.vertices.map(v=>[v[0]+scene.lighting.sun.cast[0]*v[2],v[1]+scene.lighting.sun.cast[1]*v[2]]))}));
  const elevationAt=(x,y)=>{let height=scene.terrain.elevation;for(const {t} of nearby(floorIndex,x,y)){const h=triangleHeight(x,y,...t);if(h!==null)height=Math.max(height,h)}return height};
- return {scene,parts,solids,overheads,portals:portalMap,navCells,shadowPolygons,blocked,
+ return {scene,parts,solids,overheads,portals:portalMap,get navCells(){return navigationCells()},shadowPolygons,blocked,
   elevationAt,containsGround:onLand,
   interactionAt:(x,y)=>portalMap.find(p=>Math.hypot(x-p.approach[0],y-p.approach[1])<=p.range),
   route:(start,goal)=>window.AstraeonNavigation.route(start,goal,blocked,{bounds,reach:.26,step:bounds.maxX-bounds.minX>80?1:.5}),
