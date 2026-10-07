@@ -71,7 +71,8 @@ with sync_playwright() as p:
                      'progression-config.js', 'progression.js', 'stats.js', 'character-state.js',
                      'player-state.js', 'save-state.js', 'skill-definitions.js', 'skill-tree.js', 'skill-runtime.js',
                      'combat-resolution-config.js', 'combat-resolution.js', 'combat-runtime.js',
-                     'action-loadout.js', 'action-runtime.js']:
+                     'action-loadout.js', 'action-runtime.js', 'item-definitions.js', 'item-inventory.js',
+                     'item-equipment.js', 'item-state.js']:
         assert any(url.endswith('/' + filename + '?v=' + current_version) for url in version['urls']), filename
     world = json.loads((ROOT / 'world/v3/wayfarer-spatial.json').read_text())
     art = {material['texture']['file'] for material in world['materials'].values()
