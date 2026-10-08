@@ -50,7 +50,7 @@ function evaluate(inventory,transaction={},options={}){
  const owned=counts(inventory,catalog);const debitStacks=Object.hasOwn(transaction,'stackDebits')?transaction.stackDebits:[],debitInstances=Object.hasOwn(transaction,'instanceDebits')?transaction.instanceDebits:[],rewards=Object.hasOwn(transaction,'itemRewards')?transaction.itemRewards:[];
  if(![debitStacks,debitInstances,rewards].every(Array.isArray))return fail('INVALID_PACKAGE');
  for(const debit of debitStacks){const d=catalog.getDefinition(debit?.itemId),n=debit?.quantity;if(!d?.stackable||!integer(n,1))return fail('INVALID_STACK_ITEM');if(n>(owned.stacks[d.id]||0))return fail('INSUFFICIENT_ITEMS');owned.stacks[d.id]-=n}
- const removed=new Set();for(const id of debitInstances){const item=inventory.instances[id];if(!item||removed.has(id))return fail('UNKNOWN_INSTANCE');if(Object.values(equipment).includes(id))return fail('ITEM_EQUIPPED');removed.add(id);owned.instances[item.definitionId]--}
+ const removed=new Set();for(const id of debitInstances){if(typeof id!=='string'||!Object.hasOwn(inventory.instances,id)||removed.has(id))return fail('UNKNOWN_INSTANCE');const item=inventory.instances[id];if(Object.values(equipment).includes(id))return fail('ITEM_EQUIPPED');removed.add(id);owned.instances[item.definitionId]--}
  let instanceUnits=0,instanceWeight=0;
  for(const reward of rewards){const d=catalog.getDefinition(reward?.itemId),n=reward?.quantity;if(!d||!integer(n,1))return fail('INVALID_ITEM_REWARD');const unit=units(d.weight);if(unit===null)return fail('INVALID_WEIGHT',{itemId:d.id});
   if(d.stackable){const count=(owned.stacks[d.id]||0)+n;if(!integer(count)||count>d.maxStack)return fail('STACK_OVERFLOW');owned.stacks[d.id]=count}
