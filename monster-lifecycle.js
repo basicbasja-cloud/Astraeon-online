@@ -32,6 +32,7 @@ function create({loot,getRewardContext=()=>({zone:0}),rng,definitions=D}={}){
   if(busy)return fail('TRANSACTION_IN_PROGRESS');if(actors.has(actor))return fail('ALREADY_REGISTERED');
   const checked=definitions.validate(definitions.getDefinition(definitionId));if(!checked.ok)return checked;
   if(!time(now)||!point(actor)||!Number.isFinite(actor.maxHp)||actor.maxHp<=0||!Number.isFinite(actor.hp)||actor.hp<=0||actor.hp>actor.maxHp)return fail('INVALID_MONSTER');
+  if(!time(now+checked.definition.combat.initialDelay))return fail('INVALID_TIME');
   if(!spawn||typeof spawn.id!=='string'||!spawn.id.trim()||!point(spawn.home))return fail('INVALID_SPAWN');
   if(spawns.has(spawn.id))return fail('DUPLICATE_SPAWN');
   const identity=loot.register(actor,checked.definition.rewardDefinitionId);if(!identity.ok)return identity;
@@ -119,7 +120,7 @@ function create({loot,getRewardContext=()=>({zone:0}),rng,definitions=D}={}){
   const allowed=canDeliver(token,context);if(!allowed.ok)return allowed;
   const ticket=tokens.get(token),r=actors.get(ticket.actor);if(ticket.impacted||r.pending!==token)return fail('ALREADY_EXECUTED');
   if(r.state!=='ATTACK'||distance(ticket.actor,context.target)>r.definition.combat.attackRange||context.attackAllowed===false)return fail('OUT_OF_ATTACK_RANGE');
-  ticket.impacted=true;r.pending=null;return freeze({ok:true,attackId:token.attackId});
+  ticket.impacted=true;r.pending=null;r.lastTime=context.now;return freeze({ok:true,attackId:token.attackId});
  }
  function invalidateTargets(now,reason='INVALID_TARGET'){
   if(busy)return fail('TRANSACTION_IN_PROGRESS');if(!time(now)||[...registered].some(a=>!clock(actors.get(a),now)))return fail('INVALID_TIME');
