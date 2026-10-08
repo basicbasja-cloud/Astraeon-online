@@ -42,5 +42,8 @@ function validate(value){
  }catch{return fail('definition')}
 }
 function maxHP(definition,level=1,scale=1){const checked=validate(definition);if(!checked.ok||!Number.isFinite(level)||level<1||!Number.isFinite(scale)||scale<=0)return freeze({ok:false,code:'INVALID_MONSTER_STATS'});const s=definition.stats,hp=(s.hpBase+s.hpPerLevel*level)*s.hpScale*scale;return Number.isFinite(hp)&&hp>0?freeze({ok:true,maxHP:hp}):freeze({ok:false,code:'INVALID_MONSTER_STATS'})}
-window.AstraeonMonsterLifecycleDefinitions=freeze({definitions,legacySpecies,fixtureIds,validate,maxHP,getDefinition:id=>Object.hasOwn(definitions,id)?definitions[id]:null});
+// Temporary bounded coexistence of the existing replacement population and
+// per-life respawns. No approved final spawn density is expressed here.
+const population=freeze({initialCount:7,maxActors:8,maxAlive:8,replacementThreshold:7,replacementInterval:12});
+window.AstraeonMonsterLifecycleDefinitions=freeze({definitions,legacySpecies,fixtureIds,population,validate,maxHP,getDefinition:id=>Object.hasOwn(definitions,id)?definitions[id]:null});
 })();
