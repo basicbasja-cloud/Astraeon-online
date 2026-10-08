@@ -237,9 +237,12 @@ conditions, so there is no randomized pending gear roll to reload for free.
 
 ## Extension boundaries and provisional proof content
 
-Monster Box can later be an ordinary stackable canonical ItemDefinition in a
-monster table. Box opening and box-content tables are **separate future contracts**;
-no box definition/opening implementation is introduced here.
+The [Monster Box foundation](CORE_SPINE_MONSTER_BOX.md) now adds an ordinary
+canonical stackable ItemDefinition and separate opening/content-table authority.
+This Loot owner's table/RNG/death claim contract does not change. The isolated
+`proof-monster-box` table grants `monster-box-proof` x1 (guaranteed, NON-FINAL);
+it never opens the Box or rolls its contents. Existing production tables and
+reward values remain unchanged. There is no automatic production Box drop.
 
 Drop generation, entitlement, ownership commit and presentation are separate.
 Patch 0.0.1 retains **direct-to-inventory on death**. Future ground entities/pickup,
@@ -274,8 +277,10 @@ registration → authoritative HP-zero death → cached claim → commit, then c
 this owner's `newLife` at deterministic respawn readiness. It does not change
 tables, RNG, claims, inventory internals or reward formulas. Loading/player death
 invalidate offensive leases; travel retires both owners. Committed rewards persist
-through unchanged version 5; AI/death linkage stays transient. Current cache is 91.
+through unchanged version 5; AI/death linkage stays transient. Current cache is 92.
 See [lifecycle verification](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md).
 
-Recommended next Backbone task: **Monster Box item/opening foundation**, with a
-separate content-table contract and existing canonical ownership.
+The Box extension reuses only Item State's small item reward planner; it does not
+reuse Loot claims, life generations, currency/EXP/quest orchestration or tables.
+See [verified Box handoff](CORE_SPINE_MONSTER_BOX_REPORT.md).
+Recommended next Backbone task: **Inventory Capacity / Weight foundation**.

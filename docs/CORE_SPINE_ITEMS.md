@@ -202,10 +202,10 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **91** imports and precaches the item and Action Item modules together.
+Boot/page/SW version **92** imports and precaches the item and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
-identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, boxes,
+identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, final Box content/UI,
 full gear slots, final content/balance, rarity, affixes, enhancement, sockets,
 binding, durability, encumbrance and server authority remain future work.
 
@@ -226,4 +226,16 @@ monster rewards using the existing canonical ownership and Progression/Stats
 contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
 before synchronous publication. Existing formulas, learned skills, action slots,
 Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
-boot/page/cache version is now 91. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+boot/page/cache version is now 92. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+
+## Monster Box opening extension
+
+The [Box contract](CORE_SPINE_MONSTER_BOX.md) adds the canonical stackable
+`monster-box-proof` capability and separate Box Content Tables. Item State exposes
+private `canOpenable`/`commitOpenable` boundaries to Player: maximum package
+preflight before entropy, then contained source debit plus complete canonical
+stack/instance rewards. The existing reward planning loop is shared with Loot;
+death claims and kill adapters are not reused. A transient Item State revision
+also invalidates opening tickets after successful equipment-only mutations.
+No Box-specific ownership schema or save version bump is introduced. See
+[verified Box handoff](CORE_SPINE_MONSTER_BOX_REPORT.md).

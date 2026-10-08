@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 91. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 92. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -83,7 +83,7 @@ monster deaths to validated immutable tables, injected RNG, pure resolution and
 owned per-life claims. Mixed stack/ItemInstance/gold rewards commit once through
 canonical ownership; Base/Job EXP and quest credit retain their existing
 separate authorities. Current direct-on-death rewards and prototype kill cycles
-are retained. Final drop balance, ground-loot UI and Monster Box opening remain
+are retained. Final drop balance and ground-loot UI remain
 future work. `/tools/monster-loot.html` is an isolated
 in-memory sandbox. See [verified loot handoff](docs/CORE_SPINE_MONSTER_LOOT_REPORT.md).
 Patch 0.0.1 and Core Spine remain incomplete.
@@ -99,18 +99,32 @@ in-memory clock/target/death/respawn sandbox. See
 [verified lifecycle handoff](docs/CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md).
 Final monster content, balance, navigation and presentation remain future work.
 
+The [Monster Box foundation](docs/CORE_SPINE_MONSTER_BOX.md) adds one provisional
+canonical stack item and a separate immutable Box Content Table. Non-rolling
+prepare authorizes commit-time RNG; single and bulk opening publish source debit
+and all canonical stack/ItemInstance contents together. Private tickets and
+inventory revision reject duplicate/stale execution. Maximum reward preflight
+runs before entropy. Boxes stay outside learned slots and Action Item cooldowns;
+opening grants no EXP, Job EXP or quest credit. The existing Bag opens one owned
+Box; bulk is an API/dev action. `/tools/monster-box.html` uses isolated developer
+storage. Production monster drops are unchanged; an isolated Loot fixture proves
+unopened Box ownership. See [verified Box handoff](docs/CORE_SPINE_MONSTER_BOX_REPORT.md).
+Save version stays 5. Final content/balance/UI and Inventory Capacity / Weight
+remain future work; Patch 0.0.1 is not complete.
+
 ## Verification
 
 The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **91**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **92**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/monster_box_browser.py --url http://127.0.0.1:8011
 python tests/monster_lifecycle_browser.py --url http://127.0.0.1:8011
 python tests/monster_loot_browser.py --url http://127.0.0.1:8011
 python tests/action_item_browser.py --url http://127.0.0.1:8011

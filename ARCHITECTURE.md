@@ -83,6 +83,7 @@ they do not supersede the current spatial architecture.
 | scene.js | Cached authored paving, original environment sprites, depth fade and animated fountain/lamps |
 | world-systems.js | Ambient walkers, gradual atmosphere parameters, quality presets and original WebAudio synthesis |
 | action-item-config.js + item-effects.js + action-item.js + action-item-runtime.js | Frozen executable consumables, validated resource previews, owned prepare/commit tickets and explicit-time item/function/global clocks |
+| box-content-tables.js + monster-box.js + monster-box-runtime.js | Separate immutable Box contents, pure injected-RNG resolution/envelope and owned inventory opening authorization; no monster death or Action Item semantics |
 | game.js | Existing menus, progression adapters, navigation/AI intent dispatch, reactions, save, camera and presentation orchestration |
 | qa.html | Same live iframe in four actual CSS viewport sizes; frame timing and state samples through validated postMessage |
 
@@ -113,9 +114,30 @@ its former parallel kill grants are removed. Claims are transient and exact-once
 new life/registered replacement actors can reward again. Save version stays 5.
 Current prototype material cycles, gold, EXP, quest and direct-to-inventory
 behavior remain. Loot owns no AI, respawn timer, pickup presentation, final balance,
-capacity policy or Monster Box opening. Modules are precached with current v91;
+capacity policy. Separate Monster Box opening is described below. Modules are precached with current v92;
 unchanged Loot v90 cache URLs remain explicitly precached for compatibility.
 See [verified handoff](docs/CORE_SPINE_MONSTER_LOOT_REPORT.md).
+
+## Monster Box inventory opening boundary
+
+The [Box contract](docs/CORE_SPINE_MONSTER_BOX.md) is downstream of canonical stack
+ownership. `box-content-tables.js` defines contents separately from Monster Drop
+Tables; `monster-box.js` validates and resolves them with injected RNG. Owned
+preparation reveals no contents. Runtime commit verifies inventory identity,
+revision, epoch and context before rolling once. Item State preflights maximum
+possible package bounds before entropy and publishes one candidate containing
+source debit and every stack/ItemInstance reward. A post-roll rejection retains
+one private outcome in the same runtime; it exposes no preferred-result retry.
+Future outcome-sensitive capacity rejection across reload needs envelope
+acceptance or durable pending outcomes before activation.
+
+Opening grants no kill progression, quest credit or currency, and has no Action
+Item clock/HP/SP effects. Existing Bag single-open and dev bulk use the same
+Player authority. Loot's isolated proof can award the unopened canonical Box;
+production tables and Lifecycle remain unchanged. Shared loading/death/travel
+boundaries invalidate tickets, while v5 saves retain ownership/serial and discard
+transient authorization. Cache v92 includes all three new modules. No final Box
+UI, content, capacity, economy, renderer or art is introduced.
 
 ## Monster lifecycle / AI boundary
 
@@ -146,7 +168,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v91, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v92, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 

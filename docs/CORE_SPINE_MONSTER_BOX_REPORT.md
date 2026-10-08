@@ -11,7 +11,7 @@ creation. Immutable canonical proof item and separate Box Content grammar/resolv
 are implemented. Owned non-rolling authorization and commit-time RNG connect
 to a contained Item State transaction. Player APIs, existing Bag single-open,
 isolated Monster Loot box proof and cache v92 are integrated. Lifecycle/Combat
-core remains unchanged. Isolated harness is authored; browser acceptance next.
+core remains unchanged. Isolated harness and focused browser acceptance are complete.
 
 One box, `monster-box-proof`; one separate table, `box-proof-basic`, with equal
 weighted material/consumable/equipment outcomes and a material quantity range.
@@ -40,15 +40,18 @@ All new content/coefficients are provisional. This is not final balance.
   package envelope rejects possible stack/serial/processing failures BEFORE RNG.
   No speculative ItemInstance allocation. Both pre-roll envelope acceptance and
   exact post-roll acceptance hooks are available for later capacity work.
-- Focused Node now **150/150, zero failures** after this guard. Full suite and
-  browser regressions are next. Previous 18 Node sources and all browser suites
-  remain unchanged. Final expected Node count is 1010; actual output authoritative.
+- Final full Node suite passed **1010/1010, zero failures** after this guard,
+  including 150 new Box checks. Evidence `monster-box/node-final/report.json`.
+  Previous 18 Node sources and all browser suites remain unchanged.
+- Final focused browser rerun passed **33 groups**, zero console/runtime/HTTP
+  errors and no bounded live targeting retries. Evidence
+  `monster-box/final-browser/monster_box_browser/report.json`.
 - Historical browser baseline 157 groups has not yet been rerun on this task.
 - Item State revision and existing frozen inventory identity authorize tickets.
   Hidden post-roll failure retention prevents retry/new-prepare roll shopping.
   No reward data is exposed in rejected commit output.
-- Remaining: focused browser acceptance, all previous browser regressions,
-  world/cache verification, contract/final handoff documentation and push.
+- Contract, README and current architecture extensions are written. Remaining:
+  previous browser regressions, world/cache verification, final handoff and push.
 - Save version stays 5; no schema change planned. No lifecycle/combat/art/world
   edits are needed.
 

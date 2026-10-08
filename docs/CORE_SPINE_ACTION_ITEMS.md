@@ -231,7 +231,7 @@ resources, advance monotonic simulation time and reset item clocks.
 
 Live developer APIs require exact `dev=1`; normal URLs expose no intended mutation
 API. Pure module globals remain available to the loader, with private state
-contained. Boot/page/SW and developer imports use cache version **91** and
+contained. Boot/page/SW and developer imports use cache version **92** and
 precache all four new modules for offline saved-character boot.
 
 Run `tools/run-node-checks.py`, `tests/action_item_browser.py`, the existing item,
@@ -245,4 +245,14 @@ monster rewards using the existing canonical ownership and Progression/Stats
 contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
 before synchronous publication. Existing formulas, learned skills, action slots,
 Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
-boot/page/cache version is now 91. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+boot/page/cache version is now 92. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+
+## Monster Box inventory interaction extension
+
+The [Box foundation](CORE_SPINE_MONSTER_BOX.md) has an inventory/openableItem
+source, separate content-table RNG and no Action Item effects or clocks. Existing
+Bag capability dispatch sends Boxes to the Box runtime and Potion/Ration to this
+authority. A Potion/Ration awarded by Box remains a normal canonical Action Item.
+Opening neither checks healing cooldown nor starts/resets it, and grants no HP/SP
+effects, learned ranks or action slots. Shared lifecycle invalidation also clears
+Box tickets while retaining existing Action Item clocks.

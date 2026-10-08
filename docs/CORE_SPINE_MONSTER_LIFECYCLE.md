@@ -218,7 +218,7 @@ Exact `dev=1` enables live definitions/inspection, safe disposable player placem
 Combat-HP damage and repeat-death inspection. QA exports readonly lifecycle and
 incoming Combat evidence. Normal URLs expose no live mutation API or debug UI.
 
-Boot/page/cache v91 loads/precache all three modules. Unchanged Loot v90 URLs are
+Boot/page/cache v92 loads/precache all three modules. Unchanged Loot v90 URLs are
 also actually precached to retain the previous explicit cache contract; scripts
 are executed once using current boot URLs. No persistent schema/artwork changes.
 
@@ -226,9 +226,11 @@ Current limits: one target, no threat system, no final balance/density/perceptio
 no navigation rewrite, no full status/monster skill framework, no durable AI save
 or server security. Movement can be blocked by existing authored collision; no
 new teleport/pathfinding escape rule is invented. Presentation mappings can later
-observe IDLE/CHASE/RETURN/ATTACK/DEAD without changing authority. Monster Box,
-capacity/weight, Quest and Storage remain separate roadmap tasks.
+observe IDLE/CHASE/RETURN/ATTACK/DEAD without changing authority. Capacity/weight,
+Quest and Storage remain separate roadmap tasks.
 
-See [verified handoff](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md). Recommended next
-Backbone task: **Monster Box item/opening foundation**, using existing canonical
-item ownership and a separate box-content table contract.
+See [verified handoff](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md). The subsequent
+[Monster Box foundation](CORE_SPINE_MONSTER_BOX.md) operates downstream of Item
+ownership with a separate content-table contract. It introduces no lifecycle
+states, respawn policy, monster attacks or death/claim changes. Recommended next
+Backbone task: **Inventory Capacity / Weight foundation**.
