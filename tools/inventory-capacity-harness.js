@@ -5,7 +5,7 @@ const D=AstraeonItemDefinitions,C=AstraeonInventoryCapacity,I=AstraeonItemInvent
 let player,state,policy,catalog,loot,actor,claim,ticket,draws=0,rolls=[],index=0,result=null,config;
 const show=(id,value)=>document.getElementById(id).textContent=JSON.stringify(value,null,2);
 const snapshot=()=>({inventory:player.getInventory(),equipment:player.getEquipment(),capacity:player.getInventoryCapacityState(),stats:player.getDerivedStats(),save:S.snapshot(state),draws,result,boxRuntime:player.getMonsterBoxRuntime()});
-function render(){show('inspection',snapshot());show('result',result);show('envelope',{bounds:AstraeonMonsterBox.envelope(AstraeonBoxContentTables.getDefinition('box-proof-basic'),Number(document.getElementById('count').value),{catalog}),acceptance:player.getMonsterBoxState(BOX,Number(document.getElementById('count').value))})}
+function render(){show('inspection',snapshot());show('result',result);show('envelope',{bounds:AstraeonMonsterBox.envelope(config.table||AstraeonBoxContentTables.getDefinition('box-proof-basic'),Number(document.getElementById('count').value),{catalog}),acceptance:player.getMonsterBoxState(BOX,Number(document.getElementById('count').value))})}
 function attach(raw){state=S.normalize(raw);player=AstraeonPlayer.attach(state,{itemCatalog:catalog,getCapacityPolicy:()=>policy,getBoxRng:()=>({next:()=>{draws++;return rolls[index++]}}),boxTables:config.table?{getDefinition:()=>config.table}:undefined});loot=AstraeonMonsterLootRuntime.create({commit:(r,p)=>player.commitMonsterRewards(r,p)});actor=claim=null}
 function reset(options={}){
  config=structuredClone(options);policy={mode:'bounded',slotLimit:options.slotLimit??10,weightLimit:options.weightLimit??10,overLimitPolicy:'no-worse',metadata:{fixture:true}};
