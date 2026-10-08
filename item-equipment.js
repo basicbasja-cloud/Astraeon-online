@@ -35,7 +35,7 @@ const legacyView=equipment=>freeze(Object.fromEntries(legacySlots.map(slot=>[slo
 function normalize(inventory,raw={},catalog=defaults){const result=normalizeSlots(inventory,raw,catalog);return plain(raw)&&Object.keys(raw).every(k=>legacySlots.includes(k))?legacyView(result):result}
 function valid(inventory,equipment,catalog=defaults){try{return I.valid(inventory,catalog)&&plain(equipment)&&JSON.stringify(normalize(inventory,equipment,catalog))===JSON.stringify(equipment)}catch{return false}}
 function canEquip(inventory,equipment,id,requestedSlot,catalog=defaults,requirements=()=>true){
- const slot=R.canonical(requestedSlot);if(!slot)return I.fail('INVALID_EQUIPMENT_SLOT');if(!valid(inventory,equipment,catalog))return I.fail('INVALID_EQUIPMENT');
+ const slot=R.canonical(requestedSlot);if(!slot)return I.fail('INVALID_EQUIPMENT_SLOT');if(typeof id!=='string'||!id)return I.fail('UNKNOWN_INSTANCE');if(!valid(inventory,equipment,catalog))return I.fail('INVALID_EQUIPMENT');
  const item=Object.hasOwn(inventory.instances,id)?inventory.instances[id]:null;if(!item)return I.fail('UNKNOWN_INSTANCE');const d=catalog.getDefinition(item.definitionId),checked=validateDefinition(d);if(!checked.ok)return checked;if(!checked.allowedSlots.includes(slot))return I.fail('WRONG_EQUIPMENT_SLOT');
  if(Object.entries(equipment).some(([s,value])=>s!==slot&&value===id))return I.fail('ALREADY_EQUIPPED');
  try{if(requirements(d.requirements,item,slot)!==true)return I.fail('EQUIPMENT_REQUIREMENTS')}catch{return I.fail('EQUIPMENT_REQUIREMENTS')}

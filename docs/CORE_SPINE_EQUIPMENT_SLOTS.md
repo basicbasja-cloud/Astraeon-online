@@ -69,7 +69,9 @@ private references and owns no state. New consumers use `getEquipmentSlots()`.
 Legacy name mirrors/setters remain contained adapters for the original three
 slots; new slots use instance-ID APIs. They never become a second gear ledger.
 
-Eligibility checks active slot, valid canonical inventory/references, owned
+Eligibility requires a nonempty primitive string instance ID before property
+lookup: boxed strings, objects/arrays with coercion, numbers and symbols reject
+without executing conversion callbacks. It checks active slot, valid canonical inventory/references, owned
 instance, validated equipment definition, allowed slot and the existing
 `equipmentRequirements(requirements,instance,canonicalSlot)` hook. Production
 requirements remain empty. No new level/class/combat restriction is invented.

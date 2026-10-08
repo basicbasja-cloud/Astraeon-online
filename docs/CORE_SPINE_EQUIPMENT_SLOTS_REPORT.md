@@ -84,8 +84,13 @@ visual equipment or UI design. Future visual layers may consume semantic IDs.
 
 `python tools/run-node-checks.py --node D:\Node\node.exe`
 
-**1300 pass / 0 fail, 21 files: 1155 previous checks + 145 new checks.**
-Evidence `node-final/report.json`. New tests cover registry/definition validation,
+**1309 pass / 0 fail, 21 files: 1155 previous checks + 154 new checks.**
+Evidence `node-identity-final/report.json`. Nine additional edge checks reject
+non-string/empty instance IDs before property coercion or mutation. This focused
+review fix changes no behavior for canonical string IDs. The final runtime SHA
+is the identity-guard successor of the earlier checkpoint; record it in the final
+documentation update and rerun focused browser acceptance after this guard.
+New tests cover registry/definition validation,
 all-five equip/replace/unequip, wrong/unowned/duplicate references, immutable
 results, callback nesting, combined Stats/Combat, max-resource safety, weighted
 and over-limit zero capacity delta, Loot/Box canonical instances and serial/claim
@@ -115,8 +120,8 @@ suite once, not repeat attempts. Final previous-suite sequence is pending.
 | monster_box_browser.py | 33 baseline | pending |
 | monster_lifecycle_browser.py | 30 | passed |
 | monster_loot_browser.py | 26 baseline | pending |
-| action_item_browser.py | 30 baseline | pending |
-| inventory_browser.py | 15 baseline | pending |
+| action_item_browser.py | 30 | passed |
+| inventory_browser.py | 15 | passed |
 | action_loadout_browser.py | 17 baseline | pending |
 | combat_browser.py | 21 baseline | pending |
 | skill_tree_browser.py | 11 baseline | pending |
