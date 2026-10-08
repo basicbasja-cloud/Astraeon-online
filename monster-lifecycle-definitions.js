@@ -18,8 +18,10 @@ const make=(id,rewardDefinitionId,{hpBase=32,hpPerLevel=4,hpScale=1,speed=1,dete
  lifecycle:{leashRange:12,respawnDelay:respawn,returnHP:'retain'},tags:['prototype'],metadata:{balance:'non-final'}
 });
 const definitions={};
-legacySpecies.forEach((s,i)=>{const id=window.AstraeonMonsterDefinitions.speciesIds[i];definitions[id]=make(id,id,{hpScale:s.hp,speed:s.speed,attackRange:i===1?4.8:s.reach+.4,windup:window.AstraeonEnemyCombat.normal[i].duration})});
-definitions['moonveil-guardian']=make('moonveil-guardian','moonveil-guardian',{hpBase:270,hpPerLevel:25,speed:.7,attackRange:6.6,windup:.9,cadence:2.4});
+// A stationary ATTACK must be inside the existing contact shape. Melee uses
+// the old chase stopping reach; charge/projectile/field keep their authored band.
+legacySpecies.forEach((s,i)=>{const id=window.AstraeonMonsterDefinitions.speciesIds[i],attack=window.AstraeonEnemyCombat.normal[i];definitions[id]=make(id,id,{hpScale:s.hp,speed:s.speed,attackRange:attack.charge?attack.range:attack.projectile||attack.field?s.reach+.4:s.reach,windup:attack.duration})});
+definitions['moonveil-guardian']=make('moonveil-guardian','moonveil-guardian',{hpBase:270,hpPerLevel:25,speed:.7,attackRange:3.5,windup:.9,cadence:2.4});
 definitions['arena-sparring']=make('arena-sparring','arena-sparring');
 const fixtureIds=['lifecycle-normal-a','lifecycle-normal-b','lifecycle-normal-c','lifecycle-tough-a'];
 definitions[fixtureIds[0]]=make(fixtureIds[0],'proof-material',{hpBase:20,hpPerLevel:0,speed:1,detect:6,attackRange:1.5,windup:.5,cadence:2,respawn:4});
