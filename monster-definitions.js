@@ -7,7 +7,7 @@ const definitions=Object.fromEntries(speciesIds.map(id=>[id,{id,dropTableId:'pro
 definitions['moonveil-guardian']={id:'moonveil-guardian',dropTableId:'prototype-cycle',rewardProfileId:'prototype-boss'};
 definitions['astral-echo']={id:'astral-echo',dropTableId:'prototype-echo',rewardProfileId:'prototype-kill'};
 definitions['arena-sparring']={id:'arena-sparring',dropTableId:'prototype-arena',rewardProfileId:'prototype-arena'};
-for(const suffix of ['material','consumable','equipment','none','multi'])definitions['proof-'+suffix]={id:'proof-'+suffix,dropTableId:'proof-'+suffix,rewardProfileId:'proof',metadata:{fixture:true}};
+for(const suffix of ['material','consumable','equipment','none','multi','monster-box'])definitions['proof-'+suffix]={id:'proof-'+suffix,dropTableId:'proof-'+suffix,rewardProfileId:'proof',metadata:{fixture:true}};
 freeze(definitions);
 window.AstraeonMonsterDefinitions=freeze({definitions,speciesIds,getDefinition:id=>Object.hasOwn(definitions,id)?definitions[id]:null});
 })();

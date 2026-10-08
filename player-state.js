@@ -16,7 +16,9 @@ function attach(state,options={}){
  function trackRewardQuest(){if(state.quest!==rewardQuest){rewardQuest=state.quest;questGeneration++}return questGeneration}
  const getItemResources=()=>{recalculate();return Object.fromEntries(['currentHP','currentSP','maxHP','maxSP'].map(key=>[key,character.getValue(key)]))};
  const itemRuntime=window.AstraeonActionItemRuntime.create({getInventory:items.getInventory,getQuantity:items.getQuantity,getResources:getItemResources,commit:(id,inventory,plan)=>items.consumeStackWithEffect(id,1,inventory,()=>{if(JSON.stringify(getItemResources())!==JSON.stringify(plan.resourceBefore))return false;character.setCurrentResources(plan.resourceAfter);return true})},{catalog:options.itemCatalog,config:options.itemActionConfig,restrictions:options.itemRestrictions});
- const {consumeStackWithEffect,commitRewards,...itemMethods}=items;
+ const boxRuntime=window.AstraeonMonsterBoxRuntime?.create({getInventory:items.getInventory,getRevision:items.getRevision,getQuantity:items.getQuantity,getCurrentHP:()=>character.getValue('currentHP'),commit:(source,resolve)=>items.commitOpenable(source,resolve,options.boxPreflight)},{catalog:options.itemCatalog,tables:options.boxTables,getRng:options.getBoxRng||(()=>window.AstraeonCombatRuntime.productionRng()),restrictions:options.boxRestrictions});
+ const {consumeStackWithEffect,commitRewards,commitOpenable,...itemMethods}=items;
+ const boxCall=(method,...args)=>boxRuntime?boxRuntime[method](...args):Object.freeze({ok:false,code:'BOX_RUNTIME_UNAVAILABLE'});
  let actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(state.actionLoadout);
  let legacySkillControls=state.legacySkillControls===true;
  const loadouts=window.AstraeonActionLoadout;
@@ -58,6 +60,12 @@ function attach(state,options={}){
   },
   getActionItemState:itemRuntime.getState,prepareActionItem:itemRuntime.prepare,commitActionItem:itemRuntime.commit,requestActionItem:itemRuntime.request,getActionItemRuntime:itemRuntime.snapshot,resetActionItemCooldowns:itemRuntime.resetCooldowns,invalidatePreparedActionItems:itemRuntime.invalidatePrepared,
   useConsumable:(id,context)=>itemRuntime.request(id,context??options.getItemContext?.()??{now:0,intent:'inventory'}),
+  getInventoryRevision:items.getRevision,
+  getMonsterBoxState:(id,count=1,context)=>boxCall('getState',id,count,context??options.getItemContext?.()??{intent:'inventory'}),
+  prepareMonsterBoxOpen:(id,count=1,context)=>boxCall('prepare',id,count,context??options.getItemContext?.()??{intent:'inventory'}),
+  commitMonsterBoxOpen:(ticket,context)=>boxCall('commit',ticket,context??options.getItemContext?.()??{intent:'inventory'}),
+  openMonsterBoxes:(id,count=1,context)=>boxCall('request',id,count,context??options.getItemContext?.()??{intent:'inventory'}),
+  getMonsterBoxRuntime:()=>boxCall('snapshot'),invalidatePreparedMonsterBoxes:()=>boxCall('invalidatePrepared'),
   getClassId,getSkillTree:()=>window.AstraeonSkillDefinitions.trees[getClassId()]||null,
   getActionLoadout:()=>state.actionLoadout,
   getLoadout:()=>state.actionLoadout,getSlot:slot=>loadouts.getSlot(actionLoadout,slot),
@@ -66,7 +74,7 @@ function attach(state,options={}){
   swapSlots:(a,b,context)=>commitLoadout(loadouts.swapSlots(actionLoadout,a,b),context),
   moveSkill:(from,to,context)=>commitLoadout(loadouts.moveSkill(actionLoadout,from,to),context),
   getActionSlotState:actionRuntime.getSlotState,prepareAction:actionRuntime.prepareAction,commitAction:actionRuntime.commitAction,requestAction:actionRuntime.requestAction,
-  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();return result.ok?itemRuntime.invalidatePrepared():result},
+  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();if(!result.ok)return result;const itemResult=itemRuntime.invalidatePrepared();return itemResult.ok&&boxRuntime?boxRuntime.invalidatePrepared():itemResult},
   canUseSkill:id=>window.AstraeonSkillRuntime.canUseSkill(character.getLearnedSkills(),getClassId(),id),
   isSkillAssigned:id=>!!window.AstraeonSkillDefinitions.getDefinition(id)&&actionLoadout.includes(id),
   setSkillNode(id,node){

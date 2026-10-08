@@ -13,6 +13,7 @@ const definitions=freeze({
  'proof-consumable':{id:'proof-consumable',entries:[proof('consumable','potion',1,2)],metadata:{fixture:true,balance:'non-final'}},
  'proof-equipment':{id:'proof-equipment',entries:[proof('equipment','astral-blade')],metadata:{fixture:true,balance:'non-final'}},
  'proof-none':{id:'proof-none',entries:[],metadata:{fixture:true,balance:'non-final'}},
+ 'proof-monster-box':{id:'proof-monster-box',entries:[proof('owned-unopened-box','monster-box-proof')],metadata:{fixture:true,balance:'guaranteed isolated box ownership proof; non-final'}},
  'proof-multi':{id:'proof-multi',entries:[proof('material','herb',.5,1,3),proof('consumable','potion',.5),proof('equipment','astral-blade',.25)],currency:{base:7,perZone:0},metadata:{fixture:true,balance:'non-final'}}
 });
 window.AstraeonDropTables=freeze({definitions,getDefinition:id=>Object.hasOwn(definitions,id)?definitions[id]:null});

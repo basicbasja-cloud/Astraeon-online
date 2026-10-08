@@ -38,7 +38,9 @@ function compile(itemId,{catalog=D,tables=window.AstraeonBoxContentTables}={}){
  if(!integer(d.maxStack)||d.actionItem!==undefined||d.effects!==undefined||!data(d)||Object.keys(d.openable).some(k=>k!=='boxContentTableId'))return fail('INVALID_MONSTER_BOX','definition');
  const id=d.openable.boxContentTableId,table=typeof id==='string'?tables?.getDefinition(id):null;
  if(!table)return fail('UNKNOWN_BOX_TABLE','boxContentTableId');
+ if(table.id!==id)return fail('INVALID_BOX_TABLE_REFERENCE','boxContentTableId');
  const checked=validate(table,{catalog});if(!checked.ok)return checked;
+ if(table.entries.some(entry=>entry.itemId===itemId))return fail('BOX_SELF_REFERENCE','entries');
  return freeze({ok:true,source:'inventory/openableItem',definition:freeze(structuredClone(d)),table:freeze(structuredClone(table))});
 }
 function resolve(table,count,rng,{catalog=D}={}){
