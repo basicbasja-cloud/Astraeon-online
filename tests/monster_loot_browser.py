@@ -26,6 +26,7 @@ def kill_to(page,target_count,cls,preferred_ids=None):
     while qa(page)['save']['kills']<target_count:
         assert time.monotonic()<deadline,('bounded live kill deadline',cls,qa(page)['loot'])
         close_menu(page);idle(page)
+        dev(page,'d.setCurrentHP(d.snapshot().maxHP);d.setCurrentSP(d.snapshot().maxSP)')
         s=qa(page);living=[e for e in s['enemies'] if e['hp']>0]
         # Per-life respawns may be nearer than the replacement under test.
         # Prefer its actual identity, then retain ordinary input/kill assertions.
@@ -46,7 +47,19 @@ def kill_to(page,target_count,cls,preferred_ids=None):
                 wx=(wx+px)/2;wy=(wy+py)/2
             timing.append({'class':cls,'event':'visible intermediate ground waypoint for offscreen actor','enemyId':target['rewardIdentity']['monsterInstanceId']})
             page.mouse.click(wx,wy)
-            page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg={'x':s['save']['x'],'y':s['save']['y']},timeout=15000)
+            origin={'x':s['save']['x'],'y':s['save']['y']}
+            try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
+            except PlaywrightTimeout:
+                state=qa(page);evidence={'class':cls,'event':'offscreen waypoint timeout; bounded keyboard approach','enemyId':target['rewardIdentity']['monsterInstanceId'],'player':{'x':state['save']['x'],'y':state['save']['y'],'hp':state['save']['hp'],'zone':state['save']['zone']},'navigation':state['navigation'],'action':state['action'],'windowName':state['windowName'],'click':{'x':wx,'y':wy}};timing.append(evidence);print(json.dumps(evidence),flush=True)
+                close_menu(page);idle(page)
+                # A visible ground point can overlap a nearby actor's click area.
+                # Ordinary directional input cancels that click target and moves
+                # toward the intended actor; no position/HP mutation or nav rewrite.
+                dx,dy=at['x']-state['save']['x'],at['y']-state['save']['y'];basis=state['view']['basis'];screen_x=dx*basis['xx']+dy*basis['yx'];screen_y=dx*basis['xy']+dy*basis['yy'];buttons=['d' if screen_x>=0 else 'a','s' if screen_y>=0 else 'w']
+                for button in buttons:page.keyboard.down(button)
+                try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
+                finally:
+                    for button in buttons:page.keyboard.up(button)
             continue
         page.mouse.click(x,y-16)
         # Existing warrior attacks stop movement. Approach the actor BEFORE hold.
@@ -55,7 +68,6 @@ def kill_to(page,target_count,cls,preferred_ids=None):
             page.wait_for_function('''({id,reach})=>{const q=AstraeonQA.snapshot(),e=q.enemies.find(e=>e.rewardIdentity.monsterInstanceId===id);return !e||e.hp===0||Math.hypot(q.save.x-e.transform.position.x,q.save.y-e.transform.position.y)<=reach}''',arg={'id':target['rewardIdentity']['monsterInstanceId'],'reach':2.3 if cls=='0' else 5.9},timeout=30000)
         except PlaywrightTimeout:
             state=qa(page);evidence={'class':cls,'event':'approach timeout','player':{'x':state['save']['x'],'y':state['save']['y'],'hp':state['save']['hp'],'zone':state['save']['zone']},'target':target,'navigation':state['navigation'],'action':state['action'],'click':{'x':x,'y':y-16},'element':page.evaluate('p=>document.elementFromPoint(p.x,p.y)?.outerHTML.slice(0,150)',{'x':x,'y':y-16})};timing.append(evidence);print(json.dumps(evidence),flush=True);raise
-        dev(page,'d.setCurrentHP(d.snapshot().maxHP);d.setCurrentSP(d.snapshot().maxSP)')
         b=page.locator('[data-action="attack"]').bounding_box();page.mouse.move(b['x']+b['width']/2,b['y']+b['height']/2);page.mouse.down()
         try:page.wait_for_function('(kills)=>AstraeonQA.snapshot().save.kills>kills',arg=s['save']['kills'],timeout=7000)
         except PlaywrightTimeout:
