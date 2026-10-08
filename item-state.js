@@ -45,16 +45,20 @@ function legacyEquipment(inventory,equipment,history={},catalog=D){
  return freeze(result);
 }
 function installMirrors(state,normalized,catalog=D){Object.assign(state,normalized);state.inventory=legacyInventory(state.itemInventory,state.itemHistory,catalog);state.equipment=legacyEquipment(state.itemInventory,state.equippedItems,state.itemHistory,catalog);return state}
-function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
+function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true,getCapacityPolicy=()=>window.AstraeonInventoryCapacity.defaultPolicy}={}){
+ const C=window.AstraeonInventoryCapacity;if(!C)throw new TypeError('Inventory capacity authority is required');
  const initial=migrate(raw,catalog);let inventory=initial.itemInventory,equipment=initial.equippedItems,history=initial.itemHistory,committing=false,revision=0;
+ const capacityOptions=()=>{let policy;try{policy=getCapacityPolicy()}catch{policy=null}return {catalog,policy,equipment}};
+ const preflight=transaction=>committing?I.fail('TRANSACTION_IN_PROGRESS'):C.evaluate(inventory,transaction,capacityOptions());
  function commit(result,nextEquipment=equipment,beforePublish){
   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
   if(!result.ok)return result;const nextInventory=result.inventory||inventory;
+  const capacity=C.evaluateOwnership(inventory,nextInventory,capacityOptions());if(!capacity.ok)return capacity;
   committing=true;
   try{
    try{onChange(nextInventory,nextEquipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
    if(beforePublish){try{if(beforePublish()!==true)return I.fail('EFFECT_COMMIT_REJECTED')}catch{return I.fail('EFFECT_COMMIT_REJECTED')}}
-   inventory=nextInventory;equipment=nextEquipment;revision++;return freeze({...result,inventory,equipment});
+   inventory=nextInventory;equipment=nextEquipment;revision++;return freeze({...result,inventory,equipment,capacity});
   }finally{committing=false}
  }
  function planRewards(start,rewards){
@@ -71,13 +75,16 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
  const api={getInventory:()=>inventory,getEquipment:()=>equipment,getHistory:()=>history,getRevision:()=>revision,
   getQuantity:id=>I.getQuantity(inventory,id),getInstance:id=>Object.hasOwn(inventory.instances,id)?inventory.instances[id]:null,
   getEquipped:slot=>E.slots.includes(slot)?equipment[slot]:null,
-  getEquipmentModifiers:()=>E.modifiers(inventory,equipment,catalog),getCarriedWeight:()=>I.carriedWeight(inventory,catalog),
+  getEquipmentModifiers:()=>E.modifiers(inventory,equipment,catalog),getCarriedWeight:()=>{const result=C.snapshot(inventory,capacityOptions());return result.ok?freeze({ok:true,weight:result.totalWeight}):result},
+  getInventoryCapacityState:()=>C.snapshot(inventory,capacityOptions()),canAcceptItemPackage:preflight,
   getEquipmentEffects:()=>E.effects(inventory,equipment,catalog),
-  canAddStack:(id,count)=>I.canAddStack(inventory,id,count,catalog),canRemoveStack:(id,count)=>I.canRemoveStack(inventory,id,count,catalog),
+  canAddStack:(id,count)=>{const checked=I.canAddStack(inventory,id,count,catalog);if(!checked.ok)return checked;const capacity=preflight({itemRewards:[{itemId:id,quantity:count}]});return capacity.ok?freeze({...checked,capacity}):capacity},canRemoveStack:(id,count)=>I.canRemoveStack(inventory,id,count,catalog),
   addStack:(id,count)=>commit(I.addStack(inventory,id,count,catalog)),removeStack:(id,count)=>commit(I.removeStack(inventory,id,count,catalog)),consumeStack:(id,count=1)=>commit(I.consumeStack(inventory,id,count,catalog)),
   consumeStackWithEffect(id,count,expectedInventory,apply){if(expectedInventory!==inventory)return I.fail('STALE_PACKAGE');if(typeof apply!=='function')return I.fail('EFFECT_COMMIT_REJECTED');return commit(I.consumeStack(inventory,id,count,catalog),equipment,apply)},
+  grantItemPackage(rewards){const capacity=preflight({itemRewards:rewards});return capacity.ok?commit(planRewards(inventory,rewards)):capacity},
   commitRewards(rewards,apply){
    if(!Array.isArray(rewards)||typeof apply!=='function')return I.fail('INVALID_REWARD_PACKAGE');
+   const capacity=preflight({itemRewards:rewards});if(!capacity.ok)return capacity;
    return commit(planRewards(inventory,rewards),equipment,apply);
   },
   canOpenable(source,bounds,preflight=()=>true){
@@ -88,10 +95,11 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
    for(const reward of bounds.maximumRewards){const d=catalog.getDefinition(reward.itemId);if(!d)return I.fail('UNKNOWN_ITEM');if(d.stackable){const checked=I.canAddStack(debit.inventory,d.id,reward.quantity,catalog);if(!checked.ok)return checked}}
    if(bounds.maximumInstanceUnits>10000)return I.fail('REWARD_SIZE_LIMIT');
    if(bounds.maximumInstanceUnits>Number.MAX_SAFE_INTEGER-inventory.nextItemSerial)return I.fail('SERIAL_EXHAUSTED');
+   const capacity=C.envelope(inventory,source,bounds,capacityOptions());if(!capacity.ok)return capacity;
    // Deterministic failures for ANY supported outcome reject before entropy,
    // including after reload. This does not allocate speculative ItemInstances.
    committing=true;
-   try{const accepted=preflight(freeze({source:{itemId:source.itemId,count:source.count},inventoryBefore:inventory,equipment,bounds}));return accepted===true?freeze({ok:true}):I.fail(typeof accepted?.code==='string'?accepted.code:'REWARD_PREFLIGHT_REJECTED')}
+   try{const accepted=preflight(freeze({source:{itemId:source.itemId,count:source.count},inventoryBefore:inventory,equipment,bounds,capacity}));return accepted===true?freeze({ok:true,capacity}):I.fail(typeof accepted?.code==='string'?accepted.code:'REWARD_PREFLIGHT_REJECTED')}
    catch{return I.fail('REWARD_PREFLIGHT_REJECTED')}finally{committing=false}
   },
   commitOpenable(source,resolve,preflight=()=>true){
@@ -106,28 +114,31 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
    try{
     let resolution;try{resolution=resolve()}catch{return I.fail('BOX_RESOLUTION_REJECTED')}
     if(resolution?.ok!==true)return I.fail(resolution?.code||'BOX_RESOLUTION_REJECTED');
+    const capacity=C.evaluate(inventory,{stackDebits:[{itemId:source.itemId,quantity:source.count}],itemRewards:resolution.itemRewards},capacityOptions());if(!capacity.ok)return capacity;
     const result=planRewards(debit.inventory,resolution.itemRewards);if(!result.ok)return result;
     const proposal=freeze({...result,source:{itemId:source.itemId,count:source.count},inventoryBefore:inventory,equipment});
     let accepted;try{accepted=preflight(proposal)}catch{return I.fail('REWARD_PREFLIGHT_REJECTED')}
     if(accepted!==true)return I.fail(typeof accepted?.code==='string'?accepted.code:'REWARD_PREFLIGHT_REJECTED');
     try{onChange(result.inventory,equipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
     const quantityBefore=I.getQuantity(inventory,source.itemId);inventory=result.inventory;revision++;
-    return freeze({...result,equipment,quantityBefore,quantityAfter:I.getQuantity(inventory,source.itemId)});
+    return freeze({...result,equipment,capacity,quantityBefore,quantityAfter:I.getQuantity(inventory,source.itemId)});
    }finally{committing=false}
   },
-  createItemInstance:(id,metadata={})=>commit(I.createInstance(inventory,id,metadata,catalog)),
+  createItemInstance(id,metadata={}){if(committing)return I.fail('TRANSACTION_IN_PROGRESS');const d=catalog.getDefinition(id);if(!d||d.stackable)return commit(I.createInstance(inventory,id,metadata,catalog));const capacity=preflight({itemRewards:[{itemId:id,quantity:1}]});return capacity.ok?commit(I.createInstance(inventory,id,metadata,catalog)):capacity},
   deleteItemInstance:id=>commit(I.deleteInstance(inventory,id,equipment,catalog)),
   canEquip:(id,slot)=>E.canEquip(inventory,equipment,id,slot,catalog,requirements),
   equip(id,slot){const result=E.equip(inventory,equipment,id,slot,catalog,requirements);return result.ok?commit(result,result.equipment):result},
   unequip(slot){const result=E.unequip(inventory,equipment,slot,catalog);return result.ok?commit(result,result.equipment):result},
   acquireEquipment(id,slot,{reuse=false}={}){
    let item=reuse?Object.values(inventory.instances).find(i=>i.definitionId===id&&!Object.values(equipment).includes(i.instanceId)):null;
+   if(!item){const capacity=preflight({itemRewards:[{itemId:id,quantity:1}]});if(!capacity.ok)return capacity}
    const created=item?{ok:true,instance:item,inventory}:I.createInstance(inventory,id,{},catalog);if(!created.ok)return created;
    const checked=E.equip(created.inventory,equipment,created.instance.instanceId,slot,catalog,requirements);return checked.ok?commit(created,checked.equipment):checked;
   },
   reward(stacks){let next=inventory;for(const [id,count] of Object.entries(stacks)){const r=I.addStack(next,id,count,catalog);if(!r.ok)return r;next=r.inventory}return commit({ok:true,inventory:next})},
   craft(recipeId){
    const recipe=D.recipes.find(r=>r.id===recipeId);if(!recipe)return I.fail('UNKNOWN_RECIPE');let next=inventory;
+   const capacity=preflight({stackDebits:Object.entries(recipe.inputs).map(([itemId,quantity])=>({itemId,quantity})),itemRewards:[{itemId:recipe.output,quantity:1}]});if(!capacity.ok)return capacity;
    for(const [id,count] of Object.entries(recipe.inputs)){const r=I.removeStack(next,id,count,catalog);if(!r.ok)return r;next=r.inventory}
    const d=catalog.getDefinition(recipe.output),r=d?.stackable?I.addStack(next,recipe.output,1,catalog):I.createInstance(next,recipe.output,{craftedRecipe:recipe.id},catalog);return commit(r);
   },

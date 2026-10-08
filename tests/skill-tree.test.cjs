@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 global.window={};
-for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+file+'.js');
+for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','inventory-capacity','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+file+'.js');
 const {definitions,trees}=window.AstraeonSkillDefinitions,tree=window.AstraeonSkillTree,save=window.AstraeonSave;
 function fixture(extra={}){const state=save.normalize({name:'Skill test',saveVersion:4,cls:0,baseJobLevel:20,skillPoints:20,actionLoadout:[],legacySkillControls:false,...extra});return {state,api:window.AstraeonPlayer.attach(state)}}
 const reject=(api,operation,code)=>{const before=api.snapshot();assert.equal(operation().code,code);assert.deepEqual(api.snapshot(),before)};

@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 global.window={};
-for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state','combat-resolution-config','combat-resolution','combat-runtime'])require('../'+file+'.js');
+for(const file of ['skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','inventory-capacity','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state','combat-resolution-config','combat-resolution','combat-runtime'])require('../'+file+'.js');
 function fixture(slot=0,extra={},options={}){const s=window.AstraeonSave.normalize({name:'runtime fixture',cls:0,baseJobLevel:20,skillPoints:50,actionLoadout:[],legacySkillControls:false,...extra}),p=window.AstraeonPlayer.attach(s,options);p.learnSkill('rising-edge');p.assignSkill(slot,'rising-edge');return {s,p}}
 const context=now=>({now});
 const execute=(p,slot=0,now=0,launch=()=>true,options)=>p.requestAction(slot,context(now),launch,options);

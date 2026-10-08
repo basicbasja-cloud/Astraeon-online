@@ -38,6 +38,6 @@ function createInstance(state,id,metadata={},catalog=defaults){
  const instance={instanceId,definitionId:id,metadata:structuredClone(metadata)};return freeze({ok:true,instance,inventory:{...state,instances:{...state.instances,[instanceId]:instance},nextItemSerial:n+1}});
 }
 function deleteInstance(state,id,equipment={},catalog=defaults){if(!valid(state,catalog))return fail('INVALID_INVENTORY');if(!Object.hasOwn(state.instances,id))return fail('UNKNOWN_INSTANCE');if(Object.values(equipment).includes(id))return fail('ITEM_EQUIPPED');const instances={...state.instances};delete instances[id];return freeze({ok:true,inventory:{...state,instances}})}
-function carriedWeight(state,catalog=defaults){if(!valid(state,catalog))return fail('INVALID_INVENTORY');let weight=0;for(const [id,count] of Object.entries(state.stacks))weight+=catalog.getDefinition(id).weight*count;for(const item of Object.values(state.instances))weight+=catalog.getDefinition(item.definitionId).weight;return Number.isFinite(weight)?freeze({ok:true,weight}):fail('WEIGHT_OVERFLOW')}
+function carriedWeight(state,catalog=defaults){const C=window.AstraeonInventoryCapacity;if(!C)return fail('CAPACITY_AUTHORITY_REQUIRED');const result=C.snapshot(state,{catalog});return result.ok?freeze({ok:true,weight:result.totalWeight}):result}
 window.AstraeonItemInventory=freeze({normalize,valid,getQuantity,canAddStack,addStack,canRemoveStack,removeStack,consumeStack:removeStack,createInstance,deleteInstance,carriedWeight,fail});
 })();
