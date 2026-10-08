@@ -34,13 +34,15 @@ def export(scene):
    ground=next(o for o in collection.objects if o.type=='MESH' and not o.get('surface_role'));vs=vertices(ground)
    terrain={'bounds':{'minX':min(v[0] for v in vs),'minY':min(v[1] for v in vs),'maxX':max(v[0] for v in vs),'maxY':max(v[1] for v in vs)},'elevation':max(v[2] for v in vs),'material':ground.data.materials[0].name,'vertices':vs,'faces':[list(p.vertices) for p in ground.data.polygons],'surfaces':[]}
    if scene.get('world_bounds_json'):terrain['bounds']=json.loads(scene['world_bounds_json'])
-   if uv(ground):terrain['uvs']=uv(ground)
+   coordinates=uv(ground)
+   if coordinates:terrain['uvs']=coordinates
    if ground.get('outline_vertex_indices'):terrain['walkablePolygon']=[vs[i][:2] for i in json.loads(ground['outline_vertex_indices'])]
    for o in collection.objects:
     if o.type=='MESH' and o.get('surface_role') and not o.get('export_reference_only'):
      vs=vertices(o);points=[v[:2] for v in vs];surface={'id':o.name,'role':o['surface_role'],'polygon':points,'vertices':vs,'faces':[list(p.vertices) for p in o.data.polygons],'material':o.data.materials[0].name,'walkable':o.get('walkable',o['surface_role'] not in ('water',)),'visible':bool(o.get('render_visible',True))}
      if o.get('object_id'):surface['objectId']=o['object_id']
-     if uv(o):surface['uvs']=uv(o)
+     coordinates=uv(o)
+     if coordinates:surface['uvs']=coordinates
      if o.get('road_segment'):
       surface['centerline']=json.loads(o['centerline_json']) if o.get('centerline_json') else [[(points[0][i]+points[3][i])/2 for i in range(2)],[(points[1][i]+points[2][i])/2 for i in range(2)]];surface['width']=o['road_width'] if o.get('road_width') else sum((points[0][i]-points[3][i])**2 for i in range(2))**.5;surface['legacyRole']=o['legacy_role']
      terrain['surfaces'].append(surface)
@@ -51,8 +53,13 @@ def export(scene):
    if o.type=='MESH':
     part={'id':o.name,'role':o['role'],'shadow':bool(o['shadow']),'material':o.data.materials[0].name,'vertices':vertices(o),'faces':[list(p.vertices) for p in o.data.polygons]}
     if o.get('render_visible') is not None:part['visible']=bool(o['render_visible'])
-    if uv(o):part['uvs']=uv(o)
-    if baked_lighting(o):part['bakedLighting']=baked_lighting(o)
+    # Read each native corner array once. Rebuilding the same full arrays for
+    # truthiness and assignment needlessly doubles allocations during large
+    # authoring exports; values and serialization remain identical.
+    coordinates=uv(o)
+    if coordinates:part['uvs']=coordinates
+    light=baked_lighting(o)
+    if light:part['bakedLighting']=light
     opacity=vertex_opacity(o)
     if opacity is not None:
      assert len(opacity)==len(part['vertices']) and all(0<=a<=1 for a in opacity),o.name

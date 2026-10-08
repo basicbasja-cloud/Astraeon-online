@@ -1,5 +1,45 @@
 # ASTRAEON — capital architecture revision 76
 
+## Current verified checkpoint — occupied windows / natural edges v81, 8 October 2026
+
+Original World task ACTIVE. Same working branch codex/world-pipeline-v3-proof.
+SourceSHA256:01983f97781fb1f6d02bebda134a33d678ff75102d0a99b04e2b218bf0b74207.
+NativeSHA256:4af92fcb4edcf991f2f351da27669692ab528fbbb8f780f3b79708e22566bba1.
+Cache96, generation wayfarer-01983f97781f. Camera45/35/135/FOV15 retained.
+142 pierced upper openings on12 distinct new houses have wider glazing, pale
+frames and quieter blue glass.25 connected soft property-path green patches
+add25.131m² and2141 triangles, no new image assets. Original roof forms,37 old
+houses, old ground uses/doors/solids/terrain/navigation/gameplay remain exact.
+One-shot author-capital-property-life-v81.py is APPLIED; DO NOT rerun.
+
+All13 native stages /96 Node tests /5 streaming tests /8 ordinary captures with
+zero errors or missing culling pixels /camera /WebKit /cache-offline /field-return
+PASS. Source transport has962,571 authored draw triangles /34,724,460 attributes,
+75 chunks,26,374,440 compressed bytes. Full fresh4096 ground shade with original
+alpha and8sun/4contact samples. Emulated cold17788.67ms/warm11086.55ms,
+34 unloads/23reloads, no monolithic boot or errors. Physical iPhone Safari PENDING.
+All8 city views and3 mobile/offline/return images manually inspected against
+RO3 house01:40/03:35 and gate01:00/04:25. Windows and green ingress visibly improve.
+
+Native author first hit memory exhaustion before saving; original v80 native/
+source SHA was verified unchanged. Candidate author now uses compact sealed
+fingerprints instead of two live worlds. Foliage saved full shade then hit a
+second duplicate-export memory peak; its full rerun PASS after releasing completed
+world/ray buffers. Exporter now reads UV/light corners once, with exact native/
+source preservation proved. Failed logs remain; no image/sample/quality cuts.
+
+Evidence:docs/review/wayfarer-capital-v81/checkpoint.json and property-life/
+visual-review.json. No native/browser jobs remain running. Full RO3 acceptance
+remains OPEN. Exact next original World action: v82 planned occupied closed west
+side glazing/timber on selected new houses, real private-path drains, continuous
+shared city masonry on existing opaque river bank. Prepared three v82 tools are
+unapplied. Run readonly plan only after preserving/pushing v81; native v82 flag
+must guard author once. New frames cast shadows, so full fresh lighting is required.
+Do not shortcut bakes or alter original house layouts to meet the reference.
+
+Pre-v81 full backup:/tmp/astraeon-before-property-life-v81/; v80 pushed checkpoint
+0cc347f is preserved. Original art work continues immediately from this result.
+
 ## Current verified checkpoint — original neighborhoods v80, 7 October 2026
 
 Same working branch codex/world-pipeline-v3-proof. Original World art task ACTIVE;

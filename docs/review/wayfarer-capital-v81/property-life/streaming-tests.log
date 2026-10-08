@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: current manifest excludes a future zone from boot
+ok 1 - current manifest excludes a future zone from boot
+  ---
+  duration_ms: 124.205474
+  type: 'test'
+  ...
+# Subtest: deduplicated requests, retained ownership, unload and exact reload
+ok 2 - deduplicated requests, retained ownership, unload and exact reload
+  ---
+  duration_ms: 172.024188
+  type: 'test'
+  ...
+# Subtest: failed fetch retries without duplicated objects and persistent failure remains retryable
+ok 3 - failed fetch retries without duplicated objects and persistent failure remains retryable
+  ---
+  duration_ms: 1288.240946
+  type: 'test'
+  ...
+# Subtest: spawn-local real city boots without distant chunks, suspend frees ownership
+ok 4 - spawn-local real city boots without distant chunks, suspend frees ownership
+  ---
+  duration_ms: 454.664089
+  type: 'test'
+  ...
+# Subtest: streamed diagnostic navigation grid remains exact and lazy
+ok 5 - streamed diagnostic navigation grid remains exact and lazy
+  ---
+  duration_ms: 316.362448
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2387.223826

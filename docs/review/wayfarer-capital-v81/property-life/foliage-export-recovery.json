@@ -1,0 +1,8 @@
+{
+  "exitCode": -9,
+  "nativeShadeSavedBeforeFinalExport": true,
+  "reason": "Retained full input world and ray buffers during final export exceeded8GiB",
+  "fix": "Release completed input export and ray buffers before final save/export; rerun full original-alpha foliage stage",
+  "qualitySamplesUnchanged": true,
+  "failingEvidence": "foliage-light-attempt1.log"
+}

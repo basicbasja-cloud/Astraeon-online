@@ -4,7 +4,7 @@ Uses the same original alpha, affine UV projection and bounded transparent-ray
 continuation as the floor bake. No geometry, UV, floor or runtime raycast changes.
 Run after the architecture bake when either foliage or sunlight changes.
 """
-import bpy,json,math,runpy,os,base64,zlib,time
+import bpy,json,math,runpy,os,base64,zlib,time,gc
 from pathlib import Path
 from mathutils import Vector
 from mathutils.bvhtree import BVHTree
@@ -63,4 +63,10 @@ for o in bpy.data.objects:
     if distance is not None:occ+=max(0,1-distance/.85)
    ao=1-.30*occ/len(samples);layer.data[li].color=(ao,visible,0,1);count+=1;shadowed+=visible<.9;minimum=min(minimum,visible);maximum=max(maximum,visible)
 scene['ro3_foliage_light_v70_json']=json.dumps({'meshes':mesh_count,'corners':count,'shadedCorners':shadowed,'sunVisibilityRange':[minimum,maximum],'sunRays':4,'contactRays':4,'originalAlpha':True,'maxTransparentIntersections':max_steps,'geometryAndUVUnchanged':True})
+# The full native corner bake is now authoritative. Release the input export
+# and ray buffers before constructing the final JSON world, rather than holding
+# two complete baked worlds alongside Blender in an8GiB authoring workspace.
+# This changes no geometry, UVs, original alpha or lighting sample counts.
+del world,vertices,triangles,cutouts,cache,tree,exported_parts
+gc.collect()
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'authoring/wayfarer-spatial.blend'),compress=True);runpy.run_path(str(ROOT/'tools/export-world-v3.py'),run_name='__main__');print('PASS original-alpha foliage light:',mesh_count,'meshes;',count,'corners;',shadowed,'shaded;',round(time.monotonic()-start,1),'seconds')
