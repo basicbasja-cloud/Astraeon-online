@@ -1,8 +1,8 @@
 # Monster Box Item / Opening foundation — handoff
 
-**Verification in progress.** Runtime, focused acceptance and contract are
-complete; previous browser/cache regressions are still running. This is only the
-Monster Box foundation. Patch 0.0.1 and Core Spine are **not complete**.
+**Verified 2026-10-08.** Runtime, contract, focused acceptance and all requested
+previous regressions passed. This implements only the Monster Box foundation.
+Patch 0.0.1 and Core Spine are **not complete**.
 
 ## Git identity and resume point
 
@@ -11,15 +11,19 @@ Monster Box foundation. Patch 0.0.1 and Core Spine are **not complete**.
 - Starting parent HEAD: `05243a45737dbe5a493b7753f5517d7ea920243b`.
 - Runtime/test checkpoint: `9f52bd84b51f1413d036c25be6b1dcde14655a23`.
 - Contract checkpoint: `abd2750ff8e0e0619d6c8b6bba1369f3247496e0`.
-- Final HEAD: pending final verification/report commit and push. Final response
-  will record the exact documentation successor SHA.
+- Final HEAD: documentation successor, printed with final status/log in the chat
+  handoff. This document cannot embed its own commit hash; use `git rev-parse HEAD`
+  after checking out the released branch. Runtime/test code is unchanged after
+  the checkpoint above.
 
 Step 0 fetched origin, switched/pulled parent ff-only, confirmed clean tree and
 created this branch from authoritative remote HEAD. No reset to the older
 `535a1b1` checkpoint, unrelated merge, PR, force push or history rewrite occurred.
-Resume: finish sequential browser/cache runner, inspect artifacts, finalize this
-report, diff/check/commit and push only this branch. Runtime has not changed since
-its checkpoint. Evidence is outside Git at
+All requested verification is finished, including a final pre-push Node rerun,
+source/authored-data audit and `git diff --check`. Final publication uses only
+`git push -u origin backbone/monster-box-0.0.1`; final response records exact
+local/remote HEAD and clean status after push. No implementation work remains
+for this foundation. Evidence is outside Git at
 `D:\Astraeon\backbone-verification\monster-box`.
 
 ## Files
@@ -100,7 +104,8 @@ Full specification: [CORE_SPINE_MONSTER_BOX.md](CORE_SPINE_MONSTER_BOX.md).
 ## Deterministic verification
 
 `python tools/run-node-checks.py` with the actual Node executable passed
-**1010 checks / 0 failures** in 19 files. Evidence: `node-final/report.json`.
+**1010 checks / 0 failures** in 19 files, repeated before final publication.
+Evidence: `node-final/report.json` and `node-prepush/report.json`.
 
 - New deterministic tests: **150** in `tests/monster-box.test.cjs`.
 - Previous tests retained: **859** historical checks; all 18 previous Node files
@@ -137,10 +142,27 @@ actual enemy-caused player death/respawn, ticket invalidation, save/reload and
 field/town ownership retention. Isolated harness and ordinary normal-URL character
 creation also passed. This is automated live functional smoke, not art acceptance.
 
-Sequential regressions so far: Lifecycle **30**, Monster Loot **26**, Action Item
-**30**, Inventory **15** and Action Loadout **17** groups pass. Combat, Skill Tree,
-Progression and cache/offline verification remain pending. Actual report files are authoritative;
-final counts must be filled only after runner completion.
+All nine functional browser suites passed sequentially: **190 groups / 0 failures**
+including **157 previous groups**, with zero captured console/page/runtime/HTTP
+errors. Every prior suite and assertion was retained.
+
+| Suite | Groups | Result |
+| --- | ---: | --- |
+| `tests/monster_box_browser.py` | 33 | PASS |
+| `tests/monster_lifecycle_browser.py` | 30 | PASS |
+| `tests/monster_loot_browser.py` | 26 | PASS |
+| `tests/action_item_browser.py` | 30 | PASS |
+| `tests/inventory_browser.py` | 15 | PASS |
+| `tests/action_loadout_browser.py` | 17 | PASS |
+| `tests/combat_browser.py` | 21 | PASS |
+| `tests/skill_tree_browser.py` | 11 | PASS |
+| `tests/progression_browser.py` | 7 | PASS |
+
+`tests/cache_resume.py` also passed: `astraeon-static-v92`, **146 cached requests**,
+old cache removed, saved character retained, offline town boot/reload,
+legacy-town migration, same-layout blocked-save recovery and exact offline
+source/ground SHA256 parity. Zero captured page errors. Evidence:
+`final-browser/cache_resume/report.json`. Save version remains **5**.
 
 Evidence: `final-browser/<suite>/report.json`, per-suite logs and `runner.json`.
 One Mage Loot waypoint timeout triggered the unchanged driver's existing bounded
@@ -148,6 +170,33 @@ keyboard approach; subsequent replacement/reward assertions passed. The driver
 preserved authoritative state (`navigation:null`, `action:null`) in its evidence.
 This is the prior navigation/timing signal, not a demonstrated Box regression.
 No combat/navigation/lifecycle rewrite or weakened assertion was introduced.
+
+## Reproduction and final Git checks
+
+Run from this repository with the documented static server on 127.0.0.1:8011.
+Commands and all functional browser filenames are in README. This Windows pass
+used `D:\Node\node.exe`, the bundled Python at
+`C:\Users\Drink beer ai sus\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`,
+`PYTHONPATH=D:\Astraeon\backbone-verification\python` and
+`ASTRAEON_BROWSER=C:\Program Files\Google\Chrome\Application\chrome.exe`.
+
+```powershell
+python tools/run-node-checks.py --node D:\Node\node.exe --output D:\Astraeon\backbone-verification\monster-box\repeat-node
+python tests/monster_box_browser.py --url http://127.0.0.1:8011 --output D:\Astraeon\backbone-verification\monster-box\repeat-browser
+# Run all eight prior functional browser suites in the table, then:
+python tests/cache_resume.py --url http://127.0.0.1:8011 --output D:\Astraeon\backbone-verification\monster-box\repeat-cache
+python tools/validate-world-v3.py
+git diff --check
+git status --short
+git log --oneline -12
+```
+
+Final diff inspection covers all 29 changed paths: 9 additions and 20 modified
+files. Protected paths and historical reports are untouched; source data and
+previous assertions are retained. Final status is expected clean after the
+report-only commit; exact final status/log and remote match are returned in the
+chat handoff. No art/visual, physical-device-performance or full-patch acceptance
+is claimed.
 
 ## Known limitations / next integration
 
