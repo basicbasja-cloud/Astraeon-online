@@ -13,6 +13,9 @@ define('astral-blade','Astral Blade','equipment',{equipmentSlots:['weapon'],modi
 define('adventurer-garb','Adventurer Garb','equipment',{equipmentSlots:['armor']});
 define('warden-plate','Warden Plate','equipment',{equipmentSlots:['armor'],modifiers:[{add:{DEF:2}}],effects:{incomingFlatReduction:2}});
 for(const [id,name] of [['spirit-charm','Spirit Charm'],['moonveil-sigil','Moonveil Sigil'],['sunstone-crest','Sunstone Crest'],['dawn-circuit','Dawn Circuit'],['veilheart','Veilheart']])define(id,name,'equipment',{equipmentSlots:['relic'],modifiers:[{add:{physicalATK:3,magicATK:3}}]});
+// Mechanical slot proofs only. No production shop, recipe or drop is added.
+define('offhand-proof','Off Hand (proof)','equipment',{equipmentSlots:['offHand'],modifiers:[{add:{DEF:1}}],metadata:{fixture:true,balance:'non-final',weight:'unconfigured',source:'equipment-slot-proof'}});
+define('shoes-proof','Shoes (proof)','equipment',{equipmentSlots:['shoes'],modifiers:[{add:{MDEF:1}}],metadata:{fixture:true,balance:'non-final',weight:'unconfigured',source:'equipment-slot-proof'}});
 const legacyCounters={herb:'herb',ore:'ore',shard:'shard',potion:'potion',ration:'ration',blade:'astral-blade',charm:'spirit-charm',plate:'warden-plate'};
 const legacyNames=Object.fromEntries(Object.values(definitions).map(d=>[d.name,d.id]));
 const recipes=[{id:'potion',name:'Healing Flask',inputs:{herb:2,shard:1},output:'potion'},{id:'blade',name:'Astral Blade',inputs:{ore:4,shard:2},output:'astral-blade'},{id:'plate',name:'Warden Plate',inputs:{ore:6,shard:3},output:'warden-plate'},{id:'ration',name:'Field Rations',inputs:{herb:1,ore:1},output:'ration'},{id:'charm',name:'Spirit Charm',inputs:{herb:2,shard:2},output:'spirit-charm'}];

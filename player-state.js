@@ -9,7 +9,7 @@ function attach(state,options={}){
  const getClassId=()=>options.classId??window.AstraeonSkillDefinitions.classIdFor(state);
  let runtime={equipmentModifiers:[],passiveModifiers:[],temporaryEffectModifiers:[]},lastSignature;
  const items=window.AstraeonItemState.create(state,{catalog:options.itemCatalog,requirements:options.equipmentRequirements,getCapacityPolicy:options.getCapacityPolicy,onChange:(inventory,equipment)=>{const mods=build(inventory,equipment);character.setModifiers(mods);lastSignature=JSON.stringify([getClassId(),mods])}});
- const build=(inventory=items.getInventory(),equipment=items.getEquipment())=>({equipmentModifiers:[...window.AstraeonItemEquipment.modifiers(inventory,equipment,options.itemCatalog),...runtime.equipmentModifiers],passiveModifiers:[...(state.party?.length?[(options.config||window.AstraeonProgressionConfig).legacyParty]:[]),...runtime.passiveModifiers],temporaryEffectModifiers:runtime.temporaryEffectModifiers});
+ const build=(inventory=items.getInventory(),equipment=items.getEquipmentSlots())=>({equipmentModifiers:[...window.AstraeonItemEquipment.modifiers(inventory,equipment,options.itemCatalog),...runtime.equipmentModifiers],passiveModifiers:[...(state.party?.length?[(options.config||window.AstraeonProgressionConfig).legacyParty]:[]),...runtime.passiveModifiers],temporaryEffectModifiers:runtime.temporaryEffectModifiers});
  const character=window.AstraeonCharacter.create(state,{...options,getClassId,modifiers:build()});
  function recalculate(){const mods=build(),signature=JSON.stringify([getClassId(),mods]);if(signature!==lastSignature){character.setModifiers(mods);lastSignature=signature}return character.getDerivedStats()}
  let rewardQuest=state.quest,questGeneration=0;

@@ -8,7 +8,7 @@
 <p id="status" role="status"></p>
 <p><label>Definition <select id="definition"></select></label> <label>Amount <input id="amount" type="number" value="1"></label>
 <button id="add-stack">Add stack</button> <button id="remove-stack">Remove stack</button> <button id="create-instance">Create instance</button></p>
-<p><label>Instance <select id="instance"></select></label> <label>Equipment slot <select id="slot"><option>weapon</option><option>armor</option><option>relic</option></select></label>
+<p><label>Instance <select id="instance"></select></label> <label>Equipment slot <select id="slot"><option value="weapon">Main Hand</option><option value="offHand">Off Hand</option><option value="armor">Body</option><option value="shoes">Shoes</option><option value="relic">Accessory</option></select></label>
 <button id="delete-instance">Delete unequipped instance</button> <button id="equip">Equip</button> <button id="unequip">Unequip</button></p>
 <p><button id="save">Save</button> <button id="reload">Reload</button></p>
 <h2>Action Item execution (simulation seconds)</h2>
@@ -25,14 +25,14 @@
 <pre id="migration-result"></pre>
 <h2>Definitions (provisional existing content)</h2><pre id="definitions"></pre>
 <h2>Stacks / instances / next serial</h2><pre id="inventory"></pre>
-<h2>Equipment / compiled modifiers / carried weight</h2><pre id="equipment"></pre>
+<h2>Equipment Slot Closure / modifiers / capacity (NON-FINAL proof)</h2><pre id="equipment-result"></pre><pre id="equipment"></pre>
 <h2>Derived Stats</h2><pre id="derived"></pre>
 <h2>Persistent snapshot</h2><pre id="persistent"></pre>
-<script src="../skill-nodes.js?v=93"></script><script src="../combat.js?v=93"></script>
-<script src="../progression-config.js?v=93"></script><script src="../progression.js?v=93"></script><script src="../stats.js?v=93"></script>
-<script src="../skill-definitions.js?v=93"></script><script src="../skill-tree.js?v=93"></script>
-<script src="../action-loadout.js?v=93"></script><script src="../skill-runtime.js?v=93"></script><script src="../action-runtime.js?v=93"></script>
-<script src="../character-state.js?v=93"></script><script src="../item-definitions.js?v=93"></script>
-<script src="../item-inventory.js?v=93"></script><script src="../inventory-capacity.js?v=93"></script><script src="../item-equipment.js?v=93"></script><script src="../item-state.js?v=93"></script>
-<script src="../action-item-config.js?v=93"></script><script src="../item-effects.js?v=93"></script><script src="../action-item.js?v=93"></script><script src="../action-item-runtime.js?v=93"></script><script src="../box-content-tables.js?v=93"></script><script src="../monster-box.js?v=93"></script><script src="../monster-box-runtime.js?v=93"></script><script src="../player-state.js?v=93"></script><script src="../save-state.js?v=93"></script><script src="inventory-harness.js?v=93"></script>
+<script src="../skill-nodes.js?v=94"></script><script src="../combat.js?v=94"></script>
+<script src="../progression-config.js?v=94"></script><script src="../progression.js?v=94"></script><script src="../stats.js?v=94"></script>
+<script src="../skill-definitions.js?v=94"></script><script src="../skill-tree.js?v=94"></script>
+<script src="../action-loadout.js?v=94"></script><script src="../skill-runtime.js?v=94"></script><script src="../action-runtime.js?v=94"></script>
+<script src="../character-state.js?v=94"></script><script src="../item-definitions.js?v=94"></script><script src="../equipment-slots.js?v=94"></script>
+<script src="../item-inventory.js?v=94"></script><script src="../inventory-capacity.js?v=94"></script><script src="../item-equipment.js?v=94"></script><script src="../item-state.js?v=94"></script>
+<script src="../action-item-config.js?v=94"></script><script src="../item-effects.js?v=94"></script><script src="../action-item.js?v=94"></script><script src="../action-item-runtime.js?v=94"></script><script src="../box-content-tables.js?v=94"></script><script src="../monster-box.js?v=94"></script><script src="../monster-box-runtime.js?v=94"></script><script src="../player-state.js?v=94"></script><script src="../save-state.js?v=94"></script><script src="inventory-harness.js?v=94"></script>
 </html>

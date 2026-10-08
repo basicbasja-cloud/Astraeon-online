@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 global.window={};
-for(const name of ['input','skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','item-inventory','inventory-capacity','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+name+'.js');
+for(const name of ['input','skill-nodes','combat','progression-config','progression','stats','skill-definitions','skill-tree','action-loadout','skill-runtime','action-runtime','character-state','item-definitions','equipment-slots','item-inventory','inventory-capacity','item-equipment','item-state','action-item-config','item-effects','action-item','action-item-runtime','player-state','save-state'])require('../'+name+'.js');
 const D=window.AstraeonItemDefinitions,A=window.AstraeonActionItem,F=window.AstraeonItemEffects,C=window.AstraeonActionItemConfig,S=window.AstraeonSave,R=window.AstraeonActionItemRuntime;
 const context=(now=0,extra={})=>({now,...extra});
 function fixture(extra={},options={}){const s=S.normalize({name:'Action Item fixture',cls:0,inventory:{potion:3,ration:3},...extra}),p=window.AstraeonPlayer.attach(s,options);p.setCurrentHP(1);p.setCurrentSP(1);return {s,p}}
