@@ -66,5 +66,21 @@ function resolve(table,count,rng,{catalog=D}={}){
  }catch{return fail('INVALID_RNG','rng.next')}
  return freeze({ok:true,boxContentTableId:table.id,requestedCount:count,boxes,itemRewards:[...totals].map(([itemId,quantity])=>({itemId,quantity})),metadata:structuredClone(table.metadata||{})});
 }
-window.AstraeonMonsterBox=freeze({limits,validate,compile,resolve});
+function envelope(table,count,{catalog=D}={}){
+ const checked=validate(table,{catalog});if(!checked.ok)return checked;
+ if(!integer(count))return fail('INVALID_OPEN_COUNT','count');if(count>limits.openCount)return fail('BATCH_SIZE_LIMIT','count');
+ const guaranteed=new Map(),weighted=new Map();let guaranteedInstances=0,choiceInstances=0;
+ for(const e of table.entries){
+  if(e.rollMode==='weighted'&&e.weight===0)continue;
+  const map=e.rollMode==='guaranteed'?guaranteed:weighted;
+  const value=e.rollMode==='guaranteed'?(map.get(e.itemId)||0)+e.maxQuantity:Math.max(map.get(e.itemId)||0,e.maxQuantity);
+  if(!integer(value))return fail('REWARD_OVERFLOW','maximumRewards');map.set(e.itemId,value);
+  if(!catalog.getDefinition(e.itemId).stackable){if(e.rollMode==='guaranteed')guaranteedInstances+=e.maxQuantity;else choiceInstances=Math.max(choiceInstances,e.maxQuantity)}
+ }
+ const maximumRewards=[];
+ for(const id of new Set([...guaranteed.keys(),...weighted.keys()])){const quantity=((guaranteed.get(id)||0)+(weighted.get(id)||0))*count;if(!integer(quantity))return fail('REWARD_OVERFLOW','maximumRewards');maximumRewards.push({itemId:id,quantity})}
+ const maximumInstanceUnits=(guaranteedInstances+choiceInstances)*count;if(!integer(maximumInstanceUnits,0))return fail('REWARD_OVERFLOW','maximumInstanceUnits');
+ return freeze({ok:true,maximumRewards,maximumInstanceUnits});
+}
+window.AstraeonMonsterBox=freeze({limits,validate,compile,resolve,envelope});
 })();

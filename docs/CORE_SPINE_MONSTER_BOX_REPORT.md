@@ -24,7 +24,7 @@ All new content/coefficients are provisional. This is not final balance.
   nested RNG inventory mutation and duplicate commit rejected without reward.
 - Full prior Node regression passed **859/859, zero failures** against the Item
   State extension; evidence `backbone-verification/monster-box/node-integration`.
-- Full integrated Node suite passed **1001/1001, zero failures**: 141 new Box
+- Initial integrated Node suite passed **1001/1001, zero failures**: 141 new Box
   tests, all 859 previous checks retained, one additional automatic existing
   Loot validation case for the new isolated table. Evidence
   `backbone-verification/monster-box/node/report.json`.
@@ -32,6 +32,17 @@ All new content/coefficients are provisional. This is not final balance.
   Combat requires explicit physical damageType; Lifecycle requires caller
   canRespawn policy. Corrected those new requests and required valid Combat
   output; all new/old assertions remain. Initial evidence `focused-initial.log`.
+- Initial focused browser passed **33 groups / zero runtime/HTTP errors** across
+  Swordsman/Mage, actual Bag use, deterministic bulk, gear/skill/real death/new
+  life, player death/travel/reload and isolated harness. This preceded the added
+  envelope preflight; final browser rerun is still required.
+- Review closed deterministic failure filtering across reload: pure maximum
+  package envelope rejects possible stack/serial/processing failures BEFORE RNG.
+  No speculative ItemInstance allocation. Both pre-roll envelope acceptance and
+  exact post-roll acceptance hooks are available for later capacity work.
+- Focused Node now **150/150, zero failures** after this guard. Full suite and
+  browser regressions are next. Previous 18 Node sources and all browser suites
+  remain unchanged. Final expected Node count is 1010; actual output authoritative.
 - Historical browser baseline 157 groups has not yet been rerun on this task.
 - Item State revision and existing frozen inventory identity authorize tickets.
   Hidden post-roll failure retention prevents retry/new-prepare roll shopping.

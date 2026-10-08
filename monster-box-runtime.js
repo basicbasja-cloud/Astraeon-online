@@ -4,7 +4,7 @@
 const D=window.AstraeonItemDefinitions,freeze=D.freeze,B=window.AstraeonMonsterBox;
 const fail=(code,path)=>freeze({ok:false,code,blockedReason:code,openedCount:0,consumed:false,...(path?{path}:{})});
 function create(owner,{catalog=D,tables=window.AstraeonBoxContentTables,getRng,restrictions=()=>true}={}){
- const authorityValid=!!owner&&['getInventory','getRevision','getQuantity','getCurrentHP','commit'].every(key=>typeof owner[key]==='function');
+ const authorityValid=!!owner&&['getInventory','getRevision','getQuantity','getCurrentHP','preflight','commit'].every(key=>typeof owner[key]==='function');
  const tickets=new WeakMap();let epoch=0,serial=0,busy=false,checking=false,retired=false,pending=null;
  function getState(boxItemId,count=1,context={}){
   if(!authorityValid)return fail('NO_AUTHORITY');
@@ -22,6 +22,9 @@ function create(owner,{catalog=D,tables=window.AstraeonBoxContentTables,getRng,r
   const signature=JSON.stringify([compiled.definition,compiled.table]);
   if(pending&&(pending.boxItemId!==boxItemId||pending.count!==count))return fail('OPENING_PENDING');
   if(pending&&pending.signature!==signature)return fail('STALE_CONTENT');
+  const bounds=B.envelope(compiled.table,count,{catalog});if(!bounds.ok)return fail(bounds.code,bounds.path);
+  let capacity;checking=true;try{capacity=owner.preflight({itemId:boxItemId,count,expectedInventory:inventory,expectedRevision:owner.getRevision()},bounds)}catch{return fail('REWARD_PREFLIGHT_REJECTED')}finally{checking=false}
+  if(capacity?.ok!==true)return fail(capacity?.code||'REWARD_PREFLIGHT_REJECTED');
   checking=true;let restriction;try{restriction=restrictions(compiled.definition,freeze(structuredClone(context)))}catch{restriction=false}finally{checking=false}
   if(restriction!==true)return fail(typeof restriction?.code==='string'?restriction.code:'BOX_RESTRICTION');
   return freeze({ok:true,source:'inventory/openableItem',boxItemId,boxContentTableId:compiled.table.id,requestedCount:count,quantity,definition:compiled.definition,table:compiled.table});

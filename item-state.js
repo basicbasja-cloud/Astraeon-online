@@ -80,6 +80,20 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
    if(!Array.isArray(rewards)||typeof apply!=='function')return I.fail('INVALID_REWARD_PACKAGE');
    return commit(planRewards(inventory,rewards),equipment,apply);
   },
+  canOpenable(source,bounds,preflight=()=>true){
+   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
+   if(!source||source.expectedInventory!==inventory||source.expectedRevision!==revision)return I.fail('STALE_PACKAGE');
+   const debit=I.removeStack(inventory,source.itemId,source.count,catalog);if(!debit.ok)return debit;
+   if(!bounds?.ok||!Array.isArray(bounds.maximumRewards)||!Number.isSafeInteger(bounds.maximumInstanceUnits)||bounds.maximumInstanceUnits<0)return I.fail('INVALID_REWARD_PACKAGE');
+   for(const reward of bounds.maximumRewards){const d=catalog.getDefinition(reward.itemId);if(!d)return I.fail('UNKNOWN_ITEM');if(d.stackable){const checked=I.canAddStack(debit.inventory,d.id,reward.quantity,catalog);if(!checked.ok)return checked}}
+   if(bounds.maximumInstanceUnits>10000)return I.fail('REWARD_SIZE_LIMIT');
+   if(bounds.maximumInstanceUnits>Number.MAX_SAFE_INTEGER-inventory.nextItemSerial)return I.fail('SERIAL_EXHAUSTED');
+   // Deterministic failures for ANY supported outcome reject before entropy,
+   // including after reload. This does not allocate speculative ItemInstances.
+   committing=true;
+   try{const accepted=preflight(freeze({source:{itemId:source.itemId,count:source.count},inventoryBefore:inventory,equipment,bounds}));return accepted===true?freeze({ok:true}):I.fail(typeof accepted?.code==='string'?accepted.code:'REWARD_PREFLIGHT_REJECTED')}
+   catch{return I.fail('REWARD_PREFLIGHT_REJECTED')}finally{committing=false}
+  },
   commitOpenable(source,resolve,preflight=()=>true){
    if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
    if(!source||source.expectedInventory!==inventory||source.expectedRevision!==revision)return I.fail('STALE_PACKAGE');
