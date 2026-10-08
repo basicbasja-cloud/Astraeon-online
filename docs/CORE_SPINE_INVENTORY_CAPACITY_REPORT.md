@@ -7,10 +7,13 @@ Authoritative starting HEAD: `1e32ce4e17ae516b504a65e7a0a03db634ac62d4`.
 Step 0 fetched, switched/pulled ff-only, confirmed clean and created the required
 branch. No stale checkpoint reset or unrelated merge.
 
-Resume: canonical capacity integration and 128 new deterministic checks pass.
-Full Node: 1138 pass / 0 fail, retaining all 1010 previous checks. New browser
-acceptance is running; all previous browser/cache/world verification and final
-documentation remain. No complete acceptance claim yet.
+Resume: canonical capacity integration and 141 new deterministic checks pass.
+Full Node integration checkpoint: 1138 / 0; focused final cases: 141 / 0.
+Initial focused browser: 63 groups / 0, both classes, no runtime/HTTP errors.
+All previous 1010 deterministic assertions are retained (12 import-only additions).
+Full final Node/browser/cache/world verification and documentation remain.
+Runtime integration checkpoint: `7ea67e1bacf9de1d41696a94e8b71d336b7416af`.
+No complete acceptance claim yet.
 Production provisional policy: 100 slots, 1000 weight; existing authored zero /
 unconfigured weights retained. Milliweight integer arithmetic, per-dimension
 no-worse over-limit rule; no persistent capacity counters or gameplay penalties.
