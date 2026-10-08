@@ -111,7 +111,7 @@ function create({loot,getRewardContext=()=>({zone:0}),rng,definitions=D}={}){
  }
  function canDeliver(token,context){
   const ticket=tokens.get(token),r=ticket&&actors.get(ticket.actor);
-  if(!ticket||!valid(ticket.actor,r)||ticket.epoch!==epoch||ticket.life!==r.life||ticket.aggro!==r.aggroGeneration||!ticket.impacted&&r.pending!==token||!r.targetId||['DEAD','RESPAWN_WAIT','LEASH','RETURN'].includes(r.state))return fail('STALE_ATTACK');
+  if(!ticket||!valid(ticket.actor,r)||ticket.actor.hp<=0||r.death||ticket.epoch!==epoch||ticket.life!==r.life||ticket.aggro!==r.aggroGeneration||!ticket.impacted&&r.pending!==token||!r.targetId||['DEAD','RESPAWN_WAIT','LEASH','RETURN'].includes(r.state))return fail('STALE_ATTACK');
   if(!context||!clock(r,context.now)||context.active!==true||context.paused||!targetValid(context.target)||context.target.id!==token.targetId||context.now<token.impactAt||distance(context.target,r.home)>r.definition.lifecycle.leashRange||distance(ticket.actor,r.home)>r.definition.lifecycle.leashRange)return fail('INVALID_ATTACK_CONTEXT');
   return freeze({ok:true});
  }
