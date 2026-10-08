@@ -19,6 +19,7 @@ function normalize(raw){
  state.quest=raw.quest&&Number.isInteger(raw.quest.id)&&raw.quest.id>=0&&raw.quest.id<5?{...raw.quest,progress:number(raw.quest.progress,0)}:null;state.guild=typeof raw.guild==='string'?raw.guild:null;
  state.skillNodes=window.AstraeonSkillNodes?.normalize(raw.skillNodes)||{};
  state.worldClaims=raw.worldClaims&&typeof raw.worldClaims==='object'&&!Array.isArray(raw.worldClaims)?{...raw.worldClaims}:{};
+ if(Object.prototype.hasOwnProperty.call(raw,'appearance'))state.appearance=window.AstraeonWardrobe?.normalize(raw.appearance)||null;
  return state;
 }
 window.AstraeonSave={normalize};

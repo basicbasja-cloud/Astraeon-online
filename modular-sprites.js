@@ -235,7 +235,7 @@ function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archet
  const heading=walking&&t.mode==='movement'&&Math.hypot(t.velocity?.x||0,t.velocity?.y||0)>.02?Math.atan2(t.velocity.y,t.velocity.x):t.rotation;
  const direction=modular.direction||directionFromHeading(heading,view.project);
  const clip=definition.clips[animationId],duration=compiled.duration(animationId);
- const moving=['Walk','Run'].includes(animationId),phase=moving&&clip.cycleDistance&&Number.isFinite(t.distance)?t.distance/clip.cycleDistance:moving&&Number.isFinite(t.gait)?t.gait:null;
+ const moving=['Walk','Run','Sprint'].includes(animationId),phase=moving&&clip.cycleDistance&&Number.isFinite(t.distance)?t.distance/clip.cycleDistance:moving&&Number.isFinite(t.gait)?t.gait:null;
  const elapsedMs=modular.elapsedMs??(phase!==null?((phase%1+1)%1)*duration:clip.loop?(t.stateTime||0)*1000:Math.max(0,Math.min(1,progress))*duration);
  const sampled=compiled.sample(animationId,direction,elapsedMs,{appearance:modular.appearance||{}});
  if(scope.AstraeonSpatialView?.assemblingActor)scope.AstraeonSpatialView.sampledPose={clip:'modular/'+definition.characterId,row:DIRECTIONS.indexOf(direction),column:sampled.frameIndex,bounds:[0,0,definition.canvas.frameWidth,definition.canvas.frameHeight]};
