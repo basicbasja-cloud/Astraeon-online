@@ -21,9 +21,14 @@ definitions are added. Capacity historical authored-source guard now compares
 every original definition and economy value exactly, permitting authorized new
 proof definitions. All other protected-source guards and prior assertions remain.
 
-Remaining: comprehensive new deterministic suite; new browser suite including
-both classes/real encounters; all previous browser/cache regressions; world and
-diff/source audits; complete contract/report; focused commits and ordinary push.
+Remaining: final new and previous browser/cache regressions; world and
+diff/source audits; finalize contract/report; focused documentation commit and ordinary push.
 Do not claim acceptance until those steps finish. Patch/Core Spine not complete.
 
-Checkpoint verification: full Node **1291 passing / 0 failures** (1155 retained + 136 new), `node-checkpoint/report.json`. New browser initial attempt timed out on a learned-skill contact before five-slot checks; retained `browser-focused/report.json`. Only new-suite target acquisition/retry was adjusted, with bounded authoritative waits; no original suite assertion or Combat/AI runtime change. Rerun in progress under `browser-focused-retarget`.
+Checkpoint verification: full Node **1300 passing / 0 failures** (1155 retained + 145 new), `node-final/report.json`. New browser initial attempt timed out on a learned-skill contact before five-slot checks; retained `browser-focused/report.json`. Only new-suite target acquisition/retry was adjusted, with bounded authoritative waits; no original suite assertion or Combat/AI runtime change. Rerun passed **59 groups** under `browser-focused-retarget`. Final stable-runtime replay and all ten previous functional suites plus cache are running sequentially under `browser-final`, with `runner.json` recording every outcome. World validator is running with the existing externally provisioned jsonschema dependency. No verification failure has been hidden or old assertions removed.
+
+Resume from this focused runtime/test commit: read `browser-final/runner.json` and
+`world-validation.log` in the evidence directory; finish or rerun failed suites
+unchanged after diagnosis, complete source/diff audits, replace this working report
+with verified results, commit documentation, push normally. Runtime acceptance is
+not declared until all required verification completes.

@@ -7,9 +7,9 @@ function json(v,seen=new Set(),depth=0){if(depth>64)return false;if(v===null||['
 function validateDefinition(d){
  try{
   if(!plain(d)||d.kind!=='equipment'||d.stackable!==false)return I.fail('NOT_EQUIPMENT');
-  if(!Array.isArray(d.equipmentSlots)||!d.equipmentSlots.length)return I.fail('INVALID_EQUIPMENT_DEFINITION');
+  if(typeof d.id!=='string'||!d.id||d.maxStack!==1||!Array.isArray(d.equipmentSlots)||!d.equipmentSlots.length)return I.fail('INVALID_EQUIPMENT_DEFINITION');
   const allowed=d.equipmentSlots.map(R.canonical);if(allowed.some(s=>!s)||new Set(allowed).size!==allowed.length||!plain(d.requirements)||!json(d))return I.fail('INVALID_EQUIPMENT_DEFINITION');
-  if(!Array.isArray(d.modifiers))return I.fail('INVALID_EQUIPMENT_MODIFIERS');
+  if(!Array.isArray(d.modifiers)||d.modifiers.some(m=>!plain(m)||['primary','add','multiply'].some(k=>Object.hasOwn(m,k)&&(!plain(m[k])||Object.values(m[k]).some(v=>typeof v!=='number'||!Number.isFinite(v))))))return I.fail('INVALID_EQUIPMENT_MODIFIERS');
   // Existing Stats validates its own grammar and finite arithmetic.
   try{window.AstraeonStats.calculate({equipmentModifiers:d.modifiers})}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
   return freeze({ok:true,allowedSlots:allowed});
