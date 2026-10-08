@@ -1,0 +1,385 @@
+{
+  "schemaVersion": "1.0",
+  "referenceId": "ro1-swordsman-male",
+  "researchDate": "2026-10-08",
+  "researchStatus": "COMPLETE_EVIDENCE_INVENTORY",
+  "productionGate0": "BLOCKED_REFERENCE_POSE_DATA",
+  "rawAssetsInspected": [],
+  "sources": [
+    {
+      "id": "RRL-ACT",
+      "url": "https://ragnarokresearchlab.github.io/file-formats/act/",
+      "revision": "2026-10-08 live documentation"
+    },
+    {
+      "id": "RRL-SPR",
+      "url": "https://ragnarokresearchlab.github.io/file-formats/spr/",
+      "revision": "2026-10-08 live documentation"
+    },
+    {
+      "id": "RRL-TIMING",
+      "url": "https://ragnarokresearchlab.github.io/rendering/animation-systems/",
+      "revision": "2026-10-08 live documentation"
+    },
+    {
+      "id": "ROBROWSER-ACT",
+      "url": "https://github.com/vthibault/roBrowser/blob/e4b5b53aa1f8b7e429bfa987ab321c96502ba1da/src/Loaders/Action.js",
+      "revision": "e4b5b53aa1f8b7e429bfa987ab321c96502ba1da"
+    },
+    {
+      "id": "ROBROWSER-SPR",
+      "url": "https://github.com/vthibault/roBrowser/blob/e4b5b53aa1f8b7e429bfa987ab321c96502ba1da/src/Loaders/Sprite.js",
+      "revision": "e4b5b53aa1f8b7e429bfa987ab321c96502ba1da"
+    },
+    {
+      "id": "ROBROWSER-COMPOSITION",
+      "url": "https://github.com/vthibault/roBrowser/blob/e4b5b53aa1f8b7e429bfa987ab321c96502ba1da/src/Renderer/Entity/EntityRender.js",
+      "revision": "e4b5b53aa1f8b7e429bfa987ab321c96502ba1da"
+    },
+    {
+      "id": "ACTEDITOR",
+      "url": "https://github.com/Tokeiburu/ActEditor/blob/c12198b6aaaedcaa1a3850a8d06e0618c2d4fd0c/ActEditor/Core/WPF/EditorControls/ActSelectorComponents/ActionDirectionalControl.xaml.cs",
+      "revision": "c12198b6aaaedcaa1a3850a8d06e0618c2d4fd0c"
+    },
+    {
+      "id": "ACTEDITOR-ANCHORS",
+      "url": "https://github.com/Tokeiburu/ActEditor/blob/c12198b6aaaedcaa1a3850a8d06e0618c2d4fd0c/ActEditor/Core/DrawingComponents/AnchorDraw.cs",
+      "revision": "c12198b6aaaedcaa1a3850a8d06e0618c2d4fd0c"
+    },
+    {
+      "id": "FORMAT-ACT",
+      "url": "https://github.com/rdw-archive/RagnarokFileFormats/blob/master/ACT.MD",
+      "revision": "download SHA recorded separately"
+    },
+    {
+      "id": "FORMAT-SPR",
+      "url": "https://github.com/rdw-archive/RagnarokFileFormats/blob/master/SPR.MD",
+      "revision": "download SHA recorded separately"
+    },
+    {
+      "id": "ZRENDERER",
+      "url": "https://github.com/zhad3/zrenderer/blob/b651017144bbafc92cc417032baeeba07a1304aa/source/sprite.d",
+      "revision": "b651017144bbafc92cc417032baeeba07a1304aa"
+    },
+    {
+      "id": "ZRENDERER-ACT",
+      "url": "https://github.com/zhad3/zrenderer/blob/b651017144bbafc92cc417032baeeba07a1304aa/source/resource/act.d",
+      "revision": "b651017144bbafc92cc417032baeeba07a1304aa"
+    },
+    {
+      "id": "RAGASSETS-COMPOSITION",
+      "url": "https://github.com/adsonpleal/ragassets/blob/4de4fa747431979d35c747d7edd549a872efd9e1/gateway/internal/render/engine/render.go",
+      "revision": "4de4fa747431979d35c747d7edd549a872efd9e1"
+    },
+    {
+      "id": "RAGASSETS-ACT",
+      "url": "https://github.com/adsonpleal/ragassets/blob/4de4fa747431979d35c747d7edd549a872efd9e1/gateway/internal/render/roformat/act.go",
+      "revision": "4de4fa747431979d35c747d7edd549a872efd9e1"
+    },
+    {
+      "id": "RAGASSETS-DIRECTIONS",
+      "url": "https://github.com/adsonpleal/ragassets/blob/4de4fa747431979d35c747d7edd549a872efd9e1/README.md",
+      "revision": "4de4fa747431979d35c747d7edd549a872efd9e1"
+    }
+  ],
+  "localSourceSnapshots": {
+    "rag-act.go": "ffb420226c47abc0d1ad8fbed4c6bfdef8131895df1f005b7523ac95df8209a0",
+    "z-act.d": "c2e8aaf91172050a03b4e621f1865e41ce03c231a829e93a8094876eecfc719e",
+    "rag-render.go": "7985d7f92ce93162fdf8bc7c2a07ec7c74bfb1900f2fa4b2c3d552644b17fad8",
+    "rag-sprite.go": "85959863321904802db2acbe51d225f711886b282b99cda0f395d8c824e3e7ae",
+    "z-sprite.d": "13d4b2415f3c3e73cff686f8e6721064218577cb5380bee1958b6c30083570ce",
+    "ragassets-readme.md": "f0b07b75123e32f25061525df293b4fb3c725af65dd34ab28c82d49954082ec8",
+    "act-anchor.cs": "c389792c43a6f8403c117c347a093a4c1d7cbfad074cef237f88eebf8ba853de",
+    "act-selector.cs": "2c523e13fd8cb3b0026f5ee266802448c59f8bbb98b0bf994e46ed7fa684ed35",
+    "spr-format.md": "f6dcca68343f21e6f825de6d197cec1fda001f38c45711effab4ac4b0cccffc2",
+    "ro-sprite.js": "f69d467cdf5ec03688563a3ce2432aa9afd582da70c2e35b3bcbdbe9ff7af06a",
+    "act-format.md": "74224207ff30827c4fb682e9a7b5fe933e652f9bdc6aed378ad7dee82a703fe5",
+    "ro-sprite-renderer.js": "d7a16aef5cf9c1336b45c44a1cdf181ebe485dc9139618024f95c6c19a0039d6",
+    "ro-action.js": "684712ee4784aecd46b632d8a8d1e9a1222d0fdc62c81b0a0ae028fdbffcdef6",
+    "ro-entity-base.js": "649f620dacf60f7c2e7d896ced652825e0ed3484bf5353dce49b7ad37bacf11c",
+    "ro-entity.js": "5624ec80cadc55bd44adb9abb51b83ab8cdd1f713bb5a56e338ec3c53eb17b32"
+  },
+  "directionMapping": {
+    "classification": "SOURCE-DERIVED",
+    "value": {
+      "0": "S",
+      "1": "SW",
+      "2": "W",
+      "3": "NW",
+      "4": "N",
+      "5": "NE",
+      "6": "E",
+      "7": "SE"
+    },
+    "sources": [
+      "RAGASSETS-DIRECTIONS"
+    ]
+  },
+  "actionIndexing": {
+    "classification": "SOURCE-DERIVED",
+    "value": "group * 8 + direction; camera-relative direction adjustment in client renderer",
+    "sources": [
+      "ROBROWSER-COMPOSITION",
+      "ACTEDITOR",
+      "ZRENDERER"
+    ]
+  },
+  "candidateActionGroups": {
+    "Idle": {
+      "classification": "SOURCE-DERIVED",
+      "value": {
+        "group": 0,
+        "actionIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "sources": [
+        "ZRENDERER"
+      ]
+    },
+    "Walk": {
+      "classification": "SOURCE-DERIVED",
+      "value": {
+        "group": 1,
+        "actionIds": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      "sources": [
+        "ZRENDERER"
+      ]
+    },
+    "BasicAttack": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "candidateGroups": [
+        5,
+        10,
+        11
+      ],
+      "reason": "Weapon-dependent selection requires actual male Swordman body and sword ACT plus client weapon-action mapping. Group 12 is labeled skill by pinned zrenderer; newer README calls 10\u201312 attack variants. Do not choose arbitrarily."
+    }
+  },
+  "format": {
+    "act": {
+      "classification": "SOURCE-DERIVED",
+      "value": {
+        "signature": "AC",
+        "byteOrder": "little endian",
+        "versionBytes": "minor,major",
+        "actionFrames": "variable counts",
+        "layers": [
+          "x",
+          "y",
+          "SPR image index",
+          "mirror flag",
+          "tint RGBA",
+          "scale X/Y (version-dependent)",
+          "rotation degrees",
+          "image type",
+          "width/height (2.5)"
+        ],
+        "frameFields": [
+          "ordered layers",
+          "event index",
+          "attachment points from 2.3"
+        ],
+        "timing": "one float interval per action from 2.2 in inspected parsers"
+      },
+      "sources": [
+        "ROBROWSER-ACT",
+        "ZRENDERER-ACT",
+        "RAGASSETS-ACT",
+        "FORMAT-ACT"
+      ]
+    },
+    "spr": {
+      "classification": "SOURCE-DERIVED",
+      "value": {
+        "signature": "SP",
+        "images": "palette-indexed plus truecolor ABGR",
+        "indexedTransparency": "palette index 0",
+        "rle": "2.1 zero runs",
+        "rawAlpha": "truecolor alpha; non-premultiplied"
+      },
+      "sources": [
+        "RRL-SPR",
+        "ROBROWSER-SPR",
+        "FORMAT-SPR"
+      ]
+    }
+  },
+  "frameTiming": {
+    "classification": "SOURCE-DERIVED",
+    "storedUnit": "intervals",
+    "conversionCandidates": [
+      {
+        "msPerInterval": 25,
+        "sources": [
+          "ROBROWSER-ACT"
+        ]
+      },
+      {
+        "msPerInterval": 24,
+        "sources": [
+          "RRL-TIMING",
+          "RRL-ACT"
+        ]
+      }
+    ],
+    "policy": "Keep raw intervals and select explicit conversion with provenance; no inferred Swordsman duration."
+  },
+  "composition": {
+    "head": {
+      "classification": "SOURCE-DERIVED",
+      "value": "Parent anchor 0 minus child anchor 0 offsets child layers. Stand/sit head-facing slices are not necessarily breathing key poses.",
+      "sources": [
+        "ZRENDERER",
+        "ROBROWSER-COMPOSITION",
+        "RAGASSETS-COMPOSITION"
+      ]
+    },
+    "headgear": {
+      "classification": "SOURCE-DERIVED",
+      "value": "Separate component; stand/sit can have a different frame count and head-facing slice.",
+      "sources": [
+        "RAGASSETS-COMPOSITION"
+      ]
+    },
+    "mainHand": {
+      "classification": "SOURCE-DERIVED",
+      "value": "Weapon is a separate sprite with authored ACT layer position/rotation. ACT anchor 0 is not a named right-hand anatomical socket.",
+      "sources": [
+        "ROBROWSER-COMPOSITION",
+        "ZRENDERER"
+      ]
+    },
+    "offHand": {
+      "classification": "SOURCE-DERIVED",
+      "value": "Pinned roBrowser and zrenderer draw shield before body at indices 2..5 and after body elsewhere. This is implementation evidence, not all-version universal order.",
+      "sources": [
+        "ROBROWSER-COMPOSITION",
+        "ZRENDERER"
+      ]
+    },
+    "garment": {
+      "classification": "SOURCE-DERIVED",
+      "value": "Pinned zrenderer consults job/garment/action/frame Lua rules; defaults behind body. Other revisions use numeric priorities. Do not assume a single fixed order.",
+      "sources": [
+        "ZRENDERER",
+        "RAGASSETS-DIRECTIONS"
+      ]
+    },
+    "drawOrder": {
+      "classification": "SOURCE-DERIVED",
+      "value": "Ordered ACT layers within a frame; component order can depend on direction, IMF priority and garment rules.",
+      "sources": [
+        "ZRENDERER",
+        "ROBROWSER-COMPOSITION"
+      ]
+    },
+    "mirroring": {
+      "classification": "SOURCE-DERIVED",
+      "value": "ACT supports horizontal mirror flag; not evidence of eight independent source paintings.",
+      "sources": [
+        "RAGASSETS-ACT"
+      ]
+    }
+  },
+  "unknowns": {
+    "framesPerDirection": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual Swordsman male body ACT inspected."
+    },
+    "actionDelays": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual action interval arrays inspected."
+    },
+    "keyPoseSequence": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No private body SPR paired with ACT for contact/limb/attack pose labeling."
+    },
+    "headTrajectories": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual body/head ACT pairing."
+    },
+    "mainHandTrajectories": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual body/weapon reference pairing or reviewed anatomical annotation."
+    },
+    "offHandTrajectories": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual shield ACT pairing."
+    },
+    "garmentTrajectories": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual garment ACT/rules for this appearance."
+    },
+    "headgearTrajectories": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No actual headgear reference pairing."
+    },
+    "perFrameDrawOrder": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "No job/body IMF, garment or weapon-specific rules inspected."
+    },
+    "contactEvents": {
+      "classification": "UNKNOWN / NOT ESTABLISHED",
+      "value": null,
+      "reason": "Event strings do not establish ASTRAEON gameplay contact authority."
+    }
+  },
+  "astraeonPolicy": {
+    "classification": "ASTRAEON INTERPRETATION",
+    "directions": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ],
+    "productionMirroring": "none",
+    "requiredAnchors": [
+      "root",
+      "head",
+      "mainHand",
+      "offHand",
+      "back",
+      "waist",
+      "footL",
+      "footR"
+    ],
+    "appearanceAuthority": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+    "permittedProductionActions": [
+      "Idle",
+      "Walk",
+      "BasicAttack"
+    ],
+    "rawReferencePolicy": "Private/local inspection only; no raw RO files, source imagery or copied pixels in runtime."
+  }
+}
