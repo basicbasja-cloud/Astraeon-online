@@ -10,7 +10,7 @@ const point=p=>!!p&&Number.isFinite(p.x)&&Number.isFinite(p.y);
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const time=n=>Number.isFinite(n)&&n>=0;
 const targetValid=t=>!!t&&typeof t.id==='string'&&!!t.id&&point(t)&&Number.isFinite(t.hp)&&t.hp>0;
-function canTransition(from,to){return edges[from]?.includes(to)===true}
+function canTransition(from,to){return typeof from==='string'&&typeof to==='string'&&Object.hasOwn(edges,from)&&edges[from].includes(to)}
 function create({loot,getRewardContext=()=>({zone:0}),rng,definitions=D}={}){
  const actors=new WeakMap(),tokens=new WeakMap(),spawns=new Set(),registered=new Set(),history=[];let epoch=0,busy=false;
  const record=e=>{history.push(e);if(history.length>128)history.shift()};
