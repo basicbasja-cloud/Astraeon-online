@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://astraeon.invalid/schemas/attachment-transform-v1",
+  "title": "ASTRAEON 2D attachment transform",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "x",
+    "y",
+    "rotation",
+    "scale"
+  ],
+  "properties": {
+    "x": {
+      "type": "number"
+    },
+    "y": {
+      "type": "number"
+    },
+    "rotation": {
+      "type": "number",
+      "description": "Clockwise radians in canvas coordinates"
+    },
+    "scale": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    }
+  }
+}

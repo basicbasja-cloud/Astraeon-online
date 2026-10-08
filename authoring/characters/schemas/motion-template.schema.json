@@ -1,0 +1,954 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://astraeon.invalid/schemas/motion-template-v1",
+  "title": "ASTRAEON executable MotionTemplate v1",
+  "description": "Cross-frame provenance, stable root, key timestamps, neighboring-key links and profile resolution are additionally checked by character-motion-template.js. REFERENCE_DATA_REQUIRED drafts intentionally fail.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "motionTemplateId",
+    "status",
+    "provenance",
+    "directions",
+    "registration",
+    "transformConvention",
+    "drawProfiles",
+    "defaultDrawProfile",
+    "actions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "motionTemplateId": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+    },
+    "status": {
+      "enum": [
+        "DEV_ONLY",
+        "REQUIRES_OWNER_VISUAL_REVIEW",
+        "APPROVED"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "SYNTHETIC_ENGINE_FIXTURE",
+            "RO1_DERIVED"
+          ]
+        },
+        "referenceManifestSHA256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "directions": {
+      "const": [
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N",
+        "NE",
+        "E",
+        "SE"
+      ]
+    },
+    "registration": {
+      "type": "object",
+      "required": [
+        "canvas",
+        "root",
+        "referenceHeight",
+        "mirroring"
+      ],
+      "properties": {
+        "canvas": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "root": {
+          "$ref": "#/$defs/transform"
+        },
+        "referenceHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "mirroring": {
+          "const": "none"
+        }
+      }
+    },
+    "transformConvention": {
+      "const": "canvas pixels; clockwise radians; uniform positive scale"
+    },
+    "drawProfiles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "Shadow",
+            "GarmentBack",
+            "Body",
+            "HeadBase",
+            "HairBack",
+            "HairFront",
+            "HeadgearLower",
+            "HeadgearMiddle",
+            "HeadgearTop",
+            "MainHand",
+            "WeaponSlash",
+            "OffHand",
+            "GarmentFront",
+            "BackAccessory",
+            "CosmeticFX"
+          ]
+        },
+        "minItems": 15,
+        "maxItems": 15,
+        "uniqueItems": true
+      }
+    },
+    "defaultDrawProfile": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+    },
+    "actions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "loop",
+          "directions"
+        ],
+        "properties": {
+          "loop": {
+            "type": "boolean"
+          },
+          "directions": {
+            "type": "object",
+            "required": [
+              "S",
+              "SW",
+              "W",
+              "NW",
+              "N",
+              "NE",
+              "E",
+              "SE"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "S": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "SW": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "W": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "NW": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "N": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "NE": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "E": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              },
+              "SE": {
+                "type": "object",
+                "required": [
+                  "totalDurationMs",
+                  "referenceKeys",
+                  "frames"
+                ],
+                "properties": {
+                  "totalDurationMs": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "referenceKeys": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "allOf": [
+                        {
+                          "$ref": "#/$defs/frame"
+                        },
+                        {
+                          "properties": {
+                            "role": {
+                              "const": "referenceKey"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/frame"
+                    }
+                  },
+                  "drawProfile": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+                  },
+                  "drawOrder": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "Shadow",
+                        "GarmentBack",
+                        "Body",
+                        "HeadBase",
+                        "HairBack",
+                        "HairFront",
+                        "HeadgearLower",
+                        "HeadgearMiddle",
+                        "HeadgearTop",
+                        "MainHand",
+                        "WeaponSlash",
+                        "OffHand",
+                        "GarmentFront",
+                        "BackAccessory",
+                        "CosmeticFX"
+                      ]
+                    },
+                    "minItems": 15,
+                    "maxItems": 15,
+                    "uniqueItems": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "rotation",
+        "scale"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "rotation": {
+          "type": "number",
+          "description": "Clockwise radians in canvas coordinates"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "required": [
+        "id",
+        "durationMs",
+        "role",
+        "referencePhase",
+        "root",
+        "anchors",
+        "events"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+        },
+        "durationMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "role": {
+          "enum": [
+            "referenceKey",
+            "astraeonInbetween"
+          ]
+        },
+        "referencePhase": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "root": {
+          "$ref": "#/$defs/transform"
+        },
+        "anchors": {
+          "type": "object",
+          "required": [
+            "root",
+            "head",
+            "mainHand",
+            "offHand",
+            "back",
+            "waist",
+            "footL",
+            "footR"
+          ],
+          "additionalProperties": {
+            "$ref": "#/$defs/transform"
+          }
+        },
+        "drawProfile": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+        },
+        "drawOrder": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Shadow",
+              "GarmentBack",
+              "Body",
+              "HeadBase",
+              "HairBack",
+              "HairFront",
+              "HeadgearLower",
+              "HeadgearMiddle",
+              "HeadgearTop",
+              "MainHand",
+              "WeaponSlash",
+              "OffHand",
+              "GarmentFront",
+              "BackAccessory",
+              "CosmeticFX"
+            ]
+          },
+          "minItems": 15,
+          "maxItems": 15,
+          "uniqueItems": true
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "authority"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+              },
+              "authority": {
+                "const": "presentation"
+              }
+            }
+          }
+        },
+        "source": {
+          "type": "object"
+        },
+        "poseIntent": {
+          "type": "object",
+          "required": [
+            "bodyOrientation",
+            "limbPhase",
+            "footContact",
+            "attackPhase",
+            "silhouette"
+          ],
+          "properties": {
+            "bodyOrientation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "limbPhase": {
+              "type": "string",
+              "minLength": 1
+            },
+            "footContact": {
+              "type": "string",
+              "minLength": 1
+            },
+            "attackPhase": {
+              "type": "string",
+              "minLength": 1
+            },
+            "silhouette": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "between": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "fraction": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "bodyPose": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "const": "referenceKey"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "source",
+              "poseIntent"
+            ],
+            "properties": {
+              "referencePhase": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_./-]*$"
+              }
+            },
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "between"
+                  ]
+                },
+                {
+                  "required": [
+                    "fraction"
+                  ]
+                }
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "between",
+              "fraction"
+            ],
+            "properties": {
+              "referencePhase": {
+                "type": "null"
+              },
+              "events": {
+                "maxItems": 0
+              }
+            },
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "source"
+                  ]
+                },
+                {
+                  "required": [
+                    "poseIntent"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
