@@ -1,0 +1,559 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://astraeon.invalid/schemas/appearance-pack-v1",
+  "title": "ASTRAEON replaceable raster appearance pack v1",
+  "description": "Motion registration/timing, mode-specific counts, phase ordering, atlas bounds and semantic isolation checked by character-assembly.js.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "packId",
+    "status",
+    "compatibleMotionTemplates",
+    "registration",
+    "mirroring",
+    "slots",
+    "defaultParts",
+    "parts",
+    "atlases"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "packId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "status": {
+      "enum": [
+        "DEV_ONLY",
+        "REQUIRES_OWNER_VISUAL_REVIEW",
+        "APPROVED"
+      ]
+    },
+    "compatibleMotionTemplates": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "registration": {
+      "type": "object"
+    },
+    "mirroring": {
+      "const": "none"
+    },
+    "slots": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "layers",
+          "required"
+        ],
+        "properties": {
+          "layers": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "Shadow",
+                "GarmentBack",
+                "Body",
+                "HeadBase",
+                "HairBack",
+                "HairFront",
+                "HeadgearLower",
+                "HeadgearMiddle",
+                "HeadgearTop",
+                "MainHand",
+                "WeaponSlash",
+                "OffHand",
+                "GarmentFront",
+                "BackAccessory",
+                "CosmeticFX"
+              ]
+            }
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "defaultParts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "parts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/part"
+      }
+    },
+    "atlases": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "file",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "pattern": "^assets/characters/"
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "actions"
+        ]
+      },
+      {
+        "required": [
+          "durations"
+        ]
+      },
+      {
+        "required": [
+          "durationMs"
+        ]
+      },
+      {
+        "required": [
+          "timing"
+        ]
+      },
+      {
+        "required": [
+          "anchors"
+        ]
+      },
+      {
+        "required": [
+          "motionTemplate"
+        ]
+      }
+    ]
+  },
+  "$defs": {
+    "part": {
+      "type": "object",
+      "required": [
+        "slot",
+        "mode",
+        "space",
+        "timelines"
+      ],
+      "properties": {
+        "slot": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "BODY_SYNC",
+            "PHASE_SYNC",
+            "ANCHOR_HOLD",
+            "OWN_LOOP"
+          ]
+        },
+        "space": {
+          "enum": [
+            "canvas",
+            "attachment"
+          ]
+        },
+        "anchor": {
+          "type": "string"
+        },
+        "timelines": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "S",
+              "SW",
+              "W",
+              "NW",
+              "N",
+              "NE",
+              "E",
+              "SE"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "S": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "SW": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "W": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "NW": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "N": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "NE": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "E": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              },
+              "SE": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "phases": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  },
+                  "views": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "$ref": "#/$defs/entry"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "durations"
+            ]
+          },
+          {
+            "required": [
+              "durationMs"
+            ]
+          },
+          {
+            "required": [
+              "timing"
+            ]
+          },
+          {
+            "required": [
+              "root"
+            ]
+          },
+          {
+            "required": [
+              "anchors"
+            ]
+          },
+          {
+            "required": [
+              "motionTemplate"
+            ]
+          }
+        ]
+      }
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "layers"
+      ],
+      "properties": {
+        "layers": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "enum": [
+              "Shadow",
+              "GarmentBack",
+              "Body",
+              "HeadBase",
+              "HairBack",
+              "HairFront",
+              "HeadgearLower",
+              "HeadgearMiddle",
+              "HeadgearTop",
+              "MainHand",
+              "WeaponSlash",
+              "OffHand",
+              "GarmentFront",
+              "BackAccessory",
+              "CosmeticFX"
+            ]
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/raster"
+          }
+        },
+        "at": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "durationMs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "raster": {
+      "type": "object",
+      "required": [
+        "atlasId",
+        "rect"
+      ],
+      "properties": {
+        "atlasId": {
+          "type": "string"
+        },
+        "rect": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "pivot": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "localTransform": {
+          "$ref": "attachment-transform.schema.json"
+        }
+      },
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "durationMs"
+            ]
+          },
+          {
+            "required": [
+              "timing"
+            ]
+          },
+          {
+            "required": [
+              "anchors"
+            ]
+          },
+          {
+            "required": [
+              "mirroring"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

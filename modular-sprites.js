@@ -141,6 +141,7 @@ function directionFromHeading(angle,project) {
  return DIRECTIONS[row];
 }
 function draw(ctx,sampled,images,{x=0,y=0,scale=1}={}) {
+ if(sampled.format==='ASTRAEON_ASSEMBLY_V1')return scope.AstraeonCharacterAssembly.drawAssembly(ctx,sampled,images,{x,y,scale});
  if(!positive(scale))throw Error('Invalid sprite scale');
  // Resolve every image first: missing parts never leave a partly painted character.
  const layers=sampled.layers.map(ref=>{const image=images[ref.atlasId];if(!image)throw Error('Atlas not loaded '+ref.atlasId);return {ref,image}});
@@ -248,6 +249,9 @@ function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archet
  return {RightHand:[p.x+f.y*.22,p.y-f.x*.22,p.z+1.2],LeftHand:[p.x-f.y*.22,p.y+f.x*.22,p.z+1.2],Back:[p.x-f.x*.2,p.y-f.y*.2,p.z+1.2],Hip:[p.x,p.y,p.z+.8],spriteSockets};
 }
 const api={DIRECTIONS,REQUIRED_LAYERS,OPTIONAL_LAYERS,SOCKETS,SHARED_CLIPS,CLASS_CLIPS,frameId,validateDefinition,compile,resolveCosmetics,directionFromHeading,draw,load,drawHumanoid,STATE_CLIPS};
+// Optional v1 extension. Ordinary boot keeps the existing legacy sprite contract.
+const assembly=scope.AstraeonCharacterAssembly||(typeof module!=='undefined'&&module.exports?require('./character-assembly.js'):null);
+if(assembly){api.compileAssembly=assembly.compileAssembly;api.loadAssembly=assembly.loadAssembly;api.drawAssembly=assembly.drawAssembly}
 scope.AstraeonModularSprites=Object.freeze(api);
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
