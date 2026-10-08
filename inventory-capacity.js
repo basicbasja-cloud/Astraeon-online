@@ -7,7 +7,7 @@ const integer=(n,min=0)=>Number.isSafeInteger(n)&&n>=min;
 const plain=v=>!!v&&typeof v==='object'&&!Array.isArray(v)&&(Object.getPrototypeOf(v)===Object.prototype||Object.getPrototypeOf(v)===null);
 function json(v,seen=new Set(),depth=0){if(depth>64)return false;if(v===null||['string','boolean'].includes(typeof v))return true;if(typeof v==='number')return Number.isFinite(v);if(!Array.isArray(v)&&!plain(v)||seen.has(v))return false;seen.add(v);const ok=Object.values(v).every(x=>json(x,seen,depth+1));seen.delete(v);return ok}
 const fail=(code,detail={})=>freeze({ok:false,code,blockedReason:code,...detail});
-function units(n){const scaled=n*scale,rounded=Math.round(scaled);return Number.isFinite(n)&&n>=0&&integer(rounded)&&Math.abs(scaled-rounded)<=1e-7?rounded:null}
+function units(n){const scaled=n*scale,rounded=Math.round(scaled);return Number.isFinite(n)&&n>=0&&integer(rounded)&&(n===0||rounded>0)&&Math.abs(scaled-rounded)<=1e-7?rounded:null}
 const defaultPolicy=freeze({mode:'bounded',slotLimit:100,weightLimit:1000,overLimitPolicy:'no-worse',metadata:{balance:'provisional; preserves ordinary prototype loop',weightPrecision:3}});
 function validatePolicy(policy){
  if(!plain(policy)||!json(policy)||Object.keys(policy).some(k=>!['mode','slotLimit','weightLimit','overLimitPolicy','metadata'].includes(k))||policy.overLimitPolicy!=='no-worse')return fail('INVALID_CAPACITY_POLICY');
