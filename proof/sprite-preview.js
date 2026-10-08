@@ -5,7 +5,7 @@ const api=window.AstraeonModularSprites,$=id=>document.getElementById(id),canvas
 let sprite,elapsed=0,last=0,loading=0,ready=false;
 for(const d of api.DIRECTIONS)$('direction').add(new Option(d,d));
 for(const layer of api.REQUIRED_LAYERS){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.layer=layer;label.append(input,layer);$('layers').append(label)}
-function options(){return {frameIndex:Number($('frame').value),appearance:{Weapon:$('weapon').value}}}
+function options(){return {frameIndex:Number($('frame').value),appearance:sprite.appearance}}
 function sampled(){return sprite.compiled.sample($('animation').value,$('direction').value,elapsed,$('playback').value==='0'?options():{appearance:options().appearance})}
 function render(){
  if(!sprite||!ready)return;
@@ -22,12 +22,13 @@ function render(){
 function resetClip(){elapsed=0;$('frame').value=0;$('frame').max=sprite.compiled.definition.clips[$('animation').value].durations.length-1;render()}
 async function chooseCharacter(){
  const ticket=++loading;ready=false;$('status').textContent='Loading modular proof…';
- try{const loaded=await api.load(`./assets/characters/${$('character').value}/sprite.json`,{allowDev:true});if(ticket!==loading)return;sprite=loaded;$('animation').replaceChildren();for(const id of Object.keys(sprite.compiled.definition.clips))$('animation').add(new Option(id,id));ready=true;resetClip()}
+ try{const loaded=await api.load(`./assets/characters/${$('character').value}/sprite.json`,{allowDev:true});if(ticket!==loading)return;sprite=loaded;$('weapon').replaceChildren();for(const [id,part] of Object.entries(sprite.compiled.definition.parts))if(part.slot==='Weapon')$('weapon').add(new Option(part.cosmeticId||id,id));$('weapon').value=sprite.compiled.definition.defaultParts.Weapon;$('animation').replaceChildren();for(const id of Object.keys(sprite.compiled.definition.clips))$('animation').add(new Option(id,id));ready=true;resetClip()}
  catch(error){$('status').textContent=error.message;console.error(error)}
 }
 async function chooseClip(){const ticket=++loading;ready=false;$('status').textContent='Loading animation…';try{await sprite.ensure($('animation').value);if(ticket!==loading)return;ready=true;resetClip()}catch(error){$('status').textContent=error.message;console.error(error)}}
+async function chooseWeapon(){const ticket=++loading;ready=false;$('status').textContent='Preloading cosmetic…';try{await sprite.setAppearance({Weapon:$('weapon').value});if(ticket!==loading)return;ready=true;render()}catch(error){$('weapon').value=sprite.appearance.Weapon||sprite.compiled.definition.defaultParts.Weapon;ready=true;render();$('status').textContent+='\n'+error.message}}
 $('controls').addEventListener('submit',e=>e.preventDefault());$('character').addEventListener('change',chooseCharacter);$('animation').addEventListener('change',chooseClip);
-$('frame').addEventListener('input',()=>{$('playback').value='0';render()});for(const id of ['direction','weapon','sockets'])$(id).addEventListener('change',render);$('layers').addEventListener('change',render);
+$('frame').addEventListener('input',()=>{$('playback').value='0';render()});$('weapon').addEventListener('change',chooseWeapon);for(const id of ['direction','sockets'])$(id).addEventListener('change',render);$('layers').addEventListener('change',render);
 $('playback').addEventListener('change',()=>{if(sprite){const c=sprite.compiled.definition.clips[$('animation').value];elapsed=c.durations.slice(0,Number($('frame').value)).reduce((a,b)=>a+b,0)}render()});
 function tick(time){if(last&&sprite&&ready&&$('playback').value!=='0'){elapsed+=(time-last)*Number($('playback').value);render()}last=time;requestAnimationFrame(tick)}
 await chooseCharacter();requestAnimationFrame(tick);

@@ -124,10 +124,49 @@ test('atlas loading respects repository prefixes, preloads only selected clips a
  try{
   await assert.rejects(api.load('./assets/characters/swordsman-proof/sprite.json'),/DEV_ONLY/);assert.equal(requests.length,0);
   const visual=await api.load('./assets/characters/swordsman-proof/sprite.json',{allowDev:true});
-  assert.equal(Object.keys(visual.images).length,7);assert.ok(Object.keys(visual.images).every(id=>id.endsWith('-idle')));
-  await Promise.all([visual.ensure('Walk'),visual.ensure('Walk')]);assert.equal(requests.length,14);
+  assert.equal(Object.keys(visual.images).length,6);assert.ok(Object.keys(visual.images).every(id=>id.endsWith('-idle')));
+  assert.ok(!requests.some(url=>url.includes('weapon-alt')));
+  await Promise.all([visual.ensure('Walk'),visual.ensure('Walk')]);assert.equal(requests.length,12);
   await assert.rejects(visual.ensure('Run'),/Cannot load atlas/);await visual.ensure('Run');
-  assert.equal(Object.keys(visual.images).length,21);assert.equal(requests.filter(url=>url.endsWith('/weapon-run.png')).length,2);
+  assert.equal(Object.keys(visual.images).length,18);assert.equal(requests.filter(url=>url.endsWith('/weapon-run.png')).length,2);
+  await visual.setAppearance({Weapon:'weapon-alt'});assert.equal(visual.appearance.Weapon,'weapon-alt');
+  assert.equal(Object.keys(visual.images).length,21);assert.equal(requests.filter(url=>url.includes('weapon-alt')).length,3);
+ }finally{for(const [key,value] of Object.entries(original)){if(value===undefined)delete global[key];else global[key]=value}}
+});
+test('body variants preserve gameplay class and resolve one logical cosmetic to body-specific parts',()=>{
+ const male=clone(),female=clone();male.bodyVariant='male';female.bodyVariant='female';
+ male.parts.outfit.cosmeticId=female.parts.outfit.cosmeticId='royal-knight-outfit';
+ // Body-specific rendered IDs can differ without changing the logical item.
+ female.parts['outfit-female']=female.parts.outfit;delete female.parts.outfit;female.defaultParts.Outfit='outfit-female';
+ female.parts['outfit-female'].frames=Object.fromEntries(Object.entries(female.parts['outfit-female'].frames).map(([id,ref])=>[id.replace('_outfit_','_outfit-female_'),ref]));
+ for(const d of [male,female]){
+  const c=api.compile(d),appearance=api.resolveCosmetics(d,{Outfit:'royal-knight-outfit'}),frame=c.sample('Walk','NE',130,{appearance});
+  assert.equal(frame.classId,'Swordsman');assert.equal(frame.bodyVariant,d.bodyVariant);assert.equal(frame.layers.find(l=>l.slot==='Outfit').partId,d.defaultParts.Outfit);
+  assert.deepEqual(frame.sockets.root,[160,264]);
+ }
+ assert.equal(api.compile(sword).sample('Idle','S').bodyVariant,'default');
+ assert.throws(()=>api.resolveCosmetics(male,{Outfit:'gameplay-ancient-plate'}),/Unavailable cosmetic/);
+ for(const variant of ['custom-body', 'female', 'male']){const d=clone();d.bodyVariant=variant;assert.deepEqual(api.validateDefinition(d),[])}
+ for(const variant of ['',null,3,'Female']){const d=clone();d.bodyVariant=variant;assert.ok(api.validateDefinition(d).length)}
+ male.parts['weapon-alt'].cosmeticId=male.parts.weapon.cosmeticId='default-sword';assert.ok(api.validateDefinition(male).some(e=>e.includes('Ambiguous cosmetic')));
+});
+test('cosmetics switch only after readiness, failed switches retain appearance, equipment cannot select parts',async()=>{
+ const original={fetch:global.fetch,Image:global.Image,document:global.document};
+ const d=clone();d.bodyVariant='male';d.parts.weapon.cosmeticId='default-sword';d.parts['weapon-alt'].cosmeticId='training-sword';
+ let fail=true,release;const requests=[];
+ global.document={baseURI:'https://test.invalid/sprite-preview.html'};
+ global.fetch=async()=>({ok:true,json:async()=>structuredClone(d)});
+ global.Image=class {set src(url){
+  requests.push(url);const id=new URL(url).pathname.split('/').at(-1).replace('.png',''),a=d.atlases[id];this.naturalWidth=a.width;this.naturalHeight=a.height;
+  if(id==='weapon-alt-idle'){release=()=>fail?this.onerror():this.onload()}else queueMicrotask(()=>this.onload());
+ }};
+ try{
+  await assert.rejects(api.load('assets/characters/swordsman-proof/sprite.json',{allowDev:true,bodyVariant:'female'}),/bodyVariant/);assert.equal(requests.length,0);
+  const visual=await api.load('assets/characters/swordsman-proof/sprite.json',{allowDev:true,bodyVariant:'male',cosmeticLoadout:{Weapon:'default-sword'},equipmentLoadout:{weapon:'training-sword'}});
+  assert.equal(visual.appearance.Weapon,'weapon');assert.equal(requests.length,6);
+  const rejected=visual.setAppearance({}, {cosmeticLoadout:{Weapon:'training-sword'}});assert.equal(visual.appearance.Weapon,'weapon');release();await assert.rejects(rejected);assert.equal(visual.appearance.Weapon,'weapon');
+  fail=false;const accepted=visual.setAppearance({}, {cosmeticLoadout:{Weapon:'training-sword'}});assert.equal(visual.appearance.Weapon,'weapon');release();assert.equal(await accepted,true);assert.equal(visual.appearance.Weapon,'weapon-alt');
+  assert.throws(()=>api.resolveCosmetics(d,{Equipment:'training-sword'}),/Unknown cosmetic slot/);
  }finally{for(const [key,value] of Object.entries(original)){if(value===undefined)delete global[key];else global[key]=value}}
 });
 test('movement parts sample the existing gait, while all skill VFX can share SkillAction',()=>{

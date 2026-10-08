@@ -20,6 +20,8 @@ function validateDefinition(d) {
  check(d.version==='0.1','Unsupported sprite version');
  check(slug.test(d.characterId||''),'Invalid characterId');
  check(own(CLASS_CLIPS,d.classId),'Unsupported classId');
+ // Body identity belongs to presentation, never to gameplay class/equipment.
+ if(own(d,'bodyVariant'))check(typeof d.bodyVariant==='string'&&slug.test(d.bodyVariant),'Invalid bodyVariant');
  check(same(d.directions,DIRECTIONS),'Direction order must be '+DIRECTIONS.join(','));
  const c=d.canvas||{}, w=c.frameWidth,h=c.frameHeight;
  check(Number.isInteger(w)&&positive(w)&&Number.isInteger(h)&&positive(h),'Invalid canvas dimensions');
@@ -74,10 +76,15 @@ function validateDefinition(d) {
    }
   }
  }
- const ids=new Set();
+ const ids=new Set(),cosmetics=new Set();
  for(const [partId,part] of Object.entries(parts)){
   check(slug.test(partId),'Invalid partId '+partId);
   check(own(slots,part.slot),'Unknown part slot '+partId);
+  if(own(part,'cosmeticId')){
+   check(typeof part.cosmeticId==='string'&&slug.test(part.cosmeticId),'Invalid cosmeticId '+partId);
+   const key=part.slot+'/'+part.cosmeticId;
+   check(!cosmetics.has(key),'Ambiguous cosmetic '+key);cosmetics.add(key);
+  }
   check(!own(part,'durations')&&!own(part,'canvas')&&!own(part,'rootAnchor'),'Layer timing/canvas/anchor override '+partId);
   const frames=part.frames||{};
   check(Object.keys(frames).length===poses.length,'Layer frame count mismatch '+partId);
@@ -121,7 +128,7 @@ function compile(definition) {
    const id=frameId(d.characterId,partId,animationId,direction,index),ref=part.frames[id];
    layers.push({slot,layer:d.slots[slot],partId,frameId:id,...ref});
   }
-  return {characterId:d.characterId,animationId,direction,frameIndex:index,duration:clip.durations[index],canvas:d.canvas,sockets:frame.sockets,layers};
+  return {characterId:d.characterId,classId:d.classId,bodyVariant:d.bodyVariant||'default',animationId,direction,frameIndex:index,duration:clip.durations[index],canvas:d.canvas,sockets:frame.sockets,layers};
  }
  return Object.freeze({definition:d,sample,duration:animationId=>totals[animationId]});
 }
@@ -140,10 +147,30 @@ function draw(ctx,sampled,images,{x=0,y=0,scale=1}={}) {
  ctx.save();try{ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';for(const {ref,image} of layers)ctx.drawImage(image,...ref.rect,left,top,c.frameWidth*scale,c.frameHeight*scale)}finally{ctx.restore()}
  return Object.fromEntries(Object.entries(sampled.sockets).map(([id,p])=>[id,{x:left+p[0]*scale,y:top+p[1]*scale}]));
 }
-async function load(url,{allowDev=false,animationIds=['Idle']}={}) {
+function resolveCosmetics(definition,cosmeticLoadout={}) {
+ if(!cosmeticLoadout||typeof cosmeticLoadout!=='object'||Array.isArray(cosmeticLoadout))throw Error('Invalid cosmeticLoadout');
+ const appearance={};
+ for(const [slot,cosmeticId] of Object.entries(cosmeticLoadout)){
+  if(!own(definition.slots,slot))throw Error('Unknown cosmetic slot '+slot);
+  const candidates=Object.entries(definition.parts).filter(([,part])=>part.slot===slot&&part.cosmeticId===cosmeticId);
+  if(candidates.length!==1)throw Error('Unavailable cosmetic '+cosmeticId+' for '+slot+' / '+(definition.bodyVariant||'default'));
+  appearance[slot]=candidates[0][0];
+ }
+ return appearance;
+}
+async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appearance={},cosmeticLoadout={}}={}) {
  const response=await fetch(url);if(!response.ok)throw Error('Cannot load sprite definition '+url);
  const compiled=compile(await response.json());
  if(compiled.definition.source.status==='DEV_ONLY'&&!allowDev)throw Error('DEV_ONLY sprites require explicit development opt-in');
+ if(bodyVariant!==undefined&&bodyVariant!==(compiled.definition.bodyVariant||'default'))throw Error('Sprite bodyVariant differs from requested presentation');
+ function selection(parts,cosmetics){
+  if(!parts||typeof parts!=='object'||Array.isArray(parts))throw Error('Invalid appearance');
+  const result={...parts,...resolveCosmetics(compiled.definition,cosmetics)};
+  compiled.sample('Idle','S',0,{appearance:result});
+  return Object.freeze(result);
+ }
+ let active=selection(appearance,cosmeticLoadout),revision=0;
+ const activeClips=new Set();
  const images={},pending={};
  // Atlas paths are repository-relative; metadata lives in assets/characters/<character>/.
  const root=new URL('../../../',new URL(url,document.baseURI));
@@ -155,14 +182,27 @@ async function load(url,{allowDev=false,animationIds=['Idle']}={}) {
    image.onerror=()=>reject(Error('Cannot load atlas '+id));image.src=new URL(atlas.file,root).href;
   }).catch(error=>{delete pending[id];throw error});
  }
- async function ensure(animationId){
+ async function preload(animationId,selected=active){
   const clip=compiled.definition.clips[animationId];if(!clip)throw Error('Unknown animation '+animationId);
   const ids=new Set();
-  for(const partId of Object.keys(compiled.definition.parts))for(const direction of DIRECTIONS)for(let i=0;i<clip.durations.length;i++)ids.add(compiled.definition.parts[partId].frames[frameId(compiled.definition.characterId,partId,animationId,direction,i)].atlasId);
+  for(const direction of DIRECTIONS)for(let i=0;i<clip.durations.length;i++)for(const layer of compiled.sample(animationId,direction,0,{frameIndex:i,appearance:selected}).layers)ids.add(layer.atlasId);
   await Promise.all([...ids].map(atlasImage));
  }
+ async function ensure(animationId){
+  activeClips.add(animationId);
+  let selected;do{selected=active;await preload(animationId,selected)}while(selected!==active);
+ }
+ async function setAppearance(parts={}, {cosmeticLoadout={},animationIds=[...activeClips]}={}){
+  const next=selection(parts,cosmeticLoadout),request=++revision;
+  const ready=new Set();
+  // Include clips requested while this appearance was preloading.
+  for(;;){const required=new Set([...animationIds,...activeClips]);await Promise.all([...required].filter(id=>!ready.has(id)).map(async id=>{await preload(id,next);ready.add(id)}));if([...activeClips].every(id=>ready.has(id)))break}
+  // Failed or superseded requests retain the previous complete appearance.
+  if(request!==revision)return false;
+  active=next;animationIds.forEach(id=>activeClips.add(id));return true;
+ }
  await Promise.all(animationIds.map(ensure));
- return Object.freeze({compiled,images,allowDev,ensure});
+ return Object.freeze({compiled,images,allowDev,ensure,setAppearance,get appearance(){return active}});
 }
 const STATE_CLIPS=Object.freeze({idle:'Idle',turn:'Idle',stop:'Idle',start:'Walk',walk:'Walk',run:'Run',sprint:'Run',attack:'BasicAttack',cast:'SkillAction',hit:'Hit',death:'Death',guard:'Guard',dodge:'Dash',dash:'Dash',channel:'CastChannel',blink:'Blink'});
 function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archetype='warrior'}={}) {
@@ -187,7 +227,7 @@ function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archet
  const p=t.position,f=t.facingDirection;
  return {RightHand:[p.x+f.y*.22,p.y-f.x*.22,p.z+1.2],LeftHand:[p.x-f.y*.22,p.y+f.x*.22,p.z+1.2],Back:[p.x-f.x*.2,p.y-f.y*.2,p.z+1.2],Hip:[p.x,p.y,p.z+.8],spriteSockets};
 }
-const api={DIRECTIONS,REQUIRED_LAYERS,OPTIONAL_LAYERS,SOCKETS,SHARED_CLIPS,CLASS_CLIPS,frameId,validateDefinition,compile,directionFromHeading,draw,load,drawHumanoid,STATE_CLIPS};
+const api={DIRECTIONS,REQUIRED_LAYERS,OPTIONAL_LAYERS,SOCKETS,SHARED_CLIPS,CLASS_CLIPS,frameId,validateDefinition,compile,resolveCosmetics,directionFromHeading,draw,load,drawHumanoid,STATE_CLIPS};
 scope.AstraeonModularSprites=Object.freeze(api);
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

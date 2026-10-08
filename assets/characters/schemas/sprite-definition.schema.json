@@ -812,6 +812,11 @@
                 }
               },
               "additionalProperties": false
+            },
+            "cosmeticId": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]*$",
+              "description": "Logical cosmetic item; separate body definitions may resolve it to different rendered parts or share an atlas."
             }
           },
           "required": [
@@ -854,6 +859,11 @@
         }
       },
       "additionalProperties": false
+    },
+    "bodyVariant": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Extensible visual body identity. Absent on legacy definitions means default; does not change gameplay class."
     }
   },
   "required": [

@@ -184,3 +184,36 @@ Only the owner can record a real `source.approvedBy`, reference and `APPROVED`
 status after visual review; passing schema/kinematic tests cannot grant approval.
 Actual artwork, anatomical gait/sole travel, camera consistency and gameplay
 acceptance remain the next production work, not claims made by this foundation.
+
+## Body variants and logical cosmetics
+
+New definitions may specify an extensible `bodyVariant` slug (`male`, `female`,
+`custom-body`, etc.). Old definitions remain valid and expose `default` when
+sampled. `classId` remains `Swordsman` for both Swordsman bodies. A body variant
+is presentation identity, not a gameplay class or an equipment property.
+
+Each body uses a separate registered sprite definition with the same canvas,
+direction order, sockets and clip semantics. Painted poses may differ. Parts may
+specify a `cosmeticId`, such as `royal-knight-outfit`. The same logical item may
+resolve to `outfit-male` in one definition and `outfit-female` in another. Atlas
+paths may be shared where the pose registration permits it. No biological-sex
+branches exist in gameplay logic. Selecting another body means explicitly
+loading that body's definition, preloading it, then switching presentation.
+`load(url, {bodyVariant: 'female', allowDev: true})` checks the requested identity
+before requesting any atlas. Legacy callers may omit the field.
+
+`resolveCosmetics(definition, cosmeticLoadout)` accepts render-slot keys and
+logical cosmetic IDs. It rejects unavailable/ambiguous selections. Legacy
+`appearance` part-ID selections remain supported. Neither API accepts or
+interprets gameplay equipment; an equipped sword or armour cannot choose a
+visible part. `BaseBody` selection also belongs to presentation.
+
+The loader now requests only active parts for selected clips. Unselected variants
+are not downloaded. `visual.ensure('Walk')` preloads the current appearance for
+that clip; `visual.setAppearance({}, {cosmeticLoadout: {Weapon: 'training-sword'}})`
+preloads the requested parts for active clips, then changes `visual.appearance`
+atomically. Failure retains the previous appearance, and superseded requests
+cannot overwrite newer ones. Callers draw using `visual.appearance`, including
+through the existing humanoid adapter. Other previously loaded images remain
+cached for subsequent switches. This does not implement a shop or entitlement
+system.

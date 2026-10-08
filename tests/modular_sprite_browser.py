@@ -43,12 +43,14 @@ with sync_playwright() as p:
         page.select_option('#direction','SW');page.locator('#frame').fill('1')
         before=page.evaluate('AstraeonSpritePreview.snapshot()');pixels_before=page.locator('#sprite').evaluate('(c)=>c.toDataURL()')
         page.select_option('#weapon','weapon-alt')
+        page.wait_for_function('AstraeonSpritePreview.snapshot().layers.some(l=>l.partId==="weapon-alt")')
         after=page.evaluate('AstraeonSpritePreview.snapshot()');pixels_after=page.locator('#sprite').evaluate('(c)=>c.toDataURL()')
         assert before['frameIndex']==after['frameIndex'] and before['sockets']==after['sockets']
         assert [l for l in before['layers'] if l['slot']!='Weapon']==[l for l in after['layers'] if l['slot']!='Weapon']
         assert pixels_before!=pixels_after,'Visible alternate marker did not change'
         page.screenshot(path=str(args.output/(character+'-SW.png')))
         page.select_option('#weapon','weapon')
+        page.wait_for_function('AstraeonSpritePreview.snapshot().layers.some(l=>l.partId==="weapon")')
         page.select_option('#playback','0.25')
         page.wait_for_function('AstraeonSpritePreview.snapshot().frameIndex!==1')
         page.select_option('#playback','0')
