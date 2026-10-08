@@ -30,7 +30,15 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 83. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 99. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+
+## Modular sprite foundation
+
+[The modular 2D sprite contract](docs/MODULAR_SPRITES.md) provides shared eight-direction
+poses, interchangeable character parts, registered sockets and per-frame draw order.
+Open [the development compositor](sprite-preview.html) for the temporary Swordsman/Mage
+alignment markers. These are `DEV_ONLY / PLACEHOLDER / NOT_FINAL_ART`; existing player
+visuals remain active. Run `python tools/validate-sprites.py` to check metadata and atlases.
 
 ## Verification
 

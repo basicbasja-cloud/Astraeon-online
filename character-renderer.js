@@ -11,7 +11,7 @@ function shadow(ctx,iso,t,radius=.4,alpha=.24){
  }
  ctx.restore();
 }
-function humanoid(ctx,iso,t,options={}){shadow(ctx,iso,t,.4*(options.scale||1));return window.AstraeonDirectionalArt.humanoid(ctx,iso,t,options)}
+function humanoid(ctx,iso,t,options={}){shadow(ctx,iso,t,.4*(options.scale||1));return options.modular?window.AstraeonModularSprites.drawHumanoid(ctx,iso,t,options):window.AstraeonDirectionalArt.humanoid(ctx,iso,t,options)}
 function monster(ctx,iso,t,entity,time){shadow(ctx,iso,t,entity.boss?.7:.4);return window.AstraeonDirectionalArt.monster(ctx,iso,t,entity,time)}
 window.AstraeonCharacters={humanoid,monster,shadow};
 })();

@@ -1,7 +1,7 @@
-const CACHE = 'astraeon-static-v98';
-const WORLD_CACHE='astraeon-world-v98',ASSET_CACHE='astraeon-assets-v98';
+const CACHE = 'astraeon-static-v99';
+const WORLD_CACHE='astraeon-world-v99',ASSET_CACHE='astraeon-assets-v99';
 // Only application shell/runtime. Maps, atlases, audio and chunks are on demand.
-const FILES = ["./index.html", "./manifest.webmanifest", "./icon.svg", "./style.css?v=98", "./animation.js?v=98", "./character-motion.js?v=98", "./character-renderer.js?v=98", "./combat-vfx.js?v=98", "./combat.js?v=98", "./directional-art.js?v=98", "./directional-metadata.js?v=98", "./dungeon.js?v=98", "./enemy-combat.js?v=98", "./environment-metadata.js?v=98", "./environment.js?v=98", "./exploration.js?v=98", "./game.js?v=98", "./hero-registration.js?v=98", "./icons.js?v=98", "./input.js?v=98", "./navigation.js?v=98", "./save-state.js?v=98", "./scene.js?v=98", "./skill-nodes.js?v=98", "./sprite-motion.js?v=98", "./town-structure.js?v=98", "./warrior-gait.js?v=98", "./warrior-rig.js?v=98", "./world-content.js?v=98", "./world-systems.js?v=98", "./world-view.js?v=98", "./world/v3/locomotion.js?v=98", "./world/v3/spatial.js?v=98", "./world/v3/streaming.js?v=98", "./world/v3/town-import.js?v=98", "./world/v3/warrior-registration.js?v=98", "./world/v3/renderer.js?v=98", "./vendor/three/three.module.min.js", "./vendor/three/three.core.min.js", "./world/v3/warrior-animation.json?v=98", "./world/v3/warrior-painted-locomotion.json?v=98", "./boot.js?v=98"];
+const FILES = ["./index.html", "./manifest.webmanifest", "./icon.svg", "./style.css?v=99", "./animation.js?v=99", "./character-motion.js?v=99", "./character-renderer.js?v=99", "./modular-sprites.js?v=99", "./combat-vfx.js?v=99", "./combat.js?v=99", "./directional-art.js?v=99", "./directional-metadata.js?v=99", "./dungeon.js?v=99", "./enemy-combat.js?v=99", "./environment-metadata.js?v=99", "./environment.js?v=99", "./exploration.js?v=99", "./game.js?v=99", "./hero-registration.js?v=99", "./icons.js?v=99", "./input.js?v=99", "./navigation.js?v=99", "./save-state.js?v=99", "./scene.js?v=99", "./skill-nodes.js?v=99", "./sprite-motion.js?v=99", "./town-structure.js?v=99", "./warrior-gait.js?v=99", "./warrior-rig.js?v=99", "./world-content.js?v=99", "./world-systems.js?v=99", "./world-view.js?v=99", "./world/v3/locomotion.js?v=99", "./world/v3/spatial.js?v=99", "./world/v3/streaming.js?v=99", "./world/v3/town-import.js?v=99", "./world/v3/warrior-registration.js?v=99", "./world/v3/renderer.js?v=99", "./vendor/three/three.module.min.js", "./vendor/three/three.core.min.js", "./world/v3/warrior-animation.json?v=99", "./world/v3/warrior-painted-locomotion.json?v=99", "./boot.js?v=99"];
 const LIMITS={[WORLD_CACHE]:{bytes:32*1024*1024,count:180},[ASSET_CACHE]:{bytes:64*1024*1024,count:100}};
 const inflight=new Map(),writes=new Map(),inventories=new Map();
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
@@ -31,7 +31,11 @@ self.addEventListener('fetch',event=>{
  let resolveLifetime;const lifetime=new Promise(resolve=>resolveLifetime=resolve);event.waitUntil(lifetime);
  event.respondWith((async()=>{
   try{
-   if(request.mode==='navigate'){try{const response=await network();if(response.ok)await (await caches.open(CACHE)).put('./index.html',response.clone());resolveLifetime();return response}catch(error){const cached=await caches.match('./index.html');resolveLifetime();if(cached)return cached;throw error}}
+   if(request.mode==='navigate'){
+    // A development preview must never replace the offline game entry point.
+    const entry=url.pathname===new URL('./',self.location).pathname||url.pathname===new URL('./index.html',self.location).pathname,key=entry?'./index.html':request;
+    try{const response=await network();if(response.ok)await (await caches.open(CACHE)).put(key,response.clone());resolveLifetime();return response}catch(error){const cached=await caches.match(key);resolveLifetime();if(cached)return cached;throw error}
+   }
    const cache=await caches.open(name),cached=await cache.match(request);
    if(cached){if(!shell&&!oversized)putBounded(name,request,cached,true).catch(()=>{}).finally(resolveLifetime);else resolveLifetime();return cached}
    const response=await network();if(response.ok&&!oversized){const write=shell?cache.put(request,response.clone()):putBounded(name,request,response);write.catch(()=>{}).finally(resolveLifetime)}else resolveLifetime();return response;

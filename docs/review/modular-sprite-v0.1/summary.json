@@ -1,0 +1,57 @@
+{
+  "baseBranch": "codex/world-pipeline-v3-proof",
+  "startingSHA": "a3b65899dd85666902a9115cbc400be9fb407525",
+  "branch": "codex/modular-sprite-pipeline-v0.1",
+  "ancestry": {
+    "mainSHA": "3f8d41ceee91b4fe5dc6baa7b5c44014e3608355",
+    "mainMergeBase": "f610aef75ca72104033a6d2a5b7f9280339d88d7",
+    "worldOnlyCommitsVersusMain": 49,
+    "mainOnlyCommits": 1,
+    "charBuildingSHA": "d7f9f15978b0ca6347fe5f80302d147544bd4626",
+    "charBuildingMergeBase": "d7f9f15978b0ca6347fe5f80302d147544bd4626",
+    "charUniqueCommits": 0,
+    "worldCommitsBeyondCharBuilding": 13,
+    "handling": "All Char-building character work is already in the selected base; no source branch rewrites or cherry-picks."
+  },
+  "validation": {
+    "schemaAndPixelDefinitions": 2,
+    "RGBAAtlases": 126,
+    "partFrameReferences": 3024,
+    "browserPoseCases": 432,
+    "existingNodeChecks": 96,
+    "newNodeChecks": 34,
+    "streamingNodeChecks": 5,
+    "pythonToolChecks": 6,
+    "syntaxChecks": "PASS",
+    "metadataAndPixels": "PASS",
+    "worldSchemas": "PASS",
+    "previewBrowser": "PASS",
+    "runtimeBrowser": "PASS",
+    "cacheResume": "PASS",
+    "build": "Static project; no package.json, dependency install or build step. Script syntax and actual browser launch passed."
+  },
+  "placeholders": [
+    "DEV_ONLY",
+    "PLACEHOLDER",
+    "NOT_FINAL_ART"
+  ],
+  "sourceArtwork": {
+    "existingIdentitySeed": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+    "approvedModularMasters": false,
+    "approvedMageReferenceFound": false,
+    "insertAt": "authoring/characters/modular/<characterId>/approved-reference.png"
+  },
+  "unresolvedVisualDecisions": [
+    "Owner confirmation of approved Warrior identity to Swordsman mapping",
+    "Approved canonical Mage identity/reference",
+    "Reviewed modular separation, camera, sockets and directional masters from approved source artwork",
+    "Anatomically correct body motion, sole travel and final in-game visual acceptance"
+  ],
+  "limitations": [
+    "Proof markers verify registration/composition, not anatomical motion or final art quality",
+    "No cosmetic ownership, shop, persistence or backend changes",
+    "Long clips exceeding 4096 atlas dimensions require atlas pagination",
+    "Modular runtime uses the existing Canvas assembly path; native GPU multi-layer optimization is future work"
+  ],
+  "testRepair": "Initial cache regression exposed stale v98 entries during the v99 update; corrected file list and rerun passed. No unresolved validation failures."
+}

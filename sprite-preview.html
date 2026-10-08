@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ASTRAEON modular sprite proof</title><link rel="stylesheet" href="./proof/sprite-preview.css"></head>
+<body>
+<main>
+ <h1>Modular sprite alignment proof</h1>
+ <p class="warning">DEV_ONLY · PLACEHOLDER · NOT_FINAL_ART — geometric markers, not approved character designs.</p>
+ <form id="controls">
+  <label>Class <select id="character"><option value="swordsman-proof">Swordsman</option><option value="mage-proof">Mage</option></select></label>
+  <label>Animation <select id="animation"></select></label>
+  <label>Direction <select id="direction"></select></label>
+  <label>Frame <input id="frame" type="range" min="0" value="0"><output id="frame-label">0</output></label>
+  <label>Playback <select id="playback"><option value="0">Paused</option><option value="1">Normal</option><option value="0.25">Quarter speed</option></select></label>
+  <label>Weapon marker <select id="weapon"><option value="weapon">Default</option><option value="weapon-alt">Alternate</option></select></label>
+  <label><input id="sockets" type="checkbox" checked>Show sockets</label>
+ </form>
+ <fieldset id="layers"><legend>Inspect layers</legend></fieldset>
+ <canvas id="sprite" width="720" height="520" aria-label="Synchronized sprite preview"></canvas>
+ <pre id="status" role="status">Loading proof…</pre>
+ <p>Layer visibility is a preview tool. Runtime appearances retain every required logical layer. Production artwork needs owner review.</p>
+</main>
+<script src="./world-view.js"></script><script src="./modular-sprites.js"></script><script src="./character-renderer.js"></script><script src="./proof/sprite-preview.js"></script>
+</body></html>
