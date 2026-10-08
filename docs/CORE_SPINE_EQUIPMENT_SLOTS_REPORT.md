@@ -22,10 +22,12 @@ Core checkpoint `8f3401f` precedes the stable runtime/test checkpoint above.
 **Verification in progress:** Node 1309/0 and final five-slot browser 59/0 pass.
 Every previous suite has run; three inherited encounter-fixture failures were
 reproduced with unchanged sources and read-only diagnostics, including parent
-runtime comparisons. Fixture-only readiness/HP heartbeat adapters retain all old
-assertions, wait predicates and total deadlines. Read `browser-recovery-fixture/`
-for sequential replays of Capacity, Box and Loot. Finish those replays, final
-audit/documentation and ordinary push. Acceptance is not declared yet.
+runtime comparisons. Fixture-only recovery/readiness and keyboard waypoint
+adapters retain all old assertions, wait predicates and total deadlines. Capacity
+63/0 and Box 33/0 recovery replays passed. Loot's detailed snapshot identifies an
+unintended gate click (not player death); the unsuccessful health-only diagnostic
+adapter was removed. Read `browser-loot-keyboard/` for its latest replay. Finish
+that replay, final audit/documentation and ordinary push. Acceptance is not declared yet.
 
 ## Architecture / integration report
 
@@ -120,10 +122,10 @@ suite once, not repeat attempts. Final previous-suite sequence is pending.
 | Suite | Pass groups | Status |
 | --- | --- | --- |
 | equipment_slots_browser.py | 59 | passed |
-| inventory_capacity_browser.py | 63 baseline | inherited contact fixture timeout; recovery replay pending |
-| monster_box_browser.py | 33 baseline | inherited contact fixture timeout; recovery replay pending |
+| inventory_capacity_browser.py | 63 | recovery replay passed |
+| monster_box_browser.py | 33 | recovery replay passed |
 | monster_lifecycle_browser.py | 30 | passed |
-| monster_loot_browser.py | 26 baseline | inherited fixture death/alive-enemy timeout; recovery replay pending |
+| monster_loot_browser.py | 26 baseline | inherited gate-click/alive-enemy timeout; keyboard replay pending |
 | action_item_browser.py | 30 | passed |
 | inventory_browser.py | 15 | passed |
 | action_loadout_browser.py | 17 | passed |
@@ -163,13 +165,20 @@ zero outgoing results at the original 30-second deadline. Current runtime shows
 the same incoming-hit cancellation. Fixture adapters now observe a real incoming
 attack, then wait for target cadence/recovery before the original single cast.
 They do not disable AI, change Combat or loosen the original exact skill-source
-assertion. Loot diagnostics show zone 0 / no enemies / four kills after an
-unplanned player death during outgoing encounter navigation. Its already-existing
-HP fixture is maintained during bounded waits as well as retargets; heartbeat
-events are recorded, never resurrect a dead fixture, and preserve the original
-kill/approach predicates and total deadlines. The separate actual player-death
-assertions use no heartbeat. Sequential recovery replays remain pending. All
-failed attempts and authoritative snapshots are retained externally.
+assertion. Capacity and Box recovery replays pass all 63/33 groups.
+
+Loot initially showed zone 0 / no enemies / four kills, which was provisionally
+interpreted as fixture death. A health-only diagnostic replay disproved that:
+HP 179/184, gold unchanged at 98, navigation to (2.5,14), reach 1.2, followed by
+the town **gate return arrival**, not death respawn. Its clamped offscreen ground
+waypoint overlapped a map gate. The health heartbeat was removed; no additional
+healing remains in the final fixture. Ordinary keyboard movement now handles
+offscreen approach first with the original 15-second / >1 movement condition,
+then visible monsters are clicked using authoritative Lifecycle position. Original
+kill/range/reward/actual-death/travel assertions and total deadlines remain.
+No gameplay collision, input, Combat, AI or gate code changes. The coordinate-only
+attempt also failed at the gate, confirming waypoint handling was required.
+Keyboard replay remains pending. All failed attempts and snapshots are retained.
 
 ### Cache / world / audit
 
