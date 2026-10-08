@@ -21,12 +21,16 @@ def point(page,x,y):
 def close_menu(page):
     if qa(page)['windowName']:page.locator('#modal .close').click()
 def idle(page):page.wait_for_function('!AstraeonQA.snapshot().action')
-def kill_to(page,target_count,cls):
+def kill_to(page,target_count,cls,preferred_ids=None):
     deadline=time.monotonic()+240;retries=0
     while qa(page)['save']['kills']<target_count:
         assert time.monotonic()<deadline,('bounded live kill deadline',cls,qa(page)['loot'])
         close_menu(page);idle(page)
         s=qa(page);living=[e for e in s['enemies'] if e['hp']>0]
+        # Per-life respawns may be nearer than the replacement under test.
+        # Prefer its actual identity, then retain ordinary input/kill assertions.
+        preferred=[e for e in living if e['rewardIdentity']['monsterInstanceId'] in (preferred_ids or set())]
+        if preferred:living=preferred
         if not living:
             page.wait_for_function('AstraeonQA.snapshot().enemies.some(e=>e.hp>0)',timeout=40000);continue
         target=min(living,key=lambda e:(e['transform']['position']['x']-s['save']['x'])**2+(e['transform']['position']['y']-s['save']['y'])**2)
@@ -125,7 +129,7 @@ try:
             passed('actual gameplay duplicate death route rejects without gold/EXP/quest/item duplication',{'cls':cls})
             page.wait_for_function('(ids)=>AstraeonQA.snapshot().enemies.some(e=>e.hp>0&&!ids.includes(e.rewardIdentity.monsterInstanceId))',arg=list(initial_ids),timeout=40000)
             population=qa(page);new_ids={e['rewardIdentity']['monsterInstanceId'] for e in population['enemies'] if e['hp']>0}-initial_ids
-            prior=saved(page)['kills'];kill_to(page,prior+3,cls)
+            prior=saved(page)['kills'];kill_to(page,prior+3,cls,preferred_ids=new_ids)
             page.wait_for_function('(ids)=>AstraeonQA.snapshot().loot.events.some(e=>ids.some(id=>e.deathId.startsWith(id+":")))',arg=list(new_ids),timeout=40000)
             passed('actual field replacement spawn has new identity and can reward on death',{'cls':cls,'replacementIds':sorted(new_ids)})
             close_menu(page);idle(page);before=saved(page);page.locator('[data-open="map"]').click();page.locator('[data-travel="0"]').click();page.wait_for_function('AstraeonQA.snapshot().save.zone===0')
