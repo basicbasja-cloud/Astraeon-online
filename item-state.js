@@ -46,7 +46,7 @@ function legacyEquipment(inventory,equipment,history={},catalog=D){
 }
 function installMirrors(state,normalized,catalog=D){Object.assign(state,normalized);state.inventory=legacyInventory(state.itemInventory,state.itemHistory,catalog);state.equipment=legacyEquipment(state.itemInventory,state.equippedItems,state.itemHistory,catalog);return state}
 function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
- const initial=migrate(raw,catalog);let inventory=initial.itemInventory,equipment=initial.equippedItems,history=initial.itemHistory,committing=false;
+ const initial=migrate(raw,catalog);let inventory=initial.itemInventory,equipment=initial.equippedItems,history=initial.itemHistory,committing=false,revision=0;
  function commit(result,nextEquipment=equipment,beforePublish){
   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
   if(!result.ok)return result;const nextInventory=result.inventory||inventory;
@@ -54,10 +54,21 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
   try{
    try{onChange(nextInventory,nextEquipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
    if(beforePublish){try{if(beforePublish()!==true)return I.fail('EFFECT_COMMIT_REJECTED')}catch{return I.fail('EFFECT_COMMIT_REJECTED')}}
-   inventory=nextInventory;equipment=nextEquipment;return freeze({...result,inventory,equipment});
+   inventory=nextInventory;equipment=nextEquipment;revision++;return freeze({...result,inventory,equipment});
   }finally{committing=false}
  }
- const api={getInventory:()=>inventory,getEquipment:()=>equipment,getHistory:()=>history,
+ function planRewards(start,rewards){
+  if(!Array.isArray(rewards))return I.fail('INVALID_REWARD_PACKAGE');
+  let next=start,units=0;const stackRewards=[],instanceRewards=[];
+  for(const reward of rewards){
+   const d=catalog.getDefinition(reward?.itemId),quantity=reward?.quantity;
+   if(!d||!Number.isSafeInteger(quantity)||quantity<=0)return I.fail('INVALID_ITEM_REWARD');
+   if(d.stackable){const before=I.getQuantity(next,d.id),r=I.addStack(next,d.id,quantity,catalog);if(!r.ok)return r;next=r.inventory;stackRewards.push({itemId:d.id,quantity,quantityBefore:before,quantityAfter:I.getQuantity(next,d.id)})}
+   else{units+=quantity;if(units>10000)return I.fail('REWARD_SIZE_LIMIT');for(let i=0;i<quantity;i++){const r=I.createInstance(next,d.id,{},catalog);if(!r.ok)return r;next=r.inventory;instanceRewards.push(r.instance)}}
+  }
+  return {ok:true,inventory:next,stackRewards,instanceRewards,serialBefore:start.nextItemSerial,serialAfter:next.nextItemSerial};
+ }
+ const api={getInventory:()=>inventory,getEquipment:()=>equipment,getHistory:()=>history,getRevision:()=>revision,
   getQuantity:id=>I.getQuantity(inventory,id),getInstance:id=>Object.hasOwn(inventory.instances,id)?inventory.instances[id]:null,
   getEquipped:slot=>E.slots.includes(slot)?equipment[slot]:null,
   getEquipmentModifiers:()=>E.modifiers(inventory,equipment,catalog),getCarriedWeight:()=>I.carriedWeight(inventory,catalog),
@@ -67,14 +78,28 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true}={}){
   consumeStackWithEffect(id,count,expectedInventory,apply){if(expectedInventory!==inventory)return I.fail('STALE_PACKAGE');if(typeof apply!=='function')return I.fail('EFFECT_COMMIT_REJECTED');return commit(I.consumeStack(inventory,id,count,catalog),equipment,apply)},
   commitRewards(rewards,apply){
    if(!Array.isArray(rewards)||typeof apply!=='function')return I.fail('INVALID_REWARD_PACKAGE');
-   let next=inventory,units=0;const stackRewards=[],instanceRewards=[];
-   for(const reward of rewards){
-    const d=catalog.getDefinition(reward?.itemId),quantity=reward?.quantity;
-    if(!d||!Number.isSafeInteger(quantity)||quantity<=0)return I.fail('INVALID_ITEM_REWARD');
-    if(d.stackable){const before=I.getQuantity(next,d.id),r=I.addStack(next,d.id,quantity,catalog);if(!r.ok)return r;next=r.inventory;stackRewards.push({itemId:d.id,quantity,quantityBefore:before,quantityAfter:I.getQuantity(next,d.id)})}
-    else{units+=quantity;if(units>10000)return I.fail('REWARD_SIZE_LIMIT');for(let i=0;i<quantity;i++){const r=I.createInstance(next,d.id,{},catalog);if(!r.ok)return r;next=r.inventory;instanceRewards.push(r.instance)}}
-   }
-   return commit({ok:true,inventory:next,stackRewards,instanceRewards,serialBefore:inventory.nextItemSerial,serialAfter:next.nextItemSerial},equipment,apply);
+   return commit(planRewards(inventory,rewards),equipment,apply);
+  },
+  commitOpenable(source,resolve,preflight=()=>true){
+   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
+   if(!source||source.expectedInventory!==inventory||source.expectedRevision!==revision)return I.fail('STALE_PACKAGE');
+   const d=catalog.getDefinition(source.itemId);if(!d?.stackable||!d.openable)return I.fail('NOT_OPENABLE');
+   if(typeof resolve!=='function'||typeof preflight!=='function')return I.fail('INVALID_REWARD_PACKAGE');
+   const debit=I.removeStack(inventory,source.itemId,source.count,catalog);if(!debit.ok)return debit;
+   // Lock before RNG/acceptance callbacks. Plan against a local candidate; publish
+   // source debit and ALL rewards together only after every validation succeeds.
+   committing=true;
+   try{
+    let resolution;try{resolution=resolve()}catch{return I.fail('BOX_RESOLUTION_REJECTED')}
+    if(resolution?.ok!==true)return I.fail(resolution?.code||'BOX_RESOLUTION_REJECTED');
+    const result=planRewards(debit.inventory,resolution.itemRewards);if(!result.ok)return result;
+    const proposal=freeze({...result,source:{itemId:source.itemId,count:source.count},inventoryBefore:inventory,equipment});
+    let accepted;try{accepted=preflight(proposal)}catch{return I.fail('REWARD_PREFLIGHT_REJECTED')}
+    if(accepted!==true)return I.fail(typeof accepted?.code==='string'?accepted.code:'REWARD_PREFLIGHT_REJECTED');
+    try{onChange(result.inventory,equipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
+    const quantityBefore=I.getQuantity(inventory,source.itemId);inventory=result.inventory;revision++;
+    return freeze({...result,equipment,quantityBefore,quantityAfter:I.getQuantity(inventory,source.itemId)});
+   }finally{committing=false}
   },
   createItemInstance:(id,metadata={})=>commit(I.createInstance(inventory,id,metadata,catalog)),
   deleteItemInstance:id=>commit(I.deleteInstance(inventory,id,equipment,catalog)),
