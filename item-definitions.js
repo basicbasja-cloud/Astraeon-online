@@ -7,6 +7,7 @@ function define(id,name,kind,options={}){definitions[id]=freeze({id,name,key:`it
 for(const [id,name] of [['herb','Herb'],['ore','Ore'],['shard','Relic Shards']])define(id,name,'material');
 define('potion','Healing Flask','consumable',{effects:{restoreHP:45},actionItem:{actionKind:'resourceRestore',target:'self',cooldownGroup:'hp-potion',usableStates:['town','field','dungeon']}});
 define('ration','Field Rations','consumable',{effects:{restoreSP:20},actionItem:{actionKind:'resourceRestore',target:'self',cooldownGroup:'sp-potion',usableStates:['town','field','dungeon']}});
+define('monster-box-proof','Monster Box (proof)','monsterBox',{openable:{boxContentTableId:'box-proof-basic'},tags:['monsterBox','openable'],metadata:{fixture:true,balance:'non-final',weight:'unconfigured',source:'opening-foundation-proof'}});
 define('traveler-blade','Traveler Blade','equipment',{equipmentSlots:['weapon']});
 define('astral-blade','Astral Blade','equipment',{equipmentSlots:['weapon'],modifiers:[{add:{physicalATK:6,magicATK:6}}]});
 define('adventurer-garb','Adventurer Garb','equipment',{equipmentSlots:['armor']});
