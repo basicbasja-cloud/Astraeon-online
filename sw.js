@@ -1,7 +1,7 @@
-const CACHE = 'astraeon-static-v99';
-const WORLD_CACHE='astraeon-world-v99',ASSET_CACHE='astraeon-assets-v99';
+const CACHE = 'astraeon-static-v100';
+const WORLD_CACHE='astraeon-world-v100',ASSET_CACHE='astraeon-assets-v100';
 // Only application shell/runtime. Maps, atlases, audio and chunks are on demand.
-const FILES = ["./index.html", "./manifest.webmanifest", "./icon.svg", "./style.css?v=99", "./animation.js?v=99", "./character-motion.js?v=99", "./character-renderer.js?v=99", "./modular-sprites.js?v=99", "./combat-vfx.js?v=99", "./combat.js?v=99", "./directional-art.js?v=99", "./directional-metadata.js?v=99", "./dungeon.js?v=99", "./enemy-combat.js?v=99", "./environment-metadata.js?v=99", "./environment.js?v=99", "./exploration.js?v=99", "./game.js?v=99", "./hero-registration.js?v=99", "./icons.js?v=99", "./input.js?v=99", "./navigation.js?v=99", "./save-state.js?v=99", "./scene.js?v=99", "./skill-nodes.js?v=99", "./sprite-motion.js?v=99", "./town-structure.js?v=99", "./warrior-gait.js?v=99", "./warrior-rig.js?v=99", "./world-content.js?v=99", "./world-systems.js?v=99", "./world-view.js?v=99", "./world/v3/locomotion.js?v=99", "./world/v3/spatial.js?v=99", "./world/v3/streaming.js?v=99", "./world/v3/town-import.js?v=99", "./world/v3/warrior-registration.js?v=99", "./world/v3/renderer.js?v=99", "./vendor/three/three.module.min.js", "./vendor/three/three.core.min.js", "./world/v3/warrior-animation.json?v=99", "./world/v3/warrior-painted-locomotion.json?v=99", "./boot.js?v=99"];
+const FILES = ["./index.html", "./manifest.webmanifest", "./icon.svg", "./style.css?v=100", "./animation.js?v=100", "./character-motion.js?v=100", "./character-renderer.js?v=100", "./modular-sprites.js?v=100", "./combat-vfx.js?v=100", "./combat.js?v=100", "./directional-art.js?v=100", "./directional-metadata.js?v=100", "./dungeon.js?v=100", "./enemy-combat.js?v=100", "./environment-metadata.js?v=100", "./environment.js?v=100", "./exploration.js?v=100", "./game.js?v=100", "./hero-registration.js?v=100", "./icons.js?v=100", "./input.js?v=100", "./navigation.js?v=100", "./save-state.js?v=100", "./scene.js?v=100", "./skill-nodes.js?v=100", "./sprite-motion.js?v=100", "./town-structure.js?v=100", "./warrior-gait.js?v=100", "./warrior-rig.js?v=100", "./world-content.js?v=100", "./world-systems.js?v=100", "./world-view.js?v=100", "./world/v3/locomotion.js?v=100", "./world/v3/spatial.js?v=100", "./world/v3/streaming.js?v=100", "./world/v3/town-import.js?v=100", "./world/v3/warrior-registration.js?v=100", "./world/v3/renderer.js?v=100", "./vendor/three/three.module.min.js", "./vendor/three/three.core.min.js", "./world/v3/warrior-animation.json?v=100", "./world/v3/warrior-painted-locomotion.json?v=100", "./boot.js?v=100"];
 const LIMITS={[WORLD_CACHE]:{bytes:32*1024*1024,count:180},[ASSET_CACHE]:{bytes:64*1024*1024,count:100}};
 const inflight=new Map(),writes=new Map(),inventories=new Map();
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});
@@ -25,6 +25,8 @@ function putBounded(name,request,response,touchOnly=false){
 }
 self.addEventListener('fetch',event=>{
  const request=event.request,url=new URL(request.url);if(request.method!=='GET'||url.origin!==self.location.origin)return;
+ // Review candidates must not consume or evict ordinary gameplay asset caches.
+ if(url.searchParams.get('spriteDev')==='1')return;
  const shell=FILES.some(file=>new URL(file,self.location).href===url.href),name=shell?CACHE:/\/world\/v3\/(streamed\/|world-manifest\.json)/.test(url.pathname)?WORLD_CACHE:ASSET_CACHE;
  const oversized=/\/world\/v3\/wayfarer-spatial\.json$/.test(url.pathname);
  const network=()=>{if(!inflight.has(url.href)){const pending=fetch(request).finally(()=>inflight.delete(url.href));inflight.set(url.href,pending)}return inflight.get(url.href).then(response=>response.clone())};

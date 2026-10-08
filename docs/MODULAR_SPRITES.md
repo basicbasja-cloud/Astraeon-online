@@ -217,3 +217,23 @@ cannot overwrite newer ones. Callers draw using `visual.appearance`, including
 through the existing humanoid adapter. Other previously loaded images remain
 cached for subsequent switches. This does not implement a shop or entitlement
 system.
+
+Atlas references are confined to the `assets/characters/` namespace, including
+real-path checks against escaping symlinks. Definitions may explicitly share
+compatible atlases across body variants. Packing still writes only its own
+character directory. `--deduplicate` optionally reuses identical untrimmed
+full-canvas frames and one transparent cell for empty slots, preserving gutters,
+frame IDs, pose timing and the root. It changes storage layout only; legacy pack
+calls retain their original grid layout.
+
+Looping locomotion clips may specify a positive `cycleDistance` in world units.
+The visual adapter then samples phase from the character's existing cumulative
+travel distance, keeping authored stance travel consistent when movement speed
+or the legacy gait profile changes. Omitted values retain the original `gait`
+clock. This is visual metadata; it changes neither movement nor equipment.
+
+Development previews request candidate definitions/atlases with `spriteDev=1`.
+The service worker bypasses its ordinary game caches for those resources.
+Pending production clips are disabled in the preview and must never be counted
+as produced animation. See `docs/review/swordsman-production-v0.1/README.md` for
+the current failed Walk visual gate and the incomplete production scope.

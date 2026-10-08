@@ -58,11 +58,38 @@ class SpriteTools(unittest.TestCase):
             root=Path(folder)
             with self.assertRaises(FileNotFoundError):pack(self.definition(),root/'sources',root)
             self.assertFalse((root/'assets').exists())
+    def test_dedup_preserves_full_canvas_aliases_and_shares_empty_slots(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);d=self.definition();d['parts']['empty']={'slot':'Headgear','frames':{}}
+            d['clips']['Walk']={'durations':[100,200]}
+            for part in d['parts']:
+                for clip in d['clips']:
+                    image=Image.new('RGBA',(24,96))
+                    if part=='weapon':
+                        for row in range(8):
+                            for index in range(2):image.putpixel((index*12+6,row*12+9),(120,140,160,255))
+                    path=root/'sources/parts'/part/clip/'strip.png';path.parent.mkdir(parents=True,exist_ok=True);image.save(path)
+            pack(d,root/'sources',root,deduplicate=True)
+            self.assertEqual(len(d['atlases']),2)
+            for atlas in d['atlases'].values():self.assertEqual((atlas['width'],atlas['height']),(16,16))
+            refs=list(d['parts']['weapon']['frames'].values());self.assertEqual(len({tuple(ref['rect']) for ref in refs}),1)
+            self.assertEqual({ref['atlasId'] for ref in refs},{'weapon-idle'})
+            self.assertEqual({ref['atlasId'] for ref in d['parts']['empty']['frames'].values()},{'empty'})
+            im=Image.open(root/d['atlases']['weapon-idle']['file']);self.assertEqual(im.getpixel((8,11)),(120,140,160,255))
     def test_duplicate_frame_ids_and_unknown_timing_fields_fail(self):
         with self.assertRaises(ValueError):validator.unique_object([('same-frame',1),('same-frame',2)])
         schema=json.loads((ROOT/'assets/characters/schemas/sprite-definition.schema.json').read_text())
         d=json.loads((ROOT/'assets/characters/swordsman-proof/sprite.json').read_text());d['parts']['hair']['duration']=100
         with self.assertRaises(jsonschema.ValidationError):jsonschema.validate(d,schema)
+    def test_shared_character_atlas_is_allowed_but_escaping_symlink_is_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder);file=root/'assets/characters/test-character/sprite.json';file.parent.mkdir(parents=True)
+            relative='assets/characters/shared/empty.png';imagepath=root/relative;imagepath.parent.mkdir()
+            tiny={'characterId':'test-character','canvas':{'frameWidth':4,'frameHeight':4},'atlases':{'empty':{'file':relative,'width':8,'height':8}},'parts':{'body':{'frames':{'frame':{'atlasId':'empty','rect':[2,2,4,4]}}}}}
+            file.write_text(json.dumps(tiny));Image.new('RGBA',(8,8)).save(imagepath)
+            self.assertEqual(validator.validate_file(file,root,{}),(1,1))
+            outside=root/'outside.png';imagepath.replace(outside);imagepath.symlink_to(outside)
+            with self.assertRaisesRegex(ValueError,'outside character asset namespace'):validator.validate_file(file,root,{})
     def test_validator_rejects_actual_missing_or_wrong_size_images_and_bleed(self):
         d=json.loads((ROOT/'assets/characters/swordsman-proof/sprite.json').read_text());atlas_id=next(iter(d['atlases']))
         # A tiny definition/schema isolates actual image checks; metadata semantics

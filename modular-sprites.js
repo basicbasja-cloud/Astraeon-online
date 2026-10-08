@@ -57,6 +57,7 @@ function validateDefinition(d) {
   check(/^[A-Z][A-Za-z0-9]*$/.test(animationId),'Invalid animationId '+animationId);
   check(typeof clip.loop==='boolean','Missing loop policy '+animationId);
   check(Array.isArray(clip.durations)&&clip.durations.length>0&&clip.durations.every(positive),'Invalid timing '+animationId);
+  if(own(clip,'cycleDistance'))check(positive(clip.cycleDistance)&&clip.loop,'Invalid locomotion cycle distance '+animationId);
   check(same(Object.keys(clip.directions||{}),DIRECTIONS),'Missing or unordered clip directions '+animationId);
   for(const direction of DIRECTIONS){
    const sequence=clip.directions?.[direction];
@@ -158,8 +159,9 @@ function resolveCosmetics(definition,cosmeticLoadout={}) {
  }
  return appearance;
 }
-async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appearance={},cosmeticLoadout={}}={}) {
- const response=await fetch(url);if(!response.ok)throw Error('Cannot load sprite definition '+url);
+async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appearance={},cosmeticLoadout={},isolateDevelopmentCache=false}={}) {
+ const definitionUrl=new URL(url,document.baseURI);if(isolateDevelopmentCache)definitionUrl.searchParams.set('spriteDev','1');
+ const response=await fetch(definitionUrl.href);if(!response.ok)throw Error('Cannot load sprite definition '+url);
  const compiled=compile(await response.json());
  if(compiled.definition.source.status==='DEV_ONLY'&&!allowDev)throw Error('DEV_ONLY sprites require explicit development opt-in');
  if(bodyVariant!==undefined&&bodyVariant!==(compiled.definition.bodyVariant||'default'))throw Error('Sprite bodyVariant differs from requested presentation');
@@ -179,7 +181,7 @@ async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appear
   return pending[id]??=new Promise((resolve,reject)=>{
    const atlas=compiled.definition.atlases[id],image=new Image();
    image.onload=()=>{if(image.naturalWidth!==atlas.width||image.naturalHeight!==atlas.height){reject(Error('Atlas size mismatch '+id));return}images[id]=image;resolve()};
-   image.onerror=()=>reject(Error('Cannot load atlas '+id));image.src=new URL(atlas.file,root).href;
+   image.onerror=()=>reject(Error('Cannot load atlas '+id));const imageUrl=new URL(atlas.file,root);if(isolateDevelopmentCache)imageUrl.searchParams.set('spriteDev','1');image.src=imageUrl.href;
   }).catch(error=>{delete pending[id];throw error});
  }
  async function preload(animationId,selected=active){
@@ -189,6 +191,7 @@ async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appear
   await Promise.all([...ids].map(atlasImage));
  }
  async function ensure(animationId){
+  if(!compiled.definition.clips[animationId])throw Error('Unknown animation '+animationId);
   activeClips.add(animationId);
   let selected;do{selected=active;await preload(animationId,selected)}while(selected!==active);
  }
@@ -215,8 +218,9 @@ function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archet
  const view=scope.AstraeonView,walking=['start','walk','run','sprint'].includes(state)&&t.speed>.02;
  const heading=walking&&t.mode==='movement'&&Math.hypot(t.velocity?.x||0,t.velocity?.y||0)>.02?Math.atan2(t.velocity.y,t.velocity.x):t.rotation;
  const direction=modular.direction||directionFromHeading(heading,view.project);
- const duration=compiled.duration(animationId),movingClock=['Walk','Run'].includes(animationId)&&Number.isFinite(t.gait);
- const elapsedMs=modular.elapsedMs??(movingClock?((t.gait%1+1)%1)*duration:definition.clips[animationId].loop?(t.stateTime||0)*1000:Math.max(0,Math.min(1,progress))*duration);
+ const clip=definition.clips[animationId],duration=compiled.duration(animationId);
+ const moving=['Walk','Run'].includes(animationId),phase=moving&&clip.cycleDistance&&Number.isFinite(t.distance)?t.distance/clip.cycleDistance:moving&&Number.isFinite(t.gait)?t.gait:null;
+ const elapsedMs=modular.elapsedMs??(phase!==null?((phase%1+1)%1)*duration:clip.loop?(t.stateTime||0)*1000:Math.max(0,Math.min(1,progress))*duration);
  const sampled=compiled.sample(animationId,direction,elapsedMs,{appearance:modular.appearance||{}});
  if(scope.AstraeonSpatialView?.assemblingActor)scope.AstraeonSpatialView.sampledPose={clip:'modular/'+definition.characterId,row:DIRECTIONS.indexOf(direction),column:sampled.frameIndex,bounds:[0,0,definition.canvas.frameWidth,definition.canvas.frameHeight]};
  const foot=iso(t.position.x,t.position.y,((t.position.z||0)+(t.flight||0))*35);

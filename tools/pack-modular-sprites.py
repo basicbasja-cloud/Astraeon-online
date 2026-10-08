@@ -6,12 +6,14 @@ No resize, mirror, root fitting, or individual part offsets happen during packin
 import argparse
 import json
 import re
+import hashlib
+import math
 from pathlib import Path
 from PIL import Image
 
 DIRECTIONS = ['S','SW','W','NW','N','NE','E','SE']
 
-def pack(definition, sources, repository, padding=2):
+def pack(definition, sources, repository, padding=2, deduplicate=False):
     if definition['directions'] != DIRECTIONS:
         raise ValueError('Noncanonical directions')
     if not isinstance(padding, int) or padding < 1 or padding > 16:
@@ -23,6 +25,7 @@ def pack(definition, sources, repository, padding=2):
     height = definition['canvas']['frameHeight']
     definition['atlases'] = {}
     pending = []
+    atlas_cache = {}
     for part_id, part in definition['parts'].items():
         if not re.fullmatch(r'[a-z][a-z0-9-]*', part_id):
             raise ValueError('Invalid partId')
@@ -39,25 +42,48 @@ def pack(definition, sources, repository, padding=2):
                 if source.getchannel('A').getextrema()[0] != 0:
                     raise ValueError(f'Strip lacks transparent pixels: {path}')
                 cell_w, cell_h = width+padding*2, height+padding*2
-                size = (cell_w*count, cell_h*8)
+                frames=[];indices=[];seen={}
+                for row in range(8):
+                    for index in range(count):
+                        frame=source.crop((index*width,row*height,(index+1)*width,(row+1)*height))
+                        if frame.getchannel('A').getextrema()[0]!=0:
+                            raise ValueError(f'Frame lacks transparent background: {part_id}/{animation}/{DIRECTIONS[row]}/{index}')
+                        key=hashlib.sha256(frame.tobytes()).digest() if deduplicate else (row,index)
+                        if key not in seen:seen[key]=len(frames);frames.append(frame)
+                        indices.append(seen[key])
+                empty=deduplicate and all(frame.getchannel('A').getextrema()[1]==0 for frame in frames)
+                columns=min(4096//cell_w,math.ceil(math.sqrt(len(frames)))) if deduplicate else count
+                if columns<1:raise ValueError('Canvas exceeds atlas limit')
+                rows=math.ceil(len(frames)/columns)
+                size = (cell_w*columns, cell_h*rows)
+                if empty:size=(cell_w,cell_h)
                 if max(size) > 4096:
                     raise ValueError(f'Atlas exceeds 4096; split clip into pages before publishing: {path}')
                 atlas = Image.new('RGBA', size, (0,0,0,0))
-                atlas_id = f'{part_id}-{animation.lower()}'
+                atlas_id = 'empty' if empty else f'{part_id}-{animation.lower()}'
                 if atlas_id in definition['atlases']:
-                    raise ValueError(f'Duplicate atlas ID: {atlas_id}')
+                    if not empty:raise ValueError(f'Duplicate atlas ID: {atlas_id}')
                 file = f'assets/characters/{character}/atlases/{atlas_id}.png'
                 definition['atlases'][atlas_id] = {'file':file, 'width':size[0], 'height':size[1]}
                 for row, direction in enumerate(DIRECTIONS):
                     for index in range(count):
-                        frame = source.crop((index*width,row*height,(index+1)*width,(row+1)*height))
-                        if frame.getchannel('A').getextrema()[0] != 0:
-                            raise ValueError(f'Frame lacks transparent background: {part_id}/{animation}/{direction}/{index}')
-                        x,y = index*cell_w+padding,row*cell_h+padding
+                        unique=indices[row*count+index];frame=frames[unique]
+                        x,y=(unique%columns)*cell_w+padding,(unique//columns)*cell_h+padding
+                        if empty:x=y=padding
                         atlas.paste(frame,(x,y))
                         frame_id = f'{character}_{part_id}_{animation}_{direction}_{index:02d}'
                         part['frames'][frame_id] = {'atlasId':atlas_id,'rect':[x,y,width,height]}
-                pending.append((repository/file,atlas))
+                content=(atlas.size,hashlib.sha256(atlas.tobytes()).digest())
+                shared=atlas_cache.get(content) if deduplicate else None
+                if shared and shared!=atlas_id:
+                    del definition['atlases'][atlas_id]
+                    for direction in DIRECTIONS:
+                        for index in range(count):
+                            frame_id=f'{character}_{part_id}_{animation}_{direction}_{index:02d}'
+                            part['frames'][frame_id]['atlasId']=shared
+                else:
+                    atlas_cache[content]=atlas_id
+                    if not any(path==repository/file for path,_ in pending):pending.append((repository/file,atlas))
     # Check every input before writing any output. Source strips remain authoritative.
     for path, atlas in pending:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -72,6 +98,7 @@ if __name__ == '__main__':
     parser.add_argument('--definition', required=True, type=Path)
     parser.add_argument('--sources', required=True, type=Path)
     parser.add_argument('--repository', type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument('--deduplicate',action='store_true',help='Share identical full-canvas cells; empty slots share one transparent cell. No trimming or runtime offsets.')
     args = parser.parse_args()
     definition = json.loads(args.definition.read_text())
-    print(pack(definition, args.sources, args.repository))
+    print(pack(definition, args.sources, args.repository,deduplicate=args.deduplicate))

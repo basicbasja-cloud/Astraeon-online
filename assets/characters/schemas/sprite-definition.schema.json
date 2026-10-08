@@ -754,6 +754,11 @@
               "items": {
                 "type": "string"
               }
+            },
+            "cycleDistance": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Optional authored world distance per full loop. Drives visual locomotion phase from actual distance; independent of gameplay equipment."
             }
           },
           "required": [

@@ -3,15 +3,16 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ASTRAEON modular sprite proof</title><link rel="stylesheet" href="./proof/sprite-preview.css"></head>
 <body>
 <main>
- <h1>Modular sprite alignment proof</h1>
- <p class="warning">DEV_ONLY · PLACEHOLDER · NOT_FINAL_ART — geometric markers, not approved character designs.</p>
+ <h1>Modular character development preview</h1>
+ <p class="warning">DEV_ONLY · NOT_FINAL_ART — production candidates and geometric proofs require owner visual review.</p>
  <form id="controls">
-  <label>Class <select id="character"><option value="swordsman-proof">Swordsman</option><option value="mage-proof">Mage</option></select></label>
+  <label>Character definition <select id="character"><option value="swordsman-proof">Swordsman contract proof</option><option value="swordsman-male-candidate">Swordsman · male production candidate</option><option value="mage-proof">Existing Mage contract proof</option></select></label>
   <label>Animation <select id="animation"></select></label>
   <label>Direction <select id="direction"></select></label>
   <label>Frame <input id="frame" type="range" min="0" value="0"><output id="frame-label">0</output></label>
   <label>Playback <select id="playback"><option value="0">Paused</option><option value="1">Normal</option><option value="0.25">Quarter speed</option></select></label>
-  <label>Weapon marker <select id="weapon"><option value="weapon">Default</option><option value="weapon-alt">Alternate</option></select></label>
+  <label>Weapon cosmetic <select id="weapon"><option value="weapon">Default</option><option value="weapon-alt">Alternate</option></select></label>
+  <label><input id="gameplay-scale" type="checkbox">Gameplay scale</label>
   <label><input id="sockets" type="checkbox" checked>Show sockets</label>
  </form>
  <fieldset id="layers"><legend>Inspect layers</legend></fieldset>

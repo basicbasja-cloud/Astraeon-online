@@ -65,6 +65,8 @@ const edits=[
  ['layer timing override',d=>d.parts.hair.durations=[1,2]],
  ['frame timing override',d=>d.parts.hair.frames[Object.keys(d.parts.hair.frames)[0]].frameDuration=1],
  ['invalid shared duration',d=>d.clips.Idle.durations[0]=0],
+ ['invalid locomotion distance',d=>d.clips.Walk.cycleDistance=0],
+ ['non-looping locomotion distance',d=>{d.clips.BasicAttack.cycleDistance=.78}],
  ['missing atlas',d=>d.parts.hair.frames[Object.keys(d.parts.hair.frames)[0]].atlasId='absent'],
  ['out of atlas',d=>d.parts.hair.frames[Object.keys(d.parts.hair.frames)[0]].rect[0]=100000],
  ['duplicate draw slot',d=>d.drawOrder[1]=d.drawOrder[0]],
@@ -108,6 +110,16 @@ test('existing player adapter keeps equipment and socket contracts, and modular 
  assert.deepEqual(result.RightHand,[2,2.78,1.2]);assert.deepEqual(result.spriteSockets.root,iso(2,3,0));
  assert.throws(()=>api.drawHumanoid(ctx,iso,t,{modular,archetype:'mage'}),/class differs/);
 });
+test('authored gait distance follows world travel independently of legacy gait and equipment',()=>{
+ const d=clone();d.clips.Walk.cycleDistance=.78;
+ const compiled=api.compile(d),modular={compiled,allowDev:true,images:Object.fromEntries(Object.keys(d.atlases).map(id=>[id,{}]))};
+ const t={position:{x:0,y:0,z:0},facingDirection:{x:0,y:1},rotation:Math.PI/2,state:'walk',speed:1,mode:'movement',velocity:{x:0,y:1},distance:.39,gait:.01};
+ const draw=()=>api.drawHumanoid(context(),(x,y,z)=>({x,y:y-z}),t,{modular,archetype:'warrior'});
+ draw();const first=window.AstraeonSpatialView.sampledPose.column;t.gait=.99;draw();
+ assert.equal(window.AstraeonSpatialView.sampledPose.column,first);
+ assert.equal(first,compiled.sample('Walk','S',compiled.duration('Walk')*.5).frameIndex);
+ t.distance=.01;draw();assert.notEqual(window.AstraeonSpatialView.sampledPose.column,first);
+});
 test('atlas loading respects repository prefixes, preloads only selected clips and retries failures',async()=>{
  const original={fetch:global.fetch,Image:global.Image,document:global.document};
  const requests=[],failed=new Set();
@@ -127,6 +139,7 @@ test('atlas loading respects repository prefixes, preloads only selected clips a
   assert.equal(Object.keys(visual.images).length,6);assert.ok(Object.keys(visual.images).every(id=>id.endsWith('-idle')));
   assert.ok(!requests.some(url=>url.includes('weapon-alt')));
   await Promise.all([visual.ensure('Walk'),visual.ensure('Walk')]);assert.equal(requests.length,12);
+  await assert.rejects(visual.ensure('UnproducedClip'),/Unknown animation/);
   await assert.rejects(visual.ensure('Run'),/Cannot load atlas/);await visual.ensure('Run');
   assert.equal(Object.keys(visual.images).length,18);assert.equal(requests.filter(url=>url.endsWith('/weapon-run.png')).length,2);
   await visual.setAppearance({Weapon:'weapon-alt'});assert.equal(visual.appearance.Weapon,'weapon-alt');

@@ -29,8 +29,8 @@ def validate_file(file,root,schema):
     try:
         for atlas_id,atlas in d['atlases'].items():
             path=root/atlas['file']
-            if not path.resolve().is_relative_to((root/'assets/characters'/d['characterId']).resolve()):
-                raise ValueError(f'Atlas outside character directory: {atlas_id}')
+            if not path.resolve().is_relative_to((root/'assets/characters').resolve()):
+                raise ValueError(f'Atlas outside character asset namespace: {atlas_id}')
             image=Image.open(path);images[atlas_id]=image;image.load()
             if image.format!='PNG' or image.mode!='RGBA' or image.size!=(atlas['width'],atlas['height']):
                 raise ValueError(f'Atlas image dimensions/format mismatch: {atlas_id}')
@@ -71,7 +71,7 @@ if __name__=='__main__':
     args=parser.parse_args();root=args.repository.resolve()
     schema=read_json(root/'assets/characters/schemas/sprite-definition.schema.json')
     jsonschema.Draft202012Validator.check_schema(schema)
-    files=args.definitions or sorted((root/'assets/characters').glob('*/sprite.json'))
+    files=[file.resolve() for file in args.definitions] or sorted((root/'assets/characters').glob('*/sprite.json'))
     if not files: raise SystemExit('FAIL No sprite definitions')
     failures=[];atlas_count=frame_count=0
     for file in files:
