@@ -191,10 +191,11 @@ Astral Blade retains ATK/MATK +6, known relics retain +3, Warden retains DEF +2
 and historical incoming reduction metadata 2. Five recipes and four merchant entries retain current
 inputs/output/prices. These values do not certify final balance or catalogue.
 
-Weights are explicitly zero/unconfigured. Pure carriedWeight sums stack count ×
-definition weight plus each owned instance once, including equipped objects.
-Derived carryWeight capacity remains Stats data; no encumbrance, slowdown,
-inventory slot cap, expansion, bank or pickup capacity policy is implemented.
+Weights remain explicitly zero/unconfigured. The current
+[capacity authority](CORE_SPINE_INVENTORY_CAPACITY.md) derives slot occupancy and
+integer milliweight from canonical ownership, including equipped instances once.
+Item State validates net candidates before publication; Stats carryWeight is
+independent. No encumbrance penalties, expansion or bank is implemented.
 
 Open `/tools/inventory.html` for definition/stacks/instance/serial/equipment/
 modifier/derived/save inspection and add/remove/create/delete/equip/unequip/save/
@@ -202,7 +203,7 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **92** imports and precaches the item and Action Item modules together.
+Boot/page/SW version **93** imports and precaches the item, capacity and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
 identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, final Box content/UI,
@@ -226,7 +227,7 @@ monster rewards using the existing canonical ownership and Progression/Stats
 contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
 before synchronous publication. Existing formulas, learned skills, action slots,
 Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
-boot/page/cache version is now 92. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+boot/page/cache version is now 93. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
 
 ## Monster Box opening extension
 
@@ -239,3 +240,14 @@ death claims and kill adapters are not reused. A transient Item State revision
 also invalidates opening tickets after successful equipment-only mutations.
 No Box-specific ownership schema or save version bump is introduced. See
 [verified Box handoff](CORE_SPINE_MONSTER_BOX_REPORT.md).
+
+## Capacity extension
+
+`getInventoryCapacityState` and `canAcceptItemPackage` expose immutable derived
+capacity and pure net source/output evidence. `grantItemPackage` commits a fixed
+mixed package atomically. Every supported live ownership publication enforces
+capacity; pure ItemInventory transitions remain candidate builders. Over-limit
+loads are retained and no-worse reductions/removals/equipment reference changes
+remain possible. Box envelope checks precede RNG. See the
+[capacity contract](CORE_SPINE_INVENTORY_CAPACITY.md) and
+[verified handoff](CORE_SPINE_INVENTORY_CAPACITY_REPORT.md).

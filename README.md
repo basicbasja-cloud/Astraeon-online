@@ -109,8 +109,18 @@ opening grants no EXP, Job EXP or quest credit. The existing Bag opens one owned
 Box; bulk is an API/dev action. `/tools/monster-box.html` uses isolated developer
 storage. Production monster drops are unchanged; an isolated Loot fixture proves
 unopened Box ownership. See [verified Box handoff](docs/CORE_SPINE_MONSTER_BOX_REPORT.md).
-Save version stays 5. Final content/balance/UI and Inventory Capacity / Weight
-remain future work; Patch 0.0.1 is not complete.
+Save version stays 5. Final content/balance/UI remain future work.
+
+The [Inventory Capacity / Weight foundation](docs/CORE_SPINE_INVENTORY_CAPACITY.md)
+derives slots and milliweight from canonical ownership. Immutable provisional
+100-slot / 1000-weight policy, pure net transaction preflight and per-dimension
+no-worse over-limit rules protect purchases, crafting, Loot and Box opening.
+Box maximum envelopes are accepted before RNG; blocked transactions publish
+no partial rewards or source debits. Returning over-limit saves retain all items.
+Authored item weights remain zero/unconfigured; no encumbrance gameplay penalties
+are introduced. `/tools/inventory-capacity.html` provides isolated weighted
+fixtures. See [capacity handoff](docs/CORE_SPINE_INVENTORY_CAPACITY_REPORT.md).
+Patch 0.0.1 and Core Spine remain incomplete.
 
 ## Verification
 
@@ -118,12 +128,13 @@ The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **92**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **93**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/inventory_capacity_browser.py --url http://127.0.0.1:8011
 python tests/monster_box_browser.py --url http://127.0.0.1:8011
 python tests/monster_lifecycle_browser.py --url http://127.0.0.1:8011
 python tests/monster_loot_browser.py --url http://127.0.0.1:8011

@@ -237,9 +237,19 @@ bulk, inventory mutation and isolated save/reload. Its only storage key is
 `astraeon-monster-box-dev-v1`; it never touches the playable character key.
 Exact `?dev=1` exposes bounded `AstraeonMonsterBoxDev` actions on disposable live
 characters; normal URLs expose no Box mutation API. QA result evidence is bounded
-to the latest 32 successes. Boot/page/cache **92** loads/precache the three new
+to the latest 32 successes. Boot/page/cache **93** loads/precache these three
 modules. Historical Loot v90 precache URLs remain for the prior explicit contract.
 
 Run commands in README and see [verified handoff](CORE_SPINE_MONSTER_BOX_REPORT.md)
 for deterministic/browser/smoke results. No visual acceptance is claimed.
-Recommended next Backbone task: **Inventory Capacity / Weight foundation**.
+## Inventory Capacity integration
+
+The [capacity foundation](CORE_SPINE_INVENTORY_CAPACITY.md) now enforces a
+conservative maximum envelope before prepare/commit RNG, including source Box
+debit and the full requested batch. Exact post-roll ownership is checked before
+publication. A final Box stack can free its slot; partial stacks retain it.
+Rejected envelope consumes no source, entropy or serial and reveals no outcome.
+Conservative maxima can reject an opening whose particular reward would fit;
+this preserves anti-roll-shopping. No resolver/runtime or authored content change
+is required. Existing hidden same-runtime late failure policy remains intact.
+Recommended next Backbone task: **Equipment Slot Closure foundation**.

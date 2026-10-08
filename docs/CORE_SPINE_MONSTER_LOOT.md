@@ -277,10 +277,20 @@ registration → authoritative HP-zero death → cached claim → commit, then c
 this owner's `newLife` at deterministic respawn readiness. It does not change
 tables, RNG, claims, inventory internals or reward formulas. Loading/player death
 invalidate offensive leases; travel retires both owners. Committed rewards persist
-through unchanged version 5; AI/death linkage stays transient. Current cache is 92.
+through unchanged version 5; AI/death linkage stays transient. Current cache is 93.
 See [lifecycle verification](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md).
 
 The Box extension reuses only Item State's small item reward planner; it does not
 reuse Loot claims, life generations, currency/EXP/quest orchestration or tables.
 See [verified Box handoff](CORE_SPINE_MONSTER_BOX_REPORT.md).
-Recommended next Backbone task: **Inventory Capacity / Weight foundation**.
+## Inventory Capacity integration
+
+The [capacity foundation](CORE_SPINE_INVENTORY_CAPACITY.md) preflights the exact
+resolved package before canonical publication and existing currency/progression/
+quest adapters. Capacity rejection is atomic: no partial items, serial, gold,
+Base/Job EXP or quest credit, and no reroll or fitting subset. The same live
+entitlement can retry its unchanged package after space is freed. Existing
+respawn/retirement/travel/reload can expire uncommitted transient claims; no
+durable overflow, pending-loot UI or mailbox is added. Lifecycle owns no capacity
+arithmetic. A blocked runtime death still receives its presentation timestamp.
+Recommended next Backbone task: **Equipment Slot Closure foundation**.

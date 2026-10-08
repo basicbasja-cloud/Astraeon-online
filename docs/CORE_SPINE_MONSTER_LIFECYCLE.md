@@ -232,5 +232,9 @@ Quest and Storage remain separate roadmap tasks.
 See [verified handoff](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md). The subsequent
 [Monster Box foundation](CORE_SPINE_MONSTER_BOX.md) operates downstream of Item
 ownership with a separate content-table contract. It introduces no lifecycle
-states, respawn policy, monster attacks or death/claim changes. Recommended next
-Backbone task: **Inventory Capacity / Weight foundation**.
+states, respawn policy, monster attacks or death/claim changes. The subsequent
+[capacity foundation](CORE_SPINE_INVENTORY_CAPACITY.md) checks canonical rewards
+downstream of Loot; this lifecycle owner has no slot/weight arithmetic. A rejected
+reward cannot generate another death or roll. Existing life/retirement boundaries
+still expire transient uncommitted claims. Recommended next Backbone task:
+**Equipment Slot Closure foundation**.
