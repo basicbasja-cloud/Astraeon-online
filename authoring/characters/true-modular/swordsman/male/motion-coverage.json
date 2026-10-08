@@ -1,0 +1,54 @@
+{
+  "classId": "Swordsman",
+  "bodyVariant": "male",
+  "currentRuntimeWardrobeList": [
+    "Idle",
+    "Walk",
+    "Run",
+    "Sprint",
+    "BasicAttack",
+    "SkillAction",
+    "CastChannel",
+    "CastRelease",
+    "Guard",
+    "Dash",
+    "Blink",
+    "Hit",
+    "Death",
+    "Interact",
+    "Pickup",
+    "ItemUse",
+    "Sit",
+    "Respawn"
+  ],
+  "requiredReleaseClips": [
+    "Idle",
+    "Walk",
+    "Run",
+    "Sprint",
+    "BasicAttack",
+    "SkillAction",
+    "CastChannel",
+    "CastRelease",
+    "Guard",
+    "Dash",
+    "Hit",
+    "Death",
+    "Interact",
+    "Pickup",
+    "ItemUse",
+    "Respawn"
+  ],
+  "optionalSupportedClips": [
+    "Sit"
+  ],
+  "classExcludedClips": [
+    "Blink"
+  ],
+  "builtHere": [
+    "Idle",
+    "Walk"
+  ],
+  "runtimeNote": "Current wardrobe.js still rejects any missing clip in its global 18-clip list. Keep the class-specific release gate separate; update the loader gate before runtime integration so Sit and Mage-only Blink do not block Swordsman.",
+  "status": "DEV_ONLY / REQUIRES_OWNER_VISUAL_REVIEW"
+}

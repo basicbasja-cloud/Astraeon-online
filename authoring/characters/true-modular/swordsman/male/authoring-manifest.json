@@ -1,0 +1,262 @@
+{
+  "schemaVersion": "1.0",
+  "characterId": "swordsman-male-dev-001",
+  "classId": "Swordsman",
+  "bodyVariant": "male",
+  "approvalStatus": "DEV_ONLY / REQUIRES_OWNER_VISUAL_REVIEW",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "clipsBuilt": {
+    "Idle": {
+      "framesPerDirection": 8,
+      "loop": true
+    },
+    "Walk": {
+      "framesPerDirection": 16,
+      "loop": true
+    }
+  },
+  "releaseRequiredClips": [
+    "Idle",
+    "Walk",
+    "Run",
+    "Sprint",
+    "BasicAttack",
+    "SkillAction",
+    "CastChannel",
+    "CastRelease",
+    "Guard",
+    "Dash",
+    "Hit",
+    "Death",
+    "Interact",
+    "Pickup",
+    "ItemUse",
+    "Respawn"
+  ],
+  "optionalSupportedClips": [
+    "Sit"
+  ],
+  "authoringLayers": [
+    {
+      "id": "BodyCore",
+      "runtimeSlot": "BaseBody",
+      "source": "independent anatomy surfaces"
+    },
+    {
+      "id": "HeadBase",
+      "runtimeSlot": "BaseBody",
+      "source": "independent skull, jaw, ears and neck registration"
+    },
+    {
+      "id": "Face",
+      "runtimeSlot": "BaseBody",
+      "source": "independent features"
+    },
+    {
+      "id": "HairBack",
+      "runtimeSlot": "Hair",
+      "source": "independent rear hair mass"
+    },
+    {
+      "id": "HairFront",
+      "runtimeSlot": "Hair",
+      "source": "independent fringe and front hair"
+    },
+    {
+      "id": "Outfit",
+      "runtimeSlot": "Outfit",
+      "source": "fitted original costume surfaces"
+    },
+    {
+      "id": "Weapon",
+      "runtimeSlot": "Weapon",
+      "source": "independent right-hand cosmetic"
+    },
+    {
+      "id": "Headgear",
+      "runtimeSlot": "Headgear",
+      "source": "optional transparent slot"
+    },
+    {
+      "id": "BackAccessory",
+      "runtimeSlot": "BackAccessory",
+      "source": "optional transparent slot"
+    },
+    {
+      "id": "Cape",
+      "runtimeSlot": "BackAccessory",
+      "source": "independent fitted cloth"
+    },
+    {
+      "id": "CosmeticFX",
+      "runtimeSlot": "CosmeticFX",
+      "source": "optional transparent slot"
+    }
+  ],
+  "runtimeCompile": {
+    "BaseBody": [
+      "BodyCore",
+      "HeadBase",
+      "Face"
+    ],
+    "Hair": [
+      "HairBack",
+      "HairFront"
+    ],
+    "Outfit": [
+      "Outfit"
+    ],
+    "Weapon": [
+      "Weapon"
+    ],
+    "BackAccessory": [
+      "Cape",
+      "BackAccessory"
+    ],
+    "Headgear": [
+      "Headgear"
+    ],
+    "CosmeticFX": [
+      "CosmeticFX"
+    ]
+  },
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": [
+      160,
+      264
+    ],
+    "referenceHeight": 176,
+    "camera": "elevated painted 2D; orthographic; 25 degree depth cue",
+    "scale": 1.0,
+    "mirroring": "none"
+  },
+  "sockets": [
+    "root",
+    "head",
+    "hand_R",
+    "hand_L",
+    "back",
+    "waist"
+  ],
+  "drawOrderByDirection": {
+    "S": [
+      "Cape",
+      "BackAccessory",
+      "HairBack",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "SW": [
+      "Cape",
+      "BackAccessory",
+      "HairBack",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "W": [
+      "Cape",
+      "BackAccessory",
+      "HairBack",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "NW": [
+      "BackAccessory",
+      "Cape",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "HairBack",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "N": [
+      "BackAccessory",
+      "Cape",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "HairBack",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "NE": [
+      "BackAccessory",
+      "Cape",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "HairBack",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "E": [
+      "Cape",
+      "BackAccessory",
+      "HairBack",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ],
+    "SE": [
+      "Cape",
+      "BackAccessory",
+      "HairBack",
+      "BodyCore",
+      "Outfit",
+      "HeadBase",
+      "Face",
+      "HairFront",
+      "Weapon",
+      "Headgear",
+      "CosmeticFX"
+    ]
+  },
+  "frameRegistration": "full canvas, shared pose source, root and socket map; no trim or direction mirroring",
+  "bakedAtlasFormat": "320px authoring frames; one layer/clip PNG; direction rows in canonical order; frame columns; requires reviewed runtime compilation"
+}

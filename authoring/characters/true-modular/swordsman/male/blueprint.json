@@ -1,0 +1,542 @@
+{
+  "schemaVersion": "1.0",
+  "characterId": "swordsman-male-dev-001",
+  "classId": "Swordsman",
+  "bodyVariant": "male",
+  "approvalStatus": "DEV_ONLY / REQUIRES_OWNER_VISUAL_REVIEW",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": [
+      160,
+      264
+    ],
+    "referenceHeight": 176,
+    "camera": "elevated painted 2D; orthographic; 25 degree depth cue",
+    "scale": 1.0,
+    "mirroring": "none"
+  },
+  "sockets": [
+    "root",
+    "head",
+    "hand_R",
+    "hand_L",
+    "back",
+    "waist"
+  ],
+  "authoringLayers": [
+    {
+      "id": "BodyCore",
+      "runtimeSlot": "BaseBody",
+      "source": "independent anatomy surfaces"
+    },
+    {
+      "id": "HeadBase",
+      "runtimeSlot": "BaseBody",
+      "source": "independent skull, jaw, ears and neck registration"
+    },
+    {
+      "id": "Face",
+      "runtimeSlot": "BaseBody",
+      "source": "independent features"
+    },
+    {
+      "id": "HairBack",
+      "runtimeSlot": "Hair",
+      "source": "independent rear hair mass"
+    },
+    {
+      "id": "HairFront",
+      "runtimeSlot": "Hair",
+      "source": "independent fringe and front hair"
+    },
+    {
+      "id": "Outfit",
+      "runtimeSlot": "Outfit",
+      "source": "fitted original costume surfaces"
+    },
+    {
+      "id": "Weapon",
+      "runtimeSlot": "Weapon",
+      "source": "independent right-hand cosmetic"
+    },
+    {
+      "id": "Headgear",
+      "runtimeSlot": "Headgear",
+      "source": "optional transparent slot"
+    },
+    {
+      "id": "BackAccessory",
+      "runtimeSlot": "BackAccessory",
+      "source": "optional transparent slot"
+    },
+    {
+      "id": "Cape",
+      "runtimeSlot": "BackAccessory",
+      "source": "independent fitted cloth"
+    },
+    {
+      "id": "CosmeticFX",
+      "runtimeSlot": "CosmeticFX",
+      "source": "optional transparent slot"
+    }
+  ],
+  "runtimeCompile": {
+    "BaseBody": [
+      "BodyCore",
+      "HeadBase",
+      "Face"
+    ],
+    "Hair": [
+      "HairBack",
+      "HairFront"
+    ],
+    "Outfit": [
+      "Outfit"
+    ],
+    "Weapon": [
+      "Weapon"
+    ],
+    "BackAccessory": [
+      "Cape",
+      "BackAccessory"
+    ],
+    "Headgear": [
+      "Headgear"
+    ],
+    "CosmeticFX": [
+      "CosmeticFX"
+    ]
+  },
+  "clips": {
+    "Idle": {
+      "frames": 8,
+      "durationsMs": [
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225
+      ],
+      "loop": true,
+      "poseFamily": "breathing"
+    },
+    "Walk": {
+      "frames": 16,
+      "durationsMs": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "loop": true,
+      "poseFamily": "contact-load-pass-push"
+    },
+    "Run": {
+      "frames": 12,
+      "durationsMs": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "loop": true,
+      "poseFamily": "run"
+    },
+    "Sprint": {
+      "frames": 12,
+      "durationsMs": [
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48
+      ],
+      "loop": true,
+      "poseFamily": "sprint"
+    },
+    "BasicAttack": {
+      "frames": 16,
+      "durationsMs": [
+        40,
+        40,
+        45,
+        45,
+        45,
+        35,
+        30,
+        25,
+        25,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "loop": false,
+      "poseFamily": "right-hand-sword-strike"
+    },
+    "SkillAction": {
+      "frames": 14,
+      "durationsMs": [
+        55,
+        55,
+        55,
+        60,
+        60,
+        50,
+        35,
+        35,
+        45,
+        50,
+        55,
+        65,
+        65,
+        65
+      ],
+      "loop": false,
+      "poseFamily": "committed-skill-action"
+    },
+    "CastChannel": {
+      "frames": 12,
+      "durationsMs": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ],
+      "loop": true,
+      "poseFamily": "channel"
+    },
+    "CastRelease": {
+      "frames": 10,
+      "durationsMs": [
+        35,
+        35,
+        40,
+        30,
+        30,
+        40,
+        50,
+        65,
+        65,
+        70
+      ],
+      "loop": false,
+      "poseFamily": "release"
+    },
+    "Guard": {
+      "frames": 10,
+      "durationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": true,
+      "poseFamily": "defensive-guard"
+    },
+    "Dash": {
+      "frames": 10,
+      "durationsMs": [
+        25,
+        25,
+        30,
+        35,
+        35,
+        40,
+        40,
+        40,
+        40,
+        45
+      ],
+      "loop": false,
+      "poseFamily": "evasion-dash"
+    },
+    "Blink": {
+      "frames": 10,
+      "durationsMs": [
+        25,
+        25,
+        30,
+        35,
+        35,
+        40,
+        40,
+        40,
+        40,
+        45
+      ],
+      "loop": false,
+      "poseFamily": "mage-only-blink"
+    },
+    "Hit": {
+      "frames": 8,
+      "durationsMs": [
+        25,
+        25,
+        35,
+        40,
+        45,
+        50,
+        50,
+        50
+      ],
+      "loop": false,
+      "poseFamily": "planted-flinch"
+    },
+    "Death": {
+      "frames": 12,
+      "durationsMs": [
+        45,
+        45,
+        50,
+        55,
+        60,
+        60,
+        65,
+        65,
+        75,
+        90,
+        120,
+        160
+      ],
+      "loop": false,
+      "poseFamily": "fall-and-hold"
+    },
+    "Interact": {
+      "frames": 8,
+      "durationsMs": [
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65
+      ],
+      "loop": false,
+      "poseFamily": "world-interaction"
+    },
+    "Pickup": {
+      "frames": 8,
+      "durationsMs": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "loop": false,
+      "poseFamily": "pickup"
+    },
+    "ItemUse": {
+      "frames": 8,
+      "durationsMs": [
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65
+      ],
+      "loop": false,
+      "poseFamily": "item-use"
+    },
+    "Sit": {
+      "frames": 8,
+      "durationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "poseFamily": "optional-rest"
+    },
+    "Respawn": {
+      "frames": 10,
+      "durationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop": false,
+      "poseFamily": "respawn"
+    }
+  },
+  "releaseRequiredClips": [
+    "Idle",
+    "Walk",
+    "Run",
+    "Sprint",
+    "BasicAttack",
+    "SkillAction",
+    "CastChannel",
+    "CastRelease",
+    "Guard",
+    "Dash",
+    "Hit",
+    "Death",
+    "Interact",
+    "Pickup",
+    "ItemUse",
+    "Respawn"
+  ],
+  "optionalSupportedClips": [
+    "Sit"
+  ],
+  "classExcludedClips": [
+    "Blink"
+  ],
+  "clipsBuiltInThisCheckpoint": [
+    "Idle",
+    "Walk"
+  ],
+  "defaultAppearance": {
+    "hair": "silver-tousled",
+    "weapon": "steel-sword"
+  },
+  "palette": {
+    "skin": [
+      "#f7d4b2",
+      "#d9a47c",
+      "#9a5d49"
+    ],
+    "skinlight": [
+      "#ffe1c2",
+      "#d9a47c",
+      "#9a5d49"
+    ],
+    "hair": [
+      "#f3e9f2",
+      "#b8afc2",
+      "#6d667a"
+    ],
+    "hairdark": [
+      "#d2c9d8",
+      "#898294",
+      "#4c475c"
+    ],
+    "cloth": [
+      "#354a50",
+      "#1c2a30",
+      "#101a20"
+    ],
+    "ivory": [
+      "#fff4da",
+      "#ddcba9",
+      "#907454"
+    ],
+    "gold": [
+      "#fff0ad",
+      "#e0a843",
+      "#8d511f"
+    ],
+    "bronze": [
+      "#f2d08b",
+      "#ae7138",
+      "#503827"
+    ],
+    "steel": [
+      "#f4f1dc",
+      "#b2c0c2",
+      "#566b78"
+    ],
+    "teal": [
+      "#9cf0d9",
+      "#2ba797",
+      "#155b60"
+    ]
+  },
+  "identityLocks": [
+    "silver-lavender short tousled hair and swept fringe",
+    "youthful compact male proportions",
+    "mustard-gold cape",
+    "dark navy/olive fitted top",
+    "bronze/gold shoulder and boot armor",
+    "ivory split tunic",
+    "teal waist detail",
+    "narrow straight steel sword in anatomical right hand",
+    "elevated painted 2D ASTRAEON style"
+  ],
+  "referencePolicy": {
+    "ragnarokOnline": "Hard reference for direction readability, animation phase clarity, contact-passing cadence, frame economy and attachment logic; never copy pixels, exact designs or one-to-one poses.",
+    "referenceMetadataLimit": "The inspected Spriters Resource Swordsman pages show one flattened PNG and Animations (0); part and action counts are not supplied by the website. Use ASTRAEON's runtime clip contract and explicit authoring-layer contract."
+  }
+}
