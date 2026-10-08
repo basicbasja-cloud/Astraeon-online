@@ -2,6 +2,19 @@
 
 Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice production pass. Progress saves in the current browser. The playable world uses authored 3D scenery and illustrated directional characters.
 
+## Character rescue branch
+
+`character/ro1-reference-engine-v1` separates reusable motion from raster appearance.
+The [character review tool](character-review.html) demonstrates two DEV_ONLY dummy
+packs, eight directions, independent layer sampling, attachment transforms and
+cosmetic swaps without animation reset. [Report and validation evidence](docs/review/character-ro1-engine-v1/README.md).
+
+Actual RO1 Swordsman pose/timing data is missing, so production Idle/Walk/BasicAttack
+are gated. Preserved painted neutral views require owner visual review. No new
+production character is installed. Default Swordsman creation at the source
+checkpoint references a missing asset; the existing Mage option remains usable.
+Historical world/build notes below do not authorize expanding this rescue scope.
+
 ## Current build
 
 Wayfarer is one original geometric regional capital. Architecture revision76 responds to the rejected repeated-house draft: 158 residential/commercial buildings (37 preserved originals, 121 new buildings across nine families), fourteen paired plots consolidated into larger buildings, and distinct Council, Archive and Exchange silhouettes. The royal street hierarchy, two gathering courts, plaza-facing entries, warm timber/clay theme, defended cliff banks and waterline remain. The user's52 decoded Prontera RO3 beta frames are the primary gameplay visual reference for proportions, street edges, frontage and local adjacency; RO1 Prontera, Colmar and Stormwind research supplies additional composition examples. RO3 remains the hard visual target. Authority: `authoring/wayfarer-spatial.blend`, export: `world/v3/wayfarer-spatial.json`. Native geometry, fresh lighting and gameplay review are in progress; visual acceptance remains open.

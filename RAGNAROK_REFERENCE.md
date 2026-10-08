@@ -1,5 +1,28 @@
 # Ragnarok Online reference study → ASTRAEON production
 
+## Character rescue amendment — 2026-10-08
+
+The current character brief makes RO1 a hard technical/motion reference for actual
+key poses, choreography, contact sequence, direction presentation, ACT/SPR-style
+composition and attachments. ASTRAEON approved artwork remains the hard visual
+authority. Earlier restrictions against studying exact pose/timing do not govern
+this rescue. No RO pixels, costumes or raw assets enter production or the repo.
+
+Fresh ACT/SPR/community-renderer evidence and uncertainties are recorded in
+[the reference manifest](authoring/characters/motion-templates/ro1-swordsman-male/reference-manifest.json)
+and [research notes](authoring/characters/motion-templates/ro1-swordsman-male/research-notes.md).
+Actual Swordsman male ACT/SPR files are unavailable; format facts cannot establish
+its gait or sword attack. The production motion draft remains explicitly blocked.
+Only a separate synthetic DEV_ONLY engine fixture has been animated.
+
+RO frames will be labeled referenceKey landmarks. Selective ASTRAEON in-betweens
+must link neighboring keys and preserve phase intent, landmark timestamps and
+total duration. Eight final directions are authored without runtime mirroring.
+The milestone allows only Idle/Walk/BasicAttack; later action expansion requires
+owner approval. [Rescue checkpoint](docs/review/character-ro1-engine-v1/README.md).
+
+## Historical environment/reference study
+
 The 2026-10-01 [master plan](MASTER_PLAN.md) integrates this study with the supplied
 [research catalog](RESEARCH-SOURCES.md) and Blender/native-JSON pipeline. It retains
 2D painterly actors and the Golden content freeze. The later user amendment

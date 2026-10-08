@@ -1,3 +1,42 @@
+# ASTRAEON — character rescue checkpoint, 8 October 2026
+
+Active work is `character/ro1-reference-engine-v1`, based on verified parent
+`c258c5034a49462381d15f425f103eddf85242c9`. The historical modular proof on
+`origin/swordman` at `b43f9d2ba5820f7b0ec48f137e1014fddd2e8442` is preserved.
+This character rescue brief supersedes the historical World work instructions
+below; do not resume World, map, Blender, lighting or gameplay work from them.
+
+Reusable motion/appearance assembly and two eight-direction DEV_ONLY raster
+packs pass engine tests and browser swap proof. Actual RO1 Swordsman ACT/SPR
+pose/timing inputs are missing. The reference manifest labels unknowns; the RO
+motion draft cannot compile and production Idle/Walk/BasicAttack remain unbuilt.
+Never substitute synthetic fixture keys or the old analytic `pose_for` motions.
+
+The unchanged repository-designated approved painted seed is identity authority.
+Preserved eight-view neutral candidates pass canvas/alpha/root structural checks
+and remain REQUIRES_OWNER_VISUAL_REVIEW. No new painted production art is approved.
+Whole-strip generation must follow actual annotated RO keys and reviewed identity.
+
+[Complete rescue report](docs/review/character-ro1-engine-v1/README.md),
+[assembly architecture](docs/CHARACTER_ASSEMBLY_V1.md),
+[review tool](character-review.html),
+[blocked production build](authoring/characters/builds/swordsman-male/build-manifest.json).
+222 Node tests, ten Python tests, 288 browser fixture frames and 864 visible
+isolated cosmetic swaps pass. Existing normal Mage movement/Combat and offline
+game after review pass. Default Swordsman creation is already blocked at the base
+by missing `swordsman-male-001/sprite.json`; do not invent a full18-clip catalogue
+to satisfy the old wardrobe. Ordinary boot does not load the new assembly engine.
+
+Next: obtain lawful local body/head/sword ACT+SPR and client/action mapping,
+annotate real key poses/contacts/timing/attachments, and review the painted neutral
+identity. Then complete only Idle/Walk/BasicAttack, both hair/weapon variants and
+optional-part swaps; integrate behind DEV_ONLY and capture at gameplay scale.
+Stop before expanding any production action set without owner approval.
+
+---
+
+# Historical World handoff — preserved, outside this branch's task
+
 # ASTRAEON — Wayfarer capital, verified art checkpoint v83
 
 ## Current verified checkpoint — layered painted crowns v83, 8 October 2026

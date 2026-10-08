@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "buildId": "swordsman-male-ro1-rescue-v1",
+  "status": "REFERENCE_DATA_REQUIRED",
+  "ownerVisualStatus": "REQUIRES_OWNER_VISUAL_REVIEW",
+  "motionTemplate": "authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json",
+  "referenceManifest": "authoring/characters/motion-templates/ro1-swordsman-male/reference-manifest.json",
+  "identitySource": "authoring/characters/appearance/bodies/swordsman-male-default/identity-source.json",
+  "productionAppearancePack": null,
+  "productionAtlases": [],
+  "directions": ["S", "SW", "W", "NW", "N", "NE", "E", "SE"],
+  "actions": {
+    "Idle": {"status": "BLOCKED_REFERENCE_DATA", "referenceKeyCount": null, "astraeonInbetweenCount": null, "totalFrames": null, "totalDurationMs": null, "newProductionFramesProduced": 0},
+    "Walk": {"status": "BLOCKED_REFERENCE_DATA", "referenceKeyCount": null, "astraeonInbetweenCount": null, "totalFrames": null, "totalDurationMs": null, "newProductionFramesProduced": 0},
+    "BasicAttack": {"status": "BLOCKED_REFERENCE_DATA", "referenceKeyCount": null, "astraeonInbetweenCount": null, "totalFrames": null, "totalDurationMs": null, "newProductionFramesProduced": 0}
+  },
+  "gates": {
+    "0": "RESEARCH_INVENTORY_COMPLETE__ACT_POSE_DATA_MISSING",
+    "1": "PASS_DEV_ONLY_TWO_DUMMY_PACKS",
+    "2": "PRESERVED_NEUTRAL_CANDIDATE_STRUCTURAL_PASS__OWNER_REVIEW_PENDING",
+    "3": "BLOCKED_REFERENCE_DATA_AND_IDENTITY_REVIEW",
+    "4": "NOT_RUN_FOR_PRODUCTION",
+    "5": "NOT_RUN_FOR_PRODUCTION__ENGINE_REVIEW_CAPTURES_COMPLETE"
+  },
+  "rawReferenceRequirement": "Lawfully obtained local male Swordsman body/head/sword ACT+SPR, selected client build and sword/action mapping; optional shield/headgear/garment ACT and priority rules",
+  "syntheticFixturePromotion": "PROHIBITED",
+  "historicalArtPromotion": "PROHIBITED_WITHOUT_OWNER_REVIEW",
+  "runtimeInstall": "NONE",
+  "actionExpansion": "PROHIBITED_BEFORE_OWNER_APPROVAL"
+}

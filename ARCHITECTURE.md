@@ -1,5 +1,23 @@
 # Runtime architecture
 
+## Character assembly rescue v1
+
+The character rescue adds independent `character-motion-template.js` and
+`character-assembly.js`, with an optional bridge through `modular-sprites.js`.
+Motion owns reference keys, timing, stable root, transformed anchors and draw
+profiles. Replaceable raster appearance packs own class BodySpriteSet and
+independent hair/weapons/offhand/headgear/garments/effects, using BODY_SYNC,
+PHASE_SYNC, ANCHOR_HOLD or OWN_LOOP sampling. No runtime character skeleton or
+gameplay authority is added. [Contract and boundary](docs/CHARACTER_ASSEMBLY_V1.md).
+
+Only the development review page loads the new modules. Default game boot and
+existing Combat/movement/world sources remain unchanged. Actual RO1 Swordsman
+motion cannot compile until real reference pose/timing evidence is annotated;
+synthetic fixtures are not production data. Painted art remains ASTRAEON, with
+owner visual review required. This rescue permits only Idle/Walk/BasicAttack.
+
+## Existing runtime
+
 The default Wayfarer runtime renders the Blender-authored spatial environment
 with vendored Three.js and painterly directional 2D actors in the same WebGL depth
 buffer. DOM/CSS owns menus and responsive controls. Canvas assembles actor textures,
