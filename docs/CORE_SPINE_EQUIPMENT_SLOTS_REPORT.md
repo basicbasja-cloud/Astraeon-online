@@ -12,12 +12,13 @@ balance and visual equipment appearance are not approved by these checks.
 | Starting parent branch | `backbone/inventory-capacity-weight-0.0.1` |
 | Authoritative starting parent HEAD | `621b1cd214218078beb70392f647a48a9bfdef25` |
 | Parent runtime checkpoint, not used as HEAD | `0e4b20f565cdd5cbac9c001bec1295e68f18cca8` |
-| Runtime/test checkpoint | `1315d3f7ff7be9fd5aa6e04cb582c8e840cdba34` |
+| Runtime/test checkpoint | `aeb193157d4a38271cd51eea0e7f10a46422f279` (includes final fixture setup) |
 | Final HEAD | Documentation successor; resolve `git rev-parse HEAD` on this branch. Exact final/pushed SHA is recorded in final response and external FINAL_HANDOFF.md. |
 
 Fetch/switch/ff-only pull and clean updated parent were confirmed before creating
 the requested branch. No stale-SHA reset, unrelated merge, history rewrite or PR.
-Core checkpoint `8f3401f` precedes the stable runtime/test checkpoint above.
+Core checkpoint `8f3401f` and identity/browser checkpoint `1315d3f` precede
+the stable runtime/test checkpoint above.
 
 **Verification in progress:** Node 1309/0 and final five-slot browser 59/0 pass.
 Every previous suite has run; three inherited encounter-fixture failures were
@@ -27,7 +28,11 @@ adapters retain all old assertions, wait predicates and total deadlines. Capacit
 63/0 and Box 33/0 recovery replays passed. Loot's detailed snapshot identifies an
 unintended gate click (not player death); the unsuccessful health-only diagnostic
 adapter was removed. Read `browser-loot-keyboard/` for its latest replay. Finish
-that replay, final audit/documentation and ordinary push. Acceptance is not declared yet.
+that replay; rerun unchanged Lifecycle, Action Item and Inventory browser suites
+because their first successful sequence preceded the last identity guard. Read
+`browser-guard-final/` for those fresh results. Node at the final fixture checkpoint
+already passed 1309/0 (`node-final-verified/`). Finish final audit/documentation
+and ordinary push. Acceptance is not declared yet.
 
 ## Architecture / integration report
 
