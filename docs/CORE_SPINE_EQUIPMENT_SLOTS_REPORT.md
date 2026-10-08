@@ -19,11 +19,13 @@ Fetch/switch/ff-only pull and clean updated parent were confirmed before creatin
 the requested branch. No stale-SHA reset, unrelated merge, history rewrite or PR.
 Core checkpoint `8f3401f` precedes the stable runtime/test checkpoint above.
 
-**Verification in progress:** Node and final five-slot browser pass. The remaining
-browser sequence is running; Capacity's first attempt timed out at learned contact.
-Read external `browser-final/runner.json`, rerun failed suites unchanged with
-authoritative-state diagnostics, finish audit, commit documentation and push
-normally. Acceptance is not declared until verification completes.
+**Verification in progress:** Node 1309/0 and final five-slot browser 59/0 pass.
+Every previous suite has run; three inherited encounter-fixture failures were
+reproduced with unchanged sources and read-only diagnostics, including parent
+runtime comparisons. Fixture-only readiness/HP heartbeat adapters retain all old
+assertions, wait predicates and total deadlines. Read `browser-recovery-fixture/`
+for sequential replays of Capacity, Box and Loot. Finish those replays, final
+audit/documentation and ordinary push. Acceptance is not declared yet.
 
 ## Architecture / integration report
 
@@ -89,7 +91,7 @@ Evidence `node-identity-final/report.json`. Nine additional edge checks reject
 non-string/empty instance IDs before property coercion or mutation. This focused
 review fix changes no behavior for canonical string IDs. The recorded runtime/test
 checkpoint includes this guard and browser coercion coverage. Final focused browser
-replay is scheduled after the first complete regression sequence and diagnostic retries.
+replay passed 59/0 in `browser-identity-final/`, with no runtime/HTTP errors.
 New tests cover registry/definition validation,
 all-five equip/replace/unequip, wrong/unowned/duplicate references, immutable
 results, callback nesting, combined Stats/Combat, max-resource safety, weighted
@@ -104,7 +106,9 @@ to permit the requested proof additions: it now compares **every original
 definition field**, recipe, merchant price, counter and old name mapping exactly
 to historical source. All other protected source guards remain intact; no old
 gameplay assertion was removed or weakened. Audit checks twenty old Node suites
-and twelve unchanged browser/cache sources (including unrelated world browser).
+and twelve prior browser/cache sources (including unrelated world browser).
+Nine remain byte unchanged; three contain only encounter-fixture adapters. AST
+comparison retains every original assertion and wait predicate/total deadline.
 
 ## Browser acceptance / local smoke
 
@@ -116,16 +120,16 @@ suite once, not repeat attempts. Final previous-suite sequence is pending.
 | Suite | Pass groups | Status |
 | --- | --- | --- |
 | equipment_slots_browser.py | 59 | passed |
-| inventory_capacity_browser.py | 63 baseline | initial contact timeout; rerun pending |
-| monster_box_browser.py | 33 baseline | initial contact timeout; rerun pending |
+| inventory_capacity_browser.py | 63 baseline | inherited contact fixture timeout; recovery replay pending |
+| monster_box_browser.py | 33 baseline | inherited contact fixture timeout; recovery replay pending |
 | monster_lifecycle_browser.py | 30 | passed |
-| monster_loot_browser.py | 26 baseline | initial alive-enemy wait timeout; rerun pending |
+| monster_loot_browser.py | 26 baseline | inherited fixture death/alive-enemy timeout; recovery replay pending |
 | action_item_browser.py | 30 | passed |
 | inventory_browser.py | 15 | passed |
 | action_loadout_browser.py | 17 | passed |
 | combat_browser.py | 21 | passed |
-| skill_tree_browser.py | 11 baseline | pending |
-| progression_browser.py | 7 baseline | pending |
+| skill_tree_browser.py | 11 | passed |
+| progression_browser.py | 7 | passed |
 
 New suite proves each ordinary Bag slot, replacement/old ownership/serial,
 combined Stats and both Combat directions, wrong-slot/no-mutation, flexible
@@ -149,20 +153,35 @@ retarget observations. Final previous Capacity attempt hit the unchanged 30-seco
 learned-contact wait after 17 groups; Box hit the same wait after 10 groups.
 Loot passed six groups including learned Combat, then timed out on a 40-second
 alive-enemy wait during its real five-kill itinerary, after a recorded waypoint
-and Basic Attack retarget. All three error arrays were empty. The unchanged suites
-will rerun sequentially with read-only wait-boundary snapshots; no assertions or
-timeouts are altered. Evidence will be added after completion; failures retained.
+and Basic Attack retarget. All three error arrays were empty. Unchanged diagnostic
+reruns reproduced all three. Parent `621b1cd` served through a read-only HTTP
+overlay also reproduced Capacity contact cancellation and Loot's alive-enemy
+timeout, without changing the checkout or parent history.
+
+Capacity parent evidence: anticipation at 4.642s, incoming hit at 4.751s,
+zero outgoing results at the original 30-second deadline. Current runtime shows
+the same incoming-hit cancellation. Fixture adapters now observe a real incoming
+attack, then wait for target cadence/recovery before the original single cast.
+They do not disable AI, change Combat or loosen the original exact skill-source
+assertion. Loot diagnostics show zone 0 / no enemies / four kills after an
+unplanned player death during outgoing encounter navigation. Its already-existing
+HP fixture is maintained during bounded waits as well as retargets; heartbeat
+events are recorded, never resurrect a dead fixture, and preserve the original
+kill/approach predicates and total deadlines. The separate actual player-death
+assertions use no heartbeat. Sequential recovery replays remain pending. All
+failed attempts and authoritative snapshots are retained externally.
 
 ### Cache / world / audit
 
-- Cache/offline final verification pending. Boot/page/cache **94** includes registry
-  before Equipment and actual v90/v92/v93 compatibility precache responses.
+- Cache/offline passed: `astraeon-static-v94`, **152** precached responses, obsolete
+  cache removal, saved-character/offline town/world resume and hash/error checks.
+  Registry loads before Equipment; actual v90/v92/v93 compatibility URLs retained.
 - World validator passed Terrain, Navigation, TownObject and AnimationManifest.
   Initial missing-jsonschema environment error was corrected with existing
   external dependencies; no repository change.
 - Runtime diff check passed; final audit pending. Source audit verifies 23 stable
-  core files unchanged after Git newline normalization, all previous browser
-  sources unchanged, Node declarations retained, visual/world paths untouched.
+  core files unchanged after Git newline normalization, original browser assertions
+  and waits retained, Node declarations retained, visual/world paths untouched.
 
 ## Limitations / merge risks / untouched files
 
@@ -201,7 +220,9 @@ tests/action-runtime.test.cjs; tests/combat-resolution.test.cjs;
 tests/compatibility-hardening.test.cjs; tests/inventory-capacity.test.cjs;
 tests/item-inventory-equipment.test.cjs; tests/monster-box.test.cjs;
 tests/monster-lifecycle.test.cjs; tests/monster-loot.test.cjs;
-tests/motion.test.cjs; tests/save-progression.test.cjs; tests/skill-tree.test.cjs.
+tests/motion.test.cjs; tests/save-progression.test.cjs; tests/skill-tree.test.cjs;
+tests/inventory_capacity_browser.py; tests/monster_box_browser.py;
+tests/monster_loot_browser.py (fixture setup only; all prior assertions retained).
 
 ## Evidence / final Git state
 

@@ -21,6 +21,22 @@ def point(page,x,y):
 def close_menu(page):
     if qa(page)['windowName']:page.locator('#modal .close').click()
 def idle(page):page.wait_for_function('!AstraeonQA.snapshot().action')
+def encounter_wait(page,expression,*,timeout,arg=None):
+    # This outgoing-reward fixture already restores HP before each retarget.
+    # Keep that fixture alive during bounded navigation/held-input waits too;
+    # actual player death/respawn is tested separately below without this helper.
+    deadline=time.monotonic()+timeout/1000
+    while True:
+        state=qa(page)['save']
+        assert state['zone']==2 and state['currentHP']>0,('unexpected fixture death/travel',state)
+        if state['currentHP']<state['maxHP']/2:
+            dev(page,'d.setCurrentHP(d.snapshot().maxHP)')
+            timing.append({'event':'outgoing encounter HP fixture heartbeat','kills':state['kills'],'hpBefore':state['currentHP']})
+        remaining=(deadline-time.monotonic())*1000
+        if remaining<=0:raise PlaywrightTimeout('Original bounded encounter wait expired: '+expression)
+        try:return page.wait_for_function(expression,arg=arg,timeout=min(1000,remaining))
+        except PlaywrightTimeout:
+            if time.monotonic()>=deadline:raise
 def kill_to(page,target_count,cls,preferred_ids=None):
     deadline=time.monotonic()+240;retries=0
     while qa(page)['save']['kills']<target_count:
@@ -33,7 +49,7 @@ def kill_to(page,target_count,cls,preferred_ids=None):
         preferred=[e for e in living if e['rewardIdentity']['monsterInstanceId'] in (preferred_ids or set())]
         if preferred:living=preferred
         if not living:
-            page.wait_for_function('AstraeonQA.snapshot().enemies.some(e=>e.hp>0)',timeout=40000);continue
+            encounter_wait(page,'AstraeonQA.snapshot().enemies.some(e=>e.hp>0)',timeout=40000);continue
         target=min(living,key=lambda e:(e['transform']['position']['x']-s['save']['x'])**2+(e['transform']['position']['y']-s['save']['y'])**2)
         at=target['transform']['position'];x,y=point(page,at['x'],at['y'])
         visible=page.evaluate('p=>document.elementFromPoint(p.x,p.y)?.id==="world"',{'x':x,'y':y-16})
@@ -48,16 +64,16 @@ def kill_to(page,target_count,cls,preferred_ids=None):
             timing.append({'class':cls,'event':'visible intermediate ground waypoint for offscreen actor','enemyId':target['rewardIdentity']['monsterInstanceId']})
             page.mouse.click(wx,wy)
             origin={'x':s['save']['x'],'y':s['save']['y']}
-            try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
+            try:encounter_wait(page,'p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
             except PlaywrightTimeout:
                 state=qa(page);evidence={'class':cls,'event':'offscreen waypoint timeout; bounded keyboard approach','enemyId':target['rewardIdentity']['monsterInstanceId'],'player':{'x':state['save']['x'],'y':state['save']['y'],'hp':state['save']['hp'],'zone':state['save']['zone']},'navigation':state['navigation'],'action':state['action'],'windowName':state['windowName'],'click':{'x':wx,'y':wy}};timing.append(evidence);print(json.dumps(evidence),flush=True)
                 close_menu(page);idle(page)
                 # A visible ground point can overlap a nearby actor's click area.
                 # Ordinary directional input cancels that click target and moves
-                # toward the intended actor; no position/HP mutation or nav rewrite.
+                # toward the intended actor; no position mutation or nav rewrite.
                 dx,dy=at['x']-state['save']['x'],at['y']-state['save']['y'];basis=state['view']['basis'];screen_x=dx*basis['xx']+dy*basis['yx'];screen_y=dx*basis['xy']+dy*basis['yy'];buttons=['d' if screen_x>=0 else 'a','s' if screen_y>=0 else 'w']
                 for button in buttons:page.keyboard.down(button)
-                try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
+                try:encounter_wait(page,'p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
                 finally:
                     for button in buttons:page.keyboard.up(button)
             continue
@@ -65,11 +81,11 @@ def kill_to(page,target_count,cls,preferred_ids=None):
         # Existing warrior attacks stop movement. Approach the actor BEFORE hold.
         # This wait reads actual identity/HP/distance, not animation timing.
         try:
-            page.wait_for_function('''({id,reach})=>{const q=AstraeonQA.snapshot(),e=q.enemies.find(e=>e.rewardIdentity.monsterInstanceId===id);return !e||e.hp===0||Math.hypot(q.save.x-e.transform.position.x,q.save.y-e.transform.position.y)<=reach}''',arg={'id':target['rewardIdentity']['monsterInstanceId'],'reach':2.3 if cls=='0' else 5.9},timeout=30000)
+            encounter_wait(page,'''({id,reach})=>{const q=AstraeonQA.snapshot(),e=q.enemies.find(e=>e.rewardIdentity.monsterInstanceId===id);return !e||e.hp===0||Math.hypot(q.save.x-e.transform.position.x,q.save.y-e.transform.position.y)<=reach}''',arg={'id':target['rewardIdentity']['monsterInstanceId'],'reach':2.3 if cls=='0' else 5.9},timeout=30000)
         except PlaywrightTimeout:
             state=qa(page);evidence={'class':cls,'event':'approach timeout','player':{'x':state['save']['x'],'y':state['save']['y'],'hp':state['save']['hp'],'zone':state['save']['zone']},'target':target,'navigation':state['navigation'],'action':state['action'],'click':{'x':x,'y':y-16},'element':page.evaluate('p=>document.elementFromPoint(p.x,p.y)?.outerHTML.slice(0,150)',{'x':x,'y':y-16})};timing.append(evidence);print(json.dumps(evidence),flush=True);raise
         b=page.locator('[data-action="attack"]').bounding_box();page.mouse.move(b['x']+b['width']/2,b['y']+b['height']/2);page.mouse.down()
-        try:page.wait_for_function('(kills)=>AstraeonQA.snapshot().save.kills>kills',arg=s['save']['kills'],timeout=7000)
+        try:encounter_wait(page,'(kills)=>AstraeonQA.snapshot().save.kills>kills',arg=s['save']['kills'],timeout=7000)
         except PlaywrightTimeout:
             retries+=1;print('RETRY Basic Attack',cls,'kills',s['save']['kills'],'target',target['rewardIdentity']['monsterInstanceId'],flush=True);timing.append({'class':cls,'event':'retarget after bounded Basic Attack wait','kills':s['save']['kills'],'enemyId':target['rewardIdentity']['monsterInstanceId']})
         finally:page.mouse.up()
