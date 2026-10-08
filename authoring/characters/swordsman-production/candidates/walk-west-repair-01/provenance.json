@@ -1,0 +1,15 @@
+{
+  "candidateId": "walk-west-repair-01",
+  "dateTime": "2026-10-08",
+  "method": "first-party image edit, coordinated whole-cycle sheet",
+  "prompt": "Repair a painted 2D ASTRAEON walking animation as one coordinated sequence. Reference 1 is the authoritative west-facing character identity and camera; reference 2 is an eight-frame motion/layout guide with defects in the lower-body construction. Output eight frames in FOUR columns by TWO rows, chronological row-major order, equally sized cells. All frames face WEST (screen left), same elevated 45-degree camera. Preserve the exact short lavender silver hair, young male face, broad golden scarf/cape, small bronze rounded shoulder armour, dark navy tunic, ivory trousers, teal belt ornament, brown leather boots with bronze V/trident knee guards. Anatomical RIGHT hand holds the SAME straight steel sword angled down-left, same blade length/grip throughout. Repair the two legs into natural walking: frame1 right forward left back, frame2 right planted moving back left lifting, frame3 right under hip left swings forward, frame4 right back left forward, frame5 left forward right back, frame6 left planted right lifting, frame7 left under hip right swings forward, frame8 left back right forward. Both feet correctly attached to their legs and same boot design; stable leg lengths. Subtle weight shift and arm counter-motion. Preserve head/cape/torso scale and location in all cells; no zoom/reframing. Preserve reference 1 soft painted game-sprite style and elevated camera. Transparent alpha background, no numbers, labels, shadows, floor, grid. EXCLUSIONS: no changed person/hair/costume, no 3D/PBR/plastic/anime render, no camera drift, no weapon length change or hand switch, no extra limbs, no exposed bare legs below boots, no detached body fragments, no perspective cell-size changes.",
+  "exclusions": " no changed person/hair/costume, no 3D/PBR/plastic/anime render, no camera drift, no weapon length change or hand switch, no extra limbs, no exposed bare legs below boots, no detached body fragments, no perspective cell-size changes.",
+  "sourceReferences": [
+    "../../masters/W.png",
+    "motion-guide.png"
+  ],
+  "purpose": "Repair west-facing Walk lower-body motion",
+  "status": "rejected",
+  "reason": "Legs remain in the same contact pose instead of alternating; guide lacked explicit anatomical motion authority.",
+  "ownerApproval": "NOT_APPROVED"
+}

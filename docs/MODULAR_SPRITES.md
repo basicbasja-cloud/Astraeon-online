@@ -1,8 +1,8 @@
 # Modular painted character sprites 0.1
 
 This is a production contract and a development proof. Final characters remain
-painted/stylized **2D**. `sprite-preview.html` shows geometric markers only:
-`DEV_ONLY`, `PLACEHOLDER`, `NOT_FINAL_ART`. They are never selected by normal
+painted/stylized **2D**. `sprite-preview.html` provides geometric proofs and explicitly selected painted
+production candidates, tagged `DEV_ONLY`, `PLACEHOLDER`, `NOT_FINAL_ART`. They are never selected by normal
 player calls. The existing Warrior/Mage/Ranger visuals and gameplay remain.
 
 ## Registration and shared pose
@@ -237,3 +237,16 @@ The service worker bypasses its ordinary game caches for those resources.
 Pending production clips are disabled in the preview and must never be counted
 as produced animation. See `docs/review/swordsman-production-v0.1/README.md` for
 the current failed Walk visual gate and the incomplete production scope.
+
+Development production preview releases inactive atlas Image references after
+a requested clip is ready. `keepAnimations([clipId])` is optional: preload with
+`ensure()` first; it refuses to prune during any in-flight clip or appearance
+transition. It retains only the selected cosmetic atlases for the requested
+clips and clears released load promises so later requests reload correctly.
+Legacy callers retain their existing preload behaviour.
+
+Use `index.html?swordsman=male` for an explicit in-game development appearance.
+Only internally passed clips participate; unproduced actions are labeled in the
+development overlay. This URL flag does not alter class, equipment, stats or
+save data. Normal entry URLs retain the original character. Cache version 101
+keeps the updated loader and presentation adapter synchronized.

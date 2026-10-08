@@ -1,0 +1,15 @@
+{
+  "candidateId": "walk-west-repair-02",
+  "dateTime": "2026-10-08",
+  "method": "first-party image edit with explicit per-phase anatomical guide",
+  "prompt": "Create a coordinated EIGHT-FRAME WALK animation painted 2D sprite sheet, FOUR columns TWO rows chronological row-major, using reference 1 EXACT character appearance and reference 2 EXACT LOWER-BODY POSES. Reference 2 blue is anatomical RIGHT leg, orange is LEFT leg; replace BOTH colored guides with the ivory trousers + dark brown leather greaves/bronze narrow branching V knee guards + rounded leather boots of reference 1. Follow the guide foot placements in EVERY cell, especially cells 1 and 5 have OPPOSITE leading legs. The guide’s white circles locate knees. A complete alternating walking cycle, not eight variations of the same standing pose. Keep the same west/screen-left orientation and elevated45camera throughout. Upper body location, head shape/face/hair/cape/tunic same as reference1, same scale and framing as pose guide cells. Slight natural arm counter-swing, anatomical RIGHT hand holds same long straight steel sword down-left throughout; sword tip remains complete (guide crop cut sword but final must restore it). Young male short silver-lavender hair, gold cape/scarf, bronze rounded shoulder plates, dark tunic, teal belt ornament, ivory trousers, narrow V bronze knee guards and brown boots. No costume changes. Match SOFT painted source edges/style exactly, not PBR. Transparent alpha background. EXCLUSIONS: no labels/numbers/colored guides/grid/floor/background, no 3D look, no enlarged head, no anatomical hand switch, no resized sword, no short bare legs, no duplicated standing frames, no face/hair redesign, no camera changes.",
+  "exclusions": " no labels/numbers/colored guides/grid/floor/background, no 3D look, no enlarged head, no anatomical hand switch, no resized sword, no short bare legs, no duplicated standing frames, no face/hair redesign, no camera changes.",
+  "sourceReferences": [
+    "../../masters/W.png",
+    "pose-guide.png"
+  ],
+  "purpose": "Repair alternating west-facing Walk contacts",
+  "status": "rejected",
+  "reason": "Exact pose guidance still not followed; leading leg remains almost invariant and cape/sword framing drifts. Changed strategy to offline segmented painted limb deformation.",
+  "ownerApproval": "NOT_APPROVED"
+}

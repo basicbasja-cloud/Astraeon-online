@@ -1,0 +1,23 @@
+{
+  "candidateId": "walk-lowerbody-05",
+  "dateTime": "2026-10-08T07:33:21.407527+00:00",
+  "status": "rejected",
+  "method": "first-party whole lower-body strip generation from original upright shared motion",
+  "sourceReferences": [
+    "leg-pose-guide.png",
+    "../../reference/approved-leg-detail.png",
+    "../../male/leg-templates/W.png"
+  ],
+  "promptFile": "prompt.txt",
+  "negativePrompt": [
+    "design mutation",
+    "incorrect direction",
+    "3D PBR",
+    "background",
+    "detached parts"
+  ],
+  "purpose": "Separate painted lower-body pose production from locked face/hair/upper costume",
+  "diagnosis": "More distinct support/passing forms, but shoes turn toward screen rather than consistent W; approved knee trim simplified into a large generic chevron; not runtime accepted.",
+  "ownerApproval": "NOT_APPROVED",
+  "rejectionReason": "Incorrect boot facing and knee trim; excessive knee lift reads as a marching/run gesture. Owner clarified ordinary relaxed walk, not raised-knee or running motion."
+}

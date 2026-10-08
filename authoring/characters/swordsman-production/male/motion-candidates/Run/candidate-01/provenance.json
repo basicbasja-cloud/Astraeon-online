@@ -1,0 +1,42 @@
+{
+  "candidateId": "male-run-01",
+  "dateTime": "2026-10-08T10:21:26.962189+00:00",
+  "status": "current-best",
+  "method": "Original articulated run cycle, shorter support with airborne transfer and stronger recovery; continuous painted UV legs and rigid sword; authoring-only rig",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "Run whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60,
+    60
+  ],
+  "sharedCycle": "tools/swordsman-run-cycle.py",
+  "motionDifferences": [
+    "42% support interval",
+    "15 cm swing clearance",
+    "airborne support transfer",
+    "loaded compression",
+    "forward torso commitment",
+    "stronger arm counter-motion"
+  ],
+  "identity": "Same painted directional masters, leg-chain calibration, canvas, camera and cosmetic parts as Walk",
+  "decisionReason": "Internal Run gate 92/100; distinct recovery/support/flight rather than sped-up Walk",
+  "cycleSourceSHA256": "12d245f0c070d30d0152950d6e37140755c95fd638bcdf7454fdfa2c82235472",
+  "buildSourceSHA256": "3e2e3ad1b9d0a861132d305b2ab5aa357e220401f07c29bdda6c4072de978a70"
+}

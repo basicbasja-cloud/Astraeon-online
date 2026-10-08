@@ -171,7 +171,7 @@ async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appear
   compiled.sample('Idle','S',0,{appearance:result});
   return Object.freeze(result);
  }
- let active=selection(appearance,cosmeticLoadout),revision=0;
+ let active=selection(appearance,cosmeticLoadout),revision=0,operations=0;
  const activeClips=new Set();
  const images={},pending={};
  // Atlas paths are repository-relative; metadata lives in assets/characters/<character>/.
@@ -191,11 +191,14 @@ async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appear
   await Promise.all([...ids].map(atlasImage));
  }
  async function ensure(animationId){
+  operations++;try{
   if(!compiled.definition.clips[animationId])throw Error('Unknown animation '+animationId);
   activeClips.add(animationId);
   let selected;do{selected=active;await preload(animationId,selected)}while(selected!==active);
+  }finally{operations--}
  }
  async function setAppearance(parts={}, {cosmeticLoadout={},animationIds=[...activeClips]}={}){
+  operations++;try{
   const next=selection(parts,cosmeticLoadout),request=++revision;
   const ready=new Set();
   // Include clips requested while this appearance was preloading.
@@ -203,9 +206,22 @@ async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appear
   // Failed or superseded requests retain the previous complete appearance.
   if(request!==revision)return false;
   active=next;animationIds.forEach(id=>activeClips.add(id));return true;
+  }finally{operations--}
+ }
+ function keepAnimations(animationIds){
+  if(!Array.isArray(animationIds)||!animationIds.length||animationIds.some(id=>!compiled.definition.clips[id]))throw Error('Invalid retained animations');
+  // Explicit opt-in for constrained previews/runtimes. A transition still
+  // preloads completely before old Image references can be released.
+  if(operations)return false;
+  const needed=new Set();
+  for(const id of animationIds){const clip=compiled.definition.clips[id];for(const direction of DIRECTIONS)for(let i=0;i<clip.durations.length;i++)for(const ref of compiled.sample(id,direction,0,{frameIndex:i,appearance:active}).layers)needed.add(ref.atlasId)}
+  if([...needed].some(id=>!images[id]))throw Error('Preload retained animations before releasing atlases');
+  activeClips.clear();animationIds.forEach(id=>activeClips.add(id));
+  for(const id of Object.keys(images))if(!needed.has(id)){delete images[id];delete pending[id]}
+  return true;
  }
  await Promise.all(animationIds.map(ensure));
- return Object.freeze({compiled,images,allowDev,ensure,setAppearance,get appearance(){return active}});
+ return Object.freeze({compiled,images,allowDev,ensure,setAppearance,keepAnimations,get appearance(){return active}});
 }
 const STATE_CLIPS=Object.freeze({idle:'Idle',turn:'Idle',stop:'Idle',start:'Walk',walk:'Walk',run:'Run',sprint:'Run',attack:'BasicAttack',cast:'SkillAction',hit:'Hit',death:'Death',guard:'Guard',dodge:'Dash',dash:'Dash',channel:'CastChannel',blink:'Blink'});
 function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archetype='warrior'}={}) {

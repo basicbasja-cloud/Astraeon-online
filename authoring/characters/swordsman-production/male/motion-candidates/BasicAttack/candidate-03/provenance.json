@@ -1,0 +1,37 @@
+{
+  "candidateId": "male-basicattack-03",
+  "dateTime": "2026-10-08T10:45:23.151527+00:00",
+  "status": "superseded",
+  "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    80,
+    90,
+    80,
+    55,
+    65,
+    90,
+    110,
+    100
+  ],
+  "sharedCycle": "tools/swordsman-action-poses.py",
+  "phases": [
+    "rest",
+    "anticipation",
+    "loaded anticipation",
+    "strike",
+    "follow-through",
+    "recovery",
+    "settle",
+    "rest"
+  ],
+  "decisionReason": "Superseded: repaired armour retained but sparse anticipation/recovery replaced by denser sampling"
+}

@@ -1,0 +1,37 @@
+{
+  "candidateId": "directional-01",
+  "dateTimeUTC": "2026-10-08T03:14:39.228533+00:00",
+  "purpose": "Eight coordinated directional masters, identity gate",
+  "method": "First-party image_gen editing of authoritative seed",
+  "sourceReferences": [
+    "authoring/characters/swordsman-production/reference/approved-warrior-seed.png"
+  ],
+  "prompt": "Edit from the supplied authoritative ASTRAEON Warrior seed. Produce a tightly coordinated painted 2D Swordsman turnaround: exactly eight full-body directional masters arranged in a clean FOUR COLUMN by TWO ROW grid. TOP ROW left to right: South (front), South-West (front facing viewer-left), West (profile facing viewer-left), North-West (back facing viewer-left). BOTTOM ROW left to right: North (pure back), North-East (back facing viewer-right), East (profile facing viewer-right), South-East (front facing viewer-right). These are eight separately authored orientations, NOT mirrored images. No text or direction labels inside the image. Transparent background with no floor, no shadows outside sprites, no scenery or checkerboard pixels. Each cell has a full standing neutral ready character at the exact same apparent body height, camera elevation and ground line, evenly centered with generous transparent margins. Keep the elevated game camera of the reference, approximately 45 degrees down; see the tops of the head and shoulders even in side/back views. It is a game sprite sheet, not concept illustration.\nPreserve the EXACT same young male identity and compact storybook body proportions of the reference, short tousled silver/lavender-grey swept hair and fringe, mustard/gold short shoulder cape/scarf, bronze/gold shoulder and forearm armour, dark olive/navy underlayers, split ivory short tunic, restrained teal waist ornament, leather belts/gloves and tall dark brown bronze-armoured boots. Preserve construction and fastening across front/back, with the same cape length. Face is youthful and simple with the same proportions; do not turn him into an adult muscular warrior or generic anime hero. Keep the reference's soft painted edges, warm shaded cloth and metal, compact volume treatment and no heavy black outline. Each view must unmistakably depict the SAME person in the SAME costume, with the SAME hairstyle and body proportions.\nThe SAME narrow straight steel one-handed sword with the SAME bronze/gold hilt is held firmly in ANATOMICAL RIGHT HAND in ALL eight views. Blade points downward in a relaxed ready stance. In SOUTH front view the anatomical right hand and sword are at VIEWER LEFT. In NORTH back view they are at VIEWER RIGHT. In profiles, preserve the actual right shoulder/arm and natural occlusion. Do not mirror the sword across the body to fill directions. Sword dimensions and grip never vary. Left hand is empty. No shield, helmet, wings, new accessories, new costume panels, new weapons, missing cape, changed colour, taller legs, hair redesign, visible 3D render or PBR look. Preserve identity from the provided image, not just its colour palette. Return the coordinated eight-view transparent master sheet only.",
+  "negativePrompt": "Different identity, adult/muscular proportions, hair redesign, alternate palette/costume construction, hand switching, mirrored directions, variable sword dimensions, wrong camera, 3D/PBR/plastic appearance, scenery, background, text, baked checkerboard, flat pixel art",
+  "status": "rejected",
+  "scores": {
+    "Identity consistency": 4,
+    "Body proportions": 4,
+    "Hair consistency": 4,
+    "Outfit construction": 5,
+    "Weapon consistency": 4,
+    "Handedness": 5,
+    "Camera/elevation": 3,
+    "2D ASTRAEON style": 4
+  },
+  "generationOutput": "/workspace/generated_images/exec-988345d5-a9cb-4626-a593-f561ca56a910.png",
+  "scoreTotal": 33,
+  "criticalFailures": [
+    "Camera is shallower than the authoritative elevated seed; full faces show rather than reference top-down head/shoulders."
+  ],
+  "diagnosis": "Identity/costume are recognizable, but reference camera is overridden by conventional character-turnaround framing; darker line treatment and enlarged spiky hair need closer source fidelity.",
+  "repairStrategy": "Targeted edit existing coordinated sheet plus authoritative seed; preserve valid views/costume, change elevation/paint treatment consistently and remove all background via image editor.",
+  "alphaInspection": {
+    "mode": "RGBA",
+    "range": [
+      0,
+      254
+    ],
+    "note": "Tool preview displayed transparent RGB backing; inspected actual alpha separately before diagnosing background contamination."
+  }
+}

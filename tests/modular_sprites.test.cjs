@@ -144,6 +144,17 @@ test('atlas loading respects repository prefixes, preloads only selected clips a
   assert.equal(Object.keys(visual.images).length,18);assert.equal(requests.filter(url=>url.endsWith('/weapon-run.png')).length,2);
   await visual.setAppearance({Weapon:'weapon-alt'});assert.equal(visual.appearance.Weapon,'weapon-alt');
   assert.equal(Object.keys(visual.images).length,21);assert.equal(requests.filter(url=>url.includes('weapon-alt')).length,3);
+  assert.throws(()=>visual.keepAnimations(['Death']),/Preload retained/);
+  assert.equal(Object.keys(visual.images).length,21,'Invalid retention must preserve ready images');
+  assert.equal(visual.keepAnimations(['Walk']),true);
+  assert.equal(Object.keys(visual.images).length,6);
+  assert.ok(Object.keys(visual.images).every(id=>id.endsWith('-walk')));
+  const prior=requests.length;
+  await visual.setAppearance({Weapon:'weapon'});
+  assert.equal(requests.length,prior+1,'Only the retained clip needs the requested cosmetic');
+  assert.ok(requests.at(-1).endsWith('/weapon-walk.png'),'Released images must reload even if their old Promise resolved');
+  await visual.ensure('Idle');
+  assert.equal(requests.length,prior+7);
  }finally{for(const [key,value] of Object.entries(original)){if(value===undefined)delete global[key];else global[key]=value}}
 });
 test('body variants preserve gameplay class and resolve one logical cosmetic to body-specific parts',()=>{
@@ -178,7 +189,7 @@ test('cosmetics switch only after readiness, failed switches retain appearance, 
   const visual=await api.load('assets/characters/swordsman-proof/sprite.json',{allowDev:true,bodyVariant:'male',cosmeticLoadout:{Weapon:'default-sword'},equipmentLoadout:{weapon:'training-sword'}});
   assert.equal(visual.appearance.Weapon,'weapon');assert.equal(requests.length,6);
   const rejected=visual.setAppearance({}, {cosmeticLoadout:{Weapon:'training-sword'}});assert.equal(visual.appearance.Weapon,'weapon');release();await assert.rejects(rejected);assert.equal(visual.appearance.Weapon,'weapon');
-  fail=false;const accepted=visual.setAppearance({}, {cosmeticLoadout:{Weapon:'training-sword'}});assert.equal(visual.appearance.Weapon,'weapon');release();assert.equal(await accepted,true);assert.equal(visual.appearance.Weapon,'weapon-alt');
+  fail=false;const accepted=visual.setAppearance({}, {cosmeticLoadout:{Weapon:'training-sword'}});assert.equal(visual.appearance.Weapon,'weapon');assert.equal(visual.keepAnimations(['Idle']),false,'Do not release atlases during an atomic appearance transition');release();assert.equal(await accepted,true);assert.equal(visual.appearance.Weapon,'weapon-alt');
   assert.throws(()=>api.resolveCosmetics(d,{Equipment:'training-sword'}),/Unknown cosmetic slot/);
  }finally{for(const [key,value] of Object.entries(original)){if(value===undefined)delete global[key];else global[key]=value}}
 });

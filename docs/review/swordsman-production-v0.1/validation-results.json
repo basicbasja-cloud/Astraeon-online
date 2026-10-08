@@ -1,0 +1,57 @@
+{
+  "dateTimeUTC": "2026-10-08T11:30:11.268154+00:00",
+  "scope": "Continuing production milestone, male first four clips only",
+  "completeProductionGate": "NOT_COMPLETE",
+  "ownerApproval": "NOT_APPROVED",
+  "spriteValidator": {
+    "status": "PASS",
+    "definitions": 3,
+    "atlasReferences": 147,
+    "modularFrameReferences": 7440
+  },
+  "nodeChecks": {
+    "status": "PASS",
+    "count": 135
+  },
+  "spriteToolTests": {
+    "status": "PASS",
+    "count": 8
+  },
+  "motionTests": {
+    "status": "PASS",
+    "count": 7
+  },
+  "packedCompositeChecks": {
+    "status": "PASS",
+    "Idle": 64,
+    "Walk": 128,
+    "Run": 96,
+    "BasicAttack": 128
+  },
+  "actualGameplay": {
+    "status": "PASS",
+    "evidence": "in-game/results.json",
+    "clips": [
+      "Idle",
+      "Walk (all eight directions)",
+      "Run",
+      "BasicAttack"
+    ],
+    "equipmentIndependence": true,
+    "mobileViewport": [
+      390,
+      844
+    ]
+  },
+  "browserPreview": {
+    "status": "PASS",
+    "speeds": [
+      "normal",
+      "quarter"
+    ],
+    "allEightDirections": true,
+    "BasicAttackNonLoopingHold": true
+  },
+  "gitDiffCheck": "PASS",
+  "normalGameAndCacheVersion101": "PENDING_RERUN"
+}

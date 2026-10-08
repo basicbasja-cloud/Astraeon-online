@@ -1,0 +1,30 @@
+{
+  "candidateId": "male-walk-03",
+  "dateTime": "2026-10-08T05:30:29.271581+00:00",
+  "status": "rejected",
+  "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "criticalFailures": [
+    "BaseBody upper-leg pixels remain in torso registration while Outfit legs articulate: exposed stationary skin fragments W"
+  ],
+  "diagnosis": "Offline source segmentation started at visible boot/knee, not the hidden pelvis. Move the entire underlying leg from the same anatomical hip and keep source-painted hand pixels with the arm.",
+  "rejectionReason": "Underlying body legs stayed in standing pose."
+}

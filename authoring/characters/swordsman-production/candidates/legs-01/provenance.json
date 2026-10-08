@@ -1,0 +1,20 @@
+{
+  "candidateId": "male-outfit-legs-01",
+  "dateTime": "2026-10-08T05:13:03.048110+00:00",
+  "prompt": "Technical painted 2D outfit component production. Use attached references: the ORIGINAL approved Swordsman identity first, and its coordinated directional masters second. Produce eight isolated complete RIGHT LEG outfit textures, from high thigh just below the belt to the sole, facing S SW W NW N NE E SE. Four columns by two rows, same canonical ordering as the supplied master. These are clothing/armour components ONLY, with no head, hair, torso, cape, hand or weapon. The component includes the SAME off-white cloth trouser thigh, bronze/gold pointed V knee plate, dark brown bronze-edged greave, dark leather ankle and sturdy rounded brown boot with gold/bronze seams shown in the source. Preserve the original boot design, not new armour. All eight correspond to the exact same outfit leg; only orientation changes. Same elevated approximately 45 degree camera, clearly see top surface of boot. Relaxed straight leg stance, not crouching, no left leg, no extra foot. Compact proportions: thigh about 45 percent of total leg height, calf about 35 percent, ankle/boot about 20 percent. Do NOT create tall elegant anime legs. Paint softly like the source, fine warm light, muted bronze rather than orange or bright polished gold. Retain the source's simple plate and seam treatment; do not add skulls, gems, filigree, spikes or new ornaments. 2D hand-painted game sprite texture, not 3D, not plastic, not vector sticker. All eight complete leg components have one common scale, identical height and aligned foot baseline. Lots of transparent padding between each. Pure transparent background. No labels or floor or shadows.",
+  "negativePrompt": "Different boot design, 3D/PBR, plastic, ornate armour, anime long legs, skin/nudity, two legs, different camera, mirrored missing directions, labels, floor",
+  "sourceReferences": [
+    "../../reference/approved-warrior-seed.png",
+    "../directional-02/generated-master.png"
+  ],
+  "method": "first-party coordinated component texture generation using original costume identity",
+  "status": "rejected",
+  "purpose": "Complete hidden painted boot/greave surfaces needed for grounded Walk; offline pose aid, merged into Outfit at runtime",
+  "ownerApproval": "NOT_APPROVED",
+  "output": "generated-legs.png",
+  "criticalFailures": [
+    "Camera too shallow, visible trouser opening nearly eye-level",
+    "Knee plate too broad and flat; shin decoration more elaborate than approved source"
+  ],
+  "diagnosis": "Isolated-part prompt lost full-body camera and low-resolution costume construction reference. Strengthen approved leg detail and add fixed 45-degree projected geometry guide."
+}

@@ -1,0 +1,43 @@
+{
+  "gate": "AUTHORING_RIG_ONLY",
+  "status": "REJECTED / FORE_AFT_GAIT_FAILURE",
+  "ownerApproval": "NOT_APPROVED",
+  "paintedCharacterGate": "UNRESOLVED / PREVIOUS WALK REJECTED",
+  "score": {
+    "distinctStridePhases": 5,
+    "alternatingFootContact": 5,
+    "contactDownPassingUp": 5,
+    "plantedFootStability": 5,
+    "swingFootClearance": 5,
+    "weightTransfer": 4,
+    "silhouetteReadability": 4
+  },
+  "scoreTotal": 33,
+  "scoreMaximum": 35,
+  "criticalFailures": [],
+  "loadedSoleKneeFlexRangeDegrees": [
+    6.408134042665295,
+    14.270342291411255
+  ],
+  "swingKneeFlexRangeDegrees": [
+    6.408201990105968,
+    46.895436212492356
+  ],
+  "maximumSwingClearanceMetres": 0.065,
+  "pelvisHeightRangeMetres": [
+    1.0245206029922824,
+    1.0549146381149659
+  ],
+  "maxEvaluatedBlenderJointErrorMetres": 8.722272224738164e-07,
+  "maxEvaluatedBlenderHeelToeErrorMetres": 5.336925303651757e-07,
+  "mechanicalTests": "4 PASS; 800\u20131600 samples including two cycles world-contact planting",
+  "browserTests": "64 distinct frames; eight directions; normal/quarter; stepping; gameplay-size; mobile PASS",
+  "benchmarkComparison": {
+    "NPCWalking": "Separate left/right contact and arm counter-motion read through a consistent torso silhouette. Our cycle preserves these distinctions without importing poses or art.",
+    "FemaleNovice": "Extended support, folded clearing foot and returning heel distinguish consecutive phases. Our eight-phase side/diagonal proof demonstrates these; frame counts and cadence were chosen independently.",
+    "limits": "A neutral rig does not establish painted-layer quality. Colour assists limb identification; final painted overlap and silhouette must be rechecked."
+  },
+  "visualInspection": "Inspected all eight phase renders in S/SW/W/NW/N/NE/E/SE, continuous contact diagram, browser sampled motion normal/quarter, and gameplay-size captures.",
+  "criticalFailure": "Both knees stayed ahead of the hip throughout the cycle; rearward thigh extension was inadequate despite planted-foot math.",
+  "reopenedDateTimeUTC": "2026-10-08T08:47:05.884019+00:00"
+}

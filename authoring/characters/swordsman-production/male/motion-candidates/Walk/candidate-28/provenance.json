@@ -1,0 +1,49 @@
+{
+  "candidateId": "male-walk-28",
+  "dateTime": "2026-10-08T10:14:48.361749+00:00",
+  "status": "current-best",
+  "method": "Inspected articulated 3D rig cycle projected into offline painted layers; rigid hair and sword, fixed full canvas; no runtime skeleton",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70
+  ],
+  "sharedCycle": "authoring/characters/swordsman-production/rig-walk/candidate-03/shared-cycle.json",
+  "rigGate": "INTERNAL_PASS / NOT_OWNER_APPROVED",
+  "bodyCalibration": {
+    "uniformLegChainScale": 0.7,
+    "pixelsPerProxyMetre": 84.52830188679245,
+    "cameraElevationDegrees": 45,
+    "root": [
+      160,
+      264
+    ],
+    "upperBody": "Original painted identity retained; only shared-cycle displacement applied"
+  },
+  "surfaceMethod": "One continuous weighted UV surface per painted leg; rigid soles; offline full-canvas baking",
+  "sampling": "16 frames over the same inspected eight-phase, 1.12-second cycle; no timing copied from RO",
+  "decisionReason": "Internal Walk visual gate 91/100 after rearward stride, continuous painted UV legs, foreshortened foot and far-arm registration repairs",
+  "buildSourceSHA256": "3e2e3ad1b9d0a861132d305b2ab5aa357e220401f07c29bdda6c4072de978a70"
+}

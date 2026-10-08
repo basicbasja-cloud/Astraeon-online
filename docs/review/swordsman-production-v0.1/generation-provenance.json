@@ -1,0 +1,309 @@
+{
+  "meaningfulFirstPartyGenerations": 13,
+  "walkGenerations": 7,
+  "offlineWalkAttempts": 28,
+  "articulatedRigAttempts": 3,
+  "currentWalk": "candidate-28",
+  "candidates": [
+    {
+      "candidateId": "male-arms-01",
+      "dateTimeUTC": "2026-10-08T10:34:28.235913+00:00",
+      "purpose": "Complete same-view costume arm surfaces for articulated sword action without stretching the torso",
+      "method": "First-party image-generation reference edit",
+      "sourceReferences": [
+        "canonical-guide.png",
+        "../../reference/approved-warrior-seed.png"
+      ],
+      "prompt": "Edit the attached eight-view ASTRAEON Swordsman reference into a technical RIGHT-ARM component sheet. Preserve each view's exact painted costume design, viewing elevation and pose. Layout four columns, two rows: S SW W NW / N NE E SE. Output ONLY the eight complete anatomical right arms, including the same rounded dark bronze/gold pauldron, ivory upper-arm band, dark sleeve, gold-trimmed leather forearm guard and gloved grip hand. Remove every head, hair, face, torso, cape, leg, sword and background. Complete only small inner arm/elbow surfaces hidden by clothing in the source. Each complete arm stays at the same shoulder/elbow/wrist position as the corresponding source; do not move, enlarge or reframe it. This is lossless authoring material for posing one existing character, not a new costume. Same gentle painted 2D shading and edge treatment; full transparent canvas. Keep all eight orientations distinct; no mirrored views. No sword. No floating labels. No glow, checkerboard, ground or background. No new armour plates or oversized gauntlets. No realism, 3D/PBR, plastic, anime redesign or anatomy exaggeration. The second reference is the identity/costume authority; do not redesign its arm armour.",
+      "negativePrompt": "No costume redesign, new plates, face/body/cape/legs/sword, reframing, mirroring, background, glow, 3D/PBR or plastic",
+      "status": "rejected",
+      "ownerApproval": "NOT_APPROVED",
+      "decisionReason": "Oversized redesigned forearm plates, changed glove construction, reframing and translucent background contamination; not admitted into source or runtime parts",
+      "output": "generated-arms.png",
+      "outputSHA256": "a5b11d490c4e1ddb0860fa4234b182296dbac23e63d40b18a1d524fe5780b614"
+    },
+    {
+      "candidateId": "male-body-01",
+      "dateTime": "2026-10-08T04:38:19.489095+00:00",
+      "purpose": "Paint neutral underlying male body for practical cosmetic outfit separation",
+      "method": "first-party image-generation edit of coordinated approved-identity directional candidate",
+      "sourceReferences": [
+        "../directional-02/generated-master.png"
+      ],
+      "prompt": "Create an underlying BODY-ONLY production texture from the attached eight-direction painted male Swordsman sheet. This is a technical repaint of the same poses, not a new character. Keep EXACTLY the same eight character positions, head size, body scale, foot positions, arm/hand poses, viewing elevation and grid layout. Layout top row S SW W NW, bottom row N NE E SE. Preserve the youthful face, proportions and gentle painted 2D ASTRAEON treatment. REMOVE all silver hair, yellow cape/scarf, gold armour, tunic panels, boots, belts, jewellery and sword. Replace these with simple close-fitting matte slate-blue neutral short-sleeve undershirt and short fitted shorts. Bare feet and bare lower legs. No costume details. Skin painted softly, no anatomical exaggeration, no nudity. Heads have simple skin/scalp colour without hair; retain same visible face only, not redesigned. Underlying body proportions remain compact exactly matching the original. The right hand retains the same loosely closed sword-grip pose with no weapon. Camera is elevated about 45 degrees, clearly seeing top of heads and shoulders. Use pure transparent background; no ground, no shadows outside body. Eight complete separate bodies, all source cell centres and bottom foot baseline unchanged. This body is a hidden neutral foundation for replacing the outfit; not a character redesign.",
+      "negativePrompt": "No costume, hair, sword, cape, golden armour, background, labels, 3D/PBR, anatomy exaggeration, new identity, different camera, mirrored views",
+      "status": "construction-source",
+      "ownerApproval": "NOT_APPROVED",
+      "output": "generated-body.png",
+      "inspection": "Neutral costume-free body textures are usable beneath source-painted exposed face/skin. Generated scalp and face differ and must not replace the identity source. Generated body pose is not pixel-registered; authoring deformation/registration is required. Not accepted as a standalone identity master."
+    },
+    {
+      "candidateId": "directional-01",
+      "dateTimeUTC": "2026-10-08T03:14:39.228533+00:00",
+      "purpose": "Eight coordinated directional masters, identity gate",
+      "method": "First-party image_gen editing of authoritative seed",
+      "sourceReferences": [
+        "authoring/characters/swordsman-production/reference/approved-warrior-seed.png"
+      ],
+      "prompt": "Edit from the supplied authoritative ASTRAEON Warrior seed. Produce a tightly coordinated painted 2D Swordsman turnaround: exactly eight full-body directional masters arranged in a clean FOUR COLUMN by TWO ROW grid. TOP ROW left to right: South (front), South-West (front facing viewer-left), West (profile facing viewer-left), North-West (back facing viewer-left). BOTTOM ROW left to right: North (pure back), North-East (back facing viewer-right), East (profile facing viewer-right), South-East (front facing viewer-right). These are eight separately authored orientations, NOT mirrored images. No text or direction labels inside the image. Transparent background with no floor, no shadows outside sprites, no scenery or checkerboard pixels. Each cell has a full standing neutral ready character at the exact same apparent body height, camera elevation and ground line, evenly centered with generous transparent margins. Keep the elevated game camera of the reference, approximately 45 degrees down; see the tops of the head and shoulders even in side/back views. It is a game sprite sheet, not concept illustration.\nPreserve the EXACT same young male identity and compact storybook body proportions of the reference, short tousled silver/lavender-grey swept hair and fringe, mustard/gold short shoulder cape/scarf, bronze/gold shoulder and forearm armour, dark olive/navy underlayers, split ivory short tunic, restrained teal waist ornament, leather belts/gloves and tall dark brown bronze-armoured boots. Preserve construction and fastening across front/back, with the same cape length. Face is youthful and simple with the same proportions; do not turn him into an adult muscular warrior or generic anime hero. Keep the reference's soft painted edges, warm shaded cloth and metal, compact volume treatment and no heavy black outline. Each view must unmistakably depict the SAME person in the SAME costume, with the SAME hairstyle and body proportions.\nThe SAME narrow straight steel one-handed sword with the SAME bronze/gold hilt is held firmly in ANATOMICAL RIGHT HAND in ALL eight views. Blade points downward in a relaxed ready stance. In SOUTH front view the anatomical right hand and sword are at VIEWER LEFT. In NORTH back view they are at VIEWER RIGHT. In profiles, preserve the actual right shoulder/arm and natural occlusion. Do not mirror the sword across the body to fill directions. Sword dimensions and grip never vary. Left hand is empty. No shield, helmet, wings, new accessories, new costume panels, new weapons, missing cape, changed colour, taller legs, hair redesign, visible 3D render or PBR look. Preserve identity from the provided image, not just its colour palette. Return the coordinated eight-view transparent master sheet only.",
+      "negativePrompt": "Different identity, adult/muscular proportions, hair redesign, alternate palette/costume construction, hand switching, mirrored directions, variable sword dimensions, wrong camera, 3D/PBR/plastic appearance, scenery, background, text, baked checkerboard, flat pixel art",
+      "status": "rejected",
+      "scores": {
+        "Identity consistency": 4,
+        "Body proportions": 4,
+        "Hair consistency": 4,
+        "Outfit construction": 5,
+        "Weapon consistency": 4,
+        "Handedness": 5,
+        "Camera/elevation": 3,
+        "2D ASTRAEON style": 4
+      },
+      "generationOutput": "/workspace/generated_images/exec-988345d5-a9cb-4626-a593-f561ca56a910.png",
+      "scoreTotal": 33,
+      "criticalFailures": [
+        "Camera is shallower than the authoritative elevated seed; full faces show rather than reference top-down head/shoulders."
+      ],
+      "diagnosis": "Identity/costume are recognizable, but reference camera is overridden by conventional character-turnaround framing; darker line treatment and enlarged spiky hair need closer source fidelity.",
+      "repairStrategy": "Targeted edit existing coordinated sheet plus authoritative seed; preserve valid views/costume, change elevation/paint treatment consistently and remove all background via image editor.",
+      "alphaInspection": {
+        "mode": "RGBA",
+        "range": [
+          0,
+          254
+        ],
+        "note": "Tool preview displayed transparent RGB backing; inspected actual alpha separately before diagnosing background contamination."
+      }
+    },
+    {
+      "candidateId": "directional-02",
+      "dateTimeUTC": "2026-10-08T03:17:08.698764+00:00",
+      "purpose": "Targeted directional-master camera and paint fidelity repair",
+      "method": "First-party image_gen edit; identity seed plus previous sheet",
+      "sourceReferences": [
+        "authoring/characters/swordsman-production/reference/approved-warrior-seed.png",
+        "authoring/characters/swordsman-production/candidates/directional-01/generated-master.png"
+      ],
+      "prompt": "Use the FIRST image as the authoritative identity, camera elevation and painted treatment. The SECOND image is the eight-view candidate to repair, not a new design authority. Edit that coordinated sheet, preserving its correct costume construction, eight-view positions, silver hair, gold cape, bronze armour, ivory split tunic, teal accents, narrow sword and anatomical RIGHT handedness.\nTwo targeted corrections throughout all eight views: (1) raise the camera to precisely match the first seed's elevated gameplay view, approximately 45 degrees DOWN at the character. Show more crown/top of shoulders and less vertical chest/face; gently foreshorten the same compact body in projection, without shortening its anatomical legs or making the character crouch. Use the reference's looking-down, mostly fringe-hidden face rather than large full-front anime eyes. Side views must also be viewed from above. (2) Match the first seed's soft painted edges and subtly blended warm shading; reduce the candidate's dark contour outlining and over-crisp spiky hair. Keep the hair's short swept silver/lavender silhouette, not a new haircut.\nExact sheet layout: 4 columns x 2 rows. Top: S (front), SW (front toward viewer left), W (left profile), NW (back toward viewer left). Bottom: N (back), NE (back toward viewer right), E (right profile), SE (front toward viewer right). Independently authored directions, NO mirroring. Equal apparent body size and shared elevation in all cells. Stable gold cape fastening/length and weapon dimensions. Neutral upright ready pose. Anatomical right hand owns sword: viewer-left on front, viewer-right on back. Do not change hands, add a shield, helmet or jewellery, redesign the face, change age or body proportions, turn the clothes into plate mail, or alter the weapon. Preserve everything else that already matches the reference.\nPure transparent background, no floor or external shadow, no labels or scenery. Return only the revised painted 2D sprite master sheet. No 3D/PBR/plastic rendering, no portrait camera, no generic fantasy redesign.",
+      "negativePrompt": "Identity/costume mutation, eye-level camera, crouching pose, weapon hand changes, long spiky hair, harsh outlines, 3D/PBR, scenery/background",
+      "status": "current-best",
+      "scores": {
+        "Identity consistency": 5,
+        "Body proportions": 5,
+        "Hair consistency": 4,
+        "Outfit construction": 5,
+        "Weapon consistency": 4,
+        "Handedness": 5,
+        "Camera/elevation": 5,
+        "2D ASTRAEON style": 4
+      },
+      "generationOutput": "/workspace/generated_images/exec-d451cce7-e033-4b89-a8cb-7faf374eb94d.png",
+      "scoreTotal": 37,
+      "criticalFailures": [],
+      "internalGate": "PASS directional identity gate, subject to runtime-scale and modular comparison; no owner approval",
+      "inspection": "Higher crown/shoulder visibility and fringe-obscured face now match the reference camera. Same short silver hair, gold cape fastening, bronze/ivory/teal costume and right-handed narrow sword in all eight directions. Painted contours remain a little clearer than the low-resolution seed; retain for review."
+    },
+    {
+      "candidateId": "male-outfit-legs-01",
+      "dateTime": "2026-10-08T05:13:03.048110+00:00",
+      "prompt": "Technical painted 2D outfit component production. Use attached references: the ORIGINAL approved Swordsman identity first, and its coordinated directional masters second. Produce eight isolated complete RIGHT LEG outfit textures, from high thigh just below the belt to the sole, facing S SW W NW N NE E SE. Four columns by two rows, same canonical ordering as the supplied master. These are clothing/armour components ONLY, with no head, hair, torso, cape, hand or weapon. The component includes the SAME off-white cloth trouser thigh, bronze/gold pointed V knee plate, dark brown bronze-edged greave, dark leather ankle and sturdy rounded brown boot with gold/bronze seams shown in the source. Preserve the original boot design, not new armour. All eight correspond to the exact same outfit leg; only orientation changes. Same elevated approximately 45 degree camera, clearly see top surface of boot. Relaxed straight leg stance, not crouching, no left leg, no extra foot. Compact proportions: thigh about 45 percent of total leg height, calf about 35 percent, ankle/boot about 20 percent. Do NOT create tall elegant anime legs. Paint softly like the source, fine warm light, muted bronze rather than orange or bright polished gold. Retain the source's simple plate and seam treatment; do not add skulls, gems, filigree, spikes or new ornaments. 2D hand-painted game sprite texture, not 3D, not plastic, not vector sticker. All eight complete leg components have one common scale, identical height and aligned foot baseline. Lots of transparent padding between each. Pure transparent background. No labels or floor or shadows.",
+      "negativePrompt": "Different boot design, 3D/PBR, plastic, ornate armour, anime long legs, skin/nudity, two legs, different camera, mirrored missing directions, labels, floor",
+      "sourceReferences": [
+        "../../reference/approved-warrior-seed.png",
+        "../directional-02/generated-master.png"
+      ],
+      "method": "first-party coordinated component texture generation using original costume identity",
+      "status": "rejected",
+      "purpose": "Complete hidden painted boot/greave surfaces needed for grounded Walk; offline pose aid, merged into Outfit at runtime",
+      "ownerApproval": "NOT_APPROVED",
+      "output": "generated-legs.png",
+      "criticalFailures": [
+        "Camera too shallow, visible trouser opening nearly eye-level",
+        "Knee plate too broad and flat; shin decoration more elaborate than approved source"
+      ],
+      "diagnosis": "Isolated-part prompt lost full-body camera and low-resolution costume construction reference. Strengthen approved leg detail and add fixed 45-degree projected geometry guide."
+    },
+    {
+      "candidateId": "male-outfit-legs-02",
+      "dateTime": "2026-10-08T05:18:45.602676+00:00",
+      "purpose": "Repair isolated boot camera/design using approved detail plus fixed projected pose guidance",
+      "method": "first-party coordinated 2D texture generation with identity source and procedural internal geometry guide",
+      "sourceReferences": [
+        "../../reference/approved-warrior-seed.png",
+        "../../reference/approved-leg-detail.png",
+        "pose-guide.png"
+      ],
+      "prompt": "Make the final PAINTED 2D Swordsman outfit leg component sheet. Reference 1 is the ORIGINAL APPROVED Warrior identity. Reference 2 is a close detail of its legs and boots. Reference 3 is ONLY a geometric camera/pose aid showing all eight directions at the required 45-degree elevated camera. Follow the third reference CAMERA, direction layout and component positions, but replace all its geometric surfaces with the exact softly painted clothing/bronze greave/brown boot design in references 1 and 2. This is not a new costume. Eight complete single right-leg outfit parts in top row S SW W NW, bottom row N NE E SE. Same design, common scale and height. Each starts at high trouser thigh and ends at the sole. Source construction: soft off-white trousers, a small branching V-shaped bronze knee guard, DARK grey-brown shin with subtle bronze seams, matte brown leather boot with a rounded brown/bronze toe and small muted warm trim. No oversized flat gold diamond knee plate. No big rivets, shiny studs, white specular spots or new ornaments. Preserve the compact leg proportions and chunky rounded boot in the original cropped detail. Camera is elevated 45 degrees, look DOWN onto the upper trouser opening and the top of the boot, exactly as the schematic pose aid. NOT a low front-facing catalogue view. Paint softly with source-like muted brown/bronze shadows and gently feathered contours. No thick black outline. No PBR or 3D shading. NO body head cape arms or sword, single leg only. Transparent background, no floor, cast shadow, labels or graphics. All eight stand on the same respective row baseline with ample transparent spacing.",
+      "negativePrompt": "3D/PBR, plastic, hard black outline, shallow eye-level camera, oversize diamond plate, bright polished gold, rivets, new ornaments, two legs, other costume, skin, mirrored view",
+      "status": "current-best",
+      "ownerApproval": "NOT_APPROVED",
+      "output": "generated-legs.png",
+      "componentGate": "PASS subject to composited gait inspection",
+      "inspection": "Fixed elevated view now shows trouser opening and boot top. Narrow branching knee plate, dark shin and muted brown rounded toe preserve the original construction at target resolution; no bulky flat diamond/rivets. Direction set coordinated and no mirrored views.",
+      "score": {
+        "sourceConstruction": 4,
+        "directionConsistency": 5,
+        "camera": 5,
+        "paintedStyle": 4,
+        "palette": 5,
+        "scale": 5
+      }
+    },
+    {
+      "candidateId": "walk-lowerbody-05",
+      "dateTime": "2026-10-08T07:33:21.407527+00:00",
+      "status": "rejected",
+      "method": "first-party whole lower-body strip generation from original upright shared motion",
+      "sourceReferences": [
+        "leg-pose-guide.png",
+        "../../reference/approved-leg-detail.png",
+        "../../male/leg-templates/W.png"
+      ],
+      "promptFile": "prompt.txt",
+      "negativePrompt": [
+        "design mutation",
+        "incorrect direction",
+        "3D PBR",
+        "background",
+        "detached parts"
+      ],
+      "purpose": "Separate painted lower-body pose production from locked face/hair/upper costume",
+      "diagnosis": "More distinct support/passing forms, but shoes turn toward screen rather than consistent W; approved knee trim simplified into a large generic chevron; not runtime accepted.",
+      "ownerApproval": "NOT_APPROVED",
+      "rejectionReason": "Incorrect boot facing and knee trim; excessive knee lift reads as a marching/run gesture. Owner clarified ordinary relaxed walk, not raised-knee or running motion."
+    },
+    {
+      "candidateId": "walk-relaxed-06",
+      "dateTime": "2026-10-08T07:50:40.346163+00:00",
+      "status": "rejected",
+      "method": "first-party targeted whole lower-body strip edit using original relaxed pose guidance",
+      "sourceReferences": [
+        "../walk-lowerbody-05/generated-strip.png",
+        "pose-guide.png",
+        "../legs-02/generated-legs.png",
+        "owner-upload:Classes (Female) - Novice.png (benchmark only)"
+      ],
+      "promptFile": "prompt.txt",
+      "negativePrompt": [
+        "copied external poses or pixels",
+        "incorrect camera",
+        "knee design mutation",
+        "high-knee marching",
+        "running",
+        "background"
+      ],
+      "purpose": "Repair ordinary low-clearance walk, fixed W facing and approved knee construction",
+      "rejectionReason": "Still inconsistent boot facing and simplified generic knee trim; component perspective inconsistent with approved camera. Repeats the preceding motion/design failure. Sixth serious first-party Walk attempt; retain evidence of systemic guide adherence limit, not accepted art.",
+      "ownerApproval": "NOT_APPROVED"
+    },
+    {
+      "candidateId": "male-walk-rig-painted-07",
+      "dateTimeUTC": "2026-10-08T10:02:22.280343+00:00",
+      "purpose": "Repair painted leg joins using corrected articulated cycle and stronger RO motion reference",
+      "method": "First-party whole-sheet 2D image editing",
+      "promptFile": "prompt.txt",
+      "negativePrompt": "Identity/costume/hair redesign, run/march/hop, both thighs always forward, generic anime or PBR, new ornaments, per-frame scale/recentering, backgrounds or cast shadows",
+      "sourceReferences": [
+        "painted-pose-guide.png",
+        "../../reference/approved-warrior-seed.png",
+        "articulated-rig-guide.png",
+        "/tmp/ro-side-walk-inspection.png"
+      ],
+      "benchmarkSource": "User-supplied Female Novice PNG, crop (0,272,389,350), nearest-neighbour 4x study",
+      "rigCycle": "../../rig-walk/candidate-03/shared-cycle.json",
+      "status": "rejected",
+      "ownerApproval": "NOT_APPROVED",
+      "reason": "Whole-sheet edit resized/reframed figures and changed row registration; grey/gold background glow contaminates transparency. It does not preserve the target full-canvas locked edit, so no runtime parts are derived from it.",
+      "output": "generated-painted.png",
+      "outputSHA256": "b84679c3b6301b1ba7b68705c6ba8ea36a809b5d799d6fb66c7b59b075e46f05"
+    },
+    {
+      "candidateId": "walk-upright-04",
+      "dateTime": "2026-10-08T07:29:05.723803+00:00",
+      "status": "rejected",
+      "method": "first-party whole-strip generation from character master and original upright pose guide",
+      "sourceReferences": [
+        "../../masters/W.png",
+        "pose-guide.png"
+      ],
+      "promptFile": "prompt.txt",
+      "negativePrompt": [
+        "repeated contacts",
+        "identity drift",
+        "background",
+        "3D",
+        "costume mutation"
+      ],
+      "purpose": "Separate original upright motion guidance from faulty prior painting",
+      "rejectionReason": "Repeated near-leg leading contacts instead of anatomical exchange; knee-armour/costume mutation; hair silhouette drift; lower camera; opaque generated background. Critical failures override any score.",
+      "ownerApproval": "NOT_APPROVED"
+    },
+    {
+      "candidateId": "walk-west-painted-repair-03",
+      "dateTime": "2026-10-08T07:20:35.828808+00:00",
+      "status": "rejected",
+      "method": "first-party imagegen targeted whole-strip editing from corrected shared motion",
+      "sourceReferences": [
+        "motion-guide.png",
+        "../../reference/approved-warrior-seed.png"
+      ],
+      "promptFile": "prompt.txt",
+      "negativePrompt": [
+        "identity redesign",
+        "repeated standing poses",
+        "wrong camera",
+        "3D PBR",
+        "weapon changes",
+        "background"
+      ],
+      "purpose": "Repair painted knees, trouser deformation and boot joins while retaining distinct gait phases",
+      "ownerApproval": "NOT_APPROVED",
+      "rejectionReason": "Owner rejected this strategy again: repaint retains the awkward hinged gait from its source motion. Clear painted boots alone do not establish a convincing walk."
+    },
+    {
+      "candidateId": "walk-west-repair-01",
+      "dateTime": "2026-10-08",
+      "method": "first-party image edit, coordinated whole-cycle sheet",
+      "prompt": "Repair a painted 2D ASTRAEON walking animation as one coordinated sequence. Reference 1 is the authoritative west-facing character identity and camera; reference 2 is an eight-frame motion/layout guide with defects in the lower-body construction. Output eight frames in FOUR columns by TWO rows, chronological row-major order, equally sized cells. All frames face WEST (screen left), same elevated 45-degree camera. Preserve the exact short lavender silver hair, young male face, broad golden scarf/cape, small bronze rounded shoulder armour, dark navy tunic, ivory trousers, teal belt ornament, brown leather boots with bronze V/trident knee guards. Anatomical RIGHT hand holds the SAME straight steel sword angled down-left, same blade length/grip throughout. Repair the two legs into natural walking: frame1 right forward left back, frame2 right planted moving back left lifting, frame3 right under hip left swings forward, frame4 right back left forward, frame5 left forward right back, frame6 left planted right lifting, frame7 left under hip right swings forward, frame8 left back right forward. Both feet correctly attached to their legs and same boot design; stable leg lengths. Subtle weight shift and arm counter-motion. Preserve head/cape/torso scale and location in all cells; no zoom/reframing. Preserve reference 1 soft painted game-sprite style and elevated camera. Transparent alpha background, no numbers, labels, shadows, floor, grid. EXCLUSIONS: no changed person/hair/costume, no 3D/PBR/plastic/anime render, no camera drift, no weapon length change or hand switch, no extra limbs, no exposed bare legs below boots, no detached body fragments, no perspective cell-size changes.",
+      "exclusions": " no changed person/hair/costume, no 3D/PBR/plastic/anime render, no camera drift, no weapon length change or hand switch, no extra limbs, no exposed bare legs below boots, no detached body fragments, no perspective cell-size changes.",
+      "sourceReferences": [
+        "../../masters/W.png",
+        "motion-guide.png"
+      ],
+      "purpose": "Repair west-facing Walk lower-body motion",
+      "status": "rejected",
+      "reason": "Legs remain in the same contact pose instead of alternating; guide lacked explicit anatomical motion authority.",
+      "ownerApproval": "NOT_APPROVED"
+    },
+    {
+      "candidateId": "walk-west-repair-02",
+      "dateTime": "2026-10-08",
+      "method": "first-party image edit with explicit per-phase anatomical guide",
+      "prompt": "Create a coordinated EIGHT-FRAME WALK animation painted 2D sprite sheet, FOUR columns TWO rows chronological row-major, using reference 1 EXACT character appearance and reference 2 EXACT LOWER-BODY POSES. Reference 2 blue is anatomical RIGHT leg, orange is LEFT leg; replace BOTH colored guides with the ivory trousers + dark brown leather greaves/bronze narrow branching V knee guards + rounded leather boots of reference 1. Follow the guide foot placements in EVERY cell, especially cells 1 and 5 have OPPOSITE leading legs. The guide\u2019s white circles locate knees. A complete alternating walking cycle, not eight variations of the same standing pose. Keep the same west/screen-left orientation and elevated45camera throughout. Upper body location, head shape/face/hair/cape/tunic same as reference1, same scale and framing as pose guide cells. Slight natural arm counter-swing, anatomical RIGHT hand holds same long straight steel sword down-left throughout; sword tip remains complete (guide crop cut sword but final must restore it). Young male short silver-lavender hair, gold cape/scarf, bronze rounded shoulder plates, dark tunic, teal belt ornament, ivory trousers, narrow V bronze knee guards and brown boots. No costume changes. Match SOFT painted source edges/style exactly, not PBR. Transparent alpha background. EXCLUSIONS: no labels/numbers/colored guides/grid/floor/background, no 3D look, no enlarged head, no anatomical hand switch, no resized sword, no short bare legs, no duplicated standing frames, no face/hair redesign, no camera changes.",
+      "exclusions": " no labels/numbers/colored guides/grid/floor/background, no 3D look, no enlarged head, no anatomical hand switch, no resized sword, no short bare legs, no duplicated standing frames, no face/hair redesign, no camera changes.",
+      "sourceReferences": [
+        "../../masters/W.png",
+        "pose-guide.png"
+      ],
+      "purpose": "Repair alternating west-facing Walk contacts",
+      "status": "rejected",
+      "reason": "Exact pose guidance still not followed; leading leg remains almost invariant and cape/sword framing drifts. Changed strategy to offline segmented painted limb deformation.",
+      "ownerApproval": "NOT_APPROVED"
+    }
+  ],
+  "meaningfulFirstPartyJobs": 13,
+  "ownerApproval": "NOT_APPROVED",
+  "currentBestMotion": {
+    "Idle": "03",
+    "Walk": "28",
+    "Run": "01",
+    "BasicAttack": "04"
+  },
+  "remainingClips": [
+    "SkillAction",
+    "Hit",
+    "Death",
+    "Guard",
+    "Dash"
+  ],
+  "femaleStatus": "NOT_STARTED"
+}

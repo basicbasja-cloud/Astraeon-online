@@ -1,0 +1,21 @@
+{
+  "candidateId": "walk-upright-04",
+  "dateTime": "2026-10-08T07:29:05.723803+00:00",
+  "status": "rejected",
+  "method": "first-party whole-strip generation from character master and original upright pose guide",
+  "sourceReferences": [
+    "../../masters/W.png",
+    "pose-guide.png"
+  ],
+  "promptFile": "prompt.txt",
+  "negativePrompt": [
+    "repeated contacts",
+    "identity drift",
+    "background",
+    "3D",
+    "costume mutation"
+  ],
+  "purpose": "Separate original upright motion guidance from faulty prior painting",
+  "rejectionReason": "Repeated near-leg leading contacts instead of anatomical exchange; knee-armour/costume mutation; hair silhouette drift; lower camera; opaque generated background. Critical failures override any score.",
+  "ownerApproval": "NOT_APPROVED"
+}

@@ -1,0 +1,31 @@
+{
+  "candidateId": "male-walk-02",
+  "dateTime": "2026-10-08T05:24:01.083810+00:00",
+  "status": "rejected",
+  "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "criticalFailures": [
+    "Component registered by visual sole bounds instead of leg axis: side-view greave does not cover underlying calf consistently",
+    "Boot shape deforms because rigid foot support did not include whole toe/ankle"
+  ],
+  "diagnosis": "Registration error in isolated boot component, not identity generation. Repair the source component root using leg axis and keep the entire boot rigid during pose projection.",
+  "rejectionReason": "Component sole registration and boot proportions were incorrect."
+}

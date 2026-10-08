@@ -1,0 +1,32 @@
+{
+  "candidateId": "male-walk-01",
+  "dateTime": "2026-10-08T05:10:22.252066+00:00",
+  "status": "rejected",
+  "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "criticalFailures": [
+    "Partial boot/calf textures cannot cover independent side-view steps: bare feet visible W",
+    "Incomplete sword extraction leaves floating silver edge fragments NE"
+  ],
+  "diagnosis": "Source directional masters occlude one boot in side views. Splitting those painted pixels cannot recover the missing surfaces; add complete direction-specific painted leg textures. Weapon masks need complete blade-edge coverage.",
+  "strategyChange": "Generate coordinated complete outfit leg textures from original reference, use shared whole-cycle pose and full painted legs rather than split partial pixels.",
+  "rejectionReason": "Incomplete boot extraction and detached sword/skin fragments."
+}

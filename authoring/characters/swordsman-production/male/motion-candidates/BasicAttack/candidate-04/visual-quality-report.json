@@ -1,0 +1,33 @@
+{
+  "gate": "MALE_BASIC_ATTACK_ONLY",
+  "status": "INTERNAL_PASS",
+  "ownerApproval": "NOT_APPROVED",
+  "score": {
+    "identityFidelity": 9,
+    "directionConsistency": 9,
+    "styleFidelity2D": 10,
+    "bodyProportionStability": 9,
+    "costumeStability": 9,
+    "weaponConsistency": 9,
+    "animationReadability": 8,
+    "rootGroundStability": 10,
+    "modularAlignment": 9,
+    "runtimePresentation": 9
+  },
+  "scoreTotal": 91,
+  "scoreMaximum": 100,
+  "criticalFailures": [],
+  "inspection": [
+    "Sixteen shared pose samples in all eight directions",
+    "Normal/quarter-speed actual compositor playback and non-looping hold",
+    "Gameplay-size all-direction captures",
+    "Same-view source pauldron and sleeve/brace repair; no generated replacement armour",
+    "Right-hand sword pivot retained with rigid blade dimensions",
+    "Frame/direction sword occlusion in north-facing wind-up"
+  ],
+  "technicalEvidence": [
+    "browser/results.json",
+    "128 packed composites match the lossless review strip exactly"
+  ],
+  "remainingCharacterGates": "SkillAction, Hit, Death, Guard, Dash; female variant; full in-game action set"
+}

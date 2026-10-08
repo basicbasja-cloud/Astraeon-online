@@ -1,0 +1,26 @@
+{
+  "candidateId": "male-outfit-legs-02",
+  "dateTime": "2026-10-08T05:18:45.602676+00:00",
+  "purpose": "Repair isolated boot camera/design using approved detail plus fixed projected pose guidance",
+  "method": "first-party coordinated 2D texture generation with identity source and procedural internal geometry guide",
+  "sourceReferences": [
+    "../../reference/approved-warrior-seed.png",
+    "../../reference/approved-leg-detail.png",
+    "pose-guide.png"
+  ],
+  "prompt": "Make the final PAINTED 2D Swordsman outfit leg component sheet. Reference 1 is the ORIGINAL APPROVED Warrior identity. Reference 2 is a close detail of its legs and boots. Reference 3 is ONLY a geometric camera/pose aid showing all eight directions at the required 45-degree elevated camera. Follow the third reference CAMERA, direction layout and component positions, but replace all its geometric surfaces with the exact softly painted clothing/bronze greave/brown boot design in references 1 and 2. This is not a new costume. Eight complete single right-leg outfit parts in top row S SW W NW, bottom row N NE E SE. Same design, common scale and height. Each starts at high trouser thigh and ends at the sole. Source construction: soft off-white trousers, a small branching V-shaped bronze knee guard, DARK grey-brown shin with subtle bronze seams, matte brown leather boot with a rounded brown/bronze toe and small muted warm trim. No oversized flat gold diamond knee plate. No big rivets, shiny studs, white specular spots or new ornaments. Preserve the compact leg proportions and chunky rounded boot in the original cropped detail. Camera is elevated 45 degrees, look DOWN onto the upper trouser opening and the top of the boot, exactly as the schematic pose aid. NOT a low front-facing catalogue view. Paint softly with source-like muted brown/bronze shadows and gently feathered contours. No thick black outline. No PBR or 3D shading. NO body head cape arms or sword, single leg only. Transparent background, no floor, cast shadow, labels or graphics. All eight stand on the same respective row baseline with ample transparent spacing.",
+  "negativePrompt": "3D/PBR, plastic, hard black outline, shallow eye-level camera, oversize diamond plate, bright polished gold, rivets, new ornaments, two legs, other costume, skin, mirrored view",
+  "status": "current-best",
+  "ownerApproval": "NOT_APPROVED",
+  "output": "generated-legs.png",
+  "componentGate": "PASS subject to composited gait inspection",
+  "inspection": "Fixed elevated view now shows trouser opening and boot top. Narrow branching knee plate, dark shin and muted brown rounded toe preserve the original construction at target resolution; no bulky flat diamond/rivets. Direction set coordinated and no mirrored views.",
+  "score": {
+    "sourceConstruction": 4,
+    "directionConsistency": 5,
+    "camera": 5,
+    "paintedStyle": 4,
+    "palette": 5,
+    "scale": 5
+  }
+}

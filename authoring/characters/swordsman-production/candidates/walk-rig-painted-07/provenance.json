@@ -1,0 +1,21 @@
+{
+  "candidateId": "male-walk-rig-painted-07",
+  "dateTimeUTC": "2026-10-08T10:02:22.280343+00:00",
+  "purpose": "Repair painted leg joins using corrected articulated cycle and stronger RO motion reference",
+  "method": "First-party whole-sheet 2D image editing",
+  "promptFile": "prompt.txt",
+  "negativePrompt": "Identity/costume/hair redesign, run/march/hop, both thighs always forward, generic anime or PBR, new ornaments, per-frame scale/recentering, backgrounds or cast shadows",
+  "sourceReferences": [
+    "painted-pose-guide.png",
+    "../../reference/approved-warrior-seed.png",
+    "articulated-rig-guide.png",
+    "/tmp/ro-side-walk-inspection.png"
+  ],
+  "benchmarkSource": "User-supplied Female Novice PNG, crop (0,272,389,350), nearest-neighbour 4x study",
+  "rigCycle": "../../rig-walk/candidate-03/shared-cycle.json",
+  "status": "rejected",
+  "ownerApproval": "NOT_APPROVED",
+  "reason": "Whole-sheet edit resized/reframed figures and changed row registration; grey/gold background glow contaminates transparency. It does not preserve the target full-canvas locked edit, so no runtime parts are derived from it.",
+  "output": "generated-painted.png",
+  "outputSHA256": "b84679c3b6301b1ba7b68705c6ba8ea36a809b5d799d6fb66c7b59b075e46f05"
+}

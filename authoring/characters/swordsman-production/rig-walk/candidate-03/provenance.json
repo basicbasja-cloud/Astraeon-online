@@ -1,0 +1,34 @@
+{
+  "candidateId": "candidate-03",
+  "dateTimeUTC": "2026-10-08T08:57:41.941159+00:00",
+  "method": "Original analytical three-dimensional two-bone IK, offline Blender armature rendering; no image-generation job",
+  "purpose": "Prove plausible ordinary human walk before repainting Swordsman",
+  "prompt": null,
+  "negativePrompt": null,
+  "exclusions": [
+    "No reference pixel/pose/timing copying",
+    "No painted character edits before rig gate",
+    "No runtime skeleton",
+    "No gameplay equipment appearance mapping"
+  ],
+  "referenceBenchmarks": [
+    {
+      "fileName": "1-PC-_-Computer-Ragnarok-Online-Non-Playable-Characters-NPCs-Walking-.png",
+      "sha256": "2ebe77e9020ea6509f48b0569a321d464d19df7f74d9fb6cfd3f7e9dfa5774e4",
+      "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+    },
+    {
+      "fileName": "2-PC-_-Computer-Ragnarok-Online-Classes-Female-Novice.png",
+      "sha256": "40a9b0c5dd4caa1d114c7ca3ce28cffff7bbc66bbcf33cd461c3ac9169f09650",
+      "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+    }
+  ],
+  "sourceAuthority": "Owner-approved Warrior identity remains unchanged and is not rendered by this neutral rig",
+  "status": "current-best",
+  "decisionReason": "Corrected rearward thigh extension and rear lift before forward passing; five mechanical checks and all-direction browser review pass. Previous candidate internal pass withdrawn.",
+  "ownerApproval": "NOT_APPROVED",
+  "appliedToPaintedLayers": true,
+  "rigSourceSHA256": "3438f3b4797c41e6a225ad81dd23c1586ce52206e85fb3c854b0a852e569f32b",
+  "referenceUseUpdate": "Owner requests a stronger RO motion reference while keeping the established ASTRAEON character. Rig motion remains an original articulated construction.",
+  "paintedCandidate": "male-walk-27 / separate visual gate"
+}

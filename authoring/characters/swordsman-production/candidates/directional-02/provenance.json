@@ -1,0 +1,28 @@
+{
+  "candidateId": "directional-02",
+  "dateTimeUTC": "2026-10-08T03:17:08.698764+00:00",
+  "purpose": "Targeted directional-master camera and paint fidelity repair",
+  "method": "First-party image_gen edit; identity seed plus previous sheet",
+  "sourceReferences": [
+    "authoring/characters/swordsman-production/reference/approved-warrior-seed.png",
+    "authoring/characters/swordsman-production/candidates/directional-01/generated-master.png"
+  ],
+  "prompt": "Use the FIRST image as the authoritative identity, camera elevation and painted treatment. The SECOND image is the eight-view candidate to repair, not a new design authority. Edit that coordinated sheet, preserving its correct costume construction, eight-view positions, silver hair, gold cape, bronze armour, ivory split tunic, teal accents, narrow sword and anatomical RIGHT handedness.\nTwo targeted corrections throughout all eight views: (1) raise the camera to precisely match the first seed's elevated gameplay view, approximately 45 degrees DOWN at the character. Show more crown/top of shoulders and less vertical chest/face; gently foreshorten the same compact body in projection, without shortening its anatomical legs or making the character crouch. Use the reference's looking-down, mostly fringe-hidden face rather than large full-front anime eyes. Side views must also be viewed from above. (2) Match the first seed's soft painted edges and subtly blended warm shading; reduce the candidate's dark contour outlining and over-crisp spiky hair. Keep the hair's short swept silver/lavender silhouette, not a new haircut.\nExact sheet layout: 4 columns x 2 rows. Top: S (front), SW (front toward viewer left), W (left profile), NW (back toward viewer left). Bottom: N (back), NE (back toward viewer right), E (right profile), SE (front toward viewer right). Independently authored directions, NO mirroring. Equal apparent body size and shared elevation in all cells. Stable gold cape fastening/length and weapon dimensions. Neutral upright ready pose. Anatomical right hand owns sword: viewer-left on front, viewer-right on back. Do not change hands, add a shield, helmet or jewellery, redesign the face, change age or body proportions, turn the clothes into plate mail, or alter the weapon. Preserve everything else that already matches the reference.\nPure transparent background, no floor or external shadow, no labels or scenery. Return only the revised painted 2D sprite master sheet. No 3D/PBR/plastic rendering, no portrait camera, no generic fantasy redesign.",
+  "negativePrompt": "Identity/costume mutation, eye-level camera, crouching pose, weapon hand changes, long spiky hair, harsh outlines, 3D/PBR, scenery/background",
+  "status": "current-best",
+  "scores": {
+    "Identity consistency": 5,
+    "Body proportions": 5,
+    "Hair consistency": 4,
+    "Outfit construction": 5,
+    "Weapon consistency": 4,
+    "Handedness": 5,
+    "Camera/elevation": 5,
+    "2D ASTRAEON style": 4
+  },
+  "generationOutput": "/workspace/generated_images/exec-d451cce7-e033-4b89-a8cb-7faf374eb94d.png",
+  "scoreTotal": 37,
+  "criticalFailures": [],
+  "internalGate": "PASS directional identity gate, subject to runtime-scale and modular comparison; no owner approval",
+  "inspection": "Higher crown/shoulder visibility and fringe-obscured face now match the reference camera. Same short silver hair, gold cape fastening, bronze/ivory/teal costume and right-handed narrow sword in all eight directions. Painted contours remain a little clearer than the low-resolution seed; retain for review."
+}

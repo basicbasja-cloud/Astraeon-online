@@ -1,0 +1,17 @@
+{
+  "candidateId": "male-arms-01",
+  "dateTimeUTC": "2026-10-08T10:34:28.235913+00:00",
+  "purpose": "Complete same-view costume arm surfaces for articulated sword action without stretching the torso",
+  "method": "First-party image-generation reference edit",
+  "sourceReferences": [
+    "canonical-guide.png",
+    "../../reference/approved-warrior-seed.png"
+  ],
+  "prompt": "Edit the attached eight-view ASTRAEON Swordsman reference into a technical RIGHT-ARM component sheet. Preserve each view's exact painted costume design, viewing elevation and pose. Layout four columns, two rows: S SW W NW / N NE E SE. Output ONLY the eight complete anatomical right arms, including the same rounded dark bronze/gold pauldron, ivory upper-arm band, dark sleeve, gold-trimmed leather forearm guard and gloved grip hand. Remove every head, hair, face, torso, cape, leg, sword and background. Complete only small inner arm/elbow surfaces hidden by clothing in the source. Each complete arm stays at the same shoulder/elbow/wrist position as the corresponding source; do not move, enlarge or reframe it. This is lossless authoring material for posing one existing character, not a new costume. Same gentle painted 2D shading and edge treatment; full transparent canvas. Keep all eight orientations distinct; no mirrored views. No sword. No floating labels. No glow, checkerboard, ground or background. No new armour plates or oversized gauntlets. No realism, 3D/PBR, plastic, anime redesign or anatomy exaggeration. The second reference is the identity/costume authority; do not redesign its arm armour.",
+  "negativePrompt": "No costume redesign, new plates, face/body/cape/legs/sword, reframing, mirroring, background, glow, 3D/PBR or plastic",
+  "status": "rejected",
+  "ownerApproval": "NOT_APPROVED",
+  "decisionReason": "Oversized redesigned forearm plates, changed glove construction, reframing and translucent background contamination; not admitted into source or runtime parts",
+  "output": "generated-arms.png",
+  "outputSHA256": "a5b11d490c4e1ddb0860fa4234b182296dbac23e63d40b18a1d524fe5780b614"
+}

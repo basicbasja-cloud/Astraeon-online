@@ -1,0 +1,26 @@
+{
+  "gate": "AUTHORING_RIG_ONLY",
+  "status": "INTERNAL_PASS",
+  "ownerApproval": "NOT_APPROVED",
+  "paintedCharacterGate": "UNRESOLVED / FIRST SHARED-RIG BAKE OWNER-REJECTED",
+  "score": {
+    "distinctStridePhases": 5,
+    "alternatingFootContact": 5,
+    "contactDownPassingUp": 5,
+    "plantedFootStability": 5,
+    "swingFootClearance": 5,
+    "weightTransfer": 4,
+    "silhouetteReadability": 4,
+    "rearwardThighExtension": 5
+  },
+  "scoreTotal": 38,
+  "scoreMaximum": 40,
+  "criticalFailures": [],
+  "mechanicalTests": "5 PASS including the new thigh-extension regression",
+  "browserTests": "64 distinct frames; eight directions; normal/quarter; frame stepping; gameplay-size; mobile PASS",
+  "maxEvaluatedBlenderJointErrorMetres": 7.10896279923711e-07,
+  "maxEvaluatedBlenderHeelToeErrorMetres": 4.0189469255848576e-07,
+  "visualInspection": "All eight phase renders in all directions; W/E hip-line comparison; sagittal contact diagram; sampled browser motion normal/quarter and gameplay-size captures. Rear supporting thigh moves behind hip, rear foot lifts there, then knee passes forward.",
+  "benchmarkComparison": "RO NPC Walking and Female Novice: distinct alternation, extended support, rear lift then folded forward passing, consistent scale and low toe clearance. Identity/costume/style remain ASTRAEON; no reference art is admitted to runtime.",
+  "correctionFrom02": "Original acceptance missed the thigh arc. Step track now spans both sides of the pelvis, and push-off plantar flexion prevents a rear swing reach constraint from crouching the loaded leg."
+}

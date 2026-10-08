@@ -1,0 +1,32 @@
+{
+  "candidateId": "candidate-01",
+  "dateTimeUTC": "2026-10-08T08:30:54.635447+00:00",
+  "method": "Original analytical three-dimensional two-bone IK, offline Blender armature rendering; no image-generation job",
+  "purpose": "Prove plausible ordinary human walk before repainting Swordsman",
+  "prompt": null,
+  "negativePrompt": null,
+  "exclusions": [
+    "No reference pixel/pose/timing copying",
+    "No painted character edits before rig gate",
+    "No runtime skeleton",
+    "No gameplay equipment appearance mapping"
+  ],
+  "referenceBenchmarks": [
+    {
+      "fileName": "1-PC-_-Computer-Ragnarok-Online-Non-Playable-Characters-NPCs-Walking-.png",
+      "sha256": "2ebe77e9020ea6509f48b0569a321d464d19df7f74d9fb6cfd3f7e9dfa5774e4",
+      "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+    },
+    {
+      "fileName": "2-PC-_-Computer-Ragnarok-Online-Classes-Female-Novice.png",
+      "sha256": "40a9b0c5dd4caa1d114c7ca3ce28cffff7bbc66bbcf33cd461c3ac9169f09650",
+      "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+    }
+  ],
+  "sourceAuthority": "Owner-approved Warrior identity remains unchanged and is not rendered by this neutral rig",
+  "status": "superseded",
+  "decisionReason": "Heel roll began after the sampled up phase, weakening the phase distinction.",
+  "ownerApproval": "NOT_APPROVED",
+  "appliedToPaintedLayers": false,
+  "rigSourceSHA256": null
+}

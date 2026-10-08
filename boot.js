@@ -2,7 +2,7 @@
  * imports native court data before consumers capture town content. */
 (async()=>{
 'use strict';
-const version='100';
+const version='101';
 function load(files){return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=file+'?v='+version;script.async=false;script.onload=resolve;script.onerror=()=>reject(Error('Could not load '+file));document.body.appendChild(script)})))}
 try{
  await load(['icons.js','world-view.js','world-content.js']);
@@ -24,6 +24,8 @@ try{
   if(!saved||saved.zone===0){const world=window.AstraeonContent.nativeWorld;let point=saved&&saved.worldLayout===world.layoutId?[saved.x,saved.y]:world.spawn;if(world.spatial.blocked(...point))point=world.safeSpawn;await stream.ensureAt({x:point[0],y:point[1]})}
  }
  if(window.AstraeonSpatialView)await window.AstraeonSpatialView.whenReady;
+ const developmentBody=new URLSearchParams(location.search).get('swordsman');
+ if(developmentBody){await load(['proof/swordsman-development.js']);await window.AstraeonSwordsmanDevelopmentInit(developmentBody)}
  await load(['game.js']);
 }catch(error){const app=document.getElementById('app');app.textContent='The game could not load. Reload to retry. '+error.message;console.error(error)}
 })();
