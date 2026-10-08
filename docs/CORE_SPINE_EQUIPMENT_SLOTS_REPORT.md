@@ -30,7 +30,9 @@ unintended gate click (not player death); the unsuccessful health-only diagnosti
 adapter was removed. Keyboard replay passed the gate and Swordsman itinerary,
 then exposed a stationary Mage projectile blocked by an inn corner. An ordinary
 closer step after bounded misses addresses fixture approach; read
-`browser-loot-approach/` for its latest replay. Finish
+`browser-loot-approach/` for the first closer-step replay. The final fixture uses
+the existing eight-direction input mapper (not screen-sign guesses); read
+`browser-loot-mapped/` for its final replay. Finish
 that replay; rerun unchanged Lifecycle, Action Item and Inventory browser suites
 because their first successful sequence preceded the last identity guard. Read
 `browser-guard-final/` for those fresh results. Node at the final fixture checkpoint
@@ -195,7 +197,11 @@ Range alone does not guarantee a clear muzzle. The fixture now takes an ordinary
 bounded keyboard step closer after a seven-second Basic Attack miss, preserving
 the original movement condition, range/death/reward assertions and overall bound.
 No extra HP mutation, teleport, enemy HP edit or collision bypass is introduced.
-Closer-approach replay remains pending. All failed attempts and snapshots retained.
+The final keyboard step selects the best dot-product direction from the game's
+existing eight input mappings; a screen-sign pair can head south under the
+non-square basis. A focused external Node check confirms the north-east corner
+approach chooses D with world direction (.844,-.537). Final mapped replay remains
+pending. All failed attempts and snapshots retained.
 
 ### Cache / world / audit
 

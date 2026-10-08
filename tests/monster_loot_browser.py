@@ -23,8 +23,10 @@ def close_menu(page):
 def idle(page):page.wait_for_function('!AstraeonQA.snapshot().action')
 def approach_step(page,at,cls,instance_id,event):
     s=qa(page);origin={'x':s['save']['x'],'y':s['save']['y']}
-    timing.append({'class':cls,'event':event,'enemyId':instance_id,'player':origin,'actor':at})
-    dx,dy=at['x']-origin['x'],at['y']-origin['y'];basis=s['view']['basis'];screen_x=dx*basis['xx']+dy*basis['yx'];screen_y=dx*basis['xy']+dy*basis['yy'];buttons=['d' if screen_x>=0 else 'a','s' if screen_y>=0 else 'w']
+    # Pick the closest of the actual eight input directions. Screen-sign pairs
+    # can point south despite a northward target under this non-square basis.
+    buttons=page.evaluate('''({at,origin})=>{const dx=at.x-origin.x,dy=at.y-origin.y,choices=[[['w'],0,-1],[['s'],0,1],[['a'],-1,0],[['d'],1,0],[['w','a'],-1,-1],[['w','d'],1,-1],[['s','a'],-1,1],[['s','d'],1,1]];return choices.map(([keys,x,y])=>{const direction=AstraeonMotion.cameraMovement(x,y,AstraeonView.inverse);return {keys,score:direction.x*dx+direction.y*dy}}).sort((a,b)=>b.score-a.score)[0].keys}''',{'at':at,'origin':origin})
+    timing.append({'class':cls,'event':event,'enemyId':instance_id,'player':origin,'actor':at,'buttons':buttons})
     for button in buttons:page.keyboard.down(button)
     try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
     finally:
