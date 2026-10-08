@@ -1,6 +1,58 @@
-# ASTRAEON — Wayfarer capital, verified art checkpoint v82
+# ASTRAEON — Wayfarer capital, verified art checkpoint v83
 
-## Current verified checkpoint — grounded frontages v82, 8 October 2026
+## Current verified checkpoint — layered painted crowns v83, 8 October 2026
+
+Original World task ACTIVE. Same branch: codex/world-pipeline-v3-proof.
+Verified v82 checkpoint 2932d57 is preserved, with complete native/JSON backup
+at /tmp/astraeon-before-layered-crowns-v83/.
+Source SHA256: 63e757ec6df1f533c77f0b8c2acf93da49cd3b3bf1a0fa5433d3bea953c304b3
+Native SHA256: 686908bb25b4a25454108c588189485a01595e0b6076fb378a234057ed06d496
+Cache 98, generation wayfarer-63e757ec6df1. Camera pitch 45 / yaw 35 / zoom 135 / FOV 15.
+
+Eighteen selected plaza, avenue and river trees have fuller layered middle crowns,
+three profiles and bounded uneven branch tips. Six candidates were rejected for
+insufficient roof clearance. Only existing leaf X/Y coordinates changed. Every
+leaf Z coordinate, face, UV corner, material and full painted foliage image is
+retained. Lower boughs below 2.4m never expand into walking space. Each selected
+crown remains 90 boughs / 720 triangles. Actual roof clearance is at least 0.48m;
+crowns remain separate from neighboring trees. All roots/trunks/collision/tree
+positions, 45,996 other parts, terrain/navigation/services/gameplay and original
+37 houses are preserved. No added triangles, foliage textures or material variants.
+
+All 13 native stages, 96 Node tests, five streaming tests, eight normal gameplay
+captures, camera controls, WebKit touch traversal, cache/offline/save recovery and
+ordinary field return PASS. Captures have zero errors or missing culling pixels.
+Exact transport retains 965,811 authored draw triangles / 34,841,100 attributes,
+75 chunks, 26,457,882 compressed bytes. Full fresh 4096 ground lighting
+retains original alpha and eight sun/four contact samples. Emulated cold
+16755.05 ms / warm 10298.94 ms; 34 unloads / 23 reloads.
+Physical iPhone Safari PENDING. All eight city views and mobile warm/offline/
+return images were manually reviewed against supplied RO3 gate 04:25 and house
+01:40 frames; see the visual review for actual observations and limitations.
+
+Native parity first exhausted the 8GiB memory limit while retaining duplicate
+expanded worlds (exit -9). Diagnostic logs/progress are preserved. The checker
+now compares sequential canonical full-value hashes and retains only the moved
+Hall/court for the unsaved transform and stale-shadow test. The revised check
+passed without rerunning authoring or lighting, and without quality cuts.
+
+Full RO3 visual acceptance remains OPEN. Next original World action: address
+remaining blank/repeated side and gable panels on selected new houses around the
+inward-facing courts, using distinct owned frontage details and original painted
+materials. Preserve original 37 houses, actual doors/uses/routes and the verified
+roof forms/planting/camera. The plainer river crown/water remain on the art backlog.
+Do not widen the six rejected trees into their roof envelopes.
+
+Evidence: docs/review/wayfarer-capital-v83/checkpoint.json, layered-crowns/
+visual-review.json and placement-plan.svg. The comparison page opens the v83
+plaza beside the supplied RO3 gate frame. The one-shot author
+tools/author-capital-layered-crowns-v83.py is APPLIED, with saved
+capital_layered_crowns_v83=1. DO NOT rerun it or older
+applied authors. No native/browser review jobs remain running after the final
+seal. Preserve all diagnostic evidence and the v82 backup; do not reset, clean,
+stash, discard, rebase, force-push or switch the working branch.
+
+## Previous verified checkpoint — grounded frontages v82, 8 October 2026
 
 Original World task ACTIVE. Same branch: codex/world-pipeline-v3-proof.
 v80 and v81 were verified, manually reviewed and pushed as 0cc347f and 602c4fc.
