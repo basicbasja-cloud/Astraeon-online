@@ -12,7 +12,7 @@ balance and visual equipment appearance are not approved by these checks.
 | Starting parent branch | `backbone/inventory-capacity-weight-0.0.1` |
 | Authoritative starting parent HEAD | `621b1cd214218078beb70392f647a48a9bfdef25` |
 | Parent runtime checkpoint, not used as HEAD | `0e4b20f565cdd5cbac9c001bec1295e68f18cca8` |
-| Runtime/test checkpoint | `2c6a7eb06b94f34f1c8ab20ea68d9577245e90c6` |
+| Runtime/test checkpoint | `1315d3f7ff7be9fd5aa6e04cb582c8e840cdba34` |
 | Final HEAD | Documentation successor; resolve `git rev-parse HEAD` on this branch. Exact final/pushed SHA is recorded in final response and external FINAL_HANDOFF.md. |
 
 Fetch/switch/ff-only pull and clean updated parent were confirmed before creating
@@ -87,9 +87,9 @@ visual equipment or UI design. Future visual layers may consume semantic IDs.
 **1309 pass / 0 fail, 21 files: 1155 previous checks + 154 new checks.**
 Evidence `node-identity-final/report.json`. Nine additional edge checks reject
 non-string/empty instance IDs before property coercion or mutation. This focused
-review fix changes no behavior for canonical string IDs. The final runtime SHA
-is the identity-guard successor of the earlier checkpoint; record it in the final
-documentation update and rerun focused browser acceptance after this guard.
+review fix changes no behavior for canonical string IDs. The recorded runtime/test
+checkpoint includes this guard and browser coercion coverage. Final focused browser
+replay is scheduled after the first complete regression sequence and diagnostic retries.
 New tests cover registry/definition validation,
 all-five equip/replace/unequip, wrong/unowned/duplicate references, immutable
 results, callback nesting, combined Stats/Combat, max-resource safety, weighted
@@ -117,13 +117,13 @@ suite once, not repeat attempts. Final previous-suite sequence is pending.
 | --- | --- | --- |
 | equipment_slots_browser.py | 59 | passed |
 | inventory_capacity_browser.py | 63 baseline | initial contact timeout; rerun pending |
-| monster_box_browser.py | 33 baseline | pending |
+| monster_box_browser.py | 33 baseline | initial contact timeout; rerun pending |
 | monster_lifecycle_browser.py | 30 | passed |
-| monster_loot_browser.py | 26 baseline | pending |
+| monster_loot_browser.py | 26 baseline | initial alive-enemy wait timeout; rerun pending |
 | action_item_browser.py | 30 | passed |
 | inventory_browser.py | 15 | passed |
-| action_loadout_browser.py | 17 baseline | pending |
-| combat_browser.py | 21 baseline | pending |
+| action_loadout_browser.py | 17 | passed |
+| combat_browser.py | 21 | passed |
 | skill_tree_browser.py | 11 baseline | pending |
 | progression_browser.py | 7 baseline | pending |
 
@@ -146,8 +146,12 @@ Basic Attack uses bounded authoritative kill state and records retargets. No
 Combat/AI/action change or old browser assertion modification. Focused rerun and
 final stable-runtime replay each passed all 59 groups; focused rerun had no
 retarget observations. Final previous Capacity attempt hit the unchanged 30-second
-learned-contact wait after 17 groups; errors arrays were empty. Rerun/diagnostic
-evidence will be added after completion. Failures are not discarded.
+learned-contact wait after 17 groups; Box hit the same wait after 10 groups.
+Loot passed six groups including learned Combat, then timed out on a 40-second
+alive-enemy wait during its real five-kill itinerary, after a recorded waypoint
+and Basic Attack retarget. All three error arrays were empty. The unchanged suites
+will rerun sequentially with read-only wait-boundary snapshots; no assertions or
+timeouts are altered. Evidence will be added after completion; failures retained.
 
 ### Cache / world / audit
 
