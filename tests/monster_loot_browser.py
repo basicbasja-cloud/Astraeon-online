@@ -21,6 +21,14 @@ def point(page,x,y):
 def close_menu(page):
     if qa(page)['windowName']:page.locator('#modal .close').click()
 def idle(page):page.wait_for_function('!AstraeonQA.snapshot().action')
+def approach_step(page,at,cls,instance_id,event):
+    s=qa(page);origin={'x':s['save']['x'],'y':s['save']['y']}
+    timing.append({'class':cls,'event':event,'enemyId':instance_id,'player':origin,'actor':at})
+    dx,dy=at['x']-origin['x'],at['y']-origin['y'];basis=s['view']['basis'];screen_x=dx*basis['xx']+dy*basis['yx'];screen_y=dx*basis['xy']+dy*basis['yy'];buttons=['d' if screen_x>=0 else 'a','s' if screen_y>=0 else 'w']
+    for button in buttons:page.keyboard.down(button)
+    try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
+    finally:
+        for button in buttons:page.keyboard.up(button)
 def kill_to(page,target_count,cls,preferred_ids=None):
     deadline=time.monotonic()+240;retries=0
     while qa(page)['save']['kills']<target_count:
@@ -43,13 +51,7 @@ def kill_to(page,target_count,cls,preferred_ids=None):
             # A clamped visible "ground" click may be a map gate. Use ordinary
             # directional input first, retaining the bounded movement condition.
             # No position/HP/AI mutation; actual travel is asserted separately.
-            timing.append({'class':cls,'event':'bounded keyboard waypoint for offscreen actor','enemyId':target['rewardIdentity']['monsterInstanceId']})
-            origin={'x':s['save']['x'],'y':s['save']['y']}
-            dx,dy=at['x']-origin['x'],at['y']-origin['y'];basis=s['view']['basis'];screen_x=dx*basis['xx']+dy*basis['yx'];screen_y=dx*basis['xy']+dy*basis['yy'];buttons=['d' if screen_x>=0 else 'a','s' if screen_y>=0 else 'w']
-            for button in buttons:page.keyboard.down(button)
-            try:page.wait_for_function('p=>{const s=AstraeonQA.snapshot().save;return Math.hypot(s.x-p.x,s.y-p.y)>1}',arg=origin,timeout=15000)
-            finally:
-                for button in buttons:page.keyboard.up(button)
+            approach_step(page,at,cls,target['rewardIdentity']['monsterInstanceId'],'bounded keyboard waypoint for offscreen actor')
             continue
         page.mouse.click(x,y-16)
         # Existing warrior attacks stop movement. Approach the actor BEFORE hold.
@@ -59,10 +61,16 @@ def kill_to(page,target_count,cls,preferred_ids=None):
         except PlaywrightTimeout:
             state=qa(page);evidence={'class':cls,'event':'approach timeout','player':{'x':state['save']['x'],'y':state['save']['y'],'hp':state['save']['hp'],'zone':state['save']['zone']},'target':target,'navigation':state['navigation'],'action':state['action'],'click':{'x':x,'y':y-16},'element':page.evaluate('p=>document.elementFromPoint(p.x,p.y)?.outerHTML.slice(0,150)',{'x':x,'y':y-16})};timing.append(evidence);print(json.dumps(evidence),flush=True);raise
         b=page.locator('[data-action="attack"]').bounding_box();page.mouse.move(b['x']+b['width']/2,b['y']+b['height']/2);page.mouse.down()
+        missed=False
         try:page.wait_for_function('(kills)=>AstraeonQA.snapshot().save.kills>kills',arg=s['save']['kills'],timeout=7000)
         except PlaywrightTimeout:
-            retries+=1;print('RETRY Basic Attack',cls,'kills',s['save']['kills'],'target',target['rewardIdentity']['monsterInstanceId'],flush=True);timing.append({'class':cls,'event':'retarget after bounded Basic Attack wait','kills':s['save']['kills'],'enemyId':target['rewardIdentity']['monsterInstanceId']})
+            missed=True;retries+=1;print('RETRY Basic Attack',cls,'kills',s['save']['kills'],'target',target['rewardIdentity']['monsterInstanceId'],flush=True);timing.append({'class':cls,'event':'retarget after bounded Basic Attack wait','kills':s['save']['kills'],'enemyId':target['rewardIdentity']['monsterInstanceId']})
         finally:page.mouse.up()
+        if missed:
+            # Range alone is insufficient at a projectile muzzle blocked by a
+            # corner. Ordinary input approaches after the original bounded miss.
+            idle(page);current=next((e for e in qa(page)['enemies'] if e['rewardIdentity']['monsterInstanceId']==target['rewardIdentity']['monsterInstanceId'] and e['hp']>0),None)
+            if current:approach_step(page,current['lifecycle']['position'],cls,current['rewardIdentity']['monsterInstanceId'],'ordinary closer approach after bounded miss')
     return retries
 
 try:

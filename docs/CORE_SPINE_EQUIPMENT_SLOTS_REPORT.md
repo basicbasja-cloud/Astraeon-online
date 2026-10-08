@@ -27,7 +27,10 @@ runtime comparisons. Fixture-only recovery/readiness and keyboard waypoint
 adapters retain all old assertions, wait predicates and total deadlines. Capacity
 63/0 and Box 33/0 recovery replays passed. Loot's detailed snapshot identifies an
 unintended gate click (not player death); the unsuccessful health-only diagnostic
-adapter was removed. Read `browser-loot-keyboard/` for its latest replay. Finish
+adapter was removed. Keyboard replay passed the gate and Swordsman itinerary,
+then exposed a stationary Mage projectile blocked by an inn corner. An ordinary
+closer step after bounded misses addresses fixture approach; read
+`browser-loot-approach/` for its latest replay. Finish
 that replay; rerun unchanged Lifecycle, Action Item and Inventory browser suites
 because their first successful sequence preceded the last identity guard. Read
 `browser-guard-final/` for those fresh results. Node at the final fixture checkpoint
@@ -130,7 +133,7 @@ suite once, not repeat attempts. Final previous-suite sequence is pending.
 | inventory_capacity_browser.py | 63 | recovery replay passed |
 | monster_box_browser.py | 33 | recovery replay passed |
 | monster_lifecycle_browser.py | 30 | passed |
-| monster_loot_browser.py | 26 baseline | inherited gate-click/alive-enemy timeout; keyboard replay pending |
+| monster_loot_browser.py | 26 baseline | gate fixed; ordinary closer-approach replay pending |
 | action_item_browser.py | 30 | passed |
 | inventory_browser.py | 15 | passed |
 | action_loadout_browser.py | 17 | passed |
@@ -183,7 +186,16 @@ then visible monsters are clicked using authoritative Lifecycle position. Origin
 kill/range/reward/actual-death/travel assertions and total deadlines remain.
 No gameplay collision, input, Combat, AI or gate code changes. The coordinate-only
 attempt also failed at the gate, confirming waypoint handling was required.
-Keyboard replay remains pending. All failed attempts and snapshots are retained.
+Keyboard replay passed the gate/Swordsman itinerary but exhausted the unchanged
+Mage second-itinerary 240-second bound. Read-only evidence showed repeated
+active/recovery cast phases, no new hits, player (21.469,20.050), target
+(26.189,17.427), direction (.874,-.486). Existing `.45` projectile muzzle reaches
+(21.863,19.832), inside the existing field inn collider (22,20) with its .2 margin.
+Range alone does not guarantee a clear muzzle. The fixture now takes an ordinary
+bounded keyboard step closer after a seven-second Basic Attack miss, preserving
+the original movement condition, range/death/reward assertions and overall bound.
+No extra HP mutation, teleport, enemy HP edit or collision bypass is introduced.
+Closer-approach replay remains pending. All failed attempts and snapshots retained.
 
 ### Cache / world / audit
 
