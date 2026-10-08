@@ -14,10 +14,10 @@ for(const [action,c] of Object.entries(configs)){
  const directions={};
  for(const [di,direction] of M.DIRECTIONS.entries()){
   const keys=c.durations.map((durationMs,i)=>{
-   const offset=[0,-2,0,2][i],angle=[-.3,.2,.6,-.1][i];
+   const offset=[0,-2,0,2][i],angle=[-.3,.2,.35,-.1][i];
    // Direction-specific, asymmetric calibration markers. No mirrored views.
    const horizontal=[-15,-13,-18,-13,15,13,18,13][di];
-   const anchors={root:{...root},head:T(64,43+offset),mainHand:T(64+horizontal,75+offset,angle+di*.16),offHand:T(64-horizontal,75-offset,-angle,.9),back:T(64,61+offset,0),waist:T(64,85+offset),footL:T(58,112),footR:T(70,112),weaponTip:T(64+horizontal,51+offset),fxOrigin:T(64,91)};
+   const anchors={root:{...root},head:T(64,43+offset),mainHand:T(64+horizontal,75+offset,angle+[0,-.12,-.25,-.18,0,.18,.25,.12][di]),offHand:T(64-horizontal,75-offset,-angle,.9),back:T(64,61+offset,0),waist:T(64,85+offset),footL:T(58,112),footR:T(70,112),weaponTip:T(64+horizontal,51+offset),fxOrigin:T(64,91)};
    const f={id:`${action}/${direction}/key${i}`,durationMs,role:'referenceKey',referencePhase:`debugKey${i}`,root:{...root},anchors,events:[],poseIntent:{bodyOrientation:direction,limbPhase:'synthetic calibration',footContact:'static markers; not a reference gait',attackPhase:'no sword choreography',silhouette:'geometric fixture'},source:{kind:'SYNTHETIC_ENGINE_FIXTURE'}};
    if(action==='BasicAttack'&&i===1){f.drawProfile='frameCross';f.events=[{name:'debugMarker',authority:'presentation'}]}
    return f;

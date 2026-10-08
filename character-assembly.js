@@ -167,7 +167,9 @@ function createController(compiled,{action=Object.keys(compiled.motion.template.
  });
 }
 async function loadAssembly({motionUrl,appearanceUrl,allowDev=false,assetRoot=new URL('.',document.baseURI),appearance={}}){
- const read=async url=>{const r=await fetch(url);if(!r.ok)throw Error('Cannot load assembly metadata '+url);return r.json()};
+ // Reuse the existing service-worker bypass for all explicit development input.
+ const requestUrl=url=>{const u=new URL(url,document.baseURI);if(allowDev)u.searchParams.set('spriteDev','1');return u.href};
+ const read=async url=>{const r=await fetch(requestUrl(url));if(!r.ok)throw Error('Cannot load assembly metadata '+url);return r.json()};
  const [template,pack]=await Promise.all([read(motionUrl),read(appearanceUrl)]);
  const compiled=compileAssembly(template,pack);
  if((template.status!=='APPROVED'||pack.status!=='APPROVED')&&!allowDev)throw Error('Unapproved assembly requires DEV_ONLY opt-in');
@@ -175,7 +177,7 @@ async function loadAssembly({motionUrl,appearanceUrl,allowDev=false,assetRoot=ne
  const imageFor=id=>images[id]?Promise.resolve():pending[id]??=(new Promise((resolve,reject)=>{
   const a=compiled.pack.atlases[id],im=new Image();
   im.onload=()=>{if(im.naturalWidth!==a.width||im.naturalHeight!==a.height){reject(Error('Atlas dimensions differ '+id));return}images[id]=im;resolve()};
-  im.onerror=()=>reject(Error('Cannot load atlas '+id));im.src=new URL(a.file,assetRoot).href;
+  im.onerror=()=>reject(Error('Cannot load atlas '+id));im.src=requestUrl(new URL(a.file,assetRoot).href);
  })).catch(e=>{delete pending[id];throw e});
  async function preload(selected){
   const ids=new Set();

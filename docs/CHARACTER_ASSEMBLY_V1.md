@@ -96,6 +96,8 @@ loadAssembly preloads selected-part atlases and switches atomically after succes
 Failed/superseded requests retain the previous complete appearance. Loading does
 not own gameplay clocks. Unapproved packs/templates require allowDev:true.
 Source, raster atlas and appearance selection identities can be hashed separately.
+Development metadata and atlases use the existing `spriteDev=1` service-worker
+bypass. Review assets do not consume or evict ordinary gameplay asset caches.
 
 ## Reproducible engineering proof
 
