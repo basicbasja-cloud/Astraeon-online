@@ -1,0 +1,151 @@
+{
+  "revision": 82,
+  "branch": "codex/world-pipeline-v3-proof",
+  "sourceSHA256": "3afd9c05c50595d5886b4b7f77b6fc43c12a1d227573bbb56821199bd2612382",
+  "nativeSHA256": "4d09046b70ffd1e613bdaa977b020af414defc458a816d396623ff97b953cb0e",
+  "cacheVersion": 97,
+  "generation": "wayfarer-3afd9c05c505",
+  "nativeSteps": [
+    {
+      "name": "geometry-delta",
+      "exitCode": 0,
+      "seconds": 14.6
+    },
+    {
+      "name": "prepare-alpha",
+      "exitCode": 0,
+      "seconds": 6.3
+    },
+    {
+      "name": "building-light",
+      "exitCode": 0,
+      "seconds": 193.3
+    },
+    {
+      "name": "foliage-light",
+      "exitCode": 0,
+      "seconds": 79.3
+    },
+    {
+      "name": "ground-light",
+      "exitCode": 0,
+      "seconds": 450.8
+    },
+    {
+      "name": "native-parity",
+      "exitCode": 0,
+      "seconds": 69.7
+    },
+    {
+      "name": "declared-delta",
+      "exitCode": 0,
+      "seconds": 16.1
+    },
+    {
+      "name": "architecture",
+      "exitCode": 0,
+      "seconds": 15.1
+    },
+    {
+      "name": "assembly",
+      "exitCode": 0,
+      "seconds": 18.5
+    },
+    {
+      "name": "density",
+      "exitCode": 0,
+      "seconds": 17.5
+    },
+    {
+      "name": "traversal",
+      "exitCode": 0,
+      "seconds": 5.7
+    },
+    {
+      "name": "schema",
+      "exitCode": 0,
+      "seconds": 158.4
+    },
+    {
+      "name": "node",
+      "exitCode": 0,
+      "seconds": 13.8
+    }
+  ],
+  "runtimeSteps": [
+    {
+      "name": "transport-build",
+      "exitCode": 0,
+      "seconds": 51.5
+    },
+    {
+      "name": "transport-check",
+      "exitCode": 0,
+      "seconds": 46.6
+    },
+    {
+      "name": "streaming-tests",
+      "exitCode": 0,
+      "seconds": 2.1
+    },
+    {
+      "name": "normal-captures",
+      "exitCode": 0,
+      "seconds": 235.0
+    },
+    {
+      "name": "camera-controls",
+      "exitCode": 0,
+      "seconds": 76.1
+    },
+    {
+      "name": "mobile-touch",
+      "exitCode": 0,
+      "seconds": 301.0
+    },
+    {
+      "name": "cache-offline",
+      "exitCode": 0,
+      "seconds": 115.3
+    },
+    {
+      "name": "field-return",
+      "exitCode": 0,
+      "seconds": 67.4
+    }
+  ],
+  "nodeTestsPassed": 96,
+  "streamingTestsPassed": 5,
+  "transport": {
+    "sourceSHA256": "3afd9c05c50595d5886b4b7f77b6fc43c12a1d227573bbb56821199bd2612382",
+    "authoredSourceUnchanged": true,
+    "metadataFieldsExact": true,
+    "solidGeometryExact": true,
+    "floorGeometryExact": true,
+    "collisionElevationSamples": 73728,
+    "chunks": 75,
+    "triangles": 1412547,
+    "compressedBytes": 26452383,
+    "allPayloadDigestsPassed": true,
+    "authoredDrawTrianglesExact": 965811,
+    "drawAttributeValuesExact": 34841100,
+    "signedZero": "numerically normalized"
+  },
+  "ordinaryGameplayViews": 8,
+  "cameraControls": "PASS",
+  "browserErrors": 0,
+  "missingCullingPixels": 0,
+  "mobileEmulation": {
+    "pass": true,
+    "coldMs": 18431.25097101438,
+    "warmMs": 11894.647399021778,
+    "unloads": 34,
+    "reloads": 23,
+    "physicalIPhoneSafari": "PENDING"
+  },
+  "cacheOffline": "PASS",
+  "ordinaryFieldReturn": "PASS",
+  "visualReview": "grounded-frontages/visual-review.json",
+  "completeRO3VisualBaselineMet": false,
+  "originalWorldTask": "ACTIVE"
+}

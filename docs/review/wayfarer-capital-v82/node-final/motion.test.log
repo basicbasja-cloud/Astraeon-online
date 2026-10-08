@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: world heading 0° converges with bounded rotation and forward hit geometry
+ok 1 - world heading 0° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 3.080006
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 0°
+ok 2 - dodge/attack-independent aim 0°
+  ---
+  duration_ms: 1.615943
+  type: 'test'
+  ...
+# Subtest: world heading 17° converges with bounded rotation and forward hit geometry
+ok 3 - world heading 17° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.608442
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 17°
+ok 4 - dodge/attack-independent aim 17°
+  ---
+  duration_ms: 0.514345
+  type: 'test'
+  ...
+# Subtest: world heading 45° converges with bounded rotation and forward hit geometry
+ok 5 - world heading 45° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.419123
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 45°
+ok 6 - dodge/attack-independent aim 45°
+  ---
+  duration_ms: 0.264813
+  type: 'test'
+  ...
+# Subtest: world heading 90° converges with bounded rotation and forward hit geometry
+ok 7 - world heading 90° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.468833
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 90°
+ok 8 - dodge/attack-independent aim 90°
+  ---
+  duration_ms: 0.253864
+  type: 'test'
+  ...
+# Subtest: world heading 135° converges with bounded rotation and forward hit geometry
+ok 9 - world heading 135° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.378669
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 135°
+ok 10 - dodge/attack-independent aim 135°
+  ---
+  duration_ms: 0.324405
+  type: 'test'
+  ...
+# Subtest: world heading 180° converges with bounded rotation and forward hit geometry
+ok 11 - world heading 180° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.277149
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 180°
+ok 12 - dodge/attack-independent aim 180°
+  ---
+  duration_ms: 0.638875
+  type: 'test'
+  ...
+# Subtest: world heading 225° converges with bounded rotation and forward hit geometry
+ok 13 - world heading 225° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.279735
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 225°
+ok 14 - dodge/attack-independent aim 225°
+  ---
+  duration_ms: 0.260656
+  type: 'test'
+  ...
+# Subtest: world heading 247° converges with bounded rotation and forward hit geometry
+ok 15 - world heading 247° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.231546
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 247°
+ok 16 - dodge/attack-independent aim 247°
+  ---
+  duration_ms: 0.164498
+  type: 'test'
+  ...
+# Subtest: world heading 270° converges with bounded rotation and forward hit geometry
+ok 17 - world heading 270° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.217859
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 270°
+ok 18 - dodge/attack-independent aim 270°
+  ---
+  duration_ms: 0.665882
+  type: 'test'
+  ...
+# Subtest: world heading 315° converges with bounded rotation and forward hit geometry
+ok 19 - world heading 315° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.174577
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 315°
+ok 20 - dodge/attack-independent aim 315°
+  ---
+  duration_ms: 0.114707
+  type: 'test'
+  ...
+# Subtest: world heading 359° converges with bounded rotation and forward hit geometry
+ok 21 - world heading 359° converges with bounded rotation and forward hit geometry
+  ---
+  duration_ms: 0.315534
+  type: 'test'
+  ...
+# Subtest: dodge/attack-independent aim 359°
+ok 22 - dodge/attack-independent aim 359°
+  ---
+  duration_ms: 0.113888
+  type: 'test'
+  ...
+# Subtest: camera-relative input preserves arbitrary angles, diagonal normalization and analog speed
+ok 23 - camera-relative input preserves arbitrary angles, diagonal normalization and analog speed
+  ---
+  duration_ms: 0.558788
+  type: 'test'
+  ...
+# Subtest: stance feet remain planted in world space while the root moves
+ok 24 - stance feet remain planted in world space while the root moves
+  ---
+  duration_ms: 0.910496
+  type: 'test'
+  ...
+# Subtest: teleport resets contacts without inventing movement; elevation is separate
+ok 25 - teleport resets contacts without inventing movement; elevation is separate
+  ---
+  duration_ms: 0.810772
+  type: 'test'
+  ...
+# Subtest: turning uses the shortest path across 359° / 0°
+ok 26 - turning uses the shortest path across 359° / 0°
+  ---
+  duration_ms: 0.308203
+  type: 'test'
+  ...
+# Subtest: movement distance and gait are independent of update rate
+ok 27 - movement distance and gait are independent of update rate
+  ---
+  duration_ms: 0.993991
+  type: 'test'
+  ...
+# Subtest: projectile collision uses swept travel and respects facing
+ok 28 - projectile collision uses swept travel and respects facing
+  ---
+  duration_ms: 0.54896
+  type: 'test'
+  ...
+# Subtest: authored dungeon rooms unlock through contiguous traversable passages
+ok 29 - authored dungeon rooms unlock through contiguous traversable passages
+  ---
+  duration_ms: 1.711369
+  type: 'test'
+  ...
+# Subtest: boss sweep excludes the rear, charge lanes exclude safe flanks, and seals lock their target
+ok 30 - boss sweep excludes the rear, charge lanes exclude safe flanks, and seals lock their target
+  ---
+  duration_ms: 0.329863
+  type: 'test'
+  ...
+# Subtest: swept hostile travel catches contact between frames and misses a dodge beside the lane
+ok 31 - swept hostile travel catches contact between frames and misses a dodge beside the lane
+  ---
+  duration_ms: 0.118843
+  type: 'test'
+  ...
+# Subtest: supply discoveries award once and remain claimed after save reload
+ok 32 - supply discoveries award once and remain claimed after save reload
+  ---
+  duration_ms: 0.811849
+  type: 'test'
+  ...
+# Subtest: legacy saves retain progression and class IDs while missing fields gain safe defaults
+ok 33 - legacy saves retain progression and class IDs while missing fields gain safe defaults
+  ---
+  duration_ms: 0.84171
+  type: 'test'
+  ...
+# Subtest: malformed save values cannot create invalid HUD indices, resources or coordinates
+ok 34 - malformed save values cannot create invalid HUD indices, resources or coordinates
+  ---
+  duration_ms: 0.278688
+  type: 'test'
+  ...
+# Subtest: click navigation routes through authored passages without crossing walls or cutting corners
+ok 35 - click navigation routes through authored passages without crossing walls or cutting corners
+  ---
+  duration_ms: 14.555232
+  type: 'test'
+  ...
+# Subtest: click navigation can approach a sealed gate within the interaction radius
+ok 36 - click navigation can approach a sealed gate within the interaction radius
+  ---
+  duration_ms: 2.895485
+  type: 'test'
+  ...
+# Subtest: player projectiles stop at walls before damaging a target behind them
+ok 37 - player projectiles stop at walls before damaging a target behind them
+  ---
+  duration_ms: 0.296904
+  type: 'test'
+  ...
+# Subtest: projectile muzzle offset cannot skip a thin adjacent wall
+ok 38 - projectile muzzle offset cannot skip a thin adjacent wall
+  ---
+  duration_ms: 0.150032
+  type: 'test'
+  ...
+# Subtest: Golden streets clear physical foundations across their authored width
+ok 39 - Golden streets clear physical foundations across their authored width
+  ---
+  duration_ms: 101.930804
+  type: 'test'
+  ...
+# Subtest: painted attack motion anticipates contact and settles during recovery
+ok 40 - painted attack motion anticipates contact and settles during recovery
+  ---
+  duration_ms: 0.63075
+  type: 'test'
+  ...
+# Subtest: responsive projection and inverse pair remain exact in all viewports
+ok 41 - responsive projection and inverse pair remain exact in all viewports
+  ---
+  duration_ms: 0.414534
+  type: 'test'
+  ...
+# Subtest: single-layer nodes preserve base identity, targeting and class-specific compatibility
+ok 42 - single-layer nodes preserve base identity, targeting and class-specific compatibility
+  ---
+  duration_ms: 0.85114
+  type: 'test'
+  ...
+# Subtest: node contact models distinguish burn ignition, frost, shocks, pull, Qi and plasma
+ok 43 - node contact models distinguish burn ignition, frost, shocks, pull, Qi and plasma
+  ---
+  duration_ms: 0.279573
+  type: 'test'
+  ...
+# Subtest: Tempest pulses stay at the authored target and clear when a zone changes
+ok 44 - Tempest pulses stay at the authored target and clear when a zone changes
+  ---
+  duration_ms: 0.531547
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 195.532647

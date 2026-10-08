@@ -2,7 +2,7 @@
  * imports native court data before consumers capture town content. */
 (async()=>{
 'use strict';
-const version='96';
+const version='97';
 function load(files){return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=file+'?v='+version;script.async=false;script.onload=resolve;script.onerror=()=>reject(Error('Could not load '+file));document.body.appendChild(script)})))}
 try{
  await load(['icons.js','world-view.js','world-content.js']);
