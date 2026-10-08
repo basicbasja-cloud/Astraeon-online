@@ -12,7 +12,7 @@ balance and visual equipment appearance are not approved by these checks.
 | Starting parent branch | `backbone/inventory-capacity-weight-0.0.1` |
 | Authoritative starting parent HEAD | `621b1cd214218078beb70392f647a48a9bfdef25` |
 | Parent runtime checkpoint, not used as HEAD | `0e4b20f565cdd5cbac9c001bec1295e68f18cca8` |
-| Runtime/test checkpoint | `aeb193157d4a38271cd51eea0e7f10a46422f279` (includes final fixture setup) |
+| Runtime/test checkpoint | `645ddc77a26f0005c9c9cbcb490505856f76162b` (final source/test checkpoint) |
 | Final HEAD | Documentation successor; resolve `git rev-parse HEAD` on this branch. Exact final/pushed SHA is recorded in final response and external FINAL_HANDOFF.md. |
 
 Fetch/switch/ff-only pull and clean updated parent were confirmed before creating
@@ -20,24 +20,13 @@ the requested branch. No stale-SHA reset, unrelated merge, history rewrite or PR
 Core checkpoint `8f3401f` and identity/browser checkpoint `1315d3f` precede
 the stable runtime/test checkpoint above.
 
-**Verification in progress:** Node 1309/0 and final five-slot browser 59/0 pass.
-Every previous suite has run; three inherited encounter-fixture failures were
-reproduced with unchanged sources and read-only diagnostics, including parent
-runtime comparisons. Fixture-only recovery/readiness and keyboard waypoint
-adapters retain all old assertions, wait predicates and total deadlines. Capacity
-63/0 and Box 33/0 recovery replays passed. Loot's detailed snapshot identifies an
-unintended gate click (not player death); the unsuccessful health-only diagnostic
-adapter was removed. Keyboard replay passed the gate and Swordsman itinerary,
-then exposed a stationary Mage projectile blocked by an inn corner. An ordinary
-closer step after bounded misses addresses fixture approach; read
-`browser-loot-approach/` for the first closer-step replay. The final fixture uses
-the existing eight-direction input mapper (not screen-sign guesses); read
-`browser-loot-mapped/` for its final replay. Finish
-that replay; rerun unchanged Lifecycle, Action Item and Inventory browser suites
-because their first successful sequence preceded the last identity guard. Read
-`browser-guard-final/` for those fresh results. Node at the final fixture checkpoint
-already passed 1309/0 (`node-final-verified/`). Finish final audit/documentation
-and ordinary push. Acceptance is not declared yet.
+**Verification complete for this foundation:** Node **1309/0**, functional
+browser **312/0** (253 retained + 59 new), cache/offline and world schemas pass.
+Final mapped Loot and fresh Lifecycle/Action Item/Inventory replays pass. Original
+assertions are retained; inherited encounter-fixture failures and diagnostics are
+recorded below. All source changes are committed at the runtime/test checkpoint;
+the final commit is this verified documentation successor. Push only this branch
+normally; confirm local/remote equality and clean status. No PR/merge.
 
 ## Architecture / integration report
 
@@ -99,7 +88,8 @@ visual equipment or UI design. Future visual layers may consume semantic IDs.
 `python tools/run-node-checks.py --node D:\Node\node.exe`
 
 **1309 pass / 0 fail, 21 files: 1155 previous checks + 154 new checks.**
-Evidence `node-identity-final/report.json`. Nine additional edge checks reject
+Final evidence `node-checkpoint-645ddc7/report.json`; earlier identity run
+`node-identity-final/report.json`. Nine additional edge checks reject
 non-string/empty instance IDs before property coercion or mutation. This focused
 review fix changes no behavior for canonical string IDs. The recorded runtime/test
 checkpoint includes this guard and browser coercion coverage. Final focused browser
@@ -127,17 +117,21 @@ comparison retains every original assertion and wait predicate/total deadline.
 Disposable Swordsman and Mage, local Chrome, ordinary Bag controls, real learned
 Skill/Basic Attack encounters and isolated fixtures. Final five-slot suite passed
 **59 groups**, no console/page/runtime/HTTP errors. Counts count each successful
-suite once, not repeat attempts. Final previous-suite sequence is pending.
+suite once, not repeat attempts. **312 passing functional groups / 0 failures:
+253 previous + 59 new.**
+All eleven functional suites and cache/offline ran; repeat attempts are not added
+to totals. Lifecycle, Action Item and Inventory were replayed after the final
+identity guard; current final Loot fixture was replayed separately.
 
 | Suite | Pass groups | Status |
 | --- | --- | --- |
 | equipment_slots_browser.py | 59 | passed |
 | inventory_capacity_browser.py | 63 | recovery replay passed |
 | monster_box_browser.py | 33 | recovery replay passed |
-| monster_lifecycle_browser.py | 30 | passed |
-| monster_loot_browser.py | 26 baseline | gate fixed; ordinary closer-approach replay pending |
-| action_item_browser.py | 30 | passed |
-| inventory_browser.py | 15 | passed |
+| monster_lifecycle_browser.py | 30 | fresh final replay passed |
+| monster_loot_browser.py | 26 | final mapped replay passed |
+| action_item_browser.py | 30 | fresh final replay passed |
+| inventory_browser.py | 15 | fresh final replay passed |
 | action_loadout_browser.py | 17 | passed |
 | combat_browser.py | 21 | passed |
 | skill_tree_browser.py | 11 | passed |
@@ -200,8 +194,12 @@ No extra HP mutation, teleport, enemy HP edit or collision bypass is introduced.
 The final keyboard step selects the best dot-product direction from the game's
 existing eight input mappings; a screen-sign pair can head south under the
 non-square basis. A focused external Node check confirms the north-east corner
-approach chooses D with world direction (.844,-.537). Final mapped replay remains
-pending. All failed attempts and snapshots retained.
+approach chooses D with world direction (.844,-.537). First closer-step replay
+and final mapped replay each passed **26/0**. Final
+mapped evidence records eight ordinary offscreen waypoints, one bounded Mage
+miss and one closer approach; no runtime/HTTP errors. Fresh final Lifecycle
+30/0, Action Item 30/0 and Inventory 15/0 replays also pass. All failed attempts
+and snapshots remain retained; no live failure is concealed by the totals.
 
 ### Cache / world / audit
 
@@ -211,7 +209,7 @@ pending. All failed attempts and snapshots retained.
 - World validator passed Terrain, Navigation, TownObject and AnimationManifest.
   Initial missing-jsonschema environment error was corrected with existing
   external dependencies; no repository change.
-- Runtime diff check passed; final audit pending. Source audit verifies 23 stable
+- Final `git diff --check` and source audit passed. Source audit verifies 23 stable
   core files unchanged after Git newline normalization, original browser assertions
   and waits retained, Node declarations retained, visual/world paths untouched.
 
@@ -259,10 +257,39 @@ tests/monster_loot_browser.py (fixture setup only; all prior assertions retained
 ## Evidence / final Git state
 
 External evidence `D:\Astraeon\backbone-verification\equipment-slots`:
-node-final/report.json; browser-final/runner.json and suite logs/reports;
+node-checkpoint-645ddc7/report.json; verified-manifest.json;
+browser-final/runner.json and initial suite logs/reports;
+browser-identity-final/; browser-recovery-fixture/ (Capacity/Box passes and retained
+failed health-only Loot attempt); parent-capacity/ and parent-loot/;
+browser-loot-authoritative/ (coordinate-only failure), browser-loot-keyboard/
+(retained corner failure), browser-loot-approach/ (26 pass), browser-loot-mapped/
+(final 26 pass), browser-guard-final/ (fresh three-suite passes);
 browser-focused/report.json (initial timeout); browser-focused-retarget/report.json;
 world-validation.log; source-audit.json; final FINAL_HANDOFF.md. Repository
 source/tests/contract/report suffice to resume without session memory.
+
+At verified runtime/test checkpoint, `git status --short` is empty. Log below
+is the source checkpoint; final documentation/pushed HEAD is its successor and
+its exact final log/status are recorded in final response / external handoff.
+
+```text
+git status --short
+(empty)
+
+git log --oneline -12 645ddc7
+645ddc7 Select acceptance approach keys through the existing eight-direction input mapper
+d3305b1 Approach blocked ranged encounters through ordinary input in loot acceptance
+3014ab5 Record final fixture checkpoint and remaining runtime verification
+aeb1931 Use ordinary keyboard waypoints to avoid inherited loot fixture gate clicks
+dc058c1 Stabilize inherited encounter fixtures using authoritative recovery and bounded health checks
+d73e169 Record identity checkpoint and retained browser timing evidence
+1315d3f Cover instance identity rejection in two-class equipment browser smoke
+0f4c0fb Reject equipment instance identity coercion before slot publication
+0e45913 Document equipment slot contracts migration and verification checkpoint
+2c6a7eb Expose five owned equipment slots in Bag and isolated acceptance tooling
+8f3401f Add five-slot equipment contracts and canonical reference authority
+621b1cd Finalize verified inventory capacity and weight handoff
+```
 
 After documentation commit and ordinary push:
 
