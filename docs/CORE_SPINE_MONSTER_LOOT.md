@@ -1,7 +1,7 @@
 # Core Spine — Monster Drop / Loot Resolution
 
 Patch **0.0.1 foundation only**. Save version **5**; current boot/page/cache
-version **90**. This continues the Action Item foundation. Patch 0.0.1 and the
+version **91**. This continues the Action Item foundation. Patch 0.0.1 and the
 Core Spine are **not complete**.
 
 ## Responsibilities
@@ -266,6 +266,16 @@ suites and cache/world validators as listed in README. Keep existing assertions.
 See [verified handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md) for commands, results,
 smoke evidence and recorded targeting observations. No art acceptance is claimed.
 
-Recommended next Backbone task: **Monster Lifecycle / AI foundation**, consuming
-registration → authoritative HP-zero death → cached claim → commit, with no need
-to understand inventory internals, serial allocation, RNG grammar or save migration.
+## Monster Lifecycle integration extension
+
+The [Lifecycle foundation](CORE_SPINE_MONSTER_LIFECYCLE.md) now owns explicit AI
+state, target/attack intents, home leash/return and per-life respawn. It consumes
+registration → authoritative HP-zero death → cached claim → commit, then calls
+this owner's `newLife` at deterministic respawn readiness. It does not change
+tables, RNG, claims, inventory internals or reward formulas. Loading/player death
+invalidate offensive leases; travel retires both owners. Committed rewards persist
+through unchanged version 5; AI/death linkage stays transient. Current cache is 91.
+See [lifecycle verification](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md).
+
+Recommended next Backbone task: **Monster Box item/opening foundation**, with a
+separate content-table contract and existing canonical ownership.

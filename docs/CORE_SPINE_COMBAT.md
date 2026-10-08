@@ -122,12 +122,13 @@ neutral configured DEF/MDEF/FLEE/resistance data unless m.combatStats is provide
 this is a compatibility adapter, not authored monster balance. Timelines,
 animations, hit stop, shapes, movement, VFX and camera settings are unchanged.
 
-Incoming enemy attacks retain hurtPlayer and the existing timed guard/plate
-mechanics. That orchestration uses invulnerability/time and historically applies
-guard before plate; replacing it would change behavior beyond this foundation.
-A future incoming adapter should snapshot defender stats and guard state, call
-the same resolver, consume mitigation, then use the existing hurt/death/respawn
-presentation. No claim that incoming enemies already consume DEF/MDEF here.
+Incoming enemy contacts now use the [Monster Lifecycle adapter](CORE_SPINE_MONSTER_LIFECYCLE.md)
+to snapshot defender Stats and guard state and call this same resolver. Existing
+hurtPlayer invulnerability and hurt/death/respawn presentation remain. Guard uses
+configured mitigation after defense; Plate DEF reaches Stats once, without its
+historical additional flat subtraction. This deliberately changes that legacy
+incoming order and activates DEF, with provisional damage coefficients. AI emits
+owned attack intents and calculates no alternate damage formula.
 Burn/ignite/chain/delayed Node proc damage keeps its existing calculation; the
 shared hit function now applies its numeric result through the safe HP helper.
 Action-area spirit healing remains its original shape effect. The candidate
@@ -172,7 +173,7 @@ Normal URLs expose neither CombatDev nor ProgressionDev mutation APIs.
 
 Run the documented static server, full Node suite, combat_browser.py,
 skill_tree_browser.py, progression_browser.py, cache_resume.py and world validator.
-Cache/boot/page version 90 includes the three combat modules for offline boot.
+Cache/boot/page version 91 includes the three combat modules for offline boot.
 Browser tests cover the actual playable classes, ranked Node contacts, passive
 stats, deterministic miss/dodge/crit/defense, HP/death/respawn, progression/rewards,
 save parity and future-save preservation. See CORE_SPINE_COMBAT_REPORT.md for the
@@ -195,4 +196,4 @@ monster rewards using the existing canonical ownership and Progression/Stats
 contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
 before synchronous publication. Existing formulas, learned skills, action slots,
 Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
-boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+boot/page/cache version is now 91. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).

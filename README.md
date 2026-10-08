@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 90. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 91. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -54,8 +54,9 @@ immutable resolver with injected RNG, separate Perfect Dodge, CRIT, DEF/MDEF,
 penetration, resistance and mitigation. Open `tools/combat.html` for fixture
 inspection. Future saves are blocked without overwriting storage; Stat refunds
 retain actual paid expenditure across cost changes. All combat coefficients are
-provisional; incoming enemy/status orchestration and animation timing retain their
-existing behavior. See [combat contracts](docs/CORE_SPINE_COMBAT.md) and
+provisional; incoming enemy contacts now use the same resolver through the
+Monster Lifecycle adapter. Status/presentation remain separate. See
+[combat contracts](docs/CORE_SPINE_COMBAT.md) and
 [verification report](docs/CORE_SPINE_COMBAT_REPORT.md).
 
 All eight learned skill slots now share explicit-time eligibility, authored
@@ -82,10 +83,21 @@ monster deaths to validated immutable tables, injected RNG, pure resolution and
 owned per-life claims. Mixed stack/ItemInstance/gold rewards commit once through
 canonical ownership; Base/Job EXP and quest credit retain their existing
 separate authorities. Current direct-on-death rewards and prototype kill cycles
-are retained. No final drop balance, ground-loot UI, Monster Box opening or full
-Monster Lifecycle/AI is implemented. `/tools/monster-loot.html` is an isolated
+are retained. Final drop balance, ground-loot UI and Monster Box opening remain
+future work. `/tools/monster-loot.html` is an isolated
 in-memory sandbox. See [verified loot handoff](docs/CORE_SPINE_MONSTER_LOOT_REPORT.md).
 Patch 0.0.1 and Core Spine remain incomplete.
+
+The [Monster Lifecycle foundation](docs/CORE_SPINE_MONSTER_LIFECYCLE.md) adds
+immutable mechanical definitions, explicit spawn/runtime/life identity and
+deterministic detection, target ownership, chase/attack intents, home leash,
+return, authoritative death and per-life respawn. Existing navigation consumes
+movement intents; shared Combat applies enemy contacts and existing Loot commits
+death rewards once. Four generic mechanical fixtures are provisional. AI state
+is transient; save version stays 5. `/tools/monster-lifecycle.html` is an isolated
+in-memory clock/target/death/respawn sandbox. See
+[verified lifecycle handoff](docs/CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md).
+Final monster content, balance, navigation and presentation remain future work.
 
 ## Verification
 
@@ -93,12 +105,13 @@ The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **90**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **91**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/monster_lifecycle_browser.py --url http://127.0.0.1:8011
 python tests/monster_loot_browser.py --url http://127.0.0.1:8011
 python tests/action_item_browser.py --url http://127.0.0.1:8011
 python tests/inventory_browser.py --url http://127.0.0.1:8011

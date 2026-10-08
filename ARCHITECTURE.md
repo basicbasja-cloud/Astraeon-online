@@ -75,19 +75,22 @@ they do not supersede the current spatial architecture.
 | environment.js + environment-metadata.js | Authored field/forest paths, painted props, ground patterns and segmented ruin walls |
 | navigation.js | Bounded half-unit A* grid, wall-safe path simplification; never rendered as terrain |
 | enemy-combat.js | Pure species/boss attack plans, telegraph geometry and swept charge contact |
+| monster-lifecycle-definitions.js | Frozen mechanical definitions, legacy coefficient adapters and four provisional fixtures |
+| monster-lifecycle.js | Explicit-time AI states, target/attack ownership, home leash, death/Loot handoff and per-life respawn |
+| monster-combat-runtime.js | Enemy contact adapter into shared Combat Resolution and canonical Player HP application |
 | exploration.js + save-state.js | Persistent supply/herb claims and backwards-compatible save normalization |
 | icons.js | Original SVG control/navigation symbols |
 | scene.js | Cached authored paving, original environment sprites, depth fade and animated fountain/lamps |
 | world-systems.js | Ambient walkers, gradual atmosphere parameters, quality presets and original WebAudio synthesis |
 | action-item-config.js + item-effects.js + action-item.js + action-item-runtime.js | Frozen executable consumables, validated resource previews, owned prepare/commit tickets and explicit-time item/function/global clocks |
-| game.js | Existing menus, progression adapters, movement, enemy AI, reactions, save, camera and presentation orchestration |
+| game.js | Existing menus, progression adapters, navigation/AI intent dispatch, reactions, save, camera and presentation orchestration |
 | qa.html | Same live iframe in four actual CSS viewport sizes; frame timing and state samples through validated postMessage |
 
 ## Coordinate contract
 Ground uses ordinary Cartesian x/y with separate z elevation. The authored town includes stairs and terraces. Its shared camera profile governs perspective projection, floor rays, actor directions and camera-relative input; world-space scenery and upright actors share one depth buffer. Other zones retain the paired affine projection and projected-depth sorting. The camera starts at the player and follows with exponential time-based smoothing.
 
 ## Simulation boundary
-`combat.js` has no renderer, DOM, audio, storage or clock dependency. Caller supplies simulation time, action origin, aim and entities, then consumes contact/release events. Paused menus and hidden tabs freeze simulation time. Dodge can cancel an action; cooldowns remain spent. Impact presentation does not determine damage timing. Enemy attack geometry, navigation, save defaults and world claims now have independent pure modules. Progression/stat authority now lives in the [Core Spine foundation modules](docs/CORE_SPINE_PROGRESSION.md). Movement/AI orchestration still lives inside `game.js`; moving those into an `IGameSimulation` adapter is outstanding. No server-authority or prediction claim.
+`combat.js` has no renderer, DOM, audio, storage or clock dependency. Caller supplies simulation time, action origin, aim and entities, then consumes contact/release events. Paused menus and hidden tabs freeze simulation time. Dodge can cancel an action; cooldowns remain spent. Impact presentation does not determine damage timing. Enemy attack geometry, navigation, save defaults and world claims now have independent pure modules. Progression/stat authority now lives in the [Core Spine foundation modules](docs/CORE_SPINE_PROGRESSION.md). Monster Lifecycle owns AI decisions; `game.js` dispatches its intents through existing navigation/contact adapters. Extracting wider simulation orchestration into an `IGameSimulation` adapter is outstanding. No server-authority or prediction claim.
 
 Current Potion input and Bag Potion/Ration use the separate
 [Action Item execution contract](docs/CORE_SPINE_ACTION_ITEMS.md). The private
@@ -110,8 +113,32 @@ its former parallel kill grants are removed. Claims are transient and exact-once
 new life/registered replacement actors can reward again. Save version stays 5.
 Current prototype material cycles, gold, EXP, quest and direct-to-inventory
 behavior remain. Loot owns no AI, respawn timer, pickup presentation, final balance,
-capacity policy or Monster Box opening. Five new modules are precached with v90.
+capacity policy or Monster Box opening. Modules are precached with current v91;
+unchanged Loot v90 cache URLs remain explicitly precached for compatibility.
 See [verified handoff](docs/CORE_SPINE_MONSTER_LOOT_REPORT.md).
+
+## Monster lifecycle / AI boundary
+
+The [Lifecycle contract](docs/CORE_SPINE_MONSTER_LIFECYCLE.md) separates immutable
+mechanical definitions, spawn/home data and runtime actors. Existing Loot assigns
+instance/life identity. Private lifecycle state records detection/acquisition,
+chase, attack, home leash, return, death and respawn transitions using explicit
+simulation time. Movement and owned attack intents are immutable outputs; no
+inventory, damage formula, navigation or sprite logic lives in the core.
+
+Enemy contacts now enter shared Combat Resolution with current defender Stats;
+guard mitigation and Plate DEF apply once. This replaces the historical incoming
+guard/flat-plate path, with provisional coefficients. HP-zero death hands off to
+unchanged Loot once; respawn advances that owner's life generation. Return retains
+HP. Field replacements/per-life respawns share a provisional bounded population.
+Dungeon actors wait for population retirement. Loading/player death immediately
+invalidate offensive leases; successful travel retires old registrations.
+
+Four generic fixtures prove three normal profiles and one tougher profile, without
+new art/content approval. AI and pending attacks remain transient on reload;
+canonical committed player rewards persist through unchanged save version 5.
+Exact dev=1 enables live lifecycle inspection; the isolated clock/target harness
+uses no playable save. See [verified handoff](docs/CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md).
 
 ## Historical archetype animation contract (current Warrior below)
 Three original archetypes each have eight authored directions and six poses: idle, two locomotion strides, anticipation, contact and crouched reaction. The guardian has eight poses per direction; regular enemies have idle and attack views. Runtime yaw is continuous and smoothly follows movement, target or aim; presentation projects facing through the ground camera and chooses the closest screen-space 45° view without horizontal mirroring. Gait phase follows traveled distance. Three additional walk sheets provide eight stride phases for six directions; north and northwest keep the accepted two-pose rear cycle because the extended sheets drifted toward side/front views. Warrior omits the corrupted stride and distributes seven accepted keys evenly across a cycle, avoiding a repeated hold. Cached source-silhouette paths clip neighboring cell pieces without repainting the original artwork. Source bounds exclude neighboring atlas fragments and align visible feet. Golden Warrior registration now uses source-space boot contacts and stable 70-pixel visible body scale. Sixteen original hit/death frames cover all eight directions without cardinal fallback. The manifest drives a per-direction 2D fall transform on the hit pose, crossfades to the original collapsed artwork, then holds it before its final fade.
@@ -119,7 +146,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v90, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v91, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 

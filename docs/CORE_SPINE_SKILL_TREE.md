@@ -170,7 +170,7 @@ of browser automation. The skill browser test uses disposable contexts, ordinary
 creation/input for both classes, shared developer mutations, live ranked Node
 execution, save/reload, returning-save compatibility and the isolated harness.
 Cache checks also preserve learned ranks, paid costs, passive state and assigned
-Nodes while offline. Boot/page/SW use version **90** and precache all skill modules
+Nodes while offline. Boot/page/SW use version **91** and precache all skill modules
 along with the [staged Combat Resolution extension](CORE_SPINE_COMBAT.md).
 
 ## Action Item execution extension
@@ -190,4 +190,4 @@ monster rewards using the existing canonical ownership and Progression/Stats
 contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
 before synchronous publication. Existing formulas, learned skills, action slots,
 Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
-boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+boot/page/cache version is now 91. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).

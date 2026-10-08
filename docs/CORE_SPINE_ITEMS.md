@@ -120,10 +120,11 @@ Repeating equip/unequip replaces the group, never accumulates it. Save capacity
 normalization excludes transient modifiers and does not bake equipment into
 resourceBase. Combat consumes the usual derived snapshot without resolver edits.
 
-Warden Plate's existing incoming flat reduction of 2 is definition data forwarded
-through the existing enemy damage adapter. Its existing DEF +2 reaches Stats.
-This retains current incoming orchestration; it is not a new status/mitigation
-framework. Current production gear does not add HP/SP; injected unit fixtures
+Warden Plate retains its existing definition data. Its DEF +2 reaches Stats and
+the shared incoming Combat resolver through the [Monster Lifecycle adapter](CORE_SPINE_MONSTER_LIFECYCLE.md).
+The historical additional flat subtraction is no longer applied, so Plate DEF
+enters incoming mitigation once. This is not a new status framework or approved
+balance. Current production gear does not add HP/SP; injected unit fixtures
 prove primary, percentage and resource-maximum modifiers without adding content.
 
 ## Save version 5 and deterministic migration
@@ -187,7 +188,7 @@ Only 14 existing definitions are adapted: Herb, Ore, Relic Shards, Healing Flask
 Field Rations, Traveler Blade, Astral Blade, Adventurer Garb, Warden Plate,
 Spirit Charm, Moonveil Sigil, Sunstone Crest, Dawn Circuit and Veilheart.
 Astral Blade retains ATK/MATK +6, known relics retain +3, Warden retains DEF +2
-and incoming reduction 2. Five recipes and four merchant entries retain current
+and historical incoming reduction metadata 2. Five recipes and four merchant entries retain current
 inputs/output/prices. These values do not certify final balance or catalogue.
 
 Weights are explicitly zero/unconfigured. Pure carriedWeight sums stack count ×
@@ -201,7 +202,7 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **90** imports and precaches the item and Action Item modules together.
+Boot/page/SW version **91** imports and precaches the item and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
 identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, boxes,
@@ -225,4 +226,4 @@ monster rewards using the existing canonical ownership and Progression/Stats
 contracts. Item/gear/currency rewards, Base/Job EXP and quest credit are planned
 before synchronous publication. Existing formulas, learned skills, action slots,
 Action Item execution and save version 5 remain unchanged. Claims are runtime-only;
-boot/page/cache version is now 90. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
+boot/page/cache version is now 91. See the [loot verification handoff](CORE_SPINE_MONSTER_LOOT_REPORT.md).
