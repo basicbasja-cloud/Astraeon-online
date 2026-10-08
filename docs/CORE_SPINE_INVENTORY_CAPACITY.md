@@ -171,5 +171,12 @@ or Box bulk modal is introduced.
 
 Tests: `tests/inventory-capacity.test.cjs`,
 `tests/inventory_capacity_browser.py`; see the [verification handoff](CORE_SPINE_INVENTORY_CAPACITY_REPORT.md).
-Future work includes final limits/weights, equipment-slot closure, capacity
+Future work includes final limits/weights, future inactive equipment slots, capacity
 progression, explicit overflow retention, Storage and gameplay encumbrance rules.
+
+## Equipment Slot Closure extension
+
+[Five active equipment slots](CORE_SPINE_EQUIPMENT_SLOTS.md) store references to
+owned instances, with no Capacity-core change. Equip/replace/unequip remains zero
+slot/weight delta. Two new non-final proof definitions also retain explicit zero
+unconfigured weight. No capacity/weight coefficient or penalty is changed.

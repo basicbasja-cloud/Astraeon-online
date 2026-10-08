@@ -189,7 +189,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v93, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v94, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 
@@ -328,3 +328,17 @@ configuration, RNG draw policy, HP/status boundaries, skill integration and the
 retained incoming enemy/proc compatibility paths. Future saves are rejected
 before gameplay save listeners are installed. Additive Stat expenditure accounting
 preserves actual paid refunds across cost tuning. Patch 0.0.1 remains partial.
+
+## Equipment Slot Closure
+
+The [five-slot contract](docs/CORE_SPINE_EQUIPMENT_SLOTS.md) closes Main Hand,
+Off Hand, Body, Shoes and one Accessory. The immutable registry retains inspected
+version-5 IDs `weapon/armor/relic`, adds `offHand/shoes`, and accepts semantic
+aliases. `getEquipmentSlots()` exposes all five authoritative owned-instance
+references; `getEquipment()` remains the old three-key compatibility projection.
+Replacement/unequip preserve ownership and capacity; modifiers reach existing
+Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
+are functional adapters, with no visual gear/artwork or UI redesign. Save version
+5 remains deliberate; boot/page/cache is 94. See the
+[verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
+Core Spine remain incomplete; Quest/Storage closure remains separate.

@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 92. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 94. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -128,12 +128,13 @@ The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **93**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **94**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/equipment_slots_browser.py --url http://127.0.0.1:8011
 python tests/inventory_capacity_browser.py --url http://127.0.0.1:8011
 python tests/monster_box_browser.py --url http://127.0.0.1:8011
 python tests/monster_lifecycle_browser.py --url http://127.0.0.1:8011
@@ -164,3 +165,17 @@ Review uses ordinary gameplay input, read-only snapshots and actual screenshots.
 ## Scope
 
 This is a local simulation. There is no live multiplayer, account sync or production MMO server. Mage/Ranger locomotion and broader skill-art polish remain separate work. Historical Canvas/proof paths and older review reports are comparison evidence; default town gameplay uses the spatial renderer. No proprietary Ragnarok maps, sprites or textures are used by the playable runtime. The user-supplied screenshots in `RO3 Ref/` are reference-only evidence; see `ASSET_LICENSES.md`.
+
+## Equipment Slot Closure
+
+The [five-slot contract](docs/CORE_SPINE_EQUIPMENT_SLOTS.md) closes Main Hand,
+Off Hand, Body, Shoes and one Accessory. The immutable registry retains inspected
+version-5 IDs `weapon/armor/relic`, adds `offHand/shoes`, and accepts semantic
+aliases. `getEquipmentSlots()` exposes all five authoritative owned-instance
+references; `getEquipment()` remains the old three-key compatibility projection.
+Replacement/unequip preserve ownership and capacity; modifiers reach existing
+Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
+are functional adapters, with no visual gear/artwork or UI redesign. Save version
+5 remains deliberate; boot/page/cache is 94. See the
+[verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
+Core Spine remain incomplete; Quest/Storage closure remains separate.

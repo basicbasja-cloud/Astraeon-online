@@ -38,7 +38,7 @@ Kinds are data: a future non-stack object can be owned without being equipment.
     "nextItemSerial": 2,
     "history": {}
   },
-  "equippedItems": {"weapon": "item-1", "armor": null, "relic": null},
+  "equippedItems": {"weapon": "item-1", "offHand": null, "armor": null, "shoes": null, "relic": null},
   "itemHistory": {"inventory": {}, "equipment": {}}
 }
 ```
@@ -82,7 +82,10 @@ ownership, overflow and configured maxStack reject before committing. Invalid
 instance metadata does not consume a serial. Equipped deletion rejects
 `ITEM_EQUIPPED`; unequip first. Replacing equipment retains the old instance.
 
-Current slots are `weapon`, `armor`, `relic`. Equip verifies instance ownership,
+Current active slots are `weapon` (Main Hand), `offHand`, `armor` (Body),
+`shoes`, `relic` (Accessory). See [slot closure](CORE_SPINE_EQUIPMENT_SLOTS.md).
+`getEquipmentSlots()` exposes all five; `getEquipment()` retains the historical
+three-key compatibility projection. Equip verifies instance ownership,
 known definition, equipment kind, supported target slot and no second-slot use.
 An injected synchronous `equipmentRequirements(requirements, instance, slot)`
 must return exactly true; false or exceptions reject. Production requirements
@@ -203,11 +206,11 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **93** imports and precaches the item, capacity and Action Item modules together.
+Boot/page/SW version **94** imports and precaches the item, capacity, equipment slot registry and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
 identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, final Box content/UI,
-full gear slots, final content/balance, rarity, affixes, enhancement, sockets,
+future Head/Garment/multiple Accessory slots, final content/balance, rarity, affixes, enhancement, sockets,
 binding, durability, encumbrance and server authority remain future work.
 
 ## Action Item execution extension
@@ -251,3 +254,12 @@ loads are retained and no-worse reductions/removals/equipment reference changes
 remain possible. Box envelope checks precede RNG. See the
 [capacity contract](CORE_SPINE_INVENTORY_CAPACITY.md) and
 [verified handoff](CORE_SPINE_INVENTORY_CAPACITY_REPORT.md).
+
+## Equipment Slot Closure extension
+
+The [slot contract](CORE_SPINE_EQUIPMENT_SLOTS.md) adds validated ordered five-slot
+references, two non-final proof definitions and deterministic normalization
+evidence for unsupported/conflicting references. Original authored gear values
+remain unchanged. Ownership/serial/capacity stay canonical and equip/unequip
+preserve them. Semantic aliases normalize to retained v5 IDs; no new save version
+is necessary. Cache/boot/page is 94. New consumers use `getEquipmentSlots()`.
