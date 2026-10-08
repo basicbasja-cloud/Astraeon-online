@@ -1,13 +1,13 @@
 {
   "dateTimeUTC": "2026-10-08T11:30:11.268154+00:00",
-  "scope": "Continuing production milestone, male first four clips only",
+  "scope": "Continuing production milestone: six internally passed male clips",
   "completeProductionGate": "NOT_COMPLETE",
   "ownerApproval": "NOT_APPROVED",
   "spriteValidator": {
     "status": "PASS",
     "definitions": 3,
-    "atlasReferences": 147,
-    "modularFrameReferences": 7440
+    "atlasReferences": 155,
+    "modularFrameReferences": 7728
   },
   "nodeChecks": {
     "status": "PASS",
@@ -19,14 +19,16 @@
   },
   "motionTests": {
     "status": "PASS",
-    "count": 7
+    "count": 8
   },
   "packedCompositeChecks": {
     "status": "PASS",
     "Idle": 64,
     "Walk": 128,
     "Run": 96,
-    "BasicAttack": 128
+    "BasicAttack": 128,
+    "SkillAction": 112,
+    "Hit": 64
   },
   "actualGameplay": {
     "status": "PASS",
@@ -35,13 +37,15 @@
       "Idle",
       "Walk (all eight directions)",
       "Run",
-      "BasicAttack"
+      "BasicAttack",
+      "SkillAction"
     ],
     "equipmentIndependence": true,
     "mobileViewport": [
       390,
       844
-    ]
+    ],
+    "BasicAttackCapture": "PASS synchronous observer records real action frame"
   },
   "browserPreview": {
     "status": "PASS",
@@ -53,5 +57,10 @@
     "BasicAttackNonLoopingHold": true
   },
   "gitDiffCheck": "PASS",
-  "normalGameAndCacheVersion101": "PENDING_RERUN"
+  "normalGameAndCacheVersion101": "PASS",
+  "worldBrowserVersion101": {
+    "status": "PASS",
+    "scenarios": 6,
+    "note": "Used pre-installed system FFmpeg via temporary Playwright cache symlink"
+  }
 }

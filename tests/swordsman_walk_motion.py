@@ -129,4 +129,32 @@ class ArticulatedRun(unittest.TestCase):
         self.assertGreater(max(run.pose(i/800)['feet']['R']['clearance'] for i in range(800)), .14)
 
 
+class ArticulatedSwordActions(unittest.TestCase):
+    def test_action_chains_do_not_stretch_or_slide_and_painted_blade_arc_has_no_pops(self):
+        spec = importlib.util.spec_from_file_location('sword_actions', ROOT/'tools/swordsman-action-poses.py')
+        actions = importlib.util.module_from_spec(spec); spec.loader.exec_module(actions)
+        for clip in ('BasicAttack', 'SkillAction', 'Hit'):
+            first = actions.pose(0., clip)
+            for phase in np.linspace(0., 1., 401):
+                p = actions.pose(phase, clip)
+                np.testing.assert_array_equal(p['root'], np.zeros(3))
+                for side, f in p['feet'].items():
+                    np.testing.assert_allclose(f['sole'], first['feet'][side]['sole'], atol=1e-12)
+                    for suffix, length in [('femur', .49), ('tibia', .47), ('upperarm', .25), ('forearm', .24)]:
+                        a, b = p['bones'][side+'-'+suffix]
+                        self.assertAlmostEqual(float(np.linalg.norm(b-a)), length, places=9)
+            import json
+            guides=json.loads((ROOT/'authoring/characters/swordsman-production/male/pose-guides.json').read_text())['guides']
+            for direction, guide in enumerate(guides.values()):
+                tip=np.asarray(guide['weapon_tip'])-np.asarray(guide['hand_R'])
+                source_angle=np.arctan2(tip[1],tip[0])
+                angles=[actions.blade_angle(t,clip,-direction*np.pi/4,source_angle) for t in np.linspace(0.,1.,1001)]
+                self.assertAlmostEqual(angles[0],0.,places=12)
+                self.assertAlmostEqual(float(np.sin(angles[-1])),0.,places=12)
+                self.assertAlmostEqual(float(np.cos(angles[-1])),1.,places=12)
+                self.assertLess(max(abs(np.diff(angles))),.09,
+                                'Camera-facing sword transition must not flip or pop')
+
+
+
 if __name__ == '__main__': unittest.main()

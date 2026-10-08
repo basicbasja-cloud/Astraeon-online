@@ -1,6 +1,6 @@
 {
   "gate": "MALE_BASIC_ATTACK_ONLY",
-  "status": "INTERNAL_PASS",
+  "status": "INTERNAL_PASS_WITHDRAWN",
   "ownerApproval": "NOT_APPROVED",
   "score": {
     "identityFidelity": 9,
@@ -16,7 +16,9 @@
   },
   "scoreTotal": 91,
   "scoreMaximum": 100,
-  "criticalFailures": [],
+  "criticalFailures": [
+    "Sword orientation pop between wind-up samples"
+  ],
   "inspection": [
     "Sixteen shared pose samples in all eight directions",
     "Normal/quarter-speed actual compositor playback and non-looping hold",
@@ -29,5 +31,7 @@
     "browser/results.json",
     "128 packed composites match the lossless review strip exactly"
   ],
-  "remainingCharacterGates": "SkillAction, Hit, Death, Guard, Dash; female variant; full in-game action set"
+  "remainingCharacterGates": "SkillAction, Hit, Death, Guard, Dash; female variant; full in-game action set",
+  "withdrawalReason": "New continuous-path check found a near-singular NE sword projection around phase 0.083; converting that vector directly to a rigid painted blade angle can flip between the sampled wind-up frames.",
+  "withdrawnAtUTC": "2026-10-08T11:38:21.392314+00:00"
 }

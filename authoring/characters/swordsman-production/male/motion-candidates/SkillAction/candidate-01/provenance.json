@@ -1,0 +1,61 @@
+{
+  "candidateId": "male-skillaction-01",
+  "dateTime": "2026-10-08T11:33:31.291824+00:00",
+  "status": "rejected",
+  "method": "Original fixed-chain committed thrust; shared poses bake existing painted cosmetic parts; no runtime skeleton or baked VFX",
+  "sourceReferences": [
+    "../../../../masters",
+    "../../../modular-masters",
+    "../../../pose-guides.json"
+  ],
+  "prompt": null,
+  "negativePrompt": null,
+  "purpose": "SkillAction whole-cycle construction for all eight directions and aligned layers",
+  "ownerApproval": "NOT_APPROVED",
+  "timingMs": [
+    50,
+    50,
+    60,
+    80,
+    80,
+    30,
+    35,
+    65,
+    65,
+    50,
+    60,
+    65,
+    65,
+    65
+  ],
+  "sharedCycle": "tools/swordsman-action-poses.py",
+  "phases": [
+    "rest",
+    "low retraction",
+    "loaded anticipation",
+    "committed thrust",
+    "brief extension",
+    "recovery",
+    "settle",
+    "rest"
+  ],
+  "phaseSamples": [
+    0.0,
+    0.08,
+    0.16,
+    0.24,
+    0.3,
+    0.37,
+    0.44,
+    0.5,
+    0.56,
+    0.65,
+    0.72,
+    0.82,
+    0.9,
+    1.0
+  ],
+  "surfaceMethod": "Same-direction costume arm paint with rigid pauldron and continuous sleeve/brace surface",
+  "effects": "Separate; no elemental appearance baked",
+  "rejectionReason": "Proxy neutral blade vectors did not match the actual directional source grip/tip. Correct the shared painted blade-angle calibration and adjacent-key arc before accepting SkillAction."
+}

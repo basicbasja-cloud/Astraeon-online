@@ -1,0 +1,130 @@
+{
+  "checks": [
+    {
+      "name": "authored circulation and genuine gate passage",
+      "evidence": [
+        {
+          "stop": "Through passage",
+          "position": {
+            "x": 4,
+            "y": 8.055499999999986,
+            "z": 0
+          },
+          "hidden": [
+            "east-cap",
+            "open-span"
+          ],
+          "interaction": ""
+        },
+        {
+          "stop": "Hall approach",
+          "position": {
+            "x": 8.93859234965491,
+            "y": 6.667261690512005,
+            "z": 0
+          },
+          "hidden": [
+            "canopy"
+          ],
+          "interaction": "hall-entrance"
+        },
+        {
+          "stop": "Rear service",
+          "position": {
+            "x": 12.09114103218324,
+            "y": 2.647498665939846,
+            "z": 0
+          },
+          "hidden": [],
+          "interaction": ""
+        },
+        {
+          "stop": "Canopy approach",
+          "position": {
+            "x": 9.544394194591952,
+            "y": 8.443249006545765,
+            "z": 0
+          },
+          "hidden": [
+            "canopy"
+          ],
+          "interaction": ""
+        },
+        {
+          "stop": "Outside gate",
+          "position": {
+            "x": 4.03100697417096,
+            "y": 12.178990404193412,
+            "z": 0
+          },
+          "hidden": [],
+          "interaction": ""
+        }
+      ]
+    },
+    {
+      "name": "collision rejection and camera-relative keyboard",
+      "evidence": {
+        "pillarRejected": true,
+        "keyboardDisplacement": {
+          "x": 3.157254319080901,
+          "y": 10.868361421558339,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "selective overhead visibility, shared depth and persistent shadows",
+      "evidence": {
+        "canopyAlpha": 0.18000001862332632,
+        "trunkAlpha": 1,
+        "shadowsStable": true,
+        "actorSharesDepth": true
+      }
+    },
+    {
+      "name": "animation/contact scrubber and derived overlays",
+      "evidence": {
+        "directions": 8,
+        "strategies": 3,
+        "sampledContacts": 96,
+        "clips": [
+          "warrior-walk-v3",
+          "warrior-run-v3",
+          "warrior-sprint-v3"
+        ]
+      }
+    },
+    {
+      "name": "local renderer performance evidence",
+      "evidence": {
+        "renderer": "Canvas2D",
+        "samples": 120,
+        "medianFrameMs": 16.7,
+        "p95FrameMs": 66.6,
+        "scope": "Headless Chromium cloud/software rendering; physical-device approval pending"
+      }
+    },
+    {
+      "name": "portrait, landscape and tablet traversal",
+      "evidence": [
+        {
+          "width": 390,
+          "height": 844,
+          "passageReachable": true
+        },
+        {
+          "width": 844,
+          "height": 390,
+          "passageReachable": true
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "passageReachable": true
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

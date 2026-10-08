@@ -1,8 +1,36 @@
 """Explicit candidate selection in the real player renderer; no visual approval."""
 import argparse
+import base64
 import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+
+def capture_action(page, clip, key, state, column, output):
+    page.evaluate('async clip=>{await AstraeonSwordsmanDevelopment.prepare(clip)}', clip)
+    # Install the observer before input so a slow software renderer cannot
+    # finish the short action before Playwright starts waiting for its frame.
+    page.evaluate("""({clip,state,column})=>{window.swordsmanActionCapture=new Promise((resolve,reject)=>{
+      const deadline=performance.now()+30000;
+      function capture(){
+        const s=AstraeonQA.snapshot(),a=s.renderer.actors.find(a=>a.id==='player');
+        if(AstraeonSwordsmanDevelopment.snapshot().currentClip!==clip ||
+           s.animation.state!==state || a?.motionSample.frame.column<column){
+          if(performance.now()>deadline){reject(Error('No '+clip+' frame captured'));return}
+          requestAnimationFrame(capture);return;
+        }
+        const v=AstraeonSpatialView,w=document.getElementById('world');
+        v.renderer.render(v.scene,v.camera);
+        const c=document.createElement('canvas');c.width=w.width;c.height=w.height;
+        const ctx=c.getContext('2d');ctx.drawImage(v.canvas,0,0,c.width,c.height);ctx.drawImage(w,0,0);
+        resolve({frame:a.motionSample.frame,time:s.time,image:c.toDataURL('image/png')});
+      }requestAnimationFrame(capture);
+    })}""", {'clip':clip,'state':state,'column':column})
+    page.keyboard.press(key)
+    capture = page.evaluate('()=>window.swordsmanActionCapture')
+    output.write_bytes(base64.b64decode(capture.pop('image').split(',')[1]))
+    page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Idle"')
+    return capture
+
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--url', default='http://127.0.0.1:8011')
@@ -56,12 +84,8 @@ with sync_playwright() as p:
     page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Run"')
     page.screenshot(path=str(args.output/'Run.png')); page.keyboard.up('d')
     page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Idle"')
-    awaitable = page.evaluate('async()=>{await AstraeonSwordsmanDevelopment.prepare("BasicAttack");return true}')
-    assert awaitable
-    page.keyboard.press('f')
-    page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="BasicAttack"')
-    page.screenshot(path=str(args.output/'BasicAttack.png'))
-    page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Idle"')
+    attack_capture = capture_action(page, 'BasicAttack', 'f', 'attack', 6, args.output/'BasicAttack.png')
+    skill_capture = capture_action(page, 'SkillAction', '4', 'cast', 6, args.output/'SkillAction.png')
     appearance = page.evaluate('AstraeonSwordsmanDevelopment.snapshot().appearance')
     # Leave the game first: its pagehide handler intentionally flushes the
     # live save. Writing a fixture immediately before reload would be replaced.
@@ -77,9 +101,9 @@ with sync_playwright() as p:
     page.screenshot(path=str(args.output/'mobile.png'))
     assert not errors, errors
     report = {'bodyVariant':args.body,'classId':'Swordsman','explicitDevelopmentFlag':True,
-              'actualPlayerRenderer':True,'idle':idle,'walkDirections':samples,'run':True,'basicAttack':True,
+              'actualPlayerRenderer':True,'idle':idle,'walkDirections':samples,'run':True,'basicAttack':attack_capture,'skillAction':skill_capture,
               'gameplayEquipmentIndependent':True,'mobileViewport':[390,844],
               'ownerApproval':'NOT_APPROVED','errors':errors}
     (args.output/'results.json').write_text(json.dumps(report, indent=2)+'\n')
     browser.close()
-print('PASS explicit Swordsman player: Idle, eight Walk directions, Run, equipment independence and mobile capture')
+print('PASS explicit Swordsman player: Idle, eight Walk directions, Run, BasicAttack, SkillAction, equipment independence and mobile capture')

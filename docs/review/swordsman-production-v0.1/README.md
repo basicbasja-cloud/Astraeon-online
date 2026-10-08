@@ -11,9 +11,13 @@ Base: `origin/codex/modular-sprite-pipeline-v0.1`, starting SHA `38228dd26ac8c5e
 | Idle, eight directions × eight frames | Idle/candidate-03 | 93/100 |
 | Walk, eight directions × sixteen frames | Walk/candidate-28 | 91/100 |
 | Run, eight directions × twelve frames | Run/candidate-01 | 92/100 |
-| BasicAttack, eight directions × sixteen frames | BasicAttack/candidate-04 | 91/100 |
-| SkillAction, Hit, Death, Guard, Dash | Pending production | No score |
+| BasicAttack, eight directions × sixteen frames | BasicAttack/candidate-06 | 91/100 |
+| SkillAction, eight directions × fourteen frames | SkillAction/candidate-02 | 91/100 |
+| Hit, eight directions × eight frames | Hit/candidate-02 | 92/100 |
+| Death, Guard, Dash | Pending production | No score |
 | Female Swordsman | Not started; male-first production | No score |
+
+A continuous action-path regression subsequently withdrew BasicAttack04’s pass for an NE sword-angle singularity. Candidate05 was rejected for a long NW angular detour; candidate06 unwraps adjacent keys and passes its separate internal review.
 
 The owner rejected earlier Walks. Rig candidate 02’s premature internal pass was withdrawn when measured thighs stayed ahead of the pelvis. Candidate 03 corrects rearward extension with fixed femur/tibia/foot lengths, knee poles, heel/sole/toe contact pivots, swing clearance and weight transfer. Painted candidate 28 fixes cloth joins, boot registration, foreshortened foot surfaces and the east far-arm guide. Ragnarok uploads are motion-readability benchmarks; their pixels, costume, proportions and exact timing are not runtime sources. The rejected generated arm study is retained with its diagnosis; accepted attack surfaces use existing same-direction costume paint.
 
@@ -21,13 +25,13 @@ The owner rejected earlier Walks. Rig candidate 02’s premature internal pass w
 
 Canvas: 320×320; root: (160,264); reference height: 176. Directions remain S, SW, W, NW, N, NE, E, SE without mirrored views. BaseBody, Hair, Outfit, Weapon, Headgear and BackAccessory are independent full-canvas layers sharing timelines and anatomical sockets. Default headgear/back parts are transparent. All runtime output is painted 2D PNG; articulated rigs are authoring-only.
 
-`classId: Swordsman` supports extensible presentation `bodyVariant` values. Logical cosmetics resolve body-specific artwork. Only active cosmetics and requested clips preload; appearance switches atomically after readiness. Optional `keepAnimations` releases unneeded image references after transitions; it does not guarantee immediate browser decoded-cache eviction. **Gameplay equipment never determines appearance.** No equipment-to-sprite mapping or gameplay/shop/backend redesign was introduced.
+`classId: Swordsman` supports extensible presentation `bodyVariant` values. Logical cosmetics resolve body-specific artwork. Only active cosmetics and requested clips preload; appearance switches atomically after readiness. Optional `keepAnimations` releases unneeded image references after transitions. The game development adapter retains Idle plus the most recent motion to avoid repeated decoding during stop/start; it does not guarantee immediate browser decoded-cache eviction. **Gameplay equipment never determines appearance.** No equipment-to-sprite mapping or gameplay/shop/backend redesign was introduced.
 
 Select the male candidate in `sprite-preview.html`, or use the explicit actual game development flag `index.html?qa=1&swordsman=male`. Ordinary gameplay keeps the original player. Passed clips are available; pending entries are clearly tagged and disabled in the sprite preview. Development assets bypass ordinary asset caching; synchronized shell/cache version is 101.
 
-Actual game captures under `in-game/` exercise Idle, all eight Walk directions, Run, BasicAttack and mobile scale. Saved test equipment changes to Legendary Fire Sword and Ancient Plate while cosmetic appearance remains unchanged. Browser captures prove software-rendered presentation, not mobile hardware performance.
+Actual game captures under `in-game/` exercise Idle, all eight Walk directions, Run, BasicAttack, SkillAction and mobile scale. Saved test equipment changes to Legendary Fire Sword and Ancient Plate while cosmetic appearance remains unchanged. Browser captures prove software-rendered presentation, not mobile hardware performance.
 
-Current runtime inventory: **25,448,183 bytes, 21 unique lossless atlases plus definition JSON**, including explicitly pending scaffold metadata. Source masters and strips remain separate from packed derivatives.
+Current runtime inventory: **34,769,235 bytes, 29 unique lossless atlases plus definition JSON**, including explicitly pending scaffold metadata. Source masters and strips remain separate from packed derivatives.
 
 ## Review evidence
 
@@ -39,4 +43,4 @@ Current runtime inventory: **25,448,183 bytes, 21 unique lossless atlases plus d
 - `generation-provenance.json`: thirteen meaningful first-party jobs, decisions and source references; exact prompts and exclusions remain beside candidates.
 - `validation-results.json`: scoped automated results; technical validity is separate from visual acceptance.
 
-Remaining work: finish five pending male clips in order, complete actual game action proof and normal-game/cache regressions, then produce the female variant using the established contract. The complete production score remains unset. Final visual approval belongs to the owner.
+Remaining work: finish the remaining male clips in order, complete actual game action proof and normal-game/cache regressions, then produce the female variant using the established contract. The complete production score remains unset. Final visual approval belongs to the owner.

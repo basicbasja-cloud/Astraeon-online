@@ -6,9 +6,9 @@ not represent owner approval. Normal gameplay artwork is not replaced.
 The owner rejected earlier painted Walks and their simplified leg guide. Rig
 candidate 03 passes internally at 38/40 after candidate 02’s pass was withdrawn
 for inadequate rearward thigh extension. Current male Idle03, Walk28, Run01 and
-BasicAttack04 separately pass internal clip gates (93, 91, 92 and 91/100).
+BasicAttack06 and SkillAction02 separately pass internal clip gates (93, 91, 92, 91 and 91/100). BasicAttack04’s internal pass was withdrawn for a sword-angle singularity; its history is explicit.
 Their source strips, previews, snapshots and reports are retained. All remain
-NOT_APPROVED. Five male clips and the female variant remain unproduced; the
+NOT_APPROVED. Hit02 separately passes its internal gate at 92/100; Death, Guard, Dash and the female variant remain unproduced; the
 complete character is not ready. See the review milestone report for actual
 runtime and gameplay captures.
 

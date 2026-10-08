@@ -1,7 +1,7 @@
 {
   "candidateId": "male-basicattack-04",
   "dateTime": "2026-10-08T10:52:59.812379+00:00",
-  "status": "current-best",
+  "status": "rejected",
   "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
   "sourceReferences": [
     "../../../../masters",
@@ -62,5 +62,6 @@
   "surfaceMethod": "Same-view source costume arm texture; rigid source pauldron; connected sleeve/brace UV mesh; no generated replacement armour",
   "decisionReason": "Internal BasicAttack gate 91/100 after independent source arm painting, rigid pauldron, occlusion and denser shared-cycle sampling",
   "buildSourceSHA256": "424289c1ec86afb7fda168039d76199b08c4eb095841b3edc04ddfaef278be12",
-  "cycleSourceSHA256": "1b469e42ff3d94feb345813ab701060cd0c57b584b8417247dcd10b7ba5f8a45"
+  "cycleSourceSHA256": "1b469e42ff3d94feb345813ab701060cd0c57b584b8417247dcd10b7ba5f8a45",
+  "rejectionReason": "Internal pass withdrawn: near-singular NE blade guide introduced an angular pop; retain source and repair angle curve only."
 }
