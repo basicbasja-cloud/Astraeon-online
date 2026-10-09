@@ -34,12 +34,14 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 - An isolated harness button probe caught an unsupported HP API name before the full run reached tooling. The harness now uses the actual shared `CombatResolution.applyCombatResult` signature; no Combat code changed. A new executable button-flow Node regression proves Combat death/new life and private ticket invalidation after recreation. Focused Quest total is now 162/0; full expected total is 1471 (rerun pending). Probe evidence: `quests/harness-probe.log` and `quests/quest-harness-node.log`.
 - Fifth run stopped after 13 groups waiting for player death; authoritative state remained field-center/IDLE at HP 1, simulation time 8.06987. An independent headless harness probe overlapped this run; hidden-page simulation pause is suspected but was not captured, so this is not claimed as a confirmed cause. The next run is serial with no concurrent browser; failure diagnostics now include document visibility and frame performance. No gameplay/AI/navigation assertion or behavior is changed.
 - Full current Node after harness regression: 1309 retained + 162 new = 1471/0; `quests/node-verified/report.json`. Fixed real harness button probe passes (`quests/harness-probe-fixed.log`).
+- Sixth serial full Quest browser: PASS 57 groups / 0 failures, both Swordsman and Mage, zero console/page/runtime/HTTP errors. Actual town walks/NPC interactions, Basic Attack/learned Skill deaths, Mage same-runtime new-life 1 → 2 progress, current Collect, five quest turn-ins, atomic capacity retry, player death/respawn, travel, partial/completed reload, offline, isolated harness and normal URL all pass. Exactly two observations record the successful real player-death fixture positions; no contact/navigation retry was needed in this successful run. Evidence: `quests/browser-sixth/report.json`.
+- All 11 inherited browser suites are now running sequentially, beginning with Equipment Slot Closure; cache/offline follows. Overall acceptance gate remains pending their completion. No inherited test file/assertion has changed.
 
 ## Remaining / exact next action
 
-1. Finish the added isolated Quest harness and focused browser suite. It uses ordinary movement, actual NPC interactions and real Combat deaths; no enemy HP edits, teleport, fake Kill or direct Quest progress mutation.
-2. Run/complete both classes, partial save/reload, Talk/Kill/Collect/mixed/chain, atomic capacity failure/retry, death/travel persistence and duplicate/stale rejection. Preserve failed-attempt evidence.
-3. Run all inherited browser suites, cache/offline, world validation, final full Node, source audit and diff checks; retain failed-attempt evidence.
+1. Complete all 11 inherited browser suites and cache/offline; do not run concurrent headless browser probes. Full new two-class Quest acceptance and harness are already green. Preserve failed-attempt evidence.
+2. Inspect every inherited report/error field, then rerun final source audit/diff checks. Current Node 1471/0 and world validation PASS are recorded above.
+3. Retain all original behavioral assertions; if a regression fails, inspect authoritative evidence and distinguish fixture timing from actual gameplay defects before changing anything.
 4. Commit a clean runtime/test checkpoint; replace this working report with full verified report and contract documentation, then commit documentation successor.
 5. Push only this branch normally and verify exact remote HEAD. Do not start Shop/Storage.
 
