@@ -17,7 +17,14 @@ function attach(state,options={}){
  const getItemResources=()=>{recalculate();return Object.fromEntries(['currentHP','currentSP','maxHP','maxSP'].map(key=>[key,character.getValue(key)]))};
  const itemRuntime=window.AstraeonActionItemRuntime.create({getInventory:items.getInventory,getQuantity:items.getQuantity,getResources:getItemResources,commit:(id,inventory,plan)=>items.consumeStackWithEffect(id,1,inventory,()=>{if(JSON.stringify(getItemResources())!==JSON.stringify(plan.resourceBefore))return false;character.setCurrentResources(plan.resourceAfter);return true})},{catalog:options.itemCatalog,config:options.itemActionConfig,restrictions:options.itemRestrictions});
  const boxRuntime=window.AstraeonMonsterBoxRuntime?.create({getInventory:items.getInventory,getRevision:items.getRevision,getQuantity:items.getQuantity,getCurrentHP:()=>character.getValue('currentHP'),preflight:(source,bounds)=>items.canOpenable(source,bounds,options.boxEnvelopePreflight),commit:(source,resolve)=>items.commitOpenable(source,resolve,options.boxPreflight)},{catalog:options.itemCatalog,tables:options.boxTables,getRng:options.getBoxRng||(()=>window.AstraeonCombatRuntime.productionRng()),restrictions:options.boxRestrictions});
- const {consumeStackWithEffect,commitRewards,commitItemTransaction,canOpenable,commitOpenable,...itemMethods}=items;
+ const {consumeStackWithEffect,commitRewards,commitItemTransaction,commitOwnershipTransfer,canAcceptOwnership,canOpenable,commitOpenable,...itemMethods}=items;
+ let services=null;
+ if(window.AstraeonTownServiceRuntime){
+  services=window.AstraeonTownServiceRuntime.create({getInventory:items.getInventory,getInventoryRevision:items.getRevision,getEquipment:items.getEquipmentSlots,getCurrentHP:()=>character.getValue('currentHP'),getContext:()=>options.getServiceContext?.()??{},isCurrentInteraction:(e,c)=>options.isCurrentServiceInteraction?.(e,c)===true,
+   getGold:()=>{const d=Object.getOwnPropertyDescriptor(state,'gold');return d&&Object.hasOwn(d,'value')&&d.writable?state.gold:NaN},setGold:n=>{state.gold=n},preflight:items.canAcceptItemPackage,preflightOwnership:items.canAcceptOwnership,commitTrade:items.commitItemTransaction,commitTransfer:items.commitOwnershipTransfer
+  },{catalog:options.itemCatalog,registry:options.serviceRegistry,rawStorage:state.storageState,storagePolicy:options.getStoragePolicy});
+  Object.defineProperty(state,'storageState',{enumerable:true,get:services.getStorage});
+ }
  let quests=null;
  const questContext=value=>value??options.getQuestContext?.()??{};
  const rewardIdentity=()=>{const {currentHP,currentSP,...durable}=character.snapshot();return JSON.stringify([durable,state.gold])};
@@ -60,6 +67,11 @@ function attach(state,options={}){
  }
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
   ...itemMethods,
+  ...(services?{buy:services.buy,sell:services.sell,sellItemInstance:services.sellInstance}:{}),
+  openTownService:(id,evidence)=>services?.open(id,evidence)??Object.freeze({ok:false,code:'SERVICE_RUNTIME_UNAVAILABLE'}),
+  getTownServices:()=>services?.snapshot(),getStorageState:()=>services?.getStorage(),getStorageRevision:()=>services?.getStorageRevision(),
+  prepareTownService:r=>services?.prepare(r),commitTownService:t=>services?.commit(t),invalidateTownServices:()=>services?.invalidate(),
+  depositStack:(id,n=1)=>services?.depositStack(id,n),withdrawStack:(id,n=1)=>services?.withdrawStack(id,n),depositItemInstance:id=>services?.depositInstance(id),withdrawItemInstance:id=>services?.withdrawInstance(id),
   getQuestState:()=>quests?.getState(),getQuests:()=>quests?.list(),getQuest:id=>quests?.inspect(id),getQuestRuntime:()=>quests?.snapshot(),
   canAcceptQuest:(id,c)=>quests?.canAccept(id,questContext(c)),acceptQuest:(id,c)=>quests?.accept(id,questContext(c)),
   observeQuestTalk:e=>quests?.observeTalk(e),observeQuestKill:e=>quests?.observeKill(e),
@@ -93,7 +105,7 @@ function attach(state,options={}){
   swapSlots:(a,b,context)=>commitLoadout(loadouts.swapSlots(actionLoadout,a,b),context),
   moveSkill:(from,to,context)=>commitLoadout(loadouts.moveSkill(actionLoadout,from,to),context),
   getActionSlotState:actionRuntime.getSlotState,prepareAction:actionRuntime.prepareAction,commitAction:actionRuntime.commitAction,requestAction:actionRuntime.requestAction,
-  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();if(!result.ok)return result;quests?.invalidate();const itemResult=itemRuntime.invalidatePrepared();return itemResult.ok&&boxRuntime?boxRuntime.invalidatePrepared():itemResult},
+  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();if(!result.ok)return result;quests?.invalidate();services?.invalidate();const itemResult=itemRuntime.invalidatePrepared();return itemResult.ok&&boxRuntime?boxRuntime.invalidatePrepared():itemResult},
   canUseSkill:id=>window.AstraeonSkillRuntime.canUseSkill(character.getLearnedSkills(),getClassId(),id),
   isSkillAssigned:id=>!!window.AstraeonSkillDefinitions.getDefinition(id)&&actionLoadout.includes(id),
   setSkillNode(id,node){

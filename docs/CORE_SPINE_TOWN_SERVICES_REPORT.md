@@ -37,9 +37,21 @@ carried Capacity, Collect, Action Item or Equipment/Stats.
 
 ## Remaining work / exact next step
 
-Implement validated service/shop/storage contracts, private sessions and atomic
-Shop/transfer plans through narrow Item State and Player adapters. Then add live
-NPC UI adapters, isolated harness, deterministic and browser regressions. Keep
+Implemented immutable full registry validation, existing stack prices plus one
+explicit provisional Astral Blade offer, Storage normalization/global serial
+reservation and private single-use current-interaction sessions. Owned tickets
+bind both container identities/revisions, currency and runtime epoch. Atomic
+Shop uses Item State's existing net transaction; transfers use one narrow exact
+ownership publication without allocation. Capacity preflight/publication now
+hold the existing mutation lock before injected policy callbacks.
+
+New deterministic suite: 111 checks, passing. First full run: **1585 / 0**
+(`node-core` evidence); after lock tightening: affected 571 checks / 0.
+Initial focused run had two rejection-code mismatches for NaN/Infinity count;
+runtime now returns `INVALID_QUANTITY` consistently before JSON validation.
+
+Next: add live NPC UI adapters, isolated harness, broader edge regressions and
+browser acceptance. Keep
 all inherited assertions; any fixture adaptation required by new NPC access
 must retain behavior and be recorded. Full verification, cache/offline, world
 validation, runtime checkpoint, final documentation and push remain pending.

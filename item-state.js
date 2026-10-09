@@ -5,14 +5,16 @@ const D=window.AstraeonItemDefinitions,I=window.AstraeonItemInventory,E=window.A
 const object=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 class MigrationError extends Error{constructor(){super('Legacy equipment inventory exceeds the bounded import size. Original save has been preserved.');this.code='ITEM_MIGRATION_LIMIT'}}
 function migrate(raw,catalog=D){
+ const storage=window.AstraeonStorageState;
+ const reserved=storage?.normalize(raw.storageState, I.normalize({},catalog),catalog).reservedSerial||1;
  const history=object(raw.itemHistory)?structuredClone(raw.itemHistory):{inventory:{},equipment:{}};
  let inventory,equipment;
  if(Object.hasOwn(raw,'itemInventory')){
-  inventory=I.normalize(raw.itemInventory||{},catalog);const normalized=E.normalizeDetailed(inventory,raw.equippedItems,catalog);equipment=normalized.equipment;
+  inventory=I.normalize({...raw.itemInventory,nextItemSerial:Math.max(Number.isSafeInteger(raw.itemInventory?.nextItemSerial)&&raw.itemInventory.nextItemSerial>0?raw.itemInventory.nextItemSerial:1,reserved)},catalog);const normalized=E.normalizeDetailed(inventory,raw.equippedItems,catalog);equipment=normalized.equipment;
   if(normalized.issues.length&&!history.equipmentSlotNormalization)history.equipmentSlotNormalization=normalized.issues;
  }else{
   history.inventory=structuredClone(raw.inventory||{});history.equipment=structuredClone(raw.equipment||{});
-  inventory=I.normalize({},catalog);
+  inventory=I.normalize({nextItemSerial:reserved},catalog);
   let imported=0;
   for(const [key,id] of Object.entries(D.legacyCounters)){
    const count=raw.inventory?.[key];if(!Number.isSafeInteger(count)||count<=0)continue;
@@ -31,7 +33,7 @@ function migrate(raw,catalog=D){
   }
   equipment=E.normalizeSlots(inventory,equipment,catalog);
  }
- return freeze({itemInventory:inventory,equippedItems:equipment,itemHistory:history});
+ return freeze({itemInventory:inventory,equippedItems:equipment,itemHistory:history,...(storage?{storageState:storage.normalize(raw.storageState,inventory,catalog).state}:{})});
 }
 function legacyInventory(inventory,history={},catalog=D){
  const result={...(history.inventory||{})};
@@ -50,14 +52,14 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true,getCapacity
  const C=window.AstraeonInventoryCapacity;if(!C)throw new TypeError('Inventory capacity authority is required');
  const initial=migrate(raw,catalog);let inventory=initial.itemInventory,equipment=initial.equippedItems,history=initial.itemHistory,committing=false,revision=0;
  const capacityOptions=()=>{let policy;try{policy=getCapacityPolicy()}catch{policy=null}return {catalog,policy,equipment}};
- const preflight=transaction=>committing?I.fail('TRANSACTION_IN_PROGRESS'):C.evaluate(inventory,transaction,capacityOptions());
+ const preflight=transaction=>equipmentCheck(()=>C.evaluate(inventory,transaction,capacityOptions()));
  function equipmentCheck(check){if(committing)return I.fail('TRANSACTION_IN_PROGRESS');committing=true;try{return check()}finally{committing=false}}
  function commit(result,nextEquipment=equipment,beforePublish){
   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
   if(!result.ok)return result;const nextInventory=result.inventory||inventory;
-  const capacity=C.evaluateOwnership(inventory,nextInventory,capacityOptions());if(!capacity.ok)return capacity;
   committing=true;
   try{
+   const capacity=C.evaluateOwnership(inventory,nextInventory,capacityOptions());if(!capacity.ok)return capacity;
    try{onChange(nextInventory,nextEquipment)}catch{return I.fail('INVALID_EQUIPMENT_MODIFIERS')}
    if(beforePublish){try{if(beforePublish()!==true)return I.fail('EFFECT_COMMIT_REJECTED')}catch{return I.fail('EFFECT_COMMIT_REJECTED')}}
    inventory=nextInventory;equipment=nextEquipment;revision++;return freeze({...result,inventory,equipment,capacity});
@@ -78,7 +80,7 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true,getCapacity
   getQuantity:id=>I.getQuantity(inventory,id),getInstance:id=>Object.hasOwn(inventory.instances,id)?inventory.instances[id]:null,
   getEquipped:slot=>equipment[window.AstraeonEquipmentSlots.canonical(slot)]??null,
   getEquipmentModifiers:()=>E.modifiers(inventory,equipment,catalog),getCarriedWeight:()=>{const result=C.snapshot(inventory,capacityOptions());return result.ok?freeze({ok:true,weight:result.totalWeight}):result},
-  getInventoryCapacityState:()=>C.snapshot(inventory,capacityOptions()),canAcceptItemPackage:preflight,
+  getInventoryCapacityState:()=>C.snapshot(inventory,capacityOptions()),canAcceptItemPackage:preflight,canAcceptOwnership:next=>equipmentCheck(()=>C.evaluateOwnership(inventory,next,capacityOptions())),
   getEquipmentEffects:()=>E.effects(inventory,equipment,catalog),
   canAddStack:(id,count)=>{const checked=I.canAddStack(inventory,id,count,catalog);if(!checked.ok)return checked;const capacity=preflight({itemRewards:[{itemId:id,quantity:count}]});return capacity.ok?freeze({...checked,capacity}):capacity},canRemoveStack:(id,count)=>I.canRemoveStack(inventory,id,count,catalog),
   addStack:(id,count)=>commit(I.addStack(inventory,id,count,catalog)),removeStack:(id,count)=>commit(I.removeStack(inventory,id,count,catalog)),consumeStack:(id,count=1)=>commit(I.consumeStack(inventory,id,count,catalog)),
@@ -92,6 +94,13 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true,getCapacity
    for(const debit of transaction.stackDebits||[]){const result=I.removeStack(next,debit.itemId,debit.quantity,catalog);if(!result.ok)return result;next=result.inventory}
    for(const id of transaction.instanceDebits||[]){const result=I.deleteInstance(next,id,equipment,catalog);if(!result.ok)return result;next=result.inventory}
    return commit(planRewards(next,transaction.itemRewards||[]),equipment,apply);
+  },
+  commitOwnershipTransfer(next,expectedInventory,expectedRevision,apply){
+   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
+   if(expectedInventory!==inventory||expectedRevision!==revision)return I.fail('STALE_PACKAGE');
+   if(!I.valid(next,catalog)||next.nextItemSerial!==inventory.nextItemSerial||typeof apply!=='function')return I.fail('INVALID_TRANSFER');
+   for(const id of Object.values(equipment))if(id&&!Object.hasOwn(next.instances,id))return I.fail('ITEM_EQUIPPED');
+   return commit({ok:true,inventory:next},equipment,apply);
   },
   commitRewards(rewards,apply){
    if(!Array.isArray(rewards)||typeof apply!=='function')return I.fail('INVALID_REWARD_PACKAGE');
