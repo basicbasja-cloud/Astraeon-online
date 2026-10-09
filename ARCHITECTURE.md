@@ -340,9 +340,9 @@ references; `getEquipment()` remains the old three-key compatibility projection.
 Replacement/unequip preserve ownership and capacity; modifiers reach existing
 Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
 are functional adapters, with no visual gear/artwork or UI redesign. Save version
-5 remains deliberate; boot/page/cache is 95. See the
+5 remains deliberate; current boot/page/cache is 96. See the
 [verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
-Core Spine remain incomplete; Shop/Storage/Town Services closure remains separate.
+Core Spine remain incomplete; Shop/Storage/Town Services is now verified separately.
 
 
 ## Talk / Kill / Collect Quest authority
@@ -371,7 +371,7 @@ existing field meaning or save core. Old saves have empty accepted/completed
 state. Collect/READY re-derive; tickets, events and actor references never persist.
 Death/respawn/travel retain durable progress and expire transient tickets.
 Legacy automatic Contract counters remain separate and compatible.
-Four Quest modules load before game attachment and are precached at generation 95.
+Four Quest modules load before game attachment and are precached at current generation 96.
 Plain guild/journal controls and isolated `/tools/quest.html` provide functional
 acceptance; no story, visual, AI/navigation or Quest UI redesign is introduced.
 See [Quest contracts](docs/CORE_SPINE_QUESTS.md) and

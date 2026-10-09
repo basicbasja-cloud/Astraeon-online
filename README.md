@@ -177,9 +177,9 @@ references; `getEquipment()` remains the old three-key compatibility projection.
 Replacement/unequip preserve ownership and capacity; modifiers reach existing
 Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
 are functional adapters, with no visual gear/artwork or UI redesign. Save version
-5 remains deliberate; boot/page/cache is 95. See the
+5 remains deliberate; current boot/page/cache is 96. See the
 [verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
-Core Spine remain incomplete; Shop/Storage/Town Services closure remains separate.
+Core Spine remain incomplete; Shop/Storage/Town Services is now verified separately.
 
 
 ## Talk / Kill / Collect Quest foundation
@@ -193,11 +193,11 @@ through existing Item/Capacity, Character Progression and gold authorities.
 Capacity failure leaves sources and rewards unchanged. Save version 5 retains
 accepted/Talk/Kill/completed state; no pending ticket or Collect ledger persists.
 Plain Accept/status/Turn In controls use existing guild/journal panels.
-`/tools/quest.html` is an isolated diagnostic sandbox. Cache generation is 95.
+`/tools/quest.html` is an isolated diagnostic sandbox. Current cache generation is 96.
 See the [verified Quest handoff](docs/CORE_SPINE_QUESTS_REPORT.md).
 The five quests and reward values are NON-FINAL engineering fixtures.
-Shop/Storage/Town Services, dev-tool gap closure and the 0.0.1 Integration Gate
-remain pending. Patch 0.0.1 and Core Spine are not complete.
+Shop/Storage/Town Services is verified. Dev-tool gap closure and the 0.0.1
+Integration Gate remain pending. Patch 0.0.1 and Core Spine are not complete.
 
 ## Shop / Storage / Town Services foundation
 
@@ -214,4 +214,7 @@ access bypass. Run `python tests/town_services_browser.py` for ordinary NPC
 movement, real Shop/Storage, capacity, Collect, persistence and death acceptance.
 See [contracts](docs/CORE_SPINE_TOWN_SERVICES.md) and
 [verification / resume report](docs/CORE_SPINE_TOWN_SERVICES_REPORT.md).
-This closes only the named foundation after verification, not Patch 0.0.1.
+Verification: 1474 retained + 140 new = 1614 Node checks / 0 failures;
+369 retained + 40 new = 409 browser groups / 0 failures. Cache/offline and
+world schemas pass. This closes only the named foundation, not Patch 0.0.1.
+Next: Dev-tool Gap Closure; not started here.

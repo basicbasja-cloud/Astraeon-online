@@ -180,4 +180,4 @@ fees or server/network authority. Future access restrictions, capacity profiles,
 offers and authoritative transport may extend these contracts. The next task
 is **DEV-TOOL GAP CLOSURE**, not automatic expansion in this branch.
 
-See the [working verification / handoff report](CORE_SPINE_TOWN_SERVICES_REPORT.md).
+See the [verified handoff report](CORE_SPINE_TOWN_SERVICES_REPORT.md).
