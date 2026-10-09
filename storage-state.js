@@ -14,7 +14,7 @@ function normalize(raw={},carried=I.normalize(),catalog=D){
  for(const [id,item] of Object.entries(instances))if(Object.hasOwn(carried.instances,id)){history.conflicts??={};history.conflicts[id]=item;delete instances[id]}
  let highest=0;for(const id of Object.keys(T.plain(source.instances)?source.instances:{}))highest=Math.max(highest,serial(id));
  // Observe previously quarantined IDs too; repeated loads must not rewind.
- for(const map of [history.instances,history.conflicts])for(const id of Object.keys(map||{}))highest=Math.max(highest,serial(id));
+ for(const map of [history.instances,history.conflicts,history.unsupportedSchema?.instances])for(const id of Object.keys(map||{}))highest=Math.max(highest,serial(id));
  return freeze({state:{schema:1,stacks:normalized.stacks,instances,history},reservedSerial:highest>=Number.MAX_SAFE_INTEGER?Number.MAX_SAFE_INTEGER:highest+1});
 }
 function inventory(storage,serialValue,catalog=D){return I.normalize({stacks:storage.stacks,instances:storage.instances,history:storage.history,nextItemSerial:serialValue},catalog)}
