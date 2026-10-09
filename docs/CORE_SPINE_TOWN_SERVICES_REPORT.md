@@ -148,3 +148,18 @@ contact rounding signal remains a production limitation, not a claimed fix.
 Next: finish the serial world validator; rerun source audit and diff check,
 record a clean runtime/test checkpoint, publish final documentation and normally
 push only the target branch. Do not start Dev-tool Gap Closure.
+
+## Clean runtime/test checkpoint gate
+
+Final serial `python tools/validate-world-v3.py` exits 0 and reports PASS for
+Terrain, Navigation, TownObject and AnimationManifest. All 1614 Node checks,
+409 functional browser groups and cache/offline pass. Source audit confirms
+22 inherited Node files and 38 protected core files unchanged; inherited browser
+assertions retained with documented fixture-only adaptations. Protected world,
+art, Character and style paths are untouched. `git diff --check` passes.
+
+This commit is the clean runtime/test checkpoint. Resolve its exact SHA with
+`git rev-parse HEAD`; final documentation will record it. Only final report/current
+documentation update, normal target-branch push and remote/clean-tree confirmation
+remain. No implementation or verification failures remain; prior failed attempts
+are retained as diagnostics and excluded from final passing totals.
