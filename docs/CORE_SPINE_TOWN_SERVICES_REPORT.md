@@ -109,3 +109,19 @@ running sequentially using the external `run-browser-regressions.py`; inspect
 `regression-runner.json` and per-suite command logs/reports. Do not treat the
 new-suite success as final acceptance until all inherited/cache/world results
 are confirmed. Runtime/test checkpoint and final documentation remain pending.
+
+## Retained browser / contact evidence update
+
+Eleven inherited suites pass: 312 functional groups. Cache/offline passes
+(v96, 164 precached requests, legacy removal, saved-character and offline town
+resume, 0 errors). First inherited Quest run passed 13 groups then timed out
+waiting for actual enemy-caused death. Its fresh lastState has HP 1, no incoming
+Combat events, Fox CHASE at distance 1.4000000000000008 vs range 1.4 and Boar
+CHASE at 4.800000000000001 vs 4.8. This is the documented inherited live-contact
+signal; all Lifecycle/Combat/navigation/exploration source remains identical
+to parent. Only Quest death fixture now takes a short 0.2-unit ordinary keyboard
+step toward its actual actor after approach. Actual HP=0 / Incoming Combat
+killed / preserved Quest / town respawn assertions are unchanged. No teleport,
+fake death, enemy HP, AI or collision change is introduced. Original failure
+remains `regression-quests`; full two-class rerun is `regression-quests-rerun1`.
+Do not claim Quest rerun/world accepted until their actual completion.

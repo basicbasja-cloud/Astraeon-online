@@ -154,6 +154,11 @@ try:
    page.evaluate('''()=>{window.questDeathEvidence=null;window.questDeathObserver=()=>{const s=AstraeonQA.snapshot();if(s.save.currentHP===0){window.questDeathEvidence={hp:s.save.currentHP,time:s.time,questState:s.save.questState,position:s.player.position,incoming:s.incomingCombat.at(-1)};removeEventListener('astraeon-frame',window.questDeathObserver)}};addEventListener('astraeon-frame',window.questDeathObserver)}''')
    try:
     page.mouse.click(*field_point(page,goal));page.wait_for_function('g=>{const s=AstraeonQA.snapshot();return !!window.questDeathEvidence||Math.hypot(s.save.x-g.x,s.save.y-g.y)<.5}',arg=goal,timeout=30000)
+    # The retained live contact fixture can stop at range + one floating-point
+    # unit (captured CHASE distances 1.4000000000000008 / 4.800000000000001).
+    # Use ordinary input to enter contact; keep the actual Combat death assertion.
+    if not page.evaluate('!!window.questDeathEvidence'):
+     current=actor(page,living['instanceId']);observations.append({'event':'ordinary contact step before real player-death wait','actor':current,'player':qa(page)['player']['position']});checkpoint();keyboard_step(page,current['position'],.2)
     page.wait_for_function('window.questDeathEvidence?.hp===0',timeout=60000);death=page.evaluate('window.questDeathEvidence');assert death['questState']==durable and death['incoming']['hp']['killed'] and death['incoming']['hp']['hpAfter']==0
     observations.append({'event':'latched real enemy-caused player death after ordinary ground navigation','actor':living,'goal':goal,'death':death});checkpoint()
     page.wait_for_function('AstraeonQA.snapshot().save.zone===0&&AstraeonQA.snapshot().save.currentHP>0',timeout=30000);pause(page);assert snap(page)['questState']==durable;passed('real enemy damage player death and respawn retain partial Quest progress',{'class':cls,'deathTime':death['time']})
