@@ -36,7 +36,14 @@ def replace_arm(body, raw, annotation, head_mask):
             (arr[:, :, 2] > arr[:, :, 0]*.45) & (arr[:, :, 3] > 180))
     skin[315:] = False
     labels, count = ndimage.label(ndimage.binary_closing(skin, iterations=1))
-    if count:
+    if 'generatedHeadPolygon' in annotation:
+        # Warm ivory cloth can touch the skin seed. A reviewed skull contour
+        # keeps that sleeve intact instead of treating it as generated face.
+        head = Image.new('L', raw.size)
+        if annotation['generatedHeadPolygon']:
+            ImageDraw.Draw(head).polygon([tuple(p) for p in annotation['generatedHeadPolygon']], fill=255)
+        arr[np.asarray(head) > 0] = 0
+    elif count:
         sizes = np.bincount(labels.ravel()); sizes[0] = 0
         context_head = ndimage.binary_dilation(ndimage.binary_fill_holes(labels == sizes.argmax()), iterations=2)
         arr[context_head] = 0
@@ -60,6 +67,10 @@ def replace_arm(body, raw, annotation, head_mask):
     for chain in annotation.get('extraEraseChains', []):
         extra = arm_mask(chain, annotation.get('oldWidth', 27))
         old_mask = Image.fromarray(np.maximum(np.asarray(old_mask), np.asarray(extra)))
+    if 'oldEraseMaxY' in annotation:
+        bounded = np.asarray(old_mask).copy()
+        bounded[annotation['oldEraseMaxY']+1:] = 0
+        old_mask = Image.fromarray(bounded)
     mask = Image.fromarray(np.maximum(np.asarray(new_mask), np.asarray(old_mask)))
     # Never admit a generated face or costume redesign outside the arm area.
     mask_array = np.asarray(mask).copy()
@@ -74,7 +85,25 @@ def replace_arm(body, raw, annotation, head_mask):
     arr = np.asarray(normalized).copy()
     arr[:, :, 3][arr[:, :, 3] >= 250] = 255
     normalized = Image.fromarray(arr)
-    result = Image.composite(normalized, body, soft)
+    if annotation.get('isolatedArm'):
+        # An unoccluded limb cutout supplies the missing upper arm. Remove
+        # only the old limb above the protected collar, then paint the new
+        # arm over its shoulder. Empty cutout margin cannot erase the torso.
+        old_array = np.asarray(old_mask).copy()
+        new_array = np.asarray(new_mask).copy()
+        protected = np.asarray(head_mask) > 0
+        old_array[protected] = 0
+        new_array[protected] = 0
+        old_soft = Image.fromarray(old_array).filter(ImageFilter.GaussianBlur(.65))
+        old_soft = Image.fromarray(np.minimum(np.asarray(old_soft), old_array))
+        base = Image.composite(Image.new('RGBA', body.size), body, old_soft)
+        new_soft = Image.fromarray(new_array).filter(ImageFilter.GaussianBlur(.65))
+        new_soft = np.minimum(np.asarray(new_soft), new_array)
+        patch = np.asarray(normalized).copy()
+        patch[:, :, 3] = (patch[:, :, 3].astype(float)*new_soft/255).round().astype('uint8')
+        result = Image.alpha_composite(base, Image.fromarray(patch))
+    else:
+        result = Image.composite(normalized, body, soft)
     # Keep transparent RGB canonical. This is normalization, not pose drawing.
     arr = np.asarray(result).copy(); arr[arr[:, :, 3] == 0] = 0
     return Image.fromarray(arr), mask, points, shift
@@ -82,7 +111,6 @@ def replace_arm(body, raw, annotation, head_mask):
 def run():
     pack = json.loads(SOURCE.read_text())
     atlas = Image.open(ROOT / pack['atlases']['body-basicattack']['file']).convert('RGBA')
-    provenance = json.loads((ROOT / 'authoring/characters/builds/swordsman-registration-v1/salvage-receipt.json').read_text())
     head_atlas = Image.open(ROOT / pack['atlases']['head-basicattack']['file']).convert('RGBA')
     heads = {}
     for direction in pack['bodyContract']['directions']:
