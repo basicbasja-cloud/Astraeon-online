@@ -44,7 +44,7 @@ test('cape shares its back pivot in front/back passes and is sampled from the bo
 for(const [name,edit]of [
  ['Head pivot missing',p=>delete first(p).pivot],['Head pivot outside raster',p=>first(p).pivot[0]=-1],['Head anchor nonfinite',p=>p.bodyContract.anchorRegistration.Idle.S[0].head.x=NaN],
  ['Head phase mapping invalid',p=>p.parts['swordsman-head'].mode='PHASE_SYNC'],['Hair pivot invalid',p=>p.parts['hair-a'].timelines.Idle.S.frames[0].layers.HairFront.pivot=[Infinity,0]],
- ['weapon grip missing',p=>delete p.parts['weapon-a'].timelines.Idle.S.frames[0].layers.MainHand.pivot],['cape attachment invalid',p=>p.parts.garment.anchor='missingBack'],
+ ['weapon grip missing',p=>delete p.parts['weapon-a'].timelines.Idle.S.phases[0].layers.MainHand.pivot],['cape attachment invalid',p=>p.parts.garment.anchor='missingBack'],
  ['trim metadata omitted',p=>delete first(p).trim],['trim source overrun',p=>first(p).trim.offset=[300,300]],['finite transform rejected',p=>first(p).localTransform.rotation=Infinity],
  ['invalid phase reference',p=>p.parts['hair-a'].actionPhaseRegistration={Walk:[{at:.2,transform:{x:0,y:0,rotation:0,scale:1}}]}],
  ['missing direction mapping',p=>delete p.parts['swordsman-head'].timelines.Walk.NE],['missing registered body direction',p=>delete p.bodyContract.anchorRegistration.Walk.SE],
@@ -63,4 +63,23 @@ test('body-owned grip masks stay on the selected glove raster and never alter th
 });
 test('foreground masks reject nonfinite and unrelated layer references',()=>{
  for(const edit of [p=>p.parts['swordsman-body-default'].timelines.Idle.S.frames[0].layers.Body.foregroundPasses[0].polygon[0][0]=NaN,p=>p.parts['swordsman-body-default'].timelines.Idle.S.frames[0].layers.Body.foregroundPasses[0].afterLayer='Unknown']){const bad=clone(p);edit(bad);assert.ok(A.validateAppearancePack(bad,t).length)}
+});
+test('reduced sword perspectives follow action phase while the grip follows every body frame',()=>{
+ for(const id of ['weapon-a','weapon-b'])for(const [action,v]of Object.entries(t.actions))for(const d of M.DIRECTIONS){
+  const seq=p.parts[id].timelines[action][d];assert.equal(p.parts[id].mode,'PHASE_SYNC');assert.equal(seq.phases.length,action==='BasicAttack'?6:1);
+  let elapsed=0;
+  for(let i=0;i<v.directions[d].frames.length;i++){
+   const forced=c.sample(action,d,0,{frameIndex:i,appearance:{MainHand:id}}),live=c.sample(action,d,elapsed+1,{appearance:{MainHand:id},cosmeticTimeMs:90000}),weapon=s=>s.layers.find(r=>r.slot==='MainHand');
+   assert.equal(weapon(live).weaponPhase,weapon(forced).weaponPhase);assert.deepEqual(weapon(live).rect,weapon(forced).rect);assert.deepEqual(weapon(live).transform,live.registeredAnchors.mainHand);assert.deepEqual(weapon(live).pivot,[24,98]);elapsed+=v.directions[d].frames[i].durationMs;
+  }
+ }
+});
+test('weapon phase references cannot omit the contact grip or a direction',()=>{
+ for(const edit of [p=>delete p.parts['weapon-a'].timelines.BasicAttack.W.phases[3].layers.MainHand.pivot,p=>delete p.parts['weapon-b'].timelines.BasicAttack.NW,p=>p.parts['weapon-a'].timelines.BasicAttack.SW.phases[0].at=.1]){const bad=clone(p);edit(bad);assert.throws(()=>A.compileAssembly(t,bad))}
+});
+test('registered blade tip follows the selected grip rather than the superseded motion estimate',()=>{
+ for(const [action,v]of Object.entries(t.actions))for(const d of M.DIRECTIONS)for(let frameIndex=0;frameIndex<v.directions[d].frames.length;frameIndex++)for(const MainHand of ['weapon-a','weapon-b']){
+  const s=c.sample(action,d,0,{frameIndex,appearance:{MainHand}}),r=s.layers.find(r=>r.slot==='MainHand'),tip=A.composeTransform(r.transform,{x:r.bladeTip[0]-r.pivot[0],y:r.bladeTip[1]-r.pivot[1],rotation:0,scale:1});
+  assert.ok(Math.abs(tip.x-s.registeredAnchors.weaponTip.x)<.001);assert.ok(Math.abs(tip.y-s.registeredAnchors.weaponTip.y)<.001);
+ }
 });

@@ -183,6 +183,22 @@
     "BasicAttack/W/10": {
       "sourceFrame": 11,
       "reason": "Isolated follow-through source sends the hand to the opposite side then back one frame later; salvage the adjacent coherent painted pose as a short follow-through hold. Original frame remains immutable."
+    },
+    "BasicAttack/SW/7": {
+      "sourceFrame": 8,
+      "reason": "The contact timestamp used a still-raised hand pose. Reuse the immediately following painted strike pose so contact carries the actual lowered sword arm."
+    },
+    "BasicAttack/NW/7": {
+      "sourceFrame": 8,
+      "reason": "The contact timestamp used a still-raised hand pose. Reuse the immediately following painted strike pose so contact carries the actual lowered sword arm."
+    },
+    "BasicAttack/W/14": {
+      "sourceFrame": 13,
+      "reason": "Original recovery hand is visibly open; reuse the adjacent closed-fist recovery pose for a short held-grip recovery, preserving the character and all timing."
+    },
+    "BasicAttack/W/15": {
+      "sourceFrame": 13,
+      "reason": "Original recovery hand is visibly open; reuse the adjacent closed-fist recovery pose for a short held-grip recovery, preserving the character and all timing."
     }
   },
   "weaponGripPivots": {
@@ -254,5 +270,81 @@
         98
       ]
     }
+  },
+  "weaponPhaseViews": {
+    "S": {
+      "ready": "S",
+      "loaded": "S",
+      "swing": "S",
+      "contact": "S",
+      "followThrough": "S",
+      "recovery": "S"
+    },
+    "SW": {
+      "ready": "SW",
+      "loaded": "SW",
+      "swing": "S",
+      "contact": "S",
+      "followThrough": "SW",
+      "recovery": "SW"
+    },
+    "W": {
+      "ready": "SW",
+      "loaded": "SW",
+      "swing": "S",
+      "contact": "S",
+      "followThrough": "SW",
+      "recovery": "SW"
+    },
+    "NW": {
+      "ready": "NW",
+      "loaded": "NW",
+      "swing": "N",
+      "contact": "N",
+      "followThrough": "NW",
+      "recovery": "NW"
+    },
+    "N": {
+      "ready": "N",
+      "loaded": "N",
+      "swing": "NE",
+      "contact": "NE",
+      "followThrough": "N",
+      "recovery": "N"
+    },
+    "NE": {
+      "ready": "NE",
+      "loaded": "NE",
+      "swing": "N",
+      "contact": "N",
+      "followThrough": "NE",
+      "recovery": "NE"
+    },
+    "E": {
+      "ready": "SE",
+      "loaded": "SE",
+      "swing": "S",
+      "contact": "S",
+      "followThrough": "SE",
+      "recovery": "SE"
+    },
+    "SE": {
+      "ready": "SE",
+      "loaded": "SE",
+      "swing": "S",
+      "contact": "S",
+      "followThrough": "SE",
+      "recovery": "SE"
+    }
+  },
+  "weaponSourceLandmarks": {
+    "bladeTip": [
+      24,
+      13
+    ],
+    "guardCentre": [
+      24,
+      86
+    ]
   }
 }

@@ -18,6 +18,10 @@ function diagnostics(ctx,s,{x,y,scale},options){
  const names={HeadBase:['head pivot','#9fffea'],HairFront:['hair pivot','#ef9dff'],MainHand:['weapon grip pivot','#ff7e9d'],GarmentBack:['cape pivot','#95caff']};
  for(const ref of s.layers){
   if(names[ref.layer]&&enabled(names[ref.layer][0])){mark(ref.transform,names[ref.layer][0],names[ref.layer][1]);if(ref.anchorTransform){const p=point(ref.anchorTransform),q=point(ref.transform);ctx.strokeStyle=names[ref.layer][1];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}
+  if(ref.layer==='MainHand'&&ref.bladeTip&&ref.guardCentre&&enabled('weapon grip pivot')){
+   const local=p=>A.composeTransform(ref.transform,{x:p[0]-ref.pivot[0],y:p[1]-ref.pivot[1],rotation:0,scale:1});
+   const grip=point(ref.transform),tip=point(local(ref.bladeTip));ctx.strokeStyle='#ff7e9d';ctx.beginPath();ctx.moveTo(grip.x,grip.y);ctx.lineTo(tip.x,tip.y);ctx.stroke();mark(local(ref.guardCentre),'guard','#95caff');
+  }
   if(enabled('bounding boxes')){
    let corners;
    if(ref.space==='canvas')corners=[[0,0],[320,0],[320,320],[0,320]].map(([x,y])=>point({x,y}));

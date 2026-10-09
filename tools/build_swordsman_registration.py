@@ -33,7 +33,7 @@ def build():
  ims={k:Image.open(R/a['file']).convert('RGBA') for k,a in old['atlases'].items()}
  p=copy.deepcopy(old);p.update(schemaVersion='1.1',packId='swordsman-bodywithoutfit-registration-v1',status='REQUIRES_OWNER_VISUAL_REVIEW')
  p['source'].update(method='Owner-authorized pixel-preserving head extraction and dressed-body salvage; measured socket/pivot registration',baselineCommit='db2959b97a77b3f9b54c22d5e732fe2b2345a529')
- p['bodyContract']={'contractId':'swordsman-male-dressed-body-v1','model':'BodyWithOutfit+Head','registration':copy.deepcopy(t['registration']),'directions':D,'actions':list(t['actions']),'timeline':{a:{d:[f['durationMs'] for f in v['directions'][d]['frames']] for d in D} for a,v in t['actions'].items()},'sockets':['head','mainHand','offHand','back','waist','fxOrigin'],'presentationSelector':'costumeBodyId; independent of gameplay equipment','internalLayerEquivalent':{'BodyWithOutfit':'Body','Head':'HeadBase'}}
+ p['bodyContract']={'contractId':'swordsman-male-dressed-body-v1','model':'BodyWithOutfit+Head','registration':copy.deepcopy(t['registration']),'directions':D,'actions':list(t['actions']),'timeline':{a:{d:[f['durationMs'] for f in v['directions'][d]['frames']] for d in D} for a,v in t['actions'].items()},'sockets':['head','mainHand','offHand','back','waist','fxOrigin','weaponTip'],'presentationSelector':'costumeBodyId; independent of gameplay equipment','internalLayerEquivalent':{'BodyWithOutfit':'Body','Head':'HeadBase'}}
  p['slots'].pop('Body');p['slots']['BodyWithOutfit']={'layers':['Body'],'required':True};p['slots']['Head']={'layers':['HeadBase'],'required':True}
  p['defaultParts'].pop('Body');p['defaultParts'].update(BodyWithOutfit='swordsman-body-default',Head='swordsman-head')
  p['parts'].pop('body-swordsman')
@@ -245,11 +245,30 @@ def build():
     polygon=[[round(grip[0]+4.5*math.cos(k*math.pi/4),3),round(grip[1]+4.5*math.sin(k*math.pi/4),3)] for k in range(8)]
     for id in ['swordsman-body-default','swordsman-body-royal-proof']:
      p['parts'][id]['timelines'][a][d]['frames'][i]['layers']['Body']['foregroundPasses']=[{'afterLayer':layer,'requiresLayer':'MainHand','semantic':'grip fingers/palm','polygon':polygon} for layer in ['MainHand','HairFront','HeadgearTop']]
-    targets={'head':tr(*s['neck']),'mainHand':tr(*grip,angle),'offHand':tr(*ov.get('offHand',s['offHand'])),'back':tr(*ov.get('back',s['back']),s['backRotation']),'fxOrigin':tr(*grip,angle)}
+    tip=authored['weaponSourceLandmarks']['bladeTip'];pivot=authored['weaponGripPivots']['weapon-a'][d];dx=tip[0]-pivot[0];dy=tip[1]-pivot[1]
+    tipPoint=[grip[0]+math.cos(angle)*dx-math.sin(angle)*dy,grip[1]+math.sin(angle)*dx+math.cos(angle)*dy]
+    targets={'head':tr(*s['neck']),'mainHand':tr(*grip,angle),'offHand':tr(*ov.get('offHand',s['offHand'])),'back':tr(*ov.get('back',s['back']),s['backRotation']),'fxOrigin':tr(*grip,angle),'weaponTip':tr(*tipPoint)}
     entries.append({n:relative(f['anchors'][n],target) for n,target in targets.items()})
     for id,layer in [('swordsman-head','HeadBase'),('weapon-a','MainHand'),('weapon-b','MainHand'),('offhand','OffHand')]:p['parts'][id]['timelines'][a][d]['frames'][i]['layers'][layer]['localTransform']=tr()
     for ref in p['parts']['garment']['timelines'][a][d]['frames'][i]['layers'].values():ref['localTransform']=tr(scale=authored['cape'][d]['scale'])
    p['bodyContract']['anchorRegistration'][a][d]=entries
+ # The hand transform is sampled every body frame; blade perspective is a
+ # reduced authored phase set. No generated weapon frames or independent
+ # cosmetic clock: both blade identities reuse their original source views.
+ for id in ['weapon-a','weapon-b']:
+  part=p['parts'][id];part['mode']='PHASE_SYNC';part['timelines']={}
+  for a,action in t['actions'].items():
+   part['timelines'][a]={}
+   for d in D:
+    seq=action['directions'][d];total=sum(f['durationMs'] for f in seq['frames'])
+    starts=[(0,'ready')] if a!='BasicAttack' else [(0,'ready'),(3,'loaded'),(6,'swing'),(7,'contact'),(9,'followThrough'),(13,'recovery')]
+    phases=[]
+    for index,name in starts:
+     sourceDirection=authored['weaponPhaseViews'][d][name] if a=='BasicAttack' else d
+     base=old['parts'][id]['timelines']['*'][sourceDirection]['views'][0]['layers']['MainHand']
+     ref=trimref({'atlasId':base['atlasId'],'rect':base['rect']},authored['weaponGripPivots'][id][sourceDirection],[48,128],[0,0],localTransform=tr(),pivotSemantic='grip',sourceDirection=sourceDirection,weaponPhase=name,**authored['weaponSourceLandmarks'])
+     phases.append({'at':sum(f['durationMs'] for f in seq['frames'][:index])/total,'name':name,'layers':{'MainHand':ref}})
+    part['timelines'][a][d]={'phases':phases}
  # Remove unreferenced old body/reuse atlases; preserved outside this new pack.
  used={r['atlasId'] for part in p['parts'].values() for dirs in part['timelines'].values() for seq in dirs.values() for e in seq.get('frames',seq.get('views',seq.get('phases',[]))) for r in e['layers'].values()}
  p['atlases']={k:v for k,v in p['atlases'].items() if k in used}

@@ -17,7 +17,7 @@
   "runtimeAtlases": {
     "body-idle": "3247c33634589521a799b4f9f6573f3b9a33849b84ef630c801bade904576d0e",
     "body-walk": "0d4ea0ea69455f70c09b0787f16703c9e213ebffc0d37b4c6cdc7c72efe95b81",
-    "body-basicattack": "37b7d573c2ca12bd7d551959af974348a28452102ae1d34bd381b1307efe4283",
+    "body-basicattack": "a57b7e936b08aee6e07861091f5da5a8f0f0343a7bb21bba7ffc0c9339e78485",
     "shadow": "e82bfb070b81ea9a79443e3d3a8dea8fa7ab0796fcc4534cc67658a4cb60c0da",
     "hair-a": "b2c15fb6f3cf83fce1d9f3cc2b67415feb768776aafcc4de9651a2b287ff69fc",
     "hair-b": "6d723c9cdffa31f43bd86c6adcd8fe9bc3e23cbcce2a2d72f7c281cb6bc02f1f",
@@ -30,8 +30,8 @@
     "royal-idle": "c454ada46af6f60818e89e7b7ead052aa03959593ac61097b16051697d06202b",
     "head-walk": "33aee481f5aa247dbde6938c7c0ab8ba6d1a11f7ea52b24484c870a2f8724838",
     "royal-walk": "5eb2ee8a6ba6a62ec292761747fc18d9f0e5438b61d66edb57363903e5cb9c19",
-    "head-basicattack": "a12c2e78e560aecef33e45c9dbc975e86c434d4559e7fbba31d657bcae744ffd",
-    "royal-basicattack": "e77e1553bc6b880f0d9e00b070106707e99c3d6f9130787c123d49178292df9e",
+    "head-basicattack": "98cf032bdccb06951dcd8d59c51f4aa6441ef079500eca67d8c0e921e43885c6",
+    "royal-basicattack": "2dcfb16a34d6ee2f87aeae5b990c5418953e824e5f9622c34ad81a7a4f7d64c2",
     "cape-front": "bac1ddd70b5751109d40d5c018e72a181419999b792958400e21debaf90554a0"
   },
   "frameCount": 328,
@@ -6063,25 +6063,28 @@
       "action": "BasicAttack",
       "direction": "SW",
       "frame": 7,
-      "sourceFrame": 7,
-      "poseRepair": null,
+      "sourceFrame": 8,
+      "poseRepair": {
+        "sourceFrame": 8,
+        "reason": "The contact timestamp used a still-raised hand pose. Reuse the immediately following painted strike pose so contact carries the actual lowered sword arm."
+      },
       "sourceAtlas": "body-basicattack",
       "sourceRect": [
-        2240,
+        2560,
         320,
         320,
         320
       ],
-      "sourceRGBA": "4eb8e86f362c44ad931d25c2a0e6267ea4db1bb4644bd1b4208988fc032f44d0",
+      "sourceRGBA": "0304231b934e0119f74328b8119d68ac141001cdde1d443786e71819bab58a2c",
       "headRect": [
-        133,
-        123,
+        134,
+        121,
         187,
-        169
+        166
       ],
       "headPivot": [
-        48.0,
-        70
+        47.5,
+        69
       ],
       "headMask": "connected skull/face and direction-local ear skin; holes filled; two-pixel boundary; bounded crop",
       "losslessReassembly": true
@@ -6687,25 +6690,28 @@
       "action": "BasicAttack",
       "direction": "W",
       "frame": 14,
-      "sourceFrame": 14,
-      "poseRepair": null,
+      "sourceFrame": 13,
+      "poseRepair": {
+        "sourceFrame": 13,
+        "reason": "Original recovery hand is visibly open; reuse the adjacent closed-fist recovery pose for a short held-grip recovery, preserving the character and all timing."
+      },
       "sourceAtlas": "body-basicattack",
       "sourceRect": [
-        4480,
+        4160,
         640,
         320,
         320
       ],
-      "sourceRGBA": "0cea50b44d7f7587c5eb432e2a3649e6e1cf290f6fcac3c2221a5b4632316127",
+      "sourceRGBA": "4934183afa684de198a01b5f0d518aa41428a2af477a7f4fc63057d1c8a72931",
       "headRect": [
         131,
-        84,
+        93,
         190,
-        134
+        145
       ],
       "headPivot": [
         47.5,
-        72
+        73
       ],
       "headMask": "connected skull/face and direction-local ear skin; holes filled; two-pixel boundary; bounded crop",
       "losslessReassembly": true
@@ -6714,25 +6720,28 @@
       "action": "BasicAttack",
       "direction": "W",
       "frame": 15,
-      "sourceFrame": 15,
-      "poseRepair": null,
+      "sourceFrame": 13,
+      "poseRepair": {
+        "sourceFrame": 13,
+        "reason": "Original recovery hand is visibly open; reuse the adjacent closed-fist recovery pose for a short held-grip recovery, preserving the character and all timing."
+      },
       "sourceAtlas": "body-basicattack",
       "sourceRect": [
-        4800,
+        4160,
         640,
         320,
         320
       ],
-      "sourceRGBA": "6367d4d607c61ae59c02eb18aa5d0180bae3fce72103d49d14a1c9771cc45451",
+      "sourceRGBA": "4934183afa684de198a01b5f0d518aa41428a2af477a7f4fc63057d1c8a72931",
       "headRect": [
-        130,
-        85,
-        189,
-        135
+        131,
+        93,
+        190,
+        145
       ],
       "headPivot": [
         47.5,
-        72
+        73
       ],
       "headMask": "connected skull/face and direction-local ear skin; holes filled; two-pixel boundary; bounded crop",
       "losslessReassembly": true
@@ -6930,25 +6939,28 @@
       "action": "BasicAttack",
       "direction": "NW",
       "frame": 7,
-      "sourceFrame": 7,
-      "poseRepair": null,
+      "sourceFrame": 8,
+      "poseRepair": {
+        "sourceFrame": 8,
+        "reason": "The contact timestamp used a still-raised hand pose. Reuse the immediately following painted strike pose so contact carries the actual lowered sword arm."
+      },
       "sourceAtlas": "body-basicattack",
       "sourceRect": [
-        2240,
+        2560,
         960,
         320,
         320
       ],
-      "sourceRGBA": "699ceca9b5f835b7b1ff862eb0367904776315226beb756b765454eb09778ff0",
+      "sourceRGBA": "83169c9f90108371b9366958de9cbf07bd7f0c65228aba14cfc4badf43a2bb7d",
       "headRect": [
-        132,
-        116,
-        188,
-        164
+        133,
+        115,
+        189,
+        162
       ],
       "headPivot": [
         48.0,
-        71
+        70
       ],
       "headMask": "connected skull/face and direction-local ear skin; holes filled; two-pixel boundary; bounded crop",
       "losslessReassembly": true

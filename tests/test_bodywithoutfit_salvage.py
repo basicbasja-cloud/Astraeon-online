@@ -27,9 +27,10 @@ class SalvageTests(unittest.TestCase):
   for f in self.receipt['frames']:
    a,d,i=f['action'],f['direction'],f['frame'];j=self.p['bodyContract']['directions'].index(d);l,t,r,b=f['headRect'];rect=(i*320+l,j*320+t,i*320+r,j*320+b)
    self.assertTrue(np.array_equal(np.asarray(self.ims['body-'+a.lower()].crop(rect)),np.asarray(self.ims['royal-'+a.lower()].crop(rect))),(a,d,i))
- def test_one_follow_through_repair_reuses_adjacent_painted_pose_without_generation(self):
+ def test_bounded_contact_and_held_fist_repairs_reuse_existing_painted_poses_without_generation(self):
   repaired=[f for f in self.receipt['frames'] if f.get('poseRepair')]
-  self.assertEqual([(f['action'],f['direction'],f['frame'],f['sourceFrame']) for f in repaired],[('BasicAttack','W',10,11)])
-  for id in ['body-basicattack','head-basicattack']:
-   im=self.ims[id];size=320 if id.startswith('body') else 96
-   self.assertTrue(np.array_equal(np.asarray(im.crop((10*size,2*size,11*size,3*size))),np.asarray(im.crop((11*size,2*size,12*size,3*size)))))
+  self.assertEqual([(f['action'],f['direction'],f['frame'],f['sourceFrame']) for f in repaired],[('BasicAttack','SW',7,8),('BasicAttack','W',10,11),('BasicAttack','W',14,13),('BasicAttack','W',15,13),('BasicAttack','NW',7,8)])
+  # Split masks can differ where the target grip occludes the ear. The whole
+  # Body + independent Head must still exactly equal the retained source.
+  for f in repaired:
+   j=self.p['bodyContract']['directions'].index(f['direction']);i=f['frame'];body=self.ims['body-basicattack'].crop((i*320,j*320,(i+1)*320,(j+1)*320));ref=self.p['parts']['swordsman-head']['timelines']['BasicAttack'][f['direction']]['frames'][i]['layers']['HeadBase'];x,y,w,h=ref['rect'];body.alpha_composite(self.ims[ref['atlasId']].crop((x,y,x+w,y+h)),tuple(ref['trim']['offset']));source=f['sourceFrame'];self.assertTrue(np.array_equal(np.asarray(body),np.asarray(self.old['body-basicattack'].crop((source*320,j*320,(source+1)*320,(j+1)*320)))))
