@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "2.0-authoring",
+  "classId": "Swordsman",
+  "bodyVariant": "male",
+  "status": "REQUIRES_OWNER_VISUAL_REVIEW",
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": {
+      "x": 160,
+      "y": 264,
+      "rotation": 0,
+      "scale": 1
+    },
+    "referenceHeight": 176,
+    "mirroring": "none"
+  },
+  "generationCanvas": [
+    1024,
+    1024
+  ],
+  "generationScale": 3.2,
+  "directionOrder": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "pose": {
+    "action": "Idle",
+    "direction": "S",
+    "frameIndex": 0,
+    "poseId": "Idle/S/key0",
+    "motionTemplate": "authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json",
+    "anchors": {
+      "root": {
+        "x": 160,
+        "y": 264,
+        "rotation": 0,
+        "scale": 1
+      },
+      "head": {
+        "x": 160.0,
+        "y": 115.4,
+        "rotation": 0.0,
+        "scale": 0.93333
+      },
+      "mainHand": {
+        "x": 121,
+        "y": 179,
+        "rotation": -2.63,
+        "scale": 1.0
+      },
+      "offHand": {
+        "x": 200,
+        "y": 179,
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "back": {
+        "x": 160.0,
+        "y": 143.4,
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "waist": {
+        "x": 160.0,
+        "y": 201.4,
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "footL": {
+        "x": 178.5,
+        "y": 262.0,
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "footR": {
+        "x": 140.5,
+        "y": 260.0,
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "weaponTip": {
+        "x": 80.366,
+        "y": 251.373,
+        "rotation": 0.0,
+        "scale": 1.0
+      },
+      "fxOrigin": {
+        "x": 121,
+        "y": 179,
+        "rotation": -2.63,
+        "scale": 1.0
+      }
+    },
+    "timingAuthority": "baseline MotionTemplate; guide contains no independent clock"
+  },
+  "guidePurpose": "TECHNICAL_ONLY; never production art or a new gait",
+  "authoringRule": "ISOLATED_COMPONENT_FROM_INCEPTION; no destructive full-character decomposition",
+  "normalization": "whole canvas 1024 to 320; one shared transform; no alpha-bounds fitting",
+  "neckOverlap": {
+    "bodyNeck": [
+      156,
+      132,
+      164,
+      143
+    ],
+    "headNeck": [
+      155,
+      128,
+      165,
+      141
+    ]
+  },
+  "identityReference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+  "identityUse": "appearance reference only; no pixels copied into modular sources"
+}
