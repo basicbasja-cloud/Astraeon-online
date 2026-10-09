@@ -13,7 +13,8 @@ Next: **DEV-TOOL GAP CLOSURE**; do not start it in this branch.
 | Starting parent branch | `backbone/quest-foundation-0.0.1` |
 | Exact fetched starting parent HEAD | `fea51986a0dd1b5f9d94710b0d48261deab5f175` |
 | Clean runtime/test checkpoint | `b08421cd3e186b1987aa13e6721aa51639b436d1` |
-| Final documentation HEAD / remote HEAD | Documentation successor of the checkpoint; resolve using commands below and final push receipt |
+| Verified documentation checkpoint | `72a1631cbfa81cefffe83112b181f3411ddef2a6` |
+| Final documentation successor / remote HEAD | Current target branch HEAD; resolve using commands below and final push receipt |
 
 Parent was fetched, switched and pulled ff-only, and was clean before creating
 this branch. No pasted older checkpoint was used as a reset. No merge, rebase,
@@ -317,3 +318,14 @@ No account/guild stash, mail/ground overflow, auto-sell, player trading, auction
 premium systems, repair, stock/restock/buyback, final content/UI/visual work or
 server authority was implemented. Do not interpret functional verification as
 visual/art/performance acceptance. Next recommended task: **DEV-TOOL GAP CLOSURE**.
+
+## Final documentation successor / publication gate
+
+Verified documentation checkpoint: `72a1631cbfa81cefffe83112b181f3411ddef2a6`.
+This final successor records publication readiness without runtime changes.
+All final verification results above apply to clean runtime checkpoint
+`b08421cd3e186b1987aa13e6721aa51639b436d1`; subsequent diff is documentation only.
+Source audit and full parent-to-HEAD diff check pass. Push only
+`backbone/shop-storage-town-services-0.0.1` normally, confirm local/remote exact
+HEAD equality and empty `git status --short`, and stop. Final external push
+receipt and response contain this successor's exact SHA. No next task starts here.
