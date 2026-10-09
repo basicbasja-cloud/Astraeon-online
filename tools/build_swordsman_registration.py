@@ -28,6 +28,7 @@ def trimref(ref,pivot,sourceSize,offset,**kw):return {**ref,'pivot':[round(float
 def build():
  AS.mkdir(parents=True,exist_ok=True);BUILD.mkdir(parents=True,exist_ok=True);REVIEW.mkdir(parents=True,exist_ok=True)
  old=read(OLD);motionfile=R/'authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json';t=read(motionfile)
+ authored=read(BUILD/'appearance-registration.json')
  ims={k:Image.open(R/a['file']).convert('RGBA') for k,a in old['atlases'].items()}
  p=copy.deepcopy(old);p.update(schemaVersion='1.1',packId='swordsman-bodywithoutfit-registration-v1',status='REQUIRES_OWNER_VISUAL_REVIEW')
  p['source'].update(method='Owner-authorized pixel-preserving head extraction and dressed-body salvage; measured socket/pivot registration',baselineCommit='db2959b97a77b3f9b54c22d5e732fe2b2345a529')
@@ -107,9 +108,13 @@ def build():
     gold=(arr[:,:,0]>120)&(arr[:,:,1]>70)&(arr[:,:,2]<130)&(arr[:,:,0]>arr[:,:,1]*1.18)&(arr[:,:,1]>arr[:,:,2]*1.25)&(arr[:,:,3]>220)&~mask
     collarWindow=(abs(xx-neck[0])<28)&(yy>neck[1]-4)&(yy<neck[1]+19)
     weight=gold*collarWindow*np.exp(-((xx-neck[0])/22)**2-((yy-neck[1]-7)/14)**2)
-    if weight.sum()>5:back=[float((weight*xx).sum()/weight.sum()),float((weight*yy).sum()/weight.sum())+2]
-    else:back=[neck[0],neck[1]+9]
-    samples[a,d,i]={'neck':neck,'hairSockets':sockets,'headRect':[l,top,right,bottom],'headPivot':pivot,'headCanvasOffset':[l-cx,top-cy],'mainHand':grips['mainHand'],'offHand':grips['offHand'],'back':back,'backMeasurement':'painted gold collar/shoulder centroid; torso-local search','tilt':tilt,'headBox':hb}
+    if weight.sum()>5:
+     bx=float((weight*xx).sum()/weight.sum());by=float((weight*yy).sum()/weight.sum())
+     slope=float((weight*(xx-bx)*(yy-by)).sum()/max(1,(weight*(xx-bx)**2).sum()))
+     backRotation=max(-.32,min(.32,math.atan(slope)))
+    else:bx,by=neck[0],neck[1]+7;backRotation=0
+    ox,oy=authored['cape'][d]['collarOffset'];back=[bx+ox,by+oy]
+    samples[a,d,i]={'neck':neck,'hairSockets':sockets,'headRect':[l,top,right,bottom],'headPivot':pivot,'headCanvasOffset':[l-cx,top-cy],'mainHand':grips['mainHand'],'offHand':grips['offHand'],'back':back,'backRotation':backRotation,'backMeasurement':'painted collar plane, independent of skull tilt; authored neckline registration','tilt':tilt,'headBox':hb}
     hr.append(cell);br.append(body)
     # Proof B changes all complete clothing/armour pixels, preserving gloves
     # and boots. It cannot alter the now-independent Head source.
@@ -132,18 +137,18 @@ def build():
  # Hair images are retained byte-for-byte. Their transform inherits the actual
  # selected Head socket, with no independent body-space bob/quarter-cycle lag.
  for id in ['hair-a','hair-b']:
-  part=p['parts'][id];part.update(mode='BODY_SYNC',parentLayer='HeadBase',anchor='hair',defaultRegistration=tr());part['timelines']={}
+  part=p['parts'][id];part.update(mode='BODY_SYNC',parentLayer='HeadBase',anchor='hair',defaultRegistration=tr(),directionRegistration=copy.deepcopy(authored['hair']));part['timelines']={}
   for a,action in t['actions'].items():
    part['timelines'][a]={}
    for j,d in enumerate(D):
     oldref=old['parts'][id]['timelines']['*'][d]['phases'][0]['layers']['HairFront'];r=oldref['rect'];tile=ims[id].crop((r[0],r[1],r[0]+r[2],r[1]+r[3]));bb=tile.getbbox();pivot=[(bb[0]+bb[2])/2,bb[1]+18]
-    ref=trimref({'atlasId':id,'rect':r},pivot,[80,80],[0,0],pivotSemantic='skull',localTransform=tr(0,-2))
+    ref=trimref({'atlasId':id,'rect':r},pivot,[80,80],[0,0],pivotSemantic='skull',localTransform=tr())
     part['timelines'][a][d]={'frames':[{'layers':{'HairFront':copy.deepcopy(ref)}} for f in action['directions'][d]['frames']]}
  # Rear cloth lies behind the actor; only the collar/central back panel
  # overlaps the dressed torso. Exposed sword-arm gloves remain in front.
  frontrows=[]
  for j,d in enumerate(D):
-  tile=ims['cape'].crop((0,j*144,160,(j+1)*144));arr=np.asarray(tile).copy()
+  sourcej=D.index(authored['cape'][d]['sourceDirection']);tile=ims['cape'].crop((0,sourcej*144,160,(sourcej+1)*144));arr=np.asarray(tile).copy()
   yy,xx=np.mgrid[:144,:160]
   width=np.interp(yy,[0,35,70,100,126,144],[90,70,54,54,124,144])
   arr[np.abs(xx-80)>width/2]=0
@@ -173,11 +178,11 @@ def build():
      elif id=='headgear':
       base=old['parts'][id]['timelines']['*'][d]['views'][0]['layers']['HeadgearTop'];pivot=base['pivot'];layer='HeadgearTop';local=tr();sourceSize=[80,80]
      else:
-      base=old['parts'][id]['timelines']['*'][d]['phases'][0]['layers']['GarmentBack'];pivot=base['pivot'];layer='GarmentBack';sourceSize=[160,144]
-      point=ov.get('back',s['back']);rotation=s['tilt']*.65
+      calibration=authored['cape'][d];base=old['parts'][id]['timelines']['*'][calibration['sourceDirection']]['phases'][0]['layers']['GarmentBack'];pivot=calibration['pivot'];layer='GarmentBack';sourceSize=[160,144]
+      point=ov.get('back',s['back']);rotation=s['backRotation']
       # Rear cape collar is seated below the extracted jaw; front/profile
       # cloth is behind shoulders, with its neckline occluded by the body.
-      target=tr(*point,rotation,.94);local=relative(f['anchors']['back'],target)
+      target=tr(*point,rotation,calibration['scale']);local=relative(f['anchors']['back'],target)
      ref=trimref({'atlasId':base['atlasId'],'rect':base['rect']},pivot,sourceSize,[0,0],localTransform=local,pivotSemantic={'MainHand':'grip','OffHand':'handle','HeadgearTop':'head-local','GarmentBack':'upper-back'}[layer])
      layers={layer:ref}
      if id=='garment' and d in ['NW','N','NE']:
@@ -204,10 +209,10 @@ def build():
    for i,f in enumerate(action['directions'][d]['frames']):
     s=samples[a,d,i];ov=overrides.get(a+'/'+d,{}).get(str(i),{})
     grip=ov.get('mainHand',s['mainHand']);angle=ov.get('weaponRotation',f['anchors']['mainHand']['rotation'])
-    targets={'head':tr(*s['neck']),'mainHand':tr(*grip,angle),'offHand':tr(*ov.get('offHand',s['offHand'])),'back':tr(*ov.get('back',s['back']),s['tilt']*.65),'fxOrigin':tr(*grip,angle)}
+    targets={'head':tr(*s['neck']),'mainHand':tr(*grip,angle),'offHand':tr(*ov.get('offHand',s['offHand'])),'back':tr(*ov.get('back',s['back']),s['backRotation']),'fxOrigin':tr(*grip,angle)}
     entries.append({n:relative(f['anchors'][n],target) for n,target in targets.items()})
     for id,layer in [('swordsman-head','HeadBase'),('weapon-a','MainHand'),('weapon-b','MainHand'),('offhand','OffHand')]:p['parts'][id]['timelines'][a][d]['frames'][i]['layers'][layer]['localTransform']=tr()
-    for ref in p['parts']['garment']['timelines'][a][d]['frames'][i]['layers'].values():ref['localTransform']=tr(scale=.94)
+    for ref in p['parts']['garment']['timelines'][a][d]['frames'][i]['layers'].values():ref['localTransform']=tr(scale=authored['cape'][d]['scale'])
    p['bodyContract']['anchorRegistration'][a][d]=entries
  # Remove unreferenced old body/reuse atlases; preserved outside this new pack.
  used={r['atlasId'] for part in p['parts'].values() for dirs in part['timelines'].values() for seq in dirs.values() for e in seq.get('frames',seq.get('views',seq.get('phases',[]))) for r in e['layers'].values()}
