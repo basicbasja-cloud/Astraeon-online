@@ -42,11 +42,12 @@ with sync_playwright() as p:
     page.evaluate('AstraeonGameplayReview.setPose("Walk","SW")')
     page.wait_for_function('AstraeonGameplayReview.snapshot().lastSample.direction==="SW"')
     swap_before=page.evaluate('AstraeonGameplayReview.snapshot()')
-    page.evaluate('AstraeonGameplayReview.loaded.setAppearance({Hair:"hair-b",MainHand:"weapon-b",OffHand:"offhand",Headgear:"headgear",Garment:null})')
+    page.evaluate('AstraeonGameplayReview.loaded.setAppearance({BodyWithOutfit:"swordsman-body-royal-proof",Hair:"hair-b",MainHand:"weapon-b",OffHand:"offhand",Headgear:"headgear",Garment:null})')
     swap_after=page.evaluate('AstraeonGameplayReview.snapshot()')
     assert swap_after['lastSample']['action']=='Walk' and swap_after['lastSample']['direction']=='SW'
     assert swap_before['lastTransform']['position']==swap_after['lastTransform']['position']
     assert swap_before['lastTransform']['distance']==swap_after['lastTransform']['distance']
+    assert page.evaluate('AstraeonGameplayReview.loaded.appearance.BodyWithOutfit')=='swordsman-body-royal-proof'
     page.screenshot(path=str(args.output/'appearance-swaps-in-world.png'))
     # Focus the actual canvas before keyboard input. Ordinary transform remains
     # the game's movement authority, while the review pose is independent.
