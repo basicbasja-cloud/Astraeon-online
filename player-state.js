@@ -17,7 +17,22 @@ function attach(state,options={}){
  const getItemResources=()=>{recalculate();return Object.fromEntries(['currentHP','currentSP','maxHP','maxSP'].map(key=>[key,character.getValue(key)]))};
  const itemRuntime=window.AstraeonActionItemRuntime.create({getInventory:items.getInventory,getQuantity:items.getQuantity,getResources:getItemResources,commit:(id,inventory,plan)=>items.consumeStackWithEffect(id,1,inventory,()=>{if(JSON.stringify(getItemResources())!==JSON.stringify(plan.resourceBefore))return false;character.setCurrentResources(plan.resourceAfter);return true})},{catalog:options.itemCatalog,config:options.itemActionConfig,restrictions:options.itemRestrictions});
  const boxRuntime=window.AstraeonMonsterBoxRuntime?.create({getInventory:items.getInventory,getRevision:items.getRevision,getQuantity:items.getQuantity,getCurrentHP:()=>character.getValue('currentHP'),preflight:(source,bounds)=>items.canOpenable(source,bounds,options.boxEnvelopePreflight),commit:(source,resolve)=>items.commitOpenable(source,resolve,options.boxPreflight)},{catalog:options.itemCatalog,tables:options.boxTables,getRng:options.getBoxRng||(()=>window.AstraeonCombatRuntime.productionRng()),restrictions:options.boxRestrictions});
- const {consumeStackWithEffect,commitRewards,canOpenable,commitOpenable,...itemMethods}=items;
+ const {consumeStackWithEffect,commitRewards,commitItemTransaction,canOpenable,commitOpenable,...itemMethods}=items;
+ let quests=null;
+ const questContext=value=>value??options.getQuestContext?.()??{};
+ const rewardIdentity=()=>{const {currentHP,currentSP,...durable}=character.snapshot();return JSON.stringify([durable,state.gold])};
+ function questPreflight(transaction,rewards){
+  recalculate();const capacity=items.canAcceptItemPackage(transaction);if(!capacity.ok)return capacity;
+  const descriptor=Object.getOwnPropertyDescriptor(state,'gold');
+  if(descriptor?(!Object.hasOwn(descriptor,'value')||!descriptor.writable):!Object.isExtensible(state))return Object.freeze({ok:false,code:'INVALID_CURRENCY'});
+  const gold=state.gold;if(!Number.isFinite(gold)||gold<0||!Number.isSafeInteger(rewards.gold)||rewards.gold<0||!Number.isFinite(gold+rewards.gold)||gold+rewards.gold>Number.MAX_SAFE_INTEGER)return Object.freeze({ok:false,code:'CURRENCY_OVERFLOW'});
+  const progression=character.prepareRewards(rewards.baseExp,rewards.jobExp);return progression.ok?window.AstraeonItemDefinitions.freeze({ok:true,capacity,progression,currencyBefore:gold,currencyAfter:gold+rewards.gold}):progression;
+ }
+ function commitQuestReward(transaction,rewards,inventory,revision,publish){
+  const checked=questPreflight(transaction,rewards);if(!checked.ok)return checked;
+  const result=items.commitItemTransaction(transaction,inventory,revision,()=>{if(!character.commitPreparedRewards(checked.progression))return false;state.gold=checked.currencyAfter;return publish()});
+  return result.ok?window.AstraeonItemDefinitions.freeze({...result,currencyBefore:checked.currencyBefore,currencyAfter:state.gold,currencyGranted:rewards.gold,baseExp:rewards.baseExp,jobExp:rewards.jobExp,baseLevelsGained:checked.progression.baseLevelsGained,jobLevelsGained:checked.progression.jobLevelsGained}):result;
+ }
  const boxCall=(method,...args)=>boxRuntime?boxRuntime[method](...args):Object.freeze({ok:false,code:'BOX_RUNTIME_UNAVAILABLE'});
  let actionLoadout=window.AstraeonSkillRuntime.normalizeLoadout(state.actionLoadout);
  let legacySkillControls=state.legacySkillControls===true;
@@ -45,6 +60,10 @@ function attach(state,options={}){
  }
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
   ...itemMethods,
+  getQuestState:()=>quests?.getState(),getQuests:()=>quests?.list(),getQuest:id=>quests?.inspect(id),getQuestRuntime:()=>quests?.snapshot(),
+  canAcceptQuest:(id,c)=>quests?.canAccept(id,questContext(c)),acceptQuest:(id,c)=>quests?.accept(id,questContext(c)),
+  observeQuestTalk:e=>quests?.observeTalk(e),observeQuestKill:e=>quests?.observeKill(e),
+  prepareQuestTurnIn:(id,c)=>quests?.prepare(id,questContext(c)),commitQuestTurnIn:(ticket,c)=>quests?.commit(ticket,questContext(c)),turnInQuest:(id,c)=>quests?.turnIn(id,questContext(c)),invalidatePreparedQuests:()=>quests?.invalidate(),
   getMonsterRewardContext:zone=>window.AstraeonItemDefinitions.freeze({zone,quest:state.quest?{...state.quest}:null,questGeneration:trackRewardQuest()}),
   commitMonsterRewards(resolution,profileId,contracts=[]){
    recalculate();const context=resolution?.questGeneration!==undefined&&resolution.questGeneration!==trackRewardQuest()?{...resolution,quest:null}:resolution;
@@ -74,7 +93,7 @@ function attach(state,options={}){
   swapSlots:(a,b,context)=>commitLoadout(loadouts.swapSlots(actionLoadout,a,b),context),
   moveSkill:(from,to,context)=>commitLoadout(loadouts.moveSkill(actionLoadout,from,to),context),
   getActionSlotState:actionRuntime.getSlotState,prepareAction:actionRuntime.prepareAction,commitAction:actionRuntime.commitAction,requestAction:actionRuntime.requestAction,
-  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();if(!result.ok)return result;const itemResult=itemRuntime.invalidatePrepared();return itemResult.ok&&boxRuntime?boxRuntime.invalidatePrepared():itemResult},
+  getActionRuntime:actionRuntime.snapshot,resetActionCooldowns:actionRuntime.resetCooldowns,invalidatePreparedActions(){const result=actionRuntime.invalidatePrepared();if(!result.ok)return result;quests?.invalidate();const itemResult=itemRuntime.invalidatePrepared();return itemResult.ok&&boxRuntime?boxRuntime.invalidatePrepared():itemResult},
   canUseSkill:id=>window.AstraeonSkillRuntime.canUseSkill(character.getLearnedSkills(),getClassId(),id),
   isSkillAssigned:id=>!!window.AstraeonSkillDefinitions.getDefinition(id)&&actionLoadout.includes(id),
   setSkillNode(id,node){
@@ -98,6 +117,10 @@ function attach(state,options={}){
   }
  };
  for(const key of ['grantBaseExp','grantJobExp','setBaseLevel','setBaseJobLevel','addStatPoints','addSkillPoints','allocateStat','resetStats','getSkillRank','getLearnedSkills','getPassiveSkillModifiers','canLearnSkill','learnSkill','rankUpSkill','canRefundSkill','getAvailableSkills'])api[key]=(...args)=>{recalculate();return character[key](...args)};
+ if(window.AstraeonQuestRuntime){
+  quests=window.AstraeonQuestRuntime.create({getInventory:items.getInventory,getInventoryRevision:items.getRevision,getEquipment:items.getEquipmentSlots,getCurrentHP:()=>character.getValue('currentHP'),preflight:questPreflight,commit:commitQuestReward,rewardIdentity},{raw:state.questState,definitions:options.questDefinitions,catalog:options.itemCatalog,monsters:options.questMonsters,targets:options.questTargets,isTalkEvidence:options.isQuestTalkEvidence,isKillEvidence:options.isQuestKillEvidence});
+  Object.defineProperty(state,'questState',{enumerable:true,get:quests.getState});
+ }
  recalculate();return Object.freeze(api);
 }
 window.AstraeonPlayer=Object.freeze({legacyModifiers,attach});

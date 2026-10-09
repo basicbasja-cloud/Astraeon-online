@@ -84,6 +84,15 @@ function create(raw,{catalog=D,onChange=()=>{},requirements=()=>true,getCapacity
   addStack:(id,count)=>commit(I.addStack(inventory,id,count,catalog)),removeStack:(id,count)=>commit(I.removeStack(inventory,id,count,catalog)),consumeStack:(id,count=1)=>commit(I.consumeStack(inventory,id,count,catalog)),
   consumeStackWithEffect(id,count,expectedInventory,apply){if(expectedInventory!==inventory)return I.fail('STALE_PACKAGE');if(typeof apply!=='function')return I.fail('EFFECT_COMMIT_REJECTED');return commit(I.consumeStack(inventory,id,count,catalog),equipment,apply)},
   grantItemPackage(rewards){const capacity=preflight({itemRewards:rewards});return capacity.ok?commit(planRewards(inventory,rewards)):capacity},
+  commitItemTransaction(transaction,expectedInventory,expectedRevision,apply){
+   if(committing)return I.fail('TRANSACTION_IN_PROGRESS');
+   if(expectedInventory!==inventory||expectedRevision!==revision)return I.fail('STALE_PACKAGE');
+   if(typeof apply!=='function')return I.fail('EFFECT_COMMIT_REJECTED');
+   const capacity=preflight(transaction);if(!capacity.ok)return capacity;let next=inventory;
+   for(const debit of transaction.stackDebits||[]){const result=I.removeStack(next,debit.itemId,debit.quantity,catalog);if(!result.ok)return result;next=result.inventory}
+   for(const id of transaction.instanceDebits||[]){const result=I.deleteInstance(next,id,equipment,catalog);if(!result.ok)return result;next=result.inventory}
+   return commit(planRewards(next,transaction.itemRewards||[]),equipment,apply);
+  },
   commitRewards(rewards,apply){
    if(!Array.isArray(rewards)||typeof apply!=='function')return I.fail('INVALID_REWARD_PACKAGE');
    const capacity=preflight({itemRewards:rewards});if(!capacity.ok)return capacity;
