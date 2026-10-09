@@ -20,11 +20,15 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 
 - Focused Quest Node: 161 passing, zero failing (including weighted net capacity, maxStack, unsafe stored ID and verifier failures).
 - Full Node: 1309 inherited + 154 Quest = 1463 passing, zero failing.
+- Current full Node: 1309 inherited + 161 Quest = 1470 passing, zero failing; `quests/node-current/report.json`.
 - Evidence: `D:/Astraeon/backbone-verification/quests/node-initial/report.json`.
 - No inherited test assertion has been edited.
 - World schema validator: PASS.
 - First Swordsman browser attempt passed 14 groups through actual Talk/rewards/chain, current Collect, real Combat death, duplicate death, partial Kill reload and travel. Its player-death walking fixture timed out. No runtime/HTTP errors were recorded. Evidence retained in `D:/Astraeon/backbone-verification/quests/browser-first`.
-- Second attempt uses the nearest actual enemy's existing detection/attack at field arrival, without walking into a distant obstacle; no gameplay/AI/navigation code was changed. It is running, acceptance remains pending.
+- Second attempt passed the same 14 groups, then showed fast travel places the player at field center outside every current enemy's detection range. The stationary death fixture's range assertion failed; no runtime/HTTP errors. State evidence is retained in `quests/browser-second/report.json`.
+- Third attempt clicks ordinary ground into existing detection range, then observes real incoming damage/death. No gameplay/AI/navigation code was changed. It is running, acceptance remains pending.
+- The browser source also proves Mage same-runtime respawn increments an active Kill objective 1 → 2, and offline saved Quest resume. Full two-class final run and inherited suites remain pending.
+- Source audit: 79 inherited test/core files unchanged; no visual/world path changes. `quests/source-audit.json`.
 
 ## Remaining / exact next action
 
