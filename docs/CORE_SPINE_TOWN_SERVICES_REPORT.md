@@ -1,4 +1,4 @@
-# Shop / Storage / Town Services — working checkpoint
+# Shop / Storage / Town Services â€” working checkpoint
 
 Foundation is IN PROGRESS. Patch 0.0.1 / Core Spine are not complete.
 
@@ -45,8 +45,10 @@ Shop uses Item State's existing net transaction; transfers use one narrow exact
 ownership publication without allocation. Capacity preflight/publication now
 hold the existing mutation lock before injected policy callbacks.
 
-New deterministic suite: **139 checks**, passing. Current full run:
-**1474 inherited + 139 new = 1613 / 0** (`node-integration-rerun`).
+New deterministic suite: **140 checks**, passing. Current full run:
+**1474 inherited + 140 new = 1614 / 0** (`node-final`).
+Prior integration run was 1613 / 0; the added check proves that restored
+unsupported-schema quarantine IDs reserve serial even without a carried serial.
 First core full run was 1585 / 0 (`node-core`); affected lock rerun 571 / 0.
 Initial focused run had two rejection-code mismatches for NaN/Infinity count;
 runtime now returns `INVALID_QUANTITY` consistently before JSON validation.
@@ -80,3 +82,16 @@ world validator and source audit; fix any genuine failures. Keep
 all inherited assertions; any fixture adaptation required by new NPC access
 must retain behavior and be recorded. Full verification, cache/offline, world
 validation, runtime checkpoint, final documentation and push remain pending.
+
+## Verification checkpoint update
+
+Current implementation HEAD before this report update: `71b883d` (resolve the
+full SHA from Git). Full Node `node-final`: 1614 / 0. Source audit confirms all
+22 inherited Node files byte-identical, inherited browser AST assertions intact
+except one active-generation cache fixture, and protected paths untouched.
+`browser-two-class-1` is still running; Swordsman actual Shop/Storage/Collect/
+capacity/Action Item groups have passed through stored-Potion withdrawal.
+All inherited browser suites and final cache remain pending. World validator
+was interrupted to avoid concurrent large-scene validation competing with live
+software WebGL; rerun it serially after browsers. This is not a schema result.
+External evidence root and runner remain as above; do not mark accepted yet.
