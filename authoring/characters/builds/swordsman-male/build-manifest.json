@@ -1,30 +1,57 @@
 {
-  "schemaVersion": "1.0",
-  "buildId": "swordsman-male-ro1-rescue-v1",
-  "status": "REFERENCE_DATA_REQUIRED",
-  "ownerVisualStatus": "REQUIRES_OWNER_VISUAL_REVIEW",
+  "status": "ANIMATED_ART_PROOF_CREATED",
+  "ownerVisualApproval": "PENDING",
   "motionTemplate": "authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json",
-  "referenceManifest": "authoring/characters/motion-templates/ro1-swordsman-male/reference-manifest.json",
-  "identitySource": "authoring/characters/appearance/bodies/swordsman-male-default/identity-source.json",
-  "productionAppearancePack": null,
-  "productionAtlases": [],
-  "directions": ["S", "SW", "W", "NW", "N", "NE", "E", "SE"],
+  "appearancePack": "authoring/characters/appearance/swordsman-male-painted/appearance-pack.json",
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": {
+      "x": 160,
+      "y": 264,
+      "rotation": 0,
+      "scale": 1
+    },
+    "referenceHeight": 176,
+    "mirroring": "none"
+  },
+  "runtimeAtlases": {
+    "body-idle": "001b4a4d65bb1111da4997b6e90778922d16ba683d9ce2e445bf6456052b9a59",
+    "body-walk": "9ae2b1ffa2422120570a6b936e37fb5b7cfed5461432ac54bcef4d26902d03ef",
+    "body-basicattack": "824c4b465da37cec2272907e8a1d37e28b721340b92407c28bfb0ed567f7dc7f",
+    "shadow": "e82bfb070b81ea9a79443e3d3a8dea8fa7ab0796fcc4534cc67658a4cb60c0da",
+    "hair-a": "b2c15fb6f3cf83fce1d9f3cc2b67415feb768776aafcc4de9651a2b287ff69fc",
+    "hair-b": "6d723c9cdffa31f43bd86c6adcd8fe9bc3e23cbcce2a2d72f7c281cb6bc02f1f",
+    "weapon-a": "e63703bbfc5eabaaac1f0ff014e93ba8cc2d5e20bf30d279735bc4c138b477d8",
+    "weapon-b": "853ac50e301781d14ba77385ec5e8505bc8c312db83b1ee0855275eba4e263b6",
+    "offhand": "a1f24d48b0cd3659e28432acc5c6bed3545cb2c1c8f3088bea48bed1302e00d7",
+    "headgear": "d2b2f5df85dc2b334e88dbe90bd6e9ca8859e5c8d09fde6cb33723db1c6fa81d",
+    "cape": "19a63def64f9f1e4d1fdd6f074af59be9ec9dcfba92d596b7a44fbeb65681527",
+    "reuse-body-idle": "7613ae6643465a2ba6fbf30cd3a1ec17bb259cc35734ee897cba497b492666d6",
+    "reuse-body-walk": "c2323c688a87b909f777a0cd49435fdb7f524cb0b3cdadb029a393694ab91bb1",
+    "reuse-body-basicattack": "9444b62f8443bd3cbda56bae88dba65af8c5f3f463241aa3b716f4d80dfcefd6"
+  },
   "actions": {
-    "Idle": {"status": "BLOCKED_REFERENCE_DATA", "referenceKeyCount": null, "astraeonInbetweenCount": null, "totalFrames": null, "totalDurationMs": null, "newProductionFramesProduced": 0},
-    "Walk": {"status": "BLOCKED_REFERENCE_DATA", "referenceKeyCount": null, "astraeonInbetweenCount": null, "totalFrames": null, "totalDurationMs": null, "newProductionFramesProduced": 0},
-    "BasicAttack": {"status": "BLOCKED_REFERENCE_DATA", "referenceKeyCount": null, "astraeonInbetweenCount": null, "totalFrames": null, "totalDurationMs": null, "newProductionFramesProduced": 0}
+    "Idle": {
+      "framesPerDirection": 9,
+      "durationMs": 3000,
+      "referenceKeys": 2,
+      "inbetweens": 7
+    },
+    "Walk": {
+      "framesPerDirection": 16,
+      "durationMs": 600,
+      "referenceKeys": 8,
+      "inbetweens": 8
+    },
+    "BasicAttack": {
+      "framesPerDirection": 16,
+      "durationMs": 450,
+      "referenceKeys": 10,
+      "inbetweens": 6
+    }
   },
-  "gates": {
-    "0": "RESEARCH_INVENTORY_COMPLETE__ACT_POSE_DATA_MISSING",
-    "1": "PASS_DEV_ONLY_TWO_DUMMY_PACKS",
-    "2": "PRESERVED_NEUTRAL_CANDIDATE_STRUCTURAL_PASS__OWNER_REVIEW_PENDING",
-    "3": "BLOCKED_REFERENCE_DATA_AND_IDENTITY_REVIEW",
-    "4": "NOT_RUN_FOR_PRODUCTION",
-    "5": "NOT_RUN_FOR_PRODUCTION__ENGINE_REVIEW_CAPTURES_COMPLETE"
-  },
-  "rawReferenceRequirement": "Lawfully obtained local male Swordsman body/head/sword ACT+SPR, selected client build and sword/action mapping; optional shield/headgear/garment ACT and priority rules",
-  "syntheticFixturePromotion": "PROHIBITED",
-  "historicalArtPromotion": "PROHIBITED_WITHOUT_OWNER_REVIEW",
-  "runtimeInstall": "NONE",
-  "actionExpansion": "PROHIBITED_BEFORE_OWNER_APPROVAL"
+  "rawROPixelsInProduction": false
 }

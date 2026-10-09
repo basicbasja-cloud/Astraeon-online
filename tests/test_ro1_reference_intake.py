@@ -87,7 +87,7 @@ class ReferenceIntakeTests(unittest.TestCase):
                     self.assertEqual(frame["root"],t["registration"]["root"])
                     self.assertEqual(frame["anchors"]["root"],frame["root"])
 
-    def test_documented_schemas_accept_fixtures_and_reject_unknown_production_draft(self):
+    def test_documented_schemas_accept_fixtures_and_rendered_proof_but_reject_empty_draft(self):
         folder=ROOT/"authoring/characters/schemas"
         transform=json.loads((folder/"attachment-transform.schema.json").read_text())
         registry=Registry().with_resource("https://astraeon.invalid/schemas/attachment-transform.schema.json",Resource.from_contents(transform))
@@ -100,7 +100,9 @@ class ReferenceIntakeTests(unittest.TestCase):
             pack=json.loads((ROOT/f"authoring/characters/appearance/{name}/appearance-pack.json").read_text())
             Draft202012Validator(appearance,registry=registry).validate(pack)
         draft=json.loads((ROOT/"authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json").read_text())
-        self.assertTrue(list(Draft202012Validator(motion).iter_errors(draft)))
+        Draft202012Validator(motion,registry=registry).validate(draft)
+        draft['status']='REFERENCE_DATA_REQUIRED'
+        self.assertTrue(list(Draft202012Validator(motion,registry=registry).iter_errors(draft)))
 
     def test_debug_raster_rebuild_is_byte_deterministic(self):
         with tempfile.TemporaryDirectory() as folder:

@@ -53,8 +53,8 @@ const edits=[
  ['null malformed frame',t=>seq(t).frames[0]=null]
 ];
 for(const [name,edit] of edits)test('MotionTemplate rejects '+name,()=>{const t=clone(template);edit(t);assert.ok(M.validateMotionTemplate(t).length);assert.throws(()=>M.compileMotionTemplate(t))});
-test('RO draft with unknown source facts is deliberately non-executable',()=>{
- const draft=read('authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json');assert.equal(draft.status,'REFERENCE_DATA_REQUIRED');assert.throws(()=>M.compileMotionTemplate(draft),/reference data required/);
+test('RO rendered evidence executes without pretending raw ACT was inspected',()=>{
+ const draft=read('authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json');assert.equal(draft.status,'REQUIRES_OWNER_VISUAL_REVIEW');assert.deepEqual(M.validateMotionTemplate(draft),[]);assert.equal(draft.provenance.exactACTTiming,false);
  const manifest=read('authoring/characters/motion-templates/ro1-swordsman-male/reference-manifest.json');assert.equal(manifest.rawAssetsInspected.length,0);assert.equal(manifest.unknowns.keyPoseSequence.value,null);
 });
 test('source-derived templates require manifest hash and real key source identities',()=>{

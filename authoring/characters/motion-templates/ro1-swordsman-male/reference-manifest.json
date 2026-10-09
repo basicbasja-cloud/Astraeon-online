@@ -240,7 +240,13 @@
         ]
       }
     ],
-    "policy": "Keep raw intervals and select explicit conversion with provenance; no inferred Swordsman duration."
+    "policy": "Keep raw intervals and select explicit conversion with provenance; no inferred Swordsman duration.",
+    "renderedObservation": {
+      "classification": "RENDERED_REFERENCE",
+      "Walk": "8 x75ms =600ms from APNG",
+      "Attack": "9 x100ms =900ms from APNG; retimed to450ms presentation, not exact ACT timing",
+      "Idle": "one unique standing pose per direction; ASTRAEON breathing3000ms is an interpretation"
+    }
   },
   "composition": {
     "head": {
@@ -303,52 +309,62 @@
     "framesPerDirection": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual Swordsman male body ACT inspected."
+      "reason": "No actual Swordsman male body ACT inspected.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "actionDelays": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual action interval arrays inspected."
+      "reason": "No actual action interval arrays inspected.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "keyPoseSequence": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No private body SPR paired with ACT for contact/limb/attack pose labeling."
+      "reason": "No private body SPR paired with ACT for contact/limb/attack pose labeling.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "headTrajectories": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual body/head ACT pairing."
+      "reason": "No actual body/head ACT pairing.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "mainHandTrajectories": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual body/weapon reference pairing or reviewed anatomical annotation."
+      "reason": "No actual body/weapon reference pairing or reviewed anatomical annotation.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "offHandTrajectories": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual shield ACT pairing."
+      "reason": "No actual shield ACT pairing.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "garmentTrajectories": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual garment ACT/rules for this appearance."
+      "reason": "No actual garment ACT/rules for this appearance.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "headgearTrajectories": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No actual headgear reference pairing."
+      "reason": "No actual headgear reference pairing.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "perFrameDrawOrder": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "No job/body IMF, garment or weapon-specific rules inspected."
+      "reason": "No job/body IMF, garment or weapon-specific rules inspected.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     },
     "contactEvents": {
       "classification": "UNKNOWN / NOT ESTABLISHED",
       "value": null,
-      "reason": "Event strings do not establish ASTRAEON gameplay contact authority."
+      "reason": "Event strings do not establish ASTRAEON gameplay contact authority.",
+      "scope": "Exact ACT/SPR internal values. Rendered motion landmarks and painted retargeting are recorded separately in renderedMotionEvidence."
     }
   },
   "astraeonPolicy": {

@@ -82,6 +82,7 @@ function validateMotionTemplate(t){
       const act=['RO1_ACT','ACT_EXTRACTED'].includes(s.kind)&&/^[a-f0-9]{64}$/.test(s.actSHA256||'')&&Number.isInteger(s.actionId)&&s.actionId>=0;
       const visual=['RENDERED_REFERENCE','VIDEO_DERIVED','VISUAL_DERIVED'].includes(s.kind)&&/^[a-f0-9]{64}$/.test(s.sourceImageSHA256||'')&&typeof s.url==='string'&&/^https:\/\//.test(s.url)&&['HIGH','MEDIUM','LOW'].includes(s.confidence)&&s.rawACTInspected===false;
       check(indexed&&(act||visual),'Missing source-derived key identity '+f.id);
+      if(act)check(f.evidenceClass==='ACT_EXTRACTED','ACT evidence classification required '+f.id);
       if(visual){
        check(f.evidenceClass===s.kind,'Reference evidence classification differs '+f.id);
        check(t.provenance.exactACTTiming!==true,'Rendered/video/visual evidence cannot claim exact ACT timing');
