@@ -125,3 +125,26 @@ killed / preserved Quest / town respawn assertions are unchanged. No teleport,
 fake death, enemy HP, AI or collision change is introduced. Original failure
 remains `regression-quests`; full two-class rerun is `regression-quests-rerun1`.
 Do not claim Quest rerun/world accepted until their actual completion.
+
+## Final browser verification and contact fixture correction
+
+All twelve inherited functional browser suites now pass: **369 groups**, including
+57 Quest groups in `regression-quests-rerun2`. Together with 40 new Town Services
+groups, the final successful total is **409 / 0**, with zero unexpected console,
+page, runtime or HTTP errors. Earlier partial attempts are not added to totals.
+Full Node `node-pre-push` is **1614 / 0** (1474 retained + 140 new). Cache/offline
+passes v96 / 164 requests. Raw evidence and final-verification-summary.json remain
+in the external evidence root.
+
+The first Quest ordinary contact step was too early on Mage: rerun1 passed 40
+groups before Mage remained CHASE at 1.4000000000000012 against range 1.4.
+Rerun2 waits for authoritative chase arrival, then uses the same ordinary
+0.2-unit keyboard step if no real death has happened. Both classes now pass
+original HP-zero, Incoming Combat killed, Quest preservation and town-respawn
+assertions. No assertion was removed or weakened; no AI/Combat/navigation source
+changed. Original failed reports remain available. The inherited stationary
+contact rounding signal remains a production limitation, not a claimed fix.
+
+Next: finish the serial world validator; rerun source audit and diff check,
+record a clean runtime/test checkpoint, publish final documentation and normally
+push only the target branch. Do not start Dev-tool Gap Closure.

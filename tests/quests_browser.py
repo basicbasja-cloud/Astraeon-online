@@ -158,7 +158,9 @@ try:
     # unit (captured CHASE distances 1.4000000000000008 / 4.800000000000001).
     # Use ordinary input to enter contact; keep the actual Combat death assertion.
     if not page.evaluate('!!window.questDeathEvidence'):
-     current=actor(page,living['instanceId']);observations.append({'event':'ordinary contact step before real player-death wait','actor':current,'player':qa(page)['player']['position']});checkpoint();keyboard_step(page,current['position'],.2)
+     page.wait_for_function('id=>{const s=AstraeonQA.snapshot(),m=s.enemies.find(e=>e.lifecycle.instanceId===id)?.lifecycle;return !!window.questDeathEvidence||(m?.targetId==="player"&&m.targetDistance<=m.attackRange+.15)}',arg=living['instanceId'],timeout=30000)
+     if not page.evaluate('!!window.questDeathEvidence'):
+      current=actor(page,living['instanceId']);observations.append({'event':'ordinary contact step after authoritative chase reaches attack boundary','actor':current,'player':qa(page)['player']['position']});checkpoint();keyboard_step(page,current['position'],.2)
     page.wait_for_function('window.questDeathEvidence?.hp===0',timeout=60000);death=page.evaluate('window.questDeathEvidence');assert death['questState']==durable and death['incoming']['hp']['killed'] and death['incoming']['hp']['hpAfter']==0
     observations.append({'event':'latched real enemy-caused player death after ordinary ground navigation','actor':living,'goal':goal,'death':death});checkpoint()
     page.wait_for_function('AstraeonQA.snapshot().save.zone===0&&AstraeonQA.snapshot().save.currentHP>0',timeout=30000);pause(page);assert snap(page)['questState']==durable;passed('real enemy damage player death and respawn retain partial Quest progress',{'class':cls,'deathTime':death['time']})
