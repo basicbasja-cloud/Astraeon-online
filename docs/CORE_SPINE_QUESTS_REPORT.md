@@ -15,7 +15,7 @@ See [contracts](CORE_SPINE_QUESTS.md).
 | Exact fetched starting parent HEAD | `a946ba4e51e20b45aaf83aa85fb08e49755f6fc6` |
 | Verified runtime source HEAD | `da4f46f7ff297a2f4970a47e41af259308a1b374`; checkpoint successors change documentation only |
 | Runtime/test checkpoint | `f26260f64198e9fcf3de3cefc9f27921b48b4ecf` |
-| Documentation checkpoint | First documentation commit; its exact SHA will be recorded by the final documentation successor. |
+| Documentation checkpoint | `9e79ff0368f8a04ba33f4f01bea6eaf71a5ca835` |
 | Final documentation HEAD | Documentation successor containing this report; resolve `git rev-parse HEAD` on this branch and compare the fetched remote tip. Exact final/pushed SHA is recorded in the final response and external `FINAL_HANDOFF.md`. A committed file cannot contain its own Git commit hash. |
 
 Fetch, parent switch/ff-only pull, clean fully updated parent, exact HEAD and recent
