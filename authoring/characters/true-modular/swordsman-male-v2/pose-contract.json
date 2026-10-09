@@ -52,16 +52,16 @@
         "scale": 0.93333
       },
       "mainHand": {
-        "x": 121,
-        "y": 179,
+        "x": 119,
+        "y": 187,
         "rotation": -2.63,
-        "scale": 1.0
+        "scale": 1
       },
       "offHand": {
-        "x": 200,
-        "y": 179,
-        "rotation": 0.0,
-        "scale": 1.0
+        "x": 202,
+        "y": 187,
+        "rotation": 0,
+        "scale": 1
       },
       "back": {
         "x": 160.0,
@@ -88,23 +88,23 @@
         "scale": 1.0
       },
       "weaponTip": {
-        "x": 80.366,
-        "y": 251.373,
-        "rotation": 0.0,
-        "scale": 1.0
+        "x": 78.366,
+        "y": 259.373,
+        "rotation": 0,
+        "scale": 1
       },
       "fxOrigin": {
-        "x": 121,
-        "y": 179,
+        "x": 119,
+        "y": 187,
         "rotation": -2.63,
-        "scale": 1.0
+        "scale": 1
       }
     },
     "timingAuthority": "baseline MotionTemplate; guide contains no independent clock"
   },
   "guidePurpose": "TECHNICAL_ONLY; never production art or a new gait",
   "authoringRule": "ISOLATED_COMPONENT_FROM_INCEPTION; no destructive full-character decomposition",
-  "normalization": "whole canvas 1024 to 320; one shared transform; no alpha-bounds fitting",
+  "normalization": "whole square canvas to320; BodyCore initial translation[0,-3]; dependent art authored against registered painted guide with no offsets",
   "neckOverlap": {
     "bodyNeck": [
       156,
@@ -120,5 +120,35 @@
     ]
   },
   "identityReference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
-  "identityUse": "appearance reference only; no pixels copied into modular sources"
+  "identityUse": "appearance reference only; no pixels copied into modular sources",
+  "generationCanvasPolicy": "model may return another square size; preserve whole-canvas fractional coordinates",
+  "calibration": {
+    "classification": "ASTRAEON_INTERPRETATION",
+    "scope": "South Idle authoring only; baseline template unchanged",
+    "BodyCore": {
+      "source": "sources/bodycore-raw.png",
+      "wholeCanvasScale": 0.2551834130781499,
+      "translation": [
+        0,
+        -3
+      ],
+      "reason": "initial candidate soles at267.43; shared root264; no source pixels cut"
+    },
+    "anchors": {
+      "mainHand": {
+        "x": 119,
+        "y": 187,
+        "rotation": -2.63,
+        "scale": 1
+      },
+      "offHand": {
+        "x": 202,
+        "y": 187,
+        "rotation": 0,
+        "scale": 1
+      }
+    },
+    "review": "candidate only; muscular anatomy and grip calibration require composite review"
+  },
+  "paintedGuideSHA256": "c4c66b03256708238de105f758b516979fbd6d5aff12c77b18d3a8e5557cc25b"
 }

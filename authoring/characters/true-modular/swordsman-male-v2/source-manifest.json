@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "2.0-authoring",
+  "packId": "swordsman-male-true-modular-south-candidate-v2",
+  "classId": "Swordsman",
+  "bodyVariant": "male",
+  "status": "REQUIRES_OWNER_VISUAL_REVIEW",
+  "ownerApproval": "PENDING",
+  "directionOrder": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "mirroring": "none",
+  "motionTemplateId": "ro1-swordsman-male-v1",
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": {
+      "x": 160,
+      "y": 264,
+      "rotation": 0,
+      "scale": 1
+    },
+    "referenceHeight": 176,
+    "mirroring": "none"
+  },
+  "poseId": "Idle/S/key0",
+  "contractSHA256": "79700808962d6013603ce33a54670bb8c09bc4b2b8915f4bf9ef9a5a7d643333",
+  "availablePoses": [
+    "Idle/S/key0"
+  ],
+  "authorship": "ISOLATED_COMPONENT_FROM_INCEPTION",
+  "authoritativeSources": "independent painted rasters",
+  "slots": {
+    "BodyCore": {
+      "required": true,
+      "layers": [
+        "BodyCore"
+      ]
+    },
+    "HeadBase": {
+      "required": true,
+      "layers": [
+        "HeadBase"
+      ]
+    },
+    "Face": {
+      "required": true,
+      "layers": [
+        "Face"
+      ]
+    },
+    "Outfit": {
+      "required": true,
+      "layers": [
+        "OutfitFront"
+      ]
+    },
+    "Hair": {
+      "required": true,
+      "layers": [
+        "HairBack",
+        "HairFront"
+      ]
+    },
+    "Weapon": {
+      "required": false,
+      "layers": [
+        "Weapon"
+      ]
+    }
+  },
+  "defaultParts": {
+    "BodyCore": "bodycore",
+    "HeadBase": "headbase",
+    "Face": "face",
+    "Outfit": "outfit-a",
+    "Hair": null,
+    "Weapon": "weapon-a"
+  },
+  "parts": {
+    "bodycore": {
+      "slot": "BodyCore",
+      "poseId": "Idle/S/key0",
+      "contractSHA256": "79700808962d6013603ce33a54670bb8c09bc4b2b8915f4bf9ef9a5a7d643333",
+      "authorship": "ISOLATED_COMPONENT_FROM_INCEPTION",
+      "layers": {
+        "BodyCore": {
+          "rawSource": "authoring/characters/true-modular/swordsman-male-v2/sources/bodycore-raw.png",
+          "rawSHA256": "b2d2831f996ace2e356258e08f5080527f1ab69a49bef441d556b4f88e06ad8d",
+          "file": "assets/characters/swordsman-true-modular-v2/bodycore.png",
+          "rasterSHA256": "a71d91fc6a7d89ddb0d6766cbbf4c8de376c44fe23658b79da3cdfc3501b2bc9",
+          "canvas": [
+            320,
+            320
+          ],
+          "prompt": "authoring/characters/true-modular/swordsman-male-v2/bodycore-repair-prompt.txt",
+          "promptSHA256": "8e121d9d2d626917f920bbc266cdac862184f64200b8130d446abb37f757b06c",
+          "provider": "built-in ImageGen",
+          "poseId": "Idle/S/key0",
+          "normalization": "whole-canvas resample; no alpha cutting or bounds fitting",
+          "candidateReview": "PROVISIONAL"
+        }
+      }
+    },
+    "headbase": {
+      "slot": "HeadBase",
+      "poseId": "Idle/S/key0",
+      "contractSHA256": "79700808962d6013603ce33a54670bb8c09bc4b2b8915f4bf9ef9a5a7d643333",
+      "authorship": "ISOLATED_COMPONENT_FROM_INCEPTION",
+      "layers": {
+        "HeadBase": {
+          "rawSource": "authoring/characters/true-modular/swordsman-male-v2/sources/headbase-raw.png",
+          "rawSHA256": "1a9b62f6f78d676ec42dfe72101df3fc21a1da39d74d488ad181972a276a2a1e",
+          "file": "assets/characters/swordsman-true-modular-v2/headbase.png",
+          "rasterSHA256": "4437851ecc02af5888ebe7e628b8c5f09faa1379c0c1bd12e4c3719f40913f72",
+          "canvas": [
+            320,
+            320
+          ],
+          "prompt": "authoring/characters/true-modular/swordsman-male-v2/headbase-prompt.txt",
+          "promptSHA256": "8461156818d8dc0e94c3bbfcea94a91ee955c3b8f475463bade33824446d59a4",
+          "provider": "built-in ImageGen",
+          "poseId": "Idle/S/key0",
+          "normalization": "whole-canvas resample; no alpha cutting or bounds fitting",
+          "candidateReview": "PROVISIONAL"
+        }
+      }
+    },
+    "face": {
+      "slot": "Face",
+      "poseId": "Idle/S/key0",
+      "contractSHA256": "79700808962d6013603ce33a54670bb8c09bc4b2b8915f4bf9ef9a5a7d643333",
+      "authorship": "ISOLATED_COMPONENT_FROM_INCEPTION",
+      "layers": {
+        "Face": {
+          "rawSource": "authoring/characters/true-modular/swordsman-male-v2/sources/face-raw.png",
+          "rawSHA256": "8dad80523c0f55db860c06569cd67784c4a91e3031c3c08678ccd2990f91ca4f",
+          "file": "assets/characters/swordsman-true-modular-v2/face.png",
+          "rasterSHA256": "447f117b8228e0f3258cae7736f5f2e11b50781b5f01cfb6ad79ed3df99f8ed3",
+          "canvas": [
+            320,
+            320
+          ],
+          "prompt": "authoring/characters/true-modular/swordsman-male-v2/face-prompt.txt",
+          "promptSHA256": "12f527f4474c8fec3c3be12a51c55f11ee18447e7f8c15117bd180b1eb2ff9b4",
+          "provider": "built-in ImageGen",
+          "poseId": "Idle/S/key0",
+          "normalization": "whole-canvas resample; no alpha cutting or bounds fitting",
+          "candidateReview": "REJECTED"
+        }
+      }
+    },
+    "outfit-a": {
+      "slot": "Outfit",
+      "poseId": "Idle/S/key0",
+      "contractSHA256": "79700808962d6013603ce33a54670bb8c09bc4b2b8915f4bf9ef9a5a7d643333",
+      "authorship": "ISOLATED_COMPONENT_FROM_INCEPTION",
+      "layers": {
+        "OutfitFront": {
+          "rawSource": "authoring/characters/true-modular/swordsman-male-v2/sources/outfit-a-raw.png",
+          "rawSHA256": "bb12fc7792d8f05f5d9ee9fcbf2d1148620abe11c0624396bc142582095579e9",
+          "file": "assets/characters/swordsman-true-modular-v2/outfit-a.png",
+          "rasterSHA256": "1f5f8f4aa3cf6244a0408c3e5ea9a86b14a99b4f839c4c7dd8d9d1dd6e690e08",
+          "canvas": [
+            320,
+            320
+          ],
+          "prompt": "authoring/characters/true-modular/swordsman-male-v2/outfit-repair-prompt.txt",
+          "promptSHA256": "6f65973a5915b806895bbcfd45eebbe753f5a4434995fb30e9a6228dd0110d6d",
+          "provider": "built-in ImageGen",
+          "poseId": "Idle/S/key0",
+          "normalization": "whole-canvas resample; no alpha cutting or bounds fitting",
+          "candidateReview": "REJECTED"
+        }
+      }
+    },
+    "weapon-a": {
+      "slot": "Weapon",
+      "poseId": "Idle/S/key0",
+      "contractSHA256": "79700808962d6013603ce33a54670bb8c09bc4b2b8915f4bf9ef9a5a7d643333",
+      "authorship": "ISOLATED_COMPONENT_FROM_INCEPTION",
+      "layers": {
+        "Weapon": {
+          "rawSource": "authoring/characters/appearance/weapons/swordsman-sword/generated/weapons-raw.png",
+          "rawSHA256": "93f28e170b1693e9155423aead1f85514b77c937a2ab3a95541e302a8a743778",
+          "sourceRegion": {
+            "grid": [
+              6,
+              4
+            ],
+            "cell": 0
+          },
+          "file": "assets/characters/swordsman-true-modular-v2/weapon-a.png",
+          "rasterSHA256": "a2a5e9c2137cc3522d1b3cb43fa4738fb807cc62254a2eaf63b9f79a0b0b708e",
+          "canvas": [
+            320,
+            320
+          ],
+          "prompt": "authoring/characters/true-modular/swordsman-male-v2/weapon-baseline-prompt.txt",
+          "promptSHA256": "06750adc1ab359a00577295c0ab9e5e23a5d9015a00334f9f958071694c877e4",
+          "provider": "built-in ImageGen (baseline reuse)",
+          "poseId": "Idle/S/key0",
+          "candidateReview": "PROVISIONAL",
+          "baselineReceipt": "authoring/characters/builds/swordsman-male/repair-and-component-jobs.json",
+          "normalization": "v1 isolated sword cell and grip pivot; shared South mainHand anchor"
+        }
+      }
+    }
+  },
+  "drawOrder": [
+    "HairBack",
+    "BodyCore",
+    "HeadBase",
+    "Face",
+    "OutfitFront",
+    "HairFront",
+    "Weapon"
+  ],
+  "gates": {
+    "south": "VISUAL_FAIL",
+    "cosmeticSwaps": "NOT_STARTED_GATE3_BLOCKED",
+    "eightDirectionIdle": "NOT_STARTED_GATE3_BLOCKED",
+    "Walk": "NOT_STARTED_GATE3_BLOCKED",
+    "BasicAttack": "NOT_STARTED_GATE3_BLOCKED"
+  },
+  "missingComponents": [
+    "HairBack",
+    "HairFront"
+  ],
+  "runtimeInstallation": false,
+  "nextMethod": "Coordinate-constrained layered painting or lossless layer export from an art document. Do not repeat unconstrained whole-canvas component generation."
+}

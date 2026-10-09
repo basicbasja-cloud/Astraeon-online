@@ -1,5 +1,21 @@
 # Runtime architecture
 
+## True modular authoring v2 — South gate blocked
+
+`character-source-authoring.js` binds independent editable BodyCore, HeadBase,
+Face, Outfit, HairBack/HairFront and Weapon sources to a shared pose contract.
+It reuses the v1 numeric MotionTemplate and generic raster drawing. The current
+South draft has five available candidate layers and no Hair sources. Strict
+source compilation rejects incomplete coverage; an explicit diagnostic mode
+displays the failed candidates and missing-source state. Source hashes and
+exact generation prompts are verified before browser preview.
+
+South is VISUAL_FAIL: generated Outfit and Face did not follow the painted pose
+guide. New cosmetic variants, eight-direction Idle, Walk and BasicAttack are
+gated. This is an isolated authoring experiment, not a runtime AppearancePack
+or ordinary-player integration. Gameplay equipment never selects source art.
+The baseline runtime and source proof described below remain unchanged.
+
 ## Character assembly rescue v1
 
 The character rescue adds independent `character-motion-template.js` and

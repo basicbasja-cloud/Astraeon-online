@@ -4,6 +4,15 @@ Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice 
 
 ## Character rescue branch
 
+The current `character/true-modular-ro1-swordsman-v2` authoring task is
+**blocked at South Idle: VISUAL_FAIL, source coverage incomplete**. BodyCore,
+HeadBase, Face and Outfit were requested as independent painted sources;
+Outfit/Face registration failed, and later gates remain unproduced.
+[Diagnostic source review](character-modular-source-review.html) and
+[blocked-gate report](docs/review/character-true-modular-v2/REPORT.md) preserve
+the actual failure. No new art is installed in normal gameplay. The v1
+animated checkpoint below remains available and its motion authority unchanged.
+
 `character/ro1-reference-engine-v1` separates reusable motion from painted raster appearance.
 The [character review player](character-review.html) immediately autoplays the
 ASTRAEON Swordsman Walk, with all eight directions and independent Hair A/B,

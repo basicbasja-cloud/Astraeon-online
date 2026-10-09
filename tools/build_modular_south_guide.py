@@ -39,6 +39,10 @@ def build():
       'neckOverlap':{'bodyNeck':[156,132,164,143],'headNeck':[155,128,165,141]},
       'identityReference':'authoring/characters/gait-rig-v50/approved-warrior-seed.png',
       'identityUse':'appearance reference only; no pixels copied into modular sources'}
-    (DEST/'pose-contract.json').write_text(json.dumps(contract,indent=2)+'\n')
+    # A locked candidate contract records its initial calibration. Regenerating
+    # a technical guide must not silently replace that authority or its hashes.
+    contract_path=DEST/'pose-contract.json'
+    if not contract_path.exists():
+        contract_path.write_text(json.dumps(contract,indent=2)+'\n')
 
 if __name__=='__main__': build()

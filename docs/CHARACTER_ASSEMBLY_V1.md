@@ -1,5 +1,12 @@
 # ASTRAEON Character Assembly Engine v1
 
+V2 authoring amendment: the monolithic v1 BodySpriteSet below is historical
+runtime proof. New editable sources must independently author BodyCore,
+HeadBase, Face, Outfit, HairBack/HairFront and Weapon before any optimization
+bake. V2 South is currently VISUAL_FAIL and incomplete; see
+[the blocked-gate report](review/character-true-modular-v2/REPORT.md).
+No change to v1 motion, sampling or runtime validation is implied.
+
 Rescue scope: reusable assembly and RO1 reference intake; painted Swordsman proof
 limited to Idle, Walk and BasicAttack. The [animated painted proof](review/character-ro1-animated-v1/REPORT.md) uses rendered RO motion evidence. Exact ACT timing is unknown; owner visual approval is pending. [Historical audit](review/character-ro1-engine-v1/audit.md).
 

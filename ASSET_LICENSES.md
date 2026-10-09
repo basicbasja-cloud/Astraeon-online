@@ -1,5 +1,16 @@
 # Asset provenance
 
+## True modular South authoring candidates — 9 October 2026
+
+`authoring/characters/true-modular/swordsman-male-v2/` preserves independently
+requested built-in ImageGen BodyCore, HeadBase, Face and Outfit candidates,
+exact prompts, input-image hashes and untouched outputs. They failed the South
+visual gate and are not approved production artwork. The existing original
+independent ASTRAEON sword source is reused with its v1 provenance. All v2
+previews remain DEV_ONLY; Hair and later gates are unproduced. The approved
+ASTRAEON seed supplies appearance reference only. No copied Ragnarok pixels
+were used as generation inputs or added to production/review/source rasters.
+
 No Ragnarok artwork is used in ASTRAEON's runtime assets. The production assets listed below are original generated art for ASTRAEON. No third-party texture/model/audio pack is presently used. Generated-art provenance is tracked here; this is not a claim that third-party game art is licensed.
 
 ## Reference-only material

@@ -1,0 +1,36 @@
+{
+  "southGate": "VISUAL_FAIL",
+  "ownerApproval": "PENDING",
+  "sourceCoverageComplete": false,
+  "checks": {
+    "outfitTopOutsideHeadZone": false,
+    "faceWithinHeadZone": false
+  },
+  "measurements": {
+    "HeadBase": [
+      137,
+      95,
+      183,
+      150
+    ],
+    "Face": [
+      137,
+      154,
+      182,
+      184
+    ],
+    "Outfit": [
+      106,
+      104,
+      214,
+      256
+    ]
+  },
+  "issues": [
+    "Outfit collar/shoulder/hand proportions do not match BodyCore after two attempts.",
+    "Face contains a skin patch rather than only isolated feature strokes; it is below HeadBase.",
+    "BodyCore is too muscular for compact identity; HeadBase/neck still provisional.",
+    "HairBack/HairFront were not authored because the shared registration method failed; no empty sources substituted.",
+    "Sword was originally authored independently; shared grip placement needs a passing outfit before visual approval."
+  ]
+}

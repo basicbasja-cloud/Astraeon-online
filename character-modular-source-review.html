@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASTRAEON · South modular authoring diagnosis</title>
+<style>
+body{margin:0;background:#182632;color:#eef2f5;font:15px/1.5 system-ui}main{max-width:1280px;margin:auto;padding:24px}h1{font-size:24px;margin:0 0 12px}.state{border-left:4px solid #ed927e;background:#382f32;padding:12px 16px}a{color:#abdade}section{margin-top:24px}.review{display:grid;grid-template-columns:minmax(200px,640px) 1fr;gap:24px}canvas{max-width:100%;height:auto;background:repeating-conic-gradient(#526370 0% 25%,#475965 0% 50%) 50%/24px 24px;display:block}label{display:block;margin:8px 0}select,button{font:inherit;padding:8px;background:#324858;color:inherit;border:1px solid #7a95a4;border-radius:4px}button{cursor:pointer}.board{width:100%;height:auto}iframe{width:100%;height:720px;border:0}.muted{color:#b9c6ce}@media(max-width:800px){.review{grid-template-columns:1fr}main{padding:16px}}
+</style>
+<main>
+<h1>Swordsman Male · South Idle authoring diagnosis</h1>
+<p class="state"><strong>VISUAL FAIL · DEV_ONLY · OWNER APPROVAL PENDING</strong><br>Outfit and Face do not fit the shared body/head pose. Hair sources are missing. This candidate cannot advance to cosmetic variants, eight directions or animation.</p>
+<p id="status" role="status">Checking source identities…</p>
+<section class="review">
+<canvas id="composite" width="640" height="640" aria-label="Failed South modular candidate"></canvas>
+<div><label>Review scale <select id="scale"><option value="0.54">Approximate game size</option><option value="1.08">2× game size</option><option value="2" selected>Large authoring view</option><option value="4">4× canonical canvas</option></select></label>
+<fieldset id="layers"><legend>Independent source visibility</legend></fieldset>
+<p class="muted">Removing a preview layer leaves the other source rasters unchanged. New Hair A/B, Outfit A/B and weapon-variant production have not passed their gate.</p>
+<button id="world">Review this failed candidate in the world</button>
+<p><a href="character-review.html">Preserved v1 animation player</a> · <a href="docs/review/character-true-modular-v2/REPORT.md">Gate report</a></p></div>
+</section>
+<section><h2>Source decomposition</h2><img class="board" src="docs/review/character-true-modular-v2/south-candidate-decomposition.png?spriteDev=1" alt="Five available candidate layers, two missing hair layers, and the failed composite"></section>
+<section id="worldReview" hidden><h2>Failed candidate · isolated world review</h2><p id="worldStatus">Loading the existing world with a memory save…</p><iframe id="game" title="Failed South candidate in isolated actual world"></iframe></section>
+</main>
+<script src="character-motion-template.js?spriteDev=1"></script>
+<script src="character-assembly.js?spriteDev=1"></script>
+<script src="character-source-authoring.js?spriteDev=1"></script>
+<script src="proof/modular-south-source-review.js?spriteDev=1"></script>
+</html>

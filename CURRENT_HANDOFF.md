@@ -1,3 +1,39 @@
+# ASTRAEON — true modular South authoring checkpoint, 9 October 2026
+
+New work is on `character/true-modular-ro1-swordsman-v2`, from freshly verified
+remote `character/ro1-reference-engine-v1` HEAD
+`db2959b97a77b3f9b54c22d5e732fe2b2345a529`. Baseline motion/appearance/review
+sources remain intact. No merge, rewrite or ordinary-player install.
+
+Gate0 audit, fresh Cloud Browser RO sheet research and identity lock completed.
+South isolated source generation failed registration: Outfit collar/joints do
+not fit BodyCore after2 attempts; Face is misplaced and includes skin shading.
+BodyCore/HeadBase remain provisional. HairBack/HairFront are not authored; no
+empty assets stand in for them. The independent baseline sword remains useful.
+
+**DEV_ONLY / SOUTH VISUAL FAIL / SOURCE COVERAGE INCOMPLETE / OWNER APPROVAL
+PENDING.** [Full report and exact evidence](docs/review/character-true-modular-v2/REPORT.md).
+[Static failed-source review](character-modular-source-review.html) includes
+an isolated actual-world view with memory-only save. The diagnostic source
+compiler verifies identities; strict compilation rejects missing Hair.
+
+Verified266 JavaScript and20 Python checks; five available layer rasters stay
+unchanged across weapon hiding; source/prompt hashes, game-size and actual-world
+capture pass. These checks do not pass the failed visual gate. No v2 cosmetic
+A/B proof,8-direction Idle, Walk or BasicAttack was produced. Their baseline
+motion authority is preserved unchanged. No wider action/class scope.
+
+Resume with coordinate-constrained layered painting or an art-document export
+workflow. Read `authoring/characters/true-modular/swordsman-male-v2/` contract,
+manifest, prompts, generation-jobs and normalization receipt. Replace failed
+South sources and finish true front/back hair before any cosmetic/direction/
+animation expansion. Do not repeat unconstrained outfit prompts or cut apart
+the dressed v1 body. Do not warp/nudge many layers to conceal a broken contract.
+
+---
+
+# Preserved v1 animated rescue checkpoint
+
 # ASTRAEON — animated character rescue checkpoint,9October2026
 
 Branch `character/ro1-reference-engine-v1`; starting checkpoint
