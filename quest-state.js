@@ -3,6 +3,7 @@
 'use strict';
 const D=window.AstraeonQuestDefinitions,freeze=window.AstraeonItemDefinitions.freeze;
 const statuses=freeze(['LOCKED','AVAILABLE','ACTIVE','READY_TO_TURN_IN','COMPLETED']);
+const entryFor=(state,id)=>Object.hasOwn(state.entries,id)?state.entries[id]:null;
 function normalize(raw,registry){
  const entries={},history=D.plain(raw?.history)&&D.json(raw.history)?structuredClone(raw.history):{};
  for(const [id,value] of Object.entries(D.plain(raw?.entries)?raw.entries:{})){
@@ -14,7 +15,7 @@ function normalize(raw,registry){
  return freeze({schema:1,entries,history});
 }
 function evaluate(state,definition,inventory,catalog=window.AstraeonItemDefinitions){
- const entry=state.entries[definition.id],prerequisites=definition.prerequisites.every(id=>state.entries[id]?.status==='COMPLETED');
+ const entry=entryFor(state,definition.id),prerequisites=definition.prerequisites.every(id=>entryFor(state,id)?.status==='COMPLETED');
  const pools={},objectives=definition.objectives.map(o=>{
   let owned=null,progress=entry?.progress[o.id]||0;
   if(o.type==='COLLECT'){
@@ -26,6 +27,7 @@ function evaluate(state,definition,inventory,catalog=window.AstraeonItemDefiniti
  const status=entry?.status==='COMPLETED'?'COMPLETED':entry?objectives.every(o=>o.complete)?'READY_TO_TURN_IN':'ACTIVE':prerequisites?'AVAILABLE':'LOCKED';
  return freeze({ok:true,questId:definition.id,status,prerequisitesSatisfied:prerequisites,objectives});
 }
-function canTransition(from,to){return ({LOCKED:['AVAILABLE'],AVAILABLE:['ACTIVE'],ACTIVE:['READY_TO_TURN_IN'],READY_TO_TURN_IN:['ACTIVE','COMPLETED'],COMPLETED:[]})[from]?.includes(to)||false}
+const transitions=freeze({LOCKED:['AVAILABLE'],AVAILABLE:['ACTIVE'],ACTIVE:['READY_TO_TURN_IN'],READY_TO_TURN_IN:['ACTIVE','COMPLETED'],COMPLETED:[]});
+function canTransition(from,to){return typeof from==='string'&&typeof to==='string'&&Object.hasOwn(transitions,from)&&transitions[from].includes(to)}
 window.AstraeonQuestState=freeze({statuses,normalize,evaluate,canTransition});
 })();

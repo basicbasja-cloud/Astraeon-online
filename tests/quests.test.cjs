@@ -150,3 +150,12 @@ test('actual harness buttons use supported Combat HP API, new life and private r
   for(const id of ['talk','prepare','save'])click(id);assert(snapshot().ticket.ok);const saved=snapshot().save;click('reload');click('commit');assert.equal(result().code,'INVALID_QUEST_TICKET');assert.deepEqual(snapshot().save,saved);assert.equal(stored.has('astraeon-iso-v1'),false);
  }finally{for(const [key,value] of Object.entries(previous)){if(value===undefined)delete global[key];else global[key]=value}}
 });
+
+test('valid prototype-named quest identity reads only owned durable entries and prerequisites',()=>{
+ const definitions=clone(D.definitions);definitions[0].id='toString';definitions[4].prerequisites=['toString'];const f=fixture({}, {questDefinitions:definitions});
+ assert.equal(f.p.getQuest('toString').status,'AVAILABLE');assert.equal(f.p.getQuest(q('chain')).status,'LOCKED');f.talk();assert.deepEqual(f.p.getQuestState().entries,{});
+ assert(f.p.acceptQuest('toString').ok);assert.equal(f.p.getQuest('toString').objectives[0].progress,0);f.talk();assert(f.p.turnInQuest('toString').ok);assert.equal(f.p.getQuest(q('chain')).status,'AVAILABLE');
+ const restored=fixture(Save.snapshot(f.state),{questDefinitions:definitions});assert.equal(restored.p.getQuest('toString').status,'COMPLETED');assert.deepEqual(restored.p.getQuestState(),f.p.getQuestState());
+});
+test('prototype-named objective identity has explicit capped owned progress',()=>{const d=definition('talk');d.objectives[0].id='valueOf';const f=custom(d);accepted(f,'talk');assert.equal(f.p.getQuest(q('talk')).objectives[0].progress,0);f.talk();f.talk();assert.equal(f.p.getQuest(q('talk')).objectives[0].progress,1);assert(Object.hasOwn(f.p.getQuestState().entries[q('talk')].progress,'valueOf'))});
+test('unknown prototype-named or coercing transition inputs reject without throwing',()=>{for(const from of ['toString','valueOf','constructor',null,{}, {toString(){throw Error('must not coerce')}}])assert.equal(Q.canTransition(from,'ACTIVE'),false);assert.equal(Q.canTransition('AVAILABLE',{}),false)});

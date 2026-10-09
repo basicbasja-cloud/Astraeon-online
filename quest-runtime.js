@@ -14,7 +14,7 @@ function create(owner,{raw,definitions=D.definitions,catalog=window.AstraeonItem
  function observe(e,type,verify){
   if(busy)return fail('TRANSACTION_IN_PROGRESS');let authorized=false;try{authorized=!!e&&typeof e==='object'&&verify(e)===true&&e.type===type}catch{return fail('INVALID_QUEST_EVIDENCE')}if(!authorized)return fail('INVALID_QUEST_EVIDENCE');if(seen.has(e))return fail('DUPLICATE_QUEST_EVIDENCE');seen.add(e);
   const entries={...state.entries},changed=[];
-  for(const id of registry.ids){const entry=entries[id];if(!entry||entry.status==='COMPLETED')continue;const d=registry.getDefinition(id),progress={...entry.progress};let touched=false;
+  for(const id of registry.ids){const entry=Object.hasOwn(entries,id)?entries[id]:null;if(!entry||entry.status==='COMPLETED')continue;const d=registry.getDefinition(id),progress={...entry.progress};let touched=false;
    for(const o of d.objectives)if((o.type==='TALK'&&type==='NPC_INTERACTED'&&o.targetId===e.targetId||o.type==='KILL'&&type==='MONSTER_DIED'&&o.monsterDefinitionId===e.monsterDefinitionId)&&progress[o.id]<o.required){progress[o.id]++;touched=true}
    if(touched){entries[id]={...entry,progress};changed.push(id)}
   }
