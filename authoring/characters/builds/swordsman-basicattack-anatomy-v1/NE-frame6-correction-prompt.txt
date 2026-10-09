@@ -1,0 +1,12 @@
+Fix an anatomical error in this SIX-cell sprite sheet. Keep exact transparent 1536x1024, three columns and two rows. ONLY edit TOP-MIDDLE cell (NE frame6). ALL OTHER FIVE cells must be visually unchanged. Same painted 2D bronze/ivory swordsman, bald head, NE facing and cell roots. No weapon, hair, FX, background or labels.
+
+Top-middle currently has an EXTRA floating glove above the skull and a sword arm already stretched forwards/down. It reads as THREE arms. Fix it so there are exactly TWO arms:
+- Preserve the support arm extending back to image LEFT.
+- Preserve the sword-arm right shoulder/bronze pauldron at local cell x285,y278.
+- REMOVE its existing forward/down forearm and fist at local x330,y315 through x355,y332; replace the vacated region with the correct torso/transparent background.
+- Re-author that SAME sword arm as a raised bent arm CONNECTING to the fist above/right of the skull at local x292,y167.
+- Put a real elbow OUTSIDE the RIGHT silhouette of the skull, approximately local x330,y228.
+- Upper arm: right shoulder x285,y278 to elbow x330,y228, ivory sleeve at the elbow.
+- Forearm: elbow x330,y228 to wrist x306,y187, bronze bracer.
+- Hand: closed gloved fist at x292,y167, same original raised-fist phase.
+It must be one connected shoulder-upper-arm-elbow-forearm-wrist-fist chain, not a detached glove and not an extra third arm. Keep the original head, body, root, feet and costume, and preserve the same rear NE perspective. Do not change any other cell. This is surgical anatomical painting. Transparent alpha everywhere outside sprites.
