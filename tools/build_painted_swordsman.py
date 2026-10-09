@@ -279,6 +279,8 @@ def build():
     profiles={'front':LAYERS.copy()}
     rear=LAYERS.copy();rear.remove('MainHand');rear.insert(rear.index('Body'),'MainHand');rear.remove('OffHand');rear.insert(rear.index('Body'),'OffHand');rear.remove('GarmentBack');rear.insert(rear.index('Body')+1,'GarmentBack');profiles['rear']=rear
     loaded=LAYERS.copy();loaded.remove('MainHand');loaded.insert(loaded.index('Body'),'MainHand');profiles['loaded']=loaded
+    profiles['loadedRear']=rear.copy()
+    strike_rear=rear.copy();strike_rear.remove('MainHand');strike_rear.insert(strike_rear.index('GarmentBack')+1,'MainHand');profiles['rearStrike']=strike_rear
     t={'schemaVersion':'1.0','motionTemplateId':'ro1-swordsman-male-v1','status':'REQUIRES_OWNER_VISUAL_REVIEW','directions':DIRECTIONS,'registration':REG,
        'transformConvention':'canvas pixels; clockwise radians; uniform positive scale','provenance':{'kind':'RO1_DERIVED','referenceManifestSHA256':digest(MD/'rendered-reference.json'),'evidenceClass':'RENDERED_REFERENCE','exactACTTiming':False,'rawACTInspected':False,'attachmentCoordinates':'ASTRAEON painted-pose calibration; not exact ACT offsets'},'drawProfiles':profiles,'defaultDrawProfile':'front','actions':{}}
     for action in ['Idle','Walk','BasicAttack']:
@@ -295,7 +297,8 @@ def build():
                 frame={'id':f'{action}/{d}/key{ki}','durationMs':duration,'role':'referenceKey','evidenceClass':'RENDERED_REFERENCE','referencePhase':phase,'root':copy.deepcopy(REG['root']),'anchors':copy.deepcopy(anchor_data[action,d][index]),'events':events,
                        'source':{'kind':'RENDERED_REFERENCE','sourceImageSHA256':r['sha256'],'url':r['url'],'actionId':r['actionId'],'frameIndex':sourceframe,'direction':d,'confidence':'HIGH' if action!='BasicAttack' else 'MEDIUM','rawACTInspected':False},
                        'poseIntent':{'bodyOrientation':d+' elevated camera; independently painted','limbPhase':phase,'footContact':phase if action=='Walk' else 'support stance retained','attackPhase':phase if action=='BasicAttack' else 'none','silhouette':'RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand'}}
-                if action=='BasicAttack' and ki<4:frame['drawProfile']='loaded'
+                if action=='BasicAttack' and ki<4:frame['drawProfile']='loadedRear' if d in ['NW','N','NE'] else 'loaded'
+                if action=='BasicAttack' and 7<=index<=12 and d in ['NW','N','NE']:frame['drawProfile']='rearStrike'
                 keys.append(frame)
             frames=[]
             for ki,key in enumerate(keys):
@@ -305,6 +308,8 @@ def build():
                 for n in range(1,count):
                     right=keys[(ki+1)%len(keys)]
                     frames.append(dict(id=f'{action}/{d}/between{index+n}',durationMs=offsets[n+1]-offsets[n],role='astraeonInbetween',evidenceClass='ASTRAEON_INBETWEEN',referencePhase=None,between=[key['id'],right['id']],fraction=n/count,root=copy.deepcopy(REG['root']),anchors=anchor_data[action,d][index+n],events=[]))
+            if action=='BasicAttack' and d in ['NW','N','NE']:
+                for i in range(7,13):frames[i]['drawProfile']='rearStrike'
             dirs[d]={'totalDurationMs':sum(durations),'referenceKeys':keys,'frames':frames,'drawProfile':'rear' if d in ['NW','N','NE'] else 'front'}
         t['actions'][action]={'loop':action!='BasicAttack','directions':dirs}
     write(MD/'motion-template.json',t)

@@ -10,6 +10,15 @@ Stand with straight head has one unique pose; repeated renderer slices are not b
 
 Confidence: rendered phase evidence HIGH, painted anatomical retarget/attachment calibration MEDIUM, exact ACT delays UNKNOWN. Attachment transforms are measured/retargeted on painted ASTRAEON poses, not ACT-extracted coordinates. Source motion and painted approximation require owner review.
 
+Painted assembly ordering is an ASTRAEON INTERPRETATION, not an extracted ACT
+layer list. Rear loaded frames keep the cape over the back torso throughout;
+the contact/follow-through profile moves the sword across the cape for a readable
+arc. East uses a side/front profile so the cape cannot hide the face. These
+direction/frame profiles are data, not character-specific engine branches.
+Off-center leaning scalp measurements and overlapping recovery unit conversion
+were repaired after actual composite review. Original generated recovery tails
+were superseded by coherent chunks returning to inspected Ready at the waist.
+
 ---
 
 Historical format-only research below records what was unknown before rendered acquisition; its raw-ACT-only stop condition is superseded.

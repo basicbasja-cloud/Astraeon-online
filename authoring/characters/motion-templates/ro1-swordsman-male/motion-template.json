@@ -86,6 +86,40 @@
       "GarmentFront",
       "BackAccessory",
       "CosmeticFX"
+    ],
+    "loadedRear": [
+      "Shadow",
+      "MainHand",
+      "OffHand",
+      "Body",
+      "GarmentBack",
+      "HeadBase",
+      "HairBack",
+      "HairFront",
+      "HeadgearLower",
+      "HeadgearMiddle",
+      "HeadgearTop",
+      "WeaponSlash",
+      "GarmentFront",
+      "BackAccessory",
+      "CosmeticFX"
+    ],
+    "rearStrike": [
+      "Shadow",
+      "OffHand",
+      "Body",
+      "GarmentBack",
+      "MainHand",
+      "HeadBase",
+      "HairBack",
+      "HairFront",
+      "HeadgearLower",
+      "HeadgearMiddle",
+      "HeadgearTop",
+      "WeaponSlash",
+      "GarmentFront",
+      "BackAccessory",
+      "CosmeticFX"
     ]
   },
   "defaultDrawProfile": "front",
@@ -32107,7 +32141,7 @@
                 "attackPhase": "readyRaised",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key1",
@@ -32201,7 +32235,7 @@
                 "attackPhase": "anticipation1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key2",
@@ -32295,7 +32329,7 @@
                 "attackPhase": "anticipation2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key3",
@@ -32389,7 +32423,7 @@
                 "attackPhase": "anticipation3",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key4",
@@ -32580,7 +32614,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "contactSweep",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key6",
@@ -32673,7 +32708,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key7",
@@ -32771,7 +32807,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key8",
@@ -32864,7 +32901,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "recoveryIntent",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key9",
@@ -33058,7 +33096,7 @@
                 "attackPhase": "readyRaised",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key1",
@@ -33152,7 +33190,7 @@
                 "attackPhase": "anticipation1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key2",
@@ -33246,7 +33284,7 @@
                 "attackPhase": "anticipation2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/key3",
@@ -33340,7 +33378,7 @@
                 "attackPhase": "anticipation3",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NW/between4",
@@ -33693,7 +33731,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "contactSweep",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/between8",
@@ -33774,7 +33813,8 @@
                   "scale": 1.0
                 }
               },
-              "events": []
+              "events": [],
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key6",
@@ -33867,7 +33907,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key7",
@@ -33965,7 +34006,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/between11",
@@ -34046,7 +34088,8 @@
                   "scale": 1.0
                 }
               },
-              "events": []
+              "events": [],
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/key8",
@@ -34139,7 +34182,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "recoveryIntent",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NW/between13",
@@ -34499,7 +34543,7 @@
                 "attackPhase": "readyRaised",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key1",
@@ -34593,7 +34637,7 @@
                 "attackPhase": "anticipation1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key2",
@@ -34687,7 +34731,7 @@
                 "attackPhase": "anticipation2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key3",
@@ -34781,7 +34825,7 @@
                 "attackPhase": "anticipation3",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key4",
@@ -34972,7 +35016,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "contactSweep",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key6",
@@ -35065,7 +35110,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key7",
@@ -35163,7 +35209,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key8",
@@ -35256,7 +35303,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "recoveryIntent",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key9",
@@ -35450,7 +35498,7 @@
                 "attackPhase": "readyRaised",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key1",
@@ -35544,7 +35592,7 @@
                 "attackPhase": "anticipation1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key2",
@@ -35638,7 +35686,7 @@
                 "attackPhase": "anticipation2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/key3",
@@ -35732,7 +35780,7 @@
                 "attackPhase": "anticipation3",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/N/between4",
@@ -36085,7 +36133,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "contactSweep",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/between8",
@@ -36166,7 +36215,8 @@
                   "scale": 1.0
                 }
               },
-              "events": []
+              "events": [],
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key6",
@@ -36259,7 +36309,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key7",
@@ -36357,7 +36408,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/between11",
@@ -36438,7 +36490,8 @@
                   "scale": 1.0
                 }
               },
-              "events": []
+              "events": [],
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/key8",
@@ -36531,7 +36584,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "recoveryIntent",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/N/between13",
@@ -36891,7 +36945,7 @@
                 "attackPhase": "readyRaised",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key1",
@@ -36985,7 +37039,7 @@
                 "attackPhase": "anticipation1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key2",
@@ -37079,7 +37133,7 @@
                 "attackPhase": "anticipation2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key3",
@@ -37173,7 +37227,7 @@
                 "attackPhase": "anticipation3",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key4",
@@ -37364,7 +37418,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "contactSweep",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key6",
@@ -37457,7 +37512,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key7",
@@ -37555,7 +37611,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key8",
@@ -37648,7 +37705,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "recoveryIntent",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key9",
@@ -37842,7 +37900,7 @@
                 "attackPhase": "readyRaised",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key1",
@@ -37936,7 +37994,7 @@
                 "attackPhase": "anticipation1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key2",
@@ -38030,7 +38088,7 @@
                 "attackPhase": "anticipation2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/key3",
@@ -38124,7 +38182,7 @@
                 "attackPhase": "anticipation3",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
               },
-              "drawProfile": "loaded"
+              "drawProfile": "loadedRear"
             },
             {
               "id": "BasicAttack/NE/between4",
@@ -38477,7 +38535,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "contactSweep",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/between8",
@@ -38558,7 +38617,8 @@
                   "scale": 1.0
                 }
               },
-              "events": []
+              "events": [],
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key6",
@@ -38651,7 +38711,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough1",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key7",
@@ -38749,7 +38810,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "followThrough2",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/between11",
@@ -38830,7 +38892,8 @@
                   "scale": 1.0
                 }
               },
-              "events": []
+              "events": [],
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/key8",
@@ -38923,7 +38986,8 @@
                 "footContact": "support stance retained",
                 "attackPhase": "recoveryIntent",
                 "silhouette": "RO rendered pose landmark retargeted to ASTRAEON outfit and anatomical right hand"
-              }
+              },
+              "drawProfile": "rearStrike"
             },
             {
               "id": "BasicAttack/NE/between13",
