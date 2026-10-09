@@ -147,9 +147,19 @@ try:
    # Isolated player-resource setup for death policy only. The actual enemy AI
    # causes death; no position, enemy HP, AI, collision or Quest state changes.
    dev(page,'d.setCurrentHP(1)');close(page);s=qa(page);living=min((e['lifecycle'] for e in s['enemies'] if e['hp']>0),key=lambda m:math.hypot(m['position']['x']-s['save']['x'],m['position']['y']-s['save']['y']))
-   at=living['position'];position=s['player']['position'];distance=math.hypot(at['x']-position['x'],at['y']-position['y']);goal={'x':at['x']+(position['x']-at['x'])/distance*5.5,'y':at['y']+(position['y']-at['y'])/distance*5.5};page.mouse.click(*field_point(page,goal));page.wait_for_function('g=>{const s=AstraeonQA.snapshot();return s.save.currentHP===0||Math.hypot(s.save.x-g.x,s.save.y-g.y)<.5}',arg=goal,timeout=30000)
-   observations.append({'event':'real player-death encounter after ordinary ground navigation','actor':living,'player':s['player'],'goal':goal});checkpoint()
-   page.wait_for_function('AstraeonQA.snapshot().save.currentHP===0',timeout=60000);assert qa(page)['save']['questState']==durable;page.wait_for_function('AstraeonQA.snapshot().save.zone===0&&AstraeonQA.snapshot().save.currentHP>0',timeout=30000);pause(page);assert snap(page)['questState']==durable;passed('real enemy damage player death and respawn retain partial Quest progress',{'class':cls})
+   at=living['position'];position=s['player']['position'];distance=math.hypot(at['x']-position['x'],at['y']-position['y']);goal={'x':at['x']+(position['x']-at['x'])/distance*5.5,'y':at['y']+(position['y']-at['y'])/distance*5.5}
+   # Latch authoritative observation before movement: HP=0 is transient until
+   # auto-respawn, so two separate host waits can miss it. This observer only
+   # reads QA/Combat evidence and never mutates gameplay or Quest progress.
+   page.evaluate('''()=>{window.questDeathEvidence=null;window.questDeathObserver=()=>{const s=AstraeonQA.snapshot();if(s.save.currentHP===0){window.questDeathEvidence={hp:s.save.currentHP,time:s.time,questState:s.save.questState,position:s.player.position,incoming:s.incomingCombat.at(-1)};removeEventListener('astraeon-frame',window.questDeathObserver)}};addEventListener('astraeon-frame',window.questDeathObserver)}''')
+   try:
+    page.mouse.click(*field_point(page,goal));page.wait_for_function('g=>{const s=AstraeonQA.snapshot();return !!window.questDeathEvidence||Math.hypot(s.save.x-g.x,s.save.y-g.y)<.5}',arg=goal,timeout=30000)
+    page.wait_for_function('window.questDeathEvidence?.hp===0',timeout=60000);death=page.evaluate('window.questDeathEvidence');assert death['questState']==durable and death['incoming']['hp']['killed'] and death['incoming']['hp']['hpAfter']==0
+    observations.append({'event':'latched real enemy-caused player death after ordinary ground navigation','actor':living,'goal':goal,'death':death});checkpoint()
+    page.wait_for_function('AstraeonQA.snapshot().save.zone===0&&AstraeonQA.snapshot().save.currentHP>0',timeout=30000);pause(page);assert snap(page)['questState']==durable;passed('real enemy damage player death and respawn retain partial Quest progress',{'class':cls,'deathTime':death['time']})
+   except Exception:
+    report['lastState']=qa(page);report['browserState']=page.evaluate('({hidden:document.hidden,visibilityState:document.visibilityState,performance:AstraeonQA.performance(),deathEvidence:window.questDeathEvidence})');raise
+   finally:page.evaluate("removeEventListener('astraeon-frame',window.questDeathObserver);delete window.questDeathObserver")
    travel(page,2);pause(page);fox=next(e['lifecycle'] for e in qa(page)['enemies'] if e['lifecycle']['definitionId']=='leafmane-fox');id=fox['instanceId'];before=snap(page);close(page);dead=fight(page,id,skill);assert quest(page,'kill')['status']=='READY_TO_TURN_IN';passed('learned Skill contacts real monster and next legitimate death finishes Kill',{'class':cls,'deathId':dead['deathId']})
    # The same runtime actor gets a new life: use ordinary input to retreat and
    # wait on the authoritative simulation-clock/life condition.
