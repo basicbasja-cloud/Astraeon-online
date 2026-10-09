@@ -192,3 +192,12 @@ source, reward, serial, progression/currency field and READY quest state.
 No second calculator, penalty, overflow or capacity counter is introduced.
 Quest has no RNG. Monster Box's maximum pre-roll envelope and anti-roll-shopping
 contract remain unchanged; Monster Loot retains its resolved exact package.
+
+## Separate Storage boundary
+
+[Storage](CORE_SPINE_TOWN_SERVICES.md) is a distinct container and is excluded
+from carried slots/weight. Exact-instance moves preserve identity and serial.
+Withdrawal evaluates the proposed final carried ownership through this existing
+Capacity authority before either container changes. Deposit improves carried
+ownership and separately respects the provisional Storage slot policy. No
+second carried calculator, overflow redirect or encumbrance penalty is added.

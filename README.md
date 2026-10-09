@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 94. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 96. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -198,3 +198,20 @@ See the [verified Quest handoff](docs/CORE_SPINE_QUESTS_REPORT.md).
 The five quests and reward values are NON-FINAL engineering fixtures.
 Shop/Storage/Town Services, dev-tool gap closure and the 0.0.1 Integration Gate
 remain pending. Patch 0.0.1 and Core Spine are not complete.
+
+## Shop / Storage / Town Services foundation
+
+Interact with the actual Merchant to buy/sell through current local service
+access. The existing housing-keeper has a clearly non-final Storage engineering
+proof section. Stored stacks and exact ItemInstances are separate from carried
+ownership; equipped gear requires explicit unequip before sale/deposit.
+Collect uses carried ownership only. Save version 5 persists optional Storage
+and one canonical instance serial; access sessions/tickets are transient.
+
+Open `/tools/town-services.html` for isolated diagnostic actors and canonical
+Shop/transfer operations. Exact `?dev=1` inspection in the game has no service
+access bypass. Run `python tests/town_services_browser.py` for ordinary NPC
+movement, real Shop/Storage, capacity, Collect, persistence and death acceptance.
+See [contracts](docs/CORE_SPINE_TOWN_SERVICES.md) and
+[verification / resume report](docs/CORE_SPINE_TOWN_SERVICES_REPORT.md).
+This closes only the named foundation after verification, not Patch 0.0.1.

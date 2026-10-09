@@ -274,3 +274,18 @@ effects. It is excluded from the public Player item-method projection.
 Collect reads current ownership and creates no separate ledger. Capacity or stale
 authorization failure consumes nothing and allocates no instances/serials.
 Existing Loot/Box, merchant/crafting and equipment contracts remain unchanged.
+
+## Town Services / Storage extension
+
+The live Player `buy`/`sell` compatibility methods now dispatch to the
+[owned current-interaction Shop authority](CORE_SPINE_TOWN_SERVICES.md). Its
+exact-instance sell and canonical stack/instance buys preflight the complete
+package and currency before one Item State ownership publication. Standalone
+historical fixtures retain physical trade primitives without live service
+access. Definitions/prices/recipes in ItemDefinitions are unchanged.
+
+A narrow private `commitOwnershipTransfer` validates exact final ownership,
+current identity/revision, unchanged allocator and retained equipped refs before
+contained Storage publication. Global observed Storage IDs reserve the canonical
+serial during Item State migration; transfers do not allocate. Optional v5
+Storage is a separate durable container, not carried Inventory or Equipment.

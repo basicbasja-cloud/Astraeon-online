@@ -85,6 +85,7 @@ they do not supersede the current spatial architecture.
 | action-item-config.js + item-effects.js + action-item.js + action-item-runtime.js | Frozen executable consumables, validated resource previews, owned prepare/commit tickets and explicit-time item/function/global clocks |
 | box-content-tables.js + monster-box.js + monster-box-runtime.js | Separate immutable Box contents, pure injected-RNG resolution/envelope and owned inventory opening authorization; no monster death or Action Item semantics |
 | inventory-capacity.js | Pure canonical ownership slot/milliweight snapshots, net exact/envelope preflight and per-dimension no-worse over-limit policy; Item State remains publisher |
+| town-service-definitions.js + storage-state.js + town-service-runtime.js | Validated service/Shop contracts, separate durable Storage, current semantic interaction sessions and atomic Shop/exact-instance transfers |
 | game.js | Existing menus, progression adapters, navigation/AI intent dispatch, reactions, save, camera and presentation orchestration |
 | qa.html | Same live iframe in four actual CSS viewport sizes; frame timing and state samples through validated postMessage |
 
@@ -189,7 +190,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v95, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v96, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 
@@ -375,3 +376,22 @@ Plain guild/journal controls and isolated `/tools/quest.html` provide functional
 acceptance; no story, visual, AI/navigation or Quest UI redesign is introduced.
 See [Quest contracts](docs/CORE_SPINE_QUESTS.md) and
 [verified handoff](docs/CORE_SPINE_QUESTS_REPORT.md).
+
+## Town service / Storage boundary
+
+[Shop / Storage / Town Services](docs/CORE_SPINE_TOWN_SERVICES.md) uses the same
+semantic NPC evidence as Quest. A private current-interaction session gates live
+Shop and Storage, with town/range/player/loading revalidation. Owned tickets
+bind both container identities/revisions, currency and runtime epoch. Shop uses
+the existing Item State net transaction with contained currency publication.
+Storage moves exact instances through a narrow private ownership publisher,
+without allocation or copying equipped references. Global serial reservation
+precedes legacy import and canonical creation; malformed stored data is inert.
+
+Optional v5 `storageState` persists a separate container, with provisional slot
+policy and no carried weight. Stored items do not affect carried Capacity,
+Collect, Action Items or Stats. Transfers change carried revision and stale
+prepared Quest tickets. Closing/loading/death/travel/reconstruction invalidates
+transient access. No subscription, AI, Combat, navigation, world or visual
+behavior is added. Functional existing menus and isolated tooling consume
+these authorities; no final economy/content/UI/server approval is implied.

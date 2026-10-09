@@ -237,3 +237,13 @@ cache/offline and world schemas pass. Source audit retains all 45 inherited test
 files and 34 protected core files unchanged. Valid prototype-named IDs use own
 entry lookup; unknown/coercing state-transition inputs reject safely.
 See [verification evidence and limitations](CORE_SPINE_QUESTS_REPORT.md).
+
+## Storage / town service integration
+
+[Storage transfers](CORE_SPINE_TOWN_SERVICES.md) move ordinary canonical items
+out of or into carried Inventory. Collect reads carried ownership exclusively:
+3 Herbs -> deposit 1 -> 2/3 ACTIVE -> withdraw 1 -> READY. Stored items satisfy
+no Collect consumption plan. Each successful transfer publishes one carried
+revision and invalidates previously prepared Quest inventory authorization.
+Shop/Storage grant no fabricated Talk/Kill/EXP credit. The actual semantic NPC
+interaction remains shared, independently observable by matching Talk objectives.

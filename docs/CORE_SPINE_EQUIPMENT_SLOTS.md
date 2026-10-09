@@ -205,3 +205,13 @@ Future Slot additions must update registry/definitions/migrations and tests.
 Run README verification commands and see the [verified handoff](CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md).
 Recommended next Core Spine foundation: **Talk / Kill / Collect Quest contracts**;
 Storage interaction remains a separate remaining roadmap requirement.
+
+## Shop / Storage ownership relationship
+
+[Shop and Storage](CORE_SPINE_TOWN_SERVICES.md) retain normal owned instances.
+Shop equipment buy uses the canonical allocator and does not auto-equip. Sale
+and deposit of an equipped instance reject `ITEM_EQUIPPED`; explicit unequip
+comes first. Stored instances are not carried and cannot equip or modify Stats.
+Withdrawal moves the same identity/metadata back, without serial or automatic
+slot assignment. The five-slot registry and equipped reference semantics remain
+unchanged; no appearance layer is introduced.
