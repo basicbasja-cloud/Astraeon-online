@@ -175,7 +175,8 @@ try:
 except Exception as error:
  report.update(result='failed',failure=str(error),lastState=last_snapshot)
  try:
-  if last_page and not last_page.is_closed():report['lastState']=qa(last_page);last_page.screenshot(path=str(args.output/'failure.png'))
+  if last_page and not last_page.is_closed():
+   report['lastState']=qa(last_page);report['browserState']=last_page.evaluate('({hidden:document.hidden,visibilityState:document.visibilityState,performance:AstraeonQA.performance()})');last_page.screenshot(path=str(args.output/'failure.png'))
  except Exception:pass
  raise
 finally:

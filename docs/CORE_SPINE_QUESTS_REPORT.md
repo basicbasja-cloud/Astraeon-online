@@ -32,6 +32,8 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 - The browser source also proves Mage same-runtime respawn increments an active Kill objective 1 → 2, and offline saved Quest resume. Full two-class final run and inherited suites remain pending.
 - Source audit: 79 inherited test/core files unchanged; no visual/world path changes. `quests/source-audit.json`.
 - An isolated harness button probe caught an unsupported HP API name before the full run reached tooling. The harness now uses the actual shared `CombatResolution.applyCombatResult` signature; no Combat code changed. A new executable button-flow Node regression proves Combat death/new life and private ticket invalidation after recreation. Focused Quest total is now 162/0; full expected total is 1471 (rerun pending). Probe evidence: `quests/harness-probe.log` and `quests/quest-harness-node.log`.
+- Fifth run stopped after 13 groups waiting for player death; authoritative state remained field-center/IDLE at HP 1, simulation time 8.06987. An independent headless harness probe overlapped this run; hidden-page simulation pause is suspected but was not captured, so this is not claimed as a confirmed cause. The next run is serial with no concurrent browser; failure diagnostics now include document visibility and frame performance. No gameplay/AI/navigation assertion or behavior is changed.
+- Full current Node after harness regression: 1309 retained + 162 new = 1471/0; `quests/node-verified/report.json`. Fixed real harness button probe passes (`quests/harness-probe-fixed.log`).
 
 ## Remaining / exact next action
 
