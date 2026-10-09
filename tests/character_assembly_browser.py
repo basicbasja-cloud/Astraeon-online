@@ -42,7 +42,7 @@ with sync_playwright() as p:
     page=browser.new_page(viewport={'width':1360,'height':1000})
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.on('response',lambda r:resources.append(f'{r.status} {r.url}') if r.status>=400 else None)
-    page.goto(args.url.rstrip('/')+'/character-review.html',wait_until='networkidle')
+    page.goto(args.url.rstrip('/')+'/character-engine-review.html',wait_until='networkidle')
     page.wait_for_function('window.AstraeonCharacterReview')
     page.evaluate('AstraeonCharacterReview.prepareVariants()')
     matrix=page.evaluate('''()=>{
