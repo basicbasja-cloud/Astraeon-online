@@ -79,3 +79,30 @@ Unordered, non-repeatable engineering fixtures only. No story/UI/art/balance app
   checkpoint, publish final contract/report and current architecture docs, commit
   documentation successor, push only this branch normally and verify remote tip.
   Do not start Shop/Storage.
+
+## Clean runtime/test checkpoint — full gate verified
+
+The final source remains byte unchanged from `da4f46f7ff297a2f4970a47e41af259308a1b374`.
+This report-only commit is the clean runtime/test acceptance checkpoint; resolve
+its exact SHA with Git. Final documentation is the only remaining work before push.
+
+- **1309 retained + 165 Quest = 1474 Node checks / 0 failures**, 22 files.
+- **312 retained + 57 Quest = 369 functional browser groups / 0 failures**.
+  All 11 inherited suites and both-class focused Quest flow pass; error arrays
+  are empty. No inherited fixture/assertion was edited.
+- Cache/offline: PASS generation 95, saved-character retention, legacy-cache
+  removal and offline town/art resume. Focused Quest offline progress also passes.
+- World schemas: PASS all four. Source audit: 79 inherited test/core files
+  unchanged; protected visual/world/Character paths untouched. Diff check passes.
+- Evidence: `quests/final-verification-summary.json`, `final-regressions-summary.json`,
+  `browser-final-second/report.json`, `node-final-confirmed/report.json`,
+  `cache-final/report.json`, `world-validation-final.log`, `source-audit.json`.
+- An external report reader initially treated the unchanged Combat report's
+  `ok:true` as missing `result:passed`. Combat itself exited 0, passed 21 checks
+  and had no errors. Only that external reader was corrected; raw reports and
+  repository tests were not modified. All remaining suites then passed.
+
+Exact next step: publish the final Quest contract/report and focused current-doc
+adapters; commit documentation checkpoint and successor; inspect final diff,
+rerun Node/audit/checks, push only this branch normally, verify exact remote HEAD,
+and stop. Patch 0.0.1 / Core Spine remain incomplete; do not start Shop/Storage.
