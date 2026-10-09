@@ -36,6 +36,11 @@ function validateAppearancePack(pack,template){
   check(same(c?.actions,Object.keys(t.actions)),'BodyWithOutfit action contract differs');
   check(same(c?.timeline,Object.fromEntries(Object.entries(t.actions).map(([a,v])=>[a,Object.fromEntries(DIRECTIONS.map(d=>[d,v.directions[d].frames.map(f=>f.durationMs)]))]))),'BodyWithOutfit frame timeline differs');
   check(['head','mainHand','offHand','back'].every(n=>c?.sockets?.includes(n)),'BodyWithOutfit semantic sockets missing');
+  for(const [a,v]of Object.entries(t.actions))for(const d of DIRECTIONS){
+   const entries=c?.anchorRegistration?.[a]?.[d];
+   check(Array.isArray(entries)&&entries.length===v.directions[d].frames.length,'Missing BodyWithOutfit anchor registration '+a+'/'+d);
+   for(const entry of entries||[])check(object(entry)&&['head','mainHand','offHand','back'].every(n=>validTransform(entry[n]))&&Object.keys(entry).every(n=>n!=='root'&&c.sockets.includes(n)&&validTransform(entry[n])),'Invalid BodyWithOutfit finite socket registration');
+  }
   for(const part of Object.values(parts))if(part?.slot==='BodyWithOutfit')check(part.contractId===c?.contractId&&part.mode==='BODY_SYNC'&&part.space==='canvas','Incompatible BodyWithOutfit part');
  }
  for(const [slot,s] of Object.entries(slots)){
@@ -152,6 +157,8 @@ function compileAssembly(template,appearancePack){
  function sample(action,direction,elapsedMs=0,{frameIndex,appearance={},cosmeticTimeMs=elapsedMs}={}){
   if(!finiteTime(cosmeticTimeMs))throw Error('Invalid cosmetic clock');
   const body=compiledMotion.sample(action,direction,elapsedMs,{frameIndex}),chosen=selection(appearance),byLayer={};
+  const corrections=pack.bodyContract?.anchorRegistration?.[action]?.[direction]?.[body.frameIndex]||{};
+  const registeredAnchors=Object.fromEntries(Object.entries(body.frame.anchors).map(([n,a])=>[n,corrections[n]?composeTransform(a,corrections[n]):a]));
   for(const [slot,id] of Object.entries(chosen)){
    if(id===null)continue;
    const part=pack.parts[id],seq=(part.timelines[action]||part.timelines['*'])[direction];
@@ -179,14 +186,14 @@ function compileAssembly(template,appearancePack){
    if(resolving.has(layer))throw Error('Cyclic attachment parent');resolving.add(layer);
    let anchor;
    if(ref.parentLayer){const parent=byLayer[ref.parentLayer];if(!parent?.sockets?.[ref.anchor])throw Error('Selected Head socket unavailable');anchor=composeTransform(resolve(ref.parentLayer),parent.sockets[ref.anchor])}
-   else anchor=body.frame.anchors[ref.anchor];
+   else anchor=registeredAnchors[ref.anchor];
    ref.anchorTransform=anchor;
    ref.transform=ref.space==='attachment'?composeTransform(anchor,ref.registrationTransform):identity();
    resolving.delete(layer);return ref.transform;
   }
   Object.keys(byLayer).forEach(resolve);
   const profile=pack.frameDrawProfiles?.[action]?.[direction]?.[body.frameIndex],drawOrder=profile?pack.drawProfiles[profile]:body.drawOrder;
-  return {...body,drawOrder,format:'ASTRAEON_ASSEMBLY_V1',packId:pack.packId,layers:drawOrder.filter(n=>own(byLayer,n)).map(n=>byLayer[n]),appearance:chosen};
+  return {...body,drawOrder,registeredAnchors,format:'ASTRAEON_ASSEMBLY_V1',packId:pack.packId,layers:drawOrder.filter(n=>own(byLayer,n)).map(n=>byLayer[n]),appearance:chosen};
  }
  return Object.freeze({motion:compiledMotion,pack,sample,selection});
 }
@@ -206,7 +213,7 @@ function drawAssembly(ctx,sampled,images,{x=0,y=0,scale=1,visibleLayers}={}){
    }
   }
  }finally{ctx.restore()}
- return Object.fromEntries(Object.entries(sampled.frame.anchors).map(([name,t])=>[name,{x:x+(t.x-root.x)*scale,y:y+(t.y-root.y)*scale,rotation:t.rotation,scale:t.scale*scale}]));
+ return Object.fromEntries(Object.entries(sampled.registeredAnchors||sampled.frame.anchors).map(([name,t])=>[name,{x:x+(t.x-root.x)*scale,y:y+(t.y-root.y)*scale,rotation:t.rotation,scale:t.scale*scale}]));
 }
 function createController(compiled,{action=Object.keys(compiled.motion.template.actions)[0],direction='S',elapsedMs=0,cosmeticTimeMs=0,appearance={}}={}){
  let currentAction=action,currentDirection=direction,time=elapsedMs,cosmetic=cosmeticTimeMs,selected=compiled.selection(appearance);

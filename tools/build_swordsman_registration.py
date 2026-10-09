@@ -112,6 +112,17 @@ def build():
     oldref=old['parts'][id]['timelines']['*'][d]['phases'][0]['layers']['HairFront'];r=oldref['rect'];tile=ims[id].crop((r[0],r[1],r[0]+r[2],r[1]+r[3]));bb=tile.getbbox();pivot=[(bb[0]+bb[2])/2,bb[1]+18]
     ref=trimref({'atlasId':id,'rect':r},pivot,[80,80],[0,0],pivotSemantic='skull',localTransform=tr(0,-2))
     part['timelines'][a][d]={'frames':[{'layers':{'HairFront':copy.deepcopy(ref)}} for f in action['directions'][d]['frames']]}
+ # Rear cloth lies behind the actor; only the collar/central back panel
+ # overlaps the dressed torso. Exposed sword-arm gloves remain in front.
+ frontrows=[]
+ for j,d in enumerate(D):
+  tile=ims['cape'].crop((0,j*144,160,(j+1)*144));arr=np.asarray(tile).copy()
+  yy,xx=np.mgrid[:144,:160]
+  width=np.interp(yy,[0,35,70,100,126,144],[90,70,54,54,124,144])
+  arr[np.abs(xx-80)>width/2]=0
+  frontrows.append([Image.fromarray(arr)])
+ capeFrontRefs=saveatlas('cape-front',frontrows,(160,144))
+ p['slots']['Garment']['layers']=['GarmentBack','GarmentFront']
  # Minimal directional phase perspectives reuse the same authored blade art.
  # Grip annotation is measured within the handle rather than .86 bbox height.
  overrides=read(BUILD/'socket-overrides.json') if (BUILD/'socket-overrides.json').exists() else {}
@@ -141,11 +152,30 @@ def build():
       # cloth is behind shoulders, with its neckline occluded by the body.
       target=tr(*point,rotation,.94);local=relative(f['anchors']['back'],target)
      ref=trimref({'atlasId':base['atlasId'],'rect':base['rect']},pivot,sourceSize,[0,0],localTransform=local,pivotSemantic={'MainHand':'grip','OffHand':'handle','HeadgearTop':'head-local','GarmentBack':'upper-back'}[layer])
-     frames.append({'layers':{layer:ref}})
+     layers={layer:ref}
+     if id=='garment' and d in ['NW','N','NE']:
+      layers['GarmentFront']={**copy.deepcopy(ref),**capeFrontRefs[j][0]}
+     frames.append({'layers':layers})
     part['timelines'][a][d]={'frames':frames}
  # Perspective masks are supplied by frame/direction profiles, not class logic.
- layers=list(t['drawProfiles']['front']);front=layers.copy();rear=layers.copy();rear.remove('GarmentBack');rear.insert(rear.index('Body')+1,'GarmentBack')
+ layers=list(t['drawProfiles']['front']);front=layers.copy();rear=layers.copy();rear.remove('GarmentFront');rear.insert(rear.index('Body')+1,'GarmentFront')
  p['drawProfiles']={'front':front,'rear':rear};p['frameDrawProfiles']={a:{d:['rear' if d in ['NW','N','NE'] else 'front']*len(v['directions'][d]['frames']) for d in D} for a,v in t['actions'].items()}
+ # Publish one shared dressed-body socket contract. Both costumes consume
+ # exactly these calibrations; attachments never independently chase guesses.
+ # MotionTemplate pose identities, choreography and timestamps stay immutable.
+ p['bodyContract']['anchorRegistration']={}
+ for a,action in t['actions'].items():
+  p['bodyContract']['anchorRegistration'][a]={}
+  for d in D:
+   entries=[]
+   for i,f in enumerate(action['directions'][d]['frames']):
+    s=samples[a,d,i];ov=overrides.get(a+'/'+d,{}).get(str(i),{})
+    grip=ov.get('mainHand',s['mainHand']);angle=ov.get('weaponRotation',f['anchors']['mainHand']['rotation'])
+    targets={'head':tr(*s['neck']),'mainHand':tr(*grip,angle),'offHand':tr(*ov.get('offHand',s['offHand'])),'back':tr(*ov.get('back',s['back']),s['tilt']*.65),'fxOrigin':tr(*grip,angle)}
+    entries.append({n:relative(f['anchors'][n],target) for n,target in targets.items()})
+    for id,layer in [('swordsman-head','HeadBase'),('weapon-a','MainHand'),('weapon-b','MainHand'),('offhand','OffHand')]:p['parts'][id]['timelines'][a][d]['frames'][i]['layers'][layer]['localTransform']=tr()
+    for ref in p['parts']['garment']['timelines'][a][d]['frames'][i]['layers'].values():ref['localTransform']=tr(scale=.94)
+   p['bodyContract']['anchorRegistration'][a][d]=entries
  # Remove unreferenced old body/reuse atlases; preserved outside this new pack.
  used={r['atlasId'] for part in p['parts'].values() for dirs in part['timelines'].values() for seq in dirs.values() for e in seq.get('frames',seq.get('views',seq.get('phases',[]))) for r in e['layers'].values()}
  p['atlases']={k:v for k,v in p['atlases'].items() if k in used}
