@@ -1,0 +1,93 @@
+{
+  "stage": "OWNER_REVIEW_CANDIDATE",
+  "branch": "character/ro1-reference-engine-v1",
+  "startingRequestedBranchHEAD": "db2959b97a77b3f9b54c22d5e732fe2b2345a529",
+  "implementationCommit": "2066705743089e9cf976eebb7b0da3f1aa175c89",
+  "reviewArtifactsCommit": "69b959b551e0f3a8a62ce25e52d9dd322b15944a",
+  "model": "MotionTemplate+BodyWithOutfit+Head+Hair+MainHand+OffHand+Headgear+Garment+optionalFX",
+  "sourcePaintedArtReused": true,
+  "sourceFaceRedrawn": false,
+  "boundedExistingPoseSelections": [
+    "BasicAttack/SW/7<-8",
+    "BasicAttack/NW/7<-8",
+    "BasicAttack/W/10<-11",
+    "BasicAttack/W/14<-13",
+    "BasicAttack/W/15<-13"
+  ],
+  "motionTemplateChanged": false,
+  "motionSHA256": "f8a0d56555cff0fbaf7b078af22c22aaea166825c6ef41809a4bdd7ea6a458a6",
+  "currentAppearanceSHA256": "b3e32e1039c540a410dc4b39e2af72c09c1e49a579e78c329ed2a28b93d6e25a",
+  "animationArtifactsExist": true,
+  "ownerPreview": {
+    "file": "swordsman-repaired-owner-preview.gif",
+    "frames": 584,
+    "durationMs": 40800,
+    "actions": [
+      "Idle",
+      "Walk",
+      "BasicAttack"
+    ],
+    "directions": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ]
+  },
+  "validation": {
+    "commonJSTests": 292,
+    "worldStreamingTests": 5,
+    "pythonTests": 21,
+    "hairRasterComparisons": 656,
+    "gloveRasterComparisons": 288,
+    "nonBodyCostumeRasterComparisons": 328,
+    "actualWorldPoses": 24,
+    "actualWorldExactContacts": 8,
+    "desktop": true,
+    "mobile": true,
+    "nativeRenderer": true,
+    "allImageReceiptsVerified": true
+  },
+  "costumeSwap": {
+    "action": "Walk",
+    "direction": "SW",
+    "frameIndex": 7,
+    "elapsedMs": 277,
+    "cosmeticClockUnchanged": true,
+    "otherLayersPixelIdentical": true,
+    "registeredAnchorsUnchanged": true,
+    "appearanceBefore": {
+      "Shadow": "shadow",
+      "Hair": "hair-a",
+      "MainHand": "weapon-a",
+      "OffHand": null,
+      "Headgear": null,
+      "Garment": "garment",
+      "BodyWithOutfit": "swordsman-body-default",
+      "Head": "swordsman-head"
+    },
+    "appearanceAfter": {
+      "Shadow": "shadow",
+      "Hair": "hair-a",
+      "MainHand": "weapon-a",
+      "OffHand": null,
+      "Headgear": null,
+      "Garment": "garment",
+      "BodyWithOutfit": "swordsman-body-royal-proof",
+      "Head": "swordsman-head"
+    }
+  },
+  "rejectedCandidatesPreserved": [
+    "../character-ro1-animated-v1",
+    "rejected-registration-candidate-220d535",
+    "rejected-grip-candidate-4c0f0e2",
+    "rejected-sword-candidate-31bb1a8"
+  ],
+  "protectedGameplayEquipmentWorldFilesChanged": false,
+  "ownerVisualApproval": "PENDING",
+  "automatedTestsCertifyVisualQuality": false
+}
