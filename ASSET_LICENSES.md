@@ -1,3 +1,7 @@
+## Swordsman dressed-body salvage and registration proof
+
+`assets/characters/swordsman-bodywithoutfit-v1` consists of pixel-preserving derivatives of the existing first-party painted Swordsman sources. Head pixels are separated without repainting the face. Default Body preserves dressed-body pixels; royal body is a controlled colour proof, DEV_ONLY. Cape-front masks reuse the existing independent cape source. No new generation, third-party sprite pixels or copyrighted RO raster inputs were used. Source/derivative SHA256 receipts: `authoring/characters/builds/swordsman-registration-v1/salvage-receipt.json`. Existing underlying asset licenses/provenance continue to apply. Owner visual approval remains pending.
+
 # Asset provenance
 
 No Ragnarok artwork is used in ASTRAEON's runtime assets. The production assets listed below are original generated art for ASTRAEON. No third-party texture/model/audio pack is presently used. Generated-art provenance is tracked here; this is not a claim that third-party game art is licensed.

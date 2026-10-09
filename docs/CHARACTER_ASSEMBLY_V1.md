@@ -1,3 +1,21 @@
+# Current production composition: BodyWithOutfit + independent Head
+
+The owner-selected model supersedes the former BodySpriteSet wording for new production. Use MotionTemplate + BodyWithOutfit + Head + Hair + MainHand + OffHand + Headgear + Garment/Cape + optional FX. A costume replaces the **entire dressed body**; it never builds armour as independent shirt/pants/boots layers. Gameplay equipment remains a separate authority.
+
+The strict schema1.1 pack is [swordsman-bodywithoutfit](../authoring/characters/appearance/swordsman-bodywithoutfit/appearance-pack.json). BodyWithOutfit and Head are required. The existing generic engine retains internal layer names Body and HeadBase as clean equivalents, preserving historical fixtures and draw profiles.
+
+The BodyWithOutfit contract binds canvas320, root(160,264), eight directions, Idle/Walk/BasicAttack, the exact frame-duration timeline and shared semantic socket calibration. Both default and royal proof bodies bind the same contract. MotionTemplate bytes, choreography, events and timings are unchanged. Registered body anchors compose motion anchors with the single shared contract calibration; a costume cannot override them.
+
+Each Head frame has a neck/base pivot, explicit trim origin, and Head-local hair/headgear sockets. Head uses BODY_SYNC to preserve the already-painted direction/action perspectives. Hair inherits the **selected Head transform** and local skull socket. MainHand uses its authored grip pivot and a reduced PHASE_SYNC set of existing directional blade perspectives; its registered hand transform still follows every body frame. cape uses its measured shoulder/back pivot and BODY_SYNC registration. Rear cloth has back/front passes so cloth can cover the torso while the sword arm remains readable.
+
+Transform order is motion anchor × shared body-contract calibration × part.defaultRegistration × directionRegistration × actionPhaseRegistration × sample.localTransform. Head-local children begin from Head transform × its local socket. No runtime Swordsman action/direction/frame offset branches exist. Appearance draw profiles are validated complete layer permutations and select phase occlusion independently of choreography.
+
+The review defaults to a clean composite. Its development controls expose solo layers, root/anchors, neck/skull/grip/back pivots, bounds, phase, sampling and order. Costume changes preserve action, direction, elapsed time, cosmetic time and all non-body raster samples. Both browser PNG comparisons and controller tests cover the complete328-frame proof. No Equipment Backbone, world, ordinary boot or gameplay source is changed.
+
+New [animated review evidence](review/character-bodywithoutfit-registration-v1/registration-report.md) remains **OWNER VISUAL APPROVAL PENDING**. The prior rejected proof and schema1.0 fixtures remain immutable historical references. Their executable tests still run.
+
+---
+
 # ASTRAEON Character Assembly Engine v1
 
 Rescue scope: reusable assembly and RO1 reference intake; painted Swordsman proof

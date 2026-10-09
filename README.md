@@ -1,3 +1,5 @@
+Current character review: [repaired Swordsman animations](docs/review/character-bodywithoutfit-registration-v1/registration-report.md), with complete dressed-body swaps and an independent Head. Open `character-review.html`; all new art remains **OWNER VISUAL APPROVAL PENDING**. Ordinary game boot and equipment mechanics are unchanged.
+
 # ASTRAEON - Worlds Beyond the Veil
 
 Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice production pass. Progress saves in the current browser. The playable world uses authored 3D scenery and illustrated directional characters.

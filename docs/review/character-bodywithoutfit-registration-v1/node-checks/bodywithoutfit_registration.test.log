@@ -1,0 +1,250 @@
+TAP version 13
+# Subtest: production contract requires dressed bodies and independent Head with the shared canvas/timeline
+ok 1 - production contract requires dressed bodies and independent Head with the shared canvas/timeline
+  ---
+  duration_ms: 75.234495
+  type: 'test'
+  ...
+# Subtest: Idle renders every frame in all eight directions with finite deterministic registered anchors/pivots
+ok 2 - Idle renders every frame in all eight directions with finite deterministic registered anchors/pivots
+  ---
+  duration_ms: 36.480287
+  type: 'test'
+  ...
+# Subtest: Walk renders every frame in all eight directions with finite deterministic registered anchors/pivots
+ok 3 - Walk renders every frame in all eight directions with finite deterministic registered anchors/pivots
+  ---
+  duration_ms: 56.699513
+  type: 'test'
+  ...
+# Subtest: BasicAttack renders every frame in all eight directions with finite deterministic registered anchors/pivots
+ok 4 - BasicAttack renders every frame in all eight directions with finite deterministic registered anchors/pivots
+  ---
+  duration_ms: 34.74221
+  type: 'test'
+  ...
+# Subtest: BodyWithOutfit A/B preserves action, direction, frame, animation and cosmetic clocks through every pose
+ok 5 - BodyWithOutfit A/B preserves action, direction, frame, animation and cosmetic clocks through every pose
+  ---
+  duration_ms: 113.632897
+  type: 'test'
+  ...
+# Subtest: costume replacement preserves independent Head
+ok 6 - costume replacement preserves independent Head
+  ---
+  duration_ms: 0.351799
+  type: 'test'
+  ...
+# Subtest: costume replacement preserves independent Hair
+ok 7 - costume replacement preserves independent Hair
+  ---
+  duration_ms: 1.927353
+  type: 'test'
+  ...
+# Subtest: costume replacement preserves independent MainHand
+ok 8 - costume replacement preserves independent MainHand
+  ---
+  duration_ms: 1.409993
+  type: 'test'
+  ...
+# Subtest: costume replacement preserves independent OffHand
+ok 9 - costume replacement preserves independent OffHand
+  ---
+  duration_ms: 0.507555
+  type: 'test'
+  ...
+# Subtest: costume replacement preserves independent Headgear
+ok 10 - costume replacement preserves independent Headgear
+  ---
+  duration_ms: 0.22574
+  type: 'test'
+  ...
+# Subtest: costume replacement preserves independent Garment
+ok 11 - costume replacement preserves independent Garment
+  ---
+  duration_ms: 0.12597
+  type: 'test'
+  ...
+# Subtest: Hair A/B and Headgear inherit the selected Head local sockets on all 328 poses
+ok 12 - Hair A/B and Headgear inherit the selected Head local sockets on all 328 poses
+  ---
+  duration_ms: 56.69166
+  type: 'test'
+  ...
+# Subtest: Weapon A/B retain the same explicit grip transform while replacing only sword source pixels
+ok 13 - Weapon A/B retain the same explicit grip transform while replacing only sword source pixels
+  ---
+  duration_ms: 22.195351
+  type: 'test'
+  ...
+# Subtest: cape shares its back pivot in front/back passes and is sampled from the body phase without an independent clock
+ok 14 - cape shares its back pivot in front/back passes and is sampled from the body phase without an independent clock
+  ---
+  duration_ms: 9.086116
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects Head pivot missing
+ok 15 - strict production validation rejects Head pivot missing
+  ---
+  duration_ms: 109.422344
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects Head pivot outside raster
+ok 16 - strict production validation rejects Head pivot outside raster
+  ---
+  duration_ms: 145.99436
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects Head anchor nonfinite
+ok 17 - strict production validation rejects Head anchor nonfinite
+  ---
+  duration_ms: 110.935199
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects Head phase mapping invalid
+ok 18 - strict production validation rejects Head phase mapping invalid
+  ---
+  duration_ms: 113.832083
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects Hair pivot invalid
+ok 19 - strict production validation rejects Hair pivot invalid
+  ---
+  duration_ms: 91.018956
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects weapon grip missing
+ok 20 - strict production validation rejects weapon grip missing
+  ---
+  duration_ms: 82.788326
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects cape attachment invalid
+ok 21 - strict production validation rejects cape attachment invalid
+  ---
+  duration_ms: 51.510237
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects trim metadata omitted
+ok 22 - strict production validation rejects trim metadata omitted
+  ---
+  duration_ms: 95.944154
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects trim source overrun
+ok 23 - strict production validation rejects trim source overrun
+  ---
+  duration_ms: 73.416892
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects finite transform rejected
+ok 24 - strict production validation rejects finite transform rejected
+  ---
+  duration_ms: 84.119813
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects invalid phase reference
+ok 25 - strict production validation rejects invalid phase reference
+  ---
+  duration_ms: 99.74494
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects missing direction mapping
+ok 26 - strict production validation rejects missing direction mapping
+  ---
+  duration_ms: 51.230293
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects missing registered body direction
+ok 27 - strict production validation rejects missing registered body direction
+  ---
+  duration_ms: 99.90526
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects contract timeline differs
+ok 28 - strict production validation rejects contract timeline differs
+  ---
+  duration_ms: 75.927003
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects root override
+ok 29 - strict production validation rejects root override
+  ---
+  duration_ms: 79.645033
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects costume contract incompatible
+ok 30 - strict production validation rejects costume contract incompatible
+  ---
+  duration_ms: 49.805959
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects Head socket invalid
+ok 31 - strict production validation rejects Head socket invalid
+  ---
+  duration_ms: 145.931215
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects independent Outfit primary
+ok 32 - strict production validation rejects independent Outfit primary
+  ---
+  duration_ms: 57.001898
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects head-local parent unrelated
+ok 33 - strict production validation rejects head-local parent unrelated
+  ---
+  duration_ms: 64.410796
+  type: 'test'
+  ...
+# Subtest: strict production validation rejects required Head removed
+ok 34 - strict production validation rejects required Head removed
+  ---
+  duration_ms: 86.125415
+  type: 'test'
+  ...
+# Subtest: legacy motion and source atlases retain their baseline bytes, approval cannot be inferred
+ok 35 - legacy motion and source atlases retain their baseline bytes, approval cannot be inferred
+  ---
+  duration_ms: 12.981984
+  type: 'test'
+  ...
+# Subtest: body-owned grip masks stay on the selected glove raster and never alter the MotionTemplate
+ok 36 - body-owned grip masks stay on the selected glove raster and never alter the MotionTemplate
+  ---
+  duration_ms: 23.107165
+  type: 'test'
+  ...
+# Subtest: foreground masks reject nonfinite and unrelated layer references
+ok 37 - foreground masks reject nonfinite and unrelated layer references
+  ---
+  duration_ms: 86.50438
+  type: 'test'
+  ...
+# Subtest: reduced sword perspectives follow action phase while the grip follows every body frame
+ok 38 - reduced sword perspectives follow action phase while the grip follows every body frame
+  ---
+  duration_ms: 64.44571
+  type: 'test'
+  ...
+# Subtest: weapon phase references cannot omit the contact grip or a direction
+ok 39 - weapon phase references cannot omit the contact grip or a direction
+  ---
+  duration_ms: 196.721067
+  type: 'test'
+  ...
+# Subtest: registered blade tip follows the selected grip rather than the superseded motion estimate
+ok 40 - registered blade tip follows the selected grip rather than the superseded motion estimate
+  ---
+  duration_ms: 24.929964
+  type: 'test'
+  ...
+1..40
+# tests 40
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3058.950294

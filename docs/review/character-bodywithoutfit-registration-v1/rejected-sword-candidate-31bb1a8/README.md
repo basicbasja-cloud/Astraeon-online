@@ -1,0 +1,1 @@
+Owner rejection: “The sword is not correct.” Candidate 31bb1a8 had body-owned palm occlusion and remeasured W grip centres, but retained one rigid sword view per direction and manually assigned blade arcs. These images are preserved; they do not represent visual approval.

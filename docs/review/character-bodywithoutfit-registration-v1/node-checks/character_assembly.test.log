@@ -1,0 +1,532 @@
+TAP version 13
+# Subtest: canonical named direction order and required anatomical anchor names
+ok 1 - canonical named direction order and required anatomical anchor names
+  ---
+  duration_ms: 3.468685
+  type: 'test'
+  ...
+# Subtest: synthetic MotionTemplate and both appearance packs validate independently
+ok 2 - synthetic MotionTemplate and both appearance packs validate independently
+  ---
+  duration_ms: 44.615171
+  type: 'test'
+  ...
+# Subtest: Idle fixture has eight authored directions, preserved keys and separate in-betweens
+ok 3 - Idle fixture has eight authored directions, preserved keys and separate in-betweens
+  ---
+  duration_ms: 0.886646
+  type: 'test'
+  ...
+# Subtest: Walk fixture has eight authored directions, preserved keys and separate in-betweens
+ok 4 - Walk fixture has eight authored directions, preserved keys and separate in-betweens
+  ---
+  duration_ms: 0.298019
+  type: 'test'
+  ...
+# Subtest: BasicAttack fixture has eight authored directions, preserved keys and separate in-betweens
+ok 5 - BasicAttack fixture has eight authored directions, preserved keys and separate in-betweens
+  ---
+  duration_ms: 0.142034
+  type: 'test'
+  ...
+# Subtest: unknown action rejects instead of idle fallback
+ok 6 - unknown action rejects instead of idle fallback
+  ---
+  duration_ms: 0.785894
+  type: 'test'
+  ...
+# Subtest: unknown direction rejects instead of mirroring
+ok 7 - unknown direction rejects instead of mirroring
+  ---
+  duration_ms: 0.198269
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects noncanonical direction order
+ok 8 - MotionTemplate rejects noncanonical direction order
+  ---
+  duration_ms: 7.730975
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects missing eighth direction
+ok 9 - MotionTemplate rejects missing eighth direction
+  ---
+  duration_ms: 14.925471
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects malformed zero frame timing
+ok 10 - MotionTemplate rejects malformed zero frame timing
+  ---
+  duration_ms: 7.595401
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects nonfinite frame timing
+ok 11 - MotionTemplate rejects nonfinite frame timing
+  ---
+  duration_ms: 22.071544
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects fractional millisecond frame timing
+ok 12 - MotionTemplate rejects fractional millisecond frame timing
+  ---
+  duration_ms: 40.810651
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects missing explicit root
+ok 13 - MotionTemplate rejects missing explicit root
+  ---
+  duration_ms: 11.721004
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects nonfinite root coordinates
+ok 14 - MotionTemplate rejects nonfinite root coordinates
+  ---
+  duration_ms: 11.795236
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects root drift
+ok 15 - MotionTemplate rejects root drift
+  ---
+  duration_ms: 7.449049
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects missing required foot anchor
+ok 16 - MotionTemplate rejects missing required foot anchor
+  ---
+  duration_ms: 15.838537
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects nonfinite anchor coordinates
+ok 17 - MotionTemplate rejects nonfinite anchor coordinates
+  ---
+  duration_ms: 50.408108
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects nonfinite attachment rotation
+ok 18 - MotionTemplate rejects nonfinite attachment rotation
+  ---
+  duration_ms: 24.718911
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects nonfinite attachment scale
+ok 19 - MotionTemplate rejects nonfinite attachment scale
+  ---
+  duration_ms: 24.479131
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects negative attachment scale
+ok 20 - MotionTemplate rejects negative attachment scale
+  ---
+  duration_ms: 7.205433
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects duplicate frame ID
+ok 21 - MotionTemplate rejects duplicate frame ID
+  ---
+  duration_ms: 43.930782
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects unclassified frame role
+ok 22 - MotionTemplate rejects unclassified frame role
+  ---
+  duration_ms: 7.836302
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects in-between refers to non-neighboring keys
+ok 23 - MotionTemplate rejects in-between refers to non-neighboring keys
+  ---
+  duration_ms: 5.793416
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects in-between invents a source phase
+ok 24 - MotionTemplate rejects in-between invents a source phase
+  ---
+  duration_ms: 7.360577
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects in-between phase fraction disagrees with timestamp
+ok 25 - MotionTemplate rejects in-between phase fraction disagrees with timestamp
+  ---
+  duration_ms: 8.674245
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects reference pose orientation changed
+ok 26 - MotionTemplate rejects reference pose orientation changed
+  ---
+  duration_ms: 10.416519
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects reference key metadata removed
+ok 27 - MotionTemplate rejects reference key metadata removed
+  ---
+  duration_ms: 5.777893
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects reference key source mislabeled RO
+ok 28 - MotionTemplate rejects reference key source mislabeled RO
+  ---
+  duration_ms: 48.855938
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects synthetic fixture promoted to production
+ok 29 - MotionTemplate rejects synthetic fixture promoted to production
+  ---
+  duration_ms: 9.023893
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects key catalog contains invented in-between
+ok 30 - MotionTemplate rejects key catalog contains invented in-between
+  ---
+  duration_ms: 7.944757
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects unknown default draw profile
+ok 31 - MotionTemplate rejects unknown default draw profile
+  ---
+  duration_ms: 8.200182
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects invalid direction draw profile
+ok 32 - MotionTemplate rejects invalid direction draw profile
+  ---
+  duration_ms: 6.219017
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects invalid frame draw profile
+ok 33 - MotionTemplate rejects invalid frame draw profile
+  ---
+  duration_ms: 6.549826
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects invalid frame draw override
+ok 34 - MotionTemplate rejects invalid frame draw override
+  ---
+  duration_ms: 7.397853
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects invalid draw profile permutation
+ok 35 - MotionTemplate rejects invalid draw profile permutation
+  ---
+  duration_ms: 9.054038
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects production direction mirroring flag
+ok 36 - MotionTemplate rejects production direction mirroring flag
+  ---
+  duration_ms: 9.667892
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects visual event claims Combat authority
+ok 37 - MotionTemplate rejects visual event claims Combat authority
+  ---
+  duration_ms: 40.487503
+  type: 'test'
+  ...
+# Subtest: MotionTemplate rejects null malformed frame
+ok 38 - MotionTemplate rejects null malformed frame
+  ---
+  duration_ms: 17.574843
+  type: 'test'
+  ...
+# Subtest: RO rendered evidence executes without pretending raw ACT was inspected
+ok 39 - RO rendered evidence executes without pretending raw ACT was inspected
+  ---
+  duration_ms: 14.618529
+  type: 'test'
+  ...
+# Subtest: source-derived templates require manifest hash and real key source identities
+ok 40 - source-derived templates require manifest hash and real key source identities
+  ---
+  duration_ms: 12.960442
+  type: 'test'
+  ...
+# Subtest: action duration is deterministic through loops and nonloop terminal holds
+ok 41 - action duration is deterministic through loops and nonloop terminal holds
+  ---
+  duration_ms: 0.34543
+  type: 'test'
+  ...
+# Subtest: selective smoothing preserves total time, key times and exact reference metadata
+ok 42 - selective smoothing preserves total time, key times and exact reference metadata
+  ---
+  duration_ms: 10.122627
+  type: 'test'
+  ...
+# Subtest: additional frames cannot silently add total duration
+ok 43 - additional frames cannot silently add total duration
+  ---
+  duration_ms: 9.942806
+  type: 'test'
+  ...
+# Subtest: smoothing does not double every frame without an insertion schedule
+ok 44 - smoothing does not double every frame without an insertion schedule
+  ---
+  duration_ms: 30.101348
+  type: 'test'
+  ...
+# Subtest: smoothing rejects unknown, unordered, zero-budget and terminal insertions
+ok 45 - smoothing rejects unknown, unordered, zero-budget and terminal insertions
+  ---
+  duration_ms: 4.20862
+  type: 'test'
+  ...
+# Subtest: attachment smoothing takes shortest rotation arc and linear scale
+ok 46 - attachment smoothing takes shortest rotation arc and linear scale
+  ---
+  duration_ms: 0.180582
+  type: 'test'
+  ...
+# Subtest: BODY_SYNC samples exact expanded body frame without affecting timing
+ok 47 - BODY_SYNC samples exact expanded body frame without affecting timing
+  ---
+  duration_ms: 0.785203
+  type: 'test'
+  ...
+# Subtest: PHASE_SYNC uses time thresholds rather than frame-index ratios
+ok 48 - PHASE_SYNC uses time thresholds rather than frame-index ratios
+  ---
+  duration_ms: 0.706935
+  type: 'test'
+  ...
+# Subtest: explicit frame inspection maps PHASE_SYNC from frame start timestamp
+ok 49 - explicit frame inspection maps PHASE_SYNC from frame start timestamp
+  ---
+  duration_ms: 0.854067
+  type: 'test'
+  ...
+# Subtest: ANCHOR_HOLD reuses a raster sample while attachment transforms advance
+ok 50 - ANCHOR_HOLD reuses a raster sample while attachment transforms advance
+  ---
+  duration_ms: 0.377548
+  type: 'test'
+  ...
+# Subtest: ANCHOR_HOLD can select a perspective-critical authored phase view
+ok 51 - ANCHOR_HOLD can select a perspective-critical authored phase view
+  ---
+  duration_ms: 46.084852
+  type: 'test'
+  ...
+# Subtest: OWN_LOOP follows independent cosmetic clock across action changes
+ok 52 - OWN_LOOP follows independent cosmetic clock across action changes
+  ---
+  duration_ms: 1.089922
+  type: 'test'
+  ...
+# Subtest: direction order resolves semantic profiles and frame override takes precedence
+ok 53 - direction order resolves semantic profiles and frame override takes precedence
+  ---
+  duration_ms: 11.039216
+  type: 'test'
+  ...
+# Subtest: absent optional layers produce no transparent-atlas requirements
+ok 54 - absent optional layers produce no transparent-atlas requirements
+  ---
+  duration_ms: 37.269353
+  type: 'test'
+  ...
+# Subtest: Hair swap hair-b isolates every unrelated source across all actions/directions/frames
+ok 55 - Hair swap hair-b isolates every unrelated source across all actions/directions/frames
+  ---
+  duration_ms: 26.751842
+  type: 'test'
+  ...
+# Subtest: MainHand swap weapon-b isolates every unrelated source across all actions/directions/frames
+ok 56 - MainHand swap weapon-b isolates every unrelated source across all actions/directions/frames
+  ---
+  duration_ms: 18.589469
+  type: 'test'
+  ...
+# Subtest: OffHand swap null isolates every unrelated source across all actions/directions/frames
+ok 57 - OffHand swap null isolates every unrelated source across all actions/directions/frames
+  ---
+  duration_ms: 57.477739
+  type: 'test'
+  ...
+# Subtest: Headgear swap null isolates every unrelated source across all actions/directions/frames
+ok 58 - Headgear swap null isolates every unrelated source across all actions/directions/frames
+  ---
+  duration_ms: 19.313608
+  type: 'test'
+  ...
+# Subtest: Headgear swap headgear-b isolates every unrelated source across all actions/directions/frames
+ok 59 - Headgear swap headgear-b isolates every unrelated source across all actions/directions/frames
+  ---
+  duration_ms: 8.361404
+  type: 'test'
+  ...
+# Subtest: Garment swap null isolates every unrelated source across all actions/directions/frames
+ok 60 - Garment swap null isolates every unrelated source across all actions/directions/frames
+  ---
+  duration_ms: 7.262348
+  type: 'test'
+  ...
+# Subtest: appearance swap preserves Walk/SW/frame5, time, direction and external gameplay state
+ok 61 - appearance swap preserves Walk/SW/frame5, time, direction and external gameplay state
+  ---
+  duration_ms: 0.642358
+  type: 'test'
+  ...
+# Subtest: same BodySpriteSet atlas identity survives both Hair and weapon alternatives
+ok 62 - same BodySpriteSet atlas identity survives both Hair and weapon alternatives
+  ---
+  duration_ms: 0.198549
+  type: 'test'
+  ...
+# Subtest: second dummy appearance uses the exact same immutable MotionTemplate without class branches
+ok 63 - second dummy appearance uses the exact same immutable MotionTemplate without class branches
+  ---
+  duration_ms: 14.410634
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects arbitrary body timing
+ok 64 - AppearancePack rejects arbitrary body timing
+  ---
+  duration_ms: 49.566785
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects part body timing
+ok 65 - AppearancePack rejects part body timing
+  ---
+  duration_ms: 14.103291
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects per-raster body timing
+ok 66 - AppearancePack rejects per-raster body timing
+  ---
+  duration_ms: 12.75495
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects shared canvas mismatch
+ok 67 - AppearancePack rejects shared canvas mismatch
+  ---
+  duration_ms: 10.431962
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects unknown sampling mode
+ok 68 - AppearancePack rejects unknown sampling mode
+  ---
+  duration_ms: 13.3651
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects BODY_SYNC count mismatch
+ok 69 - AppearancePack rejects BODY_SYNC count mismatch
+  ---
+  duration_ms: 10.906907
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects invalid phase mapping
+ok 70 - AppearancePack rejects invalid phase mapping
+  ---
+  duration_ms: 49.427583
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects missing authored direction
+ok 71 - AppearancePack rejects missing authored direction
+  ---
+  duration_ms: 14.862015
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects invalid own-loop delay
+ok 72 - AppearancePack rejects invalid own-loop delay
+  ---
+  duration_ms: 10.886106
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects nonfinite local attachment
+ok 73 - AppearancePack rejects nonfinite local attachment
+  ---
+  duration_ms: 10.681628
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects missing atlas reference
+ok 74 - AppearancePack rejects missing atlas reference
+  ---
+  duration_ms: 45.789943
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects out-of-atlas rect
+ok 75 - AppearancePack rejects out-of-atlas rect
+  ---
+  duration_ms: 14.244575
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects production mirroring
+ok 76 - AppearancePack rejects production mirroring
+  ---
+  duration_ms: 11.004504
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects required Body removed
+ok 77 - AppearancePack rejects required Body removed
+  ---
+  duration_ms: 17.675833
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects unrelated semantic layer
+ok 78 - AppearancePack rejects unrelated semantic layer
+  ---
+  duration_ms: 20.955478
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects unknown motion compatibility
+ok 79 - AppearancePack rejects unknown motion compatibility
+  ---
+  duration_ms: 35.180366
+  type: 'test'
+  ...
+# Subtest: AppearancePack rejects atlas traversal
+ok 80 - AppearancePack rejects atlas traversal
+  ---
+  duration_ms: 6.445808
+  type: 'test'
+  ...
+# Subtest: immutable compilation isolates source metadata and appearance selections
+ok 81 - immutable compilation isolates source metadata and appearance selections
+  ---
+  duration_ms: 10.006221
+  type: 'test'
+  ...
+# Subtest: appearance selection rejects unknown/incompatible slot and required-layer absence
+ok 82 - appearance selection rejects unknown/incompatible slot and required-layer absence
+  ---
+  duration_ms: 0.303047
+  type: 'test'
+  ...
+# Subtest: invalid clocks and frame indices reject
+ok 83 - invalid clocks and frame indices reject
+  ---
+  duration_ms: 0.200592
+  type: 'test'
+  ...
+# Subtest: raster draw applies anchor rotation/scale and resolves all assets before drawing
+ok 84 - raster draw applies anchor rotation/scale and resolves all assets before drawing
+  ---
+  duration_ms: 0.794697
+  type: 'test'
+  ...
+# Subtest: legacy modular API exposes v1 extension without replacing old definitions
+ok 85 - legacy modular API exposes v1 extension without replacing old definitions
+  ---
+  duration_ms: 1.216251
+  type: 'test'
+  ...
+# Subtest: protected gameplay, world, Blender and boot sources unchanged from clean parent
+ok 86 - protected gameplay, world, Blender and boot sources unchanged from clean parent
+  ---
+  duration_ms: 11.990048
+  type: 'test'
+  ...
+# Subtest: visual events do not become Combat authority
+ok 87 - visual events do not become Combat authority
+  ---
+  duration_ms: 0.535707
+  type: 'test'
+  ...
+1..87
+# tests 87
+# suites 0
+# pass 87
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1351.691771

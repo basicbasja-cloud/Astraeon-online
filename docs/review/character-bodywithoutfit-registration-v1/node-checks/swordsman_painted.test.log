@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: rendered RO production proof validates independently of missing raw ACT files
+ok 1 - rendered RO production proof validates independently of missing raw ACT files
+  ---
+  duration_ms: 62.564155
+  type: 'test'
+  ...
+# Subtest: render provenance manifest identity is deterministic and source frames exist
+ok 2 - render provenance manifest identity is deterministic and source frames exist
+  ---
+  duration_ms: 4.379196
+  type: 'test'
+  ...
+# Subtest: one-handed sword variant follows inspected Swordman mapping
+ok 3 - one-handed sword variant follows inspected Swordman mapping
+  ---
+  duration_ms: 0.207122
+  type: 'test'
+  ...
+# Subtest: Idle has all eight registered authored directions and classified duration-preserving refinements
+ok 4 - Idle has all eight registered authored directions and classified duration-preserving refinements
+  ---
+  duration_ms: 1.494031
+  type: 'test'
+  ...
+# Subtest: Walk has all eight registered authored directions and classified duration-preserving refinements
+ok 5 - Walk has all eight registered authored directions and classified duration-preserving refinements
+  ---
+  duration_ms: 4.102831
+  type: 'test'
+  ...
+# Subtest: BasicAttack has all eight registered authored directions and classified duration-preserving refinements
+ok 6 - BasicAttack has all eight registered authored directions and classified duration-preserving refinements
+  ---
+  duration_ms: 1.402783
+  type: 'test'
+  ...
+# Subtest: Idle keys repeat the single observed stance instead of inventing RO breathing frames
+ok 7 - Idle keys repeat the single observed stance instead of inventing RO breathing frames
+  ---
+  duration_ms: 0.273462
+  type: 'test'
+  ...
+# Subtest: attack contact and recovery are presentation-only markers at deterministic times
+ok 8 - attack contact and recovery are presentation-only markers at deterministic times
+  ---
+  duration_ms: 0.701226
+  type: 'test'
+  ...
+# Subtest: provenance rejects unclassified rendered key
+ok 9 - provenance rejects unclassified rendered key
+  ---
+  duration_ms: 41.749664
+  type: 'test'
+  ...
+# Subtest: provenance rejects exact ACT timing claimed from renderer
+ok 10 - provenance rejects exact ACT timing claimed from renderer
+  ---
+  duration_ms: 73.648591
+  type: 'test'
+  ...
+# Subtest: provenance rejects in-between claims RO key evidence
+ok 11 - provenance rejects in-between claims RO key evidence
+  ---
+  duration_ms: 30.286868
+  type: 'test'
+  ...
+# Subtest: provenance rejects unknown evidence kind
+ok 12 - provenance rejects unknown evidence kind
+  ---
+  duration_ms: 63.240705
+  type: 'test'
+  ...
+# Subtest: provenance rejects source URL missing
+ok 13 - provenance rejects source URL missing
+  ---
+  duration_ms: 30.296763
+  type: 'test'
+  ...
+# Subtest: provenance rejects invalid direction source
+ok 14 - provenance rejects invalid direction source
+  ---
+  duration_ms: 72.97755
+  type: 'test'
+  ...
+# Subtest: provenance rejects action expansion without approval
+ok 15 - provenance rejects action expansion without approval
+  ---
+  duration_ms: 69.876741
+  type: 'test'
+  ...
+# Subtest: every atlas file exists and has its compiled identity; no RO files are runtime dependencies
+ok 16 - every atlas file exists and has its compiled identity; no RO files are runtime dependencies
+  ---
+  duration_ms: 30.164663
+  type: 'test'
+  ...
+# Subtest: Hair changes only its own independent sources on every painted pose
+ok 17 - Hair changes only its own independent sources on every painted pose
+  ---
+  duration_ms: 100.073994
+  type: 'test'
+  ...
+# Subtest: MainHand changes only its own independent sources on every painted pose
+ok 18 - MainHand changes only its own independent sources on every painted pose
+  ---
+  duration_ms: 34.196297
+  type: 'test'
+  ...
+# Subtest: OffHand changes only its own independent sources on every painted pose
+ok 19 - OffHand changes only its own independent sources on every painted pose
+  ---
+  duration_ms: 59.653572
+  type: 'test'
+  ...
+# Subtest: Headgear changes only its own independent sources on every painted pose
+ok 20 - Headgear changes only its own independent sources on every painted pose
+  ---
+  duration_ms: 30.614151
+  type: 'test'
+  ...
+# Subtest: Garment changes only its own independent sources on every painted pose
+ok 21 - Garment changes only its own independent sources on every painted pose
+  ---
+  duration_ms: 52.914101
+  type: 'test'
+  ...
+# Subtest: appearance swap keeps Walk SW frame5, clock and external gameplay state
+ok 22 - appearance swap keeps Walk SW frame5, clock and external gameplay state
+  ---
+  duration_ms: 0.927807
+  type: 'test'
+  ...
+# Subtest: appearance cannot override production timing or create independent body resets
+ok 23 - appearance cannot override production timing or create independent body resets
+  ---
+  duration_ms: 42.840747
+  type: 'test'
+  ...
+# Subtest: painted hair and garment use reduced phase samples; equipment uses held direction views
+ok 24 - painted hair and garment use reduced phase samples; equipment uses held direction views
+  ---
+  duration_ms: 0.450018
+  type: 'test'
+  ...
+# Subtest: rear garment covers back torso; loaded frame and direction overrides resolve independently
+ok 25 - rear garment covers back torso; loaded frame and direction overrides resolve independently
+  ---
+  duration_ms: 0.224458
+  type: 'test'
+  ...
+# Subtest: owner approval cannot be inferred from structural tests
+ok 26 - owner approval cannot be inferred from structural tests
+  ---
+  duration_ms: 0.098428
+  type: 'test'
+  ...
+# Subtest: east profile cape stays behind the visible face and torso
+ok 27 - east profile cape stays behind the visible face and torso
+  ---
+  duration_ms: 0.240392
+  type: 'test'
+  ...
+# Subtest: rear attack keeps cape over torso through loaded keys and strike frames
+ok 28 - rear attack keeps cape over torso through loaded keys and strike frames
+  ---
+  duration_ms: 1.571877
+  type: 'test'
+  ...
+# Subtest: rear contact sword crosses in front of cape while loaded hand stays behind body
+ok 29 - rear contact sword crosses in front of cape while loaded hand stays behind body
+  ---
+  duration_ms: 6.07496
+  type: 'test'
+  ...
+# Subtest: second dummy Body Hair and Weapon pack reuses the actual RO template without class branches
+ok 30 - second dummy Body Hair and Weapon pack reuses the actual RO template without class branches
+  ---
+  duration_ms: 72.248413
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1077.635957

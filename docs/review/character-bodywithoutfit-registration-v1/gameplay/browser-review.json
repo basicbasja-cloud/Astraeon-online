@@ -1,0 +1,4169 @@
+{
+  "realWorldRasterCapture": true,
+  "desktopStates": 24,
+  "mobileCapture": true,
+  "allDirections": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "actions": [
+    "Idle",
+    "Walk",
+    "BasicAttack"
+  ],
+  "samples": [
+    {
+      "drawCount": 7,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 1.5166699999999995,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "S",
+        "frameIndex": 4,
+        "elapsedMs": 719.9000000003725,
+        "cosmeticTimeMs": 3725.199999999255,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 161.5000013095,
+            "y": 135.9999971664,
+            "rotation": 0,
+            "scale": 1.000000001892
+          },
+          "mainHand": {
+            "x": 118.0000006161744,
+            "y": 182.999997466621,
+            "rotation": -2.63,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 197,
+            "y": 175,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 161.20853,
+            "y": 139.08519,
+            "rotation": 0.0031198,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160,
+            "y": 201.4,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 178.5,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 140.5,
+            "y": 260,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 78.366,
+            "y": 254.373,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 118.0000006161744,
+            "y": 182.999997466621,
+            "rotation": -2.63,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 1.5166699999999995
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 13,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 3.016669999999994,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "SW",
+        "frameIndex": 4,
+        "elapsedMs": 1835.7999999988824,
+        "cosmeticTimeMs": 1836.2999999988824,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.9999977428,
+            "y": 134.9999972616,
+            "rotation": 0,
+            "scale": 1.000000038744
+          },
+          "mainHand": {
+            "x": 141.0000020778916,
+            "y": 171.9999995923305,
+            "rotation": -2.82,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 189,
+            "y": 180,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 163.20011,
+            "y": 138.77187999999998,
+            "rotation": 0.0251169,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.938,
+            "y": 200.883,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 181,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 145.5,
+            "y": 247,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 111.766,
+            "y": 264.745,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 141.0000020778916,
+            "y": 171.9999995923305,
+            "rotation": -2.82,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 3.016669999999994
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 19,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 4.516669999999989,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "W",
+        "frameIndex": 4,
+        "elapsedMs": 2355.300000000745,
+        "cosmeticTimeMs": 2357.0999999996275,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.99999685359998,
+            "y": 134.999996234,
+            "rotation": 0,
+            "scale": 0.9999999768440001
+          },
+          "mainHand": {
+            "x": 169.00000466039296,
+            "y": 179.00000121922454,
+            "rotation": -3.03,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 187,
+            "y": 179,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 166.08808,
+            "y": 139.64526,
+            "rotation": -0.0787551,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.081,
+            "y": 201.262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 146,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 174,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 150.757,
+            "y": 265.484,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 169.00000466039296,
+            "y": 179.00000121922454,
+            "rotation": -3.03,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 4.516669999999989
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 25,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 6.0166699999999835,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "NW",
+        "frameIndex": 4,
+        "elapsedMs": 2448.0999999996275,
+        "cosmeticTimeMs": 2448.7000000011176,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.499995893,
+            "y": 131.9999981734,
+            "rotation": 0,
+            "scale": 1.0000000369139999
+          },
+          "mainHand": {
+            "x": 178.99999579324052,
+            "y": 180.00000266848073,
+            "rotation": 2.87,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 128,
+            "y": 165,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 160.02952,
+            "y": 137.32781,
+            "rotation": 0.1574579,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.559,
+            "y": 196.135,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 143,
+            "y": 244,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 177,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 207.266,
+            "y": 258.958,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 178.99999579324052,
+            "y": 180.00000266848073,
+            "rotation": 2.87,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 6.0166699999999835
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 31,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 7.299969999999981,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "N",
+        "frameIndex": 4,
+        "elapsedMs": 2074.699999999255,
+        "cosmeticTimeMs": 2077.300000000745,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.5000039525,
+            "y": 133.9999969358,
+            "rotation": 0,
+            "scale": 0.9999999691370001
+          },
+          "mainHand": {
+            "x": 198.99999644396107,
+            "y": 177.0000006434645,
+            "rotation": 2.57,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 117,
+            "y": 184,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 160.92131,
+            "y": 138.3381,
+            "rotation": 0.0031295,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160,
+            "y": 197.8,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 141,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 181.5,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 243.901,
+            "y": 243.806,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 198.99999644396107,
+            "y": 177.0000006434645,
+            "rotation": 2.57,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 7.299969999999981
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 37,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 8.799970000000018,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "NE",
+        "frameIndex": 4,
+        "elapsedMs": 1821.199999999255,
+        "cosmeticTimeMs": 1828.9000000003725,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.5000023432,
+            "y": 133.9999959632,
+            "rotation": 0,
+            "scale": 0.999999952776
+          },
+          "mainHand": {
+            "x": 174.0000009816207,
+            "y": 179.99999448413536,
+            "rotation": 2.35,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 145,
+            "y": 166,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 160.14837,
+            "y": 138.84746,
+            "rotation": 0.1872537,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.256,
+            "y": 200.43,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 140.5,
+            "y": 243,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 174,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 241.052,
+            "y": 238.325,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 174.0000009816207,
+            "y": 179.99999448413536,
+            "rotation": 2.35,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 8.799970000000018
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 44,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 10.316570000000084,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "E",
+        "frameIndex": 4,
+        "elapsedMs": 1967.5,
+        "cosmeticTimeMs": 1968,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160,
+            "y": 133.0000041872,
+            "rotation": 0,
+            "scale": 0.9999999599760001
+          },
+          "mainHand": {
+            "x": 146.99999480907718,
+            "y": 183.99999868492145,
+            "rotation": 2.8,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 174,
+            "y": 172,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 153.50726,
+            "y": 137.97489000000002,
+            "rotation": 0.0405761,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160,
+            "y": 200.46,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 146,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 174,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 174.804,
+            "y": 265.204,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 146.99999480907718,
+            "y": 183.99999868492145,
+            "rotation": 2.8,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 10.316570000000084
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 51,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 12.066570000000171,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Idle",
+        "direction": "SE",
+        "frameIndex": 4,
+        "elapsedMs": 1317.7999999988824,
+        "cosmeticTimeMs": 1318.2999999988824,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.5000008308,
+            "y": 134.9999984534,
+            "rotation": 0,
+            "scale": 1.00000004377
+          },
+          "mainHand": {
+            "x": 129.99999545248966,
+            "y": 176.00000016700758,
+            "rotation": -2.35,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 193,
+            "y": 161,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 157.40162,
+            "y": 138.50148,
+            "rotation": -0.0316471,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.465,
+            "y": 200.677,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 184.5,
+            "y": 249,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 144,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 69.948,
+            "y": 234.325,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 129.99999545248966,
+            "y": 176.00000016700758,
+            "rotation": -2.35,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 12.066570000000171
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 58,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 13.816570000000258,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "S",
+        "frameIndex": 7,
+        "elapsedMs": 313.5,
+        "cosmeticTimeMs": 1514.2000000011176,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.499996908,
+            "y": 143.999996914,
+            "rotation": 0,
+            "scale": 0.999999990246
+          },
+          "mainHand": {
+            "x": 132.99999501233958,
+            "y": 183.00000220112327,
+            "rotation": -2.63,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 196,
+            "y": 181,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 159.56359,
+            "y": 147.37606,
+            "rotation": -0.0064033,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.554,
+            "y": 205.871,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 172.5,
+            "y": 238,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 155,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 87.366,
+            "y": 262.373,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 132.99999501233958,
+            "y": 183.00000220112327,
+            "rotation": -2.63,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 13.816570000000258
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 64,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 15.083270000000331,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "SW",
+        "frameIndex": 7,
+        "elapsedMs": 251.39999999850988,
+        "cosmeticTimeMs": 851.8999999985099,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.0000039616,
+            "y": 153.0000010016,
+            "rotation": 0,
+            "scale": 1.000000051904
+          },
+          "mainHand": {
+            "x": 131.99999705117972,
+            "y": 184.00000241035724,
+            "rotation": -2.82,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 191,
+            "y": 189,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 162.67526,
+            "y": 156.16251,
+            "rotation": -0.0200085,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.029,
+            "y": 211.219,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 146,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 174,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 105.766,
+            "y": 263.745,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 131.99999705117972,
+            "y": 184.00000241035724,
+            "rotation": -2.82,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 15.083270000000331
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 70,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 16.34997000000037,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "W",
+        "frameIndex": 7,
+        "elapsedMs": 184.80000000074506,
+        "cosmeticTimeMs": 1385.300000000745,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.99999940179998,
+            "y": 140.9999987244,
+            "rotation": 0,
+            "scale": 0.9999999748199999
+          },
+          "mainHand": {
+            "x": 157.99999960699787,
+            "y": 190.00000354434056,
+            "rotation": -3.03,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 189,
+            "y": 174,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 164.40232999999998,
+            "y": 145.86344000000003,
+            "rotation": -0.1305803,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.879,
+            "y": 203.931,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 201,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 138,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 145.757,
+            "y": 272.484,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 157.99999960699787,
+            "y": 190.00000354434056,
+            "rotation": -3.03,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 16.34997000000037
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 77,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 17.89997000000028,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "NW",
+        "frameIndex": 7,
+        "elapsedMs": 189.5,
+        "cosmeticTimeMs": 1390.199999999255,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.50000226240002,
+            "y": 133.9999957762,
+            "rotation": 0,
+            "scale": 0.9999999714779999
+          },
+          "mainHand": {
+            "x": 185.00000061209482,
+            "y": 174.0000021291884,
+            "rotation": 2.87,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 139,
+            "y": 164,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 161.63159000000002,
+            "y": 138.44566,
+            "rotation": 0.1442435,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.513,
+            "y": 200.04,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 146,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 174,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 205.266,
+            "y": 258.958,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 185.00000061209482,
+            "y": 174.0000021291884,
+            "rotation": 2.87,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 17.89997000000028
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 83,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 19.11657000000022,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "N",
+        "frameIndex": 7,
+        "elapsedMs": 128.90000000037253,
+        "cosmeticTimeMs": 729.3000000007451,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 161.499999469,
+            "y": 144.000005101,
+            "rotation": 0,
+            "scale": 0.9999999863099999
+          },
+          "mainHand": {
+            "x": 196.00000479562704,
+            "y": 185.00000164749122,
+            "rotation": 2.57,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 125,
+            "y": 191,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 161.5673,
+            "y": 148.30438,
+            "rotation": 0.0039061,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.321,
+            "y": 206.478,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 146,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 174,
+            "y": 259,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 242.901,
+            "y": 253.806,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 196.00000479562704,
+            "y": 185.00000164749122,
+            "rotation": 2.57,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 19.11657000000022
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 89,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 20.383170000000156,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "NE",
+        "frameIndex": 7,
+        "elapsedMs": 402,
+        "cosmeticTimeMs": 1002.9000000003725,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.0000023156,
+            "y": 140.9999954172,
+            "rotation": 0,
+            "scale": 1.00000004302
+          },
+          "mainHand": {
+            "x": 175.99999835372796,
+            "y": 191.99999759809492,
+            "rotation": 2.35,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 144,
+            "y": 175,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 156.82803,
+            "y": 146.50699,
+            "rotation": 0.1575456,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.702,
+            "y": 204.089,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 128.5,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 181,
+            "y": 248,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 233.052,
+            "y": 248.325,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 175.99999835372796,
+            "y": 191.99999759809492,
+            "rotation": 2.35,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 20.383170000000156
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 95,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 21.766470000000076,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "E",
+        "frameIndex": 7,
+        "elapsedMs": 173,
+        "cosmeticTimeMs": 773.4000000003725,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.4999999651,
+            "y": 149.9999950177,
+            "rotation": 0,
+            "scale": 0.999999991212
+          },
+          "mainHand": {
+            "x": 147.9999951982385,
+            "y": 185.99999762512977,
+            "rotation": 2.8,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 180,
+            "y": 192,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 152.68147,
+            "y": 155.16874,
+            "rotation": 0.0440557,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.343,
+            "y": 208.632,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 136.5,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 182,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 178.804,
+            "y": 269.204,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 147.9999951982385,
+            "y": 185.99999762512977,
+            "rotation": 2.8,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 21.766470000000076
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 102,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 23.283169999999977,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "Walk",
+        "direction": "SE",
+        "frameIndex": 7,
+        "elapsedMs": 239.2999999988824,
+        "cosmeticTimeMs": 1439.699999999255,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.5000004444,
+            "y": 145.999995778,
+            "rotation": 0,
+            "scale": 1.00000003296
+          },
+          "mainHand": {
+            "x": 141.99999545248966,
+            "y": 186.00000016700758,
+            "rotation": -2.35,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 186,
+            "y": 166,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 157.20211,
+            "y": 149.37947,
+            "rotation": 0.0075206,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.429,
+            "y": 206.514,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 178.5,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 104,
+            "y": 243,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 81.948,
+            "y": 244.325,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 141.99999545248966,
+            "y": 186.00000016700758,
+            "rotation": -2.35,
+            "scale": 1
+          }
+        },
+        "role": "astraeonInbetween",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 23.283169999999977
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 108,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 24.54986999999992,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frameIndex": 7,
+        "elapsedMs": 212.90000000037253,
+        "cosmeticTimeMs": 1113.4000000003725,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.5000025644,
+            "y": 164.00000062400002,
+            "rotation": 0,
+            "scale": 0.999999969984
+          },
+          "mainHand": {
+            "x": 192.00000270318765,
+            "y": 208.9999953019083,
+            "rotation": 2.2,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 199,
+            "y": 142,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 155.08053,
+            "y": 167.64077,
+            "rotation": -0.090848,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.827,
+            "y": 226.276,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 204.5,
+            "y": 241,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 124.5,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 97.692,
+            "y": 221.694,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 192.00000270318765,
+            "y": 208.9999953019083,
+            "rotation": 2.2,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 24.54986999999992
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 114,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 25.816469999999825,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frameIndex": 7,
+        "elapsedMs": 149.30000000074506,
+        "cosmeticTimeMs": 1949.800000000745,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.5000029956,
+            "y": 164.9999998694,
+            "rotation": 0,
+            "scale": 1.0000000389400001
+          },
+          "mainHand": {
+            "x": 199.99999797368335,
+            "y": 203.99999789832708,
+            "rotation": 2,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 184,
+            "y": 187,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 162.33882,
+            "y": 168.697,
+            "rotation": -0.1273348,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.92,
+            "y": 232.276,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 230.5,
+            "y": 251,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 146,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 55.692,
+            "y": 128.694,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 199.99999797368335,
+            "y": 203.99999789832708,
+            "rotation": 2,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 25.816469999999825
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 120,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 27.31646999999974,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frameIndex": 7,
+        "elapsedMs": 67.70000000111759,
+        "cosmeticTimeMs": 3218.2000000011176,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.4999972644,
+            "y": 171.00000430609998,
+            "rotation": 0,
+            "scale": 1.000000018916
+          },
+          "mainHand": {
+            "x": 217.99999629241944,
+            "y": 203.9999975303525,
+            "rotation": 1.95,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 234,
+            "y": 167,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 163.39257999999998,
+            "y": 174.64580999999998,
+            "rotation": -0.069021,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.225,
+            "y": 233.772,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 241,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 149.5,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 113.692,
+            "y": 209.694,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 217.99999629241944,
+            "y": 203.9999975303525,
+            "rotation": 1.95,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 27.31646999999974
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 126,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 28.616469999999666,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frameIndex": 7,
+        "elapsedMs": 188,
+        "cosmeticTimeMs": 2438.599999997765,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 161.0000002102,
+            "y": 161.0000000824,
+            "rotation": 0,
+            "scale": 1.0000000008380001
+          },
+          "mainHand": {
+            "x": 233.99999748145405,
+            "y": 140.00000270460635,
+            "rotation": 1.9000000000000001,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 127,
+            "y": 206,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 168.76725,
+            "y": 164.00914,
+            "rotation": -0.2975198,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.688,
+            "y": 226.188,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 160.5,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 238.5,
+            "y": 247,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 122.166,
+            "y": 166.014,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 233.99999748145405,
+            "y": 140.00000270460635,
+            "rotation": 1.9000000000000001,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 28.616469999999666
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 132,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 29.899769999999613,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frameIndex": 7,
+        "elapsedMs": 92.80000000074506,
+        "cosmeticTimeMs": 2793.800000000745,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.999996197,
+            "y": 151.000003701,
+            "rotation": 0,
+            "scale": 1.00000001933
+          },
+          "mainHand": {
+            "x": 203.00000202325418,
+            "y": 205.0000027519549,
+            "rotation": 1.7,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 97,
+            "y": 159,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 156.54964999999999,
+            "y": 155.53903,
+            "rotation": 0.152736,
+            "scale": 1
+          },
+          "waist": {
+            "x": 160.208,
+            "y": 219.245,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 83,
+            "y": 263,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 167.5,
+            "y": 250,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 143.692,
+            "y": 217.694,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 203.00000202325418,
+            "y": 205.0000027519549,
+            "rotation": 1.7,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 29.899769999999613
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 139,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 31.416569999999545,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frameIndex": 7,
+        "elapsedMs": 340.5,
+        "cosmeticTimeMs": 3491.099999997765,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.999996087,
+            "y": 154.00000156,
+            "rotation": 0,
+            "scale": 0.999999962264
+          },
+          "mainHand": {
+            "x": 197.99999932817303,
+            "y": 204.00000219057608,
+            "rotation": 1.8,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 92,
+            "y": 158,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 154.15842999999998,
+            "y": 158.79587999999998,
+            "rotation": 0.2147166,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.79,
+            "y": 221.581,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 92,
+            "y": 247,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 182,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 112.692,
+            "y": 211.694,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 197.99999932817303,
+            "y": 204.00000219057608,
+            "rotation": 1.8,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "GarmentFront",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 31.416569999999545
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 146,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 32.93316999999947,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frameIndex": 7,
+        "elapsedMs": 13.5,
+        "cosmeticTimeMs": 3614.199999999255,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 160.0000047344,
+            "y": 156.9999982576,
+            "rotation": 0,
+            "scale": 1.000000024848
+          },
+          "mainHand": {
+            "x": 197.99999752037587,
+            "y": 203.9999979212575,
+            "rotation": 1.8,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 200,
+            "y": 204,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 151.19842,
+            "y": 160.91031,
+            "rotation": 0.2180497,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.593,
+            "y": 219.537,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 89.5,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 190.5,
+            "y": 257,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 112.796,
+            "y": 216.701,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 197.99999752037587,
+            "y": 203.9999979212575,
+            "rotation": 1.8,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 32.93316999999947
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    },
+    {
+      "drawCount": 152,
+      "lastTransform": {
+        "position": {
+          "x": 128,
+          "y": 164,
+          "z": 0.025
+        },
+        "rotation": 1.5707963267948966,
+        "desiredRotation": 1.5707963267948966,
+        "facingDirection": {
+          "x": 6.123233995736766e-17,
+          "y": 1
+        },
+        "velocity": {
+          "x": 0,
+          "y": 0
+        },
+        "angularVelocity": 0,
+        "mode": "movement",
+        "speed": 0,
+        "state": "idle",
+        "stateTime": 34.21656999999942,
+        "transition": 1,
+        "distance": 0,
+        "feet": [
+          {
+            "x": 127.9,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          },
+          {
+            "x": 128.1,
+            "y": 164,
+            "z": 0,
+            "groundZ": null,
+            "swing": false
+          }
+        ],
+        "gait": 0,
+        "strategy": "walk",
+        "activeStrategy": "walk",
+        "strategyTransition": null,
+        "profile": {
+          "speed": 1.3,
+          "cycleDistance": 1.05,
+          "duty": 0.56,
+          "lift": 0.1,
+          "lead": 0.69,
+          "clip": "warrior-walk-v4",
+          "torso": "warrior-walk-torso-v3",
+          "bodyPitch": 0,
+          "atlas": "assets/warrior-walk-v3.webp",
+          "phases": [
+            "left-contact",
+            "left-down",
+            "passing",
+            "left-push",
+            "right-contact",
+            "right-down",
+            "passing",
+            "right-push"
+          ]
+        },
+        "flight": 0
+      },
+      "lastSample": {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frameIndex": 7,
+        "elapsedMs": 86.09999999776483,
+        "cosmeticTimeMs": 1886.8999999985099,
+        "appearance": {
+          "Shadow": "shadow",
+          "Hair": "hair-a",
+          "MainHand": "weapon-a",
+          "OffHand": null,
+          "Headgear": null,
+          "Garment": "garment",
+          "BodyWithOutfit": "swordsman-body-default",
+          "Head": "swordsman-head"
+        },
+        "registeredAnchors": {
+          "root": {
+            "x": 160,
+            "y": 264,
+            "rotation": 0,
+            "scale": 1
+          },
+          "head": {
+            "x": 159.9999949567,
+            "y": 162.9999970771,
+            "rotation": 0,
+            "scale": 0.9999999774289999
+          },
+          "mainHand": {
+            "x": 162.00000121906996,
+            "y": 214.99999623525542,
+            "rotation": 1.8,
+            "scale": 1
+          },
+          "offHand": {
+            "x": 188,
+            "y": 172,
+            "rotation": 0,
+            "scale": 1
+          },
+          "back": {
+            "x": 154.34381,
+            "y": 164.90060000000003,
+            "rotation": -0.0252754,
+            "scale": 1
+          },
+          "waist": {
+            "x": 159.623,
+            "y": 223.479,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footL": {
+            "x": 180.5,
+            "y": 262,
+            "rotation": 0,
+            "scale": 1
+          },
+          "footR": {
+            "x": 88.5,
+            "y": 260,
+            "rotation": 0,
+            "scale": 1
+          },
+          "weaponTip": {
+            "x": 83.125,
+            "y": 222.134,
+            "rotation": 0,
+            "scale": 1
+          },
+          "fxOrigin": {
+            "x": 162.00000121906996,
+            "y": 214.99999623525542,
+            "rotation": 1.8,
+            "scale": 1
+          }
+        },
+        "role": "referenceKey",
+        "drawOrder": [
+          "Shadow",
+          "GarmentBack",
+          "Body",
+          "MainHand",
+          "HeadBase",
+          "HairFront"
+        ],
+        "unit": 0.48145933014354064,
+        "rasterFoot": {
+          "x": 128,
+          "y": 224
+        },
+        "worldFoot": {
+          "x": 680.0000000000003,
+          "y": 383.00000000000136,
+          "depth": 0.9723427130834539
+        },
+        "worldTime": 34.21656999999942
+      },
+      "memoryOnly": true,
+      "gameplayClass": 12,
+      "presentationClass": "Swordsman",
+      "combatAuthority": "existing game; visual markers never executed"
+    }
+  ],
+  "appearanceSwapMechanicsUnchanged": true,
+  "movementDistanceBefore": 0,
+  "movementDistanceAfter": 2.6250000000003686,
+  "ownerStorageUnchanged": true,
+  "memoryOnly": true,
+  "gameplayFixture": "existing Mage; painted Swordsman presentation only",
+  "combatAuthorityUnchanged": true,
+  "errors": [],
+  "unexpectedHTTP": [],
+  "ownerVisualApproval": "PENDING"
+}

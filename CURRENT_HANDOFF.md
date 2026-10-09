@@ -1,3 +1,7 @@
+# Current character checkpoint: dressed-body registration repair
+
+Continue branch `character/ro1-reference-engine-v1`. The owner selected BodyWithOutfit + independent Head; separate BodyCore/Outfit is superseded. The new strict appearance pack reuses all painted source frames, extracts the existing Head pixels, and repairs skull/grip/shoulder registration. MotionTemplate and ordinary gameplay remain unchanged. Royal body B proves same-time costume swaps. The latest sword-alignment revision adds six weapon perspective phases, corrects the SW/W/NW blade arc, and reuses five bounded existing body poses for strike/held-fist continuity. Earlier rejected candidates are preserved. Open `character-review.html` for clean autoplay and development diagnostics. See [new animated review package](docs/review/character-bodywithoutfit-registration-v1/registration-report.md). **OWNER VISUAL APPROVAL PENDING**. The old animated proof is preserved as rejected evidence.
+
 # ASTRAEON — animated character rescue checkpoint,9October2026
 
 Branch `character/ro1-reference-engine-v1`; starting checkpoint

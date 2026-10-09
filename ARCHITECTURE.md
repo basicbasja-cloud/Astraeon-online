@@ -1,3 +1,7 @@
+## Current character presentation contract
+
+Production composition is MotionTemplate + BodyWithOutfit + independent Head + independent Hair/equipment/garment. A costume replaces one complete intentionally dressed body, without resetting animation or mechanical equipment. The strict schema1.1 pack and shared calibrated socket contract preserve the existing numeric motion template. Generic internal Body/HeadBase layer names remain compatible with historical fixtures. Head-local skull/headgear sockets prevent independent body-space chasing; grip and shoulder pivots drive weapons and cape. Details and review status: [Character Assembly](docs/CHARACTER_ASSEMBLY_V1.md) and [registration evidence](docs/review/character-bodywithoutfit-registration-v1/registration-report.md).
+
 # Runtime architecture
 
 ## Character assembly rescue v1
