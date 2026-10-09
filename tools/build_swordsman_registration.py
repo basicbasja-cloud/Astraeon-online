@@ -127,7 +127,7 @@ def build():
      if id.startswith('weapon'):
       base=old['parts'][id]['timelines']['*'][d]['views'][0]['layers']['MainHand'];r=base['rect'];tile=ims[id].crop((r[0],r[1],r[0]+48,r[1]+128));bb=tile.getbbox()
       # Each original raster is annotated at its visible grip segment.
-      pivot=[(bb[0]+bb[2])/2,bb[3]-12];layer='MainHand';point=ov.get('mainHand',s['mainHand']);rotation=f['anchors']['mainHand']['rotation']
+      pivot=[(bb[0]+bb[2])/2,bb[3]-16];layer='MainHand';point=ov.get('mainHand',s['mainHand']);rotation=f['anchors']['mainHand']['rotation']
       if 'weaponRotation' in ov:rotation=ov['weaponRotation']
       target=tr(*point,rotation);local=relative(f['anchors']['mainHand'],target);sourceSize=[48,128]
      elif id=='offhand':
