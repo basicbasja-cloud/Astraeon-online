@@ -206,7 +206,7 @@ reload/migration inspection controls. Key `astraeon-inventory-dev-v1` is isolate
 from playable storage. Migration inspection does not replace the sandbox state.
 Exact `?dev=1` extends the existing live development adapter with these item APIs;
 ordinary URLs expose no progression/combat/item harness mutation globals.
-Boot/page/SW version **94** imports and precaches the item, capacity, equipment slot registry and Action Item modules together.
+Boot/page/SW version **95** imports and precaches the item, capacity, equipment slot registry and Action Item modules together.
 
 See [verification and full handoff](CORE_SPINE_ITEMS_REPORT.md). This implements
 identity/ownership/equipment foundation only. Production UI, final Action Item content/balance, final Box content/UI,
@@ -262,4 +262,15 @@ references, two non-final proof definitions and deterministic normalization
 evidence for unsupported/conflicting references. Original authored gear values
 remain unchanged. Ownership/serial/capacity stay canonical and equip/unequip
 preserve them. Semantic aliases normalize to retained v5 IDs; no new save version
-is necessary. Cache/boot/page is 94. New consumers use `getEquipmentSlots()`.
+is necessary. Cache/boot/page is 95. New consumers use `getEquipmentSlots()`.
+
+## Quest net transaction adapter
+
+The [Quest foundation](CORE_SPINE_QUESTS.md) uses the same canonical ownership.
+A narrow private `commitItemTransaction` validates complete stack/instance source
+debits plus authored rewards through existing Capacity, builds a local inventory
+candidate and publishes ownership once with contained Character/gold/completion
+effects. It is excluded from the public Player item-method projection.
+Collect reads current ownership and creates no separate ledger. Capacity or stale
+authorization failure consumes nothing and allocates no instances/serials.
+Existing Loot/Box, merchant/crafting and equipment contracts remain unchanged.

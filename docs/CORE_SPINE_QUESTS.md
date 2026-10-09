@@ -1,6 +1,6 @@
 # Talk / Kill / Collect Quest foundation
 
-Working contract; full browser acceptance is pending. Patch 0.0.1 reusable gameplay contracts. The five proof quests are engineering
+Verified reusable Patch 0.0.1 gameplay contracts. The five proof quests are engineering
 fixtures, not approved story, quest balance, dialogue or final UI. This milestone
 does not complete Patch 0.0.1 or Core Spine.
 
@@ -228,3 +228,12 @@ history is inert, not support for arbitrary future save semantics.
 
 Quest UI/art, content and balance are separate work. Shop/Storage/Town Services,
 dev-tool gap closure and the 0.0.1 integration gate remain outstanding.
+
+## Verification
+
+1309 inherited + 165 Quest = 1474 deterministic checks, zero failures.
+312 retained + 57 Quest = 369 functional browser groups, zero failures;
+cache/offline and world schemas pass. Source audit retains all 45 inherited test
+files and 34 protected core files unchanged. Valid prototype-named IDs use own
+entry lookup; unknown/coercing state-transition inputs reject safely.
+See [verification evidence and limitations](CORE_SPINE_QUESTS_REPORT.md).

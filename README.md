@@ -128,12 +128,13 @@ The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **94**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **95**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/quests_browser.py --url http://127.0.0.1:8011
 python tests/equipment_slots_browser.py --url http://127.0.0.1:8011
 python tests/inventory_capacity_browser.py --url http://127.0.0.1:8011
 python tests/monster_box_browser.py --url http://127.0.0.1:8011
@@ -176,6 +177,24 @@ references; `getEquipment()` remains the old three-key compatibility projection.
 Replacement/unequip preserve ownership and capacity; modifiers reach existing
 Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
 are functional adapters, with no visual gear/artwork or UI redesign. Save version
-5 remains deliberate; boot/page/cache is 94. See the
+5 remains deliberate; boot/page/cache is 95. See the
 [verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
-Core Spine remain incomplete; Quest/Storage closure remains separate.
+Core Spine remain incomplete; Shop/Storage/Town Services closure remains separate.
+
+
+## Talk / Kill / Collect Quest foundation
+
+The [Quest contract](docs/CORE_SPINE_QUESTS.md) adds immutable engineering
+definitions, explicit acceptance and completed-quest prerequisites. Actual NPC
+interaction supplies Talk evidence; existing Lifecycle per-life death supplies
+Kill evidence once. Collect and readiness derive from current canonical ownership.
+Private turn-in tickets commit complete source debits and deterministic rewards
+through existing Item/Capacity, Character Progression and gold authorities.
+Capacity failure leaves sources and rewards unchanged. Save version 5 retains
+accepted/Talk/Kill/completed state; no pending ticket or Collect ledger persists.
+Plain Accept/status/Turn In controls use existing guild/journal panels.
+`/tools/quest.html` is an isolated diagnostic sandbox. Cache generation is 95.
+See the [verified Quest handoff](docs/CORE_SPINE_QUESTS_REPORT.md).
+The five quests and reward values are NON-FINAL engineering fixtures.
+Shop/Storage/Town Services, dev-tool gap closure and the 0.0.1 Integration Gate
+remain pending. Patch 0.0.1 and Core Spine are not complete.

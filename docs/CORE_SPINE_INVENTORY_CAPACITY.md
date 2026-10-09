@@ -180,3 +180,15 @@ progression, explicit overflow retention, Storage and gameplay encumbrance rules
 owned instances, with no Capacity-core change. Equip/replace/unequip remains zero
 slot/weight delta. Two new non-final proof definitions also retain explicit zero
 unconfigured weight. No capacity/weight coefficient or penalty is changed.
+
+## Quest exact net turn-in preflight
+
+The [Quest foundation](CORE_SPINE_QUESTS.md) supplies a deterministic exact
+transaction: aggregated Collect source debits plus all authored item rewards.
+Existing `canAcceptItemPackage` evaluates the final ownership, so consuming the
+last source stack can free a slot/weight for reward items. Same-item consuming
+objectives share a complete required plan. Capacity failure preserves every
+source, reward, serial, progression/currency field and READY quest state.
+No second calculator, penalty, overflow or capacity counter is introduced.
+Quest has no RNG. Monster Box's maximum pre-roll envelope and anti-roll-shopping
+contract remain unchanged; Monster Loot retains its resolved exact package.

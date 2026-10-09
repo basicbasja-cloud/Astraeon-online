@@ -189,7 +189,7 @@ Three original archetypes each have eight authored directions and six poses: idl
 These are painted 2.5D assets, not skinned 3D characters. The movement layer tracks stance contacts, but sprites do not articulate limbs to those contacts. Hand/back/hip coordinates are approximate world-space attachment positions, not imported rig sockets. Attack impacts wait for actual aim convergence; projectiles and slash effects use the same continuous world direction. Directional pose consistency, limited enemy locomotion and richer transitions remain art polish work.
 
 ## Loading and persistence
-Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v94, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
+Current zone spawns active enemies; old enemies are discarded on transition. Boot waits for town and character art. Zone transitions pause behind a loading overlay and await that zone’s ground/enemy atlases; failed loads preserve zone and travel gold and can be retried. Shared image atlases load once. This is zone activation, not chunk streaming. LocalStorage retains the existing save key and progression, normalized to saveVersion 5; failed writes notify the player. Active dungeon runs reset on reload. SW serves navigations network-first and versioned static assets cache-first (v95, aligned with boot/page). Core town/hero art is precached; field/forest/guardian art is cached when visited. Unvisited zones require a connection. Real multiplayer, account persistence and a shared economy are future work.
 
 ## Item ownership and equipment
 
@@ -339,6 +339,39 @@ references; `getEquipment()` remains the old three-key compatibility projection.
 Replacement/unequip preserve ownership and capacity; modifiers reach existing
 Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
 are functional adapters, with no visual gear/artwork or UI redesign. Save version
-5 remains deliberate; boot/page/cache is 94. See the
+5 remains deliberate; boot/page/cache is 95. See the
 [verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
-Core Spine remain incomplete; Quest/Storage closure remains separate.
+Core Spine remain incomplete; Shop/Storage/Town Services closure remains separate.
+
+
+## Talk / Kill / Collect Quest authority
+
+`quest-definitions.js` validates and freezes the complete authored registry.
+`quest-state.js` normalizes optional durable `questState` and derives objective
+readiness from canonical ownership. `quest-evidence.js` issues privately owned
+semantic NPC capabilities and validates exact existing Lifecycle death objects,
+including life/death identity and definition identity from that same owner.
+`quest-runtime.js` owns explicit acceptance, capped durable Talk/Kill progress,
+completed-quest prerequisites and opaque turn-in tickets. It adds no Combat,
+Monster, Inventory, currency or EXP authority and introduces no subscriptions.
+
+Actual `interact(n)` supplies Talk; the existing player-owned death path supplies
+one Kill observation per legitimate life. Loot capacity rejection cannot fabricate
+or reroll a Kill. Collect is current ownership, including equipped instances;
+spending items invalidates readiness. Equipped Collect sources must be unequipped
+before consumption. Complete Collect debits and deterministic rewards use the
+existing exact net Capacity package, private Item State transaction and prepared
+Character reward authority; only successful contained publication completes the
+quest. Duplicate/copied/foreign/stale tickets cannot mint rewards. The trust
+boundary remains synchronous local publishers, not a server transaction engine.
+
+Save version 5 deliberately adds optional extensible `questState` without changing
+existing field meaning or save core. Old saves have empty accepted/completed
+state. Collect/READY re-derive; tickets, events and actor references never persist.
+Death/respawn/travel retain durable progress and expire transient tickets.
+Legacy automatic Contract counters remain separate and compatible.
+Four Quest modules load before game attachment and are precached at generation 95.
+Plain guild/journal controls and isolated `/tools/quest.html` provide functional
+acceptance; no story, visual, AI/navigation or Quest UI redesign is introduced.
+See [Quest contracts](docs/CORE_SPINE_QUESTS.md) and
+[verified handoff](docs/CORE_SPINE_QUESTS_REPORT.md).

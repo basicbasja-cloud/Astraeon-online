@@ -226,8 +226,9 @@ Current limits: one target, no threat system, no final balance/density/perceptio
 no navigation rewrite, no full status/monster skill framework, no durable AI save
 or server security. Movement can be blocked by existing authored collision; no
 new teleport/pathfinding escape rule is invented. Presentation mappings can later
-observe IDLE/CHASE/RETURN/ATTACK/DEAD without changing authority. Capacity/weight,
-Quest and Storage remain separate roadmap tasks.
+observe IDLE/CHASE/RETURN/ATTACK/DEAD without changing authority. Capacity and
+Equipment closure are documented below; Shop/Storage/Town Services remains the
+next separate roadmap task.
 
 See [verified handoff](CORE_SPINE_MONSTER_LIFECYCLE_REPORT.md). The subsequent
 [Monster Box foundation](CORE_SPINE_MONSTER_BOX.md) operates downstream of Item
@@ -237,4 +238,16 @@ states, respawn policy, monster attacks or death/claim changes. The subsequent
 downstream of Loot; this lifecycle owner has no slot/weight arithmetic. A rejected
 reward cannot generate another death or roll. Existing life/retirement boundaries
 still expire transient uncommitted claims. Recommended next Backbone task:
-**Equipment Slot Closure foundation**.
+**Shop / Storage / Town Services foundation**, following completed Equipment Slot
+Closure and the Quest observer integration below.
+
+## Quest death observer boundary
+
+The [Quest foundation](CORE_SPINE_QUESTS.md) observes this existing authority
+without modifying Lifecycle. A narrow bridge validates the exact owned death
+event and current runtime/life/death identity, obtaining MonsterDefinition ID from
+the same owner. Duplicate event objects give no additional Quest Kill credit;
+respawned new lives legitimately count. Loot resolution is never Kill evidence.
+Only the existing player-owned combat/death path delivers the observation.
+Quest durability does not serialize the Lifecycle event history, alter AI or
+introduce listeners that travel/reconstruction could duplicate.
