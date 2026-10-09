@@ -55,15 +55,35 @@ def build():
    hr=[];br=[];rr=[];gr=[]
    for i,f in enumerate(action['directions'][d]['frames']):
     ref=old['parts']['body-swordsman']['timelines'][a][d]['frames'][i]['layers']['Body'];x,y,w,h=ref['rect'];im=ims[ref['atlasId']].crop((x,y,x+w,y+h));arr=np.asarray(im).copy();hb=head_box(im)
+    # The historical broad threshold included warm ivory sleeves next to
+    # leaning heads. A skin-only seed excludes that cloth before measuring.
+    skin=(arr[:,:,0]>130)&(arr[:,:,1]>85)&(arr[:,:,2]>55)&(arr[:,:,0]>arr[:,:,1]*1.13)&(arr[:,:,1]>arr[:,:,2]*1.10)&(arr[:,:,2]>arr[:,:,0]*.50)&(arr[:,:,3]>200)
+    seed=np.zeros((320,320),bool);seed[max(0,hb[1]-2):hb[3]+1,max(0,hb[0]-3):min(320,hb[2]+3)]=True
+    islands=ndimage.binary_closing(skin&seed,iterations=1);labels,count=ndimage.label(islands);sizes=np.bincount(labels.ravel());sizes[0]=0
+    assert count and sizes.max()>30,(a,d,i,'missing skin-only skull')
+    sy,sx=np.where(labels==sizes.argmax());hb=[int(sx.min()),int(sy.min()),int(sx.max()+1),int(sy.max()+1)]
     l=max(0,hb[0]-3);top=max(0,hb[1]-2);right=min(320,hb[2]+3);bottom=hb[3]+1
-    mask=np.zeros((320,320),bool);mask[top:bottom,l:right]=True
+    region=np.zeros((320,320),bool);region[top:bottom,l:right]=True
+    island=ndimage.binary_closing(skin&region,iterations=1)
+    labels,count=ndimage.label(island);sizes=np.bincount(labels.ravel());sizes[0]=0
+    assert count and sizes.max()>30,(a,d,i,'missing head component')
+    # A rectangular crop alone also catches the raised sword arm. Preserve
+    # only the connected skull/face silhouette and its antialiased boundary.
+    mask=ndimage.binary_dilation(ndimage.binary_fill_holes(labels==sizes.argmax()),iterations=2)&region
+    # Tight skull geometry excludes a touching ivory cuff in side attacks;
+    # colour alone cannot distinguish warm sleeve shading from skin.
+    upperSeed=skin&region;upperSeed[hb[1]+18:]=False
+    uy,ux=np.where(upperSeed);skullCentre=float(np.median(ux))
+    skullRadius=min(24,max(20,(int(ux.max())-int(ux.min())+1)/2+3))
+    yy,xx=np.mgrid[:320,:320];height=min(48,max(36,hb[3]-hb[1]))
+    skullEnvelope=((xx-skullCentre)/skullRadius)**2+((yy-(hb[1]+height*.49))/(height/2+3))**2<=1
+    mask &= skullEnvelope
     headarr=arr.copy();headarr[~mask]=0;bodyarr=arr.copy();bodyarr[mask]=0
     head=Image.fromarray(headarr);body=Image.fromarray(bodyarr);restored=Image.alpha_composite(body,head)
     assert np.array_equal(np.asarray(restored),arr),(a,d,i,'identity changed')
     neck=[(hb[0]+hb[2])/2,bottom-1];crop=head.crop((l,top,right,bottom));cell=Image.new('RGBA',(96,96));cx=(96-crop.width)//2;cy=(96-crop.height)//2;cell.alpha_composite(crop,(cx,cy))
     pivot=[cx+neck[0]-l,cy+neck[1]-top]
     # Skull measurements use only the upper half, excluding collar/neck/ears.
-    skin=(arr[:,:,0]>130)&(arr[:,:,1]>85)&(arr[:,:,2]>55)&(arr[:,:,0]>arr[:,:,1]*1.035)&(arr[:,:,3]>200)
     upper=skin[max(0,hb[1]):hb[1]+max(8,(hb[3]-hb[1])//2),l:right];uy,ux=np.where(upper)
     skullx=float(np.median(ux)+l);skullw=int(ux.max()-ux.min()+1);skully=hb[1]+15
     topys,topxs=np.where(skin[hb[1]:hb[1]+10,l:right]);lowys,lowxs=np.where(skin[hb[1]+18:min(hb[3],hb[1]+30),l:right])
@@ -91,7 +111,7 @@ def build():
     # and boots. It cannot alter the now-independent Head source.
     royal=bodyarr.copy();warm=(royal[:,:,0]>royal[:,:,2]*1.4)&(royal[:,:,1]>royal[:,:,2]*1.25)&(royal[:,:,0]>95)&(royal[:,:,3]>0)
     royal[:,:,0][warm]=(royal[:,:,0][warm]*.43).astype('uint8');royal[:,:,1][warm]=(royal[:,:,1][warm]*.88).astype('uint8');royal[:,:,2][warm]=np.minimum(255,royal[:,:,2][warm]*1.8+55).astype('uint8');rr.append(Image.fromarray(royal))
-    receipt.append({'action':a,'direction':d,'frame':i,'sourceAtlas':ref['atlasId'],'sourceRect':ref['rect'],'sourceRGBA':hashlib.sha256(arr.tobytes()).hexdigest(),'headRect':[l,top,right,bottom],'headPivot':pivot,'losslessReassembly':True})
+    receipt.append({'action':a,'direction':d,'frame':i,'sourceAtlas':ref['atlasId'],'sourceRect':ref['rect'],'sourceRGBA':hashlib.sha256(arr.tobytes()).hexdigest(),'headRect':[l,top,right,bottom],'headPivot':pivot,'headMask':'connected skull/face component; holes filled; two-pixel boundary; bounded crop','losslessReassembly':True})
    heads.append(hr);bodies.append(br);royals.append(rr)
   hrefs=saveatlas('head-'+a.lower(),heads,(96,96));brefs=saveatlas('body-'+a.lower(),bodies,(320,320));rrefs=saveatlas('royal-'+a.lower(),royals,(320,320))
   p['parts']['swordsman-head']['timelines'][a]={};p['parts']['swordsman-body-default']['timelines'][a]={};p['parts']['swordsman-body-royal-proof']['timelines'][a]={}
@@ -159,7 +179,13 @@ def build():
     part['timelines'][a][d]={'frames':frames}
  # Perspective masks are supplied by frame/direction profiles, not class logic.
  layers=list(t['drawProfiles']['front']);front=layers.copy();rear=layers.copy();rear.remove('GarmentFront');rear.insert(rear.index('Body')+1,'GarmentFront')
- p['drawProfiles']={'front':front,'rear':rear};p['frameDrawProfiles']={a:{d:['rear' if d in ['NW','N','NE'] else 'front']*len(v['directions'][d]['frames']) for d in D} for a,v in t['actions'].items()}
+ # A raised blade passes behind the skull. Contact can cross the torso,
+ # while the selected Head/Hair remains the foreground identity silhouette.
+ for order in [front,rear]:order.remove('MainHand');order.insert(order.index('HeadBase'),'MainHand')
+ loadedFront=front.copy();loadedRear=rear.copy()
+ for order in [loadedFront,loadedRear]:order.remove('MainHand');order.insert(order.index('Body'),'MainHand')
+ p['drawProfiles']={'front':front,'rear':rear,'loadedFront':loadedFront,'loadedRear':loadedRear}
+ p['frameDrawProfiles']={a:{d:[('loadedRear' if d in ['NW','N','NE'] else 'loadedFront') if a=='BasicAttack' and i<6 else ('rear' if d in ['NW','N','NE'] else 'front') for i in range(len(v['directions'][d]['frames']))] for d in D} for a,v in t['actions'].items()}
  # Publish one shared dressed-body socket contract. Both costumes consume
  # exactly these calibrations; attachments never independently chase guesses.
  # MotionTemplate pose identities, choreography and timestamps stay immutable.
