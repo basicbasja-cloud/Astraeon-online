@@ -8,6 +8,7 @@ parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--url',default='http://127.0.0.1:8012')
 parser.add_argument('--output',type=Path,default=Path('docs/review/character-ro1-animated-v1/gameplay'))
 parser.add_argument('--contact-only',action='store_true',help='Capture exact presentation contact keys without executing Combat')
+parser.add_argument('--inspect-static',action='store_true',help='Capture exact registered poses for all three actions without waiting for playback phase')
 args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
 directions=['S','SW','W','NW','N','NE','E','SE'];errors=[];bad_http=[];samples=[];tiles=[]
 with sync_playwright() as p:
@@ -22,6 +23,7 @@ with sync_playwright() as p:
         for direction in directions:
             page.evaluate('([a,d])=>AstraeonGameplayReview.setPose(a,d)',[action,direction])
             if args.contact_only:page.evaluate('(d)=>AstraeonGameplayReview.inspectFrame("BasicAttack",d,7)',direction)
+            elif args.inspect_static:page.evaluate('([a,d])=>AstraeonGameplayReview.inspectFrame(a,d,a==="Idle"?4:7)',[action,direction])
             page.wait_for_function('([a,d])=>{const s=AstraeonGameplayReview.snapshot().lastSample;return s.action===a&&s.direction===d&&s.frameIndex>=4}',arg=[action,direction])
             snap=page.evaluate('AstraeonGameplayReview.snapshot()');samples.append(snap)
             assert snap['memoryOnly'] and snap['combatAuthority'].startswith('existing game')

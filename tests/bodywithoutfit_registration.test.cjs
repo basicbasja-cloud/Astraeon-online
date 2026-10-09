@@ -38,7 +38,7 @@ test('Weapon A/B retain the same explicit grip transform while replacing only sw
 test('cape shares its back pivot in front/back passes and is sampled from the body phase without an independent clock',()=>{
  for(const d of M.DIRECTIONS)for(let frameIndex=0;frameIndex<16;frameIndex++){
   const s=c.sample('BasicAttack',d,0,{frameIndex}),g=s.layers.filter(r=>r.slot==='Garment');assert.ok(g.length);for(const r of g){assert.equal(r.mode,'BODY_SYNC');assert.equal(r.pivotSemantic,'upper-back');assert.deepEqual(r.anchorTransform,s.registeredAnchors.back)}
-  if(g.length===2){assert.deepEqual(g[0].transform,g[1].transform);assert.ok(s.drawOrder.indexOf('GarmentBack')<s.drawOrder.indexOf('Body'));assert.ok(s.drawOrder.indexOf('GarmentFront')<s.drawOrder.indexOf('MainHand'))}
+  if(g.length===2){assert.deepEqual(g[0].transform,g[1].transform);assert.ok(s.drawOrder.indexOf('GarmentBack')<s.drawOrder.indexOf('Body'));if(frameIndex<6)assert.ok(s.drawOrder.indexOf('MainHand')<s.drawOrder.indexOf('Body'));else{assert.ok(s.drawOrder.indexOf('GarmentFront')<s.drawOrder.indexOf('MainHand'));assert.ok(s.drawOrder.indexOf('MainHand')<s.drawOrder.indexOf('HeadBase'))}}
  }
 });
 for(const [name,edit]of [

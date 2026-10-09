@@ -23,3 +23,7 @@ class SalvageTests(unittest.TestCase):
    j=self.p['bodyContract']['directions'].index(d);points=json.loads((R/'authoring/characters/builds/swordsman-registration-v1/socket-overrides.json').read_text())['BasicAttack/'+d]
    for i in range(16):
     x,y=points[str(i)]['mainHand'];im=self.old['body-basicattack'];self.assertGreater(im.getpixel((i*320+x,j*320+y))[3],200,(d,i,x,y))
+ def test_costume_colour_proof_keeps_entire_head_neck_seam_pixel_identical(self):
+  for f in self.receipt['frames']:
+   a,d,i=f['action'],f['direction'],f['frame'];j=self.p['bodyContract']['directions'].index(d);l,t,r,b=f['headRect'];rect=(i*320+l,j*320+t,i*320+r,j*320+b)
+   self.assertTrue(np.array_equal(np.asarray(self.ims['body-'+a.lower()].crop(rect)),np.asarray(self.ims['royal-'+a.lower()].crop(rect))),(a,d,i))

@@ -104,12 +104,19 @@ def build():
      gy,gx=np.unravel_index(score.argmax(),score.shape);grips[name]=[int(gx),int(gy)]
     # Shoulder attachment follows measured neck and upper torso, not a head
     # centre offset. Directional cape registration is calibrated separately.
-    back=[neck[0],neck[1]+9]
-    samples[a,d,i]={'neck':neck,'hairSockets':sockets,'headRect':[l,top,right,bottom],'headPivot':pivot,'headCanvasOffset':[l-cx,top-cy],'mainHand':grips['mainHand'],'offHand':grips['offHand'],'back':back,'tilt':tilt,'headBox':hb}
+    gold=(arr[:,:,0]>120)&(arr[:,:,1]>70)&(arr[:,:,2]<130)&(arr[:,:,0]>arr[:,:,1]*1.18)&(arr[:,:,1]>arr[:,:,2]*1.25)&(arr[:,:,3]>220)&~mask
+    collarWindow=(abs(xx-neck[0])<28)&(yy>neck[1]-4)&(yy<neck[1]+19)
+    weight=gold*collarWindow*np.exp(-((xx-neck[0])/22)**2-((yy-neck[1]-7)/14)**2)
+    if weight.sum()>5:back=[float((weight*xx).sum()/weight.sum()),float((weight*yy).sum()/weight.sum())+2]
+    else:back=[neck[0],neck[1]+9]
+    samples[a,d,i]={'neck':neck,'hairSockets':sockets,'headRect':[l,top,right,bottom],'headPivot':pivot,'headCanvasOffset':[l-cx,top-cy],'mainHand':grips['mainHand'],'offHand':grips['offHand'],'back':back,'backMeasurement':'painted gold collar/shoulder centroid; torso-local search','tilt':tilt,'headBox':hb}
     hr.append(cell);br.append(body)
     # Proof B changes all complete clothing/armour pixels, preserving gloves
     # and boots. It cannot alter the now-independent Head source.
     royal=bodyarr.copy();warm=(royal[:,:,0]>royal[:,:,2]*1.4)&(royal[:,:,1]>royal[:,:,2]*1.25)&(royal[:,:,0]>95)&(royal[:,:,3]>0)
+    # Keep the complete neck seam and antialiased identity boundary unchanged
+    # in this colour-only proof, including neighbouring collar pixels.
+    warm &= ~region
     royal[:,:,0][warm]=(royal[:,:,0][warm]*.43).astype('uint8');royal[:,:,1][warm]=(royal[:,:,1][warm]*.88).astype('uint8');royal[:,:,2][warm]=np.minimum(255,royal[:,:,2][warm]*1.8+55).astype('uint8');rr.append(Image.fromarray(royal))
     receipt.append({'action':a,'direction':d,'frame':i,'sourceAtlas':ref['atlasId'],'sourceRect':ref['rect'],'sourceRGBA':hashlib.sha256(arr.tobytes()).hexdigest(),'headRect':[l,top,right,bottom],'headPivot':pivot,'headMask':'connected skull/face component; holes filled; two-pixel boundary; bounded crop','losslessReassembly':True})
    heads.append(hr);bodies.append(br);royals.append(rr)
