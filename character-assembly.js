@@ -100,6 +100,19 @@ function validateAppearancePack(pack,template){
      check(part.space==='canvas'&&Array.isArray(f.foregroundPasses),'Foreground masks require a canvas raster '+label);
      for(const pass of Array.isArray(f.foregroundPasses)?f.foregroundPasses:[])check(LAYERS.includes(pass?.afterLayer)&&pass.afterLayer!==layer&&(!pass.requiresLayer||LAYERS.includes(pass.requiresLayer))&&Array.isArray(pass.polygon)&&pass.polygon.length>=3&&pass.polygon.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=0&&p[1]>=0&&p[0]<=r?.[2]&&p[1]<=r?.[3]),'Invalid authored foreground mask '+label);
     }
+    if(f.weaponPoseFrame){
+     const w=f.weaponPoseFrame,point=p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite);
+     check(part.slot==='MainHand'&&part.weaponDefinition?.poseSetVersion===1,'WeaponPoseFrame requires a compatible weapon definition '+label);
+     check(part.weaponDefinition?.compatibleBodyContract===pack.bodyContract?.contractId,'Weapon body contract mismatch '+label);
+     check(part.weaponDefinition?.compatibleMotionTemplates?.includes(t.motionTemplateId),'Weapon motion contract mismatch '+label);
+     check(part.weaponDefinition?.phases?.includes(w.phase),'Invalid WeaponPoseSet phase '+label);
+     check(part.weaponDefinition?.perspectiveVariants?.includes(w.perspectiveVariant),'Invalid weapon perspective variant '+label);
+     for(const key of ['equipmentAnchor','gripContactPoint','weaponTip','localOffset','handContactPoint'])check(point(w[key]),'Invalid weapon '+key+' '+label);
+     check(same(w.equipmentAnchor,f.pivot),'Weapon pivot must register equipment anchor '+label);
+     check(!same(w.equipmentAnchor,w.gripContactPoint),'Equipment anchor and grip must be distinct '+label);
+     check(Number.isFinite(w.rotation)&&Number.isFinite(w.scale)&&w.scale>0,'Invalid weapon pose transform '+label);
+     check(own(pack.drawProfiles||{},w.drawProfile),'Invalid weapon draw profile '+label);
+    }
     for(const field of ['durationMs','timing','anchors','mirroring'])check(!own(f,field),'Raster cannot override motion '+label+'/'+field);
    }
   };

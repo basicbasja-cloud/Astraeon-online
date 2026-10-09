@@ -1,15 +1,15 @@
 (async function(){
 'use strict';
 const M=window.AstraeonMotionTemplate,A=window.AstraeonCharacterAssembly,$=id=>document.getElementById(id);
-const params=new URLSearchParams(location.search),legacy=params.has('legacy'),registration=params.has('registration');
+const params=new URLSearchParams(location.search),legacy=params.has('legacy'),registration=params.has('registration'),historical=params.has('anatomy');
 let anatomy; const visibility=new Map();
 let loaded,time=0,cosmetic=0,playing=true,forcedFrame,last=performance.now();
 const layers=new Map(),debug=new Map();
 const groups={BodyWithOutfit:['Body'],Head:['HeadBase'],Hair:['HairBack','HairFront'],MainHand:['MainHand'],OffHand:['OffHand'],Headgear:['HeadgearLower','HeadgearMiddle','HeadgearTop'],Garment:['GarmentBack','GarmentFront']};
-for(const [name,layers]of [['BodyWithOutfit',['Body']],['Head',['HeadBase']],['Hair',['HairBack','HairFront']],['MainHand',['MainHand']],['Cape',['GarmentBack','GarmentFront']]]){
+for(const [name,layers]of [['BodyWithOutfit',['Body']],['Head',['HeadBase']],['Hair',['HairBack','HairFront']],['MainHand',['MainHand']],['OffHand',['OffHand']],['Headgear',['HeadgearLower','HeadgearMiddle','HeadgearTop']],['Garment',['GarmentBack','GarmentFront']],['WeaponSlash',['WeaponSlash']]]){
  const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.visible=name;label.append(input,name);$('visibility').append(label);visibility.set(name,{input,layers});input.onchange=render;
 }
-for(const name of ['arm joints','root','body anchors','head pivot','hair pivot','mainHand anchor','weapon grip pivot','back anchor','cape pivot','bounding boxes','action phase','sampling mode','draw order']){
+for(const name of ['arm joints','root','body anchors','head pivot','hair pivot','mainHand anchor','weapon grip pivot','back anchor','cape pivot','bounding boxes','action phase','sampling mode','draw order','shoulder','elbow','wrist','hand contact','equipment anchor','weapon anchor','grip contact','weapon tip']){
  const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=false;input.dataset.debug=name;label.append(input,name);$('debug-toggles').append(label);debug.set(name,input);input.onchange=render;
 }
 function current(){const seq=loaded.compiled.motion.template.actions[$('action').value].directions[$('direction').value];return loaded.sample($('action').value,$('direction').value,time%seq.totalDurationMs,{frameIndex:forcedFrame,cosmeticTimeMs:cosmetic})}
@@ -19,6 +19,7 @@ function diagnostics(ctx,s,{x,y,scale},options){
  ctx.save();ctx.font='12px monospace';ctx.lineWidth=1.5;
  const enabled=n=>options===true||options?.includes(n);
  for(const [n,p]of Object.entries(s.registeredAnchors||s.frame.anchors))if(enabled('body anchors')||n==='root'&&enabled('root')||n==='mainHand'&&enabled('mainHand anchor')||n==='back'&&enabled('back anchor'))mark(p,n,'#ffc56e');
+ if(s.action==='BasicAttack'){const w=s.layers.find(l=>l.layer==='MainHand');if(w?.weaponPoseFrame){const f=w.weaponPoseFrame,world=p=>A.composeTransform(w.transform,{x:p[0]-w.pivot[0],y:p[1]-w.pivot[1],rotation:0,scale:1});if(enabled('equipment anchor'))mark(w.anchorTransform,'equipment anchor','#ffdd70');if(enabled('weapon anchor'))mark(w.transform,'weapon anchor','#cd9aff');if(enabled('grip contact'))mark(world(f.gripContactPoint),'grip contact','#ff829e');if(enabled('weapon tip'))mark(world(f.weaponTip),'weapon tip','#89f0db');}}
  const names={HeadBase:['head pivot','#9fffea'],HairFront:['hair pivot','#ef9dff'],MainHand:['weapon grip pivot','#ff7e9d'],GarmentBack:['cape pivot','#95caff']};
  for(const ref of s.layers){
   if(names[ref.layer]&&enabled(names[ref.layer][0])){mark(ref.transform,names[ref.layer][0],names[ref.layer][1]);if(ref.anchorTransform){const p=point(ref.anchorTransform),q=point(ref.transform);ctx.strokeStyle=names[ref.layer][1];ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}
@@ -33,9 +34,9 @@ function diagnostics(ctx,s,{x,y,scale},options){
    ctx.strokeStyle=names[ref.layer]?.[1]||'#839daa';ctx.beginPath();corners.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.stroke();
   }
  }
- if(enabled('arm joints')&&s.action==='BasicAttack'&&anatomy){
+ if((enabled('arm joints')||['shoulder','elbow','wrist','hand contact'].some(enabled))&&s.action==='BasicAttack'&&anatomy){
   const entry=anatomy.frames[s.direction]?.[s.frameIndex],joints=entry?.joints;
-  if(joints){const colors=['#ffca70','#86e8e2','#83bcff','#ff8da1'];ctx.lineWidth=2;ctx.strokeStyle='#eef5fa';ctx.beginPath();joints.forEach((p,i)=>{const q=point({x:p[0],y:p[1]});i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y)});ctx.stroke();joints.forEach((p,i)=>mark({x:p[0],y:p[1]},['shoulder','elbow','wrist','grip'][i],colors[i]));}
+  if(joints){const colors=['#ffca70','#86e8e2','#83bcff','#ff8da1'];ctx.lineWidth=2;ctx.strokeStyle='#eef5fa';ctx.beginPath();joints.forEach((p,i)=>{const q=point({x:p[0],y:p[1]});i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y)});ctx.stroke();joints.forEach((p,i)=>mark({x:p[0],y:p[1]},['shoulder','elbow','wrist','hand contact'][i],colors[i]));}
  }
  let line=16;function text(s){ctx.fillStyle='#10202bdd';ctx.fillRect(3,line-12,ctx.measureText(s).width+8,16);ctx.fillStyle='#eef5fa';ctx.fillText(s,7,line);line+=18}
  if(enabled('action phase'))text(`${s.action}/${s.direction} frame ${s.frameIndex} phase ${s.phase.toFixed(3)} ${s.frame.referencePhase||s.frame.role}`);
@@ -50,7 +51,8 @@ function paint(canvas,sample,zoom,visibleLayers,overlay=false,canonical=false){
  A.drawAssembly(ctx,sample,loaded.images,{...transform,visibleLayers});if(overlay)diagnostics(ctx,sample,transform,overlay);
 }
 function render(){
- if(!loaded)return;const s=current(),zoom=Number($('scale').value),solo=groups[$('solo').value],hidden=[...visibility.values()].flatMap(v=>v.input.checked?[]:v.layers),visible=solo?solo.filter(l=>!hidden.includes(l)):s.drawOrder.filter(l=>!hidden.includes(l)),overlays=$('anchors').value==='1'?true:[...debug].filter(([n,c])=>c.checked).map(([n])=>n);
+ if(!loaded)return;const s=current(),zoom=Number($('scale').value),solo=({'Body only':['Body'],'Weapon only':['MainHand'],'Body + Weapon':['Body','MainHand'],'Body + Weapon + Grip Debug':['Body','MainHand']})[$('solo').value]||groups[$('solo').value],hidden=[...visibility.values()].flatMap(v=>v.input.checked?[]:v.layers),visible=solo?solo.filter(l=>!hidden.includes(l)):s.drawOrder.filter(l=>!hidden.includes(l)),overlays=$('anchors').value==='1'?true:[...debug].filter(([n,c])=>c.checked).map(([n])=>n);
+ if($('solo').value==='Body + Weapon + Grip Debug'&&Array.isArray(overlays))overlays.push('arm joints','equipment anchor','weapon anchor','grip contact','weapon tip');
  $('hero').width=$('hero').height=128*zoom;
  for(const [id,z]of [['hero',zoom],['gameplay',1],['review',2]])paint($(id),s,z,visible,overlays.length||overlays===true?overlays:false);
  $('status').textContent=`${s.action==='BasicAttack'?'Basic Attack':s.action} · ${s.direction} · ${playing?'Playing':'Paused'} · frame ${s.frameIndex}/${loaded.compiled.motion.template.actions[s.action].directions[s.direction].frames.length-1} · Owner approval pending`;
@@ -64,12 +66,13 @@ function render(){
 }
 function fail(e){$('status').className='error';$('status').textContent=e.message;console.error(e)}
 try{
- loaded=await A.loadAssembly({motionUrl:'authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json',appearanceUrl:`authoring/characters/appearance/${legacy?'swordsman-male-painted':registration?'swordsman-bodywithoutfit':'swordsman-basicattack-anatomy'}/appearance-pack.json`,allowDev:true});
- if(!legacy&&!registration)anatomy=await (await fetch('authoring/characters/builds/swordsman-basicattack-anatomy-v1/joint-review.json')).json();
+ loaded=await A.loadAssembly({motionUrl:'authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json',appearanceUrl:`authoring/characters/appearance/${legacy?'swordsman-male-painted':registration?'swordsman-bodywithoutfit':historical?'swordsman-basicattack-anatomy':'swordsman-true8dir'}/appearance-pack.json`,allowDev:true});
+ if(!legacy&&!registration)anatomy=await (await fetch(`authoring/characters/builds/${historical?'swordsman-basicattack-anatomy-v1':'swordsman-true8dir-v1'}/joint-review.json`)).json();
+ if(loaded.compiled.pack.headAppearanceModel==='HeadIncludesHair'){groups.Hair=['HeadBase'];const v=visibility.get('Hair');v.layers=['HeadBase'];v.input.parentNode.lastChild.textContent='Head + Hair style';visibility.get('Head').input.parentNode.lastChild.textContent='Head + Hair';}
  for(const d of M.DIRECTIONS){const b=document.createElement('button');b.textContent=d;b.onclick=()=>{$('direction').value=d;render()};$('directions').append(b)}
  for(const [id,slot]of [['costume','BodyWithOutfit'],['hair','Hair'],['weapon','MainHand'],['offhand','OffHand'],['headgear','Headgear'],['garment','Garment']]){
   if(legacy&&id==='costume'){$(id).disabled=true;continue}
-  $(id).onchange=async()=>{try{await loaded.setAppearance({[slot]:$(id).value||null});render()}catch(e){fail(e)}};
+  $(id).onchange=async()=>{try{await loaded.setAppearance({[id==='hair'&&loaded.compiled.pack.headAppearanceModel==='HeadIncludesHair'?'Head':slot]:id==='hair'&&loaded.compiled.pack.headAppearanceModel==='HeadIncludesHair'?$(id).value.replace('hair-','head-style-'):$(id).value||null});render()}catch(e){fail(e)}};
  }
  $('action').onchange=()=>{time=0;forcedFrame=undefined;render()};$('direction').onchange=render;$('scale').onchange=render;$('anchors').onchange=render;$('solo').onchange=render;
  $('play').onclick=()=>{playing=!playing;forcedFrame=undefined;$('play').textContent=playing?'Pause':'Play';render()};
@@ -77,7 +80,7 @@ try{
  for(const [id,delta]of [['previous',-1],['next',1]])$(id).onclick=()=>{const s=current(),count=loaded.compiled.motion.template.actions[s.action].directions[s.direction].frames.length;inspectFrame((s.frameIndex+delta+count)%count)};
  $('frame').oninput=()=>{forcedFrame=Number($('frame').value);playing=false;$('play').textContent='Play';time=loaded.compiled.motion.template.actions[$('action').value].directions[$('direction').value].frames.slice(0,forcedFrame).reduce((n,f)=>n+f.durationMs,0);render()};
  const api={snapshot:()=>({...current(),playing,time,cosmetic}),get loaded(){return loaded},
-  async prepareVariants(){const previous=loaded.appearance;await loaded.setAppearance({...(legacy?{}:{BodyWithOutfit:'swordsman-body-royal-proof'}),Hair:'hair-b',MainHand:'weapon-b',OffHand:'offhand',Headgear:'headgear'});await loaded.setAppearance(previous)},
+  async prepareVariants(){const previous=loaded.appearance;await loaded.setAppearance({...(legacy?{}:{BodyWithOutfit:'swordsman-body-royal-proof'}),...(loaded.compiled.pack.headAppearanceModel==='HeadIncludesHair'?{Head:'head-style-b'}:{Hair:'hair-b'}),MainHand:'weapon-b',OffHand:'offhand',Headgear:'headgear'});await loaded.setAppearance(previous)},
   async setAppearance(patch){await loaded.setAppearance(patch);render()},
   renderPose:({action='Walk',direction='S',frameIndex=0,appearance=loaded.appearance,visibleLayers,scale=1,overlay=false,canonical=false,timeMs}={})=>{
    const seq=loaded.compiled.motion.template.actions[action].directions[direction];const t=timeMs??seq.frames.slice(0,frameIndex).reduce((n,f)=>n+f.durationMs,0);const s=loaded.compiled.sample(action,direction,t,{frameIndex:timeMs===undefined?frameIndex:undefined,appearance,cosmeticTimeMs:t});const c=document.createElement('canvas');c.width=c.height=(canonical?320:128)*scale;paint(c,s,scale,visibleLayers,overlay,canonical);return c.toDataURL('image/png')},
