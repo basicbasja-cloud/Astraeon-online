@@ -45,13 +45,38 @@ Shop uses Item State's existing net transaction; transfers use one narrow exact
 ownership publication without allocation. Capacity preflight/publication now
 hold the existing mutation lock before injected policy callbacks.
 
-New deterministic suite: 111 checks, passing. First full run: **1585 / 0**
-(`node-core` evidence); after lock tightening: affected 571 checks / 0.
+New deterministic suite: **139 checks**, passing. Current full run:
+**1474 inherited + 139 new = 1613 / 0** (`node-integration-rerun`).
+First core full run was 1585 / 0 (`node-core`); affected lock rerun 571 / 0.
 Initial focused run had two rejection-code mismatches for NaN/Infinity count;
 runtime now returns `INVALID_QUANTITY` consistently before JSON validation.
 
-Next: add live NPC UI adapters, isolated harness, broader edge regressions and
-browser acceptance. Keep
+Live actual-NPC service adapters, functional existing Merchant/Housing panels,
+isolated harness and deliberate boot/page/cache v96 are implemented. Save core,
+Quest core, Loot/Box/AI/Combat, definitions/recipes and visual/world files remain
+unchanged. Source adjacency assertion in inherited Box check initially failed
+after adding service invalidation between Box invalidation and the loading flag;
+adapter order was corrected, preserving the original assertion unchanged.
+
+Browser attempt 1 reached actual Merchant with valid session and zero errors,
+then failed a copied navigation helper's hardcoded Guild-window fixture check.
+Generic target-kind assertion fixes only that fixture. Attempt 2 passed 18
+Swordsman service/Storage/Collect/persistence/travel/harness groups, then hit a
+30-second normal-URL create click timeout. Normal/harness contexts now use the
+same bounded 180-second timeout as playable contexts. Both raw reports remain
+under `browser-attempt-1` / `browser-attempt-2`; no console/page/HTTP error was
+recorded. Final two-class run adds offline Storage reload and actual enemy-caused
+player death before closure.
+
+Inherited fixture adapters (behavioral assertions retained): action Item,
+Inventory, Equipment Slots, Monster Box and Capacity browser merchant setup now
+walks/interacts with the real Merchant. Capacity policy changes invalidate
+sessions, so its buy/sell setup explicitly reinteracts after policy changes.
+Quest cache fixture checks the active cache generation instead of literal v95,
+retaining four-module precache and actual offline durable-state assertions.
+
+Next: run final new two-class browser, all inherited suites, cache/offline,
+world validator and source audit; fix any genuine failures. Keep
 all inherited assertions; any fixture adaptation required by new NPC access
 must retain behavior and be recorded. Full verification, cache/offline, world
 validation, runtime checkpoint, final documentation and push remain pending.

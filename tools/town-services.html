@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="icon" href="../icon.svg"><title>Town Services sandbox</title>
+<h1>Shop / Storage / Town Services engineering sandbox</h1><p>Disposable save: astraeon-town-services-dev-v1. No final NPC service, economy, Storage capacity or UI approval.</p>
+<p><button id="merchant">Interact with merchant fixture</button><button id="storage">Interact with Storage fixture</button></p>
+<p><label>Stack <select id="item"><option>herb</option><option>ore</option><option>potion</option><option>ration</option><option>monster-box-proof</option></select></label><label>Count <input id="count" type="number" value="1"></label><button id="buy">Buy</button><button id="sell">Sell stack</button><button id="depositStack">Deposit stack</button><button id="withdrawStack">Withdraw stack</button><button id="grant">Canonical fixture grant</button></p>
+<p><label>Exact instance ID <input id="instance" value="item-1"></label><button id="instanceGrant">Canonical gear fixture grant</button><button id="sellItemInstance">Sell instance</button><button id="depositItemInstance">Deposit instance</button><button id="withdrawItemInstance">Withdraw instance</button><button id="equip">Equip Main Hand</button><button id="unequip">Unequip Main Hand</button></p>
+<p><label>Prepared operation <select id="operation"><option>buy</option><option>sellStack</option><option>sellInstance</option><option>depositStack</option><option>withdrawStack</option><option>depositInstance</option><option>withdrawInstance</option></select></label><button id="prepare">Prepare</button><button id="commit">Commit</button><button id="duplicate">Duplicate commit</button></p>
+<p><label>Carried slots <input id="slots" type="number" value="100"></label><button id="policy">Set isolated capacity</button><button id="accept">Accept Collect proof</button><button id="save">Save sandbox</button><button id="reload">Reload sandbox</button></p>
+<h2>Immutable registry and validation</h2><pre id="registry"></pre><h2>Authorization and plan</h2><pre id="ticket"></pre><h2>Receipt / structured rejection</h2><pre id="result"></pre><h2>Both containers / revisions / currency / serial / Capacity / Collect / Save</h2><pre id="inspection"></pre>
+<script src="../input.js?v=96"></script>
+<script src="../skill-nodes.js?v=96"></script>
+<script src="../combat.js?v=96"></script>
+<script src="../progression-config.js?v=96"></script>
+<script src="../progression.js?v=96"></script>
+<script src="../stats.js?v=96"></script>
+<script src="../skill-definitions.js?v=96"></script>
+<script src="../skill-tree.js?v=96"></script>
+<script src="../action-loadout.js?v=96"></script>
+<script src="../skill-runtime.js?v=96"></script>
+<script src="../action-runtime.js?v=96"></script>
+<script src="../character-state.js?v=96"></script>
+<script src="../item-definitions.js?v=96"></script>
+<script src="../equipment-slots.js?v=96"></script>
+<script src="../item-inventory.js?v=96"></script>
+<script src="../inventory-capacity.js?v=96"></script>
+<script src="../item-equipment.js?v=96"></script>
+<script src="../item-state.js?v=96"></script>
+<script src="../action-item-config.js?v=96"></script>
+<script src="../item-effects.js?v=96"></script>
+<script src="../action-item.js?v=96"></script>
+<script src="../action-item-runtime.js?v=96"></script>
+<script src="../drop-tables.js?v=96"></script>
+<script src="../monster-definitions.js?v=96"></script>
+<script src="../loot-resolution.js?v=96"></script>
+<script src="../monster-rewards.js?v=96"></script>
+<script src="../monster-loot-runtime.js?v=96"></script>
+<script src="../box-content-tables.js?v=96"></script>
+<script src="../monster-box.js?v=96"></script>
+<script src="../monster-box-runtime.js?v=96"></script>
+<script src="../combat-resolution-config.js?v=96"></script>
+<script src="../combat-resolution.js?v=96"></script>
+<script src="../combat-runtime.js?v=96"></script>
+<script src="../enemy-combat.js?v=96"></script>
+<script src="../monster-lifecycle-definitions.js?v=96"></script>
+<script src="../monster-lifecycle.js?v=96"></script>
+<script src="../monster-combat-runtime.js?v=96"></script>
+<script src="../quest-definitions.js?v=96"></script>
+<script src="../quest-state.js?v=96"></script>
+<script src="../quest-evidence.js?v=96"></script>
+<script src="../quest-runtime.js?v=96"></script>
+<script src="../town-service-definitions.js?v=96"></script><script src="../storage-state.js?v=96"></script><script src="../town-service-runtime.js?v=96"></script><script src="../player-state.js?v=96"></script>
+<script src="../save-state.js?v=96"></script>
+<script src="town-services-harness.js?v=96"></script>
+</html>
