@@ -28,7 +28,7 @@ function diagnostics(ctx,s,{x,y,scale},options){
  let line=16;function text(s){ctx.fillStyle='#10202bdd';ctx.fillRect(3,line-12,ctx.measureText(s).width+8,16);ctx.fillStyle='#eef5fa';ctx.fillText(s,7,line);line+=18}
  if(enabled('action phase'))text(`${s.action}/${s.direction} frame ${s.frameIndex} phase ${s.phase.toFixed(3)} ${s.frame.referencePhase||s.frame.role}`);
  if(enabled('sampling mode'))for(const l of s.layers)text(`${l.slot}: ${l.mode} sample ${l.sampleIndex}`);
- if(enabled('draw order'))text(s.layers.map(l=>l.slot).join(' > '));
+ if(enabled('draw order'))text(s.layers.map(l=>l.slot).join(' > ')+ (s.layers.some(l=>l.foregroundPasses?.length)?' / body fingers cover held grip':''));
  ctx.restore();
 }
 function paint(canvas,sample,zoom,visibleLayers,overlay=false,canonical=false){
@@ -47,7 +47,7 @@ function render(){
  if(document.querySelector('details').open){
   for(const layer of s.layers)if(!layers.has(layer.layer)){const label=document.createElement('label'),canvas=document.createElement('canvas');label.append(layer.slot,canvas);canvas.width=canvas.height=128;$('layers').append(label);layers.set(layer.layer,canvas)}
   for(const [layer,canvas]of layers)paint(canvas,s,1,[layer]);
-  $('metadata').textContent=JSON.stringify({role:s.frame.role,evidenceClass:s.frame.evidenceClass,referencePhase:s.frame.referencePhase,durationMs:s.frame.durationMs,totalDurationMs:s.totalDurationMs,root:s.frame.root,anchors:s.frame.anchors,events:s.frame.events,appearance:s.appearance,drawOrder:s.layers.map(l=>l.layer),sampling:s.layers.map(l=>({part:l.partId,mode:l.mode,sample:l.sampleIndex,pivot:l.pivot,transform:l.transform,parent:l.parentLayer}))},null,2);
+  $('metadata').textContent=JSON.stringify({role:s.frame.role,evidenceClass:s.frame.evidenceClass,referencePhase:s.frame.referencePhase,durationMs:s.frame.durationMs,totalDurationMs:s.totalDurationMs,root:s.frame.root,anchors:s.frame.anchors,events:s.frame.events,appearance:s.appearance,drawOrder:s.layers.map(l=>l.layer),foregroundPasses:s.layers.flatMap(l=>(l.foregroundPasses||[]).map(p=>({source:l.layer,...p}))),sampling:s.layers.map(l=>({part:l.partId,mode:l.mode,sample:l.sampleIndex,pivot:l.pivot,transform:l.transform,parent:l.parentLayer}))},null,2);
  }
 }
 function fail(e){$('status').className='error';$('status').textContent=e.message;console.error(e)}

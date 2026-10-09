@@ -56,3 +56,11 @@ test('legacy motion and source atlases retain their baseline bytes, approval can
  const r=read('authoring/characters/builds/swordsman-registration-v1/salvage-receipt.json'),hash=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
  assert.equal(hash('authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json'),r.motionTemplateSHA256);const legacy=read('authoring/characters/appearance/swordsman-male-painted/appearance-pack.json');for(const [id,a]of Object.entries(legacy.atlases))assert.equal(hash(a.file),r.sourceAtlases[id]);assert.equal(p.status,'REQUIRES_OWNER_VISUAL_REVIEW');assert.equal(r.ownerVisualApproval,'PENDING');assert.equal(r.faceRedrawn,false);
 });
+test('body-owned grip masks stay on the selected glove raster and never alter the MotionTemplate',()=>{
+ for(const [action,v]of Object.entries(t.actions))for(const d of M.DIRECTIONS)for(let frameIndex=0;frameIndex<v.directions[d].frames.length;frameIndex++){
+  const s=c.sample(action,d,0,{frameIndex});const body=s.layers.find(r=>r.slot==='BodyWithOutfit');assert.deepEqual(body.foregroundPasses.map(p=>p.afterLayer),['MainHand','HairFront','HeadgearTop']);for(const mask of body.foregroundPasses){assert.equal(mask.requiresLayer,'MainHand');assert.ok(mask.polygon.every(q=>q.every(Number.isFinite)))}assert.deepEqual(s.frame,t.actions[action].directions[d].frames[frameIndex]);
+ }
+});
+test('foreground masks reject nonfinite and unrelated layer references',()=>{
+ for(const edit of [p=>p.parts['swordsman-body-default'].timelines.Idle.S.frames[0].layers.Body.foregroundPasses[0].polygon[0][0]=NaN,p=>p.parts['swordsman-body-default'].timelines.Idle.S.frames[0].layers.Body.foregroundPasses[0].afterLayer='Unknown']){const bad=clone(p);edit(bad);assert.ok(A.validateAppearancePack(bad,t).length)}
+});

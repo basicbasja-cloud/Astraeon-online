@@ -29,6 +29,7 @@ def build():
  AS.mkdir(parents=True,exist_ok=True);BUILD.mkdir(parents=True,exist_ok=True);REVIEW.mkdir(parents=True,exist_ok=True)
  old=read(OLD);motionfile=R/'authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json';t=read(motionfile)
  authored=read(BUILD/'appearance-registration.json')
+ overrides=read(BUILD/'socket-overrides.json') if (BUILD/'socket-overrides.json').exists() else {}
  ims={k:Image.open(R/a['file']).convert('RGBA') for k,a in old['atlases'].items()}
  p=copy.deepcopy(old);p.update(schemaVersion='1.1',packId='swordsman-bodywithoutfit-registration-v1',status='REQUIRES_OWNER_VISUAL_REVIEW')
  p['source'].update(method='Owner-authorized pixel-preserving head extraction and dressed-body salvage; measured socket/pivot registration',baselineCommit='db2959b97a77b3f9b54c22d5e732fe2b2345a529')
@@ -55,7 +56,8 @@ def build():
   for j,d in enumerate(D):
    hr=[];br=[];rr=[];gr=[]
    for i,f in enumerate(action['directions'][d]['frames']):
-    ref=old['parts']['body-swordsman']['timelines'][a][d]['frames'][i]['layers']['Body'];x,y,w,h=ref['rect'];im=ims[ref['atlasId']].crop((x,y,x+w,y+h));arr=np.asarray(im).copy();hb=head_box(im)
+    repair=authored.get('bodyPoseRepairs',{}).get(a+'/'+d+'/'+str(i),{});sourceFrame=repair.get('sourceFrame',i)
+    ref=old['parts']['body-swordsman']['timelines'][a][d]['frames'][sourceFrame]['layers']['Body'];x,y,w,h=ref['rect'];im=ims[ref['atlasId']].crop((x,y,x+w,y+h));arr=np.asarray(im).copy();hb=head_box(im)
     # The historical broad threshold included warm ivory sleeves next to
     # leaning heads. A skin-only seed excludes that cloth before measuring.
     skin=(arr[:,:,0]>130)&(arr[:,:,1]>85)&(arr[:,:,2]>55)&(arr[:,:,0]>arr[:,:,1]*1.13)&(arr[:,:,1]>arr[:,:,2]*1.10)&(arr[:,:,2]>arr[:,:,0]*.50)&(arr[:,:,3]>200)
@@ -63,14 +65,16 @@ def build():
     islands=ndimage.binary_closing(skin&seed,iterations=1);labels,count=ndimage.label(islands);sizes=np.bincount(labels.ravel());sizes[0]=0
     assert count and sizes.max()>30,(a,d,i,'missing skin-only skull')
     sy,sx=np.where(labels==sizes.argmax());hb=[int(sx.min()),int(sy.min()),int(sx.max()+1),int(sy.max()+1)]
-    l=max(0,hb[0]-3);top=max(0,hb[1]-2);right=min(320,hb[2]+3);bottom=hb[3]+1
+    l=max(0,hb[0]-8);top=max(0,hb[1]-2);right=min(320,hb[2]+8);bottom=hb[3]+1
     region=np.zeros((320,320),bool);region[top:bottom,l:right]=True
-    island=ndimage.binary_closing(skin&region,iterations=1)
+    pureSkin=skin&(arr[:,:,0]>arr[:,:,1]*1.18)
+    island=ndimage.binary_closing(pureSkin&region,iterations=1)
     labels,count=ndimage.label(island);sizes=np.bincount(labels.ravel());sizes[0]=0
     assert count and sizes.max()>30,(a,d,i,'missing head component')
     # A rectangular crop alone also catches the raised sword arm. Preserve
     # only the connected skull/face silhouette and its antialiased boundary.
-    mask=ndimage.binary_dilation(ndimage.binary_fill_holes(labels==sizes.argmax()),iterations=2)&region
+    core=ndimage.binary_fill_holes(labels==sizes.argmax())
+    mask=ndimage.binary_dilation(core,iterations=2)&region
     # Tight skull geometry excludes a touching ivory cuff in side attacks;
     # colour alone cannot distinguish warm sleeve shading from skin.
     upperSeed=skin&region;upperSeed[hb[1]+18:]=False
@@ -78,16 +82,46 @@ def build():
     skullRadius=min(24,max(20,(int(ux.max())-int(ux.min())+1)/2+3))
     yy,xx=np.mgrid[:320,:320];height=min(48,max(36,hb[3]-hb[1]))
     skullEnvelope=((xx-skullCentre)/skullRadius)**2+((yy-(hb[1]+height*.49))/(height/2+3))**2<=1
-    mask &= skullEnvelope
+    mask &= skullEnvelope | (yy>hb[1]+height*.60)
+    # Ears have warmer, darker shading than the bald skull and can be
+    # disconnected by their painted outlines. They are still Head identity.
+    # Directional anatomical windows exclude the raised ivory sword cuff.
+    earEnvelope=np.zeros((320,320),bool)
+    earSides=authored['headEarSides'][d]
+    for side in earSides:
+     ex=skullCentre+(-1 if side=='left' else 1)*(skullRadius-2)
+     earEnvelope |= ((xx-ex)/8)**2+((yy-(hb[1]+height*.68))/8)**2<=1
+    earSkin=(arr[:,:,0]>160)&(arr[:,:,1]>80)&(arr[:,:,2]>45)&(arr[:,:,0]>arr[:,:,1]*1.20)&(arr[:,:,1]>arr[:,:,2]*1.08)&(arr[:,:,2]>arr[:,:,0]*.40)&(arr[:,:,3]>60)
+    ears=ndimage.binary_dilation(earSkin&earEnvelope,iterations=2)&region
+    mask |= ears
+    # A reusable Head cannot carry the adjacent costume's gold collar or
+    # ivory cuff. Keep filled facial interiors (eyes/highlights) intact.
+    metal=(arr[:,:,0]>70)&(arr[:,:,2]<arr[:,:,0]*.44)&(arr[:,:,1]>arr[:,:,2]*1.7)
+    ivory=(arr[:,:,0]>100)&(arr[:,:,1]>arr[:,:,0]*.86)&(arr[:,:,2]>arr[:,:,0]*.55)
+    mask &= ~metal
+    mask[ivory&~core]=False
+    # A raised glove can occlude an ear. It belongs to the dressed body,
+    # never to the independent identity, even when its shading touches skin.
+    glovePoint=overrides.get(a+'/'+d,{}).get(str(i),{}).get('mainHand')
+    if glovePoint:
+     gx,gy=glovePoint;mask[(xx-gx)**2+(yy-gy)**2<=5.5**2]=False
+    # Colour filtering can leave isolated pieces of neighbouring armour.
+    # The painted skull/face/ears form one connected identity silhouette.
+    fragments,count=ndimage.label(mask&(arr[:,:,3]>0),structure=np.ones((3,3)))
+    fragmentSizes=np.bincount(fragments.ravel());fragmentSizes[0]=0
+    mask &= fragments==fragmentSizes.argmax()
     headarr=arr.copy();headarr[~mask]=0;bodyarr=arr.copy();bodyarr[mask]=0
     head=Image.fromarray(headarr);body=Image.fromarray(bodyarr);restored=Image.alpha_composite(body,head)
     assert np.array_equal(np.asarray(restored),arr),(a,d,i,'identity changed')
     neck=[(hb[0]+hb[2])/2,bottom-1];crop=head.crop((l,top,right,bottom));cell=Image.new('RGBA',(96,96));cx=(96-crop.width)//2;cy=(96-crop.height)//2;cell.alpha_composite(crop,(cx,cy))
     pivot=[cx+neck[0]-l,cy+neck[1]-top]
     # Skull measurements use only the upper half, excluding collar/neck/ears.
-    upper=skin[max(0,hb[1]):hb[1]+max(8,(hb[3]-hb[1])//2),l:right];uy,ux=np.where(upper)
-    skullx=float(np.median(ux)+l);skullw=int(ux.max()-ux.min()+1);skully=hb[1]+15
-    topys,topxs=np.where(skin[hb[1]:hb[1]+10,l:right]);lowys,lowxs=np.where(skin[hb[1]+18:min(hb[3],hb[1]+30),l:right])
+    # Keep the socket measurements within the skull's original measured
+    # bounds; wider extraction includes ears and must not change head scale.
+    ml=max(0,hb[0]-3);mr=min(320,hb[2]+3)
+    upper=skin[max(0,hb[1]):hb[1]+max(8,(hb[3]-hb[1])//2),ml:mr];uy,ux=np.where(upper)
+    skullx=float(np.median(ux)+ml);skullw=int(ux.max()-ux.min()+1);skully=hb[1]+15
+    topys,topxs=np.where(skin[hb[1]:hb[1]+10,ml:mr]);lowys,lowxs=np.where(skin[hb[1]+18:min(hb[3],hb[1]+30),ml:mr])
     tilt=math.atan2(float(np.median(topxs)-np.median(lowxs)),20) if len(topxs) and len(lowxs) else 0
     tilt=max(-.32,min(.32,tilt));hairscale=(skullw+6)/48
     sockets={'hair':tr(skullx-neck[0],skully-neck[1],tilt,hairscale),'headgear':tr(skullx-neck[0],skully+8-neck[1],tilt,hairscale)}
@@ -123,7 +157,7 @@ def build():
     # in this colour-only proof, including neighbouring collar pixels.
     warm &= ~region
     royal[:,:,0][warm]=(royal[:,:,0][warm]*.43).astype('uint8');royal[:,:,1][warm]=(royal[:,:,1][warm]*.88).astype('uint8');royal[:,:,2][warm]=np.minimum(255,royal[:,:,2][warm]*1.8+55).astype('uint8');rr.append(Image.fromarray(royal))
-    receipt.append({'action':a,'direction':d,'frame':i,'sourceAtlas':ref['atlasId'],'sourceRect':ref['rect'],'sourceRGBA':hashlib.sha256(arr.tobytes()).hexdigest(),'headRect':[l,top,right,bottom],'headPivot':pivot,'headMask':'connected skull/face component; holes filled; two-pixel boundary; bounded crop','losslessReassembly':True})
+    receipt.append({'action':a,'direction':d,'frame':i,'sourceFrame':sourceFrame,'poseRepair':repair or None,'sourceAtlas':ref['atlasId'],'sourceRect':ref['rect'],'sourceRGBA':hashlib.sha256(arr.tobytes()).hexdigest(),'headRect':[l,top,right,bottom],'headPivot':pivot,'headMask':'connected skull/face and direction-local ear skin; holes filled; two-pixel boundary; bounded crop','losslessReassembly':True})
    heads.append(hr);bodies.append(br);royals.append(rr)
   hrefs=saveatlas('head-'+a.lower(),heads,(96,96));brefs=saveatlas('body-'+a.lower(),bodies,(320,320));rrefs=saveatlas('royal-'+a.lower(),royals,(320,320))
   p['parts']['swordsman-head']['timelines'][a]={};p['parts']['swordsman-body-default']['timelines'][a]={};p['parts']['swordsman-body-royal-proof']['timelines'][a]={}
@@ -157,7 +191,6 @@ def build():
  p['slots']['Garment']['layers']=['GarmentBack','GarmentFront']
  # Minimal directional phase perspectives reuse the same authored blade art.
  # Grip annotation is measured within the handle rather than .86 bbox height.
- overrides=read(BUILD/'socket-overrides.json') if (BUILD/'socket-overrides.json').exists() else {}
  for id in ['weapon-a','weapon-b','offhand','headgear','garment']:
   part=p['parts'][id];part['mode']='BODY_SYNC';part['timelines']={};part['defaultRegistration']=tr()
   if id=='headgear':part.update(parentLayer='HeadBase',anchor='headgear')
@@ -170,7 +203,7 @@ def build():
      if id.startswith('weapon'):
       base=old['parts'][id]['timelines']['*'][d]['views'][0]['layers']['MainHand'];r=base['rect'];tile=ims[id].crop((r[0],r[1],r[0]+48,r[1]+128));bb=tile.getbbox()
       # Each original raster is annotated at its visible grip segment.
-      pivot=[(bb[0]+bb[2])/2,bb[3]-16];layer='MainHand';point=ov.get('mainHand',s['mainHand']);rotation=f['anchors']['mainHand']['rotation']
+      pivot=authored['weaponGripPivots'][id][d];layer='MainHand';point=ov.get('mainHand',s['mainHand']);rotation=f['anchors']['mainHand']['rotation']
       if 'weaponRotation' in ov:rotation=ov['weaponRotation']
       target=tr(*point,rotation);local=relative(f['anchors']['mainHand'],target);sourceSize=[48,128]
      elif id=='offhand':
@@ -209,6 +242,9 @@ def build():
    for i,f in enumerate(action['directions'][d]['frames']):
     s=samples[a,d,i];ov=overrides.get(a+'/'+d,{}).get(str(i),{})
     grip=ov.get('mainHand',s['mainHand']);angle=ov.get('weaponRotation',f['anchors']['mainHand']['rotation'])
+    polygon=[[round(grip[0]+4.5*math.cos(k*math.pi/4),3),round(grip[1]+4.5*math.sin(k*math.pi/4),3)] for k in range(8)]
+    for id in ['swordsman-body-default','swordsman-body-royal-proof']:
+     p['parts'][id]['timelines'][a][d]['frames'][i]['layers']['Body']['foregroundPasses']=[{'afterLayer':layer,'requiresLayer':'MainHand','semantic':'grip fingers/palm','polygon':polygon} for layer in ['MainHand','HairFront','HeadgearTop']]
     targets={'head':tr(*s['neck']),'mainHand':tr(*grip,angle),'offHand':tr(*ov.get('offHand',s['offHand'])),'back':tr(*ov.get('back',s['back']),s['backRotation']),'fxOrigin':tr(*grip,angle)}
     entries.append({n:relative(f['anchors'][n],target) for n,target in targets.items()})
     for id,layer in [('swordsman-head','HeadBase'),('weapon-a','MainHand'),('weapon-b','MainHand'),('offhand','OffHand')]:p['parts'][id]['timelines'][a][d]['frames'][i]['layers'][layer]['localTransform']=tr()

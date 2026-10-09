@@ -96,6 +96,10 @@ function validateAppearancePack(pack,template){
      }
     }
     if(f.sockets)for(const socket of Object.values(f.sockets))check(validTransform(socket),'Invalid local socket '+label);
+    if(f.foregroundPasses){
+     check(part.space==='canvas'&&Array.isArray(f.foregroundPasses),'Foreground masks require a canvas raster '+label);
+     for(const pass of Array.isArray(f.foregroundPasses)?f.foregroundPasses:[])check(LAYERS.includes(pass?.afterLayer)&&pass.afterLayer!==layer&&(!pass.requiresLayer||LAYERS.includes(pass.requiresLayer))&&Array.isArray(pass.polygon)&&pass.polygon.length>=3&&pass.polygon.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=0&&p[1]>=0&&p[0]<=r?.[2]&&p[1]<=r?.[3]),'Invalid authored foreground mask '+label);
+    }
     for(const field of ['durationMs','timing','anchors','mirroring'])check(!own(f,field),'Raster cannot override motion '+label+'/'+field);
    }
   };
@@ -210,6 +214,15 @@ function drawAssembly(ctx,sampled,images,{x=0,y=0,scale=1,visibleLayers}={}){
    else{
     const t=ref.transform;
     ctx.save();try{ctx.translate(x+(t.x-root.x)*scale,y+(t.y-root.y)*scale);ctx.rotate(t.rotation);ctx.scale(t.scale*scale,t.scale*scale);ctx.drawImage(image,...ref.rect,-ref.pivot[0],-ref.pivot[1],ref.rect[2],ref.rect[3])}finally{ctx.restore()}
+   }
+   // A held object can cross the torso while the body's fingers cover its
+   // handle. The selected canvas owns these authored masks, so glove pixels
+   // follow costume changes without changing the weapon or motion sample.
+   for(const source of ready)for(const pass of source.ref.foregroundPasses||[])if(pass.afterLayer===ref.layer&&(!pass.requiresLayer||ready.some(r=>r.ref.layer===pass.requiresLayer))&&sampled.drawOrder.indexOf(source.ref.layer)<sampled.drawOrder.indexOf(ref.layer)){
+    ctx.save();try{
+     ctx.beginPath();pass.polygon.forEach(([px,py],i)=>{const dx=x+(px-root.x)*scale,dy=y+(py-root.y)*scale;if(i)ctx.lineTo(dx,dy);else ctx.moveTo(dx,dy)});ctx.closePath();ctx.clip();
+     ctx.drawImage(source.image,...source.ref.rect,x-root.x*scale,y-root.y*scale,w*scale,h*scale);
+    }finally{ctx.restore()}
    }
   }
  }finally{ctx.restore()}

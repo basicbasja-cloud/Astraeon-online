@@ -148,5 +148,111 @@
         -3
       ]
     }
+  },
+  "headEarSides": {
+    "S": [
+      "left",
+      "right"
+    ],
+    "SW": [
+      "left",
+      "right"
+    ],
+    "W": [
+      "right"
+    ],
+    "NW": [
+      "right"
+    ],
+    "N": [
+      "left",
+      "right"
+    ],
+    "NE": [
+      "right"
+    ],
+    "E": [
+      "left"
+    ],
+    "SE": [
+      "left",
+      "right"
+    ]
+  },
+  "bodyPoseRepairs": {
+    "BasicAttack/W/10": {
+      "sourceFrame": 11,
+      "reason": "Isolated follow-through source sends the hand to the opposite side then back one frame later; salvage the adjacent coherent painted pose as a short follow-through hold. Original frame remains immutable."
+    }
+  },
+  "weaponGripPivots": {
+    "weapon-a": {
+      "S": [
+        24,
+        98
+      ],
+      "SW": [
+        24,
+        98
+      ],
+      "W": [
+        24,
+        98
+      ],
+      "NW": [
+        24,
+        98
+      ],
+      "N": [
+        24,
+        98
+      ],
+      "NE": [
+        24,
+        98
+      ],
+      "E": [
+        24,
+        98
+      ],
+      "SE": [
+        24,
+        98
+      ]
+    },
+    "weapon-b": {
+      "S": [
+        24,
+        98
+      ],
+      "SW": [
+        24,
+        98
+      ],
+      "W": [
+        24,
+        98
+      ],
+      "NW": [
+        24,
+        98
+      ],
+      "N": [
+        24,
+        98
+      ],
+      "NE": [
+        24,
+        98
+      ],
+      "E": [
+        24,
+        98
+      ],
+      "SE": [
+        24,
+        98
+      ]
+    }
   }
 }
