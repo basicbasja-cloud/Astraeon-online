@@ -23,7 +23,7 @@ function create(owner,{raw,definitions=D.definitions,catalog=window.AstraeonItem
  }
  function plan(id,c){
   if(!context(c))return fail('FORBIDDEN_QUEST_CONTEXT');const result=inspect(id);if(!result.ok)return result;if(result.status!=='READY_TO_TURN_IN')return fail(result.status==='COMPLETED'?'QUEST_COMPLETED':'QUEST_NOT_READY');
-  const d=registry.getDefinition(id);if(!isTalkEvidence(c.interaction)||c.interaction.targetId!==d.turnInTargetId)return fail('WRONG_TURN_IN_TARGET');
+  const d=registry.getDefinition(id);let permitted=false;try{permitted=isTalkEvidence(c.interaction)===true&&c.interaction.targetId===d.turnInTargetId}catch{}if(!permitted)return fail('WRONG_TURN_IN_TARGET');
   const amounts={};for(const o of d.objectives)if(o.type==='COLLECT'&&o.consumeOnTurnIn)amounts[o.itemId]=(amounts[o.itemId]||0)+o.required;
   const stackDebits=[],instanceDebits=[];for(const [itemId,quantity] of Object.entries(amounts)){
    const definition=catalog.getDefinition(itemId);if(definition.stackable)stackDebits.push({itemId,quantity});else{const candidates=Object.values(owner.getInventory().instances).filter(i=>i.definitionId===itemId&&!Object.values(owner.getEquipment()).includes(i.instanceId));if(candidates.length<quantity)return fail('ITEM_EQUIPPED');instanceDebits.push(...candidates.slice(0,quantity).map(i=>i.instanceId))}

@@ -8,7 +8,8 @@ Status: IN PROGRESS. Acceptance gate has not been closed.
 - Parent: `backbone/equipment-slot-closure-0.0.1`
 - Exact fetched starting parent: `a946ba4e51e20b45aaf83aa85fb08e49755f6fc6`
 - Parent was clean and fully updated. No reset, merge, rebase or PR.
-- Resolve the current working checkpoint with `git rev-parse HEAD`.
+- Core integration checkpoint: `2ad79d999b3fc7fda2d553bc54cff0ef677c8d07`.
+- Resolve its later working successors with `git rev-parse HEAD`.
 - Runtime/test acceptance checkpoint and final documentation successor: pending.
 
 ## Implemented checkpoint
@@ -17,15 +18,18 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 
 ## Verification already run
 
-- Focused Quest Node: 154 passing, zero failing.
+- Focused Quest Node: 161 passing, zero failing (including weighted net capacity, maxStack, unsafe stored ID and verifier failures).
 - Full Node: 1309 inherited + 154 Quest = 1463 passing, zero failing.
 - Evidence: `D:/Astraeon/backbone-verification/quests/node-initial/report.json`.
 - No inherited test assertion has been edited.
+- World schema validator: PASS.
+- First Swordsman browser attempt passed 14 groups through actual Talk/rewards/chain, current Collect, real Combat death, duplicate death, partial Kill reload and travel. Its player-death walking fixture timed out. No runtime/HTTP errors were recorded. Evidence retained in `D:/Astraeon/backbone-verification/quests/browser-first`.
+- Second attempt uses the nearest actual enemy's existing detection/attack at field arrival, without walking into a distant obstacle; no gameplay/AI/navigation code was changed. It is running, acceptance remains pending.
 
 ## Remaining / exact next action
 
-1. Add isolated Quest harness and focused browser acceptance using ordinary movement, actual NPC interactions and real Combat deaths. No enemy HP edits, teleport, fake Kill or direct Quest progress mutation.
-2. Exercise both classes, partial save/reload, Talk/Kill/Collect/mixed/chain, atomic capacity failure/retry, death/travel persistence and duplicate/stale rejection.
+1. Finish the added isolated Quest harness and focused browser suite. It uses ordinary movement, actual NPC interactions and real Combat deaths; no enemy HP edits, teleport, fake Kill or direct Quest progress mutation.
+2. Run/complete both classes, partial save/reload, Talk/Kill/Collect/mixed/chain, atomic capacity failure/retry, death/travel persistence and duplicate/stale rejection. Preserve failed-attempt evidence.
 3. Run all inherited browser suites, cache/offline, world validation, final full Node, source audit and diff checks; retain failed-attempt evidence.
 4. Commit a clean runtime/test checkpoint; replace this working report with full verified report and contract documentation, then commit documentation successor.
 5. Push only this branch normally and verify exact remote HEAD. Do not start Shop/Storage.
