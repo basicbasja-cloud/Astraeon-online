@@ -43,7 +43,7 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 ## Remaining / exact next action
 
 1. Complete all 11 inherited browser suites and cache/offline; do not run concurrent headless browser probes. Full new two-class Quest acceptance and harness are already green. Preserve failed-attempt evidence.
-2. Inspect every inherited report/error field, then rerun final source audit/diff checks. Current Node 1471/0 and world validation PASS are recorded above.
+2. Inspect every inherited report/error field, then rerun final source audit/diff checks. Current Node 1474/0 and world validation PASS are recorded below.
 3. Retain all original behavioral assertions; if a regression fails, inspect authoritative evidence and distinguish fixture timing from actual gameplay defects before changing anything.
 4. Commit a clean runtime/test checkpoint; replace this working report with full verified report and contract documentation, then commit documentation successor.
 5. Push only this branch normally and verify exact remote HEAD. Do not start Shop/Storage.
@@ -51,3 +51,31 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 ## Current limitations / trust boundary
 
 Unordered, non-repeatable engineering fixtures only. No story/UI/art/balance approval. Collect uses current ordinary canonical ownership; equipped Collect instances cannot be consumed while equipped. Same-runtime opaque capabilities protect local integrity, not server security. Contained synchronous publication follows the existing trusted Item/Character publisher boundary, with all deterministic failures prevalidated; it is not a general rollback engine for malicious callbacks. Legacy automatic Contract counters remain unchanged and separate. Kill evidence is independent of whether Loot capacity accepts the death reward. Runtime event history is bounded and not serialized.
+
+## Latest verified resume checkpoint — authoritative current status
+
+- Branch: `backbone/quest-foundation-0.0.1`; verified runtime source HEAD:
+  `da4f46f7ff297a2f4970a47e41af259308a1b374`. Later report-only commits preserve
+  these source bytes; resolve current checkpoint with `git rev-parse HEAD`.
+- Full Node confirmed: **1309 retained + 165 Quest = 1474 pass / 0 fail**,
+  22 files, `quests/node-final-confirmed/report.json`.
+- Final-source two-class Quest browser: **57 pass / 0 fail**, zero errors,
+  `quests/browser-final-second/report.json`. Both real enemy-caused player deaths
+  were latched with Incoming Combat killed=true and actual town respawn. Exactly
+  two expected death observations, no encounter retry.
+- Final-source inherited suites completed unchanged: Equipment 59 + Capacity 63
+  + Monster Box 33 + Lifecycle 30 = **185 groups**, zero runtime/HTTP errors.
+  Evidence: `quests/final-regressions-summary.json` and per-suite reports.
+- World validator configured rerun: PASS all four schemas,
+  `quests/world-validation-final.log`. An initial retry without the local
+  jsonschema dependency path failed import; no World/source adaptation was made.
+- Audit: all 45 inherited test files and 34 protected core files unchanged;
+  no World/Visual/Character changes. The full acceptance gate remains pending.
+- Current serial queue: Monster Loot, Action Item, Inventory, Action Loadout,
+  Combat, Skill Tree, Progression, then unchanged cache/offline. Do not run
+  concurrent headless probes. If interrupted, inspect these final evidence folders
+  and rerun only unfinished/failed suites unchanged before final closure.
+- After all 312 retained groups and cache pass: record clean runtime/test
+  checkpoint, publish final contract/report and current architecture docs, commit
+  documentation successor, push only this branch normally and verify remote tip.
+  Do not start Shop/Storage.
