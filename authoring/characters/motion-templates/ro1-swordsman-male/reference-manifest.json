@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0",
   "referenceId": "ro1-swordsman-male",
-  "researchDate": "2026-10-08",
+  "researchDate": "2026-10-09",
   "researchStatus": "COMPLETE_EVIDENCE_INVENTORY",
-  "productionGate0": "BLOCKED_REFERENCE_POSE_DATA",
+  "productionGate0": "PASS_RENDERED_REFERENCE",
   "rawAssetsInspected": [],
   "sources": [
     {
@@ -381,5 +381,30 @@
       "BasicAttack"
     ],
     "rawReferencePolicy": "Private/local inspection only; no raw RO files, source imagery or copied pixels in runtime."
+  },
+  "supersededGate": "Previous raw-ACT-only production gate superseded by owner instruction; rendered motion evidence is accepted with confidence labels.",
+  "renderedMotionEvidence": {
+    "classification": "RENDERED_REFERENCE",
+    "manifest": "rendered-reference.json",
+    "rawACTInspected": false,
+    "actions": {
+      "Idle": "0..7: one unique straight-head stance/direction",
+      "Walk": "8..15: 8 rendered phases/direction",
+      "BasicAttack": "80..87: 9 rendered phases/direction, selected one-handed sword family",
+      "Ready": "32..39: recovery ready reference"
+    },
+    "selectedAttack": {
+      "family": 80,
+      "weaponView": 2,
+      "reason": "Swordman SWORD maps to selector1, which resolves ATTACK2/group10; rendered overhead sweep matches the one-handed blade. Group40 is unarmed,88 is thrust,96 is skill in inspected client."
+    },
+    "timing": "APNG timing is renderer presentation only; exact ACT delays UNKNOWN",
+    "confidence": {
+      "renderedPoseSequence": "HIGH",
+      "paintedRetarget": "MEDIUM",
+      "exactACTDelays": "UNKNOWN"
+    },
+    "privateBoard": "authoring/characters/private-ro-reference/RO_REFERENCE/",
+    "copyrightPolicy": "Reference images ignored; no source RO pixels in production or tracked review outputs"
   }
 }

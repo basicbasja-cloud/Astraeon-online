@@ -1,3 +1,19 @@
+# Rendered motion acquisition — 2026-10-09
+
+The owner superseded the raw-ACT-only stop condition. The active proof uses rendered RO player motion; exact ACT delays and original layer/socket coordinates are not claimed.
+
+Public ragassets output at https://assets.latam-tools.com.br/image was decoded as APNG for Stand, Walk, selected sword Attack and Ready in all eight direction indices. `tools/acquire_ro1_render_reference.py` reproduces the private research boards. `rendered-reference.json` commits URLs, hashes, frame counts and observed renderer delays without copyrighted frame pixels. The ignored board is `authoring/characters/private-ro-reference/RO_REFERENCE/`.
+
+The pinned roBrowser WeaponAction mapping selects SWORD (weapon view2) → selector1 → ATTACK2/group10 → action80+direction for Swordman. Group40 renders unarmed punching,88 renders a thrust,96 is the inspected client skill group; alternatives were inspected before selection. Group80 gives raised preparation, committed overhead/diagonal sweep and recovery intent. Some adjacent attack directions reuse rendered artwork; ASTRAEON directions are independently painted, including a repaired NW strip, with no production mirroring. Anatomical handedness is retargeted to the approved ASTRAEON right hand.
+
+Stand with straight head has one unique pose; repeated renderer slices are not breathing keys. Idle uses that standing landmark with ASTRAEON raster breathing refinements. Walk preserves8 source phases and adds8 transitions within600ms. Attack preserves9 rendered attack landmarks plus a Ready recovery boundary, adds6 transitions and retimes the presentation to450ms. Attack contact marker is170ms. This is a downstream presentation choice, never Combat authority or an assertion of original ACT timing.
+
+Confidence: rendered phase evidence HIGH, painted anatomical retarget/attachment calibration MEDIUM, exact ACT delays UNKNOWN. Attachment transforms are measured/retargeted on painted ASTRAEON poses, not ACT-extracted coordinates. Source motion and painted approximation require owner review.
+
+---
+
+Historical format-only research below records what was unknown before rendered acquisition; its raw-ACT-only stop condition is superseded.
+
 # RO1 motion evidence — 2026-10-08
 
 See [reference-manifest.json](reference-manifest.json) for source URLs, pinned

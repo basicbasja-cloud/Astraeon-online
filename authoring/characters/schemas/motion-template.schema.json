@@ -882,6 +882,15 @@
         },
         "bodyPose": {
           "type": "object"
+        },
+        "evidenceClass": {
+          "enum": [
+            "ACT_EXTRACTED",
+            "RENDERED_REFERENCE",
+            "VIDEO_DERIVED",
+            "VISUAL_DERIVED",
+            "ASTRAEON_INBETWEEN"
+          ]
         }
       },
       "allOf": [

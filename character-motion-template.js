@@ -5,6 +5,7 @@ const DIRECTIONS=Object.freeze(['S','SW','W','NW','N','NE','E','SE']);
 const ANCHORS=Object.freeze(['root','head','mainHand','offHand','back','waist','footL','footR']);
 const LAYERS=Object.freeze(['Shadow','GarmentBack','Body','HeadBase','HairBack','HairFront','HeadgearLower','HeadgearMiddle','HeadgearTop','MainHand','WeaponSlash','OffHand','GarmentFront','BackAccessory','CosmeticFX']);
 const RO_PROOF_ACTIONS=Object.freeze(['Idle','Walk','BasicAttack']);
+const EVIDENCE_CLASSES=Object.freeze(['ACT_EXTRACTED','RENDERED_REFERENCE','VIDEO_DERIVED','VISUAL_DERIVED','ASTRAEON_INBETWEEN']);
 const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
 const object=o=>o!==null&&typeof o==='object'&&!Array.isArray(o);
 const positive=n=>Number.isFinite(n)&&n>0;
@@ -76,13 +77,26 @@ function validateMotionTemplate(t){
      check(['bodyOrientation','limbPhase','footContact','attackPhase','silhouette'].every(k=>typeof intent[k]==='string'&&intent[k].length>0),'Missing key pose intent '+f.id);
      const s=f.source||{};
      if(synthetic)check(s.kind==='SYNTHETIC_ENGINE_FIXTURE','Fixture cannot claim RO keys '+f.id);
-     else check(s.kind==='RO1_ACT'&&/^[a-f0-9]{64}$/.test(s.actSHA256||'')&&Number.isInteger(s.actionId)&&s.actionId>=0&&Number.isInteger(s.frameIndex)&&s.frameIndex>=0&&s.direction===direction,'Missing source-derived key identity '+f.id);
+     else {
+      const indexed=Number.isInteger(s.frameIndex)&&s.frameIndex>=0&&s.direction===direction;
+      const act=['RO1_ACT','ACT_EXTRACTED'].includes(s.kind)&&/^[a-f0-9]{64}$/.test(s.actSHA256||'')&&Number.isInteger(s.actionId)&&s.actionId>=0;
+      const visual=['RENDERED_REFERENCE','VIDEO_DERIVED','VISUAL_DERIVED'].includes(s.kind)&&/^[a-f0-9]{64}$/.test(s.sourceImageSHA256||'')&&typeof s.url==='string'&&/^https:\/\//.test(s.url)&&['HIGH','MEDIUM','LOW'].includes(s.confidence)&&s.rawACTInspected===false;
+      check(indexed&&(act||visual),'Missing source-derived key identity '+f.id);
+      if(visual){
+       check(f.evidenceClass===s.kind,'Reference evidence classification differs '+f.id);
+       check(t.provenance.exactACTTiming!==true,'Rendered/video/visual evidence cannot claim exact ACT timing');
+       if(s.kind==='RENDERED_REFERENCE')check(Number.isInteger(s.actionId)&&s.actionId>=0,'Missing rendered action index '+f.id);
+       if(s.kind==='VIDEO_DERIVED')check(Number.isFinite(s.videoTimeMs)&&s.videoTimeMs>=0,'Missing video timestamp '+f.id);
+       if(s.kind==='VISUAL_DERIVED')check(Array.isArray(s.sheetBounds)&&s.sheetBounds.length===4&&s.sheetBounds.every(Number.isFinite),'Missing sheet position '+f.id);
+      }
+     }
     }else{
      check(!key,'Reference catalog contains an in-between '+f.id);
      check(Array.isArray(f.between)&&f.between.length===2&&f.between.every(named)&&f.between[0]!==f.between[1],'Invalid in-between neighbors '+f.id);
      check(Number.isFinite(f.fraction)&&f.fraction>0&&f.fraction<1,'Invalid in-between fraction '+f.id);
      check(f.referencePhase===null&&!own(f,'source')&&!own(f,'poseIntent'),'In-between cannot claim a source pose '+f.id);
      check(Array.isArray(f.events)&&f.events.length===0,'In-between cannot introduce events '+f.id);
+     if(!synthetic)check(f.evidenceClass==='ASTRAEON_INBETWEEN','In-between evidence must be ASTRAEON_INBETWEEN '+f.id);
     }
    };
    keys.forEach(f=>validateFrame(f,true));frames.forEach(f=>validateFrame(f));
@@ -95,7 +109,7 @@ function validateMotionTemplate(t){
     if(!object(key))continue;
     const i=frames.findIndex(f=>f?.id===key.id),out=frames[i];
     if(out){
-     for(const field of ['role','referencePhase','root','anchors','poseIntent','source','events','drawProfile','drawOrder','bodyPose'])check(same(out[field],key[field]),'Reference key altered '+key.id+'/'+field);
+     for(const field of ['role','referencePhase','root','anchors','poseIntent','source','events','drawProfile','drawOrder','bodyPose','evidenceClass'])check(same(out[field],key[field]),'Reference key altered '+key.id+'/'+field);
      check(sumDuration(frames.slice(0,i))===keyTime,'Reference key timestamp altered '+key.id);
     }
     keyTime+=key.durationMs;
@@ -138,6 +152,7 @@ function smoothSequence(sequence,insertions={},loop=false){
    // Root must remain exact rather than undergo floating-point interpolation.
    anchors.root=copy(left.root);
    const f={id:s.id,durationMs:times[j+2]-times[j+1],role:'astraeonInbetween',referencePhase:null,between:[left.id,right.id],fraction:s.at,root:copy(left.root),anchors,events:[]};
+   if(left.evidenceClass)f.evidenceClass='ASTRAEON_INBETWEEN';
    if(own(left,'drawProfile'))f.drawProfile=left.drawProfile;
    if(own(left,'drawOrder'))f.drawOrder=copy(left.drawOrder);
    frames.push(f);
@@ -160,6 +175,6 @@ function compileMotionTemplate(template){
  }
  return Object.freeze({template:t,sample,duration:(action,direction)=>sequence(action,direction).totalDurationMs});
 }
-const api=Object.freeze({DIRECTIONS,ANCHORS,LAYERS,RO_PROOF_ACTIONS,validTransform,validOrder,validateMotionTemplate,compileMotionTemplate,smoothSequence,interpolateTransform,freeze,copy});
+const api=Object.freeze({DIRECTIONS,ANCHORS,LAYERS,RO_PROOF_ACTIONS,EVIDENCE_CLASSES,validTransform,validOrder,validateMotionTemplate,compileMotionTemplate,smoothSequence,interpolateTransform,freeze,copy});
 scope.AstraeonMotionTemplate=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

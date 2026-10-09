@@ -1,0 +1,1547 @@
+{
+  "referenceId": "RO1-SWORDMAN-MALE-RENDERED-2026-10-09",
+  "classification": "RENDERED_REFERENCE",
+  "rawACTInspected": false,
+  "renderSource": "https://assets.latam-tools.com.br",
+  "rendererDocumentation": "https://github.com/adsonpleal/ragassets",
+  "clientMappingRevision": "e4b5b53aa1f8b7e429bfa987ab321c96502ba1da",
+  "attackMappingSources": [
+    "https://github.com/vthibault/roBrowser/blob/e4b5b53aa1f8b7e429bfa987ab321c96502ba1da/src/DB/Jobs/WeaponAction.js",
+    "https://github.com/vthibault/roBrowser/blob/e4b5b53aa1f8b7e429bfa987ab321c96502ba1da/src/Renderer/Entity/EntityAction.js"
+  ],
+  "selectedAttack": {
+    "family": 80,
+    "weaponView": 2,
+    "reason": "Swordman SWORD maps to selector1, which resolves ATTACK2/group10; rendered overhead sweep matches the one-handed blade. Group40 is unarmed,88 is thrust,96 is skill in inspected client."
+  },
+  "timingPolicy": "APNG presentation delays are observed renderer output; exact ACT intervals and original-client gameplay durations remain unknown.",
+  "standingObservation": "Pinned straight-head output repeats one identical standing image; do not treat head orientation slices or duplicate frames as breathing keys.",
+  "phaseLabels": {
+    "idle": [
+      "stand"
+    ],
+    "walk": [
+      "passingRightSupport",
+      "advanceLeft",
+      "contactLeft",
+      "loadLeft",
+      "passingLeftSupport",
+      "advanceRight",
+      "contactRight",
+      "loadRight"
+    ],
+    "attack": [
+      "readyRaised",
+      "anticipation1",
+      "anticipation2",
+      "anticipation3",
+      "weightCommit",
+      "contactSweep",
+      "followThrough1",
+      "followThrough2",
+      "recoveryIntent"
+    ]
+  },
+  "records": [
+    {
+      "action": "idle",
+      "direction": "S",
+      "actionId": 0,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=0&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "052856d50944430f1087dcbe71795d81c52a3dcc3e24124dfecd43a66081bb7f",
+      "decodedFrameSHA256": [
+        "a4c6960be9022e2d349929f90cc43d483789d792627f55c7f3daa28aff6e26be",
+        "a4c6960be9022e2d349929f90cc43d483789d792627f55c7f3daa28aff6e26be",
+        "a4c6960be9022e2d349929f90cc43d483789d792627f55c7f3daa28aff6e26be"
+      ],
+      "frameCount": 3,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "SW",
+      "actionId": 1,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=1&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "71e33d23dcea157e8d1777cf496932100ba413101c2d1ddc966d7ad899c5c07b",
+      "decodedFrameSHA256": [
+        "d093acec9c7b165bdd8d1ac9b4c817848f53786adc03e06ade456334945062e1",
+        "d093acec9c7b165bdd8d1ac9b4c817848f53786adc03e06ade456334945062e1",
+        "d093acec9c7b165bdd8d1ac9b4c817848f53786adc03e06ade456334945062e1"
+      ],
+      "frameCount": 3,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "W",
+      "actionId": 2,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=2&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "032677fc8ab71f2dab07932b85afc0598f28ed38fb5b8fc58a373cfef29d63a5",
+      "decodedFrameSHA256": [
+        "8558a6fc7e97229b901d61a28aab6584e900edb21a81d40b27f5e79e31b95b32",
+        "8558a6fc7e97229b901d61a28aab6584e900edb21a81d40b27f5e79e31b95b32",
+        "8558a6fc7e97229b901d61a28aab6584e900edb21a81d40b27f5e79e31b95b32"
+      ],
+      "frameCount": 3,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "NW",
+      "actionId": 3,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=3&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "ef8f3cdeea3b97d49a41d1c3450f9bd90420326d05e91273b8171760a32b58cd",
+      "decodedFrameSHA256": [
+        "4607060456e7c7ac8a89dbcc82431d139525f90766ec9726af468f66745f5232",
+        "4607060456e7c7ac8a89dbcc82431d139525f90766ec9726af468f66745f5232",
+        "4607060456e7c7ac8a89dbcc82431d139525f90766ec9726af468f66745f5232"
+      ],
+      "frameCount": 3,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "N",
+      "actionId": 4,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=4&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "52374b4df2024cdd0e896ae81a75b840bd11b79bd09ab0692c2041519112e2a9",
+      "decodedFrameSHA256": [
+        "e65b7026881e92d36ee80bdddb5e6e0f078cf9f6c7f777a4f998b828005b69d8",
+        "e65b7026881e92d36ee80bdddb5e6e0f078cf9f6c7f777a4f998b828005b69d8",
+        "e65b7026881e92d36ee80bdddb5e6e0f078cf9f6c7f777a4f998b828005b69d8"
+      ],
+      "frameCount": 3,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "NE",
+      "actionId": 5,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=5&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "c865ab1a54c5efaece228bc4974cc9a2b1bd379ca27cf5e030b846e5fddd9e5c",
+      "decodedFrameSHA256": [
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09",
+        "c57e6f999c73e0722ca482dd9547059fe64a6930a0c8f146c43eaae451e1ac09"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "E",
+      "actionId": 6,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=6&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "a32df6f4808185f1cf96c8da31ffc7240e55c4d5f753146a915e70e4882b6a2b",
+      "decodedFrameSHA256": [
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194",
+        "2714b0354958eade413d97cec04bb03d1f2651ac1936135ce6e04cedfa1bc194"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "idle",
+      "direction": "SE",
+      "actionId": 7,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=7&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "1d69893765605ad00416b84b1d4292988c213ea6d4af215e6fc282146b27366b",
+      "decodedFrameSHA256": [
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a",
+        "f04be933433e1531e424ddf9e95a42db9b8282d521f90f1f6b32c6f928dd797a"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 1,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "S",
+      "actionId": 8,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=8&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "c4fabbef5fd49430cfc2a8e9303bd017f91d3db60a5dc89c7b36ef8c68cca44b",
+      "decodedFrameSHA256": [
+        "0fde1e94edb04473abab1479309f0afb4aff7f6bb74bb08487205acec457665d",
+        "d7624282b5561154e55d62b166349637637b136bf7a117257e33f2ce52befa86",
+        "54810643c884b945f2e236fdcf07b4d609449c69920a877dfe92457f0380d0b7",
+        "ad9028e9e7fb27337f676ff3ff355a198a4ecdbf3c8cda9ea7330b1a017ac30d",
+        "71ba717977f1c75845245aa00b9880b871ef826c2af050d24b36c658b6cdb13b",
+        "afaf69135d211ca6d8dc4ec62e5e2335c3a61af352bf978721964af2d34df225",
+        "db8b7a25d889ccbdd653af2594911dc3fd4b22964ca9be6aff7206efa7bcab9e",
+        "53ea4c4ca73bb4836c2f56613ad18106c24d5e9b846179bd68fd553624bed69a"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "SW",
+      "actionId": 9,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=9&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "69ed6db9562f5b3299be013e9a2258613fd13c37e0d25620ec965e43ae6c95ef",
+      "decodedFrameSHA256": [
+        "140689c73685aafde8adb92cbfdc176f1cb75c9d1a961973cdc26d96ac7a5ab8",
+        "e907617930141b5db2774dd6818b540b97ae5b93781d1c57d4b6c372c8aa7cac",
+        "38dc4e511cda206371a582ee0c9809c0aa0b9e98dfcc20d471cbb961970b9555",
+        "77009d76e7adfc93d7e0f59c5580ed101750555d15ac790fdd0829015687e342",
+        "4defc0b873dec281b7c2129b64795be44f27406ae99a505b17c31859144e0d60",
+        "06ce0db88e9450c931e7e28a0eacb2fdc1e0399d0d75e354e3b0aebb2fa2c31f",
+        "72522e4f5456f55001d6ffab06f3ffefce009f24f3841279d18a993d1a67290b",
+        "0c74f648e1bbae1caf8b17d67059ee59a22aa24f5104c7577be05bd21edf94f3"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "W",
+      "actionId": 10,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=10&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "f8219abd3551619ab1539119e78aa639fd35585ab6ebafded395c839ac87bc52",
+      "decodedFrameSHA256": [
+        "54bc9c94c2214be14b19336c8f9296e98a240820cb5f56f9a67b384833353b3a",
+        "37f13acca9d048b0a998ae153bce1f3753bc7c5d4ff0bc3fada9dfa38c5d0c57",
+        "6966d51254ab9b51362290a023d07f35141aa77890f140fa8980468ebd7d0f2f",
+        "b39310146ffdfe9f35679517b81b8fe4732635e9f4c1a487999820c7a992c10f",
+        "6522797b3af878d4d3db13f95ccd1d8eb7ce2ac37e9d445272358ffa6a71af4f",
+        "4317e74f1e0963918a53e4bb6a98e29482b5b79f7d2aec1bf7bd38b2704f320a",
+        "c945b998ffcc02ed6e07e97f969588bac9cca6bcd1f5f0d7d1e269a8c5d0ab71",
+        "be30befd9e3ade0cec4bfca2792e0852533f9baed7177ffb4778272779335b49"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "NW",
+      "actionId": 11,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=11&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "c7d3d06b2f0feb4d106c9da222519752e716f1c6441e1534e2fc7c09f39ace70",
+      "decodedFrameSHA256": [
+        "35c231f96523e921199d8379979201cd14dbcb2b7464f76bbac25cbf949dd944",
+        "cb0f67f0d34533fdae99cb226afc3f08de957084fc921b86e883c55558ddf02c",
+        "3872629861afaf1e4376af1e70902ce13be7bb9cd6ba1869e4bd88f9c556a706",
+        "f7db7b4b8920a684437644a491932a0f3ecee97cd83495184f9bd6f7dac1e6f7",
+        "8933c06031be34ffd88b28bc4b04c82694889dd550d2ec1b0346c4b38d75cfad",
+        "5ea2c357d69b87a3cae72620bafe06629edb7f8b51d2ec01b83de0e762fe9b97",
+        "181c6015367c806b3b0aec49e27da1b82e5ca33249ebe7f904dbfc200233466b",
+        "dbb2074d03a844dc26584cea299af5c35ddf4614d3a3d0e62aa360159512efde"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "N",
+      "actionId": 12,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=12&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "5099ae29106eb54528f4a01327d71f6d8a5f8d748c5166be327e6d816eecbbdc",
+      "decodedFrameSHA256": [
+        "545151c41ff13d4a69a9de8899aab6ae786214200dda3dced85ea5f9228d9ad6",
+        "d62a08d034bee1a4058e83b125b892b814db8c8c842b68db45e7bbe7e3eb1cd2",
+        "01511c68781de2f66be2038d231d35f3abf8748cc89d8e3cb2b37754da0eacf1",
+        "5244642ce8eb064b4b36b115122cd5acb17687c89eb20982a49497185c61b4b4",
+        "e29bc1b761c8e6041d883b446864b2aa0c6c48f364d1c8d810cc7e50a079cdd5",
+        "6c84e3e3ed1f0e4411e64d627b3ee9ccccbac348d9ffb6b2e8cef519bfd5075c",
+        "d9ad942e99b388271ea2195239f183cf2be5bef294795d4a8b372e976942bdf3",
+        "9cbd3769bdbbdc7f243a7ddf135e0f4953fb702ab7c85ff3443eb7f238d45a9e"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "NE",
+      "actionId": 13,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=13&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "db7713a775056730faeaf3251253ba281b4a98770401492f95fe817edee8cf81",
+      "decodedFrameSHA256": [
+        "5990c401d74bdd09a63058b10d97151636d9bd29f9bb7c108b5accbaca01ff62",
+        "23f33fd9ff2f478b256d92671667d433faafce9f1249c7986dccc19a380e0fa6",
+        "dfc85b6929c02f377f39d580a640ea00c5340c3147497039edc32f508aa382b4",
+        "087450ecff914cff221d0d4819197afc1d2496babc15558584542e7244969fb2",
+        "ee34875b41a25ea757a899ee46c2c615f64709af0754c14937791d603fd61310",
+        "29e2d84652e72bc5a3a893eb0d436495c8f4f3bd47aff04eadcc89f4f632725e",
+        "c1aba368f828af1db8dc911f618bfcead44116955229b00c9c2440c0df9fd65a",
+        "0f23d891e2e1da85df22df3c6170a4086689a30745569c2d777ce1d3f0ec9cf6"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "E",
+      "actionId": 14,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=14&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b58b2c528832c4545ab99e4ecddd9506b4fe91f137ece73d1f36e8d3a977d85e",
+      "decodedFrameSHA256": [
+        "ca2738473906a8677db5abede49ae885a9af868ada35b42396c1a68cb4e75cbb",
+        "ad2d1e5ff58c9b2ecfda31033bb46284bd0f8f34cae358c6f89202241bea0618",
+        "547b349f2d88b43a3eba8b43f2d8a93c207e06799b57d8299758bbd060e83e38",
+        "551184c828e343721749e7f69a225707ae18cd823d5889d4ac54944581fc4564",
+        "57343c6f361124f8e1c334e8d1cd5321dd858e287481e26de4d2aefbc11d19ef",
+        "80500e1200c3c3ee0e67bf9161d6d436f98c61b96ec5b881a0bf32f4e16e7f93",
+        "eb177ea0692b8b020d9db7939232fd1e1369b175383594984861e790b3e5493d",
+        "821b483cebb947ac4e38ae140aca9198e09951b7673a62e6ffb346d30caf0aa9"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "walk",
+      "direction": "SE",
+      "actionId": 15,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=15&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "a44cb68762d1038f24378104e07c835283af04ef41dbf7ffe6f75de39b086ca7",
+      "decodedFrameSHA256": [
+        "76aec0082504dfb8680b9e3fc68faab2268d69f478d0c4edfd936ad5431fb00c",
+        "bcba31203238fe4175ba66448314aaeb928e6acdffd0d41828d8cd43feecd230",
+        "06c5065811bfc92b43ff2b506d17dac66fd2a92db504e1b6e88e048a5878316f",
+        "e273937ba78ebf785d6bae0fa2ed130c01e3a203135b446112dc94efabf5c335",
+        "2aa8c795d63da64da7a938f8c939c320b38451696f14ff162930703448ed263b",
+        "df83d5770bcb208113732274f7e9c55eda4a17443d8b36f2c58f8fc073a53e56",
+        "cb72c98044f0c2ab7a648b5642d350f7d411641c3086556033a61cdf4cda26f8",
+        "f9b223f904020489df62d0dbbab6b4d14730c3a52b1bcf06eadd54db06ea95d8"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0,
+        75.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "S",
+      "actionId": 80,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=80&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "0786a6308864c44ae8cd4d7f3b10d6efe9629d358a65a204e41f3856b8398e06",
+      "decodedFrameSHA256": [
+        "2cf45eaf25557d0df4888334ac41e33505bfee855a281775dbfac87d2902490a",
+        "eb5aa5c45411345a6747899c47a2c36bf4fb12c2b784398137381e3c428f8919",
+        "ff28f7d2bb6778df9a828b1e6bb7e6ec51c8d87f8e37cd4a5beb26de3b9c21d9",
+        "ff28f7d2bb6778df9a828b1e6bb7e6ec51c8d87f8e37cd4a5beb26de3b9c21d9",
+        "be5a2c54e0ec2bb66196ff786396fcab03d0c77d8b32dc8c687a75cdbc927462",
+        "248f9335195e6af9d05b8a514a946ef5a76706bf927dab8b330bcf0ac40e20e6",
+        "def933dfe7c740250ba33bd558bbf6981cfe881cdaf5ae0cef291c48c56486f0",
+        "69fb7a2b72fe809078949f52c0694a3a51f10a7a797b2d47440ee710404ed42b",
+        "ab18d265ada324dcd67a10bcae72bf435a8babeab14e58e8b6acf3ad5c7f9b48"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "SW",
+      "actionId": 81,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=81&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "0786a6308864c44ae8cd4d7f3b10d6efe9629d358a65a204e41f3856b8398e06",
+      "decodedFrameSHA256": [
+        "2cf45eaf25557d0df4888334ac41e33505bfee855a281775dbfac87d2902490a",
+        "eb5aa5c45411345a6747899c47a2c36bf4fb12c2b784398137381e3c428f8919",
+        "ff28f7d2bb6778df9a828b1e6bb7e6ec51c8d87f8e37cd4a5beb26de3b9c21d9",
+        "ff28f7d2bb6778df9a828b1e6bb7e6ec51c8d87f8e37cd4a5beb26de3b9c21d9",
+        "be5a2c54e0ec2bb66196ff786396fcab03d0c77d8b32dc8c687a75cdbc927462",
+        "248f9335195e6af9d05b8a514a946ef5a76706bf927dab8b330bcf0ac40e20e6",
+        "def933dfe7c740250ba33bd558bbf6981cfe881cdaf5ae0cef291c48c56486f0",
+        "69fb7a2b72fe809078949f52c0694a3a51f10a7a797b2d47440ee710404ed42b",
+        "ab18d265ada324dcd67a10bcae72bf435a8babeab14e58e8b6acf3ad5c7f9b48"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "W",
+      "actionId": 82,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=82&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "5beff55f3f7ef090cc0bd128ff147b35e2228c4487f58d836ebf1fc477c88e8a",
+      "decodedFrameSHA256": [
+        "d0735acfdfbe7856e7b258922ae44ed59c706d0128d86ec9f5c61aac6d3177ee",
+        "bcd5702e85ba2eac526575fdfa5d91fcc6d53ac6a3080059e0f7ab4ab66162ad",
+        "33cc65d1bf1cbe68d6eb9fe2f49965715f2ce5a4133315f6bf70602ae8924f0c",
+        "33cc65d1bf1cbe68d6eb9fe2f49965715f2ce5a4133315f6bf70602ae8924f0c",
+        "96f934a600f7350dd6cafbea13e8e454acbee4899aab08219b84cfde5c4d0119",
+        "6b7441ac5a91b60e78e97707f78171b3a99e72bb19dd4a94d89215e3c03956a2",
+        "8450c7ec4802dd7e35588f07cd10cc80853932b2d3c57b815db671f1829b3f45",
+        "7e65a2816305786e1d6e0c11bfed461da0ec4d0472612b8c5c746b5ab3ff4c81",
+        "a6c1b375c7cdb2f0ae44d1382b5ce19d772d4462c3a04e3c0fa582418303981f"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "NW",
+      "actionId": 83,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=83&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "5beff55f3f7ef090cc0bd128ff147b35e2228c4487f58d836ebf1fc477c88e8a",
+      "decodedFrameSHA256": [
+        "d0735acfdfbe7856e7b258922ae44ed59c706d0128d86ec9f5c61aac6d3177ee",
+        "bcd5702e85ba2eac526575fdfa5d91fcc6d53ac6a3080059e0f7ab4ab66162ad",
+        "33cc65d1bf1cbe68d6eb9fe2f49965715f2ce5a4133315f6bf70602ae8924f0c",
+        "33cc65d1bf1cbe68d6eb9fe2f49965715f2ce5a4133315f6bf70602ae8924f0c",
+        "96f934a600f7350dd6cafbea13e8e454acbee4899aab08219b84cfde5c4d0119",
+        "6b7441ac5a91b60e78e97707f78171b3a99e72bb19dd4a94d89215e3c03956a2",
+        "8450c7ec4802dd7e35588f07cd10cc80853932b2d3c57b815db671f1829b3f45",
+        "7e65a2816305786e1d6e0c11bfed461da0ec4d0472612b8c5c746b5ab3ff4c81",
+        "a6c1b375c7cdb2f0ae44d1382b5ce19d772d4462c3a04e3c0fa582418303981f"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "N",
+      "actionId": 84,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=84&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "af516de127c099f4a08f1cf86ad3b3b639a4a280dc29b0946ed2466fb7b3e436",
+      "decodedFrameSHA256": [
+        "fb76d29e5068fbc4c94c706f42da72d6cfe956012d2f585c77b5a33ab3faaa13",
+        "eb597a440048bf4e775dc83a90a4cf31b68fff02dc8c094828d9b645391a918e",
+        "679702461e4426f4f0dd3c357cbd111a60592591de8a48a8efe0d6a2adaf81a0",
+        "679702461e4426f4f0dd3c357cbd111a60592591de8a48a8efe0d6a2adaf81a0",
+        "fe247e90de85ab2098c08dd1140843ebdbe8070f57a19e76f0cf122d0910fbba",
+        "d6a5f8b00d636d62b8f042aa77ed00a212d0b6133f822715dec6169c9eaf8962",
+        "eb748fc4887cd0456cb63f7c4933ebc91798a8458425576e2a3d06aeb718c58a",
+        "bf38764d615b9e97e8e293eeee9bbe3c9a755c1aadbb92f672d2d126f685256a",
+        "e40047d62dc7b77323c6d10127c869438284c78135a9be3a94f2bf38a6918261"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "NE",
+      "actionId": 85,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=85&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "af516de127c099f4a08f1cf86ad3b3b639a4a280dc29b0946ed2466fb7b3e436",
+      "decodedFrameSHA256": [
+        "fb76d29e5068fbc4c94c706f42da72d6cfe956012d2f585c77b5a33ab3faaa13",
+        "eb597a440048bf4e775dc83a90a4cf31b68fff02dc8c094828d9b645391a918e",
+        "679702461e4426f4f0dd3c357cbd111a60592591de8a48a8efe0d6a2adaf81a0",
+        "679702461e4426f4f0dd3c357cbd111a60592591de8a48a8efe0d6a2adaf81a0",
+        "fe247e90de85ab2098c08dd1140843ebdbe8070f57a19e76f0cf122d0910fbba",
+        "d6a5f8b00d636d62b8f042aa77ed00a212d0b6133f822715dec6169c9eaf8962",
+        "eb748fc4887cd0456cb63f7c4933ebc91798a8458425576e2a3d06aeb718c58a",
+        "bf38764d615b9e97e8e293eeee9bbe3c9a755c1aadbb92f672d2d126f685256a",
+        "e40047d62dc7b77323c6d10127c869438284c78135a9be3a94f2bf38a6918261"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "E",
+      "actionId": 86,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=86&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b4dc3970d78ccde7b45d1921797f87811ad1634f3fc1b8aeff97c73c7a2d8cd4",
+      "decodedFrameSHA256": [
+        "2c0f4955b0bd8407d8c57cbecae643c9dc25b679681ecfadc861f4bb0b4c53ab",
+        "7b8e944f7a438fe56908c4a1e022438e22d1b23dca1ede1edd9452f95d0d7ef1",
+        "5629c2648a2b1c08e6c26068a8db2d26251c4094e8accfee36136a73512a7c88",
+        "5629c2648a2b1c08e6c26068a8db2d26251c4094e8accfee36136a73512a7c88",
+        "0ab71877ed2c265f3d3062649b674c29be4df6b198def650471fb7133552dfe2",
+        "e1ea77a4e410649a54c8f1126aab7c223e9375afe4027344c0bd09803f2b649b",
+        "2737c647e07fa90f96c7f97e91cb84d3c126138452cb8ac98472fc40da83a100",
+        "77def191107b94a5f107b43f579ab4af1365b4263924597ee829b61bd9b57885",
+        "6b9e1ec150255258d02c07de7f7a18e05a0dc32851bdf8c282dad77dc9b84218"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack",
+      "direction": "SE",
+      "actionId": 87,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=87&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b4dc3970d78ccde7b45d1921797f87811ad1634f3fc1b8aeff97c73c7a2d8cd4",
+      "decodedFrameSHA256": [
+        "2c0f4955b0bd8407d8c57cbecae643c9dc25b679681ecfadc861f4bb0b4c53ab",
+        "7b8e944f7a438fe56908c4a1e022438e22d1b23dca1ede1edd9452f95d0d7ef1",
+        "5629c2648a2b1c08e6c26068a8db2d26251c4094e8accfee36136a73512a7c88",
+        "5629c2648a2b1c08e6c26068a8db2d26251c4094e8accfee36136a73512a7c88",
+        "0ab71877ed2c265f3d3062649b674c29be4df6b198def650471fb7133552dfe2",
+        "e1ea77a4e410649a54c8f1126aab7c223e9375afe4027344c0bd09803f2b649b",
+        "2737c647e07fa90f96c7f97e91cb84d3c126138452cb8ac98472fc40da83a100",
+        "77def191107b94a5f107b43f579ab4af1365b4263924597ee829b61bd9b57885",
+        "6b9e1ec150255258d02c07de7f7a18e05a0dc32851bdf8c282dad77dc9b84218"
+      ],
+      "frameCount": 9,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "S",
+      "actionId": 32,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=32&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b2a7085c05f95697177ec643324551e9399d22f944b300e373783143f953d519",
+      "decodedFrameSHA256": [
+        "0de0298e5e73902c752b31ad70c823f3c1c92fe646635b906bc8183a26939845",
+        "50b538703e9b7a122f6c8377cc64c5ff53fd60f5199b394e0a23e8baa6965a5f",
+        "5139fd9731e889e7c1683143bb590ae98b9ca9a99b66625f74b3f61161e2bf23",
+        "a0c0bf00e00a1640ab9b3df25447a02af7696db59960a1a6bbae595a36069dd3",
+        "5de231d03e03e58a487f37410264164db2a43cf82c2eecbd17732d08656d515a",
+        "a47eb80189c83d366c1c1c390e4c50f3503f35ccadd071c1c48df513bf359076"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "SW",
+      "actionId": 33,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=33&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b2a7085c05f95697177ec643324551e9399d22f944b300e373783143f953d519",
+      "decodedFrameSHA256": [
+        "0de0298e5e73902c752b31ad70c823f3c1c92fe646635b906bc8183a26939845",
+        "50b538703e9b7a122f6c8377cc64c5ff53fd60f5199b394e0a23e8baa6965a5f",
+        "5139fd9731e889e7c1683143bb590ae98b9ca9a99b66625f74b3f61161e2bf23",
+        "a0c0bf00e00a1640ab9b3df25447a02af7696db59960a1a6bbae595a36069dd3",
+        "5de231d03e03e58a487f37410264164db2a43cf82c2eecbd17732d08656d515a",
+        "a47eb80189c83d366c1c1c390e4c50f3503f35ccadd071c1c48df513bf359076"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "W",
+      "actionId": 34,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=34&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "0cdd7945d5cc91fce9328c57b45bbd140b0585d54e3c639b55a1b345c8844262",
+      "decodedFrameSHA256": [
+        "aa095e492411164d6160e1f4916b195e4ca6eaedbce4f718e070ddb230bb27f9",
+        "a8e2bc24ee590317ab5f4045fc4339df5ca21ccbd8ffdf0a42fed4a478d89941",
+        "0d88af2435688768ca98a75bc2b2e5c6c01617e4b91cafb3ccc9e2009eff9157",
+        "0c3042001c99ae8088bff1c2e9093ae23605281f79ab8be78c71972f5f0194a5",
+        "6157ca97f0af12194dfa0a812d869f99b1a3d9f4be6c5c7ce355cbc8a9ee6318",
+        "193e6a62dc79b322da4400b27b0154ea6a5851585382321a00ac4032a757f9df"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "NW",
+      "actionId": 35,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=35&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "0cdd7945d5cc91fce9328c57b45bbd140b0585d54e3c639b55a1b345c8844262",
+      "decodedFrameSHA256": [
+        "aa095e492411164d6160e1f4916b195e4ca6eaedbce4f718e070ddb230bb27f9",
+        "a8e2bc24ee590317ab5f4045fc4339df5ca21ccbd8ffdf0a42fed4a478d89941",
+        "0d88af2435688768ca98a75bc2b2e5c6c01617e4b91cafb3ccc9e2009eff9157",
+        "0c3042001c99ae8088bff1c2e9093ae23605281f79ab8be78c71972f5f0194a5",
+        "6157ca97f0af12194dfa0a812d869f99b1a3d9f4be6c5c7ce355cbc8a9ee6318",
+        "193e6a62dc79b322da4400b27b0154ea6a5851585382321a00ac4032a757f9df"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "N",
+      "actionId": 36,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=36&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "1deb39f8706127d2dec9b82354058ef3295d29fe673b3b6c7948a11266e2af33",
+      "decodedFrameSHA256": [
+        "c0692e5de60fa5be5d06d5fd8fb46e24baa5a6ea2ba7e8402a4247d7aad90ff6",
+        "c38e1dc7c58e7435eebe441fa9c41111771856eb2653d272662c83c65cd25422",
+        "25903038c09062c115c132c0cf769eb6ad7b3de428325c8417ac3f4e52f469e1",
+        "6cd884ed81fb1c305007abf63dcb155a53ce6e21c602290f4b1933e1795858dc",
+        "8b5a20c6e86790a0ae91fc9d12c30972347107575404366034d1b99ed442d533",
+        "1e4fa16faa40f9268124fb65e068d649db0a0163ee916ef061d0bbd27c3acbec"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "NE",
+      "actionId": 37,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=37&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "1deb39f8706127d2dec9b82354058ef3295d29fe673b3b6c7948a11266e2af33",
+      "decodedFrameSHA256": [
+        "c0692e5de60fa5be5d06d5fd8fb46e24baa5a6ea2ba7e8402a4247d7aad90ff6",
+        "c38e1dc7c58e7435eebe441fa9c41111771856eb2653d272662c83c65cd25422",
+        "25903038c09062c115c132c0cf769eb6ad7b3de428325c8417ac3f4e52f469e1",
+        "6cd884ed81fb1c305007abf63dcb155a53ce6e21c602290f4b1933e1795858dc",
+        "8b5a20c6e86790a0ae91fc9d12c30972347107575404366034d1b99ed442d533",
+        "1e4fa16faa40f9268124fb65e068d649db0a0163ee916ef061d0bbd27c3acbec"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "E",
+      "actionId": 38,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=38&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b482d6116115bda2c25d2f5d785d09bda22791b8e2f0802595e6a34db5893cb2",
+      "decodedFrameSHA256": [
+        "714393a8b0bbec3e2a85ae204513af07ccbead7fd0f60f2fb46417150ed04ed6",
+        "b9e982c3a791e7a464d36d75284a47445326112a9a91f23ebcae4526c13ffe7a",
+        "4709273f348467d8c974df77ab663d4a5a49b7406da977f4e4cf99263ba71093",
+        "3b5e69d6590323f374c9a36fa37794b804227e101a7ee7a83a246adeab64bb14",
+        "81b862fbc5547e99bc76c5b4fef3b7a8439bdf928b784dc2632429b3c8275175",
+        "2e9d916740a6f0fcdd0d4a4f858fe01ebcd7dfe70c01ce0133ce1248daf7459a"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "ready",
+      "direction": "SE",
+      "actionId": 39,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=39&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "b482d6116115bda2c25d2f5d785d09bda22791b8e2f0802595e6a34db5893cb2",
+      "decodedFrameSHA256": [
+        "714393a8b0bbec3e2a85ae204513af07ccbead7fd0f60f2fb46417150ed04ed6",
+        "b9e982c3a791e7a464d36d75284a47445326112a9a91f23ebcae4526c13ffe7a",
+        "4709273f348467d8c974df77ab663d4a5a49b7406da977f4e4cf99263ba71093",
+        "3b5e69d6590323f374c9a36fa37794b804227e101a7ee7a83a246adeab64bb14",
+        "81b862fbc5547e99bc76c5b4fef3b7a8439bdf928b784dc2632429b3c8275175",
+        "2e9d916740a6f0fcdd0d4a4f858fe01ebcd7dfe70c01ce0133ce1248daf7459a"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack-40",
+      "direction": "S",
+      "actionId": 40,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=40&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "72e3e9cdc8a3e243c5884c08b7acc617e22a445b581d567d434386291137da5e",
+      "decodedFrameSHA256": [
+        "fcbed84e630733e21b3e38365e835c2493259b0cfc34e3fa7007007d4112e291",
+        "9962aa11ce65e19af326e5d230aed48880d2585e2ca5ee0039b7239e7b819bfd",
+        "5ea3e184c1f4aae7dc444c28bf11668eaeb54b7e96f3b04451e0da427a234bf5",
+        "21d82c3ba24eb9f4d3a39a0d0c5eb58fd222d59b44214074bcd70d9cc51f24aa",
+        "21d82c3ba24eb9f4d3a39a0d0c5eb58fd222d59b44214074bcd70d9cc51f24aa"
+      ],
+      "frameCount": 5,
+      "uniqueRenderedFrames": 4,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack-88",
+      "direction": "S",
+      "actionId": 88,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=88&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "5d6c774d35fe4bf0c709cbe1098e892d96e017031d614bfbb0b49740ed3a0f5e",
+      "decodedFrameSHA256": [
+        "d8f0334e3a10d718c894a22f4844ecaf079fe5f305229fbaa5340288eb33fcdc",
+        "791b450eef8800e0ba4ffafcde70aa5718a382bcb55662797bde5074cd9e05c5",
+        "549220319626eb13894c3a172b9635cb0122a2c559960fa9995b0083aa6f7d2d",
+        "b65fdf49c1e76f54a3abdcdc2906141d30ce8e5b0a20a976a60abaeb967233ae",
+        "3a91ba3dcf9d6e002b287933db557ea582fdcddf25d3f17455b0c57e3a68127b",
+        "11a40d2bdf81cf2db23899ec9d981c1f656b9e10bb196ce4eb2201ed1fce6c45",
+        "4fc4756fec42b99a5125d93913ac0bbfc8e1d4972f287abe250c47fed662998d",
+        "114ed35166de4b7aacfbbb480607e0dfea14ed7bee136b9458f95e6ec6482433"
+      ],
+      "frameCount": 8,
+      "uniqueRenderedFrames": 8,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    },
+    {
+      "action": "attack-96",
+      "direction": "S",
+      "actionId": 96,
+      "url": "https://assets.latam-tools.com.br/image?job=1&gender=male&head=1&headdir=straight&action=96&enableShadow=false&canvas=192x192%2B96%2B160&weapon=2",
+      "sha256": "fc2dfe042bf9f27c3b604ed7857a6816d2a477dc6d38635b6eefd8790532f0df",
+      "decodedFrameSHA256": [
+        "daa84e8d5a6f46b144d47f306f1c4f5c480a407fa06d0a70ae3e2343d7a42515",
+        "ed2186da99ded7abb5a51d553e43d277f8216f60e2b3d1f13b3ac53b1c0abaca",
+        "d4af572505a94a188adb1fa190bce99cd0a74a14138c84aa262542460d9ce4a1",
+        "23fa2741ba1a9c8d6d169b9e360e03841c54a04c378eddc82832c08283635aae",
+        "520359ea1d42b3d305c280ac330e22eb5b32afa8dc1df7ab84fa20b289b20a66",
+        "460168fb40007e31c0959c0b7c56d10d5ed4ad26697f0a08b9e3cdf9ce426417"
+      ],
+      "frameCount": 6,
+      "uniqueRenderedFrames": 6,
+      "renderedDelaysMs": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "rawACTInspected": false,
+      "classification": "RENDERED_REFERENCE",
+      "confidence": {
+        "poseSequence": "HIGH",
+        "anatomicalAnnotation": "MEDIUM",
+        "exactACTDelay": "UNKNOWN"
+      },
+      "canvas": [
+        192,
+        192
+      ],
+      "rendererOrigin": [
+        96,
+        160
+      ],
+      "weaponView": 2
+    }
+  ],
+  "referenceImagery": "Ignored private-ro-reference/RO_REFERENCE; not runtime, not shipped, not committed"
+}
