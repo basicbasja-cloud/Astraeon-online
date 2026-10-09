@@ -4,6 +4,7 @@ import json
 import os
 import tempfile
 from pathlib import Path
+import town_service_navigation
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
 parser=argparse.ArgumentParser()
@@ -49,7 +50,7 @@ try:
             assert initial['equippedItems']['armor'] in initial['itemInventory']['instances']
             passed('new character has canonical starter instances and owned equipment IDs',{'cls':cls})
 
-            page.locator('[data-open="systems"]').click();page.locator('[data-nav="market"]').click()
+            town_service_navigation.npc_interaction(page,'merchant')
             before=snapshot(page);page.locator('[data-buy="herb:5"]').click()
             after=snapshot(page);assert after['gold']==before['gold']-5
             assert after['itemInventory']['stacks']['herb']==before['inventory']['herb']+1
