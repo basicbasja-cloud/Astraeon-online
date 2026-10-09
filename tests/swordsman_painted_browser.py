@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--url',default='http://127.0.0.1:8012')
 parser.add_argument('--output',type=Path,default=Path('docs/review/character-ro1-animated-v1/gameplay'))
+parser.add_argument('--contact-only',action='store_true',help='Capture exact presentation contact keys without executing Combat')
 args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
 directions=['S','SW','W','NW','N','NE','E','SE'];errors=[];bad_http=[];samples=[];tiles=[]
 with sync_playwright() as p:
@@ -17,17 +18,26 @@ with sync_playwright() as p:
     page.goto(args.url+'/character-gameplay-review.html',wait_until='networkidle')
     page.wait_for_function('window.AstraeonGameplayReview?.snapshot().drawCount>3')
     storage_before=page.evaluate('JSON.stringify({...localStorage})')
-    for action in ['Idle','Walk','BasicAttack']:
+    for action in (['BasicAttack'] if args.contact_only else ['Idle','Walk','BasicAttack']):
         for direction in directions:
             page.evaluate('([a,d])=>AstraeonGameplayReview.setPose(a,d)',[action,direction])
+            if args.contact_only:page.evaluate('(d)=>AstraeonGameplayReview.inspectFrame("BasicAttack",d,7)',direction)
             page.wait_for_function('([a,d])=>{const s=AstraeonGameplayReview.snapshot().lastSample;return s.action===a&&s.direction===d&&s.frameIndex>=4}',arg=[action,direction])
             snap=page.evaluate('AstraeonGameplayReview.snapshot()');samples.append(snap)
             assert snap['memoryOnly'] and snap['combatAuthority'].startswith('existing game')
-            filename=args.output/f'{action}-{direction}.png';page.screenshot(path=str(filename))
+            if args.contact_only:assert snap['lastSample']['frameIndex']==7
+            filename=args.output/f'{action}{"-contact" if args.contact_only else ""}-{direction}.png';page.screenshot(path=str(filename))
             frame=page.frame_locator('#game');bounds=frame.locator('#world').bounding_box()
             foot=snap['lastSample']['worldFoot'];x=bounds['x']+foot['x'];y=bounds['y']+foot['y']
             tile=Image.open(filename).crop((round(x-96),round(y-144),round(x+96),round(y+48)))
             tiles.append((action+'/'+direction,tile))
+    if args.contact_only:
+        assert not errors and not bad_http,(errors,bad_http)
+        board=Image.new('RGB',(8*192,220),'#243644');draw=ImageDraw.Draw(board)
+        for i,(label,tile) in enumerate(tiles):draw.text((i*192+8,5),label+' / contact key',fill='#edf3ff');board.paste(tile,(i*192,28))
+        board.save(args.output/'BasicAttack-contact-eight-directions.png')
+        (args.output/'contact-review.json').write_text(json.dumps(dict(exactContactFrameIndex=7,actualWorldStates=8,samples=samples,combatTriggered=False,errors=errors,unexpectedHTTP=bad_http),indent=2)+'\n')
+        browser.close();print('PASS8 exact-contact world screenshots; visual frame inspection never executes Combat');raise SystemExit(0)
     # Swap at a running Walk frame: no action/time reset, no mechanics mutation.
     page.evaluate('AstraeonGameplayReview.setPose("Walk","SW")')
     page.wait_for_function('AstraeonGameplayReview.snapshot().lastSample.direction==="SW"')
