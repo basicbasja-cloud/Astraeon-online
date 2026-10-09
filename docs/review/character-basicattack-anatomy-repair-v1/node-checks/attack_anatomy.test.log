@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: anatomy candidate compiles the same three actions and eight directions without mirroring
+ok 1 - anatomy candidate compiles the same three actions and eight directions without mirroring
+  ---
+  duration_ms: 74.585667
+  type: 'test'
+  ...
+# Subtest: all 128 attack poses retain exact MotionTemplate frames, root, contact and presentation timing
+ok 2 - all 128 attack poses retain exact MotionTemplate frames, root, contact and presentation timing
+  ---
+  duration_ms: 25.120704
+  type: 'test'
+  ...
+# Subtest: two sword identities share painted hand transforms and exact blade tip through all attack frames
+ok 3 - two sword identities share painted hand transforms and exact blade tip through all attack frames
+  ---
+  duration_ms: 23.288267
+  type: 'test'
+  ...
+# Subtest: costume replacement retains every attachment and both clocks at each repaired attack phase
+ok 4 - costume replacement retains every attachment and both clocks at each repaired attack phase
+  ---
+  duration_ms: 78.81107
+  type: 'test'
+  ...
+# Subtest: review-only joints never enter sampled gameplay motion or equipment
+ok 5 - review-only joints never enter sampled gameplay motion or equipment
+  ---
+  duration_ms: 52.463204
+  type: 'test'
+  ...
+# Subtest: ready-return blade angle agrees with next ready while body recovery is independently painted
+ok 6 - ready-return blade angle agrees with next ready while body recovery is independently painted
+  ---
+  duration_ms: 3.248144
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 771.154634

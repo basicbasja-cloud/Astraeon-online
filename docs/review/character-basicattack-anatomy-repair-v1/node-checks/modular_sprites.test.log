@@ -1,0 +1,244 @@
+TAP version 13
+# Subtest: Swordsman resolves every clip, direction and synchronized part
+ok 1 - Swordsman resolves every clip, direction and synchronized part
+  ---
+  duration_ms: 56.399919
+  type: 'test'
+  ...
+# Subtest: Mage resolves every clip, direction and synchronized part
+ok 2 - Mage resolves every clip, direction and synchronized part
+  ---
+  duration_ms: 28.140767
+  type: 'test'
+  ...
+# Subtest: one clip clock handles unequal durations, loop boundaries and non-looping holds
+ok 3 - one clip clock handles unequal durations, loop boundaries and non-looping holds
+  ---
+  duration_ms: 17.165062
+  type: 'test'
+  ...
+# Subtest: swapping a weapon changes one part while preserving shared pose, handedness and timing
+ok 4 - swapping a weapon changes one part while preserving shared pose, handedness and timing
+  ---
+  duration_ms: 13.862177
+  type: 'test'
+  ...
+# Subtest: direction and individual attack frame override default draw order
+ok 5 - direction and individual attack frame override default draw order
+  ---
+  duration_ms: 13.705616
+  type: 'test'
+  ...
+# Subtest: all screen headings resolve by named direction; legacy table indices are never reused
+ok 6 - all screen headings resolve by named direction; legacy table indices are never reused
+  ---
+  duration_ms: 3.070685
+  type: 'test'
+  ...
+# Subtest: validation rejects missing direction
+ok 7 - validation rejects missing direction
+  ---
+  duration_ms: 52.323182
+  type: 'test'
+  ...
+# Subtest: validation rejects wrong direction order
+ok 8 - validation rejects wrong direction order
+  ---
+  duration_ms: 22.220106
+  type: 'test'
+  ...
+# Subtest: validation rejects unordered clip rows
+ok 9 - validation rejects unordered clip rows
+  ---
+  duration_ms: 56.531418
+  type: 'test'
+  ...
+# Subtest: validation rejects missing canonical frame
+ok 10 - validation rejects missing canonical frame
+  ---
+  duration_ms: 24.026167
+  type: 'test'
+  ...
+# Subtest: validation rejects duplicate frame index
+ok 11 - validation rejects duplicate frame index
+  ---
+  duration_ms: 21.057071
+  type: 'test'
+  ...
+# Subtest: validation rejects missing layer frame
+ok 12 - validation rejects missing layer frame
+  ---
+  duration_ms: 23.533541
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid frame naming
+ok 13 - validation rejects invalid frame naming
+  ---
+  duration_ms: 44.429255
+  type: 'test'
+  ...
+# Subtest: validation rejects canvas mismatch
+ok 14 - validation rejects canvas mismatch
+  ---
+  duration_ms: 17.364754
+  type: 'test'
+  ...
+# Subtest: validation rejects missing required layer
+ok 15 - validation rejects missing required layer
+  ---
+  duration_ms: 73.865919
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid root
+ok 16 - validation rejects invalid root
+  ---
+  duration_ms: 21.02247
+  type: 'test'
+  ...
+# Subtest: validation rejects root drift
+ok 17 - validation rejects root drift
+  ---
+  duration_ms: 25.771279
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid socket
+ok 18 - validation rejects invalid socket
+  ---
+  duration_ms: 18.114659
+  type: 'test'
+  ...
+# Subtest: validation rejects missing socket
+ok 19 - validation rejects missing socket
+  ---
+  duration_ms: 53.773969
+  type: 'test'
+  ...
+# Subtest: validation rejects layer timing override
+ok 20 - validation rejects layer timing override
+  ---
+  duration_ms: 16.312967
+  type: 'test'
+  ...
+# Subtest: validation rejects frame timing override
+ok 21 - validation rejects frame timing override
+  ---
+  duration_ms: 19.784029
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid shared duration
+ok 22 - validation rejects invalid shared duration
+  ---
+  duration_ms: 57.580972
+  type: 'test'
+  ...
+# Subtest: validation rejects invalid locomotion distance
+ok 23 - validation rejects invalid locomotion distance
+  ---
+  duration_ms: 26.958861
+  type: 'test'
+  ...
+# Subtest: validation rejects non-looping locomotion distance
+ok 24 - validation rejects non-looping locomotion distance
+  ---
+  duration_ms: 63.14135
+  type: 'test'
+  ...
+# Subtest: validation rejects missing atlas
+ok 25 - validation rejects missing atlas
+  ---
+  duration_ms: 31.059852
+  type: 'test'
+  ...
+# Subtest: validation rejects out of atlas
+ok 26 - validation rejects out of atlas
+  ---
+  duration_ms: 56.901547
+  type: 'test'
+  ...
+# Subtest: validation rejects duplicate draw slot
+ok 27 - validation rejects duplicate draw slot
+  ---
+  duration_ms: 18.940655
+  type: 'test'
+  ...
+# Subtest: validation rejects mirroring
+ok 28 - validation rejects mirroring
+  ---
+  duration_ms: 18.004432
+  type: 'test'
+  ...
+# Subtest: validation rejects missing proof tag
+ok 29 - validation rejects missing proof tag
+  ---
+  duration_ms: 17.136373
+  type: 'test'
+  ...
+# Subtest: validation rejects false approval
+ok 30 - validation rejects false approval
+  ---
+  duration_ms: 67.275208
+  type: 'test'
+  ...
+# Subtest: compiled metadata cannot be edited by a caller after validation
+ok 31 - compiled metadata cannot be edited by a caller after validation
+  ---
+  duration_ms: 22.767016
+  type: 'test'
+  ...
+# Subtest: additional sockets and split weapon slots extend the same contract
+ok 32 - additional sockets and split weapon slots extend the same contract
+  ---
+  duration_ms: 23.72457
+  type: 'test'
+  ...
+# Subtest: compositor draws every part with one stable root/scale and returns registered sockets
+ok 33 - compositor draws every part with one stable root/scale and returns registered sockets
+  ---
+  duration_ms: 17.444508
+  type: 'test'
+  ...
+# Subtest: existing player adapter keeps equipment and socket contracts, and modular visuals require opt-in
+ok 34 - existing player adapter keeps equipment and socket contracts, and modular visuals require opt-in
+  ---
+  duration_ms: 17.854396
+  type: 'test'
+  ...
+# Subtest: authored gait distance follows world travel independently of legacy gait and equipment
+ok 35 - authored gait distance follows world travel independently of legacy gait and equipment
+  ---
+  duration_ms: 28.424124
+  type: 'test'
+  ...
+# Subtest: atlas loading respects repository prefixes, preloads only selected clips and retries failures
+ok 36 - atlas loading respects repository prefixes, preloads only selected clips and retries failures
+  ---
+  duration_ms: 43.979551
+  type: 'test'
+  ...
+# Subtest: body variants preserve gameplay class and resolve one logical cosmetic to body-specific parts
+ok 37 - body variants preserve gameplay class and resolve one logical cosmetic to body-specific parts
+  ---
+  duration_ms: 152.246118
+  type: 'test'
+  ...
+# Subtest: cosmetics switch only after readiness, failed switches retain appearance, equipment cannot select parts
+ok 38 - cosmetics switch only after readiness, failed switches retain appearance, equipment cannot select parts
+  ---
+  duration_ms: 40.167662
+  type: 'test'
+  ...
+# Subtest: movement parts sample the existing gait, while all skill VFX can share SkillAction
+ok 39 - movement parts sample the existing gait, while all skill VFX can share SkillAction
+  ---
+  duration_ms: 15.136407
+  type: 'test'
+  ...
+1..39
+# tests 39
+# suites 0
+# pass 39
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1491.942463
