@@ -26,7 +26,8 @@ Immutable validated five engineering quest fixtures; durable accepted/Talk/Kill/
 - World schema validator: PASS.
 - First Swordsman browser attempt passed 14 groups through actual Talk/rewards/chain, current Collect, real Combat death, duplicate death, partial Kill reload and travel. Its player-death walking fixture timed out. No runtime/HTTP errors were recorded. Evidence retained in `D:/Astraeon/backbone-verification/quests/browser-first`.
 - Second attempt passed the same 14 groups, then showed fast travel places the player at field center outside every current enemy's detection range. The stationary death fixture's range assertion failed; no runtime/HTTP errors. State evidence is retained in `quests/browser-second/report.json`.
-- Third attempt clicks ordinary ground into existing detection range, then observes real incoming damage/death. No gameplay/AI/navigation code was changed. It is running, acceptance remains pending.
+- Third attempt passed 20 Swordsman groups, including real player death/respawn, learned Skill kill, same-runtime new life, actual Collect consumption and atomic capacity failure. It then exposed a fixture assumption: real Loot had increased Ore to four, so removing one still left a source stack after turn-in. Evidence retained in `quests/browser-third`. The retry now reads canonical ownership and removes only excess above the required two, preserving the net source/output assertion. No gameplay code changed.
+- Fourth full two-class Quest run is in progress. Inherited suites are queued sequentially after its successful result, then cache/offline. Acceptance remains pending.
 - The browser source also proves Mage same-runtime respawn increments an active Kill objective 1 → 2, and offline saved Quest resume. Full two-class final run and inherited suites remain pending.
 - Source audit: 79 inherited test/core files unchanged; no visual/world path changes. `quests/source-audit.json`.
 
