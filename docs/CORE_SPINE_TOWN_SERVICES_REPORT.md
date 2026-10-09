@@ -1,4 +1,4 @@
-# Shop / Storage / Town Services â€” working checkpoint
+# Shop / Storage / Town Services - working checkpoint
 
 Foundation is IN PROGRESS. Patch 0.0.1 / Core Spine are not complete.
 
@@ -95,3 +95,17 @@ All inherited browser suites and final cache remain pending. World validator
 was interrupted to avoid concurrent large-scene validation competing with live
 software WebGL; rerun it serially after browsers. This is not a schema result.
 External evidence root and runner remain as above; do not mark accepted yet.
+
+## New browser milestone
+
+`browser-two-class-1/report.json`: **40 groups / 0 failures**, Swordsman and
+Mage, 0 unexpected console/page/runtime/HTTP errors. Sixteen structured
+rejections are expected acceptance evidence, not runtime errors. Actual NPC
+movement/interactions, Shop and exact Storage transfers, Capacity failures,
+carried-only Collect and stale Quest ticket, Action Item, offline reload,
+ordinary field travel and actual enemy-caused death/town respawn pass.
+Normal URL and isolated harness pass. All inherited browser suites are now
+running sequentially using the external `run-browser-regressions.py`; inspect
+`regression-runner.json` and per-suite command logs/reports. Do not treat the
+new-suite success as final acceptance until all inherited/cache/world results
+are confirmed. Runtime/test checkpoint and final documentation remain pending.
