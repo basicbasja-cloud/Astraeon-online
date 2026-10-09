@@ -131,3 +131,20 @@ All new materials and character art are original built-in ImageGen outputs; no R
 | wayfarer-banner-v44.svg | Original project vector art: blue cloth and gold compass heraldry |
 
 Landmarks, houses, new lanterns, blossoms and river strata are original meshes in the saved Blender source. Shared trees and material tiles are reusable vegetation/surface components; the twelve new frontage lots are assembled from architectural parts.
+
+## Painted Swordsman rescue proof — 2026-10-09
+
+`assets/characters/swordsman-ro1-painted-v1/` contains newly authored built-in
+ImageGen painted raster art compiled from coherent body strips and independent
+hair/weapon/shield/circlet/cape canvases under `authoring/characters/appearance/`.
+The existing repository-designated approved ASTRAEON seed supplies appearance;
+RO rendered poses supply technical choreography guides only. No copied RO sprite
+pixels are included in the painted production sources, atlases or owner previews.
+Public RO renderer images remain ignored private research, never runtime inputs.
+Source generation prompts, normalization and calibration receipts are retained
+under `authoring/characters/builds/swordsman-male/`.
+
+New painted assets require owner visual approval. This entry records provenance,
+not approval or a claim that a complete character catalogue exists. Flat blue
+`reuse-body-*` atlases are DEV_ONLY engine reuse evidence. The review adapter is
+also DEV_ONLY and leaves ordinary game/Combat/world authority unchanged.

@@ -10,11 +10,12 @@ independent hair/weapons/offhand/headgear/garments/effects, using BODY_SYNC,
 PHASE_SYNC, ANCHOR_HOLD or OWN_LOOP sampling. No runtime character skeleton or
 gameplay authority is added. [Contract and boundary](docs/CHARACTER_ASSEMBLY_V1.md).
 
-Only the development review page loads the new modules. Default game boot and
-existing Combat/movement/world sources remain unchanged. Actual RO1 Swordsman
-motion cannot compile until real reference pose/timing evidence is annotated;
-synthetic fixtures are not production data. Painted art remains ASTRAEON, with
-owner visual review required. This rescue permits only Idle/Walk/BasicAttack.
+The animated character-review page and isolated in-world review load the new
+modules. Default boot, Combat, movement and world sources remain unchanged.
+The RO template now compiles rendered pose evidence with explicit confidence;
+raw ACT timing is not claimed. Painted Body is independent of Hair, weapon,
+shield, circlet and cape. Synthetic fixtures remain DEV_ONLY. Owner visual
+approval is pending; this rescue permits only Idle/Walk/BasicAttack.
 
 ## Existing runtime
 

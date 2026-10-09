@@ -11,9 +11,12 @@ this rescue. No RO pixels, costumes or raw assets enter production or the repo.
 Fresh ACT/SPR/community-renderer evidence and uncertainties are recorded in
 [the reference manifest](authoring/characters/motion-templates/ro1-swordsman-male/reference-manifest.json)
 and [research notes](authoring/characters/motion-templates/ro1-swordsman-male/research-notes.md).
-Actual Swordsman male ACT/SPR files are unavailable; format facts cannot establish
-its gait or sword attack. The production motion draft remains explicitly blocked.
-Only a separate synthetic DEV_ONLY engine fixture has been animated.
+The owner superseded the raw-ACT-only gate on2026-10-09. Stand, Walk, sword
+Attack80+direction and Ready32+direction were inspected through ragassets in
+all eight directions, and the Swordman one-handed mapping was verified in the
+pinned community client. [Rendered provenance](authoring/characters/motion-templates/ro1-swordsman-male/rendered-reference.json).
+Exact ACT timing and internal offsets remain unknown. The painted ASTRAEON
+three-action proof is animated and reviewable; it requires owner visual approval.
 
 RO frames will be labeled referenceKey landmarks. Selective ASTRAEON in-betweens
 must link neighboring keys and preserve phase intent, landmark timestamps and

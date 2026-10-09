@@ -1,37 +1,43 @@
-# ASTRAEON — character rescue checkpoint, 8 October 2026
+# ASTRAEON — animated character rescue checkpoint,9October2026
 
-Active work is `character/ro1-reference-engine-v1`, based on verified parent
-`c258c5034a49462381d15f425f103eddf85242c9`. The historical modular proof on
-`origin/swordman` at `b43f9d2ba5820f7b0ec48f137e1014fddd2e8442` is preserved.
-This character rescue brief supersedes the historical World work instructions
-below; do not resume World, map, Blender, lighting or gameplay work from them.
+Branch `character/ro1-reference-engine-v1`; starting checkpoint
+`b277ac8875063935969ee7c2f1cfcbd732c4d57d`. Historical proof on `origin/swordman`
+`b43f9d2ba5820f7b0ec48f137e1014fddd2e8442` remains preserved. No World, map,
+Blender, lighting, gameplay or Combat source changes are authorized here.
 
-Reusable motion/appearance assembly and two eight-direction DEV_ONLY raster
-packs pass engine tests and browser swap proof. Actual RO1 Swordsman ACT/SPR
-pose/timing inputs are missing. The reference manifest labels unknowns; the RO
-motion draft cannot compile and production Idle/Walk/BasicAttack remain unbuilt.
-Never substitute synthetic fixture keys or the old analytic `pose_for` motions.
+The owner reported that engineering alone did not show animation and superseded
+raw-ACT-only gating. The active proof contains real painted ASTRAEON Swordsman
+Idle, Walk and BasicAttack in eight authored directions, with independent Hair
+A/B, Sword A/B, shield, circlet and cape. [Watch the owner GIF](docs/review/character-ro1-animated-v1/swordsman-owner-preview.gif).
+[Autoplay player](character-review.html) defaults to Walk/S, overlays off.
+[Report](docs/review/character-ro1-animated-v1/REPORT.md) records review and limits.
 
-The unchanged repository-designated approved painted seed is identity authority.
-Preserved eight-view neutral candidates pass canvas/alpha/root structural checks
-and remain REQUIRES_OWNER_VISUAL_REVIEW. No new painted production art is approved.
-Whole-strip generation must follow actual annotated RO keys and reviewed identity.
+RO motion evidence is RENDERED_REFERENCE through public ragassets, with pinned
+Swordman SWORD mapping selecting attack group80. Exact ACT delays are UNKNOWN.
+Walk has8keys+8in-betweens/600ms. Attack has9attack keys+1Ready boundary+
+6in-betweens/450ms. Idle uses one observed standing pose repeated at two cycle
+boundaries, plus7ASTRAEON breathing refinements/3000ms. No RO imagery is shipped.
+Private research boards remain ignored. Do not resume `pose_for` as authority.
 
-[Complete rescue report](docs/review/character-ro1-engine-v1/README.md),
-[assembly architecture](docs/CHARACTER_ASSEMBLY_V1.md),
-[review tool](character-review.html),
-[blocked production build](authoring/characters/builds/swordsman-male/build-manifest.json).
-222 Node tests, ten Python tests, 288 browser fixture frames and 864 visible
-isolated cosmetic swaps pass. Existing normal Mage movement/Combat and offline
-game after review pass. Default Swordsman creation is already blocked at the base
-by missing `swordsman-male-001/sprite.json`; do not invent a full18-clip catalogue
-to satisfy the old wardrobe. Ordinary boot does not load the new assembly engine.
+Body is painted raster; hair, sword, shield, circlet and cape stay separate.
+Root/head registration, diagonal facing and attack recovery were repaired from
+visual captures. [In-world review](character-gameplay-review.html) loads the
+unchanged actual world with an isolated memory save, existing Mage mechanics
+and a presentation-only Swordsman override. Ordinary game boot remains unchanged.
+The old selectable Swordsman still lacks `swordsman-male-001/sprite.json`; do not
+invent18actions to satisfy the old wardrobe contract. Its repair is downstream.
 
-Next: obtain lawful local body/head/sword ACT+SPR and client/action mapping,
-annotate real key poses/contacts/timing/attachments, and review the painted neutral
-identity. Then complete only Idle/Walk/BasicAttack, both hair/weapon variants and
-optional-part swaps; integrate behind DEV_ONLY and capture at gameplay scale.
-Stop before expanding any production action set without owner approval.
+ENGINE PASS / STRUCTURAL PASS / ANIMATED ART PROOF CREATED /
+OWNER VISUAL APPROVAL PENDING. Structural tests do not approve identity or motion
+fidelity. No Run, Sprint, Guard, Dash, Hit, Death, Cast, Pickup or wider catalogue
+expansion before owner visual approval. Review the animations first.
+
+Verified:257 JavaScript tests,15 Python tests,328 default and328 fully equipped
+uncropped browser composites,1,640 isolated raster swaps,24 desktop world states,
+8 exact attack-contact world captures, desktop/mobile player and world captures.
+Normal Mage movement/Combat/offline regression passes. Headless software world
+capture does not certify physical-device performance. The owner GIF runs19.8s;
+APNGs preserve exact millisecond timings and transparent alpha.
 
 ---
 

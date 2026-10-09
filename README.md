@@ -4,16 +4,20 @@ Original browser-first 2.5D action RPG under an iterative MMORPG vertical-slice 
 
 ## Character rescue branch
 
-`character/ro1-reference-engine-v1` separates reusable motion from raster appearance.
-The [character review tool](character-review.html) demonstrates two DEV_ONLY dummy
-packs, eight directions, independent layer sampling, attachment transforms and
-cosmetic swaps without animation reset. [Report and validation evidence](docs/review/character-ro1-engine-v1/README.md).
+`character/ro1-reference-engine-v1` separates reusable motion from painted raster appearance.
+The [character review player](character-review.html) immediately autoplays the
+ASTRAEON Swordsman Walk, with all eight directions and independent Hair A/B,
+Sword A/B, shield, circlet and cape swaps. [Watch the owner animation](docs/review/character-ro1-animated-v1/swordsman-owner-preview.gif).
+Idle, Walk and BasicAttack are actual painted animations, based on public RO1
+rendered pose evidence. Exact ACT delays remain unknown. New art requires owner
+visual approval. [Animated proof report](docs/review/character-ro1-animated-v1/REPORT.md).
 
-Actual RO1 Swordsman pose/timing data is missing, so production Idle/Walk/BasicAttack
-are gated. Preserved painted neutral views require owner visual review. No new
-production character is installed. Default Swordsman creation at the source
-checkpoint references a missing asset; the existing Mage option remains usable.
-Historical world/build notes below do not authorize expanding this rescue scope.
+[In-world visual review](character-gameplay-review.html) uses an isolated memory
+save and existing Mage mechanics with a Swordsman presentation override. Ordinary
+boot, gameplay and world files are unchanged. The older Swordsman creator still
+requires its missing full-catalogue asset; this three-action proof does not invent
+that catalogue. [Historical dummy engine review](character-engine-review.html).
+Stop after these three actions until owner approval.
 
 ## Current build
 

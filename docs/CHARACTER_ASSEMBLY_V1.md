@@ -1,14 +1,14 @@
 # ASTRAEON Character Assembly Engine v1
 
 Rescue scope: reusable assembly and RO1 reference intake; painted Swordsman proof
-limited to Idle, Walk and BasicAttack. Production remains blocked on actual RO
-key-pose data. [Audit and evidence](review/character-ro1-engine-v1/audit.md).
+limited to Idle, Walk and BasicAttack. The [animated painted proof](review/character-ro1-animated-v1/REPORT.md) uses rendered RO motion evidence. Exact ACT timing is unknown; owner visual approval is pending. [Historical audit](review/character-ro1-engine-v1/audit.md).
 
 `character-motion-template.js` is the independent numeric motion authority.
 `character-assembly.js` combines it with replaceable raster appearance packs.
 `modular-sprites.js` exposes optional compileAssembly/loadAssembly/drawAssembly
 without changing its legacy compile/load/draw API. Normal game boot is unchanged.
-Load motion-template, assembly, then modular-sprites for the new review tool.
+The painted review loads motion-template and assembly. Modular-sprites supplies
+an optional bridge for existing visual callers.
 
 ## Motion and smoothing
 
@@ -34,8 +34,11 @@ silhouette and weapon progression. Reference dwell may be reduced within its
 interval, but landmark timestamps remain fixed. Events remain on keys. No
 automatic frame doubling, duration doubling or custom procedural gait.
 
-The `ro1-swordsman-male` draft intentionally fails executable validation until
-actual source evidence exists. Synthetic fixtures cannot be marked production.
+The `ro1-swordsman-male` template now executes rendered reference evidence.
+Every key identifies source URL, image hash, indexed action/frame and confidence.
+ACT_EXTRACTED, RENDERED_REFERENCE, VIDEO_DERIVED and VISUAL_DERIVED keys remain
+distinct from ASTRAEON_INBETWEEN frames. Rendered evidence cannot claim exact ACT
+timing. Synthetic fixtures cannot be marked production.
 RO-derived rescue templates reject actions outside Idle/Walk/BasicAttack.
 
 ## Appearance and layer sampling
@@ -112,7 +115,9 @@ Body/Hair/MainHand selection. There is no Swordsman-specific engine branch.
 
 ## Production gates
 
-Private RO extraction must precede production animation. Verify eight neutral
+RO motion evidence must precede production animation. The owner-authorized
+fallback accepts rendered/video/visual evidence when raw ACT is unavailable;
+exact ACT claims still require actual extraction. Verify eight neutral
 painted ASTRAEON identities from the unchanged seed, then use Game Studio's
 approved-seed → edit canvas → coherent strip → shared normalization/registration
 → preview → in-engine review workflow. Do not generate each frame independently.
