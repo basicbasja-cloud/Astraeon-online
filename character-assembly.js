@@ -16,7 +16,7 @@ function validateAppearancePack(pack,template){
  if(!object(pack))return ['AppearancePack must be an object'];
  const t=template?.template||template;
  if(!t?.actions||!t.registration)return ['MotionTemplate must compile before appearance'];
- check(pack.schemaVersion==='1.0','Unsupported appearance schema');
+ check(['1.0','1.1'].includes(pack.schemaVersion),'Unsupported appearance schema');
  check(typeof pack.packId==='string'&&/^[a-z][a-z0-9-]*$/.test(pack.packId),'Invalid appearance packId');
  check(Array.isArray(pack.compatibleMotionTemplates)&&pack.compatibleMotionTemplates.includes(t.motionTemplateId),'Appearance is incompatible with MotionTemplate');
  check(same(pack.registration,t.registration),'Appearance shared registration differs');
@@ -27,6 +27,17 @@ function validateAppearancePack(pack,template){
  const slots=object(pack.slots)?pack.slots:{},parts=object(pack.parts)?pack.parts:{},atlases=object(pack.atlases)?pack.atlases:{},defaults=object(pack.defaultParts)?pack.defaultParts:{};
  const assigned=new Set();
  check(Object.keys(slots).length>0&&Object.values(slots).some(s=>s?.required&&s?.layers?.includes('Body')),'Required BodySpriteSet missing');
+ if(pack.schemaVersion==='1.1'){
+  const c=pack.bodyContract;
+  check(slots.BodyWithOutfit?.required===true&&slots.Head?.required===true,'Production requires independent BodyWithOutfit and Head');
+  check(!own(slots,'BodyCore')&&!own(slots,'Outfit'),'Production paper-doll body model prohibited');
+  check(object(c)&&c.model==='BodyWithOutfit+Head'&&typeof c.contractId==='string','BodyWithOutfit contract missing');
+  check(same(c?.registration,t.registration)&&same(c?.directions,DIRECTIONS),'BodyWithOutfit registration contract differs');
+  check(same(c?.actions,Object.keys(t.actions)),'BodyWithOutfit action contract differs');
+  check(same(c?.timeline,Object.fromEntries(Object.entries(t.actions).map(([a,v])=>[a,Object.fromEntries(DIRECTIONS.map(d=>[d,v.directions[d].frames.map(f=>f.durationMs)]))]))),'BodyWithOutfit frame timeline differs');
+  check(['head','mainHand','offHand','back'].every(n=>c?.sockets?.includes(n)),'BodyWithOutfit semantic sockets missing');
+  for(const part of Object.values(parts))if(part?.slot==='BodyWithOutfit')check(part.contractId===c?.contractId&&part.mode==='BODY_SYNC'&&part.space==='canvas','Incompatible BodyWithOutfit part');
+ }
  for(const [slot,s] of Object.entries(slots)){
   if(!object(s)){check(false,'Invalid slot '+slot);continue}
   check(typeof s.required==='boolean'&&Array.isArray(s.layers)&&s.layers.length>0,'Invalid semantic slot '+slot);
@@ -45,7 +56,19 @@ function validateAppearancePack(pack,template){
   const s=slots[part.slot],label=id;
   check(!!s,'Unknown part slot '+id);check(MODES.includes(part.mode),'Invalid layer sampling mode '+id);
   check(['canvas','attachment'].includes(part.space),'Invalid layer space '+id);
-  if(part.space==='attachment')check(typeof part.anchor==='string'&&Object.values(t.actions).every(a=>DIRECTIONS.every(d=>a.directions[d].frames.every(f=>own(f.anchors,part.anchor)))),'Unavailable attachment anchor '+id);
+  if(part.space==='attachment'){
+   if(part.parentLayer){
+    const parent=Object.values(parts).find(p=>p!==part&&slots[p?.slot]?.layers?.includes(part.parentLayer));
+    check(!!parent&&parent.slot==='Head'&&['Hair','Headgear'].includes(part.slot),'Invalid head-local parent '+id);
+    check(typeof part.anchor==='string'&&Object.values(parent?.timelines||{}).every(dirs=>Object.values(dirs).every(seq=>(seq.frames||seq.phases||seq.views||[]).every(e=>e.layers[part.parentLayer]?.sockets?.[part.anchor]&&validTransform(e.layers[part.parentLayer].sockets[part.anchor])))),'Unavailable head-local socket '+id);
+   }else check(typeof part.anchor==='string'&&Object.values(t.actions).every(a=>DIRECTIONS.every(d=>a.directions[d].frames.every(f=>own(f.anchors,part.anchor)))),'Unavailable attachment anchor '+id);
+  }
+  if(own(part,'defaultRegistration'))check(validTransform(part.defaultRegistration),'Invalid default registration '+id);
+  if(own(part,'directionRegistration'))check(same(Object.keys(part.directionRegistration),DIRECTIONS)&&Object.values(part.directionRegistration).every(validTransform),'Invalid direction registration '+id);
+  if(own(part,'actionPhaseRegistration'))for(const [a,entries]of Object.entries(part.actionPhaseRegistration)){
+   check(own(t.actions,a)&&Array.isArray(entries)&&entries.length>0,'Invalid registration action '+id);
+   for(const [i,e]of (Array.isArray(entries)?entries:[]).entries())check(Number.isFinite(e?.at)&&e.at>=0&&e.at<1&&(i===0?e.at===0:e.at>entries[i-1].at)&&validTransform(e?.transform),'Invalid registration phase '+id);
+  }
   for(const field of ['durations','durationMs','timing','root','anchors','motionTemplate'])check(!own(part,field),'Part cannot override motion '+id+'/'+field);
   const ref=(entry)=>{
    if(!object(entry)||!object(entry.layers)){check(false,'Missing semantic samples '+label);return}
@@ -60,7 +83,14 @@ function validateAppearancePack(pack,template){
     if(part.space==='attachment'){
      check(Array.isArray(f.pivot)&&f.pivot.length===2&&f.pivot.every(Number.isFinite),'Invalid attachment image pivot '+label);
      if(own(f,'localTransform'))check(validTransform(f.localTransform),'Invalid local transform '+label);
+     if(pack.schemaVersion==='1.1'){
+      check(Array.isArray(f.pivot)&&f.pivot[0]>=0&&f.pivot[1]>=0&&f.pivot[0]<=r?.[2]&&f.pivot[1]<=r?.[3],'Production pivot outside raster '+label);
+      const trim=f.trim;
+      check(object(trim)&&Array.isArray(trim.sourceSize)&&trim.sourceSize.length===2&&trim.sourceSize.every(Number.isSafeInteger)&&Array.isArray(trim.offset)&&trim.offset.length===2&&trim.offset.every(Number.isSafeInteger)&&trim.offset.every(n=>n>=0)&&trim.offset[0]+r?.[2]<=trim.sourceSize[0]&&trim.offset[1]+r?.[3]<=trim.sourceSize[1],'Missing/invalid explicit trim metadata '+label);
+      if(part.slot==='Head')check(f.sockets&&['hair','headgear'].every(n=>validTransform(f.sockets[n])),'Head-local sockets required '+label);
+     }
     }
+    if(f.sockets)for(const socket of Object.values(f.sockets))check(validTransform(socket),'Invalid local socket '+label);
     for(const field of ['durationMs','timing','anchors','mirroring'])check(!own(f,field),'Raster cannot override motion '+label+'/'+field);
    }
   };
@@ -90,6 +120,13 @@ function validateAppearancePack(pack,template){
      }
     }
    }
+  }
+ }
+ if(pack.drawProfiles){
+  for(const order of Object.values(pack.drawProfiles))check(motion.validOrder(order),'Invalid appearance draw profile');
+  for(const [a,dirs]of Object.entries(pack.frameDrawProfiles||{})){
+   check(own(t.actions,a)&&same(Object.keys(dirs),DIRECTIONS),'Invalid appearance draw direction mapping');
+   for(const d of DIRECTIONS)check(Array.isArray(dirs[d])&&dirs[d].length===t.actions[a]?.directions[d].frames.length&&dirs[d].every(n=>own(pack.drawProfiles,n)),'Invalid appearance frame draw profile');
   }
  }
  return errors;
@@ -130,9 +167,26 @@ function compileAssembly(template,appearancePack){
     const phase=frameIndex===undefined?body.phase:compiledMotion.template.actions[action].directions[direction].frames.slice(0,frameIndex).reduce((n,f)=>n+f.durationMs,0)/body.totalDurationMs;
     index=phaseIndex(entries,phase);entry=entries[index];
    }
-   for(const [layer,ref] of Object.entries(entry.layers))byLayer[layer]={...ref,slot,layer,partId:id,sampleIndex:index,mode:part.mode,space:part.space,transform:part.space==='attachment'?composeTransform(body.frame.anchors[part.anchor],ref.localTransform||identity()):identity()};
+   let registration=part.defaultRegistration||identity();
+   registration=composeTransform(registration,part.directionRegistration?.[direction]||identity());
+   const phases=part.actionPhaseRegistration?.[action];
+   if(phases)registration=composeTransform(registration,phases[phaseIndex(phases,body.phase)].transform);
+   for(const [layer,ref] of Object.entries(entry.layers))byLayer[layer]={...ref,slot,layer,partId:id,sampleIndex:index,mode:part.mode,space:part.space,parentLayer:part.parentLayer,anchor:part.anchor,registrationTransform:composeTransform(registration,ref.localTransform||identity())};
   }
-  return {...body,format:'ASTRAEON_ASSEMBLY_V1',packId:pack.packId,layers:body.drawOrder.filter(n=>own(byLayer,n)).map(n=>byLayer[n]),appearance:chosen};
+  const resolving=new Set();
+  function resolve(layer){
+   const ref=byLayer[layer];if(ref.transform)return ref.transform;
+   if(resolving.has(layer))throw Error('Cyclic attachment parent');resolving.add(layer);
+   let anchor;
+   if(ref.parentLayer){const parent=byLayer[ref.parentLayer];if(!parent?.sockets?.[ref.anchor])throw Error('Selected Head socket unavailable');anchor=composeTransform(resolve(ref.parentLayer),parent.sockets[ref.anchor])}
+   else anchor=body.frame.anchors[ref.anchor];
+   ref.anchorTransform=anchor;
+   ref.transform=ref.space==='attachment'?composeTransform(anchor,ref.registrationTransform):identity();
+   resolving.delete(layer);return ref.transform;
+  }
+  Object.keys(byLayer).forEach(resolve);
+  const profile=pack.frameDrawProfiles?.[action]?.[direction]?.[body.frameIndex],drawOrder=profile?pack.drawProfiles[profile]:body.drawOrder;
+  return {...body,drawOrder,format:'ASTRAEON_ASSEMBLY_V1',packId:pack.packId,layers:drawOrder.filter(n=>own(byLayer,n)).map(n=>byLayer[n]),appearance:chosen};
  }
  return Object.freeze({motion:compiledMotion,pack,sample,selection});
 }

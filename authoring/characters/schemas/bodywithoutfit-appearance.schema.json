@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "astraeon-bodywithoutfit-appearance-v1.1",
+  "title": "BodyWithOutfit plus independent Head production contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "packId",
+    "bodyContract",
+    "slots",
+    "defaultParts",
+    "parts",
+    "atlases",
+    "registration"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.1"
+    },
+    "bodyContract": {
+      "type": "object",
+      "required": [
+        "contractId",
+        "model",
+        "registration",
+        "directions",
+        "actions",
+        "timeline",
+        "sockets"
+      ],
+      "properties": {
+        "model": {
+          "const": "BodyWithOutfit+Head"
+        },
+        "directions": {
+          "const": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ]
+        },
+        "actions": {
+          "const": [
+            "Idle",
+            "Walk",
+            "BasicAttack"
+          ]
+        },
+        "contractId": {
+          "type": "string"
+        },
+        "registration": {
+          "type": "object"
+        },
+        "timeline": {
+          "type": "object"
+        },
+        "sockets": {
+          "type": "array",
+          "minItems": 4
+        }
+      }
+    },
+    "slots": {
+      "type": "object",
+      "required": [
+        "BodyWithOutfit",
+        "Head",
+        "Hair",
+        "MainHand",
+        "OffHand",
+        "Headgear",
+        "Garment"
+      ],
+      "not": {
+        "anyOf": [
+          {
+            "required": [
+              "BodyCore"
+            ]
+          },
+          {
+            "required": [
+              "Outfit"
+            ]
+          }
+        ]
+      }
+    },
+    "parts": {
+      "type": "object"
+    },
+    "defaultParts": {
+      "type": "object",
+      "required": [
+        "BodyWithOutfit",
+        "Head"
+      ]
+    }
+  },
+  "description": "Executable character-assembly.js validator additionally checks every timeline, required neck/grip/skull/back pivot, Head-local parent, finite transform, trim metadata, atlas bounds, all eight direction mappings and identical body-contract compatibility. Internal Body and HeadBase layers are retained for generic-engine compatibility."
+}
