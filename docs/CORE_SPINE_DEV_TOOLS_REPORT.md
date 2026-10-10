@@ -155,3 +155,13 @@ The running inherited suites never invoke this coherent dev teleport, so normal
 travel/AI behavior and their tested paths remain unchanged. Final new browser
 42-group run must execute current code. Town Services/Lifecycle final reports
 pass 40/30 groups, zero unexpected errors. Remaining inherited queue is active.
+
+## Measured final Node / retained browser progress
+
+Full `node-final-3`: **1614 retained + 89 new = 1703 pass / 0 fail**, 24 suites.
+Inherited completed reports: Town Services 40, Lifecycle 30, Capacity 63 =
+**133 groups / 0 failures**, zero unexpected errors. Remaining inherited queue
+is active. These are measured completed reports, not expected counts.
+Current implementation HEAD before this report: `da361e0` (resolve full SHA).
+Final new 42-group run, remaining browser/cache, world validation and clean
+runtime/test checkpoint are still required before closure/push.
