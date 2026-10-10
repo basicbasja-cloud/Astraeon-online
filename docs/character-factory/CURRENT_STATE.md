@@ -26,14 +26,16 @@ not a visual acceptance result. Nominal game-height measurements range from
 
 ## Awaiting owner decision
 
-**TURNAROUND_REVIEW_PENDING.** Accept the directional appearance, or identify
-specific views/features for revision. New rear cape design, profile proportions,
-camera consistency and sword handling deserve particular inspection. Concept
-approval does not automatically approve these new surfaces or exact projection.
+**TURNAROUND_REVIEW_FAILED.** The owner rejected W, NW and N for incorrect sword
+direction and hands that do not grip. The other five views remain unapproved.
+Exact feedback is retained in the turnaround folder's `OWNER_FEEDBACK.md`.
+The parent character concept remains approved. Concept approval does not
+automatically approve new surfaces, grip or exact projection.
 
 Production registration, independent editable body/costume/weapon art, motion
 and runtime release remain unapproved and unauthored for this new character.
-No complete playable candidate is claimed. The global action matrix still has
+The new production factory has not been built; these are concept images and a
+static review page. No complete playable candidate is claimed. The global action matrix still has
 empty new-character coverage.
 
 ## Next after an accepted turnaround

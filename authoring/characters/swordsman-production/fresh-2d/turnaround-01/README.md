@@ -1,7 +1,9 @@
 # Directional concept turnaround 01
 
-**DEV_ONLY / TURNAROUND_REVIEW_PENDING.** The parent concept is approved;
-the newly drawn directions are not. Open `review.html` for canonical-order
+**DEV_ONLY / TURNAROUND_REVIEW_FAILED.** The owner rejected W, NW and N for
+incorrect sword direction and missing grip. See `OWNER_FEEDBACK.md`.
+The parent concept is approved; the newly drawn directions are not.
+Open `review.html` for canonical-order
 direction cards, the approved concept comparison, and common-scale previews.
 
 Selected sheet: `turnaround.png`. Initial `source.png` is retained: it repeated
@@ -27,8 +29,9 @@ Eight distinct front, side and rear painted concepts derived from the approved
 character. Compare hair/head size, face, shoulders, tunic, teal waist cloth,
 gold cape, boots, camera elevation and sword shape across views. Rear cape
 shape/trim and hidden costume surfaces are newly interpreted artwork requiring
-owner review. Sword remains in anatomical right-hand position by visual inspection;
-true skeletal handedness cannot be certified from a painted sheet alone.
+owner review. The owner's feedback invalidates the earlier claim of plausible
+sword placement: W, NW and N fail direction/grip. True skeletal handedness or
+physical grip cannot be certified from a painted sheet alone.
 
 ## Limits
 

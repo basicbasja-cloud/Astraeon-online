@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "candidateId": "fresh-2d-turnaround-01",
   "createdDate": "2026-10-10",
-  "status": "DEV_ONLY_TURNAROUND_REVIEW_PENDING",
-  "ownerApproval": "TURNAROUND_PENDING",
+  "status": "DEV_ONLY_TURNAROUND_REVIEW_FAILED",
+  "ownerApproval": "TURNAROUND_REJECTED_W_NW_N",
   "parentConcept": "../candidate-01/candidate.png",
   "parentConceptSHA256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
   "parentApprovalScope": "CONCEPT_ONLY",
@@ -299,5 +299,17 @@
     ],
     "residue": "Other alpha>=128 components are isolated one-pixel residues",
     "skeletonValidated": false
+  },
+  "ownerFeedback": {
+    "reason": "Sword direction incorrect; hands do not grip",
+    "date": "2026-10-10",
+    "evidence": "OWNER_FEEDBACK.md",
+    "productionFactory": "NOT_BUILT",
+    "otherDirections": "NOT_APPROVED",
+    "rejectedDirections": [
+      "W",
+      "NW",
+      "N"
+    ]
   }
 }
