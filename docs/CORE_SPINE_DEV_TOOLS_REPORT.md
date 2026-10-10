@@ -50,3 +50,24 @@ receipts. Add only narrow Gold/modifier/monster/teleport/wipe owner adapters.
 Then deterministic tests, real two-class browser, all inherited suites/cache,
 source audit, clean runtime checkpoint, final docs and normal target-only push.
 Do not start Integration Gate. This report is not completion evidence.
+
+## Implementation checkpoint
+
+One `AstraeonDev` namespace and real-game framed console now implement the list.
+Only exact dev mode loads dev-tools.js. Canonical Gold and modifier inspection
+are narrow Player additions. Definition-aware spawn reuses enemy()/Lifecycle;
+kill uses hit()/Combat HP application and existing death orchestration. Map/point
+teleport validates authored collision, invalidates tickets/services/targets/input,
+uses prepareZone and centerCamera/transform. Wipe removes only astraeon-iso-v1,
+stops old runtime/save writes and requires reload. Cache advances once to v97.
+
+Focused Node: 79 / 0. Full integration: 1614 retained + 79 new = 1693 / 0.
+First focused run had two new-fixture expectations inconsistent with existing
+data (Skill Points gate at Job 1; proof-material grants Herb x2); corrected to
+actual definitions without runtime balance changes. First new browser run passes
+16 Swordsman groups including real Lifecycle spawn/death/Quest credit, then
+compares save snapshots while town simulation is running. Snapshot fixture now
+opens the existing Character menu before comparing, preserving the exact
+Save-authority equality assertion. Raw attempt remains browser-attempt-1.
+Full new two-class rerun, all inherited browser/cache and final source audit
+remain pending. Do not mark complete or start Integration Gate yet.
