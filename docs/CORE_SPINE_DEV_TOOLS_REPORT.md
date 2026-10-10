@@ -81,3 +81,12 @@ Console now references existing `../icon.svg`; no art change or error suppressio
 Raw `browser-attempt-2` is retained. Rerun3 must show zero unexpected errors.
 All runtime source remains at the 1693-check implementation; final regression
 queue/source audit and documentation checkpoint remain pending.
+
+## Integrity edge-case checkpoint
+
+New focused suite is now **86 / 0**. Seven added cases cover primitive registry
+identity, spent-point Job lowering, canonical learned/temporary modifier inspection,
+invalid snapshot lock recovery, explicit persistence failure and immutable receipts.
+The full 1693 integration run predates these seven test-only additions; rerun full
+suite before final checkpoint. Browser rerun3 has passed Swordsman through wipe/
+reload; remaining class/exposure/error gate and inherited acceptance stay pending.
