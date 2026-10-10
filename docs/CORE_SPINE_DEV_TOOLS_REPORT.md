@@ -179,3 +179,17 @@ Expanded final new browser is running as `browser-final-1` (expected 42 groups;
 report actual result only after completion). Next: final world validation serially,
 source/diff audit, clean runtime/test checkpoint, final report/docs and normal
 target-only push. Do not start Integration Gate.
+
+## Final current-runtime browser result
+
+`browser-final-1/report.json`: **42 pass / 0 fail**, zero unexpected console/page/
+runtime/HTTP errors. Swordsman and Mage each execute 19 groups through the actual
+dev-mode game frame, plus four normal/non-exact URL exposure checks. Valid
+Action Item preparation becomes stale after teleport with no consumption.
+Combined measured functional browser total: **409 retained + 42 new = 451 / 0**.
+Full Node: 1703 / 0. Cache/offline: v97 / 165 requests, PASS.
+
+World validator is running serially after all browsers closed. Next: inspect its
+actual verdict, source audit/diff check, create clean runtime/test checkpoint,
+then replace working notes with final verified report and normally push target.
+No additional runtime changes are planned; no Integration Gate starts here.
