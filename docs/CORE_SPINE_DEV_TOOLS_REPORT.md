@@ -105,3 +105,12 @@ Source audit verifies 23 inherited Node files unchanged, inherited browser AST
 assertions unchanged and 38 protected cores identical. The external inherited
 runner is active, starting Town Services then Lifecycle and other foundations,
 ending with Quest/cache. Do not infer final acceptance before all actual reports.
+
+## Final acceptance extension queued
+
+The new browser suite now also prepares a valid existing Action Item ticket,
+teleports, and verifies STALE_PACKAGE with no consumption in both classes.
+This is test-only; previously passing 40-group report remains valid evidence
+for unchanged runtime. Expanded final 42-group run is queued after inherited
+browsers finish, to avoid concurrent browser resource contention. No inherited
+test/assertion is edited. Integration Gate remains out of scope.
