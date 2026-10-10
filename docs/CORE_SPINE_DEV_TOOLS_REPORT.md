@@ -126,3 +126,19 @@ travel reconciliation. No inherited assertion or diagnostic meaning is weakened.
 Node/final new browser must rerun after this narrow compatibility correction.
 The active Town Services suite does not use Lifecycle.placePlayer; the later
 Lifecycle suite will load the preserved helper.
+
+## Source/retained acceptance checkpoint
+
+Full Node after compatibility correction (`node-final-2`) passes **1700 / 0**.
+Source audit: **23 inherited Node files unchanged, 38 protected core files
+unchanged, all inherited browser assertions unchanged**. Diff sequence audit
+also preserves all original game lines except the exact-save wipe guard and
+optional definition input to the existing enemy factory; the new owner adapters
+are inserted inside exact dev mode. No world/art/Character/nav data changed.
+
+Inherited Town Services Swordsman has passed actual NPC access, Shop/Storage,
+Collect, offline reload, ordinary travel and real enemy death/respawn. Mage and
+remaining suites are running. Latest implementation: `bbcaaa4` (resolve full SHA
+from Git); this report successor stores current evidence. Next: complete inherited
+runner, expanded final new browser, cache/world/source audit, clean runtime/test
+checkpoint and final documentation. No final acceptance claim yet.
