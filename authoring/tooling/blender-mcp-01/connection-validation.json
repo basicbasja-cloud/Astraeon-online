@@ -1,0 +1,70 @@
+{
+  "status": "LOCAL_MCP_CONNECTION_VERIFIED",
+  "checks": [
+    "MCP initialize and tool discovery",
+    "Telemetry-off tool succeeds and live addon consent is false",
+    "Scene query reaches owned disposable Blender",
+    "Safe-mode Blender edit executes and restores original transform",
+    "Actual Blender viewport capture returned through MCP",
+    "Safe mode rejects a non-Blender import",
+    "Rigify generates an editable rig with arm IK and finger controls"
+  ],
+  "captures": [
+    {
+      "path": "disposable-viewport.png",
+      "bytes": 74464,
+      "sha256": "194490f48fbde97cde5f1c9493536a0266f9f022c049dbaf06e37197fc638a1a"
+    }
+  ],
+  "replies": {
+    "telemetry": "Data collection is OFF: addon consent is false and telemetry is disabled by the launch environment.",
+    "addonStatus": {
+      "up_to_date": true,
+      "protocol_version": 13,
+      "expected_protocol_version": 13,
+      "addon_version": [
+        1,
+        8
+      ],
+      "capabilities": [
+        "bpy_api_lookup",
+        "describe_node_type",
+        "drain_human_activity",
+        "execute_code",
+        "get_addon_info",
+        "get_object_info",
+        "get_scene_info",
+        "get_telemetry_consent",
+        "get_viewport_screenshot",
+        "get_world_state_snapshot",
+        "list_scene_items",
+        "pick_viewport_object",
+        "set_telemetry_consent"
+      ],
+      "blender_version": "5.2.2 LTS",
+      "premium_generators": [],
+      "libraries": {
+        "polyhaven": "off",
+        "sketchfab": "off",
+        "polypizza": "off"
+      },
+      "generators": {
+        "tripo": "off (Premium only)",
+        "hunyuan3d": "off",
+        "hyper3d": "off"
+      },
+      "source": "native",
+      "warning": null,
+      "telemetry_consent": false,
+      "update_command": "uvx mcp-for-blender install-addon",
+      "after_install": "If the addon file was updated: in Blender, Preferences \u2192 Add-ons \u2192 disable/enable 'Interface: Blender MCP', or restart Blender, then Start MCP Server."
+    },
+    "initialScene": "Scene 'ASTRAEON_MCP_DISPOSABLE_CONNECTION_TEST' | 2 armature, 1 camera, 1 light, 221 mesh | active RIG-MCP_Rigify_Guide | selected RIG-MCP_Rigify_Guide | mode OBJECT\n\nShowing 20 of 225 (name | type | location | size | hidden | children):\nCube | mesh | at (0.0, 0.0, 0.0) | size 2.0x2.0x2.0\nLight | light | at (4.08, 1.01, 5.9)\nCamera | camera | at (7.36, -6.93, 4.96)\nMCP_Rigify_Guide | armature | at (0.0, 0.0, 0.0) | size 1.58x0.29x1.98\nRIG-MCP_Rigify_Guide | armature | at (0.0, 0.0, 0.0) | size 3.16x3.16x1.99\nWGT-RIG-MCP_Rigify_Guide_eye.L | mesh | at (0.05, -0.43, 1.89) | size 0.03x0.0x0.03\nWGT-RIG-MCP_Rigify_Guide_eye.R | mesh | at (-0.05, -0.43, 1.89) | size 0.03x0.0x0.03\nWGT-RIG-MCP_Rigify_Guide_eyes | mesh | at (0.0, -0.43, 1.89) | size 0.17x0.0x0.06\nWGT-RIG-MCP_Rigify_Guide_master_eye.L | mesh | at (0.05, -0.12, 1.89) | size 0.02x0.0x0.02\nWGT-RIG-MCP_Rigify_Guide_master_eye.R | mesh | at (-0.05, -0.12, 1.89) | size 0.02x0.0x0.02\nWGT-RIG-MCP_Rigify_Guide_nose_master | mesh | at (0.0, -0.17, 1.84) | size 0.02x0.0x0.02\nWGT-RIG-MCP_Rigify_Guide_ear.L | mesh | at (0.09, -0.03, 1.86) | size 0.01x0.03x0.04\nWGT-RIG-MCP_Rigify_Guide_ear.R | mesh | at (-0.09, -0.03, 1.86) | size 0.01x0.03x0.04\nWGT-RIG-MCP_Rigify_Guide_jaw_master | mesh | at (0.0, -0.06, 1.87) | size 0.2x0.07x0.08\nWGT-RIG-MCP_Rigify_Guide_teeth.T | mesh | at (0.0, -0.16, 1.82) | size 0.06x0.05x0.01\nWGT-RIG-MCP_Rigify_Guide_teeth.B | mesh | at (0.0, -0.15, 1.79) | size 0.06x0.05x0.01\nWGT-RIG-MCP_Rigify_Guide_tongue_master | mesh | at (0.0, -0.11, 1.8) | size 0.03x0.01x0.01\nWGT-RIG-MCP_Rigify_Guide_brow.B.L | mesh | at (0.08, -0.12, 1.9) | size 0.01x0.0x0.01\nWGT-RIG-MCP_Rigify_Guide_brow.B.L.001 | mesh | at (0.07, -0.13, 1.91) | size 0.01x0.0x0.01\nWGT-RIG-MCP_Rigify_Guide_brow.B.L.002 | mesh | at (0.06, -0.14, 1.91) | size 0.01x0.0x0.01\n... 205 more. Narrow with query= or root=, or raise limit.",
+    "reversibleEdit": "Code executed successfully: MCP_REVERSIBLE_EDIT_PASS: cube moved 0.75 and restored\n",
+    "viewport": "Tiles left to right, top to bottom: front, three_quarter. Framed 1 objects, 2 x 2 x 2 m across, centred at [0.0, 0.0, 0.0].",
+    "rigify": "Code executed successfully: Fetch rig.\nClear rig animation data.\nCreate widgets collection: 0.001\nDuplicate rig: 0.016\nInstantiate rigs: 0.004\nInitialize rigs: 0.001\nPrepare bones: 0.003\nGenerate bones: 6.390\nParent bones: 0.057\nConfigure bones: 0.044\nPreapply bones: 0.012\nApply bones: 0.004\nRig bones: 0.033\nGenerate widgets: 0.032\nAssign layers: 0.046\nFinalize: 0.037\nThe rest: 0.037\nInfo: Successfully generated: \"RIG-MCP_Rigify_Guide\"\nRIGIFY_GENERATION_PASS 706 bones; arm IK and finger controls present\nInfo: Saved as \"disposable-rigify.blend\"\n"
+  },
+  "paidJobs": 0,
+  "characterApproval": false,
+  "productionCharacterChanged": false
+}

@@ -1,0 +1,11 @@
+{
+  "file": "blender_mcp/server.py",
+  "reason": "Pinned upstream telemetry helper imports an absent config module. When launch env disables telemetry, return only after addon consent is set false; avoid constructing the unused telemetry collector.",
+  "upstreamSha256": "a274fd515d937cf24fca2ae7768b7815a36a6d15631fc320d4bb678ddda7ec5a",
+  "installedSha256": "61286e0a4bccbf1a51f626287ff52c2cfd7085d354ab0911f2bb08d0fed9fe48",
+  "replacement": "        if any(os.environ.get(key, \"\").lower() in (\"true\", \"1\", \"yes\", \"on\")\n               for key in (\"DISABLE_TELEMETRY\", \"BLENDER_MCP_DISABLE_TELEMETRY\", \"MCP_DISABLE_TELEMETRY\")):\n            return \"Data collection is OFF: addon consent is false and telemetry is disabled by the launch environment.\"\n        get_telemetry().invalidate_consent_cache()\n",
+  "statusReadReplacement": {
+    "old": "\"telemetry_consent\": get_telemetry().check_user_consent(),",
+    "new": "\"telemetry_consent\": blender.send_command(\"get_telemetry_consent\").get(\"consent\", False),"
+  }
+}

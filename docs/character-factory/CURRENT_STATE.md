@@ -48,7 +48,17 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**FREE_SOURCE_REVIEW_FAILED / TOOLING_RESEARCH / PAID_PLAN_ON_HOLD.**
+**FREE_SOURCE_REVIEW_FAILED / LOCAL_BLENDER_MCP_VERIFIED / PAID_PLAN_ON_HOLD.**
+The owner said "start implement" after the toolset recommendation. Selected
+character, rigging and QA skills are installed with shared references and
+ASTRAEON integration notes. Pinned MCP for Blender is registered locally,
+Blender addon and Rigify enabled, and seven real connection checks pass in a
+disposable scene. Telemetry and paid generators are off. Two upstream status
+helper compatibility fixes are recorded. See
+`authoring/tooling/blender-mcp-01/README.md` and validation/provenance receipts.
+New MCP tools need a Codex restart to load into chat; skills are discoverable
+on the next turn. This verifies tooling, not a new character or factory.
+
 On 10 October 2026 the owner rejected `free-master-01`: body proportions and
 size are incorrect, the pose does not match the approved photo, and grip is
 unacceptable. Its files are retained as an abandoned pilot, not an active
