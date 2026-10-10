@@ -198,8 +198,8 @@ Plain Accept/status/Turn In controls use existing guild/journal panels.
 `/tools/quest.html` is an isolated diagnostic sandbox. Current cache generation is 97.
 See the [verified Quest handoff](docs/CORE_SPINE_QUESTS_REPORT.md).
 The five quests and reward values are NON-FINAL engineering fixtures.
-Shop/Storage/Town Services is verified. Dev-tool gap closure and the 0.0.1
-Integration Gate remain pending. Patch 0.0.1 and Core Spine are not complete.
+Shop/Storage/Town Services and Dev-tool gap closure are verified. The 0.0.1
+Integration Gate remains pending. Patch 0.0.1 and Core Spine are not complete.
 
 ## Shop / Storage / Town Services foundation
 
@@ -219,7 +219,7 @@ See [contracts](docs/CORE_SPINE_TOWN_SERVICES.md) and
 Verification: 1474 retained + 140 new = 1614 Node checks / 0 failures;
 369 retained + 40 new = 409 browser groups / 0 failures. Cache/offline and
 world schemas pass. This closes only the named foundation, not Patch 0.0.1.
-Next: Dev-tool Gap Closure; not started here.
+Dev-tool gap closure is verified separately below. Integration Gate remains pending.
 
 ## Developer Tool Gap Closure
 
@@ -234,3 +234,8 @@ only `astraeon-iso-v1` and requires reload. Save remains version 5.
 See [tool contracts](docs/CORE_SPINE_DEV_TOOLS.md) and
 [current verification/resume report](docs/CORE_SPINE_DEV_TOOLS_REPORT.md).
 The Integration Gate is a separate next stage; it is not started here.
+
+Developer verification: 1614 retained + 89 new = **1703 Node checks / 0 failures**;
+409 retained + 42 new = **451 browser groups / 0 failures**. Cache/offline (v97,
+165 requests), world schemas and source/diff checks pass. Normal/QA-only URLs
+expose no developer mutations. Next: **0.0.1 Integration Gate**, not started here.

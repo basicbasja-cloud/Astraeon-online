@@ -1,212 +1,298 @@
-# Developer Tool Gap Closure - working report
+# Developer Tool Gap Closure - verified handoff
 
-## Git / resume
+## Conclusion / current status
 
-Branch: `backbone/dev-tool-gap-closure-0.0.1`.
-Parent: `backbone/shop-storage-town-services-0.0.1`.
-Exact fetched parent HEAD: `5456a6a42adf6e9084caf881b09c97a95ea389f3`.
-Fetched, switched, pulled ff-only; parent and new branch were clean.
-Actual parent baseline: **1614 Node checks / 0 failures**, 23 suites.
-Parent browser evidence: 409 functional groups / 0 failures in verified Town Services report.
-Runtime/test and documentation checkpoints: pending.
+The roadmap developer tools pass the runtime and verification gate. They use
+existing gameplay authorities. Final publication is confirmed by matching local
+and remote target HEADs and the clean-tree push receipt. Patch 0.0.1 / Core Spine
+are not complete. Next: **0.0.1 Integration Gate**. It is not started here.
+
+## Git identity / resume
+
+| Field | Value |
+| --- | --- |
+| Repository | `basicbasja-cloud/Astraeon-online` |
+| Branch | `backbone/dev-tool-gap-closure-0.0.1` |
+| Starting parent | `backbone/shop-storage-town-services-0.0.1` |
+| Exact fetched starting parent HEAD | `5456a6a42adf6e9084caf881b09c97a95ea389f3` |
+| Clean runtime/test checkpoint | `1ba0a3b872824aeea407a23db71da2b94539feb3` |
+| Final documentation / remote HEAD | Documentation successor; resolve current target HEAD and push receipt below |
+
+Parent was fetched, switched and pulled ff-only. Parent and new branch were clean.
+No reset to an older pasted hash, merge, rebase, force push, PR or protected branch
+change was performed. All source/tests below are verified at the clean checkpoint.
+Later commits are documentation only. A commit cannot include its own hash; the
+final response and external `final-push-receipt.json` record exact final hashes.
+
+```powershell
+git switch backbone/dev-tool-gap-closure-0.0.1
+git rev-parse HEAD
+git ls-remote origin refs/heads/backbone/dev-tool-gap-closure-0.0.1
+git status --short
+git log --oneline -20
+```
+
+Resume only from latest remote target. No runtime implementation remains.
 Evidence root: `D:\Astraeon\backbone-verification\dev-tools`.
+`final-verification-summary.json` and `source-audit.json` hold measured results.
+Failed new attempts are retained. They are not included in passing totals.
 
-## Source audit matrix
+## Confirmed source audit / tool matrix
 
-| Required tool | Existing implementation / authority | Safe? / gap | Action |
+The audit read actual Player/Character/Progression, Skills/Loadout, Items/Equipment/
+Capacity, gold, Combat/Lifecycle/Loot, Box, Quest evidence, Town Services/Storage,
+Save/migration, map/travel/loading/death, current dev/QA globals, harnesses and
+boot/cache. Roadmap authority is `ASTRAEON_Backbone_Release_Roadmap_EN_v0.4.md`,
+Patch 0.0.1 Developer Tools. This was not a new gameplay foundation.
+
+| Required tool | Existing implementation | Gap / action | Canonical authority |
 | --- | --- | --- | --- |
-| Set Base Level | ProgressionDev -> Player -> Character -> Progression.setLevel | Canonical; errors throw, no coherent receipt | Reuse with validated receipt |
-| Set Job Level | Same, setBaseJobLevel | Canonical; same gap | Reuse |
-| Add EXP | Player.grantBaseExp / grantJobExp | Canonical point/cap rules | Reuse |
-| Give item | ProgressionDev.addStack/createItemInstance; isolated Inventory harness | Canonical capacity/serial | Reuse package acquisition |
-| Give money | No validated standalone grant API; plain Player gold publishers | Missing | Narrow safe Player gold helper |
-| Learn/reset skill | Player Character SkillTree APIs; exact dev gate | Canonical gates/refunds/loadout reset | Reuse; preserve gates |
-| Reset stats | Player Character.resetStats | Paid refund/clamp canonical | Reuse |
-| Spawn monster | Normal enemy factory + Lifecycle.register; isolated harness only | Missing real game command | Narrow definition-aware factory adapter |
-| Kill target | LifecycleDev.damage -> hit -> Combat.apply -> kill -> Lifecycle; Loot.repeatDeath | Existing canonical path, policy unclear | Explicit real actor kill receipt/policy |
-| Teleport map/point | LifecycleDev.placePlayer writes coordinates and centerCamera | Same-map only; target/session reconciliation incomplete | Validated travel/transform adapter; compatibility wrapper |
-| Inspect derived stats | Player getters / Character snapshot | Canonical | Reuse, include modifier groups |
-| Inspect effects/status | QA active combat/monster statuses; passive getter | Partial, fragmented | Read current supported groups/statuses only |
-| Save snapshot | ProgressionDev.snapshot -> Save.snapshot | Canonical | Reuse frozen inspector |
-| Wipe test character | No scoped command | Missing | Exact save-key removal; stop runtime, require reload |
+| Set Base Level | ProgressionDev / progression harness | Reuse with validated receipt | Player -> Character -> Progression.setLevel |
+| Set Job Level | setBaseJobLevel | Reuse | Same, Base Job track |
+| Add EXP | grantBaseExp / grantJobExp | Reuse, no new curve | Character -> Progression.grant |
+| Give item | addStack/createItemInstance/package APIs | Reuse atomic package, coherent console | Item State -> Inventory / Capacity |
+| Give money | Existing plain Player wallet and contained reward publishers | Add narrow safe grant/set helper | Same Player gold field |
+| Learn/rank/reset skill | Existing Skill Tree / Character APIs | Reuse gates/refunds/loadout behavior | Player -> Character -> Skill Tree |
+| Reset stats | Character.resetStats | Reuse paid refund/clamp | Character -> Stats |
+| Spawn monster | Existing enemy factory; isolated Lifecycle harness | Add real-game definition-aware spawn | Existing enemy() -> Lifecycle.register |
+| Kill target | LifecycleDev.damage -> hit/death | Explicit coherent command and reward policy | Existing Combat HP apply -> Lifecycle death |
+| Teleport map/point | Limited Lifecycle point diagnostic | Add reconciled map/point command | Existing loading/collision/transform/camera |
+| Inspect derived stats | Existing Character / Player getters | Add grouped modifier read model | Existing Stats/Character result |
+| Inspect effects/status | Fragmented QA/status fields | Show current limited data only | Existing modifiers, equipment effects, runtime |
+| Save snapshot | Existing Save.snapshot | Reuse frozen inspector | Save v5 |
+| Wipe test character | Missing | Exact key, name confirmation, stop writes/reload | Current character save identity |
 
-Other existing exact-dev globals: Combat, Quest, Lifecycle, Capacity, Box, Loot,
-Town Services. They remain compatible. QA exposes inspection only. Existing isolated
-harnesses are not sufficient proof for real game commands. Normal game has no
-mutation globals; preserve the exact `dev=1` boundary.
+All required tools are available and tested. Existing safe commands are reused;
+no second Character, EXP, inventory, Gold, skill, damage or monster ledger exists.
+The original Lifecycle point diagnostic is unchanged. It lets AI observe the
+moved player for perception/leash fixtures. It is not the general teleport tool.
+This preserves old test meaning as well as assertions.
 
-Progression lowering refuses negative point pools; no manual EXP/point rewrite.
-Skill learn/rank retains class/job/prerequisite/point gates. New commands do not
-invent a status system. Kill follows existing hit/Combat HP application and exact
-Lifecycle death, including normal Loot/EXP/gold/kill counters and eligible Quest
-Kill evidence; duplicate same-life kill rejects. Teleport may bypass grind/gate
-cost, but validates map/point/collision and clears transient combat/target/services.
-Storage and durable Quest/item state remain unchanged.
+## Commands / access / result contract
 
-## Exact next step
+One `AstraeonDev` namespace groups progression, items, money, skills, stats,
+monsters, world, inspect and save. `dev-tools.js` loads only for exact `dev=1`.
+Normal URL, QA-only, dev=0/dev=01 and similarly named parameters expose no new
+mutation module/API. QA keeps existing read-only inspection. This is local
+isolation, not server authentication or GM/RBAC permissions.
 
-Add one coherent `AstraeonDev` adapter and real-game console with canonical
-receipts. Add only narrow Gold/modifier/monster/teleport/wipe owner adapters.
-Then deterministic tests, real two-class browser, all inherited suites/cache,
-source audit, clean runtime checkpoint, final docs and normal target-only push.
-Do not start Integration Gate. This report is not completion evidence.
+`tools/dev-console.html` embeds the actual same-origin dev-mode game. It operates
+on a real loaded character, not a separate sandbox. Current specialized globals
+and harnesses remain compatible. One small console provides all required controls.
+No production menu, style, visual or content editor is added.
 
-## Implementation checkpoint
+Mutations return frozen structured receipts with operation, canonical before/
+after and result, or stable code/blockedReason. The owner blocks reentrant or
+concurrent coherent commands during async teleport. Inspectors do not save,
+grant rewards or publish ownership mutation. `inspect.maps/monsters` are small
+supporting diagnostics for valid command inputs.
 
-One `AstraeonDev` namespace and real-game framed console now implement the list.
-Only exact dev mode loads dev-tools.js. Canonical Gold and modifier inspection
-are narrow Player additions. Definition-aware spawn reuses enemy()/Lifecycle;
-kill uses hit()/Combat HP application and existing death orchestration. Map/point
-teleport validates authored collision, invalidates tickets/services/targets/input,
-uses prepareZone and centerCamera/transform. Wipe removes only astraeon-iso-v1,
-stops old runtime/save writes and requires reload. Cache advances once to v97.
+Successful commands use existing save/UI refresh. A persistence error is explicit
+as `persistence.ok=false` / SAVE_WRITE_FAILED after the valid memory commit.
+It does not claim a database rollback. Supported preflight rejection is unchanged.
 
-Focused Node: 79 / 0. Full integration: 1614 retained + 79 new = 1693 / 0.
-First focused run had two new-fixture expectations inconsistent with existing
-data (Skill Points gate at Job 1; proof-material grants Herb x2); corrected to
-actual definitions without runtime balance changes. First new browser run passes
-16 Swordsman groups including real Lifecycle spawn/death/Quest credit, then
-compares save snapshots while town simulation is running. Snapshot fixture now
-opens the existing Character menu before comparing, preserving the exact
-Save-authority equality assertion. Raw attempt remains browser-attempt-1.
-Full new two-class rerun, all inherited browser/cache and final source audit
-remain pending. Do not mark complete or start Integration Gate yet.
+## Progression / items / money / skills / stats
 
-## Browser error-gate checkpoint
+Level setters use current configured Base 60 / Base Job 50 caps. They keep the
+existing EXP and point rule. Lowering refuses a negative point pool after spend.
+EXP uses the existing multi-level/cap transition. Character keeps its existing
+resource clamp behavior; debug EXP does not add an alternate healing rule.
 
-Second run passes all 40 functional groups across both classes and four normal/
-non-exact dev URLs, but correctly fails the final error gate: the new console
-page had no icon link and the server log records `/favicon.ico` 404 requests.
-Console now references existing `../icon.svg`; no art change or error suppression.
-Raw `browser-attempt-2` is retained. Rerun3 must show zero unexpected errors.
-All runtime source remains at the 1693-check implementation; final regression
-queue/source audit and documentation checkpoint remain pending.
+Item grant uses a complete canonical reward package. Capacity/weight/maxStack,
+metadata, revision, global ItemInstance serial and stored-ID reservation remain
+canonical. Stack grants use no serial; accepted non-stack units allocate once
+each. Failed grants allocate no item/serial. Purchases/grants do not auto-equip.
+No rarity, affix, catalogue or capacity bypass is added.
 
-## Integrity edge-case checkpoint
+Gold grant/set accepts safe nonnegative whole amounts and a valid plain writable
+current wallet. Overflow and malformed current gold reject without repair.
+There is no DevGold wallet. Existing authorization identity checks see Gold changes.
 
-New focused suite is now **86 / 0**. Seven added cases cover primitive registry
-identity, spent-point Job lowering, canonical learned/temporary modifier inspection,
-invalid snapshot lock recovery, explicit persistence failure and immutable receipts.
-The full 1693 integration run predates these seven test-only additions; rerun full
-suite before final checkpoint. Browser rerun3 has passed Swordsman through wipe/
-reload; remaining class/exposure/error gate and inherited acceptance stay pending.
+Skill learn/rank keeps class, registry, Job, prerequisite, rank and point gates.
+Level/EXP tools may supply valid points without grinding; no fake rank or graph
+is installed. Reset uses paid refunds and clears loadout through Player authority.
+Stat reset uses the existing expenditure ledger, recalculates Stats and clamps
+HP/SP. Existing town/camp/no-active-action configuration restrictions remain.
+No progression, stat or skill formula was changed.
 
-## Two-class browser milestone
+## Spawn / kill-target reward and Quest policy
 
-`browser-attempt-3/report.json`: **40 groups / 0 failures**, no unexpected console,
-page/runtime or HTTP errors. Both classes run all commands through the real-game
-console; normal/QA-only/dev=0/dev=01 expose no mutation module/API. Kill delivers
-one existing Lifecycle death, reward and active Quest increment; same-life repeat
-grants nothing. Scoped wipe preserves unrelated keys and pagehide does not recreate
-the removed save. First two raw attempts remain diagnostic evidence.
+Spawn validates known Lifecycle definition, current zone, finite valid position,
+authored collision and existing population budget. It supports the current
+hostile field. Town, remote-map and dungeon spawn reject. It creates a real actor
+through enemy() and Lifecycle registration. Existing mechanical fixtures use
+existing generic species presentation/attack orchestration. No new monster art,
+stats, content or AI code is introduced.
 
-Full `node-final-1`: **1614 retained + 86 new = 1700 / 0**, 24 suites.
-Source audit verifies 23 inherited Node files unchanged, inherited browser AST
-assertions unchanged and 38 protected cores identical. The external inherited
-runner is active, starting Town Services then Lifecycle and other foundations,
-ending with Quest/cache. Do not infer final acceptance before all actual reports.
+Kill uses exact runtime ID, or selected target when omitted. It calls existing
+`hit(actor,actor.hp)` -> Combat HP application -> normal kill/Lifecycle notification.
+This is an explicit dev lethal application, not an ordinary attack simulation.
+It introduces no alternate damage formula or second death authority.
 
-## Final acceptance extension queued
+The receipt states normal death policy: Loot once; Base EXP, Job EXP, gold and
+kill counters through the existing reward profile/commit; eligible active Quest
+Kill through exact Lifecycle evidence. Capacity still applies. A death can be
+successful while its reward is rejected; `result.reward` records that failure.
+No reroll or partial successful grant is implied. Same-life repeat is ALREADY_DEAD
+and gives no second reward/evidence. Existing respawn/new-life semantics remain.
 
-The new browser suite now also prepares a valid existing Action Item ticket,
-teleports, and verifies STALE_PACKAGE with no consumption in both classes.
-This is test-only; previously passing 40-group report remains valid evidence
-for unchanged runtime. Expanded final 42-group run is queued after inherited
-browsers finish, to avoid concurrent browser resource contention. No inherited
-test/assertion is edited. Integration Gate remains out of scope.
+## Teleport / transient reconciliation
 
-## Legacy diagnostic semantic preservation
+The request is a frozen primitive copy of `{zone,x,y}`. Valid map, finite bounds
+and authored collision are checked before loading. Changed caller objects cannot
+change the pending destination. After loading, replaced character or player death
+rejects before map publication. Three focused tests cover these async edges,
+including actual extracted owner adapter code.
 
-Review found that delegating old Lifecycle.placePlayer to the new full teleport
-would release AI targets before inherited perception/home-leash fixtures could
-observe normal AI transitions. The old diagnostic helper is now exactly unchanged
-from parent. It retains collision/transform validation and intentionally lets AI
-observe the moved player. The new coherent world.teleport alone performs complete
-travel reconciliation. No inherited assertion or diagnostic meaning is weakened.
-Node/final new browser must rerun after this narrow compatibility correction.
-The active Town Services suite does not use Lifecycle.placePlayer; the later
-Lifecycle suite will load the preserved helper.
+General teleport uses existing prepareZone, population retirement/rebuild,
+centerCamera and player transform. It bypasses ordinary unlock/grind/travel cost
+explicitly. It retains inventory/equipment/Gold/Quest/Storage and records discovered
+map using existing fields. It exits transient dungeon context.
 
-## Source/retained acceptance checkpoint
+Prepared action/Action Item/Box/Quest packages, service sessions, NPC context,
+monster targets/pending attacks, timeline/projectiles/fields, input, target selection
+and navigation are reconciled. Camera/transform match the new point. Dead/loading/
+invalid point rejects. The original diagnostic point helper remains for natural
+AI perception/leash testing; callers use world.teleport for full reconciliation.
 
-Full Node after compatibility correction (`node-final-2`) passes **1700 / 0**.
-Source audit: **23 inherited Node files unchanged, 38 protected core files
-unchanged, all inherited browser assertions unchanged**. Diff sequence audit
-also preserves all original game lines except the exact-save wipe guard and
-optional definition input to the existing enemy factory; the new owner adapters
-are inserted inside exact dev mode. No world/art/Character/nav data changed.
+## Inspectors / Save / wipe
 
-Inherited Town Services Swordsman has passed actual NPC access, Shop/Storage,
-Collect, offline reload, ordinary travel and real enemy death/respawn. Mage and
-remaining suites are running. Latest implementation: `bbcaaa4` (resolve full SHA
-from Git); this report successor stores current evidence. Next: complete inherited
-runner, expanded final new browser, cache/world/source audit, clean runtime/test
-checkpoint and final documentation. No final acceptance claim yet.
+Stats inspection returns current primary and derived Character results plus
+existing equipment, passive (learned/party) and temporary modifier groups.
+No second stat calculator exists. Effects inspection shows current equipment
+functions, guard/invulnerability timestamps, combat tags/fields/projectile count
+and monster burn/slow/frozen/stunned timestamps with simulation time. Expired
+fields may remain visible. No full Status Effect system is invented.
 
-## Async teleport request integrity
+Save inspector is exactly Save.snapshot: progression, allocation, skills/loadout,
+items/equipment/gold, Quest, Storage and map/position. It is frozen serializable
+data. Runtime tickets, capabilities, actor refs, listeners, sessions and DOM are
+not added to Save. Version **5** and future-save/migration guards are unchanged.
+No persistent dev schema, permissions or pending command is added.
 
-Review identified a mutable caller point reference crossing the async map load.
-The command now owns a frozen primitive point copy and rechecks player life after
-loading before publishing map state. Three new tests prove request-copy ownership,
-real adapter rejection on player death during loading, and replaced-character
-staleness without map mutation. Focused suite: **89 / 0**. Full total is expected
-to be 1614 + 89 = 1703; this is not reported as measured until full rerun.
-The running inherited suites never invoke this coherent dev teleport, so normal
-travel/AI behavior and their tested paths remain unchanged. Final new browser
-42-group run must execute current code. Town Services/Lifecycle final reports
-pass 40/30 groups, zero unexpected errors. Remaining inherited queue is active.
+Wipe requires `WIPE ` plus the exact loaded name. It removes only
+`astraeon-iso-v1`, invalidates transient authorities, stops old runtime and blocks
+old save/pagehide writes. It explicitly requires reload. Other dev evidence,
+quality/settings and unrelated origin keys stay. `localStorage.clear()` is absent.
+Normal URL has no wipe command.
 
-## Measured final Node / retained browser progress
+## Measured deterministic results
 
-Full `node-final-3`: **1614 retained + 89 new = 1703 pass / 0 fail**, 24 suites.
-Inherited completed reports: Town Services 40, Lifecycle 30, Capacity 63 =
-**133 groups / 0 failures**, zero unexpected errors. Remaining inherited queue
-is active. These are measured completed reports, not expected counts.
-Current implementation HEAD before this report: `da361e0` (resolve full SHA).
-Final new 42-group run, remaining browser/cache, world validation and clean
-runtime/test checkpoint are still required before closure/push.
+**1614 inherited + 89 new = 1703 pass / 0 fail**, 24 suites.
+Full command: `python tools/run-node-checks.py` with the documented local Node path.
+Final report: `node-final-3/report.json`. All 23 inherited Node files are unchanged
+after line-ending normalization. No old assertion was removed or weakened.
 
-## Full inherited acceptance milestone
+New suite covers exact access, invalid IDs/numbers, canonical levels/EXP/points/
+resources, class-safe skill rank/refund/loadout, paid stat reset, canonical items/
+serial/capacity, Gold safety, immutable inspections/receipts, Lifecycle-owned death,
+async point ownership/context staleness, Save equivalence and wipe scope.
+World/teleport owner integration also has actual browser proof and source audit;
+Node callback fixtures alone are not used as the acceptance claim.
 
-All **409 inherited functional browser groups pass**, 13 suites; no inherited
-assertion/file was changed. No failed inherited attempt occurred in this run.
-Successful reports have zero unexpected console/page/runtime/HTTP errors.
-Cache/offline also passes: **v97, 165 precached requests**, legacy cache removal,
-offline town, saved character/migration/recovery and errors empty. Source/runtime
-modules are current. Full Node remains 1703 / 0 at `node-final-3`.
+## Measured browser acceptance / smoke
 
-Expanded final new browser is running as `browser-final-1` (expected 42 groups;
-report actual result only after completion). Next: final world validation serially,
-source/diff audit, clean runtime/test checkpoint, final report/docs and normal
-target-only push. Do not start Integration Gate.
+| Final successful suite | Groups |
+| --- | ---: |
+| Town Services / Storage | 40 |
+| Monster Lifecycle | 30 |
+| Inventory Capacity | 63 |
+| Monster Box | 33 |
+| Monster Loot | 26 |
+| Action Item | 30 |
+| Inventory | 15 |
+| Equipment Slots | 59 |
+| Action Loadout | 17 |
+| Combat | 21 |
+| Skill Tree | 11 |
+| Progression | 7 |
+| Quest | 57 |
+| **Inherited retained** | **409** |
+| **New Dev Tools (`browser-final-1`)** | **42** |
+| **Total** | **451 / 0 failures** |
 
-## Final current-runtime browser result
+Swordsman: PASS, all required commands in 19 real-game console groups.
+Mage: PASS, same 19 groups. Four normal/QA-only/non-exact URL checks pass.
+Level/EXP, stack/unique/Gold grant, learn/rank/reset, stat reset, real Lifecycle
+spawn/update/death/normal Loot and Quest evidence, duplicate rejection, map/point
+teleport, valid Action Item ticket invalidation, Stats/effects/save inspection and
+scoped wipe/reload are exercised. Actual console buttons call the real loaded game.
+No direct Quest progress, fake owned items or second monster death is used.
 
-`browser-final-1/report.json`: **42 pass / 0 fail**, zero unexpected console/page/
-runtime/HTTP errors. Swordsman and Mage each execute 19 groups through the actual
-dev-mode game frame, plus four normal/non-exact URL exposure checks. Valid
-Action Item preparation becomes stale after teleport with no consumption.
-Combined measured functional browser total: **409 retained + 42 new = 451 / 0**.
-Full Node: 1703 / 0. Cache/offline: v97 / 165 requests, PASS.
+Successful reports contain **0 unexpected console/page/runtime/HTTP errors**.
+Expected command rejections are separate. All 13 inherited functional suites pass
+on their first current run. No inherited browser source or assertion is changed.
+Local smoke is these recorded real two-class flows and retained gameplay paths,
+not a separate unrecorded manual visual review.
 
-World validator is running serially after all browsers closed. Next: inspect its
-actual verdict, source audit/diff check, create clean runtime/test checkpoint,
-then replace working notes with final verified report and normally push target.
-No additional runtime changes are planned; no Integration Gate starts here.
+## Failed new attempts / evidence limits
 
-## Clean runtime/test checkpoint gate
+Initial focused suite had two new-fixture expectation errors: Job 1 rising-edge
+rejects SKILL_POINTS, and proof-material grants Herb x2. Expectations were aligned
+with actual unchanged definitions. No inherited test or balance was changed.
 
-Final serial world validator exits 0 and passes Terrain, Navigation, TownObject
-and AnimationManifest. Measured final Node **1703 / 0**, functional browser
-**451 / 0** (409 retained + 42 new), cache/offline v97 / 165 requests PASS, and
-zero unexpected successful-browser console/page/runtime/HTTP errors.
-Source audit preserves 23 inherited Node files, all inherited browser files/
-assertions, 41 protected cores and normal game lines except the scoped save guard/
-optional definition-aware factory input. Protected world/art/Character paths
-are untouched. Full diff check passes.
+`browser-attempt-1` passes 16 groups, then save equality fails after teleport while
+simulation is unpaused. The exact changing field was not captured: **Not confirmed**.
+The fixture now pauses with the existing Character menu before comparison. It
+retains exact Save-authority equality; no gameplay or inspector formula is changed.
 
-This commit is the clean runtime/test checkpoint. Record its exact SHA using
-`git rev-parse HEAD`. Only final documentation successors, normal target-only
-push and remote/clean-tree confirmation remain. No further runtime work or
-Integration Gate begins in this branch. External final-verification-summary.json
-and source-audit.json retain the actual proof; failed new attempts remain intact.
+`browser-attempt-2` passes all 40 functional groups but fails the error gate.
+Server log confirms `/favicon.ico` 404s; the new console lacked an icon link.
+It now references existing icon.svg. No error was filtered. `browser-attempt-3`
+passes 40/0, then final expanded current-code run passes 42/0. Raw failed reports
+remain available and are excluded from final passing totals.
+
+Review also kept the original Lifecycle point helper to preserve diagnostic
+meaning, and added owned async point/life revalidation tests. These are integrity
+review changes, not a claim of observed production data loss. No new inherited
+navigation/contact failure occurred. Prior historical reports remain unchanged.
+
+## Cache/offline / world / source audit
+
+One deliberate boot/page/SW change **v96 -> v97** loads the new module before game
+consumers in exact dev mode. Its bytes are precached but normal mode never executes
+it. Cache/offline passes: **165 requests**, legacy removal, offline town, saved
+character/migration/recovery and no errors. Saved-character resume remains valid.
+
+Final serial `python tools/validate-world-v3.py` exits 0: PASS Terrain, Navigation,
+TownObject and AnimationManifest. `git diff --check` passes. Source audit verifies
+**41 protected cores**, 23 inherited Node files and all inherited browser assertions.
+Original normal game lines stay except the scoped wipe save guard and optional
+factory definition input. New owner adapters are inside exact dev mode.
+No world, art, Character, collision/navigation data or style files changed.
+
+## Files added
+
+- `dev-tools.js`
+- `tests/dev-tools.test.cjs`, `tests/dev_tools_browser.py`
+- `tools/dev-console.html`, `tools/dev-console.js`
+- `docs/CORE_SPINE_DEV_TOOLS.md`, `docs/CORE_SPINE_DEV_TOOLS_REPORT.md`
+
+## Files modified
+
+- `player-state.js`: validated existing wallet publication / read-only modifiers
+- `game.js`: scoped save guard, optional factory input, dev-only owner adapters
+- `boot.js`, `index.html`, `sw.js`: deliberate v97 module/cache integration
+- `README.md`, `ARCHITECTURE.md`: current entry points and contract references
+
+## Known limitations / risks / next action
+
+This is local development isolation and trusted publishers. It is not networking,
+server security, GM accounts/RBAC or a rollback database. Save write failure can
+follow a committed memory mutation and is shown explicitly. Field spawn uses
+current population/collision policy; town/remote/dungeon spawn rejects. Generic
+mechanical fixtures reuse current presentation/attack orchestration. No content
+editor is provided. Skill/stat configuration retains current restrictions.
+Status inspection is limited to current representation, not a future status engine.
+Legacy specialized diagnostics remain compatible; full map teleport uses the new
+coherent command. No new final coefficients, content, economy or balance is added.
+
+Likely integration conflicts: Game/Player and boot/page/SW/current docs. Protected
+Progression/Stats, Skills/Loadout, Items/Equipment/Capacity, Action Item, Combat,
+Loot/Lifecycle/Box, Quest, Town Services/Storage and Save core are unchanged.
+World/RO3/authoring/Blender, sprites/layers/atlases, renderer/lighting/camera assets,
+animation, navigation/collision behavior and style/visual evidence are untouched.
+No performance/art acceptance or full Patch/Core Spine completion is claimed.
+
+Required next action after publication: **0.0.1 Integration Gate**, in a separate
+authorized task. Do not start more gameplay foundations or Integration Gate here.
