@@ -79,7 +79,7 @@ const SPAWN_POINTS=[[11,2],[17,2],[27,10],[27,17],[17,24],[11,24],[2,17],[2,10]]
 const isBlocked=(x,y)=>dungeon?window.AstraeonDungeon.blocked(x,y,dungeon.wave):x<1||y<1||x>worldLimits().w-2||y>worldLimits().h-2||(S?.zone===0?townWorld.spatial.blocked(x,y):layout().blocks.some(b=>x>b.x-.2&&x<b.x+b.w+.2&&y>b.y-.2&&y<b.y+b.h+.2));
 let transitionPending=false;
 async function prepareZone(zone,dungeonMode=false){if(transitionPending)return false;invalidateMonsterTargets('LOADING');player?.invalidatePreparedQuests();player?.invalidateTownServices();player?.invalidatePreparedMonsterBoxes();transitionPending=true;const previousWindow=windowName;windowName='loading';const overlay=document.createElement('div');overlay.className='transition-overlay';overlay.setAttribute('role','status');overlay.textContent=dungeonMode?'Entering Moonveil…':`Travelling to ${ZONES[zone].mapName}…`;el.append(overlay);try{await Promise.all([window.AstraeonDirectionalArt.ensure(zone,dungeonMode),window.AstraeonEnvironment.ensure(zone,dungeonMode)]);return true}catch(error){toast('โหลดพื้นที่ไม่ได้ · ตรวจการเชื่อมต่อแล้วลองใหม่');return false}finally{overlay.remove();windowName=previousWindow;transitionPending=false}}
-let saveFailed=false;const save=()=>{if(!S)return;try{player.recalculate();localStorage.setItem('astraeon-iso-v1',JSON.stringify({...window.AstraeonSave.snapshot(S),heading:playerTransform.rotation}));saveFailed=false}catch{if(!saveFailed)toast('บันทึกในเครื่องไม่ได้ · ตรวจพื้นที่จัดเก็บหรือโหมดส่วนตัว');saveFailed=true}};
+let saveFailed=false,testCharacterWiped=false;const save=()=>{if(!S||testCharacterWiped)return;try{player.recalculate();localStorage.setItem('astraeon-iso-v1',JSON.stringify({...window.AstraeonSave.snapshot(S),heading:playerTransform.rotation}));saveFailed=false}catch{if(!saveFailed)toast('บันทึกในเครื่องไม่ได้ · ตรวจพื้นที่จัดเก็บหรือโหมดส่วนตัว');saveFailed=true}};
 function itemContext(){return {now,actorPresent:!!S,menuOpen:!!windowName,transitionPending,actionActive:!!combat.active,intent:'inventory',state:S.zone===0?'town':dungeon?'dungeon':'field'}}
 function toast(t){let n=$('.toast');if(n){n.textContent=t;n.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{if(n)n.hidden=true},3500)}}
 function make(){audio.unlock();let name=$('#newname').value.trim().slice(0,24)||'Adventurer',race=+$('#newrace').value,cls=+$('#newclass').value,origin=$('#neworigin').value;S=window.AstraeonSave.normalize({saveVersion:4,learnedSkills:{},actionLoadout:Array(8).fill(null),legacySkillControls:cls!==0&&cls!==12,skillNodes:{},name,race,cls,origin,path:-1,lv:1,xp:0,hp:100,maxHp:100,energy:60,maxEnergy:60,gold:50,inventory:{herb:3,ore:2,shard:1,potion:2,ration:2,blade:0,charm:0},equipment:{weapon:'Traveler Blade',armor:'Adventurer Garb',relic:'None'},zone:0,x:townWorld.spawn[0],y:townWorld.spawn[1],worldLayout:townWorld.layoutId,kills:0,clears:0,rank:'Copper',quest:null,techniques:[],active:0,profession:'Untrained',profXP:0,reputation:0,house:0,guild:null,party:[],pvpWins:0,discovered:[0],camp:0,skillMastery:0,weaponMastery:0,mail:[],journal:['เข้าร่วม Adventurers’ Consortium']});player=window.AstraeonPlayer.attach(S,playerOptions());loot=createLootAuthority();lifecycle=createLifecycleAuthority();save();mount();toast(`ยินดีต้อนรับ ${name} — ไปพบ Guild Registrar หรือกด J เพื่อรับงาน`)}
@@ -282,7 +282,7 @@ if(npc){target={x:npc.x,y:npc.y,npc};if(distance(S,npc)<2.5)interact(npc);return
 const at=reverse(x,y);target={x:clamp(at.x,1,worldLimits().w-2),y:clamp(at.y,1,worldLimits().h-2)}
 }
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-function enemy(x,y,type=0,elite=false,boss=false){const species=type%8,def=monsterDefs[species],id=boss?'moonveil-guardian':window.AstraeonMonsterDefinitions.speciesIds[species],definition=window.AstraeonMonsterLifecycleDefinitions.getDefinition(id),maxHp=window.AstraeonMonsterLifecycleDefinitions.maxHP(definition,S.lv,elite&&!boss?1.8:1).maxHP;const actor={x,y,homeX:x,homeY:y,hp:maxHp,maxHp,name:boss?'Moonveil Guardian':(elite?'Elder ':'')+def.name,type:species,species,def,elite,boss,windup:null,phase:0,pattern:0,animState:'idle',animStarted:now,animUntil:0,deadAt:0,moving:false,slowUntil:0,burnUntil:0,burnTick:0};const registered=lifecycle.register(actor,id,{id:`zone-${S.zone}:population-${++spawnSerial}`,home:{x,y}},now);if(!registered.ok)throw Error(registered.code);return actor}
+function enemy(x,y,type=0,elite=false,boss=false,definitionId=null){const species=type%8,def=monsterDefs[species],id=definitionId||(boss?'moonveil-guardian':window.AstraeonMonsterDefinitions.speciesIds[species]),definition=window.AstraeonMonsterLifecycleDefinitions.getDefinition(id),maxHp=window.AstraeonMonsterLifecycleDefinitions.maxHP(definition,S.lv,elite&&!boss?1.8:1).maxHP;const actor={x,y,homeX:x,homeY:y,hp:maxHp,maxHp,name:boss?'Moonveil Guardian':(elite?'Elder ':'')+def.name,type:species,species,def,elite,boss,windup:null,phase:0,pattern:0,animState:'idle',animStarted:now,animUntil:0,deadAt:0,moving:false,slowUntil:0,burnUntil:0,burnTick:0};const registered=lifecycle.register(actor,id,{id:`zone-${S.zone}:population-${++spawnSerial}`,home:{x,y}},now);if(!registered.ok)throw Error(registered.code);return actor}
 function spawn(){if(!S)return;lifecycle.retireAll(now);mobs=[];hostileShots=[];hazards=[];if(ZONES[S.zone].safe)return;for(let i=0;i<window.AstraeonMonsterLifecycleDefinitions.population.initialCount;i++){let [x,y]=SPAWN_POINTS[(i+S.zone*2)%SPAWN_POINTS.length];if(!isBlocked(x,y))mobs.push(enemy(x,y,S.zone===1?4+i%4:i%4,i===5))}}
 async function startDungeon(chapter){combat.cancel();combat.projectiles=[];if(dungeon)return toast('กำลังสำรวจดันเจียนอยู่');if(chapter<0||chapter>=CHAPTERS.length)return;const c=CHAPTERS[chapter];if(chapter>campaign())return toast('ผ่านบทก่อนหน้าเพื่อปลดล็อก');if(S.lv<ZONES[c.zone].level)return toast(`ต้อง Level ${ZONES[c.zone].level}`);if(!await prepareZone(c.zone,true))return;close();S.zone=c.zone;[S.x,S.y]=window.AstraeonDungeon.rooms[0].start;S.hp=S.maxHp;S.energy=S.maxEnergy;S.discovered=Array.from(new Set([...(S.discovered||[]),c.zone]));centerCamera();selectedEnemy=null;target=null;dungeon={chapter,wave:0,next:0};spawnWave();refreshUI();save();toast(`${c.title} · ประตูผนึกปิดแล้ว`)}
 function spawnWave(){if(!dungeon)return;lifecycle.retireAll(now);const wave=dungeon.wave,room=window.AstraeonDungeon.rooms[wave];mobs=[];hostileShots=[];hazards=[];selectedEnemy=null;if(wave>0){S.hp=Math.min(S.maxHp,S.hp+30);S.energy=Math.min(S.maxEnergy,S.energy+20)}for(const [x,y,species] of room.spawns)mobs.push(enemy(x,y,species,wave===2&&species===6,wave===3));dungeon.next=0;dungeon.cleared=false;refreshUI();save();toast(wave===3?`${CHAPTERS[dungeon.chapter].boss} · ${room.name}`:`${room.name} · กำจัดศัตรูเพื่อเปิดทาง`)}
@@ -495,7 +495,7 @@ if(new URLSearchParams(location.search).get('dev')==='1'){
  window.AstraeonMonsterLifecycleDev=Object.freeze({
   snapshot:()=>lifecycle?.snapshot(),definitions:()=>window.AstraeonMonsterLifecycleDefinitions.definitions,
   inspect:id=>{const m=mobs.find(m=>lifecycle.inspect(m).instanceId===id);return m?lifecycle.inspect(m):null},
-  placePlayer:(x,y)=>{if(!Number.isFinite(x)||!Number.isFinite(y)||isBlocked(x,y))return {ok:false,code:'INVALID_POSITION'};S.x=x;S.y=y;target=null;centerCamera();return {ok:true}},
+  placePlayer:(x,y)=>devPlacePoint({zone:S?.zone,x,y}),
   damage:(id,amount)=>{const m=mobs.find(m=>lifecycle.inspect(m).instanceId===id);if(!m||!Number.isFinite(amount)||amount<0)return {ok:false,code:'INVALID_DAMAGE'};hit(m,amount);return lifecycle.inspect(m)},
   repeatDeath:id=>{const m=mobs.find(m=>lifecycle.inspect(m).instanceId===id);return m?lifecycle.notifyDeath(m,now):{ok:false,code:'UNKNOWN_MONSTER_INSTANCE'}}
  });
@@ -537,6 +537,74 @@ if(new URLSearchParams(location.search).get('dev')==='1'){
   definitions:()=>({monsters:window.AstraeonMonsterDefinitions.definitions,tables:window.AstraeonDropTables.definitions}),validate:id=>window.AstraeonLootResolution.validateReference(id)
  });
  window.AstraeonProgressionDev=Object.freeze(api);
+ const devFail=code=>Object.freeze({ok:false,code,blockedReason:code});
+ function validDevPoint(point){
+  if(!point||!Number.isSafeInteger(point.zone)||!ZONES[point.zone])return devFail('INVALID_MAP');
+  const {zone,x,y}=point,{w,h}=view.limits(zone);
+  if(!Number.isFinite(x)||!Number.isFinite(y)||x<1||y<1||x>w-2||y>h-2)return devFail('INVALID_POSITION');
+  // Use the current authored collision data and existing spatial authority.
+  const blocked=zone===0?townWorld.spatial.blocked(x,y):MAP_LAYOUTS[zone].blocks.some(b=>x>b.x-.2&&x<b.x+b.w+.2&&y>b.y-.2&&y<b.y+b.h+.2);
+  return blocked?devFail('BLOCKED_POSITION'):{ok:true};
+ }
+ function devPlacePoint(point){
+  if(!S||S.hp<=0||transitionPending)return devFail('CONTEXT_BLOCKED');
+  const checked=validDevPoint(point);if(!checked.ok)return checked;
+  if(point.zone!==S.zone||dungeon)return devFail('MAP_TRANSITION_REQUIRED');
+  player.invalidatePreparedActions();invalidateMonsterTargets('DEV_TELEPORT');
+  input.clear();keys.clear();heldAction=null;touchMove={x:0,y:0};target=null;selectedEnemy=null;
+  S.x=point.x;S.y=point.y;deathUntil=0;centerCamera();playerAnim.state='idle';playerAnim.until=0;
+  close();refreshUI();save();return {ok:true,position:{zone:S.zone,x:S.x,y:S.y},invalidated:['actions','item/Box/Quest tickets','services','combat','monster targets','input','targeting']};
+ }
+ async function devTeleport(point){
+  if(!S||S.hp<=0||transitionPending)return devFail('CONTEXT_BLOCKED');
+  const checked=validDevPoint(point);if(!checked.ok)return checked;
+  if(point.zone===S.zone&&!dungeon)return devPlacePoint(point);
+  const original=S;if(!await prepareZone(point.zone,false))return devFail('MAP_LOAD_FAILED');
+  if(S!==original)return devFail('STALE_CHARACTER');
+  player.invalidatePreparedActions();dungeon=null;S.zone=point.zone;
+  if(S.zone===0)S.worldLayout=townWorld.layoutId;
+  S.discovered=Array.from(new Set([...(S.discovered||[]),S.zone]));spawn();
+  return devPlacePoint(point);
+ }
+ function devSpawn(id,point){
+  const definition=window.AstraeonMonsterLifecycleDefinitions.getDefinition(id);
+  if(!definition)return devFail('UNKNOWN_MONSTER_DEFINITION');
+  const checked=validDevPoint(point);if(!checked.ok)return checked;
+  if(point.zone!==S.zone)return devFail('MAP_MISMATCH');
+  if(S.hp<=0||ZONES[S.zone].safe||dungeon)return devFail('HOSTILE_CONTEXT_REQUIRED');
+  if(mobs.length>=window.AstraeonMonsterLifecycleDefinitions.population.maxActors)return devFail('MONSTER_POPULATION_LIMIT');
+  const species=window.AstraeonMonsterDefinitions.speciesIds.indexOf(id);
+  const actor=enemy(point.x,point.y,Math.max(0,species),false,id==='moonveil-guardian',id);
+  mobs.push(actor);return {ok:true,monster:lifecycle.inspect(actor)};
+ }
+ function devKill(id){
+  const actor=id===undefined?selectedEnemy:mobs.find(m=>lifecycle.inspect(m).instanceId===id);
+  if(!actor)return devFail('UNKNOWN_MONSTER_INSTANCE');
+  if(actor.hp<=0)return devFail('ALREADY_DEAD');
+  if(S.hp<=0||ZONES[S.zone].safe||dungeon)return devFail('HOSTILE_CONTEXT_REQUIRED');
+  const before=lifecycle.inspect(actor);hit(actor,actor.hp);
+  const after=lifecycle.inspect(actor);
+  return {ok:!!after.deathId,before,after,reward:after.rewardResult,policy:{loot:'normal exact-once death handoff; capacity applies',baseExp:'existing reward profile',jobExp:'existing reward profile',gold:'existing reward profile',killCounters:'existing reward commit',questKill:'eligible active objectives via Lifecycle death evidence'}};
+ }
+ window.AstraeonDev=window.AstraeonDevTools.create({
+  getPlayer:()=>testCharacterWiped?null:player,isLoading:()=>transitionPending||!canvas,
+  canConfigure:()=>canTuneNodes()&&!combat.active,
+  saveSnapshot:()=>window.AstraeonSave.snapshot(S),
+  afterMutation:()=>{if(!S)return {ok:true};refreshUI();save();return {ok:!saveFailed,code:saveFailed?'SAVE_WRITE_FAILED':null}},
+  spawnMonster:devSpawn,killTarget:devKill,teleport:devTeleport,
+  monsters:()=>mobs.map(m=>lifecycle.inspect(m)),maps:()=>ZONES.map((z,zone)=>({zone,id:z.id,safe:!!z.safe,bounds:view.limits(zone)})),
+  effects:()=>({time:now,scope:'current limited runtime; no general Status Effect system',guardUntil:S?.guard||0,invulnerableUntil:S?.invulnUntil||0,playerAnimationState:playerAnim.state,combat:{active:combat.active?{id:combat.active.def.id,tags:[...combat.active.def.tags],impact:combat.active.impact,end:combat.active.end}:null,projectileCount:combat.projectiles.length,fieldCount:combat.fields.length},monsters:mobs.map(m=>({instanceId:lifecycle.inspect(m).instanceId,burnUntil:m.burnUntil||0,slowUntil:m.slowUntil||0,frozenUntil:m.frozenUntil||0,stunnedUntil:m.stunnedUntil||0}))}),
+  wipe:confirmation=>{
+   if(confirmation!=='WIPE '+S.name)return devFail('WIPE_CONFIRMATION_REQUIRED');
+   try{localStorage.removeItem('astraeon-iso-v1')}catch{return devFail('SAVE_WRITE_FAILED')}
+   testCharacterWiped=true;player.invalidatePreparedActions();invalidateMonsterTargets('DEV_WIPE');lifecycle.retireAll(now);
+   combat.clear();input.clear();keys.clear();heldAction=null;touchMove={x:0,y:0};target=null;selectedEnemy=null;
+   S=null;player=null;mobs=[];windowName=null;
+   el.innerHTML='<div class="creation"><div class="sheet"><h1>Test character removed</h1><p>Reload to create a new disposable character.</p><button id="dev-reload" class="btn">Reload</button></div></div>';
+   document.querySelector('#dev-reload').onclick=()=>location.reload();
+   return {ok:true,removedKeys:['astraeon-iso-v1'],reloadRequired:true};
+  }
+ },location.search);
 }
 window.addEventListener('pagehide',save);document.addEventListener('visibilitychange',()=>{if(document.hidden){input.clear();touchMove={x:0,y:0};heldAction=null;save()}});
 el.innerHTML='<div class="creation"><div class="sheet"><h1>ASTRAEON</h1><p>Preparing your adventurer…</p></div></div>';Promise.all([window.AstraeonDirectionalArt.ready,window.AstraeonScene.whenReady,groundReady,window.AstraeonEnvironment.ensure(S?.zone||0),window.AstraeonDirectionalArt.ensure(S?.zone||0)]).then(()=>{if(S)mount();else creation()}).catch(error=>{console.error(error);el.innerHTML='<div class="creation"><div class="sheet"><h1>World loading failed</h1><p>Check the connection and reload the game.</p></div></div>'});

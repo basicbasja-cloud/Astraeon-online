@@ -66,6 +66,8 @@ function attach(state,options={}){
   Object.defineProperty(state,key,descriptor);
  }
  const api={recalculate,getDerivedStats:()=>recalculate(),getPrimaryStats:character.getPrimaryStats,snapshot:()=>{recalculate();return character.snapshot()},getBaseExpRequirement:character.getBaseExpRequirement,getJobExpRequirement:character.getJobExpRequirement,
+  getModifierGroups:()=>window.AstraeonStats.freeze(structuredClone({...build(),passiveModifiers:[...build().passiveModifiers,...character.getPassiveSkillModifiers()]})),
+  grantGold:amount=>changeGold(amount,true),setGold:amount=>changeGold(amount,false),
   ...itemMethods,
   ...(services?{buy:services.buy,sell:services.sell,sellItemInstance:services.sellInstance}:{}),
   openTownService:(id,evidence)=>services?.open(id,evidence)??Object.freeze({ok:false,code:'SERVICE_RUNTIME_UNAVAILABLE'}),
@@ -134,6 +136,14 @@ function attach(state,options={}){
   Object.defineProperty(state,'questState',{enumerable:true,get:quests.getState});
  }
  recalculate();return Object.freeze(api);
+ function changeGold(amount,add){
+  const fail=code=>Object.freeze({ok:false,code,blockedReason:code});
+  if(!Number.isSafeInteger(amount)||amount<0)return fail('INVALID_CURRENCY_AMOUNT');
+  const d=Object.getOwnPropertyDescriptor(state,'gold'),before=state.gold;
+  if(!d||!Object.hasOwn(d,'value')||!d.writable||!Number.isSafeInteger(before)||before<0)return fail('INVALID_CURRENCY');
+  const after=add?before+amount:amount;if(!Number.isSafeInteger(after))return fail('CURRENCY_OVERFLOW');
+  state.gold=after;return Object.freeze({ok:true,currencyBefore:before,currencyAfter:after});
+ }
 }
 window.AstraeonPlayer=Object.freeze({legacyModifiers,attach});
 })();
