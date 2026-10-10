@@ -48,7 +48,21 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**FREE_SOURCE_REVIEW_FAILED / LOCAL_BLENDER_MCP_VERIFIED / PAID_PLAN_ON_HOLD.**
+**FRESH_PROPORTION_POSE_BLOCKOUT_UNAPPROVED / LOCAL_BLENDER_MCP_VERIFIED / PAID_PLAN_ON_HOLD.**
+
+After restart, local Blender MCP tools are available and connected. The owner
+said "or let follow our plan". A new reference-calibrated volume study is saved
+under `authoring/characters/swordsman-production/reference-fit-01/`, with the
+unchanged concept beside it, uniform camera/root framing, an overlay, authoring
+and game-size controls, W/NW/N checks and a body-only view. This is a narrow
+body/head proportion and relaxed-pose checkpoint, not a dedicated finished
+painted candidate. Face, hair silhouette, anatomical grip, costume finish,
+retopology, fitted rig and motion remain unfinished. QA is NO-SHIP; owner
+approval and runtime admission are false. The body is one closed mesh, but
+technical closure and manually registered guides do not establish art likeness.
+No rejected source is imported or resumed. All 50 rejected free-master-01
+manifest files and the approved concept hash remain unchanged. See the new
+checkpoint's README, QA, fit specification, validation and review page.
 The owner said "start implement" after the toolset recommendation. Selected
 character, rigging and QA skills are installed with shared references and
 ASTRAEON integration notes. Pinned MCP for Blender is registered locally,
@@ -56,15 +70,15 @@ Blender addon and Rigify enabled, and seven real connection checks pass in a
 disposable scene. Telemetry and paid generators are off. Two upstream status
 helper compatibility fixes are recorded. See
 `authoring/tooling/blender-mcp-01/README.md` and validation/provenance receipts.
-New MCP tools need a Codex restart to load into chat; skills are discoverable
-on the next turn. This verifies tooling, not a new character or factory.
+The restart requirement has been satisfied and skills are discoverable in this
+chat. Tool verification does not approve a character or complete the factory.
 
 On 10 October 2026 the owner rejected `free-master-01`: body proportions and
 size are incorrect, the pose does not match the approved photo, and grip is
 unacceptable. Its files are retained as an abandoned pilot, not an active
 candidate. See its `OWNER_FEEDBACK.md` and `owner-review.json`. Do not repair or
-reuse it as the next candidate. The current request is research into installable
-Blender skills, skeleton guidance and MCP. See `BLENDER_TOOLING_RESEARCH.md`.
+reuse it as the next candidate. Subsequent research into installable Blender
+skills, skeleton guidance and MCP is recorded in `BLENDER_TOOLING_RESEARCH.md`.
 
 Historical implementation evidence follows; none overrides owner rejection.
 The owner authorized the free route: "Now let make it". MPFB 2.0.17 was downloaded
