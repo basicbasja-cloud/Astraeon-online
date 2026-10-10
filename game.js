@@ -495,7 +495,7 @@ if(new URLSearchParams(location.search).get('dev')==='1'){
  window.AstraeonMonsterLifecycleDev=Object.freeze({
   snapshot:()=>lifecycle?.snapshot(),definitions:()=>window.AstraeonMonsterLifecycleDefinitions.definitions,
   inspect:id=>{const m=mobs.find(m=>lifecycle.inspect(m).instanceId===id);return m?lifecycle.inspect(m):null},
-  placePlayer:(x,y)=>devPlacePoint({zone:S?.zone,x,y}),
+  placePlayer:(x,y)=>{if(!Number.isFinite(x)||!Number.isFinite(y)||isBlocked(x,y))return {ok:false,code:'INVALID_POSITION'};S.x=x;S.y=y;target=null;centerCamera();return {ok:true}},
   damage:(id,amount)=>{const m=mobs.find(m=>lifecycle.inspect(m).instanceId===id);if(!m||!Number.isFinite(amount)||amount<0)return {ok:false,code:'INVALID_DAMAGE'};hit(m,amount);return lifecycle.inspect(m)},
   repeatDeath:id=>{const m=mobs.find(m=>lifecycle.inspect(m).instanceId===id);return m?lifecycle.notifyDeath(m,now):{ok:false,code:'UNKNOWN_MONSTER_INSTANCE'}}
  });

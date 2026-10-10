@@ -117,8 +117,11 @@ Quest authorizations, service sessions and monster offensive target/attack state
 They clear timeline/projectiles/fields, held input, target/navigation selection
 and reposition through existing `centerCamera` / player transform. Cooldown and
 durable state policies remain existing behavior. Dead/loading/invalid point rejects.
-The legacy Lifecycle positioning helper is a compatibility adapter, not a remote
-travel or collision bypass.
+The legacy Lifecycle point helper remains unchanged for perception/leash fixtures.
+It validates current collision and calls existing transform/camera authority. It
+intentionally lets AI observe the moved player instead of releasing its target.
+It is not the roadmap map-teleport command; use the coherent `world.teleport`
+for complete general travel reconciliation.
 
 ## Read-only inspectors / status limits
 

@@ -114,3 +114,15 @@ This is test-only; previously passing 40-group report remains valid evidence
 for unchanged runtime. Expanded final 42-group run is queued after inherited
 browsers finish, to avoid concurrent browser resource contention. No inherited
 test/assertion is edited. Integration Gate remains out of scope.
+
+## Legacy diagnostic semantic preservation
+
+Review found that delegating old Lifecycle.placePlayer to the new full teleport
+would release AI targets before inherited perception/home-leash fixtures could
+observe normal AI transitions. The old diagnostic helper is now exactly unchanged
+from parent. It retains collision/transform validation and intentionally lets AI
+observe the moved player. The new coherent world.teleport alone performs complete
+travel reconciliation. No inherited assertion or diagnostic meaning is weakened.
+Node/final new browser must rerun after this narrow compatibility correction.
+The active Town Services suite does not use Lifecycle.placePlayer; the later
+Lifecycle suite will load the preserved helper.
