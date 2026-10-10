@@ -16,7 +16,8 @@ are not complete. Next: **0.0.1 Integration Gate**. It is not started here.
 | Starting parent | `backbone/shop-storage-town-services-0.0.1` |
 | Exact fetched starting parent HEAD | `5456a6a42adf6e9084caf881b09c97a95ea389f3` |
 | Clean runtime/test checkpoint | `1ba0a3b872824aeea407a23db71da2b94539feb3` |
-| Final documentation / remote HEAD | Documentation successor; resolve current target HEAD and push receipt below |
+| Verified documentation checkpoint | `f212658001f97ae166fad85a703951d15c43d5dd` |
+| Final documentation successor / remote HEAD | Current target HEAD; resolve with commands and final push receipt below |
 
 Parent was fetched, switched and pulled ff-only. Parent and new branch were clean.
 No reset to an older pasted hash, merge, rebase, force push, PR or protected branch
@@ -296,3 +297,14 @@ No performance/art acceptance or full Patch/Core Spine completion is claimed.
 
 Required next action after publication: **0.0.1 Integration Gate**, in a separate
 authorized task. Do not start more gameplay foundations or Integration Gate here.
+
+## Final documentation successor / publication gate
+
+Verified documentation checkpoint: `f212658001f97ae166fad85a703951d15c43d5dd`.
+This successor records the resume point with documentation-only changes. The
+runtime/test checkpoint is `1ba0a3b872824aeea407a23db71da2b94539feb3`.
+All runtime, inherited tests and final acceptance above are complete. Source/diff
+audit passes and runtime source is unchanged after that checkpoint. Publish only
+`backbone/dev-tool-gap-closure-0.0.1` normally, verify exact local/remote HEAD
+equality and empty `git status --short`, record the final push receipt and stop.
+Do not start the Integration Gate.
