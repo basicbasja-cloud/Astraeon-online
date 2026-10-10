@@ -1,0 +1,92 @@
+{
+  "retrieved": "2026-10-10",
+  "url": "https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.2/examples/dragon/export/dragon-ess.json",
+  "sha256": "d75aff09995e1e7001c095db00fc95a7dab28ace96826882611a95d27e61c36a",
+  "spineVersion": "4.2.22",
+  "bones": 33,
+  "slots": 31,
+  "animations": [
+    "flying"
+  ],
+  "scope": "Parsed original JSON only; no editor import or render test performed",
+  "attachmentTimelines": {
+    "default": {
+      "left-wing": {
+        "left-wing": {
+          "sequence": [
+            {
+              "mode": "loop",
+              "delay": 0.0667
+            },
+            {
+              "time": 0.6
+            },
+            {
+              "time": 0.7333,
+              "mode": "loop",
+              "index": 1
+            },
+            {
+              "time": 0.8,
+              "mode": "loop",
+              "index": 2,
+              "delay": 0.0333
+            },
+            {
+              "time": 0.9667,
+              "index": 7
+            }
+          ]
+        }
+      },
+      "right-wing": {
+        "right-wing": {
+          "sequence": [
+            {
+              "mode": "loop",
+              "delay": 0.0667
+            },
+            {
+              "time": 0.6
+            },
+            {
+              "time": 0.7333,
+              "mode": "loop",
+              "index": 1
+            },
+            {
+              "time": 0.8,
+              "mode": "loop",
+              "index": 2,
+              "delay": 0.0333
+            },
+            {
+              "time": 0.9667,
+              "index": 7
+            }
+          ]
+        }
+      }
+    }
+  },
+  "sequenceAttachments": [
+    {
+      "skin": "default",
+      "slot": "left-wing",
+      "attachment": "left-wing",
+      "sequence": {
+        "count": 9,
+        "digits": 2
+      }
+    },
+    {
+      "skin": "default",
+      "slot": "right-wing",
+      "attachment": "right-wing",
+      "sequence": {
+        "count": 9,
+        "digits": 2
+      }
+    }
+  ]
+}

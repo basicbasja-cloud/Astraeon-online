@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-10",
+  "scope": "Targeted follow-up research; no local end-to-end character production proof",
+  "sourceCount": 22,
+  "sources": [
+    {
+      "title": "RO operations interview",
+      "url": "https://www.4gamer.net/games/001/G000183/20221219027/index_2.html",
+      "inspection": "Original staff interview; manually authored eight-direction costume art, with limited scope"
+    },
+    {
+      "title": "ACT specification",
+      "url": "https://ragnarokresearchlab.github.io/file-formats/act/",
+      "inspection": "Original community reverse engineering; playback, not original art tools"
+    },
+    {
+      "title": "Original ACT notes",
+      "url": "https://github.com/rdw-archive/RagnarokFileFormats/blob/master/ACT.MD",
+      "inspection": "Original community reverse engineering and its uncertainties"
+    },
+    {
+      "title": "zrenderer anchors",
+      "url": "https://github.com/zhad3/zrenderer/blob/main/source/sprite.d",
+      "inspection": "Read original code using raw source; parent-child action/frame anchors"
+    },
+    {
+      "title": "zrenderer frame selection",
+      "url": "https://github.com/zhad3/zrenderer/blob/main/source/renderer.d",
+      "inspection": "Read original code using raw source; special frame selection"
+    },
+    {
+      "title": "ActEditor",
+      "url": "https://github.com/Tokeiburu/ActEditor",
+      "inspection": "Original source tree inspected; no build or execution"
+    },
+    {
+      "title": "Krita animation",
+      "url": "https://docs.krita.org/en/user_manual/animation.html",
+      "inspection": "Official manual read; coherent frame drawing"
+    },
+    {
+      "title": "Krita export",
+      "url": "https://docs.krita.org/en/reference_manual/render_animation.html",
+      "inspection": "Official manual read; PNG sequences"
+    },
+    {
+      "title": "Spine region sequences",
+      "url": "https://en.esotericsoftware.com/spine-regions",
+      "inspection": "Official manual read; equal-size numeric image sequences"
+    },
+    {
+      "title": "Aseprite CLI",
+      "url": "https://www.aseprite.org/docs/cli/",
+      "inspection": "Official manual read; layer/tag/frame export"
+    },
+    {
+      "title": "Blender skinning",
+      "url": "https://docs.blender.org/manual/en/latest/animation/armatures/skinning/index.html",
+      "inspection": "Official manual fetched HTTP 200 via requests after web fetch failed"
+    },
+    {
+      "title": "Spine Dragon example",
+      "url": "https://en.esotericsoftware.com/spine-examples-dragon",
+      "inspection": "Official example documentation read"
+    },
+    {
+      "title": "Spine Dragon stable JSON",
+      "url": "https://github.com/EsotericSoftware/spine-runtimes/blob/4.2/examples/dragon/export/dragon-ess.json",
+      "inspection": "Original 4.2 JSON parsed; two nine-image sequences; receipt saved"
+    },
+    {
+      "title": "Spine eight-direction project",
+      "url": "https://esotericsoftware.com/files/projects/twitch/twitch-8-direction-chara.zip",
+      "inspection": "Archive read in memory; metadata recorded, bundled JSON parse failed; native project not run"
+    },
+    {
+      "title": "Spine animator explanation",
+      "url": "https://en.esotericsoftware.com/forum/d/12414-keyable-skin-switching",
+      "inspection": "Official staff replies read; poses versus appearance skins"
+    },
+    {
+      "title": "Spine directional rig tradeoffs",
+      "url": "https://en.esotericsoftware.com/forum/d/24092-best-practices-of-rigging-8-directional-character-in-spine-2d/2",
+      "inspection": "Official staff replies read; torso turns and separate rigs"
+    },
+    {
+      "title": "Hades developer response",
+      "url": "https://steamcommunity.com/app/1145360/discussions/0/1738883810796606862/",
+      "inspection": "Original developer-tagged response read; multi-angle 3D-to-2D"
+    },
+    {
+      "title": "Dead Cells artist account",
+      "url": "https://www.gamedeveloper.com/production/art-design-deep-dive-using-a-3d-pipeline-for-2d-animation-in-i-dead-cells-i-",
+      "inspection": "Firsthand Thomas Vasseur production account read"
+    },
+    {
+      "title": "Tree of Savior art-director interview",
+      "url": "https://treeofsavior.com/page/news/view.php?n=337",
+      "inspection": "Original official interview read; camera and hand-painted textures"
+    },
+    {
+      "title": "PixelLab static rotations",
+      "url": "https://www.pixellab.ai/docs/tools/create-8-rotations-pro",
+      "inspection": "Current vendor manual read; feature claim not locally tested"
+    },
+    {
+      "title": "PixelLab automatic animation",
+      "url": "https://www.pixellab.ai/docs/tools/create-animations-automatic",
+      "inspection": "Current vendor manual read; different feature and limits"
+    },
+    {
+      "title": "PixelLab outfit transfer",
+      "url": "https://www.pixellab.ai/docs/tools/transfer-outfit-pro",
+      "inspection": "Current vendor manual read; appearance transfer does not document removable layers"
+    }
+  ],
+  "unusableSources": [
+    {
+      "url": "https://docs.blender.org/manual/en/latest/render/layers/holdout.html",
+      "result": "404; not used as evidence"
+    },
+    {
+      "url": "https://rathena.org/board/topic/61862-guide-spriting-101-creating-a-sprite-and-act-file/",
+      "result": "Search result found but full page fetch failed; excluded from report claims"
+    }
+  ]
+}

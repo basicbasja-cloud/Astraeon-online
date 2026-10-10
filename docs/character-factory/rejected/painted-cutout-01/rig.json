@@ -1,0 +1,1117 @@
+{
+  "schemaVersion": 1,
+  "id": "swordsman-painted-rig-01",
+  "status": "OWNER_REJECTED_ABANDONED",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "mirroring": "none",
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": [
+      160,
+      264
+    ],
+    "referenceHeight": 176
+  },
+  "bodyJoints": {
+    "root": [
+      0,
+      0,
+      0
+    ],
+    "waist": [
+      0,
+      0,
+      1.7
+    ],
+    "neck": [
+      0,
+      0,
+      2.78
+    ],
+    "head": [
+      0,
+      0,
+      3.35
+    ],
+    "back": [
+      0,
+      0.1,
+      2.36
+    ],
+    "shoulder_R": [
+      -0.42,
+      -0.02,
+      2.7
+    ],
+    "elbow_R": [
+      -0.56,
+      -0.05,
+      2.13
+    ],
+    "wrist_R": [
+      -0.57,
+      -0.1,
+      1.68
+    ],
+    "grip_R": [
+      -0.58,
+      -0.12,
+      1.46
+    ],
+    "shoulder_L": [
+      0.42,
+      -0.02,
+      2.7
+    ],
+    "elbow_L": [
+      0.53,
+      -0.05,
+      2.16
+    ],
+    "wrist_L": [
+      0.53,
+      -0.09,
+      1.7
+    ],
+    "grip_L": [
+      0.53,
+      -0.09,
+      1.5
+    ],
+    "hip_R": [
+      -0.25,
+      0,
+      1.61
+    ],
+    "knee_R": [
+      -0.29,
+      -0.02,
+      0.83
+    ],
+    "sole_R": [
+      -0.3,
+      -0.24,
+      0.05
+    ],
+    "hip_L": [
+      0.25,
+      0,
+      1.61
+    ],
+    "knee_L": [
+      0.28,
+      -0.03,
+      0.85
+    ],
+    "sole_L": [
+      0.29,
+      -0.24,
+      0.05
+    ]
+  },
+  "restWeaponAxis": [
+    0,
+    -0.82,
+    -0.82
+  ],
+  "requiredActions": [
+    "Idle",
+    "Walk",
+    "Run",
+    "Sprint",
+    "BasicAttack",
+    "SkillAction",
+    "CastChannel",
+    "CastRelease",
+    "Guard",
+    "Dash",
+    "Hit",
+    "Death",
+    "Interact",
+    "Pickup",
+    "ItemUse",
+    "Respawn"
+  ],
+  "images": {
+    "SE": {
+      "file": "source/SE-parts.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d366b9ac84360026f1aab458a36814ad7aa6892d31d5cc89c1855820c8e141f2"
+    },
+    "SE-hidden": {
+      "file": "source/SE-hidden-surfaces.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3aef607df651890930196d8430b619618b830d85c10270c75d286f630f2880c4"
+    }
+  },
+  "views": {
+    "SE": {
+      "state": "REGISTERED_PILOT",
+      "ownerApproval": "PENDING",
+      "attachments": [
+        {
+          "id": "head-base",
+          "image": "SE",
+          "bone": "head",
+          "slot": "BaseBody",
+          "rect": [
+            55,
+            44,
+            179,
+            232
+          ],
+          "pivot": [
+            149,
+            258
+          ],
+          "axisEnd": [
+            149,
+            130
+          ],
+          "depth": 11,
+          "scale": 0.21,
+          "select": {}
+        },
+        {
+          "id": "hair-silver",
+          "image": "SE",
+          "bone": "head",
+          "slot": "Hair",
+          "rect": [
+            264,
+            25,
+            273,
+            231
+          ],
+          "pivot": [
+            404,
+            300
+          ],
+          "axisEnd": [
+            404,
+            150
+          ],
+          "depth": 40,
+          "scale": 0.21,
+          "select": {
+            "hair": "on"
+          }
+        },
+        {
+          "id": "torso-under",
+          "image": "SE",
+          "bone": "torso",
+          "slot": "BaseBody",
+          "rect": [
+            560,
+            20,
+            180,
+            258
+          ],
+          "pivot": [
+            660,
+            244
+          ],
+          "axisEnd": [
+            660,
+            45
+          ],
+          "depth": 10,
+          "scale": 0.235,
+          "select": {}
+        },
+        {
+          "id": "torso-bronze",
+          "image": "SE",
+          "bone": "torso",
+          "slot": "Outfit",
+          "rect": [
+            784,
+            5,
+            234,
+            332
+          ],
+          "pivot": [
+            887,
+            227
+          ],
+          "axisEnd": [
+            892,
+            46
+          ],
+          "depth": 23,
+          "scale": 0.235,
+          "select": {
+            "outfit": "bronze"
+          }
+        },
+        {
+          "id": "torso-steel",
+          "image": "SE",
+          "bone": "torso",
+          "slot": "Outfit",
+          "rect": [
+            786,
+            1191,
+            230,
+            327
+          ],
+          "pivot": [
+            890,
+            1400
+          ],
+          "axisEnd": [
+            890,
+            1226
+          ],
+          "depth": 23,
+          "scale": 0.235,
+          "select": {
+            "outfit": "steel"
+          }
+        },
+        {
+          "id": "arm-R-skin",
+          "image": "SE",
+          "bone": "upper_R",
+          "slot": "BaseBody",
+          "rect": [
+            72,
+            290,
+            107,
+            215
+          ],
+          "pivot": [
+            127,
+            317
+          ],
+          "axisEnd": [
+            104,
+            483
+          ],
+          "depth": 12,
+          "scale": 0.16950169368139492,
+          "select": {}
+        },
+        {
+          "id": "fore-R-skin",
+          "image": "SE",
+          "bone": "fore_R",
+          "slot": "BaseBody",
+          "rect": [
+            309,
+            297,
+            148,
+            202
+          ],
+          "pivot": [
+            335,
+            324
+          ],
+          "axisEnd": [
+            431,
+            473
+          ],
+          "depth": 13,
+          "scale": 0.11805105674849031,
+          "select": {}
+        },
+        {
+          "id": "hand-R-skin",
+          "image": "SE-hidden",
+          "bone": "hand_R",
+          "slot": "BodyHands",
+          "rect": [
+            127,
+            42,
+            237,
+            315
+          ],
+          "pivot": [
+            196,
+            84
+          ],
+          "axisEnd": [
+            263,
+            288
+          ],
+          "depth": 36,
+          "scale": 0.047614530215141664,
+          "select": {}
+        },
+        {
+          "id": "hand-R-grip",
+          "image": "SE-hidden",
+          "bone": "hand_R",
+          "slot": "Hands",
+          "rect": [
+            868,
+            36,
+            243,
+            321
+          ],
+          "pivot": [
+            954,
+            80
+          ],
+          "axisEnd": [
+            1019,
+            287
+          ],
+          "depth": 38,
+          "scale": 0.047121918676830105,
+          "select": {
+            "outfit": [
+              "bronze",
+              "steel"
+            ]
+          }
+        },
+        {
+          "id": "arm-L-skin",
+          "image": "SE",
+          "bone": "upper_L",
+          "slot": "BaseBody",
+          "rect": [
+            840,
+            306,
+            121,
+            196
+          ],
+          "pivot": [
+            882,
+            332
+          ],
+          "axisEnd": [
+            930,
+            478
+          ],
+          "depth": 12,
+          "scale": 0.1488697523759626,
+          "select": {}
+        },
+        {
+          "id": "fore-L-skin",
+          "image": "SE",
+          "bone": "fore_L",
+          "slot": "BaseBody",
+          "rect": [
+            51,
+            516,
+            152,
+            192
+          ],
+          "pivot": [
+            80,
+            540
+          ],
+          "axisEnd": [
+            177,
+            683
+          ],
+          "depth": 13,
+          "scale": 0.12155989887640613,
+          "select": {}
+        },
+        {
+          "id": "hand-L-skin",
+          "image": "SE-hidden",
+          "bone": "hand_L",
+          "slot": "BodyHands",
+          "rect": [
+            460,
+            36,
+            245,
+            366
+          ],
+          "pivot": [
+            529,
+            78
+          ],
+          "axisEnd": [
+            635,
+            340
+          ],
+          "depth": 36,
+          "scale": 0.031131877403812798,
+          "select": {}
+        },
+        {
+          "id": "hand-L-rest",
+          "image": "SE-hidden",
+          "bone": "hand_L",
+          "slot": "Hands",
+          "rect": [
+            1222,
+            31,
+            219,
+            369
+          ],
+          "pivot": [
+            1293,
+            77
+          ],
+          "axisEnd": [
+            1380,
+            336
+          ],
+          "depth": 38,
+          "scale": 0.03220397149899536,
+          "select": {
+            "outfit": [
+              "bronze",
+              "steel"
+            ]
+          }
+        },
+        {
+          "id": "sleeve-R",
+          "image": "SE",
+          "bone": "upper_R",
+          "slot": "Outfit",
+          "rect": [
+            548,
+            507,
+            183,
+            207
+          ],
+          "pivot": [
+            653,
+            554
+          ],
+          "axisEnd": [
+            630,
+            687
+          ],
+          "depth": 24,
+          "scale": 0.21045580399756258,
+          "select": {
+            "outfit": "bronze"
+          }
+        },
+        {
+          "id": "bracer-R",
+          "image": "SE",
+          "bone": "fore_R",
+          "slot": "Outfit",
+          "rect": [
+            834,
+            512,
+            151,
+            202
+          ],
+          "pivot": [
+            881,
+            543
+          ],
+          "axisEnd": [
+            947,
+            684
+          ],
+          "depth": 25,
+          "scale": 0.13440418869016568,
+          "select": {
+            "outfit": "bronze"
+          }
+        },
+        {
+          "id": "sleeve-L",
+          "image": "SE",
+          "bone": "upper_L",
+          "slot": "Outfit",
+          "rect": [
+            57,
+            707,
+            174,
+            210
+          ],
+          "pivot": [
+            144,
+            753
+          ],
+          "axisEnd": [
+            172,
+            889
+          ],
+          "depth": 21,
+          "scale": 0.1647755985272701,
+          "select": {
+            "outfit": "bronze"
+          }
+        },
+        {
+          "id": "bracer-L",
+          "image": "SE",
+          "bone": "fore_L",
+          "slot": "Outfit",
+          "rect": [
+            305,
+            719,
+            151,
+            198
+          ],
+          "pivot": [
+            392,
+            749
+          ],
+          "axisEnd": [
+            335,
+            886
+          ],
+          "depth": 22,
+          "scale": 0.1415571314119867,
+          "select": {
+            "outfit": "bronze"
+          }
+        },
+        {
+          "id": "thigh-R-skin",
+          "image": "SE-hidden",
+          "bone": "thigh_R",
+          "slot": "BaseBody",
+          "rect": [
+            98,
+            416,
+            214,
+            510
+          ],
+          "pivot": [
+            236,
+            460
+          ],
+          "axisEnd": [
+            174,
+            870
+          ],
+          "depth": 10,
+          "scale": 0.0853716305750731,
+          "select": {}
+        },
+        {
+          "id": "thigh-L-skin",
+          "image": "SE-hidden",
+          "bone": "thigh_L",
+          "slot": "BaseBody",
+          "rect": [
+            457,
+            418,
+            261,
+            510
+          ],
+          "pivot": [
+            519,
+            470
+          ],
+          "axisEnd": [
+            648,
+            870
+          ],
+          "depth": 10,
+          "scale": 0.07971913604969577,
+          "select": {}
+        },
+        {
+          "id": "shin-R-skin",
+          "image": "SE-hidden",
+          "bone": "shin_R",
+          "slot": "BaseBody",
+          "rect": [
+            833,
+            425,
+            257,
+            548
+          ],
+          "pivot": [
+            943,
+            459
+          ],
+          "axisEnd": [
+            1002,
+            944
+          ],
+          "depth": 12,
+          "scale": 0.08019099423172846,
+          "select": {}
+        },
+        {
+          "id": "shin-L-skin",
+          "image": "SE-hidden",
+          "bone": "shin_L",
+          "slot": "BaseBody",
+          "rect": [
+            1224,
+            424,
+            257,
+            531
+          ],
+          "pivot": [
+            1316,
+            461
+          ],
+          "axisEnd": [
+            1430,
+            925
+          ],
+          "depth": 12,
+          "scale": 0.08284703078575768,
+          "select": {}
+        },
+        {
+          "id": "trouser-R",
+          "image": "SE",
+          "bone": "thigh_R",
+          "slot": "Outfit",
+          "rect": [
+            570,
+            720,
+            140,
+            211
+          ],
+          "pivot": [
+            646,
+            751
+          ],
+          "axisEnd": [
+            620,
+            906
+          ],
+          "depth": 20,
+          "scale": 0.22524223156019696,
+          "select": {
+            "outfit": [
+              "bronze",
+              "steel"
+            ]
+          }
+        },
+        {
+          "id": "trouser-L",
+          "image": "SE",
+          "bone": "thigh_L",
+          "slot": "Outfit",
+          "rect": [
+            815,
+            720,
+            155,
+            209
+          ],
+          "pivot": [
+            870,
+            750
+          ],
+          "axisEnd": [
+            900,
+            906
+          ],
+          "depth": 20,
+          "scale": 0.2109104417887834,
+          "select": {
+            "outfit": [
+              "bronze",
+              "steel"
+            ]
+          }
+        },
+        {
+          "id": "boot-R",
+          "image": "SE",
+          "bone": "shin_R",
+          "slot": "Outfit",
+          "rect": [
+            568,
+            937,
+            140,
+            250
+          ],
+          "pivot": [
+            627,
+            963
+          ],
+          "axisEnd": [
+            635,
+            1167
+          ],
+          "depth": 21,
+          "scale": 0.191908146337054,
+          "select": {
+            "outfit": [
+              "bronze",
+              "steel"
+            ]
+          }
+        },
+        {
+          "id": "boot-L",
+          "image": "SE",
+          "bone": "shin_L",
+          "slot": "Outfit",
+          "rect": [
+            848,
+            938,
+            155,
+            239
+          ],
+          "pivot": [
+            909,
+            965
+          ],
+          "axisEnd": [
+            949,
+            1150
+          ],
+          "depth": 21,
+          "scale": 0.20913619147479384,
+          "select": {
+            "outfit": [
+              "bronze",
+              "steel"
+            ]
+          }
+        },
+        {
+          "id": "cape-gold",
+          "image": "SE",
+          "bone": "torso",
+          "slot": "BackAccessory",
+          "rect": [
+            7,
+            1192,
+            261,
+            322
+          ],
+          "pivot": [
+            150,
+            1388
+          ],
+          "axisEnd": [
+            155,
+            1190
+          ],
+          "depth": 5,
+          "scale": 0.235,
+          "select": {
+            "cape": "on"
+          }
+        },
+        {
+          "id": "sword-bronze",
+          "image": "SE",
+          "bone": "weapon",
+          "slot": "Weapon",
+          "rect": [
+            300,
+            1175,
+            232,
+            339
+          ],
+          "pivot": [
+            347,
+            1229
+          ],
+          "axisEnd": [
+            520,
+            1494
+          ],
+          "depth": 34,
+          "scale": 0.1855594369859229,
+          "select": {
+            "weapon": "bronze"
+          }
+        },
+        {
+          "id": "sword-training",
+          "image": "SE",
+          "bone": "weapon",
+          "slot": "Weapon",
+          "rect": [
+            545,
+            1192,
+            214,
+            307
+          ],
+          "pivot": [
+            596,
+            1237
+          ],
+          "axisEnd": [
+            748,
+            1486
+          ],
+          "depth": 34,
+          "scale": 0.20129809161868809,
+          "select": {
+            "weapon": "training"
+          }
+        }
+      ]
+    }
+  },
+  "motions": {
+    "Idle": {
+      "state": "AUTHORED_PILOT",
+      "loop": true,
+      "durations": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150
+      ]
+    },
+    "Walk": {
+      "state": "AUTHORED_PILOT",
+      "loop": true,
+      "durations": [
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55,
+        55
+      ]
+    },
+    "BasicAttack": {
+      "state": "AUTHORED_PILOT",
+      "loop": false,
+      "durations": [
+        65,
+        65,
+        60,
+        60,
+        55,
+        45,
+        35,
+        35,
+        45,
+        65,
+        80,
+        80,
+        85,
+        85,
+        85,
+        85
+      ],
+      "impactFrame": 8,
+      "keys": [
+        {
+          "time": 0,
+          "elbow_R": [
+            -0.56,
+            -0.05,
+            2.13
+          ],
+          "wrist_R": [
+            -0.57,
+            -0.1,
+            1.68
+          ],
+          "grip_R": [
+            -0.58,
+            -0.12,
+            1.46
+          ],
+          "weapon_axis": [
+            0,
+            -0.82,
+            -0.82
+          ]
+        },
+        {
+          "time": 250,
+          "elbow_R": [
+            -0.66,
+            0.05,
+            2.38
+          ],
+          "wrist_R": [
+            -0.68,
+            0.08,
+            2.91
+          ],
+          "grip_R": [
+            -0.66,
+            0.1,
+            3.05
+          ],
+          "weapon_axis": [
+            0,
+            0.1,
+            1.0
+          ]
+        },
+        {
+          "time": 340,
+          "elbow_R": [
+            -0.62,
+            -0.16,
+            2.32
+          ],
+          "wrist_R": [
+            -0.46,
+            -0.32,
+            2.81
+          ],
+          "grip_R": [
+            -0.4,
+            -0.35,
+            2.93
+          ],
+          "weapon_axis": [
+            0,
+            -0.18,
+            1.0
+          ]
+        },
+        {
+          "time": 460,
+          "elbow_R": [
+            -0.44,
+            -0.42,
+            2.2
+          ],
+          "wrist_R": [
+            -0.18,
+            -0.72,
+            1.91
+          ],
+          "grip_R": [
+            -0.1,
+            -0.83,
+            1.72
+          ],
+          "weapon_axis": [
+            0,
+            -1.12,
+            -0.25
+          ]
+        },
+        {
+          "time": 625,
+          "elbow_R": [
+            -0.49,
+            -0.35,
+            2.07
+          ],
+          "wrist_R": [
+            -0.3,
+            -0.61,
+            1.77
+          ],
+          "grip_R": [
+            -0.23,
+            -0.7,
+            1.59
+          ],
+          "weapon_axis": [
+            0,
+            -0.65,
+            -0.74
+          ]
+        },
+        {
+          "time": 1080,
+          "elbow_R": [
+            -0.56,
+            -0.05,
+            2.13
+          ],
+          "wrist_R": [
+            -0.57,
+            -0.1,
+            1.68
+          ],
+          "grip_R": [
+            -0.58,
+            -0.12,
+            1.46
+          ],
+          "weapon_axis": [
+            0,
+            -0.82,
+            -0.82
+          ]
+        }
+      ]
+    }
+  },
+  "variants": {
+    "default": {
+      "outfit": "bronze",
+      "weapon": "bronze",
+      "cape": "on",
+      "hair": "on"
+    },
+    "training": {
+      "outfit": "bronze",
+      "weapon": "training",
+      "cape": "on",
+      "hair": "on"
+    },
+    "steel": {
+      "outfit": "steel",
+      "weapon": "bronze",
+      "cape": "on",
+      "hair": "on"
+    },
+    "body-only": {
+      "outfit": "none",
+      "weapon": "none",
+      "cape": "off",
+      "hair": "off"
+    },
+    "no-weapon": {
+      "outfit": "bronze",
+      "weapon": "none",
+      "cape": "on",
+      "hair": "on"
+    },
+    "no-cape": {
+      "outfit": "bronze",
+      "weapon": "bronze",
+      "cape": "off",
+      "hair": "on"
+    }
+  },
+  "limits": [
+    "Only SE source art exists; never mirror or synthesize another view.",
+    "Pilot motion is unapproved and needs redraws for out-of-plane poses.",
+    "Complete alternate outfit, offhand and headgear art remain missing.",
+    "No playable or release-ready character is claimed."
+  ],
+  "ownerReview": {
+    "date": "2026-10-10",
+    "result": "REJECTED",
+    "feedback": "All of this is not what i think is correct way, the part are overlay and the separate not okay"
+  }
+}

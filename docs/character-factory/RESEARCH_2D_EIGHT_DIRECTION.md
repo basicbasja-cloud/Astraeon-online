@@ -5,10 +5,12 @@ Owner instruction: abandon the failed character approach and investigate a new
 Ragnarok-preferred production method for motions, costumes, and weapons.
 The attached factory pack is reference material; it does not override that request.
 
-**Subsequent owner decision:** the painted concept was approved on 10 October
-2026. Production now awaits review of the new eight-direction concept turnaround.
-See [current state](CURRENT_STATE.md) for the authoritative latest status; pending
-concept-review references below describe the earlier research checkpoint.
+**Superseded production recommendation:** the painted concept was approved,
+but the subsequent turnaround and independently generated cutout assembly
+failed owner review. Read [revised authoring research](RESEARCH_COHERENT_SPRITE_AUTHORING_V2.md)
+before choosing a source-production method. See [current state](CURRENT_STATE.md)
+for authoritative status. This report remains historical research, not a reason
+to resume the rejected parts workflow.
 
 ## Decision
 
