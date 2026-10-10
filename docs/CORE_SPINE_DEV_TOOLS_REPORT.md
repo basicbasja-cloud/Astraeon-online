@@ -193,3 +193,20 @@ World validator is running serially after all browsers closed. Next: inspect its
 actual verdict, source audit/diff check, create clean runtime/test checkpoint,
 then replace working notes with final verified report and normally push target.
 No additional runtime changes are planned; no Integration Gate starts here.
+
+## Clean runtime/test checkpoint gate
+
+Final serial world validator exits 0 and passes Terrain, Navigation, TownObject
+and AnimationManifest. Measured final Node **1703 / 0**, functional browser
+**451 / 0** (409 retained + 42 new), cache/offline v97 / 165 requests PASS, and
+zero unexpected successful-browser console/page/runtime/HTTP errors.
+Source audit preserves 23 inherited Node files, all inherited browser files/
+assertions, 41 protected cores and normal game lines except the scoped save guard/
+optional definition-aware factory input. Protected world/art/Character paths
+are untouched. Full diff check passes.
+
+This commit is the clean runtime/test checkpoint. Record its exact SHA using
+`git rev-parse HEAD`. Only final documentation successors, normal target-only
+push and remote/clean-tree confirmation remain. No further runtime work or
+Integration Gate begins in this branch. External final-verification-summary.json
+and source-audit.json retain the actual proof; failed new attempts remain intact.
