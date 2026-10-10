@@ -58,6 +58,13 @@ The production master remains unfinished and unapproved.
 
 ## Generation specification / prompt set
 
+Additional experiment: `south-low-recovery-candidate.png` preserves the South
+identity and changes the sixth pose to low bent-elbow recovery. Fixed boot placement
+was also requested but not achieved: measured maximum sole drift is 16.585 runtime
+pixels. It is isolated in `attack-low-recovery-study.json`, not promoted into the
+default study. See `docs/review/character-ro1-rebuild-v2/POSE-AUDIT.md` for prompt,
+measurements and the unresolved recovery-to-ready transition.
+
 Tool: built-in image generation, transparent-background mode. Each direction was
 requested separately as six complete original sprites on a 1536×1024, 3×2 sheet.
 References: actual private RO1 rendered attack captures for compact anatomy and

@@ -98,6 +98,7 @@ art or declare a female/class artwork set finished.
 | Normalize original art | `tools/normalize_character_art.py` | Deterministic atlas + SHA256/layout receipt; rejects clipped/cross-cell art, per-frame transforms, unexplained reuse and private source pixels |
 | Review any appearance pack | `character-production-review.html?motion=PATH&appearance=PATH` | Timeline-preserving part swaps, layer isolation, grip/attachment overlays |
 | Inspect geometry | `character-production-validation.js` | Independent grip/equipment/tip measurements and non-mutating arc warnings |
+| Audit planted stance | `tools/audit_character_stance.py` | Sole drift from artist-isolated boot regions; reports failures without transforming source pixels |
 | Export any appearance pack | `tools/export_character_production_review.py` | Eight-direction normal/half-speed GIFs, exact-time APNGs, per-direction boards and export receipt |
 | Create candidate master | `tools/create_character_master.cjs` | Validated versioned baseline; never automatically approved |
 | Scaffold/validate replacement | `tools/character_art_variant.cjs` | Artwork-only manifest and actual PNG dimension validation |
