@@ -30,7 +30,7 @@ No build step or npm install is required. Serve the checkout with a static serve
 python -m http.server 8011 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 96. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
+Open `http://127.0.0.1:8011`. Localhost/HTTPS supports the service worker. Boot, page and service-worker cache versions are all 97. Software WebGL renders the world at native CSS resolution; hardware follows screen density up to 1.5×. The former forced half-resolution software path has been removed.
 
 The progression/stat/save foundation of Backbone 0.0.1 uses independent Base/Job
 EXP, validated STR/AGI/VIT/INT/DEX/LUK allocation, data-driven derived stats and
@@ -128,12 +128,14 @@ The [Item / Inventory / Equipment foundation](docs/CORE_SPINE_ITEMS.md) now owns
 definition-ID stacks, stable non-stack instances and equipped instance references.
 Existing crafting, merchant, rewards and consumables use the shared canonical API.
 Save version is **5**, migrated deterministically from earlier saves; cache version
-is **95**. `/tools/inventory.html` provides an isolated developer sandbox.
+is **97**. `/tools/inventory.html` provides an isolated developer sandbox.
 See [verified results and handoff](docs/CORE_SPINE_ITEMS_REPORT.md). Final inventory
 UI, item balance/content and the remaining Patch 0.0.1 systems are still open.
 
 ```powershell
 python tools/run-node-checks.py
+python tests/dev_tools_browser.py --url http://127.0.0.1:8011
+python tests/town_services_browser.py --url http://127.0.0.1:8011
 python tests/quests_browser.py --url http://127.0.0.1:8011
 python tests/equipment_slots_browser.py --url http://127.0.0.1:8011
 python tests/inventory_capacity_browser.py --url http://127.0.0.1:8011
@@ -177,7 +179,7 @@ references; `getEquipment()` remains the old three-key compatibility projection.
 Replacement/unequip preserve ownership and capacity; modifiers reach existing
 Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
 are functional adapters, with no visual gear/artwork or UI redesign. Save version
-5 remains deliberate; current boot/page/cache is 96. See the
+5 remains deliberate; current boot/page/cache is 97. See the
 [verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
 Core Spine remain incomplete; Shop/Storage/Town Services is now verified separately.
 
@@ -193,7 +195,7 @@ through existing Item/Capacity, Character Progression and gold authorities.
 Capacity failure leaves sources and rewards unchanged. Save version 5 retains
 accepted/Talk/Kill/completed state; no pending ticket or Collect ledger persists.
 Plain Accept/status/Turn In controls use existing guild/journal panels.
-`/tools/quest.html` is an isolated diagnostic sandbox. Current cache generation is 96.
+`/tools/quest.html` is an isolated diagnostic sandbox. Current cache generation is 97.
 See the [verified Quest handoff](docs/CORE_SPINE_QUESTS_REPORT.md).
 The five quests and reward values are NON-FINAL engineering fixtures.
 Shop/Storage/Town Services is verified. Dev-tool gap closure and the 0.0.1
@@ -218,3 +220,17 @@ Verification: 1474 retained + 140 new = 1614 Node checks / 0 failures;
 369 retained + 40 new = 409 browser groups / 0 failures. Cache/offline and
 world schemas pass. This closes only the named foundation, not Patch 0.0.1.
 Next: Dev-tool Gap Closure; not started here.
+
+## Developer Tool Gap Closure
+
+Open `/tools/dev-console.html` to control the actual game with a disposable
+character. Exact `?dev=1` provides `AstraeonDev`: canonical levels/EXP, item/Gold
+grants, skills/stat reset, Lifecycle spawn/kill, reconciled map/point teleport,
+read-only Stats/effects/save inspection and scoped character wipe. Normal and
+QA-only URLs do not load the mutation module. Kill uses ordinary exact-once
+death rewards and eligible Quest evidence; capacity still applies. Wipe removes
+only `astraeon-iso-v1` and requires reload. Save remains version 5.
+
+See [tool contracts](docs/CORE_SPINE_DEV_TOOLS.md) and
+[current verification/resume report](docs/CORE_SPINE_DEV_TOOLS_REPORT.md).
+The Integration Gate is a separate next stage; it is not started here.

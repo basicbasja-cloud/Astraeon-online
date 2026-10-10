@@ -340,7 +340,7 @@ references; `getEquipment()` remains the old three-key compatibility projection.
 Replacement/unequip preserve ownership and capacity; modifiers reach existing
 Stats/Combat. Only two non-final Off Hand/Shoes fixtures are added. Bag controls
 are functional adapters, with no visual gear/artwork or UI redesign. Save version
-5 remains deliberate; current boot/page/cache is 96. See the
+5 remains deliberate; current boot/page/cache is 97. See the
 [verified handoff](docs/CORE_SPINE_EQUIPMENT_SLOTS_REPORT.md). Patch 0.0.1 and
 Core Spine remain incomplete; Shop/Storage/Town Services is now verified separately.
 
@@ -371,7 +371,7 @@ existing field meaning or save core. Old saves have empty accepted/completed
 state. Collect/READY re-derive; tickets, events and actor references never persist.
 Death/respawn/travel retain durable progress and expire transient tickets.
 Legacy automatic Contract counters remain separate and compatible.
-Four Quest modules load before game attachment and are precached at current generation 96.
+Four Quest modules load before game attachment and are precached at current generation 97.
 Plain guild/journal controls and isolated `/tools/quest.html` provide functional
 acceptance; no story, visual, AI/navigation or Quest UI redesign is introduced.
 See [Quest contracts](docs/CORE_SPINE_QUESTS.md) and
@@ -395,3 +395,23 @@ prepared Quest tickets. Closing/loading/death/travel/reconstruction invalidates
 transient access. No subscription, AI, Combat, navigation, world or visual
 behavior is added. Functional existing menus and isolated tooling consume
 these authorities; no final economy/content/UI/server approval is implied.
+
+## Developer adapter boundary
+
+Exact `dev=1` loads `dev-tools.js` before the game and publishes `AstraeonDev`.
+It wraps existing Player/Character/Progression, Skill Tree, canonical Inventory/
+Capacity, Lifecycle/Combat and Save authorities. New Player Gold publication
+validates the existing wallet; grouped modifier inspection adds no formulas.
+Real-game spawn uses the existing enemy factory and Lifecycle registration.
+Kill applies lethal HP through existing Combat/hit/death orchestration, retaining
+normal Loot/progression/counters and eligible Quest evidence once per life.
+Teleport validates authored map/collision and reconciles prepared tickets, services,
+input, targets, combat and player transform through existing loading/camera APIs.
+Scoped wipe removes only the character save and stops old runtime save writes.
+
+The console is presentation over a real dev-mode game frame, not a second
+character authority. Read-only inspectors use canonical results and currently
+supported status fields. Save stays v5; dev capabilities never persist. Boot/page/
+SW advances once to v97; normal/QA-only URLs never load mutation adapters.
+See [Dev Tool contracts](docs/CORE_SPINE_DEV_TOOLS.md). Integration Gate remains
+a separate stage. No world/visual/gameplay foundation is added by this task.

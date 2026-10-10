@@ -90,3 +90,18 @@ invalid snapshot lock recovery, explicit persistence failure and immutable recei
 The full 1693 integration run predates these seven test-only additions; rerun full
 suite before final checkpoint. Browser rerun3 has passed Swordsman through wipe/
 reload; remaining class/exposure/error gate and inherited acceptance stay pending.
+
+## Two-class browser milestone
+
+`browser-attempt-3/report.json`: **40 groups / 0 failures**, no unexpected console,
+page/runtime or HTTP errors. Both classes run all commands through the real-game
+console; normal/QA-only/dev=0/dev=01 expose no mutation module/API. Kill delivers
+one existing Lifecycle death, reward and active Quest increment; same-life repeat
+grants nothing. Scoped wipe preserves unrelated keys and pagehide does not recreate
+the removed save. First two raw attempts remain diagnostic evidence.
+
+Full `node-final-1`: **1614 retained + 86 new = 1700 / 0**, 24 suites.
+Source audit verifies 23 inherited Node files unchanged, inherited browser AST
+assertions unchanged and 38 protected cores identical. The external inherited
+runner is active, starting Town Services then Lifecycle and other foundations,
+ending with Quest/cache. Do not infer final acceptance before all actual reports.
