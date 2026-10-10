@@ -38,7 +38,12 @@ def main():
                'authoring/characters/swordsman-production/rig-walk/candidate-03/walk-proof.blend',
                'tools/build-swordsman-production.py', 'tools/build-swordsman-walk-rig.py',
                'tools/normalize-modular-strip.py', 'tools/pack-modular-sprites.py',
-               'tools/validate-sprites.py', 'modular-sprites.js', 'animation.js']
+               'tools/validate-sprites.py', 'modular-sprites.js', 'animation.js',
+               'wardrobe.js', 'docs/CHARACTERS_PATCH_001.md',
+               'authoring/characters/true-modular/swordsman/male/README.md',
+               'authoring/characters/true-modular/swordsman/male/blueprint.json',
+               'authoring/characters/true-modular/swordsman/male/provenance/identity-lock.json',
+               'tools/build_true_modular_swordsman.py', 'tools/modular_character_engine.py']
     report = {'status': 'AUDIT_ONLY', 'ownerApproval': 'NOT_GRANTED_BY_AUDIT',
               'packManifest': pack_checks,
               'sources': {name: digest(ROOT / name) for name in sources},

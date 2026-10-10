@@ -146,6 +146,41 @@ integration is implemented. CURRENT_HANDOFF contains a separate world task and
 historical camera/branch instructions; this user's explicit character branch/task
 controls this work. World files and renderer are outside this bounded change.
 
-Decision: audit gate understood; no blocking runtime contradiction. Proceed with
+## Latest-branch additions that supersede the pack snapshot
+
+The base's newest commit adds `authoring/characters/true-modular/swordsman/male/`
+and `tools/modular_character_engine.py` / `build_true_modular_swordsman.py`. These
+author 11 independent source layers from original geometry (BodyCore, HeadBase,
+Face, HairBack/Front, Outfit, Weapon, Cape, accessories/FX), with registered Idle
+and Walk and cosmetic-swap evidence. They deprecate the old subtractive painter
+as an authoring route, while retaining all historical candidates. Their identity
+lock references unapproved `swordsman-production/master-composite.png`; it does
+not establish newer owner-approved identity authority. Source rig knee poles
+and 25-degree depth cue differ from the earlier anatomical gait/45-degree Blender
+guide. Preserve both proofs; neither silently freezes final Golden proportions.
+The new factory provides neutral 45-degree Blender structural evidence under the
+existing 320px authoring contract; final fit/retargeting to this newer independent
+layer authoring route remains open. No new painted candidate is promoted.
+
+`docs/CHARACTERS_PATCH_001.md` and `wardrobe.js` introduce a uniform .5 runtime
+compilation: 160×160 / root (80,132) / reference 88, derived from 320px authoring.
+This is an existing presentation path, not a newer approved 320px source contract
+replacement. Current Mage packages exist; `swordsman-male-001` and
+`swordsman-female-001` do not. The creator's wardrobe load requests the absent
+Swordsman URL. The modular runtime browser baseline waits for creator readiness
+and times out. This pre-existing package gap explains that failure and contradicts
+older documentation claiming ordinary calls still always use the legacy player.
+The 18-clip wardrobe gate also differs from the newer Swordsman's 16 required
+actions (Sit optional, Blink excluded). Fixing this belongs to later integration;
+do not manufacture missing production clips to make the test green.
+
+The nine Golden actions requested here remain the minimum factory target, not a
+claim that broader latest-branch action coverage is already complete. The newer
+proof has Idle/Walk only; the six older internally passed clips are historical
+painted evidence, not transferable approval for the independent source renderer.
+
+Decision: audit gate understood; no blocking contradiction for neutral authoring
+evidence. Shipping/Golden integration remains blocked by the missing packages and
+unapproved camera/identity fit. Proceed with
 Phase 2 neutral rig/view foundation only. Stop before motion-library expansion,
 equipment proof, stylisation or Golden acceptance.
