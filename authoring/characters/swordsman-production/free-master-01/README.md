@@ -1,5 +1,7 @@
 # Rebuild and inspect the free source pilot
 
+**OWNER SOURCE REVIEW FAILED (10 October 2026).** Abandoned for incorrect body proportions/size, reference pose and grip. See [OWNER_FEEDBACK.md](OWNER_FEEDBACK.md). The implementation below is historical evidence; do not resume this source as a candidate.
+
 The approved painted design is reference data only. The editable model and
 rendered geometry previews are unapproved authoring sources, never runtime 3D.
 The scripts start from the pinned MPFB core mesh and weights; no rejected source

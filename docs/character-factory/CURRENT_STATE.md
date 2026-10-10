@@ -48,7 +48,15 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**FREE_SOURCE_MODEL_BUILT / OWNER_GEOMETRY_REVIEW_PENDING / PAID_PLAN_ON_HOLD.**
+**FREE_SOURCE_REVIEW_FAILED / TOOLING_RESEARCH / PAID_PLAN_ON_HOLD.**
+On 10 October 2026 the owner rejected `free-master-01`: body proportions and
+size are incorrect, the pose does not match the approved photo, and grip is
+unacceptable. Its files are retained as an abandoned pilot, not an active
+candidate. See its `OWNER_FEEDBACK.md` and `owner-review.json`. Do not repair or
+reuse it as the next candidate. The current request is research into installable
+Blender skills, skeleton guidance and MCP. See `BLENDER_TOOLING_RESEARCH.md`.
+
+Historical implementation evidence follows; none overrides owner rejection.
 The owner authorized the free route: "Now let make it". MPFB 2.0.17 was downloaded
 from its official pinned release into an ignored workspace-local cache and loaded
 successfully in Blender 5.2.2. A fresh connected body, weighted finger rig, compact
@@ -56,7 +64,7 @@ shape, modeled clothes/hair/armor/cape, sword and alternate blade are saved unde
 `authoring/characters/swordsman-production/free-master-01/`. No rejected source
 was imported. See its `STATUS.md`, `README.md`, review page and validation receipts.
 
-This is an unapproved geometry pilot, not a finished painted candidate. The face,
+This is a rejected geometry pilot, not a finished painted candidate. The face,
 hair, garment detail and material finish still need refinement toward the approved
 concept. Eight exact headings share one grip pose, one fixed camera, canvas
 320 x 320, root (160,264), and one uniform scale. Large W/NW/N/SE hand inspections

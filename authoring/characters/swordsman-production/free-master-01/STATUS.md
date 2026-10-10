@@ -1,6 +1,13 @@
 # Free connected source pilot
 
-**SOURCE_MODEL_BUILT / OWNER_GEOMETRY_REVIEW_PENDING.**
+**OWNER_SOURCE_REVIEW_FAILED / ABANDONED_SOURCE_PILOT.**
+
+The owner rejected this source on 10 October 2026 for incorrect body proportions
+and size, a pose that does not match the approved photo, and an unacceptable
+grip. See `OWNER_FEEDBACK.md` and `owner-review.json`. Preserve these files as
+failure evidence; do not resume this model as the next production candidate.
+The painted parent concept remains approved. Technical validation below is
+historical and does not override this rejection.
 
 The owner authorized the free Blender route on 10 October 2026: "Now let make it".
 This is a fresh MPFB-based body and rig, not the rejected mannequin, turnaround,
@@ -28,10 +35,9 @@ is selected for all eight views, with 320 x 320 canvas, root (160,264), and
 176-pixel reference height. Gameplay review displays the entire canvas at 160
 x 160, corresponding to an 88-pixel reference height.
 
-Remaining work: refine face and hair toward the approved identity; refine
-garment construction/details, cape emblem and material finish; owner review of
-proportions and grip; reusable motion; depth-aware full-canvas modular 2D
-exports; painted finishing; existing packer/validator/runtime tests. This is
+The refinement plan formerly attached to this pilot is superseded by rejection.
+The next source needs proportions and a pose matched to the approved reference
+before detailing, followed by an anatomical grip review. This is
 not a finished painted character, accepted production candidate or completed
 factory. No runtime code or gameplay assets are replaced.
 
