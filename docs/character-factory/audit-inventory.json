@@ -1,0 +1,2405 @@
+{
+  "status": "AUDIT_ONLY",
+  "ownerApproval": "NOT_GRANTED_BY_AUDIT",
+  "packManifest": {
+    "00_START_HERE.md": true,
+    "AGENTS_TEMPLATE.md": true,
+    "BOOTSTRAP_WINDOWS.ps1": true,
+    "README.md": true,
+    "checklists/AGENT_DEFINITION_OF_DONE.md": true,
+    "checklists/GOLDEN_CHARACTER_CHECKLIST.md": true,
+    "checklists/HUMAN_APPROVAL_FORM.md": true,
+    "prompts/01_AUDIT_AND_FREEZE.md": true,
+    "prompts/02_RIG_CAMERA_FACTORY.md": true,
+    "prompts/03_MOTION_LIBRARY.md": true,
+    "prompts/04_LAYERED_EQUIPMENT.md": true,
+    "prompts/05_STYLISE_ART.md": true,
+    "prompts/06_PACK_RUNTIME.md": true,
+    "prompts/07_FACTORY_REUSE_PROOF.md": true,
+    "prompts/MASTER_AGENT_PROMPT.md": true,
+    "prompts/RECOVERY_PROMPT.md": true,
+    "repo/AGENT_CONTEXT_INJECTION.md": true,
+    "repo/ASTRAEON_SWORDMAN_BRANCH_FINDINGS.md": true,
+    "repo/CURRENT_REPO_PATHS.md": true,
+    "research/RESEARCH_SUMMARY.md": true,
+    "research/SOURCES.md": true,
+    "schemas/character_factory.schema.json": true,
+    "schemas/example_swordsman.factory.json": true,
+    "spec/ACCEPTANCE_GATES.md": true,
+    "spec/ACTION_LIBRARY.md": true,
+    "spec/ASTRAEON_CHARACTER_FACTORY_SPEC.md": true,
+    "spec/COPYRIGHT_REFERENCE_RULES.md": true,
+    "spec/DIRECTION_CAMERA_CONTRACT.md": true,
+    "spec/LAYER_SOCKET_CONTRACT.md": true,
+    "spec/NAMING_AND_LAYOUT.md": true,
+    "src/blender/README.md": true,
+    "src/blender/astraeon_character_factory.py": true,
+    "src/blender/factory-render.example.json": true,
+    "src/runtime/character-types.ts": true,
+    "src/runtime/compose-order.ts": true,
+    "src/validate/validate_character_factory.py": true
+  },
+  "sources": {
+    "docs/MODULAR_SPRITES.md": "09b003648b4ae089fe575a2f87d99475089a725c98dc1de147ef0406f0d3e6ac",
+    "RAGNAROK_REFERENCE.md": "26c5d053d64d105374196abe17fd95a769aba05dd3f6f4156760435a62bd2914",
+    "STYLE_GUIDE.md": "9c000746a58e4f05c8140a35d18924a03d5268d06863885f8c8a889ebd3b7c19",
+    "CURRENT_HANDOFF.md": "ff4c7a9d7d662392f2e6f29c414f897e2ecaf6f65bb62fc6c51e3d37c47c50ac",
+    "README.md": "0963dc6206f95e7b2efdcb04e19fef496bd6a384283167c8b2bbe4d656c61ccc",
+    "MASTER_PLAN.md": "5aff80649d9fb5a419872130f91e5b38b7648f07d59a5cb7f709c3a7717738cc",
+    "ASSET_LICENSES.md": "4daa7a556f0c9e266360882917d0d406dc95a28f0f1b12d5fa76a77c33f949cd",
+    "authoring/characters/swordsman-production/README.md": "eb5419d3d6c44658c6872c5b7c217ec9e90e357b243055ad2ed558d17972e785",
+    "docs/review/swordsman-production-v0.1/README.md": "42cac7ff6eb031c84d899bf1d05f392d084f17bb474ace4f2a5b3959a9c9684e",
+    "authoring/characters/gait-rig-v50/approved-warrior-seed.png": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05",
+    "authoring/characters/swordsman-production/reference/approved-warrior-seed.png": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05",
+    "authoring/characters/swordsman-production/reference/identity-lock.json": "bd81f4a40271018e9cb6b6eaa8692597627799555fb55403497edc6dddcb9961",
+    "authoring/characters/swordsman-production/rig-walk/candidate-03/walk-proof.blend": "95538ea66fea116fc1d0a4197130f11b07939263b5c2d58a6f34baf0e955ef9c",
+    "tools/build-swordsman-production.py": "6f2d31c2cd4158f04de5fd80bcd6e159aa7da257ccc4c369e5d7f7770c082419",
+    "tools/build-swordsman-walk-rig.py": "9dfb361117d00f17f060e02b23683527466da59ff202f8cd92fb8a24aed05835",
+    "tools/normalize-modular-strip.py": "5e020ea4ab96163aa4613cc065ba57e72132f606b9cc3d47f2bc25425850375c",
+    "tools/pack-modular-sprites.py": "968a205397ce98b28eee33fc319794f01035ee64d531a6aefec7559a37025f3d",
+    "tools/validate-sprites.py": "bf91234078fdc4236e02c86db19df6411281b590cb8a7810a34b398818b2aff3",
+    "modular-sprites.js": "9223bb5d203419ad00a6a9459c0d11c431457fc011b1029026e2a3c5a83cc261",
+    "animation.js": "1769bf2c917a32bb737803d4e70feef61c9380f705e0f54a577521dfcdb6b49b"
+  },
+  "registration": {
+    "frameWidth": 320,
+    "frameHeight": 320,
+    "rootAnchorX": 160,
+    "rootAnchorY": 264,
+    "referenceHeight": 176
+  },
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "sourceApproval": {
+    "status": "DEV_ONLY",
+    "reference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+    "approvedBy": null,
+    "camera": "Elevated painted Warrior camera, approximately 45 degrees",
+    "handedness": "right",
+    "normalization": {
+      "sourceFrameWidth": 320,
+      "sourceFrameHeight": 320,
+      "sourceRootAnchor": [
+        160,
+        264
+      ],
+      "scale": 1
+    },
+    "designLocks": [
+      "identity",
+      "silver swept hair",
+      "gold cape and bronze armour",
+      "anatomical right-hand sword",
+      "painted 2D",
+      "canonical elevated camera"
+    ]
+  },
+  "slots": {
+    "BaseBody": "BaseBody",
+    "Hair": "Hair",
+    "Outfit": "Outfit",
+    "Weapon": "Weapon",
+    "Headgear": "Headgear",
+    "BackAccessory": "BackAccessory"
+  },
+  "defaultParts": {
+    "BaseBody": "body-default",
+    "Hair": "hair-default",
+    "Outfit": "swordsman-default",
+    "Weapon": "sword-default",
+    "Headgear": "headgear-none",
+    "BackAccessory": "back-none"
+  },
+  "drawOrder": [
+    "BackAccessory",
+    "BaseBody",
+    "Outfit",
+    "Hair",
+    "Weapon",
+    "Headgear"
+  ],
+  "clips": {
+    "Idle": {
+      "framesPerDirection": 8,
+      "durations": [
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225
+      ],
+      "loop": true,
+      "tags": [
+        "INTERNAL_VISUAL_PASS",
+        "NOT_OWNER_APPROVED"
+      ],
+      "cycleDistance": null
+    },
+    "Walk": {
+      "framesPerDirection": 16,
+      "durations": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "loop": true,
+      "tags": [
+        "INTERNAL_VISUAL_PASS",
+        "NOT_OWNER_APPROVED"
+      ],
+      "cycleDistance": 0.7948032194092546
+    },
+    "Run": {
+      "framesPerDirection": 12,
+      "durations": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "loop": true,
+      "tags": [
+        "INTERNAL_VISUAL_PASS",
+        "NOT_OWNER_APPROVED"
+      ],
+      "cycleDistance": 1.409503246243013
+    },
+    "BasicAttack": {
+      "framesPerDirection": 16,
+      "durations": [
+        40,
+        40,
+        40,
+        80,
+        40,
+        25,
+        25,
+        30,
+        40,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      "loop": false,
+      "tags": [
+        "INTERNAL_VISUAL_PASS",
+        "NOT_OWNER_APPROVED"
+      ],
+      "cycleDistance": null
+    },
+    "SkillAction": {
+      "framesPerDirection": 14,
+      "durations": [
+        50,
+        50,
+        60,
+        80,
+        80,
+        30,
+        35,
+        65,
+        65,
+        50,
+        60,
+        65,
+        65,
+        65
+      ],
+      "loop": false,
+      "tags": [
+        "INTERNAL_VISUAL_PASS",
+        "NOT_OWNER_APPROVED"
+      ],
+      "cycleDistance": null
+    },
+    "Hit": {
+      "framesPerDirection": 8,
+      "durations": [
+        25,
+        25,
+        35,
+        40,
+        45,
+        50,
+        50,
+        50
+      ],
+      "loop": false,
+      "tags": [
+        "INTERNAL_VISUAL_PASS",
+        "NOT_OWNER_APPROVED"
+      ],
+      "cycleDistance": null
+    },
+    "Death": {
+      "framesPerDirection": 8,
+      "durations": [
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225
+      ],
+      "loop": false,
+      "tags": [
+        "PENDING_PRODUCTION"
+      ],
+      "cycleDistance": null
+    },
+    "Guard": {
+      "framesPerDirection": 8,
+      "durations": [
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225
+      ],
+      "loop": true,
+      "tags": [
+        "PENDING_PRODUCTION"
+      ],
+      "cycleDistance": null
+    },
+    "Dash": {
+      "framesPerDirection": 8,
+      "durations": [
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225
+      ],
+      "loop": false,
+      "tags": [
+        "PENDING_PRODUCTION"
+      ],
+      "cycleDistance": null
+    }
+  },
+  "candidateProvenance": [
+    {
+      "file": "authoring/characters/swordsman-production/candidates/arms-01/provenance.json",
+      "sha256": "bd2381a29499d0242e045cc176f4adab8b90e79018dbc77aa348ecef45b20123",
+      "evidence": {
+        "candidateId": "male-arms-01",
+        "dateTimeUTC": "2026-10-08T10:34:28.235913+00:00",
+        "purpose": "Complete same-view costume arm surfaces for articulated sword action without stretching the torso",
+        "method": "First-party image-generation reference edit",
+        "sourceReferences": [
+          "canonical-guide.png",
+          "../../reference/approved-warrior-seed.png"
+        ],
+        "prompt": "Edit the attached eight-view ASTRAEON Swordsman reference into a technical RIGHT-ARM component sheet. Preserve each view's exact painted costume design, viewing elevation and pose. Layout four columns, two rows: S SW W NW / N NE E SE. Output ONLY the eight complete anatomical right arms, including the same rounded dark bronze/gold pauldron, ivory upper-arm band, dark sleeve, gold-trimmed leather forearm guard and gloved grip hand. Remove every head, hair, face, torso, cape, leg, sword and background. Complete only small inner arm/elbow surfaces hidden by clothing in the source. Each complete arm stays at the same shoulder/elbow/wrist position as the corresponding source; do not move, enlarge or reframe it. This is lossless authoring material for posing one existing character, not a new costume. Same gentle painted 2D shading and edge treatment; full transparent canvas. Keep all eight orientations distinct; no mirrored views. No sword. No floating labels. No glow, checkerboard, ground or background. No new armour plates or oversized gauntlets. No realism, 3D/PBR, plastic, anime redesign or anatomy exaggeration. The second reference is the identity/costume authority; do not redesign its arm armour.",
+        "negativePrompt": "No costume redesign, new plates, face/body/cape/legs/sword, reframing, mirroring, background, glow, 3D/PBR or plastic",
+        "status": "rejected",
+        "ownerApproval": "NOT_APPROVED",
+        "decisionReason": "Oversized redesigned forearm plates, changed glove construction, reframing and translucent background contamination; not admitted into source or runtime parts",
+        "output": "generated-arms.png",
+        "outputSHA256": "a5b11d490c4e1ddb0860fa4234b182296dbac23e63d40b18a1d524fe5780b614"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/body-01/provenance.json",
+      "sha256": "4eedc0f6b667d937c3a7d711b3b3997acddd8a6e0303f26dff833a93915263a4",
+      "evidence": {
+        "candidateId": "male-body-01",
+        "dateTime": "2026-10-08T04:38:19.489095+00:00",
+        "purpose": "Paint neutral underlying male body for practical cosmetic outfit separation",
+        "method": "first-party image-generation edit of coordinated approved-identity directional candidate",
+        "sourceReferences": [
+          "../directional-02/generated-master.png"
+        ],
+        "prompt": "Create an underlying BODY-ONLY production texture from the attached eight-direction painted male Swordsman sheet. This is a technical repaint of the same poses, not a new character. Keep EXACTLY the same eight character positions, head size, body scale, foot positions, arm/hand poses, viewing elevation and grid layout. Layout top row S SW W NW, bottom row N NE E SE. Preserve the youthful face, proportions and gentle painted 2D ASTRAEON treatment. REMOVE all silver hair, yellow cape/scarf, gold armour, tunic panels, boots, belts, jewellery and sword. Replace these with simple close-fitting matte slate-blue neutral short-sleeve undershirt and short fitted shorts. Bare feet and bare lower legs. No costume details. Skin painted softly, no anatomical exaggeration, no nudity. Heads have simple skin/scalp colour without hair; retain same visible face only, not redesigned. Underlying body proportions remain compact exactly matching the original. The right hand retains the same loosely closed sword-grip pose with no weapon. Camera is elevated about 45 degrees, clearly seeing top of heads and shoulders. Use pure transparent background; no ground, no shadows outside body. Eight complete separate bodies, all source cell centres and bottom foot baseline unchanged. This body is a hidden neutral foundation for replacing the outfit; not a character redesign.",
+        "negativePrompt": "No costume, hair, sword, cape, golden armour, background, labels, 3D/PBR, anatomy exaggeration, new identity, different camera, mirrored views",
+        "status": "construction-source",
+        "ownerApproval": "NOT_APPROVED",
+        "output": "generated-body.png",
+        "inspection": "Neutral costume-free body textures are usable beneath source-painted exposed face/skin. Generated scalp and face differ and must not replace the identity source. Generated body pose is not pixel-registered; authoring deformation/registration is required. Not accepted as a standalone identity master."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/directional-01/provenance.json",
+      "sha256": "6f3866fdd9ff1cb29f5221d68c0bdb6c5d47ee0f3a82b0af160d1076c9f16a35",
+      "evidence": {
+        "candidateId": "directional-01",
+        "dateTimeUTC": "2026-10-08T03:14:39.228533+00:00",
+        "purpose": "Eight coordinated directional masters, identity gate",
+        "method": "First-party image_gen editing of authoritative seed",
+        "sourceReferences": [
+          "authoring/characters/swordsman-production/reference/approved-warrior-seed.png"
+        ],
+        "prompt": "Edit from the supplied authoritative ASTRAEON Warrior seed. Produce a tightly coordinated painted 2D Swordsman turnaround: exactly eight full-body directional masters arranged in a clean FOUR COLUMN by TWO ROW grid. TOP ROW left to right: South (front), South-West (front facing viewer-left), West (profile facing viewer-left), North-West (back facing viewer-left). BOTTOM ROW left to right: North (pure back), North-East (back facing viewer-right), East (profile facing viewer-right), South-East (front facing viewer-right). These are eight separately authored orientations, NOT mirrored images. No text or direction labels inside the image. Transparent background with no floor, no shadows outside sprites, no scenery or checkerboard pixels. Each cell has a full standing neutral ready character at the exact same apparent body height, camera elevation and ground line, evenly centered with generous transparent margins. Keep the elevated game camera of the reference, approximately 45 degrees down; see the tops of the head and shoulders even in side/back views. It is a game sprite sheet, not concept illustration.\nPreserve the EXACT same young male identity and compact storybook body proportions of the reference, short tousled silver/lavender-grey swept hair and fringe, mustard/gold short shoulder cape/scarf, bronze/gold shoulder and forearm armour, dark olive/navy underlayers, split ivory short tunic, restrained teal waist ornament, leather belts/gloves and tall dark brown bronze-armoured boots. Preserve construction and fastening across front/back, with the same cape length. Face is youthful and simple with the same proportions; do not turn him into an adult muscular warrior or generic anime hero. Keep the reference's soft painted edges, warm shaded cloth and metal, compact volume treatment and no heavy black outline. Each view must unmistakably depict the SAME person in the SAME costume, with the SAME hairstyle and body proportions.\nThe SAME narrow straight steel one-handed sword with the SAME bronze/gold hilt is held firmly in ANATOMICAL RIGHT HAND in ALL eight views. Blade points downward in a relaxed ready stance. In SOUTH front view the anatomical right hand and sword are at VIEWER LEFT. In NORTH back view they are at VIEWER RIGHT. In profiles, preserve the actual right shoulder/arm and natural occlusion. Do not mirror the sword across the body to fill directions. Sword dimensions and grip never vary. Left hand is empty. No shield, helmet, wings, new accessories, new costume panels, new weapons, missing cape, changed colour, taller legs, hair redesign, visible 3D render or PBR look. Preserve identity from the provided image, not just its colour palette. Return the coordinated eight-view transparent master sheet only.",
+        "negativePrompt": "Different identity, adult/muscular proportions, hair redesign, alternate palette/costume construction, hand switching, mirrored directions, variable sword dimensions, wrong camera, 3D/PBR/plastic appearance, scenery, background, text, baked checkerboard, flat pixel art",
+        "status": "rejected",
+        "scores": {
+          "Identity consistency": 4,
+          "Body proportions": 4,
+          "Hair consistency": 4,
+          "Outfit construction": 5,
+          "Weapon consistency": 4,
+          "Handedness": 5,
+          "Camera/elevation": 3,
+          "2D ASTRAEON style": 4
+        },
+        "generationOutput": "/workspace/generated_images/exec-988345d5-a9cb-4626-a593-f561ca56a910.png",
+        "scoreTotal": 33,
+        "criticalFailures": [
+          "Camera is shallower than the authoritative elevated seed; full faces show rather than reference top-down head/shoulders."
+        ],
+        "diagnosis": "Identity/costume are recognizable, but reference camera is overridden by conventional character-turnaround framing; darker line treatment and enlarged spiky hair need closer source fidelity.",
+        "repairStrategy": "Targeted edit existing coordinated sheet plus authoritative seed; preserve valid views/costume, change elevation/paint treatment consistently and remove all background via image editor.",
+        "alphaInspection": {
+          "mode": "RGBA",
+          "range": [
+            0,
+            254
+          ],
+          "note": "Tool preview displayed transparent RGB backing; inspected actual alpha separately before diagnosing background contamination."
+        }
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/directional-02/provenance.json",
+      "sha256": "e74ad16bfdf9174d76a63914340a040ea0b28155b0bdb61a8d0bd1ab5011aaed",
+      "evidence": {
+        "candidateId": "directional-02",
+        "dateTimeUTC": "2026-10-08T03:17:08.698764+00:00",
+        "purpose": "Targeted directional-master camera and paint fidelity repair",
+        "method": "First-party image_gen edit; identity seed plus previous sheet",
+        "sourceReferences": [
+          "authoring/characters/swordsman-production/reference/approved-warrior-seed.png",
+          "authoring/characters/swordsman-production/candidates/directional-01/generated-master.png"
+        ],
+        "prompt": "Use the FIRST image as the authoritative identity, camera elevation and painted treatment. The SECOND image is the eight-view candidate to repair, not a new design authority. Edit that coordinated sheet, preserving its correct costume construction, eight-view positions, silver hair, gold cape, bronze armour, ivory split tunic, teal accents, narrow sword and anatomical RIGHT handedness.\nTwo targeted corrections throughout all eight views: (1) raise the camera to precisely match the first seed's elevated gameplay view, approximately 45 degrees DOWN at the character. Show more crown/top of shoulders and less vertical chest/face; gently foreshorten the same compact body in projection, without shortening its anatomical legs or making the character crouch. Use the reference's looking-down, mostly fringe-hidden face rather than large full-front anime eyes. Side views must also be viewed from above. (2) Match the first seed's soft painted edges and subtly blended warm shading; reduce the candidate's dark contour outlining and over-crisp spiky hair. Keep the hair's short swept silver/lavender silhouette, not a new haircut.\nExact sheet layout: 4 columns x 2 rows. Top: S (front), SW (front toward viewer left), W (left profile), NW (back toward viewer left). Bottom: N (back), NE (back toward viewer right), E (right profile), SE (front toward viewer right). Independently authored directions, NO mirroring. Equal apparent body size and shared elevation in all cells. Stable gold cape fastening/length and weapon dimensions. Neutral upright ready pose. Anatomical right hand owns sword: viewer-left on front, viewer-right on back. Do not change hands, add a shield, helmet or jewellery, redesign the face, change age or body proportions, turn the clothes into plate mail, or alter the weapon. Preserve everything else that already matches the reference.\nPure transparent background, no floor or external shadow, no labels or scenery. Return only the revised painted 2D sprite master sheet. No 3D/PBR/plastic rendering, no portrait camera, no generic fantasy redesign.",
+        "negativePrompt": "Identity/costume mutation, eye-level camera, crouching pose, weapon hand changes, long spiky hair, harsh outlines, 3D/PBR, scenery/background",
+        "status": "current-best",
+        "scores": {
+          "Identity consistency": 5,
+          "Body proportions": 5,
+          "Hair consistency": 4,
+          "Outfit construction": 5,
+          "Weapon consistency": 4,
+          "Handedness": 5,
+          "Camera/elevation": 5,
+          "2D ASTRAEON style": 4
+        },
+        "generationOutput": "/workspace/generated_images/exec-d451cce7-e033-4b89-a8cb-7faf374eb94d.png",
+        "scoreTotal": 37,
+        "criticalFailures": [],
+        "internalGate": "PASS directional identity gate, subject to runtime-scale and modular comparison; no owner approval",
+        "inspection": "Higher crown/shoulder visibility and fringe-obscured face now match the reference camera. Same short silver hair, gold cape fastening, bronze/ivory/teal costume and right-handed narrow sword in all eight directions. Painted contours remain a little clearer than the low-resolution seed; retain for review."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/legs-01/provenance.json",
+      "sha256": "c7b616c037a1676cec8061aeec484cc36d1762bb1491aa7b94781c9d178846c5",
+      "evidence": {
+        "candidateId": "male-outfit-legs-01",
+        "dateTime": "2026-10-08T05:13:03.048110+00:00",
+        "prompt": "Technical painted 2D outfit component production. Use attached references: the ORIGINAL approved Swordsman identity first, and its coordinated directional masters second. Produce eight isolated complete RIGHT LEG outfit textures, from high thigh just below the belt to the sole, facing S SW W NW N NE E SE. Four columns by two rows, same canonical ordering as the supplied master. These are clothing/armour components ONLY, with no head, hair, torso, cape, hand or weapon. The component includes the SAME off-white cloth trouser thigh, bronze/gold pointed V knee plate, dark brown bronze-edged greave, dark leather ankle and sturdy rounded brown boot with gold/bronze seams shown in the source. Preserve the original boot design, not new armour. All eight correspond to the exact same outfit leg; only orientation changes. Same elevated approximately 45 degree camera, clearly see top surface of boot. Relaxed straight leg stance, not crouching, no left leg, no extra foot. Compact proportions: thigh about 45 percent of total leg height, calf about 35 percent, ankle/boot about 20 percent. Do NOT create tall elegant anime legs. Paint softly like the source, fine warm light, muted bronze rather than orange or bright polished gold. Retain the source's simple plate and seam treatment; do not add skulls, gems, filigree, spikes or new ornaments. 2D hand-painted game sprite texture, not 3D, not plastic, not vector sticker. All eight complete leg components have one common scale, identical height and aligned foot baseline. Lots of transparent padding between each. Pure transparent background. No labels or floor or shadows.",
+        "negativePrompt": "Different boot design, 3D/PBR, plastic, ornate armour, anime long legs, skin/nudity, two legs, different camera, mirrored missing directions, labels, floor",
+        "sourceReferences": [
+          "../../reference/approved-warrior-seed.png",
+          "../directional-02/generated-master.png"
+        ],
+        "method": "first-party coordinated component texture generation using original costume identity",
+        "status": "rejected",
+        "purpose": "Complete hidden painted boot/greave surfaces needed for grounded Walk; offline pose aid, merged into Outfit at runtime",
+        "ownerApproval": "NOT_APPROVED",
+        "output": "generated-legs.png",
+        "criticalFailures": [
+          "Camera too shallow, visible trouser opening nearly eye-level",
+          "Knee plate too broad and flat; shin decoration more elaborate than approved source"
+        ],
+        "diagnosis": "Isolated-part prompt lost full-body camera and low-resolution costume construction reference. Strengthen approved leg detail and add fixed 45-degree projected geometry guide."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/legs-02/provenance.json",
+      "sha256": "9de1b3e28b951aa46d425909a19baca1c6c6b16d24008ef4c368e605543e21be",
+      "evidence": {
+        "candidateId": "male-outfit-legs-02",
+        "dateTime": "2026-10-08T05:18:45.602676+00:00",
+        "purpose": "Repair isolated boot camera/design using approved detail plus fixed projected pose guidance",
+        "method": "first-party coordinated 2D texture generation with identity source and procedural internal geometry guide",
+        "sourceReferences": [
+          "../../reference/approved-warrior-seed.png",
+          "../../reference/approved-leg-detail.png",
+          "pose-guide.png"
+        ],
+        "prompt": "Make the final PAINTED 2D Swordsman outfit leg component sheet. Reference 1 is the ORIGINAL APPROVED Warrior identity. Reference 2 is a close detail of its legs and boots. Reference 3 is ONLY a geometric camera/pose aid showing all eight directions at the required 45-degree elevated camera. Follow the third reference CAMERA, direction layout and component positions, but replace all its geometric surfaces with the exact softly painted clothing/bronze greave/brown boot design in references 1 and 2. This is not a new costume. Eight complete single right-leg outfit parts in top row S SW W NW, bottom row N NE E SE. Same design, common scale and height. Each starts at high trouser thigh and ends at the sole. Source construction: soft off-white trousers, a small branching V-shaped bronze knee guard, DARK grey-brown shin with subtle bronze seams, matte brown leather boot with a rounded brown/bronze toe and small muted warm trim. No oversized flat gold diamond knee plate. No big rivets, shiny studs, white specular spots or new ornaments. Preserve the compact leg proportions and chunky rounded boot in the original cropped detail. Camera is elevated 45 degrees, look DOWN onto the upper trouser opening and the top of the boot, exactly as the schematic pose aid. NOT a low front-facing catalogue view. Paint softly with source-like muted brown/bronze shadows and gently feathered contours. No thick black outline. No PBR or 3D shading. NO body head cape arms or sword, single leg only. Transparent background, no floor, cast shadow, labels or graphics. All eight stand on the same respective row baseline with ample transparent spacing.",
+        "negativePrompt": "3D/PBR, plastic, hard black outline, shallow eye-level camera, oversize diamond plate, bright polished gold, rivets, new ornaments, two legs, other costume, skin, mirrored view",
+        "status": "current-best",
+        "ownerApproval": "NOT_APPROVED",
+        "output": "generated-legs.png",
+        "componentGate": "PASS subject to composited gait inspection",
+        "inspection": "Fixed elevated view now shows trouser opening and boot top. Narrow branching knee plate, dark shin and muted brown rounded toe preserve the original construction at target resolution; no bulky flat diamond/rivets. Direction set coordinated and no mirrored views.",
+        "score": {
+          "sourceConstruction": 4,
+          "directionConsistency": 5,
+          "camera": 5,
+          "paintedStyle": 4,
+          "palette": 5,
+          "scale": 5
+        }
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-lowerbody-05/provenance.json",
+      "sha256": "cea24f50bb6a96e2cef8b9f8ce7cb832ea62841332808ca8751e90f4edc8dd03",
+      "evidence": {
+        "candidateId": "walk-lowerbody-05",
+        "dateTime": "2026-10-08T07:33:21.407527+00:00",
+        "status": "rejected",
+        "method": "first-party whole lower-body strip generation from original upright shared motion",
+        "sourceReferences": [
+          "leg-pose-guide.png",
+          "../../reference/approved-leg-detail.png",
+          "../../male/leg-templates/W.png"
+        ],
+        "promptFile": "prompt.txt",
+        "negativePrompt": [
+          "design mutation",
+          "incorrect direction",
+          "3D PBR",
+          "background",
+          "detached parts"
+        ],
+        "purpose": "Separate painted lower-body pose production from locked face/hair/upper costume",
+        "diagnosis": "More distinct support/passing forms, but shoes turn toward screen rather than consistent W; approved knee trim simplified into a large generic chevron; not runtime accepted.",
+        "ownerApproval": "NOT_APPROVED",
+        "rejectionReason": "Incorrect boot facing and knee trim; excessive knee lift reads as a marching/run gesture. Owner clarified ordinary relaxed walk, not raised-knee or running motion."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-relaxed-06/provenance.json",
+      "sha256": "36265d72da41d6701e950dca8a6af1d34c2581d16a40fe4eca51bcf1a812186b",
+      "evidence": {
+        "candidateId": "walk-relaxed-06",
+        "dateTime": "2026-10-08T07:50:40.346163+00:00",
+        "status": "rejected",
+        "method": "first-party targeted whole lower-body strip edit using original relaxed pose guidance",
+        "sourceReferences": [
+          "../walk-lowerbody-05/generated-strip.png",
+          "pose-guide.png",
+          "../legs-02/generated-legs.png",
+          "owner-upload:Classes (Female) - Novice.png (benchmark only)"
+        ],
+        "promptFile": "prompt.txt",
+        "negativePrompt": [
+          "copied external poses or pixels",
+          "incorrect camera",
+          "knee design mutation",
+          "high-knee marching",
+          "running",
+          "background"
+        ],
+        "purpose": "Repair ordinary low-clearance walk, fixed W facing and approved knee construction",
+        "rejectionReason": "Still inconsistent boot facing and simplified generic knee trim; component perspective inconsistent with approved camera. Repeats the preceding motion/design failure. Sixth serious first-party Walk attempt; retain evidence of systemic guide adherence limit, not accepted art.",
+        "ownerApproval": "NOT_APPROVED"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-rig-painted-07/provenance.json",
+      "sha256": "dbd63667b356cd42c91f00b5faaa7816cb96148e033eebfbb1dc793bcd9da79f",
+      "evidence": {
+        "candidateId": "male-walk-rig-painted-07",
+        "dateTimeUTC": "2026-10-08T10:02:22.280343+00:00",
+        "purpose": "Repair painted leg joins using corrected articulated cycle and stronger RO motion reference",
+        "method": "First-party whole-sheet 2D image editing",
+        "promptFile": "prompt.txt",
+        "negativePrompt": "Identity/costume/hair redesign, run/march/hop, both thighs always forward, generic anime or PBR, new ornaments, per-frame scale/recentering, backgrounds or cast shadows",
+        "sourceReferences": [
+          "painted-pose-guide.png",
+          "../../reference/approved-warrior-seed.png",
+          "articulated-rig-guide.png",
+          "/tmp/ro-side-walk-inspection.png"
+        ],
+        "benchmarkSource": "User-supplied Female Novice PNG, crop (0,272,389,350), nearest-neighbour 4x study",
+        "rigCycle": "../../rig-walk/candidate-03/shared-cycle.json",
+        "status": "rejected",
+        "ownerApproval": "NOT_APPROVED",
+        "reason": "Whole-sheet edit resized/reframed figures and changed row registration; grey/gold background glow contaminates transparency. It does not preserve the target full-canvas locked edit, so no runtime parts are derived from it.",
+        "output": "generated-painted.png",
+        "outputSHA256": "b84679c3b6301b1ba7b68705c6ba8ea36a809b5d799d6fb66c7b59b075e46f05"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-upright-04/provenance.json",
+      "sha256": "7f7647c349ec646a8f41f9383e7c1ce6214074b2a11e3812f0a38e57be6eb4db",
+      "evidence": {
+        "candidateId": "walk-upright-04",
+        "dateTime": "2026-10-08T07:29:05.723803+00:00",
+        "status": "rejected",
+        "method": "first-party whole-strip generation from character master and original upright pose guide",
+        "sourceReferences": [
+          "../../masters/W.png",
+          "pose-guide.png"
+        ],
+        "promptFile": "prompt.txt",
+        "negativePrompt": [
+          "repeated contacts",
+          "identity drift",
+          "background",
+          "3D",
+          "costume mutation"
+        ],
+        "purpose": "Separate original upright motion guidance from faulty prior painting",
+        "rejectionReason": "Repeated near-leg leading contacts instead of anatomical exchange; knee-armour/costume mutation; hair silhouette drift; lower camera; opaque generated background. Critical failures override any score.",
+        "ownerApproval": "NOT_APPROVED"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-west-painted-repair-03/provenance.json",
+      "sha256": "ebb1efc61e57589630872e7e1282161eef73110b9bfbab8b8767af0b53e322b2",
+      "evidence": {
+        "candidateId": "walk-west-painted-repair-03",
+        "dateTime": "2026-10-08T07:20:35.828808+00:00",
+        "status": "rejected",
+        "method": "first-party imagegen targeted whole-strip editing from corrected shared motion",
+        "sourceReferences": [
+          "motion-guide.png",
+          "../../reference/approved-warrior-seed.png"
+        ],
+        "promptFile": "prompt.txt",
+        "negativePrompt": [
+          "identity redesign",
+          "repeated standing poses",
+          "wrong camera",
+          "3D PBR",
+          "weapon changes",
+          "background"
+        ],
+        "purpose": "Repair painted knees, trouser deformation and boot joins while retaining distinct gait phases",
+        "ownerApproval": "NOT_APPROVED",
+        "rejectionReason": "Owner rejected this strategy again: repaint retains the awkward hinged gait from its source motion. Clear painted boots alone do not establish a convincing walk."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-west-repair-01/provenance.json",
+      "sha256": "4e7d0f0349ff129594b78fbdcb5aed80bd38854a3c38edd24c7801074b211e33",
+      "evidence": {
+        "candidateId": "walk-west-repair-01",
+        "dateTime": "2026-10-08",
+        "method": "first-party image edit, coordinated whole-cycle sheet",
+        "prompt": "Repair a painted 2D ASTRAEON walking animation as one coordinated sequence. Reference 1 is the authoritative west-facing character identity and camera; reference 2 is an eight-frame motion/layout guide with defects in the lower-body construction. Output eight frames in FOUR columns by TWO rows, chronological row-major order, equally sized cells. All frames face WEST (screen left), same elevated 45-degree camera. Preserve the exact short lavender silver hair, young male face, broad golden scarf/cape, small bronze rounded shoulder armour, dark navy tunic, ivory trousers, teal belt ornament, brown leather boots with bronze V/trident knee guards. Anatomical RIGHT hand holds the SAME straight steel sword angled down-left, same blade length/grip throughout. Repair the two legs into natural walking: frame1 right forward left back, frame2 right planted moving back left lifting, frame3 right under hip left swings forward, frame4 right back left forward, frame5 left forward right back, frame6 left planted right lifting, frame7 left under hip right swings forward, frame8 left back right forward. Both feet correctly attached to their legs and same boot design; stable leg lengths. Subtle weight shift and arm counter-motion. Preserve head/cape/torso scale and location in all cells; no zoom/reframing. Preserve reference 1 soft painted game-sprite style and elevated camera. Transparent alpha background, no numbers, labels, shadows, floor, grid. EXCLUSIONS: no changed person/hair/costume, no 3D/PBR/plastic/anime render, no camera drift, no weapon length change or hand switch, no extra limbs, no exposed bare legs below boots, no detached body fragments, no perspective cell-size changes.",
+        "exclusions": " no changed person/hair/costume, no 3D/PBR/plastic/anime render, no camera drift, no weapon length change or hand switch, no extra limbs, no exposed bare legs below boots, no detached body fragments, no perspective cell-size changes.",
+        "sourceReferences": [
+          "../../masters/W.png",
+          "motion-guide.png"
+        ],
+        "purpose": "Repair west-facing Walk lower-body motion",
+        "status": "rejected",
+        "reason": "Legs remain in the same contact pose instead of alternating; guide lacked explicit anatomical motion authority.",
+        "ownerApproval": "NOT_APPROVED"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/candidates/walk-west-repair-02/provenance.json",
+      "sha256": "3b95cc5af136169b20b854aaa5613abdd3a3c4ab8b496f221223c648bf77e63f",
+      "evidence": {
+        "candidateId": "walk-west-repair-02",
+        "dateTime": "2026-10-08",
+        "method": "first-party image edit with explicit per-phase anatomical guide",
+        "prompt": "Create a coordinated EIGHT-FRAME WALK animation painted 2D sprite sheet, FOUR columns TWO rows chronological row-major, using reference 1 EXACT character appearance and reference 2 EXACT LOWER-BODY POSES. Reference 2 blue is anatomical RIGHT leg, orange is LEFT leg; replace BOTH colored guides with the ivory trousers + dark brown leather greaves/bronze narrow branching V knee guards + rounded leather boots of reference 1. Follow the guide foot placements in EVERY cell, especially cells 1 and 5 have OPPOSITE leading legs. The guide\u00e2\u20ac\u2122s white circles locate knees. A complete alternating walking cycle, not eight variations of the same standing pose. Keep the same west/screen-left orientation and elevated45camera throughout. Upper body location, head shape/face/hair/cape/tunic same as reference1, same scale and framing as pose guide cells. Slight natural arm counter-swing, anatomical RIGHT hand holds same long straight steel sword down-left throughout; sword tip remains complete (guide crop cut sword but final must restore it). Young male short silver-lavender hair, gold cape/scarf, bronze rounded shoulder plates, dark tunic, teal belt ornament, ivory trousers, narrow V bronze knee guards and brown boots. No costume changes. Match SOFT painted source edges/style exactly, not PBR. Transparent alpha background. EXCLUSIONS: no labels/numbers/colored guides/grid/floor/background, no 3D look, no enlarged head, no anatomical hand switch, no resized sword, no short bare legs, no duplicated standing frames, no face/hair redesign, no camera changes.",
+        "exclusions": " no labels/numbers/colored guides/grid/floor/background, no 3D look, no enlarged head, no anatomical hand switch, no resized sword, no short bare legs, no duplicated standing frames, no face/hair redesign, no camera changes.",
+        "sourceReferences": [
+          "../../masters/W.png",
+          "pose-guide.png"
+        ],
+        "purpose": "Repair alternating west-facing Walk contacts",
+        "status": "rejected",
+        "reason": "Exact pose guidance still not followed; leading leg remains almost invariant and cape/sword framing drifts. Changed strategy to offline segmented painted limb deformation.",
+        "ownerApproval": "NOT_APPROVED"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/BasicAttack/candidate-01/provenance.json",
+      "sha256": "f770eba38968ff3aa6cc0e73e7b448c4f739efb12a91333f08e9b38c42311e0b",
+      "evidence": {
+        "candidateId": "male-basicattack-01",
+        "dateTime": "2026-10-08T10:30:20.056339+00:00",
+        "status": "rejected",
+        "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          80,
+          90,
+          80,
+          55,
+          65,
+          90,
+          110,
+          100
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "anticipation",
+          "loaded anticipation",
+          "strike",
+          "follow-through",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "decisionReason": "Global clothed torso warp stretches the raised sleeve and pulls chest construction; replace with an independently posed complete arm authoring surface"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/BasicAttack/candidate-02/provenance.json",
+      "sha256": "ec8b8deca04d0e76ce65d4e8e4532e5e2c18a9ddd37c271e14d79c732795b2e6",
+      "evidence": {
+        "candidateId": "male-basicattack-02",
+        "dateTime": "2026-10-08T10:40:23.973717+00:00",
+        "status": "superseded",
+        "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          80,
+          90,
+          80,
+          55,
+          65,
+          90,
+          110,
+          100
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "anticipation",
+          "loaded anticipation",
+          "strike",
+          "follow-through",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "decisionReason": "Superseded: source pauldron was deformed and lower sleeve sampled ivory tunic pixels"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/BasicAttack/candidate-03/provenance.json",
+      "sha256": "d4a63e401ab00f0f35628895d26f67ea3f9bbdf4ed75927280030ca6c99178e7",
+      "evidence": {
+        "candidateId": "male-basicattack-03",
+        "dateTime": "2026-10-08T10:45:23.151527+00:00",
+        "status": "superseded",
+        "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          80,
+          90,
+          80,
+          55,
+          65,
+          90,
+          110,
+          100
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "anticipation",
+          "loaded anticipation",
+          "strike",
+          "follow-through",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "decisionReason": "Superseded: repaired armour retained but sparse anticipation/recovery replaced by denser sampling"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/BasicAttack/candidate-04/provenance.json",
+      "sha256": "8c72c30256d20b8741180104a96f218ec9232e7b21450e76e3e6a344257f0665",
+      "evidence": {
+        "candidateId": "male-basicattack-04",
+        "dateTime": "2026-10-08T10:52:59.812379+00:00",
+        "status": "rejected",
+        "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          40,
+          40,
+          40,
+          80,
+          40,
+          25,
+          25,
+          30,
+          40,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "anticipation",
+          "loaded anticipation",
+          "strike",
+          "follow-through",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "phaseSamples": [
+          0.0,
+          0.06,
+          0.12,
+          0.2,
+          0.28,
+          0.34,
+          0.4,
+          0.43,
+          0.47,
+          0.54,
+          0.62,
+          0.72,
+          0.8,
+          0.86,
+          0.93,
+          1.0
+        ],
+        "surfaceMethod": "Same-view source costume arm texture; rigid source pauldron; connected sleeve/brace UV mesh; no generated replacement armour",
+        "decisionReason": "Internal BasicAttack gate 91/100 after independent source arm painting, rigid pauldron, occlusion and denser shared-cycle sampling",
+        "buildSourceSHA256": "424289c1ec86afb7fda168039d76199b08c4eb095841b3edc04ddfaef278be12",
+        "cycleSourceSHA256": "1b469e42ff3d94feb345813ab701060cd0c57b584b8417247dcd10b7ba5f8a45",
+        "rejectionReason": "Internal pass withdrawn: near-singular NE blade guide introduced an angular pop; retain source and repair angle curve only."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/BasicAttack/candidate-05/provenance.json",
+      "sha256": "9706bb7eb73f905c887a854de55ce790dc0edfadb6006b720ce98ea99d847a80",
+      "evidence": {
+        "candidateId": "male-basicattack-05",
+        "dateTime": "2026-10-08T11:37:28.521163+00:00",
+        "status": "rejected",
+        "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          40,
+          40,
+          40,
+          80,
+          40,
+          25,
+          25,
+          30,
+          40,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "anticipation",
+          "loaded anticipation",
+          "strike",
+          "follow-through",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "phaseSamples": [
+          0.0,
+          0.06,
+          0.12,
+          0.2,
+          0.28,
+          0.34,
+          0.4,
+          0.43,
+          0.47,
+          0.54,
+          0.62,
+          0.72,
+          0.8,
+          0.86,
+          0.93,
+          1.0
+        ],
+        "surfaceMethod": "Same-view source costume arm texture; rigid source pauldron; connected sleeve/brace UV mesh; no generated replacement armour",
+        "rejectionReason": "Source-tip calibration fixes direction, but independently wrapping keys around rest creates an excessive NW strike detour. Use adjacent-key angular unwrapping."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/BasicAttack/candidate-06/provenance.json",
+      "sha256": "dc710fdd474abdffccfdf07031fecb4311343c3ed0edbcbf21c21f3990d8ca20",
+      "evidence": {
+        "candidateId": "male-basicattack-06",
+        "dateTime": "2026-10-08T11:43:41.827156+00:00",
+        "status": "current-best",
+        "method": "Original articulated sword-action sequence, offline painted modular strip construction; fixed blade dimensions and right-hand pivot; direction/frame-specific sword occlusion",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "BasicAttack whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          40,
+          40,
+          40,
+          80,
+          40,
+          25,
+          25,
+          30,
+          40,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "anticipation",
+          "loaded anticipation",
+          "strike",
+          "follow-through",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "phaseSamples": [
+          0.0,
+          0.06,
+          0.12,
+          0.2,
+          0.28,
+          0.34,
+          0.4,
+          0.43,
+          0.47,
+          0.54,
+          0.62,
+          0.72,
+          0.8,
+          0.86,
+          0.93,
+          1.0
+        ],
+        "surfaceMethod": "Same-view source costume arm texture; rigid source pauldron; connected sleeve/brace UV mesh; no generated replacement armour",
+        "decisionReason": "Internal attack gate 91/100 after source blade calibration and continuous adjacent-key angular arc repair",
+        "buildSourceSHA256": "9854e8eba3e950da3c24477375e7c912bfbc9174a1f278e81047ad465a71ddb3",
+        "cycleSourceSHA256": "53f33ba7b602758cb46507a197b0a771bbc61af6c4e62b539e170736fa1d93e0"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Hit/candidate-01/provenance.json",
+      "sha256": "4f6de71df32b0c2b84d3e80ede159efafe6b06dbfa96f646718e8577ba15368b",
+      "evidence": {
+        "candidateId": "male-hit-01",
+        "dateTime": "2026-10-08T11:58:01.748491+00:00",
+        "status": "rejected",
+        "method": "Original short planted-foot flinch; fixed chains and bounded rearward torso recoil; shared pose bake into painted modular parts",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Hit whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          25,
+          25,
+          35,
+          40,
+          45,
+          50,
+          50,
+          50
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phaseSamples": [
+          0.0,
+          0.1,
+          0.22,
+          0.35,
+          0.5,
+          0.65,
+          0.82,
+          1.0
+        ],
+        "rootDisplacement": "zero",
+        "rejectionReason": "Rest blade proxy differed from the actual painted source angle; flinch must carry its sword without swinging."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Hit/candidate-02/provenance.json",
+      "sha256": "ea61b51012d877ac93ee21649a1927d10d735aeaec381e84acc6290150464518",
+      "evidence": {
+        "candidateId": "male-hit-candidate-02",
+        "dateTimeUTC": "2026-10-08T12:00:57.726736+00:00",
+        "method": "Targeted offline rigid weapon translation at existing anatomical grip; other five lossless source strips unchanged",
+        "purpose": "Remove unintended sword swing from short hit recoil",
+        "sourceReferences": [
+          "authoring/characters/swordsman-production/male/motion-candidates/Hit/candidate-01",
+          "authoring/characters/swordsman-production/male/modular-masters"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "status": "current-best",
+        "ownerApproval": "NOT_APPROVED",
+        "unchangedStripSHA256": {
+          "BaseBody": "19ad8907cb56099ba94e3e96a2d22efe0e618cf1d33f1487952f01d2fd1f3a93",
+          "Hair": "315d1e8050a8786198b72a98c5c32bcf1eb311cce7ff1104ac7741d776e7bec0",
+          "Outfit": "d71cc1f83028aad3935db494d7c052065a30dc092984162eb03520f704f68502",
+          "Headgear": "125f513daf86a6998b5475d95cde3d85bdf6a2464ae675811952d9b78cc64ce5",
+          "BackAccessory": "125f513daf86a6998b5475d95cde3d85bdf6a2464ae675811952d9b78cc64ce5"
+        },
+        "repairSourceSHA256": "6d0a3309e3d4b32efb189fae597c311ea01fe0b340618fcf0f531e43c48f9553",
+        "decisionReason": "Internal Hit gate 92/100 after targeted weapon repair, not owner approval",
+        "buildSourceSHA256": "8165a6911bb85b902f5c7bf571707f75f0441116471702cf103da334b60d479f",
+        "cycleSourceSHA256": "7e0e981a4e3651438e79d16ecea9206ab426ba116a6b258accc12fc53e5b2de5"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Idle/candidate-01/provenance.json",
+      "sha256": "813135cfe08bebca3fade7f1de155de96d096ddc6e7d7a9c1bb6c70d2eca6382",
+      "evidence": {
+        "candidateId": "male-idle-01",
+        "status": "superseded",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Idle whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          225,
+          225,
+          225,
+          225,
+          225,
+          225,
+          225,
+          225
+        ]
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Idle/candidate-02/provenance.json",
+      "sha256": "54b50711370e672bbe766760f33c0ff08411a2ba7ae6bbee0476c9ebe57305b0",
+      "evidence": {
+        "candidateId": "male-idle-02",
+        "dateTime": "2026-10-08T05:09:59.638769+00:00",
+        "status": "superseded",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Idle whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          225,
+          225,
+          225,
+          225,
+          225,
+          225,
+          225,
+          225
+        ]
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Idle/candidate-03/provenance.json",
+      "sha256": "7dbe25333429c905fef350c8f5d2ecbee7abe0837c7b41fde455a26282751e8b",
+      "evidence": {
+        "candidateId": "male-idle-03",
+        "dateTime": "2026-10-08T06:54:06.081864+00:00",
+        "status": "current-best-development-idle",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Idle whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          225,
+          225,
+          225,
+          225,
+          225,
+          225,
+          225,
+          225
+        ]
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Run/candidate-01/provenance.json",
+      "sha256": "4b479495b1c50726f8994e3539b08b9c0629c5885a444a4608b0f616893e8077",
+      "evidence": {
+        "candidateId": "male-run-01",
+        "dateTime": "2026-10-08T10:21:26.962189+00:00",
+        "status": "current-best",
+        "method": "Original articulated run cycle, shorter support with airborne transfer and stronger recovery; continuous painted UV legs and rigid sword; authoring-only rig",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Run whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60
+        ],
+        "sharedCycle": "tools/swordsman-run-cycle.py",
+        "motionDifferences": [
+          "42% support interval",
+          "15 cm swing clearance",
+          "airborne support transfer",
+          "loaded compression",
+          "forward torso commitment",
+          "stronger arm counter-motion"
+        ],
+        "identity": "Same painted directional masters, leg-chain calibration, canvas, camera and cosmetic parts as Walk",
+        "decisionReason": "Internal Run gate 92/100; distinct recovery/support/flight rather than sped-up Walk",
+        "cycleSourceSHA256": "12d245f0c070d30d0152950d6e37140755c95fd638bcdf7454fdfa2c82235472",
+        "buildSourceSHA256": "3e2e3ad1b9d0a861132d305b2ab5aa357e220401f07c29bdda6c4072de978a70"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/SkillAction/candidate-01/provenance.json",
+      "sha256": "df38511805bfa34065c32c75ed43564fa03d1705944c86abf8df23b6077512b8",
+      "evidence": {
+        "candidateId": "male-skillaction-01",
+        "dateTime": "2026-10-08T11:33:31.291824+00:00",
+        "status": "rejected",
+        "method": "Original fixed-chain committed thrust; shared poses bake existing painted cosmetic parts; no runtime skeleton or baked VFX",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "SkillAction whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          50,
+          50,
+          60,
+          80,
+          80,
+          30,
+          35,
+          65,
+          65,
+          50,
+          60,
+          65,
+          65,
+          65
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "low retraction",
+          "loaded anticipation",
+          "committed thrust",
+          "brief extension",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "phaseSamples": [
+          0.0,
+          0.08,
+          0.16,
+          0.24,
+          0.3,
+          0.37,
+          0.44,
+          0.5,
+          0.56,
+          0.65,
+          0.72,
+          0.82,
+          0.9,
+          1.0
+        ],
+        "surfaceMethod": "Same-direction costume arm paint with rigid pauldron and continuous sleeve/brace surface",
+        "effects": "Separate; no elemental appearance baked",
+        "rejectionReason": "Proxy neutral blade vectors did not match the actual directional source grip/tip. Correct the shared painted blade-angle calibration and adjacent-key arc before accepting SkillAction."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/SkillAction/candidate-02/provenance.json",
+      "sha256": "1e652d55d0b246a87e8d6fe37bd74d473150b2710915762800ba529ddef0a7bc",
+      "evidence": {
+        "candidateId": "male-skillaction-02",
+        "dateTime": "2026-10-08T11:51:06.319734+00:00",
+        "status": "current-best",
+        "method": "Original fixed-chain committed thrust; shared poses bake existing painted cosmetic parts; no runtime skeleton or baked VFX",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "SkillAction whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          50,
+          50,
+          60,
+          80,
+          80,
+          30,
+          35,
+          65,
+          65,
+          50,
+          60,
+          65,
+          65,
+          65
+        ],
+        "sharedCycle": "tools/swordsman-action-poses.py",
+        "phases": [
+          "rest",
+          "low retraction",
+          "loaded anticipation",
+          "committed thrust",
+          "brief extension",
+          "recovery",
+          "settle",
+          "rest"
+        ],
+        "phaseSamples": [
+          0.0,
+          0.08,
+          0.16,
+          0.24,
+          0.3,
+          0.37,
+          0.44,
+          0.5,
+          0.56,
+          0.65,
+          0.72,
+          0.82,
+          0.9,
+          1.0
+        ],
+        "surfaceMethod": "Same-direction costume arm paint with rigid pauldron and continuous sleeve/brace surface",
+        "effects": "Separate; no elemental appearance baked",
+        "decisionReason": "Internal SkillAction gate 91/100, no owner approval",
+        "buildSourceSHA256": "fe2c9b7d609979c7444988efbb137973cac7cc61458872bf628e252825df9577",
+        "cycleSourceSHA256": "53f33ba7b602758cb46507a197b0a771bbc61af6c4e62b539e170736fa1d93e0"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-01/provenance.json",
+      "sha256": "f62c2e5e61cd7788d8232e848c45b3dfa0ffa62aabc49919f35a35f5e0e488b1",
+      "evidence": {
+        "candidateId": "male-walk-01",
+        "dateTime": "2026-10-08T05:10:22.252066+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "criticalFailures": [
+          "Partial boot/calf textures cannot cover independent side-view steps: bare feet visible W",
+          "Incomplete sword extraction leaves floating silver edge fragments NE"
+        ],
+        "diagnosis": "Source directional masters occlude one boot in side views. Splitting those painted pixels cannot recover the missing surfaces; add complete direction-specific painted leg textures. Weapon masks need complete blade-edge coverage.",
+        "strategyChange": "Generate coordinated complete outfit leg textures from original reference, use shared whole-cycle pose and full painted legs rather than split partial pixels.",
+        "rejectionReason": "Incomplete boot extraction and detached sword/skin fragments."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-02/provenance.json",
+      "sha256": "d1e001bc99ae18b89b4233635177308e806dac75c84b7e8b1f0d8f1efb1feb1c",
+      "evidence": {
+        "candidateId": "male-walk-02",
+        "dateTime": "2026-10-08T05:24:01.083810+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "criticalFailures": [
+          "Component registered by visual sole bounds instead of leg axis: side-view greave does not cover underlying calf consistently",
+          "Boot shape deforms because rigid foot support did not include whole toe/ankle"
+        ],
+        "diagnosis": "Registration error in isolated boot component, not identity generation. Repair the source component root using leg axis and keep the entire boot rigid during pose projection.",
+        "rejectionReason": "Component sole registration and boot proportions were incorrect."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-03/provenance.json",
+      "sha256": "eb31150e09848177a56205c0491196e3703e0d991ee07ec401d0d61da5a3e638",
+      "evidence": {
+        "candidateId": "male-walk-03",
+        "dateTime": "2026-10-08T05:30:29.271581+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "criticalFailures": [
+          "BaseBody upper-leg pixels remain in torso registration while Outfit legs articulate: exposed stationary skin fragments W"
+        ],
+        "diagnosis": "Offline source segmentation started at visible boot/knee, not the hidden pelvis. Move the entire underlying leg from the same anatomical hip and keep source-painted hand pixels with the arm.",
+        "rejectionReason": "Underlying body legs stayed in standing pose."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-04/provenance.json",
+      "sha256": "440f974b95335d36dff703c9d50db1900aecb6b796998e264fff67717fd7f9a5",
+      "evidence": {
+        "candidateId": "male-walk-04",
+        "dateTime": "2026-10-08T05:36:10.871343+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Incorrect anatomical guides exposed skin fragments."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-05/provenance.json",
+      "sha256": "717b3608253cbf0cfc7822396730ff62a2a1288b0b199081b6bad0753d193f43",
+      "evidence": {
+        "candidateId": "male-walk-05",
+        "dateTime": "2026-10-08T05:46:44.003363+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "criticalFailures": [
+          "Projected mesh fold/retriangulation produces disconnected skin surfaces near the rear right hand and side-view knees"
+        ],
+        "diagnosis": "Inverse interpolation re-triangulates projected joints independently from source topology. Close/crossing hip, knee and hand projections create invalid texture correspondences. Preserve fixed source topology with forward rasterization; do not hide the failure with runtime offsets.",
+        "strategyChange": "Change authoring deformation from inverse destination triangulation to fixed source mesh projection. Also correct diagonal ground motion to follow the exact canonical heading.",
+        "rejectionReason": "Destination retriangulation folded painted surfaces."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-06/provenance.json",
+      "sha256": "dc4b7e6a05eae8d79df313a8eed80974555d3170947824cab790b0f448262818",
+      "evidence": {
+        "candidateId": "male-walk-06",
+        "dateTime": "2026-10-08T06:10:58.556019+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Fixed topology did not complete occluded anatomy."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-07/provenance.json",
+      "sha256": "514cda49201126ef57b8fcc8d059679814e0137b1d4893703c243f966555fdd0",
+      "evidence": {
+        "candidateId": "male-walk-07",
+        "dateTime": "2026-10-08T06:25:45.236122+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Segmented rig still used incorrect leg-component joints."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-08/provenance.json",
+      "sha256": "5cbc2d996196826f4f508374cb89159c6bf6d22f9576fe50f07ee8259c65bf17",
+      "evidence": {
+        "candidateId": "male-walk-08",
+        "dateTime": "2026-10-08T06:27:20.766689+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Anatomical envelopes did not close underlying body."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-09/provenance.json",
+      "sha256": "de6f26894de8659d10899680c91c439742ec4a4921bb8984c2b4e863c837fd78",
+      "evidence": {
+        "candidateId": "male-walk-09",
+        "dateTime": "2026-10-08T06:29:02.259761+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Bare-foot/neck gaps persisted."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-10/provenance.json",
+      "sha256": "b9c772a302fd24ee9b86c7ebe03b3f6cfca0b07dfe6ef9b7758c702f8c01a409",
+      "evidence": {
+        "candidateId": "male-walk-10",
+        "dateTime": "2026-10-08T06:37:54.788780+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Capsule texture completion contained a distance-clamp bug."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-11/provenance.json",
+      "sha256": "4d667488bd1d9e50e0857f348f3af83f69de7a644a2d16d649f9e2ba40536333",
+      "evidence": {
+        "candidateId": "male-walk-11",
+        "dateTime": "2026-10-08T06:42:20.808126+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Corrected component registration; underlying surface still incomplete."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-12/provenance.json",
+      "sha256": "f38e0b652cdbc44e8b14c419a2b1cdadb0ad7bbf7b0fc89a26547a97ec2f619c",
+      "evidence": {
+        "candidateId": "male-walk-12",
+        "dateTime": "2026-10-08T06:44:06.873645+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Capsule fix exposed global torso/hand deformation."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-13/provenance.json",
+      "sha256": "60e63ae516795c2d46eddbd4d66c29b86fc0615f37c66bc8bb70ed140432c0e7",
+      "evidence": {
+        "candidateId": "male-walk-13",
+        "dateTime": "2026-10-08T06:48:35.744743+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Underlying body completion still leaked oversized fist surfaces."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-14/provenance.json",
+      "sha256": "2b348d5f0cd3cf05119e95d5664edb371db04a6ffad0af890c99500168952c1c",
+      "evidence": {
+        "candidateId": "male-walk-14",
+        "dateTime": "2026-10-08T06:54:38.380363+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Owner rejected unnatural legs. Staggered master foot offsets were reused as neutral anatomy, producing unequal effective leg lengths; segmented painting and rigid flat boots fail convincing contact/passing phases.",
+        "ownerFeedback": "Not pass for me, weird looking walk the leg is not proper"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-15/provenance.json",
+      "sha256": "11005ada29a63922b792d0f6d7ab68fdec59bc9610d89561f583c3bbc5df5263",
+      "evidence": {
+        "candidateId": "male-walk-15",
+        "dateTime": "2026-10-08T07:16:19.547996+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Corrected projected sagittal/lateral gait but segmented standing paint still stretches trouser and knee surfaces. Visual gate fails."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-16/provenance.json",
+      "sha256": "3fc48cf7252ad083959747e9ea9d39fd2b09ebda194491d9db99a9a42b5a3b04",
+      "evidence": {
+        "candidateId": "male-walk-16",
+        "dateTime": "2026-10-08T07:16:55.831334+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Corrected projected sagittal/lateral gait but segmented standing paint still stretches trouser and knee surfaces. Visual gate fails."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-17/provenance.json",
+      "sha256": "8859a005206c2e779ea8c5fa998d7b9000ac35ec3002d9a8ef3f9fd23b506a36",
+      "evidence": {
+        "candidateId": "male-walk-17",
+        "dateTime": "2026-10-08T07:17:52.996782+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Corrected projected sagittal/lateral gait but segmented standing paint still stretches trouser and knee surfaces. Visual gate fails."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-18/provenance.json",
+      "sha256": "1f7de46408e97e1650d940599e45cf195b4853ea728d1c92fbd07e45910cfce3",
+      "evidence": {
+        "candidateId": "male-walk-18",
+        "dateTime": "2026-10-08T07:24:52.112563+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "rejectionReason": "Upright support correction is useful, but swing lift .23 world units exaggerates the knee lift. Owner requests ordinary short relaxed walking. Keep gait mechanics, reduce lift/stride/arm action/cadence."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-19/provenance.json",
+      "sha256": "ef0dad4c4951ab41bea5f0e33e81b3374c1060da7bdd7af5aba3b3d19bd5860a",
+      "evidence": {
+        "candidateId": "male-walk-19",
+        "dateTime": "2026-10-08T07:35:12.337794+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "rejectionReason": "Relaxed stride/lift improved intent, but original standing trousers and duplicated knee trim remained."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-20/provenance.json",
+      "sha256": "ebc311f00d4a6d282b72d112bc7a54f2662bbf20dc5d0bc45e6ce0b499b2c27f",
+      "evidence": {
+        "candidateId": "male-walk-20",
+        "dateTime": "2026-10-08T07:41:10.038468+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "rejectionReason": "Removing static trousers revealed gaps between component cuffs and pelvis."
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-21/provenance.json",
+      "sha256": "fcb59405f4c9ef46bb9352167829500eb7226ab2a1d281ddeaa68a5d019d513d",
+      "evidence": {
+        "candidateId": "male-walk-21",
+        "dateTime": "2026-10-08T07:45:12.097799+00:00",
+        "status": "rejected-current-diagnostic",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "rejectionReason": "Ordinary support/swing construction and source-overlap repair retained for continued diagnosis; painted articulation still mechanical and exposed cloth joins inadequate. Walk does not pass the owner or internal visual gate.",
+        "cycleDistance": 0.78,
+        "stanceDuty": 0.64,
+        "swingClearance": 0.085,
+        "previewCycleMs": 1120
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-22/provenance.json",
+      "sha256": "3dea0b9e70b8b9bc6fbd243c18a1a00111aee5647558dc4b50526cbc0b269dcc",
+      "evidence": {
+        "candidateId": "male-walk-22",
+        "dateTime": "2026-10-08T08:02:23.506086+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "retention": "Compact lossless comparison and provenance; unsuccessful derived strips/GIFs/browser bulk removed",
+        "decisionReason": "Simplified guide superseded by articulated rig proof"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-23/provenance.json",
+      "sha256": "eba523d2514162dd4bc0272411bc7450b9cee4823cd5e3025184ca4e8106fbf2",
+      "evidence": {
+        "candidateId": "male-walk-23",
+        "dateTime": "2026-10-08T08:05:32.706320+00:00",
+        "status": "rejected",
+        "method": "shared offline painted pose construction, one source warp per frame; rigid cosmetic sword; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "retention": "Compact lossless comparison and provenance; unsuccessful derived strips/GIFs/browser bulk removed",
+        "decisionReason": "Simplified guide superseded by articulated rig proof"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-24/provenance.json",
+      "sha256": "f36a39a3852b46d694b86966be79420953f224bf125c5d5e360da3e2bd92072d",
+      "evidence": {
+        "candidateId": "male-walk-24",
+        "dateTime": "2026-10-08T08:38:43.369765+00:00",
+        "status": "owner-rejected",
+        "method": "Inspected articulated 3D rig cycle projected into offline painted layers; rigid hair and sword, fixed full canvas; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "sharedCycle": "authoring/characters/swordsman-production/rig-walk/candidate-02/shared-cycle.json",
+        "rigGate": "REOPENED / FAILED",
+        "bodyCalibration": {
+          "uniformLegChainScale": 0.7,
+          "pixelsPerProxyMetre": 84.52830188679245,
+          "cameraElevationDegrees": 45,
+          "root": [
+            160,
+            264
+          ],
+          "upperBody": "Original painted identity retained; only shared-cycle displacement applied"
+        },
+        "reason": "Owner observed both legs remaining in front of body. Underlying rig has no negative knee-to-hip fore/aft phase, and painted registration/joints remain inadequate.",
+        "retention": "Compact lossless comparison and provenance; unsuccessful derived strips/GIFs/browser bulk removed"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-25/provenance.json",
+      "sha256": "9815fe497bafac234c3ee669d7d17389bf318fd57fd0c6d7adad84062427deac",
+      "evidence": {
+        "candidateId": "male-walk-25",
+        "dateTime": "2026-10-08T08:58:22.051950+00:00",
+        "status": "superseded",
+        "method": "Inspected articulated 3D rig cycle projected into offline painted layers; rigid hair and sword, fixed full canvas; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140,
+          140
+        ],
+        "sharedCycle": "authoring/characters/swordsman-production/rig-walk/candidate-03/shared-cycle.json",
+        "rigGate": "INTERNAL_PASS / NOT_OWNER_APPROVED",
+        "bodyCalibration": {
+          "uniformLegChainScale": 0.7,
+          "pixelsPerProxyMetre": 84.52830188679245,
+          "cameraElevationDegrees": 45,
+          "root": [
+            160,
+            264
+          ],
+          "upperBody": "Original painted identity retained; only shared-cycle displacement applied"
+        },
+        "decisionReason": "Superseded by a continuous UV leg surface and denser sampling",
+        "retention": "Compact lossless comparison and provenance; unsuccessful derived strips/GIFs/browser bulk removed"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-26/provenance.json",
+      "sha256": "30dd1ff3ffe82d4adf89911c58384b8d4edb246f89ade6a7ce0cbbcc44cbc910",
+      "evidence": {
+        "candidateId": "male-walk-26",
+        "dateTime": "2026-10-08T09:58:24.788659+00:00",
+        "status": "rejected",
+        "method": "Inspected articulated 3D rig cycle projected into offline painted layers; rigid hair and sword, fixed full canvas; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70
+        ],
+        "sharedCycle": "authoring/characters/swordsman-production/rig-walk/candidate-03/shared-cycle.json",
+        "rigGate": "INTERNAL_PASS / NOT_OWNER_APPROVED",
+        "bodyCalibration": {
+          "uniformLegChainScale": 0.7,
+          "pixelsPerProxyMetre": 84.52830188679245,
+          "cameraElevationDegrees": 45,
+          "root": [
+            160,
+            264
+          ],
+          "upperBody": "Original painted identity retained; only shared-cycle displacement applied"
+        },
+        "surfaceMethod": "One continuous weighted UV surface per painted leg; rigid soles; offline full-canvas baking",
+        "sampling": "16 frames over the same inspected eight-phase, 1.12-second cycle; no timing copied from RO",
+        "decisionReason": "Rejected: degenerate projected bare foot leaked beyond the north-facing boot",
+        "retention": "Compact lossless comparison and provenance; unsuccessful derived strips/GIFs/browser bulk removed"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-27/provenance.json",
+      "sha256": "070c5e41eb47740d7c3b759188fd3971d2c4d72415ca0e00c4a41596f6008127",
+      "evidence": {
+        "candidateId": "male-walk-27",
+        "dateTime": "2026-10-08T10:09:38.173088+00:00",
+        "status": "superseded",
+        "method": "Inspected articulated 3D rig cycle projected into offline painted layers; rigid hair and sword, fixed full canvas; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70
+        ],
+        "sharedCycle": "authoring/characters/swordsman-production/rig-walk/candidate-03/shared-cycle.json",
+        "rigGate": "INTERNAL_PASS / NOT_OWNER_APPROVED",
+        "bodyCalibration": {
+          "uniformLegChainScale": 0.7,
+          "pixelsPerProxyMetre": 84.52830188679245,
+          "cameraElevationDegrees": 45,
+          "root": [
+            160,
+            264
+          ],
+          "upperBody": "Original painted identity retained; only shared-cycle displacement applied"
+        },
+        "surfaceMethod": "One continuous weighted UV surface per painted leg; rigid soles; offline full-canvas baking",
+        "sampling": "16 frames over the same inspected eight-phase, 1.12-second cycle; no timing copied from RO",
+        "buildSourceSHA256": "1d1ace6d66cca47b824708a30ed5947b0b218bcf82cab571623dd12d81d13d18",
+        "decisionReason": "East-facing far arm registration corrected in candidate 28; foot and leg repairs retained",
+        "retention": "Compact lossless comparison and provenance; unsuccessful derived strips/GIFs/browser bulk removed"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/male/motion-candidates/Walk/candidate-28/provenance.json",
+      "sha256": "c13a0e72c63231893771522b54dec6ba39c94b3524a9ca7b240ba1442941a873",
+      "evidence": {
+        "candidateId": "male-walk-28",
+        "dateTime": "2026-10-08T10:14:48.361749+00:00",
+        "status": "current-best",
+        "method": "Inspected articulated 3D rig cycle projected into offline painted layers; rigid hair and sword, fixed full canvas; no runtime skeleton",
+        "sourceReferences": [
+          "../../../../masters",
+          "../../../modular-masters",
+          "../../../pose-guides.json"
+        ],
+        "prompt": null,
+        "negativePrompt": null,
+        "purpose": "Walk whole-cycle construction for all eight directions and aligned layers",
+        "ownerApproval": "NOT_APPROVED",
+        "timingMs": [
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70,
+          70
+        ],
+        "sharedCycle": "authoring/characters/swordsman-production/rig-walk/candidate-03/shared-cycle.json",
+        "rigGate": "INTERNAL_PASS / NOT_OWNER_APPROVED",
+        "bodyCalibration": {
+          "uniformLegChainScale": 0.7,
+          "pixelsPerProxyMetre": 84.52830188679245,
+          "cameraElevationDegrees": 45,
+          "root": [
+            160,
+            264
+          ],
+          "upperBody": "Original painted identity retained; only shared-cycle displacement applied"
+        },
+        "surfaceMethod": "One continuous weighted UV surface per painted leg; rigid soles; offline full-canvas baking",
+        "sampling": "16 frames over the same inspected eight-phase, 1.12-second cycle; no timing copied from RO",
+        "decisionReason": "Internal Walk visual gate 91/100 after rearward stride, continuous painted UV legs, foreshortened foot and far-arm registration repairs",
+        "buildSourceSHA256": "3e2e3ad1b9d0a861132d305b2ab5aa357e220401f07c29bdda6c4072de978a70"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/rig-walk/candidate-01/provenance.json",
+      "sha256": "064691bf7a11f02f6842181d3d3f905cc957ddf76e15025a6c636e5ee992d4b8",
+      "evidence": {
+        "candidateId": "candidate-01",
+        "dateTimeUTC": "2026-10-08T08:30:54.635447+00:00",
+        "method": "Original analytical three-dimensional two-bone IK, offline Blender armature rendering; no image-generation job",
+        "purpose": "Prove plausible ordinary human walk before repainting Swordsman",
+        "prompt": null,
+        "negativePrompt": null,
+        "exclusions": [
+          "No reference pixel/pose/timing copying",
+          "No painted character edits before rig gate",
+          "No runtime skeleton",
+          "No gameplay equipment appearance mapping"
+        ],
+        "referenceBenchmarks": [
+          {
+            "fileName": "1-PC-_-Computer-Ragnarok-Online-Non-Playable-Characters-NPCs-Walking-.png",
+            "sha256": "2ebe77e9020ea6509f48b0569a321d464d19df7f74d9fb6cfd3f7e9dfa5774e4",
+            "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+          },
+          {
+            "fileName": "2-PC-_-Computer-Ragnarok-Online-Classes-Female-Novice.png",
+            "sha256": "40a9b0c5dd4caa1d114c7ca3ce28cffff7bbc66bbcf33cd461c3ac9169f09650",
+            "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+          }
+        ],
+        "sourceAuthority": "Owner-approved Warrior identity remains unchanged and is not rendered by this neutral rig",
+        "status": "superseded",
+        "decisionReason": "Heel roll began after the sampled up phase, weakening the phase distinction.",
+        "ownerApproval": "NOT_APPROVED",
+        "appliedToPaintedLayers": false,
+        "rigSourceSHA256": null
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/rig-walk/candidate-02/provenance.json",
+      "sha256": "0d6e065edabe0e06cc404557ffb99497d75aad6f6e181f3c303ed4a84cb64dc9",
+      "evidence": {
+        "candidateId": "candidate-02",
+        "dateTimeUTC": "2026-10-08T08:30:54.635447+00:00",
+        "method": "Original analytical three-dimensional two-bone IK, offline Blender armature rendering; no image-generation job",
+        "purpose": "Prove plausible ordinary human walk before repainting Swordsman",
+        "prompt": null,
+        "negativePrompt": null,
+        "exclusions": [
+          "No reference pixel/pose/timing copying",
+          "No painted character edits before rig gate",
+          "No runtime skeleton",
+          "No gameplay equipment appearance mapping"
+        ],
+        "referenceBenchmarks": [
+          {
+            "fileName": "1-PC-_-Computer-Ragnarok-Online-Non-Playable-Characters-NPCs-Walking-.png",
+            "sha256": "2ebe77e9020ea6509f48b0569a321d464d19df7f74d9fb6cfd3f7e9dfa5774e4",
+            "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+          },
+          {
+            "fileName": "2-PC-_-Computer-Ragnarok-Online-Classes-Female-Novice.png",
+            "sha256": "40a9b0c5dd4caa1d114c7ca3ce28cffff7bbc66bbcf33cd461c3ac9169f09650",
+            "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+          }
+        ],
+        "sourceAuthority": "Owner-approved Warrior identity remains unchanged and is not rendered by this neutral rig",
+        "status": "REJECTED / FORE_AFT_GAIT_FAILURE",
+        "decisionReason": "Earlier heel roll exposes the up phase; articulated support/swing, stable forward knees and fixed rigid feet pass internal rig-only inspection.",
+        "ownerApproval": "NOT_APPROVED",
+        "appliedToPaintedLayers": false,
+        "rigSourceSHA256": "cfb08a93f2cb0c11c3b890fb24dba018d787d4d11849110e169fea9b0c9e7a6c",
+        "criticalFailure": "Both knees stayed ahead of the hip throughout the cycle; rearward thigh extension was inadequate despite planted-foot math.",
+        "reopenedDateTimeUTC": "2026-10-08T08:47:05.893305+00:00"
+      }
+    },
+    {
+      "file": "authoring/characters/swordsman-production/rig-walk/candidate-03/provenance.json",
+      "sha256": "ff47e6899189d9d975842eae9e63c3e495cf2e76281ff210beb2bc507a28e4b3",
+      "evidence": {
+        "candidateId": "candidate-03",
+        "dateTimeUTC": "2026-10-08T08:57:41.941159+00:00",
+        "method": "Original analytical three-dimensional two-bone IK, offline Blender armature rendering; no image-generation job",
+        "purpose": "Prove plausible ordinary human walk before repainting Swordsman",
+        "prompt": null,
+        "negativePrompt": null,
+        "exclusions": [
+          "No reference pixel/pose/timing copying",
+          "No painted character edits before rig gate",
+          "No runtime skeleton",
+          "No gameplay equipment appearance mapping"
+        ],
+        "referenceBenchmarks": [
+          {
+            "fileName": "1-PC-_-Computer-Ragnarok-Online-Non-Playable-Characters-NPCs-Walking-.png",
+            "sha256": "2ebe77e9020ea6509f48b0569a321d464d19df7f74d9fb6cfd3f7e9dfa5774e4",
+            "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+          },
+          {
+            "fileName": "2-PC-_-Computer-Ragnarok-Online-Classes-Female-Novice.png",
+            "sha256": "40a9b0c5dd4caa1d114c7ca3ce28cffff7bbc66bbcf33cd461c3ac9169f09650",
+            "use": "Motion readability only; no copied pixels, poses, proportions, frame layout or timing"
+          }
+        ],
+        "sourceAuthority": "Owner-approved Warrior identity remains unchanged and is not rendered by this neutral rig",
+        "status": "current-best",
+        "decisionReason": "Corrected rearward thigh extension and rear lift before forward passing; five mechanical checks and all-direction browser review pass. Previous candidate internal pass withdrawn.",
+        "ownerApproval": "NOT_APPROVED",
+        "appliedToPaintedLayers": true,
+        "rigSourceSHA256": "3438f3b4797c41e6a225ad81dd23c1586ce52206e85fb3c854b0a852e569f32b",
+        "referenceUseUpdate": "Owner requests a stronger RO motion reference while keeping the established ASTRAEON character. Rig motion remains an original articulated construction.",
+        "paintedCandidate": "male-walk-27 / separate visual gate"
+      }
+    }
+  ]
+}
