@@ -165,3 +165,17 @@ is active. These are measured completed reports, not expected counts.
 Current implementation HEAD before this report: `da361e0` (resolve full SHA).
 Final new 42-group run, remaining browser/cache, world validation and clean
 runtime/test checkpoint are still required before closure/push.
+
+## Full inherited acceptance milestone
+
+All **409 inherited functional browser groups pass**, 13 suites; no inherited
+assertion/file was changed. No failed inherited attempt occurred in this run.
+Successful reports have zero unexpected console/page/runtime/HTTP errors.
+Cache/offline also passes: **v97, 165 precached requests**, legacy cache removal,
+offline town, saved character/migration/recovery and errors empty. Source/runtime
+modules are current. Full Node remains 1703 / 0 at `node-final-3`.
+
+Expanded final new browser is running as `browser-final-1` (expected 42 groups;
+report actual result only after completion). Next: final world validation serially,
+source/diff audit, clean runtime/test checkpoint, final report/docs and normal
+target-only push. Do not start Integration Gate.
