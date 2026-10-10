@@ -47,7 +47,12 @@ function create(owner,search){
   monsters:{spawn:(id,point)=>run('spawn-monster',()=>typeof id==='string'?owner.spawnMonster(id,point):fail('UNKNOWN_MONSTER_DEFINITION')),kill:id=>run('kill-target',()=>id===undefined||typeof id==='string'?owner.killTarget(id):fail('UNKNOWN_MONSTER_INSTANCE'))},
   world:{async teleport(point){
    const start=begin('teleport');if(!start.ok)return start;
-   try{return finish(start,await owner.teleport(point))}catch{return finish(start,fail('TELEPORT_FAILED'))}finally{busy=false}
+   try{
+    if(!point||!integer(point.zone))return finish(start,fail('INVALID_MAP'));
+    if(!Number.isFinite(point.x)||!Number.isFinite(point.y))return finish(start,fail('INVALID_POSITION'));
+    const request=freeze({zone:point.zone,x:point.x,y:point.y});
+    return finish(start,await owner.teleport(request));
+   }catch{return finish(start,fail('TELEPORT_FAILED'))}finally{busy=false}
   }},
   inspect:{stats,effects:()=>owner.getPlayer()?freeze({modifiers:owner.getPlayer().getModifierGroups(),equipmentEffects:owner.getPlayer().getEquipmentEffects(),runtime:structuredClone(owner.effects())}):null,save:snapshot,monsters:()=>freeze(structuredClone(owner.monsters())),maps:()=>freeze(structuredClone(owner.maps()))},
   save:{snapshot,wipeTestCharacter:confirmation=>run('wipe-test-character',()=>owner.wipe(confirmation))}

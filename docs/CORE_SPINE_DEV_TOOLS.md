@@ -108,6 +108,8 @@ does not fabricate Quest progress or bypass Loot authorization.
 
 `{zone,x,y}` uses current numeric zone IDs and authored bounds/collision. It may
 bypass ordinary travel unlock/grind/gold cost, but not map/position integrity.
+The async command owns a frozen primitive copy of the point request. It rejects
+a replaced character or player death during loading before map publication.
 Cross-map movement loads existing map assets through `prepareZone`, exits transient
 dungeon state, rebuilds current population and records existing discovered map.
 It does not generate rewards or reset player inventory/Quest/Storage.

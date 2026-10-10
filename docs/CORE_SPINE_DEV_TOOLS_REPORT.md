@@ -142,3 +142,16 @@ remaining suites are running. Latest implementation: `bbcaaa4` (resolve full SHA
 from Git); this report successor stores current evidence. Next: complete inherited
 runner, expanded final new browser, cache/world/source audit, clean runtime/test
 checkpoint and final documentation. No final acceptance claim yet.
+
+## Async teleport request integrity
+
+Review identified a mutable caller point reference crossing the async map load.
+The command now owns a frozen primitive point copy and rechecks player life after
+loading before publishing map state. Three new tests prove request-copy ownership,
+real adapter rejection on player death during loading, and replaced-character
+staleness without map mutation. Focused suite: **89 / 0**. Full total is expected
+to be 1614 + 89 = 1703; this is not reported as measured until full rerun.
+The running inherited suites never invoke this coherent dev teleport, so normal
+travel/AI behavior and their tested paths remain unchanged. Final new browser
+42-group run must execute current code. Town Services/Lifecycle final reports
+pass 40/30 groups, zero unexpected errors. Remaining inherited queue is active.

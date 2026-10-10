@@ -561,6 +561,7 @@ if(new URLSearchParams(location.search).get('dev')==='1'){
   if(point.zone===S.zone&&!dungeon)return devPlacePoint(point);
   const original=S;if(!await prepareZone(point.zone,false))return devFail('MAP_LOAD_FAILED');
   if(S!==original)return devFail('STALE_CHARACTER');
+  if(S.hp<=0)return devFail('CONTEXT_BLOCKED');
   player.invalidatePreparedActions();dungeon=null;S.zone=point.zone;
   if(S.zone===0)S.worldLayout=townWorld.layoutId;
   S.discovered=Array.from(new Set([...(S.discovered||[]),S.zone]));spawn();
