@@ -71,3 +71,13 @@ opens the existing Character menu before comparing, preserving the exact
 Save-authority equality assertion. Raw attempt remains browser-attempt-1.
 Full new two-class rerun, all inherited browser/cache and final source audit
 remain pending. Do not mark complete or start Integration Gate yet.
+
+## Browser error-gate checkpoint
+
+Second run passes all 40 functional groups across both classes and four normal/
+non-exact dev URLs, but correctly fails the final error gate: the new console
+page had no icon link and the server log records `/favicon.ico` 404 requests.
+Console now references existing `../icon.svg`; no art change or error suppression.
+Raw `browser-attempt-2` is retained. Rerun3 must show zero unexpected errors.
+All runtime source remains at the 1693-check implementation; final regression
+queue/source audit and documentation checkpoint remain pending.
