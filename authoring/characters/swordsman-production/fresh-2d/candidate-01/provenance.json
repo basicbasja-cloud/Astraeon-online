@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "fresh-2d-candidate-01",
+  "createdDate": "2026-10-10",
+  "status": "DEV_ONLY",
+  "ownerApproval": "PENDING",
+  "tool": "host-native image_gen.imagegen",
+  "selectedFile": "candidate.png",
+  "requestedDirection": "SE",
+  "validatedDirections": 0,
+  "authoredMotionClips": 0,
+  "independentEquipmentLayers": 0,
+  "normalizedRuntimeFrames": 0,
+  "generationCount": 2,
+  "method": "fresh text generation followed by one bounded correction of that new image",
+  "rejectedSourcesUsed": false,
+  "identityVocabulary": "Inherited approved Warrior color/design vocabulary; approval does not transfer to this image",
+  "prompts": {
+    "prompt.txt": "146964f4c594c1413bfb373f972ad846cef0212b9bbcbbdf906bc07b8321bad9",
+    "correction-prompt.txt": "1d5fbafc1f6eedd62c8f4a0fd9824a4e95df310e1b22e6f5a69aa222047ca2fc"
+  },
+  "images": [
+    {
+      "file": "source.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "2e1ab5715efe4af1a98c13f3f361ed214c56c075444342be0b9d226895f5bdb9",
+      "alphaBoundsAny": [
+        0,
+        4,
+        1240,
+        1236
+      ],
+      "alphaBoundsAt128": [
+        281,
+        62,
+        895,
+        1191
+      ],
+      "fullyTransparentPixels": 1265335,
+      "lowAlphaResiduePixels": 16669
+    },
+    {
+      "file": "candidate.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
+      "alphaBoundsAny": [
+        39,
+        37,
+        1232,
+        1207
+      ],
+      "alphaBoundsAt128": [
+        269,
+        91,
+        894,
+        1204
+      ],
+      "fullyTransparentPixels": 1213219,
+      "lowAlphaResiduePixels": 14267
+    }
+  ],
+  "limits": [
+    "Single composite view only",
+    "Exact camera, anatomical ground root and directional angle unverified",
+    "Blade still passes in front of leg area",
+    "Raw alpha contains low-opacity residue",
+    "No owner approval and no playable sprite package"
+  ]
+}

@@ -4,6 +4,13 @@ Audit date: 10 October 2026 (Asia/Bangkok). Base: latest fetched `origin/swordma
 `b43f9d2ba5820f7b0ec48f137e1014fddd2e8442`. Working branch:
 `character/production-factory-v2`, as requested by the owner. No merge or deployment.
 
+**10 October owner override:** neutral guide 01 was rejected for the arm, sword
+and overall anatomy. The owner subsequently instructed a fresh rebuild and deep
+internet research, rather than further repair of the failed approach. The earlier
+phase progression below is historical. Current decision and source-backed tool
+comparison: [fresh 2D research](RESEARCH_2D_EIGHT_DIRECTION.md). No approved new
+motion library or Golden character exists.
+
 The existing modular painted sprite system is suitable. No failing runtime
 contract justifies replacing it. Proceed only with the upstream structural guide
 foundation; no Golden production, final paint, class expansion or visual approval.

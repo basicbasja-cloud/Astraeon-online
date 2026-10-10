@@ -1,0 +1,3054 @@
+{
+  "status": "DEV_ONLY / STRUCTURAL_GUIDE / NOT_OWNER_APPROVED",
+  "authoringOnly": true,
+  "shippingRepresentation": "painted-2d-png",
+  "blenderVersion": "5.2.2 LTS",
+  "config": {
+    "schemaVersion": 1,
+    "characterId": "swordsman-male-factory",
+    "status": "DEV_ONLY / STRUCTURAL_GUIDE / NOT_OWNER_APPROVED",
+    "shippingRepresentation": "painted-2d-png",
+    "identityReference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+    "identitySHA256": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05",
+    "identityFit": "PROVISIONAL: neutral mannequin; final Swordsman proportions and exact camera fit require owner review",
+    "canvas": {
+      "width": 320,
+      "height": 320,
+      "root": [
+        160,
+        264
+      ],
+      "referenceHeight": 176
+    },
+    "directions": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ],
+    "camera": {
+      "projection": "ORTHO",
+      "elevationDegrees": 45,
+      "orthographicSpan": 2.65,
+      "distance": 8,
+      "target": [
+        0,
+        0,
+        1
+      ],
+      "rotationAuthority": "character-root-only",
+      "yawOffsetDegrees": 0,
+      "yawSign": -1
+    },
+    "coordinateSystem": "+Y anatomical forward, +X anatomical right, +Z up; S faces fixed camera; SW faces viewer-left",
+    "rig": {
+      "hipHeight": 0.99,
+      "hipHalfWidth": 0.105,
+      "shoulderHalfWidth": 0.205,
+      "chestAboveHip": 0.48,
+      "neckAboveHip": 0.6,
+      "headAboveHip": 0.78,
+      "femur": 0.49,
+      "tibia": 0.47,
+      "upperarm": 0.25,
+      "forearm": 0.24,
+      "footLength": 0.28,
+      "ankleHeight": 0.085
+    },
+    "proxy": {
+      "headRadii": [
+        0.16,
+        0.15,
+        0.19
+      ],
+      "chestRadii": [
+        0.19,
+        0.105,
+        0.24
+      ],
+      "pelvisRadii": [
+        0.15,
+        0.095,
+        0.085
+      ],
+      "armRadius": 0.036,
+      "thighRadius": 0.06,
+      "shinRadius": 0.045
+    },
+    "sockets": {
+      "root": "root",
+      "head": "socket_head",
+      "hand_R": "socket_hand_R",
+      "hand_L": "socket_hand_L",
+      "back": "socket_back",
+      "waist": "socket_waist",
+      "foot_R": "socket_foot_R",
+      "foot_L": "socket_foot_L"
+    },
+    "attachments": {
+      "weapon": "hand_R",
+      "offhand": "hand_L",
+      "headgear": "head",
+      "backAccessory": "back",
+      "belt": "waist"
+    },
+    "layers": [
+      "BaseBody",
+      "Hair",
+      "Outfit",
+      "Weapon",
+      "Headgear",
+      "BackAccessory",
+      "Offhand"
+    ],
+    "render": {
+      "engine": "CYCLES",
+      "device": "CPU",
+      "samples": 8,
+      "seed": 17,
+      "threads": 1,
+      "denoising": false,
+      "adaptiveSampling": false,
+      "colorManagement": "Standard",
+      "transparent": true
+    },
+    "guideAction": {
+      "id": "Neutral",
+      "sourceFrame": 1,
+      "frameIndex": 0,
+      "durationMs": 1000,
+      "status": "STRUCTURAL_GUIDE_ONLY"
+    },
+    "goldenActions": [
+      {
+        "id": "Idle",
+        "status": "pending"
+      },
+      {
+        "id": "Walk",
+        "status": "pending"
+      },
+      {
+        "id": "Run",
+        "status": "pending"
+      },
+      {
+        "id": "BasicAttack",
+        "status": "pending"
+      },
+      {
+        "id": "SkillAction",
+        "status": "pending"
+      },
+      {
+        "id": "Hit",
+        "status": "pending"
+      },
+      {
+        "id": "Death",
+        "status": "pending"
+      },
+      {
+        "id": "Guard",
+        "status": "pending"
+      },
+      {
+        "id": "Dash",
+        "status": "pending"
+      }
+    ]
+  },
+  "cameraWorldMatrix": [
+    [
+      -1.0,
+      -0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -0.707107,
+      0.707107,
+      5.656854
+    ],
+    [
+      -0.0,
+      0.707107,
+      0.707107,
+      6.656854
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "cameraShift": [
+    -1.7881393432617188e-07,
+    0.058166977018117905
+  ],
+  "cameraNeverMovesBetweenDirections": true,
+  "frames": [
+    {
+      "action": "Neutral",
+      "direction": "S",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          160.0,
+          114.9152
+        ],
+        "hand_R": [
+          131.6226,
+          182.4559
+        ],
+        "hand_L": [
+          188.3774,
+          182.4559
+        ],
+        "back": [
+          160.0,
+          129.7725
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          147.3208,
+          264.0
+        ],
+        "foot_L": [
+          172.6793,
+          264.0
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            0.0,
+            0.024,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              0.024
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            0.235,
+            0.05,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.235
+            ],
+            [
+              1e-06,
+              -0.0,
+              -1.000001,
+              0.05
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            -0.235,
+            0.05,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              -0.0,
+              -0.0,
+              -0.235
+            ],
+            [
+              -1e-06,
+              -0.0,
+              -1.000001,
+              0.05
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            0.0,
+            -0.102,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              -0.0,
+              -1.0,
+              -0.102
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            0.105,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.105
+            ],
+            [
+              0.0,
+              -0.0,
+              -0.999997,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            -0.105,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              -0.105
+            ],
+            [
+              0.0,
+              -0.0,
+              -0.999997,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": 0,
+      "geometryHashes": {
+        "Anatomical forward marker": "9f6fa162f3f5084c5e905e382effbe5e3ee1d2eb2faaa02beacae2c1ff28fac8",
+        "Back socket marker": "94824bfdcd07369f462ae66b23288a65bcde2679ba0c851c1a0e1a87bcb6dc0a",
+        "Chest proxy": "06b87acee69721b5cd2e6839ac62f1ae9247f454c9f61842b97441a092aa7606",
+        "Hair volume marker": "624373d3b27c595deae7f1c1b4c2d9e41ac75498d57dfd7b96d2fa765997ed1a",
+        "Head proxy / NO FACE IDENTITY": "edb64c04543236fec4f1bd0650ac150abcdf7901aeee33019e43fdcc4dd8352a",
+        "Headgear socket marker": "8375fe4f49c16a88f7c6df5bc96f5a813f7fd1e575ed84de71438d00e36b21ef",
+        "L hand": "a480d7c1ff955c28cc890768df121b130c58b35bcce9e76c1065faee2efe81d0",
+        "L planted rigid foot": "d7d00ef9b4ee4526d355612f15603ec6fb1b7552e56d780f86596f7803bbef23",
+        "L-femur joint": "53b340a025b374f9b169d53cc25ce51561be758da9bd5b5e3f3d2aecfdf80199",
+        "L-femur link": "ff248682fa7146b5c49803f31c0e5cca9a76a59e505fd9cd9236e58ab82be266",
+        "L-forearm joint": "c5bd740f754efad759b99ed6d30d4baed77b189825dde73b3ab8260c3bf2219f",
+        "L-forearm link": "fae18b42bcc1c72c64131b62d2b6656d5dcdfe1992fa77eaa279305d94ac2a82",
+        "L-tibia joint": "c5c3b5c33ecce4fad48f72f36d04b6784537ea46fbb6eb49478423951aadd2ec",
+        "L-tibia link": "081be5a691ed6f2d206ddbfec4264137efafefdec2699cba1cae05977cf7e182",
+        "L-upperarm joint": "78dbfb204399e4d6a7cf0887eb37e2dfd9063d26e61d8c9e07ac24d0a30efeda",
+        "L-upperarm link": "22feb87a603d6f8f8d2ac8e55537d05ab3266c4938fc916822d3b8056e40ec64",
+        "Left-hand offhand mount marker": "29fa74c1afa7c3ebb25a9384e69e1c54ed3c5d04a340729b246ae196b56fa48d",
+        "Pelvis proxy": "f5e1d035754d6299cef5ab7d86296e18faffc7cb938ac075177a1e5e7ddc8561",
+        "R hand": "a0dea48f0123012574d93a95ba8d3f7a2e6a66260aa48ecdcc0cbeccd7b228e4",
+        "R planted rigid foot": "8a8532fce2dc18ad25ead36e15a22edc3e0060a396f6a75b34bdd2abaffbfa71",
+        "R-femur joint": "3a0552a04583457e9c79bf4dc3ba31879c862b2a26f81969ef0352c1914fcb81",
+        "R-femur link": "eae7f4bda95f04967e3d002a47fbb0323421b969f86739d76ba47d7275a14096",
+        "R-forearm joint": "09dbb7ee1df70de5b0f4502cb5cb6182d960c74e6ec020c59892dbbf51613ced",
+        "R-forearm link": "de21995ef373e739e1a791681f1c7443251ecac1df3008e1d294368fc5334906",
+        "R-tibia joint": "4425685120ab9f1d62b6eb622020a4e07d07e08bcba34b62faaf3a1ea8906a50",
+        "R-tibia link": "54b75ae0dfdfcaa198f51b15911596e9481f06384a7d57f3842ffd541e72bb2f",
+        "R-upperarm joint": "1dfb571abea6269657b6d2ddba7cd2f117aebeaac3202b3a244249989cdb9b7d",
+        "R-upperarm link": "1e955f72c96a604718ca531e86f0f22f514a92cee25eebf9d3a4f62f3723ed6a",
+        "Right-hand sword guide": "51942545d60432e42b251b3aa6f78dfbd199929cc8cc6f1fe2a83bd5bcf81754",
+        "Sword grip crossbar": "c249379136312bce5cfa635b309682bfd73d8f6f71d9e9ede626f95a53833a66",
+        "Torso outfit clearance marker": "bcffda16c1db68d580fd1207b0ea8989239047b0a5a7ee48a9e8cd28bbb6cb17",
+        "head link": "d2e98f59bdb909d8752d17048b88f0570743413007deef2a1bb2ad43afeae19e",
+        "neck link": "b3fe2da6e21f6b0a71a50f1d81dc41ba094f8c8e5124bf58a46b585ff944a4aa",
+        "pelvis link": "dc859a5b6b178d3c7df439ca4d19132ea84f524bd0d7b44081f2a5d06d7fbdf3",
+        "spine link": "844a564e0e4725d14008067f4db0ad84a463459335f5d90d91f095b1825d664f"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "SW",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          157.9507,
+          114.315
+        ],
+        "hand_R": [
+          135.6648,
+          167.0168
+        ],
+        "hand_L": [
+          175.7965,
+          195.3941
+        ],
+        "back": [
+          168.7094,
+          132.3234
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          151.0344,
+          257.6604
+        ],
+        "foot_L": [
+          168.9656,
+          270.3396
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              -0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            0.016971,
+            0.016971,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              -0.707107,
+              0.016971
+            ],
+            [
+              -0.707107,
+              0.0,
+              -0.707107,
+              0.016971
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            0.201525,
+            -0.130815,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              -0.0,
+              -0.707108,
+              0.201525
+            ],
+            [
+              -0.707106,
+              -0.0,
+              -0.707108,
+              -0.130815
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            -0.130815,
+            0.201525,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              0.707106,
+              -0.0,
+              -0.707108,
+              -0.130815
+            ],
+            [
+              -0.707107,
+              -0.0,
+              -0.707108,
+              0.201525
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            -0.072125,
+            -0.072125,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              -0.0,
+              -0.707107,
+              -0.072125
+            ],
+            [
+              -0.707107,
+              -0.0,
+              -0.707107,
+              -0.072125
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              -0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            0.074246,
+            -0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              -0.0,
+              -0.707105,
+              0.074246
+            ],
+            [
+              -0.707107,
+              -0.0,
+              -0.707105,
+              -0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            -0.074246,
+            0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              -0.0,
+              -0.707105,
+              -0.074246
+            ],
+            [
+              -0.707107,
+              -0.0,
+              -0.707105,
+              0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -45,
+      "geometryHashes": {
+        "Anatomical forward marker": "8dbbcb014a993e83838112bbac04019621cc0e0af5b02a6311b34100fc45a344",
+        "Back socket marker": "7858c63d3ca742228fd1b74f3b96c4b7e2ec052aa55adaa2cc122cfc8890244b",
+        "Chest proxy": "504b79b404aa415e7ec0b6fa686436ad1acf24f82f8f01ecdef2e87185b5a491",
+        "Hair volume marker": "f6770b634c3154ed8c4018618e87cd11411e658496d78f9f160d371a3e599492",
+        "Head proxy / NO FACE IDENTITY": "b93d3dc880dd6f855df74442322359ab2e923e5a51a55b5daacf0dbb1788b376",
+        "Headgear socket marker": "92731c9c72ae5237dc346b185ede41e303e524a36fbc35369e47e6f4288015fc",
+        "L hand": "62c97531f91b8e07f4dd13138635134c05be9bb23658ad5b681d9f8e25be2264",
+        "L planted rigid foot": "8d912c530a553633103e7cd521c526f73cf599754e9c67d895791ca96ca46631",
+        "L-femur joint": "d2ddfb401cf543f6cafc98332241b692aaa112ba773bb82c8da7341f77a48f9b",
+        "L-femur link": "3e15484a07e23192b11300f130d2fa5a7fa56ee26fd35b8964a850f44342f548",
+        "L-forearm joint": "1261db8217d31518102dca380a61e2b4fbb11709e6c959015a95a458f5708a22",
+        "L-forearm link": "5da09b5e540f5fefb09cefea3377e568dbb3549768be96bb979efc7fcdb9f207",
+        "L-tibia joint": "d8f4dd586303e8e2b0552c983b30bbda82ca1b7c17823c298832c5a0c3946e6d",
+        "L-tibia link": "c0c1377c3a02b2b857f156c93792979af17747e8be67b7cf2eaf87607799d6b5",
+        "L-upperarm joint": "92fadda4fa919a656c5277ac379758855629078cf1426c46fbdae0b187452f13",
+        "L-upperarm link": "acc132512ffb496d7c17254c8da0bcc9a72f8af8eb94488d8d4c342881e7df87",
+        "Left-hand offhand mount marker": "bb277f3c06f9c9ef7a8e53a9138492da0ce592eb1cdcd826695ecc0309f01558",
+        "Pelvis proxy": "afdce0c72081c9b7d38292706cc98bf60b8e5c57b64fad64d523fabbad1c75a6",
+        "R hand": "f7c2ff1a25901fb585d48ed4d96796ace7511d8a98813b032c670c6164c01ccd",
+        "R planted rigid foot": "4258411819b3cd5aa470060c51ca125021ac2bd1cc24aa25865bf39540a8e202",
+        "R-femur joint": "48a68cfa8d97c87cf73c7e88a6e7e193fce24bb87b4c41b924277ad4d976fb50",
+        "R-femur link": "12e77817f03f035943379e002eed368fd22450550c663d96629890fb854ece3d",
+        "R-forearm joint": "e7253c4c926382084e7560e5eacd627f5f2acb89eaa60fb04d1c357299e26776",
+        "R-forearm link": "06780782528e921a2890e747289f9f99daa9006fc0bbf1a991826fa3563c7352",
+        "R-tibia joint": "2c525084f8a263f9972de81a7155e1c1da17f4def5077a66fa9c3dcd9b428ab2",
+        "R-tibia link": "1f2d29c956126cacdc4ba7fd447f8f8c2a4e28177c909ab53fc9a5ee565aaf57",
+        "R-upperarm joint": "e2cb18ffcc18321208f1eaeb5198fe50493517b2d5b3b17c248b1ef394f0531c",
+        "R-upperarm link": "bd4083f5ec5776c31d397e9932c4946e821170bdf13bf6bd4493973f5e5933b3",
+        "Right-hand sword guide": "03d279368f7dea76695bbc36e580615c015ad1ddbc02e791b36261f48b913ec6",
+        "Sword grip crossbar": "b1b31e59219700e9eac64a40431f0fa9db740094ffcea38118309953797c385c",
+        "Torso outfit clearance marker": "fe6e7c98a53e8d567c86b190c77475bb6cd1edad947974a9d33112b6d8e1f4b2",
+        "head link": "ab1436f0230de0743c0c0c4e2eeaaa0e6c7b4dae42b6649d57e8568ae2027daa",
+        "neck link": "607ff093ed098f15387921e99e4bd9f9f3e3c23d69ffed57092f793036399b35",
+        "pelvis link": "a6a5d80d46d6126e805eff65ca8d1b33a74e3a61ff46337869ace5dd01fc32ed",
+        "spine link": "d2adc52616979084d27d2fa1c45882d8edce8266fc8c21de9f176137acae89cf"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "W",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          157.1019,
+          112.8659
+        ],
+        "hand_R": [
+          153.9623,
+          158.1208
+        ],
+        "hand_L": [
+          153.9623,
+          198.2524
+        ],
+        "back": [
+          172.317,
+          138.4819
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          160.0,
+          255.0344
+        ],
+        "foot_L": [
+          160.0,
+          272.9656
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.0,
+              0.0,
+              -1.0,
+              0.0
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            0.024,
+            -0.0,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              -0.0,
+              0.0,
+              -1.0,
+              0.024
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              -0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            0.05,
+            -0.235,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              1e-06,
+              -0.0,
+              -1.000001,
+              0.05
+            ],
+            [
+              -1.0,
+              -0.0,
+              -0.0,
+              -0.235
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            0.05,
+            0.235,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -1e-06,
+              -0.0,
+              -1.000001,
+              0.05
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.235
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            -0.102,
+            0.0,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              -0.0,
+              -0.0,
+              -1.0,
+              -0.102
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              -0.0,
+              0.0,
+              -1.0,
+              0.0
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            0.0,
+            -0.105,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.0,
+              -0.0,
+              -0.999997,
+              0.0
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              -0.105
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            0.0,
+            0.105,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.0,
+              -0.0,
+              -0.999997,
+              0.0
+            ],
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.105
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -90,
+      "geometryHashes": {
+        "Anatomical forward marker": "7a9bffa73d121c1c5ccd0193845e14b02af97e45278e026c4d2382eec88ef90c",
+        "Back socket marker": "1de1d87ca6f892408900aa69cd4fe87c8116563f2d36e3cfa557f83238cfb215",
+        "Chest proxy": "3bb4602c7b8280f56e16426c04b3e4157ef48f6df879eb0eb2bc8a179bb47205",
+        "Hair volume marker": "ce2a74b5f7203d4053eddd99e00d1d307fc07db5e93bb77f511441297bf4461d",
+        "Head proxy / NO FACE IDENTITY": "5351c9cc3240fa8021d612fa67c2955a11c18edc1a296a44c7ebbce11efe2281",
+        "Headgear socket marker": "b8f92ed2ea39e9981e61ca77d9b1dab4f8ba0ac7ccbc7e98893d0e902e4cde5a",
+        "L hand": "efa065264e594d0e8687824c6211b69f4b1140dd7b8222712d7d14c14af2f538",
+        "L planted rigid foot": "ba9e3eafb3b0ae0b4eb79b0ec7d14096a1896c76e007f02747c4a0ae31098b33",
+        "L-femur joint": "4f55be484a0770f8407dd7b7d06949a611ff6a304046330240eee4a7cce3774d",
+        "L-femur link": "85bd2f3dbf013e71ee0b13d6be69f9c8b9ab7cfc416aed81197047303e2e4a0b",
+        "L-forearm joint": "006412f11aad2ca284c953d3c846e1e0cd417e96eb98451a0160924a41091760",
+        "L-forearm link": "b76155232a03a08dd4e8d7c92ed907514b7417b88e55ca01ad0d5efc82563136",
+        "L-tibia joint": "c1bce99c0e340139ee50546fca127b9e6873a24fd86526302696d0282ac73d78",
+        "L-tibia link": "6422c5a9e17fa771bd7da648ab98402eabdaa76cf1252129dd7e287533829ac3",
+        "L-upperarm joint": "e4e312d4c3d85c11980a6c974a1a3c7d54e10988591aa37c6edd470a1d3d914c",
+        "L-upperarm link": "09d68d6d6b9eddfed7c502f23f6c6f0fadac40acb5247ac7524108cae0dcd78c",
+        "Left-hand offhand mount marker": "356200a8dcdd50513d4022f2082988959cc65b54d41daeeef59589c687d63d78",
+        "Pelvis proxy": "bb678f704cdaf118310014d341fe86ec517d30f4081cf31af5dd330241d9d965",
+        "R hand": "78af10473e029669199891ef24bf45fe90e59f3ba9540c466c98de8fa413c925",
+        "R planted rigid foot": "f6148df3700f859b4cbb8f3f3fb870944eb26cc9f441cf557d72e1b2c2315500",
+        "R-femur joint": "107d04501838d57cb29dc7a1fb7bb4497b432a1dfe477d62e0c08fe96b44fab1",
+        "R-femur link": "8b36ccd404e1e9cca60c1165d906f66c49fb4284ffc159f0036ff6c4c1f635b9",
+        "R-forearm joint": "d90751cf3efdec6a13135ddfc84fa4d441367759a083e839457f7a32bac11e34",
+        "R-forearm link": "70fed6143b06ba2562b203bebeb48868af21e06bb50c02a1ee55672b7d0b2565",
+        "R-tibia joint": "941379dbee899c05899531f336b98e594ee2f259798b6106e9cd6a3a631137ae",
+        "R-tibia link": "406b36bb6589411008bf3be91b8801161b6ff2c61976e895eeef9319845723b7",
+        "R-upperarm joint": "e169d03e72322428545b62897ca70c0c9b7d5803520c5c2a80bfb4c36d602aa1",
+        "R-upperarm link": "1c12339ad8465d2e819a3560f590dab719381be7008ada0ae25204326aaccf63",
+        "Right-hand sword guide": "47c363bbc3bebca12cb5ed876d26d4389d812617c04c248eb0c25e74953c1568",
+        "Sword grip crossbar": "f9f7b57afe8bd959029d45c9e46dca2c8662ab47b6d29265e20f7d200551bf92",
+        "Torso outfit clearance marker": "d0dfe6a0571bed012a0e3462c86b16e29957b23c8425ee3a34f66c562345df33",
+        "head link": "e086e09f3d073792d66cf2559b209fd33c8c9c94c2fd781f34de3e90147dec7e",
+        "neck link": "fcb1f5924f0c69dd365b04e5003619bb710c897bf81212c78140fbcf63a0eeb0",
+        "pelvis link": "ef1760dfaa15880cace6a369b98f33a60d50e92e48e3f5a37987ccefb6fe0f96",
+        "spine link": "563cf9f10dac8cc5a930fc53b9262921366361d23bc0fe757c8be70f418c3332"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "NW",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          157.9507,
+          111.4169
+        ],
+        "hand_R": [
+          175.7965,
+          160.979
+        ],
+        "hand_L": [
+          135.6649,
+          189.3564
+        ],
+        "back": [
+          168.7094,
+          144.6404
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          168.9656,
+          257.6604
+        ],
+        "foot_L": [
+          151.0344,
+          270.3396
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            0.016971,
+            -0.016971,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              -0.707107,
+              0.016971
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              -0.016971
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            -0.130815,
+            -0.201525,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -0.707106,
+              -0.0,
+              -0.707108,
+              -0.130815
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707108,
+              -0.201525
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            0.201525,
+            0.130815,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              -0.0,
+              -0.707108,
+              0.201525
+            ],
+            [
+              -0.707106,
+              0.0,
+              0.707108,
+              0.130815
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            -0.072125,
+            0.072125,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              -0.0,
+              -0.707107,
+              -0.072125
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              0.072125
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            -0.074246,
+            -0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              -0.0,
+              -0.707105,
+              -0.074246
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707105,
+              -0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            0.074246,
+            0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              -0.0,
+              -0.707105,
+              0.074246
+            ],
+            [
+              -0.707107,
+              0.0,
+              0.707105,
+              0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -135,
+      "geometryHashes": {
+        "Anatomical forward marker": "31d78d3dd65728bd991e8bf886677e410e3f95cb001fee623a8e58d30083c9c7",
+        "Back socket marker": "897016a207ecbfe46f1b0e0419ea41eaa3d5689b88d0c3996acb16c3be8772f2",
+        "Chest proxy": "69ebc0e50ee9e2f77f337651438defd7a2380f1d902e51cd3f5b4bd83872d222",
+        "Hair volume marker": "59b6690735f3ecedcd7004a544b76782c4509b0260f4c78e873adfeb7417dd18",
+        "Head proxy / NO FACE IDENTITY": "cf7023646f8232f206e120608222c640efc443ba093d4c1aaecc0984e18abe14",
+        "Headgear socket marker": "b32c0fe8950a78ab7a9324e3400dfadb66adde0602a956a018aaeb7d99831634",
+        "L hand": "088a232ec52778c21c08de1cf42a4a17de6ea817c9c42d50808bef3b43b847bd",
+        "L planted rigid foot": "b30991ea0a4a99157987ccbd90e7c4013363c90357569f094710180eb2cfd173",
+        "L-femur joint": "2318aa3a574d839544b4f2a905e98858e555c16a86045ef21aedbad90da7fb64",
+        "L-femur link": "ede99c7eafa7e5f9d541c74cefb01561660552cce7c08fe3a612678dc69145af",
+        "L-forearm joint": "3ac6421510e2fa4b5aec9a7e8a6ed0d8df4b301d8071f51cc728496a9598efbf",
+        "L-forearm link": "acc697476440fe7b94167ef036a9083db717c8f108b3b62b721543bff10f36c7",
+        "L-tibia joint": "2f22b57fd9c304d10975a34aaf6a9b4cad6d52cdb402ffaf545761c15d60a15c",
+        "L-tibia link": "01723b0e5290ff414f7629da0374c0f8c5d266bd0c9c98d2a878b1ed2308c179",
+        "L-upperarm joint": "66b494ae1013d48b366fa6cf433dd251fc1725a709180b05c2636550b84cf0df",
+        "L-upperarm link": "210916599353b28a6fe600f0da2fa19cd8195fb5aad8842e08a3f1aee848e7b1",
+        "Left-hand offhand mount marker": "83930577f19960a159dc81efa3d893434a28ef676b924f0c8b7a98ea71468f59",
+        "Pelvis proxy": "9dc22d4b04e8543fb2417ae65d8d71fa5da752e7e0254a305f13b85166905c78",
+        "R hand": "6f5f41bff8b3557a02f22d911fb25de493f562fd8ad67ec5114d52747dbee52a",
+        "R planted rigid foot": "8ff36ef70db2cc7895a4cabea23b24309a13c7c0f7f9026ba716612578eb2d17",
+        "R-femur joint": "9e3a5f038d1ce02eac59865d11b6ad4de1df018f7de7829f126bda8c90f00069",
+        "R-femur link": "d753973f91e3778bd5903fed14a911f315e2b10e145bceaf4b886cd6c2d40f9e",
+        "R-forearm joint": "9a7ea254b026136bfddacb084e1f2a8e360ff44b88c11ca32449baad48081b67",
+        "R-forearm link": "2752b00aa25c56667a9aa8935a1c049b023812ea24edfaec268eeb9f76a6ea88",
+        "R-tibia joint": "93a16b26b5916962544bd97092909cd44a2f3c070ac748e4303d2ba8bf5a2404",
+        "R-tibia link": "ea389255b672ba9cb05eec1dc75653460293242422f68f1316223f3a0839ad0e",
+        "R-upperarm joint": "30612c2a0ef0f3ed69e240ca722346346a69763b373795c4205517b4a9087166",
+        "R-upperarm link": "747a08f30036c98d17b9d84ad083e331f7985c16933fe65e1ba35b9ccd576460",
+        "Right-hand sword guide": "ae3d52f49afae880afcfec7e87d809de20052091d93e4010a15d8509f5b6c23e",
+        "Sword grip crossbar": "b9f8529700f30b730ae11febbb49e93bb3bd25abb93c8fdbf46b6d28ef9f045b",
+        "Torso outfit clearance marker": "1baba9be09c147db0078ed9382cf8a8caa32d92f89323fb49a11d17792e33175",
+        "head link": "8b8e1584be9743bc91aa7d51e65cbbb8c44e27a8e6df12a2a5916945d680f547",
+        "neck link": "76298c6d7ec23afe7355afa67ef945ad3b0338e338fb05aceb6455c79f19a350",
+        "pelvis link": "82f3c37996b147225e83de3a97f432091fc95df539f39e18efcf5d1f8ec7c90a",
+        "spine link": "9b7f5eab85b4cfddaad0e706999f0d7296ced502d93f1559a0128b82bbdf5883"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "N",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          160.0,
+          110.8167
+        ],
+        "hand_R": [
+          188.3774,
+          173.9173
+        ],
+        "hand_L": [
+          131.6226,
+          173.9173
+        ],
+        "back": [
+          160.0,
+          147.1913
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          172.6793,
+          264.0
+        ],
+        "foot_L": [
+          147.3208,
+          264.0
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            -0.0,
+            -0.024,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              -0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              -0.024
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            -0.235,
+            -0.05,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              -0.0,
+              -0.0,
+              -0.235
+            ],
+            [
+              -1e-06,
+              0.0,
+              1.000001,
+              -0.05
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            0.235,
+            -0.05,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.235
+            ],
+            [
+              1e-06,
+              0.0,
+              1.000001,
+              -0.05
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            0.0,
+            0.102,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.102
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            -0.105,
+            -0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              -0.105
+            ],
+            [
+              0.0,
+              0.0,
+              0.999997,
+              -0.0
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            0.105,
+            -0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -1.0,
+              0.0,
+              0.0,
+              0.105
+            ],
+            [
+              0.0,
+              0.0,
+              0.999997,
+              -0.0
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -180,
+      "geometryHashes": {
+        "Anatomical forward marker": "f5063306e327a6106c3245911a20e57e274db85e91f1418ccb00f5989017f861",
+        "Back socket marker": "0f2e4bdf90e65afa6f7e7dc1881bbdabee3503829037d6e4aa5c7f550d7ed29c",
+        "Chest proxy": "67102f3598c54cd36de25a9a22ff1b8d45eed3453f73c4b3354b9e44765f1758",
+        "Hair volume marker": "73c6b427d1d0ce6afe57f9b2a3ae35a294a55c0afda92a944532e9ca00f27452",
+        "Head proxy / NO FACE IDENTITY": "1bdcc491d77cf990137b4590e3e06b7d4f2bfff389483990cae3d1cab97f3ee5",
+        "Headgear socket marker": "a40dbc21fc04a1507ac51fd019f5998a8f111fd86599729bfe5c0a3b4b6f580c",
+        "L hand": "797aa940b98d9c1dde6fabe35fcb243a21a24706eb475807db7072b172768d4b",
+        "L planted rigid foot": "af9f49fffa7f9bc877b22e74abf9703f1e2f7f99cc2e6e873a19b3d0db54af9b",
+        "L-femur joint": "c83714092895b82c21f2f867599a5303338011f617018a3c5b98429426033da1",
+        "L-femur link": "7d46818fce236da56acd0c1ec263cee2f9d43953cb992743335b6c926c228fd0",
+        "L-forearm joint": "4073d41e700dd06663d576351c4e6b46c31c81d4f866254634d5e9253e8b8aa8",
+        "L-forearm link": "d83484425c83c28b20c3650a43113a82664550a4f626b1a008ebd8dd4e780ecf",
+        "L-tibia joint": "729c45f020df0f7db75b0f5637b5aa42a9582920afafda54c12a608a709e4f3d",
+        "L-tibia link": "bf882f41f39445962e11aaf8fbf67aa8e078426e942f0e4f6bd2bc85f38c570d",
+        "L-upperarm joint": "da80c7f6bce02426d3288133eeeef2bdc105dca55ae65758ec28b7544bb09bfc",
+        "L-upperarm link": "0ad575dae523df0385ff2abbf03a1e2922ab8c9dc7660eb0c26a1c3dafad74c1",
+        "Left-hand offhand mount marker": "f7e7e658b7f800b5fef7bba2621918278ce79a9e26b7523b24093967135ca0bc",
+        "Pelvis proxy": "7670110d29ab7cd06002c131503ec0ae184484275190e3e7ddcf2bbc87ca8848",
+        "R hand": "edcf0ad06973e1a9c578e66f4ccdee997a64ddbfbe84d38d1f0606263a751f56",
+        "R planted rigid foot": "2e0000a3c444d80efb04776c2de8bc4ca305fb5d002ccf51819233cd1aad488a",
+        "R-femur joint": "ad54e8c876ebfb7e2ac415ffa7691b54f4ba010319dff0e3f512047873312b64",
+        "R-femur link": "7b2367a2134d1793001082a36fb553282a3b2fd557af4a058f2f9da408152d6a",
+        "R-forearm joint": "56927594ac2291cdb22c076d9ab3e0b1722a1cddad53fda9a5242579d21657cd",
+        "R-forearm link": "6e42e2eec54ff5c87f53d6bf6d0a527082d28bf3db94faa0665b42286372687f",
+        "R-tibia joint": "5a8bc2378d5efbf1869b016ce5ad1f199d2a196ef75966d66bcfc0453a4943be",
+        "R-tibia link": "b8c4e6c4697c5126ae94924dea14bd4e5c41d1a8bf73cf367e189a488247c56a",
+        "R-upperarm joint": "375d4bbaa006b685ccd0d6c3fbc6f71ff0f9feba3f9b8a55698051c65ad86130",
+        "R-upperarm link": "580ab68a5f39b93883655fb310a22a3d286cb9d31c461b64c0f4058d131a52ac",
+        "Right-hand sword guide": "db86536f90ed32540fe797620ec85cf2b5d766c7e328cbca0b86006d144b9727",
+        "Sword grip crossbar": "3f04080e6b2d4a6021ae720863baf3a8ee3290298fa7106e985ece0fbe749808",
+        "Torso outfit clearance marker": "3846e709294e07429a946505ee2e62bf08435627225b70dd8c19c9897ec88f53",
+        "head link": "c23ccd6cac2db6be0d56ca0e5befddd2d56fa1daa1021b84fc6f0c8ee1dc9854",
+        "neck link": "17afc40d065dd0cbdc3592c71d4813ff93970fd2996d7c6a06eaee02fb41d9e7",
+        "pelvis link": "390e18fc97a1a0113d8b57f5ab03d61adf7ca0a9444838b98051b7e096ccee96",
+        "spine link": "399eabc1d28ea00c391ae569dc0aec9f43c4a65bb192131814b02b4bd1133cd9"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "NE",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          162.0493,
+          111.4169
+        ],
+        "hand_R": [
+          184.3352,
+          189.3564
+        ],
+        "hand_L": [
+          144.2035,
+          160.9791
+        ],
+        "back": [
+          151.2906,
+          144.6404
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          168.9656,
+          270.3396
+        ],
+        "foot_L": [
+          151.0344,
+          257.6604
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            -0.016971,
+            -0.016971,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              -0.016971
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              -0.016971
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            -0.201525,
+            0.130815,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              -0.201525
+            ],
+            [
+              0.707106,
+              0.0,
+              0.707108,
+              0.130815
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            0.130815,
+            -0.201525,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -0.707106,
+              0.0,
+              0.707108,
+              0.130815
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707108,
+              -0.201525
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            0.072125,
+            0.072125,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              0.072125
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              0.072125
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            -0.074246,
+            0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707105,
+              -0.074246
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707105,
+              0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            0.074246,
+            -0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              -0.707107,
+              0.0,
+              0.707105,
+              0.074246
+            ],
+            [
+              0.707107,
+              0.0,
+              0.707105,
+              -0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -225,
+      "geometryHashes": {
+        "Anatomical forward marker": "9860efaf791049e3993bcaae7e66b20d5aba28610252164c8f16574b24667da0",
+        "Back socket marker": "4966230512aef799a7ef90c3a165f100020d59cb982091e88837eaede62538c9",
+        "Chest proxy": "b34e14ece27218bb751578a1e6e7f3af2132ae36eec5a8d20701cd77d618d750",
+        "Hair volume marker": "9e8245e95509daa6043a9929e12594bfe99c2b776a1da7a6db94bc9a4125b3cf",
+        "Head proxy / NO FACE IDENTITY": "0200be57f1d01c8f9cb8e56c1468c8f63a0b9bc5f5ac7713566d76c7bb945272",
+        "Headgear socket marker": "ddb2b8e4c62087d1e932da0280d215e3d7e7f8755b4e1142e887d94c7cfe703e",
+        "L hand": "dfebd5577a87ff75f234e3a19a422bdda748dd86c33755044a4fe682fbbde758",
+        "L planted rigid foot": "232a067fcf11bd8691e8116cc4c39b80ab52fdd9859bb7c90f3d52da6064e707",
+        "L-femur joint": "9147536e4c8f217eceadbb65ce793c860bf03d24494f86af3afd4ae736924b7b",
+        "L-femur link": "ac54b7b8c57017b128d0d5210c64502c4dbb811347ebd3fc1224dd4fbf33e75b",
+        "L-forearm joint": "aeaae6dd69abecbf8085dac1ec55f0bb47b479f6b5db4d2c91db8c6b1c0803ec",
+        "L-forearm link": "ef04170560e9d137f6265ebdf052a875cb025f7e279226df3ecb3ee40f49f8bf",
+        "L-tibia joint": "d9290a40b77098378258ed1d33e7222ffd022df7ca5d221acb9845805c0c2976",
+        "L-tibia link": "ba9561df0b59ff936739dd0fb9e4ec2cf4094ccb80434736e5a1d5a5cbb27a24",
+        "L-upperarm joint": "eea2aee590def571eabe62a19e7e50f428829a7b465a8d87ed2d7328555aa498",
+        "L-upperarm link": "24e2f2d47ba9f8c200dc2b22f40d511a04705fe8cef15360c79b30546e73ce9a",
+        "Left-hand offhand mount marker": "44995c7a1ea923457065dd69d7ca741fcc22dd8ef719247c53245e8ae233e1b8",
+        "Pelvis proxy": "2cfe5b588d41fe8ca31e7c7dc3c4d18e7e88f4eceff8de5d69b989be8ea6c42f",
+        "R hand": "64d244a8e2e880913f875cc8278cdb91cb96074fc2f2b40fcf8d6e8d179171c6",
+        "R planted rigid foot": "514d6e7bbbae9f15dd343e51bc199b905538644ad1d41ded523faa5936d19708",
+        "R-femur joint": "c1081b86ac2221656088eff013d4301565c107e3c7f5594a3de7edfd9fe3bbf8",
+        "R-femur link": "bdfdcfe857073d1195d325ae9bcbe34d3632cbdb9b5d918e4624e2c946730c5a",
+        "R-forearm joint": "407b2cc16a2f64667f651edc7521eecf36a755be8597f387a711495e078ecc41",
+        "R-forearm link": "73a81929bedc60b0ee295411c4c5aff00131c276bc3d02f65e473aa8d1c32501",
+        "R-tibia joint": "822df05b3bd921186fa61efad72dc462c88184b0181b32fc976abcf8984e8fda",
+        "R-tibia link": "1f67b2a2599b87a084c4f0ce3eebd85d1c16e3cb1a123fd06f52bbc4e4598622",
+        "R-upperarm joint": "33d51f81b9dfe03745fe037db1236964f54e80131ca4b6c3b869f9b2c0bc37f7",
+        "R-upperarm link": "9f3abccc7a51bca4390de592f27cfdcebf1792d7dd25f6b1183eb7d45532c34a",
+        "Right-hand sword guide": "b856cd0463100540114b1cc5237b0f2e69c38db4dbe6b7908f82ac2a9b1ce10c",
+        "Sword grip crossbar": "ea1692907259c90c2e18b308d12facea48f7ebb942a4091059e8c12aaa24630a",
+        "Torso outfit clearance marker": "b7c9e09a89f1de64d944ad148473b20789c0b2839e51ba447d0979e00b1038f8",
+        "head link": "25377a4e7116d116685809f5fec0c6e38a360a5a01663d304859ab05b349cbef",
+        "neck link": "f45d33ec207f78973dd97b2be2cfcb476616d63298daace28f0e3440aef07834",
+        "pelvis link": "13cfe3f252e59b6cd3231f5939d03e90bc4276f4be1c96abf6e8a48da8c6c2fe",
+        "spine link": "1852f19c07aa508e2003a59f9aa4a058a38a0c5fb97393433fc99035e0a152f3"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "E",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          162.8981,
+          112.8659
+        ],
+        "hand_R": [
+          166.0377,
+          198.2524
+        ],
+        "hand_L": [
+          166.0377,
+          158.1208
+        ],
+        "back": [
+          147.683,
+          138.4819
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          160.0,
+          272.9656
+        ],
+        "foot_L": [
+          160.0,
+          255.0344
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              -0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            -0.024,
+            0.0,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              0.0,
+              0.0,
+              1.0,
+              -0.024
+            ],
+            [
+              1.0,
+              0.0,
+              -0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            -0.05,
+            0.235,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              -1e-06,
+              0.0,
+              1.000001,
+              -0.05
+            ],
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.235
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            -0.05,
+            -0.235,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              1e-06,
+              0.0,
+              1.000001,
+              -0.05
+            ],
+            [
+              1.0,
+              -0.0,
+              -0.0,
+              -0.235
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            0.102,
+            -0.0,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.102
+            ],
+            [
+              1.0,
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              0.0,
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              1.0,
+              0.0,
+              -0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            -0.0,
+            0.105,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.0,
+              0.0,
+              0.999997,
+              -0.0
+            ],
+            [
+              1.0,
+              -0.0,
+              -0.0,
+              0.105
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            -0.0,
+            -0.105,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.0,
+              0.0,
+              0.999997,
+              -0.0
+            ],
+            [
+              1.0,
+              -0.0,
+              -0.0,
+              -0.105
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -270,
+      "geometryHashes": {
+        "Anatomical forward marker": "0475fbec04fd55c214c36a4d7f1f8e678332a125d3642dd635788b1cafe1cb36",
+        "Back socket marker": "1778e00720d7c9ee4916f75a49ce1b6f50542ad1f7da39addd0de9b7c1b1d8ae",
+        "Chest proxy": "2a00a37a04faf1e8b1470bc31bd55481d159ba492b9bda05fd15555f3a6ea0c7",
+        "Hair volume marker": "5d578c9d5d0edd73853e76b463d1e16694bfb5d3a9197ee9b7f310c4e82b710d",
+        "Head proxy / NO FACE IDENTITY": "4730864180b27e74cfb7d0034327578f2e6000dd055e41e7e3a533c3abeb41bf",
+        "Headgear socket marker": "09b663034e11dbdc68b4b1dd4bd40a5134baf9fa5cee506c24eadb4b1a6a6a56",
+        "L hand": "c73b0b20d42efc5cb00a6941e1b74c7877cd96a8ab39bc0a6910438841d7094d",
+        "L planted rigid foot": "251c8fac011319f700df3a1a084e55d7343608a6243579e891da1858ce31875d",
+        "L-femur joint": "e9d42e3e699975a42a0c2852aa5eac50e3861b01f0ba7983e3c3370fbb1ca929",
+        "L-femur link": "6562c04ece2432230bcd3155658ba9bfc4b20653ef74d8ecf9d2ee021f1c214f",
+        "L-forearm joint": "d35db94bb79b4cc82ae75b55a2fc938ebc7643d0e77bda543f18fbfb00ddaa0d",
+        "L-forearm link": "5876fd100ba5681ad02d8aac040cd2f58502e52bdb43a8b6aabc3681ba54dda6",
+        "L-tibia joint": "ca20cfa3f9a14bbb6ac3455144701a92950eecb0da5d226a20086fa9cfba62e1",
+        "L-tibia link": "61ae798ecc7c2db7f1896ae898e5734bb862e4ab5d073dc5299af20aa8759ee8",
+        "L-upperarm joint": "c8c6d0a0022c76c9e53168e4a4b9ce6ecd5cdf9f77e7b3029dc0dab95cbb8dc7",
+        "L-upperarm link": "d84d96d5ac76341f20eb8d01c1d343a3b4d9f691d4b57544b38d7370757e2123",
+        "Left-hand offhand mount marker": "e5adedb6f693861849cb3d3b4f9099e23c20fe974dae3bb13b6c345a1b328c3a",
+        "Pelvis proxy": "718d873c1afd7fdb54c746172445c72e50341d277aef980c1af80d0c0851a8fa",
+        "R hand": "f3d26f50b2505f22a1ad4ae41091dd17d3250880378c8d8c3329eee5803e2cd4",
+        "R planted rigid foot": "00b5adf169804d6fe6194d5c1cd7bc8329ba0b8f516e2631e0086ffb758cf11c",
+        "R-femur joint": "4b876bbf3796d4cd38f7ebce70d3bf298a04206b1fa4e51f36db59afa5977040",
+        "R-femur link": "940b12b8bf2196fed1c63b722d4bdfac2c3bd2d6f4b2dd65555eb03616ef7333",
+        "R-forearm joint": "3708c74b580d988bf925efe018a8a2c868779e0ef54829852b84efb4d167506e",
+        "R-forearm link": "af4fc7e5fc0cd92e44faad9cfedc9df159d8f6d5484b4c04200e9c4adf5b6d6f",
+        "R-tibia joint": "3175cf0c6efef19ff86166756dd334c35586087ccf2acbc43502085181daeaf2",
+        "R-tibia link": "7835950ecf57f3636880d6cc7fabfb4510a4f4e585331534478220178cc9e87a",
+        "R-upperarm joint": "8cbece5459597be58130e9ed86f32342c4b60c6adf0432715a1f83eec9259b9c",
+        "R-upperarm link": "06fe5a7f90669a1fb56ba61f93fab66d6602b462d81914b6e527194d5a7c7bfa",
+        "Right-hand sword guide": "e204d000faf6e66abbfb3c83ad35bc14cb76193f1c13cf8f1356988114ae0cf1",
+        "Sword grip crossbar": "57802859801ada581dddc8048559d252c0dfb780014baabacb97a4e7604a80f3",
+        "Torso outfit clearance marker": "1b441ff70a5ce3a5602066627914a633dde3f55a335eac6a950d2843b35305e5",
+        "head link": "ee3392a4a435680c353b6fb50f1162258ea0df5a3759d418168576ff90cbae88",
+        "neck link": "d1310d5eea0fddcea687244a9ac9038899c34e975ce9bbd068b6b89b237f5d24",
+        "pelvis link": "d4efc12603ed60dca06cfd203d42677fc2cbdf5d708de17847ee126b99e08206",
+        "spine link": "bd30924a4955a6cd4c6579399b1cfd05ab16d771831b5795bffc58f9b06bdbb9"
+      }
+    },
+    {
+      "action": "Neutral",
+      "direction": "SE",
+      "frameIndex": 0,
+      "sourceFrame": 1,
+      "durationMs": 1000,
+      "root": [
+        160.0,
+        264.0
+      ],
+      "sockets": {
+        "root": [
+          160.0,
+          264.0
+        ],
+        "head": [
+          162.0493,
+          114.315
+        ],
+        "hand_R": [
+          144.2035,
+          195.3941
+        ],
+        "hand_L": [
+          184.3351,
+          167.0168
+        ],
+        "back": [
+          151.2906,
+          132.3234
+        ],
+        "waist": [
+          160.0,
+          179.4674
+        ],
+        "foot_R": [
+          151.0344,
+          270.3396
+        ],
+        "foot_L": [
+          168.9656,
+          257.6604
+        ]
+      },
+      "attachmentTransforms": {
+        "root": {
+          "bone": "root",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "head": {
+          "bone": "socket_head",
+          "worldPosition": [
+            -0.016971,
+            0.016971,
+            1.77
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              -0.016971
+            ],
+            [
+              0.707107,
+              0.0,
+              -0.707107,
+              0.016971
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.77
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_R": {
+          "bone": "socket_hand_R",
+          "worldPosition": [
+            0.130815,
+            0.201525,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              0.707106,
+              0.0,
+              0.707108,
+              0.130815
+            ],
+            [
+              0.707107,
+              -0.0,
+              -0.707107,
+              0.201525
+            ],
+            [
+              -0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "hand_L": {
+          "bone": "socket_hand_L",
+          "worldPosition": [
+            -0.201525,
+            -0.130815,
+            1.005
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707108,
+              -0.201525
+            ],
+            [
+              0.707106,
+              -0.0,
+              -0.707108,
+              -0.130815
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              1.005
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "back": {
+          "bone": "socket_back",
+          "worldPosition": [
+            0.072125,
+            -0.072125,
+            1.47
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              0.072125
+            ],
+            [
+              0.707107,
+              -0.0,
+              -0.707107,
+              -0.072125
+            ],
+            [
+              0.0,
+              1.0,
+              -0.0,
+              1.47
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "waist": {
+          "bone": "socket_waist",
+          "worldPosition": [
+            0.0,
+            0.0,
+            0.99
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707107,
+              0.0
+            ],
+            [
+              0.707107,
+              0.0,
+              -0.707107,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.99
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_R": {
+          "bone": "socket_foot_R",
+          "worldPosition": [
+            0.074246,
+            0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707105,
+              0.074246
+            ],
+            [
+              0.707107,
+              -0.0,
+              -0.707105,
+              0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "foot_L": {
+          "bone": "socket_foot_L",
+          "worldPosition": [
+            -0.074246,
+            -0.074246,
+            0.0
+          ],
+          "worldMatrix": [
+            [
+              0.707107,
+              0.0,
+              0.707105,
+              -0.074246
+            ],
+            [
+              0.707107,
+              -0.0,
+              -0.707105,
+              -0.074246
+            ],
+            [
+              0.0,
+              1.0,
+              1e-06,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      },
+      "yawDegrees": -315,
+      "geometryHashes": {
+        "Anatomical forward marker": "d6666b562a5f781faffb9ca5b7b59e04ef95baf12eb00223193dfc40c9691df3",
+        "Back socket marker": "293728da0e1fcecd87fcf7306ffb846ea2ef54a6eba169f5f81a96d607878e80",
+        "Chest proxy": "2d18f2a0bd7a8f1d288532a1b0dd46371e9a7babe7929036e1c1d505894bf049",
+        "Hair volume marker": "6d369dba9e760da373fee42ad4168dea84333f058e09feb9d34f0af12199d978",
+        "Head proxy / NO FACE IDENTITY": "cbf304102402fa3bdddd75a6d17f060f3048ac8cffe2fb5af12ee90986e36c7d",
+        "Headgear socket marker": "5e6ad54dd8a85e53ae8fde775f0da37cf72d3b1fbd1a0af0bcdfd1d9903e2d05",
+        "L hand": "3699d576f1ee826f4736f3e3e3058db770b3aea0ae34ad45c7945ac07be3c70d",
+        "L planted rigid foot": "f1b06320676f49f7b75743875a0b1b6a3647f6c0fddf94bdbb2300304a430977",
+        "L-femur joint": "6901b995e4f0f5f18e4477793116f1982c805d2b29be814e88d5a537e5720e83",
+        "L-femur link": "97292d733fbbb0efcef45a41f4dba07cfc24357a12156e53040aab561dc52c31",
+        "L-forearm joint": "b95b82924b69176c5898bf390b353e809274cc796362fd204089a5a3c91a9688",
+        "L-forearm link": "391a2233d4e7b10c2e9ef3bfed25a8f9402a12bfbabfda2c06efb0f9793b10d4",
+        "L-tibia joint": "0540948b1ebfbeb5f50988c5c3b51684c72f48b4b8dc8c011293f2654123e425",
+        "L-tibia link": "d8ac5aac02eddd74b9600f8d1331ab26c05fc281ab07e86861367c999ba7680c",
+        "L-upperarm joint": "097634d4b5817dfa6cbf60d1e28ef51e99c9116907ed5eca47841ac774882052",
+        "L-upperarm link": "a893845a3f98dce095f3703a5bf15d2bcde31d123a0368711b19f732a2595f52",
+        "Left-hand offhand mount marker": "5c81fc5c43f0247ffff79178de2e9f73d90d333f3e8d1b40341844ddd309293b",
+        "Pelvis proxy": "3128b8f5be04fd7b3aea5a203655076823a8e3c1ed145dd6b964bee7bd58dfba",
+        "R hand": "ee149fa5a45b3c278a7e3a077137eed1c95d1b5abec75822160e809b6394776e",
+        "R planted rigid foot": "797d96724e25e7e20a489b50711031ac8e64e07a19240615aad7027456072b7b",
+        "R-femur joint": "e7d3cb7945e195f14473fdda7672ebaaa7065455ae5db27d6f7c63f51e9506d7",
+        "R-femur link": "2e27983de4be5e972cb26de24ef05648a8b055c0aee8b40e59095ce4dd30ca51",
+        "R-forearm joint": "9dfeec040f845580fc79f25452fa5c562c6e026a603479700c8d7fdd86a6ce82",
+        "R-forearm link": "b15e35012c3ad4760f98497d5162006f3d61623e18c5ca18e972f3d0efba4198",
+        "R-tibia joint": "72be39745c1955ce3b825480dc2b215fc545b5a45db2b84267aac40104890007",
+        "R-tibia link": "d9b2744fd6a3e18182fc2961b3b0be0ff549c3b6c974a3a7aa6193b9eeb01449",
+        "R-upperarm joint": "17b23fc2ed942cb89cd6b56ded5af4048b61cbb841b7bbaef0f439b98cae83db",
+        "R-upperarm link": "b4105550a533eff3490a20bf4ec60e3d8e6bdb9205b478019964bc3674d71b8a",
+        "Right-hand sword guide": "326c5b44d77a2b9b69466777a30a4c47d799b68c156fd968325eb26718bbdca3",
+        "Sword grip crossbar": "91f7d0cca129a6de1b53772c51edb709edaec7d1b8912daa8785561f8c7b87a4",
+        "Torso outfit clearance marker": "b91138402fdf8f57b5fd3fee6b5f9a10278d5bc7d020fc93a035c6c07eca9326",
+        "head link": "d8a54ad70919cffe619c79c5c207d23e1ea61653d9e3e2fd2fa452884d89b05e",
+        "neck link": "087d7e653a0c1006741355d13d22ceaa9ec5eade9ce8f42817c1dc9e899f65e5",
+        "pelvis link": "6ba76c243bcd610a26311d88f29068a8bf593fef8b16e88401faa4add277689f",
+        "spine link": "5bf8451dc9b1f97473da58fa8bd9487b3f8aa13ace2386fc5810990bad51346c"
+      }
+    }
+  ]
+}

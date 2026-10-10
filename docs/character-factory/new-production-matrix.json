@@ -1,0 +1,174 @@
+{
+  "status": "PLANNED_NOT_AUTHORED",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "sourcePatch": "docs/CHARACTERS_PATCH_001.md",
+  "sourceBlueprint": "authoring/characters/true-modular/swordsman/male/blueprint.json",
+  "framesPerDirectionAllPatchActions": 192,
+  "framePositionsAllPatchActions": 1536,
+  "swordsmanRequiredActions": 16,
+  "swordsmanRequiredFramePositions": 1392,
+  "actions": [
+    {
+      "action": "Idle",
+      "framesPerDirectionInPatch": 8,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Walk",
+      "framesPerDirectionInPatch": 16,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Run",
+      "framesPerDirectionInPatch": 12,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Sprint",
+      "framesPerDirectionInPatch": 12,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "BasicAttack",
+      "framesPerDirectionInPatch": 16,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "SkillAction",
+      "framesPerDirectionInPatch": 14,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "CastChannel",
+      "framesPerDirectionInPatch": 12,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "CastRelease",
+      "framesPerDirectionInPatch": 10,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Guard",
+      "framesPerDirectionInPatch": 10,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Dash",
+      "framesPerDirectionInPatch": 10,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Blink",
+      "framesPerDirectionInPatch": 10,
+      "swordsmanContract": "excluded",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Hit",
+      "framesPerDirectionInPatch": 8,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Death",
+      "framesPerDirectionInPatch": 12,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Interact",
+      "framesPerDirectionInPatch": 8,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Pickup",
+      "framesPerDirectionInPatch": 8,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "ItemUse",
+      "framesPerDirectionInPatch": 8,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Sit",
+      "framesPerDirectionInPatch": 8,
+      "swordsmanContract": "optional",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    },
+    {
+      "action": "Respawn",
+      "framesPerDirectionInPatch": 10,
+      "swordsmanContract": "required",
+      "newCandidateAuthored": false,
+      "directionCoverage": []
+    }
+  ],
+  "weaponFamilies": [
+    {
+      "id": "one-handed-sword",
+      "status": "FIRST_FAMILY_PLANNED"
+    },
+    {
+      "id": "two-handed-sword",
+      "status": "SEPARATE_GRIP_AND_MOTION_REQUIRED"
+    },
+    {
+      "id": "spear",
+      "status": "SEPARATE_GRIP_AND_MOTION_REQUIRED"
+    },
+    {
+      "id": "bow",
+      "status": "SEPARATE_GRIP_AND_MOTION_REQUIRED"
+    },
+    {
+      "id": "staff",
+      "status": "SEPARATE_GRIP_AND_MOTION_REQUIRED"
+    }
+  ],
+  "notes": [
+    "Global wardrobe gate and class-specific blueprint must be reconciled before release",
+    "Frame counts are current repository requirements, not observed Ragnarok animation counts",
+    "No old candidate frames fill this new matrix"
+  ]
+}

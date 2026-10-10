@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "characterId": "swordsman-male-factory",
+  "status": "DEV_ONLY / STRUCTURAL_GUIDE / NOT_OWNER_APPROVED",
+  "shippingRepresentation": "painted-2d-png",
+  "identityReference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+  "identitySHA256": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05",
+  "identityFit": "PROVISIONAL: neutral mannequin; final Swordsman proportions and exact camera fit require owner review",
+  "canvas": {
+    "width": 320,
+    "height": 320,
+    "root": [
+      160,
+      264
+    ],
+    "referenceHeight": 176
+  },
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "camera": {
+    "projection": "ORTHO",
+    "elevationDegrees": 45,
+    "orthographicSpan": 2.65,
+    "distance": 8,
+    "target": [
+      0,
+      0,
+      1
+    ],
+    "rotationAuthority": "character-root-only",
+    "yawOffsetDegrees": 0,
+    "yawSign": -1
+  },
+  "coordinateSystem": "+Y anatomical forward, +X anatomical right, +Z up; S faces fixed camera; SW faces viewer-left",
+  "rig": {
+    "hipHeight": 0.99,
+    "hipHalfWidth": 0.105,
+    "shoulderHalfWidth": 0.205,
+    "chestAboveHip": 0.48,
+    "neckAboveHip": 0.6,
+    "headAboveHip": 0.78,
+    "femur": 0.49,
+    "tibia": 0.47,
+    "upperarm": 0.25,
+    "forearm": 0.24,
+    "footLength": 0.28,
+    "ankleHeight": 0.085
+  },
+  "proxy": {
+    "headRadii": [
+      0.16,
+      0.15,
+      0.19
+    ],
+    "chestRadii": [
+      0.19,
+      0.105,
+      0.24
+    ],
+    "pelvisRadii": [
+      0.15,
+      0.095,
+      0.085
+    ],
+    "armRadius": 0.036,
+    "thighRadius": 0.06,
+    "shinRadius": 0.045
+  },
+  "sockets": {
+    "root": "root",
+    "head": "socket_head",
+    "hand_R": "socket_hand_R",
+    "hand_L": "socket_hand_L",
+    "back": "socket_back",
+    "waist": "socket_waist",
+    "foot_R": "socket_foot_R",
+    "foot_L": "socket_foot_L"
+  },
+  "attachments": {
+    "weapon": "hand_R",
+    "offhand": "hand_L",
+    "headgear": "head",
+    "backAccessory": "back",
+    "belt": "waist"
+  },
+  "layers": [
+    "BaseBody",
+    "Hair",
+    "Outfit",
+    "Weapon",
+    "Headgear",
+    "BackAccessory",
+    "Offhand"
+  ],
+  "render": {
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 8,
+    "seed": 17,
+    "threads": 1,
+    "denoising": false,
+    "adaptiveSampling": false,
+    "colorManagement": "Standard",
+    "transparent": true
+  },
+  "guideAction": {
+    "id": "Neutral",
+    "sourceFrame": 1,
+    "frameIndex": 0,
+    "durationMs": 1000,
+    "status": "STRUCTURAL_GUIDE_ONLY"
+  },
+  "goldenActions": [
+    {
+      "id": "Idle",
+      "status": "pending"
+    },
+    {
+      "id": "Walk",
+      "status": "pending"
+    },
+    {
+      "id": "Run",
+      "status": "pending"
+    },
+    {
+      "id": "BasicAttack",
+      "status": "pending"
+    },
+    {
+      "id": "SkillAction",
+      "status": "pending"
+    },
+    {
+      "id": "Hit",
+      "status": "pending"
+    },
+    {
+      "id": "Death",
+      "status": "pending"
+    },
+    {
+      "id": "Guard",
+      "status": "pending"
+    },
+    {
+      "id": "Dash",
+      "status": "pending"
+    }
+  ]
+}
