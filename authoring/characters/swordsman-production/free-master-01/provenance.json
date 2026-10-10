@@ -1,0 +1,37 @@
+{
+  "status": "UNAPPROVED_SOURCE_PILOT",
+  "upstream": {
+    "tool": "MPFB",
+    "version": "2.0.17",
+    "url": "https://codeload.github.com/makehumancommunity/mpfb2/zip/refs/tags/v2.0.17",
+    "archiveBytes": 44643182,
+    "sha256": "d08e726c798fdc4eefb02b06b6c4efe37d40b5439777e53cf96dce0e5073297d",
+    "installScope": "Workspace-local source; loaded only by authoring scripts",
+    "codeLicense": "GPL-3.0-or-later",
+    "coreAssetsLicense": "CC0-1.0",
+    "licenseReference": "https://github.com/makehumancommunity/mpfb2/blob/v2.0.17/LICENSE.md"
+  },
+  "approvedConcept": {
+    "path": "authoring/characters/swordsman-production/fresh-2d/candidate-01/candidate.png",
+    "sha256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
+    "scope": "Parent painted concept only"
+  },
+  "authoring": "Local Blender geometry and weighted skeleton; no AI image cards or paid generation",
+  "excludedSources": [
+    "neutral mannequin",
+    "rejected turnaround",
+    "rejected painted-cutout rig"
+  ],
+  "runtime3D": false,
+  "paidCalls": 0,
+  "humanApproval": false,
+  "scripts": {
+    "tools/setup-free-character-source.py": "e089e5229935dcc7ea1a3ae71db87894260ac19f21b25c44ad4418a89737bd48",
+    "tools/probe-free-character-source.py": "48f1a0a6a237d1d5c2f43054a29579fce2f46f02fa9b86daf7fb52b4dbc6e576",
+    "tools/build-free-character-master.py": "c9ef81ec45391270ca7c1ff276371cbf3508ecfd74f4f63505e5dd8fe777d8d6",
+    "tools/pose-free-character-grip.py": "06a36aa49d9989bc8a6478059f7169d41b23c9778064dd4c62b4a56657a510fc",
+    "tools/verify-free-character-source.py": "3905256dd40d0e1c04c91c444957c1fa6e68ef1f1051e5d276183c3ee563c521",
+    "tools/inspect-free-character-master.py": "13f8a3ffa342bd707ea2dad0d34632e6bec0ecb17b236c59a7eb8bfc2b941989",
+    "tools/review-free-character-source.py": "ff6fa995a5e5fc5e4c101c1067128ff756db396fd9833d600d8949dc05d92f77"
+  }
+}

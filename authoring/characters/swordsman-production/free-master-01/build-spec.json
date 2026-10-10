@@ -1,0 +1,55 @@
+{
+  "status": "SOURCE_PILOT_NOT_APPROVED",
+  "mpfbVersion": "2.0.17",
+  "macro": {
+    "gender": 1.0,
+    "age": 0.35,
+    "muscle": 0.4,
+    "weight": 0.45,
+    "proportions": 0.5,
+    "height": 0.5,
+    "cupsize": 0.5,
+    "firmness": 0.5,
+    "race": {
+      "asian": 0.7,
+      "caucasian": 0.3,
+      "african": 0
+    }
+  },
+  "targets": {
+    "head/head-age-decr": 0.5,
+    "head/head-round": 0.35,
+    "nose/nose-scale-depth-decr": 1.0,
+    "nose/nose-volume-decr": 0.55,
+    "chin/chin-width-decr": 0.3,
+    "chin/chin-triangle": 0.45,
+    "mouth/mouth-lowerlip-volume-decr": 0.7,
+    "mouth/mouth-upperlip-volume-decr": 0.7,
+    "eyes/l-eye-scale-incr": 1.15,
+    "eyes/r-eye-scale-incr": 1.15
+  },
+  "cameraMatrix": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.32190272212028503,
+    -0.9467727541923523,
+    -4.0,
+    0.0,
+    0.9467727541923523,
+    0.32190272212028503,
+    2.049999952316284,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "previewSize": [
+    640,
+    640
+  ],
+  "renderEngine": "BLENDER_EEVEE",
+  "paidCalls": 0
+}

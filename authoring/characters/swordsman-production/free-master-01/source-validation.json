@@ -1,0 +1,217 @@
+{
+  "status": "TECHNICAL_PILOT_PASS",
+  "checks": [
+    {
+      "name": "Connected anatomical surface",
+      "pass": true,
+      "detail": {
+        "visibleBodyVertices": 13380,
+        "componentSizes": [
+          13380
+        ]
+      }
+    },
+    {
+      "name": "Connected region head",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 2924,
+        "inMainSurface": 2924
+      }
+    },
+    {
+      "name": "Connected region spine01",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 378,
+        "inMainSurface": 378
+      }
+    },
+    {
+      "name": "Connected region upperarm02.R",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 231,
+        "inMainSurface": 231
+      }
+    },
+    {
+      "name": "Connected region upperarm02.L",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 231,
+        "inMainSurface": 231
+      }
+    },
+    {
+      "name": "Connected region finger3-3.R",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 139,
+        "inMainSurface": 139
+      }
+    },
+    {
+      "name": "Connected region finger3-3.L",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 139,
+        "inMainSurface": 139
+      }
+    },
+    {
+      "name": "Connected region foot.R",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 345,
+        "inMainSurface": 345
+      }
+    },
+    {
+      "name": "Connected region foot.L",
+      "pass": true,
+      "detail": {
+        "weightedVertices": 358,
+        "inMainSurface": 358
+      }
+    },
+    {
+      "name": "Weighted source body",
+      "pass": true,
+      "detail": {
+        "verticesWithLessThanPoint9DeformWeight": 0
+      }
+    },
+    {
+      "name": "All finger chains exist",
+      "pass": true,
+      "detail": {
+        "fingerBonesExpected": 30
+      }
+    },
+    {
+      "name": "All required sockets exist",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Right-hand socket equals modeled hilt center",
+      "pass": true,
+      "detail": {
+        "hiltCenter": [
+          -0.2509108781814575,
+          -0.08025961369276047,
+          0.5433973670005798
+        ],
+        "socketCenter": [
+          -0.25091081857681274,
+          -0.08025966584682465,
+          0.5433973073959351
+        ],
+        "error": 9.912352782227151e-08
+      }
+    },
+    {
+      "name": "Active quaternion pose channels",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Wrist deformation moves glove and sword",
+      "pass": true,
+      "detail": {
+        "bladeMaxDisplacement": 0.07801057064737174,
+        "gloveMaxDisplacement": 0.017404782437461967
+      }
+    },
+    {
+      "name": "Binding restores after pose probe",
+      "pass": true,
+      "detail": {
+        "maxError": 0.0
+      }
+    },
+    {
+      "name": "Blade swap keeps body source and motion",
+      "pass": true,
+      "detail": {
+        "bodyGeometryHash": "814a35dec787d9bd343f0628783939faf5193a121d4d8c8b54fbb5bf0b9b7b84",
+        "action": "SourceGrip_ReviewPose",
+        "posedBodyMaxDisplacement": 0.0
+      }
+    },
+    {
+      "name": "One shared camera",
+      "pass": true,
+      "detail": {
+        "name": "LockedOrthographicCamera"
+      }
+    },
+    {
+      "name": "Eight exact headings",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "Shared root at 160,264",
+      "pass": true,
+      "detail": {
+        "rootByView": [
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ],
+          [
+            160.0,
+            264.00001525878906
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Finger endpoint fit",
+      "pass": true,
+      "detail": {
+        "errors": {
+          "2": 3.0719530773294423e-08,
+          "3": 8.560065398421926e-08,
+          "4": 1.228781230931777e-07,
+          "5": 4.440397584217064e-06,
+          "thumb": 0.0031988120887565833
+        },
+        "limitation": "Endpoint fit is not anatomical or artistic approval"
+      }
+    }
+  ],
+  "ownerApproved": false,
+  "motionCoverage": [],
+  "runtimeAdmitted": false,
+  "limitations": [
+    "Geometry and binding checks only",
+    "No finished paint, full motion library or final modular sprite export"
+  ]
+}

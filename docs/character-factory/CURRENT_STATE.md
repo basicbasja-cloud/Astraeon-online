@@ -48,11 +48,26 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**FREE_ROUTE_EVALUATION / PAID_PLAN_ON_HOLD.** The owner subsequently asked whether
-a free way is available. [Free-route feasibility](FREE_SOURCE_ROUTE.md) recommends
-a coherent MPFB/MakeHuman core mesh with Blender modeling and painted finishing.
-Core assets are CC0; actual addon compatibility and approved-character quality
-remain untested. No new addon, model weights or mesh were downloaded in this check.
+**FREE_SOURCE_MODEL_BUILT / OWNER_GEOMETRY_REVIEW_PENDING / PAID_PLAN_ON_HOLD.**
+The owner authorized the free route: "Now let make it". MPFB 2.0.17 was downloaded
+from its official pinned release into an ignored workspace-local cache and loaded
+successfully in Blender 5.2.2. A fresh connected body, weighted finger rig, compact
+shape, modeled clothes/hair/armor/cape, sword and alternate blade are saved under
+`authoring/characters/swordsman-production/free-master-01/`. No rejected source
+was imported. See its `STATUS.md`, `README.md`, review page and validation receipts.
+
+This is an unapproved geometry pilot, not a finished painted candidate. The face,
+hair, garment detail and material finish still need refinement toward the approved
+concept. Eight exact headings share one grip pose, one fixed camera, canvas
+320 x 320, root (160,264), and one uniform scale. Large W/NW/N/SE hand inspections
+isolate the right glove, bracer and sword for diagnosis; complete views retain real
+occlusion. Outfit removal
+and alternate-blade source proofs reuse the same body/rig. No accepted motion,
+finished modular export, runtime admission or factory completion is claimed.
+
+Core assets are CC0; addon code has its separate GPL license. Original license
+texts and archive provenance are retained. The paid Tripo plan remains on hold;
+no paid job or new image-generation call was used for this source pilot.
 
 The earlier model input remains prepared. The owner said
 "Go for it" after the revised research. One coherent front modeling reference

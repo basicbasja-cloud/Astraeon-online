@@ -27,6 +27,14 @@ mesh was performed during this feasibility check. MPFB's official getting-starte
 page specifies Blender >=4.2; our installed version is 5.2.2, but an actual load
 and generation check is still needed before claiming compatibility.
 
+Implementation checkpoint after owner authorization: MPFB 2.0.17 now loads in
+the installed Blender 5.2.2 and creates a body and weighted finger rig. The fresh
+source pilot, previews, licenses and receipts are in
+`authoring/characters/swordsman-production/free-master-01/`. A legacy-loader
+failure was resolved using Blender's extension registration. Subsequent work
+uses isolated Blender resource paths. See the pilot status for the remaining
+visual/source limitations; compatibility does not prove approved design quality.
+
 Next gates: establish the connected body and finger topology; reshape it against
 the approved design; prove hand grip and fixed-camera difficult views; author
 meaningful clothing/equipment sources; then expand motion and export. Do not
