@@ -1,6 +1,10 @@
 # New dedicated Swordsman candidate
 
-Candidate: `fresh-2d/candidate-01`. State: **DEV_ONLY / OWNER_REVIEW_PENDING**.
+Candidate: `fresh-2d/candidate-01`. State: **CONCEPT_APPROVED / PRODUCTION_DEV_ONLY**.
+The owner approved the painted concept on 10 October 2026 and authorized iteration
+until the next decision. Eight-direction source, layers, motion and release remain
+unapproved. Exact approved image and statement are retained in the candidate's
+`CONCEPT_APPROVAL.md`.
 This is a fresh painted 2D source. The rejected mannequin and old motion frames
 are not inputs. Preserve the inherited silver hair, gold cape, bronze armour,
 ivory tunic and teal detail as identity vocabulary; this is not a claim that the

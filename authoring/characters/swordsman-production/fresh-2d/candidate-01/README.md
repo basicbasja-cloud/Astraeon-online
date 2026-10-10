@@ -1,6 +1,8 @@
 # Fresh painted Swordsman — candidate 01
 
-**DEV_ONLY / OWNER_REVIEW_PENDING.** Selected visual review image: `candidate.png`.
+**CONCEPT_APPROVED / PRODUCTION_DEV_ONLY.** The owner approved this painted
+concept on 10 October 2026. See `CONCEPT_APPROVAL.md` for the exact scope.
+Selected visual review image: `candidate.png`.
 Open `review.html` for light/dark backgrounds and actual small-scale previews.
 
 Generated from a new description using host-native image generation. No rejected
@@ -19,7 +21,8 @@ Visual observations: revision 02 has more compact anatomy and simpler armour
 than the initial image. The fist/handle connection is visible. The blade still
 runs in front of the leg area, so the requested outside-boot resting pose is not
 fully established. Precise direction angle, projection and head/body ratio are
-unverified; the owner has not accepted them. No automated technical pass should
+unverified; concept approval does not certify these production measurements.
+No automated technical pass should
 be interpreted as an art acceptance score.
 
 Research: `docs/character-factory/RESEARCH_2D_EIGHT_DIRECTION.md` at repository root.

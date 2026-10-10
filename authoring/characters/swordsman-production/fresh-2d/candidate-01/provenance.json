@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "candidateId": "fresh-2d-candidate-01",
   "createdDate": "2026-10-10",
-  "status": "DEV_ONLY",
-  "ownerApproval": "PENDING",
+  "status": "CONCEPT_APPROVED_PRODUCTION_DEV_ONLY",
+  "ownerApproval": "CONCEPT_APPROVED",
   "tool": "host-native image_gen.imagegen",
   "selectedFile": "candidate.png",
   "requestedDirection": "SE",
@@ -72,6 +72,12 @@
     "Exact camera, anatomical ground root and directional angle unverified",
     "Blade still passes in front of leg area",
     "Raw alpha contains low-opacity residue",
-    "No owner approval and no playable sprite package"
-  ]
+    "Concept approved only; turnaround, layers, motion and playable package remain unapproved"
+  ],
+  "conceptApproval": {
+    "evidence": "CONCEPT_APPROVAL.md",
+    "approvedFile": "candidate.png",
+    "date": "2026-10-10",
+    "approvedSHA256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b"
+  }
 }
