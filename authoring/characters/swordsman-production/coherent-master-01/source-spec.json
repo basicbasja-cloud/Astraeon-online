@@ -1,0 +1,112 @@
+{
+  "status": "MODEL_INPUT_PREPARED_SPEND_NOT_AUTHORIZED",
+  "date": "2026-10-10",
+  "designApprovalScope": "Parent concept only; technical reference is not owner-approved production art",
+  "sourceRoute": "New coherent 3D mesh; Blender authoring only; painted 2D runtime output",
+  "inputRole": "Weapon-free front A-pose modeling reference; not pose authority for animation",
+  "excludedSources": [
+    "rejected neutral mannequin",
+    "rejected concept turnaround",
+    "rejected independent-limb atlas/cutout assembly"
+  ],
+  "firstGate": [
+    "coherent connected character geometry",
+    "identity/proportions match approved concept",
+    "actual side and rear surfaces",
+    "hands suitable for correcting and rigging a sword grip",
+    "topology and material inspection before rigging",
+    "no geometry approval inferred from provider success"
+  ],
+  "laterRequirements": [
+    "editable canonical body with concealed surfaces",
+    "independent outfit and equipment sources",
+    "shared motion data",
+    "fixed camera and exact eight headings",
+    "mandatory existing logical layers",
+    "full-canvas lossless PNG/JSON export",
+    "owner acceptance before action expansion"
+  ],
+  "providerGenerationScope": {
+    "candidates": 1,
+    "textureQuality": "standard",
+    "faceLimit": 50000,
+    "seed": 621018,
+    "noPaidRiggingOrAnimation": true,
+    "noAutomaticRetry": true
+  },
+  "references": [
+    {
+      "role": "approved-concept",
+      "path": "authoring/characters/swordsman-production/fresh-2d/candidate-01/candidate.png",
+      "sha256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        269,
+        90,
+        895,
+        1204
+      ]
+    },
+    {
+      "role": "tall-input-internal-rejection",
+      "path": "authoring/characters/swordsman-production/coherent-master-01/source/front-reference-01-tall.png",
+      "sha256": "42255325f89f79367892ded56edc8a52b6ae4b50180b24a76f74e6e130bb5851",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        124,
+        34,
+        901,
+        1480
+      ]
+    },
+    {
+      "role": "selected-model-input",
+      "path": "authoring/characters/swordsman-production/coherent-master-01/source/front-reference.png",
+      "sha256": "ddf914a10648ae1423029ac37917f939233feb7f01211d25220d3ab33119d438",
+      "size": [
+        1199,
+        1312
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        192,
+        65,
+        1008,
+        1288
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "built-in image_gen",
+    "calls": 2,
+    "rawOutputs": [
+      "C:/Users/Lenovo/.codex/generated_images/01a1252e-ed2c-70f2-8fbb-85e198ae529a/exec-cbae3ea0-a417-45eb-99ad-d9f47a3e84a1.png",
+      "C:/Users/Lenovo/.codex/generated_images/01a1252e-ed2c-70f2-8fbb-85e198ae529a/exec-50cf3765-02c8-4586-83cf-c2fa64cbfde3.png"
+    ],
+    "edits": "Second native generation corrects compact proportions; neither output pixel-edited locally",
+    "prompts": [
+      "source/front-reference-prompt.txt",
+      "source/front-reference-correction-prompt.txt"
+    ]
+  }
+}

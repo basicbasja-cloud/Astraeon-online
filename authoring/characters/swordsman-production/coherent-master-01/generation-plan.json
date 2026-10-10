@@ -1,0 +1,40 @@
+{
+  "dry_run": true,
+  "valid": true,
+  "input": "authoring/characters/swordsman-production/coherent-master-01/source/front-reference.png",
+  "model": "v3.1-20260211",
+  "model_reason": "default high-fidelity \u2192 v3.1",
+  "steps": [
+    {
+      "name": "image-to-model",
+      "endpoint": "/v3/generation/image-to-model",
+      "task_type": "image_to_model",
+      "payload": {
+        "input": "<upload:authoring/characters/swordsman-production/coherent-master-01/source/front-reference.png>",
+        "model": "v3.1-20260211",
+        "texture": true,
+        "pbr": false,
+        "texture_quality": "standard",
+        "face_limit": 50000,
+        "model_seed": 621018
+      }
+    }
+  ],
+  "pending_uploads": [
+    "authoring/characters/swordsman-production/coherent-master-01/source/front-reference.png"
+  ],
+  "deliverables": [],
+  "candidates": 1,
+  "warnings": [],
+  "errors": [],
+  "cost_notes": [],
+  "approval": {
+    "status": "PENDING",
+    "estimatedCredits": 30,
+    "proposedCeilingCredits": 30,
+    "automaticRetries": false,
+    "paidProcessingChain": false,
+    "providerEnforcedCap": false
+  },
+  "inputSha256": "ddf914a10648ae1423029ac37917f939233feb7f01211d25220d3ab33119d438"
+}

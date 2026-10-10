@@ -48,9 +48,19 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**RESEARCH_REASSESSMENT_AFTER_OWNER_REJECTION.** The owner requested more research
-before another attempt. Read [revised coherent-source research](RESEARCH_COHERENT_SPRITE_AUTHORING_V2.md).
-It supersedes proceeding directly to generated limb parts and a shared cutout rig.
+**MODEL_INPUT_PREPARED / AWAITING_ACCOUNT_AND_SPEND_DECISION.** The owner said
+"Go for it" after the revised research. One coherent front modeling reference
+and an exact one-call Tripo plan are prepared in
+`authoring/characters/swordsman-production/coherent-master-01/`.
+The initial reference's overly tall proportions were internally rejected and
+one targeted correction was saved. Neither reference is accepted production art.
+
+The CLI dry run is valid for one standard-textured v3.1 model, estimated at
+30 credits. The proposed ceiling is 30 credits, with no paid chain or retries.
+Device account authorization was started; account connection and explicit
+spend approval are pending. No model-generation task has been submitted.
+Read [revised research](RESEARCH_COHERENT_SPRITE_AUTHORING_V2.md) for the source
+route; it supersedes generated limb parts and a shared cutout rig.
 
 Establish a coherent editable character source before building automation.
 The revised recommendation is a new coherent modeled/skinned master authoring
@@ -65,5 +75,7 @@ W, NW and N are mandatory early stress views. Expand animation/costumes only
 after this source gate passes owner review.
 
 Blender is installed. Spine, Krita and Aseprite were not found in the installation
-locations checked. No installation, purchase or paid generation was performed
-for the research checkpoint.
+locations checked. The Tripo CLI was downloaded through npx for its free doctor,
+device login and dry-run capabilities. No global installation, purchase or paid
+generation has been performed. Two built-in image-generation calls prepared the
+technical reference, with source pixels/prompts/provenance preserved.
