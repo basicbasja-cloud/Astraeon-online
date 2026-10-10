@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-10",
+  "branch": "character/production-factory-v2",
+  "referenceSHA256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
+  "geometry": "Fresh source-native meshes; no rejected source imported",
+  "scripts": {
+    "build-painted-character-source.py": "f296d187730c8d28c5a4377b615b91a5c416c41eddc5a68fb613e3e66595b87f",
+    "detail-painted-character-source.py": "bacbe42f3098764b18f6dd0eaf07fc0076ef89e942e80156d84d603446e9edf0",
+    "apply-painted-surface-coat.py": "24f0117a205f5c0ac6a0695128e29506bd2c350def825d147f0d9b4bded26776",
+    "bake-painted-source-checks.py": "5a82221192ac59d634c5b200317682afaafc09baa59cd45da8929e03a47f296b",
+    "paint-reference-projection-study.py": "9771c9c0108be2cf50c7f4d7ea600b8ee083452010264727c2e9015a037c0aea"
+  },
+  "paint": {
+    "method": "Built-in imagegen material swatch atlas on native mesh UVs; no key or paid-provider job",
+    "atlasSHA256": "f996dc00743cd133e2a73b89ccfc7088905317783e2f85d1debc627228915f2d",
+    "prompt": "paint/MATERIAL_PROMPT.txt"
+  },
+  "rejectedExperiments": [
+    "Four-view imagegen paint sheet changed registration; paint/rejected-registration-01/",
+    "Full portrait projection contaminates hidden body/duplicates native features; diagnostic only"
+  ],
+  "paidJobs": [],
+  "runtimeAdmission": false,
+  "ownerApproval": false,
+  "methodSources": [
+    "https://docs.blender.org/manual/en/4.1/render/shader_nodes/converter/shader_to_rgb.html",
+    "https://docs.blender.org/manual/en/5.0/sculpt_paint/texture_paint/introduction.html"
+  ]
+}

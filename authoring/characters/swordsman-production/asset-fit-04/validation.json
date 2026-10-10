@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-11",
+  "verdict": "NO_SHIP",
+  "ownerApproved": false,
+  "runtimeAdmitted": false,
+  "motionCoverage": [],
+  "scene": "ASTRAEON_ASSET_FIT_04",
+  "armatures": 0,
+  "sourceBody": {
+    "vertices": 6287,
+    "faces": 6324,
+    "quads": 6242,
+    "triangles": 82,
+    "boundaryEdges": 0,
+    "nonmanifoldEdges": 0,
+    "maxInheritedWeights": 6,
+    "minInheritedWeightSum": 0.08451110266469186,
+    "maxInheritedWeightSum": 1.2795428335666656
+  },
+  "canvas": [
+    320,
+    320
+  ],
+  "root": [
+    160,
+    264
+  ],
+  "runtimeScale": 0.5,
+  "runtimeCanvas": [
+    160,
+    160
+  ],
+  "runtimeRoot": [
+    80,
+    132
+  ],
+  "directions": {
+    "S": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        99,
+        94,
+        207,
+        267
+      ],
+      "alphaHeight": 174
+    },
+    "SW": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        101,
+        93,
+        208,
+        279
+      ],
+      "alphaHeight": 187
+    },
+    "W": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        127,
+        92,
+        191,
+        286
+      ],
+      "alphaHeight": 195
+    },
+    "NW": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        125,
+        91,
+        199,
+        285
+      ],
+      "alphaHeight": 195
+    },
+    "N": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        112,
+        97,
+        220,
+        274
+      ],
+      "alphaHeight": 178
+    },
+    "NE": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        111,
+        95,
+        218,
+        275
+      ],
+      "alphaHeight": 181
+    },
+    "E": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        128,
+        93,
+        192,
+        273
+      ],
+      "alphaHeight": 181
+    },
+    "SE": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        120,
+        93,
+        194,
+        270
+      ],
+      "alphaHeight": 178
+    }
+  },
+  "equippedLayerProof": {
+    "scope": "All eight static equipped frames; visible-only modules, not arbitrary substitution",
+    "order": [
+      "BaseBody",
+      "Hair",
+      "Outfit",
+      "Weapon",
+      "BackAccessory"
+    ],
+    "perDirection": {
+      "S": {
+        "coverageMismatchPixels": 3,
+        "opaqueMeanRGBError": 0.2954869044071388
+      },
+      "SW": {
+        "coverageMismatchPixels": 4,
+        "opaqueMeanRGBError": 0.25808755995509747
+      },
+      "W": {
+        "coverageMismatchPixels": 2,
+        "opaqueMeanRGBError": 0.41805412307843426
+      },
+      "NW": {
+        "coverageMismatchPixels": 1,
+        "opaqueMeanRGBError": 0.4042127096520402
+      },
+      "N": {
+        "coverageMismatchPixels": 5,
+        "opaqueMeanRGBError": 0.41317753975981825
+      },
+      "NE": {
+        "coverageMismatchPixels": 2,
+        "opaqueMeanRGBError": 0.3508251500272777
+      },
+      "E": {
+        "coverageMismatchPixels": 4,
+        "opaqueMeanRGBError": 0.4249465811965812
+      },
+      "SE": {
+        "coverageMismatchPixels": 0,
+        "opaqueMeanRGBError": 0.35020108547108664
+      }
+    }
+  },
+  "weaponFullCanvasPixels": {
+    "SE": {
+      "visible": 409,
+      "isolated": 437
+    },
+    "W": {
+      "visible": 147,
+      "isolated": 176
+    },
+    "NW": {
+      "visible": 0,
+      "isolated": 379
+    },
+    "N": {
+      "visible": 356,
+      "isolated": 498
+    }
+  },
+  "diagnosticWeaponGripCoverage": {
+    "SE": {
+      "isolated": 44534,
+      "hand-masked": 39976
+    },
+    "W": {
+      "isolated": 15087,
+      "hand-masked": 10008
+    },
+    "NW": {
+      "isolated": 32353,
+      "hand-masked": 26135
+    },
+    "N": {
+      "isolated": 47498,
+      "hand-masked": 37460
+    }
+  },
+  "preservation": {
+    "free-master-01": {
+      "filesChecked": 50,
+      "changedFiles": []
+    },
+    "reference-fit-01": {
+      "filesChecked": 19,
+      "changedFiles": []
+    },
+    "source-refinement-02": {
+      "filesChecked": 62,
+      "changedFiles": []
+    }
+  },
+  "defects": [
+    "Approved likeness/painted quality not reached",
+    "NW full-character blade occluded",
+    "Inherited triangles/poles need joint topology review",
+    "FBX inherited weights need normalization and deformation review",
+    "No custom rig or actions",
+    "Visible-only layers are pose/equipment-specific"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-11",
+  "downloadDate": "2026-10-10",
+  "branch": "character/production-factory-v2",
+  "authorization": "additional credential : i approve all free asset if you want to down load online for quick and quality build, but continue your work",
+  "useScope": "ASTRAEON project-local source studies and renders; no standalone asset redistribution or runtime admission",
+  "assets": [
+    {
+      "id": "quaternius-base-standard",
+      "creator": "Quaternius",
+      "page": "https://quaternius.com/packs/universalbasecharacters.html",
+      "downloadPage": "https://quaternius.itch.io/universal-base-characters",
+      "archive": ".character-tools/free-assets/quaternius-base-standard/source.zip",
+      "sha256": "fdbf1804c90dfc1ea03e992bff7da2dfd1a79318e13270a660180f9308455f40",
+      "archiveLicense": "CC0-1.0",
+      "licenseCopy": "LICENSE_BASE_STANDARD.txt",
+      "usedFiles": [
+        "Base Characters/Unity/Superhero_Male_FullBody.fbx",
+        "Base Characters/Godot - UE/Superhero_Male_FullBody.gltf",
+        "Base Characters/Textures/T_Eye_Brown.png",
+        "Base Characters/Textures/T_Eye_Normal.png"
+      ],
+      "role": "Modified FBX anatomy, native eyes and eyebrows; glTF materials inspected; original costume not taken from the superhero",
+      "imported": "Separate FBX/glTF inspection scenes; no external .blend loaded",
+      "bytes": 128968391,
+      "licenseSHA256": "0f4beaf0fe360a7732e58bbe3dbf60a2422367fbea60cb9ea4add968f383268e"
+    },
+    {
+      "id": "quaternius-fantasy-standard",
+      "creator": "Quaternius",
+      "page": "https://quaternius.com/packs/modularcharacteroutfitsfantasy.html",
+      "downloadPage": "https://quaternius.itch.io/modular-character-outfits-fantasy",
+      "archive": ".character-tools/free-assets/quaternius-fantasy-standard/source.zip",
+      "sha256": "c3468b18871cc8c8f05ab14df7712baf22cb9f389cbd870babf130e595187f70",
+      "archiveLicense": "CC0-1.0",
+      "licenseCopy": "LICENSE_FANTASY_STANDARD.txt",
+      "usedFiles": [
+        "Exports/FBX (Unity)/Outfits/Male_Ranger.fbx"
+      ],
+      "role": "Inspection only; cloned boots/legs stay hidden in the latest equipped character",
+      "freePackScope": "Ranger and Peasant; no Knight or paid Source package purchased",
+      "bytes": 294347394,
+      "licenseSHA256": "2202cc2f608c4210790b112e5f121bc2e7f8dced7b5b1c7f4be6203461bdebbb"
+    },
+    {
+      "id": "snow-v42",
+      "creator": "Blender Foundation / Blender Studio",
+      "page": "https://studio.blender.org/characters/snow/v4/",
+      "archive": ".character-tools/free-assets/snow-v42/snow_v42.zip",
+      "sha256": "98d58ef3a07083ede14140bc462cccb55d317062846aa0eb652d2e4a7ac422a6",
+      "observedLicense": "CC-BY-4.0",
+      "credit": "Snow Rig (CC) Blender Foundation | studio.blender.org",
+      "role": "Downloaded reference only; not loaded into Blender and not present in source renders",
+      "bytes": 111580346
+    },
+    {
+      "id": "girush-yw",
+      "creator": "Girush",
+      "page": "https://opengameart.org/content/base-rigged-stylized-humanoid-character-yw",
+      "archive": ".character-tools/free-assets/girush-yw/source.7z",
+      "sha256": "89b885ce4acb7663c236d4602b4f6e44e3384e153049f897f9b383ceee16aacb",
+      "observedLicense": "CC0-1.0 on author page and readme",
+      "role": "Downloaded reference only; no external .blend loaded; not used in source renders",
+      "bytes": 4577846
+    }
+  ],
+  "licenseObservations": {
+    "archiveAndPackPage": "The two Standard archive license files and pack pages identify CC0-1.0.",
+    "currentGenericSite": "https://quaternius.com/license.html",
+    "currentGenericSiteVersion": "QAL v1.0, updated 2026-08-28",
+    "difference": "QAL permits modifying and using assets in games/products, but restricts standalone original or modified asset redistribution. This differs from archive CC0 labels.",
+    "currentHandling": "Record both observations; keep archives and native working copy local; no standalone package publication. Do not infer that every Quaternius product is CC0."
+  },
+  "corrections": [
+    "The glTF eye-normal node referenced a nonexistent T_Eye_Normal_png.png. The current copied eye material loads the actual T_Eye_Normal.png and packs it. Original archives are unchanged.",
+    "FBX has up to six positive inherited influences and unnormalized sums. The inspected glTF four-influence limit does not certify the FBX source."
+  ],
+  "originalConcept": "../fresh-2d/candidate-01/candidate.png",
+  "originalConceptSHA256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
+  "paidJobs": [],
+  "paidDownloads": [],
+  "externalBlendLibrariesLoaded": [],
+  "runtimeAdmitted": false,
+  "ownerApproved": false
+}

@@ -1,6 +1,6 @@
 # Current character-production state
 
-10 October 2026. Branch: `character/production-factory-v2`.
+11 October 2026. Branch: `character/production-factory-v2`.
 
 ## Accepted
 
@@ -47,6 +47,58 @@ matrix still has empty new-character coverage. Concept approval remains valid;
 it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
+
+**Latest: authorized free anatomy fitting study, still NO-SHIP.**
+The owner approved downloading free assets on 10 October. Quaternius Standard
+FBX/glTF anatomy and the compatible free Fantasy clothing pack were downloaded,
+hashed and imported as data into separate inspection scenes. The archive files
+label CC0; the current generic site shows QAL with different redistribution
+terms. Both observations and creator credit are retained in
+`asset-fit-04/FREE_ASSET_PROVENANCE.json`; raw archives and the native working
+copy stay in the ignored local cache. Snow and Girush YW remain unloaded
+references. No paid downloads, external .blend libraries or provider jobs occurred.
+
+`asset-fit-04/` contains the new static body fitting, original editable costume
+surfaces, surface paint, anatomy clearance, continuous navy sleeves, a back
+cape, and a palm-roll/finger-root grip correction. Eight actual headings, five
+visible-only equipped layers per heading, matching SE/W/NW/N grip holdouts and
+equipment removals are recorded. The matching weapon layers omit covered grip
+pixels; full concealed anatomy stays in the editable source. Numeric
+reconstruction has small edge/color differences, not a zero-error certificate
+or arbitrary-substitution proof. The original approved concept and 131 files
+across the preserved earlier checkpoint manifests remain unchanged.
+
+The source still misses approved facial/hair likeness and painted finish;
+costume construction and NW full-character sword readability remain open.
+The body is closed with 6,242 quads plus 82 triangles. The FBX has up to six
+positive inherited influences with unnormalized sums, unlike the inspected
+four-influence glTF. These are static fitting guides, not an accepted bind.
+Joint topology, controls, weight/deformation QA and source acceptance remain
+required. This active scene has zero armatures/actions, coverage remains empty,
+and no runtime package has been admitted. The local Save Copy includes source03
+and separate free-asset inspection scenes; it is not a standalone asset release.
+
+**Latest: native UV paint study and free-asset inspection, still NO-SHIP.**
+The owner asked to iterate until the pipeline reaches the approved painting's
+quality, then explicitly authorized free online assets. New surface/material
+work is retained in `source-lookdev-03/`. Eight actual headings, matching grip
+diagnostics, source removal frames and SE visible-only layer checks exist. W
+and N now reveal blade pixels, but NW remains fully occluded. The face portrait
+projection and a generated four-view paint sheet failed internal review and
+are not active inputs. Native surface UVs use the saved built-in imagegen
+material atlas instead. Likeness, cape/cloth finish and overall quality remain
+below the approved painting; no source approval or action coverage is claimed.
+
+Professional free body/rig and costume assets are being inspected separately.
+Quaternius Standard glTF imported into an isolated inspection scene; welding
+duplicated UV seam vertices produced a closed body with at most four weights
+per vertex and a full finger skeleton. That is a technical asset observation,
+not acceptance of its superhero appearance. Archive license/provenance must
+remain attached to any derivative. Blender Studio Snow and Girush YW downloaded
+as references, but their .blend libraries are not loaded because MCP safe mode
+blocks them. Safe mode remains enabled. Paid jobs and runtime admission remain
+absent. Continue fitting a coherent original source; do not mass-produce classes
+or claim the source/lookdev experiments are the completed factory.
 
 **FRESH_SOURCE_REFINEMENT_INTERNAL / LOCAL_BLENDER_MCP_VERIFIED / PAID_PLAN_ON_HOLD.**
 
