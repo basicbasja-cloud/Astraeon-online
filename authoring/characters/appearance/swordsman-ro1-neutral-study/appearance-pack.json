@@ -1,0 +1,885 @@
+{
+  "schemaVersion": "1.1",
+  "packId": "swordsman-ro1-study-neutral-fit",
+  "status": "DEV_ONLY",
+  "headAppearanceModel": "HeadIncludesHair",
+  "source": {
+    "reference": "authoring/characters/builds/swordsman-ro1-rebuild-v2/neutral-fit.json",
+    "method": "Fresh original static layer fit; no rejected pose art reused"
+  },
+  "compatibleMotionTemplates": [
+    "swordsman-ro1-study-neutral-fit"
+  ],
+  "registration": {
+    "canvas": [
+      320,
+      320
+    ],
+    "root": {
+      "x": 160,
+      "y": 264,
+      "rotation": 0,
+      "scale": 1
+    },
+    "referenceHeight": 176,
+    "mirroring": "none"
+  },
+  "mirroring": "none",
+  "slots": {
+    "BodyWithOutfit": {
+      "required": true,
+      "layers": [
+        "Body"
+      ]
+    },
+    "Head": {
+      "required": true,
+      "layers": [
+        "HeadBase"
+      ]
+    }
+  },
+  "defaultParts": {
+    "BodyWithOutfit": "body-study",
+    "Head": "head-study"
+  },
+  "parts": {
+    "body-study": {
+      "slot": "BodyWithOutfit",
+      "mode": "BODY_SYNC",
+      "space": "canvas",
+      "contractId": "swordsman-ro1-study-neutral-body",
+      "timelines": {
+        "Idle": {
+          "S": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      0,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "S"
+                  }
+                }
+              }
+            ]
+          },
+          "SW": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      320,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "SW"
+                  }
+                }
+              }
+            ]
+          },
+          "W": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      640,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "W"
+                  }
+                }
+              }
+            ]
+          },
+          "NW": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      960,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "NW"
+                  }
+                }
+              }
+            ]
+          },
+          "N": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      1280,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "N"
+                  }
+                }
+              }
+            ]
+          },
+          "NE": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      1600,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "NE"
+                  }
+                }
+              }
+            ]
+          },
+          "E": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      1920,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "E"
+                  }
+                }
+              }
+            ]
+          },
+          "SE": {
+            "frames": [
+              {
+                "layers": {
+                  "Body": {
+                    "atlasId": "body",
+                    "rect": [
+                      0,
+                      2240,
+                      320,
+                      320
+                    ],
+                    "sourceDirection": "SE"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "head-study": {
+      "slot": "Head",
+      "mode": "BODY_SYNC",
+      "space": "attachment",
+      "anchor": "head",
+      "timelines": {
+        "Idle": {
+          "S": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      0,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "S"
+                  }
+                }
+              }
+            ]
+          },
+          "SW": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      320,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "SW"
+                  }
+                }
+              }
+            ]
+          },
+          "W": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      640,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "W"
+                  }
+                }
+              }
+            ]
+          },
+          "NW": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      960,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "NW"
+                  }
+                }
+              }
+            ]
+          },
+          "N": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      1280,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "N"
+                  }
+                }
+              }
+            ]
+          },
+          "NE": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      1600,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "NE"
+                  }
+                }
+              }
+            ]
+          },
+          "E": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      1920,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "E"
+                  }
+                }
+              }
+            ]
+          },
+          "SE": {
+            "frames": [
+              {
+                "layers": {
+                  "HeadBase": {
+                    "atlasId": "head",
+                    "rect": [
+                      0,
+                      2240,
+                      320,
+                      320
+                    ],
+                    "pivot": [
+                      160,
+                      160
+                    ],
+                    "trim": {
+                      "sourceSize": [
+                        320,
+                        320
+                      ],
+                      "offset": [
+                        0,
+                        0
+                      ]
+                    },
+                    "sockets": {
+                      "hair": {
+                        "x": 0,
+                        "y": 0,
+                        "rotation": 0,
+                        "scale": 1
+                      },
+                      "headgear": {
+                        "x": 0,
+                        "y": -35,
+                        "rotation": 0,
+                        "scale": 1
+                      }
+                    },
+                    "sourceDirection": "SE"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "atlases": {
+    "body": {
+      "file": "assets/characters/swordsman-ro1-neutral-study/body.png",
+      "width": 320,
+      "height": 2560
+    },
+    "head": {
+      "file": "assets/characters/swordsman-ro1-neutral-study/head.png",
+      "width": 320,
+      "height": 2560
+    }
+  },
+  "bodyContract": {
+    "contractId": "swordsman-ro1-study-neutral-body",
+    "model": "BodyWithOutfit+Head",
+    "registration": {
+      "canvas": [
+        320,
+        320
+      ],
+      "root": {
+        "x": 160,
+        "y": 264,
+        "rotation": 0,
+        "scale": 1
+      },
+      "referenceHeight": 176,
+      "mirroring": "none"
+    },
+    "directions": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ],
+    "actions": [
+      "Idle"
+    ],
+    "timeline": {
+      "Idle": {
+        "S": [
+          1000
+        ],
+        "SW": [
+          1000
+        ],
+        "W": [
+          1000
+        ],
+        "NW": [
+          1000
+        ],
+        "N": [
+          1000
+        ],
+        "NE": [
+          1000
+        ],
+        "E": [
+          1000
+        ],
+        "SE": [
+          1000
+        ]
+      }
+    },
+    "sockets": [
+      "head",
+      "mainHand",
+      "offHand",
+      "back"
+    ],
+    "anchorRegistration": {
+      "Idle": {
+        "S": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "SW": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "W": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "NW": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "N": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "NE": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "E": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ],
+        "SE": [
+          {
+            "head": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "mainHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "offHand": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            },
+            "back": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scale": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -107,12 +107,24 @@ class ReferenceIntakeTests(unittest.TestCase):
     def test_debug_raster_rebuild_is_byte_deterministic(self):
         with tempfile.TemporaryDirectory() as folder:
             subprocess.run([sys.executable,str(ROOT/"tools/build_assembly_debug.py"),"--output-root",folder],check=True,capture_output=True)
+            second=Path(folder)/"repeat"
+            subprocess.run([sys.executable,str(ROOT/"tools/build_assembly_debug.py"),"--output-root",str(second)],check=True,capture_output=True)
             manifest=json.loads((ROOT/"authoring/characters/builds/assembly-debug/build-manifest.json").read_text())
             for name,digest in manifest["runtimeAtlases"].items():
                 rebuilt=Path(folder)/"assets/characters/assembly-debug-v1"/(name+".png")
-                self.assertEqual(hashlib.sha256(rebuilt.read_bytes()).hexdigest(),digest,name)
+                original=ROOT/"assets/characters/assembly-debug-v1"/(name+".png")
+                self.assertEqual(hashlib.sha256(original.read_bytes()).hexdigest(),digest,name)
+                # PNG compression bytes differ across zlib/Pillow builds. Preserve
+                # the checked-in pixel oracle and require same-environment repeat
+                # bytes, instead of silently refreshing a platform-specific hash.
+                from PIL import Image
+                with Image.open(original) as a, Image.open(rebuilt) as b:
+                    self.assertEqual(a.size,b.size,name)
+                    self.assertEqual(a.convert('RGBA').tobytes(),b.convert('RGBA').tobytes(),name)
+                self.assertEqual(rebuilt.read_bytes(),(second/"assets/characters/assembly-debug-v1"/(name+".png")).read_bytes(),name)
             original=ROOT/manifest["motionTemplate"]
-            self.assertEqual(original.read_bytes(),(Path(folder)/manifest["motionTemplate"]).read_bytes())
+            self.assertEqual(json.loads(original.read_text()),json.loads((Path(folder)/manifest["motionTemplate"]).read_text()))
+            self.assertEqual((Path(folder)/manifest["motionTemplate"]).read_bytes(),(second/manifest["motionTemplate"]).read_bytes())
 
 
 if __name__=="__main__":unittest.main()

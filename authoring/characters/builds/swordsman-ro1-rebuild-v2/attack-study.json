@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "action": "BasicAttack",
+  "motionTemplate": "authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json",
+  "sourceCell": [
+    512,
+    512
+  ],
+  "sharedScale": 0.48,
+  "reviewBleedX": 0,
+  "phases": [
+    "ready",
+    "anticipation",
+    "acceleration",
+    "contact",
+    "followThrough",
+    "recovery"
+  ],
+  "timelineToPose": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    5,
+    5
+  ],
+  "sheets": {
+    "S": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/south-six-phase-candidate.png",
+      "root": [
+        256,
+        490
+      ]
+    },
+    "SW": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/southwest-six-phase-candidate.png",
+      "root": [
+        256,
+        490
+      ]
+    },
+    "W": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/west-six-phase-candidate.png",
+      "root": [
+        256,
+        490
+      ]
+    },
+    "NW": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/northwest-six-phase-candidate.png",
+      "root": [
+        256,
+        490
+      ]
+    },
+    "N": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/north-six-phase-candidate.png",
+      "root": [
+        256,
+        490
+      ]
+    },
+    "NE": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/northeast-six-phase-padded.png",
+      "root": [
+        256,
+        468
+      ],
+      "scale": 0.6
+    },
+    "E": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/east-six-phase-candidate.png",
+      "root": [
+        256,
+        490
+      ]
+    },
+    "SE": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/southeast-six-phase-padded.png",
+      "root": [
+        256,
+        416
+      ],
+      "scale": 0.75
+    }
+  },
+  "alphaFloor": 16
+}

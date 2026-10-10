@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Character pose study review</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui;background:#14212b;color:#eef3f6}body{max-width:1320px;margin:24px auto;padding:0 18px}h1{font-size:24px;margin-bottom:8px}p{max-width:90ch;line-height:1.5}a{color:#8cd4ff}nav{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}button,select{font:inherit;padding:9px;border:1px solid #647887;background:#293d4d;color:white;border-radius:5px}img{display:block;width:100%;height:auto;border:1px solid #486070;border-radius:8px}.notice{padding:14px;background:#483923;border-left:4px solid #e5b55b}li{margin:8px 0}#status{font-weight:600}
+</style>
+<h1>Character pose study</h1>
+<p class="notice">Combined artwork study. This is not the reusable production master. Body, complete Head+Hair and WeaponPoseSet still need separate validated resources. Six painted poses are held on the shared animation clock.</p>
+<nav><button id="normal">Play 1×</button><button id="half">Play ½×</button><label>Inspect pose <select id="pose"><option value="0">Ready</option><option value="1">Anticipation</option><option value="2">Acceleration</option><option value="3">Contact</option><option value="4">Follow-through</option><option value="5">Recovery</option></select></label></nav>
+<p id="status" role="status">Loading study…</p><img id="board" alt="All eight original character directions, current attack pose">
+<p>Fixed registration exposes source-art movement. Root marks are visible below each figure. Check feet, shoulders, hand ownership, blade angle, rear-view occlusion and the recovery transition.</p>
+<ul id="findings"></ul>
+<p><a href="character-baseline-review.html">RO1 reference workbench</a> · <a href="character-production-review.html">Modular production review</a></p>
+<script>
+'use strict';
+const folder=new URLSearchParams(location.search).get('study')||'docs/review/character-ro1-rebuild-v2/attack-study';
+const board=document.querySelector('#board'),status=document.querySelector('#status');
+let receipt;
+function show(file,label){board.src=folder+'/'+file;status.textContent=label;}
+fetch(folder+'/study-validation.json').then(r=>{if(!r.ok)throw Error('Study receipt unavailable');return r.json()}).then(r=>{
+ receipt=r;
+ document.querySelector('#normal').onclick=()=>show(r.action+'-normal.png','1× · '+r.durationMs+' ms · eight directions · STUDY ONLY');
+ document.querySelector('#half').onclick=()=>show(r.action+'-half.png','½× · '+r.durationMs*2+' ms · STUDY ONLY');
+ document.querySelector('#pose').onchange=e=>show('pose-'+e.target.value+'.png','Paused · '+e.target.selectedOptions[0].textContent+' · STUDY ONLY');
+ for(const f of r.findings){const li=document.createElement('li');li.textContent=f.severity+' — '+f.direction+' pose '+f.pose+': '+f.message;document.querySelector('#findings').append(li);}
+ for(const limitation of r.limitations){const li=document.createElement('li');li.textContent=limitation;document.querySelector('#findings').append(li);}
+ document.querySelector('#normal').click();
+ window.characterPoseStudy={getState:()=>({status:status.textContent,source:board.getAttribute('src'),directions:r.directions,visualApproval:false,blockingFindings:r.findings.length})};
+}).catch(e=>{status.textContent=e.message;});
+</script></html>

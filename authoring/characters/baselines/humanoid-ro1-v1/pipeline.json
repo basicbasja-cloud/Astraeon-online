@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "baselineId": "humanoid-ro1-v1",
+  "revision": 1,
+  "status": "DRAFT",
+  "masterCharacter": "swordsman",
+  "masterApproved": false,
+  "directions": ["S", "SW", "W", "NW", "N", "NE", "E", "SE"],
+  "actions": ["Idle", "Walk", "BasicAttack"],
+  "motionTemplate": "authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json",
+  "registration": {"canvas": [320, 320], "root": [160, 264], "mirroring": "none"},
+  "slots": {
+    "BodyWithOutfit": {"required": true, "layers": ["Body"]},
+    "Head": {"required": true, "layers": ["HeadBase"], "includesHair": true, "hairstyleSelection": "complete head resource"},
+    "MainHand": {"required": false, "layers": ["MainHand"], "contract": "WeaponPoseSet"},
+    "OffHand": {"required": false, "layers": ["OffHand"]},
+    "Headgear": {"required": false, "layers": ["HeadgearLower", "HeadgearMiddle", "HeadgearTop"], "parent": "Head"},
+    "Garment": {"required": false, "layers": ["GarmentBack", "GarmentFront"]},
+    "WeaponSlash": {"required": false, "layers": ["WeaponSlash"]},
+    "CosmeticFX": {"required": false, "layers": ["CosmeticFX"]}
+  },
+  "normalization": {
+    "resample": "LANCZOS",
+    "scalePolicy": "one explicit scale for the whole source sheet",
+    "rootPolicy": "authored source origin; never auto-fit alpha bounds per frame",
+    "clipping": "reject",
+    "background": "RGBA transparent",
+    "geometryDeformation": "prohibited"
+  },
+  "review": {
+    "requiredModes": ["Body only", "Weapon only", "Body + Weapon", "Grip debug", "Full composite"],
+    "requiredChecks": ["silhouette", "head-neck", "shoulder-elbow-wrist", "painted-hand-contact", "weapon-perspective", "tip-arc", "occlusion", "recovery", "eight-distinct-projections"],
+    "defaultDebug": false,
+    "ownerApprovalRequiredForMaster": true
+  }
+}
