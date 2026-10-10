@@ -1,0 +1,223 @@
+{
+  "scene": "ASTRAEON_SOURCE_REFINEMENT_02",
+  "vertices": 87356,
+  "faces": 87362,
+  "connectedComponents": [
+    87356
+  ],
+  "boundaryEdges": 0,
+  "nonManifoldEdges": 0,
+  "looseVertices": 0,
+  "quads": 87362,
+  "triangles": 0,
+  "ngons": 0,
+  "armatures": 0,
+  "cameraOrthographic": true,
+  "canvas": [
+    320,
+    320
+  ],
+  "root": [
+    160,
+    264
+  ],
+  "referenceNormalizedHeight": 176,
+  "cameraElevationDegrees": 25,
+  "cameraElevationIsInferred": true,
+  "bladeTipInferredDepthMeters": -0.4,
+  "directions": {
+    "S": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        113,
+        95,
+        204,
+        267
+      ],
+      "alphaHeight": 173
+    },
+    "SW": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        117,
+        93,
+        209,
+        277
+      ],
+      "alphaHeight": 185
+    },
+    "W": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        125,
+        92,
+        202,
+        281
+      ],
+      "alphaHeight": 190
+    },
+    "NW": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        124,
+        92,
+        218,
+        278
+      ],
+      "alphaHeight": 187
+    },
+    "N": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        115,
+        97,
+        206,
+        271
+      ],
+      "alphaHeight": 175
+    },
+    "NE": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        110,
+        95,
+        202,
+        273
+      ],
+      "alphaHeight": 179
+    },
+    "E": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        117,
+        94,
+        195,
+        271
+      ],
+      "alphaHeight": 178
+    },
+    "SE": {
+      "canvas": [
+        320,
+        320
+      ],
+      "alphaBounds": [
+        101,
+        93,
+        195,
+        269
+      ],
+      "alphaHeight": 177
+    }
+  },
+  "diagnosticWeaponPixelCounts": {
+    "SE": {
+      "isolated": 39560,
+      "hand-masked": 31364,
+      "visible": 29559,
+      "removedByHandAndBracer": 8196,
+      "productionVisiblePixels": 333,
+      "productionIsolatedPixels": 389
+    },
+    "W": {
+      "isolated": 17568,
+      "hand-masked": 13368,
+      "visible": 1134,
+      "removedByHandAndBracer": 4200,
+      "productionVisiblePixels": 38,
+      "productionIsolatedPixels": 133
+    },
+    "NW": {
+      "isolated": 24558,
+      "hand-masked": 18029,
+      "visible": 0,
+      "removedByHandAndBracer": 6529,
+      "productionVisiblePixels": 0,
+      "productionIsolatedPixels": 161
+    },
+    "N": {
+      "isolated": 35949,
+      "hand-masked": 25702,
+      "visible": 0,
+      "removedByHandAndBracer": 10247,
+      "productionVisiblePixels": 0,
+      "productionIsolatedPixels": 212
+    }
+  },
+  "gloveTopology": {
+    "Fitted_Glove_R": {
+      "vertices": 9434,
+      "faces": 9434,
+      "connectedComponents": [
+        9434
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "looseVertices": 0,
+      "deformationReady": false,
+      "skinned": false
+    },
+    "Fitted_Glove_L": {
+      "vertices": 7252,
+      "faces": 7252,
+      "connectedComponents": [
+        7252
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "looseVertices": 0,
+      "deformationReady": false,
+      "skinned": false
+    }
+  },
+  "deformationReady": false,
+  "skinned": false,
+  "ownerApproved": false,
+  "runtimeAdmitted": false,
+  "motionCoverage": [],
+  "verdict": "NO_SHIP",
+  "status": "INTERNAL_SOURCE_REFINEMENT",
+  "gripType": "Static modeled finger/thumb geometry; no fitted finger controls",
+  "equipmentLayers": "Five equipped visible-only layers, SE only; hidden surfaces require rebake",
+  "meshPurpose": "Voxel volume source for proportion, pose and grip; authored retopology required",
+  "visualDefects": [
+    "Preliminary head and hair differ from approved painting",
+    "Garment classification leaves jagged seam edges",
+    "Scarf, armor and boot forms need sculpted detail and fitting cleanup",
+    "Cape and torso obscure the grip in rear views; complete sword readability remains unresolved",
+    "Side and rear inferred depth is unapproved",
+    "Materials are structural colors, not the painted sprite finish"
+  ],
+  "preservation": {
+    "free-master-01": {
+      "checkedFiles": 50,
+      "changedFiles": []
+    },
+    "reference-fit-01": {
+      "checkedFiles": 19,
+      "changedFiles": []
+    }
+  },
+  "approvedConceptSHA256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b"
+}

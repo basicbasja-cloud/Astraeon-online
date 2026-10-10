@@ -48,7 +48,32 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**FRESH_PROPORTION_POSE_BLOCKOUT_UNAPPROVED / LOCAL_BLENDER_MCP_VERIFIED / PAID_PLAN_ON_HOLD.**
+**FRESH_SOURCE_REFINEMENT_INTERNAL / LOCAL_BLENDER_MCP_VERIFIED / PAID_PLAN_ON_HOLD.**
+
+The owner reiterated continued work while asking explanatory questions. The
+fresh source is now developed under
+`authoring/characters/swordsman-production/source-refinement-02/`: modeled
+head/hair, physical wrapped fingers and thumb, fitted garment shells and eight
+static views. The review includes complete and isolated SE/W/NW/N grips, weapon
+holdout coverage, five equipped visible-only SE layers, separately baked outfit
+removal, and an alternate blade at unchanged camera/root/pose. Those layers
+reconstruct one equipped view with zero coverage mismatches and a small color
+difference; they do not retain
+hidden body pixels for arbitrary runtime substitution. NW/N complete production
+frames have no visible weapon pixels because body and cape occlude them; isolated
+contact does not resolve that readability issue. See the new README/QA/validation.
+
+This remains an internal NO-SHIP source study, not a newly approved dedicated
+painted candidate. Head/hair likeness, scarf/garment fitting, seams, detail and
+rear readability need work. The body is a closed voxel volume with 87,356
+vertices and 87,362 quads, not authored deformation topology. There are zero
+armatures, no weights, no fitted finger controls and no new motion coverage.
+Retopology and topology QA must precede rigging. The concept and all files in the
+preserved rejected pilot and first fresh checkpoint manifests remain unchanged.
+No paid job, rejected source import, or runtime admission occurred. Shared
+humanoid anatomy, attachment contracts, camera/export and eventual rig can serve
+other classes; class equipment, proportions where needed, grips and actions
+still need their own authoring and validation. This base is not canonical yet.
 
 After restart, local Blender MCP tools are available and connected. The owner
 said "or let follow our plan". A new reference-calibrated volume study is saved
