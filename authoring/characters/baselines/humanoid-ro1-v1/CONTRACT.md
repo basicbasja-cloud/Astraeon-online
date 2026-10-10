@@ -97,6 +97,8 @@ art or declare a female/class artwork set finished.
 | Review original pose studies | `tools/export_character_pose_study.py` and `character-pose-study.html` | All eight views on the shared clock; reports source-boundary failures and never emits a production pack |
 | Normalize original art | `tools/normalize_character_art.py` | Deterministic atlas + SHA256/layout receipt; rejects clipped/cross-cell art, per-frame transforms, unexplained reuse and private source pixels |
 | Review any appearance pack | `character-production-review.html?motion=PATH&appearance=PATH` | Timeline-preserving part swaps, layer isolation, grip/attachment overlays |
+| Play any complete candidate | `character-playable.html?motion=PATH&appearance=PATH` | Eight-direction movement, finite attack completion, time-preserving swaps; rejects missing actions and explicitly rejected art |
+| Fit partial independent parts | `character-layer-fit.html?config=PATH` | Body/head/weapon isolation, authored neck/grip and body-owned finger overlap; never pretends one direction is a full pack |
 | Inspect geometry | `character-production-validation.js` | Independent grip/equipment/tip measurements and non-mutating arc warnings |
 | Audit planted stance | `tools/audit_character_stance.py` | Sole drift from artist-isolated boot regions; reports failures without transforming source pixels |
 | Export any appearance pack | `tools/export_character_production_review.py` | Eight-direction normal/half-speed GIFs, exact-time APNGs, per-direction boards and export receipt |

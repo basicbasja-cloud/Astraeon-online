@@ -1,0 +1,58 @@
+{
+  "status": "PARTIAL_STUDY",
+  "visualApproval": false,
+  "config": "authoring/characters/builds/swordsman-ro1-rebuild-v2/south-layer-fit.json",
+  "description": {
+    "direction": "S",
+    "action": "BasicAttack",
+    "timing": [
+      20,
+      20,
+      20,
+      10,
+      10,
+      45,
+      45,
+      25,
+      25,
+      30,
+      15,
+      15,
+      30,
+      30,
+      30,
+      80
+    ],
+    "timelineToPose": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5
+    ],
+    "poseNames": [
+      "ready",
+      "anticipation",
+      "acceleration",
+      "contact",
+      "followThrough",
+      "recovery"
+    ]
+  },
+  "browserErrors": [],
+  "limitations": [
+    "Only explicitly authored direction/action; never extrapolates production coverage",
+    "Numeric export success does not approve source anatomy or registration"
+  ]
+}

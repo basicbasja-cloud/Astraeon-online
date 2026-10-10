@@ -1,0 +1,319 @@
+{
+  "status": "PARTIAL_STUDY",
+  "visualApproval": false,
+  "direction": "S",
+  "action": "BasicAttack",
+  "motionTemplate": "authoring/characters/motion-templates/ro1-swordsman-male/motion-template.json",
+  "root": [
+    160,
+    264
+  ],
+  "bodyRoot": [
+    256,
+    480
+  ],
+  "bodyScale": 0.38,
+  "headScale": 1,
+  "weaponScale": 0.32,
+  "headRect": [
+    0,
+    0,
+    320,
+    320
+  ],
+  "headPivot": [
+    160,
+    160
+  ],
+  "sources": {
+    "body": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/south-body-attack-cutout.png"
+    },
+    "head": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/normalized-head/atlas.png"
+    },
+    "weapon": {
+      "file": "authoring/characters/builds/swordsman-ro1-rebuild-v2/south-weapon-pose-candidate.png"
+    }
+  },
+  "timelineToPose": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    5,
+    5
+  ],
+  "poses": [
+    {
+      "name": "ready",
+      "cell": [
+        0,
+        0
+      ],
+      "neck": [
+        266,
+        151
+      ],
+      "hand": [
+        139,
+        80
+      ],
+      "weaponGrip": [
+        139,
+        251
+      ],
+      "fingers": [
+        [
+          121,
+          66
+        ],
+        [
+          157,
+          66
+        ],
+        [
+          157,
+          94
+        ],
+        [
+          121,
+          94
+        ]
+      ],
+      "drawOrder": [
+        "body",
+        "head",
+        "weapon"
+      ]
+    },
+    {
+      "name": "anticipation",
+      "cell": [
+        1,
+        0
+      ],
+      "neck": [
+        281,
+        154
+      ],
+      "hand": [
+        182,
+        92
+      ],
+      "weaponGrip": [
+        140,
+        251
+      ],
+      "fingers": [
+        [
+          164,
+          78
+        ],
+        [
+          200,
+          78
+        ],
+        [
+          200,
+          106
+        ],
+        [
+          164,
+          106
+        ]
+      ],
+      "drawOrder": [
+        "body",
+        "weapon",
+        "head"
+      ]
+    },
+    {
+      "name": "acceleration",
+      "cell": [
+        2,
+        0
+      ],
+      "neck": [
+        290,
+        163
+      ],
+      "hand": [
+        195,
+        119
+      ],
+      "weaponGrip": [
+        248,
+        366
+      ],
+      "fingers": [
+        [
+          177,
+          105
+        ],
+        [
+          213,
+          105
+        ],
+        [
+          213,
+          133
+        ],
+        [
+          177,
+          133
+        ]
+      ],
+      "drawOrder": [
+        "body",
+        "head",
+        "weapon"
+      ]
+    },
+    {
+      "name": "contact",
+      "cell": [
+        0,
+        1
+      ],
+      "neck": [
+        270,
+        119
+      ],
+      "hand": [
+        123,
+        275
+      ],
+      "weaponGrip": [
+        295,
+        211
+      ],
+      "fingers": [
+        [
+          105,
+          261
+        ],
+        [
+          141,
+          261
+        ],
+        [
+          141,
+          289
+        ],
+        [
+          105,
+          289
+        ]
+      ],
+      "drawOrder": [
+        "body",
+        "head",
+        "weapon"
+      ]
+    },
+    {
+      "name": "followThrough",
+      "cell": [
+        1,
+        1
+      ],
+      "neck": [
+        294,
+        119
+      ],
+      "hand": [
+        141,
+        252
+      ],
+      "weaponGrip": [
+        318,
+        208
+      ],
+      "fingers": [
+        [
+          123,
+          238
+        ],
+        [
+          159,
+          238
+        ],
+        [
+          159,
+          266
+        ],
+        [
+          123,
+          266
+        ]
+      ],
+      "drawOrder": [
+        "body",
+        "head",
+        "weapon"
+      ]
+    },
+    {
+      "name": "recovery",
+      "cell": [
+        2,
+        1
+      ],
+      "neck": [
+        300,
+        120
+      ],
+      "hand": [
+        172,
+        58
+      ],
+      "weaponGrip": [
+        183,
+        240
+      ],
+      "fingers": [
+        [
+          154,
+          44
+        ],
+        [
+          190,
+          44
+        ],
+        [
+          190,
+          72
+        ],
+        [
+          154,
+          72
+        ]
+      ],
+      "drawOrder": [
+        "body",
+        "head",
+        "weapon"
+      ]
+    }
+  ],
+  "limitations": [
+    "South only; not production action coverage",
+    "Source stance and recovery failures unresolved",
+    "Neck and grip landmarks visually authored, not raw RO joints",
+    "Foreground finger masks are draft; inspect handle contact",
+    "No owner approval",
+    "Background-removal generation changed body scale and placement; remeasured draft registration, not pixel-preserving extraction"
+  ]
+}

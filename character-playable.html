@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Character movement and equipment test</title>
+<style>:root{color-scheme:dark;font:16px system-ui;background:#14212b;color:#edf3f7}body{max-width:1100px;margin:20px auto;padding:0 16px}h1{font-size:23px}canvas{width:100%;background:#283e47;border:1px solid #637d83;touch-action:none}p{line-height:1.5}#parts{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}label{display:flex;flex-direction:column;gap:4px}select,button{font:inherit;padding:8px;background:#263747;color:white;border:1px solid #6b8497}#touch{display:flex;gap:12px;margin:12px 0}pre{white-space:pre-wrap;font-size:12px}a{color:#96dbff}</style>
+<h1>Character movement and equipment test</h1>
+<p>WASD or arrows to move · Space to attack · Pointer: hold a destination to move · Release to stop. Equipment changes preserve the current animation. This isolated test does not change game saves or deal damage.</p>
+<p id="status" role="status">Supply ?motion=PATH&amp;appearance=PATH for a complete Idle / Walk / BasicAttack pack. Incomplete studies are rejected.</p>
+<div id="parts"></div><canvas id="stage" width="1000" height="600" tabindex="0" aria-label="Playable character test arena"></canvas>
+<div id="touch"><button id="attack">Attack</button><button id="stop">Stop</button></div><pre id="diagnostics"></pre>
+<script src="character-motion-template.js"></script><script src="character-assembly.js"></script><script src="character-playable-controller.js"></script><script src="proof/character-playable.js"></script></html>
