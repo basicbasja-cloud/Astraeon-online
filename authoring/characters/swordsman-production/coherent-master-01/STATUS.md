@@ -1,6 +1,6 @@
 # Coherent master source 01
 
-Status: MODEL_INPUT_PREPARED / AWAITING_ACCOUNT_AND_SPEND_DECISION.
+Status: MODEL_INPUT_PREPARED / PAID_PLAN_ON_HOLD / FREE_ROUTE_EVALUATION.
 No new model, rig or production approval yet.
 
 The owner authorized proceeding with the revised source route on 10 October 2026.
@@ -25,3 +25,8 @@ Prompts and native generation provenance are in `source-spec.json`.
 Tripo v3.1 model, estimated at 30 credits. `GENERATION_PLAN.md` describes its scope.
 No provider model task has been submitted. Device login was started for the
 account holder; do not store its temporary authorization code in production data.
+
+The owner subsequently asked for a free way. The Tripo job is on hold; do not
+submit on the basis of the earlier general "Go for it". The free Blender/MPFB
+source route is described in `docs/character-factory/FREE_SOURCE_ROUTE.md`.
+No free-route source mesh or addon compatibility has been proved yet.

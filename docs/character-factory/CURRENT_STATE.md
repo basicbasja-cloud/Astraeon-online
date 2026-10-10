@@ -48,7 +48,13 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
-**MODEL_INPUT_PREPARED / AWAITING_ACCOUNT_AND_SPEND_DECISION.** The owner said
+**FREE_ROUTE_EVALUATION / PAID_PLAN_ON_HOLD.** The owner subsequently asked whether
+a free way is available. [Free-route feasibility](FREE_SOURCE_ROUTE.md) recommends
+a coherent MPFB/MakeHuman core mesh with Blender modeling and painted finishing.
+Core assets are CC0; actual addon compatibility and approved-character quality
+remain untested. No new addon, model weights or mesh were downloaded in this check.
+
+The earlier model input remains prepared. The owner said
 "Go for it" after the revised research. One coherent front modeling reference
 and an exact one-call Tripo plan are prepared in
 `authoring/characters/swordsman-production/coherent-master-01/`.
@@ -58,7 +64,8 @@ one targeted correction was saved. Neither reference is accepted production art.
 The CLI dry run is valid for one standard-textured v3.1 model, estimated at
 30 credits. The proposed ceiling is 30 credits, with no paid chain or retries.
 Device account authorization was started; account connection and explicit
-spend approval are pending. No model-generation task has been submitted.
+spend approval were requested, but the paid plan is now on hold while the free
+route is considered. No model-generation task has been submitted.
 Read [revised research](RESEARCH_COHERENT_SPRITE_AUTHORING_V2.md) for the source
 route; it supersedes generated limb parts and a shared cutout rig.
 
