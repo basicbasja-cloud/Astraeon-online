@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASTRAEON | Painted pose study</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#17232f;color:#e8eef4;font:15px/1.55 system-ui,sans-serif}main{max-width:1420px;margin:auto;padding:24px}h1{font-size:25px;margin:0}h2{font-size:19px;margin:28px 0 8px}p{max-width:950px;color:#c2cdd7}a{color:#aad5ff}.badge{display:inline-block;padding:4px 10px;background:#61432b;border-radius:6px;margin-top:12px}fieldset{border:1px solid #526274;display:flex;flex-wrap:wrap;gap:16px;padding:12px;margin:18px 0}select,button{font:inherit;color:inherit;background:#293a4a;border:1px solid #708094;border-radius:5px;padding:5px}label{display:flex;gap:7px;align-items:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.card{padding:14px;background:#233341;border:1px solid #405565;border-radius:9px;min-width:0}.card h3{font-size:16px;margin:0}.card p{font-size:13px;margin:8px 0}.viewport{overflow:auto;text-align:center;margin-top:10px}canvas{display:block;margin:auto;background:repeating-conic-gradient(#283542 0% 25%,#303f4c 0% 50%) 50% / 20px 20px;max-width:100%;height:auto}.metrics{font-size:13px;color:#c2cdd7;white-space:pre-wrap}.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.guide-grid canvas{width:160px;height:160px}#load-status{font-size:13px;color:#a9e7bb}footer{margin:24px 0;color:#b8c6d3;font-size:13px}
+</style>
+<style>.grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}.card .note{min-height:4.65em}canvas{max-width:none}</style>
+<main>
+<h1>ASTRAEON · Painted pose study</h1>
+<span class="badge">Art and pose study · unapproved · outside production atlases</span>
+<p>Blender establishes the pose, camera and attachment. Painting must preserve those while matching the approved design. Compare the full canvases at a common scale; each image keeps its original framing.</p>
+<fieldset><legend>Compare registration and readability</legend>
+<label>Frame size <select id="frame-size"><option value="160">160 px</option><option value="320" selected>320 px</option><option value="640">640 px</option></select></label>
+<label><input id="joints" type="checkbox"> Blender joint overlay</label>
+<label><input id="ghost" type="checkbox"> Blender silhouette overlay</label>
+<label><input id="light" type="checkbox"> Light background</label>
+</fieldset>
+<div id="load-status">Loading unchanged image files…</div>
+<div class="grid" id="comparisons"></div>
+<h2>One original idle pose · eight camera headings</h2>
+<p>These are pose guides from the same Blender rig. They have no painted finish or production motion approval. The guide's right wrist is neutral and the measured sword axis is 90° to the forearm.</p>
+<div class="guide-grid" id="guides"></div>
+<h2>What must pass before this becomes a sprite frame</h2>
+<p>Pose and anchor agreement, natural closed grip, approved proportions and painted rendering, clean transparency, and readability in the game. Eight directions and connected animations need the same consistency. Complete equipment layers must include hidden surfaces and remain registered during swaps.</p>
+<footer><a href="README.md">Study notes</a> · <a href="paint-study-audit.json">Measurements and image hashes</a> · <a href="pose-guide.json">Blender pose receipt</a> · <a href="ro-pose-paint-prompt.txt">Paint prompt</a>. No approval is recorded by this viewer.</footer>
+</main>
+<script type="module">
+const [pose,audit]=await Promise.all(['pose-guide.json','paint-study-audit.json'].map(async url=>{const r=await fetch(`${url}?checkpoint=registration-03`,{cache:'no-store'});if(!r.ok)throw Error(`${url}: ${r.status}`);return r.json()}));
+const entries=[
+ ['Blender · compact idle guide','ro-idle-guide-SE.png','Pose and registration authority for this trial.'],
+ ['Paint · registration correction','painted-se-registration-pilot.png','Targeted framing correction. Check remaining scale, ground and joint drift. Unapproved.'],
+ ['Paint · RO pose pilot','painted-se-ro-pose-pilot.png','Check the bent arm and sword direction against the guide. No production approval.'],
+ ['Paint · earlier style pilot','painted-se-style-pilot.png','Rejected as a frame: changed sword direction and scale. Retained for comparison.'],
+ ['Approved identity and paint style','../fresh-2d/candidate-01/candidate.png','Design reference only. Its framing and sword pose are not the registration target.']
+];
+const images=new Map(),cards=[];
+async function load(url){const im=new Image();im.src=url;await im.decode();images.set(url,im);return im}
+await Promise.all([...entries.map(e=>e[1]),...Object.keys(pose.directions).map(d=>`ro-idle-guide-${d}.png`)].map(load));
+for(const [title,url,note] of entries){const card=document.createElement('article');card.className='card';const h=document.createElement('h3');h.textContent=title;const p=document.createElement('p');p.className='note';p.textContent=note;const holder=document.createElement('div');holder.className='viewport';const canvas=document.createElement('canvas');holder.append(canvas);const metric=document.createElement('p');metric.className='metrics';const info=audit.images[url.split('/').at(-1)];if(info)metric.textContent=`Source: ${info.canvas.join(' × ')} ${info.mode}\nOpaque bounds: ${info.opaqueBoundsAlpha224.join(', ')}\nFaint alpha pixels (1–15): ${info.faintPixelsAlpha1To15}`;card.append(h,p,holder,metric);document.querySelector('#comparisons').append(card);cards.push({canvas,url});}
+for(const d of Object.keys(pose.directions)){const card=document.createElement('article');card.className='card';const h=document.createElement('h3');h.textContent=d;const canvas=document.createElement('canvas');card.append(h,canvas);document.querySelector('#guides').append(card);cards.push({canvas,url:`ro-idle-guide-${d}.png`,direction:d,fixed:true});}
+function draw(){const size=Number(document.querySelector('#frame-size').value);for(const c of cards){const n=c.fixed?160:size;c.canvas.width=c.canvas.height=n;c.canvas.style.background=document.querySelector('#light').checked?'#f4f1eb':'';const ctx=c.canvas.getContext('2d');ctx.drawImage(images.get(c.url),0,0,n,n);const direction=pose.directions[c.direction??'SE'];const identity=c.url.includes('candidate-01');if(document.querySelector('#ghost').checked&&!c.fixed&&!identity){ctx.globalAlpha=.35;ctx.drawImage(images.get('ro-idle-guide-SE.png'),0,0,n,n);ctx.globalAlpha=1;}if(document.querySelector('#joints').checked&&!identity){const [w,h]=direction.canvas;const project=([x,y])=>[x*n/w,y*n/h];ctx.lineWidth=1.3;for(const [name,joint] of Object.entries(direction.joints)){const a=project(joint.head),b=project(joint.tail);ctx.strokeStyle=name.endsWith('.R')?'#61def5':name.endsWith('.L')?'#ffac66':'#ecf0f4';ctx.beginPath();ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();ctx.beginPath();ctx.arc(...b,2,0,Math.PI*2);ctx.stroke();}ctx.strokeStyle='#ffed75';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(...project(direction.swordAxis[0]));ctx.lineTo(...project(direction.swordAxis[1]));ctx.stroke();}}}
+document.querySelectorAll('select,input').forEach(el=>el.addEventListener('change',draw));draw();document.querySelector('#load-status').textContent=`Loaded ${images.size} image files. Full canvas comparison; no automatic crop or independent fitting.`;
+</script>
+</html>
