@@ -1,0 +1,54 @@
+# Original RO-inspired sprite direction and practice
+
+Iteration 5, 2026-10-11. The user asks to keep researching until the game has Ragnarok's appeal in its own identity. The existing [RO action audit](ragnarok-hard-reference.md) remains the hard reference. This document turns observed behavior and primary artist instruction into proposed original art choices; these choices are not approved art or measurements of every historical RO asset.
+
+## What transfers, and what belongs to our character
+
+Transfer the compact oblique presentation, readable face/equipment at gameplay scale, decisive pose changes, consistent directional identity and related body/head/equipment timing. Preserve our character's silver-lavender hair, ochre scarf/cape, bronze armor, navy/ivory clothing, olive trousers, muted teal sash and anatomical right-hand sword. Give those materials and motifs their own shapes and ramps. No rejected branch artwork or external RO sprite pixels are a production seed.
+
+Do not reproduce an illustration by shrinking every ornament. Establish the head/face, scarf, shoulder silhouette, tabard split, boots and sword as the primary identity masses; keep stars and trim only where they still read. The user's broad illustrated style remains valid direction, while no current individual turnaround or animation is approved.
+
+## Fresh sources actually studied
+
+[Retrieval and read-scope audit](art-direction-source-audit.json) pins downloaded assets/code and limits. No external tutorial GIF, model, PSD or paper is redistributed.
+
+- [Thomas Vasseur's first-person Dead Cells pipeline](https://www.gamedeveloper.com/production/art-design-deep-dive-using-a-3d-pipeline-for-2d-animation-in-i-dead-cells-i-): design a small 2D sheet before modeling; establish convincing sparse keys and timing before extra frames; export small rendered frames/normals for toon lighting. He explicitly reports unresolved pixel flicker and a detail/animation tradeoff. This supports rapid retakes, not the claim that our rough model already looks like RO. Its combat cadence and stylistic choices are not universal rules for this game.
+- [Pedro Medeiros: 3D reference](https://saint11.art/blog/3d-ref/): use a rough model for perspective, then redraw the final clusters and adjust timing. His rotating-sign mirroring is inapplicable to our asymmetrical equipped character.
+- [Medeiros: cluster painting](https://saint11.art/pixel_art_articles/article2/): organize broad color masses before detail; refine deliberate curves and inspect noisy single-pixel accents. Exceptions such as eye glints remain intentional. His landscape example is instruction, not our character palette or a sprite template.
+- [Medeiros: consistency](https://saint11.art/blog/consistency/): choose coherent resolution/color treatment inside the game world; integer point-scaled inspection reveals pixel structure. A high-resolution portrait or UI can follow another controlled treatment. His game-canvas examples are not Astraeon's camera configuration.
+- [Medeiros tutorial collection](https://saint11.art/blog/pixel-art-tutorials/): five downloaded GIFs were decoded and visually inspected at selected samples: attack, motion blur, top-down attack, outlines and subpixel movement. Impact was retrieved but not visually reviewed. Smears communicate a fast path across held poses; recovery can contract them. Opposing-arm motion, planted contact and torso/head changes matter. Selective contours separate materials; subtle shading movement can suggest motion without translating the whole silhouette. The attack sheet's preference for little player anticipation is not binding: our desired RO-like action keeps explicit preparation, with input/event timing to be decided in-game.
+- [NotSlot preparation](https://notslot.com/tutorials/2020/04/spine-8-direction-character-part-1), [rigging](https://notslot.com/tutorials/2020/04/spine-8-direction-character-part-2), [walk](https://notslot.com/tutorials/2020/04/spine-8-direction-character-part-3): named layered attachments, direction banks, IK, draw-order keys, view-specific corrections and secondary motion. Five-view mirroring and their left-hand sword are excluded from our production rules. No PSD/Spine project or upstream script was installed.
+- [Broxxar example](https://github.com/Broxxar/PixelArtPipeline/tree/5969589448e87cc12cd7fb0d81926c9f218a089c): both capture scripts and two shaders were read at the pinned commit. The capture yields after sampling so skinned meshes can update, uses point-filtered small targets, and exports color/normal atlases. Its toon shader decodes normals, applies a two-level threshold and clips alpha; this is not an outline/temporal-stability solver. The fixed-FPS/legacy-clip helper needs redesign for our authored delays and independent parts. Unity was not run; no code/art was imported.
+- [Kalnins et al., Coherent Stylized Silhouettes](https://pixl.cs.princeton.edu/pubs/Kalnins_2003_CSS/index.php): downloaded the six-page paper; studied selected design, propagation, parameterization, result and limitation passages. It tracks surface-associated stroke samples and balances image-space spacing with shape coherence. Merging/splitting paths can pop or accumulate clutter; directional detail and tiny distant features remain limitations. It motivates explicit temporal checks, but its algorithm is not implemented here and does not promise pixel-perfect sprite stability.
+
+An Aztez developer excerpt on IndieDB was read. Its original full-tutorial link now redirects to unrelated content; only the accessible excerpt counts as studied. It supplies no verified full weapon-effect implementation for this iteration.
+
+## Proposed review contract
+
+| Element | Provisional practice | Review/failure condition |
+|---|---|---|
+| Size/projection | Fixed 128×128 logical cells; roughly 96 px visible standing height; initial 30° capture; about 3.3 heads for this study | These are proposals, not RO constants. Verify camera/gameplay scale and fixed source transforms; do not normalize each silhouette independently. |
+| Identity | Silver hair, scarf/cape and contrasting tabard/navy body read first | A clasp may not migrate between shoulders; costume and face cannot change during a clip. |
+| Values/materials | Start with 3–5 principal values per material; darker colored contours; restrained metal highlights | Do not enforce a universal total palette count. Examine native-size face/grip and material separation, not just a large attractive board. |
+| Detail | Simplify stars, embroidery and folds into readable clusters | Noise should not replace structure; purposeful eye glints are not automatically defects. |
+| Motion | Ready → rear-leg load/coil → hips/chest drive → lead-knee absorption/rear-heel release → recovery | Review weapon-free body, normal/quarter speed, contact state and silhouette; neither hashes nor planted ankles prove acting. |
+| Directions | Eight standing/walking/sitting views in the inspected reference; explicit per-action reuse maps where appropriate | Keep requested aim separate from selected picture. Resolve every equipped part once to the same action view. |
+| Parts | Complete bald head/hair, covered anatomy and garment backs; correct crossing visibility | A generated flat board is never complete hidden geometry. Test actual swaps before promotion. |
+| Contours | Separate outer silhouette from internal material boundaries | Independently outlining each opaque part can add dark seams around overlapping pieces. Compose with shared visibility, then review outer/internal contours; choose authored splits or a tested renderer. This is a proposed technique, not executed outline production. |
+| FX | Shape the fast sweep, taper/contract recovery, clear on cancellation and exact expiry | Shared time does not require equal sample cadence. Held body keys must not extend a trail past its lifetime. Current baked ribbon geometry remains unapproved. |
+
+## New visual practice and its limits
+
+The [four-key study](../../../research/sprite-animation/silver-scarf/art-study-v5/README.md) is an original text-driven generated board from the user's character description. It emphasizes legs/pelvis/chest and readable right-arm continuity. No rejected branch image or external sprite was supplied to generation. A mechanical equal-cell native reduction accompanies the original; pixels were not repainted or background-extracted.
+
+At native inspection, scarf/tabard/hair identity and the different load/cut silhouettes remain readable. Small ornamental detail competes with the face, the clasp placement needs stricter pose consistency, and the output is a large stylized image rather than a verified uniform native pixel grid. The requested 1024×1024 canvas returned 1254×1254. There is no source contact guide, actual skeletal ownership, eight-view turnaround, alpha export or complete hidden part set. Consequently this is **unapproved direction study**, not a production seed, sprite clip or modular replacement proof. Do not turn its four cells into a GIF by independently fitting bounds.
+
+## Knowledge tested, rather than merely read
+
+Inspecting the current held-pose exporter found a concrete effect bug: emission ended at 360 ms, lifetime was 70 ms, but the 400 ms effect image stayed visible until the body's next 520 ms key. That adds 90 ms of exposure. The repair samples scalar effect decay from the authoritative action time while leaving the eight body keys unchanged. The last ribbon fades 400–430 ms and clears at 430 ms, even though that body pose stays until 520 ms. Render invalidation now includes effect gain.
+
+The [effect check](../../../research/sprite-animation/silver-scarf/rig-proof-v4/effect-exposure-check.json) records actual tests. Current Chromium checks total **31**, including changed FX pixels with the same held body pose at 400/415 ms and absence at 430 ms. Updated GIFs have 11 display exposures, still eight unique body keys and 800 ms total (3,200 ms at quarter speed). Additional exposures only describe effect decay. This fixes lifetime, not ribbon shape/translucent self-overlap. The six-pixel exact-color failure is unchanged and preserved separately.
+
+## Next evidence needed
+
+Choose a consistent original native turnaround before detailed cel production. Build final four combat views and eight locomotion views against the approved body/part contract, with explicit identity landmarks, contact and wrist/grip guides. Keep a body-only motion review and independent part reconstruction. Refine an authored smear with normal/quarter-speed and interruption checks. Add complete locomotion/reaction actions, larger interchangeable items and a second proportion/grip family before any factory claim. Real-game projection, attack events and measured runtime cost remain required.

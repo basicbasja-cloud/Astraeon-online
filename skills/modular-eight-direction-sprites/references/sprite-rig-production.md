@@ -80,3 +80,5 @@ The proof covers one rig, eight facings, eight attack keys, 17 item passes and 4
 ## Remaining gates
 
 The authored model is a technical prototype, not approved final RO-inspired art. Its segmented limbs, broad head silhouette, clothing and ribbon require artistic review and refinement. No individual approved turnaround exists yet. Walk, idle variations, hurt, cast, death, further weapon grips, shields, additional body families and real-game transitions remain unfinished. The evidence supports continued rig-based iteration; it does not support a claim of mastery, mass-production readiness, or ACT/SPR binary compatibility.
+
+A fifth-iteration inspection found the final baked ribbon outliving its declared 430 ms cutoff because the body key lasted to 520 ms. Shared action time now drives a separate fade/exposure sample and render invalidation. Current preview passes 31 browser checks including mid-key decay and expiry. See [art-direction practice](original-ro-art-direction.md); ribbon geometry and final art remain unapproved.

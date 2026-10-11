@@ -35,13 +35,14 @@
     "68 MiB decoded one-facing arrays before browser overhead; no production performance validation"
   ],
   "source_scripts": {
-    "skills/modular-eight-direction-sprites/studies/rigged-parts/browser-check.py": "ecefad99989823fd12da3396495eb05cfc5a656f3e13cc068ec426a1e7d96819",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/browser-check.py": "50b593d1b4cdada935337d2e3943118ef62ba0f68b14728e53e997cfd0d113c2",
     "skills/modular-eight-direction-sprites/studies/rigged-parts/build-character.py": "d8f89ee9875bf3f751fcef83c1182d37da8871eddccc2c5867566fc72ba98a15",
     "skills/modular-eight-direction-sprites/studies/rigged-parts/check-source.py": "f27a7bb36e1c91605ac6c23602bae59173e8685185a88a81fa158923102b32d9",
-    "skills/modular-eight-direction-sprites/studies/rigged-parts/compose-proof.py": "d2ceef68fb1b223b9c0aec6038efd3c278dbb63dd1c82ea7fbf637ae5b735b1a",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/compose-proof.py": "7bd4c5bfb0f36f3cfa446aa207ee280361573e2532a653906760ec762613ffee",
     "skills/modular-eight-direction-sprites/studies/rigged-parts/render-owner-checks.py": "36706edbb1044a62f8568de23cd0312f5d52efb9b96368ae3dfb3f64d740079c",
     "skills/modular-eight-direction-sprites/studies/rigged-parts/rig-poses.mjs": "12b06a933b7d17aa2b86b7ec3fc6ccde270c6747e87a946b6de349ce34155960",
     "skills/modular-eight-direction-sprites/studies/rigged-parts/validate-contract.mjs": "7b0d3269fc90fa865a190bdab4108493abc24395258b05fd26e01b833fe285f9"
   },
-  "browser_evidence": "Current export: 29 actual Chromium checks passed. Standalone preview only; not game integration or artistic approval."
+  "browser_evidence": "Current export: 31 actual Chromium checks passed, including mid-key decay and exact expiry. Standalone preview only; not game integration or artistic approval.",
+  "effect_exposure_repair": "Body keys unchanged; last baked ribbon fades and clears 400..430 ms rather than remaining visible to 520 ms."
 }

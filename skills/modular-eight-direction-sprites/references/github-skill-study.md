@@ -29,7 +29,7 @@
 | Right-hand source ownership | Reopened `.blend`, actual weights and baked keys | Review wrist/grip readability for final drawings in every pose |
 | Complete interchangeable parts | Original full geometry, eight-view strips, hair/torso/cape/weapon/helmet swaps | Approved final sprite style and broader item sizes |
 | Opaque overlap correctness | Independent whole-scene owner/alpha reference passes | Resolve separately recorded color differences and choose the game's production renderer |
-| Attack preview behavior | 21 earlier-export shared-clock/swapping/stop checks; current rerun blocked | Current-export browser checks, final acting/effect approval and actual game combat transitions |
+| Attack preview behavior | 31 current-export shared-clock/swapping/stop and mid-key FX-expiry checks | Final acting/effect approval and actual game combat transitions |
 | Mass production | Bounded 48-loadout/64-pose coverage exercise | More body families, locomotion/reaction actions, fit stress tests and measured in-game cost |
 
 “Ultimate” remains the user's target, not a completion label. More repositories do not override a failed visible result. Each new rule should explain a concrete failure, include a reproducible exercise, and distinguish what was implemented from what was merely studied.

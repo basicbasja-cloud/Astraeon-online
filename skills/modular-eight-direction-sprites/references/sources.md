@@ -98,3 +98,5 @@ Use architectural ideas and original project-owned art by default. Before admitt
 Search results that led to mirrors, marketing pages, or unverified agent skills were discovery leads. They are not treated as production evidence in this catalog. Claims about quality or maintenance are bounded by the actual review level above.
 
 The follow-up [RO action-direction audit](ro-action-direction-audit.json) contains 64 actual requests across eight Swordman action blocks, including eight distinct sitting views and a preserved head-region attack discrepancy. See the [interpretation and scope](ragnarok-hard-reference.md#eight-selectable-directions-versus-four-drawings).
+
+Iteration 5 adds [original RO-inspired art-direction practice](original-ro-art-direction.md) and its [source/read-scope audit](art-direction-source-audit.json): first-person Dead Cells production, primary Saint11 instruction, complete NotSlot text series, a pinned toon-capture example and selected silhouette-coherence paper passages. Original visual practice and a tested held-pose FX-expiry repair are linked separately from external source study.

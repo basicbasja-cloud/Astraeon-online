@@ -1,0 +1,115 @@
+{
+  "failure_found": "Baked final trail was held 400..520 ms with the body key even though emission ended at 360 ms and lifetime was 70 ms",
+  "old_observed_exposure_end_ms": 520,
+  "intended_effect_end_ms": 430,
+  "old_excess_exposure_ms": 90,
+  "repair": "One authoritative action time, sparse body pose sampling, separate scalar effect decay and exact cutoff. Render invalidation includes decay gain.",
+  "body_key_count": 8,
+  "body_delays_ms": [
+    80,
+    100,
+    100,
+    60,
+    60,
+    120,
+    140,
+    140
+  ],
+  "new_gif_exposures_ms": [
+    0,
+    80,
+    180,
+    280,
+    340,
+    400,
+    410,
+    420,
+    430,
+    520,
+    660
+  ],
+  "actual_browser_check_names": [
+    "Ribbon decays while the body pose remains held",
+    "Trail expires at 430 ms before the held body pose ends"
+  ],
+  "gif_checks": [
+    {
+      "file": "attack-SE.gif",
+      "decoded_gif_frames": 11,
+      "total_duration_ms": 800,
+      "frame_delays_ms": [
+        80,
+        100,
+        100,
+        60,
+        60,
+        10,
+        10,
+        10,
+        90,
+        140,
+        140
+      ]
+    },
+    {
+      "file": "attack-quarter-speed.gif",
+      "decoded_gif_frames": 11,
+      "total_duration_ms": 3200,
+      "frame_delays_ms": [
+        320,
+        400,
+        400,
+        240,
+        240,
+        40,
+        40,
+        40,
+        360,
+        560,
+        560
+      ]
+    },
+    {
+      "file": "attack-eight-directions.gif",
+      "decoded_gif_frames": 11,
+      "total_duration_ms": 800,
+      "frame_delays_ms": [
+        80,
+        100,
+        100,
+        60,
+        60,
+        10,
+        10,
+        10,
+        90,
+        140,
+        140
+      ]
+    },
+    {
+      "file": "attack-four-diagonals.gif",
+      "decoded_gif_frames": 11,
+      "total_duration_ms": 800,
+      "frame_delays_ms": [
+        80,
+        100,
+        100,
+        60,
+        60,
+        10,
+        10,
+        10,
+        90,
+        140,
+        140
+      ]
+    }
+  ],
+  "limits": [
+    "Baked ribbon geometry is still held; only scalar fade and exposure expiry changed",
+    "FX design remains unapproved",
+    "No game attack-speed/event integration",
+    "Exact opaque reference color failure remains separate"
+  ]
+}

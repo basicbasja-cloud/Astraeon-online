@@ -10,11 +10,11 @@ Working branch: `research/modular-sprites-full-body-2026-10-11`. Stay on this br
 
 [Complete v4 review package](silver-scarf/rig-proof-v4/README.md) · [Four diagonal attack views](silver-scarf/rig-proof-v4/attack-four-diagonals.gif) · [Separate-part sources](silver-scarf/rig-proof-v4/separate-parts.png) · [Editable source](silver-scarf/rig-proof-v4/silver-scarf-modular-source.blend)
 
-Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts provide a bounded repeatable export exercise. Independent full-scene ownership/alpha checks pass; exact color comparison retains six differing pixels and remains failed. The current export passes 29 actual browser behavior checks, including the optional four-diagonal view policy; earlier 21-check evidence remains separately labeled as baseline. These are technical checks, not art approval.
+Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts provide a bounded repeatable export exercise. Independent full-scene ownership/alpha checks pass; exact color comparison retains six differing pixels and remains failed. The current export passes 31 actual browser behavior checks, including the optional four-diagonal view policy; earlier 21-check evidence remains separately labeled as baseline. These are technical checks, not art approval.
 
 ## Reusable knowledge
 
-- [SKILL.md v0.4](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [SKILL.md v0.5](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)
@@ -25,3 +25,5 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 The target is reliable mass production. An approved final turnaround, sprite acting/effect quality, additional actions and rig families, and actual game integration remain unfinished. No claim of mastery, final art approval or original-client ACT/SPR binary compatibility is made.
 
 The [RO action-direction audit](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md#eight-selectable-directions-versus-four-drawings) directly checks eight selected Swordman action blocks: standing, walking **and sitting** have eight distinct views; many tested other actions reuse four diagonals. An anomalous head-region sample remains explicitly documented.
+
+Iteration 5 adds an [original four-key art study](silver-scarf/art-study-v5/README.md), [primary artist/coherence research and proposed art direction](../../skills/modular-eight-direction-sprites/references/original-ro-art-direction.md), and a [tested mid-key trail-expiry repair](silver-scarf/rig-proof-v4/effect-exposure-check.json). The body retains eight poses; effect exposure no longer runs 90 ms late. The new image board is unapproved, flattened direction study, not a modular production seed.

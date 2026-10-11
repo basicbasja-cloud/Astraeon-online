@@ -29,7 +29,7 @@ def load(part,d,i):
         CACHE[key]=(rgba,z,code,encoded)
     return CACHE[key]
 
-def compose(parts,d,i,fx=False,packed=False,owners=False):
+def compose(parts,d,i,fx=False,packed=False,owners=False,fx_gain=1):
     result=np.zeros((256,256,4),dtype=np.uint8)
     nearest=np.full((256,256),np.inf)
     owner=np.zeros((256,256),dtype=np.uint8)
@@ -39,11 +39,11 @@ def compose(parts,d,i,fx=False,packed=False,owners=False):
         visible=(rgba[:,:,3]>0)&(z<nearest)
         result[visible]=rgba[visible];nearest[visible]=z[visible]
         owner[visible]=list(M['parts']).index(part)+1
-    if fx:
+    if fx and fx_gain>0:
         weapon=next(p for p in parts if p.startswith('weapon.'))
         rgba,z,code,_=load(weapon.replace('weapon.','trail.'),d,i)
         if packed:z=np.where(code==16777215,np.inf,code.astype(float)/MAX_CODE*Z_RANGE)
-        alpha=rgba[:,:,3].astype(float)/255
+        alpha=rgba[:,:,3].astype(float)/255*fx_gain
         alpha=np.where(z<nearest,alpha,0)
         # Straight-alpha over, including translucent ribbon outside the body.
         base_alpha=result[:,:,3].astype(float)/255
@@ -128,15 +128,22 @@ def export():
         bg=Image.new('RGBA',im.size,(32,39,49,255));bg.alpha_composite(im);return bg.convert('RGB')
     def save_gif(name,parts,fx=False,slow=1,allviews=False):
         frames=[]
-        for i in range(8):
+        # Body keys stay sparse; effect exposure can end inside a held body key.
+        display_times=sorted(set(TIMES+([410,420,430] if fx else [])))
+        expiry=round((M['trail']['emitting_seconds'][1]+M['trail']['lifetime_seconds'])*1000)
+        fade_start=max(M['trail']['emitting_seconds'][1]*1000,TIMES[max(M['trail']['active_key_indices'])])
+        for ms in display_times:
+            i=max(n for n,start in enumerate(TIMES) if start<=ms)
+            gain=0 if ms>=expiry else 1 if ms<fade_start else (expiry-ms)/(expiry-fade_start)
             if allviews:
                 panel=Image.new('RGB',(4*192,2*176),(32,39,49));draw=ImageDraw.Draw(panel)
                 for n,d in enumerate(DIRS):
-                    im=background(native(compose(parts,d,i,fx))).resize((160,160),Image.Resampling.NEAREST)
+                    im=background(native(compose(parts,d,i,fx,fx_gain=gain))).resize((160,160),Image.Resampling.NEAREST)
                     x=(n%4)*192+16;y=(n//4)*176+16;panel.paste(im,(x,y));draw.text((x,y-13),d,fill='white')
                 frames.append(panel)
-            else:frames.append(background(native(compose(parts,'SE',i,fx))).resize((384,384),Image.Resampling.NEAREST))
-        frames[0].save(OUT/name,save_all=True,append_images=frames[1:],duration=[x*slow for x in M['clips']['attack']['frame_delays_ms']],loop=0,disposal=2,optimize=False)
+            else:frames.append(background(native(compose(parts,'SE',i,fx,fx_gain=gain))).resize((384,384),Image.Resampling.NEAREST))
+        delays=[b-a for a,b in zip(display_times,display_times[1:]+[800])]
+        frames[0].save(OUT/name,save_all=True,append_images=frames[1:],duration=[x*slow for x in delays],loop=0,disposal=2,optimize=False)
         CACHE.clear()
     save_gif('attack-SE.gif',M['default'],True)
     save_gif('attack-eight-directions.gif',M['default'],True,allviews=True)
@@ -145,15 +152,19 @@ def export():
     save_gif('attack-alternate.gif',M['alternate'],True)
     paired={'S':'SW','SW':'SW','W':'NW','NW':'NW','N':'NE','NE':'NE','E':'SE','SE':'SE'}
     frames=[]
-    for i in range(8):
+    paired_times=sorted(set(TIMES+[410,420,430]))
+    for ms in paired_times:
+        i=max(n for n,start in enumerate(TIMES) if start<=ms)
+        gain=0 if ms>=430 else 1 if ms<400 else (430-ms)/30
         panel=Image.new('RGB',(4*192,176),(32,39,49));draw=ImageDraw.Draw(panel)
         for n,d in enumerate(['SW','NW','NE','SE']):
-            im=background(native(compose(M['default'],d,i,True))).resize((160,160),Image.Resampling.NEAREST)
+            im=background(native(compose(M['default'],d,i,True,fx_gain=gain))).resize((160,160),Image.Resampling.NEAREST)
             x=n*192+16;panel.paste(im,(x,16));draw.text((x,2),d,fill='white')
         frames.append(panel)
-    frames[0].save(OUT/'attack-four-diagonals.gif',save_all=True,append_images=frames[1:],duration=M['clips']['attack']['frame_delays_ms'],loop=0,disposal=2,optimize=False)
+    frames[0].save(OUT/'attack-four-diagonals.gif',save_all=True,append_images=frames[1:],duration=[b-a for a,b in zip(paired_times,paired_times[1:]+[800])],loop=0,disposal=2,optimize=False)
     CACHE.clear()
     report['paired_attack_view_policy']={'map':paired,'scope':'Optional study policy based on the observed Swordman block; not a universal rule for all RO actions or an approved game contract','no_image_flip':True}
+    report['effect_exposure']={'emission_end_ms':360,'lifetime_ms':70,'expires_ms':430,'body_key_5_hold_ms':[400,520],'final_decay_samples_ms':[400,410,420,430],'body_pose_keys_unchanged':8,'scope':'Scalar fade and expiry of the baked ribbon; no continuous geometric re-sampling or artistic approval.'}
     sheet=Image.new('RGB',(4*192,4*174),(32,39,49));draw=ImageDraw.Draw(sheet)
     for n,part in enumerate(p for p in M['parts'] if not p.startswith('trail.')):
         im=background(native(load(part,'SE',0)[0])).resize((156,156),Image.Resampling.NEAREST)

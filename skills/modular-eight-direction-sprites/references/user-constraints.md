@@ -15,6 +15,7 @@ Recorded 2026-10-11 during research iteration 2. These override earlier inferred
 11. Research sprite rigs deeply: directional attachment banks, named bones/IK, mesh weights, draw-order changes, skin replacement, and repeatable production of hair and equipment. Provide an actual layered swapping proof, not another flattened strip labeled modular.
 12. Study broadly across GitHub skills, source code, documentation, papers and industry instruction, then test the knowledge in original work. The user calls the target an “ultimate skill”; this remains a goal, not a mastery claim.
 13. Study rigging and sprite art/animation together; use Ragnarok as the hard reference. Another rig pipeline does not replace RO-specific visual review.
+14. Keep researching and practicing toward Ragnarok-like appeal in the game’s own identity. Preserve actual results and remaining gaps; reading more sources alone cannot establish completion or mastery.
 
 Implementation code, game contracts, and non-art requirements can be inspected on the newest branch. External primary references and fresh isolated experiments are the permitted study basis. Never treat the presence of an asset in a branch as approval.
 

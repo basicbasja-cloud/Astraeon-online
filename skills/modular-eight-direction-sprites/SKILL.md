@@ -5,7 +5,7 @@ description: Design, produce, repair, and validate eight-direction 2D character 
 
 # Modular eight-direction sprites
 
-Research-backed draft v0.4, reviewed 2026-10-11. Includes deep rig/weight/IK study, pinned GitHub skill comparison, fresh Ragnarok hard references and an original editable modular rig with eight-direction attack exports and replacement tests. Final sprite art, production game integration and mass-production readiness remain unvalidated. The linked sources establish individual techniques; this package's combined asset contract and quality gates are proposed engineering practice.
+Research-backed draft v0.5, reviewed 2026-10-11. Includes deep rig/weight/IK study, pinned GitHub comparison, Ragnarok action audits, primary artist/coherence research, an original modular rig proof, a new unapproved visual study and a tested repair for effect expiry within held body poses. Final sprite art, production game integration and mass-production readiness remain unvalidated. The linked sources establish individual techniques; this package's combined asset contract and quality gates are proposed engineering practice.
 
 ## Scope and references
 
@@ -17,7 +17,7 @@ Read [research](references/research.md) for approach selection, [motion findings
 
 Do not claim that reading this skill permanently trains a model. The durable output is this package and project assets. Do not claim the package is installed unless the active skill loader actually registers it.
 
-For rigged modular production, read [sprite rig production](references/sprite-rig-production.md), [GitHub skill comparison](references/github-skill-study.md) and [Ragnarok hard reference](references/ragnarok-hard-reference.md). Painted v3 is rejected for apparent hand switching, its effect and flattened parts; it is failure evidence, not a source seed. Reproduce the new [rigged-parts exercise](studies/rigged-parts/README.md). Ragnarok is the hard visual reference; other rigs supply techniques.
+For rigged modular production, read [sprite rig production](references/sprite-rig-production.md), [GitHub skill comparison](references/github-skill-study.md) and [Ragnarok hard reference](references/ragnarok-hard-reference.md). Painted v3 is rejected for apparent hand switching, its effect and flattened parts; it is failure evidence, not a source seed. Reproduce the new [rigged-parts exercise](studies/rigged-parts/README.md). Ragnarok is the hard visual reference; other rigs supply techniques. Read [original art direction](references/original-ro-art-direction.md) for native-scale cluster/contour practice, source limitations and the new unapproved four-key exercise.
 
 ## 1. Establish the production contract
 
@@ -88,13 +88,15 @@ Use one fixed ground root and consistent scale/camera. Do not normalize each pos
 
 Review the body with the sword/trail hidden and in silhouette. If the load, drive and recovery cannot be distinguished from the legs, pelvis and torso, reject the motion before detail work. Check visible knee/hip/shoulder changes, coherent head attachment, stable bone lengths/grip and a readable planted support. A rigid-length/contact diagnostic proves only its mathematical assumptions; it does not approve the final drawings.
 
-Export the sword trail as a separate phase-controlled layer. Activate it on the fast forward cut, optionally retain a collapsing remnant, then clear it in recovery and on interruption. Register it to the actual projected blade sweep. A generic crescent drifting away from the blade is a failed effect, even if its timing is correct.
+Export the sword trail as a separate phase-controlled layer. Use one authoritative action time while allowing body poses and effect decay to have different samples. A held body key must not keep a baked trail alive beyond emission end plus lifetime. Check the cutoff between pose keys as well as cancellation; include effect changes in render invalidation. The current proof fixes a 90 ms late exposure without adding body poses; scalar fading alone does not improve trail geometry. Activate it on the fast forward cut, optionally retain a collapsing remnant, then clear it in recovery and on interruption. Register it to the actual projected blade sweep. A generic crescent drifting away from the blade is a failed effect, even if its timing is correct.
 
 Measure exported-sprite contact drift at the actual game speed, scale, zoom, and projection. Declare a pixel budget; inspect normal and quarter speed. Add strategically placed poses, change holds/cadence, or implement reviewed contact correction when the export fails. Do not prescribe eight frames as a universal walk standard.
 
 ## 5. Produce each replacement against the base
 
 Author a part while the approved body and neighboring pieces remain visible as alignment references. Export only the intended piece. Reuse camera, pixel density, palette, lighting, timing, and source coordinates.
+
+Inspect native resolution before detail and before promoting a turnaround. Establish broad material/identity clusters and deliberate contours, then refine face, glove/grip, folds and accents. A rendered mannequin or large generated illustration can establish perspective but remains unapproved art. Verify returned canvas/grid/alpha; a prompt requesting pixels or parts is not evidence. Independently outlined pieces can create dark seams after swapping, so review outer and internal boundaries against shared visibility.
 
 Complete the entire supported action/direction/frame matrix. A palette variant can reuse geometry; a new silhouette generally needs new authored content or a rigged/rendered variant.
 

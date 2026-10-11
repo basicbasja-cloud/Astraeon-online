@@ -1,8 +1,10 @@
 // Research compositor: complete source strips, packed per-pixel depth, shared clock.
+import {createAttackSampler} from './attack-sampling.mjs';
 const $=id=>document.getElementById(id), canvas=$('sprite'),ctx=canvas.getContext('2d');
 const manifest=await fetch('rig-manifest.json').then(r=>{if(!r.ok)throw Error('Missing manifest');return r.json()});
 const durations=manifest.clips.attack.frame_delays_ms,total=durations.reduce((a,b)=>a+b,0);
 const starts=durations.map((_,i)=>durations.slice(0,i).reduce((a,b)=>a+b,0));
+const sampleAttack=createAttackSampler(manifest.clips.attack,manifest.trail);
 export const pairedAttackViews={S:'SW',SW:'SW',W:'NW',NW:'NW',N:'NE',NE:'NE',E:'SE',SE:'SE'};
 const state={elapsed:0,playing:true,once:false,interrupted:false,direction:'SE',parts:[],loading:true,error:null,frame:0,revision:0,loadedFacing:null,renderCount:0};
 const fixed=manifest.default.filter(p=>!p.startsWith('hair.')&&!p.startsWith('torso.')&&!p.startsWith('cape.')&&!p.startsWith('weapon.'));
@@ -43,12 +45,12 @@ async function stage(){
    state.parts=parts;state.direction=dir;state.loading=false;state.revision++;render();status();
  }catch(e){if(token!==generation)return;state.error=e.message;state.loading=false;status()}
 }
-function poseIndex(ms){let sum=0;for(let i=0;i<durations.length;i++){sum+=durations[i];if(ms<sum)return i}return 7}
+function poseIndex(ms){return sampleAttack(ms).frame}
 function depthAt(data,j){const n=data[j]*65536+data[j+1]*256+data[j+2];return n===16777215?Infinity:n}
 const source=new Float32Array(256*256*4),nearest=new Float32Array(256*256),native=ctx.createImageData(128,128);
 function render(){
  if(state.loading||state.error||!state.parts.length)return;
- const frame=poseIndex(state.elapsed);state.frame=frame;$('pose').value=frame;
+ const {frame,fxGain}=sampleAttack(state.elapsed,state.interrupted);state.frame=frame;$('pose').value=frame;
  source.fill(0);nearest.fill(Infinity);
  for(const part of state.parts){
    const {color,depth}=strips.get(part);
@@ -57,11 +59,11 @@ function render(){
      if(color[j+3]&&z<nearest[n]){nearest[n]=z;const k=n*4;source[k]=color[j];source[k+1]=color[j+1];source[k+2]=color[j+2];source[k+3]=color[j+3]/255}
    }
  }
- if($('fx').checked&&!state.interrupted){
+ if($('fx').checked&&fxGain>0){
    const weapon=state.parts.find(p=>p.startsWith('weapon.'));
    const {color,depth}=strips.get(weapon.replace('weapon.','trail.'));
    for(let y=0;y<256;y++)for(let x=0;x<256;x++){
-     const n=y*256+x,j=(y*2048+frame*256+x)*4,z=depthAt(depth,j),k=n*4,a=color[j+3]/255;
+     const n=y*256+x,j=(y*2048+frame*256+x)*4,z=depthAt(depth,j),k=n*4,a=color[j+3]/255*fxGain;
      if(a&&z<nearest[n]){const old=source[k+3],combined=a+old*(1-a);for(let c=0;c<3;c++)source[k+c]=(color[j+c]*a+source[k+c]*old*(1-a))/combined;source[k+3]=combined}
    }
  }
@@ -90,7 +92,8 @@ $('pose').oninput=()=>{state.elapsed=starts[Number($('pose').value)];state.playi
 $('defaults').onclick=()=>{for(const id of ['hair','torso','cape','weapon','headgear'])$(id).selectedIndex=0;stage()};
 let last=performance.now(),previousSignature='';
 function tick(now){const delta=Math.min(now-last,100);last=now;if(state.playing){state.elapsed+=delta*Number($('speed').value);if(state.elapsed>=total){if(state.once){state.elapsed=0;state.playing=false;state.once=false;state.interrupted=true;$('play').textContent='Play'}else state.elapsed%=total}}
- const signature=[poseIndex(state.elapsed),state.direction,state.revision,state.interrupted].join(':');if(signature!==previousSignature){previousSignature=signature;render()}
+ const sample=sampleAttack(state.elapsed,state.interrupted);
+ const signature=[sample.frame,sample.fxGain.toFixed(2),state.direction,state.revision,state.interrupted].join(':');if(signature!==previousSignature){previousSignature=signature;render()}
  requestAnimationFrame(tick);
 }
 // Read-only diagnostics plus deliberate timeline stepping for browser validation.
