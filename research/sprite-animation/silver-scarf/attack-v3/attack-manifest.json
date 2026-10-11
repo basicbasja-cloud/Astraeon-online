@@ -1,0 +1,404 @@
+{
+  "version": 3,
+  "acceptance": "CANDIDATE_USER_REVIEW_PENDING",
+  "direction": "SE/front-right only",
+  "canvas": [
+    256,
+    256
+  ],
+  "frame_delays_ms": [
+    80,
+    100,
+    100,
+    60,
+    60,
+    120,
+    140,
+    140
+  ],
+  "duration_ms": 800,
+  "average_timeline_pose_fps": 10,
+  "logical_frames": 8,
+  "distinct_body_images": 7,
+  "ground_root": [
+    128,
+    208
+  ],
+  "contact_anchor": {
+    "kind": "front/left toe",
+    "position": [
+      182,
+      208
+    ]
+  },
+  "maximum_support_marker_registration_error_px": 0.7071067811865476,
+  "render_order": [
+    "trail",
+    "body"
+  ],
+  "trail_active_indices": [
+    3,
+    4,
+    5
+  ],
+  "loop_endpoint_RGBA_identical": true,
+  "frames": [
+    {
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "source_box": [
+        26,
+        121,
+        320,
+        482
+      ],
+      "source_support_toe": [
+        314.0,
+        449.0
+      ],
+      "normalized_support_toe": [
+        182.0,
+        208.0
+      ],
+      "placement": [
+        38,
+        44
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        41,
+        47,
+        182,
+        222
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 3796,
+        "toe_band_bottom": 461
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 1,
+      "phase": "load",
+      "duration_ms": 100,
+      "source_box": [
+        407,
+        105,
+        697,
+        484
+      ],
+      "source_support_toe": [
+        691.0,
+        448.0
+      ],
+      "normalized_support_toe": [
+        182.0,
+        207.5
+      ],
+      "placement": [
+        40,
+        36
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        43,
+        39,
+        182,
+        223
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 3763,
+        "toe_band_bottom": 460
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "source_box": [
+        771,
+        63,
+        1102,
+        484
+      ],
+      "source_support_toe": [
+        1087.0,
+        441.0
+      ],
+      "normalized_support_toe": [
+        182.0,
+        208.0
+      ],
+      "placement": [
+        24,
+        19
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        27,
+        22,
+        187,
+        227
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 4034,
+        "toe_band_bottom": 453
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "source_box": [
+        1144,
+        133,
+        1525,
+        477
+      ],
+      "source_support_toe": [
+        1458.0,
+        455.0
+      ],
+      "normalized_support_toe": [
+        182.0,
+        208.0
+      ],
+      "placement": [
+        25,
+        47
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        28,
+        50,
+        213,
+        216
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 4529,
+        "toe_band_bottom": 468
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "source_box": [
+        21,
+        595,
+        406,
+        933
+      ],
+      "source_support_toe": [
+        346.0,
+        902.0
+      ],
+      "normalized_support_toe": [
+        182.5,
+        207.5
+      ],
+      "placement": [
+        20,
+        54
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        23,
+        57,
+        209,
+        220
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 4826,
+        "toe_band_bottom": 913
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "source_box": [
+        417,
+        634,
+        796,
+        934
+      ],
+      "source_support_toe": [
+        710.0,
+        895.5
+      ],
+      "normalized_support_toe": [
+        182.5,
+        207.75
+      ],
+      "placement": [
+        36,
+        77
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        39,
+        80,
+        223,
+        224
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 6408,
+        "toe_band_bottom": 907
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "source_box": [
+        787,
+        586,
+        1107,
+        939
+      ],
+      "source_support_toe": [
+        1064.0,
+        903.0
+      ],
+      "normalized_support_toe": [
+        182.5,
+        208.5
+      ],
+      "placement": [
+        44,
+        50
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        47,
+        53,
+        201,
+        224
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 2271,
+        "toe_band_bottom": 912
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step"
+    },
+    {
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "source_box": [
+        26,
+        121,
+        320,
+        482
+      ],
+      "source_support_toe": [
+        314.0,
+        449.0
+      ],
+      "normalized_support_toe": [
+        182.0,
+        208.0
+      ],
+      "placement": [
+        38,
+        44
+      ],
+      "scale": 0.5,
+      "visible_bounds_alpha80": [
+        41,
+        47,
+        182,
+        222
+      ],
+      "boot_marker_diagnostic": {
+        "front_boot_area": 3796,
+        "toe_band_bottom": 461
+      },
+      "contact_policy": "front/left toe registered; rear foot allowed to pivot/step",
+      "image_alias": 0
+    }
+  ],
+  "trail": {
+    "3": {
+      "source_grip": [
+        1396,
+        286
+      ],
+      "source_blade_tip": [
+        1515,
+        300
+      ],
+      "normalized_grip": [
+        151.0,
+        123.5
+      ],
+      "normalized_blade_tip": [
+        210.5,
+        130.5
+      ],
+      "effect_scale_for_projected_blade": 0.0735198706148097,
+      "rotation_degrees": 27.487259779137634,
+      "opacity": 0.66
+    },
+    "4": {
+      "source_grip": [
+        298,
+        812
+      ],
+      "source_blade_tip": [
+        395,
+        898
+      ],
+      "normalized_grip": [
+        158.5,
+        162.5
+      ],
+      "normalized_blade_tip": [
+        207.0,
+        205.5
+      ],
+      "effect_scale_for_projected_blade": 0.07954120065885904,
+      "rotation_degrees": -7.363033719359413,
+      "opacity": 0.94
+    },
+    "5": {
+      "source_grip": [
+        699,
+        850
+      ],
+      "source_blade_tip": [
+        785,
+        924
+      ],
+      "normalized_grip": [
+        177.0,
+        185.0
+      ],
+      "normalized_blade_tip": [
+        220.0,
+        222.0
+      ],
+      "effect_scale_for_projected_blade": 0.06961388948204766,
+      "rotation_degrees": -6.513750084286419,
+      "opacity": 0.32
+    }
+  },
+  "source_files": [
+    "source-art.png",
+    "source-trail.png"
+  ],
+  "limitations": [
+    "One facing; other painted attack directions are not authored",
+    "Separate trail only: body/clothes/head/weapon are still a flattened layer",
+    "Art does not reproduce every rig target exactly: rear foot performs authored-looking step/heel release",
+    "Registration markers do not prove zero silhouette boiling or correct weight dynamics",
+    "Interactive preview is separate from the actual game; gameplay validation pending"
+  ]
+}

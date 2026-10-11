@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "browser": "151.0.7922.173",
+  "console_errors": [],
+  "playback": [
+    {
+      "requested_speed": 1.0,
+      "observed_time_ratio": 1.0031680036295916
+    },
+    {
+      "requested_speed": 0.25,
+      "observed_time_ratio": 0.2492878536045045
+    }
+  ],
+  "checks": [
+    "paused mid-walk swaps preserve exact elapsed time",
+    "normal and quarter playback clock advance",
+    "mid-attack weapon swap preserves elapsed time",
+    "eight directional views render",
+    "camera yaw/pitch controls render",
+    "held-pose diagnostic renders",
+    "30 and 60 FPS pose targets render"
+  ],
+  "limitations": [
+    "No pixel art production or game integration",
+    "No start/stop/turn transition controller",
+    "Painter depth approximation can misorder crossing surfaces",
+    "Playback checked for clock advancement; screenshots require visual inspection"
+  ]
+}

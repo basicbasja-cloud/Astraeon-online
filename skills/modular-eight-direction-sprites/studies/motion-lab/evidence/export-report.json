@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checks": 856,
+  "combinationChecks": 448,
+  "pngCount": 4240,
+  "blankFrames": 24,
+  "walkPosesPerDirection": 48,
+  "attackPosesPerDirection": 47,
+  "nativeFrame": [
+    128,
+    128
+  ],
+  "root": [
+    64,
+    104
+  ],
+  "allEightDirections": true,
+  "decodedPartReconstruction": "byte-identical to same-rasterizer full reference",
+  "independentMixedSwapChecks": 8,
+  "walkHoldDriftBoundPixels": 0.9066666666666667,
+  "limitations": [
+    "Original geometric diagnostic, not Ragnarok-like approved sprite art",
+    "Fixed elevation only",
+    "Binary-alpha depth composition; no antialiased or translucent surfaces",
+    "Reference and parts share one rasterizer; comparison does not prove external renderer correctness",
+    "No trimmed atlas or target-game integration",
+    "Stress action subsets are incomplete; not standalone shippable items",
+    "Contact bound excludes pixel rounding, starts/stops/turns and actual game movement"
+  ],
+  "output": "/workspace/scratch/sprite-export-study"
+}

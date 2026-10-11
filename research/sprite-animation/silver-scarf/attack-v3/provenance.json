@@ -1,0 +1,23 @@
+{
+  "character": "Silver Scarf swordsman, user-supplied design reference",
+  "art": "Fresh image-generation character strip; original joint guide; separate generated trail",
+  "third_party_art_in_package": false,
+  "game_branch_character_art_used": false,
+  "acceptance": "CANDIDATE_USER_REVIEW_PENDING",
+  "source_sha256": {
+    "source-art.png": "513c5b4728356aeeb37a742f02ffe0c41450b813fa1f3a9b8e1d3d6252a8402e",
+    "source-trail.png": "d03aec526e17e7b8cb200f6212b5f8a8179503023747aa50291e7e516eab77c9"
+  },
+  "export": "Constant body scale and contact marker translation; shared timeline; separate trail",
+  "checks": [
+    "decoded GIF delays and endpoints",
+    "source and exported figure bounds",
+    "Chromium playback, one-shot, stop and trail toggle"
+  ],
+  "limits": [
+    "one painted direction",
+    "only trail is a separate layer",
+    "target-game integration untested",
+    "art acceptance pending"
+  ]
+}

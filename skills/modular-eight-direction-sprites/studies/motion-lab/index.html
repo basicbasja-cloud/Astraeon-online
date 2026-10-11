@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Original eight-direction motion study</title>
+<style>
+body{background:#111d29;color:#e4edf3;font:15px system-ui;margin:24px auto;max-width:1120px;padding:0 16px}h1{font-size:23px;margin-bottom:8px}p{color:#b7c9d5;line-height:1.5}fieldset{border:1px solid #426079;padding:12px;margin:14px 0;display:flex;gap:12px;flex-wrap:wrap}label{display:flex;gap:6px;align-items:center}select,button,input{font:inherit;background:#21374b;color:#eef5fa;border:1px solid #526d83;padding:5px;border-radius:3px}canvas{width:100%;height:auto;background:#182b3d;display:block}small{color:#bbcedc}a{color:#add6ff}
+</style>
+<h1>Original eight-direction motion study</h1>
+<p>Diagnostic geometry for grounding, shared pose timing, and interchangeable parts. This is a fresh engineering exercise, not final character art or an approved animation. Blue boot = anatomical left; orange boot = anatomical right.</p>
+<fieldset><label>Action <select id="action"><option>walk</option><option>idle</option><option>attack</option></select></label>
+<label>Playback <select id="speed"><option value="1">Normal speed</option><option value=".25">Quarter speed</option></select></label>
+<button id="pause">Pause</button><label>Phase <input id="phase" type="range" min="0" max="999" value="0"></label>
+<label>Pose rate <select id="sampling"><option value="continuous">Continuous rig</option><option value="eight">8 poses per cycle · diagnostic</option><option value="30">30 FPS target</option><option value="60">60 FPS target</option></select></label>
+<label>Camera yaw <select id="yaw"><option value="0">0°</option><option value="1">45°</option><option value="2">90°</option><option value="4">180°</option></select></label>
+<label>Pitch <input id="pitch" type="range" min="10" max="89" value="46"></label></fieldset>
+<fieldset><label>Hat <select id="hat"><option value="cap">Cap</option><option value="crest">Crest</option><option value="none">None</option></select></label>
+<label>Coat <select id="coat"><option value="blue">Blue</option><option value="red">Red</option></select></label>
+<label>Weapon <select id="weapon"><option value="sword">Sword</option><option value="wand">Wand</option><option value="none">None</option></select></label>
+<label>Shield <select id="shield"><option value="round">Small shield</option><option value="large">Large shield</option><option value="none">None</option></select></label></fieldset>
+<canvas id="views" width="1120" height="560" aria-label="Eight simultaneous directional views"></canvas>
+<p id="readout"></p><canvas id="strip" width="1120" height="215" aria-label="Eight phase samples of the south view"></canvas>
+<p>All views sample one pose. Green rings indicate planted feet. The moving grid shows root-relative ground travel; a planted foot stays aligned with a ground line during its contact interval. Swapping parts preserves the clock. Attack hit landmark is a diagnostic phase, not a gameplay damage implementation.</p>
+<small>Run: <code>python -m http.server 8765 --directory studies/motion-lab</code> from the skill package. Tests: <code>node studies/motion-lab/motion.test.mjs</code>. Source and scope: <a href="README.md">README</a>.</small>
+<script type="module" src="app.mjs"></script></html>

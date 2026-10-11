@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Silver Scarf — full-body attack study</title>
+<style>
+body{font:16px system-ui;margin:32px auto;max-width:900px;padding:0 20px;background:#19212e;color:#e7e9ef}h1{font-size:24px}button,select{font:inherit;padding:8px 14px;border:1px solid #778296;border-radius:6px;background:#283448;color:inherit;cursor:pointer}label{display:inline-flex;align-items:center;gap:6px} .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}canvas{display:block;width:256px;height:256px;margin:20px 0;border:1px solid #5f6c80}img{max-width:100%}p{line-height:1.5;color:#c5cfdd}a{color:#a8d7ff}.views{display:flex;gap:24px;flex-wrap:wrap}figure{margin:0}figcaption{margin-bottom:8px}output{display:block;min-height:24px;margin-top:14px}
+</style>
+<h1>Silver Scarf: full-body attack</h1>
+<p>One southeast-facing candidate. Eight timed entries over 800 ms; the final entry reuses the exact ready drawing. Review the knees, hips, chest and released rear foot with the trail hidden.</p>
+<div class="controls">
+<button id="attack" disabled>Attack / restart</button><button id="stop" disabled>Return to ready</button>
+<label><input id="loop" type="checkbox"> Loop</label>
+<label><input id="trail" type="checkbox" checked> Sword trail</label>
+<label>Speed <select id="speed"><option value="1">Normal</option><option value="0.25">Quarter speed</option></select></label>
+</div>
+<canvas id="sprite" width="256" height="256" aria-label="Animated character attack"></canvas>
+<label>Inspect pose <input id="pose" type="range" min="0" max="7" value="0"></label>
+<output id="status">Loading…</output>
+<p>Separate transparent trail and body strips are included. Head, clothing and sword are still flattened into the body layer. Other painted directions and game integration remain unfinished.</p>
+<div class="views"><figure><figcaption>Normal GIF</figcaption><img src="attack-full-body.gif" width="256" height="256" alt="Full-body attack at normal speed"></figure><figure><figcaption>Quarter-speed GIF</figcaption><img src="attack-full-body-slow.gif" width="256" height="256" alt="Full-body attack at quarter speed"></figure></div>
+<p><a href="attack-contact-sheet.png">Contact sheet</a> · <a href="attack-manifest.json">Timing and export record</a> · <a href="README.md">Study notes</a></p>
+<script type="module">
+const manifest=await (await fetch('attack-manifest.json')).json();
+const load=src=>new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>reject(new Error('Could not load '+src));i.src=src;});
+const [body,trail]=await Promise.all(['body-frames','trail-frames'].map(folder=>Promise.all(Array.from({length:8},(_,i)=>load(`${folder}/${String(i).padStart(2,'0')}.png`)))));
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d'),status=document.querySelector('#status');
+const controls=Object.fromEntries(['attack','stop','loop','trail','speed','pose'].map(id=>[id,document.getElementById(id)]));
+let elapsed=0,playing=false,previous=performance.now(),index=0;
+const edges=manifest.frame_delays_ms.reduce((a,d)=>[...a,a.at(-1)+d],[0]);
+const poseAt=ms=>Math.min(7,edges.findIndex((edge,i)=>i>0&&ms<edge)-1);
+function draw(i){index=i;ctx.clearRect(0,0,256,256);if(controls.trail.checked)ctx.drawImage(trail[i],0,0);ctx.drawImage(body[i],0,0);controls.pose.value=i;status.textContent=`${manifest.frames[i].phase.replaceAll('_',' ')} · pose ${i+1}/8 · ${manifest.frame_delays_ms[i]} ms`;}
+function ready(){playing=false;elapsed=0;draw(0);}
+controls.attack.disabled=controls.stop.disabled=false;
+controls.attack.onclick=()=>{elapsed=0;playing=true;previous=performance.now();draw(0);};
+controls.stop.onclick=ready;
+controls.pose.oninput=()=>{playing=false;elapsed=edges[Number(controls.pose.value)];draw(Number(controls.pose.value));};
+controls.trail.onchange=()=>draw(index);
+function tick(now){const dt=now-previous;previous=now;if(playing){elapsed+=dt*Number(controls.speed.value);if(elapsed>=800){if(controls.loop.checked)elapsed%=800;else return ready(),requestAnimationFrame(tick);}draw(poseAt(elapsed));}requestAnimationFrame(tick);}
+// Deterministic review hook for contact/interrupt checks; does not drive gameplay.
+window.study={get state(){return {index,playing,elapsed,trail:controls.trail.checked};},seek(i){playing=false;elapsed=edges[i];draw(i);},ready};
+ready();requestAnimationFrame(tick);
+</script>
+</html>
