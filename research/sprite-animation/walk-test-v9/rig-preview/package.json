@@ -1,0 +1,93 @@
+{
+  "schema": "walk-native-package-v1",
+  "native_canvas": [
+    128,
+    128
+  ],
+  "render_canvas": [
+    256,
+    256
+  ],
+  "shared_scale": 0.5,
+  "registration": "Fixed source camera/root; no bbox fitting",
+  "body_exposures": 8,
+  "apng_delays_ms": [
+    167,
+    166,
+    167,
+    167,
+    166,
+    167,
+    167,
+    166
+  ],
+  "apng_cycle_ms": 1333,
+  "gif_delays_ms": [
+    170,
+    160,
+    170,
+    170,
+    160,
+    170,
+    170,
+    160
+  ],
+  "gif_cycle_ms": 1330,
+  "source_duration_ms": 1333.3333730697632,
+  "gif_timing": "10ms container quantization, cumulative boundaries; 3.333ms shorter than source cycle",
+  "views": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "complete_part_view_coverage": [
+    "SE"
+  ],
+  "slots": [
+    "armor",
+    "belt",
+    "body",
+    "boots",
+    "cape",
+    "face",
+    "gloves",
+    "hair.auburn",
+    "hair.silver",
+    "pants",
+    "sash",
+    "scarf",
+    "torso"
+  ],
+  "depth_encoding": "RGB24 fixed 0..8 camera units; ffffff background; nearest native sample",
+  "layer_comparison": {
+    "exact_color_pass": false,
+    "maximum_rgb_difference": 255,
+    "mean_rgb_difference_per_key": [
+      1.1075846354166667,
+      1.3111165364583333,
+      1.2569986979166667,
+      1.2028401692708333,
+      1.2931925455729167,
+      1.2047932942708333,
+      1.23809814453125,
+      1.250732421875
+    ],
+    "scope": "Separate shaded passes + native alpha/depth sample policy; no exact compositing claim if differences remain"
+  },
+  "hair_swap_lower_body_changed_pixels_per_key": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "release_ready": false
+}

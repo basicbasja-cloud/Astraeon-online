@@ -1,3 +1,9 @@
+## Iteration 9: one original walk, modular source and painted playback
+
+[Painted walk GIF and review](walk-test-v9/README.md) test eight sparse poses in our own fantasy anime style over a newly built original modular character. The saved 41-sample action, eight physical facings, complete SE parts and actual hair swapping are included. Real footwear floor penetration was found and repaired with fixed-length IK. Two imagegen whole-sheet attempts retain pose/shape drift; painted anatomy and production parts remain unapproved. A shared grid-row calibration corrects a sheet displacement without per-frame fitting. [Reproduction commands](../../skills/modular-eight-direction-sprites/studies/walk-test/README.md).
+
+![Original-style walk test](walk-test-v9/painted-preview/walk-painted-SE.gif)
+
 ## Iteration 8: preset animations, skeleton transfer and contact gaps
 
 [New study and comparison boards](preset-retarget-v8/README.md) sample eight CC0 presets at 339 real timestamps, preserve source/root transforms and expose endpoint failures on a fresh proportion skeleton. [Reusable preset/retarget guide](../../skills/modular-eight-direction-sprites/references/preset-retargeting-practice.md) draws on official Mixamo/Godot documentation, five selected papers, two patents and pinned Rokoko code. Other providers are allowed; KayKit is an additional audited candidate, not an executed transfer. No original animation or art approval is established.
@@ -10,7 +16,7 @@ The [v0.6 executable review pipeline](../../skills/modular-eight-direction-sprit
 
 Working branch: `research/modular-sprites-full-body-2026-10-11`. Stay on this branch for subsequent iterations. It was created from the newest observed head, `character/production-factory-v2` at `e130b217da3ba9e56cce7d1e33bf29f20daedd7a`; obsolete main and rejected branch art are excluded from study.
 
-## Current original rig proof v4
+## Historical original rig proof v4 — unapproved
 
 **Technical prototype; art, acting and effect unapproved.** Complete separately authored body/head/hair/equipment geometry now produces eight-direction attack sprites with invariant anatomical right-hand weapons. Painted v3 is rejected and is retained only as failure evidence.
 
@@ -22,7 +28,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.8](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.9](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)
