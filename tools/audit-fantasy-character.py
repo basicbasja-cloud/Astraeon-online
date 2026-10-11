@@ -65,9 +65,11 @@ for clip in json.loads(s['clips']):
         loop_error=max(abs(rig.pose.bones[n].matrix[i][j]-m[i][j]) for n,m in first.items() for i in range(4) for j in range(4))
         if loop_error>1e-4:issues.append('Loop endpoints differ: '+clip['name'])
     clip_reports.append({'name':clip['name'],'frames':clip['frames'],'loop':clip['loop'],'loopEndpointMatrixError':loop_error,'samples':samples})
+images=[{'name':i.name,'size':list(i.size),'embedded':bool(i.packed_file)} for i in bpy.data.images if i.source=='FILE']
+if any(not i['embedded'] or min(i['size'])==0 for i in images):issues.append('Missing or external native texture; embed textures before delivery')
 report={'kind':'native_source_audit','nativeSHA256':hashlib.sha256(Path(bpy.data.filepath).read_bytes()).hexdigest(),
         'technicalVerdict':'PASS' if not issues else 'FAIL','visualVerdict':'REQUIRES_ART_REVIEW','ownerApproved':False,'runtimeAdmitted':False,
-        'issues':sorted(set(issues)),'bones':len(rig.data.bones),'meshes':meshes,'clips':clip_reports,
+        'issues':sorted(set(issues)),'bones':len(rig.data.bones),'meshes':meshes,'images':images,'clips':clip_reports,
         'sourceBoundaryNote':'Source nonmanifold joins are retained and reported. Closed manufactured accessories can be single-sided ornamental surfaces.'}
 path=base/'authoring/characters/swordsman-production/fantasy-base-01/factory/source-audit.json';path.parent.mkdir(parents=True,exist_ok=True)
 path.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')

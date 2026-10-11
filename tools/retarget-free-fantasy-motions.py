@@ -114,7 +114,10 @@ for clip in clips:
         # Keep the real deformed soles on the floor, retaining donor step lift/bob.
         correctionZ=max(0,-low)
         if name in ['Idle','Walk','Run','Sprint','Guard','BasicAttack','SkillAction']:correctionZ=-low
-        shift('Hips',displacement+Vector((0,0,correctionZ)));floorCorrections.append(correctionZ)
+        # Keep the prone head and its antialiasing inside the common canvas in
+        # every heading. This small source-space settling applies to all parts.
+        settle=Vector((0,-.05*t,0)) if name=='Death' else Vector()
+        shift('Hips',displacement+Vector((0,0,correctionZ))+settle);floorCorrections.append(correctionZ)
         bpy.context.view_layer.update()
         hand=rig.pose.bones['Hand.R'];deform=hand.matrix@hand.bone.matrix_local.inverted()
         weaponAxis=(deform.to_3x3()@axis).normalized();forearmAxis=(rig.pose.bones['Forearm.R'].tail-rig.pose.bones['Forearm.R'].head).normalized()

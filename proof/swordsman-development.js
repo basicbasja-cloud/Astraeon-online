@@ -9,7 +9,7 @@ window.AstraeonSwordsmanDevelopmentInit=async bodyVariant=>{
  if(factoryReview){
   const root='./authoring/characters/swordsman-production/fantasy-base-01/';
   const proof=await(await fetch(root+'factory/runtime-compatibility.json?spriteDev=1&t='+Date.now(),{cache:'no-store'})).json();
-  url=root+'runtime/assets/characters/fantasy-golden-01/sprite-'+proof.nativeSHA256.slice(0,12)+'-'+proof.bankSHA256.slice(0,12)+'.json';
+  url=root+'runtime/'+proof.definitionFile;
  }
  const visual=await api.load(url,{
   allowDev:true,bodyVariant:factoryReview?'male':bodyVariant,isolateDevelopmentCache:true,animationIds:['Idle']
@@ -54,8 +54,8 @@ window.AstraeonSwordsmanDevelopmentInit=async bodyVariant=>{
   // The explicit factory page previews its source even on a saved Mage/Ranger
   // profile. Supply only the render argument; never alter gameplay or saves.
   const renderPlayer=window.AstraeonAnimation.player;
-  window.AstraeonAnimation.player=(...args)=>{args[7]=visualFor(args[2]?.state||'idle');return renderPlayer(...args)};
-  const sets=await(await fetch('./authoring/characters/swordsman-production/fantasy-base-01/runtime/appearance-sets.json',{cache:'no-store'})).json();
+  window.AstraeonAnimation.player=(...args)=>{args[1]=1;args[7]=visualFor(args[2]?.state||'idle');return renderPlayer(...args)};
+  const sets=await(await fetch('./authoring/characters/swordsman-production/fantasy-base-01/runtime/appearance-sets.json?spriteDev=1&t='+Date.now(),{cache:'no-store'})).json();
   const panel=document.createElement('aside');panel.style.cssText='position:fixed;right:8px;top:58px;z-index:1001;padding:9px;background:#17242ded;color:#ffe5a1;font:12px system-ui;max-width:270px';
   panel.innerHTML='<label>Factory outfit <select id="factory-outfit"><option value="default">Original</option><option value="alternate">Crimson</option></select></label><br><label>Factory sword <select id="factory-weapon"><option value="default">Original</option><option value="alternate">Short blade</option><option value="none">None</option></select></label><br><label><input id="factory-headgear" type="checkbox">Circlet</label> <label><input id="factory-offhand" type="checkbox">Buckler</label> <label><input id="factory-cape" type="checkbox" checked>Cape</label><p>Technical playback · Art NOT APPROVED</p>';
   document.body.append(panel);

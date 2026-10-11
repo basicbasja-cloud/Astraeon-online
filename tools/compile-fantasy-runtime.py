@@ -15,6 +15,14 @@ def module(name,path):
     spec=importlib.util.spec_from_file_location(name,path);value=importlib.util.module_from_spec(spec);spec.loader.exec_module(value);return value
 packer=module('existing_packer',ROOT/'tools/pack-modular-sprites.py');validator=module('existing_validator',ROOT/'tools/validate-sprites.py')
 package=read(OUT/'package.json');bank=read(OUT/'factory/swap-bank.json');assert bank['baseNativeSHA256']==package['nativeSHA256']
+compiler_hash=sha(Path(__file__))
+target=DEST/'assets/characters/fantasy-golden-01/sprite.json'
+previous=read(target) if target.exists() else {}
+prior_report=read(OUT/'factory/runtime-compatibility.json') if (OUT/'factory/runtime-compatibility.json').exists() else {}
+reuse_previous=prior_report.get('nativeSHA256')==package['nativeSHA256'] and prior_report.get('bankSHA256')==bank['bankSHA256'] and len(previous.get('clips',{}))==len(package['clips'])
+fragments=ROOT/'.character-tools/runtime-fragments/fantasy-golden-01'
+empty_atlas=previous.get('atlases',{}).get('empty') if reuse_previous else None
+reused_parts=0;repacked_parts=0
 key=hashlib.sha256((bank['bankSHA256']+sha(ROOT/'tools/bake-fantasy-swap-bank.py')).encode()).hexdigest()[:16]
 basecache=ROOT/'.character-tools/sprite-bakes'/package['cacheKey'];swapcache=ROOT/'.character-tools/swap-bakes'/key
 for clip in package['clips']:assert (swapcache/clip['name']/'receipt.json').is_file(),'Finish swap bake: '+clip['name']
@@ -59,8 +67,11 @@ for clip in package['clips']:
             for kind,color in colors.items():
                 alpha=color[:,:,3];border=int(np.count_nonzero(alpha[0]))+int(np.count_nonzero(alpha[-1]))+int(np.count_nonzero(alpha[1:-1,0]))+int(np.count_nonzero(alpha[1:-1,-1]))
                 if border:clipped.append({'action':name,'direction':direction,'frame':frame,'part':kind,'borderPixels':border})
-            z=np.stack([depths[m] for m in core]);sort=np.argsort(z,axis=0,kind='stable')[::-1];ranks={m:np.argmax(sort==i,axis=0).astype(np.uint8) for i,m in enumerate(core)}
             priority=np.array([0,1,3,4,5,0])[:,None,None]
+            # Both outfit alternatives have the same logical body priority.
+            # Equal-depth ordering cannot depend on the alternate being added
+            # last to the authoring union. The source compositor uses this tie order.
+            z=np.stack([depths[m] for m in core]);sort=np.argsort(z.astype(np.int32)*8+priority,axis=0,kind='stable')[::-1];ranks={m:np.argmax(sort==i,axis=0).astype(np.uint8) for i,m in enumerate(core)}
             buckets={m:np.sum((z>depths[m])|((z==depths[m])&(priority>2)),axis=0).astype(np.uint8) for m in ['Weapon','WeaponAlt']}
             # Verify actual opaque hand coverage against an unmasked blade/hilt
             # render, rather than assuming a rounded center lies inside a finger.
@@ -76,10 +87,35 @@ for clip in package['clips']:
             pixels=colors[kind].copy();pixels[~mask]=0
             if np.any(pixels[:,:,3]):used_slots.add(info['slot'])
             strip.paste(Image.fromarray(pixels),((i%clip['frames'])*320,(i//clip['frames'])*320))
-        path=SOURCES/'parts'/id/name/'strip.png';path.parent.mkdir(parents=True,exist_ok=True);strip.save(path,compress_level=1);del strip
+        path=SOURCES/'parts'/id/name/'strip.png';path.parent.mkdir(parents=True,exist_ok=True)
+        old_part=previous.get('parts',{}).get(id)
+        same=False
+        if reuse_previous and old_part and path.exists() and previous['clips'].get(name)==d['clips'][name]:
+            with Image.open(path) as old_strip:
+                same=old_strip.mode=='RGBA' and old_strip.size==strip.size and hashlib.sha256(old_strip.tobytes()).digest()==hashlib.sha256(strip.tobytes()).digest()
+        if same:
+            refs={key:ref for key,ref in old_part['frames'].items() if key.startswith(f"{d['characterId']}_{id}_{name}_")}
+            assert len(refs)==clip['frames']*8
+            d['parts'][id]['frames'].update(refs)
+            for ref in refs.values():d['atlases'][ref['atlasId']]=previous['atlases'][ref['atlasId']]
+            reused_parts+=1;del strip;continue
+        strip.save(path,compress_level=1)
+        blank=strip.getchannel('A').getbbox() is None;del strip
+        if blank and empty_atlas:
+            d['atlases']['empty']=empty_atlas
+            for direction in package['directions']:
+                for index in range(clip['frames']):
+                    d['parts'][id]['frames'][f"{d['characterId']}_{id}_{name}_{direction}_{index:02}"]={'atlasId':'empty','rect':[2,2,320,320]}
+            continue
         single=copy.deepcopy(d);single['parts']={id:{'slot':info['slot'],'frames':{}}};single['clips']={name:d['clips'][name]}
-        packer.pack(single,SOURCES,DEST,deduplicate=True)
+        # Fragment metadata stays in the cache until the complete definition
+        # passes. Continue using the existing packer without publishing fragments.
+        packer.pack(single,SOURCES,fragments,deduplicate=True)
+        for atlas in single['atlases'].values():
+            source=fragments/atlas['file'];destination=DEST/atlas['file'];destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,destination)
+        if 'empty' in single['atlases']:empty_atlas=single['atlases']['empty']
         d['parts'][id]['frames'].update(single['parts'][id]['frames']);d['atlases'].update(single['atlases'])
+        repacked_parts+=1
     del records
     print('RUNTIME_PACKED '+name,flush=True)
 assert not clipped, ('Clipped equipment/outfit bake',clipped)
@@ -92,16 +128,17 @@ for group,variants in appearances.items():
 # Immutable atlas URLs also work with older service workers that predate the
 # development-cache opt-out. Their contents always identify the actual bake.
 for atlas in d['atlases'].values():
-    original=DEST/atlas['file'];unique=original.with_name(original.stem+'-'+sha(original)[:12]+original.suffix)
+    original=DEST/atlas['file'];digest=sha(original)[:12]
+    unique=original if original.stem.endswith('-'+digest) else original.with_name(original.stem+'-'+digest+original.suffix)
     if not unique.exists():shutil.copyfile(original,unique)
     atlas['file']=unique.relative_to(DEST).as_posix()
-target=DEST/'assets/characters/fantasy-golden-01/sprite.json';target.write_text(json.dumps(d,indent=2)+'\n')
-immutable=target.with_name('sprite-'+package['nativeSHA256'][:12]+'-'+bank['bankSHA256'][:12]+'.json')
+target.write_text(json.dumps(d,indent=2)+'\n')
+immutable=target.with_name('sprite-'+package['nativeSHA256'][:12]+'-'+bank['bankSHA256'][:12]+'-'+compiler_hash[:12]+'.json')
 shutil.copyfile(target,immutable)
 (DEST/'appearance-sets.json').write_text(json.dumps(appearances,indent=2)+'\n')
 schema=read(ROOT/'assets/characters/schemas/sprite-definition.schema.json');validator.jsonschema.Draft202012Validator(schema).validate(d);validator.validate_file(target,DEST,schema)
 subprocess.run(['C:/Program Files/nodejs/node.exe',str(ROOT/'tools/validate-modular-metadata.cjs'),str(target)],check=True,cwd=ROOT)
-report={'technicalVerdict':'PASS','nativeSHA256':package['nativeSHA256'],'bankSHA256':bank['bankSHA256'],'directions':package['directions'],'requiredFramePositions':1392,'totalFramePositions':1456,
+report={'technicalVerdict':'PASS','nativeSHA256':package['nativeSHA256'],'bankSHA256':bank['bankSHA256'],'compilerSHA256':compiler_hash,'definitionFile':immutable.relative_to(DEST).as_posix(),'reusedUnchangedPartClips':reused_parts,'repackedPartClips':repacked_parts,'directions':package['directions'],'requiredFramePositions':1392,'totalFramePositions':1456,
         'slots':len(d['slots']),'parts':len(d['parts']),'atlases':len(d['atlases']),'existingRendererSHA256':sha(ROOT/'modular-sprites.js'),
         'runtimeRepresentation':'ordinary RGBA PNG atlases, shared sockets, timing and ordered 2D slots; no depth maps or 3D',
         'outfitVariantScope':'crimson garment with fitted closed cuirass and raised bronze border; same source body, rig and motion','ownerApproved':False,'runtimeDefaultRegistered':False,

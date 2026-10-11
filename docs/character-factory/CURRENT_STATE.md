@@ -14,9 +14,13 @@ The supplied textured source now has an editable 60-bone rig with 30 digit
 bones, continuous cape and attached sword. The first complete source bake
 covers all 16 required actions, eight real headings and 1,392 positions,
 plus optional Sit (1,456 total). Original paint and source receipts are retained.
-The latest source audit and source raster comparison pass. Equipment/runtime
-rebaking and final integration verification are in progress at this checkpoint;
-read the candidate's final reports rather than earlier checkpoint results.
+The final source audit/raster checks and five source integration tests pass.
+The equipment compiler passes existing schema/atlas/metadata checks; all 480
+ordered-runtime pixel comparisons match exactly. Existing modular renderer
+tests pass (39). Browser checks cover source review, equipment, motion, desktop
+and narrow layouts, and the actual game with click-to-move. Fresh console
+errors are empty. Current native SHA starts `9894ebb2b07d`; sealed receipts
+and the local editable delivery identify this exact build.
 
 The owner requested free preset motions and corrected the unnatural hand.
 The owner explicitly confirmed a grip perpendicular to the forearm with a

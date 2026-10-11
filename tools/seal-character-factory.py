@@ -9,24 +9,31 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def write(path,data):path.write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8')
 recipe=read(OUT/'factory/recipe.json');package=read(OUT/'package.json');audit=read(OUT/'factory/source-audit.json');raster=read(OUT/'validation.json')
 assert audit['technicalVerdict']==raster['technicalVerdict']=='PASS'
+assert audit['images'] and all(i['embedded'] and min(i['size'])>0 for i in audit['images'])
 assert not package['missingActions'] and package['requiredFramePositionsRendered']==1392
 native=ROOT/recipe['productionNative'];assert sha(native)==package['nativeSHA256']==audit['nativeSHA256']
 integration=read(OUT/'factory/integration-evidence.json');assert integration['nativeSHA256']==package['nativeSHA256']
 test_result=read(OUT/'factory/test-result.json');assert test_result['technicalVerdict']=='PASS' and test_result['testsRun']==5 and test_result['nativeSHA256']==package['nativeSHA256']
 runtime_result=read(OUT/'factory/runtime-test-result.json');assert runtime_result['technicalVerdict']=='PASS' and runtime_result['nativeSHA256']==package['nativeSHA256']
+browser=read(OUT/'factory/browser-review.json')
+assert browser['technicalVerdict']=='PASS' and browser['nativeSHA256']==package['nativeSHA256'] and browser['actualGameChecked']
+assert not browser['ownerApproved']
+for proof in browser['screenshots']:
+    assert sha(OUT/proof['file'])==proof['sha256'],'Browser proof changed'
 assert len(integration['gripSamples'])==408
 assert integration['trueHandHoldout']['samples']==408 and integration['trueHandHoldout']['opaqueCoveredPixels']>1000
 assert integration['trueHandHoldout']['residualFraction']<.05
 assert all(s['transparentHoles']==0 and s['revealedDifferentPixels']>100 for s in integration['capeRemoval'])
 scripts=recipe['buildScripts']+[recipe['auditScript'],recipe['bakeScript'],recipe['packScript'],'inspect-fantasy-base.py','run-character-factory.py','check-fantasy-grip.py','render-fantasy-proof.py','verify-fantasy-delivery.py','seal-character-factory.py']
 scripts+=['build-fantasy-swap-bank.py','bake-fantasy-swap-bank.py','compile-fantasy-runtime.py','verify-fantasy-runtime.py']
-scripts+=['fetch-free-quaternius-motions.py','inspect-free-motion-rigs.py','extract-free-motion-samples.py','make-fantasy-review-media.py']
+scripts+=['fetch-free-quaternius-motions.py','inspect-free-motion-rigs.py','extract-free-motion-samples.py','make-fantasy-review-media.py','repair-fantasy-death-framing.py']
 files=[ROOT/'tools'/name for name in scripts]+[ROOT/'tests/test_fantasy_sprite_package.py']
 support=[ROOT/recipe['approvedConcept'],ROOT/'authoring/characters/swordsman-production/fresh-2d/candidate-01/CONCEPT_APPROVAL.md',
          ROOT/'authoring/characters/swordsman-production/reference-fit-01/fit-spec.json',ROOT/'authoring/characters/true-modular/swordsman/male/blueprint.json',
          ROOT/'docs/character-factory/new-production-matrix.json',ROOT/'docs/character-factory/RESEARCH_COHERENT_SPRITE_AUTHORING_V2.md']
 support+=[ROOT/'modular-sprites.js',ROOT/'world-view.js',ROOT/'character-renderer.js',ROOT/'animation.js',ROOT/'tools/pack-modular-sprites.py',ROOT/'tools/validate-sprites.py',ROOT/'tools/validate-modular-metadata.cjs',ROOT/'assets/characters/schemas/sprite-definition.schema.json']
 support+=[ROOT/'boot.js',ROOT/'proof/swordsman-development.js',ROOT/'proof/fantasy-game.html',ROOT/'docs/character-factory/RESEARCH_FREE_MOTIONS_20261011.md']
+support+=[ROOT/'docs/character-factory/CURRENT_STATE.md']
 receipt={'sealedAtUTC':datetime.now(timezone.utc).isoformat(),'nativeSHA256':sha(native),'archiveSHA256':recipe['sourceArchiveSHA256'],
          'approvedConceptSHA256':recipe['approvedConceptSHA256'],'python':platform.python_version(),'blender':'5.2.2 LTS',
          'scripts':{p.relative_to(ROOT).as_posix():sha(p) for p in files},'requiredFramePositions':1392,'totalFramePositions':1456,
@@ -34,11 +41,23 @@ receipt={'sealedAtUTC':datetime.now(timezone.utc).isoformat(),'nativeSHA256':sha
          'sourceScope':'Owner-supplied local input; archive has no license document. Raw source excluded from public package.',
          'originalConceptPixelsUnchanged':sha(ROOT/recipe['approvedConcept'])==recipe['approvedConceptSHA256']}
 write(OUT/'factory/build-receipt.json',receipt)
-write(OUT/'artifact-manifest.json',{p.relative_to(OUT).as_posix():{'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(OUT.rglob('*')) if p.is_file() and p.name!='artifact-manifest.json'})
+runtime_definition=read(OUT/'runtime/assets/characters/fantasy-golden-01/sprite.json')
+bank=read(OUT/'factory/swap-bank.json')
+runtime_files={'runtime/'+a['file'] for a in runtime_definition['atlases'].values()}
+runtime_proof=read(OUT/'factory/runtime-compatibility.json')
+runtime_files|={'runtime/assets/characters/fantasy-golden-01/sprite.json',
+                'runtime/'+runtime_proof['definitionFile']}
+def current_file(path):
+    relative=path.relative_to(OUT).as_posix()
+    return path.is_file() and (not relative.startswith('runtime/assets/') or relative in runtime_files)
+current=[p for p in sorted(OUT.rglob('*')) if current_file(p) and p.name!='artifact-manifest.json']
+# Older generated atlas files stay local as recovery evidence, but cannot
+# silently inflate or contaminate the sealed current delivery.
+write(OUT/'artifact-manifest.json',{p.relative_to(OUT).as_posix():{'sha256':sha(p),'bytes':p.stat().st_size} for p in current})
 dest=ROOT/'.character-tools/deliveries/ASTRAEON_first_sprite_production.zip';dest.parent.mkdir(parents=True,exist_ok=True)
 with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=2) as archive:
-    for path in sorted(OUT.rglob('*')):
-        if path.is_file():archive.write(path,path.relative_to(ROOT).as_posix())
+    for path in current+[OUT/'artifact-manifest.json']:
+        archive.write(path,path.relative_to(ROOT).as_posix())
     for path in files:archive.write(path,path.relative_to(ROOT).as_posix())
     for path in support:archive.write(path,path.relative_to(ROOT).as_posix())
     archive.write(native,recipe['productionNative'])
