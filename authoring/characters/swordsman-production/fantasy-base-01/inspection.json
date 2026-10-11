@@ -1,0 +1,180 @@
+{
+  "kind": "user_supplied_source_inspection",
+  "ownerApproved": false,
+  "runtimeAdmitted": false,
+  "archiveSHA256": "308e5578d99cf9a3193fb4d43f9820dbbf9f100f42a326d44d633f4fcf5f385a",
+  "source": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbx",
+  "sourceSHA256": "a4a022bfc7cb00d59256454a05b108f75c41a529513d99a83a281199e05adfd7",
+  "files": [
+    {
+      "name": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm/fantasy_character_3d_model_metallic.JPEG",
+      "bytes": 669741,
+      "sha256": "d65875217aeae1331efe6df9cc025c565c2b98b58b6f7a2c1dcf682871f9ad15"
+    },
+    {
+      "name": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm/fantasy_character_3d_model_roughness.JPEG",
+      "bytes": 344131,
+      "sha256": "39f67ea92310c5fdda01f7728523b3b86818833a1be3fd4a66a919ad546d71c3"
+    },
+    {
+      "name": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm/tripo_node_96cb945a-16de-482e-a9d5-85851131a8e7_BaseColor.jpg",
+      "bytes": 1823732,
+      "sha256": "cbcc884df68eec0feda94a6884dd18e22a9edf676e8bd3a890a32ca53d0d29f0"
+    },
+    {
+      "name": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm/tripo_node_96cb945a-16de-482e-a9d5-85851131a8e7_Normal_Bake.jpg",
+      "bytes": 1026311,
+      "sha256": "d29c27993f3b7a80f41cef0d7c69862c5559bc4ee4a8de45d3306b5b9c8b321c"
+    },
+    {
+      "name": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbx",
+      "bytes": 638140,
+      "sha256": "a4a022bfc7cb00d59256454a05b108f75c41a529513d99a83a281199e05adfd7"
+    }
+  ],
+  "licenseEvidence": "No license or creator attribution document is included in this archive.",
+  "objects": [
+    {
+      "name": "tripo_node_bd5c9178",
+      "type": "MESH",
+      "parent": null,
+      "location": [
+        1.1920928955078125e-07,
+        2.2351741790771484e-08,
+        2.9802322387695312e-08
+      ],
+      "rotation": [
+        -4.371138828673793e-08,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "vertices": 9165,
+      "polygons": 9679,
+      "triangles": 18329,
+      "boundaryEdges": 7,
+      "nonmanifoldEdges": 14,
+      "looseVertices": 0,
+      "connectedComponents": [
+        9165
+      ],
+      "uvLayers": [
+        "tripo_node_96cb945a-16de-482e-a9d5-85851131a8e7_NewUVMap"
+      ],
+      "materialSlots": [
+        "tripo_mat_bd5c9178"
+      ],
+      "vertexGroups": [],
+      "modifiers": [],
+      "shapeKeys": []
+    }
+  ],
+  "materials": [
+    {
+      "name": "tripo_mat_bd5c9178",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "image": null
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "image": null
+        },
+        {
+          "name": "Normal Map",
+          "type": "ShaderNodeNormalMap",
+          "image": null
+        },
+        {
+          "name": "Image Texture",
+          "type": "ShaderNodeTexImage",
+          "image": "tripo_image_bd5c9178_0"
+        },
+        {
+          "name": "Image Texture.001",
+          "type": "ShaderNodeTexImage",
+          "image": "tripo_image_bd5c9178_3"
+        },
+        {
+          "name": "Image Texture.002",
+          "type": "ShaderNodeTexImage",
+          "image": "fantasy_character_3d_model_roughness"
+        },
+        {
+          "name": "Image Texture.003",
+          "type": "ShaderNodeTexImage",
+          "image": "fantasy_character_3d_model_metallic"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "name": "fantasy_character_3d_model_metallic",
+      "size": [
+        2048,
+        2048
+      ],
+      "loaded": true,
+      "colorSpace": "Non-Color",
+      "file": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm\\fantasy_character_3d_model_metallic.JPEG"
+    },
+    {
+      "name": "fantasy_character_3d_model_roughness",
+      "size": [
+        2048,
+        2048
+      ],
+      "loaded": true,
+      "colorSpace": "Non-Color",
+      "file": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm\\fantasy_character_3d_model_roughness.JPEG"
+    },
+    {
+      "name": "tripo_image_bd5c9178_0",
+      "size": [
+        4096,
+        4096
+      ],
+      "loaded": true,
+      "colorSpace": "sRGB",
+      "file": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm\\tripo_node_96cb945a-16de-482e-a9d5-85851131a8e7_BaseColor.jpg"
+    },
+    {
+      "name": "tripo_image_bd5c9178_3",
+      "size": [
+        2048,
+        2048
+      ],
+      "loaded": true,
+      "colorSpace": "Non-Color",
+      "file": "tripo_convert_bd5c9178-3370-414d-82ed-a1989d1ba426.fbm\\tripo_node_96cb945a-16de-482e-a9d5-85851131a8e7_Normal_Bake.jpg"
+    }
+  ],
+  "actions": [],
+  "worldBounds": {
+    "min": [
+      -0.49902334809303284,
+      -0.11621091514825821,
+      2.472258131547278e-08
+    ],
+    "max": [
+      0.49902358651161194,
+      0.11621100455522537,
+      0.9902344346046448
+    ],
+    "size": [
+      0.9980469346046448,
+      0.23242191970348358,
+      0.9902344346046448
+    ]
+  },
+  "rigged": false,
+  "modularObjects": 1
+}

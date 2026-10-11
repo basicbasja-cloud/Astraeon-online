@@ -1,0 +1,367 @@
+{
+  "clips": [
+    {
+      "name": "Idle",
+      "action": "F01_Idle",
+      "frames": 8,
+      "loop": true,
+      "durationsMs": [
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225,
+        225
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Walk",
+      "action": "F01_Walk",
+      "frames": 16,
+      "loop": true,
+      "durationsMs": [
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70,
+        70
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Run",
+      "action": "F01_Run",
+      "frames": 12,
+      "loop": true,
+      "durationsMs": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Sprint",
+      "action": "F01_Sprint",
+      "frames": 12,
+      "loop": true,
+      "durationsMs": [
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48,
+        48
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "BasicAttack",
+      "action": "F01_BasicAttack",
+      "frames": 16,
+      "loop": false,
+      "durationsMs": [
+        40,
+        40,
+        45,
+        45,
+        45,
+        35,
+        30,
+        25,
+        25,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "SkillAction",
+      "action": "F01_SkillAction",
+      "frames": 14,
+      "loop": false,
+      "durationsMs": [
+        55,
+        55,
+        55,
+        60,
+        60,
+        50,
+        35,
+        35,
+        45,
+        50,
+        55,
+        65,
+        65,
+        65
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "CastChannel",
+      "action": "F01_CastChannel",
+      "frames": 12,
+      "loop": true,
+      "durationsMs": [
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90,
+        90
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "CastRelease",
+      "action": "F01_CastRelease",
+      "frames": 10,
+      "loop": false,
+      "durationsMs": [
+        35,
+        35,
+        40,
+        30,
+        30,
+        40,
+        50,
+        65,
+        65,
+        70
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Guard",
+      "action": "F01_Guard",
+      "frames": 10,
+      "loop": true,
+      "durationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Dash",
+      "action": "F01_Dash",
+      "frames": 10,
+      "loop": false,
+      "durationsMs": [
+        25,
+        25,
+        30,
+        35,
+        35,
+        40,
+        40,
+        40,
+        40,
+        45
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Hit",
+      "action": "F01_Hit",
+      "frames": 8,
+      "loop": false,
+      "durationsMs": [
+        25,
+        25,
+        35,
+        40,
+        45,
+        50,
+        50,
+        50
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Death",
+      "action": "F01_Death",
+      "frames": 12,
+      "loop": false,
+      "durationsMs": [
+        45,
+        45,
+        50,
+        55,
+        60,
+        60,
+        65,
+        65,
+        75,
+        90,
+        120,
+        160
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Interact",
+      "action": "F01_Interact",
+      "frames": 8,
+      "loop": false,
+      "durationsMs": [
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Pickup",
+      "action": "F01_Pickup",
+      "frames": 8,
+      "loop": false,
+      "durationsMs": [
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60,
+        60
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "ItemUse",
+      "action": "F01_ItemUse",
+      "frames": 8,
+      "loop": false,
+      "durationsMs": [
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65,
+        65
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    },
+    {
+      "name": "Sit",
+      "action": "F01_Sit",
+      "frames": 8,
+      "loop": false,
+      "durationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "contract": "optional",
+      "ownerApproved": false
+    },
+    {
+      "name": "Respawn",
+      "action": "F01_Respawn",
+      "frames": 10,
+      "loop": false,
+      "durationsMs": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "contract": "required",
+      "ownerApproved": false
+    }
+  ],
+  "poleCalibration": {
+    "R": {
+      "poleAngleDegrees": 90,
+      "bindKneeError": 4.952045306472843e-05
+    },
+    "L": {
+      "poleAngleDegrees": 90,
+      "bindKneeError": 4.952045306472843e-05
+    }
+  },
+  "ownerApproved": false
+}
