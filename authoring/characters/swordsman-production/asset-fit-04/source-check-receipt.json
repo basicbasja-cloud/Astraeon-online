@@ -12,6 +12,8 @@
   "boundaryEdges": 0,
   "nonmanifoldEdges": 0,
   "maxInheritedWeights": 6,
+  "minInheritedWeightSum": 0.08451110266469186,
+  "maxInheritedWeightSum": 1.2795428335666656,
   "modules": {
     "BaseBody": [
       "SM_AssetFit04_Body",
@@ -51,7 +53,12 @@
     "Weapon": [
       "SM_AssetFit04_Blade_AxisGuide",
       "SM_AssetFit04_Hilt_Provisional",
-      "SM_AssetFit04_Guard_Provisional"
+      "SM_AssetFit04_Identity_WeaponGuard",
+      "SM_AssetFit04_Identity_WeaponGuardRidge_-1",
+      "SM_AssetFit04_Identity_WeaponGuardCrest_-1",
+      "SM_AssetFit04_Identity_WeaponGuardRidge_1",
+      "SM_AssetFit04_Identity_WeaponGuardCrest_1",
+      "SM_AssetFit04_Identity_WeaponPommel"
     ],
     "BackAccessory": [
       "SM_AssetFit04_CapeRefit_Cloth",
@@ -116,7 +123,11 @@
       "SM_AssetFit04_Refitted_Boot_R",
       "SM_AssetFit04_Refitted_Trouser_R",
       "SM_AssetFit04_Refitted_Glove_L",
-      "SM_AssetFit04_Refitted_Glove_R"
+      "SM_AssetFit04_Refitted_Glove_R",
+      "SM_AssetFit04_Identity_BootSole_R",
+      "SM_AssetFit04_Identity_BootWelt_R",
+      "SM_AssetFit04_Identity_BootSole_L",
+      "SM_AssetFit04_Identity_BootWelt_L"
     ]
   },
   "canvas": [
@@ -161,7 +172,5 @@
   ],
   "gripMethod": "MCP-root-preserving static palm roll and handle-centered curl",
   "handTransformsAreStatic": true,
-  "equippedLayerScope": "Visible pixels of this static equipped pose; not substitution-ready action coverage",
-  "minInheritedWeightSum": 0.08451110266469186,
-  "maxInheritedWeightSum": 1.2795428335666656
+  "equippedLayerScope": "Visible pixels of this static equipped pose; not substitution-ready action coverage"
 }

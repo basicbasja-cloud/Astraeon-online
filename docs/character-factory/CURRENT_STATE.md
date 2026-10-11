@@ -48,6 +48,19 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
+**Latest: asset-fit-04 shared identity and semantic layer refinement, still NO-SHIP.**
+Blender was restored from its saved owned checkpoint after closing. The source
+now has an ornate guard/pommel, correctly layered buckle, surface-fitted garment
+emblems, boot soles, darker bronze/leather, and native facial shading refinements.
+All eight static frames, equipment removals and matching grip diagnostics are
+rebaked. An additional semantic export separates body/outfit, head/hair, weapon,
+and cape at one shared canvas/root, with headgear explicitly unequipped. Head
+masking preserves source topology. The new local working copy is
+`.character-tools/checkpoints/asset-fit-04-identity.blend`; the preceding copy is
+preserved. The skin UV imagegen attempt produced no retrievable artifact and is
+not active. Approved likeness, rear sword readability, joint topology/weight QA,
+rig controls and motion coverage remain unresolved. No runtime admission occurs.
+
 **Latest: authorized free anatomy fitting study, still NO-SHIP.**
 The owner approved downloading free assets on 10 October. Quaternius Standard
 FBX/glTF anatomy and the compatible free Fantasy clothing pack were downloaded,

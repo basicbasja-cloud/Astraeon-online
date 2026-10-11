@@ -13,7 +13,7 @@ geometry=[o for o in s.objects if o.type in ('MESH','CURVE')]
 groups={
  'BaseBody':[o for o in geometry if o.name in [p+'Body',p+'Eyes',p+'Brows'] or o.name.startswith(p+'FaceDetail_')],
  'Hair':[o for o in geometry if o.name.startswith(p+'Hair_')],
- 'Weapon':[o for o in geometry if o.name.startswith((p+'Blade_AxisGuide',p+'Hilt_Provisional',p+'Guard_Provisional'))],
+ 'Weapon':[o for o in geometry if o.name.startswith((p+'Blade_AxisGuide',p+'Hilt_Provisional',p+'Guard_Provisional',p+'Identity_Weapon'))],
  'BackAccessory':[o for o in geometry if o.name.startswith(p+'CapeRefit_')],
 }
 claimed={o for objects in groups.values() for o in objects}

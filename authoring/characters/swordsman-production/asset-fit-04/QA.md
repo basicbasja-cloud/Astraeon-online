@@ -30,6 +30,21 @@ there are no FK controls, animation tests, or validated contact mechanics.
 Lighting is shared by all headings and reduced from the initial overbright
 study lights; it is not corrected independently per frame.
 
+Latest internal refinement: the plain guard is hidden and replaced by hooked
+quillons, a central relief and a pommel. Weapon diagnostics include those source
+objects and keep the old hidden guard inactive. Belt frame/pin placement clears
+the leather backing and refitted shirt; garment emblems follow evaluated surfaces.
+Boot soles establish a shoe outline; bronze/leather shading now converts intended
+paint colors to linear shader inputs and samples the source UV paint atlas without
+bleeding into neighboring swatches. Lips, brows, cheek tint and native eye shading
+are refined. These are improvements, not an owner-approved likeness result.
+
+The additional semantic bake separates body/outfit from head/hair and exports
+weapon/cape across all eight headings. Headgear is unequipped. Head/body masking
+uses 1,286 head-region polygons on the unchanged closed body. Numeric recomposition
+is recorded separately under `modularLayerProof`; it does not validate substitution,
+deformation or motion coverage.
+
 Major visual gaps: the face/hair identity and painterly finish still differ
 substantially from the approved concept; boots, collar and costume construction
 need authored detail; metal is too uniformly shaded; cape silhouette differs;

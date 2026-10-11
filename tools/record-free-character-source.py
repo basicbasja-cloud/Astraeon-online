@@ -33,6 +33,17 @@ for d in ['S','SW','W','NW','N','NE','E','SE']:
     proof[d]={'coverageMismatchPixels':int(np.sum(mask!=(b[:,:,3]>128))),
               'opaqueMeanRGBError':float(np.mean(np.abs(a[:,:,:3].astype(float)-b[:,:,:3].astype(float))[mask]))}
 weapon={d:{kind:int(np.sum(np.asarray(Image.open(out/f'renders/Weapon-{kind}-{d}-fullcanvas.png'))[:,:,3]>128)) for kind in ['visible','isolated']} for d in ['SE','W','NW','N']}
+modular_receipt=json.loads((out/'modular-static-receipt.json').read_text(encoding='utf-8'))
+modular_proof={}
+for d in modular_receipt['directions']:
+    composite=Image.open(out/f'renders/{d}-final-static.png').convert('RGBA');a=np.asarray(composite);mask=a[:,:,3]>128
+    merged=Image.new('RGBA',composite.size)
+    for name in modular_receipt['bakedParts']:
+        layer=Image.open(out/f'renders/modular-{name}-{d}.png').convert('RGBA');assert layer.size==composite.size
+        merged=Image.alpha_composite(merged,layer)
+    b=np.asarray(merged)
+    modular_proof[d]={'coverageMismatchPixels':int(np.sum(mask!=(b[:,:,3]>128))),
+                     'opaqueMeanRGBError':float(np.mean(np.abs(a[:,:,:3].astype(float)-b[:,:,:3].astype(float))[mask]))}
 grip={d:{kind:int(np.sum(np.asarray(Image.open(out/f'renders/weapon-{kind}-{d}.png'))[:,:,3]>128)) for kind in ['isolated','hand-masked']} for d in ['SE','W','NW','N']}
 assets=json.loads((out/'FREE_ASSET_PROVENANCE.json').read_text(encoding='utf-8'))
 for record in assets['assets']:
@@ -46,8 +57,9 @@ write(out/'FREE_ASSET_PROVENANCE.json',assets)
 scripts=['import-free-character-references.py','fit-free-character-study.py','refit-free-character-costume.py',
          'refine-free-character-style.py','repair-free-character-grip.py','finish-free-character-surfaces.py',
          'close-free-character-costume-gaps.py','inspect-free-character-grip.py',
+         'refine-free-character-identity.py','bake-modular-character-study.py',
          'bake-free-character-source-checks.py','record-free-character-source.py']
-native=root/'.character-tools/checkpoints/asset-fit-04-native.blend';assert native.is_file()
+native=root/'.character-tools/checkpoints/asset-fit-04-identity.blend';assert native.is_file()
 write(out/'provenance.json',{'date':'2026-10-11','branch':'character/production-factory-v2','originalConceptSHA256':digest(reference),
  'scripts':{s:digest(root/'tools'/s) for s in scripts},'nativeWorkingCopy':{'path':str(native),'sha256':digest(native),'bytes':native.stat().st_size,'scope':'Local working project with inspection scenes; not standalone asset package'},
  'sourceTextureFix':'Correct eye-normal file loaded and packed; no 0x0 texture in active source',
@@ -57,9 +69,10 @@ write(out/'validation.json',{'date':'2026-10-11','verdict':'NO_SHIP','ownerAppro
  'scene':receipt['scene'],'armatures':0,'sourceBody':{k:receipt[k] for k in ['vertices','faces','quads','triangles','boundaryEdges','nonmanifoldEdges','maxInheritedWeights','minInheritedWeightSum','maxInheritedWeightSum']},
  'canvas':[320,320],'root':[160,264],'runtimeScale':.5,'runtimeCanvas':[160,160],'runtimeRoot':[80,132],
  'directions':directions,'equippedLayerProof':{'scope':'All eight static equipped frames; visible-only modules, not arbitrary substitution','order':modules,'perDirection':proof},
+ 'modularLayerProof':{'scope':modular_receipt['scope'],'order':modular_receipt['bakedParts'],'headgear':modular_receipt['headgear'],'perDirection':modular_proof},
  'weaponFullCanvasPixels':weapon,'diagnosticWeaponGripCoverage':grip,'preservation':preservation,
- 'defects':['Approved likeness/painted quality not reached','NW full-character blade occluded','Inherited triangles/poles need joint topology review','FBX inherited weights need normalization and deformation review','No custom rig or actions','Visible-only layers are pose/equipment-specific']})
+ 'defects':['Approved likeness/painted quality not reached','NW full-character weapon readability insufficient (five visible pixels)','Inherited triangles/poles need joint topology review','FBX inherited weights need normalization and deformation review','No custom rig or actions','Visible-only layers are pose/equipment-specific']})
 for folder in [out.parent/'source-lookdev-03',out]:
     files={str(p.relative_to(folder)).replace('\\','/'):{'sha256':digest(p),'bytes':p.stat().st_size} for p in sorted(folder.rglob('*')) if p.is_file() and p.name!='artifact-manifest.json' and not p.name.endswith('.blend1')}
     write(folder/'artifact-manifest.json',files)
-print(json.dumps({'directions':directions,'layerProof':proof,'weaponPixels':weapon,'gripCoverage':grip,'preservation':preservation,'nativeBytes':native.stat().st_size},indent=2))
+print(json.dumps({'directions':directions,'layerProof':proof,'modularLayerProof':modular_proof,'weaponPixels':weapon,'gripCoverage':grip,'preservation':preservation,'nativeBytes':native.stat().st_size},indent=2))

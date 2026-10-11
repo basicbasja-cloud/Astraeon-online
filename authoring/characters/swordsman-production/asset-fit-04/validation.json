@@ -43,10 +43,10 @@
       "alphaBounds": [
         99,
         94,
-        207,
-        267
+        208,
+        273
       ],
-      "alphaHeight": 174
+      "alphaHeight": 180
     },
     "SW": {
       "canvas": [
@@ -54,12 +54,12 @@
         320
       ],
       "alphaBounds": [
-        101,
+        100,
         93,
         208,
-        279
+        285
       ],
-      "alphaHeight": 187
+      "alphaHeight": 193
     },
     "W": {
       "canvas": [
@@ -70,9 +70,9 @@
         127,
         92,
         191,
-        286
+        290
       ],
-      "alphaHeight": 195
+      "alphaHeight": 199
     },
     "NW": {
       "canvas": [
@@ -80,12 +80,12 @@
         320
       ],
       "alphaBounds": [
-        125,
+        123,
         91,
         199,
-        285
+        288
       ],
-      "alphaHeight": 195
+      "alphaHeight": 198
     },
     "N": {
       "canvas": [
@@ -93,12 +93,12 @@
         320
       ],
       "alphaBounds": [
-        112,
+        111,
         97,
         220,
-        274
+        277
       ],
-      "alphaHeight": 178
+      "alphaHeight": 181
     },
     "NE": {
       "canvas": [
@@ -108,10 +108,10 @@
       "alphaBounds": [
         111,
         95,
-        218,
-        275
+        219,
+        279
       ],
-      "alphaHeight": 181
+      "alphaHeight": 185
     },
     "E": {
       "canvas": [
@@ -122,9 +122,9 @@
         128,
         93,
         192,
-        273
+        277
       ],
-      "alphaHeight": 181
+      "alphaHeight": 185
     },
     "SE": {
       "canvas": [
@@ -134,10 +134,10 @@
       "alphaBounds": [
         120,
         93,
-        194,
-        270
+        196,
+        275
       ],
-      "alphaHeight": 178
+      "alphaHeight": 183
     }
   },
   "equippedLayerProof": {
@@ -152,72 +152,120 @@
     "perDirection": {
       "S": {
         "coverageMismatchPixels": 3,
-        "opaqueMeanRGBError": 0.2954869044071388
+        "opaqueMeanRGBError": 0.30164593053395544
       },
       "SW": {
         "coverageMismatchPixels": 4,
-        "opaqueMeanRGBError": 0.25808755995509747
+        "opaqueMeanRGBError": 0.25939526267037183
       },
       "W": {
-        "coverageMismatchPixels": 2,
-        "opaqueMeanRGBError": 0.41805412307843426
+        "coverageMismatchPixels": 4,
+        "opaqueMeanRGBError": 0.4214848571157315
       },
       "NW": {
-        "coverageMismatchPixels": 1,
-        "opaqueMeanRGBError": 0.4042127096520402
+        "coverageMismatchPixels": 0,
+        "opaqueMeanRGBError": 0.4261391389295932
       },
       "N": {
-        "coverageMismatchPixels": 5,
-        "opaqueMeanRGBError": 0.41317753975981825
+        "coverageMismatchPixels": 4,
+        "opaqueMeanRGBError": 0.422912683237731
       },
       "NE": {
         "coverageMismatchPixels": 2,
-        "opaqueMeanRGBError": 0.3508251500272777
+        "opaqueMeanRGBError": 0.35465309652098714
       },
       "E": {
-        "coverageMismatchPixels": 4,
-        "opaqueMeanRGBError": 0.4249465811965812
+        "coverageMismatchPixels": 3,
+        "opaqueMeanRGBError": 0.4185196623430101
       },
       "SE": {
+        "coverageMismatchPixels": 2,
+        "opaqueMeanRGBError": 0.36606940349285555
+      }
+    }
+  },
+  "modularLayerProof": {
+    "scope": "Visible-only layers of this static equipped combination; no arbitrary swapping or motion coverage",
+    "order": [
+      "BodyOutfit",
+      "HeadHair",
+      "Weapon",
+      "Cape"
+    ],
+    "headgear": {
+      "state": "unequipped",
+      "asset": null,
+      "rendered": false
+    },
+    "perDirection": {
+      "S": {
+        "coverageMismatchPixels": 3,
+        "opaqueMeanRGBError": 0.12597200622083982
+      },
+      "SW": {
+        "coverageMismatchPixels": 3,
+        "opaqueMeanRGBError": 0.06378192404393278
+      },
+      "W": {
+        "coverageMismatchPixels": 4,
+        "opaqueMeanRGBError": 0.10818380328491407
+      },
+      "NW": {
         "coverageMismatchPixels": 0,
-        "opaqueMeanRGBError": 0.35020108547108664
+        "opaqueMeanRGBError": 0.22248970762682296
+      },
+      "N": {
+        "coverageMismatchPixels": 2,
+        "opaqueMeanRGBError": 0.23068833652007648
+      },
+      "NE": {
+        "coverageMismatchPixels": 1,
+        "opaqueMeanRGBError": 0.17970464977050488
+      },
+      "E": {
+        "coverageMismatchPixels": 3,
+        "opaqueMeanRGBError": 0.11071649166151945
+      },
+      "SE": {
+        "coverageMismatchPixels": 1,
+        "opaqueMeanRGBError": 0.16076963786194903
       }
     }
   },
   "weaponFullCanvasPixels": {
     "SE": {
-      "visible": 409,
-      "isolated": 437
+      "visible": 435,
+      "isolated": 465
     },
     "W": {
-      "visible": 147,
-      "isolated": 176
+      "visible": 154,
+      "isolated": 183
     },
     "NW": {
-      "visible": 0,
-      "isolated": 379
+      "visible": 5,
+      "isolated": 395
     },
     "N": {
-      "visible": 356,
-      "isolated": 498
+      "visible": 364,
+      "isolated": 526
     }
   },
   "diagnosticWeaponGripCoverage": {
     "SE": {
-      "isolated": 44534,
-      "hand-masked": 39976
+      "isolated": 48394,
+      "hand-masked": 43685
     },
     "W": {
-      "isolated": 15087,
-      "hand-masked": 10008
+      "isolated": 16429,
+      "hand-masked": 11350
     },
     "NW": {
-      "isolated": 32353,
-      "hand-masked": 26135
+      "isolated": 35104,
+      "hand-masked": 27909
     },
     "N": {
-      "isolated": 47498,
-      "hand-masked": 37460
+      "isolated": 51843,
+      "hand-masked": 38861
     }
   },
   "preservation": {
@@ -236,7 +284,7 @@
   },
   "defects": [
     "Approved likeness/painted quality not reached",
-    "NW full-character blade occluded",
+    "NW full-character weapon readability insufficient (five visible pixels)",
     "Inherited triangles/poles need joint topology review",
     "FBX inherited weights need normalization and deformation review",
     "No custom rig or actions",
