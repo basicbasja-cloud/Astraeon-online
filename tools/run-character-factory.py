@@ -6,11 +6,17 @@ Native plus exporter digests make incomplete bake caches safe to resume.
 import argparse,hashlib,json,subprocess,sys,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('mode',choices=['inspect','build','audit','bake','pack','variants','runtime','all']);parser.add_argument('--actions',default='all')
+parser=argparse.ArgumentParser();parser.add_argument('mode',choices=['inspect','build','audit','bake','pack','variants','runtime','refresh','all']);parser.add_argument('--actions',default='all')
 parser.add_argument('--recipe',type=Path,default=ROOT/'authoring/characters/swordsman-production/fantasy-base-01/factory/recipe.json')
 parser.add_argument('--blender',type=Path,default=Path('C:/Program Files/Blender Foundation/Blender 5.2/blender.exe'))
 parser.add_argument('--partial',action='store_true');args=parser.parse_args()
 recipe=json.loads(args.recipe.read_text(encoding='utf-8'));out=ROOT/recipe['output'];native=ROOT/recipe['productionNative'];cache=ROOT/recipe['cache'];cache.mkdir(parents=True,exist_ok=True)
+if args.mode=='refresh':
+    for mode in ['audit','bake','pack','variants','runtime']:
+        subprocess.run([sys.executable,str(Path(__file__).resolve()),mode,'--recipe',str(args.recipe),'--blender',str(args.blender)],cwd=ROOT,check=True)
+    for script in ['verify-fantasy-delivery.py','verify-fantasy-runtime.py']:
+        subprocess.run([sys.executable,str(ROOT/'tools'/script)],cwd=ROOT,check=True)
+    sys.exit(0)
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 assert digest(Path(recipe['sourceArchive']))==recipe['sourceArchiveSHA256'],'Source changed; inspect the new base before fitting.'
 assert digest(ROOT/recipe['approvedConcept'])==recipe['approvedConceptSHA256'],'Approved design changed.'

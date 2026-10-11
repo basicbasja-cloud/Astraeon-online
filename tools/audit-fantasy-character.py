@@ -36,6 +36,11 @@ for clip in json.loads(s['clips']):
         xyz=np.concatenate(points);bounds=[]
         contact=json.loads(s['swordContact']);hand=rig.pose.bones[contact['bone']]
         grip=rig.matrix_world@(hand.matrix@hand.bone.matrix_local.inverted()@Vector(contact['centerModel']))
+        weapon_axis=((hand.matrix@hand.bone.matrix_local.inverted()).to_3x3()@Vector(contact['axisModel'])).normalized()
+        forearm_axis=(rig.pose.bones['Forearm.R'].tail-rig.pose.bones['Forearm.R'].head).normalized()
+        grip_angle=math.degrees(weapon_axis.angle(forearm_axis))
+        wrist_angle=math.degrees(hand.rotation_quaternion.angle)
+        if abs(grip_angle-90)>.05 or abs(wrist_angle)>.05:issues.append(f'Grip/wrist alignment {clip["name"]} {frame}')
         grip_h=np.array([*grip,1.],dtype=np.float64)
         for direction,yaw in json.loads(s['directions']):
             turn=np.array(Matrix.Rotation(math.radians(yaw),4,'Z'),dtype=np.float64)
@@ -52,7 +57,8 @@ for clip in json.loads(s['clips']):
             if weight>.999 and error>.002:issues.append(f'Unreachable planted foot {clip["name"]} {frame} {side}')
         scale_error=max(abs(v-1) for p in rig.pose.bones for v in p.scale)
         if scale_error>1e-6:issues.append('Pose scales a bone')
-        samples.append({'frame':frame,'minimumZByModule':lows,'footIK':foot,'maximumBoneScaleError':scale_error,'projections':bounds})
+        samples.append({'frame':frame,'minimumZByModule':lows,'footIK':foot,'maximumBoneScaleError':scale_error,'projections':bounds,
+                        'gripForearmDegrees':grip_angle,'rightWristLocalDegrees':wrist_angle})
     loop_error=0
     if clip['loop']:
         s.frame_set(1);first={p.name:p.matrix.copy() for p in rig.pose.bones};s.frame_set(clip['frames']+1)

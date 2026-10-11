@@ -3,7 +3,7 @@
 This factory turns the supplied textured fantasy FBX into an editable rig and
 coordinated painted 2D sprites. The first candidate uses one body/outfit, one
 head/hair, one sword and one cape. Default headgear/offhand are unequipped.
-A shorter broad sword, crimson outfit recolor, gold circlet and arm-strapped
+A shorter broad sword, crimson cuirass outfit, gold circlet and arm-strapped
 buckler prove bounded equipment reuse on the same poses. Review the actual
 game renderer and swaps in [runtime/review.html](runtime/review.html), and
 the reference comparison/grips in [review.html](review.html).
@@ -30,8 +30,9 @@ records the builders, audit and export scripts. It points to the supplied
 archive in Downloads; adjust that path if the archive is moved, retaining its
 digest. The raw source and native project remain in the ignored local cache.
 
-After editing the native source, run `audit`, then `bake`, then `pack` with the
-same CLI. `bake --actions Idle,BasicAttack` is a bounded preview bake;
+After editing the native source, run `refresh` with the same CLI. It audits,
+bakes, packs, rebuilds the swap bank, compiles runtime atlases and verifies both
+deliveries. `bake --actions Idle,BasicAttack` is a bounded preview bake;
 `pack --partial` explicitly marks missing clips as a technical failure.
 Full `bake` safely resumes existing frame pairs. A changed native or exporter
 creates a new cache identity rather than silently mixing older renders.
@@ -51,8 +52,8 @@ CastRelease, Guard, Dash, Hit, Death, Interact, Pickup, ItemUse, Respawn and Sit
 
 Every frame uses a 320 × 320 source canvas, root (160,264), fixed orthographic
 camera and common scale. The review displays a 160 × 160 canvas at game size.
-The fitted idle SE character is approximately 176 source pixels tall, with a
-49-pixel head/hair extent: 27.8%, close to the measured approved reference.
+The source fit measured 176 source pixels tall and a 49-pixel head/hair extent
+before motion retargeting: 27.8%, close to the measured approved reference.
 Other poses naturally change their bounds. Directions rotate the actual source;
 no heading is mirrored or independently rescaled.
 
@@ -73,7 +74,8 @@ These depth files stay in authoring. The runtime export converts their ordering
 into complete RGBA portions in ordinary render slots. Fixed core depth ranks
 partition body/head/cape/headgear/offhand pixels. Each sword inserts between
 those ranks, so swapping the sword does not move or regenerate body parts.
-The crimson garment variant has identical geometry and shares the core ranks.
+The rank union includes the alternate cuirass geometry, so either garment can
+combine with either sword without regenerating the original body sequence.
 Removing a part reveals the retained pixels of the other parts.
 
 `runtime/assets/characters/fantasy-golden-01/sprite.json` uses the existing
@@ -85,7 +87,7 @@ slots and the complete head/hair maps to Hair slots; required Outfit is an
 empty registration slot. This is explicit source grouping, not missing art.
 
 The review calls `AstraeonAnimation.player` through the actual character adapter.
-`index.html?swordsman=fantasy&qa=1` enables the same candidate in the actual
+`proof/fantasy-game.html?swordsman=fantasy&qa=1` enables the same candidate in the actual
 game through its existing explicit development hook, with temporary appearance
 controls. It does not approve or register this candidate as the default character.
 
@@ -94,7 +96,8 @@ assembled Blender render for comparison. Separate antialiased boundaries can
 differ by a few pixels. `validation.json` retains those errors rather than
 claiming identical rasterization.
 
-The sword follows Hand.R. Its independent image uses the actual deformed
+The sword follows Hand.R with a neutral wrist and a grip axis 90 degrees to
+the forearm, as confirmed by the owner. Its independent image uses the actual deformed
 holding hand as a holdout, so covered hilt pixels belong to the hand. Cape
 removal exposes complete body pixels instead of holes. The continuous cape is
 a fitted cloth mesh with original cape paint baked from isolated source cape
@@ -111,11 +114,21 @@ appropriate weights and its own visual and deformation review. The tools do
 not automatically generate approved faces, every outfit or every weapon type.
 
 The supplied base has a 60-bone rig, including 30 finger/thumb deform bones,
-foot IK and three cape joints. Original body/head UV paint is retained.
+foot IK authoring controls and three cape joints. The delivered motions use
+retargeted FK joints, target-proportion floor correction and continuous cape
+floor contact. Original body/head UV paint is retained.
 Source generated topology and remaining texture patches are documented in QA;
 the factory has no automatic substitute for art judgment or retopology.
 
 ## Provenance and evidence
+
+All 17 motions are retargeted from the free CC0 Quaternius Standard libraries.
+`factory/free-motion-sources.json` retains download/file receipts,
+`factory/QUATERNIUS_LICENSE.txt` retains the license, and
+`factory/motion-retarget.json` records clip mappings and measured grip angles.
+No donor mannequin geometry or finger animation replaces the supplied model.
+The included skeleton samples permit rebuilding without a network connection.
+See [motion research](../../../../docs/character-factory/RESEARCH_FREE_MOTIONS_20261011.md).
 
 The archive SHA256 is
 `308e5578d99cf9a3193fb4d43f9820dbbf9f100f42a326d44d633f4fcf5f385a`.

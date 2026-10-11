@@ -58,9 +58,9 @@ face, gray material patches, stance and rear grip. Approving the concept or
 providing the FBX did not approve these new poses or outputs. Further source
 polish can retain the same factory, rig and motion contract.
 
-The bounded reuse proof adds a shorter broad sword, a crimson outfit material
-variant, a gold circlet and an arm-strapped buckler across the same poses.
-These are unapproved variants; the recolor is not a new garment silhouette.
+The bounded reuse proof adds a shorter broad sword, a crimson garment with a
+fitted closed cuirass and bronze border, a circlet and an arm-strapped buckler
+across the same poses. These variants remain unapproved.
 Other class bodies, garment shapes and weapon families require fitted sources
 and their own checks. Runtime delivery uses the existing modular renderer,
 schema, ordered slots and packer; depth remains in authoring. The candidate is
@@ -70,3 +70,24 @@ Files named `*-source.png` show the original supplied input; `*-fitted.png`
 and `rig-fit.json` retain earlier build-stage inspection. They are historical
 diagnostics, not final production strips. Use `atlases/`, `package.json`, the
 final source audit and the named motion/grip proofs for the delivered candidate.
+
+Projected bone-center alpha is retained as a diagnostic, not a coverage gate:
+in Walk NW frame 9 the nearer weapon surface has depth 47534 and the holding
+hand 47642 at the rounded center. A blanket empty-center test incorrectly
+rejects that legitimate foreground overlap. The integration gate now checks
+actual opaque hand-covered weapon pixels using independent hand, unmasked
+weapon and depth renders. It retains residual edge disagreement and requires
+less than 5%, alongside the full-runtime holdout check.
+
+## Owner hand feedback and motion replacement
+
+The owner rejected the unnatural hand and clarified that the grip should be
+perpendicular to the forearm while the wrist stays naturally aligned. The
+arbitrary wrist rotation was removed. The right wrist now remains neutral;
+the audit records grip/forearm angles and wrist rotations on real poses.
+All 17 actions now use CC0 presets retargeted onto the supplied character.
+Source receipts, sampled skeleton data and per-action adjustments are retained.
+The rig's IK controls remain editable, while preset clips use FK rotations.
+Body/head floor correction and cape floor contact handle the enlarged source
+proportions during death. Neither those repairs nor the numeric 90-degree
+check constitute owner approval of the grasp or motion.

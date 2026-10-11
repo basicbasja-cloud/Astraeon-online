@@ -12,7 +12,7 @@ rig=bpy.data.objects[s['rigObject']];root=bpy.data.objects[s['rootObject']]
 root.rotation_euler.z=0
 blueprint=json.loads((base/'authoring/characters/true-modular/swordsman/male/blueprint.json').read_text(encoding='utf-8-sig'))
 matrix=json.loads((base/'docs/character-factory/new-production-matrix.json').read_text())
-hand=Quaternion(json.loads(s['restingHandQuaternion']))
+hand=Quaternion();s['restingHandQuaternion']=json.dumps(list(hand))
 for a in list(bpy.data.actions):
     if a.name.startswith('F01_'):bpy.data.actions.remove(a)
 rig.animation_data_clear()

@@ -8,12 +8,13 @@ from pathlib import Path
 from mathutils import Vector
 base=Path(__file__).resolve().parents[1];s=bpy.context.scene
 rig=bpy.data.objects[s['rigObject']];root=bpy.data.objects[s['rootObject']]
-center=Vector(json.loads(s['swordContact'])['centerModel']);guard=center+Vector((0,-.05,0))
+contact=json.loads(s['swordContact']);center=Vector(contact['centerModel']);axis=Vector(contact['axisModel'])
+guard=center+axis*.05;basis=Vector((0,-1,0)).rotation_difference(axis)
 obj=bpy.data.objects['F01_SwordGuard'];material=obj.data.materials[0]
 # A non-self-intersecting quillon profile, hooked toward the blade at both ends.
 profile=[(-.042,-.013),(-.029,-.010),(-.020,-.002),(-.008,-.004),(.008,-.004),(.020,-.002),(.029,-.010),(.042,-.013),
          (.038,.003),(.026,.008),(.014,.006),(.006,.005),(-.006,.005),(-.014,.006),(-.026,.008),(-.038,.003)]
-verts=[tuple(guard+Vector((x,y,z))) for z in [-.005,.005] for x,y in profile];n=len(profile)
+verts=[tuple(guard+basis@Vector((x,y,z))) for z in [-.005,.005] for x,y in profile];n=len(profile)
 faces=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
 mesh=bpy.data.meshes.new('F01_HookedGuard');mesh.from_pydata(verts,[],faces);mesh.update();mesh.materials.append(material)
 obj.data=mesh;obj.vertex_groups.clear();g=obj.vertex_groups.new(name='Hand.R');g.add(list(range(2*n)),1,'REPLACE')

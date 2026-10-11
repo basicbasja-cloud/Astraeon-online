@@ -14,7 +14,7 @@ cases={'default':{'outfit':'default','weapon':'default','headgear':'none','offha
        'equipment':{'outfit':'default','weapon':'default','headgear':'default','offhand':'default','cape':'default'},
        'alternate':{'outfit':'alternate','weapon':'alternate','headgear':'default','offhand':'default','cape':'default'},
        'capeRemoved':{'outfit':'default','weapon':'default','headgear':'default','offhand':'default','cape':'none'}}
-evidence=[]
+evidence=[];garment_geometry_pixels=0
 for action in ['Idle','Walk','BasicAttack','Guard','Death']:
     count=len(d['clips'][action]['durations']);indices=sorted(set([0,count//2,count-1]));atlas={}
     for part in d['parts'].values():
@@ -24,6 +24,8 @@ for action in ['Idle','Walk','BasicAttack','Guard','Death']:
         for index in indices:
             tag=f'{direction}-{index+1:03}';a=np.asarray(Image.open(base/action/(tag+'-tile.png')).convert('RGBA'));az=np.asarray(Image.open(base/action/(tag+'-depth.png')))
             b=np.asarray(Image.open(swap/action/(tag+'-tile.png')).convert('RGBA'));bz=np.asarray(Image.open(swap/action/(tag+'-depth.png')))
+            if action=='Idle' and direction=='SE' and index==0:
+                garment_geometry_pixels=int(np.sum((a[:,320:640,3]>224)&(b[:,:320,3]>224)&(np.abs(az[:,320:640].astype(np.int32)-bz[:,:320].astype(np.int32))>1)))
             for case,choices in cases.items():
                 appearance={s:part for group,choice in choices.items() for s,part in sets[group][choice].items()}
                 colors={'BodyOutfit':b[:,:320] if choices['outfit']=='alternate' else a[:,320:640],'HeadHair':a[:,640:960],
@@ -31,7 +33,7 @@ for action in ['Idle','Walk','BasicAttack','Guard','Death']:
                         'Cape':a[:,1280:1600] if choices['cape']=='default' else np.zeros((320,320,4),np.uint8),
                         'Headgear':b[:,640:960] if choices['headgear']=='default' else np.zeros((320,320,4),np.uint8),
                         'Offhand':b[:,960:1280] if choices['offhand']=='default' else np.zeros((320,320,4),np.uint8)}
-                depths={'BodyOutfit':az[:,320:640],'HeadHair':az[:,640:960],'Weapon':bz[:,320:640] if choices['weapon']=='alternate' else az[:,960:1280],
+                depths={'BodyOutfit':bz[:,:320] if choices['outfit']=='alternate' else az[:,320:640],'HeadHair':az[:,640:960],'Weapon':bz[:,320:640] if choices['weapon']=='alternate' else az[:,960:1280],
                         'Cape':az[:,1280:1600],'Headgear':bz[:,640:960],'Offhand':bz[:,960:1280]}
                 expected=pack.compose(colors,depths,list(colors));rgb=np.zeros((320,320,3),np.float32);alpha=np.zeros((320,320,1),np.float32)
                 for slot in d['drawOrder']:
@@ -44,8 +46,10 @@ for action in ['Idle','Walk','BasicAttack','Guard','Death']:
     del atlas
 compat=read(OUT/'factory/runtime-compatibility.json');covered=sum(r['opaqueHandCoveredWeaponPixels'] for r in compat['holdout']);bad=sum(r['residualPixelsAbove96'] for r in compat['holdout'])
 assert covered>5000 and bad/covered<.05,(covered,bad)
+assert garment_geometry_pixels>30, ('Alternate outfit has no meaningful geometric depth change',garment_geometry_pixels)
 report={'technicalVerdict':'PASS','nativeSHA256':p['nativeSHA256'],'cases':len(evidence),'maximumRGBAError':max(r['maximumRGBAError'] for r in evidence),
         'coveredHiltPixels':covered,'coveredHiltResidualPixelsAbove96':bad,'coveredHiltResidualFraction':bad/covered,
         'holdoutNote':'Independent multisampled cells can disagree at subpixel edges; opaque hand/weapon overlap residuals retained, bounded below 5%.',
+        'alternateGarmentChangedDepthPixelsSE':garment_geometry_pixels,'clippedEquipmentBorders':compat['clippedEquipmentBorders'],
         'motionReauthoredForVariations':False,'bodyGeometryChangedForWeaponSwap':False,'rendererChanged':False,'ownerApproved':False,'evidence':evidence}
 (OUT/'factory/runtime-test-result.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({k:v for k,v in report.items() if k!='evidence'},indent=2))

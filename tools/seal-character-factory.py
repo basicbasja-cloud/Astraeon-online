@@ -15,15 +15,18 @@ integration=read(OUT/'factory/integration-evidence.json');assert integration['na
 test_result=read(OUT/'factory/test-result.json');assert test_result['technicalVerdict']=='PASS' and test_result['testsRun']==5 and test_result['nativeSHA256']==package['nativeSHA256']
 runtime_result=read(OUT/'factory/runtime-test-result.json');assert runtime_result['technicalVerdict']=='PASS' and runtime_result['nativeSHA256']==package['nativeSHA256']
 assert len(integration['gripSamples'])==408
-assert all(s['weaponAlphaAtHiltCenter']<=160 for s in integration['gripSamples'])
+assert integration['trueHandHoldout']['samples']==408 and integration['trueHandHoldout']['opaqueCoveredPixels']>1000
+assert integration['trueHandHoldout']['residualFraction']<.05
 assert all(s['transparentHoles']==0 and s['revealedDifferentPixels']>100 for s in integration['capeRemoval'])
 scripts=recipe['buildScripts']+[recipe['auditScript'],recipe['bakeScript'],recipe['packScript'],'inspect-fantasy-base.py','run-character-factory.py','check-fantasy-grip.py','render-fantasy-proof.py','verify-fantasy-delivery.py','seal-character-factory.py']
 scripts+=['build-fantasy-swap-bank.py','bake-fantasy-swap-bank.py','compile-fantasy-runtime.py','verify-fantasy-runtime.py']
+scripts+=['fetch-free-quaternius-motions.py','inspect-free-motion-rigs.py','extract-free-motion-samples.py','make-fantasy-review-media.py']
 files=[ROOT/'tools'/name for name in scripts]+[ROOT/'tests/test_fantasy_sprite_package.py']
 support=[ROOT/recipe['approvedConcept'],ROOT/'authoring/characters/swordsman-production/fresh-2d/candidate-01/CONCEPT_APPROVAL.md',
          ROOT/'authoring/characters/swordsman-production/reference-fit-01/fit-spec.json',ROOT/'authoring/characters/true-modular/swordsman/male/blueprint.json',
          ROOT/'docs/character-factory/new-production-matrix.json',ROOT/'docs/character-factory/RESEARCH_COHERENT_SPRITE_AUTHORING_V2.md']
 support+=[ROOT/'modular-sprites.js',ROOT/'world-view.js',ROOT/'character-renderer.js',ROOT/'animation.js',ROOT/'tools/pack-modular-sprites.py',ROOT/'tools/validate-sprites.py',ROOT/'tools/validate-modular-metadata.cjs',ROOT/'assets/characters/schemas/sprite-definition.schema.json']
+support+=[ROOT/'boot.js',ROOT/'proof/swordsman-development.js',ROOT/'proof/fantasy-game.html',ROOT/'docs/character-factory/RESEARCH_FREE_MOTIONS_20261011.md']
 receipt={'sealedAtUTC':datetime.now(timezone.utc).isoformat(),'nativeSHA256':sha(native),'archiveSHA256':recipe['sourceArchiveSHA256'],
          'approvedConceptSHA256':recipe['approvedConceptSHA256'],'python':platform.python_version(),'blender':'5.2.2 LTS',
          'scripts':{p.relative_to(ROOT).as_posix():sha(p) for p in files},'requiredFramePositions':1392,'totalFramePositions':1456,

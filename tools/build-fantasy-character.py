@@ -239,7 +239,9 @@ def mesh(name,verts,faces,mat):
     me=bpy.data.meshes.new(name);me.from_pydata(verts,[],faces);me.update();me.materials.append(mat)
     o=bpy.data.objects.new(name,me);s.collection.objects.link(o);o.parent=rig;o['spriteModule']='Weapon'
     g=o.vertex_groups.new(name='Hand.R');g.add(list(range(len(verts))),1,'REPLACE');m=o.modifiers.new('HandAttachment','ARMATURE');m.object=rig;return o
-center=Vector((-.448,.012,.721));axis=Vector((0,-1,0))
+center=Vector((-.448,.012,.721))
+forearm=(rig.data.bones['Forearm.R'].tail_local-rig.data.bones['Forearm.R'].head_local).normalized()
+axis=Vector((0,-1,0));axis=(axis-forearm*axis.dot(forearm)).normalized()
 def cylinder(name,a,b,radius,mat):
     tangent=(b-a).normalized();seed=Vector((1,0,0)) if abs(tangent.x)<.9 else Vector((0,0,1))
     u=(seed-tangent*seed.dot(tangent)).normalized();v=tangent.cross(u).normalized();verts=[]
@@ -251,17 +253,16 @@ cylinder('F01_SwordHandle',center-axis*.044,center+axis*.044,.0065,leather)
 guard=center+axis*.05
 cylinder('F01_SwordGuard',guard+Vector((-.036,0,0)),guard+Vector((.036,0,0)),.006,gold)
 cylinder('F01_SwordPommel',center-axis*.057,center-axis*.045,.009,gold)
-start=guard+axis*.008;tip=guard+axis*.335;width=.017;depth=.003
-mesh('F01_SwordBlade',[start+Vector((-width,0,0)),start+Vector((width,0,0)),start+Vector((0,0,depth)),start-Vector((0,0,depth)),tip],[(0,2,4),(2,1,4),(1,3,4),(3,0,4),(0,3,1,2)],steel)
+start=guard+axis*.008;tip=guard+axis*.335;width=.017;depth=.003;basis=Vector((0,-1,0)).rotation_difference(axis)
+mesh('F01_SwordBlade',[start+basis@Vector((-width,0,0)),start+basis@Vector((width,0,0)),start+basis@Vector((0,0,depth)),start-basis@Vector((0,0,depth)),tip],[(0,2,4),(2,1,4),(1,3,4),(3,0,4),(0,3,1,2)],steel)
 for obj in s.objects:
     if obj.get('spriteModule'):
         for slot in obj.material_slots:
             if slot.material:painted_shader(slot.material)
-p=rig.pose.bones['Hand.R'];current=(p.matrix@p.bone.matrix_local.inverted()).to_3x3()@axis
-delta=current.normalized().rotation_difference(Vector((.45,-.3,-.841)).normalized())
-p.matrix=Matrix.Translation(p.head)@delta.to_matrix().to_4x4()@Matrix.Translation(-p.head)@p.matrix
+p=rig.pose.bones['Hand.R'];p.rotation_quaternion=Quaternion()
 bpy.context.view_layer.update()
 s['restingHandQuaternion']=json.dumps(list(p.rotation_quaternion))
+s['gripAlignment']='Perpendicular sword/forearm; neutral wrist, confirmed by owner 2026-10-11.'
 s['swordContact']=json.dumps({'centerModel':list(center),'axisModel':list(axis),'radius':.0065,'bone':'Hand.R','visualAccepted':False})
 s['factoryWorkspace']=str(BASE);s['factoryVersion']='fantasy-base-1';s['ownerApproved']=False;s['runtimeAdmitted']=False
 s['directions']=json.dumps([['S',0],['SW',-45],['W',-90],['NW',-135],['N',-180],['NE',-225],['E',-270],['SE',45]])

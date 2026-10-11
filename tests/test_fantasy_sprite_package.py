@@ -30,6 +30,10 @@ class FantasySpritePackage(unittest.TestCase):
         self.assertEqual(self.audit['nativeSHA256'],self.package['nativeSHA256'])
         self.assertEqual(self.audit['technicalVerdict'],'PASS');self.assertEqual(self.validation['technicalVerdict'],'PASS')
         self.assertFalse(self.package['ownerApproved']);self.assertFalse(self.package['runtimeAdmitted'])
+        for clip in self.audit['clips']:
+            for sample in clip['samples']:
+                self.assertAlmostEqual(sample['gripForearmDegrees'],90,delta=.05)
+                self.assertAlmostEqual(sample['rightWristLocalDegrees'],0,delta=.05)
 
     def test_complete_action_timing_and_dimensions(self):
         blueprint=json.loads((ROOT/'authoring/characters/true-modular/swordsman/male/blueprint.json').read_text(encoding='utf-8-sig'))
@@ -69,6 +73,10 @@ class FantasySpritePackage(unittest.TestCase):
             self.results['capeRemoval'].append({'direction':direction,'concealedBodyPixels':int(hidden.sum()),'revealedDifferentPixels':int(changed.sum()),'transparentHoles':int(np.sum(removed[:,:,3][hidden]<=224))})
 
     def test_holding_hand_owns_covered_hilt_pixels(self):
+        bank=read('factory/swap-bank.json')
+        self.assertEqual(bank['baseNativeSHA256'],self.package['nativeSHA256'])
+        key=hashlib.sha256((bank['bankSHA256']+sha(ROOT/'tools/bake-fantasy-swap-bank.py')).encode()).hexdigest()[:16]
+        cache=ROOT/'.character-tools/swap-bakes'/key;covered_total=0;residual_total=0
         for audit in self.audit['clips']:
             clip=self.clips[audit['name']]
             for sample in audit['samples']:
@@ -76,11 +84,23 @@ class FantasySpritePackage(unittest.TestCase):
                     direction=projection['direction'];x,y=[int(round(v)) for v in projection['gripPixel']]
                     with Image.open(OUT/clip['strips'][direction]['Weapon']) as image:
                         alpha=image.getpixel(((sample['frame']-1)*320+x,y))[3]
-                    # A hilt is only 1–2 source pixels wide. Rounded projected
-                    # centers can land on a multisampled edge. Reject a mostly
-                    # exposed center; retain the actual alpha in the evidence.
-                    self.assertLessEqual(alpha,160,f"Mostly exposed hilt: {audit['name']} {direction} {sample['frame']}")
+                    # A projected bone center can coincide with a nearer guard
+                    # or blade. Only actual opaque hand/weapon depth overlap
+                    # establishes pixels that must belong to the holding hand.
+                    tag=f'{direction}-{sample["frame"]:03}'
+                    tile=np.asarray(Image.open(cache/audit['name']/(tag+'-tile.png')).convert('RGBA'))
+                    depth=np.asarray(Image.open(cache/audit['name']/(tag+'-depth.png')))
+                    raw=tile[:,1280:1600];hand=tile[:,1600:1920]
+                    covered=(raw[:,:,3]>224)&(hand[:,:,3]>224)&(depth[:,1600:1920]<depth[:,1280:1600])
+                    with Image.open(OUT/clip['strips'][direction]['Weapon']) as image:
+                        weapon=np.asarray(image)[:,(sample['frame']-1)*320:sample['frame']*320]
+                    covered_total+=int(covered.sum());residual_total+=int(np.sum(weapon[:,:,3][covered]>96))
                     self.results['gripSamples'].append({'action':audit['name'],'direction':direction,'frame':sample['frame'],'weaponAlphaAtHiltCenter':alpha})
+        self.assertGreater(covered_total,1000)
+        self.assertLess(residual_total/covered_total,.05,'Opaque hand-covered weapon remains visible')
+        self.results['trueHandHoldout']={'samples':len(self.results['gripSamples']),'opaqueCoveredPixels':covered_total,
+                                       'residualPixelsAbove96':residual_total,'residualFraction':residual_total/covered_total,
+                                       'projectedCenterAlphaIsDiagnostic':True}
 
     def test_no_clipping_or_degenerate_weapon_surfaces(self):
         for frames in self.validation['frames'].values():

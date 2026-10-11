@@ -2,6 +2,45 @@
 
 11 October 2026. Branch: `character/production-factory-v2`.
 
+## Latest source and factory checkpoint
+
+The owner replaced X Bot with `fantasy+character+3d+model.zip` and authorized
+continued factory work. The dedicated candidate is now
+`authoring/characters/swordsman-production/fantasy-base-01/`.
+The owner's painted concept remains the design authority. No rejected
+mannequin, image-card source or X Bot body is used by this candidate.
+
+The supplied textured source now has an editable 60-bone rig with 30 digit
+bones, continuous cape and attached sword. The first complete source bake
+covers all 16 required actions, eight real headings and 1,392 positions,
+plus optional Sit (1,456 total). Original paint and source receipts are retained.
+The latest source audit and source raster comparison pass. Equipment/runtime
+rebaking and final integration verification are in progress at this checkpoint;
+read the candidate's final reports rather than earlier checkpoint results.
+
+The owner requested free preset motions and corrected the unnatural hand.
+The owner explicitly confirmed a grip perpendicular to the forearm with a
+naturally aligned wrist. All 17 actions now use CC0 Quaternius preset motion
+data retargeted to this fitted source. Donor meshes and finger poses are not
+imported into the character. The right wrist stays neutral; the actual grip
+angle is measured at 90 degrees. The enlarged head/body and continuous cape
+receive native floor-contact corrections during the fall.
+
+The Golden swap bank includes a fitted crimson cuirass garment, alternate
+sword, circlet, arm-strapped buckler and removable cape. Motion and the original
+body sequence are retained for swaps. Authoring depth compiles into ordinary
+ordered RGBA slots using the existing packer, schema and modular renderer.
+The candidate has an explicit development game entry, not default admission.
+
+**NO-SHIP / OWNER ART REVIEW PENDING.** Concept approval does not approve this
+source, new motions, garments, grip or facial/material finish. The owner's
+original request requires stopping at the completed Golden visual gate before
+expanding all classes. The older sections below are historical rejection and
+research records; their “latest” labels predate this supplied fantasy base.
+
+See `RESEARCH_FREE_MOTIONS_20261011.md`, the candidate README, QA notes and
+factory receipts for the current workflow. There were no paid provider jobs.
+
 ## Accepted
 
 The owner approved the painted concept in
