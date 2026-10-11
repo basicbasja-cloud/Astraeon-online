@@ -1,0 +1,329 @@
+{
+  "schema": "proportional-preset-diagnostic-v1",
+  "source_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "transform_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "edge_factors": {
+    "root": 0.64,
+    "pelvis": 0.64,
+    "spine_01": 0.8,
+    "thigh_l": 0.85,
+    "thigh_r": 0.85,
+    "spine_02": 0.8,
+    "calf_l": 0.64,
+    "calf_r": 0.64,
+    "spine_03": 0.8,
+    "foot_l": 0.64,
+    "foot_r": 0.64,
+    "neck_01": 1.15,
+    "clavicle_l": 0.85,
+    "clavicle_r": 0.85,
+    "ball_l": 0.64,
+    "ball_r": 0.64,
+    "Head": 1.15,
+    "upperarm_l": 0.85,
+    "upperarm_r": 0.85,
+    "ball_leaf_l": 0.64,
+    "ball_leaf_r": 0.64,
+    "lowerarm_l": 0.72,
+    "lowerarm_r": 0.72,
+    "hand_l": 0.72,
+    "hand_r": 0.72,
+    "index_01_l": 0.85,
+    "middle_01_l": 0.85,
+    "pinky_01_l": 0.85,
+    "ring_01_l": 0.85,
+    "thumb_01_l": 0.85,
+    "index_01_r": 0.85,
+    "middle_01_r": 0.85,
+    "pinky_01_r": 0.85,
+    "ring_01_r": 0.85,
+    "thumb_01_r": 0.85,
+    "index_02_l": 0.85,
+    "middle_02_l": 0.85,
+    "pinky_02_l": 0.85,
+    "ring_02_l": 0.85,
+    "thumb_02_l": 0.85,
+    "index_02_r": 0.85,
+    "middle_02_r": 0.85,
+    "pinky_02_r": 0.85,
+    "ring_02_r": 0.85,
+    "thumb_02_r": 0.85,
+    "index_03_l": 0.85,
+    "middle_03_l": 0.85,
+    "pinky_03_l": 0.85,
+    "ring_03_l": 0.85,
+    "thumb_03_l": 0.85,
+    "index_03_r": 0.85,
+    "middle_03_r": 0.85,
+    "pinky_03_r": 0.85,
+    "ring_03_r": 0.85,
+    "thumb_03_r": 0.85,
+    "index_04_leaf_l": 0.85,
+    "middle_04_leaf_l": 0.85,
+    "pinky_04_leaf_l": 0.85,
+    "ring_04_leaf_l": 0.85,
+    "thumb_04_leaf_l": 0.85,
+    "index_04_leaf_r": 0.85,
+    "middle_04_leaf_r": 0.85,
+    "pinky_04_leaf_r": 0.85,
+    "ring_04_leaf_r": 0.85,
+    "thumb_04_leaf_r": 0.85
+  },
+  "max_identity_reconstruction_error": 3.626633446092756e-06,
+  "max_rigid_edge_length_error": 1.3287575778286875e-06,
+  "rigid_edge_scope": "All parent-child head offsets except pelvis-to-root. Source pelvis has authored translation (especially roll/jump), retained rather than misclassified as stretched limb.",
+  "goals": "Synthetic per-frame trajectory goals: chest-relative wrist at 0.80, root-relative ankle at 0.64. NOT observed footplants, hilt contacts or sole patches.",
+  "diagnostic_solver": "Two segments, source bend half-plane, fixed lengths, nearest reachable endpoint. Independent chains; not applied to whole target rig, no fingers/surface/temporal correction.",
+  "scope": "Fresh generic proportion-only skeleton; same hierarchy/rest basis. No original character art, Mixamo clip or production retarget. Endpoint samples have no invented hold.",
+  "release_ready": false,
+  "clips": [
+    {
+      "name": "Idle_Loop",
+      "duration_seconds": 2.5,
+      "summary": {
+        "right.arm": {
+          "samples": 76,
+          "unreachable": 76,
+          "max_before_error": 0.04586306926751503,
+          "max_after_error": 0.016506626001658958
+        },
+        "left.arm": {
+          "samples": 76,
+          "unreachable": 76,
+          "max_before_error": 0.046545933230974945,
+          "max_after_error": 0.03319901011584272
+        },
+        "right.leg": {
+          "samples": 76,
+          "unreachable": 7,
+          "max_before_error": 0.021834386606460646,
+          "max_after_error": 0.0002576400379846988
+        },
+        "left.leg": {
+          "samples": 76,
+          "unreachable": 0,
+          "max_before_error": 0.021834420998829908,
+          "max_after_error": 5.721958498152797e-17
+        }
+      },
+      "samples": 76
+    },
+    {
+      "name": "Walk_Loop",
+      "duration_seconds": 1.3333333730697632,
+      "summary": {
+        "right.arm": {
+          "samples": 41,
+          "unreachable": 41,
+          "max_before_error": 0.04812838869468558,
+          "max_after_error": 0.03215931223205688
+        },
+        "left.arm": {
+          "samples": 41,
+          "unreachable": 41,
+          "max_before_error": 0.04814086090291301,
+          "max_after_error": 0.03212625778603928
+        },
+        "right.leg": {
+          "samples": 41,
+          "unreachable": 4,
+          "max_before_error": 0.02183442931405477,
+          "max_after_error": 0.007439677739580205
+        },
+        "left.leg": {
+          "samples": 41,
+          "unreachable": 2,
+          "max_before_error": 0.02183444128862499,
+          "max_after_error": 0.0016445389920264892
+        }
+      },
+      "samples": 41
+    },
+    {
+      "name": "Jog_Fwd_Loop",
+      "duration_seconds": 0.9333333373069763,
+      "summary": {
+        "right.arm": {
+          "samples": 29,
+          "unreachable": 0,
+          "max_before_error": 0.036703133966365604,
+          "max_after_error": 0.0
+        },
+        "left.arm": {
+          "samples": 29,
+          "unreachable": 0,
+          "max_before_error": 0.036907696708354,
+          "max_after_error": 6.206335383118183e-17
+        },
+        "right.leg": {
+          "samples": 29,
+          "unreachable": 1,
+          "max_before_error": 0.021834507425393133,
+          "max_after_error": 0.0006509877245901782
+        },
+        "left.leg": {
+          "samples": 29,
+          "unreachable": 1,
+          "max_before_error": 0.02183452513939707,
+          "max_after_error": 0.000435753400431163
+        }
+      },
+      "samples": 29
+    },
+    {
+      "name": "Sprint_Loop",
+      "duration_seconds": 0.6666666865348816,
+      "summary": {
+        "right.arm": {
+          "samples": 21,
+          "unreachable": 0,
+          "max_before_error": 0.0367142145272874,
+          "max_after_error": 5.551115123125783e-17
+        },
+        "left.arm": {
+          "samples": 21,
+          "unreachable": 0,
+          "max_before_error": 0.037184377544376604,
+          "max_after_error": 5.551115123125783e-17
+        },
+        "right.leg": {
+          "samples": 21,
+          "unreachable": 2,
+          "max_before_error": 0.02183464040222737,
+          "max_after_error": 0.005885307989813306
+        },
+        "left.leg": {
+          "samples": 21,
+          "unreachable": 2,
+          "max_before_error": 0.02183459982070032,
+          "max_after_error": 0.005815726096204146
+        }
+      },
+      "samples": 21
+    },
+    {
+      "name": "Jump_Start",
+      "duration_seconds": 1.3333333730697632,
+      "summary": {
+        "right.arm": {
+          "samples": 41,
+          "unreachable": 23,
+          "max_before_error": 0.04381398529345015,
+          "max_after_error": 0.032373415200941974
+        },
+        "left.arm": {
+          "samples": 41,
+          "unreachable": 37,
+          "max_before_error": 0.04492387894036356,
+          "max_after_error": 0.02790177295010354
+        },
+        "right.leg": {
+          "samples": 41,
+          "unreachable": 3,
+          "max_before_error": 0.021834438155981763,
+          "max_after_error": 0.006256720625621377
+        },
+        "left.leg": {
+          "samples": 41,
+          "unreachable": 0,
+          "max_before_error": 0.021834421917703448,
+          "max_after_error": 3.1031676915590914e-17
+        }
+      },
+      "samples": 41
+    },
+    {
+      "name": "Jump_Land",
+      "duration_seconds": 1.2666666507720947,
+      "summary": {
+        "right.arm": {
+          "samples": 39,
+          "unreachable": 39,
+          "max_before_error": 0.04508337350492239,
+          "max_after_error": 0.015584617649783687
+        },
+        "left.arm": {
+          "samples": 39,
+          "unreachable": 35,
+          "max_before_error": 0.047192068580884344,
+          "max_after_error": 0.03214439869018579
+        },
+        "right.leg": {
+          "samples": 39,
+          "unreachable": 3,
+          "max_before_error": 0.021834403595894357,
+          "max_after_error": 0.0003440776104413517
+        },
+        "left.leg": {
+          "samples": 39,
+          "unreachable": 0,
+          "max_before_error": 0.021834398516328735,
+          "max_after_error": 4.3885418357208765e-17
+        }
+      },
+      "samples": 39
+    },
+    {
+      "name": "Roll",
+      "duration_seconds": 1.4666666984558105,
+      "summary": {
+        "right.arm": {
+          "samples": 45,
+          "unreachable": 15,
+          "max_before_error": 0.04580356703813413,
+          "max_after_error": 0.030105216679871885
+        },
+        "left.arm": {
+          "samples": 45,
+          "unreachable": 22,
+          "max_before_error": 0.04686214156511504,
+          "max_after_error": 0.033371378076513664
+        },
+        "right.leg": {
+          "samples": 45,
+          "unreachable": 8,
+          "max_before_error": 0.021834684406544996,
+          "max_after_error": 0.0020952549079733445
+        },
+        "left.leg": {
+          "samples": 45,
+          "unreachable": 9,
+          "max_before_error": 0.02183468826641083,
+          "max_after_error": 0.006969472558760554
+        }
+      },
+      "samples": 45
+    },
+    {
+      "name": "Sword_Attack",
+      "duration_seconds": 1.5333333015441895,
+      "summary": {
+        "right.arm": {
+          "samples": 47,
+          "unreachable": 47,
+          "max_before_error": 0.04312174082084104,
+          "max_after_error": 0.03694082542578372
+        },
+        "left.arm": {
+          "samples": 47,
+          "unreachable": 43,
+          "max_before_error": 0.03982123311007395,
+          "max_after_error": 0.02431574906145797
+        },
+        "right.leg": {
+          "samples": 47,
+          "unreachable": 0,
+          "max_before_error": 0.021834514131611086,
+          "max_after_error": 2.7755575615628914e-17
+        },
+        "left.leg": {
+          "samples": 47,
+          "unreachable": 0,
+          "max_before_error": 0.021834433550360518,
+          "max_after_error": 2.7755575615628914e-17
+        }
+      },
+      "samples": 47
+    }
+  ]
+}

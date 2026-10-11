@@ -1,3 +1,7 @@
+## Iteration 8: preset animations, skeleton transfer and contact gaps
+
+[New study and comparison boards](preset-retarget-v8/README.md) sample eight CC0 presets at 339 real timestamps, preserve source/root transforms and expose endpoint failures on a fresh proportion skeleton. [Reusable preset/retarget guide](../../skills/modular-eight-direction-sprites/references/preset-retargeting-practice.md) draws on official Mixamo/Godot documentation, five selected papers, two patents and pinned Rokoko code. Other providers are allowed; KayKit is an additional audited candidate, not an executed transfer. No original animation or art approval is established.
+
 ## Iteration 6: commands, skeleton guides and frame studies
 
 The [v0.6 executable review pipeline](../../skills/modular-eight-direction-sprites/scripts/README.md) now builds/checks/packages the original rig proof in isolated directories. [Actual fresh-build evidence and the review ZIP](pipeline-v6/README.md) include 64 anatomical guides and 32 browser checks. [External motion studies](motion-reference-v6/README.md) include 213 decoded samples from RO, King Lucas and Fyna. Art, locomotion, exact color and production-game integration remain unapproved or unimplemented; the release command explicitly blocks them.
@@ -18,7 +22,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [SKILL.md v0.5](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.8](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)
