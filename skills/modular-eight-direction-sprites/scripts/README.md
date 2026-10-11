@@ -1,4 +1,4 @@
-# Executable modular sprite workflow — v0.6
+# Executable modular sprite workflow — v0.7
 
 This is an executable review workflow, currently with **one original rig family and one attack adapter**. It builds separate complete parts and anatomical guides; it does not produce accepted artwork from arbitrary text. No paid service is used. Read [pose/reference practice](../references/pose-guide-practice.md) and fill the [ordered production brief](../templates/pose-production-brief.md) before generating or drawing character frames.
 
@@ -39,7 +39,7 @@ python skills/modular-eight-direction-sprites/scripts/capture-reference.py /path
 python skills/modular-eight-direction-sprites/scripts/capture-reference.py /path/to/reference.mp4 --output /tmp/new-video-study --source-url 'https://publisher.example/exact-video'
 ```
 
-The source URL records provenance; the command reads a local file and does not log in or download from that URL. GIF/APNG preserves decoded samples and display durations. Video requires FFmpeg/ffprobe and keeps presentation timestamps without resampling to a guessed FPS. Duplicates remain separate samples. No per-frame bbox centering, trimming or scale fitting occurs. The review board uses one shared display scale; source PNGs keep the decoded canvas.
+The source URL records provenance; the command reads a local file and does not log in or download from that URL. GIF/APNG preserves decoded samples and display durations. Video requires FFmpeg/ffprobe and keeps presentation timestamps without resampling to a guessed FPS. Duplicates remain separate samples. No per-frame bbox centering, trimming or scale fitting occurs. Review boards use one shared display scale; study PNGs keep the decoded canvas or the explicitly recorded fixed crop.
 
 An absent/zero image delay fails by default. For **still-pose study only**, `--allow-untimed` retains those samples with unknown duration and a null total, without claiming playback timing. Fyna's two developer GIFs actually needed this mode. Video durations must be available; no guessed last-frame duration is supplied.
 
@@ -54,3 +54,18 @@ PYTHONDONTWRITEBYTECODE=1 python -W error::ResourceWarning skills/modular-eight-
 ```
 
 Eight tests cover artifact corruption/missing/extra files, source fingerprint changes, failed child preservation, path escapes/symlinks, release blocking, missing tools, APNG timing/duplicates and unknown-delay extraction rollback. Fresh Blender and Chromium checks are recorded separately; unit fixtures do not replace them.
+
+
+## Bounded video studies and richer original source guides
+
+```sh
+python skills/modular-eight-direction-sprites/scripts/capture-reference.py /path/to/reference.mp4 --output /tmp/shot-study --source-url 'https://publisher.example/exact-video' --start-ms 12000 --end-ms 13100 --crop 880 330 300 360 --camera-motion moving
+PYTHONPATH=/tmp/sprite-render-deps python skills/modular-eight-direction-sprites/scripts/export-conditioning.py --build-root /tmp/astraeon-sprites --output /tmp/new-conditioning-study
+PYTHONDONTWRITEBYTECODE=1 python -W error::ResourceWarning skills/modular-eight-direction-sprites/scripts/tests/test_reference.py
+```
+
+Capture v2 keeps original decoded frame ordinals/PTS alongside clip-relative time. Windows select complete exposures by onset in `[start,end)` relative to the first source timestamp; the last exposure is not shortened to fit the requested end. `--crop X Y WIDTH HEIGHT` uses the same unscaled source rectangle for every sample and fails outside the canvas. Source→study coordinate subtraction is recorded. Video autorotation is disabled so pixels match probed coded dimensions. Decoded sample counts and unchanged source hashes are checked. Unknown timing cannot support a timed window. Review boards paginate at 72 samples and show source timestamps. Camera motion is an operator declaration, **not** estimated compensation or measured world contacts. GIF/APNG inputs support the same onset windows when timing is known.
+
+Conditioning export accepts the current verified silver-scarf-A completed build, reads its already-rendered complete parts, and publishes separately; it does not rebuild or alter the rig. It exports 64 sets of source skeleton/composite/silhouette/integer ownership/depth plus diagnostic grip crops. Full canvases retain their 2× registration. Part-ID maps describe render pieces, not fingers; wrist axes are not finger-contact proof. It checks support agreement and re-verifies source build integrity. The depth encoding/backend limits are documented in `conditioning.json`. Existing destinations and outputs inside the build root are rejected. No external reference pixels enter these original source guides.
+
+See [iteration 7 conditioning evidence](../../../research/sprite-animation/conditioning-v7/README.md), [ToS observations](../../../research/sprite-animation/motion-reference-v7/README.md) and [redraw practice](../references/conditioning-and-redraw.md). Five added fixtures actually decode a variable-frame-rate FFV1 video, check exact source PTS/window boundaries, fixed crop registration, unknown final hold rejection, invalid/empty/oversized windows and atomic crop failure. Together with the previous suite: **13 tests**. A test passing is not artistic approval.

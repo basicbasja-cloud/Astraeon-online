@@ -46,3 +46,6 @@ Use the [ordered guide-to-art request template](../templates/pose-production-bri
 ## Current completion bar
 
 The reusable CLI now builds, checks and packages the technical proof, with 64 original skeleton guides and external frame-study extraction. It still has no original walk clip, approved native anatomy/style set, finger-contact proof, complete action family or production-game rendering run. Exact-color reconstruction still differs at six pixels. These are concrete next work items, not reasons to label the package “ultimate” or a no-error generator.
+
+
+Iteration 7 follows the broader source instruction with [actual ToS video/GIF captures](../../../research/sprite-animation/motion-reference-v7/README.md) and [conditioning/redraw practice](conditioning-and-redraw.md). The new exporter supplies source silhouette, ownership and common-range depth as well as skeletons. Their geometry still comes from the unapproved proof; no original walk or articulated fingers have appeared merely because more maps were exported.

@@ -1,0 +1,409 @@
+{
+  "schema": "timed-reference-capture-v2",
+  "source_url": "https://store.steampowered.com/app/372000/Tree_of_Savior_English_Ver/",
+  "source_sha256": "d069794e6163e073c7799b83076f07fd1e826576741688a80ca583a073370326",
+  "decoder": "video",
+  "tools": {
+    "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers"
+  },
+  "source_canvas": [
+    1920,
+    1080
+  ],
+  "canvas": [
+    300,
+    360
+  ],
+  "fixed_crop_xywh": [
+    880,
+    330,
+    300,
+    360
+  ],
+  "source_xy_to_study_xy": {
+    "subtract_xy": [
+      880,
+      330
+    ],
+    "scale": 1
+  },
+  "requested_window_ms": [
+    12000.0,
+    13100.0
+  ],
+  "window_policy": "Select complete source exposures by onset in [start,end), relative to first source PTS; last exposure is not truncated",
+  "camera_motion": "moving",
+  "camera_motion_evidence": "Operator declaration; not measured or compensated",
+  "frames": [
+    {
+      "index": 0,
+      "source_index": 360,
+      "file": "0000.png",
+      "source_pts_ms": 12000.0,
+      "source_elapsed_ms": 12000.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 0.0,
+      "sha256": "3ef5e833b48f8da657291f82bcf0643af505c60c7a43f7ed8b8d121974a8bb00"
+    },
+    {
+      "index": 1,
+      "source_index": 361,
+      "file": "0001.png",
+      "source_pts_ms": 12033.333,
+      "source_elapsed_ms": 12033.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 33.33300000000054,
+      "sha256": "be89a79f76d57b1b47c6091b859265edb2d939407c5cbc08000d7a0bd99d5e5f"
+    },
+    {
+      "index": 2,
+      "source_index": 362,
+      "file": "0002.png",
+      "source_pts_ms": 12066.667,
+      "source_elapsed_ms": 12066.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 66.66699999999946,
+      "sha256": "3b998b7f73b02ac461b7e5a2e8ba7a263200feba432f5abfc6776e0c4cd324c7"
+    },
+    {
+      "index": 3,
+      "source_index": 363,
+      "file": "0003.png",
+      "source_pts_ms": 12100.0,
+      "source_elapsed_ms": 12100.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 100.0,
+      "sha256": "1b1ae5e3a80a7903a657201fbdbfb3bd077d2dc8ec311b465ec1e11e6f06e79d"
+    },
+    {
+      "index": 4,
+      "source_index": 364,
+      "file": "0004.png",
+      "source_pts_ms": 12133.333,
+      "source_elapsed_ms": 12133.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 133.33300000000054,
+      "sha256": "f3e6178043ba3eeea2ab8c20354654c6da93742b4c94339641d01f073e41a529"
+    },
+    {
+      "index": 5,
+      "source_index": 365,
+      "file": "0005.png",
+      "source_pts_ms": 12166.667,
+      "source_elapsed_ms": 12166.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 166.66699999999946,
+      "sha256": "ea86e643b6168b5967a79b473c0884b041b314b57a55644fa12ca1f527a18d25"
+    },
+    {
+      "index": 6,
+      "source_index": 366,
+      "file": "0006.png",
+      "source_pts_ms": 12200.0,
+      "source_elapsed_ms": 12200.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 200.0,
+      "sha256": "44ede961a518599755a26acbc6d7d9f1bf885acb2ecc24e047483dba0703b753"
+    },
+    {
+      "index": 7,
+      "source_index": 367,
+      "file": "0007.png",
+      "source_pts_ms": 12233.333,
+      "source_elapsed_ms": 12233.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 233.33300000000054,
+      "sha256": "fe1e560c3fe77aff3f1bc60fb6c88f932a7e7b0f824714a2a886b2f63c9401a0"
+    },
+    {
+      "index": 8,
+      "source_index": 368,
+      "file": "0008.png",
+      "source_pts_ms": 12266.667,
+      "source_elapsed_ms": 12266.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 266.66699999999946,
+      "sha256": "34739657ff7ede0bbc615828ef906c27373c73f8815f8f1fce64b513972f6377"
+    },
+    {
+      "index": 9,
+      "source_index": 369,
+      "file": "0009.png",
+      "source_pts_ms": 12300.0,
+      "source_elapsed_ms": 12300.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 300.0,
+      "sha256": "341e0b4fdd609f6e25742d6f957abdbb6c40f99cba7e767383f94a016d61799f"
+    },
+    {
+      "index": 10,
+      "source_index": 370,
+      "file": "0010.png",
+      "source_pts_ms": 12333.333,
+      "source_elapsed_ms": 12333.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 333.33300000000054,
+      "sha256": "26a329df4c4999c4b53b9003223172ea9bbb70b231d9c0ec18e0f27974287754"
+    },
+    {
+      "index": 11,
+      "source_index": 371,
+      "file": "0011.png",
+      "source_pts_ms": 12366.667,
+      "source_elapsed_ms": 12366.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 366.66699999999946,
+      "sha256": "9d0fcf53456617827838c15ecca218e1f908ddf6123fe3ecd7866efc2d197605"
+    },
+    {
+      "index": 12,
+      "source_index": 372,
+      "file": "0012.png",
+      "source_pts_ms": 12400.0,
+      "source_elapsed_ms": 12400.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 400.0,
+      "sha256": "7de20c7cf5a29d2be82b5399747592ae2092d3b57909f557cd164910252e8979"
+    },
+    {
+      "index": 13,
+      "source_index": 373,
+      "file": "0013.png",
+      "source_pts_ms": 12433.333,
+      "source_elapsed_ms": 12433.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 433.33300000000054,
+      "sha256": "03b044232166c4f742353c8edcd824dbfad6c380992c3b45b09bb7fa8bab619f"
+    },
+    {
+      "index": 14,
+      "source_index": 374,
+      "file": "0014.png",
+      "source_pts_ms": 12466.667,
+      "source_elapsed_ms": 12466.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 466.66699999999946,
+      "sha256": "9fd9466b976126b92448163165a201cd41846622c26b477c6b704e9fdc250de4"
+    },
+    {
+      "index": 15,
+      "source_index": 375,
+      "file": "0015.png",
+      "source_pts_ms": 12500.0,
+      "source_elapsed_ms": 12500.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 500.0,
+      "sha256": "ad631d3398db0daebe69c53e9e7940aa79370b22687a1d606148e8ef7f7e4d0f"
+    },
+    {
+      "index": 16,
+      "source_index": 376,
+      "file": "0016.png",
+      "source_pts_ms": 12533.333,
+      "source_elapsed_ms": 12533.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 533.3330000000005,
+      "sha256": "f95c757ac07e7b2ab13ed0c64301bba96a80f592625fc5f29035c2c3f9d06264"
+    },
+    {
+      "index": 17,
+      "source_index": 377,
+      "file": "0017.png",
+      "source_pts_ms": 12566.667,
+      "source_elapsed_ms": 12566.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 566.6669999999995,
+      "sha256": "d92ffd0fe19d58f4ece88ca2cc7f3a6d0d253e1f2b36ef70760ad55f6cb16749"
+    },
+    {
+      "index": 18,
+      "source_index": 378,
+      "file": "0018.png",
+      "source_pts_ms": 12600.0,
+      "source_elapsed_ms": 12600.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 600.0,
+      "sha256": "5f58c499fbe8d5e1abe541e1710e32b66b79b43c9644e61ab502235d27ee09b4"
+    },
+    {
+      "index": 19,
+      "source_index": 379,
+      "file": "0019.png",
+      "source_pts_ms": 12633.333,
+      "source_elapsed_ms": 12633.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 633.3330000000005,
+      "sha256": "9c8bb37e872ae9223bf6b741374dac11ee6620afa5f9741fd856ded6e9ec8490"
+    },
+    {
+      "index": 20,
+      "source_index": 380,
+      "file": "0020.png",
+      "source_pts_ms": 12666.667,
+      "source_elapsed_ms": 12666.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 666.6669999999995,
+      "sha256": "65d217e599aa70d153b4360ec422a4c27482fa6b424806765635f571a4c77ead"
+    },
+    {
+      "index": 21,
+      "source_index": 381,
+      "file": "0021.png",
+      "source_pts_ms": 12700.0,
+      "source_elapsed_ms": 12700.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 700.0,
+      "sha256": "49d023c0eca158f8c250de26d888fa24f4b3784871343785e0c097d3a458d00d"
+    },
+    {
+      "index": 22,
+      "source_index": 382,
+      "file": "0022.png",
+      "source_pts_ms": 12733.333,
+      "source_elapsed_ms": 12733.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 733.3330000000005,
+      "sha256": "6798b2bc8534b01c18df659a8e77eb475767c6de6233aa7c42134c1166c3e2eb"
+    },
+    {
+      "index": 23,
+      "source_index": 383,
+      "file": "0023.png",
+      "source_pts_ms": 12766.667,
+      "source_elapsed_ms": 12766.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 766.6669999999995,
+      "sha256": "4f7dc4c8533795fcac0a5509e8e0279319c7e12655dfcd1807933f36a3216f2e"
+    },
+    {
+      "index": 24,
+      "source_index": 384,
+      "file": "0024.png",
+      "source_pts_ms": 12800.0,
+      "source_elapsed_ms": 12800.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 800.0,
+      "sha256": "c614fe6933077ac75561f505042b5edc0c52e0f5fdb334460a5aaee98ca934d9"
+    },
+    {
+      "index": 25,
+      "source_index": 385,
+      "file": "0025.png",
+      "source_pts_ms": 12833.333,
+      "source_elapsed_ms": 12833.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 833.3330000000005,
+      "sha256": "8e2ac8412f2ee0137ebd40267e094e51c19fd02b8cf3cb3966a16f23139a18ae"
+    },
+    {
+      "index": 26,
+      "source_index": 386,
+      "file": "0026.png",
+      "source_pts_ms": 12866.667,
+      "source_elapsed_ms": 12866.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 866.6669999999995,
+      "sha256": "7baa11b50932f805b64708a6634087860a28220bd3bb027416cb240012a28d1c"
+    },
+    {
+      "index": 27,
+      "source_index": 387,
+      "file": "0027.png",
+      "source_pts_ms": 12900.0,
+      "source_elapsed_ms": 12900.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 900.0,
+      "sha256": "d31fd2e3be3b4f7efdfd3505fd6fb76c355d5756e132afea65eb957d20d09533"
+    },
+    {
+      "index": 28,
+      "source_index": 388,
+      "file": "0028.png",
+      "source_pts_ms": 12933.333,
+      "source_elapsed_ms": 12933.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 933.3330000000005,
+      "sha256": "6ec77247b9c65f4add0644f9e7bd25d26143abe84a03d65a61227fe05d961b52"
+    },
+    {
+      "index": 29,
+      "source_index": 389,
+      "file": "0029.png",
+      "source_pts_ms": 12966.667,
+      "source_elapsed_ms": 12966.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 966.6669999999995,
+      "sha256": "79b6f8982728cc503909bcc5147f05a18d2f800cf26fa8426e3fbab4d4773b54"
+    },
+    {
+      "index": 30,
+      "source_index": 390,
+      "file": "0030.png",
+      "source_pts_ms": 13000.0,
+      "source_elapsed_ms": 13000.0,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 1000.0,
+      "sha256": "c33ae9efde4173cec3b8fb4fbfc8a1bcc7314b000e3d9d3ea421e22fb316f8ea"
+    },
+    {
+      "index": 31,
+      "source_index": 391,
+      "file": "0031.png",
+      "source_pts_ms": 13033.333,
+      "source_elapsed_ms": 13033.333,
+      "duration_ms": 33.334,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 1033.3330000000005,
+      "sha256": "53fa181f377f9206807ab806ec10f686c08b7d8d2602757f3938c7d215b7ca98"
+    },
+    {
+      "index": 32,
+      "source_index": 392,
+      "file": "0032.png",
+      "source_pts_ms": 13066.667,
+      "source_elapsed_ms": 13066.667,
+      "duration_ms": 33.333,
+      "timing": "decoded PTS delta; source final frame uses reported duration",
+      "time_ms": 1066.6669999999995,
+      "sha256": "5a1061374815e4f4f361c8147d00282e13a3cf7d549db8da9b8f1116dc73fbeb"
+    }
+  ],
+  "duration_ms": 1099.9999999999995,
+  "review_boards": [
+    "frames-review.png"
+  ],
+  "registration": "One fixed shot crop; no per-frame trim/center/scale; video autorotation disabled",
+  "scope": "External motion study only. No extracted character pixels enter original game exports. No inferred hidden joints."
+}

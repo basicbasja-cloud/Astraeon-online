@@ -105,3 +105,7 @@ Iteration 5 adds [original RO-inspired art-direction practice](original-ro-art-d
 ## Iteration 6 additions
 
 Read [pose/reference practice](pose-guide-practice.md) and its [primary-source audit](pipeline-source-audit.json). The executable CLI applies export integrity and registration findings; [external capture evidence](../../../research/sprite-animation/motion-reference-v6/README.md) distinguishes 213 actually decoded/visually reviewed samples from candidate references not studied. Mixamo documentation was read, but no account/action download or retargeting was executed.
+
+## Iteration 7 additions
+
+Read [conditioning/redraw practice](conditioning-and-redraw.md), [natural-motion practice](natural-motion-practice.md), and the [source/code read-scope audit](conditioning-source-audit.json). Evidence includes205actually inspected ToS video/GIF samples, a new capture-window/crop implementation,64richer original guide-map sets, and88actual fresh external Quaternius source poses sampled through Blender. The original guide board was explicitly rejected by the user as unnatural; the external rig is studied, not retargeted. No model training/ControlNet/hand-refinement execution, naturalness acceptance or final character release is claimed.

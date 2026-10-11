@@ -1,0 +1,95 @@
+{
+  "iteration": 7,
+  "date": "2026-10-11",
+  "lpc": {
+    "commit": "58ce1aa479e4df32845a73a5d0afc221c3a893c2",
+    "files": [
+      {
+        "path": "sources/canvas/renderer.ts",
+        "url": "https://raw.githubusercontent.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/58ce1aa479e4df32845a73a5d0afc221c3a893c2/sources/canvas/renderer.ts",
+        "sha256": "2da2d818de9091b88c1ba71105c78505e12ea2f023b713f0901dc7b2fc96ad31",
+        "review": "Selected implementation passages read; repository-local skill read as comparison only; not invoked/executed or imported"
+      },
+      {
+        "path": "sources/canvas/preview-animation.ts",
+        "url": "https://raw.githubusercontent.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/58ce1aa479e4df32845a73a5d0afc221c3a893c2/sources/canvas/preview-animation.ts",
+        "sha256": "cebceac87f7e32dfb01053670495bb1796e38f9b6c13432e5e3db8245fa3262d",
+        "review": "Selected implementation passages read; repository-local skill read as comparison only; not invoked/executed or imported"
+      },
+      {
+        "path": "sources/custom-animations.ts",
+        "url": "https://raw.githubusercontent.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/58ce1aa479e4df32845a73a5d0afc221c3a893c2/sources/custom-animations.ts",
+        "sha256": "b3fe11bc316284cf2bd972ec7f957da75e65fee77bb93e10cbef6eb68bcc3f2b",
+        "review": "Selected implementation passages read; repository-local skill read as comparison only; not invoked/executed or imported"
+      },
+      {
+        "path": "scripts/zPositioning/parse_zpos.ts",
+        "url": "https://raw.githubusercontent.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/58ce1aa479e4df32845a73a5d0afc221c3a893c2/scripts/zPositioning/parse_zpos.ts",
+        "sha256": "51dbf1985fbd8f2f5a43ee43e74897c655db86c0d2951bc90c6fad3faf380413",
+        "review": "Selected implementation passages read; repository-local skill read as comparison only; not invoked/executed or imported"
+      },
+      {
+        "path": ".agents/skills/canvas-render/SKILL.md",
+        "url": "https://raw.githubusercontent.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/58ce1aa479e4df32845a73a5d0afc221c3a893c2/.agents/skills/canvas-render/SKILL.md",
+        "sha256": "9d7c4ab80066261beb7ff2b31e1774e362c6ec085499f387694e14e6a2fd380b",
+        "review": "Selected implementation passages read; repository-local skill read as comparison only; not invoked/executed or imported"
+      }
+    ],
+    "tree_truncated": true,
+    "scope": "Four-direction layering/oversized source extraction study; no external art into original character, not source for diagonal pose generation"
+  },
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2311.17957v2",
+      "title": "HandRefiner",
+      "read": "selected method/ablation/limitations sections",
+      "execution": false
+    },
+    {
+      "url": "https://arxiv.org/html/2403.10731v2",
+      "title": "Giving a Hand to Diffusion Models",
+      "read": "selected \u00a7\u00a7III, IV blending evaluation, V limitations",
+      "execution": false
+    },
+    {
+      "url": "https://www-labs.iro.umontreal.ca/~bmpix/pdf/PAPER_CUTOUTS.pdf",
+      "title": "Generative Cutout Animation",
+      "read": "selected \u00a7\u00a73\u20135 and figures5\u20138,11\u201314; downloaded PDF converted to text",
+      "pdf_sha256": "f6c1fbbe51c5405308f7436d8f1b11ce7ab05b822554e8783b5eb35c9e4aab32",
+      "execution": false
+    },
+    {
+      "url": "https://github.com/lllyasviel/ControlNet",
+      "title": "ControlNet",
+      "read": "author README condition-type descriptions only",
+      "execution": false
+    },
+    {
+      "url": "https://www.animationmentor.com/blog/tutorial-building-appealing-character-poses-for-animation/",
+      "title": "Anthony Wong pose lesson",
+      "read": "full substantive article text; embedded video not viewed"
+    },
+    {
+      "url": "https://www.animationmentor.com/blog/tutorial-animate-sword-fights-battle-sequences/",
+      "title": "Natasha Krinsky combat lesson",
+      "read": "full substantive article text; embedded video not viewed"
+    },
+    {
+      "url": "https://www.animationmentor.com/blog/animation-tips-tricks-what-makes-or-breaks-a-good-body-mechanics-shot/",
+      "title": "Wayne Gilbert body mechanics",
+      "read": "full substantive article text"
+    },
+    {
+      "url": "https://quaternius.itch.io/universal-animation-library",
+      "title": "Universal Animation Library",
+      "read": "author page/current changelog and bundled README/license",
+      "execution": "Actually downloaded current free Standard; Blender sampled two clips from RM glb"
+    },
+    {
+      "url": "https://github.com/J-Ponzo/gltf-universal-animation-library",
+      "title": "2025 discovery mirror",
+      "commit": "e24c23cf2a1323488a3faa226ea7ea21f644b73e",
+      "read": "README/LICENSE/tree; no animation download/use because older than listed fixes"
+    }
+  ]
+}
