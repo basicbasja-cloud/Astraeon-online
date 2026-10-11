@@ -2,6 +2,24 @@
 
 11 October 2026. Branch: `character/production-factory-v2`.
 
+## Paused progress checkpoint: painted-factory-02
+
+The owner requested pushing progress and continuing next time on 11 October 2026.
+The rejected recent RO pose/paint trials were reverted in `e130b217`, restoring
+the pre-RO source. Keep the existing body motions and the explicitly confirmed
+90-degree sword-to-forearm angle with a naturally aligned wrist. Ragnarok-style
+modular composition remains requested; the rejected RO pose trials do not.
+
+`authoring/characters/swordsman-production/painted-factory-02/` now contains an
+editable Blender snapshot, source receipt and four critical-view guide sets.
+The new work changes the holding digits/glove forms and adds a shorter silver
+hairstyle to the shared rig. Unrelated motion digests match before/after.
+**Grip visual validation, approved painted finish, complete painted animations,
+and the runtime hairstyle/equipment swap proof remain unfinished.** The old
+complete bake below is technical coverage, not the requested painted result.
+See that folder's `README.md` for exact resume steps. Work is paused by the owner;
+no automatic continuation is scheduled.
+
 ## Latest source and factory checkpoint
 
 The owner replaced X Bot with `fantasy+character+3d+model.zip` and authorized
