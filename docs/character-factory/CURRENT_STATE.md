@@ -48,6 +48,27 @@ it does not approve source layers, projection, equipment or animation.
 
 ## Active work and next source gate
 
+**Latest: anatomy-base-05, rebuilding after owner anatomy/hand feedback. Still NO-SHIP.**
+The owner explicitly authorized free asset downloads and continued polishing.
+The new source uses the CC0 VRoid Base Male beta native body/head and actual
+rotational finger joints. The compressed palm and circular grip of source04
+are not reused. Full-hand placement preserves phalanx lengths; major body
+proportions remain fitted inferences, not an accepted bind. Forearm armor is
+fitted to the actual sleeve, the hilt/pommel gap is closed, and a continuous
+cape replaces the one-angle outline. A bounded shared sword/palm rotation
+is retained as a clearance study, with actual rendered rear-view checks.
+The older source04 depth experiment failed and was rolled back.
+
+`anatomy-base-05/review.html` contains all eight headings, anatomy-only views,
+grip close-ups, and matching body/outfit, head/hair, weapon and cape layers.
+Headgear is unequipped. License evidence, source receipts and measured raster
+reconstruction errors are retained beside it. The new local Save Copy is
+`.character-tools/checkpoints/anatomy-base-05-native.blend`. Four free asset
+downloads have distinct active/inspection/inactive statuses; no paid jobs occurred.
+Approved painted likeness, costume silhouette, anatomy/deformation acceptance,
+production rig and complete motion coverage remain unfinished. The body has
+156 boundary edges; no topology/rig acceptance is claimed. Coverage remains empty.
+
 **Latest: asset-fit-04 shared identity and semantic layer refinement, still NO-SHIP.**
 Blender was restored from its saved owned checkpoint after closing. The source
 now has an ornate guard/pommel, correctly layered buckle, surface-fitted garment

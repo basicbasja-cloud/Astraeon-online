@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASTRAEON · New anatomy source</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#e8edf2;background:#111923}*{box-sizing:border-box}body{max-width:1120px;margin:0 auto;padding:24px}h1{font-size:25px;margin:0 0 8px}h2{font-size:17px;margin:24px 0 12px}p{color:#b9c6d3;line-height:1.5}.status{color:#ffc777}.controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:18px 0}select,button{font:inherit;background:#293746;color:inherit;border:1px solid #526476;border-radius:6px;padding:7px}label{display:flex;gap:9px;align-items:center}.pair{display:flex;gap:18px;flex-wrap:wrap}.panel{background:#1b2734;border:1px solid #3a4b5e;border-radius:10px;padding:12px}.stage{background:#182632;border-radius:6px;line-height:0}.light .stage{background:#e3e5e4}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.grid .stage{display:flex;justify-content:center}canvas{max-width:100%;height:auto}figcaption{font-size:13px;color:#c0cedb;padding:9px 0 0}figure{margin:0}a{color:#a8d8ff}.note{font-size:13px}#grips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}#grips img{width:100%;display:block}.error{color:#ff9494}@media(max-width:760px){.grid,#grips{grid-template-columns:repeat(2,1fr)}}
+</style>
+<h1>ASTRAEON · New anatomy source</h1>
+<p class="status">Work in progress. The painted concept is approved; this source is still being polished.</p>
+<p>New anatomy and native finger joints replace the previous body and circular grip. Check proportions, wrist contact, and sword direction at game size.</p>
+<div class="controls">
+<label>Direction <select id="direction"><option>SE</option><option>S</option><option>SW</option><option>W</option><option>NW</option><option>N</option><option>NE</option><option>E</option></select></label>
+<label>View <select id="view"><option value="character">Character</option><option value="BodyOutfit">Body with outfit</option><option value="HeadHair">Head with hair</option><option value="Weapon">Weapon</option><option value="Cape">Cape</option><option value="anatomy">Anatomy only · SE/W/NW/N</option><option value="layers">Recombined layers</option></select></label>
+<label>Size <select id="size"><option value="320">Authoring · 320</option><option value="160">Game · 160</option><option value="640">Enlarged · 640</option></select></label>
+<button id="background">Light background</button>
+</div>
+<div class="pair"><figure class="panel"><div class="stage"><canvas id="reference" width="320" height="320"></canvas></div><figcaption>Approved painting · unchanged</figcaption></figure><figure class="panel"><div class="stage"><canvas id="source" width="320" height="320"></canvas></div><figcaption id="caption">New source · SE</figcaption></figure></div>
+<p id="message" class="note">Headgear is unequipped. These layers describe this costume and pose; animation and other equipment combinations remain unfinished.</p>
+<h2>Eight directions</h2><div class="grid" id="directions"></div>
+<h2>Right hand and weapon · costume removed for inspection</h2><div id="grips"></div>
+<p class="note">The hand and hilt move together in the shared source. Hidden handle pixels are removed by actual hand coverage. A visible blade fragment in NW is not a completed visual-quality result.</p>
+<p><a href="validation.json">Validation record</a> · <a href="FREE_ASSET_PROVENANCE.json">Free asset provenance</a> · <a href="README.md">Source notes</a></p>
+<script>
+const directions=['S','SW','W','NW','N','NE','E','SE'];
+const parts=['BodyOutfit','HeadHair','Weapon','Cape'];
+const images=new Map();let drawVersion=0;
+function load(path){if(!images.has(path)){images.set(path,new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('Could not load '+path));im.src=path;}));}return images.get(path);}
+function frame(d){return 'renders/'+d+'-current.png';}
+function draw(im,canvas){const ctx=canvas.getContext('2d');ctx.clearRect(0,0,320,320);ctx.drawImage(im,0,0,320,320);}
+async function update(){const version=++drawVersion;const d=document.getElementById('direction').value,v=document.getElementById('view').value,size=Number(document.getElementById('size').value);const canv=document.getElementById('source');for(const c of [canv,document.getElementById('reference')])c.style.width=size+'px';
+let selected=d;if(v==='anatomy'&&!['SE','W','NW','N'].includes(d))selected='SE';
+try{if(v==='layers'){const ims=await Promise.all(parts.map(p=>load('renders/modular-'+p+'-'+d+'.png')));if(version!==drawVersion)return;const ctx=canv.getContext('2d');ctx.clearRect(0,0,320,320);for(const im of ims)ctx.drawImage(im,0,0,320,320);}else{const path=v==='character'?frame(d):v==='anatomy'?'renders/anatomy-only-'+selected+'.png':'renders/modular-'+v+'-'+d+'.png';const im=await load(path);if(version!==drawVersion)return;draw(im,canv);}document.getElementById('caption').textContent='New source · '+selected+' · '+document.getElementById('view').selectedOptions[0].text;document.getElementById('message').classList.remove('error');}catch(error){document.getElementById('message').textContent=error.message;document.getElementById('message').classList.add('error');}}
+async function start(){const im=await load('../fresh-2d/candidate-01/candidate.png');const ctx=document.getElementById('reference').getContext('2d');const scale=.0017*320/3.440181732;ctx.drawImage(im,160-645*scale,264-1155*scale,im.width*scale,im.height*scale);
+for(const d of directions){const figure=document.createElement('figure');figure.className='panel';figure.innerHTML='<div class="stage"><canvas width="320" height="320" style="width:160px"></canvas></div><figcaption>'+d+'</figcaption>';figure.addEventListener('click',()=>{document.getElementById('direction').value=d;update();});document.getElementById('directions').append(figure);draw(await load(frame(d)),figure.querySelector('canvas'));}
+for(const d of ['SE','W','NW','N']){const f=document.createElement('figure');f.className='panel';f.innerHTML='<div class="stage"><img alt="'+d+' grip inspection" src="renders/grip-isolated-'+d+'.png"></div><figcaption>'+d+' · isolated hand and sword</figcaption>';document.getElementById('grips').append(f);}await update();}
+for(const id of ['direction','view','size'])document.getElementById(id).addEventListener('change',update);document.getElementById('background').addEventListener('click',()=>{document.body.classList.toggle('light');document.getElementById('background').textContent=document.body.classList.contains('light')?'Dark background':'Light background';});start().catch(error=>{document.getElementById('message').textContent=error.message;document.getElementById('message').classList.add('error');});
+</script></html>

@@ -1,0 +1,199 @@
+{
+  "verdict": "NO_SHIP",
+  "ownerApproved": false,
+  "runtimeAdmitted": false,
+  "motionCoverage": [],
+  "source": {
+    "vertices": 3768,
+    "faces": 7340,
+    "triangles": 7340,
+    "boundaryEdges": 156,
+    "nonmanifoldEdges": 156,
+    "maxWeights": 4,
+    "minWeightSum": 0.9999999273568392,
+    "maxWeightSum": 1.0000000651925802
+  },
+  "directions": {
+    "S": {
+      "bounds": [
+        100,
+        95,
+        205,
+        272
+      ],
+      "height": 178,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "SW": {
+      "bounds": [
+        100,
+        95,
+        228,
+        283
+      ],
+      "height": 189,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "W": {
+      "bounds": [
+        134,
+        95,
+        220,
+        287
+      ],
+      "height": 193,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "NW": {
+      "bounds": [
+        123,
+        97,
+        227,
+        285
+      ],
+      "height": 189,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "N": {
+      "bounds": [
+        114,
+        99,
+        219,
+        275
+      ],
+      "height": 177,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "NE": {
+      "bounds": [
+        91,
+        96,
+        219,
+        276
+      ],
+      "height": 181,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "E": {
+      "bounds": [
+        99,
+        94,
+        185,
+        273
+      ],
+      "height": 180,
+      "canvas": [
+        320,
+        320
+      ]
+    },
+    "SE": {
+      "bounds": [
+        92,
+        95,
+        196,
+        272
+      ],
+      "height": 178,
+      "canvas": [
+        320,
+        320
+      ]
+    }
+  },
+  "modularProof": {
+    "S": {
+      "coverageMismatchPixels": 1,
+      "opaqueMeanRGBError": 0.29940815895159584
+    },
+    "SW": {
+      "coverageMismatchPixels": 4,
+      "opaqueMeanRGBError": 0.17740756977933655
+    },
+    "W": {
+      "coverageMismatchPixels": 0,
+      "opaqueMeanRGBError": 0.2197411003236246
+    },
+    "NW": {
+      "coverageMismatchPixels": 3,
+      "opaqueMeanRGBError": 0.3314090441591188
+    },
+    "N": {
+      "coverageMismatchPixels": 1,
+      "opaqueMeanRGBError": 0.26217041907418476
+    },
+    "NE": {
+      "coverageMismatchPixels": 0,
+      "opaqueMeanRGBError": 0.2765278600092099
+    },
+    "E": {
+      "coverageMismatchPixels": 1,
+      "opaqueMeanRGBError": 0.14522760646108665
+    },
+    "SE": {
+      "coverageMismatchPixels": 0,
+      "opaqueMeanRGBError": 0.26891021843030377
+    }
+  },
+  "weaponPixels": {
+    "S": {
+      "visible": 689,
+      "isolated": 706
+    },
+    "SW": {
+      "visible": 523,
+      "isolated": 543
+    },
+    "W": {
+      "visible": 266,
+      "isolated": 279
+    },
+    "NW": {
+      "visible": 20,
+      "isolated": 542
+    },
+    "N": {
+      "visible": 343,
+      "isolated": 709
+    },
+    "NE": {
+      "visible": 492,
+      "isolated": 535
+    },
+    "E": {
+      "visible": 172,
+      "isolated": 190
+    },
+    "SE": {
+      "visible": 517,
+      "isolated": 535
+    }
+  },
+  "preservedConceptSHA256": "2fa0145d82ae3eabd6c04aadbf89d485b2bf0b0db3c228d278ca95b7f463253b",
+  "defects": [
+    "Approved painted likeness and costume silhouette not reached",
+    "Rear sword visibility needs review",
+    "Static fitted anatomy is inferred; no accepted production bind",
+    "Body has 156 boundary edges; topology and joint deformation gate unresolved",
+    "No production rig or action coverage",
+    "Equipped layers are combination-specific, not arbitrary substitution proof"
+  ]
+}
