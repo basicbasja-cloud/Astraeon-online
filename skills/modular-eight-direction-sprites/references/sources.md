@@ -1,6 +1,6 @@
 # Annotated source catalog
 
-Reviewed on 2026-10-11. This catalog contains 55 source entries. Entries are evidence for their stated scope only. Code was inspected statically; no upstream engine, model, or asset generator was executed. The original package motion study was executed separately. Publication years refer to identified artifacts rather than search-engine age labels.
+Reviewed on 2026-10-11. This base catalog contains 55 source entries. Iteration 4 adds the [deep rig study](sprite-rig-production.md), [pinned GitHub skill comparison/audit](github-skill-study.md) and [fresh RO hard-reference audit](ragnarok-hard-reference.md); their review scopes are recorded separately. Entries are evidence for their stated scope only. Code was inspected statically; no upstream engine, model, or asset generator was executed. The original package motion study was executed separately. Publication years refer to identified artifacts rather than search-engine age labels.
 
 Review levels: **code** = selected implementation inspected from a pinned commit; **page** = source page or retrieved document inspected; **metadata** = repository/index/abstract inspected; **limited** = indexed excerpts available but full-page retrieval failed or embedded material was not inspected. Live documentation and default-branch URLs can change.
 
@@ -96,3 +96,5 @@ Review levels: **code** = selected implementation inspected from a pinned commit
 Use architectural ideas and original project-owned art by default. Before admitting external art or code, check that specific material's license and attribution, including per-item credits in mixed catalogs. A repository's code license does not automatically license linked commercial game assets. Model code, weights, training data, and generated-output terms may differ. This research did not import third-party art into the game.
 
 Search results that led to mirrors, marketing pages, or unverified agent skills were discovery leads. They are not treated as production evidence in this catalog. Claims about quality or maintenance are bounded by the actual review level above.
+
+The follow-up [RO action-direction audit](ro-action-direction-audit.json) contains 64 actual requests across eight Swordman action blocks, including eight distinct sitting views and a preserved head-region attack discrepancy. See the [interpretation and scope](ragnarok-hard-reference.md#eight-selectable-directions-versus-four-drawings).

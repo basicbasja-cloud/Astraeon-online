@@ -1,5 +1,7 @@
 # Silver Scarf — full-body attack candidate v3
 
+**Rejected by the user:** frame-three hand continuity, effect quality, and missing replaceable character parts. This is failure evidence only.
+
 This rebuild responds to the rejected stationary-body animation. It adds a loading stance, torso coil, forward drive, knee/hip movement, rear-leg extension and coordinated recovery. It uses fresh original artwork guided by a newly authored joint study; it does not use any rejected game-branch character art.
 
 The 256² GIF has eight timeline entries over 800 ms, with seven distinct body images. Delays are 80, 100, 100, 60, 60, 120, 140 and 140 ms: approximately ten pose entries per second, with a brief strike and held recovery. This is an authored cadence inspired by studied examples, not a verified universal Ragnarok rate.
@@ -23,7 +25,7 @@ Serve this directory with `python -m http.server 8770`, then open `http://localh
 
 Decoded GIF timing/endpoints and export bounds passed. Chromium normal one-shot, quarter-speed loop, trail toggle and interruption checks passed without page errors. The ready image is exactly reused at completion; stopping clears the effect. Contact sheet, body-only strike and browser captures were visually inspected.
 
-This is a candidate awaiting the user's visual assessment. It has only one southeast/front-right facing. The body, clothing, head and sword are flattened together; only the trail is separate. It is not yet a complete eight-direction replaceable-part asset. The painted rear foot departs from the diagnostic rig's contact policy. Marker alignment does not prove physical balance or zero visual jitter. Small painted details may vary between poses. Actual game-scale contact, combat interruptions and integration remain untested.
+This candidate was rejected by the user and is not an animation base. It has only one southeast/front-right facing. The body, clothing, head and sword are flattened together; only the trail is separate. It is not yet a complete eight-direction replaceable-part asset. The painted rear foot departs from the diagnostic rig's contact policy. Marker alignment does not prove physical balance or zero visual jitter. Small painted details may vary between poses. Actual game-scale contact, combat interruptions and integration remain untested.
 
 ## Provenance
 

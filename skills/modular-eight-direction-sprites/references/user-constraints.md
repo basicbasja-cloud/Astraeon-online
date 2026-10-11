@@ -11,6 +11,10 @@ Recorded 2026-10-11 during research iteration 2. These override earlier inferred
 7. The 24-pose painted attack was rejected for shaking. The six-pose remake was also rejected because its lower body stands still. Neither sheet is an approved animation or production reference.
 8. The user explicitly requests a sword trailing effect, more internet study of RO and other eight-direction sprites, and results usable in a game. The trail must follow the strike; it does not excuse missing full-body mechanics.
 9. Do not freeze both legs to fix registration. Keep declared support contacts fixed while allowing hips, knees, the rear heel/pivot, chest, head and counterbalancing arm to move. Source counts and successful file/browser checks do not override the user's animation rejection.
+10. The full-body v3 attack is also rejected: frame three appears to switch the sword to the left hand, its effect is rejected, and its flattened character layer does not satisfy modular production. Preserve anatomical right-hand ownership through all poses, including when an arm crosses the torso.
+11. Research sprite rigs deeply: directional attachment banks, named bones/IK, mesh weights, draw-order changes, skin replacement, and repeatable production of hair and equipment. Provide an actual layered swapping proof, not another flattened strip labeled modular.
+12. Study broadly across GitHub skills, source code, documentation, papers and industry instruction, then test the knowledge in original work. The user calls the target an “ultimate skill”; this remains a goal, not a mastery claim.
+13. Study rigging and sprite art/animation together; use Ragnarok as the hard reference. Another rig pipeline does not replace RO-specific visual review.
 
 Implementation code, game contracts, and non-art requirements can be inspected on the newest branch. External primary references and fresh isolated experiments are the permitted study basis. Never treat the presence of an asset in a branch as approval.
 

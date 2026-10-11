@@ -1,0 +1,37 @@
+{
+  "baseline": "PASS",
+  "strips_checked": 272,
+  "negative_fixtures": [
+    {
+      "fixture": "wrong-hand weapon",
+      "expected_error": "weapon-socket:weapon.straight",
+      "rejected": true
+    },
+    {
+      "fixture": "missing diagonal hair",
+      "expected_error": "item-coverage:hair.silver",
+      "rejected": true
+    },
+    {
+      "fixture": "incompatible body family",
+      "expected_error": "rig-family:torso.travel",
+      "rejected": true
+    },
+    {
+      "fixture": "mirrored asymmetrical weapon",
+      "expected_error": "mirrored-asymmetry:weapon.falchion",
+      "rejected": true
+    },
+    {
+      "fixture": "incomplete hidden head",
+      "expected_error": "hidden-content:head.base",
+      "rejected": true
+    },
+    {
+      "fixture": "missing pose key",
+      "expected_error": "pose-coverage",
+      "rejected": true
+    }
+  ],
+  "scope": "Manifest coverage and actual strip PNG headers. Source hierarchy/weights/baked keys are independently checked by check-source.py. No visual or game acceptance implied."
+}

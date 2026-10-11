@@ -1,0 +1,6 @@
+# Reproducible raw depth and automatic Blender backups stay local.
+*.exr
+*.blend1
+# Per-frame packed depth is recreated during composition; shipping uses strips.
+/parts/**/*.depth.png
+/blocking-review/

@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-11",
+  "branch": "research/modular-sprites-full-body-2026-10-11",
+  "acceptance": "TECHNICAL_PROOF_ART_AND_EFFECT_NOT_APPROVED",
+  "character_input": "User-provided silver-haired armored adventurer illustration, interpreted manually. No rejected branch art was sampled or used as a seed.",
+  "source_authorship": "Original meshes, materials, armature, procedural IK/pose targets and blade-history exporter authored for this study.",
+  "external_references": "See pinned research audits in skills/modular-eight-direction-sprites/references. External RO images and upstream skill source were studied outside the checkout and are not redistributed.",
+  "tools": {
+    "blender": "4.3.2",
+    "renderer": "Cycles CPU, one sample; custom normal-band emission",
+    "composition": "Python/Pillow/numpy/OpenEXR: mechanical per-pixel depth composition and native-size resolve",
+    "runtime": "Original standalone HTML/Canvas CPU preview; no production game integration"
+  },
+  "paid_provider_jobs": 0,
+  "generated_model_service_used": false,
+  "canonical_game_dev_cli_used": false,
+  "proof_scope": {
+    "body_families": 1,
+    "actions": [
+      "attack with ready endpoint"
+    ],
+    "bone_count": 17,
+    "complete_opaque_items": 15,
+    "trail_items": 2,
+    "unique_source_views": 8,
+    "keys_per_view": 8,
+    "source_part_color_frames": 1088,
+    "logical_loadouts": 48
+  },
+  "known_limits": [
+    "Unapproved rough modeled appearance and ribbon effect",
+    "Rigid segment skinning; no finished animator-facing control rig",
+    "Not all locomotion/actions, body families or weapon grip families",
+    "Exact reference color comparison failed at six source pixels; owner/alpha comparisons passed",
+    "68 MiB decoded one-facing arrays before browser overhead; no production performance validation"
+  ],
+  "source_scripts": {
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/browser-check.py": "ecefad99989823fd12da3396495eb05cfc5a656f3e13cc068ec426a1e7d96819",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/build-character.py": "d8f89ee9875bf3f751fcef83c1182d37da8871eddccc2c5867566fc72ba98a15",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/check-source.py": "f27a7bb36e1c91605ac6c23602bae59173e8685185a88a81fa158923102b32d9",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/compose-proof.py": "d2ceef68fb1b223b9c0aec6038efd3c278dbb63dd1c82ea7fbf637ae5b735b1a",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/render-owner-checks.py": "36706edbb1044a62f8568de23cd0312f5d52efb9b96368ae3dfb3f64d740079c",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/rig-poses.mjs": "12b06a933b7d17aa2b86b7ec3fc6ccde270c6747e87a946b6de349ce34155960",
+    "skills/modular-eight-direction-sprites/studies/rigged-parts/validate-contract.mjs": "7b0d3269fc90fa865a190bdab4108493abc24395258b05fd26e01b833fe285f9"
+  },
+  "browser_evidence": "Current export: 29 actual Chromium checks passed. Standalone preview only; not game integration or artistic approval."
+}

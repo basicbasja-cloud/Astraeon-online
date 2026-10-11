@@ -29,7 +29,7 @@ Appearance selection and owned cosmetic items must be separate from stat modifie
 ## Motion requirements carried forward
 
 - Simple, grounded Ragnarok-inspired movement with complete body coordination.
-- Higher animation FPS than classic Ragnarok; use historical timing for study, not as a production ceiling.
+- Earlier higher-FPS preference is superseded for the current attack: lower RO-like pose cadence with explicit holds. Keep renderer update rate independent; see binding user constraints.
 - Fresh idle and locomotion poses; no animated legs pasted under an unchanged torso.
 - All eight facings retain consistent scale, anatomical handedness, root registration, and action phase.
 - Body motion controls the timing and attachment transforms for hats, weapons, shields, and eventual back cosmetics.

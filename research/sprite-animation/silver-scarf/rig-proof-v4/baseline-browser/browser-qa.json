@@ -1,0 +1,188 @@
+{
+  "url": "http://127.0.0.1:8772/",
+  "browser": "151.0.7922.173",
+  "checks": [
+    {
+      "check": "Paused hair swap preserves pose and subframe",
+      "pass": true,
+      "time_ms": 367,
+      "key": 4
+    },
+    {
+      "check": "Helmet removes hair from equipped parts",
+      "pass": true
+    },
+    {
+      "check": "Covered hair swap has no visible ghost",
+      "pass": true
+    },
+    {
+      "check": "Other equipment swaps retain shared phase",
+      "pass": true
+    },
+    {
+      "check": "Weapon variant retains declared right-hand socket",
+      "pass": true
+    },
+    {
+      "check": "S six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "SE six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "E six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "NE six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "N six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "NW six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "W six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "SW six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "All facing caches bounded",
+      "pass": true,
+      "decoded_arrays_bytes_each": 71303168
+    },
+    {
+      "check": "Ribbon contributes during strike",
+      "pass": true
+    },
+    {
+      "check": "Interruption clears trail and returns ready",
+      "pass": true
+    },
+    {
+      "check": "Normal one-shot completes to ready",
+      "pass": true
+    },
+    {
+      "check": "Quarter-speed one-shot completes to ready",
+      "pass": true
+    },
+    {
+      "check": "Rapid direction requests commit the newest complete view",
+      "pass": true
+    },
+    {
+      "check": "No page errors during happy-path checks",
+      "pass": true
+    },
+    {
+      "check": "Missing diagonal part fails visibly",
+      "pass": true,
+      "error": "Missing required part: strips/hair.silver/NE.png"
+    }
+  ],
+  "scope": "Standalone CPU compositor only; not game integration or artistic approval.",
+  "facing_checks": [
+    {
+      "direction": "S",
+      "six_pose_hashes": [
+        "9ce12dc41b03b81ed96f4cc20291cb0e2d141d7b251db5d2427bceba783631f2",
+        "7c0e55cc32054d34b1dc1e6c738bbf58218105e0c24c00e4a3d155be3763c9c5",
+        "53f174e043f44256797eb67957f852bb5ddd7dcfd4b26265c5a8ce089942b370",
+        "386844299e33c496f46b0a4cf26b06a8cb4e88f14a8ffa9ff474a4cecf6f8a44",
+        "9f722ffe96d1db79c5265f40a7dd87a861e6686e72fd325ca6b95f6b0a90d4e5",
+        "deb1537163a0a34cb81f2bf9dd63431319aec3f0d31967815ef886b6db7a3fe8"
+      ]
+    },
+    {
+      "direction": "SE",
+      "six_pose_hashes": [
+        "57ba9d9eb1ed2b4c76ca58ef9593995d400f13a84ace09f5f62949baf286c707",
+        "f3bcab2c6cbd7e0618b6420ab75f1e9f9dc409876d8fa9aed8f04445cd519de3",
+        "5f6d65268754f8b2d26e4b9b76316cb03b48e0d1eee2ab39a5e654479a919354",
+        "39677bb4adc5146c0c9c00be1aae7f67e855755f0c1ab0728288867bd0ed1469",
+        "276ede638022acf42bcacfae8cadd364f4aeaa74aa909ef0ce07e2783daa9acb",
+        "8f639b8f1164afe08009e1cfdda34c3f59642297871a200563f17417931938a1"
+      ]
+    },
+    {
+      "direction": "E",
+      "six_pose_hashes": [
+        "e512f2150dc0ec44fadb5b79e2df7f223a916ab0f311ceb982913a40aab95de4",
+        "82ccb79a5e733c7ad2a80e51bf5ecb9663c7e8ba11a277995e7882894728327e",
+        "f021a3109feb62862c3791201df3720ddd15439276171ba7ad50f4bde8c198d1",
+        "747735220310633b898a5b243fb777568bd92ef78cf87e9f66a03091cef1839e",
+        "2b027c4a9e7c4304217a59e6a568f8d07754dd6fe580b349b61f6e075edf6613",
+        "641d1a6f26e69f02abac10dec063fae8097ed3054d76e552219c3e5c96e22308"
+      ]
+    },
+    {
+      "direction": "NE",
+      "six_pose_hashes": [
+        "731244ea4cca043102973d69cc4ad26011263dc725f965b4acd19480d0daa319",
+        "bed7a632115c0716eff662795a2e9aaabff9b278d1b33a5c6a69c1b35f6a493f",
+        "eedbae84faee057e2ca80727bb36674e3736119da4d668c403600d285ee5b547",
+        "1fbe3af0b9565e10f09ecccef3a210a64a263c620bfe7ca1bbd9cef779fe9018",
+        "dc950bc74e0d7d0c115ba6d767430eee32f1f4330b81f2650e7e32b77c1b2850",
+        "61f99f02d351241210c82bd4531f53b7eeb55d16f4ecfe0629869958e2751d15"
+      ]
+    },
+    {
+      "direction": "N",
+      "six_pose_hashes": [
+        "53e88803288f1fbd22d65fda90a6bd9f7909ff262ab8ca18d688461cf4e59275",
+        "571485e15e65ac53f2deda9ab35f865aa0f8303c7b5f79e92e39915e17e24443",
+        "a5c9318f0c06dcc9c4491b822bccb78ba3653d2b627f167390a4061cab32d444",
+        "6b425d4d2ad2a1b804448352588e06db96e2a6c782db40605eac9c766265ad16",
+        "e0ffdf8ee420c24f5177949c8f67da1ff10c5f781eb661d8e2046ed87769f02c",
+        "b471cd466b702b9949cb88964640f69ce11e0cfb6907e651298a85ba9c09fb3d"
+      ]
+    },
+    {
+      "direction": "NW",
+      "six_pose_hashes": [
+        "a52750e9509e387f84819e8ab449dc534952f628d98e57140ea6c12654fe11e2",
+        "d5981eaf9afaf429a77604d48e1fbc8b04cdbd2818e9696f51e8e6ece1e1cc82",
+        "fcfc95401f5989664c9103cc42e33df1d5611f03558a926e5e50c5fb8ec4c296",
+        "e5e5c48da93a65711235aec996f9ec5b3389d540a70ebcdbb44eb18576c80928",
+        "0a62bece55608d0d3c72b3cfd79f4491fb3e963d669a6330eab5202728192ad5",
+        "00e3f19398ae9dd28a38503b9e71db769beafa6c9cd4d1e7f45a1281d69ca383"
+      ]
+    },
+    {
+      "direction": "W",
+      "six_pose_hashes": [
+        "0b7a0d11ecf43f4375864706e00833898226cc8688cca7ea1992a7aaa3bcbb18",
+        "1ab92125f143e48bf2fe3fa3abbf4a12c2be2a49c7e2434f92c6d07f3195855f",
+        "4bd17fac8bb6fa482fdaa19324a4564ede2d613bc46019279921189899ade5d9",
+        "67a4f05e982cb5c22db5c23d5e37490c84964c90db1930915647365f951511e4",
+        "78dc3b06b34825eccb47017cfcd2401ebb1aab9c7a24a54c8c4092f97a42b5f8",
+        "bb44e04638b63b38ce7e327579813a764870ce0e5c731ba8fd686fdd67ed6650"
+      ]
+    },
+    {
+      "direction": "SW",
+      "six_pose_hashes": [
+        "4a321095389d6ed63b701963c90fb7928acb9a136c5d318db98eb20b5a1cf486",
+        "e489c2f191e37cb7c127f44d6eb58a39ea021d6825a87f76089cd9fa3570376a",
+        "8da3a4a16f9fdbf1da17ff2a62cd570dfb5f5e1b7c97682cc50d4e8b0f0c176a",
+        "610acc41202953b5b2b573ca872a8546d8c95d9a12aec2be3846c30e7f2d28c8",
+        "e5f7a45e605232e119928c855d21bbbf65038752137f6e5bbe5cb2c05d508fb2",
+        "1979285c2c162d21eebcaa46fe33aba9e9a032b1d6ceaa75ebd213977d7cf88f"
+      ]
+    }
+  ],
+  "page_errors": [],
+  "tested_revision_scope": "Before fixed capture offset, bare-foot source completion and optional paired-view control",
+  "superseded_as_current_validation": true
+}

@@ -5,7 +5,7 @@ description: Design, produce, repair, and validate eight-direction 2D character 
 
 # Modular eight-direction sprites
 
-Research-backed draft v0.3, reviewed 2026-10-11. Includes original motion, separate-part export, depth-composition studies, and a full-body attack repair study responding to rejected painted animations. Final sprite art, production packing, and game integration remain unvalidated. The linked sources establish individual techniques; this package's combined asset contract and quality gates are proposed engineering practice.
+Research-backed draft v0.4, reviewed 2026-10-11. Includes deep rig/weight/IK study, pinned GitHub skill comparison, fresh Ragnarok hard references and an original editable modular rig with eight-direction attack exports and replacement tests. Final sprite art, production game integration and mass-production readiness remain unvalidated. The linked sources establish individual techniques; this package's combined asset contract and quality gates are proposed engineering practice.
 
 ## Scope and references
 
@@ -16,6 +16,8 @@ Use when a character must retain identity and animation while independently repl
 Read [research](references/research.md) for approach selection, [motion findings](references/motion-study.md) for animation design and measured limitations, [asset contract](references/asset-contract.md) before production, and [production recipes](references/production-recipes.md) for tool-specific work. [Sources](references/sources.md) distinguishes implementations, official documentation, research, and tutorials. [Astraeon technical brief](references/astraeon-technical-brief.md) pins the newest branch studied.
 
 Do not claim that reading this skill permanently trains a model. The durable output is this package and project assets. Do not claim the package is installed unless the active skill loader actually registers it.
+
+For rigged modular production, read [sprite rig production](references/sprite-rig-production.md), [GitHub skill comparison](references/github-skill-study.md) and [Ragnarok hard reference](references/ragnarok-hard-reference.md). Painted v3 is rejected for apparent hand switching, its effect and flattened parts; it is failure evidence, not a source seed. Reproduce the new [rigged-parts exercise](studies/rigged-parts/README.md). Ragnarok is the hard visual reference; other rigs supply techniques.
 
 ## 1. Establish the production contract
 
@@ -42,6 +44,8 @@ These choices can feed the same layered runtime. Preserve the editable source an
 
 Never substitute rotation of one flat image for new facing views. Do not assume a four-direction asset library provides diagonal sprites.
 
+Do not automatically mirror asymmetrical characters. Keep anatomical ownership in the source hierarchy and actual weights, reopen the baked action, then inspect visible wrist–grip continuity in every pose. A socket declaration or prompt word cannot validate a visually switched hand.
+
 ## 3. Define slots, pieces, and compatibility
 
 Separate gameplay equipment slots from render pieces. A single equipped cape may provide `cape_back` and `cape_front`; one helmet may hide selected hair regions; one glove item may supply both anatomical hands.
@@ -49,6 +53,8 @@ Separate gameplay equipment slots from render pieces. A single equipped cape may
 Choose the least complex split that supports the target poses. Full-frame part layers often need fewer sockets than separately positioned limbs. Segment only where independent replacement, attachment motion, or occlusion needs it.
 
 Every part declares its compatible rig family, body proportions, actions, direction coverage, grip family, render pieces, and hiding/coverage rules. Two-handed items can reserve both hand slots. Reject incompatible combinations or apply a documented, visible fallback. Never silently use a south-facing or idle-only part in a missing attack direction.
+
+Separate selectable directions from uniquely authored views. RO-style actions may declare an eight-to-four diagonal view map; standing/walking/sitting can use another map. The inspected male Swordman has eight distinct sitting views too; do not assume only standing/walking need eight. Resolve that action view once for all equipped pieces. Explicit reuse preserves coverage; it does not permit undeclared missing views, independent part mappings, weapon-hand flips or altered gameplay aim.
 
 ## 4. Lock the base and pose timeline
 
@@ -96,6 +102,8 @@ Keep useful overlap under joints and clothing seams. Supply hidden anatomy or in
 
 For 3D exports, preserve identical sample times for all equipment passes. Choose explicitly whether a pass contains isolated full geometry or visibility clipped by a canonical combination. The second choice may require regenerating masks when combinations change. Validate reconstructed composites against full reference renders.
 
+Validate actual evaluated scene time before batch export. Manually posing while an active action evaluates another frame can freeze rendered animation. Check distinct image outputs as well as metadata. Report independent full-scene owner/alpha and color comparisons separately; exact visibility cannot conceal unresolved color differences. Translucent FX require additional sorting tests.
+
 ## 6. Author occlusion
 
 Store a default draw order for each facing, with action/frame overrides where necessary. Inspect diagonal facings and crossing limbs, not just front and back.
@@ -132,6 +140,7 @@ Visual and runtime checks:
 - Show parts individually, a diagnostic layered composite, and the final appearance.
 - Stress large helmets, long hair, capes, bulky sleeves, broad shields, and long weapons where relevant.
 - Swap compatible items in motion and during attacks; preserve phase and avoid partial-load frames.
+- Exercise missing diagonal parts, wrong hand ownership, incompatible rig families and rapid asynchronous requests; reject unsupported tuples explicitly.
 - Inspect seams, clipping, silhouette drift, mirrored asymmetry, hair coverage, alpha fringes, and world depth.
 - Measure relevant draw cost, decoded texture memory, loading latency, and bounded cache growth.
 
@@ -144,3 +153,5 @@ Deliver editable source, approved turnaround, separate part assets, runtime mani
 When the user teaches a new rule, record the concrete failure it prevents, the revised procedure, an example, and the check that detects regressions. Put fixed project choices in a project brief; keep broadly reusable rules in this skill. Raise the package version after substantive revisions.
 
 Use the [competency ladder](references/motion-study.md#competency-ladder) to select the next exercise. Continue from the highest demonstrated stage; do not equate source count, passing mathematical tests, or a mannequin preview with mastery of final sprite animation. The original [motion lab](studies/motion-lab/README.md) is a reproducible study, not an approved production base.
+
+For the user's “ultimate skill” target, keep a capability/evidence/gap record. One family and one attack cannot validate a factory for additional proportions, actions or grips. Preserve failed comparisons and user rejections when new iterations improve individual gates.

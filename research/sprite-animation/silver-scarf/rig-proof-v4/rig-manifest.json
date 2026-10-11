@@ -1,0 +1,2140 @@
+{
+  "version": 4,
+  "acceptance": "TECHNICAL_PROOF_ART_NOT_APPROVED",
+  "rig_family": "silver-scarf-A",
+  "canvas": [
+    256,
+    256
+  ],
+  "native_canvas": [
+    128,
+    128
+  ],
+  "resolve": "Compose opaque source visibility at 2x native size, then area-resolve to native 128px",
+  "directions": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "clips": {
+    "attack": {
+      "duration_ms": 800,
+      "frame_delays_ms": [
+        80,
+        100,
+        100,
+        60,
+        60,
+        120,
+        140,
+        140
+      ],
+      "keys": 8
+    }
+  },
+  "parts": {
+    "body.base": {
+      "geometry_objects": 14,
+      "source_is_complete": true,
+      "attached_bones": [
+        "chest",
+        "left.foot",
+        "left.forearm",
+        "left.hand",
+        "left.shin",
+        "left.thigh",
+        "left.upperarm",
+        "pelvis",
+        "right.foot",
+        "right.forearm",
+        "right.hand",
+        "right.shin",
+        "right.thigh",
+        "right.upperarm"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "head.base": {
+      "geometry_objects": 16,
+      "source_is_complete": true,
+      "attached_bones": [
+        "head"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "legs.olive": {
+      "geometry_objects": 4,
+      "source_is_complete": true,
+      "attached_bones": [
+        "left.shin",
+        "left.thigh",
+        "right.shin",
+        "right.thigh"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "boots.brown": {
+      "geometry_objects": 10,
+      "source_is_complete": true,
+      "attached_bones": [
+        "left.foot",
+        "left.shin",
+        "right.foot",
+        "right.shin"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "gloves.brown": {
+      "geometry_objects": 4,
+      "source_is_complete": true,
+      "attached_bones": [
+        "left.forearm",
+        "left.hand",
+        "right.forearm",
+        "right.hand"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "armor.bronze": {
+      "geometry_objects": 10,
+      "source_is_complete": true,
+      "attached_bones": [
+        "left.forearm",
+        "left.upperarm",
+        "right.forearm",
+        "right.upperarm"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "torso.tabard": {
+      "geometry_objects": 14,
+      "source_is_complete": true,
+      "attached_bones": [
+        "chest",
+        "left.forearm",
+        "left.upperarm",
+        "pelvis",
+        "right.forearm",
+        "right.upperarm"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "torso.travel": {
+      "geometry_objects": 11,
+      "source_is_complete": true,
+      "attached_bones": [
+        "chest",
+        "left.forearm",
+        "left.upperarm",
+        "pelvis",
+        "right.forearm",
+        "right.upperarm"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "hair.silver": {
+      "geometry_objects": 25,
+      "source_is_complete": true,
+      "attached_bones": [
+        "head"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "hair.chestnut": {
+      "geometry_objects": 15,
+      "source_is_complete": true,
+      "attached_bones": [
+        "head"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "cape.gold": {
+      "geometry_objects": 3,
+      "source_is_complete": true,
+      "attached_bones": [
+        "chest"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "cape.teal": {
+      "geometry_objects": 3,
+      "source_is_complete": true,
+      "attached_bones": [
+        "chest"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "weapon.straight": {
+      "geometry_objects": 4,
+      "source_is_complete": true,
+      "attached_bones": [
+        "weapon.right"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "weapon.falchion": {
+      "geometry_objects": 4,
+      "source_is_complete": true,
+      "attached_bones": [
+        "weapon.right"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "headgear.helm": {
+      "geometry_objects": 3,
+      "source_is_complete": true,
+      "attached_bones": [
+        "head"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "trail.straight": {
+      "geometry_objects": 1,
+      "source_is_complete": true,
+      "attached_bones": [
+        "blade-history:right.hand"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    },
+    "trail.falchion": {
+      "geometry_objects": 1,
+      "source_is_complete": true,
+      "attached_bones": [
+        "blade-history:right.hand"
+      ],
+      "rig_family": "silver-scarf-A",
+      "directions": [
+        "S",
+        "SE",
+        "E",
+        "NE",
+        "N",
+        "NW",
+        "W",
+        "SW"
+      ],
+      "attack_keys": 8,
+      "is_mirrored": false
+    }
+  },
+  "slots": {
+    "body": [
+      "body.base"
+    ],
+    "head": [
+      "head.base"
+    ],
+    "hair": [
+      "hair.silver",
+      "hair.chestnut"
+    ],
+    "torso": [
+      "torso.tabard",
+      "torso.travel"
+    ],
+    "legs": [
+      "legs.olive"
+    ],
+    "boots": [
+      "boots.brown"
+    ],
+    "gloves": [
+      "gloves.brown"
+    ],
+    "armor": [
+      "armor.bronze"
+    ],
+    "cape": [
+      "cape.gold",
+      "cape.teal",
+      null
+    ],
+    "weapon": [
+      "weapon.straight",
+      "weapon.falchion"
+    ],
+    "headgear": [
+      null,
+      "headgear.helm"
+    ]
+  },
+  "default": [
+    "body.base",
+    "head.base",
+    "legs.olive",
+    "boots.brown",
+    "gloves.brown",
+    "armor.bronze",
+    "torso.tabard",
+    "hair.silver",
+    "cape.gold",
+    "weapon.straight"
+  ],
+  "alternate": [
+    "body.base",
+    "head.base",
+    "legs.olive",
+    "boots.brown",
+    "gloves.brown",
+    "armor.bronze",
+    "torso.travel",
+    "hair.chestnut",
+    "cape.teal",
+    "weapon.falchion"
+  ],
+  "coverage_rules": {
+    "headgear.helm": {
+      "hides_slots": [
+        "hair"
+      ],
+      "reason": "Closed helmet replaces hair coverage; bald head remains complete"
+    }
+  },
+  "poses": [
+    {
+      "direction": "S",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        98.57598114013672,
+        142.351806640625
+      ],
+      "left_hand": [
+        158.47032165527344,
+        142.96424865722656
+      ],
+      "blade_tip": [
+        98.57598114013672,
+        211.81712341308594
+      ],
+      "head_socket": [
+        127.55711364746094,
+        82.35530090332031
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "S",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        101.44391632080078,
+        123.18830871582031
+      ],
+      "left_hand": [
+        154.9881134033203,
+        147.8695831298828
+      ],
+      "blade_tip": [
+        103.10669708251953,
+        59.2884521484375
+      ],
+      "head_socket": [
+        127.55711364746094,
+        81.86857604980469
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "S",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        90.3044204711914,
+        97.28857421875
+      ],
+      "left_hand": [
+        148.5989532470703,
+        150.42503356933594
+      ],
+      "blade_tip": [
+        101.13177490234375,
+        29.491912841796875
+      ],
+      "head_socket": [
+        127.55711364746094,
+        79.52407836914062
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "S",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        109.33074188232422,
+        123.8756103515625
+      ],
+      "left_hand": [
+        152.35240173339844,
+        125.6771240234375
+      ],
+      "blade_tip": [
+        121.13159942626953,
+        137.0724639892578
+      ],
+      "head_socket": [
+        127.55711364746094,
+        89.60244750976562
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "S",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        126.48837280273438,
+        165.26239013671875
+      ],
+      "left_hand": [
+        143.53897094726562,
+        125.44021606445312
+      ],
+      "blade_tip": [
+        151.3301239013672,
+        225.35662078857422
+      ],
+      "head_socket": [
+        127.55711364746094,
+        100.13226318359375
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "S",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        125.24684143066406,
+        176.23168182373047
+      ],
+      "left_hand": [
+        145.7149200439453,
+        140.66106414794922
+      ],
+      "blade_tip": [
+        138.10047912597656,
+        243.77882766723633
+      ],
+      "head_socket": [
+        127.55711364746094,
+        111.84855651855469
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "S",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        99.44068145751953,
+        146.4745330810547
+      ],
+      "left_hand": [
+        158.6802520751953,
+        142.86569213867188
+      ],
+      "blade_tip": [
+        102.65048217773438,
+        215.67073440551758
+      ],
+      "head_socket": [
+        127.55711364746094,
+        88.730224609375
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "S",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        98.57598114013672,
+        142.351806640625
+      ],
+      "left_hand": [
+        158.47032165527344,
+        142.96424865722656
+      ],
+      "blade_tip": [
+        98.57598114013672,
+        211.81712341308594
+      ],
+      "head_socket": [
+        127.55711364746094,
+        82.35530090332031
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "SE",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        108.4305419921875,
+        152.31523895263672
+      ],
+      "left_hand": [
+        152.83151245117188,
+        131.3274154663086
+      ],
+      "blade_tip": [
+        135.14906311035156,
+        216.2469711303711
+      ],
+      "head_socket": [
+        125.7127685546875,
+        82.73728942871094
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "SE",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        96.37184143066406,
+        135.05520629882812
+      ],
+      "left_hand": [
+        153.7569580078125,
+        136.76226806640625
+      ],
+      "blade_tip": [
+        91.74736785888672,
+        71.76873779296875
+      ],
+      "head_socket": [
+        117.92552185058594,
+        83.86334228515625
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "SE",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        84.9954833984375,
+        113.81866455078125
+      ],
+      "left_hand": [
+        152.85308837890625,
+        140.82815551757812
+      ],
+      "blade_tip": [
+        75.50746154785156,
+        45.74461364746094
+      ],
+      "head_socket": [
+        111.0604476928711,
+        82.94064331054688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "SE",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        141.96461486816406,
+        124.66653442382812
+      ],
+      "left_hand": [
+        133.5229949951172,
+        119.3062744140625
+      ],
+      "blade_tip": [
+        196.16546630859375,
+        124.19398498535156
+      ],
+      "head_socket": [
+        139.51121520996094,
+        87.12667846679688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "SE",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        170.03323364257812,
+        156.68663787841797
+      ],
+      "left_hand": [
+        126.95591735839844,
+        122.25477600097656
+      ],
+      "blade_tip": [
+        223.9629364013672,
+        200.4667625427246
+      ],
+      "head_socket": [
+        154.40261840820312,
+        94.57237243652344
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "SE",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        170.470458984375,
+        167.822509765625
+      ],
+      "left_hand": [
+        135.82228088378906,
+        135.18869018554688
+      ],
+      "blade_tip": [
+        197.01748657226562,
+        227.20949935913086
+      ],
+      "head_socket": [
+        161.50677490234375,
+        104.81735229492188
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "SE",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        117.83026885986328,
+        154.3121337890625
+      ],
+      "left_hand": [
+        152.24900817871094,
+        131.30602264404297
+      ],
+      "blade_tip": [
+        148.4103240966797,
+        216.51022720336914
+      ],
+      "head_socket": [
+        132.9535369873047,
+        87.61259460449219
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "SE",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        108.4305419921875,
+        152.31523895263672
+      ],
+      "left_hand": [
+        152.83151245117188,
+        131.3274154663086
+      ],
+      "blade_tip": [
+        135.14906311035156,
+        216.2469711303711
+      ],
+      "head_socket": [
+        125.7127685546875,
+        82.73728942871094
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "E",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        129.48919677734375,
+        155.87633514404297
+      ],
+      "left_hand": [
+        132.38729858398438,
+        125.09254455566406
+      ],
+      "blade_tip": [
+        167.27487182617188,
+        206.4488067626953
+      ],
+      "head_socket": [
+        124.94881439208984,
+        83.65945434570312
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "E",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        109.56768035888672,
+        145.2396240234375
+      ],
+      "left_hand": [
+        137.17828369140625,
+        129.34349822998047
+      ],
+      "blade_tip": [
+        101.36489868164062,
+        84.60977172851562
+      ],
+      "head_socket": [
+        113.93598175048828,
+        88.67913818359375
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "E",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        104.61857604980469,
+        127.38420104980469
+      ],
+      "left_hand": [
+        142.2891845703125,
+        132.53807830810547
+      ],
+      "blade_tip": [
+        80.37312316894531,
+        66.29658508300781
+      ],
+      "head_socket": [
+        104.22730255126953,
+        91.18898010253906
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "E",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        166.1587677001953,
+        113.68797302246094
+      ],
+      "left_hand": [
+        111.1988525390625,
+        121.4586181640625
+      ],
+      "blade_tip": [
+        231.00949096679688,
+        88.55903625488281
+      ],
+      "head_socket": [
+        144.4627685546875,
+        81.14962768554688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "E",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        188.6961669921875,
+        135.22723388671875
+      ],
+      "left_hand": [
+        110.72502899169922,
+        125.86532592773438
+      ],
+      "blade_tip": [
+        240.1225128173828,
+        157.1874008178711
+      ],
+      "head_socket": [
+        165.52239990234375,
+        81.14962768554688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "E",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        190.5560302734375,
+        145.88735961914062
+      ],
+      "left_hand": [
+        121.08802032470703,
+        134.81670379638672
+      ],
+      "blade_tip": [
+        215.2455596923828,
+        194.66291046142578
+      ],
+      "head_socket": [
+        175.56918334960938,
+        87.84251403808594
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "E",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        141.91770935058594,
+        153.35245513916016
+      ],
+      "left_hand": [
+        131.35357666015625,
+        125.4058837890625
+      ],
+      "blade_tip": [
+        181.9546356201172,
+        200.92528533935547
+      ],
+      "head_socket": [
+        135.18881225585938,
+        84.91436767578125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "E",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        129.48919677734375,
+        155.87633514404297
+      ],
+      "left_hand": [
+        132.38729858398438,
+        125.09254455566406
+      ],
+      "blade_tip": [
+        167.27487182617188,
+        206.4488067626953
+      ],
+      "head_socket": [
+        124.94881439208984,
+        83.65945434570312
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "NE",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        149.41604614257812,
+        150.94905853271484
+      ],
+      "left_hand": [
+        109.11363983154297,
+        127.91195678710938
+      ],
+      "blade_tip": [
+        176.1345672607422,
+        188.16226959228516
+      ],
+      "head_socket": [
+        125.7127685546875,
+        84.58163452148438
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "NE",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        133.30148315429688,
+        147.7756576538086
+      ],
+      "left_hand": [
+        114.96366882324219,
+        129.95907592773438
+      ],
+      "blade_tip": [
+        126.32547760009766,
+        90.2894287109375
+      ],
+      "head_socket": [
+        117.92552185058594,
+        93.49493408203125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "NE",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        137.6787567138672,
+        130.03866577148438
+      ],
+      "left_hand": [
+        123.0954360961914,
+        130.4110107421875
+      ],
+      "blade_tip": [
+        112.87853240966797,
+        79.10873413085938
+      ],
+      "head_socket": [
+        111.0604476928711,
+        99.43731689453125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "NE",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        167.7406005859375,
+        97.37103271484375
+      ],
+      "left_hand": [
+        98.45716857910156,
+        130.8733139038086
+      ],
+      "blade_tip": [
+        205.2525177001953,
+        51.04209899902344
+      ],
+      "head_socket": [
+        139.51121520996094,
+        75.17257690429688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "NE",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        171.54466247558594,
+        113.45480346679688
+      ],
+      "left_hand": [
+        104.3541488647461,
+        134.15685272216797
+      ],
+      "blade_tip": [
+        190.34280395507812,
+        120.87100219726562
+      ],
+      "head_socket": [
+        154.40261840820312,
+        67.72686767578125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "NE",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        173.73768615722656,
+        123.27554321289062
+      ],
+      "left_hand": [
+        110.14327239990234,
+        139.76302337646484
+      ],
+      "blade_tip": [
+        182.10691833496094,
+        165.20440673828125
+      ],
+      "head_socket": [
+        161.50677490234375,
+        70.86769104003906
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "NE",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        157.59291076660156,
+        144.15766143798828
+      ],
+      "left_hand": [
+        108.23423767089844,
+        128.62151336669922
+      ],
+      "blade_tip": [
+        183.6336212158203,
+        178.0453643798828
+      ],
+      "head_socket": [
+        132.9535369873047,
+        82.21615600585938
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "NE",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        149.41604614257812,
+        150.94905853271484
+      ],
+      "left_hand": [
+        109.11363983154297,
+        127.91195678710938
+      ],
+      "blade_tip": [
+        176.1345672607422,
+        188.16226959228516
+      ],
+      "head_socket": [
+        125.7127685546875,
+        84.58163452148438
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "N",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        156.5382537841797,
+        140.41973114013672
+      ],
+      "left_hand": [
+        96.64390563964844,
+        138.13406372070312
+      ],
+      "blade_tip": [
+        156.53823852539062,
+        172.09935760498047
+      ],
+      "head_socket": [
+        127.55711364746094,
+        84.96360778808594
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "N",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        153.67031860351562,
+        141.177734375
+      ],
+      "left_hand": [
+        100.12611389160156,
+        138.2484130859375
+      ],
+      "blade_tip": [
+        152.00753784179688,
+        85.48066711425781
+      ],
+      "head_socket": [
+        127.55711364746094,
+        95.48970031738281
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "N",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        164.809814453125,
+        120.22712707519531
+      ],
+      "left_hand": [
+        106.51527404785156,
+        135.69296264648438
+      ],
+      "blade_tip": [
+        153.98245239257812,
+        76.6759033203125
+      ],
+      "head_socket": [
+        127.55711364746094,
+        102.85389709472656
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "N",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        145.7834930419922,
+        85.27395629882812
+      ],
+      "left_hand": [
+        102.76183319091797,
+        142.03538513183594
+      ],
+      "blade_tip": [
+        133.9826202392578,
+        33.620086669921875
+      ],
+      "head_socket": [
+        127.55711364746094,
+        72.69679260253906
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "N",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        128.6258544921875,
+        104.12333679199219
+      ],
+      "left_hand": [
+        111.57525634765625,
+        142.2722930908203
+      ],
+      "blade_tip": [
+        103.78408813476562,
+        112.79121398925781
+      ],
+      "head_socket": [
+        127.55711364746094,
+        62.16697692871094
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "N",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        129.8673858642578,
+        113.23275756835938
+      ],
+      "left_hand": [
+        109.39930725097656,
+        147.13015747070312
+      ],
+      "blade_tip": [
+        117.01374816894531,
+        156.09037017822266
+      ],
+      "head_socket": [
+        127.55711364746094,
+        63.83647155761719
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "N",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        155.67355346679688,
+        132.1139373779297
+      ],
+      "left_hand": [
+        96.43397521972656,
+        139.06922912597656
+      ],
+      "blade_tip": [
+        152.4637451171875,
+        161.27320861816406
+      ],
+      "head_socket": [
+        127.55711364746094,
+        81.09852600097656
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "N",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        156.5382537841797,
+        140.41973114013672
+      ],
+      "left_hand": [
+        96.64390563964844,
+        138.13406372070312
+      ],
+      "blade_tip": [
+        156.53823852539062,
+        172.09935760498047
+      ],
+      "head_socket": [
+        127.55711364746094,
+        84.96360778808594
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "NW",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        146.68368530273438,
+        130.456298828125
+      ],
+      "left_hand": [
+        102.28271484375,
+        149.7708969116211
+      ],
+      "blade_tip": [
+        119.96517181396484,
+        167.6695098876953
+      ],
+      "head_socket": [
+        129.40145874023438,
+        84.58163452148438
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "NW",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        158.7423858642578,
+        129.3108367919922
+      ],
+      "left_hand": [
+        101.3572769165039,
+        149.35572052001953
+      ],
+      "blade_tip": [
+        163.3668670654297,
+        73.00038146972656
+      ],
+      "head_socket": [
+        137.18870544433594,
+        93.49493408203125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "NW",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        170.11874389648438,
+        103.69703674316406
+      ],
+      "left_hand": [
+        102.26113891601562,
+        145.28983306884766
+      ],
+      "blade_tip": [
+        179.6067657470703,
+        60.42320251464844
+      ],
+      "head_socket": [
+        144.0537872314453,
+        99.43731689453125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "NW",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        113.14962768554688,
+        84.48304748535156
+      ],
+      "left_hand": [
+        121.59123229980469,
+        148.4062271118164
+      ],
+      "blade_tip": [
+        58.94877243041992,
+        46.498565673828125
+      ],
+      "head_socket": [
+        115.60301208496094,
+        75.17257690429688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "NW",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        85.08100128173828,
+        112.69908142089844
+      ],
+      "left_hand": [
+        128.15830993652344,
+        145.45773315429688
+      ],
+      "blade_tip": [
+        31.15130615234375,
+        137.68106079101562
+      ],
+      "head_socket": [
+        100.71160888671875,
+        67.72686767578125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "NW",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        84.6437759399414,
+        121.64193725585938
+      ],
+      "left_hand": [
+        119.29194641113281,
+        152.60253143310547
+      ],
+      "blade_tip": [
+        58.09674835205078,
+        172.6596908569336
+      ],
+      "head_socket": [
+        93.60745239257812,
+        70.86769104003906
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "NW",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        137.28396606445312,
+        124.27633666992188
+      ],
+      "left_hand": [
+        102.86521911621094,
+        150.62889862060547
+      ],
+      "blade_tip": [
+        106.70391082763672,
+        160.4337158203125
+      ],
+      "head_socket": [
+        122.16069030761719,
+        82.21615600585938
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "NW",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        146.68368530273438,
+        130.456298828125
+      ],
+      "left_hand": [
+        102.28271484375,
+        149.7708969116211
+      ],
+      "blade_tip": [
+        119.96517181396484,
+        167.6695098876953
+      ],
+      "head_socket": [
+        129.40145874023438,
+        84.58163452148438
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "W",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        125.62503814697266,
+        126.89520263671875
+      ],
+      "left_hand": [
+        122.7269287109375,
+        156.0057601928711
+      ],
+      "blade_tip": [
+        87.83935546875,
+        177.4676742553711
+      ],
+      "head_socket": [
+        130.16542053222656,
+        83.65945434570312
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "W",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        145.5465545654297,
+        119.12641906738281
+      ],
+      "left_hand": [
+        117.93594360351562,
+        156.77449798583984
+      ],
+      "blade_tip": [
+        153.74932861328125,
+        60.15934753417969
+      ],
+      "head_socket": [
+        141.17825317382812,
+        88.67913818359375
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "W",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        150.4956512451172,
+        90.13150024414062
+      ],
+      "left_hand": [
+        112.82504272460938,
+        153.57991790771484
+      ],
+      "blade_tip": [
+        174.74110412597656,
+        39.87123107910156
+      ],
+      "head_socket": [
+        150.88693237304688,
+        91.18898010253906
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "W",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        88.9554672241211,
+        95.46159362792969
+      ],
+      "left_hand": [
+        143.91537475585938,
+        146.25389862060547
+      ],
+      "blade_tip": [
+        24.104740142822266,
+        82.13351440429688
+      ],
+      "head_socket": [
+        110.65145874023438,
+        81.14962768554688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "W",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        66.4180679321289,
+        134.1584930419922
+      ],
+      "left_hand": [
+        144.3892059326172,
+        141.84718322753906
+      ],
+      "blade_tip": [
+        14.991719245910645,
+        180.96041870117188
+      ],
+      "head_socket": [
+        89.59183502197266,
+        81.14962768554688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "W",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        64.5582046508789,
+        143.57708740234375
+      ],
+      "left_hand": [
+        134.0261993408203,
+        152.97451782226562
+      ],
+      "blade_tip": [
+        39.868675231933594,
+        205.20627975463867
+      ],
+      "head_socket": [
+        79.5450439453125,
+        87.84251403808594
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "W",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        113.19652557373047,
+        125.23602294921875
+      ],
+      "left_hand": [
+        123.76065063476562,
+        156.5290298461914
+      ],
+      "blade_tip": [
+        73.15959167480469,
+        176.0186538696289
+      ],
+      "head_socket": [
+        119.9254150390625,
+        84.91436767578125
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "W",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        125.62503814697266,
+        126.89520263671875
+      ],
+      "left_hand": [
+        122.7269287109375,
+        156.0057601928711
+      ],
+      "blade_tip": [
+        87.83935546875,
+        177.4676742553711
+      ],
+      "head_socket": [
+        130.16542053222656,
+        83.65945434570312
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "SW",
+      "index": 0,
+      "phase": "ready",
+      "duration_ms": 80,
+      "right_grip": [
+        105.69818115234375,
+        131.82247924804688
+      ],
+      "left_hand": [
+        146.00059509277344,
+        153.1863555908203
+      ],
+      "blade_tip": [
+        78.97966003417969,
+        195.75420761108398
+      ],
+      "head_socket": [
+        129.40145874023438,
+        82.73728942871094
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    },
+    {
+      "direction": "SW",
+      "index": 1,
+      "phase": "load_rear_leg",
+      "duration_ms": 100,
+      "right_grip": [
+        121.81275177001953,
+        116.59037780761719
+      ],
+      "left_hand": [
+        140.1505584716797,
+        156.15892028808594
+      ],
+      "blade_tip": [
+        128.78875732421875,
+        54.47969055175781
+      ],
+      "head_socket": [
+        137.18870544433594,
+        83.86334228515625
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 3.332000937312528e-08
+    },
+    {
+      "direction": "SW",
+      "index": 2,
+      "phase": "coil",
+      "duration_ms": 100,
+      "right_grip": [
+        117.43548583984375,
+        87.47703552246094
+      ],
+      "left_hand": [
+        132.01878356933594,
+        155.7069854736328
+      ],
+      "blade_tip": [
+        142.23570251464844,
+        27.05908203125
+      ],
+      "head_socket": [
+        144.0537872314453,
+        82.94064331054688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2013700229374393e-07
+    },
+    {
+      "direction": "SW",
+      "index": 3,
+      "phase": "drive",
+      "duration_ms": 60,
+      "right_grip": [
+        87.3736343383789,
+        111.77853393554688
+      ],
+      "left_hand": [
+        156.6570587158203,
+        136.83919525146484
+      ],
+      "blade_tip": [
+        49.86170196533203,
+        119.65045166015625
+      ],
+      "head_socket": [
+        115.6030044555664,
+        87.12667846679688
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.2377834115800373e-07
+    },
+    {
+      "direction": "SW",
+      "index": 4,
+      "phase": "cut",
+      "duration_ms": 60,
+      "right_grip": [
+        83.5695571899414,
+        155.93091583251953
+      ],
+      "left_hand": [
+        150.76007080078125,
+        133.55565643310547
+      ],
+      "blade_tip": [
+        64.77140045166016,
+        217.2768211364746
+      ],
+      "head_socket": [
+        100.71160125732422,
+        94.57237243652344
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 1.3546182092708877e-07
+    },
+    {
+      "direction": "SW",
+      "index": 5,
+      "phase": "follow_through",
+      "duration_ms": 120,
+      "right_grip": [
+        81.37654113769531,
+        166.18889617919922
+      ],
+      "left_hand": [
+        144.97096252441406,
+        148.0281982421875
+      ],
+      "blade_tip": [
+        73.00729370117188,
+        234.66478157043457
+      ],
+      "head_socket": [
+        93.6074447631836,
+        104.81735229492188
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 8.437597493012342e-08
+    },
+    {
+      "direction": "SW",
+      "index": 6,
+      "phase": "recover",
+      "duration_ms": 140,
+      "right_grip": [
+        97.52132415771484,
+        134.4308090209961
+      ],
+      "left_hand": [
+        146.87998962402344,
+        153.31340789794922
+      ],
+      "blade_tip": [
+        71.48060607910156,
+        198.89857482910156
+      ],
+      "head_socket": [
+        122.16069030761719,
+        87.61257934570312
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 6.143906154658885e-08
+    },
+    {
+      "direction": "SW",
+      "index": 7,
+      "phase": "ready",
+      "duration_ms": 140,
+      "right_grip": [
+        105.69818115234375,
+        131.82247924804688
+      ],
+      "left_hand": [
+        146.00059509277344,
+        153.1863555908203
+      ],
+      "blade_tip": [
+        78.97966003417969,
+        195.75420761108398
+      ],
+      "head_socket": [
+        129.40145874023438,
+        82.73728942871094
+      ],
+      "weapon_owner": "anatomical_right",
+      "source_socket": "weapon.right -> right.hand",
+      "grip_error_world": 0.0
+    }
+  ],
+  "maximum_right_grip_error_world": 1.3546182092708877e-07,
+  "projection": {
+    "camera_elevation_degrees": 30,
+    "orthographic_scale": 2.65,
+    "fixed_camera": true,
+    "root_world": [
+      0,
+      0,
+      0
+    ],
+    "capture_shift_x": 0.0017300000181421638
+  },
+  "trail": {
+    "source": "Actual continuous right-hand blade base/tip samples",
+    "emitting_seconds": [
+      0.25,
+      0.36
+    ],
+    "lifetime_seconds": 0.07,
+    "active_key_indices": [
+      3,
+      4,
+      5
+    ],
+    "separate_per_weapon_shape": true,
+    "scope": "Unapproved ribbon proof; translucent self-overlap and clipping require additional production review"
+  },
+  "limits": [
+    "Original modeled look is an unapproved prototype, not approved painted RO art",
+    "Only attack/ready keys; no complete locomotion action family",
+    "Single body-proportion family",
+    "Normal-based stylized lighting intentionally avoids cross-part cast shadows",
+    "Depth compositing is a research preview, not an integrated production game shader",
+    "No claim of actual RO ACT/SPR binary compatibility"
+  ],
+  "anchors": {
+    "ground_root_source_pixels": [
+      127.55711364746094,
+      208.31482315063477
+    ],
+    "shared_for_every_part_pose_and_facing": true
+  },
+  "encoding": {
+    "color": "8-bit RGBA straight alpha",
+    "depth": "24-bit integer packed big-endian into RGB, range 0..8 world units, code 0xffffff means blank",
+    "visibility": "Compose at 256x256 then premultiplied 2x2 resolve to 128x128",
+    "strip": "8 poses across; one facing per strip; fixed untrimmed source cells"
+  }
+}
