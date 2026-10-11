@@ -1,0 +1,238 @@
+{
+  "url": "http://sprite-proof.local/",
+  "offline_filesystem_routes": true,
+  "browser": "151.0.7922.173",
+  "checks": [
+    {
+      "check": "Paused hair swap preserves pose and subframe",
+      "pass": true,
+      "time_ms": 367,
+      "key": 4
+    },
+    {
+      "check": "Helmet removes hair from equipped parts",
+      "pass": true
+    },
+    {
+      "check": "Covered hair swap has no visible ghost",
+      "pass": true
+    },
+    {
+      "check": "Other equipment swaps retain shared phase",
+      "pass": true
+    },
+    {
+      "check": "Weapon variant retains declared right-hand socket",
+      "pass": true
+    },
+    {
+      "check": "S six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "SE six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "E six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "NE six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "N six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "NW six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "W six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "SW six body poses render distinctly",
+      "pass": true
+    },
+    {
+      "check": "All facing caches bounded",
+      "pass": true,
+      "decoded_arrays_bytes_each": 71303168
+    },
+    {
+      "check": "Paired attack view S resolves SW",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view SW resolves SW",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view W resolves NW",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view NW resolves NW",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view N resolves NE",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view NE resolves NE",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view E resolves SE",
+      "pass": true
+    },
+    {
+      "check": "Paired attack view SE resolves SE",
+      "pass": true
+    },
+    {
+      "check": "Ribbon contributes during strike",
+      "pass": true
+    },
+    {
+      "check": "Ribbon decays while the body pose remains held",
+      "pass": true
+    },
+    {
+      "check": "Trail expires at 430 ms before the held body pose ends",
+      "pass": true
+    },
+    {
+      "check": "Interruption clears trail and returns ready",
+      "pass": true
+    },
+    {
+      "check": "Normal one-shot completes to ready",
+      "pass": true
+    },
+    {
+      "check": "Quarter-speed one-shot completes to ready",
+      "pass": true
+    },
+    {
+      "check": "Rapid direction requests commit the newest complete view",
+      "pass": true
+    },
+    {
+      "check": "No page errors during happy-path checks",
+      "pass": true
+    },
+    {
+      "check": "Missing diagonal part fails visibly",
+      "pass": true,
+      "error": "Missing required part: strips/hair.silver/NE.png"
+    },
+    {
+      "check": "Packaged guide and readme links resolve",
+      "pass": true
+    }
+  ],
+  "scope": "Standalone CPU compositor only; not game integration or artistic approval.",
+  "facing_checks": [
+    {
+      "direction": "S",
+      "six_pose_hashes": [
+        "a1270a907686c4b2510942761f574031e487279a5d72a3699c749069e21d613b",
+        "7a412896e1b1f9b7ddc09674d41b23f9e6bb6a3f936da8fb230dce13ea4d9aea",
+        "96de549107f711c551b59c5903bd55e28212c0bc6566307ac8f3333fbfaab14e",
+        "57ce2c27371e3d8cd007f6245cb49fb9484d02070c70d9a98a678f16ef1c4753",
+        "7865cfcc455846a1a48a44c3600dd314711425021b59717c0f5ebf05ec6a233e",
+        "0507bbd086584f75e00f65abec8eba2f1a4af91eeb16837f30d2228232928dc1"
+      ]
+    },
+    {
+      "direction": "SE",
+      "six_pose_hashes": [
+        "b07a3e69549f768e1a850aa2b0c153d3bfb8e7c0154ac35e64ff6c47bc50d8fb",
+        "f893e5d094f5653efb05746c26b68964d23d3e946bed9bd8ea756d90e00ce57d",
+        "7acc102316f3ce4c2852528c93c2695acefdc8d3b696b70633627435e71769a1",
+        "8318506479f89be191e1a6526c76eb56feeae3b12682c8fe7dfabf9f00b21e9b",
+        "5f478abb5159abbcc06d81612670e5c13cd6182990fa1d1df630bb6313c543e2",
+        "28e0a337f290d19541688fe936d04724f8935a0094051b80d0dea535d65c27e3"
+      ]
+    },
+    {
+      "direction": "E",
+      "six_pose_hashes": [
+        "f6faa91ab282529eb1076e3533ca429919a69489f71b26158103097a202d9dea",
+        "1f49bb89f94bdc1884652cedd4c8310a60e262414a536cc32109573145965dec",
+        "7f23dd137c99490e17476fff718e632dd535a70c5b84c8f6de2e3038a8c68b67",
+        "112d035ac68c9039ca38f85850484558cc06796deeba13778f8f242bbee57742",
+        "51ea62eeaf8ab1d4c60a3f54a3ceabf3c6e54848fc5dd66578dcf5b7d0206586",
+        "358a02b9edaa0138d355c1890938f01793c938b72101531461e7d3bf5060f929"
+      ]
+    },
+    {
+      "direction": "NE",
+      "six_pose_hashes": [
+        "c457075d88bbad242a52ba73a8ee6a9ad8ab0d91ac373cc7ee53fbb0500835ae",
+        "2139c6a280ffea4eaf2750b8836e650e962033dcde439508cccedf4d0fe08b39",
+        "8366af38445f645fd1fc504123f6be0aebf9c3f51b1ac41ccab06fa1880e0392",
+        "0b93d4e084bb3baee719a3b970e999bc6db238a6d3dae255d182aaa9138a7577",
+        "9ac753e7285ff85626d0456e41b5bfed6276076e3b458e7df7da0539b3c0ccaa",
+        "e99b218ad1cd1d087657cf5f54e94f12e67fd832fe26e1479bd3077555ae5158"
+      ]
+    },
+    {
+      "direction": "N",
+      "six_pose_hashes": [
+        "c2efa3e4b94772bf6d67f66ae97bb3dc0d5def792e42979b0f8864d1b0af5168",
+        "01ec8a497a8130a5074ef4b3c05286fb5718c7438eda87f817a8b8e0326d8668",
+        "e66d757d66dd787f3083d9faf4a6dee28f7ea5460ea50b56695ef002b51c77ed",
+        "9e5df10facf68ac100f3b772bcd64d91ef924688700a81f5b23c2434516e3fa9",
+        "110a00f2c5b6d255699c6ddfd6b37b9fbe2295daf3b6f8fac9573bb10cb36ccf",
+        "e0f0f768847723bee8b758fb0cc3c29ee11b7f267ce0246f5880c32ee936162c"
+      ]
+    },
+    {
+      "direction": "NW",
+      "six_pose_hashes": [
+        "59dc207a20ed5986e8879f09b801c64e12421b9e20d44af484aae877675a4372",
+        "b9b199c6de5dff033863795ca1389944713d33261af006be0ec853effc6aed93",
+        "4546241ca859a70ec769a757bb2dedc234969c4ddaa0e165462210844f26c9cf",
+        "87a790e34c6df790abe6bfcfc8aec275996b2969519831136513e0dbc1e80bba",
+        "a06dd6143c18dece8b3abb4b2aea6b6ba42e2859c62ce1f99cf910f5c55313c7",
+        "706dd57099694d5797f55a0bafd9a2444ca6ad96a099c60339c8dee8369d2272"
+      ]
+    },
+    {
+      "direction": "W",
+      "six_pose_hashes": [
+        "ddfe2807cf939a0c37982a2d4b94946d706c32b6409813593bbaaf6c0b6d53a2",
+        "c2a1576f463534bac4134f5f505813a5da1d14167752d848bbf96f757156c23d",
+        "57312b1b5bca86623d716bcdf927b83dbea4af28c39ecddd045aef677de64122",
+        "972f48778032ee6d2c6aff298a19032ca6dcf62059bbc4ee2f2443b2414e8fcf",
+        "abc754fbfc698bc3e584132587573483ff3f32852b13d3348df191bd521e084a",
+        "b26402c06c634d2e4089bdec00111c9d4272677fd3fb47cfdcfe3b5ac129828d"
+      ]
+    },
+    {
+      "direction": "SW",
+      "six_pose_hashes": [
+        "401f29d400499a5f5b1dde9e817332e34ccb216149c130ea60587240c927c847",
+        "71838aa616a6b2d9f87ee54ba005f44cff3a5f1d40f83d6c9373075502655968",
+        "309bd7b2fd2a53b180a0e9bc10e65706a73b31f31b37ff3e3510a65b7d55165f",
+        "ac6998c725f0ffc29f0627a022fd5c2ea92c8ed2eba391f14870165c24d669ed",
+        "e706fe34e17f20e117f2161ebe6634f80a001a058aef1726ec08135919f3bc58",
+        "cfbccb2b404a8f20427ee59ffd0a0f36e3537a5802e00b227793e0c18dda8fdb"
+      ]
+    }
+  ],
+  "page_errors": [],
+  "current_export_hashes": {
+    "rig-manifest.json": "de9e5a0ef9ff73ba0a73eb9d4b7a42db56493d123e29c53b5571a16ab68fdcca",
+    "silver-scarf-modular-source.blend": "97288b100b85fb97ba94c80c5374e1d4d79a65f9893aaa8b5c275d607f6f299f",
+    "preview.mjs": "074c29d37718adb9427f23d9d095d0590a1c27d4b22094298a188836fac42ccd",
+    "attack-sampling.mjs": "fc30c357a90888464efc4dd52b940915b0d4a3632285bb7fcf25ca1111085e35",
+    "index.html": "f5d8792a88b0d767a0188443b6344379b3552826c5d7ac748cf537f791df03a3"
+  }
+}

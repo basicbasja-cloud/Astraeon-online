@@ -1,8 +1,9 @@
 """Independent full-scene part IDs distinguish visibility from shader differences."""
 import bpy,json,math
+import os
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
-OUT=HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'
+OUT=Path(os.environ.get('SPRITE_OUTPUT_ROOT', str(HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'))).resolve()
 bpy.ops.wm.open_mainfile(filepath=str(OUT/'silver-scarf-modular-source.blend'))
 scene=bpy.context.scene;rig=bpy.data.objects['SilverScarfRig']
 m=json.loads((OUT/'rig-manifest.json').read_text());parts=list(m['parts'])

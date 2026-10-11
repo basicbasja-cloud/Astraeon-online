@@ -4,13 +4,14 @@ Host Python needs Pillow, numpy and OpenEXR. This performs mechanical visibility
 composition and export, not image synthesis or painting. No external art inputs.
 """
 import hashlib, itertools, json, sys, time
+import os
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 import OpenEXR
 
 HERE=Path(__file__).resolve().parent
-OUT=HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'
+OUT=Path(os.environ.get('SPRITE_OUTPUT_ROOT', str(HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'))).resolve()
 M=json.loads((OUT/'rig-manifest.json').read_text())
 DIRS=M['directions']; TIMES=[0,80,180,280,340,400,520,660]
 MAX_CODE=16777214; Z_RANGE=8.0

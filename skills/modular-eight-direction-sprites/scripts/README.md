@@ -1,0 +1,56 @@
+# Executable modular sprite workflow — v0.6
+
+This is an executable review workflow, currently with **one original rig family and one attack adapter**. It builds separate complete parts and anatomical guides; it does not produce accepted artwork from arbitrary text. No paid service is used. Read [pose/reference practice](../references/pose-guide-practice.md) and fill the [ordered production brief](../templates/pose-production-brief.md) before generating or drawing character frames.
+
+## Setup and commands
+
+Run from the repository root. Linux/Python 3.12 was tested with Blender 4.3.2, Node 24.19, Chromium 151 and the Python packages in [requirements](requirements.txt). Blender, Node and Chromium must be on PATH. Chromium must be permitted to launch, even for filesystem-backed Playwright routes. `game-dev` is not required by this standalone adapter. Use your environment's Python package installation; for an isolated environment:
+
+```sh
+python -m venv /tmp/sprite-pipeline-env
+/tmp/sprite-pipeline-env/bin/pip install -r skills/modular-eight-direction-sprites/scripts/requirements.txt
+/tmp/sprite-pipeline-env/bin/python skills/modular-eight-direction-sprites/scripts/pipeline.py doctor
+/tmp/sprite-pipeline-env/bin/python skills/modular-eight-direction-sprites/scripts/pipeline.py build --output /tmp/astraeon-sprites
+/tmp/sprite-pipeline-env/bin/python skills/modular-eight-direction-sprites/scripts/pipeline.py check --output /tmp/astraeon-sprites
+/tmp/sprite-pipeline-env/bin/python skills/modular-eight-direction-sprites/scripts/pipeline.py pack --output /tmp/astraeon-sprites --archive /tmp/astraeon-review.zip
+```
+
+In this session OpenEXR is installed separately. The actual tested equivalent was `PYTHONPATH=/tmp/sprite-render-deps python …`. The venv setup above is a setup recipe, not another executed environment test. Avoid putting pipeline output inside the skill source. Keep older proofs intact; use a dedicated output directory.
+
+`build` sequentially runs pose generation → complete-part rendering → independent full-scene references → composition → reopened source validation → contract/negative-fixture validation → source skeleton projection → guide drawing → actual browser checks. Blender receives `--python-exit-code 2`; Python exceptions fail the stage. Logs go to the individual build's `logs/` directory.
+
+`current.json` points to a completed immutable review build. Resolve its `build` value relative to `--output`. Serve that directory with `python -m http.server --directory <build-directory> 8772`, or unpack `review.zip` and serve the unpacked directory. Open `http://localhost:8772/` for part swapping, directional views and playback. No production game admission is performed.
+
+## Rebuild, failure and packaging semantics
+
+- The fingerprint contains adapter code, imported motion helpers, runtime templates, pipeline code and discovered tool versions. No timestamp controls cache validity.
+- A cache hit additionally verifies **every recorded build artifact** and recomputes required report gates. Missing, changed or extra files reject reuse. Use `--force` for a clean rebuild even with a verified hit.
+- Each build starts in a new directory. Filename-only skip logic inside the research exporter therefore cannot reuse frames from an older source revision. Raw renders remain available locally for repeat comparisons.
+- A nonblocking output lock rejects overlapping builders. Files changed during rendering invalidate the build. A failed stage retains its log and `FAILED` receipt; the previous `current.json` remains intact. There is no destructive cleanup of old builds.
+- `check` checks completed artifact integrity and recorded gates. It **does not rerun Blender or Chromium**. Run `build --force` when new live verification is needed. Receipts are provenance, not cryptographic signatures against malicious replacement.
+- `pack` verifies the selected full build first, creates a ZIP in a temporary file, verifies entries against SHA-256 and promotes it with a rename. For the same completed build its ordering/timestamps are deterministic. Blender output bytes across distinct reruns are not promised to be identical.
+- The ZIP contains source `.blend`, timed poses, modular strips, standalone runtime, guides, GIFs and reports. It excludes raw EXRs, redundant per-part frames, logs and external reference art. `package-manifest.json` hashes the ZIP's contents; the larger original build inventory is deliberately not all present in the ZIP.
+- `--mode release` **returns exit 2** for this adapter. Exact color, art/motion acceptance, locomotion, FX appearance and real game integration remain blocked. There is no flag that turns the current prototype into an approved release.
+
+## Frame-by-frame study extraction
+
+```sh
+python skills/modular-eight-direction-sprites/scripts/capture-reference.py /path/to/reference.gif --output /tmp/new-motion-study --source-url 'https://publisher.example/exact-source'
+python skills/modular-eight-direction-sprites/scripts/capture-reference.py /path/to/reference.mp4 --output /tmp/new-video-study --source-url 'https://publisher.example/exact-video'
+```
+
+The source URL records provenance; the command reads a local file and does not log in or download from that URL. GIF/APNG preserves decoded samples and display durations. Video requires FFmpeg/ffprobe and keeps presentation timestamps without resampling to a guessed FPS. Duplicates remain separate samples. No per-frame bbox centering, trimming or scale fitting occurs. The review board uses one shared display scale; source PNGs keep the decoded canvas.
+
+An absent/zero image delay fails by default. For **still-pose study only**, `--allow-untimed` retains those samples with unknown duration and a null total, without claiming playback timing. Fyna's two developer GIFs actually needed this mode. Video durations must be available; no guessed last-frame duration is supplied.
+
+The output includes source/frame hashes, `frames-review.png`, and an unannotated `landmarks-template.json`. This template is **not a detected skeleton**. Record visible joints, estimates and unknowns separately. The original rig adapter instead emits 64 measured source guides in `pose-guides.json` and `guides/<direction>/`, so hidden source-known joints cannot be confused with inferred screenshot landmarks.
+
+## Evidence
+
+See the committed [iteration 6 review](../../../research/sprite-animation/pipeline-v6/README.md) and [external frame studies](../../../research/sprite-animation/motion-reference-v6/README.md). Run the failure-case suite with:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python -W error::ResourceWarning skills/modular-eight-direction-sprites/scripts/tests/test_pipeline.py
+```
+
+Eight tests cover artifact corruption/missing/extra files, source fingerprint changes, failed child preservation, path escapes/symlinks, release blocking, missing tools, APNG timing/duplicates and unknown-delay extraction rollback. Fresh Blender and Chromium checks are recorded separately; unit fixtures do not replace them.

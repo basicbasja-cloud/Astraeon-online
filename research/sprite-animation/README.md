@@ -1,3 +1,7 @@
+## Iteration 6: commands, skeleton guides and frame studies
+
+The [v0.6 executable review pipeline](../../skills/modular-eight-direction-sprites/scripts/README.md) now builds/checks/packages the original rig proof in isolated directories. [Actual fresh-build evidence and the review ZIP](pipeline-v6/README.md) include 64 anatomical guides and 32 browser checks. [External motion studies](motion-reference-v6/README.md) include 213 decoded samples from RO, King Lucas and Fyna. Art, locomotion, exact color and production-game integration remain unapproved or unimplemented; the release command explicitly blocks them.
+
 # Sprite animation research — rig, sprites and Ragnarok
 
 Working branch: `research/modular-sprites-full-body-2026-10-11`. Stay on this branch for subsequent iterations. It was created from the newest observed head, `character/production-factory-v2` at `e130b217da3ba9e56cce7d1e33bf29f20daedd7a`; obsolete main and rejected branch art are excluded from study.

@@ -1,9 +1,10 @@
 """Reopen the actual .blend and inspect its baked action without manual posing."""
 import bpy,json,math
+import os
 from pathlib import Path
 from mathutils import Vector
 HERE=Path(__file__).resolve().parent
-OUT=HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'
+OUT=Path(os.environ.get('SPRITE_OUTPUT_ROOT', str(HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'))).resolve()
 bpy.ops.wm.open_mainfile(filepath=str(OUT/'silver-scarf-modular-source.blend'))
 rig=bpy.data.objects['SilverScarfRig'];scene=bpy.context.scene
 data=json.loads((OUT/'rig-poses.json').read_text())

@@ -15,6 +15,8 @@ blender -b -t 4 --python skills/modular-eight-direction-sprites/studies/rigged-p
 python skills/modular-eight-direction-sprites/studies/rigged-parts/compose-proof.py
 blender -b -t 4 --python skills/modular-eight-direction-sprites/studies/rigged-parts/check-source.py
 node skills/modular-eight-direction-sprites/studies/rigged-parts/validate-contract.mjs
+blender -b --python-exit-code 2 -t 4 --python skills/modular-eight-direction-sprites/studies/rigged-parts/export-pose-guides.py
+python skills/modular-eight-direction-sprites/studies/rigged-parts/draw-guides.py
 ```
 
 Install dependencies in an isolated local environment if missing; do not vendor them into the research package. This session used OpenEXR from `/tmp/sprite-render-deps` and invoked host composition with `PYTHONPATH=/tmp/sprite-render-deps`.
@@ -38,3 +40,8 @@ The batch skips existing per-part color PNGs. If geometry, camera, lighting, sou
 - `browser-check.py`: renders actual exported strips and exercises swaps, coverage, all eight views, stop, one-shot, slow playback, rapid load requests and a deliberately missing diagonal asset.
 
 The armature contains editable deform bones and baked poses. Analytic IK targets are in the source code; the `.blend` does not provide a finished animator-facing IK control rig. Hair/capes are complete rigid sources in this exercise, not finished secondary-motion rigs. Dynamic trail history is generated during export, not baked into the saved Blender action.
+
+
+## Iteration 6 preferred entry point
+
+Use the [isolated pipeline CLI](../../scripts/README.md) for repeat runs. The older direct sequence above is a research adapter example; it uses the historical output by default and its renderer skips existing PNGs. The CLI supplies `SPRITE_OUTPUT_ROOT` for a new build, fingerprints source/templates/tools, runs the entire dependency chain and refuses invalid cache reuse. `export-pose-guides.py` reopens the baked action to project 64 named anatomical guides; `draw-guides.py` composes every actual pose for aligned overlays. [Review evidence](../../../../research/sprite-animation/pipeline-v6/README.md) keeps artistic and release failures explicit.

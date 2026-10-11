@@ -4,12 +4,13 @@ Run with Blender, not host Python. No input game art or rejected sprite is used.
 This is a part-production prototype; its look is not artistically approved.
 """
 import bpy, bmesh, json, math, sys, time
+import os
 from pathlib import Path
 from mathutils import Matrix, Vector
 from bpy_extras.object_utils import world_to_camera_view
 
 HERE=Path(__file__).resolve().parent
-OUT=HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'
+OUT=Path(os.environ.get('SPRITE_OUTPUT_ROOT', str(HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'))).resolve()
 OUT.mkdir(parents=True,exist_ok=True)
 DATA=json.loads((OUT/'rig-poses.json').read_text())
 KEYS=DATA['keys']; REST=KEYS[0]

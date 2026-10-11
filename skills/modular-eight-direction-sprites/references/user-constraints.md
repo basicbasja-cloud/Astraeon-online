@@ -17,6 +17,9 @@ Recorded 2026-10-11 during research iteration 2. These override earlier inferred
 13. Study rigging and sprite art/animation together; use Ragnarok as the hard reference. Another rig pipeline does not replace RO-specific visual review.
 14. Keep researching and practicing toward Ragnarok-like appeal in the game’s own identity. Preserve actual results and remaining gaps; reading more sources alone cannot establish completion or mastery.
 
+15. Build a reusable executable sprite skill pipeline. The latest priority is native visual appeal and correct anatomy/acting over frame count: no twisted palms, left/right hand swaps, detached grips or bow-legged walking. Capture external walk/attack poses frame by frame and use explicit skeleton guides; distinguish observed visible points from occluded estimates.
+16. References need not all be Ragnarok. Study suitable other games and rig sources too, while keeping an original character identity and RO-like quality target. Error-free generation is a goal, not an achieved guarantee.
+
 Implementation code, game contracts, and non-art requirements can be inspected on the newest branch. External primary references and fresh isolated experiments are the permitted study basis. Never treat the presence of an asset in a branch as approval.
 
 Before the fourth constraint arrived, the old checkout's warrior sheet and scene screenshot were inspected. The resulting art/style inferences are superseded and must not inform new asset production. Existing research entries that describe those files are historical observations only.

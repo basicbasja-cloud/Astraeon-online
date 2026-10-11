@@ -5,7 +5,7 @@ description: Design, produce, repair, and validate eight-direction 2D character 
 
 # Modular eight-direction sprites
 
-Research-backed draft v0.5, reviewed 2026-10-11. Includes deep rig/weight/IK study, pinned GitHub comparison, Ragnarok action audits, primary artist/coherence research, an original modular rig proof, a new unapproved visual study and a tested repair for effect expiry within held body poses. Final sprite art, production game integration and mass-production readiness remain unvalidated. The linked sources establish individual techniques; this package's combined asset contract and quality gates are proposed engineering practice.
+Research-backed draft v0.6, reviewed 2026-10-11. Includes deep rig/weight/IK study, pinned GitHub comparison, Ragnarok action audits, primary artist/coherence research, an original modular rig proof, a new unapproved visual study and a tested repair for effect expiry within held body poses. Final sprite art, production game integration and mass-production readiness remain unvalidated. The linked sources establish individual techniques; this package's combined asset contract and quality gates are proposed engineering practice.
 
 ## Scope and references
 
@@ -18,6 +18,14 @@ Read [research](references/research.md) for approach selection, [motion findings
 Do not claim that reading this skill permanently trains a model. The durable output is this package and project assets. Do not claim the package is installed unless the active skill loader actually registers it.
 
 For rigged modular production, read [sprite rig production](references/sprite-rig-production.md), [GitHub skill comparison](references/github-skill-study.md) and [Ragnarok hard reference](references/ragnarok-hard-reference.md). Painted v3 is rejected for apparent hand switching, its effect and flattened parts; it is failure evidence, not a source seed. Reproduce the new [rigged-parts exercise](studies/rigged-parts/README.md). Ragnarok is the hard visual reference; other rigs supply techniques. Read [original art direction](references/original-ro-art-direction.md) for native-scale cluster/contour practice, source limitations and the new unapproved four-key exercise.
+
+## Executable workflow and pose references
+
+Use the [pipeline commands](scripts/README.md) for isolated `doctor`, `build`, `check` and `pack` runs. The current adapter builds one original complete-part attack rig; it is not an arbitrary text-to-sprite factory. It fingerprints source/tool versions, verifies cached artifacts, retains failed-stage logs and preserves the previous completed build. Required mechanical checks precede the current review pointer; release packaging rejects the outstanding visual/color/action/integration gates.
+
+For fresh motion study, use `scripts/capture-reference.py` on local GIF/APNG/video inputs. Preserve decoded samples and available presentation times, including duplicate poses. Do not invent a playback rate for zero-delay samples or call an empty annotation template a detected skeleton. Read [pose-guide practice](references/pose-guide-practice.md) and inspect [213 external reference samples](../../research/sprite-animation/motion-reference-v6/README.md). Original source guides come from the actual reopened rig, retain anatomical ownership and use the same export camera; they remain unapproved motion guides.
+
+The user's latest emphasis is attractive original fantasy sprites with correct hands, weapon grips, limb chains and walking mechanics, even with few frames. References can extend beyond RO. More sources, image prompts or successful bone-origin checks cannot guarantee error-free generation. Review palm/finger contact, silhouettes and native appeal before multiplying items/actions; no current prototype is an approved seed.
 
 ## 1. Establish the production contract
 

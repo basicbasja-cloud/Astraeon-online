@@ -1,8 +1,10 @@
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
 // Original kinematic blocking study. Public artwork is not sampled into this rig.
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {solveLimb,add,sub,mul,length,unit,dot,rotate,project} from '../motion-lab/motion.mjs';
-const OUT=new URL('../../../../research/sprite-animation/silver-scarf/rig-proof-v4/',import.meta.url);
+const OUT=process.env.SPRITE_OUTPUT_ROOT ? pathToFileURL(path.resolve(process.env.SPRITE_OUTPUT_ROOT)+path.sep) : new URL('../../../../research/sprite-animation/silver-scarf/rig-proof-v4/',import.meta.url);
 const times=[0,.08,.18,.28,.34,.40,.52,.66];
 const duration=.8;
 const phases=['ready','load_rear_leg','coil','drive','cut','follow_through','recover','ready'];

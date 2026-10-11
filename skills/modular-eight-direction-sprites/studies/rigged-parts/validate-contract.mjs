@@ -1,6 +1,8 @@
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
 // Structural batch checks and deliberately invalid item fixtures. No art approval.
 import {readFile,writeFile} from 'node:fs/promises';
-const out=new URL('../../../../research/sprite-animation/silver-scarf/rig-proof-v4/',import.meta.url);
+const out=process.env.SPRITE_OUTPUT_ROOT ? pathToFileURL(path.resolve(process.env.SPRITE_OUTPUT_ROOT)+path.sep) : new URL('../../../../research/sprite-animation/silver-scarf/rig-proof-v4/',import.meta.url);
 const manifest=JSON.parse(await readFile(new URL('rig-manifest.json',out),'utf8'));
 const expected=['S','SE','E','NE','N','NW','W','SW'];
 function validate(m){

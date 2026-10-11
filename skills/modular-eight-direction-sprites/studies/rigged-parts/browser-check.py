@@ -1,16 +1,17 @@
 """Exercise actual exported strips, swaps and interruptions in Chromium."""
 import hashlib,json,sys,time,mimetypes
 from urllib.parse import urlparse,unquote
+import os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 HERE=Path(__file__).resolve().parent
-OUT=HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'
+OUT=Path(os.environ.get('SPRITE_OUTPUT_ROOT', str(HERE.parents[3]/'research/sprite-animation/silver-scarf/rig-proof-v4'))).resolve()
 URL=sys.argv[1] if len(sys.argv)>1 else 'http://127.0.0.1:8772/'
 OFFLINE=URL=='--offline'
 if OFFLINE:URL='http://sprite-proof.local/'
 def digest(p):return hashlib.sha256(bytes(p.evaluate('rigProof.getPixels()'))).hexdigest()
 with sync_playwright() as playwright:
- browser=playwright.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox'])
+ browser=playwright.chromium.launch(executable_path=os.environ.get('SPRITE_CHROMIUM','/usr/bin/chromium'),headless=True,args=['--no-sandbox'])
  context=browser.new_context(viewport={'width':1200,'height':920})
  if OFFLINE:
   def local_asset(route):
@@ -78,7 +79,9 @@ with sync_playwright() as playwright:
  broken.goto(URL);broken.wait_for_function('window.rigProof && rigProof.ready()',timeout=30000)
  broken.select_option('#direction','NE');broken.wait_for_function('rigProof.state.error!==null',timeout=30000)
  error=broken.evaluate('rigProof.state.error');check('Missing diagonal part fails visibly',error.startswith('Missing required part:'),error=error)
+ check('Packaged guide and readme links resolve',page.evaluate("async()=>{const names=['README.md','pose-guide-review.png','pose-guides.json'];const responses=await Promise.all(names.map(n=>fetch(n)));return responses.every(r=>r.ok)&&(await responses[2].json()).poses.length===64}"))
  # Read-only records use the actual browser pixel results above.
+ report['current_export_hashes']={name:hashlib.sha256((OUT/name).read_bytes()).hexdigest() for name in ['rig-manifest.json','silver-scarf-modular-source.blend','preview.mjs','attack-sampling.mjs','index.html']}
  (OUT/'browser-qa.json').write_text(json.dumps(report,indent=2)+'\n')
  print(json.dumps({'checks':len(report['checks']),'all_pass':all(c['pass'] for c in report['checks']),'page_errors':errors,'decoded_part_arrays_bytes':memory[0]},indent=2))
  browser.close()
