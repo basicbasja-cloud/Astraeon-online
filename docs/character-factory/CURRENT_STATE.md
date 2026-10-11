@@ -2,35 +2,6 @@
 
 11 October 2026. Branch: `character/production-factory-v2`.
 
-## Latest correction: pose guides and painted finishing
-
-The owner clarified that Blender is the skeleton/pose proof used to guide
-high-quality painted sprites. The existing `fantasy-base-01` package proves
-rigging, baking, equipment composition and runtime integration. It does not
-establish the approved painted quality or a completed Golden production.
-The missing painted finishing stage remains required by the research plan.
-
-New work is isolated in `authoring/characters/swordsman-production/paint-finish-01/`.
-An original compact idle stance referenced to Ragnarok silhouettes has eight
-real Blender headings, unchanged bone lengths, a neutral holding wrist and
-a measured 90-degree sword/forearm angle. The old native source is unchanged.
-This is one pose study; RO-like locomotion and attacks are not yet established.
-
-Three built-in image-generation paint pilots and their prompts are retained.
-The RO pose pilot improves the bent arm and downward-left sword relative to the
-guide, with rendering closer to the approved concept. It still fails canvas
-registration: opaque normalized height is about 50% larger than the guide,
-and faint alpha pixels remain. A targeted framing correction reduces height
-drift to 11.8%, but the bottom remains 9.0% of canvas height too low. None of
-these paintings is admitted to the runtime. Prompt-only image edits have not
-established repeatable registration in these trials.
-The new viewer compares full canvases and joint overlays without hiding drift.
-
-**PAINTED FACTORY INCOMPLETE / NO-SHIP.** Painted eight-direction motion,
-complete hidden equipment layers, stable joints/anchors and clean alpha
-remain unproven. Existing technical test passes below retain their original
-scope; they do not prove art quality or replace the owner visual gate.
-
 ## Latest source and factory checkpoint
 
 The owner replaced X Bot with `fantasy+character+3d+model.zip` and authorized
