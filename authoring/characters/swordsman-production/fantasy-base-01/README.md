@@ -153,3 +153,33 @@ Relevant primary references are Blender's
 [Armature modifier](https://docs.blender.org/manual/en/4.5/modeling/modifiers/deform/armature.html),
 [skinning](https://docs.blender.org/manual/en/5.0/animation/armatures/skinning/parenting.html)
 and [weight editing](https://docs.blender.org/manual/en/5.2/sculpt_paint/weight_paint/editing.html).
+
+## Local handoff
+
+The sealed local delivery is
+`.character-tools/deliveries/ASTRAEON_first_sprite_production.zip`. It contains
+the editable production and equipment-bank Blender files, embedded source
+textures, all rendered strips, current runtime atlases, factory scripts,
+license receipts and review evidence. Raw downloaded archives are excluded.
+Both native files remain local owner-input derivatives.
+
+Serve the extracted repository folder on port 8011 and open
+`authoring/characters/swordsman-production/fantasy-base-01/runtime/review.html`.
+The review uses ordinary 2D sprites through the existing renderer. To rebuild
+from scratch, retain the separately supplied source archive and its pinned
+digest; the delivered native can also be edited and refreshed locally.
+
+The fall has a small shared source-space settling correction that keeps the
+head and antialiasing inside every directional canvas. Unchanged action-cache
+reuse is recorded with evaluated geometry, bone and camera digests in
+`factory/death-framing-repair.json`; Death was re-rendered.
+
+Runtime equal-depth ties use the same body priority for the original and
+alternate garment. The compiler reuses a part/clip only when its full raw RGBA
+strip matches exactly. Definition URLs include source, bank and compiler
+digests; PNG URLs include their content digest.
+
+The standalone source/runtime review is included in the local archive.
+`proof/fantasy-game.html?swordsman=fantasy` runs within the full ASTRAEON
+repository. Its explicit development entry overrides only the character's
+render presentation, so the saved gameplay class remains intact.

@@ -15,26 +15,26 @@ The final package, source audit, raster validation and integration evidence
 identify the same native digest.
 
 The corrected guard has a closed hooked profile rather than collapsed faces.
-The actual hand masks covered hilt pixels. A numerical projected-center check
-is useful evidence of ownership, but it does not prove aesthetically perfect
-finger anatomy or contact at every finger surface.
+The actual hand masks covered hilt pixels. Independent hand/weapon depth
+coverage is tested, while projected centers remain diagnostics. These checks
+do not prove aesthetically perfect anatomy or contact at every finger surface.
 
 | Area | Result | Practical assessment |
 |---|---|---|
 | Shared headings and registration | Match | Eight genuine rotations; common camera/root/scale. |
-| Head-to-height proportion | Close | Idle SE approximately 49/176 pixels, matching the measured 27.8% reference fraction. |
+| Head-to-height proportion | Close source fit | The pre-retarget fit measured 49/176 pixels (27.8%); motion naturally changes projected bounds. |
 | Costume identity and palette | Close | Gold scarf/cape, bronze armor, ivory/teal tunic and olive pants retained. |
 | Face and hair likeness | Needs art review | Source hair and face paint retained; the generated mesh simplifies facial features and fine hair contours. |
 | Painted material finish | Gap | Some gray texture patches and broad faceted shading remain; the approved illustration has richer metal/leather highlights and cleaner contours. |
 | Grip and sword orientation | Needs art review | Shared hand attachment, finger joints and covered-hilt omission are present; W/NW/N are explicit stress views. |
 | Body/head/cape separation | Technically tested | Concealed body survives cape removal; complete module pixels and depth determine overlap. |
-| Motion | Authored, unapproved | Blueprint timing and 17 clips exist; the owner must judge stance, attack readability, secondary motion and character personality. |
+| Motion | Presets retargeted, unapproved | All 17 CC0 clips retain blueprint timing; the owner must judge stance, readability, secondary motion and personality. |
 
 ## Technical gates
 
 `factory/source-audit.json` checks normalized weights, at most four influences,
-no unweighted vertices or invalid bones, unit pose scales, planted-foot target
-reach, loop endpoints, sampled eight-heading framing and nondegenerate weapon
+no unweighted vertices or invalid bones, unit pose scales, active IK target
+reach, neutral wrist/perpendicular grip, loop endpoints, sampled framing and nondegenerate weapon
 faces. Source boundary/nonmanifold counts are retained, including ornamental
 single-sided cloth trim; the generated input is not certified retopologized.
 
@@ -91,3 +91,38 @@ The rig's IK controls remain editable, while preset clips use FK rotations.
 Body/head floor correction and cape floor contact handle the enlarged source
 proportions during death. Neither those repairs nor the numeric 90-degree
 check constitute owner approval of the grasp or motion.
+
+## Final framing correction
+
+The strict equipment compiler detected two alpha-1 antialiasing pixels at the
+bottom of HeadHair in Death N frames 10–12. Death now settles by 0.05 source
+units along negative Y over its clip, shared across all headings and parts.
+The source pose is corrected; the boundary test is unchanged. The repair
+records evaluated geometry, rig matrices and camera digests for every frame
+of all 16 unchanged actions before reusing their bake caches. Death is
+rendered again for both the source and equipment bank. See
+`factory/death-framing-repair.json`.
+
+
+## Sealed technical results
+
+The source audit/raster checks and all five source integration tests pass.
+The unchanged existing modular renderer suite passes 39 tests. The repaired
+compiler resolves equal-depth body/outfit ties consistently: all 480 sampled
+combinations across Idle, Walk, BasicAttack, Guard and Death now have maximum
+RGBA error 0 against source depth composition. No equipment border pixels
+are clipped. Runtime hand holdout covers 13,176 opaque overlap pixels, with
+346 residual edge pixels above alpha 96 (2.626%, below the 5% bound).
+The alternate garment changes depth at 374 pixels in Idle SE.
+
+`factory/browser-review.json` records desktop/narrow layouts, playback and
+scrubbing, costume/weapon/headgear/offhand/cape swaps, and actual-game
+click-to-move Run followed by Idle. Fresh runtime/game console errors are
+empty. Browser JPEG evidence is in `renders/browser/`. The explicit factory
+game path selects the candidate through the render adapter and retains the
+existing gameplay/save inputs. This is technical playback acceptance only.
+
+The owner Golden art decision remains pending before other classes or weapon
+families are expanded. The simplified face, faceted surfaces, material patches,
+stance, grasp and final game-scale readability still need art judgment against
+the approved painting. No numeric test promotes these outputs to final art.
