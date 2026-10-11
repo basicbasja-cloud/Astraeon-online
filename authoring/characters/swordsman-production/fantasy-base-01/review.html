@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASTRAEON · Fantasy base character factory</title>
+<style>
+.views.authoring{grid-template-columns:repeat(2,minmax(0,1fr))}
+:root{color-scheme:dark;--bg:#15202b;--panel:#202e3b;--line:#3a4e60;--text:#f0f3f5;--muted:#acbbc8;--accent:#efc271}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,sans-serif}main{max-width:1400px;margin:auto;padding:24px}h1{font-size:27px;margin:0}h2{font-size:20px;font-weight:550}p{margin:6px 0 18px}.muted{color:var(--muted)}.status{border-left:3px solid var(--accent);padding:12px 16px;background:var(--panel);margin:18px 0}.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:16px;background:var(--panel);border-radius:9px}select,button,input{font:inherit}select,button{background:#17212c;color:var(--text);border:1px solid var(--line);padding:7px 10px;border-radius:5px}button{cursor:pointer}label{display:inline-flex;align-items:center;gap:7px}input[type=checkbox]{accent-color:var(--accent)}.timeline{display:flex;align-items:center;gap:14px;margin:16px 0}.timeline input{flex:1;accent-color:var(--accent)}.views{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.view{background:#111a24;border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}.view h3{font-size:15px;font-weight:500;margin:0 0 8px}.viewport{position:relative;width:160px;aspect-ratio:1;max-width:100%;margin:0 auto;background:#182532;overflow:hidden}.viewport.light{background:#e5e7e8}.viewport.checker{background-color:#a5adb3;background-image:linear-gradient(45deg,#d4d9dd 25%,transparent 25%),linear-gradient(-45deg,#d4d9dd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#d4d9dd 75%),linear-gradient(-45deg,transparent 75%,#d4d9dd 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}canvas{display:block;width:100%;height:100%}.anchor{position:absolute;left:50%;top:82.5%;width:6px;height:6px;margin:-3px;border:1px solid #52dac5;border-radius:50%;pointer-events:none}.anchor:after{content:'';position:absolute;left:-80px;width:160px;top:2px;border-top:1px solid #52dac540}.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}.proof article{background:var(--panel);padding:16px;border-radius:8px}.proof img{display:block;width:100%;max-height:440px;object-fit:contain;background:#182532}.grips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.grips img{width:100%;background:#182532}a{color:#edd196}footer{margin:28px 0;color:var(--muted)}#error{color:#ffb1a5;white-space:pre-wrap}.pill{display:inline-block;color:var(--accent);font-size:13px;border:1px solid var(--line);padding:2px 8px;border-radius:99px;margin-left:8px}@media(max-width:850px){.views{grid-template-columns:repeat(2,minmax(0,1fr))}.proof{grid-template-columns:1fr}.grips{grid-template-columns:repeat(2,minmax(0,1fr))}main{padding:14px}.viewport{max-width:100%}}
+</style>
+<main>
+<h1>ASTRAEON character factory <span class="pill">First character</span></h1>
+<p class="muted">Your textured fantasy base · Eight real headings · Shared pose, camera, scale and anchor</p>
+<div class="status"><strong id="coverage">Loading the saved sprite package…</strong><br><span id="qa">Visual acceptance is pending. The approved painting remains the design reference.</span></div>
+<div class="controls">
+<label>Action <select id="action" aria-label="Action"></select></label>
+<button id="play">Pause</button><button id="replay">Replay</button>
+<label><input id="repeat" type="checkbox" checked>Repeat preview</label>
+<label>Size <select id="size"><option value="160">Game · 160 canvas</option><option value="320">Authoring · 320 canvas</option></select></label>
+<label>Background <select id="background"><option value="dark">Dark</option><option value="light">Light</option><option value="checker">Checker</option></select></label>
+<label>View <select id="mode"><option value="parts">Combined independent parts</option><option value="reference">Native render comparison</option></select></label>
+<button id="reload">Reload latest</button>
+</div>
+<div class="controls" style="margin-top:10px" id="parts">
+<label><input type="checkbox" data-module="BodyOutfit" checked>Body + outfit</label>
+<label><input type="checkbox" data-module="HeadHair" checked>Head + hair</label>
+<label><input type="checkbox" data-module="Weapon" checked>Weapon</label>
+<label><input type="checkbox" data-module="Cape" checked>Cape</label>
+<label><input type="checkbox" data-module="Headgear" checked>Headgear (unequipped)</label>
+<label><input id="anchor" type="checkbox">Root markers</label>
+<button id="restore">Show all parts</button>
+</div>
+<div class="timeline"><span id="frame">Frame 1</span><input id="scrub" type="range" min="1" max="8" value="1" aria-label="Frame"><span id="timing"></span></div>
+<p class="muted">Toggle the cape or weapon to inspect real removals. Each part retains concealed pixels; depth resolves overlap across every heading and pose. Covered hilt pixels belong to the gripping hand.</p>
+<div id="views" class="views"></div><pre id="error"></pre>
+<div class="proof">
+<article><h2>Approved painted concept</h2><canvas id="registered-concept" width="320" height="320" aria-label="Approved concept at the same root and character height"></canvas><p class="muted">The design authority, at the same 320 canvas, root and target height. Approval of this image does not automatically approve the new model or motion.</p></article>
+<article><h2>New base in retargeted idle</h2><img src="renders/Idle-SE-01.png?revision=free-motion-v1" alt="New textured source in retargeted idle"><p class="muted">Original paint retained; aligned wrist, gripping fingers, preset motion and continuous cloth.</p></article>
+<article><h2>Rear motion stress view</h2><img src="renders/BasicAttack-NW-09.png" alt="Northwest sword attack showing cape and actual weapon heading"><p class="muted">Weapon, hand and cape share one rig. No directional mirroring or pose-specific image overlays.</p></article>
+</div>
+<h2>Grip checks</h2><div class="grips">
+<article><p>SE</p><img src="renders/SE-grip.png" alt="Southeast grip close-up"></article>
+<article><p>W</p><img src="renders/W-grip.png" alt="West grip close-up"></article>
+<article><p>NW</p><img src="renders/NW-grip.png" alt="Northwest grip close-up"></article>
+<article><p>N</p><img src="renders/N-grip.png" alt="North grip close-up"></article>
+</div>
+<footer><a href="runtime/review.html">Existing game renderer and equipment swaps</a> · <a href="README.md">Factory instructions</a> · <a href="package.json">Sprite package</a> · <a href="validation.json">Raster validation</a> · <a href="factory/source-audit.json">Rig and motion audit</a> · <a href="inspection.json">Original source receipt</a></footer>
+</main>
+<script>
+'use strict';
+const modules=['BodyOutfit','HeadHair','Weapon','Cape','Headgear'],directions=['S','SW','W','NW','N','NE','E','SE'];
+const $=id=>document.getElementById(id);let pkg,clip,frame=0,playing=true,last=performance.now(),epoch=0,ready=false;
+const vertex=`#version 300 es
+in vec2 aPosition;out vec2 uv;void main(){gl_Position=vec4(aPosition,0.,1.);uv=vec2((aPosition.x+1.)*.5,(1.-aPosition.y)*.5);}`;
+const fragment=`#version 300 es
+precision highp float;precision highp int;in vec2 uv;out vec4 outputColor;
+uniform int frameIndex,frameCount,visibility;
+${modules.map((m,i)=>`uniform sampler2D c${i};uniform sampler2D z${i};`).join('\n')}
+float depthCode(vec4 d){return d.r*255.*256.+d.g*255.;}
+void main(){vec2 p=vec2((uv.x+float(frameIndex))/float(frameCount),uv.y);vec4 c[5];float z[5];
+${modules.map((m,i)=>`c[${i}]=texture(c${i},p);z[${i}]=depthCode(texture(z${i},p));`).join('\n')}
+for(int i=0;i<5;i++){if((visibility&(1<<i))==0)c[i]=vec4(0.);}
+for(int i=0;i<4;i++){for(int j=0;j<4-i;j++){if(z[j]<z[j+1]){float d=z[j];z[j]=z[j+1];z[j+1]=d;vec4 a=c[j];c[j]=c[j+1];c[j+1]=a;}}}
+vec3 color=vec3(0.);float alpha=0.;for(int i=0;i<5;i++){color=c[i].rgb*c[i].a+color*(1.-c[i].a);alpha=c[i].a+alpha*(1.-c[i].a);}
+outputColor=vec4(alpha>0.?color/alpha:vec3(0.),alpha);}`;
+function image(url){return new Promise((resolve,reject)=>{const im=new Image;im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Image failed: '+url));im.src=url+(url.includes('?')?'&':'?')+'spriteDev=1&native='+encodeURIComponent(pkg?.nativeSHA256||'reference');});}
+class View {
+ constructor(direction){this.direction=direction;this.textures=[];this.element=document.createElement('article');this.element.className='view';this.element.innerHTML=`<h3>${direction}</h3><div class="viewport"><canvas width="320" height="320" aria-label="${direction} character sprite"></canvas><canvas width="320" height="320" hidden></canvas><span class="anchor" hidden></span></div>`;$('views').append(this.element);this.viewport=this.element.querySelector('.viewport');const canvases=this.element.querySelectorAll('canvas');this.canvas=canvases[0];this.referenceCanvas=canvases[1];this.referenceContext=canvases[1].getContext('2d');
+  const gl=this.gl=this.canvas.getContext('webgl2',{alpha:true,premultipliedAlpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)throw Error('WebGL2 is required for independent-part depth preview. Native comparison remains in the exported PNGs.');
+  function shader(type,code){const sh=gl.createShader(type);gl.shaderSource(sh,code);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(sh));return sh;}
+  this.program=gl.createProgram();gl.attachShader(this.program,shader(gl.VERTEX_SHADER,vertex));gl.attachShader(this.program,shader(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(this.program);if(!gl.getProgramParameter(this.program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(this.program));gl.useProgram(this.program);
+  const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);const loc=gl.getAttribLocation(this.program,'aPosition');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);gl.disable(gl.BLEND);gl.disable(gl.DITHER);
+ }
+ texture(data,unit,uniform){const gl=this.gl,tex=gl.createTexture();this.textures.push(tex);gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,tex);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  if(data instanceof Uint8Array)gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,1,1,0,gl.RGBA,gl.UNSIGNED_BYTE,data);else{if(data.width>gl.getParameter(gl.MAX_TEXTURE_SIZE))throw Error('Atlas exceeds this device texture limit');gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,data);}gl.uniform1i(gl.getUniformLocation(this.program,uniform),unit);
+ }
+ async load(selected,generation){const paths=selected.strips[this.direction],suffix='?source='+pkg.nativeSHA256.slice(0,12);const loaded=await Promise.all(modules.map(async m=>m==='Headgear'&&!pkg.headgear.equipped?null:Promise.all([image(paths[m]+suffix),image(paths['Depth-'+m]+suffix)])));const reference=await image(paths.NativeReference+suffix);if(generation!==epoch)return;
+  this.reference=reference;const gl=this.gl;for(const t of this.textures)gl.deleteTexture(t);this.textures=[];gl.useProgram(this.program);
+  for(let i=0;i<modules.length;i++){this.texture(loaded[i]?loaded[i][0]:new Uint8Array([0,0,0,0]),i*2,'c'+i);this.texture(loaded[i]?loaded[i][1]:new Uint8Array([255,255,0,255]),i*2+1,'z'+i);}
+  gl.uniform1i(gl.getUniformLocation(this.program,'frameCount'),selected.frames);
+ }
+ draw(){const native=$('mode').value==='reference';this.canvas.hidden=native;this.referenceCanvas.hidden=!native;this.viewport.querySelector('.anchor').hidden=!$('anchor').checked;
+  if(native){this.referenceContext.clearRect(0,0,320,320);if(this.reference)this.referenceContext.drawImage(this.reference,frame*320,0,320,320,0,0,320,320);return;}
+  const gl=this.gl;gl.useProgram(this.program);gl.uniform1i(gl.getUniformLocation(this.program,'frameIndex'),frame);let mask=0;document.querySelectorAll('[data-module]').forEach(input=>{if(input.checked)mask|=1<<modules.indexOf(input.dataset.module);});gl.uniform1i(gl.getUniformLocation(this.program,'visibility'),mask);gl.viewport(0,0,320,320);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+ }
+}
+let views=[];
+function draw(){if(!ready)return;for(const v of views)v.draw();$('frame').textContent=`Frame ${frame+1} / ${clip.frames}`;$('scrub').value=frame+1;$('timing').textContent=`${clip.durationsMs[frame]} ms`;}
+async function selectAction(){ready=false;const generation=++epoch;clip=pkg.clips.find(c=>c.name===$('action').value);if(!clip)return;frame=0;$('scrub').max=clip.frames;await Promise.all(views.map(v=>v.load(clip,generation)));if(generation!==epoch)return;ready=true;last=performance.now();draw();}
+function failed(error){$('error').textContent=error.stack||String(error);playing=false;$('play').textContent='Play';}
+async function reload(){const old=$('action').value;const revision=Date.now();pkg=await(await fetch('package.json?revision='+revision,{cache:'no-store'})).json();document.querySelectorAll('img[src^="renders/"]').forEach(im=>{const url=new URL(im.src);url.searchParams.set('native',pkg.nativeSHA256);url.searchParams.set('spriteDev','1');im.src=url;});$('action').replaceChildren(...pkg.clips.map(c=>{const option=document.createElement('option');option.value=c.name;option.textContent=c.name;return option;}));if(pkg.clips.some(c=>c.name===old))$('action').value=old;
+ $('coverage').textContent=`${pkg.requiredFramePositionsRendered} / 1392 required frame positions · ${pkg.clips.length} complete action strips · 8 directions`;
+ const check=await(await fetch('validation.json?revision='+revision,{cache:'no-store'})).json();$('qa').textContent=`Raster checks: ${check.technicalVerdict}. Owner art review pending.${pkg.missingActions.length?' Remaining bakes: '+pkg.missingActions.join(', ')+'.':''}`;await selectAction();}
+$('action').onchange=()=>selectAction().catch(failed);$('reload').onclick=()=>reload().catch(failed);$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'Pause':'Play';last=performance.now();};$('replay').onclick=()=>{frame=0;playing=true;$('play').textContent='Pause';last=performance.now();draw();};$('scrub').oninput=()=>{frame=Number($('scrub').value)-1;playing=false;$('play').textContent='Play';draw();};
+$('size').onchange=()=>{$('views').classList.toggle('authoring',$('size').value==='320');for(const v of views){v.viewport.style.width=$('size').value+'px';}};$('background').onchange=()=>{for(const v of views)v.viewport.className='viewport '+$('background').value;};$('mode').onchange=draw;$('anchor').onchange=draw;document.querySelectorAll('[data-module]').forEach(input=>input.onchange=draw);$('restore').onclick=()=>{document.querySelectorAll('[data-module]').forEach(input=>input.checked=true);draw();};
+function tick(now){if(ready&&playing&&now-last>=clip.durationsMs[frame]){last=now;if(frame+1<clip.frames)frame++;else if(clip.loop||$('repeat').checked)frame=0;else{playing=false;$('play').textContent='Play';}draw();}requestAnimationFrame(tick);}
+image('../fresh-2d/candidate-01/candidate.png').then(im=>{const c=$('registered-concept').getContext('2d');const scale=.15813117699910154;c.drawImage(im,160-645*scale,264-1155*scale,im.width*scale,im.height*scale);});
+try{views=directions.map(d=>new View(d));reload().catch(failed);requestAnimationFrame(tick);}catch(error){failed(error);}
+</script></html>
