@@ -2,6 +2,8 @@
 
 This is a bounded motion experiment, separate from the older attack adapter and rejected character art. Read the [review and failures](../../../../research/sprite-animation/walk-test-v9/README.md). No approved art seed or production-ready painted part library exists.
 
+The user's later quality correction is handled in [v10 detailed masters and anatomical review](../../../../research/sprite-animation/quality-review-v10/README.md). Use [continuity practice and CLI](../../references/anatomical-continuity.md) for source-bone comparison. `pack-quality.py` preserves four-pose 512-square masters instead of the earlier miniature output; for the retained 1254-square sheet only, run with `--sheet research/sprite-animation/quality-review-v10/evidence/four-pose-raw.png --output /tmp/my-quality-master --row-offset -20`. Do not reuse that offset on another image without measuring its grid. `verify-leg-ui.cjs` checks the standalone annotation UI, not the game runtime.
+
 Run from repository root. Use new output directories; tools reject existing build/package/check targets. Requires Blender 4.3.2, Python/NumPy/Pillow; `pack-walk.py` additionally uses OpenEXR 3.5.2. The CLI `game-dev` is unavailable in this environment; direct local Blender execution is the fallback.
 
 ```bash

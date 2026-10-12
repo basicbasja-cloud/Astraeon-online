@@ -1,0 +1,480 @@
+{
+  "schema": "anatomical-leg-review-v1",
+  "source_motion_path": "research/sprite-animation/walk-test-v9/motion.json",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "source_glb_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "source_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "canvas": [
+    512,
+    512
+  ],
+  "facing": "SE",
+  "duration_seconds": 1.3333333730697632,
+  "coordinate_origin": "Top-left, master pixels; anatomical sides, never screen sides",
+  "thresholds": {
+    "pose_px": 16,
+    "swap_margin_px": 8,
+    "velocity_residual_px_per_s": 60
+  },
+  "method": "Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.",
+  "frames": [
+    {
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0,
+      "image": "research/sprite-animation/quality-review-v10/master/frames/00.png",
+      "image_sha256": "b04501d1fe37bc2f6b8ff5dd7cd568cf9c7c48aaf227f7f5da7210b10e487268",
+      "reference": {
+        "hip_r": [
+          241.29754111410455,
+          283.82932465745984
+        ],
+        "knee_r": [
+          221.1991470136996,
+          340.5558617123736
+        ],
+        "ankle_r": [
+          189.9065669675919,
+          391.3149170532952
+        ],
+        "toe_r": [
+          219.62016857797923,
+          428.05234245869104
+        ],
+        "hip_l": [
+          266.4516873429314,
+          271.8240565756732
+        ],
+        "knee_l": [
+          301.59132542035945,
+          346.7857424067213
+        ],
+        "ankle_l": [
+          308.19194357905235,
+          426.4139549320013
+        ],
+        "toe_l": [
+          343.9117515121608,
+          440.31295720665435
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.09278370440006256,
+        "l": 0.08057089149951935
+      },
+      "identity_review": "unconfirmed",
+      "notes": "manual review",
+      "points": {
+        "hip_r": {
+          "xy": [
+            262,
+            299
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_r": {
+          "xy": [
+            211,
+            351
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 12
+        },
+        "ankle_r": {
+          "xy": [
+            189,
+            394
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_r": {
+          "xy": [
+            211,
+            429
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "hip_l": {
+          "xy": [
+            315,
+            306
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_l": {
+          "xy": [
+            337,
+            366
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "ankle_l": {
+          "xy": [
+            342,
+            445
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_l": {
+          "xy": [
+            398,
+            464
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        }
+      }
+    },
+    {
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408,
+      "image": "research/sprite-animation/quality-review-v10/master/frames/01.png",
+      "image_sha256": "e34d642fa97c41d9f1c9371daddc073460c9e2977ea1489a6010f54b8f3b7d08",
+      "reference": {
+        "hip_r": [
+          247.76018393508394,
+          273.41596011509415
+        ],
+        "knee_r": [
+          276.2940161369471,
+          351.08597295341224
+        ],
+        "ankle_r": [
+          221.70941624109892,
+          369.9075030826203
+        ],
+        "toe_r": [
+          212.42571050004372,
+          407.85768131587025
+        ],
+        "hip_l": [
+          273.68574694650556,
+          260.37541605731155
+        ],
+        "knee_l": [
+          276.71463357581877,
+          335.7550844821427
+        ],
+        "ankle_l": [
+          260.7937676115056,
+          405.7492776032073
+        ],
+        "toe_l": [
+          293.7475967416269,
+          438.9147976796245
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.220994770526886,
+        "l": 0.07046044617891312
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Provisional manual visible-chain tracing, guided by teal left-hip cloth and source pose. Hips are covered by garment; estimated joints are not recovered ground truth.",
+      "points": {
+        "hip_r": {
+          "xy": [
+            259,
+            299
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_r": {
+          "xy": [
+            288,
+            351
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "ankle_r": {
+          "xy": [
+            218,
+            383
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_r": {
+          "xy": [
+            202,
+            421
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "hip_l": {
+          "xy": [
+            313,
+            305
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_l": {
+          "xy": [
+            318,
+            366
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "ankle_l": {
+          "xy": [
+            307,
+            434
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_l": {
+          "xy": [
+            331,
+            461
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        }
+      }
+    },
+    {
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816,
+      "image": "research/sprite-animation/quality-review-v10/master/frames/02.png",
+      "image_sha256": "b17bc716b870c3c7b4b25ff8a240da64425819e5a6b49b89f973547d3650e845",
+      "reference": {
+        "hip_r": [
+          246.31353857444637,
+          281.8615266377062
+        ],
+        "knee_r": [
+          277.60359106337876,
+          358.7071375834991
+        ],
+        "ankle_r": [
+          282.0884203546836,
+          439.3404646766941
+        ],
+        "toe_r": [
+          317.80820780122264,
+          453.23951891928704
+        ],
+        "hip_l": [
+          273.20416537167347,
+          267.95689577411815
+        ],
+        "knee_l": [
+          261.53919277940156,
+          334.7224194288998
+        ],
+        "ankle_l": [
+          221.1637982918022,
+          375.8737416156912
+        ],
+        "toe_l": [
+          246.01328994742542,
+          414.96410776796336
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057080954313278,
+        "l": 0.10320902615785599
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Provisional manual visible-chain tracing, guided by teal left-hip cloth and source pose. Hips are covered by garment; estimated joints are not recovered ground truth.",
+      "points": {
+        "hip_r": {
+          "xy": [
+            246,
+            302
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_r": {
+          "xy": [
+            309,
+            345
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "ankle_r": {
+          "xy": [
+            331,
+            422
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_r": {
+          "xy": [
+            388,
+            454
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "hip_l": {
+          "xy": [
+            308,
+            306
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_l": {
+          "xy": [
+            258,
+            334
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "ankle_l": {
+          "xy": [
+            236,
+            365
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_l": {
+          "xy": [
+            260,
+            407
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        }
+      }
+    },
+    {
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1,
+      "image": "research/sprite-animation/quality-review-v10/master/frames/03.png",
+      "image_sha256": "c65c7c7206ad84436a52034e175c2abda82cd12163e530d956ee19c6d985f7c4",
+      "reference": {
+        "hip_r": [
+          239.58063670983518,
+          277.2607190127226
+        ],
+        "knee_r": [
+          252.89224461327368,
+          353.1379408312026
+        ],
+        "ankle_r": [
+          235.8796335737566,
+          416.8977522464693
+        ],
+        "toe_r": [
+          267.5685036843737,
+          451.87771788532166
+        ],
+        "hip_l": [
+          265.9216713566967,
+          264.42637527243267
+        ],
+        "knee_l": [
+          297.88791193135603,
+          340.420537457216
+        ],
+        "ankle_l": [
+          247.81318359708638,
+          356.98090189559116
+        ],
+        "toe_l": [
+          238.5294983426006,
+          394.93108107024864
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057999610900879,
+        "l": 0.22099459171295166
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Provisional manual visible-chain tracing, guided by teal left-hip cloth and source pose. Hips are covered by garment; estimated joints are not recovered ground truth. Far-left ankle/toe occluded: deliberately unmarked. No identity pass may be inferred.",
+      "points": {
+        "hip_r": {
+          "xy": [
+            247,
+            302
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_r": {
+          "xy": [
+            280,
+            351
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "ankle_r": {
+          "xy": [
+            277,
+            423
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "toe_r": {
+          "xy": [
+            310,
+            451
+          ],
+          "visibility": "observed",
+          "uncertainty_px": 8
+        },
+        "hip_l": {
+          "xy": [
+            303,
+            305
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 22
+        },
+        "knee_l": {
+          "xy": [
+            312,
+            333
+          ],
+          "visibility": "estimated",
+          "uncertainty_px": 28
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0
+        }
+      }
+    }
+  ],
+  "release_ready": false,
+  "annotation_author": "Assistant visual review; provisional, no independent artist confirmation",
+  "source_blend_path": "research/sprite-animation/walk-test-v9/original-modular-walk.blend",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_replay_path": "research/sprite-animation/quality-review-v10/evidence/source-rig-replayed.json",
+  "source_replay_sha256": "684005b257e2168fd7a0ade49a9120316f726c48a2e98c4c715c671fb629e992",
+  "source_joint_map": {
+    "hip": "thigh",
+    "knee": "calf",
+    "ankle": "foot",
+    "toe": "ball_leaf"
+  }
+}

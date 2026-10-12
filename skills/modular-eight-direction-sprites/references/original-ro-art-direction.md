@@ -2,6 +2,8 @@
 
 Iteration 5, 2026-10-11. The user asks to keep researching until the game has Ragnarok's appeal in its own identity. The existing [RO action audit](ragnarok-hard-reference.md) remains the hard reference. This document turns observed behavior and primary artist instruction into proposed original art choices; these choices are not approved art or measurements of every historical RO asset.
 
+The v5 128-square proposal below is historical. The user's 2026-10-12 quality correction explicitly supplies three reference images and calls for finer face/hair, bronze and patterned cloth. Current [v10 review](../../../research/sprite-animation/quality-review-v10/README.md) preserves 512-square full-color masters and keeps anatomical acceptance separate. No earlier native-size proposal overrides this request, and no new animation is approved.
+
 ## What transfers, and what belongs to our character
 
 Transfer the compact oblique presentation, readable face/equipment at gameplay scale, decisive pose changes, consistent directional identity and related body/head/equipment timing. Preserve our character's silver-lavender hair, ochre scarf/cape, bronze armor, navy/ivory clothing, olive trousers, muted teal sash and anatomical right-hand sword. Give those materials and motifs their own shapes and ramps. No rejected branch artwork or external RO sprite pixels are a production seed.

@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-12",
+  "provider": "image_gen",
+  "user_quality_reference": "Three images attached in the latest quality correction: pixel-style four-pose example plus two detailed original silver-haired adventurer illustrations. Explicit quality references, not accepted motion.",
+  "attempts": [
+    {
+      "reference_mechanism": "num_last_images_to_include=3, directly includes the three user attachments",
+      "output": "eight-pose-attempt-1.png",
+      "status": "Detailed style candidate; gait did not fully alternate support legs"
+    },
+    {
+      "reference_mechanism": "First generated sheet plus freshly projected actual bone guides",
+      "output": "eight-pose-attempt-2.png",
+      "status": "Gait correction still insufficient; retained failure"
+    },
+    {
+      "reference_mechanism": "Fresh actual rig four-pose render sheet, first generated sheet for reference-directed surfaces only",
+      "output": "four-pose-raw.png",
+      "status": "Detailed four-pose candidate; anatomical review remains blocked"
+    }
+  ],
+  "transparent_background": true,
+  "final_requested_canvas": [
+    1024,
+    1024
+  ],
+  "final_actual_canvas": [
+    1254,
+    1254
+  ],
+  "rejected_branch_art_used": false,
+  "original_user_attachment_local_copies": "Unavailable in workspace; direct conversation references were passed to imagegen. No invented attachment hashes."
+}

@@ -1,5 +1,7 @@
 # Executable modular sprite workflow — v0.7
 
+Additional v0.10 review helpers: [anatomical leg/source-bone continuity checker](../references/anatomical-continuity.md), [standalone annotation UI and high-detail results](../../../research/sprite-animation/quality-review-v10/README.md), and [fresh walk reproduction](../studies/walk-test/README.md). These bounded studies remain outside the old attack adapter's release command. They do not unlock its blocked art, exact-color or game-integration gates. Current regression suite totals 37 passing tests; the new annotation UI has 20 passing browser checks.
+
 This is an executable review workflow, currently with **one original rig family and one attack adapter**. It builds separate complete parts and anatomical guides; it does not produce accepted artwork from arbitrary text. No paid service is used. Read [pose/reference practice](../references/pose-guide-practice.md) and fill the [ordered production brief](../templates/pose-production-brief.md) before generating or drawing character frames.
 
 ## Setup and commands

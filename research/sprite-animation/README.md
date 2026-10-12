@@ -1,3 +1,9 @@
+## Iteration 10: higher-detail art and anatomical leg inspection
+
+[Detailed 512-square motion masters and review tool](quality-review-v10/README.md) follow the user's three newly supplied quality references. A reusable [source-bone anatomical checker](../../skills/modular-eight-direction-sprites/references/anatomical-continuity.md) compares connected legs and time-continuity against the actual baked rig, including the loop seam. The standalone HTML supports annotation, visibility/uncertainty, onion skin and export. Actual artwork still requires review; 37 regression tests and 20 browser checks establish bounded tooling behavior, not artistic correctness.
+
+![Detailed four-pose art candidate](quality-review-v10/master/walk-quality.gif)
+
 ## Iteration 9: one original walk, modular source and painted playback
 
 [Painted walk GIF and review](walk-test-v9/README.md) test eight sparse poses in our own fantasy anime style over a newly built original modular character. The saved 41-sample action, eight physical facings, complete SE parts and actual hair swapping are included. Real footwear floor penetration was found and repaired with fixed-length IK. Two imagegen whole-sheet attempts retain pose/shape drift; painted anatomy and production parts remain unapproved. A shared grid-row calibration corrects a sheet displacement without per-frame fitting. [Reproduction commands](../../skills/modular-eight-direction-sprites/studies/walk-test/README.md).
@@ -28,7 +34,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.9](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.10](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)

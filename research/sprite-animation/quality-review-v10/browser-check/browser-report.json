@@ -1,0 +1,90 @@
+{
+  "browser": "151.0.7922.173",
+  "checked_page": "leg-review.html",
+  "load_method": "Self-contained local markup via setContent; managed browser blocks file navigation",
+  "checks": [
+    {
+      "name": "four actual source-key frames loaded",
+      "passed": true
+    },
+    {
+      "name": "master canvas stays 512-square",
+      "passed": true
+    },
+    {
+      "name": "review status is not approval",
+      "passed": true
+    },
+    {
+      "name": "next and previous frame controls",
+      "passed": true
+    },
+    {
+      "name": "keyboard navigation",
+      "passed": true
+    },
+    {
+      "name": "slider can inspect loop seam",
+      "passed": true
+    },
+    {
+      "name": "quarter-speed uses source intervals",
+      "passed": true
+    },
+    {
+      "name": "onion skin and source overlay toggle",
+      "passed": true
+    },
+    {
+      "name": "pointer maps screen to master pixels",
+      "passed": true
+    },
+    {
+      "name": "uncertainty edit persists",
+      "passed": true
+    },
+    {
+      "name": "point edits invalidate the old report",
+      "passed": true
+    },
+    {
+      "name": "text-field arrows do not navigate frames",
+      "passed": true
+    },
+    {
+      "name": "export includes actual edited coordinates",
+      "passed": true
+    },
+    {
+      "name": "clear marks unknown instead of guessing",
+      "passed": true
+    },
+    {
+      "name": "annotation import round trip",
+      "passed": true
+    },
+    {
+      "name": "import rejects altered source bones",
+      "passed": true
+    },
+    {
+      "name": "import rejects altered pose time",
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "mobile frame control works",
+      "passed": true
+    },
+    {
+      "name": "no runtime JS errors including reload and mobile",
+      "passed": true
+    }
+  ],
+  "total": 20,
+  "errors": [],
+  "scope": "Standalone anatomical review UI only; not game integration or artwork acceptance"
+}

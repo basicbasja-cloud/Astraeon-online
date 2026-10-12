@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ตรวจขาซ้าย–ขวาและ continuity</title>
+<style>
+:root{color-scheme:dark;font:15px/1.5 system-ui;background:#171a1f;color:#ece6dc}body{margin:0;padding:24px}h1{font-size:23px;margin:0 0 8px}p{margin:6px 0 16px;color:#bbc3cc}.layout{display:grid;grid-template-columns:minmax(280px,560px) minmax(280px,420px);gap:24px;max-width:1040px}canvas{width:100%;height:auto;background:#272727;touch-action:none;border:1px solid #4d5662;border-radius:8px}label{display:block;margin:10px 0}input,select,button{font:inherit;padding:7px;background:#252c35;color:#ece6dc;border:1px solid #566272;border-radius:5px}input[type=checkbox]{padding:0}button{cursor:pointer;margin:3px 4px 3px 0}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #deb76b}.toolbar{margin:8px 0}.blue{color:#3591ff}.orange{color:#f59045}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#20252d;padding:12px;font-size:12px;border-radius:6px;max-height:280px;overflow:auto}.notice{border-left:3px solid #deb76b;padding:8px 12px;background:#282822}.jointlist{display:grid;grid-template-columns:1fr 1fr;gap:6px}.jointlist button{margin:0;text-align:left}.active{outline:2px solid #deb76b}small{color:#b9c2cd}#position{font-variant-numeric:tabular-nums}@media(max-width:760px){body{padding:12px}.layout{grid-template-columns:1fr}h1{font-size:20px}}
+</style>
+<h1>ตรวจขาซ้าย–ขวาและความต่อเนื่อง</h1>
+<p><span class="blue">น้ำเงิน = ขาขวาตาม anatomy</span> · <span class="orange">ส้ม = ขาซ้ายตาม anatomy</span> · ต้นแบบสีเขียวจางคือกระดูกจาก rig ณ เวลาเดียวกัน</p>
+<div class="layout"><section>
+<canvas id="canvas" width="512" height="512" aria-label="ภาพตัวละครและจุดกระดูกสำหรับตรวจ"></canvas>
+<div class="toolbar"><button id="prev">← ก่อนหน้า</button><button id="play">เล่น</button><button id="next">ถัดไป →</button><select id="speed" aria-label="ความเร็ว"><option value="1">ความเร็วจริง</option><option value="0.25">ช้า ¼</option></select></div>
+<label>เฟรม <input id="frame" type="range" min="0" step="1"><span id="position"></span></label>
+<label><input id="onion" type="checkbox"> ซ้อนเฟรมก่อนหน้า (onion skin)</label>
+<label><input id="source" type="checkbox" checked> แสดงกระดูกต้นแบบ — overlay จัดตามสะโพกเพื่อเปรียบเทียบ ไม่ได้แก้ภาพ</label>
+<label><input id="marks" type="checkbox" checked> แสดงจุดและสายขาที่ระบุ</label>
+<p class="notice">ขาที่ไขว้กันยังเป็นขาเดิม อย่าใช้ด้านซ้าย/ขวาของภาพตั้งชื่อ ถ้าถูกบังให้ใช้ “ประมาณ” หรือ “ไม่ทราบ” วงกลมคือระยะคลาดเคลื่อนที่ยอมรับในการระบุจุด</p>
+</section><aside>
+<strong>เลือกข้อต่อ แล้วคลิกบนภาพ</strong><div id="joints" class="jointlist"></div>
+<label>ความชัดเจน <select id="visibility"><option value="observed">เห็นจุดจริง</option><option value="estimated">ประมาณ / ถูกบังบางส่วน</option><option value="unknown">ไม่ทราบ / ถูกบัง</option></select></label>
+<label>ระยะไม่แน่ใจ (px) <input id="uncertainty" type="number" min="0" max="512" step="1" value="0"></label>
+<label><input id="confirmed" type="checkbox"> ตรวจตัวตนซ้าย–ขวาของเฟรมนี้แล้ว</label>
+<label>บันทึก <input id="notes" type="text" style="width:90%"></label>
+<button id="clear">ล้างจุดนี้</button><button id="export">บันทึก annotation JSON</button>
+<label>โหลด annotation <input id="import" type="file" accept="application/json"></label>
+<p id="status" role="status"></p><small>เครื่องมือนี้ช่วยตรวจ annotation เทียบกระดูก ไม่ใช่ AI ที่รับรอง anatomy อัตโนมัติ ผลรายงานจะเก่าทันทีเมื่อแก้จุด ให้ export แล้วรัน checker ใหม่</small>
+<pre id="report"></pre>
+</aside></div>
+<script>
+const PAYLOAD=/*__PAYLOAD__*/;
+let data=structuredClone(PAYLOAD.case),key=0,joint='hip_r',playing=false,timer=null,dirty=false;
+const ids=['hip_r','knee_r','ankle_r','toe_r','hip_l','knee_l','ankle_l','toe_l'];
+const names={hip:'สะโพก',knee:'เข่า',ankle:'ข้อเท้า',toe:'ปลายเท้า'};
+const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d');
+canvas.width=data.canvas[0];canvas.height=data.canvas[1];$('frame').max=data.frames.length-1;
+const images=PAYLOAD.images.map(src=>{const im=new Image();im.onload=draw;im.src=src;return im});
+for(const n of ids){const b=document.createElement('button');b.id=n;b.textContent=names[n.split('_')[0]]+' '+(n.endsWith('r')?'ขวา':'ซ้าย');b.className=n.endsWith('r')?'blue':'orange';b.onclick=()=>{joint=n;refresh()};$('joints').append(b)}
+function use(p){return p.xy&&p.visibility!=='unknown'}
+function center(f){return use(f.points.hip_r)&&use(f.points.hip_l)?[(f.points.hip_r.xy[0]+f.points.hip_l.xy[0])/2,(f.points.hip_r.xy[1]+f.points.hip_l.xy[1])/2]:null}
+function line(a,b,color,width=3){ctx.beginPath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke()}
+function draw(){
+ const f=data.frames[key];ctx.fillStyle='#272727';ctx.fillRect(0,0,canvas.width,canvas.height);
+ if($('onion').checked&&images[(key+images.length-1)%images.length].complete){ctx.globalAlpha=.22;ctx.drawImage(images[(key+images.length-1)%images.length],0,0,canvas.width,canvas.height);ctx.globalAlpha=1}
+ if(images[key].complete)ctx.drawImage(images[key],0,0,canvas.width,canvas.height);
+ const gc=center(f),sc=[(f.reference.hip_r[0]+f.reference.hip_l[0])/2,(f.reference.hip_r[1]+f.reference.hip_l[1])/2],scale=PAYLOAD.report.diagnostic_global_positive_scale;
+ for(const s of ['r','l']){
+  const color=s==='r'?'#3591ff':'#f59045';
+  for(const [a,b] of [['hip','knee'],['knee','ankle'],['ankle','toe']]){
+   const n=a+'_'+s,m=b+'_'+s,p=f.points[n],q=f.points[m];
+   if($('source').checked){const transform=xy=>gc?xy.map((v,i)=>gc[i]+scale*(v-sc[i])):xy;line(transform(f.reference[n]),transform(f.reference[m]),'#98ac9d',1)}
+   if($('marks').checked&&use(p)&&use(q))line(p.xy,q.xy,color)
+  }
+  if($('marks').checked)for(const n of ids.filter(n=>n.endsWith(s))){const p=f.points[n];if(!use(p))continue;const [x,y]=p.xy;ctx.strokeStyle=color;ctx.beginPath();ctx.arc(x,y,p.uncertainty_px,0,Math.PI*2);ctx.stroke();ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,n===joint?6:4,0,Math.PI*2);ctx.fill();ctx.font='12px system-ui';ctx.fillText(n,x+8,y-7)}
+ }
+}
+function markDirty(){dirty=true;$('status').textContent='แก้ annotation แล้ว — ต้องรัน checker ใหม่';$('report').textContent='ผลเดิมถูกพักไว้ เพราะจุดตรวจเปลี่ยนแล้ว';draw()}
+function refresh(){
+ const f=data.frames[key],p=f.points[joint];$('frame').value=key;$('position').textContent=` ${key+1}/${data.frames.length} · source ${f.source_index} · ${(f.time_seconds*1000).toFixed(1)}ms`;
+ $('visibility').value=p.visibility;$('uncertainty').value=p.uncertainty_px;$('confirmed').checked=f.identity_review==='confirmed';$('notes').value=f.notes;
+ for(const n of ids)$(n).classList.toggle('active',n===joint);
+ if(!dirty){$('report').textContent=JSON.stringify({frame:PAYLOAD.report.frames[key],transition:PAYLOAD.report.transitions[key],observed_coverage_percent:PAYLOAD.report.observed_coverage_percent,not_anatomy_accuracy:true},null,2);$('status').textContent=PAYLOAD.report.status}
+ draw();
+}
+function stop(){playing=false;clearTimeout(timer);$('play').textContent='เล่น'}
+function schedule(){const f=data.frames[key],g=data.frames[(key+1)%data.frames.length];const dt=(g.time_seconds-f.time_seconds+data.duration_seconds)%data.duration_seconds;timer=setTimeout(()=>{if(!playing)return;key=(key+1)%data.frames.length;refresh();schedule()},dt*1000/Number($('speed').value))}
+function move(delta){stop();key=(key+delta+data.frames.length)%data.frames.length;refresh()}
+$('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);$('frame').oninput=()=>{stop();key=Number($('frame').value);refresh()};
+$('play').onclick=()=>{if(playing)return stop();playing=true;$('play').textContent='หยุด';schedule()};$('speed').onchange=()=>{if(playing){clearTimeout(timer);schedule()}};
+for(const n of ['onion','source','marks'])$(n).onchange=draw;
+canvas.addEventListener('pointerdown',e=>{stop();const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*canvas.width/r.width,y=(e.clientY-r.top)*canvas.height/r.height;
+ if(x<0||y<0||x>=canvas.width||y>=canvas.height)return;
+ const visibility=$('visibility').value,uncertainty=Number($('uncertainty').value);if(!Number.isFinite(uncertainty)||uncertainty<0)return;
+ data.frames[key].points[joint]={xy:[Math.round(x),Math.round(y)],visibility,uncertainty_px:uncertainty};markDirty()});
+$('visibility').onchange=()=>{const p=data.frames[key].points[joint];if($('visibility').value!=='unknown'&&!p.xy){$('status').textContent='คลิกตำแหน่งบนภาพก่อน';return}p.visibility=$('visibility').value;markDirty()};
+$('uncertainty').onchange=()=>{const v=Number($('uncertainty').value);if(Number.isFinite(v)&&v>=0){data.frames[key].points[joint].uncertainty_px=v;markDirty()}};
+$('confirmed').onchange=()=>{data.frames[key].identity_review=$('confirmed').checked?'confirmed':'unconfirmed';markDirty()};$('notes').oninput=()=>{data.frames[key].notes=$('notes').value;markDirty()};
+$('clear').onclick=()=>{data.frames[key].points[joint]={xy:null,visibility:'unknown',uncertainty_px:0};markDirty();refresh()};
+$('export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='leg-annotations.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+$('import').onchange=async e=>{try{const incoming=JSON.parse(await e.target.files[0].text());
+ if(incoming.schema!==data.schema||incoming.frames.length!==data.frames.length||incoming.source_motion_sha256!==data.source_motion_sha256||JSON.stringify(incoming.canvas)!==JSON.stringify(data.canvas))throw Error('ชุดต้นแบบ/ขนาดไม่ตรง');
+ for(let k=0;k<data.frames.length;k++){const old=data.frames[k],f=incoming.frames[k];if(f.key!==old.key||f.time_seconds!==old.time_seconds||f.image_sha256!==old.image_sha256||f.source_index!==old.source_index||JSON.stringify(f.reference)!==JSON.stringify(old.reference))throw Error('ภาพ กระดูกต้นแบบ หรือเวลาเปลี่ยน');
+  if(!['unconfirmed','confirmed'].includes(f.identity_review)||typeof f.notes!=='string')throw Error('annotation ไม่ถูกต้อง');
+  for(const n of ids){const p=f.points[n];if(!p||!['observed','estimated','unknown'].includes(p.visibility)||!Number.isFinite(p.uncertainty_px)||p.uncertainty_px<0)throw Error('จุดไม่ถูกต้อง');if(p.xy!==null&&(!Array.isArray(p.xy)||p.xy.length!==2||!p.xy.every(Number.isFinite)||p.xy[0]<0||p.xy[1]<0||p.xy[0]>=canvas.width||p.xy[1]>=canvas.height))throw Error('พิกัดไม่ถูกต้อง');if(p.visibility!=='unknown'&&!p.xy)throw Error('จุดขาดพิกัด')}
+ }
+ for(let k=0;k<data.frames.length;k++){data.frames[k].points=incoming.frames[k].points;data.frames[k].identity_review=incoming.frames[k].identity_review;data.frames[k].notes=incoming.frames[k].notes}
+ stop();markDirty();refresh()
+ }catch(err){$('status').textContent='โหลดไม่ได้: '+err.message}};
+document.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight'){e.preventDefault();move(1)}if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}});
+refresh();window.legReview={get data(){return data},get key(){return key},get dirty(){return dirty}};
+</script></html>
