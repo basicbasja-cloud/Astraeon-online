@@ -1,0 +1,386 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace AISpriteAnimation
+{
+    /// <summary>
+    /// Renders a rigged sprite: the source pixels are assigned to parts (<see cref="RigDefinition"/>), the parts form a bone hierarchy
+    /// (rotating an upper arm carries the forearm and weapon along), and each frame is composed by moving the parts.
+    /// Every output pixel is a pixel of the source sprite; nothing is blended, blurred or redrawn.
+    /// Pure math on pixel arrays (no editor or scene dependencies).
+    /// </summary>
+    public static class SpriteRig
+    {
+        private const int Upscale = 4;   // sub-pixels per source pixel while composing; reduced to one pixel by majority vote
+
+        // Bone hierarchy. -1 = attached to the root (which only translates). Parents always come before their children in RigPart order.
+        internal static readonly int[] Parent =
+        {
+            -1,                                  // Body
+            (int)RigPart.Body,                   // Head
+            (int)RigPart.Head,                   // Hair
+            (int)RigPart.Body,                   // ArmNearUpper
+            (int)RigPart.ArmNearUpper,           // ArmNearLower
+            (int)RigPart.ArmNearLower,           // Weapon (child of the near hand)
+            (int)RigPart.Body,                   // ArmFarUpper
+            (int)RigPart.ArmFarUpper,            // ArmFarLower
+            -1,                                  // LegNearUpper
+            (int)RigPart.LegNearUpper,           // LegNearLower
+            (int)RigPart.LegNearLower,           // FootNear
+            -1,                                  // LegFarUpper
+            (int)RigPart.LegFarUpper,            // LegFarLower
+            (int)RigPart.LegFarLower,            // FootFar
+        };
+
+        // The joint each part rotates about.
+        internal static readonly RigJoint[] Pivot =
+        {
+            RigJoint.Hip, RigJoint.Neck, RigJoint.HairPivot,
+            RigJoint.ShoulderNear, RigJoint.ElbowNear, RigJoint.WeaponPivot,
+            RigJoint.ShoulderFar, RigJoint.ElbowFar,
+            RigJoint.Hip, RigJoint.KneeNear, RigJoint.FootNear,
+            RigJoint.Hip, RigJoint.KneeFar, RigJoint.FootFar,
+        };
+
+        // Back to front.
+        private static readonly RigPart[] DrawOrder =
+        {
+            RigPart.LegFarUpper, RigPart.LegFarLower, RigPart.FootFar,
+            RigPart.ArmFarUpper, RigPart.ArmFarLower,
+            RigPart.Body, RigPart.Head, RigPart.Hair,
+            RigPart.LegNearUpper, RigPart.LegNearLower, RigPart.FootNear,
+            RigPart.ArmNearUpper, RigPart.ArmNearLower, RigPart.Weapon,
+        };
+
+        internal static readonly RigPart[] GroundParts = { RigPart.LegNearUpper, RigPart.LegNearLower, RigPart.FootNear, RigPart.LegFarUpper, RigPart.LegFarLower, RigPart.FootFar };
+        private static readonly RigPart[] OverlayParts = { RigPart.ArmNearUpper, RigPart.ArmNearLower, RigPart.ArmFarUpper, RigPart.ArmFarLower };
+
+        // A thigh swung far forward (a deep crouch) leaves the pelvis/skirt area behind the hip empty, which shows as a notch under the torso. Beyond this angle the vacated
+        // thigh cells are filled like a vacated arm (only then, so walking, running, attacking and the jump crouch render exactly as before).
+        private static readonly RigPart[] ThighParts = { RigPart.LegNearUpper, RigPart.LegFarUpper };
+        private const float DeepThighRadians = 65f * Mathf.Deg2Rad;
+
+        // 2D affine transform: x' = a*x + b*y + tx ; y' = c*x + d*y + ty
+        internal struct Affine
+        {
+            public float a, b, c, d, tx, ty;
+            public static Affine Identity => new Affine { a = 1, d = 1 };
+            public static Affine Translate(float x, float y) => new Affine { a = 1, d = 1, tx = x, ty = y };
+            // rotation about a pivot; angle positive = towards +x for points hanging below the pivot (y is down)
+            public static Affine RotateAbout(Vector2 p, float angle)
+            {
+                float cs = Mathf.Cos(angle), sn = Mathf.Sin(angle);
+                return new Affine { a = cs, b = sn, c = -sn, d = cs, tx = p.x - (cs * p.x + sn * p.y), ty = p.y - (-sn * p.x + cs * p.y) };
+            }
+            public Vector2 Apply(float x, float y) => new Vector2(a * x + b * y + tx, c * x + d * y + ty);
+            // this(other(p))
+            public Affine Multiply(Affine o) => new Affine
+            {
+                a = a * o.a + b * o.c, b = a * o.b + b * o.d, tx = a * o.tx + b * o.ty + tx,
+                c = c * o.a + d * o.c, d = c * o.b + d * o.d, ty = c * o.tx + d * o.ty + ty,
+            };
+            public Affine Inverse()
+            {
+                float det = a * d - b * c;
+                float ia = d / det, ib = -b / det, ic = -c / det, id = a / det;
+                return new Affine { a = ia, b = ib, c = ic, d = id, tx = -(ia * tx + ib * ty), ty = -(ic * tx + id * ty) };
+            }
+        }
+
+        /// <summary>
+        /// Renders one frame per pose on a cell grid (one cell = one source pixel).
+        /// </summary>
+        /// <param name="sprite">Source pixels, bottom-left origin (Unity texture order), size rig.width x rig.height.</param>
+        /// <param name="cells">Output grid size (cells x cells).</param>
+        /// <param name="left">Grid column of the source sprite's left edge.</param>
+        /// <param name="bottom">Grid row (from the bottom) of the source sprite's bottom edge.</param>
+        /// <returns>Frames on the cell grid, bottom-left origin; transparent where empty.</returns>
+        public static List<Color32[]> Render(RigDefinition rig, Color32[] sprite, IReadOnlyList<RigPose> poses, int cells, int left, int bottom, bool facingLeft)
+        {
+            int sw = rig.width, sh = rig.height;
+            if (sprite.Length != sw * sh) throw new ArgumentException("Sprite size does not match the rig.");
+
+            // Working copies facing right, y down. A left-facing sprite is mirrored first and the result mirrored back.
+            var src = new Color32[sw * sh];
+            var mask = new ushort[sw * sh];
+            for (int y = 0; y < sh; y++)
+                for (int x = 0; x < sw; x++)
+                {
+                    int sx = facingLeft ? sw - 1 - x : x;
+                    src[y * sw + x] = sprite[(sh - 1 - y) * sw + sx];
+                    mask[y * sw + x] = src[y * sw + x].a == 0 ? (ushort)0 : rig.GetMask(sx, y);
+                }
+            // Optional underlay (generated rig data): the torso as it looks behind the near arm / weapon. Those pixels also become Body pixels,
+            // with the underlay's colours, drawn beneath the arm; when the arm swings away they show instead of a hole. Without an underlay
+            // bodySrc is src and nothing changes.
+            Color32[] bodySrc = src;
+            if (rig.HasUnderlay)
+            {
+                bodySrc = (Color32[])src.Clone();
+                for (int y = 0; y < sh; y++)
+                    for (int x = 0; x < sw; x++)
+                    {
+                        int sx = facingLeft ? sw - 1 - x : x;
+                        Color32 u = rig.GetUnderlay(sx, y);
+                        if (u.a == 0 || src[y * sw + x].a == 0) continue;
+                        bodySrc[y * sw + x] = u;
+                        mask[y * sw + x] |= RigDefinition.Bit(RigPart.Body);
+                    }
+            }
+            var pivot = new Vector2[RigDefinition.PartCount];
+            for (int i = 0; i < pivot.Length; i++)
+            {
+                Vector2 j = rig.GetJoint(Pivot[i]);
+                pivot[i] = new Vector2(facingLeft ? sw - j.x : j.x, j.y);
+            }
+            float groundY = rig.groundY;
+            int placeLeft = facingLeft ? cells - left - sw : left;
+            int placeTop = cells - bottom - sh;
+
+            // Pixel lists and rest bounds per part.
+            var pixels = new List<int>[RigDefinition.PartCount];
+            var minB = new Vector2[RigDefinition.PartCount];
+            var maxB = new Vector2[RigDefinition.PartCount];
+            for (int p = 0; p < RigDefinition.PartCount; p++) { pixels[p] = new List<int>(); minB[p] = new Vector2(float.MaxValue, float.MaxValue); maxB[p] = new Vector2(-1, -1); }
+            for (int i = 0; i < mask.Length; i++)
+            {
+                if (mask[i] == 0) continue;
+                int x = i % sw, y = i / sw;
+                for (int p = 0; p < RigDefinition.PartCount; p++)
+                {
+                    if ((mask[i] & (1 << p)) == 0) continue;
+                    pixels[p].Add(i);
+                    minB[p] = Vector2.Min(minB[p], new Vector2(x, y));
+                    maxB[p] = Vector2.Max(maxB[p], new Vector2(x + 1, y + 1));
+                }
+            }
+
+            int hi = cells * Upscale;
+            var hiColor = new Color32[hi * hi];
+            var hiOwner = new byte[hi * hi];
+            var result = new List<Color32[]>(poses.Count);
+            var world = new Affine[RigDefinition.PartCount];
+
+            foreach (RigPose pose in poses)
+            {
+                // Hierarchical transforms: world(part) = world(parent) o rotation about the part's pivot.
+                for (int p = 0; p < RigDefinition.PartCount; p++)
+                {
+                    Affine local = Affine.RotateAbout(pivot[p], pose.angle[p]);
+                    world[p] = Parent[p] < 0 ? local : world[Parent[p]].Multiply(local);
+                }
+
+                // Grounding: the lowest foot/leg pixel always lands on the ground line (minus an intentional hop), so the feet never drift.
+                float maxBottom = float.MinValue;
+                foreach (RigPart gp in GroundParts)
+                    foreach (int idx in pixels[(int)gp])
+                    {
+                        // both bottom corners: a rotated foot's lowest point is a corner, not the middle of the pixel's bottom edge
+                        float y1 = world[(int)gp].Apply(idx % sw, (idx / sw) + 1f).y;
+                        float y2 = world[(int)gp].Apply((idx % sw) + 1f, (idx / sw) + 1f).y;
+                        if (y1 > maxBottom) maxBottom = y1;
+                        if (y2 > maxBottom) maxBottom = y2;
+                    }
+                float groundShift = maxBottom > float.MinValue ? groundY - maxBottom : 0f;
+                Affine root = Affine.Translate(Mathf.Round(pose.root.x), Mathf.Round(groundShift + pose.root.y - pose.hop));
+                var m = new Affine[RigDefinition.PartCount];
+                for (int p = 0; p < m.Length; p++) m[p] = root.Multiply(world[p]);
+
+                Array.Clear(hiColor, 0, hiColor.Length);
+                Array.Clear(hiOwner, 0, hiOwner.Length);
+                foreach (RigPart part in DrawOrder)
+                {
+                    int pi = (int)part;
+                    if (pixels[pi].Count == 0) continue;
+                    DrawPart(m[pi], pi, part == RigPart.Body ? bodySrc : src, mask, sw, sh, minB[pi], maxB[pi], placeLeft, placeTop, hi, hiColor, hiOwner);
+                }
+
+                Color32[] grid = Downsample(hiColor, hiOwner, hi, cells, out byte[] owner);
+                FillVacatedBody(grid, owner, cells, pixels, m[(int)RigPart.Body], sw, placeLeft, placeTop, OverlayParts);
+                if (Mathf.Abs(pose.angle[(int)RigPart.LegNearUpper]) > DeepThighRadians || Mathf.Abs(pose.angle[(int)RigPart.LegFarUpper]) > DeepThighRadians)
+                    FillVacatedBody(grid, owner, cells, pixels, m[(int)RigPart.Body], sw, placeLeft, placeTop, ThighParts, rig.HasUnderlay ? src : null);
+                CloseHoles(grid, cells);
+
+                // y-down -> bottom-left origin, undoing the mirror for left-facing sprites.
+                var outFrame = new Color32[cells * cells];
+                for (int y = 0; y < cells; y++)
+                    for (int x = 0; x < cells; x++)
+                        outFrame[(cells - 1 - y) * cells + x] = grid[y * cells + (facingLeft ? cells - 1 - x : x)];
+                result.Add(outFrame);
+            }
+            return result;
+        }
+
+        /// <summary>Share of the torso lean a reduced-leg-swing (robed) rig keeps in Run: the full 11 degrees swing a robe's hem back off the
+        /// front foot (the whole Body, robe included, rotates about the hip), so such rigs lean about 5.5 degrees.</summary>
+        public const float ReducedSwingRunLeanScale = 0.5f;
+
+        // Parts hanging from the Body: when the torso leans less they are counter-rotated, so their world angles (the face, the arm swing) stay as posed.
+        private static readonly RigPart[] BodyChildren = { RigPart.Head, RigPart.ArmNearUpper, RigPart.ArmFarUpper };
+
+        /// <summary>
+        /// Applies the rig's <see cref="RigDefinition.legSwingScale"/> to generated poses: every leg angle (thighs, shins, feet) is multiplied
+        /// by it, so a robed character's robe moves as one silhouette instead of scissoring. For <paramref name="animation"/> "run" such a rig
+        /// also leans its torso less (<see cref="ReducedSwingRunLeanScale"/>), with head and upper arms counter-rotated so only the torso and
+        /// robe change. Returns <paramref name="poses"/> itself when the scale is 1 (every hand-made or auto-built rig), otherwise scaled copies;
+        /// the input poses are never modified. Applied to the poses before <see cref="Render"/>, not inside it, so pose fitting and kinematics
+        /// see the angles they set.
+        /// </summary>
+        public static RigPose[] ApplyLegSwingScale(RigDefinition rig, RigPose[] poses, string animation = null)
+        {
+            float k = rig != null ? rig.EffectiveLegSwingScale : 1f;
+            if (k == 1f || poses == null) return poses;
+            bool run = string.Equals(animation, "run", StringComparison.OrdinalIgnoreCase);
+            var scaled = new RigPose[poses.Length];
+            for (int i = 0; i < poses.Length; i++)
+            {
+                var p = new RigPose { root = poses[i].root, hop = poses[i].hop };
+                Array.Copy(poses[i].angle, p.angle, p.angle.Length);
+                foreach (RigPart leg in GroundParts) p[leg] *= k;
+                if (run)
+                {
+                    float removed = p[RigPart.Body] * (1f - ReducedSwingRunLeanScale);
+                    p[RigPart.Body] -= removed;
+                    foreach (RigPart child in BodyChildren) p[child] += removed;
+                }
+                scaled[i] = p;
+            }
+            return scaled;
+        }
+
+        // Inverse mapping: every destination sub-pixel looks up the source pixel it came from, so rotated parts have no holes.
+        private static void DrawPart(Affine m, int part, Color32[] src, ushort[] mask, int sw, int sh, Vector2 minB, Vector2 maxB,
+            int placeLeft, int placeTop, int hi, Color32[] hiColor, byte[] hiOwner)
+        {
+            Affine inv = m.Inverse();
+            // destination bounds of the part's rest rectangle
+            float x0 = float.MaxValue, y0 = float.MaxValue, x1 = float.MinValue, y1 = float.MinValue;
+            for (int c = 0; c < 4; c++)
+            {
+                Vector2 q = m.Apply((c & 1) == 0 ? minB.x : maxB.x, (c & 2) == 0 ? minB.y : maxB.y);
+                x0 = Mathf.Min(x0, q.x); x1 = Mathf.Max(x1, q.x); y0 = Mathf.Min(y0, q.y); y1 = Mathf.Max(y1, q.y);
+            }
+            int dx0 = Mathf.Max(0, Mathf.FloorToInt((x0 + placeLeft) * Upscale) - 1), dx1 = Mathf.Min(hi - 1, Mathf.CeilToInt((x1 + placeLeft) * Upscale) + 1);
+            int dy0 = Mathf.Max(0, Mathf.FloorToInt((y0 + placeTop) * Upscale) - 1), dy1 = Mathf.Min(hi - 1, Mathf.CeilToInt((y1 + placeTop) * Upscale) + 1);
+            int bit = 1 << part;
+            for (int dy = dy0; dy <= dy1; dy++)
+            {
+                float qy = (dy + 0.5f) / Upscale - placeTop;
+                for (int dx = dx0; dx <= dx1; dx++)
+                {
+                    float qx = (dx + 0.5f) / Upscale - placeLeft;
+                    Vector2 p = inv.Apply(qx, qy);
+                    int ix = Mathf.FloorToInt(p.x), iy = Mathf.FloorToInt(p.y);
+                    if (ix < 0 || iy < 0 || ix >= sw || iy >= sh) continue;
+                    int si = iy * sw + ix;
+                    if ((mask[si] & bit) == 0) continue;
+                    hiColor[dy * hi + dx] = src[si];
+                    hiOwner[dy * hi + dx] = (byte)(part + 1);
+                }
+            }
+        }
+
+        // Majority vote per cell over the sub-pixels: exact source colours only, no blending.
+        private static Color32[] Downsample(Color32[] hiColor, byte[] hiOwner, int hi, int cells, out byte[] owner)
+        {
+            var grid = new Color32[cells * cells];
+            owner = new byte[cells * cells];
+            var votes = new Dictionary<int, int>();
+            var owners = new Dictionary<int, byte>();
+            for (int cy = 0; cy < cells; cy++)
+                for (int cx = 0; cx < cells; cx++)
+                {
+                    votes.Clear(); owners.Clear();
+                    int opaque = 0;
+                    for (int j = 0; j < Upscale; j++)
+                        for (int i = 0; i < Upscale; i++)
+                        {
+                            int hIdx = (cy * Upscale + j) * hi + cx * Upscale + i;
+                            Color32 c = hiColor[hIdx];
+                            if (c.a == 0) continue;
+                            opaque++;
+                            int code = (c.r << 16) | (c.g << 8) | c.b;
+                            votes.TryGetValue(code, out int n); votes[code] = n + 1;
+                            owners[code] = hiOwner[hIdx];
+                        }
+                    if (opaque * 2 < Upscale * Upscale) continue;
+                    int best = 0, bestN = -1;
+                    foreach (var kv in votes) if (kv.Value > bestN) { bestN = kv.Value; best = kv.Key; }
+                    grid[cy * cells + cx] = new Color32((byte)(best >> 16), (byte)(best >> 8), (byte)best, 255);
+                    owner[cy * cells + cx] = owners[best];
+                }
+            return grid;
+        }
+
+        // An arm drawn in front of the torso leaves a hole in the torso when it swings away. Fill those cells with the colour of the
+        // nearest body cells (the colour that was around the arm), so the torso stays solid. Only cells where a moved arm used to be are touched.
+        // ownColours (generated rigs with an underlay only): fill a vacated cell with the colour of the part pixel that used to be there (the pants a thigh
+        // leaves behind) instead of the nearest torso colour, which near the hips can be skin from the underlay. null = the original behaviour (player rigs, byte-identical).
+        private static void FillVacatedBody(Color32[] grid, byte[] owner, int cells, List<int>[] pixels, Affine bodyMatrix, int sw, int placeLeft, int placeTop, RigPart[] parts, Color32[] ownColours = null)
+        {
+            var holes = new List<int>();
+            var direct = new List<(int, Color32)>();
+            foreach (RigPart part in parts)
+                foreach (int idx in pixels[(int)part])
+                {
+                    Vector2 q = bodyMatrix.Apply((idx % sw) + 0.5f, (idx / sw) + 0.5f);
+                    int cx = Mathf.FloorToInt(q.x + placeLeft), cy = Mathf.FloorToInt(q.y + placeTop);
+                    if (cx < 0 || cy < 0 || cx >= cells || cy >= cells) continue;
+                    int ci = cy * cells + cx;
+                    if (grid[ci].a != 0) continue;
+                    if (ownColours != null && ownColours[idx].a != 0) direct.Add((ci, ownColours[idx]));
+                    else holes.Add(ci);
+                }
+            byte ownOwner = (byte)((int)RigPart.Body + 1);
+            foreach (var (ci, col) in direct) { grid[ci] = new Color32(col.r, col.g, col.b, 255); owner[ci] = ownOwner; }
+            if (holes.Count == 0) return;
+
+            byte bodyOwner = (byte)((int)RigPart.Body + 1);
+            var fills = new List<(int, Color32)>();
+            var counts = new Dictionary<int, int>();
+            foreach (int ci in holes)
+            {
+                int cx = ci % cells, cy = ci / cells;
+                for (int radius = 1; radius <= 3; radius++)
+                {
+                    counts.Clear();
+                    for (int dy = -radius; dy <= radius; dy++)
+                        for (int dx = -radius; dx <= radius; dx++)
+                        {
+                            int nx = cx + dx, ny = cy + dy;
+                            if (nx < 0 || ny < 0 || nx >= cells || ny >= cells) continue;
+                            int ni = ny * cells + nx;
+                            if (grid[ni].a == 0 || owner[ni] != bodyOwner) continue;
+                            int code = (grid[ni].r << 16) | (grid[ni].g << 8) | grid[ni].b;
+                            counts.TryGetValue(code, out int n); counts[code] = n + 1;
+                        }
+                    if (counts.Count == 0) continue;
+                    int best = 0, bestN = -1;
+                    foreach (var kv in counts) if (kv.Value > bestN) { bestN = kv.Value; best = kv.Key; }
+                    fills.Add((ci, new Color32((byte)(best >> 16), (byte)(best >> 8), (byte)best, 255)));
+                    break;
+                }
+            }
+            foreach (var (ci, col) in fills) { grid[ci] = col; owner[ci] = bodyOwner; }
+        }
+
+        // A transparent cell with at least 3 opaque 4-neighbours is a seam between parts: fill it with a neighbour's colour.
+        private static void CloseHoles(Color32[] g, int n)
+        {
+            var fill = new List<(int, Color32)>();
+            for (int y = 1; y < n - 1; y++)
+                for (int x = 1; x < n - 1; x++)
+                {
+                    int i = y * n + x;
+                    if (g[i].a != 0) continue;
+                    Color32 a = g[i - 1], b = g[i + 1], c = g[i - n], d = g[i + n];
+                    int opaque = (a.a != 0 ? 1 : 0) + (b.a != 0 ? 1 : 0) + (c.a != 0 ? 1 : 0) + (d.a != 0 ? 1 : 0);
+                    if (opaque < 3) continue;
+                    fill.Add((i, a.a != 0 ? a : b.a != 0 ? b : c));
+                }
+            foreach (var (i, col) in fill) g[i] = col;
+        }
+    }
+}
+

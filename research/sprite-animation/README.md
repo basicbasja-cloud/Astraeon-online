@@ -1,3 +1,7 @@
+## Latest: production-depth game references and bound factory planning v18
+
+[315 new reference samples, pinned game/tool source audits and source-bound part/frame planner](cross-game-factory-v18/README.md) extend learning beyond RO while keeping RO/RO3/ToS and our original style as quality references. Actual motion, atlas reconstruction, primary documents and located sources are labeled separately. The accepted upright W source compiles16poses/208unreviewed authoring jobs; this is not a completed painted production factory. [Reusable production findings](../../skills/modular-eight-direction-sprites/references/cross-game-production.md).
+
 ## Latest: upright compact walking and source-contact checks v17
 
 [Actual upright rig,16phase source GIF, RO/old/new viewer and failed redraws](ro-gait-v17/README.md) address the user’s unwanted sneaking posture. New source curves and257dense mesh samples pass explicit source-only diagnostics. The user now approves the exact16-frame/800ms W source GIF as the motion baseline; two art jobs still fail continuity/phase/grid review. [Reusable upright-gait practice](../../skills/modular-eight-direction-sprites/references/upright-compact-gait.md) records posture/contact choices and limits. No generated-image anatomy or mass-production approval.
@@ -62,7 +66,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.17](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.18](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Shared sprite production/review standard](../../skills/modular-eight-direction-sprites/references/sprite-production-standard.md)
 - [Ground-plane/contact review and fractional16-frame tests](../../skills/modular-eight-direction-sprites/references/ground-plane-and-contact-review.md)
 - [Walk spacing, registration and reproduction checks](../../skills/modular-eight-direction-sprites/references/walk-spacing-and-registration.md)

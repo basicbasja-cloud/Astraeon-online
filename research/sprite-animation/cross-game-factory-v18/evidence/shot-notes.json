@@ -1,0 +1,72 @@
+{
+  "scope": "Manual shot/visibility observations from actual full review boards. No anatomical labels or automatic quality scores. Boundaries have conservative one-frame uncertainty; no per-shot registration was inferred.",
+  "crosscode-side-door": [
+    {
+      "frames_inclusive": [
+        0,
+        19
+      ],
+      "role": "first-room held stance / short traversal",
+      "full_walk_cycle_verified": false
+    },
+    {
+      "frames_inclusive": [
+        20,
+        34
+      ],
+      "role": "fade/room transition; exclude from within-shot motion residuals"
+    },
+    {
+      "frames_inclusive": [
+        35,
+        55
+      ],
+      "role": "arrival/held pose in second room; final exposure includes long caption hold"
+    }
+  ],
+  "crosscode-combat": [
+    {
+      "frames_inclusive": [
+        0,
+        60
+      ],
+      "role": "combat cluster, heavy FX/HUD occlusion",
+      "hidden_joints": "UNKNOWN"
+    },
+    {
+      "frames_inclusive": [
+        61,
+        92
+      ],
+      "role": "second visible location/action subsequence, effects and scene tint changes",
+      "hidden_joints": "UNKNOWN"
+    }
+  ],
+  "tos-group-idle": [
+    {
+      "frames_inclusive": [
+        0,
+        29
+      ],
+      "role": "held/idle-like group, outfit/volume study; not demonstrated gait"
+    }
+  ],
+  "billboard-front-gait": [
+    {
+      "frames_inclusive": [
+        0,
+        97
+      ],
+      "role": "front gait prototype with variable GIF exposures/initialhold; not actual editor FPS or our style target"
+    }
+  ],
+  "billboard-editor-keys": [
+    {
+      "frames_inclusive": [
+        0,
+        23
+      ],
+      "role": "editor/key/part tooling; no full stride verified"
+    }
+  ]
+}

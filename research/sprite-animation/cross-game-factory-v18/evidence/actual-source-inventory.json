@@ -1,0 +1,2797 @@
+{
+  "schema": "actual-factory-source-inventory-v1",
+  "approval_path": "research/sprite-animation/ro-gait-v17/evidence/user-approved-upright-source.json",
+  "approval_sha256": "202ab54045fa1d4bc2bd47da2004300215112459bcd4a38c66e70f4834d8c755",
+  "blend_path": "research/sprite-animation/ro-gait-v17/upright-source-rig/original-modular-walk.blend",
+  "blend_sha256": "81682f4db4fe5e0f893132ee58340d98bed15d68465fbb0b5208c04013775143",
+  "blender": "4.3.2",
+  "active_action": "original.compact.contact-walk",
+  "bones": {
+    "root": {
+      "parent": null,
+      "rest_head": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rest_tail": [
+        0.0,
+        0.05999999865889549,
+        0.0
+      ]
+    },
+    "pelvis": {
+      "parent": "root",
+      "rest_head": [
+        0.0,
+        0.03206401690840721,
+        0.5866879820823669
+      ],
+      "rest_tail": [
+        0.0,
+        0.017083173617720604,
+        0.6447876691818237
+      ]
+    },
+    "spine_01": {
+      "parent": "pelvis",
+      "rest_head": [
+        5.82867034988648e-16,
+        0.007914028130471706,
+        0.6803480386734009
+      ],
+      "rest_tail": [
+        4.505215251119526e-16,
+        0.0005612717941403389,
+        0.7398958206176758
+      ]
+    },
+    "spine_02": {
+      "parent": "spine_01",
+      "rest_head": [
+        -8.69287679152223e-16,
+        -0.0027259497437626123,
+        0.7665181756019592
+      ],
+      "rest_tail": [
+        -9.277581517429506e-16,
+        -0.0008147222688421607,
+        0.8264877200126648
+      ]
+    },
+    "spine_03": {
+      "parent": "spine_02",
+      "rest_head": [
+        -1.1432076522615415e-15,
+        0.0004240809357725084,
+        0.865358293056488
+      ],
+      "rest_tail": [
+        -1.4083059889834432e-15,
+        0.002367520472034812,
+        0.9253268241882324
+      ]
+    },
+    "neck_01": {
+      "parent": "spine_03",
+      "rest_head": [
+        -1.5299751779555902e-15,
+        0.004008126445114613,
+        0.9759503602981567
+      ],
+      "rest_tail": [
+        -1.7619682907252417e-15,
+        -0.007325400598347187,
+        1.0348702669143677
+      ]
+    },
+    "Head": {
+      "parent": "neck_01",
+      "rest_head": [
+        -3.079040784476398e-15,
+        -0.005975851323455572,
+        1.027854323387146
+      ],
+      "rest_tail": [
+        -2.9907289176374276e-15,
+        -0.007926857098937035,
+        1.0878225564956665
+      ]
+    },
+    "clavicle_l": {
+      "parent": "spine_03",
+      "rest_head": [
+        0.01315999310463667,
+        -0.05298588424921036,
+        0.9655284881591797
+      ],
+      "rest_tail": [
+        0.06486569344997406,
+        -0.02254711091518402,
+        0.9654919505119324
+      ]
+    },
+    "upperarm_l": {
+      "parent": "clavicle_l",
+      "rest_head": [
+        0.13432994484901428,
+        0.042774129658937454,
+        0.9535585045814514
+      ],
+      "rest_tail": [
+        0.1943211555480957,
+        0.04380166903138161,
+        0.9535585045814514
+      ]
+    },
+    "lowerarm_l": {
+      "parent": "upperarm_l",
+      "rest_head": [
+        0.3264100253582001,
+        0.0460641048848629,
+        0.9535585045814514
+      ],
+      "rest_tail": [
+        0.38640111684799194,
+        0.04502977430820465,
+        0.9535585045814514
+      ]
+    },
+    "hand_l": {
+      "parent": "lowerarm_l",
+      "rest_head": [
+        0.5172301530838013,
+        0.042774099856615067,
+        0.9535583853721619
+      ],
+      "rest_tail": [
+        0.5772301554679871,
+        0.04277409240603447,
+        0.9535583853721619
+      ]
+    },
+    "index_01_l": {
+      "parent": "hand_l",
+      "rest_head": [
+        0.6011601090431213,
+        0.021144092082977295,
+        0.952158510684967
+      ],
+      "rest_tail": [
+        0.6611601114273071,
+        0.021144092082977295,
+        0.952158510684967
+      ]
+    },
+    "index_02_l": {
+      "parent": "index_01_l",
+      "rest_head": [
+        0.6296501755714417,
+        0.021144093945622444,
+        0.952158510684967
+      ],
+      "rest_tail": [
+        0.6896501779556274,
+        0.021144095808267593,
+        0.952158510684967
+      ]
+    },
+    "index_03_l": {
+      "parent": "index_02_l",
+      "rest_head": [
+        0.6540102362632751,
+        0.021144093945622444,
+        0.9521586298942566
+      ],
+      "rest_tail": [
+        0.7140102386474609,
+        0.021144095808267593,
+        0.9521586298942566
+      ]
+    },
+    "index_04_leaf_l": {
+      "parent": "index_03_l",
+      "rest_head": [
+        0.6750802993774414,
+        0.021144092082977295,
+        0.9521586894989014
+      ],
+      "rest_tail": [
+        0.7350803017616272,
+        0.021144093945622444,
+        0.9521586894989014
+      ]
+    },
+    "middle_01_l": {
+      "parent": "hand_l",
+      "rest_head": [
+        0.602350115776062,
+        0.039134085178375244,
+        0.9538386464118958
+      ],
+      "rest_tail": [
+        0.662283182144165,
+        0.04196780174970627,
+        0.9538386464118958
+      ]
+    },
+    "middle_02_l": {
+      "parent": "middle_01_l",
+      "rest_head": [
+        0.6319601535797119,
+        0.04053409770131111,
+        0.9538387060165405
+      ],
+      "rest_tail": [
+        0.6919015049934387,
+        0.04318637400865555,
+        0.9538387060165405
+      ]
+    },
+    "middle_03_l": {
+      "parent": "middle_02_l",
+      "rest_head": [
+        0.6556901931762695,
+        0.041584089398384094,
+        0.953838586807251
+      ],
+      "rest_tail": [
+        0.7156254053115845,
+        0.04437178373336792,
+        0.953838586807251
+      ]
+    },
+    "middle_04_leaf_l": {
+      "parent": "middle_03_l",
+      "rest_head": [
+        0.6797701716423035,
+        0.04270409047603607,
+        0.9538385272026062
+      ],
+      "rest_tail": [
+        0.7397053837776184,
+        0.0454917848110199,
+        0.9538385272026062
+      ]
+    },
+    "pinky_01_l": {
+      "parent": "hand_l",
+      "rest_head": [
+        0.5926199555397034,
+        0.07133407890796661,
+        0.9524386525154114
+      ],
+      "rest_tail": [
+        0.6524850726127625,
+        0.07535487413406372,
+        0.9524386525154114
+      ]
+    },
+    "pinky_02_l": {
+      "parent": "pinky_01_l",
+      "rest_head": [
+        0.6207600235939026,
+        0.07322408258914948,
+        0.9524387717247009
+      ],
+      "rest_tail": [
+        0.6806183457374573,
+        0.07734476029872894,
+        0.9524387717247009
+      ]
+    },
+    "pinky_03_l": {
+      "parent": "pinky_02_l",
+      "rest_head": [
+        0.6400800347328186,
+        0.07455407828092575,
+        0.9524387717247009
+      ],
+      "rest_tail": [
+        0.6999433636665344,
+        0.07860177010297775,
+        0.9524387717247009
+      ]
+    },
+    "pinky_04_leaf_l": {
+      "parent": "pinky_03_l",
+      "rest_head": [
+        0.6597501039505005,
+        0.07588409632444382,
+        0.9524388909339905
+      ],
+      "rest_tail": [
+        0.7196134328842163,
+        0.07993181049823761,
+        0.9524388909339905
+      ]
+    },
+    "ring_01_l": {
+      "parent": "hand_l",
+      "rest_head": [
+        0.600600004196167,
+        0.054744087159633636,
+        0.9536285400390625
+      ],
+      "rest_tail": [
+        0.6605619788169861,
+        0.05688012018799782,
+        0.9536285400390625
+      ]
+    },
+    "ring_02_l": {
+      "parent": "ring_01_l",
+      "rest_head": [
+        0.6281100511550903,
+        0.055724091827869415,
+        0.9536285996437073
+      ],
+      "rest_tail": [
+        0.6880720853805542,
+        0.0578586682677269,
+        0.9536285996437073
+      ]
+    },
+    "ring_03_l": {
+      "parent": "ring_02_l",
+      "rest_head": [
+        0.6497400999069214,
+        0.056494101881980896,
+        0.9536287784576416
+      ],
+      "rest_tail": [
+        0.709697425365448,
+        0.05875663459300995,
+        0.9536287784576416
+      ]
+    },
+    "ring_04_leaf_l": {
+      "parent": "ring_03_l",
+      "rest_head": [
+        0.6720001697540283,
+        0.05733411759138107,
+        0.9536289572715759
+      ],
+      "rest_tail": [
+        0.7319574952125549,
+        0.059596650302410126,
+        0.9536289572715759
+      ]
+    },
+    "thumb_01_l": {
+      "parent": "hand_l",
+      "rest_head": [
+        0.536340057849884,
+        0.019254079088568687,
+        0.9375985860824585
+      ],
+      "rest_tail": [
+        0.584027886390686,
+        -0.005426449701189995,
+        0.9108265042304993
+      ]
+    },
+    "thumb_02_l": {
+      "parent": "thumb_01_l",
+      "rest_head": [
+        0.5602800250053406,
+        0.006864139344543219,
+        0.9241586923599243
+      ],
+      "rest_tail": [
+        0.6079591512680054,
+        -0.017831241711974144,
+        0.8973848819732666
+      ]
+    },
+    "thumb_03_l": {
+      "parent": "thumb_02_l",
+      "rest_head": [
+        0.5875799655914307,
+        -0.007275828626006842,
+        0.908828854560852
+      ],
+      "rest_tail": [
+        0.6353012323379517,
+        -0.03194402530789375,
+        0.8821051120758057
+      ]
+    },
+    "thumb_04_leaf_l": {
+      "parent": "thumb_03_l",
+      "rest_head": [
+        0.6103299260139465,
+        -0.01903580129146576,
+        0.8960888981819153
+      ],
+      "rest_tail": [
+        0.6580511927604675,
+        -0.04370398446917534,
+        0.8693651556968689
+      ]
+    },
+    "clavicle_r": {
+      "parent": "spine_03",
+      "rest_head": [
+        -0.013159994035959244,
+        -0.05298588424921036,
+        0.9655284881591797
+      ],
+      "rest_tail": [
+        -0.06486569344997406,
+        -0.02254711091518402,
+        0.9654919505119324
+      ]
+    },
+    "upperarm_r": {
+      "parent": "clavicle_r",
+      "rest_head": [
+        -0.1343299299478531,
+        0.04277411103248596,
+        0.9535584449768066
+      ],
+      "rest_tail": [
+        -0.19432112574577332,
+        0.043801646679639816,
+        0.9535584449768066
+      ]
+    },
+    "lowerarm_r": {
+      "parent": "upperarm_r",
+      "rest_head": [
+        -0.3264099061489105,
+        0.04606408625841141,
+        0.9535585045814514
+      ],
+      "rest_tail": [
+        -0.3864009976387024,
+        0.045029737055301666,
+        0.9535585045814514
+      ]
+    },
+    "hand_r": {
+      "parent": "lowerarm_r",
+      "rest_head": [
+        -0.5172298550605774,
+        0.0427740179002285,
+        0.9535585045814514
+      ],
+      "rest_tail": [
+        -0.5772298574447632,
+        0.04277399927377701,
+        0.9535585045814514
+      ]
+    },
+    "index_01_r": {
+      "parent": "hand_r",
+      "rest_head": [
+        -0.6011597514152527,
+        0.021143987774848938,
+        0.9521586298942566
+      ],
+      "rest_tail": [
+        -0.6611597537994385,
+        0.021143972873687744,
+        0.9521586298942566
+      ]
+    },
+    "index_02_r": {
+      "parent": "index_01_r",
+      "rest_head": [
+        -0.6296498775482178,
+        0.02114398404955864,
+        0.9521587491035461
+      ],
+      "rest_tail": [
+        -0.6896498799324036,
+        0.021143969148397446,
+        0.9521587491035461
+      ]
+    },
+    "index_03_r": {
+      "parent": "index_02_r",
+      "rest_head": [
+        -0.6540099382400513,
+        0.02114398218691349,
+        0.9521588683128357
+      ],
+      "rest_tail": [
+        -0.7140099406242371,
+        0.021143965423107147,
+        0.9521588683128357
+      ]
+    },
+    "index_04_leaf_r": {
+      "parent": "index_03_r",
+      "rest_head": [
+        -0.675079882144928,
+        0.02114398032426834,
+        0.9521589875221252
+      ],
+      "rest_tail": [
+        -0.7350798845291138,
+        0.021143963560461998,
+        0.9521589875221252
+      ]
+    },
+    "middle_01_r": {
+      "parent": "hand_r",
+      "rest_head": [
+        -0.6023498177528381,
+        0.039133988320827484,
+        0.9538387060165405
+      ],
+      "rest_tail": [
+        -0.6622828841209412,
+        0.04196768254041672,
+        0.9538387060165405
+      ]
+    },
+    "middle_02_r": {
+      "parent": "middle_01_r",
+      "rest_head": [
+        -0.631959855556488,
+        0.04053397849202156,
+        0.9538388252258301
+      ],
+      "rest_tail": [
+        -0.6919012069702148,
+        0.04318623244762421,
+        0.9538388252258301
+      ]
+    },
+    "middle_03_r": {
+      "parent": "middle_02_r",
+      "rest_head": [
+        -0.6556898951530457,
+        0.04158398509025574,
+        0.9538390040397644
+      ],
+      "rest_tail": [
+        -0.7156251072883606,
+        0.044371653348207474,
+        0.9538390040397644
+      ]
+    },
+    "middle_04_leaf_r": {
+      "parent": "middle_03_r",
+      "rest_head": [
+        -0.6797699928283691,
+        0.042703982442617416,
+        0.9538392424583435
+      ],
+      "rest_tail": [
+        -0.7397052049636841,
+        0.04549166560173035,
+        0.9538392424583435
+      ]
+    },
+    "pinky_01_r": {
+      "parent": "hand_r",
+      "rest_head": [
+        -0.592619776725769,
+        0.07133398950099945,
+        0.9524387121200562
+      ],
+      "rest_tail": [
+        -0.6524848937988281,
+        0.07535475492477417,
+        0.9524387121200562
+      ]
+    },
+    "pinky_02_r": {
+      "parent": "pinky_01_r",
+      "rest_head": [
+        -0.6207597255706787,
+        0.07322398573160172,
+        0.9524388909339905
+      ],
+      "rest_tail": [
+        -0.6806180477142334,
+        0.07734464108943939,
+        0.9524388909339905
+      ]
+    },
+    "pinky_03_r": {
+      "parent": "pinky_02_r",
+      "rest_head": [
+        -0.6400797963142395,
+        0.07455398142337799,
+        0.95243901014328
+      ],
+      "rest_tail": [
+        -0.6999431252479553,
+        0.0786016657948494,
+        0.95243901014328
+      ]
+    },
+    "pinky_04_leaf_r": {
+      "parent": "pinky_03_r",
+      "rest_head": [
+        -0.6597498059272766,
+        0.07588397711515427,
+        0.9524389505386353
+      ],
+      "rest_tail": [
+        -0.7196131348609924,
+        0.07993166148662567,
+        0.9524389505386353
+      ]
+    },
+    "ring_01_r": {
+      "parent": "hand_r",
+      "rest_head": [
+        -0.6005997061729431,
+        0.054743990302085876,
+        0.9536284804344177
+      ],
+      "rest_tail": [
+        -0.6605616807937622,
+        0.05688001587986946,
+        0.9536284804344177
+      ]
+    },
+    "ring_02_r": {
+      "parent": "ring_01_r",
+      "rest_head": [
+        -0.6281098127365112,
+        0.05572398751974106,
+        0.9536287188529968
+      ],
+      "rest_tail": [
+        -0.6880718469619751,
+        0.05785854533314705,
+        0.9536287188529968
+      ]
+    },
+    "ring_03_r": {
+      "parent": "ring_02_r",
+      "rest_head": [
+        -0.6497398018836975,
+        0.056493986397981644,
+        0.9536290168762207
+      ],
+      "rest_tail": [
+        -0.7096971273422241,
+        0.0587565153837204,
+        0.9536290168762207
+      ]
+    },
+    "ring_04_leaf_r": {
+      "parent": "ring_03_r",
+      "rest_head": [
+        -0.6719999313354492,
+        0.05733398348093033,
+        0.953629195690155
+      ],
+      "rest_tail": [
+        -0.7319572567939758,
+        0.05959651246666908,
+        0.953629195690155
+      ]
+    },
+    "thumb_01_r": {
+      "parent": "hand_r",
+      "rest_head": [
+        -0.5363398194313049,
+        0.019254010170698166,
+        0.9375987648963928
+      ],
+      "rest_tail": [
+        -0.5840276479721069,
+        -0.005426568910479546,
+        0.9108268022537231
+      ]
+    },
+    "thumb_02_r": {
+      "parent": "thumb_01_r",
+      "rest_head": [
+        -0.5602798461914062,
+        0.006863982882350683,
+        0.9241585731506348
+      ],
+      "rest_tail": [
+        -0.607958972454071,
+        -0.01783141680061817,
+        0.8973848223686218
+      ]
+    },
+    "thumb_03_r": {
+      "parent": "thumb_02_r",
+      "rest_head": [
+        -0.5875797867774963,
+        -0.007275944575667381,
+        0.908828854560852
+      ],
+      "rest_tail": [
+        -0.6353010535240173,
+        -0.03194417059421539,
+        0.8821051120758057
+      ]
+    },
+    "thumb_04_leaf_r": {
+      "parent": "thumb_03_r",
+      "rest_head": [
+        -0.610329806804657,
+        -0.019035937264561653,
+        0.8960886597633362
+      ],
+      "rest_tail": [
+        -0.658051073551178,
+        -0.04370414465665817,
+        0.8693649172782898
+      ]
+    },
+    "cape.upper": {
+      "parent": "spine_03",
+      "rest_head": [
+        0.0,
+        0.11999999731779099,
+        0.9559503793716431
+      ],
+      "rest_tail": [
+        0.0,
+        0.17000000178813934,
+        0.7053582668304443
+      ]
+    },
+    "cape.lower": {
+      "parent": "cape.upper",
+      "rest_head": [
+        0.0,
+        0.17000000178813934,
+        0.7053582668304443
+      ],
+      "rest_tail": [
+        0.0,
+        0.23999999463558197,
+        0.4453583061695099
+      ]
+    },
+    "thigh_l": {
+      "parent": "pelvis",
+      "rest_head": [
+        0.05695998668670654,
+        -0.0008959687547758222,
+        0.5965440273284912
+      ],
+      "rest_tail": [
+        0.05695998668670654,
+        -0.0004763009201269597,
+        0.5365455150604248
+      ]
+    },
+    "calf_l": {
+      "parent": "thigh_l",
+      "rest_head": [
+        0.05695999786257744,
+        0.0008960001287050545,
+        0.3403521180152893
+      ],
+      "rest_tail": [
+        0.05695999786257744,
+        0.005701808258891106,
+        0.2805449068546295
+      ]
+    },
+    "foot_l": {
+      "parent": "calf_l",
+      "rest_head": [
+        0.05695999041199684,
+        0.022911984473466873,
+        0.06636805832386017
+      ],
+      "rest_tail": [
+        0.05695999041199684,
+        -0.028674598783254623,
+        0.035727690905332565
+      ]
+    },
+    "ball_l": {
+      "parent": "foot_l",
+      "rest_head": [
+        0.05695999786257744,
+        -0.07244803756475449,
+        0.00972803682088852
+      ],
+      "rest_tail": [
+        0.05695999786257744,
+        -0.13244810700416565,
+        0.009728030301630497
+      ]
+    },
+    "ball_leaf_l": {
+      "parent": "ball_l",
+      "rest_head": [
+        0.05695999786257744,
+        -0.12294404953718185,
+        0.009728032164275646
+      ],
+      "rest_tail": [
+        0.05695999786257744,
+        -0.18294411897659302,
+        0.009728020057082176
+      ]
+    },
+    "thigh_r": {
+      "parent": "pelvis",
+      "rest_head": [
+        -0.05695998668670654,
+        -0.0008959697443060577,
+        0.5965440273284912
+      ],
+      "rest_tail": [
+        -0.05695998668670654,
+        -0.0004763027827721089,
+        0.5365455150604248
+      ]
+    },
+    "calf_r": {
+      "parent": "thigh_r",
+      "rest_head": [
+        -0.05695999786257744,
+        0.0008959963452070951,
+        0.34035205841064453
+      ],
+      "rest_tail": [
+        -0.05695999786257744,
+        0.005701804533600807,
+        0.28054484724998474
+      ]
+    },
+    "foot_r": {
+      "parent": "calf_r",
+      "rest_head": [
+        -0.056959982961416245,
+        0.02291196770966053,
+        0.06636809557676315
+      ],
+      "rest_tail": [
+        -0.056959982961416245,
+        -0.028674626722931862,
+        0.03572772815823555
+      ]
+    },
+    "ball_r": {
+      "parent": "foot_r",
+      "rest_head": [
+        -0.056959982961416245,
+        -0.07244805991649628,
+        0.00972808338701725
+      ],
+      "rest_tail": [
+        -0.056959982961416245,
+        -0.13244813680648804,
+        0.009728076867759228
+      ]
+    },
+    "ball_leaf_r": {
+      "parent": "ball_r",
+      "rest_head": [
+        -0.05695997551083565,
+        -0.12294407188892365,
+        0.009728077799081802
+      ],
+      "rest_tail": [
+        -0.05695997551083565,
+        -0.1829441487789154,
+        0.009728067554533482
+      ]
+    }
+  },
+  "source_item_groups": {
+    "body": [
+      {
+        "mesh": "body.complete.torso",
+        "vertices": 80,
+        "polygons": 66,
+        "weight_bones": [
+          "neck_01",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "spine_03"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.complete.head",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.right.thigh",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "thigh_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.right.shin",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "calf_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.right.upperarm",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "upperarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.right.forearm",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.joint.upperarm_r",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "upperarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.joint.lowerarm_r",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "lowerarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.joint.calf_r",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "calf_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.right.palm",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "hand_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.thumb_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.thumb_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.thumb_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.index_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.index_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.index_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.middle_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.middle_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.middle_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.ring_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.ring_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.ring_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.pinky_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.pinky_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.pinky_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.right.foot",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "foot_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.left.thigh",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "thigh_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.left.shin",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "calf_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.left.upperarm",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "upperarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.left.forearm",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.joint.upperarm_l",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "upperarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.joint.lowerarm_l",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "lowerarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.joint.calf_l",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "calf_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.left.palm",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "hand_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.thumb_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.thumb_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.thumb_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.index_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.index_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.index_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.middle_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.middle_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.middle_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.ring_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.ring_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.ring_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.pinky_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.pinky_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.pinky_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "body.left.foot",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "foot_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "ear.-1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "ear.1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "gloves": [
+      {
+        "mesh": "glove.right.palm",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "hand_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.thumb_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.thumb_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.thumb_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.index_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.index_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.index_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.middle_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.middle_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.middle_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.ring_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.ring_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.ring_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.pinky_01_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_01_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.pinky_02_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_02_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.pinky_03_r",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_03_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.left.palm",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "hand_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.thumb_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.thumb_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.thumb_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "thumb_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.index_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.index_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.index_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "index_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.middle_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.middle_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.middle_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "middle_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.ring_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.ring_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.ring_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "ring_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.pinky_01_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_01_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.pinky_02_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_02_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "glove.pinky_03_l",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "pinky_03_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "pants": [
+      {
+        "mesh": "pants.right",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "thigh_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "pants.right.knee",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "calf_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "pants.left",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "thigh_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "pants.left.knee",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "calf_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "torso": [
+      {
+        "mesh": "sleeve.right",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "upperarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sleeve.right.lower",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sleeve.left",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "upperarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sleeve.left.lower",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "tunic.complete",
+        "vertices": 80,
+        "polygons": 66,
+        "weight_bones": [
+          "neck_01",
+          "pelvis",
+          "spine_01",
+          "spine_02",
+          "spine_03"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "tabard.chest",
+        "vertices": 4,
+        "polygons": 1,
+        "weight_bones": [
+          "spine_02"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "tabard.lower",
+        "vertices": 4,
+        "polygons": 1,
+        "weight_bones": [
+          "pelvis"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "armor": [
+      {
+        "mesh": "armor.right.pauldron",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "upperarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "armor.right.bracer",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "armor.right.bracer.rim",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "armor.left.pauldron",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "upperarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "armor.left.bracer",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "armor.left.bracer.rim",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "lowerarm_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "boots": [
+      {
+        "mesh": "boot.right.shaft",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "calf_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.right.cuff",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "calf_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.right.heel",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "foot_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.right.toe",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "ball_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sole.right.heel",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "foot_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sole.right.toe",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "ball_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.right.gold",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "calf_r"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.left.shaft",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "calf_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.left.cuff",
+        "vertices": 48,
+        "polygons": 38,
+        "weight_bones": [
+          "calf_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.left.heel",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "foot_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.left.toe",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "ball_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sole.left.heel",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "foot_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "sole.left.toe",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "ball_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "boot.left.gold",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "calf_l"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "belt": [
+      {
+        "mesh": "belt",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "pelvis"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "belt.buckle",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "pelvis"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "sash": [
+      {
+        "mesh": "sash.teal",
+        "vertices": 4,
+        "polygons": 1,
+        "weight_bones": [
+          "pelvis"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "cape": [
+      {
+        "mesh": "cape.complete",
+        "vertices": 25,
+        "polygons": 16,
+        "weight_bones": [
+          "cape.lower",
+          "cape.upper",
+          "spine_03"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "scarf": [
+      {
+        "mesh": "scarf.collar",
+        "vertices": 192,
+        "polygons": 192,
+        "weight_bones": [
+          "neck_01"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "hair.silver": [
+      {
+        "mesh": "hair.silver.complete.cap",
+        "vertices": 144,
+        "polygons": 120,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.0",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.1",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.2",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.3",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.4",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.5",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.6",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.7",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.8",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.9",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.lock.10",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.fringe.0",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.fringe.1",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.fringe.2",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.fringe.3",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.fringe.4",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.silver.tuft",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "hair.auburn": [
+      {
+        "mesh": "hair.auburn.complete.cap",
+        "vertices": 144,
+        "polygons": 120,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.0",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.1",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.2",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.3",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.4",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.5",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.6",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.7",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.8",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.9",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.lock.10",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.fringe.0",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.fringe.1",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.fringe.2",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.fringe.3",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.fringe.4",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "hair.auburn.tuft",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ],
+    "face": [
+      {
+        "mesh": "eye.white.-1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.iris.-1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.pupil.-1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.light.-1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "brow.-1",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "cheek.-1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.white.1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.iris.1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.pupil.1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "eye.light.1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "brow.1",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "cheek.1",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "nose",
+        "vertices": 114,
+        "polygons": 128,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      },
+      {
+        "mesh": "mouth",
+        "vertices": 32,
+        "polygons": 26,
+        "weight_bones": [
+          "Head"
+        ],
+        "armature_modifiers": [
+          "original.walk.rig"
+        ]
+      }
+    ]
+  },
+  "source_item_groups_count": 13,
+  "meshes": 170,
+  "unweighted_vertices": 0,
+  "painted_parts_complete": false,
+  "hidden_painted_content_verified": false,
+  "source_scope": "Actual reopened original source geometry/weights only. Item-group existence is not painted replacement completeness; hair.silver and hair.auburn are alternative items, not two simultaneous hair slots. Export camera/canvas is authoritative in the approved ground receipt, not inherited motion metadata.",
+  "production_ready": false
+}
