@@ -1,0 +1,1231 @@
+{
+  "schema": "sprite-standard-report-v1",
+  "character": "silver-scarf original hero",
+  "action": "walk",
+  "loop": true,
+  "frame_count": 16,
+  "duration_ms": 600,
+  "status": "REVIEW_REQUIRED",
+  "production_ready": false,
+  "blockers": [
+    "anatomy_acceptance_unresolved",
+    "logical_root_and_acting_review_unresolved",
+    "unknown_visible_track:ankle_a",
+    "unknown_visible_track:ankle_b",
+    "unknown_visible_track:belt",
+    "unknown_visible_track:eye",
+    "unknown_visible_track:root",
+    "pixel_surface_step_exceeds_declared_budget",
+    "unknown_visible_contact_samples",
+    "world_support_and_contact_lock_unresolved",
+    "complete_painted_part_coverage_and_swap_adapter_not_supplied"
+  ],
+  "stages": {
+    "anatomy": {
+      "schema": "sprite-review-gate-report-v1",
+      "status": "REVIEW_REQUIRED",
+      "frames": [
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/00.png",
+          "sha256": "55d52836b0d1a6636d33edf185d389d05384c7b023414d5707c3d9d5ec936569",
+          "source_key": 0,
+          "source_sample_position": 0.0,
+          "source_hip_axis_depth": {
+            "left": 4.601044252830751,
+            "right": 4.697487871449386
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/01.png",
+          "sha256": "1d744478674d26efefc0ea21987b8e2d54dc30cc69de5a8a70b779a892cbccdd",
+          "source_key": 1,
+          "source_sample_position": 2.5,
+          "source_hip_axis_depth": {
+            "left": 4.5957057812231135,
+            "right": 4.692387561335238
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/02.png",
+          "sha256": "2f70a57bfdb9444649111322c745b473b91c5e6f1ca7714f52552cfef71bdcb7",
+          "source_key": 2,
+          "source_sample_position": 5.0,
+          "source_hip_axis_depth": {
+            "left": 4.584959853758163,
+            "right": 4.682234122794271
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/03.png",
+          "sha256": "ea2d88df2ef5fbcce43e0dba87d605a2784fd18520bc0a97868e184f845ded9d",
+          "source_key": 3,
+          "source_sample_position": 7.5,
+          "source_hip_axis_depth": {
+            "left": 4.57192317025673,
+            "right": 4.670026234318376
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/04.png",
+          "sha256": "55039d70c2d120dab5f7c8f1e25e1e38b20db916c7f3224c29bfdb6aa2c29e43",
+          "source_key": 4,
+          "source_sample_position": 10.0,
+          "source_hip_axis_depth": {
+            "left": 4.560456760874704,
+            "right": 4.659472244065664
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/05.png",
+          "sha256": "07316f4218f36819a01cb0b1b6340486baeef0e548c23a3474c318e0576a0795",
+          "source_key": 5,
+          "source_sample_position": 12.5,
+          "source_hip_axis_depth": {
+            "left": 4.554983325064858,
+            "right": 4.654875198861966
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/06.png",
+          "sha256": "627b9145ae10602034ae33853acc42d4f21cf7f18344c9cc4922e08a5b3653ce",
+          "source_key": 6,
+          "source_sample_position": 15.0,
+          "source_hip_axis_depth": {
+            "left": 4.557610876052634,
+            "right": 4.658239329938656
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/07.png",
+          "sha256": "23166a5dd5da8920d04dc6656c1dafe355e89dfc6170c1cd7384b556aab7704b",
+          "source_key": 7,
+          "source_sample_position": 17.5,
+          "source_hip_axis_depth": {
+            "left": 4.5660564150183145,
+            "right": 4.667175404938679
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/08.png",
+          "sha256": "5b7b619e2b46aa39e8bf07ae80d6204a1a071484199bd03cb17c7fd2bcd8c5a1",
+          "source_key": 8,
+          "source_sample_position": 20.0,
+          "source_hip_axis_depth": {
+            "left": 4.576296674247579,
+            "right": 4.677595777513851
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/09.png",
+          "sha256": "1ad168857f5d4321ce71213e1347c20e54fa55c5a6fe49458a1f18e641b737c7",
+          "source_key": 9,
+          "source_sample_position": 22.5,
+          "source_hip_axis_depth": {
+            "left": 4.584562210518125,
+            "right": 4.685651988262365
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/10.png",
+          "sha256": "3af0544eb2b65c42b4ce63b736208ea379d17a5c6070e4c78d939df17945e16f",
+          "source_key": 10,
+          "source_sample_position": 25.0,
+          "source_hip_axis_depth": {
+            "left": 4.588728825647813,
+            "right": 4.6893176225645306
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/11.png",
+          "sha256": "d3e924c2f9f6d9e320c54f0c9a392083e9211070def4ff067e1199e0861e0023",
+          "source_key": 11,
+          "source_sample_position": 27.5,
+          "source_hip_axis_depth": {
+            "left": 4.590013199976948,
+            "right": 4.689880541889548
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/12.png",
+          "sha256": "5b374e38f262ab33f26d2a114d1246b47799cb7cdb9ade8af890c2d74cb374fa",
+          "source_key": 12,
+          "source_sample_position": 30.0,
+          "source_hip_axis_depth": {
+            "left": 4.5906836070818375,
+            "right": 4.689697304142088
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/13.png",
+          "sha256": "2fdf92f5d392a70b6e755362c7fe330840a4b2e261be8a3389cc33582f38acea",
+          "source_key": 13,
+          "source_sample_position": 32.5,
+          "source_hip_axis_depth": {
+            "left": 4.592868714683585,
+            "right": 4.690984901375173
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/14.png",
+          "sha256": "d527fef91c0bc3a4e01b928e1b93e78c21bb44c466c6a07847fbf8dd6435b2f0",
+          "source_key": 14,
+          "source_sample_position": 35.0,
+          "source_hip_axis_depth": {
+            "left": 4.596920255322377,
+            "right": 4.694208635270063
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        },
+        {
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/15.png",
+          "sha256": "48474b74ea4ab39c464eaba34f3d96e652c687aa46dbafa558627e0c124fad1f",
+          "source_key": 15,
+          "source_sample_position": 37.5,
+          "source_hip_axis_depth": {
+            "left": 4.6004495957723375,
+            "right": 4.697137150095371
+          },
+          "source_near_side": "left",
+          "status": "ANATOMY_REVIEW_REQUIRED",
+          "confirmed_sequence_errors": [],
+          "art_anatomy_inferred_from_source": false
+        }
+      ],
+      "semantic_classifier_used": false,
+      "floor_scores_can_override_rejection": false,
+      "new_pixels_inherit_approval": false,
+      "complete_anatomy_accepted": false,
+      "production_ready": false,
+      "scope": "Image-bound review-state gate. Rejected sequence members are blocked as a group, not a claim of separately observed hidden anatomy in each image. Source depth is source geometry only."
+    },
+    "continuity": {
+      "schema": "walk-visible-continuity-report-v1",
+      "label": "new v16 whole-loop candidate, no anatomical acceptance",
+      "frame_count": 16,
+      "cycle_ms": 600,
+      "loop": true,
+      "art_pixels_modified": false,
+      "semantic_leg_identity_checked": false,
+      "hidden_bones_inferred": false,
+      "contact_lock_checked": false,
+      "ground_root_pixel_registration": "UNRESOLVED_REQUIRES_AUTHORITATIVE_ANCHOR_AND_OBSERVATIONS",
+      "status": "DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
+      "landmarks": {
+        "ankle_a": {
+          "status": "INCOMPLETE_OBSERVATIONS"
+        },
+        "ankle_b": {
+          "status": "INCOMPLETE_OBSERVATIONS"
+        },
+        "belt": {
+          "status": "INCOMPLETE_OBSERVATIONS"
+        },
+        "eye": {
+          "status": "INCOMPLETE_OBSERVATIONS"
+        },
+        "root": {
+          "status": "INCOMPLETE_OBSERVATIONS"
+        }
+      },
+      "edges": [
+        {
+          "from": 0,
+          "to": 1,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "duration_ms": 38,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "duration_ms": 37,
+          "loop_seam": false,
+          "generation_batch_changed": false
+        },
+        {
+          "from": 15,
+          "to": 0,
+          "duration_ms": 38,
+          "loop_seam": true,
+          "generation_batch_changed": false
+        }
+      ],
+      "image_patch_tracking": {
+        "method": "Fixed-ROI SIFT/RANSAC reference-to-frame similarities; no image warp",
+        "roi": [
+          100,
+          30,
+          330,
+          250
+        ],
+        "opencv": "4.11.0",
+        "frames": [
+          {
+            "key": 0,
+            "status": "SCOPED_PIXEL_FEATURE_MATCH",
+            "matches": 16,
+            "inliers": 16,
+            "median_inlier_error_px": 3.598540205193487e-14,
+            "reference_patch_center_in_frame_px": [
+              214.99999999999997,
+              139.99999999999997
+            ],
+            "scale": 0.9999999999999999,
+            "rotation_degrees": -1.9527219400303966e-17,
+            "matrix": [
+              [
+                0.9999999999999999,
+                3.4081427229461677e-19,
+                8.393757033745035e-15
+              ],
+              [
+                -3.4081427229461677e-19,
+                0.9999999999999999,
+                6.5072264420633995e-15
+              ]
+            ]
+          },
+          {
+            "key": 1,
+            "status": "SCOPED_PIXEL_FEATURE_MATCH",
+            "matches": 12,
+            "inliers": 8,
+            "median_inlier_error_px": 0.5193613460462638,
+            "reference_patch_center_in_frame_px": [
+              201.00228777911917,
+              140.5464467992139
+            ],
+            "scale": 1.0122923828204815,
+            "rotation_degrees": -0.002200610560229098,
+            "matrix": [
+              [
+                1.0122923820738314,
+                3.888002442863862e-05,
+                -16.646017570174607
+              ],
+              [
+                -3.888002442863862e-05,
+                1.0122923820738314,
+                -1.1661274858703417
+              ]
+            ]
+          },
+          {
+            "key": 2,
+            "status": "INCONCLUSIVE"
+          },
+          {
+            "key": 3,
+            "status": "INCONCLUSIVE",
+            "matches": 8,
+            "inliers": 5
+          },
+          {
+            "key": 4,
+            "status": "INCONCLUSIVE",
+            "matches": 11,
+            "inliers": 7
+          },
+          {
+            "key": 5,
+            "status": "INCONCLUSIVE"
+          },
+          {
+            "key": 6,
+            "status": "SCOPED_PIXEL_FEATURE_MATCH",
+            "matches": 12,
+            "inliers": 8,
+            "median_inlier_error_px": 0.7553951887705542,
+            "reference_patch_center_in_frame_px": [
+              212.07689657355294,
+              144.0034536880017
+            ],
+            "scale": 1.0137845902390936,
+            "rotation_degrees": -0.34593561288751196,
+            "matrix": [
+              [
+                1.0137661120395514,
+                0.006120905689429532,
+                -6.739744311470719
+              ],
+              [
+                -0.006120905689429532,
+                1.0137661120395514,
+                3.3921927256918734
+              ]
+            ]
+          },
+          {
+            "key": 7,
+            "status": "INCONCLUSIVE",
+            "matches": 9,
+            "inliers": 5
+          },
+          {
+            "key": 8,
+            "status": "INCONCLUSIVE"
+          },
+          {
+            "key": 9,
+            "status": "INCONCLUSIVE",
+            "matches": 10,
+            "inliers": 6
+          },
+          {
+            "key": 10,
+            "status": "INCONCLUSIVE",
+            "matches": 11,
+            "inliers": 6
+          },
+          {
+            "key": 11,
+            "status": "SCOPED_PIXEL_FEATURE_MATCH",
+            "matches": 10,
+            "inliers": 8,
+            "median_inlier_error_px": 0.650714108245864,
+            "reference_patch_center_in_frame_px": [
+              213.8086928636493,
+              164.5271317361478
+            ],
+            "scale": 0.9885419572095646,
+            "rotation_degrees": -1.932852822806772,
+            "matrix": [
+              [
+                0.9879795171683019,
+                0.0333417878885585,
+                -3.2747536319337986
+              ],
+              [
+                -0.0333417878885585,
+                0.9879795171683019,
+                33.37848372862562
+              ]
+            ]
+          },
+          {
+            "key": 12,
+            "status": "INCONCLUSIVE",
+            "matches": 8,
+            "inliers": 6
+          },
+          {
+            "key": 13,
+            "status": "INCONCLUSIVE",
+            "matches": 10,
+            "inliers": 6
+          },
+          {
+            "key": 14,
+            "status": "INCONCLUSIVE",
+            "matches": 11,
+            "inliers": 7
+          },
+          {
+            "key": 15,
+            "status": "INCONCLUSIVE",
+            "matches": 12,
+            "inliers": 6
+          }
+        ],
+        "art_modified": false,
+        "anatomy_pass": false,
+        "status": "INCONCLUSIVE"
+      },
+      "palette_patch_probe": {
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "contract": {
+          "roi": [
+            105,
+            25,
+            325,
+            250
+          ],
+          "max_hsv_saturation_255": 90,
+          "min_hsv_value_255": 120,
+          "min_blue_green_ratio": 0.9,
+          "min_red_green_ratio": 0.9,
+          "minimum_pixels": 1000,
+          "surface": "Silver/lavender hair palette, calibrated only for this character",
+          "max_step_px": 20,
+          "budget_scope": "Provisional surface-registration warning for this 512px character only; not a naturalness/pose/contact/anatomy pass"
+        },
+        "frames": [
+          {
+            "key": 0,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9447,
+            "centroid_px": [
+              186.78818672594474,
+              104.71228961575103
+            ],
+            "bounds_xyxy": [
+              110,
+              45,
+              264,
+              168
+            ]
+          },
+          {
+            "key": 1,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9602,
+            "centroid_px": [
+              173.00687356800665,
+              103.58227452614038
+            ],
+            "bounds_xyxy": [
+              105,
+              43,
+              251,
+              168
+            ]
+          },
+          {
+            "key": 2,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9711,
+            "centroid_px": [
+              183.3154155081866,
+              103.99567500772321
+            ],
+            "bounds_xyxy": [
+              105,
+              43,
+              261,
+              169
+            ]
+          },
+          {
+            "key": 3,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9983,
+            "centroid_px": [
+              183.92056496043273,
+              105.71451467494741
+            ],
+            "bounds_xyxy": [
+              105,
+              44,
+              263,
+              172
+            ]
+          },
+          {
+            "key": 4,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9738,
+            "centroid_px": [
+              182.89967139042923,
+              107.60032860957075
+            ],
+            "bounds_xyxy": [
+              105,
+              48,
+              262,
+              173
+            ]
+          },
+          {
+            "key": 5,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9856,
+            "centroid_px": [
+              177.45261769480518,
+              108.1539163961039
+            ],
+            "bounds_xyxy": [
+              105,
+              48,
+              256,
+              172
+            ]
+          },
+          {
+            "key": 6,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9570,
+            "centroid_px": [
+              182.68223615464996,
+              108.03343782654127
+            ],
+            "bounds_xyxy": [
+              105,
+              47,
+              259,
+              171
+            ]
+          },
+          {
+            "key": 7,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9348,
+            "centroid_px": [
+              186.3318356867779,
+              110.46694480102695
+            ],
+            "bounds_xyxy": [
+              106,
+              51,
+              264,
+              175
+            ]
+          },
+          {
+            "key": 8,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9659,
+            "centroid_px": [
+              182.81726886841287,
+              131.30500051765193
+            ],
+            "bounds_xyxy": [
+              105,
+              71,
+              260,
+              195
+            ]
+          },
+          {
+            "key": 9,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9519,
+            "centroid_px": [
+              178.7793885912386,
+              130.70616661414013
+            ],
+            "bounds_xyxy": [
+              105,
+              70,
+              257,
+              197
+            ]
+          },
+          {
+            "key": 10,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9702,
+            "centroid_px": [
+              184.37816944959803,
+              128.30529787672646
+            ],
+            "bounds_xyxy": [
+              105,
+              66,
+              261,
+              191
+            ]
+          },
+          {
+            "key": 11,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9524,
+            "centroid_px": [
+              185.98414531709366,
+              131.0907181856363
+            ],
+            "bounds_xyxy": [
+              106,
+              71,
+              264,
+              194
+            ]
+          },
+          {
+            "key": 12,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9718,
+            "centroid_px": [
+              181.96542498456472,
+              111.0518625231529
+            ],
+            "bounds_xyxy": [
+              105,
+              51,
+              261,
+              173
+            ]
+          },
+          {
+            "key": 13,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9753,
+            "centroid_px": [
+              177.80057418230288,
+              111.76848149287399
+            ],
+            "bounds_xyxy": [
+              105,
+              51,
+              255,
+              178
+            ]
+          },
+          {
+            "key": 14,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9968,
+            "centroid_px": [
+              188.33818218298555,
+              111.52467897271268
+            ],
+            "bounds_xyxy": [
+              108,
+              51,
+              268,
+              178
+            ]
+          },
+          {
+            "key": 15,
+            "status": "DECLARED_PALETTE_REGION_MEASURED",
+            "pixels": 9778,
+            "centroid_px": [
+              184.9900797709143,
+              111.79208427081203
+            ],
+            "bounds_xyxy": [
+              105,
+              51,
+              263,
+              179
+            ]
+          }
+        ],
+        "art_modified": false,
+        "anatomy_pass": false,
+        "scope": "Palette-region centroid/occupancy only. Costume, palette, lighting, turn or occlusion changes invalidate interpretation; recalibrate for each character. Not recovered head or bone position.",
+        "centroid_step_px": [
+          13.827564010334763,
+          10.316827850198026,
+          1.8222556519811393,
+          2.144415509478994,
+          5.475112181536582,
+          5.231006052498225,
+          4.38651717650564,
+          21.132362526937673,
+          4.082043505009254,
+          6.091840263354127,
+          3.2152332394813445,
+          20.437853345518555,
+          4.226053117610472,
+          10.540427982055014,
+          3.3587639624077434,
+          7.3045657625596805
+        ],
+        "max_centroid_step_px": 21.132362526937673,
+        "last_to_first_centroid_step_px": 7.3045657625596805,
+        "declared_budget_px": 20,
+        "edges_over_declared_budget": [
+          {
+            "from": 7,
+            "to": 8,
+            "step_px": 21.132362526937673
+          },
+          {
+            "from": 11,
+            "to": 12,
+            "step_px": 20.437853345518555
+          }
+        ],
+        "registration_warning": true
+      }
+    },
+    "contact": {
+      "schema": "painted-ground-review-v1",
+      "source_ground_sha256": "2e1c0aef889abae10b6486c719217aadbc83cae54d45ba307df0ff67d6d4071e",
+      "shared_scale": 1.1,
+      "shared_translation_y_px": -14.850111,
+      "per_frame_fit": false,
+      "art_modified": false,
+      "world_support_verified": false,
+      "anatomical_identity_verified": false,
+      "status": "DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
+      "frames": [
+        {
+          "source_key": 0,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/00.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 1,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/01.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 2,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/02.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 3,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/03.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 4,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/04.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 5,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/05.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 6,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/06.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 7,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/07.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 8,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/08.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 9,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/09.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 10,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/10.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 11,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/11.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 12,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/12.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 13,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/13.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 14,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/14.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        },
+        {
+          "source_key": 15,
+          "image": "research/sprite-animation/leg-ownership-v16/candidate/frames/15.png",
+          "observations": [
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            },
+            {
+              "status": "UNKNOWN_VISIBLE_SOLE"
+            }
+          ],
+          "calibration_sample_not_independent_validation": false
+        }
+      ],
+      "scope": "Projected source-floor comparison of manually selected visible sole contours; ROI/identity/scale calibration can be wrong. Not recovery of image depth, weight or world-space foot-lock.",
+      "contact_warning_keys": [],
+      "inconclusive_keys": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "independent_contact_warning_keys": [],
+      "source_dense_summary": {
+        "samples": 129,
+        "exported_frames": 16,
+        "both_feet_airborne_candidates": 0,
+        "minimum_sole_z": -5.9157609939575195e-05,
+        "near_plane_coverage": 1.0
+      }
+    }
+  },
+  "scope": "Shared image/source/clock/review-state baseline. Current executed adapter is W walking; other actions require their own source phases, contact semantics and visual/modular review. A stable head or fewer warnings is not naturalness acceptance.",
+  "contract_sha256": "e9d3739e2e22fcf2e6815ab772439193c5c2be39080f24816c5f5ca5ca3017f4"
+}

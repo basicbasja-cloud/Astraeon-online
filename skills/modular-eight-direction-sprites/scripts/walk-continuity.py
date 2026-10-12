@@ -30,6 +30,19 @@ def cyclic_differences(points, durations_ms):
     return delta, velocity, acceleration
 
 
+def temporal_differences(points, durations_ms, loop=True):
+    if loop:
+        return cyclic_differences(points, durations_ms)
+    p=np.asarray(points,dtype=float);dt=np.asarray(durations_ms,dtype=float)/1000
+    if len(p)<3 or len(p)!=len(dt) or not np.isfinite(p).all() or not np.isfinite(dt).all() or np.any(dt<=0):
+        raise ValueError('At least three finite samples and positive exposure durations required')
+    delta=np.diff(p,axis=0)
+    velocity=delta/dt[:-1].reshape((-1,)+(1,)*(p.ndim-1))
+    centers=(dt[:-2]+dt[1:-1])/2
+    acceleration=np.diff(velocity,axis=0)/centers.reshape((-1,)+(1,)*(p.ndim-1))
+    return delta,velocity,acceleration
+
+
 def image_patch_tracking(spec):
     """Independent pixel-feature diagnostic on one declared coherent surface ROI.
 
@@ -86,10 +99,10 @@ def image_patch_tracking(spec):
             'status':'SCOPED_PIXEL_FEATURE_TRACKING' if all(r['status']=='SCOPED_PIXEL_FEATURE_MATCH' for r in rows) else 'INCONCLUSIVE'}
     if result['status']=='SCOPED_PIXEL_FEATURE_TRACKING':
         p=[r['reference_patch_center_in_frame_px'] for r in rows]
-        delta,_,_=cyclic_differences(p,[f['duration_ms'] for f in spec['frames']])
+        delta,_,_=temporal_differences(p,[f['duration_ms'] for f in spec['frames']],spec.get('loop',True))
         result['center_step_px']=np.linalg.norm(delta,axis=1).tolist()
         result['max_center_step_px']=max(result['center_step_px'])
-        result['last_to_first_center_step_px']=result['center_step_px'][-1]
+        result['last_to_first_center_step_px']=result['center_step_px'][-1] if spec.get('loop',True) else None
         result['scale_range']=[min(r['scale'] for r in rows),max(r['scale'] for r in rows)]
     return result
 
@@ -127,8 +140,8 @@ def palette_patch_probe(spec):
             'contract':contract,'frames':rows,'art_modified':False,'anatomy_pass':False,
             'scope':'Palette-region centroid/occupancy only. Costume, palette, lighting, turn or occlusion changes invalidate interpretation; recalibrate for each character. Not recovered head or bone position.'}
     if result['status']=='DECLARED_PALETTE_REGION_MEASURED':
-        delta,_,_=cyclic_differences([r['centroid_px'] for r in rows],[f['duration_ms'] for f in spec['frames']])
-        result['centroid_step_px']=np.linalg.norm(delta,axis=1).tolist();result['max_centroid_step_px']=max(result['centroid_step_px']);result['last_to_first_centroid_step_px']=result['centroid_step_px'][-1]
+        delta,_,_=temporal_differences([r['centroid_px'] for r in rows],[f['duration_ms'] for f in spec['frames']],spec.get('loop',True))
+        result['centroid_step_px']=np.linalg.norm(delta,axis=1).tolist();result['max_centroid_step_px']=max(result['centroid_step_px']);result['last_to_first_centroid_step_px']=result['centroid_step_px'][-1] if spec.get('loop',True) else None
         if 'max_step_px' in contract:
             result['declared_budget_px']=contract['max_step_px']
             result['edges_over_declared_budget']=[{'from':i,'to':(i+1)%len(rows),'step_px':v} for i,v in enumerate(result['centroid_step_px']) if v>contract['max_step_px']]
@@ -139,7 +152,8 @@ def palette_patch_probe(spec):
 def audit(spec):
     frames = spec['frames']
     duration = [f['duration_ms'] for f in frames]
-    cyclic_differences(np.zeros((len(frames), 2)), duration)
+    loop=spec.get('loop',True)
+    temporal_differences(np.zeros((len(frames), 2)), duration,loop)
     for f in frames:
         if sha(f['image']) != f['sha256']:
             raise ValueError('Changed artwork: observations must be remeasured')
@@ -154,7 +168,7 @@ def audit(spec):
             if not (0 <= x < width and 0 <= y < height) or not np.isfinite(item['uncertainty_px']) or item['uncertainty_px'] < 0:
                 raise ValueError('Invalid visible landmark observation')
     report = {'schema': 'walk-visible-continuity-report-v1', 'label': spec['label'],
-              'frame_count': len(frames), 'cycle_ms': sum(duration),
+              'frame_count': len(frames), 'cycle_ms': sum(duration), 'duration_ms':sum(duration), 'loop':loop,
               'art_pixels_modified': False, 'semantic_leg_identity_checked': False,
               'hidden_bones_inferred': False, 'contact_lock_checked': False,
               'ground_root_pixel_registration': 'UNRESOLVED_REQUIRES_AUTHORITATIVE_ANCHOR_AND_OBSERVATIONS',
@@ -172,23 +186,24 @@ def audit(spec):
                 'positions_px': p.tolist(), 'uncertainty_px': u.tolist(),
                 'trajectory_computed': False}
             continue
-        delta, velocity, acceleration = cyclic_differences(p, duration)
+        delta, velocity, acceleration = temporal_differences(p, duration,loop)
         lengths = np.linalg.norm(delta, axis=1)
         # Worst-case bound for two independently uncertain visible observations.
-        adjusted = np.maximum(0, lengths - u - np.roll(u, -1))
+        adjusted = np.maximum(0, lengths - (u+np.roll(u,-1) if loop else u[:-1]+u[1:]))
         report['landmarks'][name] = {'status': 'MEASURED_VISIBLE_POINTS', 'positions_px': p.tolist(),
             'uncertainty_px': u.tolist(), 'step_px': lengths.tolist(),
             'uncertainty_adjusted_step_px': adjusted.tolist(), 'velocity_px_per_s': velocity.tolist(),
             'acceleration_px_per_s2': acceleration.tolist(), 'max_step_px': float(lengths.max()),
             'rms_step_px': float(np.sqrt(np.mean(lengths ** 2))),
-            'last_to_first_step_px': float(lengths[-1]),
-            'max_cyclic_second_difference_px': float(np.max(np.linalg.norm(
-                np.roll(p,-1,axis=0)-2*p+np.roll(p,1,axis=0),axis=1)))}
+            'last_to_first_step_px': float(lengths[-1]) if loop else None,
+            'max_temporal_second_difference_px': float(np.max(np.linalg.norm(
+                np.roll(p,-1,axis=0)-2*p+np.roll(p,1,axis=0) if loop else np.diff(p,n=2,axis=0),axis=1)))}
+        report['landmarks'][name]['max_cyclic_second_difference_px']=report['landmarks'][name]['max_temporal_second_difference_px'] if loop else None
         if spec.get('reference_body_height_px'):
             if spec['reference_body_height_px'] <= 0:
                 raise ValueError('Reference body height must be positive')
             report['landmarks'][name]['max_step_as_reference_height_fraction'] = float(lengths.max()/spec['reference_body_height_px'])
-    for i, f in enumerate(frames):
+    for i, f in enumerate(frames if loop else frames[:-1]):
         j = (i + 1) % len(frames)
         report['edges'].append({'from': i, 'to': j, 'duration_ms': duration[i],
             'loop_seam': j == 0, 'generation_batch_changed': f.get('batch') != frames[j].get('batch')})
@@ -231,6 +246,7 @@ def main():
     mode.add_argument('--init-from-frames', type=Path)
     parser.add_argument('--frame-ms',type=float,default=75)
     parser.add_argument('--label',default='new-character-unreviewed')
+    parser.add_argument('--non-looping',action='store_true',help='One-shot action or bounded excerpt: do not invent last-to-first edge')
     parser.add_argument('--out', required=True, type=Path)
     args = parser.parse_args()
     if args.init_from_frames:
@@ -243,6 +259,7 @@ def main():
         if any(s!=sizes[0] for s in sizes):raise ValueError('Normalize the fixed canvas first')
         spec={'schema':'walk-visible-observations-v1','label':args.label,'canvas':sizes[0],
               'registration':'Declare actual logical root/camera; do not infer from changing sprite bounds',
+              'loop':not args.non_looping,
               'tracked_landmarks':['eye','belt','root'],
               'landmark_semantics':{'eye':'Same visible pupil throughout the facing; unknown when occluded',
                   'belt':'Same visible buckle/waist feature, not an arbitrary garment centroid',

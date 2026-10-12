@@ -119,3 +119,21 @@ python skills/modular-eight-direction-sprites/scripts/ground-contact.py \
 ```
 
 Initialize with that character's declared transform/budget; the example numbers above are placeholders. Every ROI starts null and identity unconfirmed. Initialization refuses overwrites, phase-count and canvas mismatches. Source and floor recipes must be adapted to the new rig/camera/sole contract. [Actual16-frame experiment](../../../research/sprite-animation/ground-walk-sixteen-v15/README.md) preserves first-raw frame5 rejection, shared-row recovery, same-art8/16 clocks and independent warnings. Source proximity or a calibration match never establishes support/ownership.
+
+## v16: shared rejection, temporal and delivery-clock standard
+
+Read [sprite production standard](../references/sprite-production-standard.md). `sprite-review-gate.py` binds source phases and exact-image rejection history; `sprite-standard.py` recomputes bound anatomy/continuity/contact inputs and refuses mixed frame banks or loop modes. Production enforcement uses `--require-production` and exits2 for unresolved/rejected work. Diagnostic exit0 only means a report was computed. There is no automatic anatomy classifier or accepted complete-part adapter in this new combined checker.
+
+```bash
+PYTHONPATH=/tmp/astraeon-vision-deps python skills/modular-eight-direction-sprites/scripts/sprite-standard.py \
+  --contract research/sprite-animation/leg-ownership-v16/evidence/attempt3-standard-contract.json \
+  --out /tmp/sprite-standard.json --require-production
+python skills/modular-eight-direction-sprites/scripts/animation-cadence.py \
+  --animation research/sprite-animation/leg-ownership-v16/uniform-review/walk-uniform-800ms.gif \
+  --out /tmp/actual-file-cadence.json
+python skills/modular-eight-direction-sprites/scripts/walk-continuity.py \
+  --init-from-frames path/to/one-shot/frames --frame-ms 50 --non-looping \
+  --label new-action-unreviewed --out /tmp/one-shot-observations.json
+```
+
+One-shot/excerpt temporal review omits the false last→first edge; loop review preserves it. `pack-motion-grid.py --non-looping` exports one-play files. `animation-cadence.py` reads actual decoded delays; nonuniform artist-authored holds may be intentional. The uniform50ms16-frame review clock changes the loop to800ms and does not fix poses or world contacts. [Executed v16 comparisons/failures](../../../research/sprite-animation/leg-ownership-v16/README.md) preserve the rejected v15 group and all3 new unapproved attempts. Wwalking is the currently tested adapter; other actions need appropriate source/grip/contact contracts.

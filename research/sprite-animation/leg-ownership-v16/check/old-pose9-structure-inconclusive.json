@@ -1,0 +1,52 @@
+{
+  "method": "Torso SIFT/RANSAC similarity registration then symmetric edge-distance in declared pelvis/thigh ROIs",
+  "status": "INCONCLUSIVE",
+  "semantic_leg_swap_detected": false,
+  "anatomy_pass": false,
+  "art_pixels_modified": false,
+  "regions": [
+    {
+      "name": "pelvis_thigh_boundary",
+      "status": "INCONCLUSIVE",
+      "foreground_coverage": 0.6823309796282769
+    },
+    {
+      "name": "proximal_overlap",
+      "status": "INCONCLUSIVE",
+      "foreground_coverage": 0.5592363840539023
+    }
+  ],
+  "opencv": "4.11.0",
+  "thresholds": {
+    "edge_radius_px": 4,
+    "mean_distance_px": 3,
+    "p95_distance_px": 8,
+    "outside_radius_fraction": 0.2
+  },
+  "registration": {
+    "matrix": [
+      [
+        0.9591298646144485,
+        -0.02744163839227213,
+        19.085201408628627
+      ],
+      [
+        0.02744163839227213,
+        0.9591298646144485,
+        -56.54331514399156
+      ]
+    ],
+    "matches": 25,
+    "inliers": 13,
+    "inlier_fraction": 0.52,
+    "median_inlier_error_px": 1.2935686521182408,
+    "scale": 0.9595223502936149,
+    "rotation_degrees": 1.6388409038753384,
+    "reflection_allowed": false,
+    "leg_fit_used": false
+  },
+  "reference_spec_sha256": "c0fb37d2aaf4fd18d0ca82df8bffce38a863bcfc8a51203d5fec5f1b47ae2cc2",
+  "reference_image_sha256": "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+  "candidate_image_sha256": "c4f84e98250cd957e94d63284e9b914055e3a19860c36da94f08408c5b196c36",
+  "scope": "Same character, facing and source phase as approved reference; different costume/view/style needs a new reference. Edge disagreement is not proof of semantic swap."
+}

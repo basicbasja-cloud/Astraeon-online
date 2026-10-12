@@ -1,4 +1,8 @@
-## Latest: flat-ground diagnostics and16-frame limit test v15
+## Latest: wrong-leg rejection, smoother-clock test and shared standard v16
+
+[Actual source/old/new review, uniform800ms GIF and combined checking standard](leg-ownership-v16/README.md) preserve the user's rejected v15 sequence9–11 and new smoothness requirement. Three redraws remain unapproved; third seam improves but an internal step still warns. Shared source/image rejection gates, one-shot handling, exact decoded cadence and122Python/77browser checks form a reusable review baseline. Current Wwalking does not certify every action, new anatomy or complete painted parts.
+
+## Previous: flat-ground diagnostics and16-frame limit test v15
 
 [16-frame GIF, same-art8-frame control and actual source/sole review](ground-walk-sixteen-v15/README.md) test fractional source sampling and flat-ground continuity. The user's first-raw frame5 rejection, two grid-layout failures, shared-row recovery, independent contact warnings, unknown-first contracts and103Python/57browser checks are retained. Current source height evidence does not establish physical support; new frame5 anatomy and heel/toe warnings remain unapproved.
 
@@ -54,7 +58,8 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.15](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.16](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Shared sprite production/review standard](../../skills/modular-eight-direction-sprites/references/sprite-production-standard.md)
 - [Ground-plane/contact review and fractional16-frame tests](../../skills/modular-eight-direction-sprites/references/ground-plane-and-contact-review.md)
 - [Walk spacing, registration and reproduction checks](../../skills/modular-eight-direction-sprites/references/walk-spacing-and-registration.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)

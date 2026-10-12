@@ -13,7 +13,9 @@ def validate_panel_cuts(alpha,spec):
  width=spec['source_cell_width'];scale=spec['global_pixel_scale'];bounds=spec['raw_row_panel_bounds'];h,w=alpha.shape
  if not all(np.isfinite(v) for v in [width,scale]) or min(width,scale)<=0:raise ValueError('Invalid shared scale or panel width')
  if abs(width*4-w)>1e-6 or len(bounds)!=5 or bounds[0]!=0 or bounds[-1]!=h or any(not isinstance(v,int) for v in bounds) or any(b<=a for a,b in zip(bounds,bounds[1:])):raise ValueError('Panel boundaries do not cover this 4x4 sheet')
- cuts=[int(alpha[y-1:y+1].max()) for y in bounds[1:-1]]+[int(alpha[:,round(i*width)-1:round(i*width)+1].max()) for i in range(1,4)]
+ columns=spec.get('raw_column_panel_bounds',[round(i*width) for i in range(5)])
+ if len(columns)!=5 or columns[0]!=0 or columns[-1]!=w or any(not isinstance(v,int) for v in columns) or any(b<=a for a,b in zip(columns,columns[1:])):raise ValueError('Invalid column panel boundaries')
+ cuts=[int(alpha[y-1:y+1].max()) for y in bounds[1:-1]]+[int(alpha[:,x-1:x+1].max()) for x in columns[1:-1]]
  if max(cuts)>64:raise ValueError('Panel cut crosses foreground; cannot recover by deleting content')
  if sorted(a['row'] for a in spec['anchors'])!=list(range(4)):raise ValueError('Exactly one common registration anchor per row is required')
  return cuts
@@ -39,8 +41,11 @@ def main():
   for col in range(4):
    # Isolate a complete panel before the common row transform, so a neighboring
    # row cannot leak into the expanded logical canvas. No foreground deletion.
-   bounds=(round(col*width),start,round((col+1)*width),end);panel=raw.crop(bounds)
-   transform=(1/scale,0,-xpad/scale,0,1/scale,origin-start)
+   columns=spec.get('raw_column_panel_bounds',[round(i*width) for i in range(5)])
+   bounds=(columns[col],start,columns[col+1],end);panel=raw.crop(bounds)
+   # A wider empty-gutter panel preserves off-grid cape pixels, while the
+   # original logical column origin/scale stays unchanged. This is not a fit.
+   transform=(1/scale,0,round(col*width)-columns[col]-xpad/scale,0,1/scale,origin-start)
    frame=panel.transform((512,512),Image.Transform.AFFINE,transform,resample=Image.Resampling.BICUBIC)
    alpha=np.array(frame)[:,:,3]
    if max(alpha[0].max(),alpha[-1].max(),alpha[:,0].max(),alpha[:,-1].max())>64:raise ValueError('Registration clips a figure')
