@@ -1,4 +1,8 @@
-## Latest: W walking expanded to 8 frames v13
+## Latest: frame continuity and reusable placement checks v14
+
+[Frame-by-frame game comparisons, equal-speed before/after GIF and new tools](continuity-v14/README.md) preserve the user's accepted v13 leg identity while recording its rejected continuity. A geometry-first whole-eight candidate reduces measured surface-registration jumps. RO/King Lucas native frames, ToS occlusion evidence, source-bone trajectories, unknown-first templates, raw failures and corrected-observation receipts are retained. New anatomy/contact/spacing and complete painted parts remain unapproved; head stability is not production acceptance.
+
+## Previous: W walking expanded to 8 frames v13
 
 [Eight-frame preview and preserved approved keys](ro-walk-eight-v13/README.md) match the audited RO Swordman walk count. New slots1/3/5/7 retain approved pixels exactly; intermediates remain review candidates. Includes 600ms reference-cadence, 1333ms source-cadence and equal-speed four-key comparison.
 
@@ -46,7 +50,8 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.13](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.14](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Walk spacing, registration and reproduction checks](../../skills/modular-eight-direction-sprites/references/walk-spacing-and-registration.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)

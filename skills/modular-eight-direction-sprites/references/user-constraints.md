@@ -43,3 +43,6 @@ The general art direction is acceptable to the user. No individual production se
 30. Continue learning and record reusable knowledge in the skill/pipeline for other characters. Generalize bone/camera/occlusion contracts and review methods; do not use this character's green cloth or exact pixel contours as a universal anatomy classifier.
 
 31. The user requests Ragnarok-like frame count to make the current walk smoother. The bounded target adopts the audited eight-frame Swordman walk and preserves the approved W keys while adding intermediates. This does not approve every new frame, change every action to eight poses or establish universal RO FPS.
+
+32. The user subsequently accepts v13 leg readability but rejects its jerky continuity. Research, analyze and apply real examples; compare with other games frame by frame. Preserve correct anatomical ownership while fixing timing/spacing/registration. Do not treat frame count or leg acceptance as whole-motion approval.
+33. Prioritize continuity of character placement between every frame, avoiding unintended jumping. Build tools to verify that behavior and keep reusable contracts, experiments, failures, guides and checks for reproducing other characters. An intended body bob must not be erased by arbitrary alignment; an unknown logical root must not be invented from sprite bounds.

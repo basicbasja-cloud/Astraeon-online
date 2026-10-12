@@ -1,0 +1,57 @@
+{
+  "jobs": [
+    {
+      "original_workspace_image": "/workspace/generated_images/exec-66d52014-87a3-44da-b486-648f600e0bb6.png",
+      "retained_raw": "research/sprite-animation/continuity-v14/evidence/W-eight-raw.png",
+      "raw_sha256": "a155d171c2c77233bde5d8dca68af21a06d782174956207eb1146c42f56987d0",
+      "prompt": "research/sprite-animation/continuity-v14/evidence/redraw-prompt.txt",
+      "prompt_sha256": "dc8c995e4416c4d506082f8705ca80a7608b9f73d847c9e411dc3dd1d30acecd",
+      "references": [
+        {
+          "path": "research/sprite-animation/profile-depth-v12/evidence/W-raw.png",
+          "sha256": "fb14b3e10bfa8f0b162867a79aedf839bf7136c86d08c356b03e28dfb895727c"
+        },
+        {
+          "path": "research/sprite-animation/ro-walk-eight-v13/source-depth/W-dressed-guide.png",
+          "sha256": "38be931cba7ccb9e865559a877d360ac59cb34e7562747417668c640932c6aa6"
+        },
+        {
+          "path": "research/sprite-animation/ro-walk-eight-v13/source-depth/W-proximal-guide.png",
+          "sha256": "f1f2dc9ac8d411f635281d9bc022ede544b59f57bd97c14edb2180ccab0fc727"
+        }
+      ],
+      "transparent_background": true,
+      "status": "REJECTED_CELL_CLIP_AND_REPEATED_SPACING",
+      "external_game_pixels_as_input": false
+    },
+    {
+      "original_workspace_image": "/workspace/generated_images/exec-fa9c9148-6c38-4293-bf0a-10a29cb77488.png",
+      "retained_raw": "research/sprite-animation/continuity-v14/evidence/W-geometry-first-raw.png",
+      "raw_sha256": "b2fca9af2d406be7ba0a1a6e7181e352180e73848acefcbca8fc2b6d488f0e4f",
+      "prompt": "research/sprite-animation/continuity-v14/evidence/geometry-first-prompt.txt",
+      "prompt_sha256": "9be4f203bd129edcea7f410a1fc9b85a6eadbb83d0c9d56bf49dc7f85fc8a399",
+      "references": [
+        {
+          "path": "research/sprite-animation/ro-walk-eight-v13/source-depth/W-dressed-guide.png",
+          "sha256": "38be931cba7ccb9e865559a877d360ac59cb34e7562747417668c640932c6aa6"
+        },
+        {
+          "path": "research/sprite-animation/profile-depth-v12/master/W/frames/00.png",
+          "sha256": "5ed068534592b93ce476479e862d9af57d47c5801e7ab641642e953a7e4ccd80"
+        }
+      ],
+      "transparent_background": true,
+      "status": "NEW_CANDIDATE_REVIEW_REQUIRED",
+      "external_game_pixels_as_input": false
+    }
+  ],
+  "all_new_pixels_user_approved": false,
+  "complete_replaceable_painted_parts": false,
+  "tools": {
+    "python": "3.12.14",
+    "Pillow": "12.3.0",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8",
+    "opencv": "4.11.0 (pinned optional wheel4.11.0.86)"
+  }
+}

@@ -87,3 +87,19 @@ Use [occlusion-image-review](../references/occlusion-image-review.md) and [v11 i
 ## Profile pelvis/depth and approved-reference image structure
 
 Read [profile-pelvis-depth](../references/profile-pelvis-depth.md) for the source cutaway/depth contract, SHA-bound W approval, paired proximal checks and `profile-structure.py` commands/dependencies. The comparator finds independent edge-structure differences; it is not an automatic semantic anatomy detector. Never transfer approval to a different generated image.
+
+## v14: cyclic placement and spacing review for reproduction
+
+Read [walk spacing and registration](../references/walk-spacing-and-registration.md). `walk-continuity.py` creates unknown-first SHA-bound contracts, checks every exposure and the cyclic seam, and keeps body placement, unsigned ankle spread and anatomical owners separate. Optional fixed-ROI SIFT and calibrated palette-region probes inspect actual pixels without warping art. Low feature coverage stays inconclusive; screen-sorted boots do not get anatomical trajectories. A stable hair centroid never approves contact or naturalness. Pupil measurements must be inspected on coordinate overlays; v14 retains a failed first marking attempt.
+
+```bash
+python skills/modular-eight-direction-sprites/scripts/walk-continuity.py --init-from-frames path/to/new/frames --frame-ms 75 \
+  --label new-character --out /tmp/new-character-review.json
+PYTHONPATH=/tmp/astraeon-vision-deps python skills/modular-eight-direction-sprites/scripts/walk-continuity.py \
+  --observations research/sprite-animation/continuity-v14/evidence/v14-observations.json \
+  --out /tmp/placement-and-spacing.json
+```
+
+Run these commands from the repository root; bound image paths in JSON are repository-relative. The75ms default is a study choice, not a rule for other actions. Calibrate palette/ROI/budgets, dimensions, camera, surfaces and timeline per character. `requirements-continuity.txt` pins the actually tested optional dependency set; its NumPy version differs from earlier render recipes.
+
+The study builder/HTML/native reference loops are in `studies/walk-test/`. [Actual v14 before/after and reports](../../../research/sprite-animation/continuity-v14/README.md) retain the accepted v13 legs/rejected motion, new unapproved pixels, source-spacing warnings, raw clipped failure and full game-reference frames. These outputs are flat research previews, not replaceable painted production parts.

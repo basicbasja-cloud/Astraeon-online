@@ -1,0 +1,119 @@
+{
+  "schema": "walk-visible-observations-v1",
+  "label": "EXAMPLE-template-not-new-character",
+  "canvas": [
+    512,
+    512
+  ],
+  "registration": "Declare actual logical root/camera; do not infer from changing sprite bounds",
+  "tracked_landmarks": [
+    "eye",
+    "belt",
+    "root"
+  ],
+  "landmark_semantics": {
+    "eye": "Same visible pupil throughout the facing; unknown when occluded",
+    "belt": "Same visible buckle/waist feature, not an arbitrary garment centroid",
+    "root": "Authoritative logical ground anchor; do not substitute belly, head or lowest alpha pixel",
+    "ankle_a_and_b": "Unordered visible band centers for span only; not anatomical side tracks"
+  },
+  "scope": "New character template: all measurements unknown. Calibrate ROIs, timing, uncertainty and surface semantics before use.",
+  "frames": [
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/00.png",
+      "sha256": "1e011d3ae674e96f37638ad85d2dc3db3d35234bb077dd9f1cd10b8a9d92aa69",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/01.png",
+      "sha256": "7d7fe555c03dfe411de11772db5618b888e0bd1b1d31c75c7e234e026ed64c8a",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/02.png",
+      "sha256": "a102ca918e393033916f3af8f0bd574a7afa94f8e5810a44dd17052a60b34f29",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/03.png",
+      "sha256": "ec643241dc78aa1ab1028338fdc7dfdccaca0c7bf5c306d450f5d5aca14d3c19",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/04.png",
+      "sha256": "45978dc1e8c18fb712dcd6051c362f76884e50bcd7aa1c46108b582454b0eb87",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/05.png",
+      "sha256": "fcfdb4f6f356f4066f3aa98b63d0905ba34d62c35b7d2c17a591e22845c821e8",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/06.png",
+      "sha256": "bdbc8e407e87727a947e0451a8e61fde4c01175967512451e2fe574e0ebeb192",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/07.png",
+      "sha256": "0c35ce032354d25835342971fa20dfb5b4506c411202e2051bdba7fe6fa094c6",
+      "duration_ms": 75.0,
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    }
+  ]
+}

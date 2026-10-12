@@ -1,0 +1,37 @@
+<!doctype html><html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Walk continuity: frame comparison v14</title>
+<style>body{margin:0;padding:18px;background:#161a21;color:#eee;font:16px/1.5 system-ui,sans-serif}main{max-width:1500px;margin:auto}button,select{font:inherit;padding:6px 12px}input{width:min(500px,75vw)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.panel{min-width:0;background:#272727;padding:10px;border-radius:8px}.panel img{width:100%;max-height:410px;object-fit:contain;image-rendering:auto}.panel[data-kind="ro"] img,.panel[data-kind="king"] img{image-rendering:pixelated}h1{font-size:24px}h2{font-size:16px;margin:3px}.muted{color:#bcc5d2}.warn{color:#ffcf79}#native{max-width:300px;height:300px;image-rendering:pixelated}label{display:inline-block;margin:8px 12px 8px 0}p{max-width:1050px}figure{margin:0}</style>
+<main><h1>เดิน W — เทียบเฟรมและรอยต่อ</h1>
+<p class="warn">V13: ผู้ใช้ยืนยันขาถูก แต่ไม่รับ continuity · V14: ภาพใหม่ที่ยังต้องตรวจขา/น้ำหนัก ไม่โอนคำอนุมัติเดิม</p>
+<p class="warn">พิกเซลบริเวณผมกระโดดสูงสุดประมาณ 48→11px แต่ spacing ช่อง 3,4,7,8 ยังเตือน · logical root/contact ยังไม่ยืนยัน · feature matching ทั้งคลิป INCONCLUSIVE</p>
+<p>เลขเฟรมของเกมต่างกัน: RO และ King Lucas ในแถวนี้จับคู่ช่วงก้าวแบบคร่าว ๆ ไม่ใช่กระดูกหรือ contact เดียวกัน ดูทุกเฟรมตามลำดับจริงได้ด้านล่าง</p>
+<button id="play">เล่น</button> <button id="previous">ก่อนหน้า</button> <button id="next">ถัดไป</button>
+<label>รอบเดิน <select id="clock"><option value="600">600 ms — เทียบจังหวะเดียวกัน</option><option value="1333">1333 ms — source cadence</option><option value="2400">2400 ms — ดูช้า</option></select></label>
+<p><input id="phase" aria-label="เฟรมตัวละคร" type="range" min="0" max="7" value="0"> <output id="position"></output></p>
+<div class="grid" id="panels"></div>
+<p id="notes" class="muted"></p>
+<h2>เรฟทุกเฟรม ตามลำดับจริง</h2>
+<label>เกม <select id="reference"><option value="ro">RO — 8 exposures × 75 ms</option><option value="king">King Lucas — 16 exposures × 30 ms</option></select></label>
+<p><input id="nativePhase" aria-label="เฟรมเรฟตามลำดับจริง" type="range" min="0" max="7" value="0"> <output id="nativeLabel"></output></p>
+<img id="native" alt="เรฟเกมตามลำดับจริง">
+<p class="muted">Canvas/scale ของแต่ละชุดคงที่ ไม่มีการ fit รายเฟรม ภาพเรฟไม่ถูกนำเข้า imagegen ของตัวละครเรา เครื่องมือนี้ไม่ยืนยัน hidden joints หรือ foot-lock อัตโนมัติ</p></main>
+<script>
+const data=__FRAME_DATA__;
+const phase=document.querySelector('#phase'),position=document.querySelector('#position');
+const panels=document.querySelector('#panels');
+const names={before:'V13 ก่อนแก้',after:'V14 candidate',rig:'กระดูก/near-far จริง',ro:'RO — ช่วงก้าวใกล้กัน',king:'King Lucas — ช่วงก้าวคร่าว ๆ'};
+for(const key of Object.keys(names)){const box=document.createElement('figure');box.className='panel';box.dataset.kind=key;box.innerHTML='<h2></h2><img alt=""><p class="muted"></p>';box.querySelector('h2').textContent=names[key];box.querySelector('img').alt=names[key];panels.append(box)}
+const descriptions=['เริ่มช่วงก้าวนำ','หลังรับน้ำหนัก/เท้าหลังเริ่มปล่อย','ช่วงขาเคลื่อนผ่านกัน','เท้าเคลื่อนไปสู่ก้าวถัดไป — V13 เคยวาดเหยียดกว้างซ้ำ','อีกข้างนำ','หลังรับน้ำหนักอีกข้าง','ช่วงขาเคลื่อนผ่านกันอีกข้าง','เท้าเคลื่อนไปสู่เฟรม 1 — ตรวจ seam 8→1'];
+let current=0,playing=false,start=0;
+function show(i){current=(i+8)%8;phase.value=current;position.textContent='เฟรม '+(current+1)+' / source '+current*5;for(const box of panels.children){const key=box.dataset.kind;const n=key==='ro'?data.roMap[current]:key==='king'?data.kingMap[current]:current;box.querySelector('img').src=data[key][n];box.querySelector('p').textContent='native index '+n}const warning=data.spacingWarnings.includes(current),notes=document.querySelector('#notes');notes.textContent=descriptions[current]+(warning?' · เครื่องมือเตือน ankle-spacing profile เทียบ source ต้องตรวจโพสเพิ่ม':'');notes.className=warning?'warn':'muted'}
+phase.oninput=()=>{playing=false;document.querySelector('#play').textContent='เล่น';show(+phase.value)};
+document.querySelector('#next').onclick=()=>{playing=false;document.querySelector('#play').textContent='เล่น';show(current+1)};
+document.querySelector('#previous').onclick=()=>{playing=false;document.querySelector('#play').textContent='เล่น';show(current-1)};
+document.querySelector('#play').onclick=()=>{playing=!playing;start=performance.now()-current*(+document.querySelector('#clock').value/8);document.querySelector('#play').textContent=playing?'หยุด':'เล่น'};
+document.querySelector('#clock').onchange=()=>{start=performance.now()-current*(+document.querySelector('#clock').value/8)};
+function tick(t){if(playing){const step=+document.querySelector('#clock').value/8;show(Math.floor((t-start)/step)%8)}requestAnimationFrame(tick)}
+const reference=document.querySelector('#reference'),nativePhase=document.querySelector('#nativePhase');
+function nativeShow(){const key=reference.value;nativePhase.max=data[key].length-1;const n=Math.min(+nativePhase.value,+nativePhase.max);nativePhase.value=n;document.querySelector('#native').src=data[key][n];document.querySelector('#nativeLabel').textContent='native '+n+' / '+data[key].length+' เฟรม'}
+reference.onchange=()=>{nativePhase.value=0;nativeShow()};nativePhase.oninput=nativeShow;
+show(0);nativeShow();requestAnimationFrame(tick);
+</script></html>
