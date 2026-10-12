@@ -1,6 +1,6 @@
 ## Latest: upright compact walking and source-contact checks v17
 
-[Actual upright rig,16phase source GIF, RO/old/new viewer and failed redraws](ro-gait-v17/README.md) address the user’s unwanted sneaking posture. New source curves and257dense mesh samples pass explicit source-only diagnostics; two art jobs still fail continuity/phase/grid review. [Reusable upright-gait practice](../../skills/modular-eight-direction-sprites/references/upright-compact-gait.md) records posture/contact choices and limits. No generated-image anatomy or mass-production approval.
+[Actual upright rig,16phase source GIF, RO/old/new viewer and failed redraws](ro-gait-v17/README.md) address the user’s unwanted sneaking posture. New source curves and257dense mesh samples pass explicit source-only diagnostics. The user now approves the exact16-frame/800ms W source GIF as the motion baseline; two art jobs still fail continuity/phase/grid review. [Reusable upright-gait practice](../../skills/modular-eight-direction-sprites/references/upright-compact-gait.md) records posture/contact choices and limits. No generated-image anatomy or mass-production approval.
 
 ## Latest: wrong-leg rejection, smoother-clock test and shared standard v16
 

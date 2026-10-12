@@ -2,6 +2,8 @@
 
 The user rejects v16 smoothness versus RO and asks why our character must sneak instead of standing/walking upright. **A generic preset's forward lean is optional acting, not a sprite or rig requirement.** Establish the desired posture in the source before drawing over it. Do not try to remove a hunch only through timing, head registration or additional frames.
 
+The user subsequently approves the exact v17 upright W source GIF: “GIF ต้นแบบใหม่ อันนี้โอเคนะ”. [SHA-bound approval](../../../research/sprite-animation/ro-gait-v17/evidence/user-approved-upright-source.json) fixes16 displayed poses,50ms exposures and800ms cycle as the accepted motion baseline for paintover comparison. Preserve the approved posture, phase order and registration. This scoped visual decision does not approve either generated drawing set, other facings or complete painted parts.
+
 ## Evidence and source study
 
 The retained RO Swordman W capture contains eight native poses. The community conversion is 8×75ms; this is not a universal original-client clock. Native order and the earlier manual eye/belt uncertainty are retained. Comparing it with the rejected v16 sheet suggests compact pose spacing and an upright attitude are useful targets. It does not recover RO's hidden bones, exact contacts or motion curves.

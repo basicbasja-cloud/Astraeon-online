@@ -2,6 +2,8 @@
 
 ผู้ใช้ปฏิเสธความสมูทของ v16 และถามว่า **ทำไมต้องย่อง แทนที่จะตัวตรงแบบ RO** รอบนี้แก้ท่าที่ source จริงก่อน แล้ววาดทับและตรวจซ้ำ ภาพเจนทั้งสองรอบยังไม่ผ่าน ไม่ย้ายคำอนุมัติขาจาก v12/v13 มาที่ภาพใหม่
 
+**ผู้ใช้อนุมัติ GIF ต้นแบบเดินตัวตรง W นี้แล้ว**: “GIF ต้นแบบใหม่ อันนี้โอเคนะ” ผูกคำอนุมัติกับไฟล์จริง16×50ms/800msและsource hashesใน [approval receipt](evidence/user-approved-upright-source.json) ใช้เป็นฐานmotionวาดทับต่อไป คำอนุมัตินี้ยังไม่ครอบคลุมภาพเจนทั้งสองรอบ
+
 [GIF ต้นแบบเดินตัวตรง16เฟรม](upright-source-800ms.gif) · [เทียบ RO / source / v16 / ภาพใหม่ทีละเฟรม](frame-review.html) · [ภาพวาดทดลอง8เฟรม—ยังไม่ผ่าน](candidate1/walk-source-cadence.gif) · [ไกด์ใช้กับตัวอื่น](../../../skills/modular-eight-direction-sprites/references/upright-compact-gait.md)
 
 ## เปลี่ยนอะไรที่ source
