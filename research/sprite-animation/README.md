@@ -1,3 +1,7 @@
+## Latest: direct game-pose paintovers and source-of-truth gates v19
+
+[RO8key/16exposure experiment, Valyria6drafts and frame-by-frame comparisons](reverse-paintover-v19/README.md) test actual source pose paintovers in our own appearance. Protected keys remain unchanged; new midpoints fail pose/scale/loop continuity. Immutable raster/source clocks, unknown hidden anatomy, actual approved original motion and authored interpolation are kept separate in the [reusable guide](../../skills/modular-eight-direction-sprites/references/reverse-paintover-source-truth.md). The checker also rejects clipped palette ROIs. New art/complete parts/production remain unapproved.
+
 ## Latest: production-depth game references and bound factory planning v18
 
 [315 new reference samples, pinned game/tool source audits and source-bound part/frame planner](cross-game-factory-v18/README.md) extend learning beyond RO while keeping RO/RO3/ToS and our original style as quality references. Actual motion, atlas reconstruction, primary documents and located sources are labeled separately. The accepted upright W source compiles16poses/208unreviewed authoring jobs; this is not a completed painted production factory. [Reusable production findings](../../skills/modular-eight-direction-sprites/references/cross-game-production.md).

@@ -1,0 +1,209 @@
+{
+  "schema": "walk-visible-continuity-report-v1",
+  "label": "valyria-keys",
+  "frame_count": 6,
+  "cycle_ms": 780,
+  "duration_ms": 780,
+  "loop": true,
+  "art_pixels_modified": false,
+  "semantic_leg_identity_checked": false,
+  "hidden_bones_inferred": false,
+  "contact_lock_checked": false,
+  "ground_root_pixel_registration": "UNRESOLVED_REQUIRES_AUTHORITATIVE_ANCHOR_AND_OBSERVATIONS",
+  "status": "DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
+  "landmarks": {
+    "root": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    }
+  },
+  "edges": [
+    {
+      "from": 0,
+      "to": 1,
+      "duration_ms": 130,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "duration_ms": 130,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "duration_ms": 130,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "duration_ms": 130,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "duration_ms": 130,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 5,
+      "to": 0,
+      "duration_ms": 130,
+      "loop_seam": true,
+      "generation_batch_changed": false
+    }
+  ],
+  "palette_patch_probe": {
+    "status": "DECLARED_PALETTE_REGION_MEASURED",
+    "contract": {
+      "roi": [
+        80,
+        10,
+        370,
+        240
+      ],
+      "max_hsv_saturation_255": 110,
+      "min_hsv_value_255": 75,
+      "min_blue_green_ratio": 0.88,
+      "min_red_green_ratio": 0.88,
+      "minimum_pixels": 100,
+      "max_step_px": 20
+    },
+    "frames": [
+      {
+        "key": 0,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8256,
+        "centroid_px": [
+          221.05983527131784,
+          89.17175387596899
+        ],
+        "bounds_xyxy": [
+          154,
+          34,
+          287,
+          141
+        ]
+      },
+      {
+        "key": 1,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8445,
+        "centroid_px": [
+          221.74624037892244,
+          90.6955595026643
+        ],
+        "bounds_xyxy": [
+          154,
+          36,
+          288,
+          143
+        ]
+      },
+      {
+        "key": 2,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8202,
+        "centroid_px": [
+          244.33955132894417,
+          92.24591563033407
+        ],
+        "bounds_xyxy": [
+          177,
+          39,
+          311,
+          146
+        ]
+      },
+      {
+        "key": 3,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8224,
+        "centroid_px": [
+          221.0717412451362,
+          89.3796206225681
+        ],
+        "bounds_xyxy": [
+          154,
+          35,
+          287,
+          141
+        ]
+      },
+      {
+        "key": 4,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8624,
+        "centroid_px": [
+          241.92022263450835,
+          90.64355287569573
+        ],
+        "bounds_xyxy": [
+          174,
+          35,
+          309,
+          143
+        ]
+      },
+      {
+        "key": 5,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8452,
+        "centroid_px": [
+          248.98580217699953,
+          89.04555134879318
+        ],
+        "bounds_xyxy": [
+          181,
+          34,
+          316,
+          142
+        ]
+      }
+    ],
+    "art_modified": false,
+    "anatomy_pass": false,
+    "scope": "Palette-region centroid/occupancy only. Costume, palette, lighting, turn or occlusion changes invalidate interpretation; recalibrate for each character. Not recovered head or bone position.",
+    "centroid_step_px": [
+      1.6712676505257793,
+      22.64644130557768,
+      23.443690689985228,
+      20.886758987059082,
+      7.244033624387226,
+      27.92625207032076
+    ],
+    "max_centroid_step_px": 27.92625207032076,
+    "last_to_first_centroid_step_px": 27.92625207032076,
+    "declared_budget_px": 20,
+    "edges_over_declared_budget": [
+      {
+        "from": 1,
+        "to": 2,
+        "step_px": 22.64644130557768
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "step_px": 23.443690689985228
+      },
+      {
+        "from": 3,
+        "to": 4,
+        "step_px": 20.886758987059082
+      },
+      {
+        "from": 5,
+        "to": 0,
+        "step_px": 27.92625207032076
+      }
+    ],
+    "registration_warning": true
+  }
+}

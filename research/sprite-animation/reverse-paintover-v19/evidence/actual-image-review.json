@@ -1,0 +1,59 @@
+{
+  "schema": "sprite-actual-pixel-review-v1",
+  "new_art_user_approved": false,
+  "production_ready": false,
+  "reviewer": "assistant visual inspection of full raw sheets, source/paintover paired boards and coordinate review; not user acceptance",
+  "cases": [
+    {
+      "image": "research/sprite-animation/reverse-paintover-v19/evidence/RO-attempt2-raw.png",
+      "sha256": "1f4365d98f18859725d377792645705914dcd45b05739622f50a7cc7d21aeb82",
+      "status": "REVIEW_REQUIRED",
+      "findings": [
+        "upright compact body closer to RO than inherited crouch",
+        "lower authoring row shifts upward versus top row",
+        "pelvis/thigh connections under garment and actual anatomical side require independent tracing; no inferred RO hidden bones",
+        "source-scale/positions not traced exactly; returned figure grows relative to conditioning"
+      ],
+      "scope": "Eight key paintover only; no complete parts/contacts."
+    },
+    {
+      "image": "research/sprite-animation/reverse-paintover-v19/evidence/RO-midpoints-raw.png",
+      "sha256": "bc0f453999e9fc17c32d508b2e0b4b0458db6104d9cdcc8706eb69d0d460a560",
+      "status": "REJECTED_FOR_THIS_INTERPOLATION_EXPERIMENT",
+      "findings": [
+        "midpoint4 reopens a wide stride between key4 trailing-leg and key5 passing poses instead of smoothly closing; see midpoint4-coordinate-review.png",
+        "midpoint body/boots bigger and soles lower relative to locked keys",
+        "actual palette-region loop step22.32248px exceeds provisional20px budget; previous key-only worst18.94811px",
+        "even-slots keep old key pixels; midpoint failures cannot be hidden by regenerating keys or fitting each frame"
+      ],
+      "anatomical_leg_owners": "UNKNOWN; no invented swap classification for occluded hips"
+    },
+    {
+      "image": "research/sprite-animation/reverse-paintover-v19/evidence/Valyria-raw.png",
+      "sha256": "1bda178f0d1999275ac2c8685dd0b8ed2aa06b4b0eefc3e9e8a60ea87cc66d65",
+      "status": "REVIEW_REQUIRED",
+      "findings": [
+        "native6exposures repeat sourcepose at1and4; generated versions are similar but pixel-different",
+        "generated swings at2and5 extend more than the source intermediate exposures",
+        "upperbody/hair moves between cells; loop palette step27.92625px triggers warning"
+      ],
+      "scope": "Alternative-game experiment; not adopted motion baseline."
+    }
+  ],
+  "source_truth_status": "Reference pixels/order/declared time bound; hidden source bones/root/contacts unknown; accepted own v17source remains separate",
+  "palette_calibration_failure": {
+    "previous_roi": [
+      80,
+      70,
+      330,
+      240
+    ],
+    "current_roi": [
+      80,
+      10,
+      370,
+      240
+    ],
+    "failure": "Previous ROI cropped several hair regions. Previous metrics retained as invalid evidence, not used as acceptance results. Added ROI-boundary rejection."
+  }
+}

@@ -137,3 +137,7 @@ python skills/modular-eight-direction-sprites/scripts/walk-continuity.py \
 ```
 
 One-shot/excerpt temporal review omits the false last→first edge; loop review preserves it. `pack-motion-grid.py --non-looping` exports one-play files. `animation-cadence.py` reads actual decoded delays; nonuniform artist-authored holds may be intentional. The uniform50ms16-frame review clock changes the loop to800ms and does not fix poses or world contacts. [Executed v16 comparisons/failures](../../../research/sprite-animation/leg-ownership-v16/README.md) preserve the rejected v15 group and all3 new unapproved attempts. Wwalking is the currently tested adapter; other actions need appropriate source/grip/contact contracts.
+
+## v19: captured truth versus authored interpolation
+
+`reference-truth.py --contract ... --out ... [--require-production]` verifies captured hashes/order/canvas/clock, scoped visible observations and protected original authored keys/phase times. Each new midpoint names its adjacent pair including the loop seam; it cannot be labeled recovered-game ground truth. Production enforcement returns2 for current research paintovers. `walk-continuity.py` now makes a clipped palette region inconclusive. [Executed experiments and commands](../../../research/sprite-animation/reverse-paintover-v19/README.md) preserve source timing, failed drafts, native/equal-cycle comparisons and independent art/parts gaps.

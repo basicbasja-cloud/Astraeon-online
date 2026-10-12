@@ -133,6 +133,11 @@ def palette_patch_probe(spec):
         original=component&keep;ys,xs=np.where(original)
         if len(xs)<contract['minimum_pixels']:
             rows.append({'key':i,'status':'INCONCLUSIVE'});continue
+        if xs.min() <= x0 or xs.max() >= x1-1 or ys.min() <= y0 or ys.max() >= y1-1:
+            rows.append({'key':i,'status':'INCONCLUSIVE_REGION_TOUCHES_ROI',
+                'pixels':len(xs),'bounds_xyxy':[int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)],
+                'reason':'Declared ROI clips the measured region; recalibrate the whole-clip ROI before centroid comparisons'})
+            continue
         rows.append({'key':i,'status':'DECLARED_PALETTE_REGION_MEASURED','pixels':len(xs),
             'centroid_px':[float(xs.mean()),float(ys.mean())],
             'bounds_xyxy':[int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)]})

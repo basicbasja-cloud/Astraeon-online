@@ -1,0 +1,50 @@
+{
+  "review_date": "2026-10-12",
+  "primary_sources": [
+    {
+      "url": "https://ragnarokresearchlab.github.io/file-formats/act/",
+      "status": "READ",
+      "finding": "Layer offsets/transforms, optional anchors/events and per-clip tick duration are data; ACT is not an anatomical bone hierarchy. Document currently says ticks x24ms.",
+      "scope": "Community reverse engineering; exact character ACT/SPR not obtained."
+    },
+    {
+      "url": "https://ragnarokresearchlab.github.io/rendering/animation-systems/",
+      "status": "READ",
+      "finding": "Author's client timing experiments narrow tick duration to24ms versus historical25ms.",
+      "scope": "Not rerun here; captured community APNG75ms exposures remain unchanged."
+    },
+    {
+      "url": "https://valkyrie-realm.net/research/file-formats/act/frame-times/",
+      "status": "UNAVAILABLE_TIMEOUT",
+      "finding": null,
+      "scope": "Clicked linked reproduction page; no files obtained or experiment executed."
+    },
+    {
+      "url": "https://film-net.github.io/",
+      "status": "READ",
+      "finding": "Scale-agnostic interpolation and disocclusion synthesis operate on raster examples, not persistent anatomical sprite ownership.",
+      "scope": "Primary research page read; neural inference/model not installed/executed."
+    },
+    {
+      "url": "https://doubiiu.github.io/projects/ToonCrafter/",
+      "status": "READ_WITH_LIMITATIONS",
+      "finding": "Sparse sketch guidance is available; authors report semantic content and appearing/disappearing object transition failures.",
+      "scope": "No model executed; eight inserted drawings produced with imagegen and labeled authored."
+    },
+    {
+      "url": "https://www.devilishgames.com/en/2016/12/14/how-to-animate-a-king-who-has-lost-his-daugthers/",
+      "status": "READ_AND_REVIEWED_EXISTING_13_EXPOSURES",
+      "finding": "Adobe Animate cut-up art to Spriter to Unity; direction-specific art avoids weapon/one-eye flip and exports required repair.",
+      "scope": "Developer GIF reviewed; source Spriter project not recovered. Not our proportions/art target."
+    },
+    {
+      "url": "https://github.com/ValyriaTear/ValyriaTear/blob/1c882efff325c941c59aa59c93fb1256258ac845/data/entities/map/characters/bronann_walk_unarmed.lua",
+      "status": "PINNED_SOURCE_AND_6_ATLAS_EXPOSURES",
+      "finding": "Native descriptor repeats ID13 at slots1and4;6exposures130ms,5unique source cells.",
+      "scope": "Previous v18 source retrieval reused and inspected. New own paintover6 generated; not engine executed."
+    }
+  ],
+  "raglite_commit": "d1ce2b1e2136c46b1409d5c6701f64d7c3cddaf9",
+  "raglite_execution": "3files read only; test suite not executed",
+  "new_game_downloads": 0
+}
