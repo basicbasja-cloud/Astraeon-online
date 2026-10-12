@@ -1,3 +1,7 @@
+## Latest: W walking expanded to 8 frames v13
+
+[Eight-frame preview and preserved approved keys](ro-walk-eight-v13/README.md) match the audited RO Swordman walk count. New slots1/3/5/7 retain approved pixels exactly; intermediates remain review candidates. Includes 600ms reference-cadence, 1333ms source-cadence and equal-speed four-key comparison.
+
 ## Latest: pelvis/depth checks and a user-confirmed W sheet v12
 
 [W approval, E/W cutaways and independent image-structure checking](profile-depth-v12/README.md) distinguish the accepted W sheet from the later rejected third pose. Forty real source-depth passes and the user's contour rule strengthen proximal identity review; calf-only v11 match conclusions are withdrawn. The pixel comparator flags the rejected pose's structure, with explicit semantic limits. E and complete painted modular production remain unfinished.
@@ -42,7 +46,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.12](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.13](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)

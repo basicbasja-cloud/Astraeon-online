@@ -5,11 +5,14 @@ import bpy
 from mathutils import Vector
 from bpy_extras.object_utils import world_to_camera_view
 
-p=argparse.ArgumentParser();p.add_argument('--blend',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+p=argparse.ArgumentParser();p.add_argument('--blend',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--views',default='E,W');p.add_argument('--keys',default='0,10,20,30')
 a=p.parse_args(sys.argv[sys.argv.index('--')+1:])
 if a.output.exists():raise ValueError('Fresh output required')
 bpy.ops.wm.open_mainfile(filepath=str(a.blend));scene=bpy.context.scene;cam=scene.camera
 motion=json.loads((a.blend.parent/'motion.json').read_text());pivot=bpy.data.objects['facing.pivot']
+keys=[int(x) for x in a.keys.split(',')];views=a.views.split(',')
+if not keys or keys!=sorted(set(keys)) or any(i<0 or i>=len(motion['frames']) or motion['frames'][i]['time_seconds']>=motion['duration_seconds'] for i in keys):raise ValueError('Invalid source keys')
+if not views or len(set(views))!=len(views) or any(v not in ['E','W'] for v in views):raise ValueError('Profile views must be E/W')
 rig=next(o for o in scene.objects if o.type=='ARMATURE');meshes=[o for o in scene.objects if o.type=='MESH']
 owners={};mats={}
 for name,color in [('r',(.03,.35,1,1)),('l',(1,.35,.02,1)),('pelvis',(.56,.53,.58,1)),('other',(.26,.28,.3,1))]:
@@ -33,9 +36,10 @@ outputs={}
 for name,socket in [('id','IndexOB'),('depth','Depth')]:
     node=nodes.new('CompositorNodeOutputFile');node.format.file_format='OPEN_EXR';node.format.color_depth='32';node.file_slots[0].path=name+'_';scene.node_tree.links.new(rl.outputs[socket],node.inputs[0]);outputs[name]=node
 a.output.mkdir(parents=True);samples=[]
-for view,angle in [('E',90),('W',270)]:
+for view in views:
+    angle={'E':90,'W':270}[view]
     pivot.rotation_euler.z=math.radians(angle)
-    for k,index in enumerate([0,10,20,30]):
+    for k,index in enumerate(keys):
         t=motion['frames'][index]['time_seconds'];pos=t*1000;scene.frame_set(math.floor(pos),subframe=pos-math.floor(pos));bpy.context.view_layer.update()
         bones={}
         for n in ['pelvis','thigh_r','calf_r','foot_r','thigh_l','calf_l','foot_l']:
@@ -57,6 +61,6 @@ for view,angle in [('E',90),('W',270)]:
 receipt={'schema':'profile-source-depth-v1','blend_sha256':hashlib.sha256(a.blend.read_bytes()).hexdigest(),'motion_sha256':hashlib.sha256((a.blend.parent/'motion.json').read_bytes()).hexdigest(),
  'blender':bpy.app.version_string,'canvas':[512,512],'camera_matrix_world':[list(row) for row in cam.matrix_world],'camera_ortho_scale':cam.data.ortho_scale,
  'depth_encoding':'Raw Cycles Z pass, scene units; smaller surface depth is nearer. No per-frame normalization. Background excluded by integer owner ID.',
- 'fixed_display_depth_range':[3.6,5.4],'owners':owners,'samples':samples,'render_passes':40,'source_pose_edited':False,
+ 'fixed_display_depth_range':[3.6,5.4],'owners':owners,'samples':samples,'render_passes':len(samples)*5,'source_pose_edited':False,
  'scope':'Cutaway removes other meshes to expose actual original pelvis and weighted leg meshes. It is a diagnostic source pass, not recovered anatomy of generated art.'}
-(a.output/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PROFILE_DEPTH',len(samples),'poses / 40 passes')
+(a.output/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print('PROFILE_DEPTH',len(samples),'poses /',len(samples)*5,'passes')

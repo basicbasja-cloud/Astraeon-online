@@ -1,0 +1,2439 @@
+{
+  "schema": "anatomical-leg-review-v1",
+  "source_motion_path": "research/sprite-animation/walk-test-v9/motion.json",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "source_joint_map": {
+    "hip": "thigh",
+    "knee": "calf",
+    "ankle": "foot",
+    "toe": "ball_leaf"
+  },
+  "source_blend_path": "research/sprite-animation/walk-test-v9/original-modular-walk.blend",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_replay_path": "research/sprite-animation/walk-test-v9/saved-rig-check.json",
+  "source_replay_sha256": "684005b257e2168fd7a0ade49a9120316f726c48a2e98c4c715c671fb629e992",
+  "source_glb_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "source_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "canvas": [
+    512,
+    512
+  ],
+  "facing": "W",
+  "duration_seconds": 1.3333333730697632,
+  "coordinate_origin": "Top-left, master pixels; anatomical sides, never screen sides",
+  "thresholds": {
+    "pose_px": 16.0,
+    "swap_margin_px": 8.0,
+    "velocity_residual_px_per_s": 60.0
+  },
+  "method": "Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.",
+  "frames": [
+    {
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/00.png",
+      "image_sha256": "6b6d4f4849fa3d9f010ec498255bc2a117ad427f3aac811f2814a4ad4b44b32a",
+      "reference": {
+        "hip_r": [
+          255.01544240456593,
+          265.0750900822302
+        ],
+        "knee_r": [
+          284.49645493905757,
+          333.0187905316087
+        ],
+        "ankle_r": [
+          329.4966229788865,
+          400.16562241377494
+        ],
+        "toe_r": [
+          288.7921807011472,
+          423.7632130838774
+        ],
+        "hip_l": [
+          256.30264367785634,
+          284.681137901722
+        ],
+        "knee_l": [
+          209.01644530477404,
+          345.12129624295113
+        ],
+        "ankle_l": [
+          200.64738097371935,
+          422.63528555761525
+        ],
+        "toe_l": [
+          150.13194294217266,
+          418.84572876912887
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.09278370440006256,
+        "l": 0.08057089149951935
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/00/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/00/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/00/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/00/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/00/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            251,
+            296
+          ],
+          "source_box": [
+            235,
+            274,
+            263,
+            316
+          ],
+          "pixels": 347,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 0,
+        "source_index": 0,
+        "time_seconds": 0.0,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.031873274594545364,
+              0.011893454939126968,
+              0.5572099685668945
+            ],
+            "xy": [
+              266.32855224609375,
+              277.3992004394531
+            ],
+            "camera_axis_depth": 4.655502796173096
+          },
+          "thigh_r": {
+            "world": [
+              -0.0030382839031517506,
+              0.0672023817896843,
+              0.5694594979286194
+            ],
+            "xy": [
+              255.01544189453125,
+              265.0751495361328
+            ],
+            "camera_axis_depth": 4.697487831115723
+          },
+          "calf_r": {
+            "world": [
+              0.08793827891349792,
+              0.06393872201442719,
+              0.3299805819988251
+            ],
+            "xy": [
+              284.4964599609375,
+              333.0188446044922
+            ],
+            "camera_axis_depth": 4.813243389129639
+          },
+          "foot_r": {
+            "world": [
+              0.22680598497390747,
+              0.06163730472326279,
+              0.09278370440006256
+            ],
+            "xy": [
+              329.4966125488281,
+              400.1656723022461
+            ],
+            "camera_axis_depth": 4.928704261779785
+          },
+          "thigh_l": {
+            "world": [
+              0.0009339400567114353,
+              -0.04654692858457565,
+              0.5646550059318542
+            ],
+            "xy": [
+              256.3026428222656,
+              284.6811981201172
+            ],
+            "camera_axis_depth": 4.601044178009033
+          },
+          "calf_l": {
+            "world": [
+              -0.1449883133172989,
+              -0.05398019403219223,
+              0.3542056977748871
+            ],
+            "xy": [
+              209.01644897460938,
+              345.12135314941406
+            ],
+            "camera_axis_depth": 4.698801517486572
+          },
+          "foot_l": {
+            "world": [
+              -0.17081472277641296,
+              -0.05696003884077072,
+              0.08057089149951935
+            ],
+            "xy": [
+              200.6473846435547,
+              422.63533782958984
+            ],
+            "camera_axis_depth": 4.831717491149902
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/00/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "e8d96fd8e08cbab34af08b434281fa6752b8d3e40de89bf4851ca1cf41be398f",
+          "dressed-depth.npy": "8bd80ba0597926e530141ef474321f21ed5960aa7c516062e1a8234c12c77774",
+          "dressed.png": "d7a00ff3946dd67e94b60868190dc75d35a4f2741cb45ff980403703a0e71759",
+          "cutaway-id.png": "67bc4e17c141f4f8f3eb123f33e841a69775fd58b5b6c1960a5ca5206bc3d866",
+          "cutaway-depth.npy": "8875650ac4a9d81c6d9dc658a014848ef5576ba8922f1be3e99855c7d03103a1",
+          "cutaway.png": "0ae5b30802b2e2dfbf1df9ecbd874a7dddc056e61f22574c2ba827b736b9d7c7",
+          "right-amodal-id.png": "c316d35a5d840afb353d0c7f50d37bfbda5388e56a8f0de3dbcdf8a3045bcf11",
+          "right-amodal-depth.npy": "9b93a248b7c14eef1b76819a68534e16d24ab2a3b9efd0f5582388cd8cfdad66",
+          "right-amodal.png": "cc35b7cc6acfb4eb53c3a1362b2aa06e1555da9f12aa653d4ca2bc314d34600b",
+          "left-amodal-id.png": "b78e249f6a38ece5c164b2097789c46a3037aeb930badab47f0b7d63ad00169b",
+          "left-amodal-depth.npy": "9db9c043af15990fe63cb0737f5eb20e717fec7a68a311a54f7f1ec50727d519",
+          "left-amodal.png": "fc17d02409c2363015c17aa219a14a7a3d7f6dae5ed024995dc93ae0cd7f7613",
+          "pelvis-amodal-id.png": "0bbef8466fd9383156f44f3b709d9b7fbe79afb32d51b57989d9fa8ab4e2b221",
+          "pelvis-amodal-depth.npy": "71cc78ea83d155f79d29e83490e59ee3a8dd4f5d7aeb9b11545579e5f8dbdfa2",
+          "pelvis-amodal.png": "afb6e1290ee51234929be39d133a2c4bfa2c690926f1b5d685b8a295ef09e382",
+          "nearer-leg-id.png": "270a0920cba09d77f93dbeb231ab3092e0ec956a227147b623e3dde8314b5529",
+          "fixed-depth.png": "bc5be487571cd3259216fdab01379f3717ca3a83cbba9940c688315cdd2bee1e",
+          "proximal-guide.png": "59589fa25213a185b1d08b44d8af73731207d6d877e10bf0b2ef3e4d706c5788"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.09644365310668945,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1257,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1177,
+            "dressed_same_owner_pixels": 569,
+            "visible_fraction": 0.48343245539507224,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 553,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 1,
+      "source_index": 5,
+      "time_seconds": 0.1666666716337204,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/01.png",
+      "image_sha256": "5c43f4a1b2994cd6ded5f0b001a7d836b8b0c41a0c3679208d24fdad1ed75208",
+      "reference": {
+        "hip_r": [
+          255.19594684733622,
+          266.7845566287625
+        ],
+        "knee_r": [
+          255.4240488055386,
+          338.7460750138174
+        ],
+        "ankle_r": [
+          331.6478080266638,
+          377.9078484642968
+        ],
+        "toe_r": [
+          319.1931160069719,
+          420.37568645935033
+        ],
+        "hip_l": [
+          256.1716031492511,
+          285.973218466528
+        ],
+        "knee_l": [
+          220.01727410811412,
+          350.8484720827779
+        ],
+        "ankle_l": [
+          234.49974089030977,
+          426.3522436449608
+        ],
+        "toe_l": [
+          187.23500196239615,
+          442.2979726707173
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.17412644624710083,
+        "l": 0.06736800819635391
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/01/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/01/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/01/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/01/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/01/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            245,
+            310
+          ],
+          "source_box": [
+            233,
+            276,
+            264,
+            349
+          ],
+          "pixels": 1195,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 1,
+        "source_index": 5,
+        "time_seconds": 0.1666666716337204,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.03196512535214424,
+              -0.004424000158905983,
+              0.5609411001205444
+            ],
+            "xy": [
+              266.3583068847656,
+              278.9672546386719
+            ],
+            "camera_axis_depth": 4.63947868347168
+          },
+          "thigh_r": {
+            "world": [
+              -0.002481258474290371,
+              0.05133792385458946,
+              0.5724301338195801
+            ],
+            "xy": [
+              255.19595336914062,
+              266.78460693359375
+            ],
+            "camera_axis_depth": 4.682234287261963
+          },
+          "calf_r": {
+            "world": [
+              -0.0017773499712347984,
+              0.052363377064466476,
+              0.3162349462509155
+            ],
+            "xy": [
+              255.42404174804688,
+              338.7461242675781
+            ],
+            "camera_axis_depth": 4.809993743896484
+          },
+          "foot_r": {
+            "world": [
+              0.23344440758228302,
+              0.057633642107248306,
+              0.17412644624710083
+            ],
+            "xy": [
+              331.6477966308594,
+              377.9079132080078
+            ],
+            "camera_axis_depth": 4.884944915771484
+          },
+          "thigh_l": {
+            "world": [
+              0.0005295573500916362,
+              -0.06249520182609558,
+              0.5691559910774231
+            ],
+            "xy": [
+              256.1716003417969,
+              285.97328186035156
+            ],
+            "camera_axis_depth": 4.584959983825684
+          },
+          "calf_l": {
+            "world": [
+              -0.11104044318199158,
+              -0.06216445565223694,
+              0.33852753043174744
+            ],
+            "xy": [
+              220.01727294921875,
+              350.8485412597656
+            ],
+            "camera_axis_depth": 4.699455261230469
+          },
+          "foot_l": {
+            "world": [
+              -0.06634845584630966,
+              -0.05695990473031998,
+              0.06736800819635391
+            ],
+            "xy": [
+              234.49974060058594,
+              426.35230255126953
+            ],
+            "camera_axis_depth": 4.838255882263184
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/01/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "890bfc1c053b46b0d8fd6fa8bc493c04dc0d7a575a25c137ef5f0ee32605c368",
+          "dressed-depth.npy": "eeb3804c06619a26666fed569f784cd12be3214a031bcaa73cd56e41a93dd5bd",
+          "dressed.png": "e37a2d21b3519332570596e3e589937c869fea949f9477cf17e3b4c55bac89e1",
+          "cutaway-id.png": "b0f5bc1b036824949d1381d6725c770b0156c1ba0b173498d5cd8d0a8432bdd4",
+          "cutaway-depth.npy": "a9d5c155741ecdfff3f1347495129751244b31d906aff9c4b5d23ae7f3c40c98",
+          "cutaway.png": "549dd2aa57e5029faa40c99a6433c45dcc9cea5406235425d14c7db57ad23e16",
+          "right-amodal-id.png": "bc4f6adcfca7c517f2ade25b2111ca9e1d967292f9dab89e9e2775d319f33abe",
+          "right-amodal-depth.npy": "9fb20085e9c9337e3c5591086def1deae3523eace8705235ffe948e1c3ca6d97",
+          "right-amodal.png": "6dd3de2a0c2644cbc26214e7eadc30b96b567c207fb2f580be487f095bd78401",
+          "left-amodal-id.png": "410ce2cca526d12f033eca446a11b31f195f2c01eb53f0f3f5bc5231a0a4d40b",
+          "left-amodal-depth.npy": "0f0e3d8c544a809e24042427fb22b3217ac2756127bd068e100653dba1727ba7",
+          "left-amodal.png": "03806f3791920fc7266332f9cab78b09201ad82f031d7f2e9688ca5edc02ab96",
+          "pelvis-amodal-id.png": "b8fff8059d4c0139dded93e6c59eb5a264ed397ce5a2940e150c6e2952ce2e01",
+          "pelvis-amodal-depth.npy": "280cc9cda620da30967a018d757db7aadd82e6f2f98d6b1deeed5ab23a82a914",
+          "pelvis-amodal.png": "5884787c7f34a2dc1c74fb7e94ed680c757339c088ba658faa322ac058ccad9b",
+          "nearer-leg-id.png": "b3c894a65b22692d513d1ee99559f3a3f96ddd9fb5c2a4126cc3db681ccb015b",
+          "fixed-depth.png": "8f5e62fe495f673074da330ec0ed35c6134754c0e9d8d7df0983b46a8d9b1c3e",
+          "proximal-guide.png": "db6c17797e97875e7a0167b813599986d6b896b6aed8fd66d0c39843123e3947"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.0972743034362793,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1293,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1225,
+            "dressed_same_owner_pixels": 521,
+            "visible_fraction": 0.4253061224489796,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 1448,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 2,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/02.png",
+      "image_sha256": "b14201cf467b08614d418a3213f5cbec1e138e7ac6b2f4f474b1b312a3e9513f",
+      "reference": {
+        "hip_r": [
+          255.58468698248078,
+          263.0685290861235
+        ],
+        "knee_r": [
+          212.36480790150318,
+          323.1809924387545
+        ],
+        "ankle_r": [
+          286.0360450261756,
+          364.8210918139192
+        ],
+        "toe_r": [
+          299.16519242298756,
+          407.3685951627038
+        ],
+        "hip_l": [
+          255.8353756681273,
+          281.32237202738247
+        ],
+        "knee_l": [
+          248.59025839310658,
+          351.6614274939126
+        ],
+        "ankle_l": [
+          267.7346811898147,
+          425.50946631427075
+        ],
+        "toe_l": [
+          221.0876829895792,
+          442.3044480461375
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.220994770526886,
+        "l": 0.07046044617891312
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/02/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/02/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/02/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/02/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/02/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            236,
+            290
+          ],
+          "source_box": [
+            233,
+            277,
+            243,
+            309
+          ],
+          "pixels": 167,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "l-1",
+          "expected_foreground": "l",
+          "source_xy": [
+            254,
+            349
+          ],
+          "source_box": [
+            230,
+            326,
+            275,
+            376
+          ],
+          "pixels": 1409,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 2,
+        "source_index": 10,
+        "time_seconds": 0.3333333432674408,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.032064471393823624,
+              -0.019501354545354843,
+              0.5838558077812195
+            ],
+            "xy": [
+              266.3905029296875,
+              274.93560791015625
+            ],
+            "camera_axis_depth": 4.61503267288208
+          },
+          "thigh_r": {
+            "world": [
+              -0.0012816304806619883,
+              0.037241626530885696,
+              0.5936645269393921
+            ],
+            "xy": [
+              255.58468627929688,
+              263.06858825683594
+            ],
+            "camera_axis_depth": 4.659472465515137
+          },
+          "calf_r": {
+            "world": [
+              -0.13465547561645508,
+              0.046088844537734985,
+              0.3750993311405182
+            ],
+            "xy": [
+              212.36480712890625,
+              323.18104553222656
+            ],
+            "camera_axis_depth": 4.775392532348633
+          },
+          "foot_r": {
+            "world": [
+              0.09268935769796371,
+              0.05696073919534683,
+              0.220994770526886
+            ],
+            "xy": [
+              286.0360412597656,
+              364.82115173339844
+            ],
+            "camera_axis_depth": 4.861150741577148
+          },
+          "thigh_l": {
+            "world": [
+              -0.0005080194678157568,
+              -0.0766756683588028,
+              0.5937588810920715
+            ],
+            "xy": [
+              255.8353729248047,
+              281.3224334716797
+            ],
+            "camera_axis_depth": 4.5604567527771
+          },
+          "calf_l": {
+            "world": [
+              -0.02286599949002266,
+              -0.06753627955913544,
+              0.3387018144130707
+            ],
+            "xy": [
+              248.5902557373047,
+              351.66148376464844
+            ],
+            "camera_axis_depth": 4.694701671600342
+          },
+          "foot_l": {
+            "world": [
+              0.0362124927341938,
+              -0.05713333189487457,
+              0.07046044617891312
+            ],
+            "xy": [
+              267.73468017578125,
+              425.50951385498047
+            ],
+            "camera_axis_depth": 4.836573600769043
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/02/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "355d353cda57d5d9a0eb14757cf977b8dd919e0f01f8c3ec9196704f0a0a6d8c",
+          "dressed-depth.npy": "b1447c1ba2fa8bd92085a540ac828657bb9b6f492fa723cc0aec0ead03f2e5b2",
+          "dressed.png": "ae90597d9d7889520dccc2001e1ae6e71193fdefe1e9a29b349b7d45e227c7f7",
+          "cutaway-id.png": "794430ebad87edc17abb82485c060da51526b7e51ebdc9cd9a56f99793e4115d",
+          "cutaway-depth.npy": "6160ca71912c4d14e62562bfd9b62d8a81396bd12bc8d5b5101afd8bdf89078a",
+          "cutaway.png": "4b464a741745c0f049a866e62f651f5099a3ae4d15cdb34f482023a7d43b88b5",
+          "right-amodal-id.png": "e29b52c1b4fd40257648e0344d52e1b1326f129193424db5beb841f90cc1a99f",
+          "right-amodal-depth.npy": "f110c2029846a8cf20c30105c9aff39283f53a2fc684cd42b6e1da9029fe2dfc",
+          "right-amodal.png": "1fb64a743a5bae27f58c8b50eb346124d08062a407cb47efe25e6d28e41bf3e8",
+          "left-amodal-id.png": "ff9a79a83e24911a981559d4c852388c246752bc0f0613471cc5bf123c58af8b",
+          "left-amodal-depth.npy": "9d4dc4f13e922d67cd76b5e679bf0c5b90411e3a28cfe68fac1e6d9165944430",
+          "left-amodal.png": "f9eda19f339f02aa150915a2f1151471cefd29fe9cd9212620b8cf5fdb663c08",
+          "pelvis-amodal-id.png": "684055c6152a1f6c4f8800e2d650d3e3ca2b35c6fe0bc237181857dade98df2d",
+          "pelvis-amodal-depth.npy": "1c28d6d81f1f959cdc780e2032e76378e26b775b44d160b9a723dfda4f4c7538",
+          "pelvis-amodal.png": "b848b70cea8b224e61dd9cbbc014b06d423dc5c4cbb6022a1e7338ee35c090c7",
+          "nearer-leg-id.png": "b23f6347bc5407d005e0a4ada30abbc924bb785b592ff5dcba10f880c6dfc0c5",
+          "fixed-depth.png": "34a79d0b83c2c04f258e6672eb75052cda09c9cd0876452e91f176cb3c4ebd71",
+          "proximal-guide.png": "e3d2747a1a9c9de754f321ec1edaf272606a40160758f15fa0d3ae641f95ec5c"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.09901571273803711,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1237,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1315,
+            "dressed_same_owner_pixels": 145,
+            "visible_fraction": 0.11026615969581749,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 2389,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 3,
+      "source_index": 15,
+      "time_seconds": 0.5,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/03.png",
+      "image_sha256": "2d4bdc87560b44283287cccdb0003790f1cc50dbc7099c5a56998970dcf95316",
+      "reference": {
+        "hip_r": [
+          255.97791032059283,
+          265.3185320804089
+        ],
+        "knee_r": [
+          195.78891493398933,
+          312.7624010031425
+        ],
+        "ankle_r": [
+          224.27230815646016,
+          384.2127872071786
+        ],
+        "toe_r": [
+          183.34358099442494,
+          410.21333154755024
+        ],
+        "hip_l": [
+          255.40808347508877,
+          282.6138239577287
+        ],
+        "knee_l": [
+          255.45629755907422,
+          352.8381208926626
+        ],
+        "ankle_l": [
+          296.04393951802314,
+          419.9932458624161
+        ],
+        "toe_l": [
+          254.94035322756707,
+          442.3149808616081
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.15207457542419434,
+        "l": 0.09131047874689102
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/03/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/03/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/03/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/03/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/03/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            245,
+            295
+          ],
+          "source_box": [
+            235,
+            289,
+            257,
+            307
+          ],
+          "pixels": 124,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 3,
+        "source_index": 15,
+        "time_seconds": 0.5,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.03200400620698929,
+              -0.02500331960618496,
+              0.5801229476928711
+            ],
+            "xy": [
+              266.37091064453125,
+              276.8694152832031
+            ],
+            "camera_axis_depth": 4.612101078033447
+          },
+          "thigh_r": {
+            "world": [
+              -6.816776294726878e-05,
+              0.032732121646404266,
+              0.5882428288459778
+            ],
+            "xy": [
+              255.9779052734375,
+              265.31858825683594
+            ],
+            "camera_axis_depth": 4.658239364624023
+          },
+          "calf_r": {
+            "world": [
+              -0.18580764532089233,
+              0.04580816254019737,
+              0.41226664185523987
+            ],
+            "xy": [
+              195.78890991210938,
+              312.76246643066406
+            ],
+            "camera_axis_depth": 4.756743431091309
+          },
+          "foot_r": {
+            "world": [
+              -0.09790967404842377,
+              0.05703089013695717,
+              0.15207457542419434
+            ],
+            "xy": [
+              224.27230834960938,
+              384.2128372192383
+            ],
+            "camera_axis_depth": 4.895341396331787
+          },
+          "thigh_l": {
+            "world": [
+              -0.00182661646977067,
+              -0.08112166076898575,
+              0.5917057991027832
+            ],
+            "xy": [
+              255.4080810546875,
+              282.61387634277344
+            ],
+            "camera_axis_depth": 4.557610988616943
+          },
+          "calf_l": {
+            "world": [
+              -0.0016778309363871813,
+              -0.0697113499045372,
+              0.3357619345188141
+            ],
+            "xy": [
+              255.456298828125,
+              352.8381805419922
+            ],
+            "camera_axis_depth": 4.694268226623535
+          },
+          "foot_l": {
+            "world": [
+              0.12357309460639954,
+              -0.05933712050318718,
+              0.09131047874689102
+            ],
+            "xy": [
+              296.0439453125,
+              419.9933090209961
+            ],
+            "camera_axis_depth": 4.824334144592285
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/03/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "1272dee1fc30521f25e696cd4a9e0e4c42640bd65e00676bc7c7c3f4237abc41",
+          "dressed-depth.npy": "36f8311c5ffb73929521920e33caf271a17bc25f62e327e0115de97d7ed62fa8",
+          "dressed.png": "b0e24364ab52477103eb0d16f67520c71cbc7c332326d68b5b0e4f43f962932c",
+          "cutaway-id.png": "75496aa97925e2fd452eb29b17064087110908fc6580cd9c0d3f4fe18f4a7cd8",
+          "cutaway-depth.npy": "477826693a1d4e506f95501ecb8c38eb1dd222f97ea18a19adb549e38421fb34",
+          "cutaway.png": "c89a8070f5d5d40f48e829977f60d424539848a4c2e2edac2b1c2b39bcf24133",
+          "right-amodal-id.png": "c8f6f3311cd5f8cd563b0526c270dca41bdb7d8b8df316c940713927d1e2bcbd",
+          "right-amodal-depth.npy": "6c69d25b2ded028aa3e457fec72c309683126045dc9e371e9476ae2f7206b468",
+          "right-amodal.png": "a05c1e01b55082390019ac372cf52100609b0a24b3b32ab186980d3510aab5b9",
+          "left-amodal-id.png": "5f092f74b77dc57f937eb2d14d228c7dffdf9bc33606d6934048fcc1f82f53ef",
+          "left-amodal-depth.npy": "90c9c0fa70995d803dd5ad3e89d63895ca0ef23ea1a95833f1238912c9ade5e9",
+          "left-amodal.png": "b2a3f1ca70311d2a546af1cd36a083fc7a77674b5e14be7bd1d1f124119fca3a",
+          "pelvis-amodal-id.png": "43880f7cf0ce33136b63484cbf0157086b5c9a52491764eb80c2079e49eb6fbf",
+          "pelvis-amodal-depth.npy": "69176803849f517d9253c669d6aab3d4bc9943266e689387284310dc18826d75",
+          "pelvis-amodal.png": "46c4e7dcb7c61c235bacbeaa354e3f76c4f99e899364c03ecaae3853c6495ece",
+          "nearer-leg-id.png": "666da278e9727d1ace42ec382c9b0b4bfa06abe9db1859f30b9f56878b04190a",
+          "fixed-depth.png": "016afbb37431b0ff6628d0e6b889f5d1dfd52282d4acaedce275e09b12b9a7db",
+          "proximal-guide.png": "92ef0ae435b17108a17ee65e260350f77755c76d8ae28cec7e01e6c87afec3af"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.10062837600708008,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1180,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1322,
+            "dressed_same_owner_pixels": 446,
+            "visible_fraction": 0.3373676248108926,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 384,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 4,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/04.png",
+      "image_sha256": "f27f60183df5b75d59977fe7d75b91bcdac1be484a8d466d193c60c3f93d2131",
+      "reference": {
+        "hip_r": [
+          256.24503148809265,
+          270.5740525674468
+        ],
+        "knee_r": [
+          208.97134013115607,
+          328.3108091907444
+        ],
+        "ankle_r": [
+          200.64746306214153,
+          404.3544552152433
+        ],
+        "toe_r": [
+          150.13204917424844,
+          400.5649547668356
+        ],
+        "hip_l": [
+          255.07783526408522,
+          287.4224493190187
+        ],
+        "knee_l": [
+          269.4015674832501,
+          357.36658898285776
+        ],
+        "ankle_l": [
+          325.25212522096274,
+          417.01886971890656
+        ],
+        "toe_l": [
+          288.7926973753338,
+          442.2292564008977
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057080954313278,
+        "l": 0.10320902615785599
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/04/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/04/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/04/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/04/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/04/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            243,
+            300
+          ],
+          "source_box": [
+            233,
+            285,
+            262,
+            319
+          ],
+          "pixels": 438,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 4,
+        "source_index": 20,
+        "time_seconds": 0.6666666865348816,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.031885065138339996,
+              -0.016834385693073273,
+              0.5572174191474915
+            ],
+            "xy": [
+              266.3323669433594,
+              282.007080078125
+            ],
+            "camera_axis_depth": 4.63054084777832
+          },
+          "thigh_r": {
+            "world": [
+              0.0007561513339169323,
+              0.04151725769042969,
+              0.5645674467086792
+            ],
+            "xy": [
+              256.2450256347656,
+              270.57411193847656
+            ],
+            "camera_axis_depth": 4.677595615386963
+          },
+          "calf_r": {
+            "world": [
+              -0.14512750506401062,
+              0.050845660269260406,
+              0.35416659712791443
+            ],
+            "xy": [
+              208.97134399414062,
+              328.3108673095703
+            ],
+            "camera_axis_depth": 4.789891242980957
+          },
+          "foot_r": {
+            "world": [
+              -0.17081446945667267,
+              0.05696004256606102,
+              0.08057080954313278
+            ],
+            "xy": [
+              200.6474609375,
+              404.35450744628906
+            ],
+            "camera_axis_depth": 4.930688858032227
+          },
+          "thigh_l": {
+            "world": [
+              -0.0028457418084144592,
+              -0.07223623991012573,
+              0.5695606470108032
+            ],
+            "xy": [
+              255.0778350830078,
+              287.4225158691406
+            ],
+            "camera_axis_depth": 4.576296806335449
+          },
+          "calf_l": {
+            "world": [
+              0.0413563996553421,
+              -0.06553040444850922,
+              0.3172934651374817
+            ],
+            "xy": [
+              269.4015808105469,
+              357.36663818359375
+            ],
+            "camera_axis_depth": 4.707046031951904
+          },
+          "foot_l": {
+            "world": [
+              0.21370773017406464,
+              -0.06167645752429962,
+              0.10320902615785599
+            ],
+            "xy": [
+              325.25213623046875,
+              417.01892852783203
+            ],
+            "camera_axis_depth": 4.816409587860107
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/04/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "62d7f4e3f6c1351d646a3d78ff15801fdf6b5df77f0c5f06a8092ddba55d1b1b",
+          "dressed-depth.npy": "cfc49a4c74f6dca5f9bef8e834a28a25aa6339d875ce1c8f033e3c7f303c2054",
+          "dressed.png": "65fa6f36b151ba767dce73d660f1541f6219ac845d7bfdd336ad6adc0fa7ea03",
+          "cutaway-id.png": "d94f22b0f7084d3b0204d2662367ae32a7b1b9a80f11e441708d7248e0e660a2",
+          "cutaway-depth.npy": "ac00f7faebf00bede6d37a225967ec398c3ec988db7bbdb5b47e1dff8b9c0f32",
+          "cutaway.png": "dd400f1ecb128e106a181e1083f662a8446169153971f197e5cf237f46cc422c",
+          "right-amodal-id.png": "1178619e5442fa691f51507a676b8ca5fe8a726b5b4683e25a6f90bf7d03dda0",
+          "right-amodal-depth.npy": "aed14a4cc9f4d0a89412913dbb25f6db5d8a6fa0fb228262527d08ab2715d0ac",
+          "right-amodal.png": "060761ec376298f8fbcc0892c48b6bd8edc649b04005f0446ba1078acbb56f84",
+          "left-amodal-id.png": "a5d2e4d503e801160d4236b0e6127946e3abe3c038756a3a20562f3a1760036d",
+          "left-amodal-depth.npy": "107b93590ac4a6797a30091c3a1c0494103f6692c80717bd975179a55b22c47a",
+          "left-amodal.png": "66e62a983a50d6b1bf400796bca6db33dece21e491a9a320c6a456360ba98e63",
+          "pelvis-amodal-id.png": "a4029d56473a7f9d26400acea6e03737d657b78ecfafbfa42999afdeb99481fe",
+          "pelvis-amodal-depth.npy": "1a51793a5256744892a23d773f60fae0181202c9e990fe5d64e636e381c3fab4",
+          "pelvis-amodal.png": "a18f7674e02c0c1cc4ff7b3d0811315bb967c93783cea08f8165b0a9d74d51f6",
+          "nearer-leg-id.png": "c10f75ed1d599ddf92ea06527602623b046ad37c393b53ae965fc74941ee1b55",
+          "fixed-depth.png": "bb8f9a2c9c623b0c2e169e8e52260245034b56690776e8b85aa0117a522a4f0c",
+          "proximal-guide.png": "33a1cded469c32d3637de39aa7339f478e8268f14bea6a711c4b54bdd54200fc"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.10129880905151367,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1218,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1305,
+            "dressed_same_owner_pixels": 591,
+            "visible_fraction": 0.4528735632183908,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 498,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 5,
+      "source_index": 25,
+      "time_seconds": 0.8333333134651184,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/05.png",
+      "image_sha256": "60189cad5f7fba9bc91e7f697ad6e9181171bcb8de968f3d1a85fd33d7e10ab7",
+      "reference": {
+        "hip_r": [
+          256.2713143448286,
+          266.73082947327504
+        ],
+        "knee_r": [
+          217.77032325841205,
+          330.17107198207486
+        ],
+        "ankle_r": [
+          233.6330754726748,
+          406.7841839835328
+        ],
+        "toe_r": [
+          187.23496333255042,
+          424.00320135762195
+        ],
+        "hip_l": [
+          255.08209873151176,
+          284.01884082175275
+        ],
+        "knee_l": [
+          257.713663264166,
+          355.72703107699925
+        ],
+        "ankle_l": [
+          333.7834107604208,
+          396.4690388160476
+        ],
+        "toe_l": [
+          319.2647550558742,
+          438.6744324643164
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.07164415717124939,
+        "l": 0.17351466417312622
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/05/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/05/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/05/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/05/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/05/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            242,
+            304
+          ],
+          "source_box": [
+            233,
+            283,
+            264,
+            367
+          ],
+          "pixels": 802,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 5,
+        "source_index": 25,
+        "time_seconds": 0.8333333134651184,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.03193575516343117,
+              -0.0006918276776559651,
+              0.5609462261199951
+            ],
+            "xy": [
+              266.34881591796875,
+              278.3669128417969
+            ],
+            "camera_axis_depth": 4.64271879196167
+          },
+          "thigh_r": {
+            "world": [
+              0.000837258412502706,
+              0.057574011385440826,
+              0.5690664052963257
+            ],
+            "xy": [
+              256.27130126953125,
+              266.73089599609375
+            ],
+            "camera_axis_depth": 4.68931770324707
+          },
+          "calf_r": {
+            "world": [
+              -0.11797439306974411,
+              0.060420677065849304,
+              0.3421010971069336
+            ],
+            "xy": [
+              217.77032470703125,
+              330.17112731933594
+            ],
+            "camera_axis_depth": 4.804184436798096
+          },
+          "foot_r": {
+            "world": [
+              -0.06902293115854263,
+              0.05747959390282631,
+              0.07164415717124939
+            ],
+            "xy": [
+              233.63307189941406,
+              406.78424072265625
+            ],
+            "camera_axis_depth": 4.935560703277588
+          },
+          "thigh_l": {
+            "world": [
+              -0.00283258524723351,
+              -0.05623419210314751,
+              0.5725292563438416
+            ],
+            "xy": [
+              255.08209228515625,
+              284.01890563964844
+            ],
+            "camera_axis_depth": 4.588728904724121
+          },
+          "calf_l": {
+            "world": [
+              0.005288258194923401,
+              -0.05386996641755104,
+              0.31647080183029175
+            ],
+            "xy": [
+              257.7136535644531,
+              355.7270812988281
+            ],
+            "camera_axis_depth": 4.717583656311035
+          },
+          "foot_l": {
+            "world": [
+              0.24003474414348602,
+              -0.056960102170705795,
+              0.17351466417312622
+            ],
+            "xy": [
+              333.7834167480469,
+              396.4690933227539
+            ],
+            "camera_axis_depth": 4.785691261291504
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/05/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "f1163a8c146b4b19d224cd3018536d1bd762a510588449c16245a1948eac0bd0",
+          "dressed-depth.npy": "3ee7328453631942aa483e9fdaefc4c116034473ef8d0324bc4c47c52ad65baa",
+          "dressed.png": "e63aff16802be9e77498ea8dcf73bd257a6572587d38ec8bc296d94300126689",
+          "cutaway-id.png": "62d16304c2f4e06464970d637e795f5f647a5079f1e3d6cbab07eaaf29aa8580",
+          "cutaway-depth.npy": "04d30dc7c107ef2443a77a2dca7cea16032150c55f11d0be70e4e99398f41346",
+          "cutaway.png": "823c6c2a57a15a12b132803f85cbbba3d83e671f1bab008cfc959dff78a5da5e",
+          "right-amodal-id.png": "5e0d5bcc0513c242bc5c1a0d8687dda138875e7aaef4cacf17e70098d6fead6b",
+          "right-amodal-depth.npy": "faf16fc05390d62ca422b96a10fce0d285310223563f9d845a0b6399d27fc54f",
+          "right-amodal.png": "ab5a4c9f78cc536728f94f2f5f283522cbd656ce2b20b5cbbee3a9a5e4ab5e35",
+          "left-amodal-id.png": "7e00598720b047bf78119da5e0549fb9524ae0b09fd6516f4d1143583413b447",
+          "left-amodal-depth.npy": "641f201f0439ccf1dc42d02ae4ca21c5b8d42a5611a4ea9d692a07eb05344e40",
+          "left-amodal.png": "c28ee1620ae95ee740c1b9165723176d08d2392e2520b18ccdc615b0f4380197",
+          "pelvis-amodal-id.png": "e86169eda5cc72ce52021c36dae5c691a15fe2e2f5bbe19415440d1b27934f38",
+          "pelvis-amodal-depth.npy": "dd8660713751bcd9680392dd03430a9cfa0e072faa82b763b605c5f1d854453b",
+          "pelvis-amodal.png": "276ae0444ef87cbecb86283059fd59db25b38d979f0d2b48b7ea434d75db9001",
+          "nearer-leg-id.png": "946b10d08e7d7cd1d70841967762f0dca632eecc59c8f5471ea2044b8bc6f735",
+          "fixed-depth.png": "fbb51c9d4b6198d01fcd398185be925535cfcdf3594dd2c26211409050fc4a5e",
+          "proximal-guide.png": "c56d058125a732569ee4191a65edb4ec415120f0eafa75b5cdef7dc99f72606e"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.10058879852294922,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1228,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1296,
+            "dressed_same_owner_pixels": 575,
+            "visible_fraction": 0.44367283950617287,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 905,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 6,
+      "source_index": 30,
+      "time_seconds": 1.0,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/06.png",
+      "image_sha256": "7a1faa948bdb057102d7b299c8e65128fa552427d7a66042521de67dc4712832",
+      "reference": {
+        "hip_r": [
+          255.87844784237163,
+          257.48562610285256
+        ],
+        "knee_r": [
+          238.91027576108522,
+          328.9913307235047
+        ],
+        "ankle_r": [
+          265.3645536446873,
+          404.0388994370369
+        ],
+        "toe_r": [
+          221.0876443597335,
+          423.9695381501052
+        ],
+        "hip_l": [
+          255.54089367691475,
+          275.7391168976442
+        ],
+        "knee_l": [
+          212.33286101908624,
+          338.29342542863407
+        ],
+        "ankle_l": [
+          286.0360257112527,
+          383.10219762697386
+        ],
+        "toe_l": [
+          299.16513930694964,
+          425.6496859992818
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057999610900879,
+        "l": 0.22099459171295166
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/06/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/06/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/06/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/06/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/06/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            233,
+            272
+          ],
+          "source_box": [
+            229,
+            265,
+            238,
+            279
+          ],
+          "pixels": 42,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "l-1",
+          "expected_foreground": "l",
+          "source_xy": [
+            247,
+            350
+          ],
+          "source_box": [
+            220,
+            287,
+            279,
+            396
+          ],
+          "pixels": 2796,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 6,
+        "source_index": 30,
+        "time_seconds": 1.0,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.03206257149577141,
+              0.014764920808374882,
+              0.5838558673858643
+            ],
+            "xy": [
+              266.389892578125,
+              269.4368591308594
+            ],
+            "camera_axis_depth": 4.644802093505859
+          },
+          "thigh_r": {
+            "world": [
+              -0.00037510323454625905,
+              0.07203207165002823,
+              0.5936647057533264
+            ],
+            "xy": [
+              255.87844848632812,
+              257.4856872558594
+            ],
+            "camera_axis_depth": 4.689697265625
+          },
+          "calf_r": {
+            "world": [
+              -0.05273782089352608,
+              0.06630060821771622,
+              0.3429400324821472
+            ],
+            "xy": [
+              238.9102783203125,
+              328.99139404296875
+            ],
+            "camera_axis_depth": 4.808877468109131
+          },
+          "foot_r": {
+            "world": [
+              0.02889842726290226,
+              0.05891036614775658,
+              0.08057999610900879
+            ],
+            "xy": [
+              265.36456298828125,
+              404.03894805908203
+            ],
+            "camera_axis_depth": 4.932378768920898
+          },
+          "thigh_l": {
+            "world": [
+              -0.001416772953234613,
+              -0.041883133351802826,
+              0.5937591195106506
+            ],
+            "xy": [
+              255.5408935546875,
+              275.7391815185547
+            ],
+            "camera_axis_depth": 4.590683460235596
+          },
+          "calf_l": {
+            "world": [
+              -0.13475406169891357,
+              -0.0480521023273468,
+              0.37507960200309753
+            ],
+            "xy": [
+              212.33285522460938,
+              338.29347229003906
+            ],
+            "camera_axis_depth": 4.693614959716797
+          },
+          "foot_l": {
+            "world": [
+              0.09268929809331894,
+              -0.05696060135960579,
+              0.22099459171295166
+            ],
+            "xy": [
+              286.0360107421875,
+              383.1022491455078
+            ],
+            "camera_axis_depth": 4.762178897857666
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/06/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "685d4228606b8798814e58d9ac4165b1e81f8183610e321dd58d504c4e4fb883",
+          "dressed-depth.npy": "3e12e6476099e25b89f501ed1ddc934071941cc91d1f6fcb1809810b044fc5ce",
+          "dressed.png": "e7fc065b158577a0e852ea7186911ebd61100a9d0c3a72faa775e91c923bd417",
+          "cutaway-id.png": "3b59c73e18c42225efaa7eb0e8547a4a36715a2bfe5a4939c412f67452a2efc6",
+          "cutaway-depth.npy": "513736f0fedc3ae384d7b45133bc4650e97afd91fa9e84b2cab39969142523e2",
+          "cutaway.png": "0a9b1ec204dbcd0ba3cffd2b8954c380f757fa61f75f3a40e5740f2ba5299d00",
+          "right-amodal-id.png": "4cfea542cf07cb2424e44a4e3f2bbde7f421dfb716127b268a9abc4d523b5e04",
+          "right-amodal-depth.npy": "9e83b52f030cc6c354fb11b7d73488d7df0df1d499da83ce7491e72a6ebc5cfd",
+          "right-amodal.png": "c0f2bb09a228d2b784491e4ecf803ae2acef7fa102f6cac467f666a9375c1074",
+          "left-amodal-id.png": "eaacb778f4102deb1c8e3c4831334356e54618d61c161ad47c619137d6c225c7",
+          "left-amodal-depth.npy": "fa5980eddb1498bbefe6a9ca22f1bf451603e1fb9a6117fc37f24476c276db64",
+          "left-amodal.png": "67ba2f0407def43da54822e3332c1d5189efb0841f0ecaf33dca4df3cc3f0c80",
+          "pelvis-amodal-id.png": "aa6be840fd7d2f1782ba0ac303b2a9336f9b11dea4531d88d4eee5e6edca3d8b",
+          "pelvis-amodal-depth.npy": "b354cba5024156ee851b6e87d13ae4035a901a612603f5e888e8bffe1ed90ea7",
+          "pelvis-amodal.png": "a0dc5bd1e1062ae78e262d584ac3d14b278b9a38be746da8a4128e697b39ecb5",
+          "nearer-leg-id.png": "29723f20c685ed333f56a33348a36c9ab6617086fe0e128434a96250587e0b20",
+          "fixed-depth.png": "e8974fd2451d18a2f5784288ed7b2a77663c98ddf187f331fa73a9d311200100",
+          "proximal-guide.png": "acb346536a40f4e6b1587aaf18f75f2a33fedf1fd40586e75880ca71a2c5d1c1"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.0990138053894043,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1265,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1197,
+            "dressed_same_owner_pixels": 179,
+            "visible_fraction": 0.14954051796157058,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 3854,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 7,
+      "source_index": 35,
+      "time_seconds": 1.1666666269302368,
+      "image": "research/sprite-animation/ro-walk-eight-v13/attempts/full-eight-redraw/frames/07.png",
+      "image_sha256": "a0fb9b9f3e6d654ac10f149949637ee066c45b1669f64ade2ea0dbf4071efff4",
+      "reference": {
+        "hip_r": [
+          255.3140108977692,
+          257.42000260130754
+        ],
+        "knee_r": [
+          257.46214962005615,
+          330.84392480368973
+        ],
+        "ankle_r": [
+          296.82006140600276,
+          401.33682555995154
+        ],
+        "toe_r": [
+          254.94090694717215,
+          423.8286947493791
+        ],
+        "hip_l": [
+          256.06458295768573,
+          276.61127084941575
+        ],
+        "knee_l": [
+          195.82137849059285,
+          327.99965892981703
+        ],
+        "ankle_l": [
+          224.2720691342897,
+          402.5162323963158
+        ],
+        "toe_l": [
+          183.34322366835198,
+          428.5167554570858
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08915293961763382,
+        "l": 0.15207500755786896
+      },
+      "identity_review": "unconfirmed",
+      "notes": "",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/07/visible-id.png",
+        "right-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/07/right-amodal.png",
+        "left-amodal": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/07/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/07/crossing-mask.png",
+        "visible-color": "research/sprite-animation/ro-walk-eight-v13/source-owners/W/07/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            241,
+            284
+          ],
+          "source_box": [
+            233,
+            266,
+            253,
+            312
+          ],
+          "pixels": 480,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 7,
+        "source_index": 35,
+        "time_seconds": 1.1666666269302368,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.03198868781328201,
+              0.020080650225281715,
+              0.5801178812980652
+            ],
+            "xy": [
+              266.365966796875,
+              269.6361846923828
+            ],
+            "camera_axis_depth": 4.651271343231201
+          },
+          "thigh_r": {
+            "world": [
+              -0.0021169204264879227,
+              0.07605169713497162,
+              0.591606616973877
+            ],
+            "xy": [
+              255.3140106201172,
+              257.4200744628906
+            ],
+            "camera_axis_depth": 4.69420862197876
+          },
+          "calf_r": {
+            "world": [
+              0.004512101411819458,
+              0.06757248938083649,
+              0.3356345593929291
+            ],
+            "xy": [
+              257.462158203125,
+              330.84397888183594
+            ],
+            "camera_axis_depth": 4.813600063323975
+          },
+          "foot_r": {
+            "world": [
+              0.12596815824508667,
+              0.06070852279663086,
+              0.08915293961763382
+            ],
+            "xy": [
+              296.820068359375,
+              401.3368835449219
+            ],
+            "camera_axis_depth": 4.9296956062316895
+          },
+          "thigh_l": {
+            "world": [
+              0.00019929942209273577,
+              -0.03779767081141472,
+              0.58833247423172
+            ],
+            "xy": [
+              256.0645751953125,
+              276.61134338378906
+            ],
+            "camera_axis_depth": 4.596920490264893
+          },
+          "calf_l": {
+            "world": [
+              -0.1857074648141861,
+              -0.04943549633026123,
+              0.41243207454681396
+            ],
+            "xy": [
+              195.82138061523438,
+              327.9997100830078
+            ],
+            "camera_axis_depth": 4.673915863037109
+          },
+          "foot_l": {
+            "world": [
+              -0.09791041165590286,
+              -0.05703073367476463,
+              0.15207500755786896
+            ],
+            "xy": [
+              224.27206420898438,
+              402.5162887573242
+            ],
+            "camera_axis_depth": 4.7962470054626465
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/ro-walk-eight-v13/source-depth/W/07/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "18b204ae2a863bf04b1d5ee2013db4729608d934c0cb9500b0efd3f9d6288cbd",
+          "dressed-depth.npy": "ac4d228bb1dfbceac8390a70f57d0434490054e4df56284f8a02eadc141e2091",
+          "dressed.png": "ce3a9d65fb719fb2adba1ae048c613ce657dd78de66aa55620bdb7cec9d76e25",
+          "cutaway-id.png": "ef22d5850ebe43db0af094e1a2e738d276723dfe03758911f9292444ae17ff44",
+          "cutaway-depth.npy": "79e004f9ecbe718e69d172cb366b975cbe9bfe01c8dd4c6e7f678c186d434544",
+          "cutaway.png": "61f9a89cc7a72e9455bf00edb5e9b86b7b15203874dd58cb25effbb9c711022d",
+          "right-amodal-id.png": "543302d9534605c6a0a704fc4e27f53ad2fc694dc864632ed9f036146607f5e9",
+          "right-amodal-depth.npy": "2a9b60193e5c9e2cab8610d0db1ceb835cd6fe41c116acab4ba7711a9c495def",
+          "right-amodal.png": "3c258f16e9199108a6e5908d0939aef441196fa6558025cbd0f372164a939adc",
+          "left-amodal-id.png": "283b234d4dbde7d0d28cf0f91a30609cb965e68f8e9bd7827069d46e7ca290d1",
+          "left-amodal-depth.npy": "5975c9edc4a5cbcc43734506fa008e51992e132b00ba00c3a68100cd7ce93558",
+          "left-amodal.png": "13bd9e588e591af2402855cabd1b6087930009f64eff108376d9e1433e04a075",
+          "pelvis-amodal-id.png": "9928fd44ca7eed5825aac565b4f0319abb4c9b7d52db1c92885f6ae8e612001c",
+          "pelvis-amodal-depth.npy": "3fb3f9f155665dd7b46838bf9d00c7d98614c55b1c6014d99433cebdb1a1ed4d",
+          "pelvis-amodal.png": "bd6b83bfeaab4afb9537aa0b14f67432463a55198b40d91cad7c419fd9f0b228",
+          "nearer-leg-id.png": "3b02a4737d0bdbae02373548227920a86e4387ac43291f9ad420be324a0055cc",
+          "fixed-depth.png": "5115b3e1651e07feb5b74bcfb5c79d0a027f809f7ecb8e07b041d34b8813abc2",
+          "proximal-guide.png": "1396bbec8b3deb0f9eecca4198685d3f7670afe8896cee94b188bfd68911db1d"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.09728813171386719,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1272,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1115,
+            "dressed_same_owner_pixels": 413,
+            "visible_fraction": 0.3704035874439462,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 1019,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    }
+  ],
+  "release_ready": false,
+  "source_occlusion_path": "research/sprite-animation/ro-walk-eight-v13/source-owners/owner-index.json",
+  "source_occlusion_sha256": "2cc46891a4f24f0a3163b2a19c6cedb2a1afb716c9c4c36f4bcf2d3070baa7c6",
+  "profile_depth_path": "research/sprite-animation/ro-walk-eight-v13/source-depth/depth-index.json",
+  "profile_depth_sha256": "9b3027166e7bbf3d5911f4ab834bf96b7a515964439a2aad584e9dcce95da4e3"
+}

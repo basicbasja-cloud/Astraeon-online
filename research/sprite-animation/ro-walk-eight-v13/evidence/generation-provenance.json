@@ -1,0 +1,44 @@
+{
+  "generator": "image_gen.imagegen",
+  "approved_reference": {
+    "path": "research/sprite-animation/profile-depth-v12/evidence/W-raw.png",
+    "sha256": "fb14b3e10bfa8f0b162867a79aedf839bf7136c86d08c356b03e28dfb895727c"
+  },
+  "full_eight_attempt": {
+    "raw": "evidence/W-eight-raw.png",
+    "sha256": "3b780ae842349ac23f9c9bc2932ab9f344a28413930c6796c923cfaf5bc5e566",
+    "prompt": "evidence/generation-prompt.txt",
+    "inputs": [
+      "source-depth/W-proximal-guide.png",
+      "source-depth/W-dressed-guide.png",
+      "approved_reference"
+    ],
+    "status": "Alternative redraw study, not canonical approved anchors"
+  },
+  "four_new_inbetween_attempt": {
+    "raw": "evidence/W-inbetweens-raw.png",
+    "sha256": "47c2442c32ba6a232c431b430eff10727cbd92f4ffa9626cad7660b17c73f1db",
+    "prompt": "evidence/inbetween-prompt.txt",
+    "source_indices": [
+      5,
+      15,
+      25,
+      35
+    ],
+    "inputs": [
+      "approved_reference",
+      "evidence/W-inbetweens-proximal-guide.png",
+      "evidence/W-inbetweens-dressed.png"
+    ],
+    "phase35_not_selected": "Drawn more like a passing pose; selected full-eight source35 instead"
+  },
+  "final_frame_origins": "evidence/frame-origins.json",
+  "final_approved_anchor_pixels_preserved": [
+    0,
+    2,
+    4,
+    6
+  ],
+  "new_whole_loop_user_approved": false,
+  "flat_painted_frames_not_modular_parts": true
+}

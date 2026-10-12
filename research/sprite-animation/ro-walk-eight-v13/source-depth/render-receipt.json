@@ -1,0 +1,1985 @@
+{
+  "schema": "profile-source-depth-v1",
+  "blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "blender": "4.3.2",
+  "canvas": [
+    512,
+    512
+  ],
+  "camera_matrix_world": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.49520301818847656,
+      -0.8687772750854492,
+      -4.0
+    ],
+    [
+      0.0,
+      0.8687772750854492,
+      0.49520301818847656,
+      2.9200000762939453
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "camera_ortho_scale": 1.5800000429153442,
+  "depth_encoding": "Raw Cycles Z pass, scene units; smaller surface depth is nearer. No per-frame normalization. Background excluded by integer owner ID.",
+  "fixed_display_depth_range": [
+    3.6,
+    5.4
+  ],
+  "owners": {
+    "body.complete.torso": {
+      "owner": "pelvis",
+      "slot": "body",
+      "bone_groups": [
+        "neck_01",
+        "pelvis",
+        "spine_01",
+        "spine_02",
+        "spine_03"
+      ]
+    },
+    "body.complete.head": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "body.right.thigh": {
+      "owner": "r",
+      "slot": "body",
+      "bone_groups": [
+        "thigh_r"
+      ]
+    },
+    "body.right.shin": {
+      "owner": "r",
+      "slot": "body",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.right.upperarm": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "body.right.forearm": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "body.joint.upperarm_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "body.joint.lowerarm_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "body.joint.calf_r": {
+      "owner": "r",
+      "slot": "body",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.right.palm": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "hand_r"
+      ]
+    },
+    "glove.right.palm": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "hand_r"
+      ]
+    },
+    "body.thumb_01_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "thumb_01_r"
+      ]
+    },
+    "glove.thumb_01_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "thumb_01_r"
+      ]
+    },
+    "body.thumb_02_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "thumb_02_r"
+      ]
+    },
+    "glove.thumb_02_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "thumb_02_r"
+      ]
+    },
+    "body.thumb_03_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "thumb_03_r"
+      ]
+    },
+    "glove.thumb_03_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "thumb_03_r"
+      ]
+    },
+    "body.index_01_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "index_01_r"
+      ]
+    },
+    "glove.index_01_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "index_01_r"
+      ]
+    },
+    "body.index_02_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "index_02_r"
+      ]
+    },
+    "glove.index_02_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "index_02_r"
+      ]
+    },
+    "body.index_03_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "index_03_r"
+      ]
+    },
+    "glove.index_03_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "index_03_r"
+      ]
+    },
+    "body.middle_01_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "middle_01_r"
+      ]
+    },
+    "glove.middle_01_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "middle_01_r"
+      ]
+    },
+    "body.middle_02_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "middle_02_r"
+      ]
+    },
+    "glove.middle_02_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "middle_02_r"
+      ]
+    },
+    "body.middle_03_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "middle_03_r"
+      ]
+    },
+    "glove.middle_03_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "middle_03_r"
+      ]
+    },
+    "body.ring_01_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "ring_01_r"
+      ]
+    },
+    "glove.ring_01_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "ring_01_r"
+      ]
+    },
+    "body.ring_02_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "ring_02_r"
+      ]
+    },
+    "glove.ring_02_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "ring_02_r"
+      ]
+    },
+    "body.ring_03_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "ring_03_r"
+      ]
+    },
+    "glove.ring_03_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "ring_03_r"
+      ]
+    },
+    "body.pinky_01_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "pinky_01_r"
+      ]
+    },
+    "glove.pinky_01_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "pinky_01_r"
+      ]
+    },
+    "body.pinky_02_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "pinky_02_r"
+      ]
+    },
+    "glove.pinky_02_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "pinky_02_r"
+      ]
+    },
+    "body.pinky_03_r": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "pinky_03_r"
+      ]
+    },
+    "glove.pinky_03_r": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "pinky_03_r"
+      ]
+    },
+    "pants.right": {
+      "owner": "r",
+      "slot": "pants",
+      "bone_groups": [
+        "thigh_r"
+      ]
+    },
+    "pants.right.knee": {
+      "owner": "r",
+      "slot": "pants",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "sleeve.right": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "sleeve.right.lower": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "armor.right.pauldron": {
+      "owner": "other",
+      "slot": "armor",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "armor.right.bracer": {
+      "owner": "other",
+      "slot": "armor",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "armor.right.bracer.rim": {
+      "owner": "other",
+      "slot": "armor",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "boot.right.shaft": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "boot.right.cuff": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.right.foot": {
+      "owner": "r",
+      "slot": "body",
+      "bone_groups": [
+        "foot_r"
+      ]
+    },
+    "boot.right.heel": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "foot_r"
+      ]
+    },
+    "boot.right.toe": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "ball_r"
+      ]
+    },
+    "sole.right.heel": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "foot_r"
+      ]
+    },
+    "sole.right.toe": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "ball_r"
+      ]
+    },
+    "boot.right.gold": {
+      "owner": "r",
+      "slot": "boots",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.left.thigh": {
+      "owner": "l",
+      "slot": "body",
+      "bone_groups": [
+        "thigh_l"
+      ]
+    },
+    "body.left.shin": {
+      "owner": "l",
+      "slot": "body",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "body.left.upperarm": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "body.left.forearm": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "body.joint.upperarm_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "body.joint.lowerarm_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "body.joint.calf_l": {
+      "owner": "l",
+      "slot": "body",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "body.left.palm": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "hand_l"
+      ]
+    },
+    "glove.left.palm": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "hand_l"
+      ]
+    },
+    "body.thumb_01_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "thumb_01_l"
+      ]
+    },
+    "glove.thumb_01_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "thumb_01_l"
+      ]
+    },
+    "body.thumb_02_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "thumb_02_l"
+      ]
+    },
+    "glove.thumb_02_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "thumb_02_l"
+      ]
+    },
+    "body.thumb_03_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "thumb_03_l"
+      ]
+    },
+    "glove.thumb_03_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "thumb_03_l"
+      ]
+    },
+    "body.index_01_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "index_01_l"
+      ]
+    },
+    "glove.index_01_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "index_01_l"
+      ]
+    },
+    "body.index_02_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "index_02_l"
+      ]
+    },
+    "glove.index_02_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "index_02_l"
+      ]
+    },
+    "body.index_03_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "index_03_l"
+      ]
+    },
+    "glove.index_03_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "index_03_l"
+      ]
+    },
+    "body.middle_01_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "middle_01_l"
+      ]
+    },
+    "glove.middle_01_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "middle_01_l"
+      ]
+    },
+    "body.middle_02_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "middle_02_l"
+      ]
+    },
+    "glove.middle_02_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "middle_02_l"
+      ]
+    },
+    "body.middle_03_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "middle_03_l"
+      ]
+    },
+    "glove.middle_03_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "middle_03_l"
+      ]
+    },
+    "body.ring_01_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "ring_01_l"
+      ]
+    },
+    "glove.ring_01_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "ring_01_l"
+      ]
+    },
+    "body.ring_02_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "ring_02_l"
+      ]
+    },
+    "glove.ring_02_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "ring_02_l"
+      ]
+    },
+    "body.ring_03_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "ring_03_l"
+      ]
+    },
+    "glove.ring_03_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "ring_03_l"
+      ]
+    },
+    "body.pinky_01_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "pinky_01_l"
+      ]
+    },
+    "glove.pinky_01_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "pinky_01_l"
+      ]
+    },
+    "body.pinky_02_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "pinky_02_l"
+      ]
+    },
+    "glove.pinky_02_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "pinky_02_l"
+      ]
+    },
+    "body.pinky_03_l": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "pinky_03_l"
+      ]
+    },
+    "glove.pinky_03_l": {
+      "owner": "other",
+      "slot": "gloves",
+      "bone_groups": [
+        "pinky_03_l"
+      ]
+    },
+    "pants.left": {
+      "owner": "l",
+      "slot": "pants",
+      "bone_groups": [
+        "thigh_l"
+      ]
+    },
+    "pants.left.knee": {
+      "owner": "l",
+      "slot": "pants",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "sleeve.left": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "sleeve.left.lower": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "armor.left.pauldron": {
+      "owner": "other",
+      "slot": "armor",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "armor.left.bracer": {
+      "owner": "other",
+      "slot": "armor",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "armor.left.bracer.rim": {
+      "owner": "other",
+      "slot": "armor",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "boot.left.shaft": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "boot.left.cuff": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "body.left.foot": {
+      "owner": "l",
+      "slot": "body",
+      "bone_groups": [
+        "foot_l"
+      ]
+    },
+    "boot.left.heel": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "foot_l"
+      ]
+    },
+    "boot.left.toe": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "ball_l"
+      ]
+    },
+    "sole.left.heel": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "foot_l"
+      ]
+    },
+    "sole.left.toe": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "ball_l"
+      ]
+    },
+    "boot.left.gold": {
+      "owner": "l",
+      "slot": "boots",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "tunic.complete": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "neck_01",
+        "pelvis",
+        "spine_01",
+        "spine_02",
+        "spine_03"
+      ]
+    },
+    "tabard.chest": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "spine_02"
+      ]
+    },
+    "tabard.lower": {
+      "owner": "other",
+      "slot": "torso",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "belt": {
+      "owner": "other",
+      "slot": "belt",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "belt.buckle": {
+      "owner": "other",
+      "slot": "belt",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "sash.teal": {
+      "owner": "other",
+      "slot": "sash",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "cape.complete": {
+      "owner": "other",
+      "slot": "cape",
+      "bone_groups": [
+        "cape.lower",
+        "cape.upper",
+        "spine_03"
+      ]
+    },
+    "scarf.collar": {
+      "owner": "other",
+      "slot": "scarf",
+      "bone_groups": [
+        "neck_01"
+      ]
+    },
+    "hair.silver.complete.cap": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.0": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.1": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.2": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.3": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.4": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.5": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.6": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.7": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.8": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.9": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.10": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.0": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.1": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.2": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.3": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.4": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.tuft": {
+      "owner": "other",
+      "slot": "hair.silver",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.complete.cap": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.0": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.1": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.2": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.3": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.4": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.5": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.6": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.7": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.8": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.9": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.10": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.0": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.1": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.2": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.3": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.4": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.tuft": {
+      "owner": "other",
+      "slot": "hair.auburn",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "ear.-1": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.white.-1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.iris.-1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.pupil.-1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.light.-1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "brow.-1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "cheek.-1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "ear.1": {
+      "owner": "other",
+      "slot": "body",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.white.1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.iris.1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.pupil.1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.light.1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "brow.1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "cheek.1": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "nose": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "mouth": {
+      "owner": "other",
+      "slot": "face",
+      "bone_groups": [
+        "Head"
+      ]
+    }
+  },
+  "samples": [
+    {
+      "view": "W",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.031873274594545364,
+            0.011893454939126968,
+            0.5572099685668945
+          ],
+          "xy": [
+            266.32855224609375,
+            277.3992004394531
+          ],
+          "camera_axis_depth": 4.655502796173096
+        },
+        "thigh_r": {
+          "world": [
+            -0.0030382839031517506,
+            0.0672023817896843,
+            0.5694594979286194
+          ],
+          "xy": [
+            255.01544189453125,
+            265.0751495361328
+          ],
+          "camera_axis_depth": 4.697487831115723
+        },
+        "calf_r": {
+          "world": [
+            0.08793827891349792,
+            0.06393872201442719,
+            0.3299805819988251
+          ],
+          "xy": [
+            284.4964599609375,
+            333.0188446044922
+          ],
+          "camera_axis_depth": 4.813243389129639
+        },
+        "foot_r": {
+          "world": [
+            0.22680598497390747,
+            0.06163730472326279,
+            0.09278370440006256
+          ],
+          "xy": [
+            329.4966125488281,
+            400.1656723022461
+          ],
+          "camera_axis_depth": 4.928704261779785
+        },
+        "thigh_l": {
+          "world": [
+            0.0009339400567114353,
+            -0.04654692858457565,
+            0.5646550059318542
+          ],
+          "xy": [
+            256.3026428222656,
+            284.6811981201172
+          ],
+          "camera_axis_depth": 4.601044178009033
+        },
+        "calf_l": {
+          "world": [
+            -0.1449883133172989,
+            -0.05398019403219223,
+            0.3542056977748871
+          ],
+          "xy": [
+            209.01644897460938,
+            345.12135314941406
+          ],
+          "camera_axis_depth": 4.698801517486572
+        },
+        "foot_l": {
+          "world": [
+            -0.17081472277641296,
+            -0.05696003884077072,
+            0.08057089149951935
+          ],
+          "xy": [
+            200.6473846435547,
+            422.63533782958984
+          ],
+          "camera_axis_depth": 4.831717491149902
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 1,
+      "source_index": 5,
+      "time_seconds": 0.1666666716337204,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.03196512535214424,
+            -0.004424000158905983,
+            0.5609411001205444
+          ],
+          "xy": [
+            266.3583068847656,
+            278.9672546386719
+          ],
+          "camera_axis_depth": 4.63947868347168
+        },
+        "thigh_r": {
+          "world": [
+            -0.002481258474290371,
+            0.05133792385458946,
+            0.5724301338195801
+          ],
+          "xy": [
+            255.19595336914062,
+            266.78460693359375
+          ],
+          "camera_axis_depth": 4.682234287261963
+        },
+        "calf_r": {
+          "world": [
+            -0.0017773499712347984,
+            0.052363377064466476,
+            0.3162349462509155
+          ],
+          "xy": [
+            255.42404174804688,
+            338.7461242675781
+          ],
+          "camera_axis_depth": 4.809993743896484
+        },
+        "foot_r": {
+          "world": [
+            0.23344440758228302,
+            0.057633642107248306,
+            0.17412644624710083
+          ],
+          "xy": [
+            331.6477966308594,
+            377.9079132080078
+          ],
+          "camera_axis_depth": 4.884944915771484
+        },
+        "thigh_l": {
+          "world": [
+            0.0005295573500916362,
+            -0.06249520182609558,
+            0.5691559910774231
+          ],
+          "xy": [
+            256.1716003417969,
+            285.97328186035156
+          ],
+          "camera_axis_depth": 4.584959983825684
+        },
+        "calf_l": {
+          "world": [
+            -0.11104044318199158,
+            -0.06216445565223694,
+            0.33852753043174744
+          ],
+          "xy": [
+            220.01727294921875,
+            350.8485412597656
+          ],
+          "camera_axis_depth": 4.699455261230469
+        },
+        "foot_l": {
+          "world": [
+            -0.06634845584630966,
+            -0.05695990473031998,
+            0.06736800819635391
+          ],
+          "xy": [
+            234.49974060058594,
+            426.35230255126953
+          ],
+          "camera_axis_depth": 4.838255882263184
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 2,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.032064471393823624,
+            -0.019501354545354843,
+            0.5838558077812195
+          ],
+          "xy": [
+            266.3905029296875,
+            274.93560791015625
+          ],
+          "camera_axis_depth": 4.61503267288208
+        },
+        "thigh_r": {
+          "world": [
+            -0.0012816304806619883,
+            0.037241626530885696,
+            0.5936645269393921
+          ],
+          "xy": [
+            255.58468627929688,
+            263.06858825683594
+          ],
+          "camera_axis_depth": 4.659472465515137
+        },
+        "calf_r": {
+          "world": [
+            -0.13465547561645508,
+            0.046088844537734985,
+            0.3750993311405182
+          ],
+          "xy": [
+            212.36480712890625,
+            323.18104553222656
+          ],
+          "camera_axis_depth": 4.775392532348633
+        },
+        "foot_r": {
+          "world": [
+            0.09268935769796371,
+            0.05696073919534683,
+            0.220994770526886
+          ],
+          "xy": [
+            286.0360412597656,
+            364.82115173339844
+          ],
+          "camera_axis_depth": 4.861150741577148
+        },
+        "thigh_l": {
+          "world": [
+            -0.0005080194678157568,
+            -0.0766756683588028,
+            0.5937588810920715
+          ],
+          "xy": [
+            255.8353729248047,
+            281.3224334716797
+          ],
+          "camera_axis_depth": 4.5604567527771
+        },
+        "calf_l": {
+          "world": [
+            -0.02286599949002266,
+            -0.06753627955913544,
+            0.3387018144130707
+          ],
+          "xy": [
+            248.5902557373047,
+            351.66148376464844
+          ],
+          "camera_axis_depth": 4.694701671600342
+        },
+        "foot_l": {
+          "world": [
+            0.0362124927341938,
+            -0.05713333189487457,
+            0.07046044617891312
+          ],
+          "xy": [
+            267.73468017578125,
+            425.50951385498047
+          ],
+          "camera_axis_depth": 4.836573600769043
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 3,
+      "source_index": 15,
+      "time_seconds": 0.5,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.03200400620698929,
+            -0.02500331960618496,
+            0.5801229476928711
+          ],
+          "xy": [
+            266.37091064453125,
+            276.8694152832031
+          ],
+          "camera_axis_depth": 4.612101078033447
+        },
+        "thigh_r": {
+          "world": [
+            -6.816776294726878e-05,
+            0.032732121646404266,
+            0.5882428288459778
+          ],
+          "xy": [
+            255.9779052734375,
+            265.31858825683594
+          ],
+          "camera_axis_depth": 4.658239364624023
+        },
+        "calf_r": {
+          "world": [
+            -0.18580764532089233,
+            0.04580816254019737,
+            0.41226664185523987
+          ],
+          "xy": [
+            195.78890991210938,
+            312.76246643066406
+          ],
+          "camera_axis_depth": 4.756743431091309
+        },
+        "foot_r": {
+          "world": [
+            -0.09790967404842377,
+            0.05703089013695717,
+            0.15207457542419434
+          ],
+          "xy": [
+            224.27230834960938,
+            384.2128372192383
+          ],
+          "camera_axis_depth": 4.895341396331787
+        },
+        "thigh_l": {
+          "world": [
+            -0.00182661646977067,
+            -0.08112166076898575,
+            0.5917057991027832
+          ],
+          "xy": [
+            255.4080810546875,
+            282.61387634277344
+          ],
+          "camera_axis_depth": 4.557610988616943
+        },
+        "calf_l": {
+          "world": [
+            -0.0016778309363871813,
+            -0.0697113499045372,
+            0.3357619345188141
+          ],
+          "xy": [
+            255.456298828125,
+            352.8381805419922
+          ],
+          "camera_axis_depth": 4.694268226623535
+        },
+        "foot_l": {
+          "world": [
+            0.12357309460639954,
+            -0.05933712050318718,
+            0.09131047874689102
+          ],
+          "xy": [
+            296.0439453125,
+            419.9933090209961
+          ],
+          "camera_axis_depth": 4.824334144592285
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 4,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.031885065138339996,
+            -0.016834385693073273,
+            0.5572174191474915
+          ],
+          "xy": [
+            266.3323669433594,
+            282.007080078125
+          ],
+          "camera_axis_depth": 4.63054084777832
+        },
+        "thigh_r": {
+          "world": [
+            0.0007561513339169323,
+            0.04151725769042969,
+            0.5645674467086792
+          ],
+          "xy": [
+            256.2450256347656,
+            270.57411193847656
+          ],
+          "camera_axis_depth": 4.677595615386963
+        },
+        "calf_r": {
+          "world": [
+            -0.14512750506401062,
+            0.050845660269260406,
+            0.35416659712791443
+          ],
+          "xy": [
+            208.97134399414062,
+            328.3108673095703
+          ],
+          "camera_axis_depth": 4.789891242980957
+        },
+        "foot_r": {
+          "world": [
+            -0.17081446945667267,
+            0.05696004256606102,
+            0.08057080954313278
+          ],
+          "xy": [
+            200.6474609375,
+            404.35450744628906
+          ],
+          "camera_axis_depth": 4.930688858032227
+        },
+        "thigh_l": {
+          "world": [
+            -0.0028457418084144592,
+            -0.07223623991012573,
+            0.5695606470108032
+          ],
+          "xy": [
+            255.0778350830078,
+            287.4225158691406
+          ],
+          "camera_axis_depth": 4.576296806335449
+        },
+        "calf_l": {
+          "world": [
+            0.0413563996553421,
+            -0.06553040444850922,
+            0.3172934651374817
+          ],
+          "xy": [
+            269.4015808105469,
+            357.36663818359375
+          ],
+          "camera_axis_depth": 4.707046031951904
+        },
+        "foot_l": {
+          "world": [
+            0.21370773017406464,
+            -0.06167645752429962,
+            0.10320902615785599
+          ],
+          "xy": [
+            325.25213623046875,
+            417.01892852783203
+          ],
+          "camera_axis_depth": 4.816409587860107
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 5,
+      "source_index": 25,
+      "time_seconds": 0.8333333134651184,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.03193575516343117,
+            -0.0006918276776559651,
+            0.5609462261199951
+          ],
+          "xy": [
+            266.34881591796875,
+            278.3669128417969
+          ],
+          "camera_axis_depth": 4.64271879196167
+        },
+        "thigh_r": {
+          "world": [
+            0.000837258412502706,
+            0.057574011385440826,
+            0.5690664052963257
+          ],
+          "xy": [
+            256.27130126953125,
+            266.73089599609375
+          ],
+          "camera_axis_depth": 4.68931770324707
+        },
+        "calf_r": {
+          "world": [
+            -0.11797439306974411,
+            0.060420677065849304,
+            0.3421010971069336
+          ],
+          "xy": [
+            217.77032470703125,
+            330.17112731933594
+          ],
+          "camera_axis_depth": 4.804184436798096
+        },
+        "foot_r": {
+          "world": [
+            -0.06902293115854263,
+            0.05747959390282631,
+            0.07164415717124939
+          ],
+          "xy": [
+            233.63307189941406,
+            406.78424072265625
+          ],
+          "camera_axis_depth": 4.935560703277588
+        },
+        "thigh_l": {
+          "world": [
+            -0.00283258524723351,
+            -0.05623419210314751,
+            0.5725292563438416
+          ],
+          "xy": [
+            255.08209228515625,
+            284.01890563964844
+          ],
+          "camera_axis_depth": 4.588728904724121
+        },
+        "calf_l": {
+          "world": [
+            0.005288258194923401,
+            -0.05386996641755104,
+            0.31647080183029175
+          ],
+          "xy": [
+            257.7136535644531,
+            355.7270812988281
+          ],
+          "camera_axis_depth": 4.717583656311035
+        },
+        "foot_l": {
+          "world": [
+            0.24003474414348602,
+            -0.056960102170705795,
+            0.17351466417312622
+          ],
+          "xy": [
+            333.7834167480469,
+            396.4690933227539
+          ],
+          "camera_axis_depth": 4.785691261291504
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 6,
+      "source_index": 30,
+      "time_seconds": 1.0,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.03206257149577141,
+            0.014764920808374882,
+            0.5838558673858643
+          ],
+          "xy": [
+            266.389892578125,
+            269.4368591308594
+          ],
+          "camera_axis_depth": 4.644802093505859
+        },
+        "thigh_r": {
+          "world": [
+            -0.00037510323454625905,
+            0.07203207165002823,
+            0.5936647057533264
+          ],
+          "xy": [
+            255.87844848632812,
+            257.4856872558594
+          ],
+          "camera_axis_depth": 4.689697265625
+        },
+        "calf_r": {
+          "world": [
+            -0.05273782089352608,
+            0.06630060821771622,
+            0.3429400324821472
+          ],
+          "xy": [
+            238.9102783203125,
+            328.99139404296875
+          ],
+          "camera_axis_depth": 4.808877468109131
+        },
+        "foot_r": {
+          "world": [
+            0.02889842726290226,
+            0.05891036614775658,
+            0.08057999610900879
+          ],
+          "xy": [
+            265.36456298828125,
+            404.03894805908203
+          ],
+          "camera_axis_depth": 4.932378768920898
+        },
+        "thigh_l": {
+          "world": [
+            -0.001416772953234613,
+            -0.041883133351802826,
+            0.5937591195106506
+          ],
+          "xy": [
+            255.5408935546875,
+            275.7391815185547
+          ],
+          "camera_axis_depth": 4.590683460235596
+        },
+        "calf_l": {
+          "world": [
+            -0.13475406169891357,
+            -0.0480521023273468,
+            0.37507960200309753
+          ],
+          "xy": [
+            212.33285522460938,
+            338.29347229003906
+          ],
+          "camera_axis_depth": 4.693614959716797
+        },
+        "foot_l": {
+          "world": [
+            0.09268929809331894,
+            -0.05696060135960579,
+            0.22099459171295166
+          ],
+          "xy": [
+            286.0360107421875,
+            383.1022491455078
+          ],
+          "camera_axis_depth": 4.762178897857666
+        }
+      }
+    },
+    {
+      "view": "W",
+      "key": 7,
+      "source_index": 35,
+      "time_seconds": 1.1666666269302368,
+      "bones": {
+        "pelvis": {
+          "world": [
+            0.03198868781328201,
+            0.020080650225281715,
+            0.5801178812980652
+          ],
+          "xy": [
+            266.365966796875,
+            269.6361846923828
+          ],
+          "camera_axis_depth": 4.651271343231201
+        },
+        "thigh_r": {
+          "world": [
+            -0.0021169204264879227,
+            0.07605169713497162,
+            0.591606616973877
+          ],
+          "xy": [
+            255.3140106201172,
+            257.4200744628906
+          ],
+          "camera_axis_depth": 4.69420862197876
+        },
+        "calf_r": {
+          "world": [
+            0.004512101411819458,
+            0.06757248938083649,
+            0.3356345593929291
+          ],
+          "xy": [
+            257.462158203125,
+            330.84397888183594
+          ],
+          "camera_axis_depth": 4.813600063323975
+        },
+        "foot_r": {
+          "world": [
+            0.12596815824508667,
+            0.06070852279663086,
+            0.08915293961763382
+          ],
+          "xy": [
+            296.820068359375,
+            401.3368835449219
+          ],
+          "camera_axis_depth": 4.9296956062316895
+        },
+        "thigh_l": {
+          "world": [
+            0.00019929942209273577,
+            -0.03779767081141472,
+            0.58833247423172
+          ],
+          "xy": [
+            256.0645751953125,
+            276.61134338378906
+          ],
+          "camera_axis_depth": 4.596920490264893
+        },
+        "calf_l": {
+          "world": [
+            -0.1857074648141861,
+            -0.04943549633026123,
+            0.41243207454681396
+          ],
+          "xy": [
+            195.82138061523438,
+            327.9997100830078
+          ],
+          "camera_axis_depth": 4.673915863037109
+        },
+        "foot_l": {
+          "world": [
+            -0.09791041165590286,
+            -0.05703073367476463,
+            0.15207500755786896
+          ],
+          "xy": [
+            224.27206420898438,
+            402.5162887573242
+          ],
+          "camera_axis_depth": 4.7962470054626465
+        }
+      }
+    }
+  ],
+  "render_passes": 40,
+  "source_pose_edited": false,
+  "scope": "Cutaway removes other meshes to expose actual original pelvis and weighted leg meshes. It is a diagnostic source pass, not recovered anatomy of generated art."
+}

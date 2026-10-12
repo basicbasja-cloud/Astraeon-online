@@ -1,17 +1,19 @@
 """Package real source depth and cutaway guides; never infer drawn leg identity."""
-import argparse,hashlib,json,shutil
+import argparse,hashlib,json,shutil,math
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw
 import OpenEXR
-p=argparse.ArgumentParser();p.add_argument('--renders',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--renders',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--columns',type=int,default=2);a=p.parse_args()
 if a.output.exists():raise ValueError('Fresh output required')
 a.output.mkdir(parents=True);receipt=json.loads((a.renders/'receipt.json').read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def read(path):
     with OpenEXR.File(str(path)) as f:
         v=next(iter(f.channels().values())).pixels
         return (v[:,:,0] if v.ndim==3 else v).copy()
-records=[];sheets={(v,mode):Image.new('RGBA',(1024,1024)) for v in ['E','W'] for mode in ['dressed','cutaway','depth','proximal']}
+views=sorted({s['view'] for s in receipt['samples']});counts={v:sum(s['view']==v for s in receipt['samples']) for v in views}
+if a.columns<1 or a.columns>8:raise ValueError('Invalid columns')
+records=[];sheets={(v,mode):Image.new('RGBA',(512*a.columns,512*math.ceil(counts[v]/a.columns))) for v in views for mode in ['dressed','cutaway','depth','proximal']}
 lo,hi=receipt['fixed_display_depth_range']
 for sample in receipt['samples']:
     v,k=sample['view'],sample['key'];src=a.renders/v/f'{k:02}';dst=a.output/v/f'{k:02}';dst.mkdir(parents=True);paths={};depths={};ids={}
@@ -42,7 +44,7 @@ for sample in receipt['samples']:
         total=int(region.sum());visible=int((region&(ids['dressed']==code)).sum())
         stats[side]={'sample_pixels':total,'dressed_same_owner_pixels':visible,'visible_fraction':visible/total if total else None,'projection_radius_px':24,'internal_bone_visibility_not_claimed':True}
     proximal.save(dst/'proximal-guide.png');paths['proximal-guide.png']=str(dst/'proximal-guide.png')
-    for mode,file in [('dressed','dressed.png'),('cutaway','cutaway.png'),('depth','fixed-depth.png'),('proximal','proximal-guide.png')]:sheets[v,mode].paste(Image.open(dst/file),(k%2*512,k//2*512))
+    for mode,file in [('dressed','dressed.png'),('cutaway','cutaway.png'),('depth','fixed-depth.png'),('proximal','proximal-guide.png')]:sheets[v,mode].paste(Image.open(dst/file),(k%a.columns*512,k//a.columns*512))
     rd,ld=[sample['bones']['thigh_'+s]['camera_axis_depth'] for s in ['r','l']]
     records.append({**sample,'paths':paths,'sha256':{n:sha(p) for n,p in paths.items()},'hip_near_side':'r' if rd<ld else 'l',
         'hip_depth_difference_scene_units':abs(rd-ld),'proximal_surface_visibility':stats,'overlap_depth_pixels':int(observable.sum()),'isolated_depth_order_mismatch_pixels':mismatches})
