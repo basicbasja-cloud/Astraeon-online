@@ -1,0 +1,23 @@
+{
+  "scope": "Inline standalone motion QA viewer, raster canvases and controls; not game-engine integration, anatomical acceptance or measured runtime cadence",
+  "checks": [
+    "eight authored directions in fixed order",
+    "64 art and192 reference images decode",
+    "600ms frame boundary75ms shared across directions",
+    "last sample is retained and600ms wraps",
+    "direction change preserves current phase",
+    "800ms control preserves selected frame",
+    "previous wraps frame1 to8",
+    "next wraps8to1",
+    "scrub pauses and chooses exact frame",
+    "stable-head front view still displaysREJECTED",
+    "W shows residual vertical warning",
+    "bone overlay and surface toggles retain phase",
+    "all four selected-detail canvases drawn",
+    "play and pause behave",
+    "mobile has no horizontal overflow",
+    "no script errors orSVGdependencies"
+  ],
+  "errors": [],
+  "passed": 16
+}

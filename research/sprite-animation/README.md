@@ -1,3 +1,7 @@
+## Latest: eight-direction walking and residual-bounce QA v20
+
+[64painted facing frames, actual original bones, per-axis/flow/continuity checks and motion research plan](eight-walk-factory-v20/README.md) preserve W8appearancefeedback with residualbounce. Newdiagnostics detect that bounce;stablehead cannot hide thefrontphase7error. Initialsourcephase pairing was corrected and failures remain visible. Allnewart/contacts/completeparts retainreviewgates. [ReusableQA](../../skills/modular-eight-direction-sprites/references/eight-direction-motion-qa.md) · [Nextmotions](eight-walk-factory-v20/NEXT-MOTION-RESEARCH.md).
+
 ## Latest: direct game-pose paintovers and source-of-truth gates v19
 
 [RO8key/16exposure experiment, Valyria6drafts and frame-by-frame comparisons](reverse-paintover-v19/README.md) test actual source pose paintovers in our own appearance. Protected keys remain unchanged; new midpoints fail pose/scale/loop continuity. Immutable raster/source clocks, unknown hidden anatomy, actual approved original motion and authored interpolation are kept separate in the [reusable guide](../../skills/modular-eight-direction-sprites/references/reverse-paintover-source-truth.md). The checker also rejects clipped palette ROIs. New art/complete parts/production remain unapproved.

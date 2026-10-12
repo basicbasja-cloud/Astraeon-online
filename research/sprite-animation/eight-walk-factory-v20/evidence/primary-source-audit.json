@@ -1,0 +1,36 @@
+{
+  "scope": "Read primary project/docs; neural models/Spine/FootSkate solver not installed or executed",
+  "sources": [
+    {
+      "url": "https://www.wslai.net/publications/video_consistency/",
+      "status": "AUTHOR_PROJECT_READ",
+      "applied": "Separate temporal coherence from image fidelity; use occlusion-aware auxiliary diagnostics."
+    },
+    {
+      "url": "https://jeff-liangf.github.io/projects/flowvid/",
+      "status": "AUTHOR_PROJECT_READ",
+      "applied": "Imperfect flow is auxiliary, cannot approve anatomy or source pose."
+    },
+    {
+      "url": "https://esotericsoftware.com/spine-keys",
+      "status": "OFFICIAL_GUIDE_READ",
+      "applied": "Separate pose keys/exposure, attachment sequence, draw order and events; between-key motion also needs review."
+    },
+    {
+      "url": "https://research.cs.wisc.edu/graphics/Gallery/FootskateSolver/footskate.html",
+      "status": "PRIMARY_SOLVER_DOCUMENTATION_READ",
+      "applied": "Require per-interval toe/heel contact constraints; clearance is not support."
+    }
+  ],
+  "unavailable": [
+    {
+      "url": "https://openaccess.thecvf.com/content_ECCV_2018/papers/Wei-Sheng_Lai_Real-Time_Blind_Video_ECCV_2018_paper.pdf",
+      "status": "HTTP403_NOT_READ_FULL_TEXT"
+    },
+    {
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Liang_FlowVid_Taming_Imperfect_Optical_Flows_for_Consistent_Video-to-Video_Synthesis_CVPR_2024_paper.html",
+      "status": "HTTP403_NOT_READ_FULL_TEXT"
+    }
+  ],
+  "executed_optical_flow": "OpenCV4.11 Farneback; diagnostic pixel warping only; original masters unchanged"
+}
