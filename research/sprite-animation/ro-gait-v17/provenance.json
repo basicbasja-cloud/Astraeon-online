@@ -1,0 +1,58 @@
+{
+  "schema": "upright-walk-generation-v1",
+  "attempts": [
+    {
+      "request": {
+        "prompt": "Create one premium original fantasy RPG character walking animation sprite sheet, EXACTLY 8 sequential full-body frames, 4 columns by 2 rows, chronological reading order. Transparent background. FIRST reference is the authoritative new upright original rig geometry: follow each cell's pelvis, head, feet, bend, foot spacing and chronological phase. Orange near leg is ANATOMICAL LEFT; blue far leg ANATOMICAL RIGHT. Preserve hip-to-thigh-to-knee ownership even behind overlapping trousers; do not simply recolor or swap cloth. All frames physically face WEST/screen-left. SECOND reference supplies only our character identity, materials, ornament and polished hand-painted sprite quality, NOT its hunched posture, long stride or cape spread. Silver lavender tousled hair, youthful anime face, mustard gold scarf/cape with ivory geometric motif, bronze pauldrons/bracers, navy sleeves, ivory tunic, leather belt, olive trousers, brown bronze-trimmed boots and teal left-hip cloth. No sword. Repaint all eight as a coherent same-character clip in this detailed original style. IMPORTANT: a relaxed UPRIGHT normal walk, neck directly over pelvis as shown by first guide, chest upright, head level, no sneaking, no crouch, no aggressive lean. Very compact natural steps, low foot swing, subtle coherent hip bob and arm counter-swing. Progress smoothly through alternating heel contact, loading, passing and reach. Do not repeat broad-stride poses. Cape may trail gently right, not explode. Keep consistent torso/head/boot volumes and one fixed camera, body scale, ground-root placement and cell margins through all eight frames. First source guide's colored mesh/lines are diagnostic only: remove all guide colors, skeletons, lines and numbers from final art. Let the leg silhouettes show near/far depth and original proximal attachments; keep garment attachment identity consistent. Return a clean usable transparent 4x2 sheet with equal logical cells and ample empty gutters, no clipping, no text, no borders, no shadows under feet, no duplicate extra figures. Review last-to-first as well as adjacent motion. Eight natural upright small-step poses take priority over copying the second image's pose.",
+        "referenced_image_paths": [
+          "/workspace/Astraeon-sprite-research/research/sprite-animation/ro-gait-v17/evidence/upright-eight-guides.png",
+          "/workspace/Astraeon-sprite-research/research/sprite-animation/profile-depth-v12/master/W/frames/02.png"
+        ],
+        "transparent_background": true
+      },
+      "raw_path": "evidence/attempt1-raw.png",
+      "generator_path": "/workspace/generated_images/exec-a5dadd82-3281-4895-9dc0-f0b6df61cc69.png",
+      "status": "UNAPPROVED",
+      "observations": "Torso more upright than v16, but second row still leans, passing shapes and both hip origins not reliably followed. No acceptance transfer.",
+      "inputs": [
+        {
+          "path": "/workspace/Astraeon-sprite-research/research/sprite-animation/ro-gait-v17/evidence/upright-eight-guides.png",
+          "sha256": "30d07359f84580e098af3c627ce3dbaefc5f32504739c086c280a31125afd225",
+          "scope": "original source geometry"
+        },
+        {
+          "path": "/workspace/Astraeon-sprite-research/research/sprite-animation/profile-depth-v12/master/W/frames/02.png",
+          "sha256": "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+          "scope": "user-scoped original appearance only; posture excluded"
+        }
+      ],
+      "raw_sha256": "d1381317bc73b2138187c39690df05d756b6aada68777bc860e54629188e8427"
+    },
+    {
+      "request": {
+        "prompt": "Edit this entire 8-frame original fantasy walking sheet coherently. FIRST image is the generated candidate to correct; SECOND image is the authoritative actual upright original rig, in the SAME 4 columns x2 rows order. Preserve premium silver-haired gold-scarf bronze-armored character detail, design, consistent rendering and WEST/screen-left facing from first image. But correct ALL motion geometry to second source. Critical errors: bottom row is leaning/crouching, steps repeat, and far-leg forward contact is not read correctly. All EIGHT frames must have the same relaxed upright chest, shoulder positioned above pelvis, neck/head directly above torso. NO hunch, sneak, lunge, look-down, hunched lower row. Don't freeze legs: preserve the ordered compact small-step heel-contact/loading/passing/reach cycle from second reference exactly. Source orange is constant near ANATOMICAL LEFT, source blue constant far ANATOMICAL RIGHT. At frame5 row2col1 the FAR RIGHT leg leads toward screen-left, while near LEFT follows rightwards; show far thigh emerging behind near hip, NOT near left leg leading again. Show real proximal contour depth, do not rely on swapping teal cloth. At frames6/7 opposite foot passes while LEFTnear support extends. Follow both knee and foot trajectories from source, no extra long strides. Arms counter-swing gently, low foot clearance, torso upright consistently, little smooth bob. Same scale, torso length, head size and fixed root placement each cell; preserve empty gutters and no clipped capes. Exactly8frames 4x2 transparent sheet, equal cells, chronological reading order, no text, guide colors or skeletons. Appearance is an original detailed painted sprite, not grey mannequin. Final8\u21921 loop must continue the same upright compact gait.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-a5dadd82-3281-4895-9dc0-f0b6df61cc69.png",
+          "/workspace/Astraeon-sprite-research/research/sprite-animation/ro-gait-v17/evidence/upright-eight-guides.png"
+        ],
+        "transparent_background": true
+      },
+      "raw_path": "evidence/attempt2-raw.png",
+      "raw_sha256": "68578d76960b874bcc9b55c27cd937bca7df4fd2079d06f102922d12fd84093c",
+      "generator_path": "/workspace/generated_images/exec-907a45f5-deef-4c24-bf59-973f147ce137.png",
+      "status": "FAILED_PACK_AND_UNAPPROVED_MOTION",
+      "observations": "Equal-grid pack rejects frame1 alpha at cell boundary. Whole-cycle edit repeats stride shapes; frame5 still does not clearly implement far-right leading contact. No cropped recovery or new approval.",
+      "inputs": [
+        {
+          "path": "/workspace/generated_images/exec-a5dadd82-3281-4895-9dc0-f0b6df61cc69.png",
+          "sha256": "d1381317bc73b2138187c39690df05d756b6aada68777bc860e54629188e8427"
+        },
+        {
+          "path": "/workspace/Astraeon-sprite-research/research/sprite-animation/ro-gait-v17/evidence/upright-eight-guides.png",
+          "sha256": "30d07359f84580e098af3c627ce3dbaefc5f32504739c086c280a31125afd225"
+        }
+      ]
+    }
+  ],
+  "external_game_pixels_used_as_generation_inputs": false
+}

@@ -1,0 +1,260 @@
+{
+  "schema": "walk-visible-continuity-report-v1",
+  "label": "v17 first redraw, upright source; unknown anatomy",
+  "frame_count": 8,
+  "cycle_ms": 800,
+  "duration_ms": 800,
+  "loop": true,
+  "art_pixels_modified": false,
+  "semantic_leg_identity_checked": false,
+  "hidden_bones_inferred": false,
+  "contact_lock_checked": false,
+  "ground_root_pixel_registration": "UNRESOLVED_REQUIRES_AUTHORITATIVE_ANCHOR_AND_OBSERVATIONS",
+  "status": "DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
+  "landmarks": {
+    "ankle_a": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "ankle_b": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "belt": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "eye": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "root": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    }
+  },
+  "edges": [
+    {
+      "from": 0,
+      "to": 1,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "duration_ms": 100,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 7,
+      "to": 0,
+      "duration_ms": 100,
+      "loop_seam": true,
+      "generation_batch_changed": false
+    }
+  ],
+  "palette_patch_probe": {
+    "status": "DECLARED_PALETTE_REGION_MEASURED",
+    "contract": {
+      "roi": [
+        80,
+        0,
+        350,
+        170
+      ],
+      "max_hsv_saturation_255": 90,
+      "min_hsv_value_255": 120,
+      "min_blue_green_ratio": 0.9,
+      "min_red_green_ratio": 0.9,
+      "minimum_pixels": 1000,
+      "surface": "Silver/lavender hair palette, calibrated only for this character",
+      "max_step_px": 20,
+      "budget_scope": "Same provisional20px warning, changed phase count8 and upright composition; no direct16-frame improvement claim"
+    },
+    "frames": [
+      {
+        "key": 0,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8032,
+        "centroid_px": [
+          261.4809511952191,
+          80.19048804780877
+        ],
+        "bounds_xyxy": [
+          191,
+          23,
+          331,
+          134
+        ]
+      },
+      {
+        "key": 1,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7844,
+        "centroid_px": [
+          243.13488016318206,
+          78.46570627231004
+        ],
+        "bounds_xyxy": [
+          173,
+          22,
+          313,
+          131
+        ]
+      },
+      {
+        "key": 2,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8013,
+        "centroid_px": [
+          223.32197678771996,
+          78.67440409334831
+        ],
+        "bounds_xyxy": [
+          154,
+          21,
+          295,
+          131
+        ]
+      },
+      {
+        "key": 3,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7864,
+        "centroid_px": [
+          220.12296541200408,
+          77.49847405900306
+        ],
+        "bounds_xyxy": [
+          150,
+          21,
+          291,
+          124
+        ]
+      },
+      {
+        "key": 4,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8309,
+        "centroid_px": [
+          260.6406306414731,
+          74.09760500661933
+        ],
+        "bounds_xyxy": [
+          189,
+          16,
+          332,
+          123
+        ]
+      },
+      {
+        "key": 5,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8083,
+        "centroid_px": [
+          248.45008041568724,
+          76.85302486700482
+        ],
+        "bounds_xyxy": [
+          174,
+          19,
+          320,
+          126
+        ]
+      },
+      {
+        "key": 6,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7874,
+        "centroid_px": [
+          232.58559817119635,
+          71.56324612649226
+        ],
+        "bounds_xyxy": [
+          165,
+          15,
+          303,
+          120
+        ]
+      },
+      {
+        "key": 7,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 8183,
+        "centroid_px": [
+          229.43199315654405,
+          77.03715018941709
+        ],
+        "bounds_xyxy": [
+          159,
+          20,
+          301,
+          129
+        ]
+      }
+    ],
+    "art_modified": false,
+    "anatomy_pass": false,
+    "scope": "Palette-region centroid/occupancy only. Costume, palette, lighting, turn or occlusion changes invalidate interpretation; recalibrate for each character. Not recovered head or bone position.",
+    "centroid_step_px": [
+      18.426969215951978,
+      19.81400249686831,
+      3.4082965287126745,
+      40.66014148965523,
+      12.498073988195701,
+      16.72314432184765,
+      6.317345192289646,
+      32.20371486356693
+    ],
+    "max_centroid_step_px": 40.66014148965523,
+    "last_to_first_centroid_step_px": 32.20371486356693,
+    "declared_budget_px": 20,
+    "edges_over_declared_budget": [
+      {
+        "from": 3,
+        "to": 4,
+        "step_px": 40.66014148965523
+      },
+      {
+        "from": 7,
+        "to": 0,
+        "step_px": 32.20371486356693
+      }
+    ],
+    "registration_warning": true
+  },
+  "observation_sha256": "38952e4ef3913749ba7226be84b3db978039f19ea7329598f5949f693b574260"
+}

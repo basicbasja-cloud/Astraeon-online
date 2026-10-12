@@ -1,3 +1,7 @@
+## Latest: upright compact walking and source-contact checks v17
+
+[Actual upright rig,16phase source GIF, RO/old/new viewer and failed redraws](ro-gait-v17/README.md) address the user’s unwanted sneaking posture. New source curves and257dense mesh samples pass explicit source-only diagnostics; two art jobs still fail continuity/phase/grid review. [Reusable upright-gait practice](../../skills/modular-eight-direction-sprites/references/upright-compact-gait.md) records posture/contact choices and limits. No generated-image anatomy or mass-production approval.
+
 ## Latest: wrong-leg rejection, smoother-clock test and shared standard v16
 
 [Actual source/old/new review, uniform800ms GIF and combined checking standard](leg-ownership-v16/README.md) preserve the user's rejected v15 sequence9–11 and new smoothness requirement. Three redraws remain unapproved; third seam improves but an internal step still warns. Shared source/image rejection gates, one-shot handling, exact decoded cadence and122Python/77browser checks form a reusable review baseline. Current Wwalking does not certify every action, new anatomy or complete painted parts.
@@ -58,7 +62,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.16](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.17](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Shared sprite production/review standard](../../skills/modular-eight-direction-sprites/references/sprite-production-standard.md)
 - [Ground-plane/contact review and fractional16-frame tests](../../skills/modular-eight-direction-sprites/references/ground-plane-and-contact-review.md)
 - [Walk spacing, registration and reproduction checks](../../skills/modular-eight-direction-sprites/references/walk-spacing-and-registration.md)

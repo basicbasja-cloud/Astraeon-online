@@ -33,7 +33,8 @@ def sample(t,index):
   obj=bpy.data.objects[name].evaluated_get(deps);mesh=obj.to_mesh()
   try:
    points=[obj.matrix_world@v.co for v in mesh.vertices];lowest=min(range(len(points)),key=lambda j:points[j].z);point=points[lowest];floor=Vector((point.x,point.y,0))
-   soles[name]={'minimum_mesh_z':point.z,'lowest_vertex_index':lowest,'lowest_vertex_world_in_place':list(point),'lowest_vertex_world_traveled':list(point+travel),'lowest_xy':xy(point),'same_xy_on_ground_world':list(floor),'same_xy_on_ground_projected':xy(floor),
+   fixed=min(indices,key=lambda j:bpy.data.objects[name].data.vertices[j].co.z)
+   soles[name]={'minimum_mesh_z':point.z,'lowest_vertex_index':lowest,'lowest_vertex_world_in_place':list(point),'lowest_vertex_world_traveled':list(point+travel),'fixed_sole_vertex_index':fixed,'fixed_sole_vertex_world_traveled':list(points[fixed]+travel),'lowest_xy':xy(point),'same_xy_on_ground_world':list(floor),'same_xy_on_ground_projected':xy(floor),
       'vertical_clearance_projected_px':xy(floor)[1]-xy(point)[1],
       'near_plane_candidate':point.z<=.004,'support_verified':False}
   finally:obj.to_mesh_clear()

@@ -1,0 +1,43 @@
+{
+  "schema": "compact-source-gait-check-v1",
+  "contract_sha256": "286d52af58b888a677ce35a13bdad68de704e51e3e354d98f47fdbfda2b0a815",
+  "ground_sha256": "f6aca75fd1591f29fa663fe069c894d85169c0be91d0ed9fe2b8b9728fd47884",
+  "baked_samples": 129,
+  "dense_samples": 257,
+  "sagittal_neck_pelvis_tilt_deg": [
+    4.121534962024137,
+    4.122436509691176
+  ],
+  "minimum_actual_sole_z": 0.0009604012593626976,
+  "both_feet_airborne_candidates": 0,
+  "flat_support_intervals": [
+    {
+      "side": "left",
+      "samples": 111,
+      "vertex_index": 60,
+      "drift_evaluable": true,
+      "max_drift_world": 3.5482392757021425e-06
+    },
+    {
+      "side": "right",
+      "samples": 1,
+      "vertex_index": 60,
+      "drift_evaluable": false,
+      "max_drift_world": null
+    },
+    {
+      "side": "right",
+      "samples": 111,
+      "vertex_index": 60,
+      "drift_evaluable": true,
+      "max_drift_world": 3.401340549082978e-06
+    }
+  ],
+  "maximum_in_place_joint_endpoint_error_world": 6.882013820860081e-07,
+  "scope": "Source only: baked neck chain plus dense actual sole vertices. Flat support intervals are authored. Rolling contact, support force/balance, painted posture/owners, parts and runtime contact are NOT certified.",
+  "painted_posture_verified": false,
+  "painted_anatomy_verified": false,
+  "production_ready": false,
+  "failed_source_checks": [],
+  "source_checks_passed": true
+}

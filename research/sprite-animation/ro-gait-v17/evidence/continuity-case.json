@@ -1,0 +1,144 @@
+{
+  "schema": "walk-visible-observations-v1",
+  "label": "v17 first redraw, upright source; unknown anatomy",
+  "canvas": [
+    512,
+    512
+  ],
+  "facing": "W",
+  "registration": "Unchanged fixed-grid pixels. No per-frame fit.",
+  "operator": "assistant visual review; coordinate bounds are conservative manual uncertainties, not statistical confidence",
+  "frames": [
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/00.png",
+      "sha256": "7a1880b84026d6800a306d4b4310ddd274bcc5383db99fb0680f9d26d79b9432",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/01.png",
+      "sha256": "23a362dd7da4192599dad30a95bac46b4d72a2e66f01e7add45044d8aad4a24b",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/02.png",
+      "sha256": "74381b8f37e5c0d42c50ef15b124513b8ee43daf70269a56c7595f72cd52acee",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/03.png",
+      "sha256": "796a9e951f292c59eae81b7887f2ab9662e94d1d3845706cf090120493495d31",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/04.png",
+      "sha256": "b6a9259e3f061e656caa1b01f0754a5240f8ef8dd533e3a0859d518b673164cb",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/05.png",
+      "sha256": "ef963b2872dc6d88e471640ed01744163449395c41694c30526f5a947c36fc7f",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/06.png",
+      "sha256": "e629eb4844df448477136832117e7eae161e80050f02893256cd1aa469c02b15",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    },
+    {
+      "image": "research/sprite-animation/ro-gait-v17/candidate1/frames/07.png",
+      "sha256": "608c6c2ae7a65b4c97e318ca931a2155a656871dd8d96b559ef9d06f9eb2ea43",
+      "duration_ms": 100,
+      "batch": "v17-first",
+      "landmarks": {
+        "eye": null,
+        "belt": null,
+        "root": null,
+        "ankle_a": null,
+        "ankle_b": null
+      }
+    }
+  ],
+  "tracked_landmarks": [
+    "eye",
+    "belt",
+    "root"
+  ],
+  "reference_body_height_px": 440,
+  "height_scope": "One rounded visible character height reference per entire clip, not per-frame normalization or a cross-character acceptance budget",
+  "texture_roi_scope": "Character-specific head/hair texture; measurement only, not a warp or universal anatomical detector",
+  "palette_patch_probe": {
+    "roi": [
+      80,
+      0,
+      350,
+      170
+    ],
+    "max_hsv_saturation_255": 90,
+    "min_hsv_value_255": 120,
+    "min_blue_green_ratio": 0.9,
+    "min_red_green_ratio": 0.9,
+    "minimum_pixels": 1000,
+    "surface": "Silver/lavender hair palette, calibrated only for this character",
+    "max_step_px": 20,
+    "budget_scope": "Same provisional20px warning, changed phase count8 and upright composition; no direct16-frame improvement claim"
+  },
+  "observation_revision": "New8frames: no transferred pupil, belt, root or owner measurements; hair ROI chosen from actual newly packed sheet.",
+  "span_profile_budget_scope": "Provisional normalized unsigned spread warning, not universal biomechanics or limb identity",
+  "loop": true
+}
