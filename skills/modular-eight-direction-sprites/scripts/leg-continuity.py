@@ -229,11 +229,12 @@ def build_html(c,report,path):
     template=Path(__file__).with_name('leg-review.html').read_text()
     images=['data:image/png;base64,'+base64.b64encode(Path(f['image']).read_bytes()).decode() for f in c['frames']]
     owner_images=['data:image/png;base64,'+base64.b64encode(Path(f['owner_paths']['visible-color']).read_bytes()).decode() if 'owner_paths' in f else None for f in c['frames']]
-    payload={'case':c,'report':report,'images':images,'owner_images':owner_images}
+    depth_images={mode:['data:image/png;base64,'+base64.b64encode(Path(f['profile_depth_record']['paths'][mode]).read_bytes()).decode() if 'profile_depth_record' in f else None for f in c['frames']] for mode in ['proximal-guide.png','fixed-depth.png','dressed.png']}
+    payload={'case':c,'report':report,'images':images,'owner_images':owner_images,'depth_images':depth_images}
     path.write_text(template.replace('/*__PAYLOAD__*/',json.dumps(payload).replace('<','\\u003c')))
 def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest='cmd',required=True)
-    q=sub.add_parser('init');q.add_argument('--motion',type=Path,required=True);q.add_argument('--frames',type=Path,required=True);q.add_argument('--keys',required=True);q.add_argument('--out',type=Path,required=True);q.add_argument('--facing',choices=FACINGS,default='SE');q.add_argument('--owners',type=Path)
+    q=sub.add_parser('init');q.add_argument('--motion',type=Path,required=True);q.add_argument('--frames',type=Path,required=True);q.add_argument('--keys',required=True);q.add_argument('--out',type=Path,required=True);q.add_argument('--facing',choices=FACINGS,default='SE');q.add_argument('--owners',type=Path);q.add_argument('--depth',type=Path)
     q=sub.add_parser('check');q.add_argument('--case',type=Path,required=True);q.add_argument('--out',type=Path,required=True);q.add_argument('--html',type=Path)
     a=p.parse_args()
     if a.cmd=='init':
@@ -242,12 +243,16 @@ def main():
         if a.owners:
             from image_leg_audit import bind_owners
             bind_owners(c,a.owners)
+        if a.depth:
+            from image_leg_audit import bind_profile_depth
+            bind_profile_depth(c,a.depth)
         a.out.write_text(json.dumps(c,indent=2)+'\n');return
     c=json.loads(a.case.read_text());validate_case(c,True);r=analyze(c);a.out.mkdir(parents=True,exist_ok=True)
     r['source_blend_replay_and_image_hashes_verified']=True
     from image_leg_audit import audit_images,evidence
     image_report=audit_images(c);r['coordinate_status']=r['status'];r['image_review']=image_report
     if image_report['status']=='REJECTED':r['status']='REJECTED'
+    elif image_report['visual_status']=='USER_ACCEPTED_LEG_READABILITY':r['status']='USER_ACCEPTED_LEG_READABILITY'
     elif image_report['status']!='SCOPED_IMAGE_REVIEW_COMPLETE':r['status']='REVIEW_REQUIRED'
     r['annotation_sha256']=sha(a.case)
     evidence(c,image_report,a.out/'image-evidence')

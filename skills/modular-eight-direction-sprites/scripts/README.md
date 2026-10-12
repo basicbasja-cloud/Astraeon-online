@@ -82,3 +82,8 @@ Read [preset/retargeting practice](../references/preset-retargeting-practice.md)
 ## Eight-facing leg ownership and actual image review
 
 Use [occlusion-image-review](../references/occlusion-image-review.md) and [v11 image evidence](../../../research/sprite-animation/eight-direction-v11/README.md). `leg-continuity.py init --facing VIEW --owners OWNER_INDEX` binds eight-facing actual source geometry. Coordinates start unknown; image crossing traces and reviewer errors are separate gates. No automatic semantic detector or mass-production guarantee is established. The source rendering/packing and browser commands are documented in the linked practice.
+
+
+## Profile pelvis/depth and approved-reference image structure
+
+Read [profile-pelvis-depth](../references/profile-pelvis-depth.md) for the source cutaway/depth contract, SHA-bound W approval, paired proximal checks and `profile-structure.py` commands/dependencies. The comparator finds independent edge-structure differences; it is not an automatic semantic anatomy detector. Never transfer approval to a different generated image.

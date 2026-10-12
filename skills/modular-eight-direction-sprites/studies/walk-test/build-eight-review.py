@@ -22,7 +22,8 @@ for index,v in enumerate(views):
     summary.append({'view':v,'status':r['status'],'coordinate_status':r['coordinate_status'],
                     'image_status':r['image_review']['status'],
                     'required_visible_crossings':len(crossings),'reviewed_matches':sum(e['result']=='reviewed_match' for e in crossings),
-                    'unresolved_crossings':sum(e['result']=='unresolved' for e in crossings),
+                    'unresolved_crossings':sum(e['result'] in ['unresolved','foreground_order_only'] for e in crossings),
+                    'local_foreground_order_only':sum(e['result']=='foreground_order_only' for e in crossings),
                     'image_flags':r['image_review']['flags'],'release_ready':False})
     frames=[Image.open(dr/'frames'/f'{k:02}.png').convert('RGBA') for k in range(4)]
     for k,f in enumerate(frames):

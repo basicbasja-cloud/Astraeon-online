@@ -1,0 +1,1261 @@
+{
+  "schema": "anatomical-leg-review-v1",
+  "source_motion_path": "research/sprite-animation/walk-test-v9/motion.json",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "source_joint_map": {
+    "hip": "thigh",
+    "knee": "calf",
+    "ankle": "foot",
+    "toe": "ball_leaf"
+  },
+  "source_blend_path": "research/sprite-animation/walk-test-v9/original-modular-walk.blend",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_replay_path": "research/sprite-animation/walk-test-v9/saved-rig-check.json",
+  "source_replay_sha256": "684005b257e2168fd7a0ade49a9120316f726c48a2e98c4c715c671fb629e992",
+  "source_glb_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "source_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "canvas": [
+    512,
+    512
+  ],
+  "facing": "W",
+  "duration_seconds": 1.3333333730697632,
+  "coordinate_origin": "Top-left, master pixels; anatomical sides, never screen sides",
+  "thresholds": {
+    "pose_px": 16.0,
+    "swap_margin_px": 8.0,
+    "velocity_residual_px_per_s": 60.0
+  },
+  "method": "Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.",
+  "frames": [
+    {
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0,
+      "image": "research/sprite-animation/profile-depth-v12/master/W/frames/00.png",
+      "image_sha256": "5ed068534592b93ce476479e862d9af57d47c5801e7ab641642e953a7e4ccd80",
+      "reference": {
+        "hip_r": [
+          255.01544240456593,
+          265.0750900822302
+        ],
+        "knee_r": [
+          284.49645493905757,
+          333.0187905316087
+        ],
+        "ankle_r": [
+          329.4966229788865,
+          400.16562241377494
+        ],
+        "toe_r": [
+          288.7921807011472,
+          423.7632130838774
+        ],
+        "hip_l": [
+          256.30264367785634,
+          284.681137901722
+        ],
+        "knee_l": [
+          209.01644530477404,
+          345.12129624295113
+        ],
+        "ankle_l": [
+          200.64738097371935,
+          422.63528555761525
+        ],
+        "toe_l": [
+          150.13194294217266,
+          418.84572876912887
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.09278370440006256,
+        "l": 0.08057089149951935
+      },
+      "identity_review": "unconfirmed",
+      "notes": "User explicitly confirms this exact W sheet is correct (อันนี้ถูกนะ). Visual leg-readability approval is retained independently from covered internal-joint measurements, which remain unknown. No automatic semantic detector or complete modular/production approval is claimed.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/W/00/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/00/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/00/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/W/00/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/W/00/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            251,
+            296
+          ],
+          "source_box": [
+            235,
+            274,
+            263,
+            316
+          ],
+          "pixels": 347,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 0,
+        "source_index": 0,
+        "time_seconds": 0.0,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.031873274594545364,
+              0.011893454939126968,
+              0.5572099685668945
+            ],
+            "xy": [
+              266.32855224609375,
+              277.3992004394531
+            ],
+            "camera_axis_depth": 4.655502796173096
+          },
+          "thigh_r": {
+            "world": [
+              -0.0030382839031517506,
+              0.0672023817896843,
+              0.5694594979286194
+            ],
+            "xy": [
+              255.01544189453125,
+              265.0751495361328
+            ],
+            "camera_axis_depth": 4.697487831115723
+          },
+          "calf_r": {
+            "world": [
+              0.08793827891349792,
+              0.06393872201442719,
+              0.3299805819988251
+            ],
+            "xy": [
+              284.4964599609375,
+              333.0188446044922
+            ],
+            "camera_axis_depth": 4.813243389129639
+          },
+          "foot_r": {
+            "world": [
+              0.22680598497390747,
+              0.06163730472326279,
+              0.09278370440006256
+            ],
+            "xy": [
+              329.4966125488281,
+              400.1656723022461
+            ],
+            "camera_axis_depth": 4.928704261779785
+          },
+          "thigh_l": {
+            "world": [
+              0.0009339400567114353,
+              -0.04654692858457565,
+              0.5646550059318542
+            ],
+            "xy": [
+              256.3026428222656,
+              284.6811981201172
+            ],
+            "camera_axis_depth": 4.601044178009033
+          },
+          "calf_l": {
+            "world": [
+              -0.1449883133172989,
+              -0.05398019403219223,
+              0.3542056977748871
+            ],
+            "xy": [
+              209.01644897460938,
+              345.12135314941406
+            ],
+            "camera_axis_depth": 4.698801517486572
+          },
+          "foot_l": {
+            "world": [
+              -0.17081472277641296,
+              -0.05696003884077072,
+              0.08057089149951935
+            ],
+            "xy": [
+              200.6473846435547,
+              422.63533782958984
+            ],
+            "camera_axis_depth": 4.831717491149902
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/00/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/00/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/00/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/00/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/00/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/profile-depth-v12/source-depth/W/00/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "e8d96fd8e08cbab34af08b434281fa6752b8d3e40de89bf4851ca1cf41be398f",
+          "dressed-depth.npy": "8bd80ba0597926e530141ef474321f21ed5960aa7c516062e1a8234c12c77774",
+          "dressed.png": "c3ec3a97078a3ae540ee5d77613b1248a635c7243afd221e1890c9ef0f2fad58",
+          "cutaway-id.png": "67bc4e17c141f4f8f3eb123f33e841a69775fd58b5b6c1960a5ca5206bc3d866",
+          "cutaway-depth.npy": "8875650ac4a9d81c6d9dc658a014848ef5576ba8922f1be3e99855c7d03103a1",
+          "cutaway.png": "de83f4949e5ea6e1693a720e0cede28359478e4db7b0f16fcd9a12c4e7260ab0",
+          "right-amodal-id.png": "c316d35a5d840afb353d0c7f50d37bfbda5388e56a8f0de3dbcdf8a3045bcf11",
+          "right-amodal-depth.npy": "9b93a248b7c14eef1b76819a68534e16d24ab2a3b9efd0f5582388cd8cfdad66",
+          "right-amodal.png": "798057b126742a5e00aa894975ef18e127b3687fd230e4d5da88ea10733dc1ca",
+          "left-amodal-id.png": "b78e249f6a38ece5c164b2097789c46a3037aeb930badab47f0b7d63ad00169b",
+          "left-amodal-depth.npy": "9db9c043af15990fe63cb0737f5eb20e717fec7a68a311a54f7f1ec50727d519",
+          "left-amodal.png": "3c50b9347a522b9539246b80c7a944a00c86267d8936aa6d17237031a4268c46",
+          "pelvis-amodal-id.png": "0bbef8466fd9383156f44f3b709d9b7fbe79afb32d51b57989d9fa8ab4e2b221",
+          "pelvis-amodal-depth.npy": "71cc78ea83d155f79d29e83490e59ee3a8dd4f5d7aeb9b11545579e5f8dbdfa2",
+          "pelvis-amodal.png": "e93a0295e0bf55a5457f0a8bc23fa1f5d109dfb28b423757bfec78554a0f9a65",
+          "nearer-leg-id.png": "270a0920cba09d77f93dbeb231ab3092e0ec956a227147b623e3dde8314b5529",
+          "fixed-depth.png": "bc5be487571cd3259216fdab01379f3717ca3a83cbba9940c688315cdd2bee1e",
+          "proximal-guide.png": "59589fa25213a185b1d08b44d8af73731207d6d877e10bf0b2ef3e4d706c5788"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.09644365310668945,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1257,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1177,
+            "dressed_same_owner_pixels": 569,
+            "visible_fraction": 0.48343245539507224,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 553,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408,
+      "image": "research/sprite-animation/profile-depth-v12/master/W/frames/01.png",
+      "image_sha256": "40419d78bd1a7a59c382d7600073f7920a43a1b946421f69891ff57b93030195",
+      "reference": {
+        "hip_r": [
+          255.58468698248078,
+          263.0685290861235
+        ],
+        "knee_r": [
+          212.36480790150318,
+          323.1809924387545
+        ],
+        "ankle_r": [
+          286.0360450261756,
+          364.8210918139192
+        ],
+        "toe_r": [
+          299.16519242298756,
+          407.3685951627038
+        ],
+        "hip_l": [
+          255.8353756681273,
+          281.32237202738247
+        ],
+        "knee_l": [
+          248.59025839310658,
+          351.6614274939126
+        ],
+        "ankle_l": [
+          267.7346811898147,
+          425.50946631427075
+        ],
+        "toe_l": [
+          221.0876829895792,
+          442.3044480461375
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.220994770526886,
+        "l": 0.07046044617891312
+      },
+      "identity_review": "unconfirmed",
+      "notes": "User explicitly confirms this exact W sheet is correct (อันนี้ถูกนะ). Visual leg-readability approval is retained independently from covered internal-joint measurements, which remain unknown. No automatic semantic detector or complete modular/production approval is claimed.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/W/01/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/01/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/01/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/W/01/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/W/01/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            236,
+            290
+          ],
+          "source_box": [
+            233,
+            277,
+            243,
+            309
+          ],
+          "pixels": 167,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "l-1",
+          "expected_foreground": "l",
+          "source_xy": [
+            254,
+            349
+          ],
+          "source_box": [
+            230,
+            326,
+            275,
+            376
+          ],
+          "pixels": 1409,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 1,
+        "source_index": 10,
+        "time_seconds": 0.3333333432674408,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.032064471393823624,
+              -0.019501354545354843,
+              0.5838558077812195
+            ],
+            "xy": [
+              266.3905029296875,
+              274.93560791015625
+            ],
+            "camera_axis_depth": 4.61503267288208
+          },
+          "thigh_r": {
+            "world": [
+              -0.0012816304806619883,
+              0.037241626530885696,
+              0.5936645269393921
+            ],
+            "xy": [
+              255.58468627929688,
+              263.06858825683594
+            ],
+            "camera_axis_depth": 4.659472465515137
+          },
+          "calf_r": {
+            "world": [
+              -0.13465547561645508,
+              0.046088844537734985,
+              0.3750993311405182
+            ],
+            "xy": [
+              212.36480712890625,
+              323.18104553222656
+            ],
+            "camera_axis_depth": 4.775392532348633
+          },
+          "foot_r": {
+            "world": [
+              0.09268935769796371,
+              0.05696073919534683,
+              0.220994770526886
+            ],
+            "xy": [
+              286.0360412597656,
+              364.82115173339844
+            ],
+            "camera_axis_depth": 4.861150741577148
+          },
+          "thigh_l": {
+            "world": [
+              -0.0005080194678157568,
+              -0.0766756683588028,
+              0.5937588810920715
+            ],
+            "xy": [
+              255.8353729248047,
+              281.3224334716797
+            ],
+            "camera_axis_depth": 4.5604567527771
+          },
+          "calf_l": {
+            "world": [
+              -0.02286599949002266,
+              -0.06753627955913544,
+              0.3387018144130707
+            ],
+            "xy": [
+              248.5902557373047,
+              351.66148376464844
+            ],
+            "camera_axis_depth": 4.694701671600342
+          },
+          "foot_l": {
+            "world": [
+              0.0362124927341938,
+              -0.05713333189487457,
+              0.07046044617891312
+            ],
+            "xy": [
+              267.73468017578125,
+              425.50951385498047
+            ],
+            "camera_axis_depth": 4.836573600769043
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/01/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/01/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/01/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/01/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/01/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/profile-depth-v12/source-depth/W/01/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "355d353cda57d5d9a0eb14757cf977b8dd919e0f01f8c3ec9196704f0a0a6d8c",
+          "dressed-depth.npy": "b1447c1ba2fa8bd92085a540ac828657bb9b6f492fa723cc0aec0ead03f2e5b2",
+          "dressed.png": "8dd59128dd4ffba56eac66436583d380cde2139c2ac29a48af5d1a1959b5f5f5",
+          "cutaway-id.png": "794430ebad87edc17abb82485c060da51526b7e51ebdc9cd9a56f99793e4115d",
+          "cutaway-depth.npy": "6160ca71912c4d14e62562bfd9b62d8a81396bd12bc8d5b5101afd8bdf89078a",
+          "cutaway.png": "369dbd4e713c231d689bf1a63a7fb21b62e2bf141c51fe10fd33cc82d2c71bd7",
+          "right-amodal-id.png": "e29b52c1b4fd40257648e0344d52e1b1326f129193424db5beb841f90cc1a99f",
+          "right-amodal-depth.npy": "f110c2029846a8cf20c30105c9aff39283f53a2fc684cd42b6e1da9029fe2dfc",
+          "right-amodal.png": "1c2e5604b489f1565d14b05393a8baf389700e0f149c3b88677f76d99502b599",
+          "left-amodal-id.png": "ff9a79a83e24911a981559d4c852388c246752bc0f0613471cc5bf123c58af8b",
+          "left-amodal-depth.npy": "9d4dc4f13e922d67cd76b5e679bf0c5b90411e3a28cfe68fac1e6d9165944430",
+          "left-amodal.png": "10f14b58b41012aef51af53d464ed819959fd7fee01350e85d01186382d6f3ba",
+          "pelvis-amodal-id.png": "684055c6152a1f6c4f8800e2d650d3e3ca2b35c6fe0bc237181857dade98df2d",
+          "pelvis-amodal-depth.npy": "1c28d6d81f1f959cdc780e2032e76378e26b775b44d160b9a723dfda4f4c7538",
+          "pelvis-amodal.png": "5f4df077f8c2b6d845bf30c14c616980e6bb226492972ec90766582a1a76d865",
+          "nearer-leg-id.png": "b23f6347bc5407d005e0a4ada30abbc924bb785b592ff5dcba10f880c6dfc0c5",
+          "fixed-depth.png": "34a79d0b83c2c04f258e6672eb75052cda09c9cd0876452e91f176cb3c4ebd71",
+          "proximal-guide.png": "e3d2747a1a9c9de754f321ec1edaf272606a40160758f15fa0d3ae641f95ec5c"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.09901571273803711,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1237,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1315,
+            "dressed_same_owner_pixels": 145,
+            "visible_fraction": 0.11026615969581749,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 2389,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816,
+      "image": "research/sprite-animation/profile-depth-v12/master/W/frames/02.png",
+      "image_sha256": "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+      "reference": {
+        "hip_r": [
+          256.24503148809265,
+          270.5740525674468
+        ],
+        "knee_r": [
+          208.97134013115607,
+          328.3108091907444
+        ],
+        "ankle_r": [
+          200.64746306214153,
+          404.3544552152433
+        ],
+        "toe_r": [
+          150.13204917424844,
+          400.5649547668356
+        ],
+        "hip_l": [
+          255.07783526408522,
+          287.4224493190187
+        ],
+        "knee_l": [
+          269.4015674832501,
+          357.36658898285776
+        ],
+        "ankle_l": [
+          325.25212522096274,
+          417.01886971890656
+        ],
+        "toe_l": [
+          288.7926973753338,
+          442.2292564008977
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057080954313278,
+        "l": 0.10320902615785599
+      },
+      "identity_review": "unconfirmed",
+      "notes": "User explicitly confirms this exact W sheet is correct (อันนี้ถูกนะ). Visual leg-readability approval is retained independently from covered internal-joint measurements, which remain unknown. No automatic semantic detector or complete modular/production approval is claimed.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/W/02/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/02/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/02/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/W/02/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/W/02/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            243,
+            300
+          ],
+          "source_box": [
+            233,
+            285,
+            262,
+            319
+          ],
+          "pixels": 438,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 2,
+        "source_index": 20,
+        "time_seconds": 0.6666666865348816,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.031885065138339996,
+              -0.016834385693073273,
+              0.5572174191474915
+            ],
+            "xy": [
+              266.3323669433594,
+              282.007080078125
+            ],
+            "camera_axis_depth": 4.63054084777832
+          },
+          "thigh_r": {
+            "world": [
+              0.0007561513339169323,
+              0.04151725769042969,
+              0.5645674467086792
+            ],
+            "xy": [
+              256.2450256347656,
+              270.57411193847656
+            ],
+            "camera_axis_depth": 4.677595615386963
+          },
+          "calf_r": {
+            "world": [
+              -0.14512750506401062,
+              0.050845660269260406,
+              0.35416659712791443
+            ],
+            "xy": [
+              208.97134399414062,
+              328.3108673095703
+            ],
+            "camera_axis_depth": 4.789891242980957
+          },
+          "foot_r": {
+            "world": [
+              -0.17081446945667267,
+              0.05696004256606102,
+              0.08057080954313278
+            ],
+            "xy": [
+              200.6474609375,
+              404.35450744628906
+            ],
+            "camera_axis_depth": 4.930688858032227
+          },
+          "thigh_l": {
+            "world": [
+              -0.0028457418084144592,
+              -0.07223623991012573,
+              0.5695606470108032
+            ],
+            "xy": [
+              255.0778350830078,
+              287.4225158691406
+            ],
+            "camera_axis_depth": 4.576296806335449
+          },
+          "calf_l": {
+            "world": [
+              0.0413563996553421,
+              -0.06553040444850922,
+              0.3172934651374817
+            ],
+            "xy": [
+              269.4015808105469,
+              357.36663818359375
+            ],
+            "camera_axis_depth": 4.707046031951904
+          },
+          "foot_l": {
+            "world": [
+              0.21370773017406464,
+              -0.06167645752429962,
+              0.10320902615785599
+            ],
+            "xy": [
+              325.25213623046875,
+              417.01892852783203
+            ],
+            "camera_axis_depth": 4.816409587860107
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/02/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/02/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/02/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/02/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/02/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/profile-depth-v12/source-depth/W/02/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "62d7f4e3f6c1351d646a3d78ff15801fdf6b5df77f0c5f06a8092ddba55d1b1b",
+          "dressed-depth.npy": "cfc49a4c74f6dca5f9bef8e834a28a25aa6339d875ce1c8f033e3c7f303c2054",
+          "dressed.png": "e298b5f5a68f8e38f49bd222722b5bfc1ea23bb1d800262f45c1c2878e646036",
+          "cutaway-id.png": "d94f22b0f7084d3b0204d2662367ae32a7b1b9a80f11e441708d7248e0e660a2",
+          "cutaway-depth.npy": "ac00f7faebf00bede6d37a225967ec398c3ec988db7bbdb5b47e1dff8b9c0f32",
+          "cutaway.png": "1bffd04f4b68b2bf3317a603d4189a000da26d2dbc689fdae8b27d7f498cd935",
+          "right-amodal-id.png": "1178619e5442fa691f51507a676b8ca5fe8a726b5b4683e25a6f90bf7d03dda0",
+          "right-amodal-depth.npy": "aed14a4cc9f4d0a89412913dbb25f6db5d8a6fa0fb228262527d08ab2715d0ac",
+          "right-amodal.png": "0412fa619a5bee5836a0a3305f692c72f5144fd57dea91977293f9ade280d6a3",
+          "left-amodal-id.png": "a5d2e4d503e801160d4236b0e6127946e3abe3c038756a3a20562f3a1760036d",
+          "left-amodal-depth.npy": "107b93590ac4a6797a30091c3a1c0494103f6692c80717bd975179a55b22c47a",
+          "left-amodal.png": "e8e057e2ae01e3dee2594cc42c09cdf1a6c602a01497eba9ef6ace1a04d6c61f",
+          "pelvis-amodal-id.png": "a4029d56473a7f9d26400acea6e03737d657b78ecfafbfa42999afdeb99481fe",
+          "pelvis-amodal-depth.npy": "1a51793a5256744892a23d773f60fae0181202c9e990fe5d64e636e381c3fab4",
+          "pelvis-amodal.png": "7fb75d603411a857be65cdda17e63052960eccb58fea97af72701544404c1a4a",
+          "nearer-leg-id.png": "c10f75ed1d599ddf92ea06527602623b046ad37c393b53ae965fc74941ee1b55",
+          "fixed-depth.png": "bb8f9a2c9c623b0c2e169e8e52260245034b56690776e8b85aa0117a522a4f0c",
+          "proximal-guide.png": "33a1cded469c32d3637de39aa7339f478e8268f14bea6a711c4b54bdd54200fc"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.10129880905151367,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1218,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1305,
+            "dressed_same_owner_pixels": 591,
+            "visible_fraction": 0.4528735632183908,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 498,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    },
+    {
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0,
+      "image": "research/sprite-animation/profile-depth-v12/master/W/frames/03.png",
+      "image_sha256": "cbb7fb2910500b7b88eed80137b4a5f24e4fccc3d86d944522af036492cf7000",
+      "reference": {
+        "hip_r": [
+          255.87844784237163,
+          257.48562610285256
+        ],
+        "knee_r": [
+          238.91027576108522,
+          328.9913307235047
+        ],
+        "ankle_r": [
+          265.3645536446873,
+          404.0388994370369
+        ],
+        "toe_r": [
+          221.0876443597335,
+          423.9695381501052
+        ],
+        "hip_l": [
+          255.54089367691475,
+          275.7391168976442
+        ],
+        "knee_l": [
+          212.33286101908624,
+          338.29342542863407
+        ],
+        "ankle_l": [
+          286.0360257112527,
+          383.10219762697386
+        ],
+        "toe_l": [
+          299.16513930694964,
+          425.6496859992818
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057999610900879,
+        "l": 0.22099459171295166
+      },
+      "identity_review": "unconfirmed",
+      "notes": "User explicitly confirms this exact W sheet is correct (อันนี้ถูกนะ). Visual leg-readability approval is retained independently from covered internal-joint measurements, which remain unknown. No automatic semantic detector or complete modular/production approval is claimed.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/W/03/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/03/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/W/03/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/W/03/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/W/03/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            233,
+            272
+          ],
+          "source_box": [
+            229,
+            265,
+            238,
+            279
+          ],
+          "pixels": 42,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "l-1",
+          "expected_foreground": "l",
+          "source_xy": [
+            247,
+            350
+          ],
+          "source_box": [
+            220,
+            287,
+            279,
+            396
+          ],
+          "pixels": 2796,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ],
+      "proximal_reviews": {
+        "r": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        },
+        "l": {
+          "kind": "unknown",
+          "review": "unconfirmed",
+          "pelvis_edge_xy": null,
+          "trace": [],
+          "notes": ""
+        }
+      },
+      "depth_review": {
+        "near_side": "unknown",
+        "cue": "unknown",
+        "cue_xy": null,
+        "review": "unconfirmed",
+        "notes": ""
+      },
+      "profile_depth_record": {
+        "view": "W",
+        "key": 3,
+        "source_index": 30,
+        "time_seconds": 1.0,
+        "bones": {
+          "pelvis": {
+            "world": [
+              0.03206257149577141,
+              0.014764920808374882,
+              0.5838558673858643
+            ],
+            "xy": [
+              266.389892578125,
+              269.4368591308594
+            ],
+            "camera_axis_depth": 4.644802093505859
+          },
+          "thigh_r": {
+            "world": [
+              -0.00037510323454625905,
+              0.07203207165002823,
+              0.5936647057533264
+            ],
+            "xy": [
+              255.87844848632812,
+              257.4856872558594
+            ],
+            "camera_axis_depth": 4.689697265625
+          },
+          "calf_r": {
+            "world": [
+              -0.05273782089352608,
+              0.06630060821771622,
+              0.3429400324821472
+            ],
+            "xy": [
+              238.9102783203125,
+              328.99139404296875
+            ],
+            "camera_axis_depth": 4.808877468109131
+          },
+          "foot_r": {
+            "world": [
+              0.02889842726290226,
+              0.05891036614775658,
+              0.08057999610900879
+            ],
+            "xy": [
+              265.36456298828125,
+              404.03894805908203
+            ],
+            "camera_axis_depth": 4.932378768920898
+          },
+          "thigh_l": {
+            "world": [
+              -0.001416772953234613,
+              -0.041883133351802826,
+              0.5937591195106506
+            ],
+            "xy": [
+              255.5408935546875,
+              275.7391815185547
+            ],
+            "camera_axis_depth": 4.590683460235596
+          },
+          "calf_l": {
+            "world": [
+              -0.13475406169891357,
+              -0.0480521023273468,
+              0.37507960200309753
+            ],
+            "xy": [
+              212.33285522460938,
+              338.29347229003906
+            ],
+            "camera_axis_depth": 4.693614959716797
+          },
+          "foot_l": {
+            "world": [
+              0.09268929809331894,
+              -0.05696060135960579,
+              0.22099459171295166
+            ],
+            "xy": [
+              286.0360107421875,
+              383.1022491455078
+            ],
+            "camera_axis_depth": 4.762178897857666
+          }
+        },
+        "paths": {
+          "dressed-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/dressed-id.png",
+          "dressed-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/03/dressed-depth.npy",
+          "dressed.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/dressed.png",
+          "cutaway-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/cutaway-id.png",
+          "cutaway-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/03/cutaway-depth.npy",
+          "cutaway.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/cutaway.png",
+          "right-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/right-amodal-id.png",
+          "right-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/03/right-amodal-depth.npy",
+          "right-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/right-amodal.png",
+          "left-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/left-amodal-id.png",
+          "left-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/03/left-amodal-depth.npy",
+          "left-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/left-amodal.png",
+          "pelvis-amodal-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/pelvis-amodal-id.png",
+          "pelvis-amodal-depth.npy": "research/sprite-animation/profile-depth-v12/source-depth/W/03/pelvis-amodal-depth.npy",
+          "pelvis-amodal.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/pelvis-amodal.png",
+          "nearer-leg-id.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/nearer-leg-id.png",
+          "fixed-depth.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/fixed-depth.png",
+          "proximal-guide.png": "research/sprite-animation/profile-depth-v12/source-depth/W/03/proximal-guide.png"
+        },
+        "sha256": {
+          "dressed-id.png": "685d4228606b8798814e58d9ac4165b1e81f8183610e321dd58d504c4e4fb883",
+          "dressed-depth.npy": "3e12e6476099e25b89f501ed1ddc934071941cc91d1f6fcb1809810b044fc5ce",
+          "dressed.png": "a94a4f07a5dcc077307cdd86bd43035507b6550e2c4a403ba711b45fa02d53a6",
+          "cutaway-id.png": "3b59c73e18c42225efaa7eb0e8547a4a36715a2bfe5a4939c412f67452a2efc6",
+          "cutaway-depth.npy": "513736f0fedc3ae384d7b45133bc4650e97afd91fa9e84b2cab39969142523e2",
+          "cutaway.png": "3c5c53ecb5b2cfb6d04081ee3065534d679232ecc5d878ec4a0d110e55e31d5e",
+          "right-amodal-id.png": "4cfea542cf07cb2424e44a4e3f2bbde7f421dfb716127b268a9abc4d523b5e04",
+          "right-amodal-depth.npy": "9e83b52f030cc6c354fb11b7d73488d7df0df1d499da83ce7491e72a6ebc5cfd",
+          "right-amodal.png": "1a09bb3190ca12030d75c3c23fc05c23448af1a0ba11993e6a4b839f2b03ce46",
+          "left-amodal-id.png": "eaacb778f4102deb1c8e3c4831334356e54618d61c161ad47c619137d6c225c7",
+          "left-amodal-depth.npy": "fa5980eddb1498bbefe6a9ca22f1bf451603e1fb9a6117fc37f24476c276db64",
+          "left-amodal.png": "43c2ca52c16f78a2244b71e340640e371cf3f9b8266b9571484121628b9c3087",
+          "pelvis-amodal-id.png": "aa6be840fd7d2f1782ba0ac303b2a9336f9b11dea4531d88d4eee5e6edca3d8b",
+          "pelvis-amodal-depth.npy": "b354cba5024156ee851b6e87d13ae4035a901a612603f5e888e8bffe1ed90ea7",
+          "pelvis-amodal.png": "5cb429bca098733b4cb5a921145fd465d99c491087bbe3e577936a2fb149ac09",
+          "nearer-leg-id.png": "29723f20c685ed333f56a33348a36c9ab6617086fe0e128434a96250587e0b20",
+          "fixed-depth.png": "e8974fd2451d18a2f5784288ed7b2a77663c98ddf187f331fa73a9d311200100",
+          "proximal-guide.png": "acb346536a40f4e6b1587aaf18f75f2a33fedf1fd40586e75880ca71a2c5d1c1"
+        },
+        "hip_near_side": "l",
+        "hip_depth_difference_scene_units": 0.0990138053894043,
+        "proximal_surface_visibility": {
+          "r": {
+            "sample_pixels": 1265,
+            "dressed_same_owner_pixels": 0,
+            "visible_fraction": 0.0,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          },
+          "l": {
+            "sample_pixels": 1197,
+            "dressed_same_owner_pixels": 179,
+            "visible_fraction": 0.14954051796157058,
+            "projection_radius_px": 24,
+            "internal_bone_visibility_not_claimed": true
+          }
+        },
+        "overlap_depth_pixels": 3854,
+        "isolated_depth_order_mismatch_pixels": 0
+      }
+    }
+  ],
+  "release_ready": false,
+  "source_occlusion_path": "research/sprite-animation/eight-direction-v11/source-owners/owner-index.json",
+  "source_occlusion_sha256": "aa3a196fd0ee95c8b702f1295f17a6e8d050ead57461ca8f7c085b84c48cb6a4",
+  "profile_depth_path": "research/sprite-animation/profile-depth-v12/source-depth/depth-index.json",
+  "profile_depth_sha256": "3e807c238197eedc717b1773e89d8688d164f26d0072697cb784221ff33c4157",
+  "user_acceptance_path": "research/sprite-animation/profile-depth-v12/evidence/W-user-acceptance.json",
+  "user_acceptance_sha256": "21549be68d8eb4627fd3d7dd7e8793c11cb44873abbb6baffb9b885efbb02573"
+}

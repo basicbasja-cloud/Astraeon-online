@@ -1,0 +1,60 @@
+{
+  "method": "Torso SIFT/RANSAC similarity registration then symmetric edge-distance in declared pelvis/thigh ROIs",
+  "status": "STRUCTURAL_DIFFERENCE_REQUIRES_REVIEW",
+  "semantic_leg_swap_detected": false,
+  "anatomy_pass": false,
+  "art_pixels_modified": false,
+  "regions": [
+    {
+      "name": "pelvis_thigh_boundary",
+      "status": "STRUCTURAL_DIFFERENCE_REQUIRES_REVIEW",
+      "foreground_coverage": 0.9551984416849282,
+      "sampled_edge_pixels": 4190,
+      "symmetric_mean_distance_px": 2.5515763759613037,
+      "symmetric_p95_distance_px": 10.187599182128906,
+      "fraction_outside_declared_radius": 0.16778042959427208
+    },
+    {
+      "name": "proximal_overlap",
+      "status": "STRUCTURAL_DIFFERENCE_REQUIRES_REVIEW",
+      "foreground_coverage": 0.9891446752760621,
+      "sampled_edge_pixels": 1586,
+      "symmetric_mean_distance_px": 4.268008708953857,
+      "symmetric_p95_distance_px": 17.742246627807617,
+      "fraction_outside_declared_radius": 0.33039092055485497
+    }
+  ],
+  "opencv": "4.11.0",
+  "thresholds": {
+    "edge_radius_px": 4,
+    "mean_distance_px": 3,
+    "p95_distance_px": 8,
+    "outside_radius_fraction": 0.2
+  },
+  "registration": {
+    "matrix": [
+      [
+        0.9875317843440906,
+        -0.028697119159306447,
+        -27.275911923855787
+      ],
+      [
+        0.028697119159306447,
+        0.9875317843440906,
+        4.891645397250822
+      ]
+    ],
+    "matches": 72,
+    "inliers": 40,
+    "inlier_fraction": 0.5555555555555556,
+    "median_inlier_error_px": 1.4758868877167366,
+    "scale": 0.9879486574401865,
+    "rotation_degrees": 1.664514753145003,
+    "reflection_allowed": false,
+    "leg_fit_used": false
+  },
+  "reference_spec_sha256": "c0fb37d2aaf4fd18d0ca82df8bffce38a863bcfc8a51203d5fec5f1b47ae2cc2",
+  "reference_image_sha256": "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+  "candidate_image_sha256": "57de08a225485acfc54d9555201fc8ecce6937cb130e16e285ed297ccaf1821e",
+  "scope": "Same character, facing and source phase as approved reference; different costume/view/style needs a new reference. Edge disagreement is not proof of semantic swap."
+}

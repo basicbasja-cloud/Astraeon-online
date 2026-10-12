@@ -1,0 +1,705 @@
+{
+  "schema": "leg-continuity-report-v1",
+  "status": "USER_ACCEPTED_LEG_READABILITY",
+  "method": "Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.",
+  "facing": "W",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_replay_sha256": "684005b257e2168fd7a0ade49a9120316f726c48a2e98c4c715c671fb629e992",
+  "source_glb_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "source_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "reference": "Measured 3D bones of the actual baked original rig projected with its fixed camera; no screenshot-estimated source skeleton",
+  "thresholds": {
+    "pose_px": 16.0,
+    "swap_margin_px": 8.0,
+    "velocity_residual_px_per_s": 60.0
+  },
+  "observed_coverage_percent": 0.0,
+  "measured_including_estimates_percent": 0.0,
+  "measured_points_within_declared_pose_budget_percent": null,
+  "unadjusted_measured_points_within_pose_budget_percent": null,
+  "percentage_is_not_anatomy_accuracy": true,
+  "diagnostic_global_positive_scale": 1.0,
+  "scale_fit_complete_frame_count": 0,
+  "alignment_scope": "Pelvis-relative QA only; no rotation, reflection or per-pose scale. Artwork unchanged. Root registration and world contacts not validated.",
+  "frames": [
+    {
+      "key": 0,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    },
+    {
+      "key": 1,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    },
+    {
+      "key": 2,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    },
+    {
+      "key": 3,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "includes_loop_seam": false,
+      "dt_seconds": 0.3333333432674408,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "includes_loop_seam": false,
+      "dt_seconds": 0.3333333432674408,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "includes_loop_seam": false,
+      "dt_seconds": 0.3333333134651184,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 0,
+      "includes_loop_seam": true,
+      "dt_seconds": 0.3333333730697632,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    }
+  ],
+  "flags": [
+    {
+      "key": 0,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 0,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "key": 1,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 1,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "key": 2,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 2,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "key": 3,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 3,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "transition": [
+        0,
+        1
+      ],
+      "type": "continuity_unmeasurable"
+    },
+    {
+      "transition": [
+        1,
+        2
+      ],
+      "type": "continuity_unmeasurable"
+    },
+    {
+      "transition": [
+        2,
+        3
+      ],
+      "type": "continuity_unmeasurable"
+    },
+    {
+      "transition": [
+        3,
+        0
+      ],
+      "type": "continuity_unmeasurable"
+    }
+  ],
+  "all_identity_confirmed": false,
+  "foot_contact_verified": false,
+  "hidden_anatomy_verified": false,
+  "release_ready": false,
+  "source_blend_replay_and_image_hashes_verified": true,
+  "coordinate_status": "REVIEW_REQUIRED",
+  "image_review": {
+    "schema": "generated-leg-image-audit-v1",
+    "status": "REVIEW_REQUIRED",
+    "visual_status": "USER_ACCEPTED_LEG_READABILITY",
+    "user_acceptance": {
+      "schema": "sprite-user-visual-acceptance-v1",
+      "authority": "user",
+      "scope": "leg_readability_in_this_sheet",
+      "facing": "W",
+      "user_message": "\u0e2d\u0e31\u0e19\u0e19\u0e35\u0e49\u0e16\u0e39\u0e01\u0e19\u0e30",
+      "raw_image": "research/sprite-animation/profile-depth-v12/evidence/W-raw.png",
+      "raw_image_sha256": "fb14b3e10bfa8f0b162867a79aedf839bf7136c86d08c356b03e28dfb895727c",
+      "user_provided_filename": "exec-8aaa73f6-b135-4e5b-b908-b3de6bc8b594.png",
+      "frame_sha256": [
+        "5ed068534592b93ce476479e862d9af57d47c5801e7ab641642e953a7e4ccd80",
+        "40419d78bd1a7a59c382d7600073f7920a43a1b946421f69891ff57b93030195",
+        "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+        "cbb7fb2910500b7b88eed80137b4a5f24e4fccc3d86d944522af036492cf7000"
+      ],
+      "hidden_joint_positions_measured": false,
+      "complete_modular_painted_parts_approved": false,
+      "other_views_approved": false
+    },
+    "acceptance_is_not_hidden_joint_measurement": true,
+    "source_visible_and_amodal_owner_pixels_verified": true,
+    "semantic_detector_used": false,
+    "method": "Actual generated RGBA evidence, silhouette support and independently reviewed foreground ownership at true source crossings. No inferred pass on occluded legs.",
+    "frames": [
+      {
+        "key": 0,
+        "landmarks": [],
+        "segments": [],
+        "crossings": [
+          {
+            "id": "l-0",
+            "expected_foreground": "l",
+            "source_xy": [
+              251,
+              296
+            ],
+            "source_box": [
+              235,
+              274,
+              263,
+              316
+            ],
+            "pixels": 347,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          }
+        ],
+        "proximal_attachment_review": {
+          "sides": {
+            "r": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            },
+            "l": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            }
+          },
+          "depth_cue_review": {
+            "near_side": "unknown",
+            "cue": "unknown",
+            "cue_xy": null,
+            "review": "unconfirmed",
+            "notes": ""
+          },
+          "source_depth_verified": true,
+          "semantic_detection_automatic": false,
+          "complete": false,
+          "mismatch": false,
+          "flags": [
+            "pelvis_to_thigh_identity_requires_image_review:r",
+            "pelvis_to_thigh_identity_requires_image_review:l",
+            "paired_pelvis_depth_readability_requires_image_review"
+          ]
+        },
+        "teal_palette_anchor": {
+          "pixels": 2180,
+          "centroid": [
+            294.1238532110092,
+            279.08715596330273
+          ],
+          "relative_x_to_pelvis_or_cell_root": 38.12385321100919,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": [
+          "pelvis_to_thigh_identity_requires_image_review:r",
+          "pelvis_to_thigh_identity_requires_image_review:l",
+          "paired_pelvis_depth_readability_requires_image_review",
+          "overlap_owner_requires_image_review:l-0"
+        ]
+      },
+      {
+        "key": 1,
+        "landmarks": [],
+        "segments": [],
+        "crossings": [
+          {
+            "id": "l-0",
+            "expected_foreground": "l",
+            "source_xy": [
+              236,
+              290
+            ],
+            "source_box": [
+              233,
+              277,
+              243,
+              309
+            ],
+            "pixels": 167,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          },
+          {
+            "id": "l-1",
+            "expected_foreground": "l",
+            "source_xy": [
+              254,
+              349
+            ],
+            "source_box": [
+              230,
+              326,
+              275,
+              376
+            ],
+            "pixels": 1409,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          }
+        ],
+        "proximal_attachment_review": {
+          "sides": {
+            "r": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            },
+            "l": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            }
+          },
+          "depth_cue_review": {
+            "near_side": "unknown",
+            "cue": "unknown",
+            "cue_xy": null,
+            "review": "unconfirmed",
+            "notes": ""
+          },
+          "source_depth_verified": true,
+          "semantic_detection_automatic": false,
+          "complete": false,
+          "mismatch": false,
+          "flags": [
+            "pelvis_to_thigh_identity_requires_image_review:r",
+            "pelvis_to_thigh_identity_requires_image_review:l",
+            "paired_pelvis_depth_readability_requires_image_review"
+          ]
+        },
+        "teal_palette_anchor": {
+          "pixels": 2140,
+          "centroid": [
+            285.96542056074765,
+            276.68457943925233
+          ],
+          "relative_x_to_pelvis_or_cell_root": 29.965420560747646,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": [
+          "pelvis_to_thigh_identity_requires_image_review:r",
+          "pelvis_to_thigh_identity_requires_image_review:l",
+          "paired_pelvis_depth_readability_requires_image_review",
+          "overlap_owner_requires_image_review:l-0",
+          "overlap_owner_requires_image_review:l-1"
+        ]
+      },
+      {
+        "key": 2,
+        "landmarks": [],
+        "segments": [],
+        "crossings": [
+          {
+            "id": "l-0",
+            "expected_foreground": "l",
+            "source_xy": [
+              243,
+              300
+            ],
+            "source_box": [
+              233,
+              285,
+              262,
+              319
+            ],
+            "pixels": 438,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          }
+        ],
+        "proximal_attachment_review": {
+          "sides": {
+            "r": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            },
+            "l": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            }
+          },
+          "depth_cue_review": {
+            "near_side": "unknown",
+            "cue": "unknown",
+            "cue_xy": null,
+            "review": "unconfirmed",
+            "notes": ""
+          },
+          "source_depth_verified": true,
+          "semantic_detection_automatic": false,
+          "complete": false,
+          "mismatch": false,
+          "flags": [
+            "pelvis_to_thigh_identity_requires_image_review:r",
+            "pelvis_to_thigh_identity_requires_image_review:l",
+            "paired_pelvis_depth_readability_requires_image_review"
+          ]
+        },
+        "teal_palette_anchor": {
+          "pixels": 2099,
+          "centroid": [
+            289.56884230585996,
+            285.96950929013815
+          ],
+          "relative_x_to_pelvis_or_cell_root": 33.56884230585996,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": [
+          "pelvis_to_thigh_identity_requires_image_review:r",
+          "pelvis_to_thigh_identity_requires_image_review:l",
+          "paired_pelvis_depth_readability_requires_image_review",
+          "overlap_owner_requires_image_review:l-0"
+        ]
+      },
+      {
+        "key": 3,
+        "landmarks": [],
+        "segments": [],
+        "crossings": [
+          {
+            "id": "l-0",
+            "expected_foreground": "l",
+            "source_xy": [
+              233,
+              272
+            ],
+            "source_box": [
+              229,
+              265,
+              238,
+              279
+            ],
+            "pixels": 42,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          },
+          {
+            "id": "l-1",
+            "expected_foreground": "l",
+            "source_xy": [
+              247,
+              350
+            ],
+            "source_box": [
+              220,
+              287,
+              279,
+              396
+            ],
+            "pixels": 2796,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          }
+        ],
+        "proximal_attachment_review": {
+          "sides": {
+            "r": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            },
+            "l": {
+              "confirmed_visible_attachment_evidence": false,
+              "kind": "unknown",
+              "pixel_support_fraction": null,
+              "not_internal_hip_detection": true
+            }
+          },
+          "depth_cue_review": {
+            "near_side": "unknown",
+            "cue": "unknown",
+            "cue_xy": null,
+            "review": "unconfirmed",
+            "notes": ""
+          },
+          "source_depth_verified": true,
+          "semantic_detection_automatic": false,
+          "complete": false,
+          "mismatch": false,
+          "flags": [
+            "pelvis_to_thigh_identity_requires_image_review:r",
+            "pelvis_to_thigh_identity_requires_image_review:l",
+            "paired_pelvis_depth_readability_requires_image_review"
+          ]
+        },
+        "teal_palette_anchor": {
+          "pixels": 276,
+          "centroid": [
+            285.5108695652174,
+            280.231884057971
+          ],
+          "relative_x_to_pelvis_or_cell_root": 29.510869565217376,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": [
+          "pelvis_to_thigh_identity_requires_image_review:r",
+          "pelvis_to_thigh_identity_requires_image_review:l",
+          "paired_pelvis_depth_readability_requires_image_review",
+          "overlap_owner_requires_image_review:l-0",
+          "overlap_owner_requires_image_review:l-1"
+        ]
+      }
+    ],
+    "flags": [
+      {
+        "key": 0,
+        "type": "pelvis_to_thigh_identity_requires_image_review:r"
+      },
+      {
+        "key": 0,
+        "type": "pelvis_to_thigh_identity_requires_image_review:l"
+      },
+      {
+        "key": 0,
+        "type": "paired_pelvis_depth_readability_requires_image_review"
+      },
+      {
+        "key": 0,
+        "type": "overlap_owner_requires_image_review:l-0"
+      },
+      {
+        "key": 1,
+        "type": "pelvis_to_thigh_identity_requires_image_review:r"
+      },
+      {
+        "key": 1,
+        "type": "pelvis_to_thigh_identity_requires_image_review:l"
+      },
+      {
+        "key": 1,
+        "type": "paired_pelvis_depth_readability_requires_image_review"
+      },
+      {
+        "key": 1,
+        "type": "overlap_owner_requires_image_review:l-0"
+      },
+      {
+        "key": 1,
+        "type": "overlap_owner_requires_image_review:l-1"
+      },
+      {
+        "key": 2,
+        "type": "pelvis_to_thigh_identity_requires_image_review:r"
+      },
+      {
+        "key": 2,
+        "type": "pelvis_to_thigh_identity_requires_image_review:l"
+      },
+      {
+        "key": 2,
+        "type": "paired_pelvis_depth_readability_requires_image_review"
+      },
+      {
+        "key": 2,
+        "type": "overlap_owner_requires_image_review:l-0"
+      },
+      {
+        "key": 3,
+        "type": "pelvis_to_thigh_identity_requires_image_review:r"
+      },
+      {
+        "key": 3,
+        "type": "pelvis_to_thigh_identity_requires_image_review:l"
+      },
+      {
+        "key": 3,
+        "type": "paired_pelvis_depth_readability_requires_image_review"
+      },
+      {
+        "key": 3,
+        "type": "overlap_owner_requires_image_review:l-0"
+      },
+      {
+        "key": 3,
+        "type": "overlap_owner_requires_image_review:l-1"
+      }
+    ],
+    "release_ready": false
+  },
+  "annotation_sha256": "f8afd3d592ba8bde178769e0172e96cb5582c94410e02a358008ca20edc75411"
+}

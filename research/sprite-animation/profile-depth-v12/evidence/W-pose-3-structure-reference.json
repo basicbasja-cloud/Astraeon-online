@@ -1,0 +1,35 @@
+{
+  "approved_case": "research/sprite-animation/profile-depth-v12/master/W/leg-annotations.json",
+  "key": 2,
+  "facing": "W",
+  "source_index": 20,
+  "reference_frame_sha256": "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+  "registration_roi": [
+    120,
+    70,
+    380,
+    255
+  ],
+  "structure_rois": {
+    "pelvis_thigh_boundary": [
+      200,
+      255,
+      335,
+      365
+    ],
+    "proximal_overlap": [
+      220,
+      282,
+      312,
+      345
+    ]
+  },
+  "thresholds": {
+    "edge_radius_px": 4,
+    "mean_distance_px": 3,
+    "p95_distance_px": 8,
+    "outside_radius_fraction": 0.2
+  },
+  "budgets_are_provisional_not_anatomy_accuracy": true,
+  "roi_semantics": "Reviewer-selected pelvis/thigh region of this exact approved pose; clothing edges are present, so mismatch requires review, not a semantic-swap verdict"
+}

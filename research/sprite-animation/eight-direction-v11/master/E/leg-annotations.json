@@ -335,7 +335,15 @@
       },
       "identity_review": "unconfirmed",
       "notes": "Fresh correction after user rejected revised E pose 3. Previous rejection retained in evidence/rejected-E-revision1. New pixels have not inherited any confirmed trace/landmark; all occlusions require independent review. New visible near/right leading chain traced independently, not copied from source. Generated leg angle/placement still differs from source; covered hip and all other crossings remain unresolved.",
-      "review_issues": [],
+      "review_issues": [
+        {
+          "code": "user_confirmed_pelvis_thigh_identity_error_after_E_correction",
+          "confirmed": true,
+          "reviewer": "user",
+          "image_sha256": "975b10c15c525298502f9e11f4714fe6482dcdb03508a4084c74369967b7290a",
+          "note": "User rejects this second correction: relocating teal cloth is not evidence that the thigh emerges from the correct pelvis side. E/W side-view hip occlusion and depth remain unresolved."
+        }
+      ],
       "points": {
         "hip_r": {
           "xy": null,
@@ -405,8 +413,8 @@
             307,
             310
           ],
-          "review": "confirmed",
-          "notes": "Independently inspected NEW correction: the visible near plain-olive thigh connects to the screen-right leading knee/calf, while teal LEFT-hip cloth stays with the trailing far-side chain. This local foreground match does not approve hidden hip or exact source pose.",
+          "review": "unconfirmed",
+          "notes": "Independently inspected NEW correction: the visible near plain-olive thigh connects to the screen-right leading knee/calf, while teal LEFT-hip cloth stays with the trailing far-side chain. This local foreground match does not approve hidden hip or exact source pose. Prior local owner match withdrawn following user correction: proximal identity not established.",
           "art_trace": [
             [
               300,
@@ -429,7 +437,7 @@
               423
             ]
           ],
-          "trace_review": "confirmed"
+          "trace_review": "unconfirmed"
         }
       ]
     },

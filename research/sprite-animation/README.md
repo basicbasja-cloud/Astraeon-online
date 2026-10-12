@@ -1,3 +1,7 @@
+## Latest: pelvis/depth checks and a user-confirmed W sheet v12
+
+[W approval, E/W cutaways and independent image-structure checking](profile-depth-v12/README.md) distinguish the accepted W sheet from the later rejected third pose. Forty real source-depth passes and the user's contour rule strengthen proximal identity review; calf-only v11 match conclusions are withdrawn. The pixel comparator flags the rejected pose's structure, with explicit semantic limits. E and complete painted modular production remain unfinished.
+
 ## Latest: eight-facing walk and occluded-leg image review v11
 
 [Actual 8-view GIF, source-owner comparison and improved tools](eight-direction-v11/README.md) add 32 painted frames, 96 real source-owner passes, image-bound rejection controls and independently marked pixel traces. Initial SE pose 2 and revised E pose 3 are user-confirmed rejected images; the E correction is separately rechecked. Four local crossing matches leave 32 unresolved regions, and NE remains rejected for an attachment-side change. All complete art/motion/modular painted-part/release gates remain blocked.
@@ -38,7 +42,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.11](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.12](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)

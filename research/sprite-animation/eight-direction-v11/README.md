@@ -1,3 +1,5 @@
+> Superseded inspection: [v12](../profile-depth-v12/README.md) withdraws the E correction's identity conclusion after the user rejects it again. Calf-only traces now report foreground order only; refreshed v11 reports contain zero complete identity matches and 36 unresolved crossing identities. The user-approved W sheet in v12 is a different new image. The counts described below record the earlier inspection, not current acceptance.
+
 # เดิน 8 ทิศ v11 — ตรวจขาซ้อนจากภาพวาดจริง
 
 รอบนี้ทำ **8 ทิศ × 4 โพส = 32 เฟรม** จาก rig ต้นแบบเดิมที่ถูกต้อง แล้วเจนวาดทับใหม่ด้วยรายละเอียดแบบที่ผู้ใช้กำหนด เก็บ master 512×512 ต่อเฟรม ไม่ mirror ตัวละคร ทุกทิศเป็นภาพทดลองที่ยังไม่อนุมัติ

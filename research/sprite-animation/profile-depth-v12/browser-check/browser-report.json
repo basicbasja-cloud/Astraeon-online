@@ -1,0 +1,76 @@
+{
+  "browser": "151.0.7922.173",
+  "total": 17,
+  "checks": [
+    {
+      "name": "exact user-approved W image has visible approval independently of measurements",
+      "passed": true
+    },
+    {
+      "name": "all four W poses use measured left-near pelvis source depth",
+      "passed": true
+    },
+    {
+      "name": "actual cutaway, depth and dressed image modes load",
+      "passed": true
+    },
+    {
+      "name": "pelvis edge pointer maps to actual master pixels",
+      "passed": true
+    },
+    {
+      "name": "both legs retain independent proximal traces",
+      "passed": true
+    },
+    {
+      "name": "adding to a confirmed trace invalidates confirmation",
+      "passed": true
+    },
+    {
+      "name": "clear one proximal side preserves the other",
+      "passed": true
+    },
+    {
+      "name": "cloth color and shading alone are not depth cue options",
+      "passed": true
+    },
+    {
+      "name": "depth cue point and near-side selection are independent observations",
+      "passed": true
+    },
+    {
+      "name": "new proximal edits invalidate old measurement report",
+      "passed": true
+    },
+    {
+      "name": "JSON export/import retains proximal and depth annotations",
+      "passed": true
+    },
+    {
+      "name": "import rejects modified metric near-side source",
+      "passed": true
+    },
+    {
+      "name": "import rejects changed user approval receipt",
+      "passed": true
+    },
+    {
+      "name": "import rejects invalid proximal point",
+      "passed": true
+    },
+    {
+      "name": "mobile layout has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "E remains pending and source hip near side is measured right",
+      "passed": true
+    },
+    {
+      "name": "no runtime JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Actual source-depth and hash-bound user approval/proximal annotation UI; no semantic model accuracy claim"
+}

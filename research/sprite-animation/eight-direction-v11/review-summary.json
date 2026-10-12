@@ -9,7 +9,20 @@
       "required_visible_crossings": 8,
       "reviewed_matches": 0,
       "unresolved_crossings": 8,
+      "local_foreground_order_only": 0,
       "image_flags": [
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
         {
           "key": 0,
           "type": "overlap_owner_requires_image_review:l-0"
@@ -20,6 +33,18 @@
         },
         {
           "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 1,
           "type": "overlap_owner_requires_image_review:r-0"
         },
         {
@@ -28,11 +53,35 @@
         },
         {
           "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
           "type": "overlap_owner_requires_image_review:r-0"
         },
         {
           "key": 2,
           "type": "overlap_owner_requires_image_review:r-1"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 3,
@@ -51,28 +100,122 @@
       "coordinate_status": "REVIEW_REQUIRED",
       "image_status": "REVIEW_REQUIRED",
       "required_visible_crossings": 4,
-      "reviewed_matches": 3,
-      "unresolved_crossings": 1,
+      "reviewed_matches": 0,
+      "unresolved_crossings": 4,
+      "local_foreground_order_only": 3,
       "image_flags": [
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 1,
+          "type": "local_trace_does_not_establish_pelvis_identity:r-0"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
+          "type": "local_trace_does_not_establish_pelvis_identity:r-0"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
         {
           "key": 3,
           "type": "overlap_owner_requires_image_review:r-0"
+        },
+        {
+          "key": 3,
+          "type": "local_trace_does_not_establish_pelvis_identity:r-1"
         }
       ],
       "release_ready": false
     },
     {
       "view": "E",
-      "status": "REVIEW_REQUIRED",
+      "status": "REJECTED",
       "coordinate_status": "REVIEW_REQUIRED",
-      "image_status": "REVIEW_REQUIRED",
+      "image_status": "REJECTED",
       "required_visible_crossings": 5,
-      "reviewed_matches": 1,
-      "unresolved_crossings": 4,
+      "reviewed_matches": 0,
+      "unresolved_crossings": 5,
+      "local_foreground_order_only": 0,
       "image_flags": [
         {
           "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 0,
           "type": "overlap_owner_requires_image_review:r-0"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 1,
@@ -81,6 +224,46 @@
         {
           "key": 1,
           "type": "overlap_owner_requires_image_review:r-1"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
+          "type": "overlap_owner_requires_image_review:r-0"
+        },
+        {
+          "key": 2,
+          "type": "confirmed_image_review_error:user_confirmed_pelvis_thigh_identity_error_after_E_correction"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 3,
@@ -102,10 +285,35 @@
       "required_visible_crossings": 4,
       "reviewed_matches": 0,
       "unresolved_crossings": 4,
+      "local_foreground_order_only": 0,
       "image_flags": [
         {
           "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 0,
           "type": "overlap_owner_requires_image_review:r-0"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 1,
@@ -121,7 +329,31 @@
         },
         {
           "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
           "type": "confirmed_image_review_error:teal_cloth_changes_anatomical_attachment_side"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 3,
@@ -143,7 +375,56 @@
       "required_visible_crossings": 1,
       "reviewed_matches": 0,
       "unresolved_crossings": 1,
+      "local_foreground_order_only": 0,
       "image_flags": [
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
         {
           "key": 3,
           "type": "overlap_owner_requires_image_review:l-0"
@@ -159,14 +440,63 @@
       "required_visible_crossings": 4,
       "reviewed_matches": 0,
       "unresolved_crossings": 4,
+      "local_foreground_order_only": 0,
       "image_flags": [
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
         {
           "key": 1,
           "type": "overlap_owner_requires_image_review:l-0"
         },
         {
           "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
           "type": "overlap_owner_requires_image_review:l-0"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 3,
@@ -187,10 +517,43 @@
       "required_visible_crossings": 6,
       "reviewed_matches": 0,
       "unresolved_crossings": 6,
+      "local_foreground_order_only": 0,
       "image_flags": [
         {
           "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 0,
           "type": "overlap_owner_requires_image_review:l-0"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 1,
@@ -202,7 +565,39 @@
         },
         {
           "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 2,
           "type": "overlap_owner_requires_image_review:l-0"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "profile_metric_depth_source_missing"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 3,
@@ -228,10 +623,35 @@
       "required_visible_crossings": 4,
       "reviewed_matches": 0,
       "unresolved_crossings": 4,
+      "local_foreground_order_only": 0,
       "image_flags": [
         {
           "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 0,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 0,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 0,
           "type": "overlap_owner_requires_image_review:l-0"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 1,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 1,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 1,
@@ -240,6 +660,30 @@
         {
           "key": 1,
           "type": "overlap_owner_requires_image_review:l-1"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 2,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 2,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:r"
+        },
+        {
+          "key": 3,
+          "type": "pelvis_to_thigh_identity_requires_image_review:l"
+        },
+        {
+          "key": 3,
+          "type": "paired_pelvis_depth_readability_requires_image_review"
         },
         {
           "key": 3,
@@ -252,8 +696,8 @@
   "source_poses": 32,
   "source_render_passes": 96,
   "required_visible_crossings": 36,
-  "reviewed_matches": 4,
-  "unresolved_crossings": 32,
+  "reviewed_matches": 0,
+  "unresolved_crossings": 36,
   "known_user_rejected_SE_pose_2_still_rejected": true,
   "known_user_rejected_E_pose_3_still_rejected": true,
   "semantic_model_executed": false,

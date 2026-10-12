@@ -1,0 +1,94 @@
+{
+  "generator": "image_gen.imagegen",
+  "outputs": [
+    {
+      "view": "E",
+      "raw": "research/sprite-animation/profile-depth-v12/evidence/E-raw.png",
+      "sha256": "1e4adb4cc46155e49c1a0f2f067cd22c69467a0b96b45125be1343817e14d944",
+      "prompt": "evidence/prompts.json",
+      "inputs": [
+        {
+          "path": "research/sprite-animation/profile-depth-v12/source-depth/E-proximal-guide.png",
+          "sha256": "2804dc66943c50fb5dd80548c787e0252b6678a25a1622656ba29b60855f8a37"
+        },
+        {
+          "path": "research/sprite-animation/profile-depth-v12/source-depth/E-dressed-guide.png",
+          "sha256": "5cd8b6f9bff5de355a244d667bf17f9c18acead2052d92981fd376dca42477c9"
+        },
+        {
+          "path": "research/sprite-animation/profile-depth-v12/source-depth/E-depth-guide.png",
+          "sha256": "5efb564b71e661a483f31f60eca8aff99a25d932bc87b3c47219888acd734660"
+        },
+        {
+          "path": "research/sprite-animation/quality-review-v10/master/frames/00.png",
+          "sha256": "b04501d1fe37bc2f6b8ff5dd7cd568cf9c7c48aaf227f7f5da7210b10e487268"
+        }
+      ],
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "normalized_canvas": [
+        512,
+        512
+      ],
+      "shared_cell_scale": 0.8165869218500797,
+      "row_offset": 0,
+      "complete_painted_parts": false,
+      "user_leg_readability_accepted": false
+    },
+    {
+      "view": "W",
+      "raw": "research/sprite-animation/profile-depth-v12/evidence/W-raw.png",
+      "sha256": "fb14b3e10bfa8f0b162867a79aedf839bf7136c86d08c356b03e28dfb895727c",
+      "prompt": "evidence/prompts.json",
+      "inputs": [
+        {
+          "path": "research/sprite-animation/profile-depth-v12/source-depth/W-proximal-guide.png",
+          "sha256": "0101f8f5cd1df5edf6d7ef30f87343dc8d079ecd2ad6a74cf5ccb256e62c3775"
+        },
+        {
+          "path": "research/sprite-animation/profile-depth-v12/source-depth/W-dressed-guide.png",
+          "sha256": "78f89ce925e70eebaa058a6fef0ac0ec0ad47d4109e547faeda6dfa69cde1cf1"
+        },
+        {
+          "path": "research/sprite-animation/profile-depth-v12/source-depth/W-depth-guide.png",
+          "sha256": "fe71bb2fd49413c45d829279815b0011cc2a86c700dbc3bb34891487831083b2"
+        },
+        {
+          "path": "research/sprite-animation/quality-review-v10/master/frames/00.png",
+          "sha256": "b04501d1fe37bc2f6b8ff5dd7cd568cf9c7c48aaf227f7f5da7210b10e487268"
+        }
+      ],
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "normalized_canvas": [
+        512,
+        512
+      ],
+      "shared_cell_scale": 0.8165869218500797,
+      "row_offset": 0,
+      "complete_painted_parts": false,
+      "user_leg_readability_accepted": true
+    }
+  ],
+  "additional_failed_attempt": {
+    "raw": "research/sprite-animation/profile-depth-v12/evidence/E-from-approved-W-failed.png",
+    "sha256": "28dc8eaa62df0ad8ee56aadc1ebf96583f940d9a4c822e42497edb69c5ec726c",
+    "requested_view": "E",
+    "observed_view": "W, manual image inspection",
+    "prompt": "evidence/E-from-approved-W-prompt.txt",
+    "inputs": [
+      "research/sprite-animation/profile-depth-v12/evidence/W-raw.png",
+      "research/sprite-animation/profile-depth-v12/source-depth/E-proximal-guide.png",
+      "research/sprite-animation/profile-depth-v12/source-depth/E-dressed-guide.png"
+    ],
+    "status": "REJECTED",
+    "reason": "Wrong facing, clipped cell and user-confirmed pose 3 leg error",
+    "approval_not_transferred": true
+  },
+  "reference_fixture": "User-confirmed W image; raw and frame SHA in W-user-acceptance.json",
+  "user_diagram_record": "evidence/user-contour-rule.json; textual rule, not recovered exact image annotation"
+}

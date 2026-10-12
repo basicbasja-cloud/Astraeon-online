@@ -63,3 +63,8 @@ node skills/modular-eight-direction-sprites/studies/walk-test/verify-eight-leg-u
 ```
 
 The owner pack is 512 square; mismatched artwork canvases are rejected. Export/packing use fresh directories. The build-review command regenerates diagnostics and refuses stale image/source hashes; it does not draw corrections. Edit the standalone HTML, export annotations, and rerun CLI `check`; browser edits invalidate the previous report immediately.
+
+
+## Iteration 12 supersedes calf-only identity matches
+
+The user rejects the E correction again because its pelvis-side origin is not proven by moving the cloth. Read [profile-pelvis-depth](profile-pelvis-depth.md). The four old local match claims are withdrawn as identity proof: without paired proximal/depth evidence they remain foreground-order observations. Refreshed v11 reports have zero complete identity matches and 36 unresolved identities. A different new W sheet receives exact-image user approval; the later regenerated W-like pose 3 is explicitly rejected. Preserve these separate decisions and do not conflate user acceptance with recovered hidden joint coordinates.

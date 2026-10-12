@@ -1,0 +1,100 @@
+{
+  "schema": "profile-depth-review-v1",
+  "views": [
+    {
+      "view": "E",
+      "status": "REVIEW_REQUIRED",
+      "measurement_status": "REVIEW_REQUIRED",
+      "coordinate_status": "REVIEW_REQUIRED",
+      "approved_hidden_joint_coordinates": false,
+      "user_acceptance": null,
+      "release_ready": false
+    },
+    {
+      "view": "W",
+      "status": "USER_ACCEPTED_LEG_READABILITY",
+      "measurement_status": "REVIEW_REQUIRED",
+      "coordinate_status": "REVIEW_REQUIRED",
+      "approved_hidden_joint_coordinates": false,
+      "user_acceptance": {
+        "schema": "sprite-user-visual-acceptance-v1",
+        "authority": "user",
+        "scope": "leg_readability_in_this_sheet",
+        "facing": "W",
+        "user_message": "\u0e2d\u0e31\u0e19\u0e19\u0e35\u0e49\u0e16\u0e39\u0e01\u0e19\u0e30",
+        "raw_image": "research/sprite-animation/profile-depth-v12/evidence/W-raw.png",
+        "raw_image_sha256": "fb14b3e10bfa8f0b162867a79aedf839bf7136c86d08c356b03e28dfb895727c",
+        "user_provided_filename": "exec-8aaa73f6-b135-4e5b-b908-b3de6bc8b594.png",
+        "frame_sha256": [
+          "5ed068534592b93ce476479e862d9af57d47c5801e7ab641642e953a7e4ccd80",
+          "40419d78bd1a7a59c382d7600073f7920a43a1b946421f69891ff57b93030195",
+          "b79b1d08a9e851bee6944ce0b070dfe6d43298a092b5ee7e61810307f9e3cb56",
+          "cbb7fb2910500b7b88eed80137b4a5f24e4fccc3d86d944522af036492cf7000"
+        ],
+        "hidden_joint_positions_measured": false,
+        "complete_modular_painted_parts_approved": false,
+        "other_views_approved": false
+      },
+      "release_ready": false
+    }
+  ],
+  "source_poses": 8,
+  "source_render_passes": 40,
+  "source_metric_depth_overlap_pixels": 14421,
+  "source_depth_order_mismatch_pixels": 0,
+  "hip_depth_difference_scene_units_range": [
+    0.09635400772094727,
+    0.10129880905151367
+  ],
+  "prior_E_correction_user_rejection_preserved": true,
+  "prior_local_identity_conclusion_withdrawn": true,
+  "new_wrong_facing_and_clipped_generation_rejected": true,
+  "source_geometry_is_not_generated_image_depth": true,
+  "formats": [
+    {
+      "view": "E",
+      "format": "png",
+      "frames": 4,
+      "duration_ms": 1333.0,
+      "visible_RGBA_exact": true
+    },
+    {
+      "view": "E",
+      "format": "webp",
+      "frames": 4,
+      "duration_ms": 1333,
+      "visible_RGBA_exact": true
+    },
+    {
+      "view": "E",
+      "format": "gif",
+      "frames": 4,
+      "duration_ms": 1330,
+      "visible_RGBA_exact": false
+    },
+    {
+      "view": "W",
+      "format": "png",
+      "frames": 4,
+      "duration_ms": 1333.0,
+      "visible_RGBA_exact": true
+    },
+    {
+      "view": "W",
+      "format": "webp",
+      "frames": 4,
+      "duration_ms": 1333,
+      "visible_RGBA_exact": true
+    },
+    {
+      "view": "W",
+      "format": "gif",
+      "frames": 4,
+      "duration_ms": 1330,
+      "visible_RGBA_exact": false
+    }
+  ],
+  "automatic_semantic_detector": false,
+  "complete_replaceable_painted_parts": false,
+  "release_ready": false
+}

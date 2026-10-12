@@ -38,3 +38,6 @@ The depth-layer sample is an approximate bounded preview: straight-alpha sRGB co
 
 
 Iteration 11 adds `export-leg-owners.py`, `pack-leg-owners.py`, `build-eight-review.py` and `verify-eight-leg-ui.cjs`. See [actual eight-facing candidates and rejection cases](../../../../research/sprite-animation/eight-direction-v11/README.md) and [occlusion practice/commands](../../references/occlusion-image-review.md). Source-owner IDs come from actual weighted geometry; generated-image chain traces remain independent human observations, not recovered source ground truth. New pixels always require fresh checks.
+
+
+Iteration 12 adds `export-profile-depth.py`, `pack-profile-depth.py`, `review-profile-depth.py`, `verify-profile-depth-ui.cjs` and the standalone `scripts/profile-structure.py`. [Profile depth practice](../../references/profile-pelvis-depth.md) documents actual source visibility/depth, the user's contour rule, approved/rejected fixtures and reuse for new characters.
