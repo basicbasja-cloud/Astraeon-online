@@ -1,6 +1,8 @@
 # RO / other-game paintover experiments — v19
 
-ลองวาดตัวละครของเราทับลำดับ RO จริงที่เก็บไว้ และ ValyriaTear จาก native atlas/โค้ดจริงแล้วครับ รอบนี้มี4 imagegen calls: RO8key2attempts,8midpointdrawings,Valyria6drawings รวม30newdrawings. ชุด16ประกอบจาก8keyเดิม +8ภาพแทรก ไม่ใช่16ภาพใหม่ทั้งหมด **ยังไม่ผ่าน motion/art/production** และไม่แทนที่ upright source v17 ที่ผู้ใช้อนุมัติ
+ลองวาดตัวละครของเราทับลำดับ RO จริงที่เก็บไว้ และ ValyriaTear จาก native atlas/โค้ดจริงแล้วครับ รอบนี้มี4 imagegen calls: RO8key2attempts,8midpointdrawings,Valyria6drawings รวม30newdrawings. ชุด16ประกอบจาก8keyเดิม +8ภาพแทรก ไม่ใช่16ภาพใหม่ทั้งหมด **ยังไม่ผ่านครบด้าน anatomy/contact/modular production** และไม่แทนที่ upright source v17 ที่ผู้ใช้อนุมัติ
+
+Latest user feedback: **“สมูทขึ้นเยอะเลย 8 เฟรม”**. The RO-based8keypainted sequence is now the user-positive **smoothness comparison reference**. [Exact8frame hashes and scoped feedback](evidence/user-eight-key-smoothness-feedback.json) preserve the drawings and both existing playback controls. User did not specify600ms versus800ms; do not invent a preferred clock. This does not approve all anatomy/contact/parts, the16-frame interpolation or other facings. Preserve the eight keys rather than regenerating them during the next refinement.
 
 ## ดูผลจริง
 

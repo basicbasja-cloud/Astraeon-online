@@ -50,3 +50,7 @@ The initial v19 palette ROI began at y70 and clipped some hair. Those metrics ar
 `scripts/reference-truth.py` checks capture hashes/canvas/order/clock, observed versus inferred points, protected authored keys and loop-pair correspondence. `--require-production` fails closed for all current paintovers. Diagnostic success means the provenance contract is intact, not that the animation is correct.
 
 The next production exercise should transfer the reviewed compact motion into complete original rig/part authoring, then redraw against actual source owner/depth/contact passes. External raster studies remain an observation lane. The approved v17 original source can provide actual bones; this RO experiment cannot supply hidden RO ground truth.
+
+## Latest user-positive eight-key smoothness
+
+The user says “สมูทขึ้นเยอะเลย 8 เฟรม” after v19. Bind this comparative smoothness feedback to the exact RO-based W eight-key PNGs in `reverse-paintover-v19/evidence/user-eight-key-smoothness-feedback.json`. Freeze those keys as a painted smoothness comparison bank for further work. Both600ms and800ms controls exist; no specific clock was selected by that message. Do not transfer the feedback to the failed16-frame insertion, Valyria6, new anatomy/contacts, other facings/actions or complete painted parts. The separately accepted v17 original source continues to provide actual authoring bones. More generated frames are not a required improvement.

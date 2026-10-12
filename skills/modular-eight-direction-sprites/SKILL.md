@@ -9,6 +9,8 @@ Research-backed draft v0.19, reviewed 2026-10-12. Includes rig/weight/IK study, 
 
 Read [reverse paintover and source-of-truth practice](references/reverse-paintover-source-truth.md) before tracing game frames or inserting drawings. v19 executes RO/Valyria original-character paintovers and a protected-key8→16experiment, retaining failed midpoint motion rather than promoting additional frames to source truth. Captured pixels/native descriptor clocks, visible observations, reconstructed poses and exact approved original source are separate authorities. `scripts/reference-truth.py` binds keys/phase/clock and rejects hidden-bone promotion; it is not an anatomy detector or production acceptance. Palette-region review now returns inconclusive when its ROI clips a measured component.
 
+Latest user-positive comparison: v19 RO-based W eight-key painted smoothness is improved, with SHA-bound feedback. Preserve that exact eight-frame bank for smoothness comparisons; no specific600/800ms clock, full anatomy/contact/parts or other-view approval is inferred. Keep the failed16-frame insertion separate.
+
 ## Scope and references
 
 Read [binding user constraints](references/user-constraints.md) before this user's project work. For Astraeon, Ragnarok is the stated inspiration, main is obsolete, and every existing branch's character art is rejected. The sole working branch for this research is now `research/modular-sprites-full-body-2026-10-11`; keep subsequent iterations on it. Study technical contracts on the newest branch, but derive no visual guidance from those rejected assets. Earlier art inferences are superseded.
