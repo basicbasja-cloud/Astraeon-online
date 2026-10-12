@@ -1,5 +1,5 @@
 """Source-guided anatomical leg QA. Manual observations, not an image pose detector."""
-import argparse,base64,hashlib,json,math
+import argparse,base64,hashlib,itertools,json,math
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw
@@ -7,14 +7,17 @@ from PIL import Image,ImageDraw
 JOINTS=[f'{part}_{side}' for side in ['r','l'] for part in ['hip','knee','ankle','toe']]
 SOURCE={'hip':'thigh','knee':'calf','ankle':'foot','toe':'ball_leaf'}
 COLORS={'r':'#3591ff','l':'#f59045'}
+FACINGS=['S','SE','E','NE','N','NW','W','SW']
 WEIGHTS={'observed':1.,'estimated':.25,'unknown':0.}
 sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def other(n):return n[:-1]+('l' if n[-1]=='r' else 'r')
-def project(p,size):
-    x,y,z=p;angle=math.pi/4;el=math.atan2(2.92-.64,4);scale=size/1.58
+def project(p,size,facing='SE'):
+    if facing not in FACINGS:raise ValueError('Unsupported facing')
+    x,y,z=p;angle=FACINGS.index(facing)*math.pi/4;el=math.atan2(2.92-.64,4);scale=size/1.58
     xx=x*math.cos(angle)-y*math.sin(angle);yy=x*math.sin(angle)+y*math.cos(angle)
     return [size/2+xx*scale,size/2-(yy*math.sin(el)+(z-.64)*math.cos(el))*scale]
-def init_case(motion,frames,keys):
+def init_case(motion,frames,keys,facing='SE'):
+    if facing not in FACINGS:raise ValueError('Unsupported facing')
     m=json.loads(Path(motion).read_text());samples=[];canvas=None
     for k,index in enumerate(keys):
         path=Path(frames)/f'{k:02}.png'
@@ -22,11 +25,12 @@ def init_case(motion,frames,keys):
         if size[0]!=size[1]:raise ValueError('Square master required')
         if canvas is not None and canvas!=size:raise ValueError('Mixed logical canvases')
         canvas=size;f=m['frames'][index]
-        ref={n:project(f['in_place_joints'][SOURCE[n.rsplit('_',1)[0]]+'_'+n[-1]],size[0]) for n in JOINTS}
+        ref={n:project(f['in_place_joints'][SOURCE[n.rsplit('_',1)[0]]+'_'+n[-1]],size[0],facing) for n in JOINTS}
         samples.append({'key':k,'source_index':index,'time_seconds':f['time_seconds'],
             'image':str(path),'image_sha256':sha(path),'reference':ref,
             'source_ankle_z':{s:f['in_place_joints']['foot_'+s][2] for s in ['r','l']},
             'identity_review':'unconfirmed','notes':'',
+            'review_issues':[],
             'points':{n:{'xy':None,'visibility':'unknown','uncertainty_px':0.} for n in JOINTS}})
     return {'schema':'anatomical-leg-review-v1','source_motion_path':str(motion),'source_motion_sha256':sha(motion),
         'source_joint_map':SOURCE.copy(),
@@ -35,7 +39,7 @@ def init_case(motion,frames,keys):
         'source_replay_path':str(Path(motion).parent/'saved-rig-check.json'),
         'source_replay_sha256':sha(Path(motion).parent/'saved-rig-check.json'),
         'source_glb_sha256':m['source_glb_sha256'],'source_capture_sha256':m['capture_sha256'],
-        'canvas':list(canvas),'facing':'SE','duration_seconds':m['duration_seconds'],
+        'canvas':list(canvas),'facing':facing,'duration_seconds':m['duration_seconds'],
         'coordinate_origin':'Top-left, master pixels; anatomical sides, never screen sides',
         'thresholds':{'pose_px':16.*canvas[0]/512,'swap_margin_px':8.*canvas[0]/512,'velocity_residual_px_per_s':60.*canvas[0]/512},
         'method':'Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.',
@@ -44,7 +48,7 @@ def validate_case(c,verify_images=False):
     if c.get('schema')!='anatomical-leg-review-v1':raise ValueError('Unknown schema')
     if c.get('source_joint_map')!=SOURCE:raise ValueError('Wrong anatomical source joint map')
     fs=c['frames'];w,h=c['canvas'];duration=c['duration_seconds']
-    if c.get('facing')!='SE' or w!=h or not isinstance(w,int) or w<=0:raise ValueError('Unsupported facing/canvas')
+    if c.get('facing') not in FACINGS or w!=h or not isinstance(w,int) or w<=0:raise ValueError('Unsupported facing/canvas')
     if len(fs)<2 or not math.isfinite(duration) or duration<=0:raise ValueError('Invalid clip')
     previous=-1
     for k,f in enumerate(fs):
@@ -83,7 +87,7 @@ def validate_case(c,verify_images=False):
             ref=m['frames'][f['source_index']]
             if abs(ref['time_seconds']-f['time_seconds'])>1e-9:raise ValueError('Wrong source pose time')
             for n in JOINTS:
-                expected=project(ref['in_place_joints'][SOURCE[n.rsplit('_',1)[0]]+'_'+n[-1]],w)
+                expected=project(ref['in_place_joints'][SOURCE[n.rsplit('_',1)[0]]+'_'+n[-1]],w,c['facing'])
                 if not np.allclose(expected,f['reference'][n],rtol=0,atol=1e-8):raise ValueError('Modified bone reference projection')
             for s in ['r','l']:
                 if f['source_ankle_z'][s]!=ref['in_place_joints']['foot_'+s][2]:raise ValueError('Modified source foot height')
@@ -105,12 +109,12 @@ def diagnostic_scale(fs):
                     sums[1]+=np.linalg.norm(np.array(f['reference'][a])-f['reference'][b]);count+=1
         if count==6 and sums[1]>1:ratios.append(sums[0]/sums[1])
     return float(np.median(ratios)) if ratios else 1.,len(ratios)
-def frame_cost(f,scale,swap=False):
+def frame_cost(f,scale,swap=False,component_swaps=()):
     gc,unc=center(f,True);sc,_=center(f,False);res=[]
     if gc is None:return None,[]
     for n,p in f['points'].items():
         if not usable(p):continue
-        sn=other(n) if swap else n
+        sn=other(n) if swap or n.rsplit('_',1)[0] in component_swaps else n
         raw=float(np.linalg.norm(np.array(p['xy'])-gc-scale*(np.array(f['reference'][sn])-sc)))
         adjusted=max(0.,raw-p['uncertainty_px']-unc)
         res.append({'joint':n,'raw_error_px':raw,'error_after_uncertainty_px':adjusted,'weight':WEIGHTS[p['visibility']]})
@@ -140,19 +144,38 @@ def analyze(c):
     measured=sum(usable(p) for f in fs for p in f['points'].values());point_pass=raw_pass=point_total=0
     for f in fs:
         own,res=frame_cost(f,scale);swapped,_=frame_cost(f,scale,True);raw=raw_pose_cost(res)
+        alternatives=[]
+        for bits in itertools.product([False,True],repeat=4):
+            mask=[n for n,on in zip(['hip','knee','ankle','toe'],bits) if on]
+            _,candidate=frame_cost(f,scale,component_swaps=mask)
+            cost=raw_pose_cost(candidate)
+            if cost is not None:alternatives.append({'exchanged_components':mask,'raw_rmse_px':cost})
+        best=min(alternatives,key=lambda x:x['raw_rmse_px']) if alternatives else None
         visible={s:sum(f['points'][n]['visibility']=='observed' for n in JOINTS if n.endswith(s)) for s in ['r','l']}
         ambiguous=own is None or min(visible.values())<2 or f['identity_review']!='confirmed'
-        local=[]
+        local=[];observability=[]
+        for part in ['hip','knee','ankle','toe']:
+            p,q=f['points'][part+'_r'],f['points'][part+'_l']
+            if not usable(p) or not usable(q):continue
+            distance=float(np.linalg.norm(np.array(f['reference'][part+'_r'])-f['reference'][part+'_l']))*scale
+            uncertainty=p['uncertainty_px']+q['uncertainty_px']
+            unresolved=distance<=max(uncertainty,1e-6)
+            observability.append({'component':part,'source_projected_pair_distance_px':distance,'declared_pair_uncertainty_px':uncertainty,'identity_unresolvable_by_coordinates':unresolved})
+            if unresolved:local.append('projected_side_pair_ambiguous:'+part)
         if own is None:local.append('insufficient_pelvis_or_joint_observations')
         elif own>limits['pose_px']:local.append('source_pose_deviation')
         elif raw is not None and raw>limits['pose_px']:local.append('source_pose_difference_inside_annotation_uncertainty')
         if own is not None and swapped is not None and own-swapped>limits['swap_margin_px']:
             local.append('opposite_side_pose_fits_better_uncertain_identity' if ambiguous else 'possible_leg_label_or_pose_swap')
         if ambiguous:local.append('anatomical_identity_unconfirmed')
+        if best and raw-best['raw_rmse_px']>limits['swap_margin_px']:
+            local.append('mixed_or_exchanged_leg_association_fits_better_raw')
         for r in res:
             point_total+=1;point_pass+=r['error_after_uncertainty_px']<=limits['pose_px'];raw_pass+=r['raw_error_px']<=limits['pose_px']
         per.append({'key':f['key'],'identity_review':f['identity_review'],'observed_per_side':visible,
-            'claimed_identity_rmse_px':own,'claimed_identity_raw_rmse_px':raw,'exchanged_identity_rmse_px':swapped,'point_errors':res,'flags':local})
+            'claimed_identity_rmse_px':own,'claimed_identity_raw_rmse_px':raw,'exchanged_identity_rmse_px':swapped,
+            'best_counterfactual_component_association':best,'association_observability':observability,
+            'counterfactual_is_not_anatomy_proof':True,'point_errors':res,'flags':local})
         flags.extend({'key':f['key'],'type':x} for x in local)
     transitions=[]
     for k,f in enumerate(fs):
@@ -169,7 +192,7 @@ def analyze(c):
         flags.extend({'transition':[k,g['key']],'type':x} for x in local)
     complete=measured==len(fs)*8 and observed==len(fs)*8 and all(f['identity_review']=='confirmed' for f in fs)
     return {'schema':'leg-continuity-report-v1','status':'REVIEW_REQUIRED' if flags or not complete else 'SCOPED_2D_MEASUREMENTS_WITHIN_BUDGET',
-        'method':c['method'],'source_motion_sha256':c['source_motion_sha256'],
+        'method':c['method'],'facing':c['facing'],'source_motion_sha256':c['source_motion_sha256'],
         'source_blend_sha256':c['source_blend_sha256'],'source_replay_sha256':c['source_replay_sha256'],
         'source_glb_sha256':c['source_glb_sha256'],'source_capture_sha256':c['source_capture_sha256'],
         'reference':'Measured 3D bones of the actual baked original rig projected with its fixed camera; no screenshot-estimated source skeleton',
@@ -205,18 +228,29 @@ def overlay(c,out):
 def build_html(c,report,path):
     template=Path(__file__).with_name('leg-review.html').read_text()
     images=['data:image/png;base64,'+base64.b64encode(Path(f['image']).read_bytes()).decode() for f in c['frames']]
-    payload={'case':c,'report':report,'images':images}
+    owner_images=['data:image/png;base64,'+base64.b64encode(Path(f['owner_paths']['visible-color']).read_bytes()).decode() if 'owner_paths' in f else None for f in c['frames']]
+    payload={'case':c,'report':report,'images':images,'owner_images':owner_images}
     path.write_text(template.replace('/*__PAYLOAD__*/',json.dumps(payload).replace('<','\\u003c')))
 def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest='cmd',required=True)
-    q=sub.add_parser('init');q.add_argument('--motion',type=Path,required=True);q.add_argument('--frames',type=Path,required=True);q.add_argument('--keys',required=True);q.add_argument('--out',type=Path,required=True)
+    q=sub.add_parser('init');q.add_argument('--motion',type=Path,required=True);q.add_argument('--frames',type=Path,required=True);q.add_argument('--keys',required=True);q.add_argument('--out',type=Path,required=True);q.add_argument('--facing',choices=FACINGS,default='SE');q.add_argument('--owners',type=Path)
     q=sub.add_parser('check');q.add_argument('--case',type=Path,required=True);q.add_argument('--out',type=Path,required=True);q.add_argument('--html',type=Path)
     a=p.parse_args()
     if a.cmd=='init':
         if a.out.exists():raise ValueError('Do not overwrite existing annotations')
-        a.out.write_text(json.dumps(init_case(a.motion,a.frames,[int(x) for x in a.keys.split(',')]),indent=2)+'\n');return
+        c=init_case(a.motion,a.frames,[int(x) for x in a.keys.split(',')],a.facing)
+        if a.owners:
+            from image_leg_audit import bind_owners
+            bind_owners(c,a.owners)
+        a.out.write_text(json.dumps(c,indent=2)+'\n');return
     c=json.loads(a.case.read_text());validate_case(c,True);r=analyze(c);a.out.mkdir(parents=True,exist_ok=True)
     r['source_blend_replay_and_image_hashes_verified']=True
+    from image_leg_audit import audit_images,evidence
+    image_report=audit_images(c);r['coordinate_status']=r['status'];r['image_review']=image_report
+    if image_report['status']=='REJECTED':r['status']='REJECTED'
+    elif image_report['status']!='SCOPED_IMAGE_REVIEW_COMPLETE':r['status']='REVIEW_REQUIRED'
+    r['annotation_sha256']=sha(a.case)
+    evidence(c,image_report,a.out/'image-evidence')
     (a.out/'continuity-report.json').write_text(json.dumps(r,indent=2)+'\n');overlay(c,a.out)
     if a.html:build_html(c,r,a.html)
     print('LEG_QA',r['status'],'observed coverage',r['observed_coverage_percent'],'flags',len(r['flags']))

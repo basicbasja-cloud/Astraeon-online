@@ -78,7 +78,37 @@ class LegContinuityTests(unittest.TestCase):
         self.assertEqual(c['thresholds']['pose_px'],4)
         self.assertEqual(c['thresholds']['swap_margin_px'],2)
     def test_wrong_facing_is_not_silently_compared_to_SE(self):
-        c=self.case();c['facing']='N'
+        c=self.case();c['facing']='INVALID'
         with self.assertRaisesRegex(ValueError,'Unsupported facing'):qa.analyze(c)
+    def test_all_eight_physical_facings_preserve_source_anatomy(self):
+        for view in qa.FACINGS:
+            c=qa.init_case(ROOT/'research/sprite-animation/walk-test-v9/motion.json',ROOT/'research/sprite-animation/quality-review-v10/master/frames',[0,10,20,30],view)
+            for f in c['frames']:
+                f['identity_review']='confirmed'
+                for n in qa.JOINTS:f['points'][n]={'xy':f['reference'][n].copy(),'visibility':'observed','uncertainty_px':0.}
+            self.assertEqual(qa.analyze(c)['status'],'SCOPED_2D_MEASUREMENTS_WITHIN_BUDGET',view)
+    def test_facing_change_with_old_reference_is_rejected(self):
+        c=self.case();c['facing']='N'
+        with self.assertRaisesRegex(ValueError,'Modified bone reference'):qa.validate_case(c,True)
+    def test_partial_chain_swap_is_visible_despite_large_uncertainty(self):
+        c=self.case();f=c['frames'][0];old=copy.deepcopy(f['points'])
+        for n in qa.JOINTS:
+            if n.startswith('knee'):f['points'][n]=old[qa.other(n)]
+            f['points'][n]['uncertainty_px']=200
+        r=qa.analyze(c)
+        self.assertIn('mixed_or_exchanged_leg_association_fits_better_raw',r['frames'][0]['flags'])
+        self.assertIn('knee',r['frames'][0]['best_counterfactual_component_association']['exchanged_components'])
+    def test_projected_overlapping_knees_do_not_get_false_certainty(self):
+        c=self.case()
+        for n in ['knee_r','knee_l']:c['frames'][1]['points'][n]['uncertainty_px']=20
+        r=qa.analyze(c)
+        self.assertIn('projected_side_pair_ambiguous:knee',r['frames'][1]['flags'])
+        self.assertEqual(r['status'],'REVIEW_REQUIRED')
+    def test_exactly_coincident_knees_are_ambiguous_even_with_zero_uncertainty(self):
+        c=self.case();f=c['frames'][1]
+        f['reference']['knee_l']=f['reference']['knee_r'].copy()
+        f['points']['knee_l']['xy']=f['points']['knee_r']['xy'].copy()
+        f['points']['knee_r']['uncertainty_px']=f['points']['knee_l']['uncertainty_px']=0.
+        self.assertIn('projected_side_pair_ambiguous:knee',qa.analyze(c)['frames'][1]['flags'])
 
 if __name__=='__main__':unittest.main()

@@ -77,3 +77,8 @@ See [iteration 7 conditioning evidence](../../../research/sprite-animation/condi
 The separate [iteration 8 experiment](../../../research/sprite-animation/preset-retarget-v8/README.md) adds `studies/source-motion/sample-presets.py`, `assess-presets.py` and `retarget_math.py`. The bounded adapter reads the audited CC0 author GLB at actual clip input times and checks same-rest-basis FK on a fresh generic proportion skeleton. Independent two-segment endpoint diagnostics expose unreachable trajectory goals without stretching limbs. These are not the original production adapter, a general Mixamo retargeter, a baked original rig or surface-contact proof.
 
 Read [preset/retargeting practice](../references/preset-retargeting-practice.md) first. Run the full test command shown in the new evidence README: **20 tests** now cover the previous 13 cases plus transform-order, hierarchy/mapping, rigid-transform and mirroring failures, reachable/unreachable chains, inner reach limits and degenerate poles. The existing original animation/art/release gates remain blocked.
+
+
+## Eight-facing leg ownership and actual image review
+
+Use [occlusion-image-review](../references/occlusion-image-review.md) and [v11 image evidence](../../../research/sprite-animation/eight-direction-v11/README.md). `leg-continuity.py init --facing VIEW --owners OWNER_INDEX` binds eight-facing actual source geometry. Coordinates start unknown; image crossing traces and reviewer errors are separate gates. No automatic semantic detector or mass-production guarantee is established. The source rendering/packing and browser commands are documented in the linked practice.

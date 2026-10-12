@@ -1,0 +1,699 @@
+{
+  "schema": "leg-continuity-report-v1",
+  "status": "REVIEW_REQUIRED",
+  "method": "Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.",
+  "facing": "SE",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_replay_sha256": "684005b257e2168fd7a0ade49a9120316f726c48a2e98c4c715c671fb629e992",
+  "source_glb_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "source_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "reference": "Measured 3D bones of the actual baked original rig projected with its fixed camera; no screenshot-estimated source skeleton",
+  "thresholds": {
+    "pose_px": 16.0,
+    "swap_margin_px": 8.0,
+    "velocity_residual_px_per_s": 60.0
+  },
+  "observed_coverage_percent": 0.0,
+  "measured_including_estimates_percent": 50.0,
+  "measured_points_within_declared_pose_budget_percent": null,
+  "unadjusted_measured_points_within_pose_budget_percent": null,
+  "percentage_is_not_anatomy_accuracy": true,
+  "diagnostic_global_positive_scale": 1.0,
+  "scale_fit_complete_frame_count": 0,
+  "alignment_scope": "Pelvis-relative QA only; no rotation, reflection or per-pose scale. Artwork unchanged. Root registration and world contacts not validated.",
+  "frames": [
+    {
+      "key": 0,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    },
+    {
+      "key": 1,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [
+        {
+          "component": "knee",
+          "source_projected_pair_distance_px": 15.336657404675504,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": true
+        },
+        {
+          "component": "ankle",
+          "source_projected_pair_distance_px": 53.03036227322995,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": false
+        },
+        {
+          "component": "toe",
+          "source_projected_pair_distance_px": 87.05052359819997,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": false
+        }
+      ],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "projected_side_pair_ambiguous:knee",
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    },
+    {
+      "key": 2,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [
+        {
+          "component": "knee",
+          "source_projected_pair_distance_px": 28.867483388439233,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": false
+        },
+        {
+          "component": "ankle",
+          "source_projected_pair_distance_px": 87.97632925740295,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": false
+        },
+        {
+          "component": "toe",
+          "source_projected_pair_distance_px": 81.36041622580579,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": false
+        }
+      ],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    },
+    {
+      "key": 3,
+      "identity_review": "unconfirmed",
+      "observed_per_side": {
+        "r": 0,
+        "l": 0
+      },
+      "claimed_identity_rmse_px": null,
+      "claimed_identity_raw_rmse_px": null,
+      "exchanged_identity_rmse_px": null,
+      "best_counterfactual_component_association": null,
+      "association_observability": [
+        {
+          "component": "knee",
+          "source_projected_pair_distance_px": 46.75834071025436,
+          "declared_pair_uncertainty_px": 24.0,
+          "identity_unresolvable_by_coordinates": false
+        }
+      ],
+      "counterfactual_is_not_anatomy_proof": true,
+      "point_errors": [],
+      "flags": [
+        "insufficient_pelvis_or_joint_observations",
+        "anatomical_identity_unconfirmed"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "includes_loop_seam": false,
+      "dt_seconds": 0.3333333432674408,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "includes_loop_seam": false,
+      "dt_seconds": 0.3333333432674408,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "includes_loop_seam": false,
+      "dt_seconds": 0.3333333134651184,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    },
+    {
+      "from": 3,
+      "to": 0,
+      "includes_loop_seam": true,
+      "dt_seconds": 0.3333333730697632,
+      "measured_correspondences": 0,
+      "residual_px_per_s": null,
+      "raw_residual_px_per_s": null,
+      "exchanged_next_residual_px_per_s": null,
+      "flags": [
+        "continuity_unmeasurable"
+      ]
+    }
+  ],
+  "flags": [
+    {
+      "key": 0,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 0,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "key": 1,
+      "type": "projected_side_pair_ambiguous:knee"
+    },
+    {
+      "key": 1,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 1,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "key": 2,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 2,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "key": 3,
+      "type": "insufficient_pelvis_or_joint_observations"
+    },
+    {
+      "key": 3,
+      "type": "anatomical_identity_unconfirmed"
+    },
+    {
+      "transition": [
+        0,
+        1
+      ],
+      "type": "continuity_unmeasurable"
+    },
+    {
+      "transition": [
+        1,
+        2
+      ],
+      "type": "continuity_unmeasurable"
+    },
+    {
+      "transition": [
+        2,
+        3
+      ],
+      "type": "continuity_unmeasurable"
+    },
+    {
+      "transition": [
+        3,
+        0
+      ],
+      "type": "continuity_unmeasurable"
+    }
+  ],
+  "all_identity_confirmed": false,
+  "foot_contact_verified": false,
+  "hidden_anatomy_verified": false,
+  "release_ready": false,
+  "source_blend_replay_and_image_hashes_verified": true,
+  "coordinate_status": "REVIEW_REQUIRED",
+  "image_review": {
+    "schema": "generated-leg-image-audit-v1",
+    "status": "REVIEW_REQUIRED",
+    "source_visible_and_amodal_owner_pixels_verified": true,
+    "semantic_detector_used": false,
+    "method": "Actual generated RGBA evidence, silhouette support and independently reviewed foreground ownership at true source crossings. No inferred pass on occluded legs.",
+    "frames": [
+      {
+        "key": 0,
+        "landmarks": [],
+        "segments": [],
+        "crossings": [],
+        "teal_palette_anchor": {
+          "pixels": 751,
+          "centroid": [
+            328.9946737683089,
+            271.6711051930759
+          ],
+          "relative_x_to_pelvis_or_cell_root": 72.99467376830893,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": []
+      },
+      {
+        "key": 1,
+        "landmarks": [
+          {
+            "joint": "knee_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "ankle_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "toe_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "knee_l",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "ankle_l",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "toe_l",
+            "alpha_3x3_max": 252,
+            "visibility": "estimated"
+          }
+        ],
+        "segments": [
+          {
+            "chain": [
+              "knee_r",
+              "ankle_r"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "ankle_r",
+              "toe_r"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "knee_l",
+              "ankle_l"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "ankle_l",
+              "toe_l"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          }
+        ],
+        "crossings": [
+          {
+            "id": "r-0",
+            "expected_foreground": "r",
+            "source_xy": [
+              268,
+              335
+            ],
+            "source_box": [
+              249,
+              270,
+              294,
+              379
+            ],
+            "pixels": 3074,
+            "observed_foreground": "r",
+            "art_xy": [
+              275,
+              346
+            ],
+            "review": "confirmed",
+            "notes": "Manual visual tracing of visible near/right thigh into the calf in the NEW image. Covered hip joint not recovered; this does not approve the complete pose.",
+            "art_trace": [
+              [
+                248,
+                319
+              ],
+              [
+                275,
+                343
+              ],
+              [
+                249,
+                349
+              ],
+              [
+                217,
+                351
+              ],
+              [
+                202,
+                372
+              ]
+            ],
+            "trace_review": "confirmed",
+            "art_pixel_supported": true,
+            "trace_foreground_support_fraction": 1.0,
+            "crossing_distance_to_trace_px": 2.9290962050714526,
+            "semantic_trace_is_manual": true,
+            "result": "reviewed_match"
+          }
+        ],
+        "teal_palette_anchor": {
+          "pixels": 662,
+          "centroid": [
+            314.33534743202415,
+            281.9305135951662
+          ],
+          "relative_x_to_pelvis_or_cell_root": 58.33534743202415,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": []
+      },
+      {
+        "key": 2,
+        "landmarks": [
+          {
+            "joint": "knee_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "ankle_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "toe_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "knee_l",
+            "alpha_3x3_max": 252,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "ankle_l",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "toe_l",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          }
+        ],
+        "segments": [
+          {
+            "chain": [
+              "knee_r",
+              "ankle_r"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "ankle_r",
+              "toe_r"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "knee_l",
+              "ankle_l"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "ankle_l",
+              "toe_l"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          }
+        ],
+        "crossings": [
+          {
+            "id": "r-0",
+            "expected_foreground": "r",
+            "source_xy": [
+              262,
+              320
+            ],
+            "source_box": [
+              242,
+              278,
+              283,
+              366
+            ],
+            "pixels": 2253,
+            "observed_foreground": "r",
+            "art_xy": [
+              284,
+              343
+            ],
+            "review": "confirmed",
+            "notes": "Manual visual tracing of visible near/right thigh into the calf in the NEW image. Covered hip joint not recovered; this does not approve the complete pose.",
+            "art_trace": [
+              [
+                269,
+                316
+              ],
+              [
+                294,
+                356
+              ],
+              [
+                303,
+                392
+              ],
+              [
+                311,
+                426
+              ],
+              [
+                326,
+                450
+              ]
+            ],
+            "trace_review": "confirmed",
+            "art_pixel_supported": true,
+            "trace_foreground_support_fraction": 1.0,
+            "crossing_distance_to_trace_px": 1.6429460100963602,
+            "semantic_trace_is_manual": true,
+            "result": "reviewed_match"
+          }
+        ],
+        "teal_palette_anchor": {
+          "pixels": 870,
+          "centroid": [
+            326.17816091954023,
+            277.2758620689655
+          ],
+          "relative_x_to_pelvis_or_cell_root": 70.17816091954023,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": []
+      },
+      {
+        "key": 3,
+        "landmarks": [
+          {
+            "joint": "knee_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "ankle_r",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "toe_r",
+            "alpha_3x3_max": 251,
+            "visibility": "estimated"
+          },
+          {
+            "joint": "knee_l",
+            "alpha_3x3_max": 253,
+            "visibility": "estimated"
+          }
+        ],
+        "segments": [
+          {
+            "chain": [
+              "knee_r",
+              "ankle_r"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          },
+          {
+            "chain": [
+              "ankle_r",
+              "toe_r"
+            ],
+            "raster_foreground_fraction": 1.0,
+            "semantic_identity_verified": false
+          }
+        ],
+        "crossings": [
+          {
+            "id": "r-0",
+            "expected_foreground": "r",
+            "source_xy": [
+              258,
+              292
+            ],
+            "source_box": [
+              249,
+              279,
+              265,
+              312
+            ],
+            "pixels": 207,
+            "observed_foreground": "unknown",
+            "art_xy": null,
+            "review": "unconfirmed",
+            "notes": "",
+            "art_trace": [],
+            "trace_review": "unconfirmed",
+            "art_pixel_supported": false,
+            "trace_foreground_support_fraction": null,
+            "crossing_distance_to_trace_px": null,
+            "semantic_trace_is_manual": true,
+            "result": "unresolved"
+          },
+          {
+            "id": "r-1",
+            "expected_foreground": "r",
+            "source_xy": [
+              245,
+              364
+            ],
+            "source_box": [
+              226,
+              331,
+              272,
+              405
+            ],
+            "pixels": 2256,
+            "observed_foreground": "r",
+            "art_xy": [
+              263,
+              365
+            ],
+            "review": "confirmed",
+            "notes": "Manual visual tracing of visible near/right thigh into the calf in the NEW image. Covered hip joint not recovered; this does not approve the complete pose.",
+            "art_trace": [
+              [
+                263,
+                317
+              ],
+              [
+                269,
+                351
+              ],
+              [
+                265,
+                387
+              ],
+              [
+                276,
+                424
+              ]
+            ],
+            "trace_review": "confirmed",
+            "art_pixel_supported": true,
+            "trace_foreground_support_fraction": 1.0,
+            "crossing_distance_to_trace_px": 4.452080386860921,
+            "semantic_trace_is_manual": true,
+            "result": "reviewed_match"
+          }
+        ],
+        "teal_palette_anchor": {
+          "pixels": 268,
+          "centroid": [
+            321.07462686567163,
+            246.63805970149255
+          ],
+          "relative_x_to_pelvis_or_cell_root": 65.07462686567163,
+          "method": "Teal-like lower-body palette pixels; heuristic appearance anchor, not an anatomical detector"
+        },
+        "flags": [
+          "overlap_owner_requires_image_review:r-0"
+        ]
+      }
+    ],
+    "flags": [
+      {
+        "key": 3,
+        "type": "overlap_owner_requires_image_review:r-0"
+      }
+    ],
+    "release_ready": false
+  },
+  "annotation_sha256": "bf1a7d92aa9ec6cd6964360af50c7a401f720f84e05ed33ddbf44ae7f79cf573"
+}

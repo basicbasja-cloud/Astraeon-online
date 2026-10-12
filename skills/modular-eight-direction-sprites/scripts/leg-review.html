@@ -4,7 +4,7 @@
 <style>
 :root{color-scheme:dark;font:15px/1.5 system-ui;background:#171a1f;color:#ece6dc}body{margin:0;padding:24px}h1{font-size:23px;margin:0 0 8px}p{margin:6px 0 16px;color:#bbc3cc}.layout{display:grid;grid-template-columns:minmax(280px,560px) minmax(280px,420px);gap:24px;max-width:1040px}canvas{width:100%;height:auto;background:#272727;touch-action:none;border:1px solid #4d5662;border-radius:8px}label{display:block;margin:10px 0}input,select,button{font:inherit;padding:7px;background:#252c35;color:#ece6dc;border:1px solid #566272;border-radius:5px}input[type=checkbox]{padding:0}button{cursor:pointer;margin:3px 4px 3px 0}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #deb76b}.toolbar{margin:8px 0}.blue{color:#3591ff}.orange{color:#f59045}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#20252d;padding:12px;font-size:12px;border-radius:6px;max-height:280px;overflow:auto}.notice{border-left:3px solid #deb76b;padding:8px 12px;background:#282822}.jointlist{display:grid;grid-template-columns:1fr 1fr;gap:6px}.jointlist button{margin:0;text-align:left}.active{outline:2px solid #deb76b}small{color:#b9c2cd}#position{font-variant-numeric:tabular-nums}@media(max-width:760px){body{padding:12px}.layout{grid-template-columns:1fr}h1{font-size:20px}}
 </style>
-<h1>ตรวจขาซ้าย–ขวาและความต่อเนื่อง</h1>
+<h1>ตรวจขาซ้าย–ขวาและความต่อเนื่อง <span id="facing"></span></h1>
 <p><span class="blue">น้ำเงิน = ขาขวาตาม anatomy</span> · <span class="orange">ส้ม = ขาซ้ายตาม anatomy</span> · ต้นแบบสีเขียวจางคือกระดูกจาก rig ณ เวลาเดียวกัน</p>
 <div class="layout"><section>
 <canvas id="canvas" width="512" height="512" aria-label="ภาพตัวละครและจุดกระดูกสำหรับตรวจ"></canvas>
@@ -13,6 +13,7 @@
 <label><input id="onion" type="checkbox"> ซ้อนเฟรมก่อนหน้า (onion skin)</label>
 <label><input id="source" type="checkbox" checked> แสดงกระดูกต้นแบบ — overlay จัดตามสะโพกเพื่อเปรียบเทียบ ไม่ได้แก้ภาพ</label>
 <label><input id="marks" type="checkbox" checked> แสดงจุดและสายขาที่ระบุ</label>
+<details open><summary>ภาพเจ้าของขาจาก geometry จริง — ตรงจุดซ้อนสีใดอยู่หน้าคือขานั้น</summary><canvas id="ownerCanvas" width="512" height="512" aria-label="เจ้าของขาต้นแบบจากส่วน geometry ที่มองเห็น"></canvas></details>
 <p class="notice">ขาที่ไขว้กันยังเป็นขาเดิม อย่าใช้ด้านซ้าย/ขวาของภาพตั้งชื่อ ถ้าถูกบังให้ใช้ “ประมาณ” หรือ “ไม่ทราบ” วงกลมคือระยะคลาดเคลื่อนที่ยอมรับในการระบุจุด</p>
 </section><aside>
 <strong>เลือกข้อต่อ แล้วคลิกบนภาพ</strong><div id="joints" class="jointlist"></div>
@@ -21,6 +22,13 @@
 <label><input id="confirmed" type="checkbox"> ตรวจตัวตนซ้าย–ขวาของเฟรมนี้แล้ว</label>
 <label>บันทึก <input id="notes" type="text" style="width:90%"></label>
 <button id="clear">ล้างจุดนี้</button><button id="export">บันทึก annotation JSON</button>
+<hr><strong>ตรวจเจ้าของขาตรงจุดซ้อนจากภาพ</strong>
+<label>โหมดคลิก <select id="mode"><option value="joint">ระบุข้อต่อ</option><option value="crossing">ตำแหน่งจุดซ้อนในภาพวาด</option><option value="trace">ไล่เส้นขาที่อยู่หน้า จากต้นขาผ่านจุดซ้อนไปหน้าแข้ง</option></select></label>
+<label>บริเวณต้นแบบ <select id="crossing"></select></label>
+<label>ขาที่มองเห็นอยู่หน้า <select id="foreground"><option value="unknown">ยังแยกไม่ได้</option><option value="r">ขาขวา</option><option value="l">ขาซ้าย</option></select></label>
+<label><input id="crossConfirmed" type="checkbox"> ไล่เส้นจากภาพวาดและตรวจเจ้าของแล้ว</label>
+<label><input id="traceConfirmed" type="checkbox"> ตรวจรอยต่อในเส้นที่คลิกแล้ว (อย่างน้อย 3 จุด)</label><button id="clearTrace">ล้างเส้นตรวจขา</button>
+<button id="flagError">ธงภาพผิด: ขาสลับ / ต่อผิดสาย</button>
 <label>โหลด annotation <input id="import" type="file" accept="application/json"></label>
 <p id="status" role="status"></p><small>เครื่องมือนี้ช่วยตรวจ annotation เทียบกระดูก ไม่ใช่ AI ที่รับรอง anatomy อัตโนมัติ ผลรายงานจะเก่าทันทีเมื่อแก้จุด ให้ export แล้วรัน checker ใหม่</small>
 <pre id="report"></pre>
@@ -32,7 +40,10 @@ const ids=['hip_r','knee_r','ankle_r','toe_r','hip_l','knee_l','ankle_l','toe_l'
 const names={hip:'สะโพก',knee:'เข่า',ankle:'ข้อเท้า',toe:'ปลายเท้า'};
 const $=id=>document.getElementById(id),canvas=$('canvas'),ctx=canvas.getContext('2d');
 canvas.width=data.canvas[0];canvas.height=data.canvas[1];$('frame').max=data.frames.length-1;
+$('facing').textContent='· '+data.facing;
 const images=PAYLOAD.images.map(src=>{const im=new Image();im.onload=draw;im.src=src;return im});
+const ownerImages=(PAYLOAD.owner_images||[]).map(src=>{if(!src)return null;const im=new Image();im.onload=draw;im.src=src;return im});
+for(const f of data.frames){f.occlusion_reviews ||= [];f.review_issues ||= [];for(const e of f.occlusion_reviews){e.art_trace ||= [];e.trace_review ||= 'unconfirmed'}}
 for(const n of ids){const b=document.createElement('button');b.id=n;b.textContent=names[n.split('_')[0]]+' '+(n.endsWith('r')?'ขวา':'ซ้าย');b.className=n.endsWith('r')?'blue':'orange';b.onclick=()=>{joint=n;refresh()};$('joints').append(b)}
 function use(p){return p.xy&&p.visibility!=='unknown'}
 function center(f){return use(f.points.hip_r)&&use(f.points.hip_l)?[(f.points.hip_r.xy[0]+f.points.hip_l.xy[0])/2,(f.points.hip_r.xy[1]+f.points.hip_l.xy[1])/2]:null}
@@ -51,13 +62,22 @@ function draw(){
   }
   if($('marks').checked)for(const n of ids.filter(n=>n.endsWith(s))){const p=f.points[n];if(!use(p))continue;const [x,y]=p.xy;ctx.strokeStyle=color;ctx.beginPath();ctx.arc(x,y,p.uncertainty_px,0,Math.PI*2);ctx.stroke();ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,n===joint?6:4,0,Math.PI*2);ctx.fill();ctx.font='12px system-ui';ctx.fillText(n,x+8,y-7)}
  }
+ const oc=$('ownerCanvas'),ox=oc.getContext('2d');oc.width=canvas.width;oc.height=canvas.height;ox.fillStyle='#272727';ox.fillRect(0,0,oc.width,oc.height);
+ if(ownerImages[key]?.complete)ox.drawImage(ownerImages[key],0,0,oc.width,oc.height);
+ else {ox.fillStyle='#deb76b';ox.font='15px system-ui';ox.fillText('ไม่มีภาพเจ้าของขาต้นแบบ — ตรวจยังไม่ครบ',12,30)}
+ const event=data.frames[key].occlusion_reviews[Number($('crossing').value)];
+ if(event){ox.strokeStyle='#fff';ox.lineWidth=2;ox.strokeRect(event.source_box[0],event.source_box[1],event.source_box[2]-event.source_box[0],event.source_box[3]-event.source_box[1]);if(event.art_xy){ctx.strokeStyle='#fff';ctx.beginPath();ctx.arc(...event.art_xy,8,0,2*Math.PI);ctx.stroke()}for(let i=1;i<event.art_trace.length;i++)line(event.art_trace[i-1],event.art_trace[i],'#fff',2)}
 }
 function markDirty(){dirty=true;$('status').textContent='แก้ annotation แล้ว — ต้องรัน checker ใหม่';$('report').textContent='ผลเดิมถูกพักไว้ เพราะจุดตรวจเปลี่ยนแล้ว';draw()}
 function refresh(){
  const f=data.frames[key],p=f.points[joint];$('frame').value=key;$('position').textContent=` ${key+1}/${data.frames.length} · source ${f.source_index} · ${(f.time_seconds*1000).toFixed(1)}ms`;
  $('visibility').value=p.visibility;$('uncertainty').value=p.uncertainty_px;$('confirmed').checked=f.identity_review==='confirmed';$('notes').value=f.notes;
  for(const n of ids)$(n).classList.toggle('active',n===joint);
- if(!dirty){$('report').textContent=JSON.stringify({frame:PAYLOAD.report.frames[key],transition:PAYLOAD.report.transitions[key],observed_coverage_percent:PAYLOAD.report.observed_coverage_percent,not_anatomy_accuracy:true},null,2);$('status').textContent=PAYLOAD.report.status}
+ const options=f.occlusion_reviews;const prior=Number($('crossing').value)||0;$('crossing').replaceChildren();
+ for(let i=0;i<options.length;i++){const o=document.createElement('option');o.value=i;o.textContent=options[i].id+' · ต้นแบบหน้า '+(options[i].expected_foreground==='r'?'ขวา':'ซ้าย');$('crossing').append(o)}
+ $('crossing').value=Math.min(prior,Math.max(0,options.length-1));const event=options[Number($('crossing').value)];
+ $('foreground').value=event?.observed_foreground||'unknown';$('crossConfirmed').checked=event?.review==='confirmed';$('traceConfirmed').checked=event?.trace_review==='confirmed';
+ if(!dirty){$('report').textContent=JSON.stringify({frame:PAYLOAD.report.frames[key],image_review:PAYLOAD.report.image_review?.frames[key],transition:PAYLOAD.report.transitions[key],observed_coverage_percent:PAYLOAD.report.observed_coverage_percent,not_anatomy_accuracy:true},null,2);$('status').textContent=PAYLOAD.report.status}
  draw();
 }
 function stop(){playing=false;clearTimeout(timer);$('play').textContent='เล่น'}
@@ -68,20 +88,31 @@ $('play').onclick=()=>{if(playing)return stop();playing=true;$('play').textConte
 for(const n of ['onion','source','marks'])$(n).onchange=draw;
 canvas.addEventListener('pointerdown',e=>{stop();const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*canvas.width/r.width,y=(e.clientY-r.top)*canvas.height/r.height;
  if(x<0||y<0||x>=canvas.width||y>=canvas.height)return;
+ if(['crossing','trace'].includes($('mode').value)){const event=data.frames[key].occlusion_reviews[Number($('crossing').value)];if(event){if($('mode').value==='trace'){event.art_trace.push([Math.round(x),Math.round(y)]);event.trace_review='unconfirmed';$('traceConfirmed').checked=false}else event.art_xy=[Math.round(x),Math.round(y)];markDirty()}else{$('status').textContent='ไม่มีจุดซ้อนที่มองเห็นในต้นแบบเฟรมนี้'}return}
  const visibility=$('visibility').value,uncertainty=Number($('uncertainty').value);if(!Number.isFinite(uncertainty)||uncertainty<0)return;
  data.frames[key].points[joint]={xy:[Math.round(x),Math.round(y)],visibility,uncertainty_px:uncertainty};markDirty()});
 $('visibility').onchange=()=>{const p=data.frames[key].points[joint];if($('visibility').value!=='unknown'&&!p.xy){$('status').textContent='คลิกตำแหน่งบนภาพก่อน';return}p.visibility=$('visibility').value;markDirty()};
 $('uncertainty').onchange=()=>{const v=Number($('uncertainty').value);if(Number.isFinite(v)&&v>=0){data.frames[key].points[joint].uncertainty_px=v;markDirty()}};
 $('confirmed').onchange=()=>{data.frames[key].identity_review=$('confirmed').checked?'confirmed':'unconfirmed';markDirty()};$('notes').oninput=()=>{data.frames[key].notes=$('notes').value;markDirty()};
+$('crossing').onchange=()=>{const event=data.frames[key].occlusion_reviews[Number($('crossing').value)];$('foreground').value=event?.observed_foreground||'unknown';$('crossConfirmed').checked=event?.review==='confirmed';$('traceConfirmed').checked=event?.trace_review==='confirmed';draw()};
+$('foreground').onchange=()=>{const e=data.frames[key].occlusion_reviews[Number($('crossing').value)];if(e){e.observed_foreground=$('foreground').value;markDirty()}};
+$('crossConfirmed').onchange=()=>{const e=data.frames[key].occlusion_reviews[Number($('crossing').value)];if(e){e.review=$('crossConfirmed').checked?'confirmed':'unconfirmed';markDirty()}};
+$('traceConfirmed').onchange=()=>{const e=data.frames[key].occlusion_reviews[Number($('crossing').value)];if(e){e.trace_review=$('traceConfirmed').checked?'confirmed':'unconfirmed';markDirty()}};
+$('clearTrace').onclick=()=>{const e=data.frames[key].occlusion_reviews[Number($('crossing').value)];if(e){e.art_trace=[];e.trace_review='unconfirmed';markDirty();refresh()}};
+$('flagError').onclick=()=>{const f=data.frames[key];f.review_issues.push({code:'reviewer_leg_chain_error',confirmed:true,image_sha256:f.image_sha256,note:'Leg identity/connection flagged from displayed artwork'});markDirty()};
 $('clear').onclick=()=>{data.frames[key].points[joint]={xy:null,visibility:'unknown',uncertainty_px:0};markDirty();refresh()};
 $('export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='leg-annotations.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
 $('import').onchange=async e=>{try{const incoming=JSON.parse(await e.target.files[0].text());
- if(incoming.schema!==data.schema||incoming.frames.length!==data.frames.length||incoming.source_motion_sha256!==data.source_motion_sha256||JSON.stringify(incoming.canvas)!==JSON.stringify(data.canvas))throw Error('ชุดต้นแบบ/ขนาดไม่ตรง');
+ if(incoming.schema!==data.schema||incoming.frames.length!==data.frames.length||incoming.facing!==data.facing||incoming.source_motion_sha256!==data.source_motion_sha256||incoming.source_blend_sha256!==data.source_blend_sha256||incoming.source_occlusion_sha256!==data.source_occlusion_sha256||JSON.stringify(incoming.canvas)!==JSON.stringify(data.canvas))throw Error('ชุดต้นแบบ/ทิศ/ขนาดไม่ตรง');
  for(let k=0;k<data.frames.length;k++){const old=data.frames[k],f=incoming.frames[k];if(f.key!==old.key||f.time_seconds!==old.time_seconds||f.image_sha256!==old.image_sha256||f.source_index!==old.source_index||JSON.stringify(f.reference)!==JSON.stringify(old.reference))throw Error('ภาพ กระดูกต้นแบบ หรือเวลาเปลี่ยน');
   if(!['unconfirmed','confirmed'].includes(f.identity_review)||typeof f.notes!=='string')throw Error('annotation ไม่ถูกต้อง');
   for(const n of ids){const p=f.points[n];if(!p||!['observed','estimated','unknown'].includes(p.visibility)||!Number.isFinite(p.uncertainty_px)||p.uncertainty_px<0)throw Error('จุดไม่ถูกต้อง');if(p.xy!==null&&(!Array.isArray(p.xy)||p.xy.length!==2||!p.xy.every(Number.isFinite)||p.xy[0]<0||p.xy[1]<0||p.xy[0]>=canvas.width||p.xy[1]>=canvas.height))throw Error('พิกัดไม่ถูกต้อง');if(p.visibility!=='unknown'&&!p.xy)throw Error('จุดขาดพิกัด')}
+  for(const issue of f.review_issues||[])if(issue.image_sha256!==old.image_sha256||typeof issue.code!=='string'||typeof issue.confirmed!=='boolean')throw Error('ธงผิดไม่ผูกกับภาพเดียวกัน');
+  const events=f.occlusion_reviews||[],expected=old.occlusion_reviews||[];if(events.length!==expected.length)throw Error('บริเวณซ้อนขาดหาย');for(const e of events){e.art_trace ||= [];e.trace_review ||= 'unconfirmed'}
+  for(let i=0;i<events.length;i++){const e=events[i],o=expected[i];for(const n of ['id','expected_foreground','source_xy','source_box','pixels'])if(JSON.stringify(e[n])!==JSON.stringify(o[n]))throw Error('เจ้าของขาต้นแบบถูกแก้');if(!['r','l','unknown'].includes(e.observed_foreground)||!['confirmed','unconfirmed'].includes(e.review))throw Error('ผลตรวจจุดซ้อนไม่ถูกต้อง');if(e.art_xy!==null&&(!Array.isArray(e.art_xy)||e.art_xy.length!==2||!e.art_xy.every(Number.isFinite)||e.art_xy[0]<0||e.art_xy[1]<0||e.art_xy[0]>=canvas.width||e.art_xy[1]>=canvas.height))throw Error('พิกัดจุดซ้อนไม่ถูกต้อง')}
+  for(const e of events){if(!Array.isArray(e.art_trace)||!['confirmed','unconfirmed'].includes(e.trace_review))throw Error('เส้นตรวจภาพไม่ถูกต้อง');for(const xy of e.art_trace)if(!Array.isArray(xy)||xy.length!==2||!xy.every(Number.isFinite)||xy[0]<0||xy[1]<0||xy[0]>=canvas.width||xy[1]>=canvas.height)throw Error('เส้นตรวจภาพออกนอกขอบ')}
  }
- for(let k=0;k<data.frames.length;k++){data.frames[k].points=incoming.frames[k].points;data.frames[k].identity_review=incoming.frames[k].identity_review;data.frames[k].notes=incoming.frames[k].notes}
+ for(let k=0;k<data.frames.length;k++){const old=data.frames[k],f=incoming.frames[k];old.points=f.points;old.identity_review=f.identity_review;old.notes=f.notes;if(f.occlusion_reviews)old.occlusion_reviews=f.occlusion_reviews;const retained=old.review_issues.filter(x=>x.confirmed);old.review_issues=[...retained,...(f.review_issues||[]).filter(x=>!retained.some(y=>JSON.stringify(x)===JSON.stringify(y)))]}
  stop();markDirty();refresh()
  }catch(err){$('status').textContent='โหลดไม่ได้: '+err.message}};
 document.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(e.key==='ArrowRight'){e.preventDefault();move(1)}if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}});

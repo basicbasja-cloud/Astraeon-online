@@ -18,7 +18,7 @@ Source means measured 3D joints from the actual baked original Blender rig, with
 
 Explicit source map: hip=`thigh_*`, knee=`calf_*`, ankle=`foot_*`, distal toe=`ball_leaf_*`. The ball joint is **not** the distal toe. Manual boot contour landmarks remain approximate proxies for internal joints; record uncertainty. Do not copy the source points into artwork annotations and call those independently detected joints.
 
-On `init`, all generated-art points start unknown. A reviewer traces visible chains and labels anatomical sides. Use costume ownership, attachment paths and the source view; screen-left is not anatomical-left. Mark covered hips/knees as estimated and genuinely hidden ankles/toes as unknown. Keep identity unconfirmed until reviewed. This tool currently supports **SE only** and rejects other facing declarations.
+On `init`, all generated-art points start unknown. A reviewer traces visible chains and labels anatomical sides. Use costume ownership, attachment paths and the source view; screen-left is not anatomical-left. Mark covered hips/knees as estimated and genuinely hidden ankles/toes as unknown. Keep identity unconfirmed until reviewed. The original v10 checker supported SE only; v11 now projects all eight physical facings. Read [occlusion-image-review](occlusion-image-review.md) for the mandatory actual-image crossing and trace gates, mixed-chain comparisons, and the confirmed failures that coordinate fits cannot override.
 
 The CLI checks artwork hashes/canvases, source motion hash, capture and GLB identities, baked `.blend` hash and saved-pose replay hash. It recomputes each reference projection and verifies actual source times; changing the stored skeleton cannot manufacture a passing score.
 

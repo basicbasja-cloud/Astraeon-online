@@ -1,0 +1,1243 @@
+{
+  "schema": "actual-leg-owner-v1",
+  "blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "blender": "4.3.2",
+  "canvas": [
+    512,
+    512
+  ],
+  "id_values": {
+    "background": 0,
+    "anatomical_right_leg": 1,
+    "anatomical_left_leg": 2,
+    "other_occluders": 3
+  },
+  "owners": {
+    "body.complete.torso": {
+      "owner": "other",
+      "bone_groups": [
+        "neck_01",
+        "pelvis",
+        "spine_01",
+        "spine_02",
+        "spine_03"
+      ]
+    },
+    "body.complete.head": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "body.right.thigh": {
+      "owner": "r",
+      "bone_groups": [
+        "thigh_r"
+      ]
+    },
+    "body.right.shin": {
+      "owner": "r",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.right.upperarm": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "body.right.forearm": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "body.joint.upperarm_r": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "body.joint.lowerarm_r": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "body.joint.calf_r": {
+      "owner": "r",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.right.palm": {
+      "owner": "other",
+      "bone_groups": [
+        "hand_r"
+      ]
+    },
+    "glove.right.palm": {
+      "owner": "other",
+      "bone_groups": [
+        "hand_r"
+      ]
+    },
+    "body.thumb_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_01_r"
+      ]
+    },
+    "glove.thumb_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_01_r"
+      ]
+    },
+    "body.thumb_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_02_r"
+      ]
+    },
+    "glove.thumb_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_02_r"
+      ]
+    },
+    "body.thumb_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_03_r"
+      ]
+    },
+    "glove.thumb_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_03_r"
+      ]
+    },
+    "body.index_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "index_01_r"
+      ]
+    },
+    "glove.index_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "index_01_r"
+      ]
+    },
+    "body.index_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "index_02_r"
+      ]
+    },
+    "glove.index_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "index_02_r"
+      ]
+    },
+    "body.index_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "index_03_r"
+      ]
+    },
+    "glove.index_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "index_03_r"
+      ]
+    },
+    "body.middle_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_01_r"
+      ]
+    },
+    "glove.middle_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_01_r"
+      ]
+    },
+    "body.middle_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_02_r"
+      ]
+    },
+    "glove.middle_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_02_r"
+      ]
+    },
+    "body.middle_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_03_r"
+      ]
+    },
+    "glove.middle_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_03_r"
+      ]
+    },
+    "body.ring_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_01_r"
+      ]
+    },
+    "glove.ring_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_01_r"
+      ]
+    },
+    "body.ring_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_02_r"
+      ]
+    },
+    "glove.ring_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_02_r"
+      ]
+    },
+    "body.ring_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_03_r"
+      ]
+    },
+    "glove.ring_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_03_r"
+      ]
+    },
+    "body.pinky_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_01_r"
+      ]
+    },
+    "glove.pinky_01_r": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_01_r"
+      ]
+    },
+    "body.pinky_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_02_r"
+      ]
+    },
+    "glove.pinky_02_r": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_02_r"
+      ]
+    },
+    "body.pinky_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_03_r"
+      ]
+    },
+    "glove.pinky_03_r": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_03_r"
+      ]
+    },
+    "pants.right": {
+      "owner": "r",
+      "bone_groups": [
+        "thigh_r"
+      ]
+    },
+    "pants.right.knee": {
+      "owner": "r",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "sleeve.right": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "sleeve.right.lower": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "armor.right.pauldron": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_r"
+      ]
+    },
+    "armor.right.bracer": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "armor.right.bracer.rim": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_r"
+      ]
+    },
+    "boot.right.shaft": {
+      "owner": "r",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "boot.right.cuff": {
+      "owner": "r",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.right.foot": {
+      "owner": "r",
+      "bone_groups": [
+        "foot_r"
+      ]
+    },
+    "boot.right.heel": {
+      "owner": "r",
+      "bone_groups": [
+        "foot_r"
+      ]
+    },
+    "boot.right.toe": {
+      "owner": "r",
+      "bone_groups": [
+        "ball_r"
+      ]
+    },
+    "sole.right.heel": {
+      "owner": "r",
+      "bone_groups": [
+        "foot_r"
+      ]
+    },
+    "sole.right.toe": {
+      "owner": "r",
+      "bone_groups": [
+        "ball_r"
+      ]
+    },
+    "boot.right.gold": {
+      "owner": "r",
+      "bone_groups": [
+        "calf_r"
+      ]
+    },
+    "body.left.thigh": {
+      "owner": "l",
+      "bone_groups": [
+        "thigh_l"
+      ]
+    },
+    "body.left.shin": {
+      "owner": "l",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "body.left.upperarm": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "body.left.forearm": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "body.joint.upperarm_l": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "body.joint.lowerarm_l": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "body.joint.calf_l": {
+      "owner": "l",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "body.left.palm": {
+      "owner": "other",
+      "bone_groups": [
+        "hand_l"
+      ]
+    },
+    "glove.left.palm": {
+      "owner": "other",
+      "bone_groups": [
+        "hand_l"
+      ]
+    },
+    "body.thumb_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_01_l"
+      ]
+    },
+    "glove.thumb_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_01_l"
+      ]
+    },
+    "body.thumb_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_02_l"
+      ]
+    },
+    "glove.thumb_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_02_l"
+      ]
+    },
+    "body.thumb_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_03_l"
+      ]
+    },
+    "glove.thumb_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "thumb_03_l"
+      ]
+    },
+    "body.index_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "index_01_l"
+      ]
+    },
+    "glove.index_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "index_01_l"
+      ]
+    },
+    "body.index_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "index_02_l"
+      ]
+    },
+    "glove.index_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "index_02_l"
+      ]
+    },
+    "body.index_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "index_03_l"
+      ]
+    },
+    "glove.index_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "index_03_l"
+      ]
+    },
+    "body.middle_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_01_l"
+      ]
+    },
+    "glove.middle_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_01_l"
+      ]
+    },
+    "body.middle_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_02_l"
+      ]
+    },
+    "glove.middle_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_02_l"
+      ]
+    },
+    "body.middle_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_03_l"
+      ]
+    },
+    "glove.middle_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "middle_03_l"
+      ]
+    },
+    "body.ring_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_01_l"
+      ]
+    },
+    "glove.ring_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_01_l"
+      ]
+    },
+    "body.ring_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_02_l"
+      ]
+    },
+    "glove.ring_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_02_l"
+      ]
+    },
+    "body.ring_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_03_l"
+      ]
+    },
+    "glove.ring_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "ring_03_l"
+      ]
+    },
+    "body.pinky_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_01_l"
+      ]
+    },
+    "glove.pinky_01_l": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_01_l"
+      ]
+    },
+    "body.pinky_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_02_l"
+      ]
+    },
+    "glove.pinky_02_l": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_02_l"
+      ]
+    },
+    "body.pinky_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_03_l"
+      ]
+    },
+    "glove.pinky_03_l": {
+      "owner": "other",
+      "bone_groups": [
+        "pinky_03_l"
+      ]
+    },
+    "pants.left": {
+      "owner": "l",
+      "bone_groups": [
+        "thigh_l"
+      ]
+    },
+    "pants.left.knee": {
+      "owner": "l",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "sleeve.left": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "sleeve.left.lower": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "armor.left.pauldron": {
+      "owner": "other",
+      "bone_groups": [
+        "upperarm_l"
+      ]
+    },
+    "armor.left.bracer": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "armor.left.bracer.rim": {
+      "owner": "other",
+      "bone_groups": [
+        "lowerarm_l"
+      ]
+    },
+    "boot.left.shaft": {
+      "owner": "l",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "boot.left.cuff": {
+      "owner": "l",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "body.left.foot": {
+      "owner": "l",
+      "bone_groups": [
+        "foot_l"
+      ]
+    },
+    "boot.left.heel": {
+      "owner": "l",
+      "bone_groups": [
+        "foot_l"
+      ]
+    },
+    "boot.left.toe": {
+      "owner": "l",
+      "bone_groups": [
+        "ball_l"
+      ]
+    },
+    "sole.left.heel": {
+      "owner": "l",
+      "bone_groups": [
+        "foot_l"
+      ]
+    },
+    "sole.left.toe": {
+      "owner": "l",
+      "bone_groups": [
+        "ball_l"
+      ]
+    },
+    "boot.left.gold": {
+      "owner": "l",
+      "bone_groups": [
+        "calf_l"
+      ]
+    },
+    "tunic.complete": {
+      "owner": "other",
+      "bone_groups": [
+        "neck_01",
+        "pelvis",
+        "spine_01",
+        "spine_02",
+        "spine_03"
+      ]
+    },
+    "tabard.chest": {
+      "owner": "other",
+      "bone_groups": [
+        "spine_02"
+      ]
+    },
+    "tabard.lower": {
+      "owner": "other",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "belt": {
+      "owner": "other",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "belt.buckle": {
+      "owner": "other",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "sash.teal": {
+      "owner": "other",
+      "bone_groups": [
+        "pelvis"
+      ]
+    },
+    "cape.complete": {
+      "owner": "other",
+      "bone_groups": [
+        "cape.lower",
+        "cape.upper",
+        "spine_03"
+      ]
+    },
+    "scarf.collar": {
+      "owner": "other",
+      "bone_groups": [
+        "neck_01"
+      ]
+    },
+    "hair.silver.complete.cap": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.0": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.2": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.3": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.4": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.5": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.6": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.7": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.8": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.9": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.lock.10": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.0": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.2": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.3": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.fringe.4": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.silver.tuft": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.complete.cap": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.0": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.2": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.3": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.4": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.5": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.6": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.7": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.8": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.9": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.lock.10": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.0": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.2": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.3": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.fringe.4": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "hair.auburn.tuft": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "ear.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.white.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.iris.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.pupil.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.light.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "brow.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "cheek.-1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "ear.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.white.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.iris.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.pupil.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "eye.light.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "brow.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "cheek.1": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "nose": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    },
+    "mouth": {
+      "owner": "other",
+      "bone_groups": [
+        "Head"
+      ]
+    }
+  },
+  "samples": [
+    {
+      "view": "S",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "S",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "S",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "S",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "SE",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "SE",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "SE",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "SE",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "E",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "E",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "E",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "E",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "NE",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "NE",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "NE",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "NE",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "N",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "N",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "N",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "N",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "NW",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "NW",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "NW",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "NW",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "W",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "W",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "W",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "W",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    },
+    {
+      "view": "SW",
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0
+    },
+    {
+      "view": "SW",
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408
+    },
+    {
+      "view": "SW",
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816
+    },
+    {
+      "view": "SW",
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0
+    }
+  ],
+  "scope": "Actual mesh weights and depth visibility, not guessed generated-art labels; amodal isolation removes other meshes; IndexOB is non-antialiased"
+}

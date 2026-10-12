@@ -1,3 +1,7 @@
+## Latest: eight-facing walk and occluded-leg image review v11
+
+[Actual 8-view GIF, source-owner comparison and improved tools](eight-direction-v11/README.md) add 32 painted frames, 96 real source-owner passes, image-bound rejection controls and independently marked pixel traces. Initial SE pose 2 and revised E pose 3 are user-confirmed rejected images; the E correction is separately rechecked. Four local crossing matches leave 32 unresolved regions, and NE remains rejected for an attachment-side change. All complete art/motion/modular painted-part/release gates remain blocked.
+
 ## Iteration 10: higher-detail art and anatomical leg inspection
 
 [Detailed 512-square motion masters and review tool](quality-review-v10/README.md) follow the user's three newly supplied quality references. A reusable [source-bone anatomical checker](../../skills/modular-eight-direction-sprites/references/anatomical-continuity.md) compares connected legs and time-continuity against the actual baked rig, including the loop seam. The standalone HTML supports annotation, visibility/uncertainty, onion skin and export. Actual artwork still requires review; 37 regression tests and 20 browser checks establish bounded tooling behavior, not artistic correctness.
@@ -34,7 +38,7 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.10](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.11](../../skills/modular-eight-direction-sprites/SKILL.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)
 - [Ragnarok hard reference and eight-to-four action views](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md)

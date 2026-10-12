@@ -41,7 +41,7 @@ board.save(a.output/'quality-review.png');strip.save(a.output/'walk-quality-stri
 report={'schema':'four-pose-quality-review-v1','sheet_sha256':hashlib.sha256(a.sheet.read_bytes()).hexdigest(),
         'actual_returned_sheet':[w,h],'requested_sheet':[1024,1024],'raw_cell':[cell,cell],
         'master_canvas':[master,master],'global_scale':master/cell,'row_pitch':row_pitch,'row_offset':a.row_offset,
-        'calibration_basis':'Common lower-row displacement: upper hair tops y51; lower y36/y26; one -20 row offset. Manual grid calibration, not rig-contact recovery.',
+        'calibration_basis':'Returned regular 2x2 grid; no row displacement correction.' if a.row_offset==0 else 'One manually declared shared lower-row grid correction; not anatomy or rig-contact recovery.',
         'per_frame_bbox_fit':False,'per_frame_scale':False,'source_pose_indices':[0,10,20,30],
         'frames':bounds,'apng_delays_ms':apng_ms,'gif_delays_ms':gif_ms,
         'art_review':'Premium reference-directed candidate; user acceptance pending',

@@ -1,0 +1,599 @@
+{
+  "schema": "anatomical-leg-review-v1",
+  "source_motion_path": "research/sprite-animation/walk-test-v9/motion.json",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "source_joint_map": {
+    "hip": "thigh",
+    "knee": "calf",
+    "ankle": "foot",
+    "toe": "ball_leaf"
+  },
+  "source_blend_path": "research/sprite-animation/walk-test-v9/original-modular-walk.blend",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_replay_path": "research/sprite-animation/walk-test-v9/saved-rig-check.json",
+  "source_replay_sha256": "684005b257e2168fd7a0ade49a9120316f726c48a2e98c4c715c671fb629e992",
+  "source_glb_sha256": "be684571ed655a1b892c2c07e6e2aeca053b606c442d34004adaf1d944090d01",
+  "source_capture_sha256": "99d40bed6c9e88060db303095af235bf476708b31cb235eb163a0bfbb54fa619",
+  "canvas": [
+    512,
+    512
+  ],
+  "facing": "S",
+  "duration_seconds": 1.3333333730697632,
+  "coordinate_origin": "Top-left, master pixels; anatomical sides, never screen sides",
+  "thresholds": {
+    "pose_px": 16.0,
+    "swap_margin_px": 8.0,
+    "velocity_residual_px_per_s": 60.0
+  },
+  "method": "Human-marked visible joints, explicit uncertainty, frozen global diagnostic scale and source trajectory comparison. Not a pretrained image detector.",
+  "frames": [
+    {
+      "key": 0,
+      "source_index": 0,
+      "time_seconds": 0.0,
+      "image": "research/sprite-animation/eight-direction-v11/master/S/frames/00.png",
+      "image_sha256": "af89698642edcee1602d95610471bc3721d1b795508ac0f8bcb1968dd18b85f0",
+      "reference": {
+        "hip_r": [
+          234.22302564789976,
+          276.34666998897586
+        ],
+        "knee_r": [
+          235.2806166636793,
+          329.16756100045114
+        ],
+        "ankle_r": [
+          236.02639360065703,
+          373.6608616789971
+        ],
+        "toe_r": [
+          237.34332970727849,
+          416.76326530099254
+        ],
+        "hip_l": [
+          271.0835616679131,
+          277.06184217873687
+        ],
+        "knee_l": [
+          273.49231604081166,
+          359.7254473962371
+        ],
+        "ankle_l": [
+          274.4579354298266,
+          440.9056451823584
+        ],
+        "toe_l": [
+          274.45793422264387,
+          462.1314876743837
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.09278370440006256,
+        "l": 0.08057089149951935
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Fresh revised pixels inspected as part of the 8-facing contact sheets. Covered hip ownership and untraced crossings remain unconfirmed; no source points copied as detected artwork joints.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/S/00/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/00/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/00/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/S/00/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/S/00/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            253,
+            310
+          ],
+          "source_box": [
+            252,
+            298,
+            255,
+            323
+          ],
+          "pixels": 42,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "l-1",
+          "expected_foreground": "l",
+          "source_xy": [
+            255,
+            333
+          ],
+          "source_box": [
+            253,
+            323,
+            257,
+            346
+          ],
+          "pixels": 61,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ]
+    },
+    {
+      "key": 1,
+      "source_index": 10,
+      "time_seconds": 0.3333333432674408,
+      "image": "research/sprite-animation/eight-direction-v11/master/S/frames/01.png",
+      "image_sha256": "93cf2ab2e288fd9d24797f930147008b107185450d9dc3da12a668f175673f1d",
+      "reference": {
+        "hip_r": [
+          243.9318273520168,
+          269.2503891875332
+        ],
+        "knee_r": [
+          241.06488075739222,
+          352.1851889034722
+        ],
+        "ankle_r": [
+          237.54183641264711,
+          359.0876896822295
+        ],
+        "toe_r": [
+          237.54184124137782,
+          395.13359688365705
+        ],
+        "hip_l": [
+          280.84679886057404,
+          269.099684067988
+        ],
+        "knee_l": [
+          277.88517413561857,
+          344.4931492423292
+        ],
+        "ankle_l": [
+          274.51409236087073,
+          410.53018157440766
+        ],
+        "toe_l": [
+          274.4708462485784,
+          450.44631441540025
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.220994770526886,
+        "l": 0.07046044617891312
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Fresh revised pixels inspected as part of the 8-facing contact sheets. Covered hip ownership and untraced crossings remain unconfirmed; no source points copied as detected artwork joints.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/S/01/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/01/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/01/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/S/01/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/S/01/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "r-0",
+          "expected_foreground": "r",
+          "source_xy": [
+            260,
+            308
+          ],
+          "source_box": [
+            259,
+            290,
+            263,
+            333
+          ],
+          "pixels": 100,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "r-1",
+          "expected_foreground": "r",
+          "source_xy": [
+            258,
+            353
+          ],
+          "source_box": [
+            256,
+            342,
+            263,
+            366
+          ],
+          "pixels": 110,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ]
+    },
+    {
+      "key": 2,
+      "source_index": 20,
+      "time_seconds": 0.6666666865348816,
+      "image": "research/sprite-animation/eight-direction-v11/master/S/frames/02.png",
+      "image_sha256": "ccb70f1aac8d2c813fb1f48a203e66b791a913deda1a61771da125aea4e09083",
+      "reference": {
+        "hip_r": [
+          242.54630636867088,
+          277.1150222680747
+        ],
+        "knee_r": [
+          239.52343160894853,
+          359.7587915355829
+        ],
+        "ankle_r": [
+          237.5420609486254,
+          440.90562760492503
+        ],
+        "toe_r": [
+          237.542054912712,
+          462.13151687222046
+        ],
+        "hip_l": [
+          279.40819926201544,
+          276.28729657398384
+        ],
+        "knee_l": [
+          277.2351690364789,
+          340.21437162372195
+        ],
+        "ankle_l": [
+          275.9862963036646,
+          372.82773173728
+        ],
+        "toe_l": [
+          274.6693565754951,
+          416.7450906334499
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057080954313278,
+        "l": 0.10320902615785599
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Fresh revised pixels inspected as part of the 8-facing contact sheets. Covered hip ownership and untraced crossings remain unconfirmed; no source points copied as detected artwork joints.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/S/02/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/02/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/02/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/S/02/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/S/02/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "r-0",
+          "expected_foreground": "r",
+          "source_xy": [
+            259,
+            325
+          ],
+          "source_box": [
+            255,
+            297,
+            262,
+            356
+          ],
+          "pixels": 131,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "r-1",
+          "expected_foreground": "r",
+          "source_xy": [
+            259,
+            371
+          ],
+          "source_box": [
+            258,
+            364,
+            261,
+            380
+          ],
+          "pixels": 34,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ]
+    },
+    {
+      "key": 3,
+      "source_index": 30,
+      "time_seconds": 1.0,
+      "image": "research/sprite-animation/eight-direction-v11/master/S/frames/03.png",
+      "image_sha256": "db7c8b957ef67d0ede3f0e2c4702444c44cd773c6eb74b5345c855e2fe22a696",
+      "reference": {
+        "hip_r": [
+          232.6579615918896,
+          269.10486757440646
+        ],
+        "knee_r": [
+          234.5152459446388,
+          348.09352979592074
+        ],
+        "ankle_r": [
+          236.91005856477761,
+          408.8549410750858
+        ],
+        "toe_r": [
+          237.4479791665379,
+          450.44526012598243
+        ],
+        "hip_l": [
+          269.57225587096394,
+          269.2454453249787
+        ],
+        "knee_l": [
+          271.5713141718997,
+          352.20656339802434
+        ],
+        "ankle_l": [
+          274.4581189215938,
+          359.0877495881359
+        ],
+        "toe_l": [
+          274.4581189215938,
+          395.13366094270407
+        ]
+      },
+      "source_ankle_z": {
+        "r": 0.08057999610900879,
+        "l": 0.22099459171295166
+      },
+      "identity_review": "unconfirmed",
+      "notes": "Fresh revised pixels inspected as part of the 8-facing contact sheets. Covered hip ownership and untraced crossings remain unconfirmed; no source points copied as detected artwork joints.",
+      "review_issues": [],
+      "points": {
+        "hip_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_r": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "hip_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "knee_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "ankle_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        },
+        "toe_l": {
+          "xy": null,
+          "visibility": "unknown",
+          "uncertainty_px": 0.0
+        }
+      },
+      "owner_paths": {
+        "visible-id": "research/sprite-animation/eight-direction-v11/source-owners/S/03/visible-id.png",
+        "right-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/03/right-amodal.png",
+        "left-amodal": "research/sprite-animation/eight-direction-v11/source-owners/S/03/left-amodal.png",
+        "crossing-mask": "research/sprite-animation/eight-direction-v11/source-owners/S/03/crossing-mask.png",
+        "visible-color": "research/sprite-animation/eight-direction-v11/source-owners/S/03/visible-color.png"
+      },
+      "occlusion_reviews": [
+        {
+          "id": "l-0",
+          "expected_foreground": "l",
+          "source_xy": [
+            252,
+            307
+          ],
+          "source_box": [
+            250,
+            288,
+            255,
+            334
+          ],
+          "pixels": 105,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        },
+        {
+          "id": "l-1",
+          "expected_foreground": "l",
+          "source_xy": [
+            253,
+            355
+          ],
+          "source_box": [
+            250,
+            344,
+            257,
+            367
+          ],
+          "pixels": 105,
+          "observed_foreground": "unknown",
+          "art_xy": null,
+          "review": "unconfirmed",
+          "notes": "",
+          "art_trace": [],
+          "trace_review": "unconfirmed"
+        }
+      ]
+    }
+  ],
+  "release_ready": false,
+  "source_occlusion_path": "research/sprite-animation/eight-direction-v11/source-owners/owner-index.json",
+  "source_occlusion_sha256": "aa3a196fd0ee95c8b702f1295f17a6e8d050ead57461ca8f7c085b84c48cb6a4"
+}
