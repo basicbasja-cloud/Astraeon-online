@@ -1,4 +1,8 @@
-## Latest: frame continuity and reusable placement checks v14
+## Latest: flat-ground diagnostics and16-frame limit test v15
+
+[16-frame GIF, same-art8-frame control and actual source/sole review](ground-walk-sixteen-v15/README.md) test fractional source sampling and flat-ground continuity. The user's first-raw frame5 rejection, two grid-layout failures, shared-row recovery, independent contact warnings, unknown-first contracts and103Python/57browser checks are retained. Current source height evidence does not establish physical support; new frame5 anatomy and heel/toe warnings remain unapproved.
+
+## Previous: frame continuity and reusable placement checks v14
 
 [Frame-by-frame game comparisons, equal-speed before/after GIF and new tools](continuity-v14/README.md) preserve the user's accepted v13 leg identity while recording its rejected continuity. A geometry-first whole-eight candidate reduces measured surface-registration jumps. RO/King Lucas native frames, ToS occlusion evidence, source-bone trajectories, unknown-first templates, raw failures and corrected-observation receipts are retained. New anatomy/contact/spacing and complete painted parts remain unapproved; head stability is not production acceptance.
 
@@ -50,7 +54,8 @@ Seventeen part/effect passes, eight views, eight keys and 48 logical loadouts pr
 
 ## Reusable knowledge
 
-- [Current SKILL.md v0.14](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Current SKILL.md v0.15](../../skills/modular-eight-direction-sprites/SKILL.md)
+- [Ground-plane/contact review and fractional16-frame tests](../../skills/modular-eight-direction-sprites/references/ground-plane-and-contact-review.md)
 - [Walk spacing, registration and reproduction checks](../../skills/modular-eight-direction-sprites/references/walk-spacing-and-registration.md)
 - [Deep sprite-rig production study](../../skills/modular-eight-direction-sprites/references/sprite-rig-production.md)
 - [Pinned GitHub skill comparison](../../skills/modular-eight-direction-sprites/references/github-skill-study.md)

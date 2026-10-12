@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-12",
+  "branch": "research/modular-sprites-full-body-2026-10-11",
+  "source_ground_sha256": "2e1c0aef889abae10b6486c719217aadbc83cae54d45ba307df0ff67d6d4071e",
+  "source_blend_sha256": "cd6557ff1bb0fa585565f7b7587d354c8d325dea0a8c4de281273aaf4dcdb065",
+  "source_motion_sha256": "405551854326cc0170ef116b456d36b0d15ac76e1386624cd66da2fe654aeb42",
+  "new_external_research_claimed": false,
+  "knowledge_applied": "Previously retained primary walk/footplant/graph/RO-KingLucas-ToS studies, now tested with actual source and generated pixels",
+  "third_party_game_art_in_generation_inputs": false,
+  "attempts": [
+    {
+      "tool": "image_gen.imagegen",
+      "original_workspace_output": "/workspace/generated_images/exec-c464acc3-a129-4862-be0f-8c9eb9336e55.png",
+      "retained_raw": "research/sprite-animation/ground-walk-sixteen-v15/evidence/W-sixteen-raw.png",
+      "raw_sha256": "8c79eccb25b8d698c6f04dc70daae796bc144d4bba27f414e789059827d49fb2",
+      "prompt": "research/sprite-animation/ground-walk-sixteen-v15/evidence/generation-prompt.txt",
+      "prompt_sha256": "ed98f4217a4cffaa364feea7eeef03724ea7f17c23d6465e84ca7e0d8306aa33",
+      "transparent_background": true,
+      "inputs": [
+        {
+          "path": "research/sprite-animation/ground-walk-sixteen-v15/evidence/sixteen-ground-conditioning.png",
+          "sha256": "4ce19ce752409cfa3fdf98d301801dc986b45497890b69b5a54da9c9010c4754",
+          "purpose": "actual original source geometry guide"
+        },
+        {
+          "path": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/00.png",
+          "sha256": "1e011d3ae674e96f37638ad85d2dc3db3d35234bb077dd9f1cd10b8a9d92aa69",
+          "purpose": "prior original appearance reference; not anatomical approval"
+        }
+      ],
+      "equal_grid_packing": "REJECTED",
+      "complete_anatomy_approved": false
+    },
+    {
+      "tool": "image_gen.imagegen",
+      "original_workspace_output": "/workspace/generated_images/exec-b878ee05-c7aa-4919-b44d-0b5d68da97b6.png",
+      "retained_raw": "research/sprite-animation/ground-walk-sixteen-v15/evidence/W-sixteen-spacious-raw.png",
+      "raw_sha256": "344e68135fb94fb87ce6dd0303c66f73b104b4dd42ed0372e8f960a585469a39",
+      "prompt": "research/sprite-animation/ground-walk-sixteen-v15/evidence/generation-spacious-prompt.txt",
+      "prompt_sha256": "f713a08bc98001c436467cafe395fbf82fc3fedd25169d0906d89ccf68d620cc",
+      "transparent_background": true,
+      "inputs": [
+        {
+          "path": "research/sprite-animation/ground-walk-sixteen-v15/evidence/sixteen-spacious-conditioning.png",
+          "sha256": "308ba2e2b39e4cce8a5f762f7ff5d27511548357b954044c8ca9661bb2fd13c2",
+          "purpose": "actual original source geometry guide"
+        },
+        {
+          "path": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/00.png",
+          "sha256": "1e011d3ae674e96f37638ad85d2dc3db3d35234bb077dd9f1cd10b8a9d92aa69",
+          "purpose": "prior original appearance reference; not anatomical approval"
+        }
+      ],
+      "equal_grid_packing": "REJECTED",
+      "complete_anatomy_approved": false
+    }
+  ],
+  "normalization": "Documented shared-row registration of intact second sheet, global1.45 sourcepixel scale; no per-frame fit/anatomy paint/mirror",
+  "source_original_unchanged": true
+}

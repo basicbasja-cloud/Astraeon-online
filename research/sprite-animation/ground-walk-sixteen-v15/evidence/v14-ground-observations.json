@@ -1,0 +1,168 @@
+{
+  "schema": "painted-floor-observations-v1",
+  "frames": [
+    {
+      "source_key": 0,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/00.png",
+      "sha256": "1e011d3ae674e96f37638ad85d2dc3db3d35234bb077dd9f1cd10b8a9d92aa69",
+      "soles": [
+        {
+          "side": "left",
+          "part": "heel",
+          "roi_xyxy": [
+            173,
+            467,
+            204,
+            506
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 2,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/01.png",
+      "sha256": "7d7fe555c03dfe411de11772db5618b888e0bd1b1d31c75c7e234e026ed64c8a",
+      "soles": [
+        {
+          "side": "left",
+          "part": "toe",
+          "roi_xyxy": [
+            188,
+            471,
+            227,
+            506
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 4,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/02.png",
+      "sha256": "a102ca918e393033916f3af8f0bd574a7afa94f8e5810a44dd17052a60b34f29",
+      "soles": [
+        {
+          "side": "left",
+          "part": "toe",
+          "roi_xyxy": [
+            241,
+            472,
+            279,
+            506
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 6,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/03.png",
+      "sha256": "ec643241dc78aa1ab1028338fdc7dfdccaca0c7bf5c306d450f5d5aca14d3c19",
+      "soles": [
+        {
+          "side": "left",
+          "part": "toe",
+          "roi_xyxy": [
+            284,
+            468,
+            319,
+            506
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 8,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/04.png",
+      "sha256": "45978dc1e8c18fb712dcd6051c362f76884e50bcd7aa1c46108b582454b0eb87",
+      "soles": [
+        {
+          "side": "right",
+          "part": "heel",
+          "roi_xyxy": [
+            186,
+            421,
+            218,
+            466
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 10,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/05.png",
+      "sha256": "fcfdb4f6f356f4066f3aa98b63d0905ba34d62c35b7d2c17a591e22845c821e8",
+      "soles": [
+        {
+          "side": "right",
+          "part": "toe",
+          "roi_xyxy": [
+            177,
+            429,
+            215,
+            470
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 12,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/06.png",
+      "sha256": "bdbc8e407e87727a947e0451a8e61fde4c01175967512451e2fe574e0ebeb192",
+      "soles": [
+        {
+          "side": "right",
+          "part": "toe",
+          "roi_xyxy": [
+            255,
+            431,
+            294,
+            475
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    },
+    {
+      "source_key": 14,
+      "image": "research/sprite-animation/continuity-v14/attempts/geometry-first/frames/07.png",
+      "sha256": "0c35ce032354d25835342971fa20dfb5b4506c411202e2051bdba7fe6fa094c6",
+      "soles": [
+        {
+          "side": "right",
+          "part": "toe",
+          "roi_xyxy": [
+            296,
+            431,
+            326,
+            473
+          ],
+          "uncertainty_px": 3,
+          "identity_review": "operator_visual_candidate_not_anatomical_proof"
+        }
+      ]
+    }
+  ],
+  "scope": "Manual small visible-sole ROIs; exact image alpha measured, source association must be inspected. No hidden-joint inference or whole-frame bottom anchoring.",
+  "source_ground_path": "research/sprite-animation/ground-walk-sixteen-v15/source/source-ground.json",
+  "source_ground_sha256": "2e1c0aef889abae10b6486c719217aadbc83cae54d45ba307df0ff67d6d4071e",
+  "canvas": [
+    512,
+    512
+  ],
+  "shared_scale": 1.1,
+  "shared_translation_y_px": -0.5403839111328352,
+  "warning_budget_px": 6,
+  "calibration": "One clip-wide scale1.10 and one translation from visible first left heel. No second-half/per-pose fitting; source-associated patches require operator review."
+}

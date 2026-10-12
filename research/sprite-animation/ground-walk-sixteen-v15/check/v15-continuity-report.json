@@ -1,0 +1,541 @@
+{
+  "schema": "walk-visible-continuity-report-v1",
+  "label": "v15 sixteen-frame registered-row study / unapproved",
+  "frame_count": 16,
+  "cycle_ms": 600,
+  "art_pixels_modified": false,
+  "semantic_leg_identity_checked": false,
+  "hidden_bones_inferred": false,
+  "contact_lock_checked": false,
+  "ground_root_pixel_registration": "UNRESOLVED_REQUIRES_AUTHORITATIVE_ANCHOR_AND_OBSERVATIONS",
+  "status": "DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
+  "landmarks": {
+    "ankle_a": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "ankle_b": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "belt": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "eye": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    },
+    "root": {
+      "status": "INCOMPLETE_OBSERVATIONS"
+    }
+  },
+  "edges": [
+    {
+      "from": 0,
+      "to": 1,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "duration_ms": 38,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "duration_ms": 37,
+      "loop_seam": false,
+      "generation_batch_changed": false
+    },
+    {
+      "from": 15,
+      "to": 0,
+      "duration_ms": 38,
+      "loop_seam": true,
+      "generation_batch_changed": false
+    }
+  ],
+  "image_patch_tracking": {
+    "method": "Fixed-ROI SIFT/RANSAC reference-to-frame similarities; no image warp",
+    "roi": [
+      100,
+      30,
+      330,
+      250
+    ],
+    "opencv": "4.11.0",
+    "frames": [
+      {
+        "key": 0,
+        "status": "SCOPED_PIXEL_FEATURE_MATCH",
+        "matches": 10,
+        "inliers": 10,
+        "median_inlier_error_px": 0.0,
+        "reference_patch_center_in_frame_px": [
+          215.0,
+          140.0
+        ],
+        "scale": 1.0,
+        "rotation_degrees": 0.0,
+        "matrix": [
+          [
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "key": 1,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 2,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 3,
+        "status": "INCONCLUSIVE",
+        "matches": 8,
+        "inliers": 4
+      },
+      {
+        "key": 4,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 5,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 6,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 7,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 8,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 9,
+        "status": "INCONCLUSIVE",
+        "matches": 9,
+        "inliers": 5
+      },
+      {
+        "key": 10,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 11,
+        "status": "INCONCLUSIVE",
+        "matches": 8,
+        "inliers": 5
+      },
+      {
+        "key": 12,
+        "status": "INCONCLUSIVE",
+        "matches": 8,
+        "inliers": 5
+      },
+      {
+        "key": 13,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 14,
+        "status": "INCONCLUSIVE"
+      },
+      {
+        "key": 15,
+        "status": "INCONCLUSIVE",
+        "matches": 10,
+        "inliers": 6
+      }
+    ],
+    "art_modified": false,
+    "anatomy_pass": false,
+    "status": "INCONCLUSIVE"
+  },
+  "palette_patch_probe": {
+    "status": "DECLARED_PALETTE_REGION_MEASURED",
+    "contract": {
+      "roi": [
+        105,
+        25,
+        325,
+        250
+      ],
+      "max_hsv_saturation_255": 90,
+      "min_hsv_value_255": 120,
+      "min_blue_green_ratio": 0.9,
+      "min_red_green_ratio": 0.9,
+      "minimum_pixels": 1000,
+      "surface": "Silver/lavender hair palette, calibrated only for this character",
+      "max_step_px": 20,
+      "budget_scope": "Provisional surface-registration warning for this 512px character only; not a naturalness/pose/contact/anatomy pass"
+    },
+    "frames": [
+      {
+        "key": 0,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6950,
+        "centroid_px": [
+          216.22705035971222,
+          130.47323741007193
+        ],
+        "bounds_xyxy": [
+          148,
+          77,
+          282,
+          178
+        ]
+      },
+      {
+        "key": 1,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6916,
+        "centroid_px": [
+          207.64965297860036,
+          130.94375361480624
+        ],
+        "bounds_xyxy": [
+          137,
+          79,
+          276,
+          179
+        ]
+      },
+      {
+        "key": 2,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6824,
+        "centroid_px": [
+          210.37382766705744,
+          131.4088511137163
+        ],
+        "bounds_xyxy": [
+          139,
+          81,
+          277,
+          179
+        ]
+      },
+      {
+        "key": 3,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6987,
+        "centroid_px": [
+          212.49134106197224,
+          131.26091312437384
+        ],
+        "bounds_xyxy": [
+          143,
+          77,
+          280,
+          179
+        ]
+      },
+      {
+        "key": 4,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7037,
+        "centroid_px": [
+          212.00127895409975,
+          122.63436123348018
+        ],
+        "bounds_xyxy": [
+          143,
+          69,
+          281,
+          170
+        ]
+      },
+      {
+        "key": 5,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7017,
+        "centroid_px": [
+          207.32136240558643,
+          122.74348011970928
+        ],
+        "bounds_xyxy": [
+          141,
+          70,
+          279,
+          169
+        ]
+      },
+      {
+        "key": 6,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6935,
+        "centroid_px": [
+          213.5659697188176,
+          122.48651766402307
+        ],
+        "bounds_xyxy": [
+          139,
+          69,
+          282,
+          170
+        ]
+      },
+      {
+        "key": 7,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6957,
+        "centroid_px": [
+          214.66709788702028,
+          122.5653298835705
+        ],
+        "bounds_xyxy": [
+          142,
+          68,
+          283,
+          169
+        ]
+      },
+      {
+        "key": 8,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7122,
+        "centroid_px": [
+          213.5325751193485,
+          135.06402695871947
+        ],
+        "bounds_xyxy": [
+          141,
+          80,
+          284,
+          183
+        ]
+      },
+      {
+        "key": 9,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7116,
+        "centroid_px": [
+          208.48693086003374,
+          134.51124227093874
+        ],
+        "bounds_xyxy": [
+          134,
+          80,
+          279,
+          183
+        ]
+      },
+      {
+        "key": 10,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7064,
+        "centroid_px": [
+          209.50297281993204,
+          135.05832389580974
+        ],
+        "bounds_xyxy": [
+          136,
+          80,
+          281,
+          183
+        ]
+      },
+      {
+        "key": 11,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6963,
+        "centroid_px": [
+          222.5977308631337,
+          135.32083871894298
+        ],
+        "bounds_xyxy": [
+          151,
+          81,
+          293,
+          183
+        ]
+      },
+      {
+        "key": 12,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7064,
+        "centroid_px": [
+          217.76231596828993,
+          120.32531143827859
+        ],
+        "bounds_xyxy": [
+          145,
+          66,
+          287,
+          167
+        ]
+      },
+      {
+        "key": 13,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 6929,
+        "centroid_px": [
+          207.68783374224276,
+          121.4788569779189
+        ],
+        "bounds_xyxy": [
+          136,
+          67,
+          280,
+          170
+        ]
+      },
+      {
+        "key": 14,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7017,
+        "centroid_px": [
+          206.10859341598973,
+          120.15633461593274
+        ],
+        "bounds_xyxy": [
+          131,
+          66,
+          275,
+          168
+        ]
+      },
+      {
+        "key": 15,
+        "status": "DECLARED_PALETTE_REGION_MEASURED",
+        "pixels": 7006,
+        "centroid_px": [
+          205.0363973736797,
+          121.30288324293463
+        ],
+        "bounds_xyxy": [
+          132,
+          67,
+          273,
+          169
+        ]
+      }
+    ],
+    "art_modified": false,
+    "anatomy_pass": false,
+    "scope": "Palette-region centroid/occupancy only. Costume, palette, lighting, turn or occlusion changes invalidate interpretation; recalibrate for each character. Not recovered head or bone position.",
+    "centroid_step_px": [
+      8.590292854869515,
+      2.7635924838374137,
+      2.122674875324592,
+      8.640460543041296,
+      4.6811885063924406,
+      6.249892015074542,
+      1.1039450207140646,
+      12.550082489238985,
+      5.075834601580407,
+      1.15396688364332,
+      13.097389138387825,
+      15.75585845425209,
+      10.140308645941913,
+      2.059870240092133,
+      1.569770081007153,
+      14.46810664200852
+    ],
+    "max_centroid_step_px": 15.75585845425209,
+    "last_to_first_centroid_step_px": 14.46810664200852,
+    "declared_budget_px": 20,
+    "edges_over_declared_budget": [],
+    "registration_warning": false
+  },
+  "observation_sha256": "54222573a3faa1b2e3e193479aebfa7fd08eaec4be7c606e274aef5ae2f69361"
+}

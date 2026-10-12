@@ -3,10 +3,10 @@ import argparse,hashlib,json
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw
-p=argparse.ArgumentParser();p.add_argument('--sheet',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--columns',type=int,required=True);p.add_argument('--rows',type=int,required=True);p.add_argument('--source-keys',required=True);p.add_argument('--frame-ms',type=int,default=75);p.add_argument('--source-cycle-ms',type=int,default=1333);a=p.parse_args()
-keys=[int(x) for x in a.source_keys.split(',')]
+p=argparse.ArgumentParser();p.add_argument('--sheet',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--columns',type=int,required=True);p.add_argument('--rows',type=int,required=True);p.add_argument('--source-keys',required=True);p.add_argument('--frame-ms',type=float,default=75);p.add_argument('--source-cycle-ms',type=int,default=1333);a=p.parse_args()
+keys=[float(x) for x in a.source_keys.split(',')];keys=[int(x) if x.is_integer() else x for x in keys]
 if a.output.exists():raise ValueError('Fresh output required')
-if a.columns<1 or a.rows<1 or len(keys)!=a.columns*a.rows or a.frame_ms<10 or a.source_cycle_ms<len(keys)*10:raise ValueError('Grid/clock mismatch or delay too short for GIF')
+if a.columns<1 or a.rows<1 or len(keys)!=a.columns*a.rows or not np.isfinite(keys).all() or not np.isfinite(a.frame_ms) or a.frame_ms<10 or a.source_cycle_ms<len(keys)*10:raise ValueError('Grid/clock mismatch or delay too short for GIF')
 im=Image.open(a.sheet).convert('RGBA');w,h=im.size
 cw,ch=w/a.columns,h/a.rows;scale=512/max(cw,ch);dw,dh=round(cw*scale),round(ch*scale);pad=((512-dw)//2,512-dh)
 frames=[];opaque=[];rows=[]
@@ -32,7 +32,7 @@ def save(name,delays):
         nxt=round((cumulative+d)/10)*10;gif_delays.append(nxt-round(cumulative/10)*10);cumulative+=d
     gif[0].save(a.output/(name+'.gif'),save_all=True,append_images=gif[1:],duration=gif_delays,loop=0,disposal=2,optimize=False)
     return gif_delays
-delays=[a.frame_ms]*len(frames);gif_ms=save('walk-ro-cadence',delays)
+delays=[round((k+1)*a.frame_ms)-round(k*a.frame_ms) for k in range(len(frames))];gif_ms=save('walk-ro-cadence',delays)
 source_ms=[round((k+1)*a.source_cycle_ms/len(frames))-round(k*a.source_cycle_ms/len(frames)) for k in range(len(frames))];source_gif=save('walk-source-cadence',source_ms)
 board=Image.new('RGB',(a.columns*512,a.rows*536),'#272727');d=ImageDraw.Draw(board)
 for k,f in enumerate(opaque):board.paste(f,(k%a.columns*512,k//a.columns*536+24));d.text((k%a.columns*512+8,k//a.columns*536+5),f'{k+1} / source {keys[k]}',fill='white')

@@ -1,0 +1,45 @@
+{
+  "schema": "bounded-sprite-study-quality-v15",
+  "status": "REVIEW_REQUIRED_NOT_PRODUCTION",
+  "count": 16,
+  "facing": "W",
+  "cycle_ms": 600,
+  "source_dense_height_summary": {
+    "samples": 129,
+    "exported_frames": 16,
+    "both_feet_airborne_candidates": 0,
+    "minimum_sole_z": -5.9157609939575195e-05,
+    "near_plane_coverage": 1.0
+  },
+  "source_floor_receipt_sha256": "2e1c0aef889abae10b6486c719217aadbc83cae54d45ba307df0ff67d6d4071e",
+  "user_rejected_old_slot": 5,
+  "old_rejection_receipt_sha256": "60a8a24ad2a27bd77f807c35d52f7ac7b490091d16584e7a06f91a09973e66cf",
+  "new_slot5": "Passing-leg outline changed; stance knee/thigh ownership and occlusion remain independent visual review, calibration cannot approve it",
+  "independent_floor_warning_slots_one_based": [
+    1,
+    7,
+    8,
+    9,
+    15
+  ],
+  "tool_checks": {
+    "python_regression_tests": 103,
+    "browser_checks": 57,
+    "decoded_animation_files": 12,
+    "count_clock_and_visible_lossless_pixels": "passed"
+  },
+  "rendered_source_phases_match_painted_anatomy": false,
+  "world_support_verified": false,
+  "world_contact_lock_verified": false,
+  "complete_replaceable_painted_parts": false,
+  "game_integration_tested": false,
+  "mass_production_ready": false,
+  "remaining": [
+    "New proximal ownership and stance-knee review including slot5",
+    "Heel/toe roll, secondary contacts at slots1/9 and warnings7/8/15",
+    "Whole-body/garment naturalness, changing proportions",
+    "Root travel/game-speed match and world foot-lock",
+    "Complete independently swappable painted parts and other facings/actions"
+  ],
+  "panel_cut_and_invalid_scale_negative_probes": "passed; recovery replay produces identical registered-grid bytes"
+}

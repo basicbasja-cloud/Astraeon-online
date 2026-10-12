@@ -103,3 +103,19 @@ PYTHONPATH=/tmp/astraeon-vision-deps python skills/modular-eight-direction-sprit
 Run these commands from the repository root; bound image paths in JSON are repository-relative. The75ms default is a study choice, not a rule for other actions. Calibrate palette/ROI/budgets, dimensions, camera, surfaces and timeline per character. `requirements-continuity.txt` pins the actually tested optional dependency set; its NumPy version differs from earlier render recipes.
 
 The study builder/HTML/native reference loops are in `studies/walk-test/`. [Actual v14 before/after and reports](../../../research/sprite-animation/continuity-v14/README.md) retain the accepted v13 legs/rejected motion, new unapproved pixels, source-spacing warnings, raw clipped failure and full game-reference frames. These outputs are flat research previews, not replaceable painted production parts.
+
+## v15: actual soles and projected flat-ground review
+
+Read [ground-plane/contact practice](../references/ground-plane-and-contact-review.md). `ground-contact.py` measures actual alpha contours in reviewed heel/toe ROIs, validates art/source/rig hashes and compares the declared shared source projection. It separates floor-height candidates from physical support, excludes calibration observations individually and leaves clipped/missing patches inconclusive. It never semantically approves left/right identity or changes artwork.
+
+```bash
+python skills/modular-eight-direction-sprites/scripts/ground-contact.py \
+  --observations research/sprite-animation/ground-walk-sixteen-v15/evidence/v15-ground-observations.json \
+  --out /tmp/floor-review.json
+python skills/modular-eight-direction-sprites/scripts/ground-contact.py \
+  --init-from-frames path/to/new/frames --source path/to/new/source-ground.json \
+  --shared-scale 1 --shared-translation-y 0 --warning-budget 6 \
+  --out /tmp/new-character-floor-observations.json
+```
+
+Initialize with that character's declared transform/budget; the example numbers above are placeholders. Every ROI starts null and identity unconfirmed. Initialization refuses overwrites, phase-count and canvas mismatches. Source and floor recipes must be adapted to the new rig/camera/sole contract. [Actual16-frame experiment](../../../research/sprite-animation/ground-walk-sixteen-v15/README.md) preserves first-raw frame5 rejection, shared-row recovery, same-art8/16 clocks and independent warnings. Source proximity or a calibration match never establishes support/ownership.
