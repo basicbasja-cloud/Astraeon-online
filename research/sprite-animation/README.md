@@ -1,5 +1,9 @@
 ## Latest: eight-direction walking and residual-bounce QA v20
 
+## Latest: RO attack paintover and preserved body holds v22
+
+[Actual body-only capture,9exposures/6bodykeys, own weapon/trail and source comparison](ro-attack-paintover-v22/README.md). Current draft has visible pose discrepancies and remains unapproved. [v21 eight-view walk registration](registered-walk-attack-v21/README.md) preserves source acting while removing calibrated surface jumps; its authored slash posing is user-rejected. All work remains on the sole research branch.
+
 [64painted facing frames, actual original bones, per-axis/flow/continuity checks and motion research plan](eight-walk-factory-v20/README.md) preserve W8appearancefeedback with residualbounce. Newdiagnostics detect that bounce;stablehead cannot hide thefrontphase7error. Initialsourcephase pairing was corrected and failures remain visible. Allnewart/contacts/completeparts retainreviewgates. [ReusableQA](../../skills/modular-eight-direction-sprites/references/eight-direction-motion-qa.md) · [Nextmotions](eight-walk-factory-v20/NEXT-MOTION-RESEARCH.md).
 
 ## Latest: direct game-pose paintovers and source-of-truth gates v19

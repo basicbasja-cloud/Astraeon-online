@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';
+import {attackKey,trailState,trailGeometry} from './attack-trail.mjs';
+const p=new URL('../../../../research/sprite-animation/registered-walk-attack-v21/attack/evidence/painted-attack.json',import.meta.url);const {frames}=JSON.parse(fs.readFileSync(p));
+test('Sparse exposure boundaries use one authoritative clock',()=>{for(const [t,k] of [[0,0],[99,0],[100,1],[219,1],[220,2],[299,2],[300,3],[359,3],[360,4],[439,4],[440,5],[560,6],[700,7],[800,7],[900,7]])assert.equal(attackKey(t),k);});
+test('Never wrap a one-shot into a synthetic last-to-first cut',()=>assert.equal(attackKey(10000),7));
+test('FX is restricted to forward strike and expires before recovery',()=>{for(const t of [0,100,220,299,430,439,440,700,800])assert.equal(trailState(t).active,false);for(const t of [300,359,360,429])assert.equal(trailState(t).active,true);});
+test('Cancellation clears effects immediately',()=>assert.equal(trailGeometry(320,frames,true).active,false));
+test('All live trail ends meet the actual painted blade tip',()=>{for(let t=300;t<430;t++)assert.ok(trailGeometry(t,frames).blade_endpoint_error_px<1e-10);});
+test('No ribbon samples retained outside active interval',()=>{for(const t of [0,220,430,800])assert.deepEqual(trailGeometry(t,frames).outer,[]);});
+test('Invalid clocks fail closed',()=>{for(const t of [-1,NaN,Infinity])assert.throws(()=>attackKey(t));});
+test('Image bindings must still match the observations',()=>{for(const f of frames){const bytes=fs.readFileSync(new URL('../../../../'+f.image,import.meta.url));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),f.sha256);}});
