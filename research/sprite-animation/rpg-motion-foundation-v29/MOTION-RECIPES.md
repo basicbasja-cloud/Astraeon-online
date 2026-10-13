@@ -1037,4 +1037,3 @@ optional research ตามคำสั่งล่าสุด ไม่commitm
 - จุดตรวจเฉพาะ: ซ้าย/ขวาตามตัวละครหรือworldต้องประกาศ; ไม่ถือเป็นภาพmirrorอัตโนมัติ
 - Reference leads: ual2-oga, kay-oga, epic-gasp, mixamo (ค้นใน SOURCES; ยังไม่เท่ากับ verified matching clip)
 - วิธีทดลอง: ตรวจ reference phase/contact → blocking ใหม่ → source/actual-art review → parts/swaps → runtime transition/event → exact-byte acceptance
-

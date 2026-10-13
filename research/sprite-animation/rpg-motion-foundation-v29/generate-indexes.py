@@ -25,7 +25,7 @@ for r in retrieval['receipts']:
 lines=['# Source index —'+str(len(sources['sources']))+' leads, explicit evidence level','', 'ข้อมูลแต่ละแถวบอกสิ่งที่ได้จริง ไม่ได้ยืนยันว่าอ่าน/ดูทุกเฟรมครบ หรือมีสิทธิ์นำทุกไฟล์ไป train/ship ดู DATASET-CONTRACT และ retrieval receipts ประกอบ','', '| ID / source | Type | Evidence | Use / rights hint |','| --- | --- | --- | --- |']
 for s in sources['sources']:
  lines.append(f"| {s['id']} / [{s['title']}]({s['url']}) | {s['kind']} | {s['evidence_level']} | {s['application']} / {s['rights_hint']} |")
-(ROOT/'SOURCES.md').write_text('\n'.join(lines)+'\n')
+(ROOT/'SOURCES.md').write_text('\n'.join(lines).rstrip()+'\n')
 motions=load('motions.json')['motions'];families=list(dict.fromkeys(m['family'] for m in motions))
 prefix={
  'idle':'ตรวจเท้ารับน้ำหนักเดิม, head/torso breathing แยกจาก origin, loop/return และ asymmetry; เริ่มด้วย native game-scale view ไม่มี FX',
@@ -53,10 +53,10 @@ for family in families:
    '- จุดตรวจเฉพาะ: '+m['specific_review'],
    '- Reference leads: '+', '.join(m['reference_leads'])+' (ค้นใน SOURCES; ยังไม่เท่ากับ verified matching clip)',
    '- วิธีทดลอง: ตรวจ reference phase/contact → blocking ใหม่ → source/actual-art review → parts/swaps → runtime transition/event → exact-byte acceptance','']
-(ROOT/'MOTION-RECIPES.md').write_text('\n'.join(lines)+'\n')
+(ROOT/'MOTION-RECIPES.md').write_text('\n'.join(lines).rstrip()+'\n')
 boards=load('preset-board-manifest.json')['boards'];lines=['# Actual acquired source clip browser','', '71candidate clips including6dash /639evaluated overview poses. No production keys, contacts, acting or character-art acceptance inferred. Blue=source right bone names; orange=left. One common world projection/range per rig bank; diagrams are deliberately not centered/fitted per pose. Legacy Kay has no leg chains.','', '| Source clip | Overview | Samples |','| --- | --- | --- |']
 for b in boards:lines.append(f"| {b['source_id']} / {b['clip']} | [board]({b['file']}) | {b['samples']} |")
-(ROOT/'CLIP-BROWSER.md').write_text('\n'.join(lines)+'\n')
+(ROOT/'CLIP-BROWSER.md').write_text('\n'.join(lines).rstrip()+'\n')
 inventory=load('clip-inventory.json');capture_records=[]
 for folder in sorted((ROOT/'captures').glob('kaykit-preview-*')):
  c=json.loads((folder/'capture.json').read_text());capture_records.append({'id':folder.name,'frames':len(c['frames']),'duration_ms':c['duration_ms'],'receipt':str((folder/'capture.json').relative_to(ROOT)),'boards':c['review_boards']})
