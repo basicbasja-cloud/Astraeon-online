@@ -1,0 +1,2714 @@
+{
+  "schema": "rpg-motion-taxonomy-v1",
+  "date": "2026-10-13",
+  "old_attacks_excluded": true,
+  "dash_excluded": false,
+  "scope_note": "Humanoid playable/NPC research superset; conditional actions are not newly promised gameplay. No finite catalog covers every RPG species or possible skill. All counts are action specifications, not acquired or approved animations.",
+  "motions": [
+    {
+      "id": "idle.relaxed",
+      "name_th": "\u0e22\u0e37\u0e19\u0e1b\u0e01\u0e15\u0e34",
+      "family": "idle",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "settle",
+        "breath",
+        "settle"
+      ],
+      "required_contact_semantics": "both soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e2d\u0e22\u0e48\u0e32\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e40\u0e14\u0e49\u0e07\u0e08\u0e32\u0e01\u0e01\u0e32\u0e23\u0e08\u0e31\u0e14\u0e20\u0e32\u0e1e; \u0e2b\u0e32\u0e22\u0e43\u0e08\u0e17\u0e35\u0e48\u0e17\u0e23\u0e27\u0e07\u0e2d\u0e01\u0e44\u0e21\u0e48\u0e02\u0e22\u0e31\u0e1a origin",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "lpc",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "idle.combat",
+      "name_th": "\u0e22\u0e37\u0e19\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e2a\u0e39\u0e49",
+      "family": "idle",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "ready",
+        "small weight shift",
+        "ready"
+      ],
+      "required_contact_semantics": "soles;weapon grip",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e04\u0e38\u0e21 guard \u0e01\u0e31\u0e1a\u0e23\u0e30\u0e22\u0e30\u0e28\u0e2d\u0e01; \u0e2b\u0e49\u0e32\u0e21\u0e2d\u0e32\u0e27\u0e38\u0e18\u0e2b\u0e25\u0e38\u0e14\u0e08\u0e32\u0e01\u0e21\u0e37\u0e2d",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "lpc",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "idle.look",
+      "name_th": "\u0e21\u0e2d\u0e07\u0e0b\u0e49\u0e32\u0e22\u0e02\u0e27\u0e32",
+      "family": "idle",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "neutral",
+        "look",
+        "return"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e2b\u0e31\u0e27\u0e01\u0e31\u0e1a\u0e15\u0e32\u0e41\u0e22\u0e01\u0e08\u0e32\u0e01 facing \u0e15\u0e31\u0e27; \u0e44\u0e21\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e02\u0e49\u0e32\u0e07\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "lpc",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "idle.fidget",
+      "name_th": "\u0e17\u0e48\u0e32\u0e1e\u0e31\u0e01\u0e40\u0e25\u0e47\u0e01\u0e19\u0e49\u0e2d\u0e22",
+      "family": "idle",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "neutral",
+        "gesture",
+        "return"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e43\u0e0a\u0e49 variant \u0e40\u0e1b\u0e47\u0e19\u0e04\u0e23\u0e31\u0e49\u0e07\u0e04\u0e23\u0e32\u0e27\u0e44\u0e21\u0e48\u0e15\u0e48\u0e2d loop \u0e01\u0e23\u0e30\u0e15\u0e38\u0e01",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "lpc",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "walk.loop",
+      "name_th": "\u0e40\u0e14\u0e34\u0e19\u0e1a\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e40\u0e23\u0e35\u0e22\u0e1a",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "L-contact",
+        "L-support",
+        "R-contact",
+        "R-support"
+      ],
+      "required_contact_semantics": "alternating soles",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "\u0e15\u0e49\u0e2d\u0e07\u0e40\u0e2b\u0e47\u0e19\u0e01\u0e32\u0e23\u0e2a\u0e31\u0e1a\u0e02\u0e32; pelvis \u0e2a\u0e39\u0e07\u0e02\u0e36\u0e49\u0e19\u0e25\u0e07\u0e15\u0e32\u0e21\u0e17\u0e48\u0e32\u0e44\u0e21\u0e48\u0e15\u0e32\u0e21 bbox",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "walk.start",
+      "name_th": "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e40\u0e14\u0e34\u0e19",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "idle",
+        "weight shift",
+        "first contact",
+        "walk"
+      ],
+      "required_contact_semantics": "support sole",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e02\u0e32\u0e23\u0e31\u0e1a\u0e19\u0e49\u0e33\u0e2b\u0e19\u0e31\u0e01\u0e08\u0e23\u0e34\u0e07\u0e44\u0e21\u0e48\u0e40\u0e23\u0e34\u0e48\u0e21\u0e27\u0e07\u0e08\u0e23\u0e2a\u0e38\u0e48\u0e21\u0e40\u0e1f\u0e2a",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "walk.stop",
+      "name_th": "\u0e2b\u0e22\u0e38\u0e14\u0e40\u0e14\u0e34\u0e19",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "stride",
+        "decelerate",
+        "settle"
+      ],
+      "required_contact_semantics": "incoming sole;both soles",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "\u0e04\u0e07\u0e08\u0e38\u0e14\u0e2a\u0e31\u0e21\u0e1c\u0e31\u0e2a\u0e2a\u0e38\u0e14\u0e17\u0e49\u0e32\u0e22\u0e41\u0e25\u0e30\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e04\u0e27\u0e32\u0e21\u0e40\u0e23\u0e47\u0e27\u0e42\u0e25\u0e01\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e01\u0e31\u0e19",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "turn.in_place",
+      "name_th": "\u0e2b\u0e31\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e01\u0e31\u0e1a\u0e17\u0e35\u0e48",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "plant",
+        "pivot",
+        "replant"
+      ],
+      "required_contact_semantics": "support sole or toe",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e2b\u0e49\u0e32\u0e21 mirror; yaw \u0e01\u0e31\u0e1a\u0e40\u0e17\u0e49\u0e32\u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e2d\u0e14\u0e04\u0e25\u0e49\u0e2d\u0e07 \u0e44\u0e21\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e1c\u0e49\u0e32\u0e2a\u0e30\u0e42\u0e1e\u0e01",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "turn.walking",
+      "name_th": "\u0e40\u0e25\u0e35\u0e49\u0e22\u0e27\u0e23\u0e30\u0e2b\u0e27\u0e48\u0e32\u0e07\u0e40\u0e14\u0e34\u0e19",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "stride",
+        "curve",
+        "new facing"
+      ],
+      "required_contact_semantics": "alternating soles",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e17\u0e34\u0e28\u0e43\u0e2b\u0e21\u0e48\u0e14\u0e49\u0e27\u0e22\u0e01\u0e0e\u0e21\u0e38\u0e21/\u0e40\u0e1f\u0e2a\u0e44\u0e21\u0e48\u0e15\u0e31\u0e14\u0e2a\u0e39\u0e48\u0e02\u0e32\u0e1d\u0e31\u0e48\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27\u0e0b\u0e49\u0e33",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "locomotion.backstep",
+      "name_th": "\u0e16\u0e2d\u0e22\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e01\u0e49\u0e32\u0e27",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "load",
+        "back contact",
+        "settle"
+      ],
+      "required_contact_semantics": "alternating soles",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "\u0e40\u0e1b\u0e47\u0e19\u0e01\u0e49\u0e32\u0e27\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32 \u0e44\u0e21\u0e48\u0e40\u0e1b\u0e47\u0e19 dash \u0e41\u0e1d\u0e07",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "locomotion.strafe",
+      "name_th": "\u0e01\u0e49\u0e32\u0e27\u0e14\u0e49\u0e32\u0e19\u0e02\u0e49\u0e32\u0e07",
+      "family": "locomotion",
+      "scope": "core",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "shift",
+        "side step",
+        "recover"
+      ],
+      "required_contact_semantics": "support sole",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e02\u0e2d\u0e07 combat controller; \u0e44\u0e21\u0e48\u0e1a\u0e34\u0e14\u0e40\u0e17\u0e49\u0e32\u0e2a\u0e27\u0e19\u0e41\u0e19\u0e27\u0e40\u0e02\u0e48\u0e32",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "ro-act"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "weapon.draw",
+      "name_th": "\u0e0a\u0e31\u0e01\u0e2d\u0e32\u0e27\u0e38\u0e18",
+      "family": "equipment",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "reach",
+        "grasp",
+        "draw",
+        "ready"
+      ],
+      "required_contact_semantics": "soles;palm;scabbard",
+      "event_candidates": [
+        "equip_attach"
+      ],
+      "specific_review": "\u0e22\u0e49\u0e32\u0e22\u0e08\u0e32\u0e01 sheath socket \u0e2a\u0e39\u0e48 palm \u0e13 event \u0e40\u0e14\u0e35\u0e22\u0e27; \u0e44\u0e21\u0e48\u0e0b\u0e49\u0e2d\u0e19\u0e14\u0e32\u0e1a\u0e2a\u0e2d\u0e07\u0e40\u0e25\u0e48\u0e21",
+      "reference_leads": [
+        "kay-itch",
+        "larian",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "weapon.sheath",
+      "name_th": "\u0e40\u0e01\u0e47\u0e1a\u0e2d\u0e32\u0e27\u0e38\u0e18",
+      "family": "equipment",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "align",
+        "insert",
+        "release",
+        "relaxed"
+      ],
+      "required_contact_semantics": "soles;palm;scabbard",
+      "event_candidates": [
+        "equip_detach"
+      ],
+      "specific_review": "\u0e41\u0e19\u0e27\u0e1b\u0e25\u0e32\u0e22\u0e14\u0e32\u0e1a\u0e01\u0e31\u0e1a\u0e1d\u0e31\u0e01\u0e15\u0e49\u0e2d\u0e07\u0e15\u0e23\u0e07; \u0e44\u0e21\u0e48\u0e2b\u0e21\u0e38\u0e19\u0e20\u0e32\u0e1e\u0e14\u0e32\u0e1a\u0e41\u0e1a\u0e19\u0e41\u0e01\u0e49",
+      "reference_leads": [
+        "kay-itch",
+        "larian",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "weapon.swap",
+      "name_th": "\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e2d\u0e32\u0e27\u0e38\u0e18",
+      "family": "equipment",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "put away",
+        "equip",
+        "settle"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "item_switch"
+      ],
+      "specific_review": "\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e27\u0e48\u0e32\u0e08\u0e30 hide/show \u0e40\u0e21\u0e37\u0e48\u0e2d\u0e44\u0e23; \u0e2a\u0e16\u0e32\u0e19\u0e30\u0e40\u0e01\u0e21\u0e15\u0e49\u0e2d\u0e07\u0e15\u0e23\u0e07\u0e20\u0e32\u0e1e",
+      "reference_leads": [
+        "kay-itch",
+        "larian",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "shield.raise",
+      "name_th": "\u0e22\u0e01\u0e42\u0e25\u0e48",
+      "family": "equipment",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "ready",
+        "raise",
+        "brace"
+      ],
+      "required_contact_semantics": "soles;forearm strap",
+      "event_candidates": [
+        "guard_on"
+      ],
+      "specific_review": "arm owner \u0e0a\u0e31\u0e14\u0e41\u0e25\u0e30\u0e42\u0e25\u0e48\u0e44\u0e21\u0e48\u0e02\u0e49\u0e32\u0e21\u0e1d\u0e31\u0e48\u0e07",
+      "reference_leads": [
+        "kay-itch",
+        "larian",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "shield.lower",
+      "name_th": "\u0e25\u0e14\u0e42\u0e25\u0e48",
+      "family": "equipment",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "guard",
+        "lower",
+        "ready"
+      ],
+      "required_contact_semantics": "soles;forearm strap",
+      "event_candidates": [
+        "guard_off"
+      ],
+      "specific_review": "\u0e01\u0e25\u0e31\u0e1a state \u0e44\u0e14\u0e49\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e27\u0e32\u0e23\u0e4c\u0e1b shoulder",
+      "reference_leads": [
+        "kay-itch",
+        "larian",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sword.diagonal",
+      "name_th": "\u0e1f\u0e31\u0e19\u0e14\u0e32\u0e1a\u0e40\u0e09\u0e35\u0e22\u0e07",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "ready",
+        "load",
+        "accelerate",
+        "cross",
+        "follow",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;one-hand grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close",
+        "recover_end"
+      ],
+      "specific_review": "\u0e43\u0e2b\u0e21\u0e48\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14; \u0e14\u0e39\u0e21\u0e37\u0e2d\u0e17\u0e48\u0e2d\u0e19\u0e41\u0e02\u0e19\u0e14\u0e32\u0e1a\u0e1a\u0e48\u0e32\u0e2d\u0e01\u0e40\u0e0a\u0e34\u0e07\u0e01\u0e23\u0e32\u0e19\u0e23\u0e48\u0e27\u0e21\u0e01\u0e31\u0e19; \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e49\u0e17\u0e48\u0e32\u0e42\u0e08\u0e21\u0e15\u0e35\u0e40\u0e01\u0e48\u0e32",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sword.horizontal",
+      "name_th": "\u0e1f\u0e31\u0e19\u0e41\u0e19\u0e27\u0e23\u0e32\u0e1a",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "load",
+        "hip turn",
+        "cross",
+        "follow",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e16\u0e48\u0e32\u0e22\u0e41\u0e23\u0e07\u0e14\u0e49\u0e27\u0e22\u0e01\u0e32\u0e23\u0e2b\u0e21\u0e38\u0e19 \u0e44\u0e21\u0e48\u0e40\u0e2b\u0e27\u0e35\u0e48\u0e22\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e37\u0e2d\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sword.overhead",
+      "name_th": "\u0e1f\u0e31\u0e19\u0e08\u0e32\u0e01\u0e1a\u0e19\u0e25\u0e07\u0e25\u0e48\u0e32\u0e07",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "load up",
+        "drop cut",
+        "absorb",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e27\u0e34\u0e16\u0e35\u0e1b\u0e25\u0e32\u0e22\u0e14\u0e32\u0e1a\u0e01\u0e31\u0e1a blade plane \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e15\u0e32\u0e21 perspective",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sword.thrust",
+      "name_th": "\u0e41\u0e17\u0e07\u0e14\u0e32\u0e1a",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "guard",
+        "load",
+        "extend",
+        "withdraw"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e04\u0e07\u0e1b\u0e25\u0e32\u0e22\u0e14\u0e32\u0e1a\u0e15\u0e32\u0e21\u0e41\u0e19\u0e27\u0e41\u0e17\u0e07 \u0e44\u0e21\u0e48\u0e2a\u0e48\u0e32\u0e22\u0e40\u0e1b\u0e47\u0e19\u0e27\u0e07",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sword.heavy",
+      "name_th": "\u0e1f\u0e31\u0e19\u0e2b\u0e19\u0e31\u0e01",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "deep load",
+        "commit",
+        "follow",
+        "slow recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close",
+        "recover_end"
+      ],
+      "specific_review": "anticipation \u0e41\u0e25\u0e30 recovery \u0e41\u0e15\u0e01\u0e15\u0e48\u0e32\u0e07\u0e08\u0e32\u0e01\u0e40\u0e1a\u0e32; \u0e44\u0e21\u0e48\u0e40\u0e23\u0e48\u0e07\u0e17\u0e38\u0e01\u0e40\u0e1f\u0e2a\u0e40\u0e17\u0e48\u0e32\u0e01\u0e31\u0e19",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sword.combo_link",
+      "name_th": "\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e04\u0e2d\u0e21\u0e42\u0e1a",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "follow1",
+        "redirect",
+        "load2",
+        "cut2"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "combo_window",
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e1b\u0e25\u0e32\u0e22\u0e17\u0e48\u0e32\u0e41\u0e23\u0e01\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e21\u0e15\u0e49\u0e19\u0e17\u0e48\u0e32\u0e17\u0e35\u0e48\u0e2a\u0e2d\u0e07\u0e08\u0e23\u0e34\u0e07 \u0e44\u0e21\u0e48\u0e27\u0e32\u0e23\u0e4c\u0e1b\u0e01\u0e25\u0e31\u0e1a ready",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "dual.attack",
+      "name_th": "\u0e42\u0e08\u0e21\u0e15\u0e35\u0e2a\u0e2d\u0e07\u0e2d\u0e32\u0e27\u0e38\u0e18",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "load",
+        "cutA",
+        "cutB",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;two grips",
+      "event_candidates": [
+        "hit_A",
+        "hit_B"
+      ],
+      "specific_review": "owner \u0e41\u0e22\u0e01\u0e41\u0e25\u0e30\u0e43\u0e1a\u0e14\u0e32\u0e1a\u0e44\u0e21\u0e48\u0e17\u0e30\u0e25\u0e38\u0e21\u0e37\u0e2d\u0e2d\u0e35\u0e01\u0e02\u0e49\u0e32\u0e07",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "greatsword.attack",
+      "name_th": "\u0e14\u0e32\u0e1a\u0e2a\u0e2d\u0e07\u0e21\u0e37\u0e2d",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "two-hand load",
+        "body cut",
+        "follow"
+      ],
+      "required_contact_semantics": "soles;two grips",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e15\u0e23\u0e27\u0e08\u0e2a\u0e2d\u0e07 palm \u0e1a\u0e19\u0e14\u0e49\u0e32\u0e21\u0e40\u0e14\u0e35\u0e22\u0e27 \u0e41\u0e25\u0e30\u0e23\u0e30\u0e22\u0e30\u0e2b\u0e48\u0e32\u0e07\u0e21\u0e37\u0e2d",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "axe.attack",
+      "name_th": "\u0e02\u0e27\u0e32\u0e19",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "load",
+        "head swing",
+        "impact",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e2b\u0e31\u0e27\u0e2d\u0e32\u0e27\u0e38\u0e18\u0e21\u0e35\u0e21\u0e27\u0e25/\u0e23\u0e31\u0e28\u0e21\u0e35\u0e15\u0e48\u0e32\u0e07\u0e08\u0e32\u0e01\u0e14\u0e32\u0e1a; \u0e44\u0e21\u0e48\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e41\u0e04\u0e48\u0e20\u0e32\u0e1e\u0e44\u0e2d\u0e40\u0e17\u0e21",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "mace.attack",
+      "name_th": "\u0e01\u0e23\u0e30\u0e1a\u0e2d\u0e07",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "load",
+        "strike",
+        "rebound",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "impact/rebound \u0e2d\u0e48\u0e32\u0e19\u0e0a\u0e31\u0e14; \u0e44\u0e21\u0e48\u0e22\u0e37\u0e21 follow \u0e02\u0e2d\u0e07\u0e14\u0e32\u0e1a\u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e15\u0e23\u0e27\u0e08",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "spear.thrust",
+      "name_th": "\u0e41\u0e17\u0e07\u0e2b\u0e2d\u0e01",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "brace",
+        "extend",
+        "reach",
+        "withdraw"
+      ],
+      "required_contact_semantics": "soles;two grips",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e21\u0e37\u0e2d\u0e2b\u0e25\u0e31\u0e07\u0e14\u0e31\u0e19 \u0e21\u0e37\u0e2d\u0e2b\u0e19\u0e49\u0e32\u0e1b\u0e23\u0e30\u0e04\u0e2d\u0e07; shaft \u0e44\u0e21\u0e48\u0e2b\u0e25\u0e38\u0e14\u0e2a\u0e2d\u0e07\u0e21\u0e37\u0e2d",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "spear.sweep",
+      "name_th": "\u0e01\u0e27\u0e32\u0e14\u0e2b\u0e2d\u0e01",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "load",
+        "turn",
+        "sweep",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;two grips",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e04\u0e33\u0e19\u0e27\u0e13 sweep radius \u0e01\u0e31\u0e1a ground clearance",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "dagger.stab",
+      "name_th": "\u0e41\u0e17\u0e07\u0e21\u0e35\u0e14",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "close guard",
+        "short drive",
+        "withdraw"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e17\u0e48\u0e32\u0e2a\u0e31\u0e49\u0e19\u0e01\u0e23\u0e30\u0e0a\u0e31\u0e1a\u0e44\u0e21\u0e48\u0e40\u0e17\u0e48\u0e32\u0e1f\u0e31\u0e19\u0e14\u0e32\u0e1a\u0e22\u0e32\u0e27",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "unarmed.punch",
+      "name_th": "\u0e15\u0e48\u0e2d\u0e22",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "guard",
+        "load",
+        "drive",
+        "retract"
+      ],
+      "required_contact_semantics": "soles;fist",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "chain \u0e2a\u0e30\u0e42\u0e1e\u0e01\u0e16\u0e36\u0e07\u0e2b\u0e21\u0e31\u0e14\u0e41\u0e25\u0e30\u0e2d\u0e35\u0e01\u0e21\u0e37\u0e2d guard; \u0e44\u0e21\u0e48 hyperextend",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "unarmed.kick",
+      "name_th": "\u0e40\u0e15\u0e30",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "shift support",
+        "chamber",
+        "extend",
+        "retract",
+        "plant"
+      ],
+      "required_contact_semantics": "one support sole",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e40\u0e02\u0e48\u0e32\u0e01\u0e31\u0e1a\u0e2a\u0e30\u0e42\u0e1e\u0e01\u0e41\u0e01\u0e19\u0e0a\u0e31\u0e14; \u0e44\u0e21\u0e48\u0e1b\u0e25\u0e48\u0e2d\u0e22 support \u0e25\u0e2d\u0e22",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "shield.bash",
+      "name_th": "\u0e01\u0e23\u0e30\u0e41\u0e17\u0e01\u0e42\u0e25\u0e48",
+      "family": "combat",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "brace",
+        "drive",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;shield strap",
+      "event_candidates": [
+        "hit_open",
+        "hit_close"
+      ],
+      "specific_review": "\u0e42\u0e25\u0e48\u0e41\u0e25\u0e30 forearm \u0e40\u0e14\u0e34\u0e19\u0e17\u0e32\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19\u0e44\u0e21\u0e48\u0e40\u0e1b\u0e47\u0e19 prop \u0e25\u0e2d\u0e22",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-itch",
+        "flare-content",
+        "saint11",
+        "slyn-castlevania"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "bow.prepare",
+      "name_th": "\u0e40\u0e15\u0e23\u0e35\u0e22\u0e21\u0e18\u0e19\u0e39/\u0e25\u0e39\u0e01",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "ready",
+        "nock",
+        "aim"
+      ],
+      "required_contact_semantics": "soles;bow grip;arrow",
+      "event_candidates": [
+        "arrow_visible"
+      ],
+      "specific_review": "owner \u0e21\u0e37\u0e2d\u0e04\u0e31\u0e19/\u0e2a\u0e32\u0e22\u0e04\u0e07\u0e17\u0e35\u0e48; \u0e19\u0e34\u0e49\u0e27\u0e41\u0e25\u0e30\u0e25\u0e39\u0e01\u0e18\u0e19\u0e39\u0e15\u0e49\u0e2d\u0e07\u0e2d\u0e48\u0e32\u0e19\u0e44\u0e14\u0e49",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "bow.draw",
+      "name_th": "\u0e07\u0e49\u0e32\u0e07\u0e18\u0e19\u0e39",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "nock",
+        "draw",
+        "full draw"
+      ],
+      "required_contact_semantics": "soles;bow;string",
+      "event_candidates": [
+        "draw_complete"
+      ],
+      "specific_review": "\u0e21\u0e37\u0e2d\u0e04\u0e31\u0e19\u0e18\u0e19\u0e39\u0e2d\u0e2d\u0e01\u0e2b\u0e48\u0e32\u0e07\u0e21\u0e37\u0e2d\u0e14\u0e36\u0e07\u0e2a\u0e32\u0e22; string endpoints \u0e44\u0e21\u0e48\u0e17\u0e30\u0e25\u0e38\u0e41\u0e02\u0e19",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "bow.aim_hold",
+      "name_th": "\u0e04\u0e49\u0e32\u0e07\u0e40\u0e25\u0e47\u0e07\u0e18\u0e19\u0e39",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "full draw",
+        "micro settle"
+      ],
+      "required_contact_semantics": "soles;bow;string",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "hold \u0e44\u0e21\u0e48\u0e01\u0e25\u0e31\u0e1a\u0e2a\u0e39\u0e48\u0e27\u0e07\u0e08\u0e23 draw \u0e41\u0e25\u0e30\u0e44\u0e21\u0e48\u0e40\u0e14\u0e49\u0e07",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "bow.release",
+      "name_th": "\u0e1b\u0e25\u0e48\u0e2d\u0e22\u0e18\u0e19\u0e39",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "full draw",
+        "release",
+        "follow",
+        "ready"
+      ],
+      "required_contact_semantics": "soles;bow grip",
+      "event_candidates": [
+        "projectile_release"
+      ],
+      "specific_review": "projectile \u0e01\u0e31\u0e1a\u0e1b\u0e25\u0e48\u0e2d\u0e22\u0e2a\u0e32\u0e22\u0e15\u0e23\u0e07 clock; \u0e2b\u0e49\u0e32\u0e21\u0e2d\u0e2d\u0e01\u0e15\u0e31\u0e49\u0e07\u0e41\u0e15\u0e48 windup",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "crossbow.fire",
+      "name_th": "\u0e22\u0e34\u0e07\u0e2b\u0e19\u0e49\u0e32\u0e44\u0e21\u0e49",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "aim",
+        "release",
+        "recoil",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "projectile_release"
+      ],
+      "specific_review": "\u0e23\u0e39\u0e1b\u0e17\u0e48\u0e32/\u0e01\u0e25\u0e44\u0e01\u0e15\u0e48\u0e32\u0e07\u0e08\u0e32\u0e01 bow",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "crossbow.reload",
+      "name_th": "\u0e1a\u0e23\u0e23\u0e08\u0e38\u0e2b\u0e19\u0e49\u0e32\u0e44\u0e21\u0e49",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "lower",
+        "load",
+        "lock",
+        "aim"
+      ],
+      "required_contact_semantics": "soles;grip;bolt",
+      "event_candidates": [
+        "ammo_loaded"
+      ],
+      "specific_review": "state ammo \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e04\u0e23\u0e31\u0e49\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27\u0e15\u0e23\u0e07\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e30\u0e25\u0e47\u0e2d\u0e01",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "throw.item",
+      "name_th": "\u0e02\u0e27\u0e49\u0e32\u0e07\u0e44\u0e2d\u0e40\u0e17\u0e21",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "hold",
+        "load",
+        "throw",
+        "follow"
+      ],
+      "required_contact_semantics": "soles;prop grip",
+      "event_candidates": [
+        "prop_release"
+      ],
+      "specific_review": "\u0e1b\u0e25\u0e48\u0e2d\u0e22 prop \u0e15\u0e2d\u0e19\u0e1e\u0e49\u0e19 palm \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e15\u0e25\u0e2d\u0e14 flight",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "wand.projectile",
+      "name_th": "\u0e22\u0e34\u0e07\u0e08\u0e32\u0e01\u0e44\u0e21\u0e49\u0e04\u0e17\u0e32",
+      "family": "ranged",
+      "scope": "weapon-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "aim",
+        "channel",
+        "release",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;wand grip",
+      "event_candidates": [
+        "projectile_release"
+      ],
+      "specific_review": "\u0e1b\u0e25\u0e32\u0e22\u0e04\u0e17\u0e32\u0e2b\u0e23\u0e37\u0e2d\u0e21\u0e37\u0e2d\u0e40\u0e1b\u0e47\u0e19 emission socket \u0e17\u0e35\u0e48\u0e23\u0e30\u0e1a\u0e38",
+      "reference_leads": [
+        "kay-itch",
+        "tos-ranger",
+        "lpc",
+        "flare-content"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "cast.start",
+      "name_th": "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e23\u0e48\u0e32\u0e22",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "ready",
+        "raise",
+        "gather"
+      ],
+      "required_contact_semantics": "soles;optional staff grip",
+      "event_candidates": [
+        "cast_begin"
+      ],
+      "specific_review": "pose \u0e23\u0e48\u0e32\u0e22\u0e21\u0e35 gesture \u0e15\u0e48\u0e32\u0e07\u0e08\u0e32\u0e01 idle; \u0e2d\u0e22\u0e48\u0e32\u0e0b\u0e48\u0e2d\u0e19\u0e14\u0e49\u0e27\u0e22 FX",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "cast.loop",
+      "name_th": "\u0e04\u0e49\u0e32\u0e07\u0e23\u0e48\u0e32\u0e22",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "gather",
+        "channel",
+        "gather"
+      ],
+      "required_contact_semantics": "soles;optional grip",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "loop seam \u0e1b\u0e34\u0e14; cloth \u0e44\u0e21\u0e48 reset \u0e17\u0e38\u0e01\u0e27\u0e07",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "cast.release",
+      "name_th": "\u0e1b\u0e25\u0e48\u0e2d\u0e22\u0e40\u0e27\u0e17",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "channel",
+        "release",
+        "follow",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;optional grip",
+      "event_candidates": [
+        "cast_release"
+      ],
+      "specific_review": "body peak \u0e01\u0e31\u0e1a gameplay event \u0e41\u0e25\u0e30 FX \u0e43\u0e0a\u0e49\u0e19\u0e32\u0e2c\u0e34\u0e01\u0e32\u0e40\u0e14\u0e35\u0e22\u0e27\u0e01\u0e31\u0e19",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "cast.interrupt",
+      "name_th": "\u0e23\u0e48\u0e32\u0e22\u0e16\u0e39\u0e01\u0e02\u0e31\u0e14",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "channel",
+        "break",
+        "recoil",
+        "ready"
+      ],
+      "required_contact_semantics": "soles;optional grip",
+      "event_candidates": [
+        "cast_cancel"
+      ],
+      "specific_review": "cancel \u0e15\u0e49\u0e2d\u0e07\u0e2b\u0e22\u0e38\u0e14 FX/release; \u0e44\u0e21\u0e48\u0e22\u0e34\u0e07\u0e40\u0e27\u0e17\u0e0b\u0e49\u0e33",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "cast.channel",
+      "name_th": "\u0e40\u0e27\u0e17\u0e15\u0e48\u0e2d\u0e40\u0e19\u0e37\u0e48\u0e2d\u0e07",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "start",
+        "sustain",
+        "finish"
+      ],
+      "required_contact_semantics": "soles;optional grip",
+      "event_candidates": [
+        "channel_tick",
+        "channel_end"
+      ],
+      "specific_review": "\u0e01\u0e33\u0e2b\u0e19\u0e14 tick rate \u0e41\u0e22\u0e01\u0e08\u0e32\u0e01\u0e08\u0e33\u0e19\u0e27\u0e19\u0e20\u0e32\u0e1e\u0e17\u0e35\u0e48\u0e27\u0e32\u0e14",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "staff.cast",
+      "name_th": "\u0e23\u0e48\u0e32\u0e22\u0e16\u0e37\u0e2d\u0e44\u0e21\u0e49\u0e40\u0e17\u0e49\u0e32",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "brace",
+        "raise",
+        "gesture",
+        "release"
+      ],
+      "required_contact_semantics": "soles;staff grip",
+      "event_candidates": [
+        "cast_release"
+      ],
+      "specific_review": "\u0e04\u0e17\u0e32\u0e40\u0e04\u0e25\u0e37\u0e48\u0e2d\u0e19\u0e15\u0e32\u0e21\u0e21\u0e37\u0e2d\u0e41\u0e25\u0e30 projection \u0e41\u0e15\u0e48\u0e25\u0e30 pose",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "spell.heal",
+      "name_th": "\u0e23\u0e31\u0e01\u0e29\u0e32/\u0e2a\u0e19\u0e31\u0e1a\u0e2a\u0e19\u0e38\u0e19",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "focus",
+        "offer",
+        "release",
+        "recover"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "cast_release"
+      ],
+      "specific_review": "\u0e41\u0e22\u0e01 timing body/support aura \u0e40\u0e1e\u0e37\u0e48\u0e2d reuse \u0e2b\u0e25\u0e32\u0e22\u0e2a\u0e35\u0e40\u0e27\u0e17",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "spell.summon",
+      "name_th": "\u0e2d\u0e31\u0e0d\u0e40\u0e0a\u0e34\u0e0d",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "prepare",
+        "invoke",
+        "release",
+        "settle"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "summon_spawn"
+      ],
+      "specific_review": "spawn event \u0e40\u0e14\u0e35\u0e22\u0e27\u0e41\u0e25\u0e30\u0e2a\u0e2d\u0e14\u0e04\u0e25\u0e49\u0e2d\u0e07 network state",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "spell.teleport",
+      "name_th": "\u0e27\u0e32\u0e23\u0e4c\u0e1b",
+      "family": "magic",
+      "scope": "class-dependent",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "prepare",
+        "vanish",
+        "appear",
+        "settle"
+      ],
+      "required_contact_semantics": "soles before/after",
+      "event_candidates": [
+        "vanish",
+        "relocate",
+        "appear"
+      ],
+      "specific_review": "\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48 dash; core \u0e22\u0e31\u0e07\u0e02\u0e36\u0e49\u0e19\u0e01\u0e31\u0e1a\u0e23\u0e30\u0e1a\u0e1a\u0e40\u0e01\u0e21",
+      "reference_leads": [
+        "kay-itch",
+        "tos-element",
+        "tos-cleric",
+        "larian",
+        "lpc"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "hit.light",
+      "name_th": "\u0e42\u0e14\u0e19\u0e15\u0e35\u0e40\u0e1a\u0e32",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "impact",
+        "recoil",
+        "recover"
+      ],
+      "required_contact_semantics": "support soles",
+      "event_candidates": [
+        "hurt"
+      ],
+      "specific_review": "\u0e23\u0e31\u0e01\u0e29\u0e32 owner \u0e41\u0e25\u0e30\u0e2d\u0e32\u0e27\u0e38\u0e18; pose \u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e37\u0e48\u0e2d\u0e17\u0e34\u0e28\u0e41\u0e23\u0e07\u0e01\u0e23\u0e30\u0e41\u0e17\u0e01",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "hit.heavy",
+      "name_th": "\u0e42\u0e14\u0e19\u0e15\u0e35\u0e2b\u0e19\u0e31\u0e01",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "impact",
+        "stagger",
+        "plant",
+        "recover"
+      ],
+      "required_contact_semantics": "changing soles",
+      "event_candidates": [
+        "hurt"
+      ],
+      "specific_review": "root displacement \u0e40\u0e1b\u0e47\u0e19 motion \u0e17\u0e35\u0e48\u0e15\u0e31\u0e49\u0e07\u0e43\u0e08 \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48 placement jump",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "hit.block",
+      "name_th": "\u0e23\u0e31\u0e1a\u0e14\u0e49\u0e27\u0e22\u0e42\u0e25\u0e48",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "brace",
+        "impact",
+        "absorb",
+        "ready"
+      ],
+      "required_contact_semantics": "soles;shield strap",
+      "event_candidates": [
+        "block_impact"
+      ],
+      "specific_review": "shield hit socket \u0e01\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e14\u0e39\u0e14\u0e0b\u0e31\u0e1a\u0e41\u0e02\u0e19\u0e15\u0e23\u0e07\u0e01\u0e31\u0e19",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "hit.parry",
+      "name_th": "\u0e1b\u0e31\u0e14\u0e2d\u0e32\u0e27\u0e38\u0e18",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "prepare",
+        "redirect",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "parry_window"
+      ],
+      "specific_review": "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e40\u0e01\u0e21; \u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19\u0e27\u0e34\u0e16\u0e35\u0e14\u0e49\u0e27\u0e22 blade/forearm \u0e44\u0e21\u0e48\u0e41\u0e04\u0e48 FX",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "status.stun",
+      "name_th": "\u0e21\u0e36\u0e19\u0e07\u0e07",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "stagger",
+        "sway",
+        "recover"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "status_on",
+        "status_off"
+      ],
+      "specific_review": "\u0e2a\u0e37\u0e48\u0e2d\u0e40\u0e2a\u0e35\u0e22\u0e2a\u0e21\u0e14\u0e38\u0e25\u0e41\u0e15\u0e48\u0e44\u0e21\u0e48\u0e2b\u0e25\u0e38\u0e14 ground \u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e15\u0e31\u0e49\u0e07\u0e43\u0e08",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "status.freeze",
+      "name_th": "\u0e41\u0e02\u0e47\u0e07\u0e04\u0e49\u0e32\u0e07",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "current pose",
+        "hold",
+        "resume"
+      ],
+      "required_contact_semantics": "current supports",
+      "event_candidates": [
+        "status_on",
+        "status_off"
+      ],
+      "specific_review": "snapshot \u0e17\u0e48\u0e32\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19 \u0e44\u0e21\u0e48\u0e08\u0e33\u0e40\u0e1b\u0e47\u0e19\u0e21\u0e35 sheet \u0e43\u0e2b\u0e21\u0e48",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "status.fear",
+      "name_th": "\u0e01\u0e25\u0e31\u0e27/\u0e2b\u0e14\u0e15\u0e31\u0e27",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "recoil",
+        "cower",
+        "recover"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "status_on",
+        "status_off"
+      ],
+      "specific_review": "\u0e1a\u0e38\u0e04\u0e25\u0e34\u0e01\u0e41\u0e25\u0e30\u0e20\u0e32\u0e29\u0e32\u0e01\u0e32\u0e22; \u0e44\u0e21\u0e48\u0e40\u0e2b\u0e21\u0e32\u0e23\u0e27\u0e21\u0e17\u0e38\u0e01 status \u0e40\u0e1b\u0e47\u0e19 idle \u0e2a\u0e31\u0e48\u0e19",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "fall.knockdown",
+      "name_th": "\u0e16\u0e39\u0e01\u0e25\u0e49\u0e21",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "impact",
+        "fall",
+        "ground contact"
+      ],
+      "required_contact_semantics": "soles then body surface",
+      "event_candidates": [
+        "ground_hit"
+      ],
+      "specific_review": "\u0e15\u0e23\u0e27\u0e08 body-ground surface \u0e41\u0e25\u0e30 garment; \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e49 bone head \u0e40\u0e1b\u0e47\u0e19 floor",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "ground.down",
+      "name_th": "\u0e19\u0e2d\u0e19\u0e25\u0e49\u0e21",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "ground settle",
+        "hold"
+      ],
+      "required_contact_semantics": "body surface",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "terminal hold \u0e44\u0e21\u0e48 loop \u0e01\u0e25\u0e31\u0e1a\u0e15\u0e2d\u0e19\u0e25\u0e49\u0e21",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "ground.getup",
+      "name_th": "\u0e25\u0e38\u0e01\u0e08\u0e32\u0e01\u0e1e\u0e37\u0e49\u0e19",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "brace hands",
+        "rise",
+        "plant",
+        "stand"
+      ],
+      "required_contact_semantics": "palms;knees;soles",
+      "event_candidates": [
+        "recover_end"
+      ],
+      "specific_review": "\u0e21\u0e37\u0e2d\u0e01\u0e14\u0e1e\u0e37\u0e49\u0e19\u0e41\u0e25\u0e30 pelvis \u0e2a\u0e39\u0e07\u0e15\u0e32\u0e21 chain \u0e08\u0e23\u0e34\u0e07",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "death.fall",
+      "name_th": "\u0e15\u0e32\u0e22/\u0e25\u0e49\u0e21",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "hit",
+        "collapse",
+        "settle"
+      ],
+      "required_contact_semantics": "changing soles/body",
+      "event_candidates": [
+        "death_begin",
+        "ground_hit"
+      ],
+      "specific_review": "finite one-shot \u0e44\u0e21\u0e48\u0e15\u0e48\u0e2d idle \u0e17\u0e31\u0e19\u0e17\u0e35",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "death.hold",
+      "name_th": "\u0e28\u0e1e\u0e04\u0e49\u0e32\u0e07",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "settled corpse",
+        "hold"
+      ],
+      "required_contact_semantics": "body surface",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e44\u0e21\u0e48\u0e16\u0e37\u0e2d last-frame duration \u0e40\u0e17\u0e48\u0e32\u0e01\u0e31\u0e1a\u0e2d\u0e32\u0e22\u0e38 state",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "revive",
+      "name_th": "\u0e0a\u0e38\u0e1a\u0e0a\u0e35\u0e27\u0e34\u0e15",
+      "family": "reaction",
+      "scope": "core",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "ground",
+        "wake",
+        "brace",
+        "rise",
+        "ready"
+      ],
+      "required_contact_semantics": "body;palms;soles",
+      "event_candidates": [
+        "revive_commit"
+      ],
+      "specific_review": "event health/state \u0e44\u0e21\u0e48\u0e1c\u0e39\u0e01\u0e01\u0e31\u0e1a GIF loop \u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34",
+      "reference_leads": [
+        "kay-itch",
+        "flare-content",
+        "wesnoth",
+        "larian"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sit.down",
+      "name_th": "\u0e19\u0e31\u0e48\u0e07\u0e25\u0e07",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "stand",
+        "bend",
+        "lower",
+        "seat"
+      ],
+      "required_contact_semantics": "soles then pelvis/seat",
+      "event_candidates": [
+        "sit_enter"
+      ],
+      "specific_review": "\u0e41\u0e22\u0e01 ground sit \u0e01\u0e31\u0e1a chair sit \u0e41\u0e25\u0e30\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e39\u0e07\u0e17\u0e35\u0e48\u0e19\u0e31\u0e48\u0e07",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sit.idle",
+      "name_th": "\u0e19\u0e31\u0e48\u0e07\u0e1e\u0e31\u0e01",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "seated",
+        "breath",
+        "seated"
+      ],
+      "required_contact_semantics": "pelvis/seat;soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "hair/head look \u0e41\u0e25\u0e30 cloak hidden content \u0e15\u0e49\u0e2d\u0e07\u0e04\u0e23\u0e1a",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "sit.up",
+      "name_th": "\u0e25\u0e38\u0e01\u0e08\u0e32\u0e01\u0e19\u0e31\u0e48\u0e07",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "lean",
+        "push",
+        "plant",
+        "stand"
+      ],
+      "required_contact_semantics": "seat then soles",
+      "event_candidates": [
+        "sit_exit"
+      ],
+      "specific_review": "\u0e23\u0e31\u0e01\u0e29\u0e32 support transfer \u0e44\u0e21\u0e48\u0e40\u0e14\u0e49\u0e07 root",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "pickup.ground",
+      "name_th": "\u0e40\u0e01\u0e47\u0e1a\u0e02\u0e2d\u0e07\u0e1a\u0e19\u0e1e\u0e37\u0e49\u0e19",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "look",
+        "bend",
+        "reach",
+        "grasp",
+        "rise"
+      ],
+      "required_contact_semantics": "soles;palm/prop",
+      "event_candidates": [
+        "loot_commit"
+      ],
+      "specific_review": "\u0e21\u0e37\u0e2d\u0e16\u0e36\u0e07 prop \u0e13 grasp; \u0e44\u0e21\u0e48\u0e41\u0e04\u0e48\u0e22\u0e48\u0e2d\u0e42\u0e14\u0e22\u0e21\u0e37\u0e2d\u0e44\u0e21\u0e48\u0e16\u0e36\u0e07",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "use.potion",
+      "name_th": "\u0e14\u0e37\u0e48\u0e21\u0e22\u0e32",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "reach",
+        "hold",
+        "drink",
+        "lower"
+      ],
+      "required_contact_semantics": "soles;palm/prop;mouth",
+      "event_candidates": [
+        "consume_item"
+      ],
+      "specific_review": "prop orientation \u0e01\u0e31\u0e1a\u0e1b\u0e32\u0e01; consume \u0e40\u0e1e\u0e35\u0e22\u0e07\u0e04\u0e23\u0e31\u0e49\u0e07\u0e40\u0e14\u0e35\u0e22\u0e27",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "use.food",
+      "name_th": "\u0e01\u0e34\u0e19\u0e2d\u0e32\u0e2b\u0e32\u0e23",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "hold",
+        "bite",
+        "chew",
+        "finish"
+      ],
+      "required_contact_semantics": "soles;palm/prop;mouth",
+      "event_candidates": [
+        "consume_item"
+      ],
+      "specific_review": "\u0e15\u0e31\u0e27\u0e40\u0e25\u0e37\u0e2d\u0e01; \u0e08\u0e33\u0e41\u0e19\u0e01 prop \u0e41\u0e25\u0e30 face state",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "interact.reach",
+      "name_th": "\u0e01\u0e14/\u0e40\u0e1b\u0e34\u0e14/\u0e2a\u0e31\u0e21\u0e1c\u0e31\u0e2a",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "approach",
+        "reach",
+        "touch",
+        "return"
+      ],
+      "required_contact_semantics": "soles;palm/target",
+      "event_candidates": [
+        "interact_commit"
+      ],
+      "specific_review": "target world socket \u0e44\u0e21\u0e48\u0e2d\u0e19\u0e38\u0e21\u0e32\u0e19\u0e08\u0e32\u0e01 sprite crop",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "interact.chest",
+      "name_th": "\u0e40\u0e1b\u0e34\u0e14\u0e2b\u0e35\u0e1a",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "reach",
+        "grasp",
+        "lift",
+        "return"
+      ],
+      "required_contact_semantics": "soles;chest handle",
+      "event_candidates": [
+        "chest_open"
+      ],
+      "specific_review": "character \u0e01\u0e31\u0e1a prop animation synchronized",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "interact.talk",
+      "name_th": "\u0e04\u0e38\u0e22/gesture",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "listen",
+        "gesture",
+        "settle"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "dialogue_beat"
+      ],
+      "specific_review": "head/hand gesture \u0e44\u0e21\u0e48\u0e17\u0e33 root \u0e40\u0e14\u0e49\u0e07\u0e2b\u0e23\u0e37\u0e2d\u0e2a\u0e25\u0e31\u0e1a\u0e21\u0e37\u0e2d",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "work.mine",
+      "name_th": "\u0e02\u0e38\u0e14\u0e41\u0e23\u0e48",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "load",
+        "swing",
+        "impact",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;two grips",
+      "event_candidates": [
+        "resource_hit"
+      ],
+      "specific_review": "optional; \u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e21\u0e37\u0e2d\u0e2b\u0e19\u0e31\u0e01\u0e21\u0e35 plane \u0e41\u0e25\u0e30 impact \u0e08\u0e38\u0e14\u0e41\u0e23\u0e48",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "work.chop",
+      "name_th": "\u0e15\u0e31\u0e14\u0e44\u0e21\u0e49",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "load",
+        "cut",
+        "impact",
+        "recover"
+      ],
+      "required_contact_semantics": "soles;grip",
+      "event_candidates": [
+        "resource_hit"
+      ],
+      "specific_review": "optional; \u0e44\u0e21\u0e48\u0e41\u0e17\u0e19\u0e14\u0e49\u0e27\u0e22 sword clip \u0e08\u0e19\u0e15\u0e23\u0e27\u0e08 contact",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "work.fish",
+      "name_th": "\u0e15\u0e01\u0e1b\u0e25\u0e32",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "cast",
+        "wait",
+        "pull",
+        "retrieve"
+      ],
+      "required_contact_semantics": "soles;rod grip",
+      "event_candidates": [
+        "line_release",
+        "catch_commit"
+      ],
+      "specific_review": "optional; \u0e43\u0e0a\u0e49 clip \u0e2b\u0e25\u0e32\u0e22 state \u0e44\u0e21\u0e48\u0e23\u0e27\u0e21\u0e17\u0e38\u0e01\u0e2d\u0e22\u0e48\u0e32\u0e07\u0e40\u0e1b\u0e47\u0e19 loop",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "work.craft",
+      "name_th": "\u0e04\u0e23\u0e32\u0e1f\u0e15\u0e4c/\u0e15\u0e35\u0e40\u0e2b\u0e25\u0e47\u0e01",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "prepare",
+        "work",
+        "inspect",
+        "finish"
+      ],
+      "required_contact_semantics": "soles;tool/table",
+      "event_candidates": [
+        "craft_tick",
+        "craft_finish"
+      ],
+      "specific_review": "optional; table height and palm tools",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "carry.idle",
+      "name_th": "\u0e16\u0e37\u0e2d\u0e02\u0e2d\u0e07",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "hold",
+        "settle"
+      ],
+      "required_contact_semantics": "soles;two palms/prop",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "optional; object center anchored grip \u0e44\u0e21\u0e48\u0e25\u0e2d\u0e22",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "carry.walk",
+      "name_th": "\u0e40\u0e14\u0e34\u0e19\u0e16\u0e37\u0e2d\u0e02\u0e2d\u0e07",
+      "family": "interaction",
+      "scope": "core-candidate",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "contact",
+        "support",
+        "opposite contact",
+        "support"
+      ],
+      "required_contact_semantics": "alternating soles;palms/prop",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "optional; arm swing \u0e16\u0e39\u0e01\u0e25\u0e14\u0e08\u0e32\u0e01\u0e16\u0e37\u0e2d\u0e02\u0e2d\u0e07\u0e44\u0e21\u0e48\u0e2b\u0e32\u0e22 phase \u0e02\u0e32",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "larian",
+        "tmw-data"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.wave",
+      "name_th": "\u0e42\u0e1a\u0e01\u0e21\u0e37\u0e2d",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "raise",
+        "wave",
+        "lower"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "owner \u0e21\u0e37\u0e2d\u0e42\u0e1a\u0e01\u0e41\u0e25\u0e30\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c\u0e04\u0e07\u0e17\u0e35\u0e48; clear silhouette",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.cheer",
+      "name_th": "\u0e14\u0e35\u0e43\u0e08",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "prepare",
+        "celebrate",
+        "settle"
+      ],
+      "required_contact_semantics": "soles or declared jump",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e01\u0e32\u0e23\u0e01\u0e23\u0e30\u0e42\u0e14\u0e14\u0e15\u0e49\u0e2d\u0e07\u0e15\u0e31\u0e49\u0e07\u0e43\u0e08; \u0e44\u0e21\u0e48\u0e42\u0e22\u0e01\u0e14\u0e49\u0e27\u0e22 image registration",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.bow",
+      "name_th": "\u0e04\u0e33\u0e19\u0e31\u0e1a",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "stand",
+        "bow",
+        "return"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "hinge hips/spine readable; head proportion \u0e04\u0e07\u0e17\u0e35\u0e48",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.point",
+      "name_th": "\u0e0a\u0e35\u0e49",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "ready",
+        "point",
+        "hold",
+        "return"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e21\u0e37\u0e2d\u0e0a\u0e35\u0e49 anatomical \u0e02\u0e49\u0e32\u0e07\u0e40\u0e14\u0e34\u0e21 \u0e44\u0e21\u0e48\u0e15\u0e32\u0e21\u0e14\u0e49\u0e32\u0e19\u0e2b\u0e19\u0e49\u0e32\u0e08\u0e2d",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.sad",
+      "name_th": "\u0e40\u0e28\u0e23\u0e49\u0e32",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "neutral",
+        "slump",
+        "settle"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e1a\u0e38\u0e04\u0e25\u0e34\u0e01\u0e14\u0e49\u0e27\u0e22 shoulder/head gesture \u0e44\u0e21\u0e48\u0e22\u0e48\u0e2d\u0e2a\u0e40\u0e01\u0e25\u0e17\u0e31\u0e49\u0e07\u0e15\u0e31\u0e27",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.angry",
+      "name_th": "\u0e42\u0e01\u0e23\u0e18",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "tense",
+        "gesture",
+        "settle"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "\u0e21\u0e37\u0e2d\u0e2d\u0e32\u0e27\u0e38\u0e18\u0e41\u0e25\u0e30 offhand \u0e23\u0e30\u0e1a\u0e38; \u0e2a\u0e35\u0e2b\u0e19\u0e49\u0e32\u0e41\u0e22\u0e01 slot \u0e16\u0e49\u0e32\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e0a\u0e49",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "emote.dance",
+      "name_th": "\u0e40\u0e15\u0e49\u0e19",
+      "family": "emote",
+      "scope": "optional",
+      "proposed_direction_policy": "4-diagonal-pilot;8-if-needed",
+      "phase_beats": [
+        "step phrase",
+        "opposite phrase",
+        "loop"
+      ],
+      "required_contact_semantics": "changing soles",
+      "event_candidates": [
+        "beat"
+      ],
+      "specific_review": "optional; beat/timing seam and support explicit",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "cmu",
+        "saint11"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "run.loop",
+      "name_th": "\u0e27\u0e34\u0e48\u0e07\u0e16\u0e49\u0e32\u0e40\u0e01\u0e21\u0e21\u0e35",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "contact",
+        "flight",
+        "opposite contact",
+        "flight"
+      ],
+      "required_contact_semantics": "alternating soles;flight",
+      "event_candidates": [
+        "footstep"
+      ],
+      "specific_review": "optional; \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48 dash; \u0e44\u0e21\u0e48\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e27\u0e48\u0e32\u0e23\u0e30\u0e1a\u0e1a\u0e40\u0e01\u0e21\u0e40\u0e23\u0e32\u0e43\u0e0a\u0e49",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "jump.takeoff",
+      "name_th": "\u0e40\u0e23\u0e34\u0e48\u0e21\u0e01\u0e23\u0e30\u0e42\u0e14\u0e14",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "load",
+        "push",
+        "leave"
+      ],
+      "required_contact_semantics": "soles to flight",
+      "event_candidates": [
+        "leave_ground"
+      ],
+      "specific_review": "optional; \u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e08\u0e23\u0e34\u0e07\u0e40\u0e17\u0e35\u0e22\u0e1a gameplay velocity",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "jump.air",
+      "name_th": "\u0e01\u0e25\u0e32\u0e07\u0e2d\u0e32\u0e01\u0e32\u0e28",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "rise",
+        "apex",
+        "fall"
+      ],
+      "required_contact_semantics": "none",
+      "event_candidates": [
+        "apex"
+      ],
+      "specific_review": "optional; \u0e44\u0e21\u0e48\u0e43\u0e0a\u0e49\u0e2b\u0e25\u0e31\u0e01 contact walk \u0e15\u0e31\u0e14\u0e2a\u0e34\u0e19",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "jump.land",
+      "name_th": "\u0e25\u0e07\u0e1e\u0e37\u0e49\u0e19",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "contact",
+        "absorb",
+        "recover"
+      ],
+      "required_contact_semantics": "soles",
+      "event_candidates": [
+        "land"
+      ],
+      "specific_review": "optional; ground event \u0e01\u0e31\u0e1a lowest surface",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "climb.ladder",
+      "name_th": "\u0e1b\u0e35\u0e19\u0e1a\u0e31\u0e19\u0e44\u0e14",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "reach",
+        "pull",
+        "opposite reach",
+        "pull"
+      ],
+      "required_contact_semantics": "palms;rungs;feet",
+      "event_candidates": [
+        "rung_contact"
+      ],
+      "specific_review": "optional; 4contact\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e4c world ladder",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "swim.loop",
+      "name_th": "\u0e27\u0e48\u0e32\u0e22\u0e19\u0e49\u0e33",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "pull",
+        "kick",
+        "recover"
+      ],
+      "required_contact_semantics": "water support",
+      "event_candidates": [
+        "stroke"
+      ],
+      "specific_review": "optional; posture/cape wet semantics",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "mount.enter",
+      "name_th": "\u0e02\u0e36\u0e49\u0e19\u0e1e\u0e32\u0e2b\u0e19\u0e30",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "approach",
+        "grasp",
+        "step",
+        "sit"
+      ],
+      "required_contact_semantics": "palms;stirrup;saddle",
+      "event_candidates": [
+        "mount_attach"
+      ],
+      "specific_review": "optional; \u0e2a\u0e2d\u0e07 actor contacts \u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e4c",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "mount.ride",
+      "name_th": "\u0e02\u0e35\u0e48\u0e1e\u0e32\u0e2b\u0e19\u0e30",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "seat follow",
+        "balance",
+        "loop"
+      ],
+      "required_contact_semantics": "saddle;stirrups",
+      "event_candidates": [
+        "none"
+      ],
+      "specific_review": "optional; rider phase matches mount not independent idle",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "mount.exit",
+      "name_th": "\u0e25\u0e07\u0e1e\u0e32\u0e2b\u0e19\u0e30",
+      "family": "traversal",
+      "scope": "conditional-not-committed",
+      "proposed_direction_policy": "8-proposed",
+      "phase_beats": [
+        "release",
+        "step",
+        "ground",
+        "stand"
+      ],
+      "required_contact_semantics": "saddle to soles",
+      "event_candidates": [
+        "mount_detach"
+      ],
+      "specific_review": "optional; attach state \u0e15\u0e23\u0e07 contact",
+      "reference_leads": [
+        "kay-itch",
+        "ual2-oga",
+        "epic-gasp",
+        "cmu"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false
+    },
+    {
+      "id": "dash.start",
+      "name_th": "\u0e40\u0e23\u0e34\u0e48\u0e21dash",
+      "family": "dash",
+      "scope": "optional",
+      "proposed_direction_policy": "8-proposed;body-facing-and-travel-direction-independent",
+      "phase_beats": [
+        "ready",
+        "load",
+        "push",
+        "travel_enter"
+      ],
+      "required_contact_semantics": "support sole then declared flight",
+      "event_candidates": [
+        "dash_begin",
+        "leave_support"
+      ],
+      "specific_review": "\u0e41\u0e22\u0e01anticipation\u0e01\u0e31\u0e1aworld impulse; pelvis/support/release\u0e15\u0e49\u0e2d\u0e07\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e4c",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-oga",
+        "epic-gasp",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false,
+      "gameplay_committed": false
+    },
+    {
+      "id": "dash.loop",
+      "name_th": "\u0e0a\u0e48\u0e27\u0e07\u0e40\u0e04\u0e25\u0e37\u0e48\u0e2d\u0e19dash",
+      "family": "dash",
+      "scope": "optional",
+      "proposed_direction_policy": "8-proposed;body-facing-and-travel-direction-independent",
+      "phase_beats": [
+        "travel",
+        "controlled posture",
+        "travel"
+      ],
+      "required_contact_semantics": "declared glide/flight/steps",
+      "event_candidates": [
+        "dash_tick"
+      ],
+      "specific_review": "\u0e23\u0e30\u0e1a\u0e38in-place\u0e2b\u0e23\u0e37\u0e2droot-motion\u0e41\u0e25\u0e30supportmode; \u0e2b\u0e49\u0e32\u0e21\u0e43\u0e0a\u0e49contactwalk\u0e15\u0e31\u0e14\u0e2a\u0e34\u0e19flight",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-oga",
+        "epic-gasp",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false,
+      "gameplay_committed": false
+    },
+    {
+      "id": "dash.end",
+      "name_th": "\u0e08\u0e1adash",
+      "family": "dash",
+      "scope": "optional",
+      "proposed_direction_policy": "8-proposed;body-facing-and-travel-direction-independent",
+      "phase_beats": [
+        "travel_exit",
+        "brake",
+        "plant",
+        "recover"
+      ],
+      "required_contact_semantics": "incoming sole or declared roll contact",
+      "event_candidates": [
+        "dash_end",
+        "recover_end"
+      ],
+      "specific_review": "\u0e2b\u0e22\u0e38\u0e14root\u0e01\u0e31\u0e1a\u0e40\u0e17\u0e49\u0e32\u0e23\u0e31\u0e1a\u0e19\u0e49\u0e33\u0e2b\u0e19\u0e31\u0e01\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e01\u0e31\u0e19; recovery\u0e15\u0e48\u0e2dwalk/idle/attack\u0e44\u0e21\u0e48\u0e27\u0e32\u0e23\u0e4c\u0e1b",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-oga",
+        "epic-gasp",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false,
+      "gameplay_committed": false
+    },
+    {
+      "id": "dash.forward",
+      "name_th": "\u0e1e\u0e38\u0e48\u0e07\u0e2b\u0e19\u0e49\u0e32",
+      "family": "dash",
+      "scope": "optional",
+      "proposed_direction_policy": "8-proposed;body-facing-and-travel-direction-independent",
+      "phase_beats": [
+        "load",
+        "drive_forward",
+        "brake",
+        "settle"
+      ],
+      "required_contact_semantics": "support transition",
+      "event_candidates": [
+        "dash_begin",
+        "dash_end"
+      ],
+      "specific_review": "world displacement\u0e15\u0e49\u0e2d\u0e07\u0e44\u0e1bfacing\u0e17\u0e35\u0e48\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28 \u0e44\u0e21\u0e48\u0e2b\u0e21\u0e38\u0e19\u0e20\u0e32\u0e1e\u0e41\u0e17\u0e19\u0e01\u0e32\u0e23\u0e40\u0e04\u0e25\u0e37\u0e48\u0e2d\u0e19",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-oga",
+        "epic-gasp",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false,
+      "gameplay_committed": false
+    },
+    {
+      "id": "dash.backward",
+      "name_th": "\u0e1e\u0e38\u0e48\u0e07\u0e16\u0e2d\u0e22",
+      "family": "dash",
+      "scope": "optional",
+      "proposed_direction_policy": "8-proposed;body-facing-and-travel-direction-independent",
+      "phase_beats": [
+        "load",
+        "drive_back",
+        "plant",
+        "settle"
+      ],
+      "required_contact_semantics": "support transition",
+      "event_candidates": [
+        "dash_begin",
+        "dash_end"
+      ],
+      "specific_review": "body facing\u0e01\u0e31\u0e1atravel direction\u0e41\u0e22\u0e01; \u0e44\u0e21\u0e48mirror\u0e2a\u0e25\u0e31\u0e1a\u0e2d\u0e38\u0e1b\u0e01\u0e23\u0e13\u0e4c",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-oga",
+        "epic-gasp",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false,
+      "gameplay_committed": false
+    },
+    {
+      "id": "dash.side",
+      "name_th": "\u0e1e\u0e38\u0e48\u0e07\u0e14\u0e49\u0e32\u0e19\u0e02\u0e49\u0e32\u0e07",
+      "family": "dash",
+      "scope": "optional",
+      "proposed_direction_policy": "8-proposed;body-facing-and-travel-direction-independent",
+      "phase_beats": [
+        "load",
+        "side_drive",
+        "plant",
+        "recover"
+      ],
+      "required_contact_semantics": "support transition",
+      "event_candidates": [
+        "dash_begin",
+        "dash_end"
+      ],
+      "specific_review": "\u0e0b\u0e49\u0e32\u0e22/\u0e02\u0e27\u0e32\u0e15\u0e32\u0e21\u0e15\u0e31\u0e27\u0e25\u0e30\u0e04\u0e23\u0e2b\u0e23\u0e37\u0e2dworld\u0e15\u0e49\u0e2d\u0e07\u0e1b\u0e23\u0e30\u0e01\u0e32\u0e28; \u0e44\u0e21\u0e48\u0e16\u0e37\u0e2d\u0e40\u0e1b\u0e47\u0e19\u0e20\u0e32\u0e1emirror\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34",
+      "reference_leads": [
+        "ual2-oga",
+        "kay-oga",
+        "epic-gasp",
+        "mixamo"
+      ],
+      "reference_coverage": "leads_only_until_bound_to_real_clip",
+      "status": "research_specification",
+      "production_approved": false,
+      "gameplay_committed": false
+    }
+  ],
+  "dash_policy": "optional_research",
+  "steering_note": {
+    "date": "2026-10-13",
+    "user_quote": "\u0e40\u0e2d\u0e32 dash \u0e14\u0e49\u0e27\u0e22\u0e01\u0e47\u0e44\u0e14\u0e49 \u0e40\u0e1c\u0e37\u0e48\u0e2d\u0e43\u0e0a\u0e49",
+    "dash_policy": "optional_research",
+    "gameplay_committed": false,
+    "old_own_attacks_still_excluded": true,
+    "added_motion_specifications": [
+      "dash.start",
+      "dash.loop",
+      "dash.end",
+      "dash.forward",
+      "dash.backward",
+      "dash.side"
+    ]
+  }
+}

@@ -1,4 +1,8 @@
-## Latest: video-first sword performance v28 — generator connection pending
+## Latest: fresh RPG motion research/dataset/know-how v29 — optional dash, old own attacks excluded
+
+[92reference leads,99action specifications,71acquired motion candidates including6optional dash,639sourcepose samples,745nativeGIFexposures and detailed reusable know-how](rpg-motion-foundation-v29/README.md). The latest request replaces the slash-onlynexttest with broad RPG research. Native clocks, evaluated external bones, observed pixels and proposed recipes remain separate. Actual source files/code/primary methods are studied; no old own slash conditions new motion. Corpus audit does not approve art/anatomy/contacts/parts/training/production. Exact acceptedW is unchanged. [Reusable skill routing](../../skills/modular-eight-direction-sprites/references/rpg-motion-foundation.md).
+
+## Historical: video-first sword performance v28 — generator connection pending
 
 [Fresh character inputs, video brief and native frame capture](video-first-slash-v28/README.md). User rejects v27 bent-arm/lifeless acting and requests generated video from character appearance, dropping old rig conditioning. There is no generated video/captured character-motion frame yet: Runway was found but is not installed/connected. Decoder fixture checks are not an attack result. Exact v27 rejection is retained; onlyW remains accepted.
 

@@ -1,0 +1,1593 @@
+{
+  "schema": "rpg-reference-catalog-v1",
+  "date": "2026-10-13",
+  "sources": [
+    {
+      "id": "ro-act",
+      "title": "RO ACT specification",
+      "url": "https://ragnarokresearchlab.github.io/file-formats/act/",
+      "kind": "format",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "reaction",
+        "interaction"
+      ],
+      "application": "ACT stores actions layers timing anchors events; inspect actual actor rather than assuming direction counts.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ro-act"
+    },
+    {
+      "id": "ro-renderer",
+      "title": "roBrowserLegacy",
+      "url": "https://github.com/MrAntares/roBrowserLegacy",
+      "kind": "engine",
+      "tags": [
+        "all"
+      ],
+      "application": "Separate engine action mapping from original copyrighted game pixels.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ro-renderer",
+      "observed_commit": "a9d31a10880740f4a351fcfca402ea6567022926"
+    },
+    {
+      "id": "ragassets",
+      "title": "ragassets renderer",
+      "url": "https://github.com/adsonpleal/ragassets",
+      "kind": "engine",
+      "tags": [
+        "all"
+      ],
+      "application": "Renderer exposes native action frame interval origin and per-layer compositing; not a license to game assets.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ragassets",
+      "observed_commit": "4de4fa747431979d35c747d7edd549a872efd9e1"
+    },
+    {
+      "id": "tos-sword",
+      "title": "Tree of Savior Swordsman",
+      "url": "https://treeofsavior.com/page/class/view.php?c=Swordsman",
+      "kind": "game",
+      "tags": [
+        "combat"
+      ],
+      "application": "Class purpose and skill presentation candidate; page is not frame capture.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#tos-sword"
+    },
+    {
+      "id": "tos-ranger",
+      "title": "Tree of Savior Ranger",
+      "url": "https://treeofsavior.com/page/class/view.php?c=Ranger",
+      "kind": "game",
+      "tags": [
+        "ranged"
+      ],
+      "application": "Bow and crossbow sequencing candidates; check release and recovery in actual footage.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#tos-ranger"
+    },
+    {
+      "id": "tos-element",
+      "title": "Tree of Savior Elementalist",
+      "url": "https://treeofsavior.com/page/class/view.php?c=Elementalist",
+      "kind": "game",
+      "tags": [
+        "magic"
+      ],
+      "application": "Cast and recuperation reference candidate; distinguish body cast from effect playback.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#tos-element"
+    },
+    {
+      "id": "tos-cleric",
+      "title": "Tree of Savior Cleric",
+      "url": "https://treeofsavior.com/page/class/view.php?c=Cleric",
+      "kind": "game",
+      "tags": [
+        "magic"
+      ],
+      "application": "Support magic reference candidate; inspect hand prop ground and finish timing.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#tos-cleric"
+    },
+    {
+      "id": "tos-video",
+      "title": "ToS new skill effects video",
+      "url": "https://www.youtube.com/watch?v=c-x5kZzg4AU",
+      "kind": "video",
+      "tags": [
+        "combat",
+        "magic",
+        "ranged"
+      ],
+      "application": "Located video lead; no frame analysis until a retrievable clip and timestamps exist.",
+      "rights_hint": "reference-only",
+      "evidence_level": "fetch_failed",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "fetch_failed",
+      "retrieval_receipt": "retrieval.json#tos-video"
+    },
+    {
+      "id": "hades-art",
+      "title": "Supergiant animation project",
+      "url": "https://www.supergiantgames.com/blog/2d-animation-project-supergiant/",
+      "kind": "game",
+      "tags": [
+        "acting"
+      ],
+      "application": "Animation/art production context; not evidence for unobserved Hades moves.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#hades-art"
+    },
+    {
+      "id": "flare-engine",
+      "title": "Flare engine",
+      "url": "https://github.com/flareteam/flare-engine",
+      "kind": "engine",
+      "tags": [
+        "all"
+      ],
+      "application": "Study action parser clocks events facing and paper-doll runtime.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "pinned_files_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "sparse_page",
+      "retrieval_receipt": "retrieval.json#flare-engine",
+      "observed_commit": "1969baeb89ebf94cf22e2bc2ed4e3d8413714d4f"
+    },
+    {
+      "id": "flare-content",
+      "title": "Flare game",
+      "url": "https://github.com/flareteam/flare-game",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "ranged",
+        "magic",
+        "reaction"
+      ],
+      "application": "Eight-direction atlases with descriptors offer separate layers and source-defined exposure order.",
+      "rights_hint": "per-file",
+      "evidence_level": "pinned_files_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "sparse_page",
+      "retrieval_receipt": "retrieval.json#flare-content",
+      "observed_commit": "af6eee6d339ac98011864bfe89da837fe7769c28"
+    },
+    {
+      "id": "valyria",
+      "title": "Valyria Tear",
+      "url": "https://github.com/ValyriaTear/ValyriaTear",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "reaction"
+      ],
+      "application": "Study body/weapon event controller and animation descriptors; read asset-specific license.",
+      "rights_hint": "per-file",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#valyria",
+      "observed_commit": "1c882efff325c941c59aa59c93fb1256258ac845"
+    },
+    {
+      "id": "mana-doc",
+      "title": "Mana Sprite System",
+      "url": "https://doc.manasource.org/sprite_system/",
+      "kind": "format",
+      "tags": [
+        "all"
+      ],
+      "application": "XML layered animation mapping and delays; different directional support per actor must be measured.",
+      "rights_hint": "documentation",
+      "evidence_level": "http_error",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "http_error",
+      "retrieval_receipt": "retrieval.json#mana-doc"
+    },
+    {
+      "id": "tmw-data",
+      "title": "The Mana World client data",
+      "url": "https://github.com/themanaworld/tmwa-client-data",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "reaction",
+        "interaction"
+      ],
+      "application": "Actual sprites XML item hair layering and player states; pin commit.",
+      "rights_hint": "per-file",
+      "evidence_level": "pinned_files_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "fetch_failed",
+      "retrieval_receipt": "retrieval.json#tmw-data",
+      "observed_commit": "3ab88eb52cb995be3d85c96810fe1826bc429ede"
+    },
+    {
+      "id": "tmw-animation",
+      "title": "Mana World animation development",
+      "url": "https://wiki.themanaworld.org/wiki/Dev:Animations",
+      "kind": "tutorial",
+      "tags": [
+        "all"
+      ],
+      "application": "Author-facing animation conventions; compare with current data rather than assume current truth.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#tmw-animation"
+    },
+    {
+      "id": "wesnoth",
+      "title": "Wesnoth source and art",
+      "url": "https://github.com/wesnoth/wesnoth",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "combat",
+        "ranged",
+        "magic",
+        "reaction"
+      ],
+      "application": "Frame-level WML attack defense death and variation; hex directions differ from our camera.",
+      "rights_hint": "per-file",
+      "evidence_level": "pinned_files_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#wesnoth",
+      "observed_commit": "cd1f7380650148d7ccff00c9b81144a87de972e4"
+    },
+    {
+      "id": "wesnoth-anim",
+      "title": "Wesnoth AnimationWML",
+      "url": "https://wiki.wesnoth.org/AnimationWML",
+      "kind": "format",
+      "tags": [
+        "combat",
+        "magic",
+        "reaction"
+      ],
+      "application": "Directional filters frame durations sounds movement offsets and hit/miss branches.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#wesnoth-anim"
+    },
+    {
+      "id": "lpc",
+      "title": "Universal LPC Generator",
+      "url": "https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "ranged",
+        "magic",
+        "reaction",
+        "interaction"
+      ],
+      "application": "Modular animation compatibility and item attribution; standard bodies are not our aesthetic benchmark.",
+      "rights_hint": "per-file",
+      "evidence_level": "pinned_files_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#lpc",
+      "observed_commit": "58ce1aa479e4df32845a73a5d0afc221c3a893c2"
+    },
+    {
+      "id": "lpc-live",
+      "title": "LPC live generator",
+      "url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/",
+      "kind": "tool",
+      "tags": [
+        "all"
+      ],
+      "application": "Animation and item splits plus credits export; do not assume every garment covers every action.",
+      "rights_hint": "per-file",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#lpc-live"
+    },
+    {
+      "id": "oga-hero",
+      "title": "Isometric Hero and Heroine",
+      "url": "https://opengameart.org/content/isometric-hero-and-heroine",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "ranged",
+        "magic",
+        "reaction"
+      ],
+      "application": "Creator-distributed isometric character source; inspect bundle clocks and licenses.",
+      "rights_hint": "per-file",
+      "evidence_level": "actual_atlas_boarded_partial_visual_review",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#oga-hero"
+    },
+    {
+      "id": "ual1",
+      "title": "Quaternius animation library 1",
+      "url": "https://quaternius.com/packs/universalanimationlibrary.html",
+      "kind": "preset",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "reaction",
+        "interaction"
+      ],
+      "application": "Separate free Standard subset from advertised full catalog; read native clip names durations tracks.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ual1"
+    },
+    {
+      "id": "ual2",
+      "title": "Quaternius animation library 2",
+      "url": "https://quaternius.com/packs/universalanimationlibrary2.html",
+      "kind": "preset",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "interaction",
+        "emote"
+      ],
+      "application": "Second library expands motion families; do not count paid full catalog as acquired.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ual2"
+    },
+    {
+      "id": "ual2-oga",
+      "title": "UAL2 creator OGA download",
+      "url": "https://opengameart.org/content/universal-animation-library-2",
+      "kind": "preset",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "interaction",
+        "emote"
+      ],
+      "application": "Direct Standard download candidate useful for reproducible real motion corpus.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "actual_source_evaluated_partial_visual_review",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ual2-oga"
+    },
+    {
+      "id": "kay-creator",
+      "title": "KayKit character animations",
+      "url": "https://kaylousberg.com/game-assets/character-animations",
+      "kind": "preset",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "ranged",
+        "magic",
+        "reaction",
+        "interaction",
+        "emote"
+      ],
+      "application": "Creator library; different rig sizes and version changes require explicit mapping.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kay-creator"
+    },
+    {
+      "id": "kay-itch",
+      "title": "KayKit current animation pack",
+      "url": "https://kaylousberg.itch.io/kaykit-character-animations",
+      "kind": "preset",
+      "tags": [
+        "all"
+      ],
+      "application": "Current provider version and tier; do not confuse legacy OGA subset with latest pack.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kay-itch"
+    },
+    {
+      "id": "kay-oga",
+      "title": "KayKit legacy character animations",
+      "url": "https://opengameart.org/content/kaykit-character-animations",
+      "kind": "preset",
+      "tags": [
+        "all"
+      ],
+      "application": "Legacy1.0 archive downloadable with bundled license; action coverage from files not page title.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "actual_source_evaluated_native_preview_captured_partial_review",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kay-oga"
+    },
+    {
+      "id": "kay-git",
+      "title": "KayKit creator Adventurers source",
+      "url": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "kind": "preset",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "interaction"
+      ],
+      "application": "Author-owned repo for source/rig compatibility; source contains oldversion not automatically current.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kay-git",
+      "observed_commit": "672074b73ba276876a19e8816ecdc5241817ab47"
+    },
+    {
+      "id": "kenney",
+      "title": "Kenney Animated Protagonists",
+      "url": "https://kenney.nl/assets/animated-characters-protagonists",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "reaction",
+        "interaction"
+      ],
+      "application": "Simpler aesthetic mechanics and poses; not equal-detail art reference.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kenney"
+    },
+    {
+      "id": "kenney-mini",
+      "title": "Kenney Mini Characters",
+      "url": "https://kenney.nl/assets/mini-characters",
+      "kind": "sprite",
+      "tags": [
+        "idle",
+        "locomotion",
+        "interaction"
+      ],
+      "application": "Small-scale readability reference; distinguish static poses from playable action clips.",
+      "rights_hint": "creator-cc0",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kenney-mini"
+    },
+    {
+      "id": "mixamo",
+      "title": "Adobe Mixamo FAQ",
+      "url": "https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html",
+      "kind": "preset",
+      "tags": [
+        "all"
+      ],
+      "application": "Account-bound motion retargeting and commercial-use FAQ; no redistributable raw library assumption.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#mixamo"
+    },
+    {
+      "id": "rokoko",
+      "title": "Rokoko motion library",
+      "url": "https://www.rokoko.com/products/motion-library",
+      "kind": "preset",
+      "tags": [
+        "all"
+      ],
+      "application": "Mocap acquisition candidate; exact clip and use rights needed before import.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#rokoko"
+    },
+    {
+      "id": "rokoko-code",
+      "title": "Rokoko Blender addon",
+      "url": "https://github.com/Rokoko/rokoko-studio-live-blender",
+      "kind": "tool",
+      "tags": [
+        "rig"
+      ],
+      "application": "Rest mapping retarget bake implementation; package-specific licensing distinct from motion clips.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#rokoko-code",
+      "observed_commit": "b031e5a001b3d87e62359d18159c4e4ab479c732"
+    },
+    {
+      "id": "actorcore",
+      "title": "ActorCore motion marketplace",
+      "url": "https://actorcore.reallusion.com/",
+      "kind": "preset",
+      "tags": [
+        "all"
+      ],
+      "application": "Commercial motion candidates; no purchases or claimed downloaded clips.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "sparse_page",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "sparse_page",
+      "retrieval_receipt": "retrieval.json#actorcore"
+    },
+    {
+      "id": "explosive",
+      "title": "Explosive RPG GLB motions",
+      "url": "https://www.explosive.ws/products/rpg-animations-glb-for-godot-blender",
+      "kind": "preset",
+      "tags": [
+        "all"
+      ],
+      "application": "Broad weapon exploration NPC action taxonomy and in-place/root-motion variants.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#explosive"
+    },
+    {
+      "id": "epic-gasp",
+      "title": "Epic Game Animation Sample",
+      "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/game-animation-sample-project-in-unreal-engine",
+      "kind": "preset",
+      "tags": [
+        "locomotion",
+        "interaction"
+      ],
+      "application": "Transition-rich locomotion sample; Unreal terms not general public-domain dataset.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#epic-gasp"
+    },
+    {
+      "id": "larian",
+      "title": "Larian animation set slots",
+      "url": "https://docs.larian.game/Animation_set_resource_panel",
+      "kind": "format",
+      "tags": [
+        "all"
+      ],
+      "application": "Production slot families by weapon sitting laying; useful completeness checklist.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#larian"
+    },
+    {
+      "id": "deepmotion",
+      "title": "DeepMotion foot locking",
+      "url": "https://www.deepmotion.com/article/foot-locking",
+      "kind": "tool",
+      "tags": [
+        "locomotion",
+        "rig"
+      ],
+      "application": "Foot lock is motion processing candidate; no execution or measured improvement here.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#deepmotion"
+    },
+    {
+      "id": "cascadeur",
+      "title": "Cascadeur tutorials",
+      "url": "https://cascadeur.com/tutor/index",
+      "kind": "tool",
+      "tags": [
+        "rig",
+        "combat",
+        "reaction"
+      ],
+      "application": "Contact and balance authoring aids; stylized acting still reviewed independently.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#cascadeur"
+    },
+    {
+      "id": "plask",
+      "title": "Plask documentation",
+      "url": "https://plask.ai/en-US/docs",
+      "kind": "tool",
+      "tags": [
+        "rig"
+      ],
+      "application": "Video mocap candidate; occlusion and props require explicit validation.",
+      "rights_hint": "provider-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#plask"
+    },
+    {
+      "id": "pose2sim",
+      "title": "Pose2Sim",
+      "url": "https://github.com/perfanalytics/pose2sim",
+      "kind": "tool",
+      "tags": [
+        "rig"
+      ],
+      "application": "Multiview calibrated markerless analysis; a single stylized sprite cannot recover true hidden joints.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#pose2sim",
+      "observed_commit": "c884f775dc475b46d3a49f5a550809552fa6b67a"
+    },
+    {
+      "id": "cmu",
+      "title": "CMU motion database",
+      "url": "https://mocap.cs.cmu.edu/",
+      "kind": "mocap",
+      "tags": [
+        "idle",
+        "locomotion",
+        "combat",
+        "interaction",
+        "emote"
+      ],
+      "application": "Human mechanics plus category metadata; actor subject is dataset split unit.",
+      "rights_hint": "source-terms",
+      "evidence_level": "http_error",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "http_error",
+      "retrieval_receipt": "retrieval.json#cmu"
+    },
+    {
+      "id": "cmu-sword",
+      "title": "CMU swordplay category",
+      "url": "https://mocap.cs.cmu.edu/search.php?maincat=4&subcat=5",
+      "kind": "mocap",
+      "tags": [
+        "combat"
+      ],
+      "application": "Swordplay query source; actual capture has no guaranteed weapon surface or our stylized acting.",
+      "rights_hint": "source-terms",
+      "evidence_level": "http_error",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "http_error",
+      "retrieval_receipt": "retrieval.json#cmu-sword"
+    },
+    {
+      "id": "cmu-bvh",
+      "title": "CMU BVH conversion repo",
+      "url": "https://github.com/una-dinosauria/cmu-mocap",
+      "kind": "mocap",
+      "tags": [
+        "all"
+      ],
+      "application": "Conversion provenance scaling axes frame time hierarchy; preserve original subject/clip IDs.",
+      "rights_hint": "source-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#cmu-bvh",
+      "observed_commit": "09a07f54f3bbb58797325f009282d0b2048a2871"
+    },
+    {
+      "id": "lafan",
+      "title": "Ubisoft LAFAN1",
+      "url": "https://github.com/ubisoft/ubisoft-laforge-animation-dataset",
+      "kind": "mocap",
+      "tags": [
+        "locomotion",
+        "interaction"
+      ],
+      "application": "BVH with train/test subjects and inbetween benchmarks; license not commercial game admission.",
+      "rights_hint": "research-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#lafan",
+      "observed_commit": "94084601bacdf9cc3764b5c73daaeccae6035fac"
+    },
+    {
+      "id": "amass",
+      "title": "AMASS dataset",
+      "url": "https://amass.is.tue.mpg.de/",
+      "kind": "mocap",
+      "tags": [
+        "all"
+      ],
+      "application": "Unified body surface motions; originating dataset and SMPL rights remain separate.",
+      "rights_hint": "research-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#amass"
+    },
+    {
+      "id": "amass-license",
+      "title": "AMASS license",
+      "url": "https://amass.is.tue.mpg.de/license.html",
+      "kind": "license",
+      "tags": [
+        "all"
+      ],
+      "application": "Check restrictions before redistribution or commercial use; do not silently train on it.",
+      "rights_hint": "research-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#amass-license"
+    },
+    {
+      "id": "humanml",
+      "title": "HumanML3D",
+      "url": "https://github.com/EricGuo5513/HumanML3D",
+      "kind": "mocap",
+      "tags": [
+        "all"
+      ],
+      "application": "Text annotated motions and preprocessing; underlying AMASS rights not replaced by repo code license.",
+      "rights_hint": "research-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#humanml",
+      "observed_commit": "9176e8fb446b71c7d2a725eb5cf6fec1ae3b3c23"
+    },
+    {
+      "id": "babel",
+      "title": "BABEL dataset",
+      "url": "https://babel.is.tue.mpg.de/",
+      "kind": "mocap",
+      "tags": [
+        "all"
+      ],
+      "application": "Dense overlapping action labels good for phase taxonomy not new unrestricted motion ownership.",
+      "rights_hint": "research-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#babel"
+    },
+    {
+      "id": "babel-license",
+      "title": "BABEL license",
+      "url": "https://babel.is.tuebingen.mpg.de/license.html",
+      "kind": "license",
+      "tags": [
+        "all"
+      ],
+      "application": "Explicit scientific research and sharing conditions; keep restricted data out of shipped package.",
+      "rights_hint": "research-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#babel-license"
+    },
+    {
+      "id": "kit",
+      "title": "KIT Motion Language",
+      "url": "https://motion-annotation.humanoids.kit.edu/dataset/",
+      "kind": "mocap",
+      "tags": [
+        "locomotion",
+        "interaction",
+        "emote"
+      ],
+      "application": "Language/motion pairing; separate exact rights acquisition and annotation from technique study.",
+      "rights_hint": "source-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#kit"
+    },
+    {
+      "id": "saint11",
+      "title": "Saint11 tutorials",
+      "url": "https://github.com/saint11/Saint11Tutorials",
+      "kind": "tutorial",
+      "tags": [
+        "all"
+      ],
+      "application": "Primary artist animation tutorials; inspect timing silhouette smears and retain attribution.",
+      "rights_hint": "source-terms",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#saint11",
+      "observed_commit": "ce1393eb2c46441d917134a9fd52e15575ee10a7"
+    },
+    {
+      "id": "slyn-blog",
+      "title": "SLYNYRD animation studies",
+      "url": "https://www.slynyrd.com/blog/",
+      "kind": "tutorial",
+      "tags": [
+        "all"
+      ],
+      "application": "Artist studies of game-scale animation; references guide mechanics not our costume identity.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#slyn-blog"
+    },
+    {
+      "id": "slyn-castlevania",
+      "title": "SLYNYRD Castlevania study",
+      "url": "https://www.slynyrd.com/blog/2022/3/19/pixelblog-37-classic-castlevania-study",
+      "kind": "tutorial",
+      "tags": [
+        "combat",
+        "locomotion",
+        "reaction"
+      ],
+      "application": "Sparse readable keys and dynamic contrast; side-scroller projection differs from RPG.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#slyn-castlevania"
+    },
+    {
+      "id": "slyn-run",
+      "title": "SLYNYRD run and gun",
+      "url": "https://www.slynyrd.com/blog/2026/1/26/side-view-run-n-gun",
+      "kind": "tutorial",
+      "tags": [
+        "locomotion",
+        "ranged"
+      ],
+      "application": "Upper/lower-body coordination and readability; not hidden skeletal truth.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#slyn-run"
+    },
+    {
+      "id": "spine-skins",
+      "title": "Spine skins",
+      "url": "https://esotericsoftware.com/spine-skins",
+      "kind": "format",
+      "tags": [
+        "parts"
+      ],
+      "application": "Slot attachment replacement and skin bones; deform needs item-specific mesh validation.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#spine-skins"
+    },
+    {
+      "id": "spine-json",
+      "title": "Spine export format",
+      "url": "https://esotericsoftware.com/spine-json-format",
+      "kind": "format",
+      "tags": [
+        "all"
+      ],
+      "application": "Timelines attachments draw order and events; transforms do not guarantee natural posing.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#spine-json"
+    },
+    {
+      "id": "dragonbones",
+      "title": "DragonBonesJS",
+      "url": "https://github.com/DragonBones/DragonBonesJS",
+      "kind": "engine",
+      "tags": [
+        "parts",
+        "rig"
+      ],
+      "application": "Skeletal2D runtime slots and display exchange; inspect maintenance and target engine before adoption.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#dragonbones",
+      "observed_commit": "64b6c69ae35777c2404be68c9192e2c56906079e"
+    },
+    {
+      "id": "ozz",
+      "title": "ozz-animation",
+      "url": "https://github.com/guillaumeblanc/ozz-animation",
+      "kind": "tool",
+      "tags": [
+        "rig"
+      ],
+      "application": "Offline/runtime sampling blending optimization useful for extracting source tracks.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#ozz",
+      "observed_commit": "744eb9d99f606eda849acb0b1204f7a3dc20bca1"
+    },
+    {
+      "id": "godot-tree",
+      "title": "Godot AnimationTree",
+      "url": "https://docs.godotengine.org/en/stable/tutorials/animation/animation_tree.html",
+      "kind": "engine",
+      "tags": [
+        "all"
+      ],
+      "application": "State machine transitions discrete sprite selection and root-motion routing.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#godot-tree"
+    },
+    {
+      "id": "blender-ik",
+      "title": "Blender IK constraint",
+      "url": "https://docs.blender.org/manual/en/latest/animation/constraints/tracking/ik_solver.html",
+      "kind": "tool",
+      "tags": [
+        "rig"
+      ],
+      "application": "Chain targets poles and solver settings; source foot surfaces remain independent.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#blender-ik"
+    },
+    {
+      "id": "blender-nla",
+      "title": "Blender NLA strips",
+      "url": "https://docs.blender.org/manual/en/latest/editors/nla/strips.html",
+      "kind": "tool",
+      "tags": [
+        "rig"
+      ],
+      "application": "Timing remapping and blending can change original source exposure; record settings.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#blender-nla"
+    },
+    {
+      "id": "aseprite",
+      "title": "Aseprite animation docs",
+      "url": "https://www.aseprite.org/docs/animation/",
+      "kind": "tool",
+      "tags": [
+        "all"
+      ],
+      "application": "Frames cels tags onion skin workflow; output clocks must be decoded checked.",
+      "rights_hint": "documentation",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#aseprite"
+    },
+    {
+      "id": "pfnn",
+      "title": "PFNN primary paper",
+      "url": "https://www.pure.ed.ac.uk/ws/files/35467734/phasefunction.pdf",
+      "kind": "paper",
+      "tags": [
+        "locomotion",
+        "rig"
+      ],
+      "application": "Phase-conditioned motion helps reason periodic continuity; not a sprite-correctness guarantee.",
+      "rights_hint": "paper",
+      "evidence_level": "pdf_retrieved_not_full_read",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "pdf_retrieved_not_full_read",
+      "retrieval_receipt": "retrieval.json#pfnn"
+    },
+    {
+      "id": "motionmatch",
+      "title": "Learned Motion Matching primary",
+      "url": "https://www.ubisoft.com/en-us/studio/laforge/news/3NWqwcMU9lMfumgfPAEfka/learned-motion-matching",
+      "kind": "paper",
+      "tags": [
+        "locomotion",
+        "rig"
+      ],
+      "application": "Trajectory and pose-conditioned retrieval; sparse sprite adaptation is our proposal.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#motionmatch"
+    },
+    {
+      "id": "inbetween",
+      "title": "Robust Motion Inbetweening primary",
+      "url": "https://www.ubisoft.com/en-us/studio/laforge/news/1ERUZiYmmtUBYZ4KvVvmFP/robust-motion-inbetweening",
+      "kind": "paper",
+      "tags": [
+        "rig"
+      ],
+      "application": "Long transitions and conditioned endpoints; added frames do not automatically improve acting.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#inbetween"
+    },
+    {
+      "id": "skelaware",
+      "title": "Skeleton-Aware retargeting",
+      "url": "https://deepmotionediting.github.io/retargeting",
+      "kind": "paper",
+      "tags": [
+        "rig"
+      ],
+      "application": "Rest topology-aware transfer; contacts and prop semantics still require constraints.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#skelaware"
+    },
+    {
+      "id": "reconform",
+      "title": "ReConForM",
+      "url": "https://arxiv.org/abs/2502.21207",
+      "kind": "paper",
+      "tags": [
+        "rig"
+      ],
+      "application": "Contact-aware adaptation across morphology; paper-level claim not an executed local solver.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#reconform"
+    },
+    {
+      "id": "deepmimic",
+      "title": "DeepMimic",
+      "url": "https://xbpeng.github.io/projects/DeepMimic/index.html",
+      "kind": "paper",
+      "tags": [
+        "rig",
+        "combat",
+        "locomotion"
+      ],
+      "application": "Example guided physics skills; reference motion and dynamic feasibility are distinct.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#deepmimic"
+    },
+    {
+      "id": "amp",
+      "title": "AMP primary",
+      "url": "https://xbpeng.github.io/projects/AMP/index.html",
+      "kind": "paper",
+      "tags": [
+        "rig",
+        "locomotion"
+      ],
+      "application": "Motion prior encourages style distribution; not guaranteed precise event/grip correspondence.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#amp"
+    },
+    {
+      "id": "anidoc",
+      "title": "AniDoc official implementation",
+      "url": "https://github.com/robbyant-research/AniDoc",
+      "kind": "paper",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Colorization/animation aid; no inference executed and generated anatomy needs independent review.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#anidoc",
+      "observed_commit": "77e0696cea9df7bb1cd2c254ba21639d3a6ab8f8"
+    },
+    {
+      "id": "tooncrafter",
+      "title": "ToonCrafter primary",
+      "url": "https://arxiv.org/abs/2405.17933",
+      "kind": "paper",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Cartoon interpolation can invent hidden structure; key correctness precedes interpolation.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#tooncrafter"
+    },
+    {
+      "id": "spritesheetdiff",
+      "title": "Sprite Sheet Diffusion",
+      "url": "https://arxiv.org/abs/2412.03685",
+      "kind": "paper",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Sheet consistency research; evaluate actual held-out action identity and anatomy.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#spritesheetdiff"
+    },
+    {
+      "id": "amass-paper",
+      "title": "AMASS primary paper",
+      "url": "https://arxiv.org/abs/1904.03278",
+      "kind": "paper",
+      "tags": [
+        "rig"
+      ],
+      "application": "Dataset parameterization and subject diversity; not proof of RPG weapon mechanics.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#amass-paper"
+    },
+    {
+      "id": "babel-paper",
+      "title": "BABEL primary paper",
+      "url": "https://arxiv.org/abs/2106.09696",
+      "kind": "paper",
+      "tags": [
+        "all"
+      ],
+      "application": "Frame-level overlapping actions suggest multi-label annotation rather than one tag per clip.",
+      "rights_hint": "paper",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#babel-paper"
+    },
+    {
+      "id": "scenario-skill",
+      "title": "Scenario sprite animation skill",
+      "url": "https://github.com/scenario-labs/skills/blob/main/skills/scenario-sprite-animation/SKILL.md",
+      "kind": "skill",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Inspect video-to-frame ordering and alpha warnings; study only no provider activation.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#scenario-skill",
+      "observed_commit": "2457432aa27683adf67ae17a52d6ae566d480f9b"
+    },
+    {
+      "id": "spritegen-skill",
+      "title": "sprite-gen motion QA",
+      "url": "https://github.com/aldegad/sprite-gen/blob/main/docs/qa-motion.md",
+      "kind": "skill",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Study contact ROI scope and blocked conditions; do not inherit universal correctness claims.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#spritegen-skill",
+      "observed_commit": "8b4f0883bc96a3a24c885d973ac564e5a2c170c0"
+    },
+    {
+      "id": "phaser-skill",
+      "title": "Phaser animation skill",
+      "url": "https://github.com/phaserjs/phaser/blob/master/skills/animations/SKILL.md",
+      "kind": "skill",
+      "tags": [
+        "all"
+      ],
+      "application": "Runtime chain events and playback; not anatomical validation.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#phaser-skill",
+      "observed_commit": "02d8931b626d9764c133cbb3fbf99966c03c757c"
+    },
+    {
+      "id": "spriteforge",
+      "title": "Sprite Forge skill",
+      "url": "https://github.com/mrudinal/agent-sprite-forge-2d-assets",
+      "kind": "skill",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Agent sprite workflow comparison; executable checks must be audited not marketing accepted.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#spriteforge",
+      "observed_commit": "fff651a89223b044ccfc0b75ed9f3754c6d739b1"
+    },
+    {
+      "id": "sylphx-skill",
+      "title": "Produce2D sprite skill",
+      "url": "https://github.com/SylphxAI/skills/blob/main/skills/produce-game-2d-sprites/SKILL.md",
+      "kind": "skill",
+      "tags": [
+        "redraw"
+      ],
+      "application": "Pipeline/chroma/frameQC study; no installation and no credential access.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#sylphx-skill",
+      "observed_commit": "c0b37adf22809ea18a2b79bc1a75496b14efbbd0"
+    },
+    {
+      "id": "crosscode-gifs",
+      "title": "CrossCode creator GIF update",
+      "url": "https://www.radicalfishgames.com/?p=1833",
+      "kind": "game",
+      "tags": [
+        "combat",
+        "ranged",
+        "locomotion"
+      ],
+      "application": "Creator gameplay GIF leads for finished pixel RPG readability; acquire/annotate individual shot before claiming frame study.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#crosscode-gifs"
+    },
+    {
+      "id": "crosscode-workflow",
+      "title": "CrossCode creator workflow update",
+      "url": "https://www.radicalfishgames.com/?p=1252",
+      "kind": "tutorial",
+      "tags": [
+        "all"
+      ],
+      "application": "Creator workflow evidence for graphics/game integration; implementation lessons do not license game sprites.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#crosscode-workflow"
+    },
+    {
+      "id": "crosscode-press",
+      "title": "CrossCode creator presskit",
+      "url": "https://www.radicalfishgames.com/presskit/sheet.php?p=crosscode",
+      "kind": "game",
+      "tags": [
+        "all"
+      ],
+      "application": "Polished top-down RPG visual comparison candidate; press materials are not commercial training permission.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#crosscode-press"
+    },
+    {
+      "id": "morta-postmortem",
+      "title": "Children of Morta creator postmortem",
+      "url": "https://www.gamedeveloper.com/design/postmortem-children-of-morta",
+      "kind": "tutorial",
+      "tags": [
+        "all"
+      ],
+      "application": "Production retrospective candidate for character action diversity and iteration; frame/video evidence remains separate.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#morta-postmortem"
+    },
+    {
+      "id": "dofus-animation",
+      "title": "DOFUS CUBE developer animation notes",
+      "url": "https://totaime.wordpress.com/2017/10/25/dofus-cube-note-06-les-animations-de-personnages/",
+      "kind": "tutorial",
+      "tags": [
+        "acting",
+        "rig"
+      ],
+      "application": "Developer discussion of character animation direction; candidate for stylized body staging and sparse acting.",
+      "rights_hint": "reference-only",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#dofus-animation"
+    },
+    {
+      "id": "devilutionx",
+      "title": "DevilutionX player implementation",
+      "url": "https://github.com/diasurgical/devilutionX/blob/master/Source/player.cpp",
+      "kind": "engine",
+      "tags": [
+        "all"
+      ],
+      "application": "Actual player action controller and walk/attack/spell/hit/death sequencing; engine code does not supply Diablo art rights.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#devilutionx",
+      "observed_commit": "b0a3b7babbdd1c10b2f7f946395e251783ae2134"
+    },
+    {
+      "id": "opendiablo2",
+      "title": "OpenDiablo2 engine",
+      "url": "https://github.com/OpenDiablo2/OpenDiablo2",
+      "kind": "engine",
+      "tags": [
+        "all"
+      ],
+      "application": "Composition-based isometric action runtime; repository state and game-asset rights require separate review.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#opendiablo2",
+      "observed_commit": "7f92c571bf04057a7fbdfb5d25a486f7d775e3c3"
+    },
+    {
+      "id": "opendiablo-cof",
+      "title": "Diablo2 COF decoder",
+      "url": "https://github.com/OpenDiablo2/cof",
+      "kind": "format",
+      "tags": [
+        "parts"
+      ],
+      "application": "Animation layer composition format candidate; no original Blizzard asset acquisition.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "fetch_failed",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "fetch_failed",
+      "retrieval_receipt": "retrieval.json#opendiablo-cof",
+      "observed_commit": "180eb64494ba142c2b2bb6281f74c4fb1275bfa8"
+    },
+    {
+      "id": "opentesarena",
+      "title": "OpenTESArena",
+      "url": "https://github.com/afritz1/OpenTESArena",
+      "kind": "engine",
+      "tags": [
+        "combat",
+        "reaction",
+        "locomotion"
+      ],
+      "application": "Classic RPG directional sprite/state reconstruction candidate; no proprietary game pixels acquired.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#opentesarena",
+      "observed_commit": "3ce0d977f33c9be2685bc9077ff5bb8bd33af885"
+    },
+    {
+      "id": "veloren-idle",
+      "title": "Veloren procedural character idle source",
+      "url": "https://docs.veloren.net/src/veloren_voxygen_anim/character/idle.rs.html",
+      "kind": "engine",
+      "tags": [
+        "idle",
+        "rig"
+      ],
+      "application": "Procedural pose source candidate for attachment/rest coordination; source text not evaluated motion.",
+      "rights_hint": "code-license-separate",
+      "evidence_level": "page_retrieved",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "page_retrieved",
+      "retrieval_receipt": "retrieval.json#veloren-idle"
+    },
+    {
+      "id": "ro3-official",
+      "title": "RO3 official game page",
+      "url": "https://ro3.roglobal.com/",
+      "kind": "game",
+      "tags": [
+        "all"
+      ],
+      "application": "Quality-level game lead; verify actual camera/actions in retrievable footage before analysis.",
+      "rights_hint": "reference-only",
+      "evidence_level": "sparse_page",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "sparse_page",
+      "retrieval_receipt": "retrieval.json#ro3-official"
+    },
+    {
+      "id": "ro-official-video",
+      "title": "RO Gravity official trailer",
+      "url": "https://www.youtube.com/watch?v=E1Q4P3bk0Eo",
+      "kind": "video",
+      "tags": [
+        "all"
+      ],
+      "application": "Official footage lead; not captured or viewed merely because the link resolves in search.",
+      "rights_hint": "reference-only",
+      "evidence_level": "fetch_failed",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "fetch_failed",
+      "retrieval_receipt": "retrieval.json#ro-official-video"
+    },
+    {
+      "id": "ro-class3-video",
+      "title": "RO class3 official trailer",
+      "url": "https://www.youtube.com/watch?v=vM6BYVjT3W4",
+      "kind": "video",
+      "tags": [
+        "all"
+      ],
+      "application": "Official class showcase lead; class3 is not automatically the separate Ragnarok3 game.",
+      "rights_hint": "reference-only",
+      "evidence_level": "fetch_failed",
+      "asset_admission": "not_admitted",
+      "old_own_attack_reference": false,
+      "retrieval_status": "fetch_failed",
+      "retrieval_receipt": "retrieval.json#ro-class3-video"
+    }
+  ]
+}

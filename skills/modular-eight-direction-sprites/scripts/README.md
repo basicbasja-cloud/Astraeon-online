@@ -171,3 +171,6 @@ family-specific diagnostics never approve production. Actual failure tests are
 ## Generated video → native frames (v28)
 
 `capture-generated-video.py VIDEO --output NEW_DIRECTORY --source-url ACTUAL_ASSET_URL [--provider PROVIDER --job-id JOB]` requires an actual video container, preserves every decoded native PTS/hold, and never guesses a missing final exposure. It emits source-bound frames/contact sheets and unannotated landmark templates. Camera motion, anatomy, acting and generation conditioning remain unverified; no old rig is used by the decoder. See [video-first practice](../references/video-first-motion.md). Four real decoder fixture regressions are `test_generated_video_capture.py`; fixtures do not contain the requested character motion.
+# RPG reference corpus audit v29
+
+`rpg-reference-audit.py --study research/sprite-animation/rpg-motion-foundation-v29 --out /tmp/rpg-corpus-audit.json` verifies source/hash bindings, native capture order/clocks/lossless RGBA, source matrices/head consistency, recipe references and optional-dash/old-attack scope. This is dataset integrity only: production_pass=false, art_anatomy_accuracy=null. See [fresh foundation](../../../research/sprite-animation/rpg-motion-foundation-v29/README.md) and `tests/test_rpg_reference_audit.py`.

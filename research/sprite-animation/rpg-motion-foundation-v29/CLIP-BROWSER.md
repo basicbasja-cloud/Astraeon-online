@@ -1,0 +1,77 @@
+# Actual acquired source clip browser
+
+71candidate clips including6dash /639evaluated overview poses. No production keys, contacts, acting or character-art acceptance inferred. Blue=source right bone names; orange=left. One common world projection/range per rig bank; diagrams are deliberately not centered/fitted per pose. Legacy Kay has no leg chains.
+
+| Source clip | Overview | Samples |
+| --- | --- | --- |
+| ual2-oga / Chest_Open | [board](preset-boards/ual2-oga--Chest_Open.png) | 9 |
+| ual2-oga / ClimbUp_1m_RM | [board](preset-boards/ual2-oga--ClimbUp_1m_RM.png) | 9 |
+| ual2-oga / Consume | [board](preset-boards/ual2-oga--Consume.png) | 9 |
+| ual2-oga / Farm_Harvest | [board](preset-boards/ual2-oga--Farm_Harvest.png) | 9 |
+| ual2-oga / Farm_PlantSeed | [board](preset-boards/ual2-oga--Farm_PlantSeed.png) | 9 |
+| ual2-oga / Farm_Watering | [board](preset-boards/ual2-oga--Farm_Watering.png) | 9 |
+| ual2-oga / Hit_Knockback | [board](preset-boards/ual2-oga--Hit_Knockback.png) | 9 |
+| ual2-oga / Hit_Knockback_RM | [board](preset-boards/ual2-oga--Hit_Knockback_RM.png) | 9 |
+| ual2-oga / Idle_FoldArms_Loop | [board](preset-boards/ual2-oga--Idle_FoldArms_Loop.png) | 9 |
+| ual2-oga / Idle_Lantern_Loop | [board](preset-boards/ual2-oga--Idle_Lantern_Loop.png) | 9 |
+| ual2-oga / Idle_No_Loop | [board](preset-boards/ual2-oga--Idle_No_Loop.png) | 9 |
+| ual2-oga / Idle_Rail_Call | [board](preset-boards/ual2-oga--Idle_Rail_Call.png) | 9 |
+| ual2-oga / Idle_Rail_Loop | [board](preset-boards/ual2-oga--Idle_Rail_Loop.png) | 9 |
+| ual2-oga / Idle_Shield_Break | [board](preset-boards/ual2-oga--Idle_Shield_Break.png) | 9 |
+| ual2-oga / Idle_Shield_Loop | [board](preset-boards/ual2-oga--Idle_Shield_Loop.png) | 9 |
+| ual2-oga / Idle_TalkingPhone_Loop | [board](preset-boards/ual2-oga--Idle_TalkingPhone_Loop.png) | 9 |
+| ual2-oga / LayToIdle | [board](preset-boards/ual2-oga--LayToIdle.png) | 9 |
+| ual2-oga / Melee_Hook | [board](preset-boards/ual2-oga--Melee_Hook.png) | 9 |
+| ual2-oga / Melee_Hook_Rec | [board](preset-boards/ual2-oga--Melee_Hook_Rec.png) | 9 |
+| ual2-oga / NinjaJump_Idle_Loop | [board](preset-boards/ual2-oga--NinjaJump_Idle_Loop.png) | 9 |
+| ual2-oga / NinjaJump_Land | [board](preset-boards/ual2-oga--NinjaJump_Land.png) | 9 |
+| ual2-oga / NinjaJump_Start | [board](preset-boards/ual2-oga--NinjaJump_Start.png) | 9 |
+| ual2-oga / OverhandThrow | [board](preset-boards/ual2-oga--OverhandThrow.png) | 9 |
+| ual2-oga / Shield_Dash_RM | [board](preset-boards/ual2-oga--Shield_Dash_RM.png) | 9 |
+| ual2-oga / Shield_OneShot | [board](preset-boards/ual2-oga--Shield_OneShot.png) | 9 |
+| ual2-oga / Slide_Exit | [board](preset-boards/ual2-oga--Slide_Exit.png) | 9 |
+| ual2-oga / Slide_Loop | [board](preset-boards/ual2-oga--Slide_Loop.png) | 9 |
+| ual2-oga / Slide_Start | [board](preset-boards/ual2-oga--Slide_Start.png) | 9 |
+| ual2-oga / Sword_Block | [board](preset-boards/ual2-oga--Sword_Block.png) | 9 |
+| ual2-oga / Sword_Dash_RM | [board](preset-boards/ual2-oga--Sword_Dash_RM.png) | 9 |
+| ual2-oga / Sword_Regular_A | [board](preset-boards/ual2-oga--Sword_Regular_A.png) | 9 |
+| ual2-oga / Sword_Regular_A_Rec | [board](preset-boards/ual2-oga--Sword_Regular_A_Rec.png) | 9 |
+| ual2-oga / Sword_Regular_B | [board](preset-boards/ual2-oga--Sword_Regular_B.png) | 9 |
+| ual2-oga / Sword_Regular_B_Rec | [board](preset-boards/ual2-oga--Sword_Regular_B_Rec.png) | 9 |
+| ual2-oga / Sword_Regular_C | [board](preset-boards/ual2-oga--Sword_Regular_C.png) | 9 |
+| ual2-oga / Sword_Regular_Combo | [board](preset-boards/ual2-oga--Sword_Regular_Combo.png) | 9 |
+| ual2-oga / TreeChopping_Loop | [board](preset-boards/ual2-oga--TreeChopping_Loop.png) | 9 |
+| ual2-oga / Walk_Carry_Loop | [board](preset-boards/ual2-oga--Walk_Carry_Loop.png) | 9 |
+| ual2-oga / Yes | [board](preset-boards/ual2-oga--Yes.png) | 9 |
+| ual2-oga / Zombie_Idle_Loop | [board](preset-boards/ual2-oga--Zombie_Idle_Loop.png) | 9 |
+| ual2-oga / Zombie_Scratch | [board](preset-boards/ual2-oga--Zombie_Scratch.png) | 9 |
+| ual2-oga / Zombie_Walk_Fwd_Loop | [board](preset-boards/ual2-oga--Zombie_Walk_Fwd_Loop.png) | 9 |
+| kay-oga / Attack(1h) | [board](preset-boards/kay-oga--Attack_1h_.png) | 9 |
+| kay-oga / AttackCombo | [board](preset-boards/kay-oga--AttackCombo.png) | 9 |
+| kay-oga / AttackSpinning | [board](preset-boards/kay-oga--AttackSpinning.png) | 9 |
+| kay-oga / Block | [board](preset-boards/kay-oga--Block.png) | 9 |
+| kay-oga / Cheer | [board](preset-boards/kay-oga--Cheer.png) | 9 |
+| kay-oga / Climbing | [board](preset-boards/kay-oga--Climbing.png) | 9 |
+| kay-oga / Dance | [board](preset-boards/kay-oga--Dance.png) | 9 |
+| kay-oga / DashBack | [board](preset-boards/kay-oga--DashBack.png) | 9 |
+| kay-oga / DashFront | [board](preset-boards/kay-oga--DashFront.png) | 9 |
+| kay-oga / DashLeft | [board](preset-boards/kay-oga--DashLeft.png) | 9 |
+| kay-oga / DashRight | [board](preset-boards/kay-oga--DashRight.png) | 9 |
+| kay-oga / Defeat | [board](preset-boards/kay-oga--Defeat.png) | 9 |
+| kay-oga / HeavyAttack | [board](preset-boards/kay-oga--HeavyAttack.png) | 9 |
+| kay-oga / Hop | [board](preset-boards/kay-oga--Hop.png) | 9 |
+| kay-oga / Idle | [board](preset-boards/kay-oga--Idle.png) | 9 |
+| kay-oga / Interact | [board](preset-boards/kay-oga--Interact.png) | 9 |
+| kay-oga / Jump | [board](preset-boards/kay-oga--Jump.png) | 9 |
+| kay-oga / LayingDownIdle | [board](preset-boards/kay-oga--LayingDownIdle.png) | 9 |
+| kay-oga / PickUp | [board](preset-boards/kay-oga--PickUp.png) | 9 |
+| kay-oga / Roll | [board](preset-boards/kay-oga--Roll.png) | 9 |
+| kay-oga / Run | [board](preset-boards/kay-oga--Run.png) | 9 |
+| kay-oga / Shoot(1h) | [board](preset-boards/kay-oga--Shoot_1h_.png) | 9 |
+| kay-oga / Shoot(2h) | [board](preset-boards/kay-oga--Shoot_2h_.png) | 9 |
+| kay-oga / Shoot(2h)Bow | [board](preset-boards/kay-oga--Shoot_2h_Bow.png) | 9 |
+| kay-oga / Shooting(1h) | [board](preset-boards/kay-oga--Shooting_1h_.png) | 9 |
+| kay-oga / Shooting(2h) | [board](preset-boards/kay-oga--Shooting_2h_.png) | 9 |
+| kay-oga / Throw | [board](preset-boards/kay-oga--Throw.png) | 9 |
+| kay-oga / Walk | [board](preset-boards/kay-oga--Walk.png) | 9 |
+| kay-oga / Wave | [board](preset-boards/kay-oga--Wave.png) | 9 |
