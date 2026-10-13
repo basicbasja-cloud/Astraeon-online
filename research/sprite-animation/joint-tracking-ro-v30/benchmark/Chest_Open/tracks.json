@@ -1,0 +1,3393 @@
+{
+  "schema": "image-correspondence-proposals-v1",
+  "case_sha256": "3d2f94c3f7c2f816e9cf1b1747ab8aa755c331a37bdfcf116591c61bf9dcf52a",
+  "reference_source_sha256": "0815dd05531cae9bc313fc9c0ba81330bc72f8e19ec45f73738e74ddc5796a43",
+  "opencv": "4.11.0",
+  "thresholds": {
+    "window": 21,
+    "levels": 3,
+    "min_eigen": 0.0001,
+    "fb_error_px": 1.0,
+    "ncc_min": 0.65,
+    "max_step_px": 32.0,
+    "patch_radius": 7,
+    "counterpart_collision_px": 4.0
+  },
+  "canvas": [
+    320,
+    320
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "image_sha256": "9c451aa796280762154132e4c6201aa1e61191ad9709bbb3534aeb09edd9137c",
+      "source_time_ms": 0.0,
+      "reference_time_seconds": 0.0,
+      "points": {
+        "head": {
+          "xy": [
+            158.03180694580078,
+            112.17721939086914
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "neck": {
+          "xy": [
+            159.62034225463867,
+            118.84366989135742
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "pelvis": {
+          "xy": [
+            164.8825454711914,
+            168.78795623779297
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.shoulder": {
+          "xy": [
+            153.30010414123535,
+            115.83391189575195
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.elbow": {
+          "xy": [
+            155.1761531829834,
+            132.54005432128906
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.64000129699707,
+            156.41075134277344
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.hip": {
+          "xy": [
+            155.37797927856445,
+            166.00515365600586
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.knee": {
+          "xy": [
+            155.4456615447998,
+            197.6688575744629
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.4592514038086,
+            231.32969856262207
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.toe": {
+          "xy": [
+            139.04760360717773,
+            241.27840518951416
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.shoulder": {
+          "xy": [
+            176.96882247924805,
+            126.6604232788086
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.elbow": {
+          "xy": [
+            188.55052947998047,
+            149.2386817932129
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.wrist": {
+          "xy": [
+            188.21548461914062,
+            175.67441940307617
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.hip": {
+          "xy": [
+            167.51264572143555,
+            170.27483940124512
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.knee": {
+          "xy": [
+            166.25982284545898,
+            209.0519618988037
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.54526901245117,
+            249.58802223205566
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.toe": {
+          "xy": [
+            156.035737991333,
+            263.7173080444336
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 1,
+      "image_sha256": "6e123a37420c540f090b7d366cff0cc97128d2cf2115eef34016cb732be5e0b4",
+      "source_time_ms": 91.11111111111111,
+      "reference_time_seconds": 0.09111111111111111,
+      "points": {
+        "head": {
+          "xy": [
+            156.60752868652344,
+            114.25714874267578
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.40674033761024475,
+          "ncc": 0.8105875849723816,
+          "step_px": 2.520848005802193,
+          "min_eigenvalue": 0.0520147942006588,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            158.49703979492188,
+            120.7810287475586
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.18424353003501892,
+          "ncc": 0.9040426015853882,
+          "step_px": 2.23945702207185,
+          "min_eigenvalue": 0.023079385980963707,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": [
+            164.99838256835938,
+            169.36520385742188
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.004977663978934288,
+          "ncc": 0.9668428301811218,
+          "step_px": 0.5887555073606869,
+          "min_eigenvalue": 0.03081553988158703,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            151.93324279785156,
+            118.28208923339844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.5205817222595215,
+          "ncc": 0.8653539419174194,
+          "step_px": 2.8039048144690586,
+          "min_eigenvalue": 0.0492703877389431,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            154.27272033691406,
+            133.82830810546875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0057373857125639915,
+          "ncc": 0.9552074074745178,
+          "step_px": 1.573463923898551,
+          "min_eigenvalue": 0.05918771028518677,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.48629760742188,
+            156.44827270507812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.010354614816606045,
+          "ncc": 0.9748237729072571,
+          "step_px": 0.158217182436762,
+          "min_eigenvalue": 0.06546580046415329,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": [
+            155.3568572998047,
+            166.47900390625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.04018760845065117,
+          "ncc": 0.9429453611373901,
+          "step_px": 0.4743207750490829,
+          "min_eigenvalue": 0.06034442409873009,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            154.5675811767578,
+            198.31321716308594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007372443098574877,
+          "ncc": 0.9766963124275208,
+          "step_px": 1.0891392988003061,
+          "min_eigenvalue": 0.01547799538820982,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.26097106933594,
+            231.72457885742188
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005568935303017497,
+          "ncc": 0.9871408939361572,
+          "step_px": 0.44186597318617904,
+          "min_eigenvalue": 0.09720542281866074,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.06106567382812,
+            241.56695556640625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001096192980185151,
+          "ncc": 0.9974546432495117,
+          "step_px": 0.28886423669791084,
+          "min_eigenvalue": 0.051352642476558685,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            175.9597625732422,
+            128.19383239746094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.010350734926760197,
+          "ncc": 0.979341983795166,
+          "step_px": 1.8356321578885872,
+          "min_eigenvalue": 0.035598304122686386,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            187.8161163330078,
+            150.26678466796875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007378015201538801,
+          "ncc": 0.9956588745117188,
+          "step_px": 1.2634706927853698,
+          "min_eigenvalue": 0.047522079199552536,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": [
+            188.15525817871094,
+            176.7846221923828
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.03230435773730278,
+          "ncc": 0.995023787021637,
+          "step_px": 1.1118351755143727,
+          "min_eigenvalue": 0.06750472635030746,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            167.60459899902344,
+            170.7095947265625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001160069485194981,
+          "ncc": 0.9921048879623413,
+          "step_px": 0.4443732644421568,
+          "min_eigenvalue": 0.017489660531282425,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            165.7053680419922,
+            209.47097778320312
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002890725154429674,
+          "ncc": 0.9930853843688965,
+          "step_px": 0.694978014376302,
+          "min_eigenvalue": 0.03876369819045067,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.52017211914062,
+            249.8712158203125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0037458695005625486,
+          "ncc": 0.9992075562477112,
+          "step_px": 0.28430346899681563,
+          "min_eigenvalue": 0.09675104916095734,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.00328063964844,
+            263.9659423828125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0006005453178659081,
+          "ncc": 0.9974533319473267,
+          "step_px": 0.25074392096218867,
+          "min_eigenvalue": 0.07381514459848404,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 2,
+      "image_sha256": "8b7ed6311a6870195f87874a2187971b6d6dc718495d1e91fe567f7022da9d7b",
+      "source_time_ms": 182.22222222222223,
+      "reference_time_seconds": 0.18222222222222223,
+      "points": {
+        "head": {
+          "xy": [
+            154.1751251220703,
+            119.90263366699219
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.14971831440925598,
+          "ncc": 0.776283860206604,
+          "step_px": 6.1472015690920765,
+          "min_eigenvalue": 0.04169709235429764,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            155.64389038085938,
+            126.01721954345703
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.23263894021511078,
+          "ncc": 0.9371700882911682,
+          "step_px": 5.963065958885303,
+          "min_eigenvalue": 0.02310614474117756,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": [
+            165.19039916992188,
+            170.70162963867188
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.027908029034733772,
+          "ncc": 0.9439141750335693,
+          "step_px": 1.3501497117228463,
+          "min_eigenvalue": 0.031747933477163315,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            149.58184814453125,
+            124.90430450439453
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.5294735431671143,
+          "ncc": 0.8690800666809082,
+          "step_px": 7.027289086915182,
+          "min_eigenvalue": 0.04144582152366638,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            152.42959594726562,
+            137.71676635742188
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.012357405386865139,
+          "ncc": 0.906547486782074,
+          "step_px": 4.303163382082916,
+          "min_eigenvalue": 0.05825076624751091,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.74374389648438,
+            156.4005889892578
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.18826651573181152,
+          "ncc": 0.9298759698867798,
+          "step_px": 0.26182499595432945,
+          "min_eigenvalue": 0.06780160218477249,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": [
+            155.3483428955078,
+            167.4150848388672
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.11399519443511963,
+          "ncc": 0.8543762564659119,
+          "step_px": 0.9361196544726503,
+          "min_eigenvalue": 0.05442632734775543,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            152.7147979736328,
+            199.52633666992188
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.11119113862514496,
+          "ncc": 0.7474293112754822,
+          "step_px": 2.214602568328684,
+          "min_eigenvalue": 0.017240939661860466,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            159.84506225585938,
+            232.33192443847656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0032739259768277407,
+          "ncc": 0.9890462756156921,
+          "step_px": 0.7361037942804928,
+          "min_eigenvalue": 0.09612011909484863,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.12071228027344,
+            242.0068817138672
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.004650752525776625,
+          "ncc": 0.9927858710289001,
+          "step_px": 0.4439512730922894,
+          "min_eigenvalue": 0.051203105598688126,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            173.53387451171875,
+            132.3272705078125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.06512249261140823,
+          "ncc": 0.9831610321998596,
+          "step_px": 4.792728189575186,
+          "min_eigenvalue": 0.03654932230710983,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            186.0279998779297,
+            153.49559020996094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.020712263882160187,
+          "ncc": 0.9864288568496704,
+          "step_px": 3.690873295701252,
+          "min_eigenvalue": 0.04179292544722557,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": [
+            187.9388885498047,
+            179.54495239257812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.1222270280122757,
+          "ncc": 0.985023558139801,
+          "step_px": 2.768797325631351,
+          "min_eigenvalue": 0.06386268883943558,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            167.77085876464844,
+            171.97616577148438
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00570397125557065,
+          "ncc": 0.9749195575714111,
+          "step_px": 1.277436699605961,
+          "min_eigenvalue": 0.01876152865588665,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            164.6755828857422,
+            210.53334045410156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007408122532069683,
+          "ncc": 0.9948527812957764,
+          "step_px": 1.4795512537763937,
+          "min_eigenvalue": 0.03535260632634163,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.4432373046875,
+            250.3784637451172
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0016651666956022382,
+          "ncc": 0.997962236404419,
+          "step_px": 0.5130491427666541,
+          "min_eigenvalue": 0.10497375577688217,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.08522033691406,
+            264.40118408203125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0006518557784147561,
+          "ncc": 0.9945934414863586,
+          "step_px": 0.4428876276515377,
+          "min_eigenvalue": 0.08150751888751984,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 3,
+      "image_sha256": "a9c41c391097bd8db23826869ea032b65c0acf3070e00ebee4630ae0eec7f542",
+      "source_time_ms": 273.33333333333337,
+      "reference_time_seconds": 0.2733333333333333,
+      "points": {
+        "head": {
+          "xy": [
+            151.384765625,
+            127.69697570800781
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.11212500184774399,
+          "ncc": 0.7972976565361023,
+          "step_px": 8.278760412962445,
+          "min_eigenvalue": 0.06449319422245026,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            152.90467834472656,
+            133.94354248046875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.9469741582870483,
+          "ncc": 0.8646727204322815,
+          "step_px": 8.386291068207266,
+          "min_eigenvalue": 0.027588937431573868,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": [
+            165.38084411621094,
+            173.0469970703125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.04058282822370529,
+          "ncc": 0.8959457278251648,
+          "step_px": 2.3530868379572363,
+          "min_eigenvalue": 0.03282187134027481,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            147.123291015625,
+            134.50701904296875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.17968860268592834,
+          "ncc": 0.8675422072410583,
+          "step_px": 9.912448217541437,
+          "min_eigenvalue": 0.044085822999477386,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            150.92457580566406,
+            143.72288513183594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.3908824324607849,
+          "ncc": 0.9035184383392334,
+          "step_px": 6.191813010661374,
+          "min_eigenvalue": 0.04564859718084335,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            146.6796875,
+            155.58265686035156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.37684518098831177,
+          "ncc": 0.8731889128684998,
+          "step_px": 1.242981655721002,
+          "min_eigenvalue": 0.07594508677721024,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": [
+            155.37704467773438,
+            168.85694885253906
+          ],
+          "status": "untrusted",
+          "reason": "appearance_or_occlusion_disagreement",
+          "fb_error_px": 0.08696157485246658,
+          "ncc": 0.5653615593910217,
+          "step_px": 1.4421496545868429,
+          "min_eigenvalue": 0.057258933782577515,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            151.09095764160156,
+            200.9508819580078
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.49619752168655396,
+          "ncc": 0.7991313338279724,
+          "step_px": 2.160135806318484,
+          "min_eigenvalue": 0.033800214529037476,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            159.47425842285156,
+            232.75828552246094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.005562744103372097,
+          "ncc": 0.9864394664764404,
+          "step_px": 0.5650480125702744,
+          "min_eigenvalue": 0.09683573246002197,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.22195434570312,
+            242.31900024414062
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002362157218158245,
+          "ncc": 0.9938666820526123,
+          "step_px": 0.3281279213241687,
+          "min_eigenvalue": 0.052948325872421265,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            170.39810180664062,
+            138.38970947265625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.16244342923164368,
+          "ncc": 0.9834219217300415,
+          "step_px": 6.825411098268641,
+          "min_eigenvalue": 0.0319991260766983,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            183.58103942871094,
+            158.37384033203125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.14131253957748413,
+          "ncc": 0.9861443042755127,
+          "step_px": 5.457558033912223,
+          "min_eigenvalue": 0.04463808238506317,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": [
+            187.22848510742188,
+            184.37643432617188
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.15518474578857422,
+          "ncc": 0.9781297445297241,
+          "step_px": 4.883430221226894,
+          "min_eigenvalue": 0.07126463204622269,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            167.99899291992188,
+            174.06504821777344
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.7233755588531494,
+          "ncc": 0.9591379761695862,
+          "step_px": 2.101303183078754,
+          "min_eigenvalue": 0.02734428644180298,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            163.7125244140625,
+            211.61358642578125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.09318821877241135,
+          "ncc": 0.994606077671051,
+          "step_px": 1.4472086854369717,
+          "min_eigenvalue": 0.04120372235774994,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.35845947265625,
+            250.7612762451172
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0023500516545027494,
+          "ncc": 0.9981255531311035,
+          "step_px": 0.3920876062312718,
+          "min_eigenvalue": 0.10247127711772919,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.0620574951172,
+            264.715576171875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0002157918643206358,
+          "ncc": 0.9988227486610413,
+          "step_px": 0.31524419645162005,
+          "min_eigenvalue": 0.07260318845510483,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 4,
+      "image_sha256": "e7050e5af67bc9b31f8d1e764d64f3042b7b66437e511bca9ddfa53cc16959a4",
+      "source_time_ms": 364.44444444444446,
+      "reference_time_seconds": 0.36444444444444446,
+      "points": {
+        "head": {
+          "xy": [
+            149.2393341064453,
+            135.38587951660156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.201889768242836,
+          "ncc": 0.8664223551750183,
+          "step_px": 7.982613492999354,
+          "min_eigenvalue": 0.04954789578914642,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            151.45448303222656,
+            141.18621826171875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.5941827297210693,
+          "ncc": 0.8732455968856812,
+          "step_px": 7.38643479066202,
+          "min_eigenvalue": 0.022643087431788445,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": [
+            165.8047637939453,
+            175.38417053222656
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 2.408781051635742,
+          "ncc": 0.8197054862976074,
+          "step_px": 2.375307913565267,
+          "min_eigenvalue": 0.04270433634519577,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            145.9896240234375,
+            144.27557373046875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.3096424639225006,
+          "ncc": 0.8238962292671204,
+          "step_px": 9.834117221787306,
+          "min_eigenvalue": 0.034395482391119,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            150.30911254882812,
+            150.38526916503906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.23758600652217865,
+          "ncc": 0.8921086192131042,
+          "step_px": 6.690751529267474,
+          "min_eigenvalue": 0.04467709735035896,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            147.8590545654297,
+            159.73117065429688
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement",
+          "fb_error_px": 5.132260322570801,
+          "ncc": 0.6411232352256775,
+          "step_px": 4.312896170043369,
+          "min_eigenvalue": 0.049208272248506546,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            149.99073791503906,
+            202.26272583007812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.08944705128669739,
+          "ncc": 0.8861353993415833,
+          "step_px": 1.7121383680665803,
+          "min_eigenvalue": 0.06145612150430679,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            159.22271728515625,
+            233.11814880371094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002742679789662361,
+          "ncc": 0.988821268081665,
+          "step_px": 0.4390609583475497,
+          "min_eigenvalue": 0.08808782696723938,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.23658752441406,
+            242.5174560546875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00017059844685718417,
+          "ncc": 0.9989504814147949,
+          "step_px": 0.1989945694208849,
+          "min_eigenvalue": 0.04687032848596573,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            167.19053649902344,
+            144.90194702148438
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.08427744358778,
+          "ncc": 0.9582412838935852,
+          "step_px": 7.259319051742821,
+          "min_eigenvalue": 0.024186789989471436,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            180.86624145507812,
+            164.378662109375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.31215739250183105,
+          "ncc": 0.9706753492355347,
+          "step_px": 6.5899933698982265,
+          "min_eigenvalue": 0.04285925626754761,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": [
+            184.9508514404297,
+            190.5840301513672
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.06622980535030365,
+          "ncc": 0.9726801514625549,
+          "step_px": 6.612250830844105,
+          "min_eigenvalue": 0.07167079299688339,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            166.83432006835938,
+            181.04415893554688
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.88828444480896,
+          "ncc": 0.7977191805839539,
+          "step_px": 7.075623595281676,
+          "min_eigenvalue": 0.03903725743293762,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.98605346679688,
+            212.5557861328125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.03529611602425575,
+          "ncc": 0.9927460551261902,
+          "step_px": 1.1897480090972155,
+          "min_eigenvalue": 0.05301094427704811,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.29940795898438,
+            251.0147705078125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0019122251542285085,
+          "ncc": 0.9985235333442688,
+          "step_px": 0.2602814293920712,
+          "min_eigenvalue": 0.10884271562099457,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.00521850585938,
+            264.94781494140625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005887994775548577,
+          "ncc": 0.9981235861778259,
+          "step_px": 0.23909311318655496,
+          "min_eigenvalue": 0.07348883897066116,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 5,
+      "image_sha256": "54a6afbf3e569dc174d44ba4505cb4c7bbb40c034aa8175c73d7041366174b46",
+      "source_time_ms": 455.55555555555554,
+      "reference_time_seconds": 0.45555555555555555,
+      "points": {
+        "head": {
+          "xy": [
+            147.26910400390625,
+            141.4281463623047
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.2239364385604858,
+          "ncc": 0.9269704818725586,
+          "step_px": 6.355375306906295,
+          "min_eigenvalue": 0.03292955085635185,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            150.0837860107422,
+            147.32347106933594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.23883505165576935,
+          "ncc": 0.9109336733818054,
+          "step_px": 6.288456277124871,
+          "min_eigenvalue": 0.02219497784972191,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            145.89398193359375,
+            151.86407470703125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.23543903231620789,
+          "ncc": 0.9188849925994873,
+          "step_px": 7.5891036678015995,
+          "min_eigenvalue": 0.034539368003606796,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            151.12232971191406,
+            156.02606201171875
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.3032610416412354,
+          "ncc": 0.7927390933036804,
+          "step_px": 5.699110991504751,
+          "min_eigenvalue": 0.03491850942373276,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            149.2739715576172,
+            203.02548217773438
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0447721928358078,
+          "ncc": 0.9497796297073364,
+          "step_px": 1.046685844473749,
+          "min_eigenvalue": 0.08125773817300797,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            158.93075561523438,
+            233.33644104003906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0011702605988830328,
+          "ncc": 0.9875475764274597,
+          "step_px": 0.36454508245854017,
+          "min_eigenvalue": 0.09715685993432999,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.2506103515625,
+            242.6146240234375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0014747444074600935,
+          "ncc": 0.9992445111274719,
+          "step_px": 0.0981746088977997,
+          "min_eigenvalue": 0.04485401511192322,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            164.9530792236328,
+            151.03627014160156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.1804834008216858,
+          "ncc": 0.9573003649711609,
+          "step_px": 6.529635150695841,
+          "min_eigenvalue": 0.028084468096494675,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            177.33094787597656,
+            170.29786682128906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.021644778549671173,
+          "ncc": 0.9601951241493225,
+          "step_px": 6.89458375190137,
+          "min_eigenvalue": 0.04604349285364151,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": [
+            179.7153778076172,
+            205.56008911132812
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.4989262819290161,
+          "ncc": 0.8595670461654663,
+          "step_px": 15.864820393943992,
+          "min_eigenvalue": 0.07834146171808243,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.49002075195312,
+            213.17552185058594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.23275861144065857,
+          "ncc": 0.9936244487762451,
+          "step_px": 0.7938014953874922,
+          "min_eigenvalue": 0.0717768594622612,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.2386474609375,
+            251.18441772460938
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00047005986561998725,
+          "ncc": 0.99860680103302,
+          "step_px": 0.18019993421150354,
+          "min_eigenvalue": 0.11730071902275085,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            155.9964141845703,
+            265.08062744140625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0003452669770922512,
+          "ncc": 0.9992092251777649,
+          "step_px": 0.1331040053101748,
+          "min_eigenvalue": 0.07872086018323898,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 6,
+      "image_sha256": "b92ed9d204402e5a80dfd9817ab18eeda74eb07e2ade08161a3b3a329d1438a0",
+      "source_time_ms": 546.6666666666667,
+      "reference_time_seconds": 0.5466666666666666,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            149.35646057128906,
+            150.484375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.09077265858650208,
+          "ncc": 0.9648571014404297,
+          "step_px": 3.2435036540388236,
+          "min_eigenvalue": 0.022081708535552025,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            146.02191162109375,
+            155.13450622558594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.09302300959825516,
+          "ncc": 0.9559797048568726,
+          "step_px": 3.2729326791884623,
+          "min_eigenvalue": 0.030246099457144737,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            148.92759704589844,
+            203.35462951660156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007916032336652279,
+          "ncc": 0.9869822859764099,
+          "step_px": 0.4778213819532919,
+          "min_eigenvalue": 0.09210290014743805,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            159.00779724121094,
+            233.37306213378906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.04385686293244362,
+          "ncc": 0.9693942666053772,
+          "step_px": 0.08530250078725031,
+          "min_eigenvalue": 0.09811563789844513,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.31495666503906,
+            242.67935180664062
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00020357764151412994,
+          "ncc": 0.999503493309021,
+          "step_px": 0.09126956763573935,
+          "min_eigenvalue": 0.043581798672676086,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            163.73179626464844,
+            154.76458740234375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0807977169752121,
+          "ncc": 0.9703131318092346,
+          "step_px": 3.9232488657557476,
+          "min_eigenvalue": 0.03172879293560982,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            173.00082397460938,
+            172.28936767578125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.8100698590278625,
+          "ncc": 0.9174304604530334,
+          "step_px": 4.766135610180905,
+          "min_eigenvalue": 0.039428893476724625,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            164.4233856201172,
+            216.4973907470703
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.6655230522155762,
+          "ncc": 0.8893353343009949,
+          "step_px": 3.84352867543373,
+          "min_eigenvalue": 0.08827490359544754,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.22984313964844,
+            251.25315856933594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00108122278470546,
+          "ncc": 0.9995152354240417,
+          "step_px": 0.06930237951962699,
+          "min_eigenvalue": 0.11345725506544113,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            155.98191833496094,
+            265.12359619140625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00016220315592363477,
+          "ncc": 0.9997756481170654,
+          "step_px": 0.045348022365480474,
+          "min_eigenvalue": 0.07927477359771729,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 7,
+      "image_sha256": "dfdd782aa89d50d089f6d2a9255353416546235c4c1978328ad1737440374c77",
+      "source_time_ms": 637.7777777777778,
+      "reference_time_seconds": 0.6377777777777778,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            149.79554748535156,
+            149.2783203125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.03881783038377762,
+          "ncc": 0.9843617081642151,
+          "step_px": 1.2834972642517208,
+          "min_eigenvalue": 0.02463156171143055,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            146.22923278808594,
+            153.75296020507812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.02141891047358513,
+          "ncc": 0.9824804067611694,
+          "step_px": 1.3970152014434114,
+          "min_eigenvalue": 0.03462883085012436,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            148.26513671875,
+            195.43943786621094
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement",
+          "fb_error_px": 8.607826232910156,
+          "ncc": 0.39559853076934814,
+          "step_px": 7.942865512361334,
+          "min_eigenvalue": 0.0934186801314354,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            158.88050842285156,
+            233.38356018066406
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.03704528883099556,
+          "ncc": 0.9814940094947815,
+          "step_px": 0.1277209938401501,
+          "min_eigenvalue": 0.09179489314556122,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.36024475097656,
+            242.65521240234375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0004930265713483095,
+          "ncc": 0.9997406601905823,
+          "step_px": 0.05131979703477375,
+          "min_eigenvalue": 0.041076693683862686,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            163.8828125,
+            154.5470428466797
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.9187784790992737,
+          "ncc": 0.9345301389694214,
+          "step_px": 0.26482359607639366,
+          "min_eigenvalue": 0.026024937629699707,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            171.7349090576172,
+            171.89907836914062
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.4334159791469574,
+          "ncc": 0.9133668541908264,
+          "step_px": 1.3247136747015775,
+          "min_eigenvalue": 0.03362991288304329,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.46484375,
+            212.19615173339844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.1273811310529709,
+          "ncc": 0.862877607345581,
+          "step_px": 4.726155235467317,
+          "min_eigenvalue": 0.05721228942275047,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.22312927246094,
+            251.25828552246094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0006852878141216934,
+          "ncc": 0.9998541474342346,
+          "step_px": 0.008447583142966775,
+          "min_eigenvalue": 0.11556030064821243,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            155.98155212402344,
+            265.1241760253906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.000274658203125,
+          "ncc": 0.9999905824661255,
+          "step_px": 0.0006857972733839182,
+          "min_eigenvalue": 0.07763264328241348,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 8,
+      "image_sha256": "dfa015c66dfc30669fe0593bd0185101fda89d6673ff1eada02f0b3fd8ab9be8",
+      "source_time_ms": 728.8888888888889,
+      "reference_time_seconds": 0.7288888888888889,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            151.1501007080078,
+            144.03213500976562
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.14641384780406952,
+          "ncc": 0.90538090467453,
+          "step_px": 5.418235382819263,
+          "min_eigenvalue": 0.022276032716035843,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            146.3720245361328,
+            147.8707733154297
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.4424227476119995,
+          "ncc": 0.9532772898674011,
+          "step_px": 5.883919789397392,
+          "min_eigenvalue": 0.026408204808831215,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            158.96664428710938,
+            233.27459716796875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001502816448919475,
+          "ncc": 0.9944459199905396,
+          "step_px": 0.13889681510775953,
+          "min_eigenvalue": 0.0899115726351738,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.313720703125,
+            242.55772399902344
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0011884236009791493,
+          "ncc": 0.9992903470993042,
+          "step_px": 0.10802071935716034,
+          "min_eigenvalue": 0.04067719727754593,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            165.6306915283203,
+            149.48065185546875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.24529530107975006,
+          "ncc": 0.9673111438751221,
+          "step_px": 5.359421496156586,
+          "min_eigenvalue": 0.022673919796943665,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            171.2902069091797,
+            166.33384704589844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.334043025970459,
+          "ncc": 0.8977238535881042,
+          "step_px": 5.582970506999022,
+          "min_eigenvalue": 0.04507870227098465,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.5513458251953,
+            211.76626586914062
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.5571702718734741,
+          "ncc": 0.9839882254600525,
+          "step_px": 0.4385025259924758,
+          "min_eigenvalue": 0.07492648810148239,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.24807739257812,
+            251.20120239257812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 7.62939453125e-05,
+          "ncc": 0.9996728301048279,
+          "step_px": 0.06229680902421614,
+          "min_eigenvalue": 0.11686129868030548,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.01441955566406,
+            265.07757568359375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00015560972678940743,
+          "ncc": 0.9998103976249695,
+          "step_px": 0.0570250814838237,
+          "min_eigenvalue": 0.0776287242770195,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 9,
+      "image_sha256": "db617706f98c5ba108ade1179638b5505658b44c58d4ea6c0d5c3963931c75a7",
+      "source_time_ms": 820.0,
+      "reference_time_seconds": 0.8200000000000001,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            152.6517333984375,
+            137.38417053222656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.11871002614498138,
+          "ncc": 0.8569629192352295,
+          "step_px": 6.815448072693997,
+          "min_eigenvalue": 0.02512161247432232,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            146.7142791748047,
+            138.9141845703125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.6171226501464844,
+          "ncc": 0.8715923428535461,
+          "step_px": 8.963125581338927,
+          "min_eigenvalue": 0.028276432305574417,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            159.2686309814453,
+            232.99761962890625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0016463943757116795,
+          "ncc": 0.986237645149231,
+          "step_px": 0.4097713029252606,
+          "min_eigenvalue": 0.09350494295358658,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.2427215576172,
+            242.42959594726562
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001221942249685526,
+          "ncc": 0.9984104633331299,
+          "step_px": 0.14648438930511404,
+          "min_eigenvalue": 0.04246441274881363,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            168.44322204589844,
+            142.86033630371094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.036607105284929276,
+          "ncc": 0.9586453437805176,
+          "step_px": 7.192976151576941,
+          "min_eigenvalue": 0.02363716997206211,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": [
+            172.8290557861328,
+            159.8828887939453
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.49614679813385,
+          "ncc": 0.934456467628479,
+          "step_px": 6.631961869201452,
+          "min_eigenvalue": 0.03516049683094025,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.8810272216797,
+            211.07981872558594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.024661079049110413,
+          "ncc": 0.9896551370620728,
+          "step_px": 0.7615113289257602,
+          "min_eigenvalue": 0.08448125422000885,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.3155059814453,
+            250.9923553466797
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0002915187506005168,
+          "ncc": 0.9984567761421204,
+          "step_px": 0.21946230468379818,
+          "min_eigenvalue": 0.11569520086050034,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.03265380859375,
+            264.9236145019531
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0003204345703125,
+          "ncc": 0.998990535736084,
+          "step_px": 0.1550372001555799,
+          "min_eigenvalue": 0.0785587951540947,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 10,
+      "image_sha256": "dc13188e7d3d8beac9c6409c8f09e13ff48152911b4a867b43fc9784e6a3f88b",
+      "source_time_ms": 911.1111111111111,
+      "reference_time_seconds": 0.9111111111111111,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            154.26901245117188,
+            130.2696533203125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.20786450803279877,
+          "ncc": 0.8267754912376404,
+          "step_px": 7.296022662590546,
+          "min_eigenvalue": 0.018022429198026657,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            148.7625732421875,
+            129.92796325683594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.15192259848117828,
+          "ncc": 0.8471342325210571,
+          "step_px": 9.216706683043355,
+          "min_eigenvalue": 0.027425847947597504,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            159.5964813232422,
+            232.49954223632812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.006985276471823454,
+          "ncc": 0.9798201322555542,
+          "step_px": 0.5962943363924827,
+          "min_eigenvalue": 0.0915202647447586,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.24053955078125,
+            242.11837768554688
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0027860142290592194,
+          "ncc": 0.9960241317749023,
+          "step_px": 0.31122591084463463,
+          "min_eigenvalue": 0.04494041949510574,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            171.80526733398438,
+            136.59812927246094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.10490445792675018,
+          "ncc": 0.9709072709083557,
+          "step_px": 7.1076427471685575,
+          "min_eigenvalue": 0.035551395267248154,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            163.6331787109375,
+            209.62208557128906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.048030052334070206,
+          "ncc": 0.9884321689605713,
+          "step_px": 1.6403407609180056,
+          "min_eigenvalue": 0.08105993270874023,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.38479614257812,
+            250.63681030273438
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0021620686165988445,
+          "ncc": 0.9981335401535034,
+          "step_px": 0.36223390882672113,
+          "min_eigenvalue": 0.11882425099611282,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.07553100585938,
+            264.59906005859375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0007575800409540534,
+          "ncc": 0.9977351427078247,
+          "step_px": 0.3273744656347973,
+          "min_eigenvalue": 0.07654135674238205,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 11,
+      "image_sha256": "7308d3b02434513fa8c0c738bc59b520cc20174ee238008a761f18be931eedf6",
+      "source_time_ms": 1002.2222222222223,
+      "reference_time_seconds": 1.0022222222222221,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            155.93870544433594,
+            124.86265563964844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.04873375967144966,
+          "ncc": 0.7540247440338135,
+          "step_px": 5.658930871651262,
+          "min_eigenvalue": 0.02614627219736576,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            150.62283325195312,
+            123.81971740722656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.3197172284126282,
+          "ncc": 0.9479638934135437,
+          "step_px": 6.385235677968618,
+          "min_eigenvalue": 0.038700953125953674,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.10140991210938,
+            231.8707275390625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.006044984329491854,
+          "ncc": 0.9825906753540039,
+          "step_px": 0.8064495045275115,
+          "min_eigenvalue": 0.0850212350487709,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.1571807861328,
+            241.65850830078125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00025257791276089847,
+          "ncc": 0.9958857893943787,
+          "step_px": 0.46736338612307665,
+          "min_eigenvalue": 0.04824124276638031,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            174.70399475097656,
+            132.51718139648438
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.004898166283965111,
+          "ncc": 0.9764670729637146,
+          "step_px": 5.005672402830594,
+          "min_eigenvalue": 0.03929645195603371,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            164.89944458007812,
+            208.10076904296875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.08121369034051895,
+          "ncc": 0.9880443215370178,
+          "step_px": 1.9793517198039945,
+          "min_eigenvalue": 0.055373549461364746,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.4699249267578,
+            250.1496124267578
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002860849956050515,
+          "ncc": 0.9977372884750366,
+          "step_px": 0.4945792962225429,
+          "min_eigenvalue": 0.107965849339962,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.05328369140625,
+            264.1788024902344
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0019061275525018573,
+          "ncc": 0.997776985168457,
+          "step_px": 0.42084601312559794,
+          "min_eigenvalue": 0.07211677730083466,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 12,
+      "image_sha256": "74057c006e66343241bc478d4e177a519bed3fed2dcbe0bb8359a5dc1b38e4ff",
+      "source_time_ms": 1093.3333333333335,
+      "reference_time_seconds": 1.0933333333333333,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            156.58599853515625,
+            122.48428344726562
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.025849847123026848,
+          "ncc": 0.9065003395080566,
+          "step_px": 2.4648818695676957,
+          "min_eigenvalue": 0.033828094601631165,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            151.32203674316406,
+            121.3814697265625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.2386784702539444,
+          "ncc": 0.9829269051551819,
+          "step_px": 2.5365207025343284,
+          "min_eigenvalue": 0.02988368086516857,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.3788604736328,
+            231.3042449951172
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001828828128054738,
+          "ncc": 0.9798639416694641,
+          "step_px": 0.630778318178759,
+          "min_eigenvalue": 0.09670207649469376,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.0732879638672,
+            241.2523193359375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0007002437487244606,
+          "ncc": 0.9977017045021057,
+          "step_px": 0.4147619567758462,
+          "min_eigenvalue": 0.046537481248378754,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            176.28224182128906,
+            131.1017608642578
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.13616535067558289,
+          "ncc": 0.9509502053260803,
+          "step_px": 2.1199714851852405,
+          "min_eigenvalue": 0.0375993512570858,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            165.89816284179688,
+            207.2305145263672
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.015433304943144321,
+          "ncc": 0.9945647120475769,
+          "step_px": 1.3246815051007321,
+          "min_eigenvalue": 0.04745440185070038,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.53724670410156,
+            249.67320251464844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0017889263108372688,
+          "ncc": 0.9979667663574219,
+          "step_px": 0.4811430411642507,
+          "min_eigenvalue": 0.10771281272172928,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.00747680664062,
+            263.8150634765625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005733732250519097,
+          "ncc": 0.9978262186050415,
+          "step_px": 0.3666119757440006,
+          "min_eigenvalue": 0.07688426971435547,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 13,
+      "image_sha256": "3dd1a6574b3349496aba1ea4b2a50ec4445d63c3e3178794546b9e27f3174d18",
+      "source_time_ms": 1184.4444444444446,
+      "reference_time_seconds": 1.1844444444444444,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            156.93153381347656,
+            121.62307739257812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.030331989750266075,
+          "ncc": 0.9358347654342651,
+          "step_px": 0.9279388434559172,
+          "min_eigenvalue": 0.027271561324596405,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            151.71563720703125,
+            120.5716552734375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.05192258581519127,
+          "ncc": 0.986431896686554,
+          "step_px": 0.9004003407632674,
+          "min_eigenvalue": 0.0338643379509449,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.4474334716797,
+            231.23829650878906
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00016853882698342204,
+          "ncc": 0.9966512322425842,
+          "step_px": 0.09513915550449044,
+          "min_eigenvalue": 0.09020631015300751,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.08615112304688,
+            241.21011352539062
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001258271950064227,
+          "ncc": 0.9995369911193848,
+          "step_px": 0.04412245809109782,
+          "min_eigenvalue": 0.05099039152264595,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            177.66038513183594,
+            130.89695739746094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.2060011774301529,
+          "ncc": 0.946446418762207,
+          "step_px": 1.3932779494476755,
+          "min_eigenvalue": 0.03393201902508736,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            166.14991760253906,
+            207.00341796875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0015443824231624603,
+          "ncc": 0.9965861439704895,
+          "step_px": 0.3390476456752541,
+          "min_eigenvalue": 0.039979591965675354,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.53756713867188,
+            249.60372924804688
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005446340655907989,
+          "ncc": 0.9996840357780457,
+          "step_px": 0.0694740055747877,
+          "min_eigenvalue": 0.10107730329036713,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.03138732910156,
+            263.73681640625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0003452669770922512,
+          "ncc": 0.9996429681777954,
+          "step_px": 0.08181880649853257,
+          "min_eigenvalue": 0.07613305002450943,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 14,
+      "image_sha256": "02af9699b8e76696a43c9c2191ff657d65123069fb46456f70e93cb12686f632",
+      "source_time_ms": 1275.5555555555557,
+      "reference_time_seconds": 1.2755555555555556,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            157.44235229492188,
+            121.2906494140625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.006576325744390488,
+          "ncc": 0.9683131575584412,
+          "step_px": 0.6094619609836859,
+          "min_eigenvalue": 0.03657803311944008,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            152.18017578125,
+            120.27019500732422
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0022057397291064262,
+          "ncc": 0.988762378692627,
+          "step_px": 0.5537818875534658,
+          "min_eigenvalue": 0.03808150812983513,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.4554901123047,
+            231.28016662597656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0002446169964969158,
+          "ncc": 0.9979895949363708,
+          "step_px": 0.04263820084683902,
+          "min_eigenvalue": 0.0930943563580513,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.080322265625,
+            241.246337890625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 3.0517578125e-05,
+          "ncc": 0.9996593594551086,
+          "step_px": 0.03669032863682122,
+          "min_eigenvalue": 0.05060327425599098,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            178.65406799316406,
+            130.6035919189453
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.18075472116470337,
+          "ncc": 0.981802225112915,
+          "step_px": 1.0360834584539758,
+          "min_eigenvalue": 0.026142630726099014,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            166.2318572998047,
+            206.95791625976562
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0003070771927013993,
+          "ncc": 0.9987112283706665,
+          "step_px": 0.09372576758011121,
+          "min_eigenvalue": 0.04298257455229759,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.5392608642578,
+            249.59095764160156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 4.825252835871652e-05,
+          "ncc": 0.99988853931427,
+          "step_px": 0.01288342491554195,
+          "min_eigenvalue": 0.09706997126340866,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.0456085205078,
+            263.7205810546875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001502816448919475,
+          "ncc": 0.9999563694000244,
+          "step_px": 0.0215830703416166,
+          "min_eigenvalue": 0.07447589188814163,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 15,
+      "image_sha256": "57cd80c1bce0c7d951af27e2f39fdaa44ef05741d5ebcaac6068abaaf6f6f20d",
+      "source_time_ms": 1366.6666666666667,
+      "reference_time_seconds": 1.3666666666666667,
+      "points": {
+        "head": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            157.600341796875,
+            121.14494323730469
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0031906652729958296,
+          "ncc": 0.988624095916748,
+          "step_px": 0.2149208521125286,
+          "min_eigenvalue": 0.0376083105802536,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            152.32723999023438,
+            120.15924835205078
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0015259551582857966,
+          "ncc": 0.9958105683326721,
+          "step_px": 0.1842200908711178,
+          "min_eigenvalue": 0.044625815004110336,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.4781036376953,
+            231.27626037597656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00013647876039613038,
+          "ncc": 0.999110996723175,
+          "step_px": 0.022948427389582526,
+          "min_eigenvalue": 0.09551770985126495,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.toe": {
+          "xy": [
+            139.07354736328125,
+            241.26986694335938
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00018437264952808619,
+          "ncc": 0.9997463226318359,
+          "step_px": 0.024485008154876097,
+          "min_eigenvalue": 0.05029904097318649,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.shoulder": {
+          "xy": [
+            179.00787353515625,
+            130.3529815673828
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.017457662150263786,
+          "ncc": 0.9871877431869507,
+          "step_px": 0.43357111280004046,
+          "min_eigenvalue": 0.024355942383408546,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.elbow": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            166.29296875,
+            206.92132568359375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00033776770578697324,
+          "ncc": 0.9991626143455505,
+          "step_px": 0.07122836239563525,
+          "min_eigenvalue": 0.04032038897275925,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.5458221435547,
+            249.57958984375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 8.897326188161969e-05,
+          "ncc": 0.9999335408210754,
+          "step_px": 0.013125441478502331,
+          "min_eigenvalue": 0.09694954752922058,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.toe": {
+          "xy": [
+            156.04942321777344,
+            263.70703125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001220703125,
+          "ncc": 0.999913215637207,
+          "step_px": 0.014076545112269695,
+          "min_eigenvalue": 0.07373454421758652,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    }
+  ],
+  "semantic_joint_detector": false,
+  "production_pass": false,
+  "anatomy_pass": false,
+  "accuracy_probability": null,
+  "future_reference_coordinates_used": false,
+  "scope": "Seeded image correspondences only. Numerical checks do not establish joint/limb identity. Unknown/occluded/lost points remain unapproved; reseed from independently inspected image."
+}

@@ -1,3 +1,9 @@
+# Current image-joint tools — v0.30
+
+See [know-how and reproducible commands](../../../research/sprite-animation/joint-tracking-ro-v30/KNOW-HOW.md). `joint-image-track.py --case CASE --root REPO --out DIR --bidirectional` proposes pixel correspondences from explicit labelled keys. `build-joint-grid-review.py --case CASE --tracks REPORT --root REPO --out HTML` builds an embedded Canvas reviewer; optional `--truth` is bound source projection only. `joint-track-reference-review.py --tracks REPORT --truth TRUTH --out REPORT` flags source/image/phase and ownership disagreement without auto-renaming or production approval. `pose-image-proposals.py` runs optional local DWPose ONNX CPU proposals; current measured inference does not pass automatic accuracy review. Dependencies: NumPy, OpenCV and Pillow. No weights bundled, no universal semantic accuracy claim. After editing images or labels rerun and rebuild; unknowns block production.
+
+Historical adapters below retain their limited scope and rejection records. Do not use old own attack rigs as new conditioning or positive references.
+
 # Executable modular sprite workflow — v0.7
 
 Latest v0.23 diagnostics: `motion-mechanics.py CASE --root REPO --out REPORT` compares bound source hand-local weapon transforms or hand-sweep/tail observations, visible grip axes, stance/balance review and owned paired-foot/lead/root-relative travel. Case examples and source/negative/rejected controls are in [v23](../../../research/sprite-animation/combat-gait-study-v23/README.md). Missing observations stay unknown; SHA-bound user rejection overrides relabeled case status. Always use `--require-production` for release enforcement (current studies exit2). No automatic image-semantic owner detector or accepted mass-production adapter is claimed.

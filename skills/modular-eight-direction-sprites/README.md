@@ -1,7 +1,8 @@
 # Eight-direction sprites with replaceable parts
 
-Research and reusable workflow draft v0.3, revised 2026-10-11.
+Research and reusable workflow draft v0.30, revised 2026-10-13.
 
+- [Image-joint grid and RO/preset evidence](references/image-joint-tracking-and-ro-coverage.md): actual-image tracking, unknown-first ownership and measured source-keyframe limits.
 - [SKILL.md](SKILL.md): concise production procedure and quality gates.
 - [Research dossier](references/research.md): evidence, approach comparison, limitations, and recommendations.
 - [Source catalog](references/sources.md): repositories, papers, official docs, and creator tutorials with review levels.

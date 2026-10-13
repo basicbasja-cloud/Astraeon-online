@@ -1,4 +1,8 @@
-## Latest: fresh RPG motion research/dataset/know-how v29 — optional dash, old own attacks excluded
+## Latest: image-joint review, RO coverage and current presets v30
+
+[Grid tool, actual-image tracking experiments, source-bound review, 85indexed RO families, current23joint presets and reusable know-how](joint-tracking-ro-v30/README.md). Tracking remains conservative proposals/unknowns, not universal anatomy approval. [Reusable skill](../../skills/modular-eight-direction-sprites/references/image-joint-tracking-and-ro-coverage.md). Exact acceptedW protected; old own slash references excluded.
+
+## Historical: fresh RPG motion research/dataset/know-how v29 — optional dash, old own attacks excluded
 
 [92reference leads,99action specifications,71acquired motion candidates including6optional dash,639sourcepose samples,745nativeGIFexposures and detailed reusable know-how](rpg-motion-foundation-v29/README.md). The latest request replaces the slash-onlynexttest with broad RPG research. Native clocks, evaluated external bones, observed pixels and proposed recipes remain separate. Actual source files/code/primary methods are studied; no old own slash conditions new motion. Corpus audit does not approve art/anatomy/contacts/parts/training/production. Exact acceptedW is unchanged. [Reusable skill routing](../../skills/modular-eight-direction-sprites/references/rpg-motion-foundation.md).
 

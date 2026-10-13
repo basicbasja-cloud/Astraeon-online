@@ -1,0 +1,3872 @@
+{
+  "schema": "image-correspondence-proposals-v1",
+  "case_sha256": "2d82c4bd8bc21fe843141f4a5aee33eed8680045af47a5d9bc27defcea2ffe41",
+  "reference_source_sha256": "0815dd05531cae9bc313fc9c0ba81330bc72f8e19ec45f73738e74ddc5796a43",
+  "opencv": "4.11.0",
+  "thresholds": {
+    "window": 21,
+    "levels": 3,
+    "min_eigen": 0.0001,
+    "fb_error_px": 1.0,
+    "ncc_min": 0.65,
+    "max_step_px": 32.0,
+    "patch_radius": 7,
+    "counterpart_collision_px": 4.0
+  },
+  "canvas": [
+    320,
+    320
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "image_sha256": "9c451aa796280762154132e4c6201aa1e61191ad9709bbb3534aeb09edd9137c",
+      "source_time_ms": 0.0,
+      "reference_time_seconds": 0.0,
+      "points": {
+        "head": {
+          "xy": [
+            158.03180694580078,
+            112.17721939086914
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "neck": {
+          "xy": [
+            159.62034225463867,
+            118.84366989135742
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "pelvis": {
+          "xy": [
+            164.8825454711914,
+            168.78795623779297
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.shoulder": {
+          "xy": [
+            153.30010414123535,
+            115.83391189575195
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.elbow": {
+          "xy": [
+            155.1761531829834,
+            132.54005432128906
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.64000129699707,
+            156.41075134277344
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.hip": {
+          "xy": [
+            155.37797927856445,
+            166.00515365600586
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.knee": {
+          "xy": [
+            155.4456615447998,
+            197.6688575744629
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.4592514038086,
+            231.32969856262207
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.toe": {
+          "xy": [
+            139.04760360717773,
+            241.27840518951416
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.shoulder": {
+          "xy": [
+            176.96882247924805,
+            126.6604232788086
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.elbow": {
+          "xy": [
+            188.55052947998047,
+            149.2386817932129
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.wrist": {
+          "xy": [
+            188.21548461914062,
+            175.67441940307617
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.hip": {
+          "xy": [
+            167.51264572143555,
+            170.27483940124512
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.knee": {
+          "xy": [
+            166.25982284545898,
+            209.0519618988037
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.54526901245117,
+            249.58802223205566
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.toe": {
+          "xy": [
+            156.035737991333,
+            263.7173080444336
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 1,
+      "image_sha256": "6e123a37420c540f090b7d366cff0cc97128d2cf2115eef34016cb732be5e0b4",
+      "source_time_ms": 91.11111111111111,
+      "reference_time_seconds": 0.09111111111111111,
+      "points": {
+        "head": {
+          "xy": [
+            156.60752868652344,
+            114.25714874267578
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.40674033761024475,
+          "ncc": 0.8105875849723816,
+          "step_px": 2.520848005802193,
+          "min_eigenvalue": 0.0520147942006588,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            158.49703979492188,
+            120.7810287475586
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.18424353003501892,
+          "ncc": 0.9040426015853882,
+          "step_px": 2.23945702207185,
+          "min_eigenvalue": 0.023079385980963707,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 7.9177951628936
+        },
+        "pelvis": {
+          "xy": [
+            164.99838256835938,
+            169.36520385742188
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.004977663978934288,
+          "ncc": 0.9668428301811218,
+          "step_px": 0.5887555073606869,
+          "min_eigenvalue": 0.03081553988158703,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            151.93324279785156,
+            118.28208923339844
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.5205817222595215,
+          "ncc": 0.8653539419174194,
+          "step_px": 2.8039048144690586,
+          "min_eigenvalue": 0.0492703877389431,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            154.27272033691406,
+            133.82830810546875
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.0057373857125639915,
+          "ncc": 0.9552074074745178,
+          "step_px": 1.573463923898551,
+          "min_eigenvalue": 0.05918771028518677,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.48629760742188,
+            156.44827270507812
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.010354614816606045,
+          "ncc": 0.9748237729072571,
+          "step_px": 0.158217182436762,
+          "min_eigenvalue": 0.06546580046415329,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 38.73956058384793
+        },
+        "right.hip": {
+          "xy": [
+            155.3568572998047,
+            166.47900390625
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.04018760845065117,
+          "ncc": 0.9429453611373901,
+          "step_px": 0.4743207750490829,
+          "min_eigenvalue": 0.06034442409873009,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            154.5675811767578,
+            198.31321716308594
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.007372443098574877,
+          "ncc": 0.9766963124275208,
+          "step_px": 1.0891392988003061,
+          "min_eigenvalue": 0.01547799538820982,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 4.560454921132335
+        },
+        "right.ankle": {
+          "xy": [
+            160.26097106933594,
+            231.72457885742188
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.0005568935303017497,
+          "ncc": 0.9871408939361572,
+          "step_px": 0.44186597318617904,
+          "min_eigenvalue": 0.09720542281866074,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.7404279409218295
+        },
+        "right.toe": {
+          "xy": [
+            138.97801208496094,
+            241.6269989013672
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001096192980185151,
+          "ncc": 0.9974546432495117,
+          "step_px": 0.28886423669791084,
+          "min_eigenvalue": 0.051352642476558685,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.2049692727893735
+        },
+        "left.shoulder": {
+          "xy": [
+            176.00636291503906,
+            128.40774536132812
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.010350734926760197,
+          "ncc": 0.979341983795166,
+          "step_px": 1.8356321578885872,
+          "min_eigenvalue": 0.035598304122686386,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.4378600140046142
+        },
+        "left.elbow": {
+          "xy": [
+            187.81441497802734,
+            150.12738037109375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007378015201538801,
+          "ncc": 0.9956588745117188,
+          "step_px": 1.2634706927853698,
+          "min_eigenvalue": 0.047522079199552536,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.2788293571056154
+        },
+        "left.wrist": {
+          "xy": [
+            188.15525817871094,
+            176.7846221923828
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.03230435773730278,
+          "ncc": 0.995023787021637,
+          "step_px": 1.1118351755143727,
+          "min_eigenvalue": 0.06750472635030746,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 8.607321049047998
+        },
+        "left.hip": {
+          "xy": [
+            167.60459899902344,
+            170.7095947265625
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.001160069485194981,
+          "ncc": 0.9921048879623413,
+          "step_px": 0.4443732644421568,
+          "min_eigenvalue": 0.017489660531282425,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            165.1005096435547,
+            209.3470001220703
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002890725154429674,
+          "ncc": 0.9930853843688965,
+          "step_px": 0.694978014376302,
+          "min_eigenvalue": 0.03876369819045067,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.2348670254247458
+        },
+        "left.ankle": {
+          "xy": [
+            169.65428161621094,
+            249.75013732910156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0037458695005625486,
+          "ncc": 0.9992075562477112,
+          "step_px": 0.28430346899681563,
+          "min_eigenvalue": 0.09675104916095734,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.36136053043114286
+        },
+        "left.toe": {
+          "xy": [
+            156.00128936767578,
+            263.96148681640625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0006005453178659081,
+          "ncc": 0.9974533319473267,
+          "step_px": 0.25074392096218867,
+          "min_eigenvalue": 0.07381514459848404,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.009760581144499512
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 2,
+      "image_sha256": "8b7ed6311a6870195f87874a2187971b6d6dc718495d1e91fe567f7022da9d7b",
+      "source_time_ms": 182.22222222222223,
+      "reference_time_seconds": 0.18222222222222223,
+      "points": {
+        "head": {
+          "xy": [
+            154.1751251220703,
+            119.90263366699219
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.14971831440925598,
+          "ncc": 0.776283860206604,
+          "step_px": 6.1472015690920765,
+          "min_eigenvalue": 0.04169709235429764,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            155.64389038085938,
+            126.01721954345703
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.23263894021511078,
+          "ncc": 0.9371700882911682,
+          "step_px": 5.963065958885303,
+          "min_eigenvalue": 0.02310614474117756,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.647263249433989
+        },
+        "pelvis": {
+          "xy": [
+            165.19039916992188,
+            170.70162963867188
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.027908029034733772,
+          "ncc": 0.9439141750335693,
+          "step_px": 1.3501497117228463,
+          "min_eigenvalue": 0.031747933477163315,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            149.58184814453125,
+            124.90430450439453
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.5294735431671143,
+          "ncc": 0.8690800666809082,
+          "step_px": 7.027289086915182,
+          "min_eigenvalue": 0.04144582152366638,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            152.42959594726562,
+            137.71676635742188
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.012357405386865139,
+          "ncc": 0.906547486782074,
+          "step_px": 4.303163382082916,
+          "min_eigenvalue": 0.05825076624751091,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.74374389648438,
+            156.4005889892578
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.18826651573181152,
+          "ncc": 0.9298759698867798,
+          "step_px": 0.26182499595432945,
+          "min_eigenvalue": 0.06780160218477249,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 31.55970745154054
+        },
+        "right.hip": {
+          "xy": [
+            155.3483428955078,
+            167.4150848388672
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.11399519443511963,
+          "ncc": 0.8543762564659119,
+          "step_px": 0.9361196544726503,
+          "min_eigenvalue": 0.05442632734775543,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            152.7147979736328,
+            199.52633666992188
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.11119113862514496,
+          "ncc": 0.7474293112754822,
+          "step_px": 2.214602568328684,
+          "min_eigenvalue": 0.017240939661860466,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 4.458648315265075
+        },
+        "right.ankle": {
+          "xy": [
+            159.84506225585938,
+            232.33192443847656
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.0032739259768277407,
+          "ncc": 0.9890462756156921,
+          "step_px": 0.7361037942804928,
+          "min_eigenvalue": 0.09612011909484863,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.7473922121623495
+        },
+        "right.toe": {
+          "xy": [
+            139.04690551757812,
+            242.07293701171875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.004650752525776625,
+          "ncc": 0.9927858710289001,
+          "step_px": 0.4439512730922894,
+          "min_eigenvalue": 0.051203105598688126,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.19809836540285547
+        },
+        "left.shoulder": {
+          "xy": [
+            173.55719757080078,
+            132.51397705078125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.06512249261140823,
+          "ncc": 0.9831610321998596,
+          "step_px": 4.792728189575186,
+          "min_eigenvalue": 0.03654932230710983,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.37631528415564314
+        },
+        "left.elbow": {
+          "xy": [
+            186.01447296142578,
+            153.32986450195312
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.020712263882160187,
+          "ncc": 0.9864288568496704,
+          "step_px": 3.690873295701252,
+          "min_eigenvalue": 0.04179292544722557,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.33255368146989067
+        },
+        "left.wrist": {
+          "xy": [
+            187.9388885498047,
+            179.54495239257812
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.1222270280122757,
+          "ncc": 0.985023558139801,
+          "step_px": 2.768797325631351,
+          "min_eigenvalue": 0.06386268883943558,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 8.539171220974762
+        },
+        "left.hip": {
+          "xy": [
+            167.77085876464844,
+            171.97616577148438
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.00570397125557065,
+          "ncc": 0.9749195575714111,
+          "step_px": 1.277436699605961,
+          "min_eigenvalue": 0.01876152865588665,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            164.06068420410156,
+            210.37645721435547
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007408122532069683,
+          "ncc": 0.9948527812957764,
+          "step_px": 1.4795512537763937,
+          "min_eigenvalue": 0.03535260632634163,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.2691930343278899
+        },
+        "left.ankle": {
+          "xy": [
+            169.5757827758789,
+            250.25652313232422
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0016651666956022382,
+          "ncc": 0.997962236404419,
+          "step_px": 0.5130491427666541,
+          "min_eigenvalue": 0.10497375577688217,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.3602100219687211
+        },
+        "left.toe": {
+          "xy": [
+            156.08280181884766,
+            264.397216796875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0006518557784147561,
+          "ncc": 0.9945934414863586,
+          "step_px": 0.4428876276515377,
+          "min_eigenvalue": 0.08150751888751984,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.009292702760453497
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 3,
+      "image_sha256": "a9c41c391097bd8db23826869ea032b65c0acf3070e00ebee4630ae0eec7f542",
+      "source_time_ms": 273.33333333333337,
+      "reference_time_seconds": 0.2733333333333333,
+      "points": {
+        "head": {
+          "xy": [
+            151.384765625,
+            127.69697570800781
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.11212500184774399,
+          "ncc": 0.7972976565361023,
+          "step_px": 8.278760412962445,
+          "min_eigenvalue": 0.06449319422245026,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            152.90467834472656,
+            133.94354248046875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.9469741582870483,
+          "ncc": 0.8646727204322815,
+          "step_px": 8.386291068207266,
+          "min_eigenvalue": 0.027588937431573868,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.3999448626437285
+        },
+        "pelvis": {
+          "xy": [
+            165.38084411621094,
+            173.0469970703125
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.04058282822370529,
+          "ncc": 0.8959457278251648,
+          "step_px": 2.3530868379572363,
+          "min_eigenvalue": 0.03282187134027481,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 14.66433983557464
+        },
+        "right.shoulder": {
+          "xy": [
+            147.123291015625,
+            134.50701904296875
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.17968860268592834,
+          "ncc": 0.8675422072410583,
+          "step_px": 9.912448217541437,
+          "min_eigenvalue": 0.044085822999477386,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            150.92457580566406,
+            143.72288513183594
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.3908824324607849,
+          "ncc": 0.9035184383392334,
+          "step_px": 6.191813010661374,
+          "min_eigenvalue": 0.04564859718084335,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            146.6796875,
+            155.58265686035156
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.37684518098831177,
+          "ncc": 0.8731889128684998,
+          "step_px": 1.242981655721002,
+          "min_eigenvalue": 0.07594508677721024,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 21.406298039402667
+        },
+        "right.hip": {
+          "xy": [
+            155.37704467773438,
+            168.85694885253906
+          ],
+          "status": "untrusted",
+          "reason": "appearance_or_occlusion_disagreement",
+          "fb_error_px": 0.08696157485246658,
+          "ncc": 0.5653615593910217,
+          "step_px": 1.4421496545868429,
+          "min_eigenvalue": 0.057258933782577515,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            151.09095764160156,
+            200.9508819580078
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.49619752168655396,
+          "ncc": 0.7991313338279724,
+          "step_px": 2.160135806318484,
+          "min_eigenvalue": 0.033800214529037476,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 4.32151716686308
+        },
+        "right.ankle": {
+          "xy": [
+            159.47425842285156,
+            232.75828552246094
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.005562744103372097,
+          "ncc": 0.9864394664764404,
+          "step_px": 0.5650480125702744,
+          "min_eigenvalue": 0.09683573246002197,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.7130566759674413
+        },
+        "right.toe": {
+          "xy": [
+            139.14055633544922,
+            242.3793487548828
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002362157218158245,
+          "ncc": 0.9938666820526123,
+          "step_px": 0.3281279213241687,
+          "min_eigenvalue": 0.052948325872421265,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.20265812416081372
+        },
+        "left.shoulder": {
+          "xy": [
+            170.3747100830078,
+            138.50617218017578
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.16244342923164368,
+          "ncc": 0.9834219217300415,
+          "step_px": 6.825411098268641,
+          "min_eigenvalue": 0.0319991260766983,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.2375772293574766
+        },
+        "left.elbow": {
+          "xy": [
+            183.6112518310547,
+            158.21697998046875
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.14131253957748413,
+          "ncc": 0.9861443042755127,
+          "step_px": 5.457558033912223,
+          "min_eigenvalue": 0.04463808238506317,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.3194868332040726
+        },
+        "left.wrist": {
+          "xy": [
+            187.22848510742188,
+            184.37643432617188
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.15518474578857422,
+          "ncc": 0.9781297445297241,
+          "step_px": 4.883430221226894,
+          "min_eigenvalue": 0.07126463204622269,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 8.474878767681604
+        },
+        "left.hip": {
+          "xy": [
+            167.99899291992188,
+            174.06504821777344
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.7233755588531494,
+          "ncc": 0.9591379761695862,
+          "step_px": 2.101303183078754,
+          "min_eigenvalue": 0.02734428644180298,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            163.10667419433594,
+            211.50423431396484
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.09318821877241135,
+          "ncc": 0.994606077671051,
+          "step_px": 1.4472086854369717,
+          "min_eigenvalue": 0.04120372235774994,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.2312796158491894
+        },
+        "left.ankle": {
+          "xy": [
+            169.48702239990234,
+            250.6454849243164
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0023500516545027494,
+          "ncc": 0.9981255531311035,
+          "step_px": 0.3920876062312718,
+          "min_eigenvalue": 0.10247127711772919,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.3460407850810296
+        },
+        "left.toe": {
+          "xy": [
+            156.05990600585938,
+            264.71142578125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0002157918643206358,
+          "ncc": 0.9988227486610413,
+          "step_px": 0.31524419645162005,
+          "min_eigenvalue": 0.07260318845510483,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.009349791092119754
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 4,
+      "image_sha256": "e7050e5af67bc9b31f8d1e764d64f3042b7b66437e511bca9ddfa53cc16959a4",
+      "source_time_ms": 364.44444444444446,
+      "reference_time_seconds": 0.36444444444444446,
+      "points": {
+        "head": {
+          "xy": [
+            149.2393341064453,
+            135.38587951660156
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.201889768242836,
+          "ncc": 0.8664223551750183,
+          "step_px": 7.982613492999354,
+          "min_eigenvalue": 0.04954789578914642,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            151.45448303222656,
+            141.18621826171875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.5941827297210693,
+          "ncc": 0.8732455968856812,
+          "step_px": 7.38643479066202,
+          "min_eigenvalue": 0.022643087431788445,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 5.451633676156267
+        },
+        "pelvis": {
+          "xy": [
+            165.8047637939453,
+            175.38417053222656
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 2.408781051635742,
+          "ncc": 0.8197054862976074,
+          "step_px": 2.375307913565267,
+          "min_eigenvalue": 0.04270433634519577,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            145.9896240234375,
+            144.27557373046875
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.3096424639225006,
+          "ncc": 0.8238962292671204,
+          "step_px": 9.834117221787306,
+          "min_eigenvalue": 0.034395482391119,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            150.30911254882812,
+            150.38526916503906
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.23758600652217865,
+          "ncc": 0.8921086192131042,
+          "step_px": 6.690751529267474,
+          "min_eigenvalue": 0.04467709735035896,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 26.558983887970363
+        },
+        "right.wrist": {
+          "xy": [
+            147.8590545654297,
+            159.73117065429688
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement",
+          "fb_error_px": 5.132260322570801,
+          "ncc": 0.6411232352256775,
+          "step_px": 4.312896170043369,
+          "min_eigenvalue": 0.049208272248506546,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            149.99073791503906,
+            202.26272583007812
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.08944705128669739,
+          "ncc": 0.8861353993415833,
+          "step_px": 1.7121383680665803,
+          "min_eigenvalue": 0.06145612150430679,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 4.721119831138193
+        },
+        "right.ankle": {
+          "xy": [
+            159.22271728515625,
+            233.11814880371094
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.002742679789662361,
+          "ncc": 0.988821268081665,
+          "step_px": 0.4390609583475497,
+          "min_eigenvalue": 0.08808782696723938,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.651870872435323
+        },
+        "right.toe": {
+          "xy": [
+            139.15284729003906,
+            242.57833862304688
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00017059844685718417,
+          "ncc": 0.9989504814147949,
+          "step_px": 0.1989945694208849,
+          "min_eigenvalue": 0.04687032848596573,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.20706630805820536
+        },
+        "left.shoulder": {
+          "xy": [
+            167.14251708984375,
+            144.9963150024414
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.08427744358778,
+          "ncc": 0.9582412838935852,
+          "step_px": 7.259319051742821,
+          "min_eigenvalue": 0.024186789989471436,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.21176571476868364
+        },
+        "left.elbow": {
+          "xy": [
+            180.92432403564453,
+            164.07566833496094
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.31215739250183105,
+          "ncc": 0.9706753492355347,
+          "step_px": 6.5899933698982265,
+          "min_eigenvalue": 0.04285925626754761,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.6170212751564823
+        },
+        "left.wrist": {
+          "xy": [
+            184.9508514404297,
+            190.5840301513672
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.06622980535030365,
+          "ncc": 0.9726801514625549,
+          "step_px": 6.612250830844105,
+          "min_eigenvalue": 0.07167079299688339,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 7.8132361408701945
+        },
+        "left.hip": {
+          "xy": [
+            166.83432006835938,
+            181.04415893554688
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.88828444480896,
+          "ncc": 0.7977191805839539,
+          "step_px": 7.075623595281676,
+          "min_eigenvalue": 0.03903725743293762,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.3698959350586,
+            212.4657745361328
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.03529611602425575,
+          "ncc": 0.9927460551261902,
+          "step_px": 1.1897480090972155,
+          "min_eigenvalue": 0.05301094427704811,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.2453950240058578
+        },
+        "left.ankle": {
+          "xy": [
+            169.42669677734375,
+            250.89498138427734
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0019122251542285085,
+          "ncc": 0.9985235333442688,
+          "step_px": 0.2602814293920712,
+          "min_eigenvalue": 0.10884271562099457,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.34958190683527596
+        },
+        "left.toe": {
+          "xy": [
+            156.0029296875,
+            264.94329833984375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005887994775548577,
+          "ncc": 0.9981235861778259,
+          "step_px": 0.23909311318655496,
+          "min_eigenvalue": 0.07348883897066116,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.010126871018550499
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 5,
+      "image_sha256": "54a6afbf3e569dc174d44ba4505cb4c7bbb40c034aa8175c73d7041366174b46",
+      "source_time_ms": 455.55555555555554,
+      "reference_time_seconds": 0.45555555555555555,
+      "points": {
+        "head": {
+          "xy": [
+            142.06164360046387,
+            143.16171646118164
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "neck": {
+          "xy": [
+            145.87167739868164,
+            145.81417083740234
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "pelvis": {
+          "xy": [
+            167.16167449951172,
+            172.02292442321777
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.shoulder": {
+          "xy": [
+            138.75922203063965,
+            134.0875244140625
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.elbow": {
+          "xy": [
+            147.07088470458984,
+            132.08139419555664
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.wrist": {
+          "xy": [
+            146.93392753601074,
+            150.2957534790039
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.hip": {
+          "xy": [
+            157.32940673828125,
+            170.88854789733887
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.knee": {
+          "xy": [
+            144.37206268310547,
+            201.4850616455078
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.49718856811523,
+            232.78855323791504
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.toe": {
+          "xy": [
+            139.085054397583,
+            242.73637294769287
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.shoulder": {
+          "xy": [
+            164.95439529418945,
+            151.41061782836914
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.elbow": {
+          "xy": [
+            177.5006866455078,
+            169.7508430480957
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.wrist": {
+          "xy": [
+            178.16896438598633,
+            195.66740036010742
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.hip": {
+          "xy": [
+            169.76390838623047,
+            176.78388595581055
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.knee": {
+          "xy": [
+            161.25301361083984,
+            213.00134658813477
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.50017929077148,
+            250.94248294830322
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.toe": {
+          "xy": [
+            155.99065780639648,
+            265.0718402862549
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 6,
+      "image_sha256": "b92ed9d204402e5a80dfd9817ab18eeda74eb07e2ade08161a3b3a329d1438a0",
+      "source_time_ms": 546.6666666666667,
+      "reference_time_seconds": 0.5466666666666666,
+      "points": {
+        "head": {
+          "xy": [
+            141.27207946777344,
+            147.53297424316406
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.10173057019710541,
+          "ncc": 0.976683497428894,
+          "step_px": 4.441993484481159,
+          "min_eigenvalue": 0.027741901576519012,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            145.3973846435547,
+            149.58274841308594
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.03710632026195526,
+          "ncc": 0.9654110074043274,
+          "step_px": 3.7983062753694767,
+          "min_eigenvalue": 0.027739984914660454,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 3.6023064744364013
+        },
+        "pelvis": {
+          "xy": [
+            163.68312072753906,
+            177.31520080566406
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.1731646060943604,
+          "ncc": 0.7785646915435791,
+          "step_px": 6.333129214906639,
+          "min_eigenvalue": 0.04622422158718109,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            140.1463165283203,
+            136.27919006347656
+          ],
+          "status": "untrusted",
+          "reason": "appearance_or_occlusion_disagreement",
+          "fb_error_px": 0.2141409069299698,
+          "ncc": 0.5178746581077576,
+          "step_px": 2.5937288725534784,
+          "min_eigenvalue": 0.06864598393440247,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            146.32363891601562,
+            134.19015502929688
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.05002353712916374,
+          "ncc": 0.9361870288848877,
+          "step_px": 2.2372412749765536,
+          "min_eigenvalue": 0.037662532180547714,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 17.162178922063283
+        },
+        "right.wrist": {
+          "xy": [
+            146.7289581298828,
+            153.6103515625
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.33282458782196045,
+          "ncc": 0.9702177047729492,
+          "step_px": 3.3209295253835807,
+          "min_eigenvalue": 0.027387138456106186,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": [
+            156.95159912109375,
+            172.36602783203125
+          ],
+          "status": "untrusted",
+          "reason": "appearance_or_occlusion_disagreement",
+          "fb_error_px": 0.3108147382736206,
+          "ncc": 0.5703060030937195,
+          "step_px": 1.5250198533210984,
+          "min_eigenvalue": 0.045975785702466965,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            143.8677978515625,
+            201.7158966064453
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.003753662109375,
+          "ncc": 0.9920885562896729,
+          "step_px": 0.5545879547214092,
+          "min_eigenvalue": 0.0703241378068924,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.2176742553711,
+            232.95791625976562
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.05224106088280678,
+          "ncc": 0.9425026774406433,
+          "step_px": 0.06360289437322292,
+          "min_eigenvalue": 0.10233992338180542,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.6751292087717053
+        },
+        "right.toe": {
+          "xy": [
+            139.16863250732422,
+            242.7758026123047
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.000617179844994098,
+          "ncc": 0.9991914629936218,
+          "step_px": 0.09504350844087502,
+          "min_eigenvalue": 0.046201564371585846,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.06707819382190618
+        },
+        "left.shoulder": {
+          "xy": [
+            163.74977111816406,
+            155.25086975097656
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.06521620601415634,
+          "ncc": 0.9736819863319397,
+          "step_px": 4.024755176970999,
+          "min_eigenvalue": 0.02765505015850067,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 3.2898741899399373
+        },
+        "left.elbow": {
+          "xy": [
+            173.29397583007812,
+            172.21743774414062
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.5082880854606628,
+          "ncc": 0.9294065833091736,
+          "step_px": 4.876525943662153,
+          "min_eigenvalue": 0.03877726197242737,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 7.231613726622031
+        },
+        "left.wrist": {
+          "xy": [
+            177.55433654785156,
+            197.8831329345703
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement,point_on_transparent_background",
+          "fb_error_px": 13.145530700683594,
+          "ncc": 0.07557866722345352,
+          "step_px": 2.2993995348669105,
+          "min_eigenvalue": 0.04527386650443077,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            165.95703125,
+            182.58946228027344
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 9.388456344604492,
+          "ncc": 0.780864417552948,
+          "step_px": 6.942408082900222,
+          "min_eigenvalue": 0.04327540844678879,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            162.90521240234375,
+            216.01951599121094
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.7037481069564819,
+          "ncc": 0.7954065203666687,
+          "step_px": 3.440800399952334,
+          "min_eigenvalue": 0.08895751088857651,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.759810123902401
+        },
+        "left.ankle": {
+          "xy": [
+            169.45409393310547,
+            251.0523223876953
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0013210974866524339,
+          "ncc": 0.9994131922721863,
+          "step_px": 0.0756697020993267,
+          "min_eigenvalue": 0.1113278940320015,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.10332351190160036
+        },
+        "left.toe": {
+          "xy": [
+            155.96983337402344,
+            265.12384033203125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00017059844685718417,
+          "ncc": 0.9997456073760986,
+          "step_px": 0.045576399063597395,
+          "min_eigenvalue": 0.07940409332513809,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.02166535273031057
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 7,
+      "image_sha256": "dfdd782aa89d50d089f6d2a9255353416546235c4c1978328ad1737440374c77",
+      "source_time_ms": 637.7777777777778,
+      "reference_time_seconds": 0.6377777777777778,
+      "points": {
+        "head": {
+          "xy": [
+            141.72239685058594,
+            145.7284698486328
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.023960987105965614,
+          "ncc": 0.9856147170066833,
+          "step_px": 1.8598445782230548,
+          "min_eigenvalue": 0.026667121797800064,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            145.73500061035156,
+            148.06996154785156
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.015245676040649414,
+          "ncc": 0.9840621948242188,
+          "step_px": 1.5500027873077633,
+          "min_eigenvalue": 0.028578946366906166,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 3.6830792033556023
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            146.86276245117188,
+            133.3719482421875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.00878260936588049,
+          "ncc": 0.9851402640342712,
+          "step_px": 0.9798553631180565,
+          "min_eigenvalue": 0.05621190741658211,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 16.748197291424432
+        },
+        "right.wrist": {
+          "xy": [
+            147.04452514648438,
+            152.326416015625
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.03851843625307083,
+          "ncc": 0.9842010140419006,
+          "step_px": 1.3221471289141826,
+          "min_eigenvalue": 0.029311511665582657,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            148.44931030273438,
+            206.4906768798828
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement",
+          "fb_error_px": 4.911453723907471,
+          "ncc": 0.6132644414901733,
+          "step_px": 6.617309347450126,
+          "min_eigenvalue": 0.07963927090167999,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.11282348632812,
+            232.97498321533203
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.04321030527353287,
+          "ncc": 0.9664332866668701,
+          "step_px": 0.07851839707116559,
+          "min_eigenvalue": 0.09613704681396484,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.7438202805794605
+        },
+        "right.toe": {
+          "xy": [
+            139.21480560302734,
+            242.75112915039062
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00043077373993583024,
+          "ncc": 0.9995536208152771,
+          "step_px": 0.05276850196579479,
+          "min_eigenvalue": 0.04336255416274071,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.06636147707743834
+        },
+        "left.shoulder": {
+          "xy": [
+            163.83824157714844,
+            154.9114990234375
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.8079531192779541,
+          "ncc": 0.9339463114738464,
+          "step_px": 0.35071286378360655,
+          "min_eigenvalue": 0.026265021413564682,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 4.036712161986791
+        },
+        "left.elbow": {
+          "xy": [
+            172.01870727539062,
+            171.81356811523438
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.3874407410621643,
+          "ncc": 0.9228211641311646,
+          "step_px": 1.337692252996786,
+          "min_eigenvalue": 0.031737182289361954,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.341387708827934
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            160.91668701171875,
+            211.9830322265625
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.12891864776611328,
+          "ncc": 0.7513532042503357,
+          "step_px": 4.4997149255737,
+          "min_eigenvalue": 0.07986042648553848,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.756009841705254
+        },
+        "left.ankle": {
+          "xy": [
+            169.44747161865234,
+            251.0579376220703
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0007811844116076827,
+          "ncc": 0.9998207688331604,
+          "step_px": 0.008407482001099333,
+          "min_eigenvalue": 0.11583889275789261,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.10388894622711144
+        },
+        "left.toe": {
+          "xy": [
+            155.96958923339844,
+            265.1244201660156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 9.650505671743304e-05,
+          "ncc": 0.9999924898147583,
+          "step_px": 0.0006757076973109293,
+          "min_eigenvalue": 0.077744260430336,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.0215623481026427
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 8,
+      "image_sha256": "dfa015c66dfc30669fe0593bd0185101fda89d6673ff1eada02f0b3fd8ab9be8",
+      "source_time_ms": 728.8888888888889,
+      "reference_time_seconds": 0.7288888888888889,
+      "points": {
+        "head": {
+          "xy": [
+            143.67044067382812,
+            137.99684143066406
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.6662130951881409,
+          "ncc": 0.9506519436836243,
+          "step_px": 7.973264872736513,
+          "min_eigenvalue": 0.025833778083324432,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            146.70919799804688,
+            141.41879272460938
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.19172422587871552,
+          "ncc": 0.9304459095001221,
+          "step_px": 6.722135617901594,
+          "min_eigenvalue": 0.027546390891075134,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 3.993094839931366
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            147.27008056640625,
+            128.7473602294922
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.2979239821434021,
+          "ncc": 0.8799027800559998,
+          "step_px": 4.642490962205878,
+          "min_eigenvalue": 0.04467063397169113,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 16.17205745968708
+        },
+        "right.wrist": {
+          "xy": [
+            147.7321319580078,
+            146.9084930419922
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.2012474089860916,
+          "ncc": 0.9490942358970642,
+          "step_px": 5.461381919942209,
+          "min_eigenvalue": 0.02709374949336052,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.18514251708984,
+            232.85002899169922
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0016583713004365563,
+          "ncc": 0.9946416020393372,
+          "step_px": 0.13501979866481428,
+          "min_eigenvalue": 0.09989329427480698,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.7277504687416072
+        },
+        "right.toe": {
+          "xy": [
+            139.1673355102539,
+            242.6509780883789
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.001074309810064733,
+          "ncc": 0.9989305138587952,
+          "step_px": 0.11182853787006042,
+          "min_eigenvalue": 0.042667120695114136,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.0638582965658498
+        },
+        "left.shoulder": {
+          "xy": [
+            165.55848693847656,
+            149.73670959472656
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.21375608444213867,
+          "ncc": 0.9611477255821228,
+          "step_px": 5.453227460382466,
+          "min_eigenvalue": 0.026268869638442993,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 3.393657317770856
+        },
+        "left.elbow": {
+          "xy": [
+            171.58154296875,
+            166.3189239501953
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.37460339069366455,
+          "ncc": 0.8976230621337891,
+          "step_px": 5.51200754094172,
+          "min_eigenvalue": 0.04464615136384964,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.705638949705917
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            161.021240234375,
+            211.51841735839844
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.6301966905593872,
+          "ncc": 0.9623985290527344,
+          "step_px": 0.476233505842372,
+          "min_eigenvalue": 0.09696625173091888,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.135761023520342
+        },
+        "left.ankle": {
+          "xy": [
+            169.46967315673828,
+            250.99620819091797
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00018625725351739675,
+          "ncc": 0.9996808767318726,
+          "step_px": 0.06594327158436664,
+          "min_eigenvalue": 0.11687342822551727,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.10344492324183703
+        },
+        "left.toe": {
+          "xy": [
+            156.00208282470703,
+            265.07843017578125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00015560972678940743,
+          "ncc": 0.9998130798339844,
+          "step_px": 0.056768554467139895,
+          "min_eigenvalue": 0.07774187624454498,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.02247714929573809
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 9,
+      "image_sha256": "db617706f98c5ba108ade1179638b5505658b44c58d4ea6c0d5c3963931c75a7",
+      "source_time_ms": 820.0,
+      "reference_time_seconds": 0.8200000000000001,
+      "points": {
+        "head": {
+          "xy": [
+            145.65878295898438,
+            129.140869140625
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.679749846458435,
+          "ncc": 0.8030869960784912,
+          "step_px": 9.076439293295588,
+          "min_eigenvalue": 0.026868214830756187,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "neck": {
+          "xy": [
+            148.04531860351562,
+            131.97796630859375
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.8588318824768066,
+          "ncc": 0.7766598463058472,
+          "step_px": 9.534905436851307,
+          "min_eigenvalue": 0.024367356672883034,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 4.888974352927885
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.elbow": {
+          "xy": [
+            148.4488983154297,
+            118.40093231201172
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 9.843132019042969,
+          "ncc": 0.6706246137619019,
+          "step_px": 10.413365543234901,
+          "min_eigenvalue": 0.021960044279694557,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.wrist": {
+          "xy": [
+            148.45933532714844,
+            138.80101013183594
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.5179259777069092,
+          "ncc": 0.8899914026260376,
+          "step_px": 8.140030950712973,
+          "min_eigenvalue": 0.026622651144862175,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 20.71843485145047
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.48328399658203,
+            232.5871353149414
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0017210670048370957,
+          "ncc": 0.9855324625968933,
+          "step_px": 0.3896258202420592,
+          "min_eigenvalue": 0.09937474876642227,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.7232813853752824
+        },
+        "right.toe": {
+          "xy": [
+            139.09274291992188,
+            242.52401733398438
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0004131160385441035,
+          "ncc": 0.9978956580162048,
+          "step_px": 0.14754720558083823,
+          "min_eigenvalue": 0.044478368014097214,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.06241831806347006
+        },
+        "left.shoulder": {
+          "xy": [
+            168.3592987060547,
+            143.0633087158203
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.034630101174116135,
+          "ncc": 0.9526732563972473,
+          "step_px": 7.237321731689894,
+          "min_eigenvalue": 0.02434915117919445,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.825354798902148
+        },
+        "left.elbow": {
+          "xy": [
+            173.13328552246094,
+            159.90406799316406
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.5185534954071045,
+          "ncc": 0.9362039566040039,
+          "step_px": 6.599869839811741,
+          "min_eigenvalue": 0.03382592275738716,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            161.3820343017578,
+            210.66050720214844
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.03318231180310249,
+          "ncc": 0.9796895980834961,
+          "step_px": 0.9306890969897159,
+          "min_eigenvalue": 0.1007353886961937,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.389009633615301
+        },
+        "left.ankle": {
+          "xy": [
+            169.52962493896484,
+            250.78824615478516
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0012723488034680486,
+          "ncc": 0.998806357383728,
+          "step_px": 0.2152094632736398,
+          "min_eigenvalue": 0.11488940566778183,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.1014645291930271
+        },
+        "left.toe": {
+          "xy": [
+            156.0201873779297,
+            264.9247283935547
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00035622002906166017,
+          "ncc": 0.9989637136459351,
+          "step_px": 0.15555265276637922,
+          "min_eigenvalue": 0.07893996685743332,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.025131535947975892
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 10,
+      "image_sha256": "dc13188e7d3d8beac9c6409c8f09e13ff48152911b4a867b43fc9784e6a3f88b",
+      "source_time_ms": 911.1111111111111,
+      "reference_time_seconds": 0.9111111111111111,
+      "points": {
+        "head": {
+          "xy": [
+            152.1054172515869,
+            121.25020980834961
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "neck": {
+          "xy": [
+            154.46145057678223,
+            126.91987991333008
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "pelvis": {
+          "xy": [
+            164.81170654296875,
+            171.37176513671875
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.shoulder": {
+          "xy": [
+            148.2119369506836,
+            120.27454376220703
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.elbow": {
+          "xy": [
+            153.19637298583984,
+            130.5727767944336
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.wrist": {
+          "xy": [
+            149.17969703674316,
+            153.08685302734375
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.hip": {
+          "xy": [
+            155.20051956176758,
+            168.91852378845215
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.knee": {
+          "xy": [
+            149.36116218566895,
+            200.04005432128906
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.52648544311523,
+            232.24486351013184
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.toe": {
+          "xy": [
+            139.1135025024414,
+            242.1912670135498
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.shoulder": {
+          "xy": [
+            172.58865356445312,
+            134.1390609741211
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.elbow": {
+          "xy": [
+            175.28255462646484,
+            159.99513626098633
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.wrist": {
+          "xy": [
+            154.34517860412598,
+            173.14266204833984
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.hip": {
+          "xy": [
+            167.40467071533203,
+            173.50382804870605
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.knee": {
+          "xy": [
+            162.91885375976562,
+            211.7929172515869
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.56501007080078,
+            250.47945499420166
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.toe": {
+          "xy": [
+            156.0555648803711,
+            264.60877895355225
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 11,
+      "image_sha256": "7308d3b02434513fa8c0c738bc59b520cc20174ee238008a761f18be931eedf6",
+      "source_time_ms": 1002.2222222222223,
+      "reference_time_seconds": 1.0022222222222221,
+      "points": {
+        "head": {
+          "xy": [
+            154.2943115234375,
+            114.96941375732422
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.09899020195007324,
+          "ncc": 0.7872424721717834,
+          "step_px": 6.651289887526813,
+          "min_eigenvalue": 0.05794471129775047,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.984714999237868
+        },
+        "neck": {
+          "xy": [
+            156.4669189453125,
+            121.25074768066406
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.07414611428976059,
+          "ncc": 0.8534398078918457,
+          "step_px": 6.013398677006892,
+          "min_eigenvalue": 0.038253750652074814,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.7564853127123594
+        },
+        "pelvis": {
+          "xy": [
+            164.71885681152344,
+            171.0735321044922
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.06632581353187561,
+          "ncc": 0.9121541976928711,
+          "step_px": 0.3123523877618299,
+          "min_eigenvalue": 0.06175680831074715,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            151.16586303710938,
+            113.54501342773438
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.3333713710308075,
+          "ncc": 0.8772791028022766,
+          "step_px": 7.349303221847252,
+          "min_eigenvalue": 0.04201735183596611,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.632383451947314
+        },
+        "right.elbow": {
+          "xy": [
+            154.9661865234375,
+            125.47200775146484
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.14049790799617767,
+          "ncc": 0.7136967778205872,
+          "step_px": 5.39908184671915,
+          "min_eigenvalue": 0.028481697663664818,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.166197469429445
+        },
+        "right.wrist": {
+          "xy": [
+            149.22592163085938,
+            148.61390686035156
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.42857733368873596,
+          "ncc": 0.9365322589874268,
+          "step_px": 4.473185009130665,
+          "min_eigenvalue": 0.0603075809776783,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 7.74226185123472
+        },
+        "right.hip": {
+          "xy": [
+            155.01174926757812,
+            170.086181640625
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement",
+          "fb_error_px": 1.2839826345443726,
+          "ncc": 0.5367932915687561,
+          "step_px": 1.1828182800875584,
+          "min_eigenvalue": 0.08017852157354355,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": [
+            151.4522247314453,
+            197.5270233154297
+          ],
+          "status": "untrusted",
+          "reason": "appearance_or_occlusion_disagreement",
+          "fb_error_px": 0.23865750432014465,
+          "ncc": 0.6436384320259094,
+          "step_px": 3.2692303997667898,
+          "min_eigenvalue": 0.04052019864320755,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.56189727783203,
+            231.76483917236328
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.007071012631058693,
+          "ncc": 0.9814683198928833,
+          "step_px": 0.8203641615084577,
+          "min_eigenvalue": 0.08737599849700928,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.0031767221011254
+        },
+        "right.toe": {
+          "xy": [
+            139.07416534423828,
+            241.69813537597656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0009656535112299025,
+          "ncc": 0.9962687492370605,
+          "step_px": 0.4718731448697836,
+          "min_eigenvalue": 0.04913231357932091,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.1314490797075496
+        },
+        "left.shoulder": {
+          "xy": [
+            175.46556091308594,
+            130.0740966796875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.004990370478481054,
+          "ncc": 0.9911732077598572,
+          "step_px": 4.98001311319935,
+          "min_eigenvalue": 0.040382497012615204,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.2648768762655056
+        },
+        "left.elbow": {
+          "xy": [
+            178.6894073486328,
+            157.08474731445312
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.3372519612312317,
+          "ncc": 0.978577733039856,
+          "step_px": 4.480737583327766,
+          "min_eigenvalue": 0.05864761397242546,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 9.735095283775774
+        },
+        "left.wrist": {
+          "xy": [
+            154.5799102783203,
+            174.408203125
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.7175439596176147,
+          "ncc": 0.7648327350616455,
+          "step_px": 1.2871259361788276,
+          "min_eigenvalue": 0.08496353030204773,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            167.3396453857422,
+            173.2280731201172
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.033211879432201385,
+          "ncc": 0.9578428864479065,
+          "step_px": 0.283317973537365,
+          "min_eigenvalue": 0.05393366888165474,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            164.56363677978516,
+            210.32749938964844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.04133904352784157,
+          "ncc": 0.9870491623878479,
+          "step_px": 1.873179213310868,
+          "min_eigenvalue": 0.051768772304058075,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.6918897179373561
+        },
+        "left.ankle": {
+          "xy": [
+            169.56216430664062,
+            250.0651397705078
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.003082275390625,
+          "ncc": 0.9974008798599243,
+          "step_px": 0.5132251105205133,
+          "min_eigenvalue": 0.10579606890678406,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.25954131609557
+        },
+        "left.toe": {
+          "xy": [
+            156.0366973876953,
+            264.1893615722656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0018578163580968976,
+          "ncc": 0.9977715015411377,
+          "step_px": 0.420171018888448,
+          "min_eigenvalue": 0.07247165590524673,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.006053567598199416
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 12,
+      "image_sha256": "74057c006e66343241bc478d4e177a519bed3fed2dcbe0bb8359a5dc1b38e4ff",
+      "source_time_ms": 1093.3333333333335,
+      "reference_time_seconds": 1.0933333333333333,
+      "points": {
+        "head": {
+          "xy": [
+            155.2389373779297,
+            112.29732513427734
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.29460203647613525,
+          "ncc": 0.8820438981056213,
+          "step_px": 2.834144600120403,
+          "min_eigenvalue": 0.04252062365412712,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.0400654760745507
+        },
+        "neck": {
+          "xy": [
+            157.0293426513672,
+            118.7360610961914
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.024229982867836952,
+          "ncc": 0.9051942825317383,
+          "step_px": 2.576813738565332,
+          "min_eigenvalue": 0.03719547018408775,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.112366050513632
+        },
+        "pelvis": {
+          "xy": [
+            164.665283203125,
+            177.28713989257812
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.0821206346154213,
+          "ncc": 0.765372633934021,
+          "step_px": 6.213838739111198,
+          "min_eigenvalue": 0.06429223716259003,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            152.80250549316406,
+            110.64230346679688
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.25176286697387695,
+          "ncc": 0.7350777387619019,
+          "step_px": 3.3323150580769676,
+          "min_eigenvalue": 0.03109154663980007,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.757179141287563
+        },
+        "right.elbow": {
+          "xy": [
+            155.55535888671875,
+            123.22682189941406
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.2140577882528305,
+          "ncc": 0.8922595977783203,
+          "step_px": 2.3212030466771765,
+          "min_eigenvalue": 0.03238339722156525,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.524233713294516
+        },
+        "right.wrist": {
+          "xy": [
+            149.02745056152344,
+            146.71893310546875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.02013264037668705,
+          "ncc": 0.969346821308136,
+          "step_px": 1.9053388929683917,
+          "min_eigenvalue": 0.04436691850423813,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 9.501923979582688
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.85256958007812,
+            231.18460845947266
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.003774970071390271,
+          "ncc": 0.9778685569763184,
+          "step_px": 0.666687062707103,
+          "min_eigenvalue": 0.09671352803707123,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.044692061121642
+        },
+        "right.toe": {
+          "xy": [
+            138.99221801757812,
+            241.29026794433594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005452749319374561,
+          "ncc": 0.9976082444190979,
+          "step_px": 0.41699275311558975,
+          "min_eigenvalue": 0.049264997243881226,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.12570553093902143
+        },
+        "left.shoulder": {
+          "xy": [
+            176.8652801513672,
+            128.6046142578125
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.04927358031272888,
+          "ncc": 0.9778063297271729,
+          "step_px": 2.029431579091608,
+          "min_eigenvalue": 0.04146888107061386,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.36930387246836
+        },
+        "left.elbow": {
+          "xy": [
+            181.6572723388672,
+            158.0027618408203
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.08397524058818817,
+          "ncc": 0.9510469436645508,
+          "step_px": 3.1066015629430273,
+          "min_eigenvalue": 0.07855736464262009,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.668494256837786
+        },
+        "left.wrist": {
+          "xy": [
+            155.508056640625,
+            180.04925537109375
+          ],
+          "status": "untrusted",
+          "reason": "appearance_or_occlusion_disagreement",
+          "fb_error_px": 0.8090874552726746,
+          "ncc": 0.39374107122421265,
+          "step_px": 5.716898294794019,
+          "min_eigenvalue": 0.06058372184634209,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            167.216796875,
+            179.26390075683594
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.4579584300518036,
+          "ncc": 0.8247483372688293,
+          "step_px": 6.037077688482187,
+          "min_eigenvalue": 0.05613138526678085,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            165.5488739013672,
+            209.4859619140625
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.010461900383234024,
+          "ncc": 0.994249701499939,
+          "step_px": 1.2853219780910419,
+          "min_eigenvalue": 0.03847292438149452,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.7128910463148989
+        },
+        "left.ankle": {
+          "xy": [
+            169.62996673583984,
+            249.59710693359375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.002754031680524349,
+          "ncc": 0.9973881840705872,
+          "step_px": 0.46606337630605615,
+          "min_eigenvalue": 0.11150821298360825,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.25081203732580354
+        },
+        "left.toe": {
+          "xy": [
+            155.99002075195312,
+            263.82508850097656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00031456799479201436,
+          "ncc": 0.9978494048118591,
+          "step_px": 0.3673631483855852,
+          "min_eigenvalue": 0.0769934430718422,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.006161377344918596
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 13,
+      "image_sha256": "3dd1a6574b3349496aba1ea4b2a50ec4445d63c3e3178794546b9e27f3174d18",
+      "source_time_ms": 1184.4444444444446,
+      "reference_time_seconds": 1.1844444444444444,
+      "points": {
+        "head": {
+          "xy": [
+            155.93162536621094,
+            111.30414581298828
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.04386189207434654,
+          "ncc": 0.9266027808189392,
+          "step_px": 1.2108764649398913,
+          "min_eigenvalue": 0.04688349366188049,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.083155506344164
+        },
+        "neck": {
+          "xy": [
+            157.68667602539062,
+            117.93141174316406
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.00887644849717617,
+          "ncc": 0.9470180869102478,
+          "step_px": 1.0390128709175643,
+          "min_eigenvalue": 0.042147405445575714,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.039802435741819
+        },
+        "pelvis": {
+          "xy": [
+            163.56292724609375,
+            188.37762451171875
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement,appearance_or_occlusion_disagreement",
+          "fb_error_px": 1.1323962211608887,
+          "ncc": 0.415639728307724,
+          "step_px": 11.145135160391598,
+          "min_eigenvalue": 0.048835452646017075,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            153.7958526611328,
+            109.5328140258789
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.030873926356434822,
+          "ncc": 0.9293480515480042,
+          "step_px": 1.4891962314013567,
+          "min_eigenvalue": 0.03552976995706558,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.93590338804028
+        },
+        "right.elbow": {
+          "xy": [
+            155.92990112304688,
+            122.47381591796875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.011231806129217148,
+          "ncc": 0.9220400452613831,
+          "step_px": 0.8410112335076693,
+          "min_eigenvalue": 0.03611999377608299,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.680235152761238
+        },
+        "right.wrist": {
+          "xy": [
+            148.87037658691406,
+            146.32479858398438
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.03934318944811821,
+          "ncc": 0.9804954528808594,
+          "step_px": 0.42428086749852845,
+          "min_eigenvalue": 0.04540235549211502,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.236777748023089
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.9191665649414,
+            231.11456298828125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0005670441896654665,
+          "ncc": 0.995096743106842,
+          "step_px": 0.09891613901977797,
+          "min_eigenvalue": 0.09547321498394012,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.0442276374171335
+        },
+        "right.toe": {
+          "xy": [
+            139.0055389404297,
+            241.24887084960938
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00013647876039613038,
+          "ncc": 0.9995591044425964,
+          "step_px": 0.04313294780183481,
+          "min_eigenvalue": 0.05060963332653046,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.12555786533949662
+        },
+        "left.shoulder": {
+          "xy": [
+            178.14697265625,
+            128.36280822753906
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.05078092962503433,
+          "ncc": 0.9748021960258484,
+          "step_px": 1.3043028150507754,
+          "min_eigenvalue": 0.039477091282606125,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.516526244335476
+        },
+        "left.elbow": {
+          "xy": [
+            182.84182739257812,
+            165.3834228515625
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.5694780349731445,
+          "ncc": 0.9371919631958008,
+          "step_px": 7.475113887477702,
+          "min_eigenvalue": 0.0813380554318428,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 17.229386656090735
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            166.0166015625,
+            190.36984252929688
+          ],
+          "status": "untrusted",
+          "reason": "missing_independent_backtrack",
+          "fb_error_px": 0.8606656789779663,
+          "ncc": 0.7573502063751221,
+          "step_px": 11.170604793002022,
+          "min_eigenvalue": 0.04402872547507286,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            165.78801727294922,
+            209.29383850097656
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00174678151961416,
+          "ncc": 0.9966593384742737,
+          "step_px": 0.286515040004801,
+          "min_eigenvalue": 0.03620438277721405,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.7534687177497507
+        },
+        "left.ankle": {
+          "xy": [
+            169.63075256347656,
+            249.52748107910156
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0006477351416833699,
+          "ncc": 0.999700665473938,
+          "step_px": 0.07049402342503253,
+          "min_eigenvalue": 0.10085560381412506,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.2528522420756476
+        },
+        "left.toe": {
+          "xy": [
+            156.01392364501953,
+            263.7470703125
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.00031419770675711334,
+          "ncc": 0.9996662139892578,
+          "step_px": 0.08131418283621152,
+          "min_eigenvalue": 0.07619992643594742,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.006577670891507139
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 14,
+      "image_sha256": "02af9699b8e76696a43c9c2191ff657d65123069fb46456f70e93cb12686f632",
+      "source_time_ms": 1275.5555555555557,
+      "reference_time_seconds": 1.2755555555555556,
+      "points": {
+        "head": {
+          "xy": [
+            156.55386352539062,
+            110.88927459716797
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.001802152837626636,
+          "ncc": 0.9343174695968628,
+          "step_px": 0.7478625892873305,
+          "min_eigenvalue": 0.05138565972447395,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.9427684314967597
+        },
+        "neck": {
+          "xy": [
+            158.19711303710938,
+            117.40109252929688
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.007974742911756039,
+          "ncc": 0.9777933955192566,
+          "step_px": 0.736060059729557,
+          "min_eigenvalue": 0.0392935574054718,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.0385127391224778
+        },
+        "pelvis": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.shoulder": {
+          "xy": [
+            154.4168701171875,
+            109.24688720703125
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.011488077230751514,
+          "ncc": 0.9726585745811462,
+          "step_px": 0.6836788913378679,
+          "min_eigenvalue": 0.037052154541015625,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 6.838398530071202
+        },
+        "right.elbow": {
+          "xy": [
+            156.36227416992188,
+            122.17782592773438
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.007320721168071032,
+          "ncc": 0.9597730040550232,
+          "step_px": 0.5239814175931398,
+          "min_eigenvalue": 0.04340474307537079,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.577778362507297
+        },
+        "right.wrist": {
+          "xy": [
+            148.7747039794922,
+            146.0347137451172
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.003661886788904667,
+          "ncc": 0.9895465970039368,
+          "step_px": 0.3054545163383615,
+          "min_eigenvalue": 0.04440094903111458,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 10.783203772079059
+        },
+        "right.hip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.knee": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.92898559570312,
+            231.15953826904297
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001502816448919475,
+          "ncc": 0.9970904588699341,
+          "step_px": 0.04999628099751751,
+          "min_eigenvalue": 0.09618135541677475,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 1.0452635479423267
+        },
+        "right.toe": {
+          "xy": [
+            138.99913024902344,
+            241.2845458984375
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001726334885461256,
+          "ncc": 0.9996745586395264,
+          "step_px": 0.03590419329844278,
+          "min_eigenvalue": 0.05054839700460434,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.12601756012808935
+        },
+        "left.shoulder": {
+          "xy": [
+            179.08102416992188,
+            128.16473388671875
+          ],
+          "status": "untrusted",
+          "reason": "labelled_keyframe_bidirectional_disagreement",
+          "fb_error_px": 0.0604248084127903,
+          "ncc": 0.9903824925422668,
+          "step_px": 0.9548223262388256,
+          "min_eigenvalue": 0.036298297345638275,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 2.7308644550353756
+        },
+        "left.elbow": {
+          "xy": [
+            184.14892578125,
+            180.177490234375
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 8.511564254760742,
+          "ncc": 0.7972304224967957,
+          "step_px": 14.85169808220142,
+          "min_eigenvalue": 0.03350122645497322,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.wrist": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "left.hip": {
+          "xy": [
+            165.9337615966797,
+            193.53932189941406
+          ],
+          "status": "untrusted",
+          "reason": "forward_backward_disagreement",
+          "fb_error_px": 1.0818023681640625,
+          "ncc": 0.759576141834259,
+          "step_px": 3.1705617700236584,
+          "min_eigenvalue": 0.0406426340341568,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false
+        },
+        "left.knee": {
+          "xy": [
+            165.86051177978516,
+            209.2597198486328
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0008121632854454219,
+          "ncc": 0.9988175630569458,
+          "step_px": 0.07227567171161466,
+          "min_eigenvalue": 0.03286321088671684,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.7692143877414914
+        },
+        "left.ankle": {
+          "xy": [
+            169.63262176513672,
+            249.51438903808594
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001078959321603179,
+          "ncc": 0.9998834729194641,
+          "step_px": 0.013504795548363079,
+          "min_eigenvalue": 0.09731695055961609,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.25343804151313143
+        },
+        "left.toe": {
+          "xy": [
+            156.0284423828125,
+            263.73081970214844
+          ],
+          "status": "proposal",
+          "reason": null,
+          "fb_error_px": 0.0001726334885461256,
+          "ncc": 0.99996417760849,
+          "step_px": 0.02177764930852858,
+          "min_eigenvalue": 0.07492697983980179,
+          "independently_reviewed": false,
+          "anatomical_identity_verified": false,
+          "endpoint_agreement_error_px": 0.00665458166231292
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    },
+    {
+      "index": 15,
+      "image_sha256": "57cd80c1bce0c7d951af27e2f39fdaa44ef05741d5ebcaac6068abaaf6f6f20d",
+      "source_time_ms": 1366.6666666666667,
+      "reference_time_seconds": 1.3666666666666667,
+      "points": {
+        "head": {
+          "xy": [
+            158.03180694580078,
+            112.17721939086914
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "neck": {
+          "xy": [
+            159.62034225463867,
+            118.84366989135742
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "pelvis": {
+          "xy": [
+            164.8825454711914,
+            168.78795623779297
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.shoulder": {
+          "xy": [
+            153.30010414123535,
+            115.83391189575195
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.elbow": {
+          "xy": [
+            155.1761531829834,
+            132.54005432128906
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.wrist": {
+          "xy": [
+            145.64000129699707,
+            156.41075134277344
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.hip": {
+          "xy": [
+            155.37797927856445,
+            166.00515365600586
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.knee": {
+          "xy": [
+            155.4456615447998,
+            197.6688575744629
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.ankle": {
+          "xy": [
+            160.4592514038086,
+            231.32969856262207
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "right.toe": {
+          "xy": [
+            139.04760360717773,
+            241.27840518951416
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.shoulder": {
+          "xy": [
+            176.96882247924805,
+            126.6604232788086
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.elbow": {
+          "xy": [
+            188.55052947998047,
+            149.2386817932129
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.wrist": {
+          "xy": [
+            188.21548461914062,
+            175.67441940307617
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.hip": {
+          "xy": [
+            167.51264572143555,
+            170.27483940124512
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.knee": {
+          "xy": [
+            166.25982284545898,
+            209.0519618988037
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.ankle": {
+          "xy": [
+            169.54526901245117,
+            249.58802223205566
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "left.toe": {
+          "xy": [
+            156.035737991333,
+            263.7173080444336
+          ],
+          "status": "seed",
+          "seed_kind": "source_projected_benchmark",
+          "seed_uncertainty_px": 0,
+          "anatomical_identity_verified": false,
+          "independently_reviewed": false
+        },
+        "grip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        },
+        "blade_tip": {
+          "xy": null,
+          "status": "unknown",
+          "reason": "no_valid_seed_or_previous_track",
+          "anatomical_identity_verified": false
+        }
+      }
+    }
+  ],
+  "semantic_joint_detector": false,
+  "production_pass": false,
+  "anatomy_pass": false,
+  "accuracy_probability": null,
+  "future_reference_coordinates_used": true,
+  "scope": "Labelled-keyframe assisted image correspondence; benchmark source-projected seed frames explicitly supplied and excluded from evaluation. Not automatic semantic detection, anatomical identity or painted-art accuracy.",
+  "mode": "sparse_labelled_keyframe_bidirectional",
+  "labelled_seed_frames": [
+    0,
+    5,
+    10,
+    15
+  ],
+  "endpoint_agreement_px": 1.5,
+  "future_unseeded_truth_used": false
+}

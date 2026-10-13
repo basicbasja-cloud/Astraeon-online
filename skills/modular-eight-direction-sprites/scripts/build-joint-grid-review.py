@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""Standalone Canvas grid/point review using bound images; no SVG or repair."""
+import argparse,base64,json,mimetypes,hashlib
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument('--case',type=Path,required=True);p.add_argument('--tracks',type=Path,required=True);p.add_argument('--root',type=Path,default=Path.cwd());p.add_argument('--truth',type=Path);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
+c=json.loads(a.case.read_text());tracks=json.loads(a.tracks.read_text());truth=json.loads(a.truth.read_text()) if a.truth else None
+if tracks.get('case_sha256')!=hashlib.sha256(a.case.read_bytes()).hexdigest():raise ValueError('Stale case/report binding')
+if len(tracks['frames'])!=len(c['frames']):raise ValueError('Frame count mismatch')
+if truth and (truth.get('source_sha256')!=tracks.get('reference_source_sha256') or len(truth['frames'])!=len(c['frames'])):raise ValueError('Reference binding mismatch')
+images=[]
+for i,f in enumerate(c['frames']):
+ path=(a.root/f['path']).resolve()
+ if not path.is_relative_to(a.root.resolve()):raise ValueError('Image outside root')
+ blob=path.read_bytes()
+ if hashlib.sha256(blob).hexdigest()!=f['sha256'] or tracks['frames'][i]['image_sha256']!=f['sha256']:raise ValueError('Stale image binding')
+ if truth and truth['frames'][i].get('candidate_image_sha256')!=f['sha256']:raise ValueError('Stale reference image binding')
+ images.append('data:'+mimetypes.guess_type(path)[0]+';base64,'+base64.b64encode(blob).decode())
+payload={'case':c,'tracks':tracks,'reference_truth':truth,'images':images}
+html='''<!doctype html><html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Joint grid image review</title>
+<style>body{background:#161d29;color:#edf1f9;font:15px system-ui;margin:20px}button,select,input{font:inherit}button,select{background:#29374d;color:#edf1f9;border:1px solid #64718a;padding:7px;border-radius:5px}main{display:flex;gap:20px;flex-wrap:wrap}.viewer{max-width:680px}canvas#view{width:min(640px,85vw);height:auto;image-rendering:pixelated;cursor:crosshair;border:1px solid #627089}canvas#zoom{width:180px;height:180px;image-rendering:pixelated;border:1px solid #627089}aside{width:360px}label{display:block;margin:10px 0}#tiles{display:flex;flex-wrap:wrap;max-width:1060px;gap:4px}#tiles img{width:80px;height:80px;object-fit:contain;background:#29303d;border:2px solid transparent;cursor:pointer}pre{white-space:pre-wrap;font-size:12px;color:#c1cde0}a{color:#a3ceff}</style>
+<h1>Grid + joint tracking review</h1><p>คลิกจุดจากภาพจริง • blue=ขวา orange=ซ้าย • optical flow เป็นproposal ไม่ใช่ข้อต่อที่ยืนยันแล้ว • source overlayไม่ใช่image observation</p>
+<main><div class="viewer"><canvas id="view"></canvas><input id="frame" type="range" min="0" value="0" style="width:100%"><div id="time"></div><button id="prev">←</button> <button id="play">Play once</button> <button id="next">→</button></div><aside>
+<label>Joint <select id="joint"></select></label><label>Grid <select id="grid"><option value="32">32px</option><option value="16">16px</option><option value="8">8px</option><option value="1">1px</option><option value="0">Off</option></select></label>
+<label><input id="proposals" type="checkbox" checked> แสดงข้อเสนอจากimage tracker</label><label><input id="reference" type="checkbox"> แสดงsource reference (benchmarkเท่านั้น)</label><label><input id="onion" type="checkbox"> Onion previous</label><label><input id="owner" type="checkbox"> ตรวจanatomical ownerจากภาพแล้ว</label><label>ระยะไม่แน่ใจ px <input id="uncertainty" type="number" value="2" min="0" max="100" step="0.25"></label>
+<button id="hidden">จุดถูกบัง/unknown</button> <button id="clear">ล้างseed</button><p id="status" role="status"></p><canvas id="zoom" width="160" height="160"></canvas><pre id="point"></pre><button id="export">Export labelled seeds JSON</button><label>Import <input id="import" type="file" accept="application/json"></label>
+<small>การแก้จุดทำให้reportเก่า: exportแล้วรันjoint-image-track.pyและตรวจซ้ำ ห้ามย้ายภาพแต่ละเฟรมเพื่อกลบdrift ไม่มีanatomy PASSจากคะแนนtracking</small></aside></main><h2>Frame grid</h2><div id="tiles"></div>
+<script>const P=__DATA__;let data=structuredClone(P.case),key=0,joint='right.knee',running=false,clock=0,start=0,dirty=false;const $=id=>document.getElementById(id),canvas=$('view'),ctx=canvas.getContext('2d');canvas.width=data.canvas[0];canvas.height=data.canvas[1];$('frame').max=data.frames.length-1;
+const joints=Object.keys(P.tracks.frames[0].points);joints.forEach(n=>{let o=document.createElement('option');o.value=n;o.textContent=n;$('joint').appendChild(o)});$('joint').value=joint;
+const images=P.images.map((src,i)=>{const im=new Image;im.onload=draw;im.src=src;const thumb=document.createElement('img');thumb.src=src;thumb.onclick=()=>set(i);thumb.title='frame'+i;$('tiles').appendChild(thumb);return im});
+function color(n){return n.startsWith('right.')?'#3b9eff':n.startsWith('left.')?'#ff9a35':'#ffffff'}
+function dot(n,p,stroke,r=3){if(!p)return;ctx.strokeStyle=stroke;ctx.beginPath();ctx.arc(p[0],p[1],r,0,Math.PI*2);ctx.stroke()}
+function draw(){ctx.fillStyle='#272d38';ctx.fillRect(0,0,canvas.width,canvas.height);if($('onion').checked&&key&&images[key-1]?.complete){ctx.globalAlpha=.20;ctx.drawImage(images[key-1],0,0);ctx.globalAlpha=1}if(images[key]?.complete)ctx.drawImage(images[key],0,0);
+const step=Number($('grid').value);if(step){ctx.strokeStyle='#67768888';ctx.lineWidth=.5;for(let x=0;x<canvas.width;x+=step){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,canvas.height);ctx.stroke()}for(let y=0;y<canvas.height;y+=step){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke()}}
+const edges=[['head','neck'],['neck','pelvis'],...['right','left'].flatMap(s=>[[s+'.shoulder',s+'.elbow'],[s+'.elbow',s+'.wrist'],['pelvis',s+'.hip'],[s+'.hip',s+'.knee'],[s+'.knee',s+'.ankle'],[s+'.ankle',s+'.toe']])];
+function bones(points,reference=false){for(const[a,b]of edges){if(!points[a]?.xy||!points[b]?.xy)continue;if(!reference&&(points[a].status==='unknown'||points[b].status==='unknown'))continue;ctx.beginPath();ctx.lineWidth=1;ctx.strokeStyle=reference?'#a2b2c577':color(b);ctx.setLineDash(reference?[4,3]:[]);ctx.moveTo(...points[a].xy);ctx.lineTo(...points[b].xy);ctx.stroke();ctx.setLineDash([])}}
+if($('reference').checked&&P.reference_truth){bones(P.reference_truth.frames[key].points,true);Object.entries(P.reference_truth.frames[key].points).forEach(([n,p])=>dot(n,p.xy,'#a2b2c577',5))};
+if($('proposals').checked)bones(P.tracks.frames[key].points);
+if($('proposals').checked)Object.entries(P.tracks.frames[key].points).forEach(([n,p])=>dot(n,p.xy,p.status==='untrusted'?'#ff496d':color(n),n===joint?5:3));
+data.seeds.filter(s=>s.frame===key).forEach(s=>dot(s.joint,s.xy,s.kind==='manual_visible'?'#70e5bc':'#a2b2c5',4));
+$('frame').value=key;$('time').textContent=`Frame ${key} / Source time ${data.frames[key].time_ms.toFixed(3)}ms / exposure ${data.frames[key].duration_ms.toFixed(3)}ms`;
+$('point').textContent=JSON.stringify({proposal:P.tracks.frames[key].points[joint],seed:data.seeds.find(s=>s.frame===key&&s.joint===joint),report_stale:dirty},null,2);$('status').textContent=dirty?'แก้annotationแล้ว — trackerreportเก่า ต้องรันใหม่':'Unknowns/proposalsยังไม่ผ่านanatomy';Array.from($('tiles').children).forEach((im,i)=>im.style.borderColor=i===key?'#97caff':'transparent')}
+function set(i){running=false;key=Math.max(0,Math.min(images.length-1,i));draw()}
+$('frame').oninput=()=>set(Number($('frame').value));$('prev').onclick=()=>set(key-1);$('next').onclick=()=>set(key+1);$('joint').onchange=()=>{joint=$('joint').value;draw()};['grid','onion','proposals','reference'].forEach(id=>$(id).onchange=draw);
+function xy(event){const r=canvas.getBoundingClientRect();return [(event.clientX-r.left-canvas.clientLeft)*canvas.width/canvas.clientWidth,(event.clientY-r.top-canvas.clientTop)*canvas.height/canvas.clientHeight]}
+canvas.onmousemove=e=>{const p=xy(e),z=$('zoom').getContext('2d');z.imageSmoothingEnabled=false;z.fillStyle='#272d38';z.fillRect(0,0,160,160);if(images[key].complete)z.drawImage(images[key],p[0]-20,p[1]-20,40,40,0,0,160,160);z.strokeStyle='white';z.beginPath();z.moveTo(80,0);z.lineTo(80,160);z.moveTo(0,80);z.lineTo(160,80);z.stroke()};
+canvas.onclick=e=>{const p=xy(e);if(p[0]<0||p[1]<0||p[0]>=canvas.width||p[1]>=canvas.height)return;data.seeds=data.seeds.filter(s=>!(s.frame===key&&s.joint===joint));data.explicit_unknowns=(data.explicit_unknowns||[]).filter(s=>!(s.frame===key&&s.joint===joint));data.seeds.push({frame:key,joint,xy:p,image_sha256:data.frames[key].sha256,kind:'manual_visible',uncertainty_px:Number($('uncertainty').value),owner_confirmed:$('owner').checked});dirty=true;draw()};
+$('clear').onclick=$('hidden').onclick=()=>{data.seeds=data.seeds.filter(s=>!(s.frame===key&&s.joint===joint));data.explicit_unknowns??=[];data.explicit_unknowns=data.explicit_unknowns.filter(s=>!(s.frame===key&&s.joint===joint));data.explicit_unknowns.push({frame:key,joint,image_sha256:data.frames[key].sha256});dirty=true;draw()};
+$('export').onclick=()=>{const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='joint-seeds.json';a.click();URL.revokeObjectURL(a.href)};
+$('import').onchange=async()=>{try{const d=JSON.parse(await $('import').files[0].text());if(d.schema!==data.schema||JSON.stringify(d.canvas)!==JSON.stringify(data.canvas)||d.frames.length!==data.frames.length||d.frames.some((f,i)=>f.sha256!==data.frames[i].sha256))throw Error('Changed images/canvas — old annotations refused');data=d;dirty=true;draw()}catch(e){$('status').textContent=e.message}};
+function tick(now){if(!running)return;const t=clock+now-start;while(key+1<images.length&&data.frames[key+1].time_ms<=t)key++;if(t>=data.frames.at(-1).time_ms+data.frames.at(-1).duration_ms)running=false;draw();if(running)requestAnimationFrame(tick)}
+$('play').onclick=()=>{if(running){running=false;return}if(key===images.length-1)key=0;clock=data.frames[key].time_ms;start=performance.now();running=true;requestAnimationFrame(tick)};window.jointReview={get data(){return data},set,xy,get key(){return key},get dirty(){return dirty},draw};draw();</script></html>'''
+a.out.write_text(html.replace('__DATA__',json.dumps(payload,separators=(',',':')).replace('<','\\u003c')));print(json.dumps({'frames':len(images),'output':str(a.out),'grid':True,'svg':False}))
