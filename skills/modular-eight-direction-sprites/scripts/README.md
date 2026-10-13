@@ -154,3 +154,16 @@ One-shot/excerpt temporal review omits the false last→first edge; loop review 
 # Cross-body slash review, v25
 
 Use [slash-gesture.py](slash-gesture.py) for the declared SE cross-body study: it checks bound actual artwork/contour observations, source crossing/direction, distinct cut/follow, held-out boot variation and registered rejection history. It is not a semantic hand detector. [v25 commands and current failures](../../../research/sprite-animation/cross-body-slash-v25/README.md) include the source replay, real Canvas checks, separate tail and decoded GIF/APNG clocks. The current result remains incomplete and cannot be a production seed.
+
+## Weighted attack and perspective-aware weapon review (v27)
+
+Read [the practice and evidence boundaries](../references/weighted-slash-and-weapon-poses.md).
+`attack-weight-review.py --case CASE --root REPO --out REPORT` compares source
+hip/lean/intermediate-cut spacing and independently observed shoulder/belt/wrist
+pixels. No force/damage or hidden anatomy is recovered.
+`weapon-pose-review.py --case CASE --root REPO --out REPORT` checks bound distinct
+pose drawings, zero runtime master rotation, common scale and camera-relative
+foreshortening; grip/occlusion remain unknown until actually reviewed.
+`blade-plane.py` respects source gripBasis in addition to handMatrix. These
+family-specific diagnostics never approve production. Actual failure tests are
+`test_attack_weight_review.py`, `test_weapon_pose_review.py`, `test_blade_plane.py`.

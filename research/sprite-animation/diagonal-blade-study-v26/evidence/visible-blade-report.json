@@ -1,0 +1,63 @@
+{
+  "schema": "blade-plane-review-v1",
+  "issues": [
+    "painted_blade_observation_unknown",
+    "painted_grip_right_chain_unverified",
+    "raw_pose_cell_clipping_or_spill"
+  ],
+  "measurements": {
+    "minimum_source_blade_plane_view_dot": 0.28032966191918907,
+    "source_edge_normal_drift": 4.6760371763654993e-07,
+    "source_follow_settle_blade_angles_screen_degrees": [
+      38.33612571136928,
+      45.5786781503991
+    ],
+    "source_coil_to_follow_tip_travel_xy": [
+      242.09751892089844,
+      223.9175262451172
+    ],
+    "source_tip_travel_angle_screen_degrees": 42.76593283713294
+  },
+  "painted_observations": [
+    {
+      "key": 0,
+      "painted_angle_degrees": 35.918030427171246,
+      "source_direction_dot": 0.9899625042158797
+    },
+    {
+      "key": 1,
+      "painted_angle_degrees": -119.00641590227005,
+      "source_direction_dot": 0.9845691293445243
+    },
+    {
+      "key": 2,
+      "painted_angle_degrees": -118.96005669395034,
+      "source_direction_dot": 0.9575668275532918
+    },
+    {
+      "key": 3,
+      "painted_angle_degrees": 35.21759296819271,
+      "source_direction_dot": 0.9556178707010063
+    },
+    {
+      "key": 5,
+      "painted_angle_degrees": 44.4052554847815,
+      "source_direction_dot": 0.999790290306712
+    },
+    {
+      "key": 6,
+      "painted_angle_degrees": 38.558399900664966,
+      "source_direction_dot": 0.9989802954259388
+    },
+    {
+      "key": 7,
+      "painted_angle_degrees": 34.845733419799735,
+      "source_direction_dot": 0.9871442820967071
+    }
+  ],
+  "status": "INCOMPLETE",
+  "production_pass": false,
+  "scope": "Camera-specific authored diagonal-slash contract. Source matrices and manual painted guard/tip points are distinct; no hidden3Dedge or palm/finger reconstruction.",
+  "source_index_sha256": "c212c7d14089a87dcf8cd91805ab94547cbc4d042c112dc3be9024b3c44023d8",
+  "art_case_sha256": "fbf3142b507f65c7a218a242a9ee47c7ce98815c726b728bff70de6f6b97d4c1"
+}

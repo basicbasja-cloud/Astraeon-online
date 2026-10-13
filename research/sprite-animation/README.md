@@ -1,4 +1,8 @@
-## Latest: source-guided cross-body slash and failure controls v25
+## Latest: wrist, weight transfer and per-pose weapon research v27
+
+[New source, original redraws, independent weapon drawings, GIFs and failure/unknown checks](weighted-slash-v27/README.md). Actual source mechanics improve, but our self-review still blocks painted production for rear-surface drift and unresolved grip/parts. [Six-source diagonal study v26](diagonal-blade-study-v26/README.md) remains archived weak acting. [Reusable guide](../../skills/modular-eight-direction-sprites/references/weighted-slash-and-weapon-poses.md). Only exactWwalking remains accepted; no rotating-flat-sword workaround, accepted attack or error-free factory is claimed.
+
+## Historical: source-guided cross-body slash and failure controls v25
 
 [New GIF, actual tutorial frame study, source revision, three redraws and gesture checks](cross-body-slash-v25/README.md). v24 is user-rejected. v25 separates cut/follow and shortens the smear after the first stroke; independent boot variation and ambiguous grip/guard still block production. Only Wwalking remains accepted. [Reusable slash guide](../../skills/modular-eight-direction-sprites/references/cross-body-slash-gesture.md).
 
