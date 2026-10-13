@@ -1,4 +1,8 @@
-## Latest: actual pickup paintover pilot and surface checks v31
+## Latest: passing modular pickup motion v32
+
+[Original painted parts, passing one-view8-key motion, independent pixel/bind tools and reusable production notes](pickup-modular-v32/README.md). Actual shoe drift0px and source-relative cuff phase0.005313 pass the unchanged criteria; agent motion acceptance is distinct from user artwork approval and complete factory readiness. [Reusable skill](../../skills/modular-eight-direction-sprites/references/source-driven-part-motion.md).
+
+## Historical: actual pickup paintover pilot and surface checks v31
 
 [8pose pickup GIF, source comparison, five actual imagegen attempts and strengthened visible-image diagnostics](pickup-pilot-v31/README.md). Selected candidate is not production-approved: support surfaces still slide and recovery differs from source-relative timing. Tracking abstains instead of inventing hidden joints. [Reusable findings](../../skills/modular-eight-direction-sprites/references/pickup-pilot-and-surface-tracking.md).
 

@@ -1,0 +1,62 @@
+{
+  "chains": {
+    "right.thigh": [
+      "right.hip",
+      "right.knee",
+      68
+    ],
+    "right.shin": [
+      "right.knee",
+      "right.ankle",
+      45
+    ],
+    "left.thigh": [
+      "left.hip",
+      "left.knee",
+      78
+    ],
+    "left.shin": [
+      "left.knee",
+      "left.ankle",
+      59
+    ],
+    "right.upperarm": [
+      "right.shoulder",
+      "right.elbow",
+      52
+    ],
+    "right.forearm": [
+      "right.elbow",
+      "right.wrist",
+      50
+    ],
+    "left.upperarm": [
+      "left.shoulder",
+      "left.elbow",
+      60
+    ],
+    "left.forearm": [
+      "left.elbow",
+      "left.wrist",
+      50
+    ],
+    "torso": [
+      "neck",
+      "pelvis",
+      null
+    ]
+  },
+  "fixed_foot_anchors": {
+    "right.ankle": [
+      165,
+      429
+    ],
+    "left.ankle": [
+      241,
+      450
+    ]
+  },
+  "neck_definition": "Authored2D upper-body/head mount driven by source head-to-pelvis vector; source has no neck bone",
+  "contact_policy": "two planted boot pieces for this action only",
+  "head_hair_separate": false
+}

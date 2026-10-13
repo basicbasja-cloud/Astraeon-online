@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "all8 actual rig bindings/positive transforms/fixed limb lengths",
+      "pass": true
+    },
+    {
+      "name": "both knee bend branches retain sign",
+      "pass": true
+    },
+    {
+      "name": "swapped thigh parents rejected",
+      "pass": true
+    },
+    {
+      "name": "mirrored forearm rejected",
+      "pass": true
+    },
+    {
+      "name": "unreachable IK refused instead of stretching",
+      "pass": true
+    },
+    {
+      "name": "initial actual source image loads",
+      "pass": true
+    },
+    {
+      "name": "slider selects fourth actual source/actor pair",
+      "pass": true
+    },
+    {
+      "name": "guide toggle changes debug draw without replacing pose",
+      "pass": true
+    },
+    {
+      "name": "source clock plays once and stops on exact eighth frame",
+      "pass": true
+    },
+    {
+      "name": "game clock plays once and stops on exact eighth frame",
+      "pass": true
+    },
+    {
+      "name": "native Canvas runtime without SVG",
+      "pass": true
+    },
+    {
+      "name": "no browser errors",
+      "pass": true
+    },
+    {
+      "name": "all8 saved RGBA frames exactly reproduce from live part renderer",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "scope": "One-view modular motion browser/binding behavior, not art approval or universal rig detection."
+}

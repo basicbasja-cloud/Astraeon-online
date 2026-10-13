@@ -1,0 +1,372 @@
+{
+  "atlas_file": "research/sprite-animation/pickup-modular-v32/atlas-raw.png",
+  "atlas_sha256": "9cca30b7f762f7e7bcd8e9e4dfc635692063ccc286b7309fd4c38d01c9b8939e",
+  "parts": [
+    {
+      "name": "head_hair",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/head_hair.png",
+      "sha256": "c8a4a8dacec96279ef11a7fa0a334813f40666d43c1e289f1bf228a99c2d4286",
+      "atlas_box": [
+        0,
+        0,
+        366,
+        365
+      ],
+      "pivot": [
+        202,
+        326
+      ],
+      "end": null,
+      "width_scale": 0.52,
+      "semantic_owner": "body",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    },
+    {
+      "name": "torso",
+      "file": "research/sprite-animation/pickup-modular-v32/torso-raw.png",
+      "sha256": "96ba77edd53889d1efabdd080f87b3d4541b89c7942e84f42a50cccd86d94fe7",
+      "atlas_box": [
+        0,
+        0,
+        1081,
+        1455
+      ],
+      "pivot": [
+        490,
+        370
+      ],
+      "end": [
+        496,
+        1150
+      ],
+      "width_scale": 0.145,
+      "semantic_owner": "body",
+      "source_role": "imagegen repair removes embedded shoulder armor to prevent doubled articulated pauldrons",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/torso-raw.png"
+    },
+    {
+      "name": "cape",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/cape.png",
+      "sha256": "3aa1e61c196f54c0e1fc54b4a759bc5b8a7a03ea1865f2f787f2b19d88745f2b",
+      "atlas_box": [
+        637,
+        0,
+        982,
+        365
+      ],
+      "pivot": [
+        94,
+        118
+      ],
+      "end": null,
+      "width_scale": 0.49,
+      "semantic_owner": "body",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    },
+    {
+      "name": "teal_panel",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/teal_panel.png",
+      "sha256": "069db8300ea20ad09b3b314af14cb12de2ef387079cd2605b7cf2bcfa2299a7c",
+      "atlas_box": [
+        982,
+        0,
+        1254,
+        365
+      ],
+      "pivot": [
+        100,
+        136
+      ],
+      "end": null,
+      "width_scale": 0.43,
+      "semantic_owner": "body",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    },
+    {
+      "name": "right.upperarm",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-right.upperarm.png",
+      "sha256": "aa574e57ff93aef510af80a052aae724f9ef89384e04b3af9e9ab1c539bcfd80",
+      "atlas_box": [
+        0,
+        0,
+        384,
+        504
+      ],
+      "pivot": [
+        245,
+        137
+      ],
+      "end": [
+        160,
+        403
+      ],
+      "width_scale": 0.18,
+      "semantic_owner": "right",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png"
+    },
+    {
+      "name": "right.forearm",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-right.forearm.png",
+      "sha256": "1983ea1f2904746235713601be323902b7cdeeab9c4f10d4df8dfdde1eb23341",
+      "atlas_box": [
+        384,
+        0,
+        768,
+        504
+      ],
+      "pivot": [
+        234,
+        112
+      ],
+      "end": [
+        151,
+        344
+      ],
+      "width_scale": 0.18,
+      "semantic_owner": "right",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png"
+    },
+    {
+      "name": "left.upperarm",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-left.upperarm.png",
+      "sha256": "d15f01fe37eb8347410e769ae51c33ff4bcb6d9dc23c1e35bad5a2e9184a763b",
+      "atlas_box": [
+        768,
+        0,
+        1152,
+        504
+      ],
+      "pivot": [
+        206,
+        143
+      ],
+      "end": [
+        267,
+        414
+      ],
+      "width_scale": 0.18,
+      "semantic_owner": "left",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png"
+    },
+    {
+      "name": "left.forearm",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-left.forearm.png",
+      "sha256": "7aac1b7d4a01e1a1fc97358fdcb355886e514996f5d815c3fbbf1d1669f61a95",
+      "atlas_box": [
+        1152,
+        0,
+        1536,
+        590
+      ],
+      "pivot": [
+        227,
+        120
+      ],
+      "end": [
+        220,
+        361
+      ],
+      "width_scale": 0.18,
+      "semantic_owner": "left",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png"
+    },
+    {
+      "name": "right.thigh",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/right.thigh.png",
+      "sha256": "0e137fb6780f4151905ed98d0711c060415b2c5654e1f8efadc473a96e6581ce",
+      "atlas_box": [
+        0,
+        636,
+        318,
+        924
+      ],
+      "pivot": [
+        189,
+        35
+      ],
+      "end": [
+        148,
+        218
+      ],
+      "width_scale": 0.31,
+      "semantic_owner": "right",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    },
+    {
+      "name": "right.shin",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-right.shin.png",
+      "sha256": "ecfbbad2d3196eddfb21116dd9f03b9dc0de8f840ead9477c6adb38590660386",
+      "atlas_box": [
+        0,
+        504,
+        384,
+        1024
+      ],
+      "pivot": [
+        184,
+        107
+      ],
+      "end": [
+        191,
+        338
+      ],
+      "width_scale": 0.22,
+      "semantic_owner": "right",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png"
+    },
+    {
+      "name": "left.thigh",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/left.thigh.png",
+      "sha256": "0bfee31bf985a110f1561dbb6b59294c85f7b22e42a214f227e2c44ef3d3b362",
+      "atlas_box": [
+        637,
+        636,
+        952,
+        924
+      ],
+      "pivot": [
+        163,
+        32
+      ],
+      "end": [
+        140,
+        219
+      ],
+      "width_scale": 0.33,
+      "semantic_owner": "left",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    },
+    {
+      "name": "left.shin",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-left.shin.png",
+      "sha256": "b49c7aaa14efd851e91020a1fd75b76c91b9af42d3ff9fa2fecb0693467c87ba",
+      "atlas_box": [
+        384,
+        504,
+        768,
+        1024
+      ],
+      "pivot": [
+        155,
+        120
+      ],
+      "end": [
+        200,
+        340
+      ],
+      "width_scale": 0.22,
+      "semantic_owner": "left",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png"
+    },
+    {
+      "name": "right.foot",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-right.foot.png",
+      "sha256": "03ecb8ee4332c6fbe00a7900f2ce49854a16c39827506f8d07f1d99ec6611174",
+      "atlas_box": [
+        768,
+        590,
+        1152,
+        1024
+      ],
+      "pivot": [
+        209,
+        170
+      ],
+      "end": null,
+      "width_scale": 0.3,
+      "semantic_owner": "right",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png",
+      "hinge_definition": "authored ankle-cuff center; filled receiving shaft extends above it"
+    },
+    {
+      "name": "left.foot",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/closed-left.foot.png",
+      "sha256": "ac7e1a9bccbf0363a5d0ba1b442a2b361b8f35ceb74e04fabe32a4c30e05eb32",
+      "atlas_box": [
+        1152,
+        590,
+        1536,
+        1024
+      ],
+      "pivot": [
+        222,
+        170
+      ],
+      "end": null,
+      "width_scale": 0.29,
+      "semantic_owner": "left",
+      "source_role": "imagegen-authored closed/filled hinge receiving surfaces; no hollow socket glyph",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/limbs-raw.png",
+      "hinge_definition": "authored ankle-cuff center; filled receiving shaft extends above it"
+    },
+    {
+      "name": "front_tabard",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/front_tabard.png",
+      "sha256": "3fec8dc593845d81d8a81e9c36a8b1843d6bbcb31a4c2e45a1e15074393c4829",
+      "atlas_box": [
+        637,
+        924,
+        952,
+        1254
+      ],
+      "pivot": [
+        161,
+        30
+      ],
+      "end": null,
+      "width_scale": 0.39,
+      "semantic_owner": "body",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    },
+    {
+      "name": "side_tabard",
+      "file": "research/sprite-animation/pickup-modular-v32/parts/side_tabard.png",
+      "sha256": "263d5721aab1c63f6308d761d6e21119416790432f02c8ce8833abb1a05ab700",
+      "atlas_box": [
+        952,
+        924,
+        1254,
+        1254
+      ],
+      "pivot": [
+        142,
+        50
+      ],
+      "end": null,
+      "width_scale": 0.37,
+      "semantic_owner": "body",
+      "source_role": "newly generated neutral part appearance, not captured anatomy",
+      "mirrored": false,
+      "source_atlas": "research/sprite-animation/pickup-modular-v32/atlas-raw.png"
+    }
+  ],
+  "scope": "16 authored part slots, one facing/one action. Head+hair combined. Asset-bind hinges are not automatic anatomical detections."
+}

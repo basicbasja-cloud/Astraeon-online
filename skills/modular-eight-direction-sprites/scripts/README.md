@@ -1,4 +1,8 @@
-# Current surface review extensions — v0.31
+# Current modular motion / rigid texture review — v0.32
+
+[Executed pickup and reproduction](../../../research/sprite-animation/pickup-modular-v32/KNOW-HOW.md). `rigged-surface-observer.py --case CASE --root REPO --out REPORT` observes first-frame-calibrated rigid painted patches using fixed-window rotation-NCC, without future poses. Missing/ambiguous/stale texture abstains or errors; this is not generic anatomy detection. `modular-motion-review.py --case CASE --root REPO --out REPORT` reruns pixels/source-phase, verifies exported authored part bindings and requires a separately inspected exact-image visual receipt. Nonpassing motion exits1; passing scope is one action/view, not full factory or user approval. Existing v31generic surface checker remains unchanged.12focused regressions/13browserchecks; newpart-bank appearance comes from three actual native imagegen jobs, not manually repainted old frames.
+
+# Historical surface review extensions — v0.31
 
 [Actual pickup study/know-how](../../../research/sprite-animation/pickup-pilot-v31/KNOW-HOW.md). Use image-surface-track.py --case CASE --root REPO --out DIR for explicit visible-surface marker correspondences; anatomical joints remain unknown and owner confirmation is refused. Use planted-surface-review.py --case CASE --root REPO --out REPORT for boundX/Ysupport proxy trajectories and source-relative phase. Later labelled imagekeys are disclosed; current pilot retains0proposals, not universal detection. Neither staticnumericPASS nor lowflowerror approves hidden joints/contact/production. Same optionalOpenCV/Pillow/NumPy dependencies.
 

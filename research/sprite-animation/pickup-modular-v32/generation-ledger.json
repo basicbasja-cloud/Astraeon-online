@@ -1,0 +1,81 @@
+{
+  "actual_generation_jobs": 3,
+  "jobs": [
+    {
+      "job": "atlas",
+      "tool": "native image_gen.imagegen",
+      "original_output_path": "/workspace/generated_images/exec-30c670be-24e5-4cd7-83d9-d4a357c98003.png",
+      "output": {
+        "path": "research/sprite-animation/pickup-modular-v32/atlas-raw.png",
+        "sha256": "9cca30b7f762f7e7bcd8e9e4dfc635692063ccc286b7309fd4c38d01c9b8939e"
+      },
+      "prompt": {
+        "path": "research/sprite-animation/pickup-modular-v32/atlas-prompt.txt",
+        "sha256": "e3758261249071b441455d9ba0285f163831ac60106d11317fffc6be351eff1d"
+      },
+      "input_files": [
+        {
+          "path": "research/sprite-animation/pickup-pilot-v31/frames/00.png",
+          "sha256": "a91512727a29e97bd9ba8a57584659e63d2142c046ce95e97230d06a43872b65"
+        },
+        {
+          "path": "research/sprite-animation/registered-walk-attack-v21/walk/W/frames/00.png",
+          "sha256": "3e1aaa3ad849a68080a208676474bf7a85874f38148a9248fe97e33522ac7692"
+        }
+      ],
+      "transparent_background": true,
+      "motion_conditioning": "neutral appearance/isolated parts only; actualmotion supplied by fresh external clip, not this atlas",
+      "old_own_slash_used": false
+    },
+    {
+      "job": "torso",
+      "tool": "native image_gen.imagegen",
+      "original_output_path": "/workspace/generated_images/exec-3fcc6f6b-30e5-4c53-9301-2015a558b36b.png",
+      "output": {
+        "path": "research/sprite-animation/pickup-modular-v32/torso-raw.png",
+        "sha256": "96ba77edd53889d1efabdd080f87b3d4541b89c7942e84f42a50cccd86d94fe7"
+      },
+      "prompt": {
+        "path": "research/sprite-animation/pickup-modular-v32/torso-prompt.txt",
+        "sha256": "cdffaeb7813a558bd21341f8ffba439f748d4335b844916f038f0872ad144f66"
+      },
+      "input_files": [
+        {
+          "path": "research/sprite-animation/pickup-modular-v32/parts/torso.png",
+          "sha256": "04c83895c8f5c49f39fdda56ed9184e3237ea0f6e6c2e0ad53da82d661d5923b"
+        }
+      ],
+      "transparent_background": true,
+      "motion_conditioning": "neutral appearance/isolated parts only; actualmotion supplied by fresh external clip, not this atlas",
+      "old_own_slash_used": false
+    },
+    {
+      "job": "limbs",
+      "tool": "native image_gen.imagegen",
+      "original_output_path": "/workspace/generated_images/exec-c022e769-9e1d-4a4a-ae16-95dc8b90c5f3.png",
+      "output": {
+        "path": "research/sprite-animation/pickup-modular-v32/limbs-raw.png",
+        "sha256": "5fe070edcc2dfc7dca777c103db5de48809797bd4003e432b3f527738ba4dbcc"
+      },
+      "prompt": {
+        "path": "research/sprite-animation/pickup-modular-v32/limbs-prompt.txt",
+        "sha256": "ddaa6e965165acabd7c6c306d5fa88f547c0524516f8f025503a4c5e2e4c8652"
+      },
+      "input_files": [
+        {
+          "path": "research/sprite-animation/pickup-modular-v32/atlas-raw.png",
+          "sha256": "9cca30b7f762f7e7bcd8e9e4dfc635692063ccc286b7309fd4c38d01c9b8939e"
+        }
+      ],
+      "transparent_background": true,
+      "motion_conditioning": "neutral appearance/isolated parts only; actualmotion supplied by fresh external clip, not this atlas",
+      "old_own_slash_used": false
+    }
+  ],
+  "raw_provider_RGBA_unchanged": true,
+  "provider_generated_video": false,
+  "source_license": {
+    "path": "research/sprite-animation/joint-tracking-ro-v30/preset-source/KayKit-License.txt",
+    "sha256": "373b159044d1a886ed15f57ca5a7673ba14e2623c460283452705f2056912ed9"
+  }
+}

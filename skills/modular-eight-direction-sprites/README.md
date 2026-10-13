@@ -1,6 +1,8 @@
 # Eight-direction sprites with replaceable parts
 
-Research and reusable workflow draft v0.31, revised 2026-10-13.
+Research and reusable workflow draft v0.32, revised 2026-10-13.
+
+- [Source-driven modular motion](references/source-driven-part-motion.md): one-view pickup passes bounded agent review with complete painted receivers, fixed-lengthIK, actual-pixel support/phase checks and negative controls; full factory remains pending.
 
 - [Actual pickup pilot/surface tracking](references/pickup-pilot-and-surface-tracking.md): original art and measured support/phase failures, with unknown joints kept separate.
 - [Image-joint grid and RO/preset evidence](references/image-joint-tracking-and-ro-coverage.md): actual-image tracking, unknown-first ownership and measured source-keyframe limits.
