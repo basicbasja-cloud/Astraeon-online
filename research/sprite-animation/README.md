@@ -1,4 +1,8 @@
-## Latest: wrist, weight transfer and per-pose weapon research v27
+## Latest: video-first sword performance v28 — generator connection pending
+
+[Fresh character inputs, video brief and native frame capture](video-first-slash-v28/README.md). User rejects v27 bent-arm/lifeless acting and requests generated video from character appearance, dropping old rig conditioning. There is no generated video/captured character-motion frame yet: Runway was found but is not installed/connected. Decoder fixture checks are not an attack result. Exact v27 rejection is retained; onlyW remains accepted.
+
+## Historical: wrist, weight transfer and per-pose weapon research v27
 
 [New source, original redraws, independent weapon drawings, GIFs and failure/unknown checks](weighted-slash-v27/README.md). Actual source mechanics improve, but our self-review still blocks painted production for rear-surface drift and unresolved grip/parts. [Six-source diagonal study v26](diagonal-blade-study-v26/README.md) remains archived weak acting. [Reusable guide](../../skills/modular-eight-direction-sprites/references/weighted-slash-and-weapon-poses.md). Only exactWwalking remains accepted; no rotating-flat-sword workaround, accepted attack or error-free factory is claimed.
 

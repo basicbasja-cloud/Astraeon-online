@@ -167,3 +167,7 @@ foreshortening; grip/occlusion remain unknown until actually reviewed.
 `blade-plane.py` respects source gripBasis in addition to handMatrix. These
 family-specific diagnostics never approve production. Actual failure tests are
 `test_attack_weight_review.py`, `test_weapon_pose_review.py`, `test_blade_plane.py`.
+
+## Generated video → native frames (v28)
+
+`capture-generated-video.py VIDEO --output NEW_DIRECTORY --source-url ACTUAL_ASSET_URL [--provider PROVIDER --job-id JOB]` requires an actual video container, preserves every decoded native PTS/hold, and never guesses a missing final exposure. It emits source-bound frames/contact sheets and unannotated landmark templates. Camera motion, anatomy, acting and generation conditioning remain unverified; no old rig is used by the decoder. See [video-first practice](../references/video-first-motion.md). Four real decoder fixture regressions are `test_generated_video_capture.py`; fixtures do not contain the requested character motion.

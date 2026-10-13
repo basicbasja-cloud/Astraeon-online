@@ -17,6 +17,12 @@ class SlashGestureTests(unittest.TestCase):
     def test_relabeling_cannot_erase_known_rejected_pixels(self):
         self.case['user_status']='UNREVIEWED'
         self.assertIn('known_rejected_pixels',self.kinds(self.case))
+    def test_v27_user_rejection_survives_relabeling_of_exact_new_pixels(self):
+        bank=json.loads((ROOT/'research/sprite-animation/weighted-slash-v27/evidence/selected-bank.json').read_text())
+        self.case['user_status']='REVIEW_REQUIRED'
+        self.case['frames'][0]['path']=bank['frames'][0]['path']
+        self.case['frames'][0]['sha256']=bank['frames'][0]['sha256']
+        self.assertIn('known_rejected_pixels',self.kinds(self.case))
     def test_changed_image_binding_is_not_old_review(self):
         self.case['frames'][0]['sha256']='0'*64
         self.assertIn('binding',self.kinds(self.case))
