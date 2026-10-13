@@ -1,4 +1,8 @@
-## Latest: coordinated attack / readable gait study v23
+## Latest: source-guided cross-body slash and failure controls v25
+
+[New GIF, actual tutorial frame study, source revision, three redraws and gesture checks](cross-body-slash-v25/README.md). v24 is user-rejected. v25 separates cut/follow and shortens the smear after the first stroke; independent boot variation and ambiguous grip/guard still block production. Only Wwalking remains accepted. [Reusable slash guide](../../skills/modular-eight-direction-sprites/references/cross-body-slash-gesture.md).
+
+## Historical: coordinated attack / readable gait study v23
 
 [Source comparisons, exact feedback, source-hand/weapon checks and preserved failures](combat-gait-study-v23/README.md). User accepts only Wwalking, rejects v22attack and the new one-legged v23body-only pilot as looking like falling. Seven walking views remain rejected; the fresh E redraw also fails review. Actual Witchcrafter developer2018frames, RO variants, Flare source and Saint11 tutorials inform the next grounded hand-sweep/tail blocking. No new passing attack/factory is claimed. [Durable practice](../../skills/modular-eight-direction-sprites/references/coordinated-combat-and-readable-gait.md).
 

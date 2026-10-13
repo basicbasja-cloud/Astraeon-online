@@ -1,0 +1,37 @@
+{
+  "schema": "slash-gesture-review-v1",
+  "status": "REJECTED_OR_INCOMPLETE",
+  "measurements": {
+    "cut_to_follow_palm_distance_px": 86.97700845625813,
+    "uncertainty_subtracted_distance_px": 78.97700845625813,
+    "coil_finish_screen_x_palm_relative_to_right_shoulder": [
+      -67,
+      105
+    ],
+    "source_cut_follow_distance_px": 63.73159576668806,
+    "source_art_follow_direction_dot": 0.992472166887751,
+    "source_coil_finish_facing_local_right_wrist_x": [
+      -0.2199999839067459,
+      0.1449999213218689
+    ],
+    "held_out_boot_x_delta_px": 16.318681318681342,
+    "held_out_boot_y_delta_px": 2.967032967032935
+  },
+  "issues": [
+    {
+      "kind": "held_out_boot_x_variation",
+      "value_px": 16.318681318681342
+    },
+    {
+      "kind": "held_out_boot_y_variation",
+      "value_px": 2.967032967032935
+    },
+    {
+      "kind": "unverified_grip_edge_alignment"
+    }
+  ],
+  "production_pass": false,
+  "observation_scope": "SHA-bound manually estimated visible glove/cuff/shoulder contours. Internal joints, finger wrap and hidden limb ownership are not detected.",
+  "contract_scope": "Explicit candidate SE diagonal cross-body slash; thresholds are provisional diagnostics, not universal sword physics or another-character approval.",
+  "case_sha256": "87b76cfb7d8efbefddb2d254582fe920348ee9ae155f95b45718a3364403a7f7"
+}

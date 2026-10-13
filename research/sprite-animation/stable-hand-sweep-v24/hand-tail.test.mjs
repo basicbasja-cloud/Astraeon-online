@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import {TIMES,DURATION,FX_START,FX_END,keyAt,geometry} from './hand-tail.mjs';
+const frames=TIMES.map((t,i)=>({palm_xy:[[240,280],[220,190],[215,145],[280,215],[295,265],[285,275],[255,280],[240,280]][i],guide_vector_xy:[[96,139],[12,-142],[-24,-158],[127,7],[109,131],[79,128],[96,139],[96,139]][i]}));
+const data={frames,virtual_blade_scale:.85};
+test('exact exposure boundaries and terminal key',()=>{TIMES.forEach((t,i)=>assert.equal(keyAt(t),i));assert.equal(keyAt(DURATION),7)});
+test('no smear during ready/windup/coil',()=>{for(let t=0;t<FX_START;t++)assert.equal(geometry(t,data).active,false)});
+test('smear expires before recovery/ready',()=>{for(let t=FX_END;t<=DURATION;t++)assert.equal(geometry(t,data).active,false)});
+test('cancellation clears current tail immediately',()=>assert.equal(geometry(320,data,{cancelled:true}).active,false));
+test('disabled effect never changes body key',()=>{assert.equal(geometry(320,data,{enabled:false}).active,false);assert.equal(keyAt(320),4)});
+test('live tail follows pose-bound virtual tip',()=>{for(let t=FX_START;t<FX_END;t++)assert(geometry(t,data).endpoint_error_px<1e-8)});
+test('tail collapses and fades instead of frozen terminal smear',()=>{const a=geometry(400,data),b=geometry(439,data);assert(b.alpha<a.alpha);assert(Math.hypot(...b.outer[0].map((v,k)=>v-b.outer.at(-1)[k]))<Math.hypot(...a.outer[0].map((v,k)=>v-a.outer.at(-1)[k])))});
+test('all pose-bound guide samples are finite and in this control viewport',()=>{for(let t=FX_START;t<FX_END;t++)for(const p of [...geometry(t,data).outer,...geometry(t,data).inner])assert(p.every(x=>Number.isFinite(x)&&x>=0&&x<=512))});
