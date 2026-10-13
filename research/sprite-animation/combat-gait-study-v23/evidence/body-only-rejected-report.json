@@ -1,0 +1,32 @@
+{
+  "schema": "motion-mechanics-report-v1",
+  "status": "USER_REJECTED",
+  "diagnostic_status": "WARN",
+  "warnings": [
+    "frame 0: user rejected visible stance/balance",
+    "frame 1: user rejected visible stance/balance",
+    "frame 2: user rejected visible stance/balance",
+    "frame 3: user rejected visible stance/balance",
+    "Current exact-image user rejection remains binding"
+  ],
+  "unknown": [
+    "frame 0: actual hand/weapon transforms unavailable",
+    "frame 0: visible hand-sweep axis incomplete",
+    "frame 1: actual hand/weapon transforms unavailable",
+    "frame 1: visible hand-sweep axis incomplete",
+    "frame 2: actual hand/weapon transforms unavailable",
+    "frame 2: visible hand-sweep axis incomplete",
+    "frame 3: actual hand/weapon transforms unavailable",
+    "frame 3: visible hand-sweep axis incomplete"
+  ],
+  "metrics": {
+    "visible_hilt_palm_gaps_px": [],
+    "projected_blade_minus_hand_deg": [],
+    "blade_angle_steps_deg": [],
+    "hand_angle_steps_deg": [],
+    "geometry_scope": "Fixed hand-local attachment only. Wrist articulation/projection can change screen angles; no universal forearm-angle rule."
+  },
+  "production_approved": false,
+  "bound_feedback_status": null,
+  "scope": "Computed evidence, not an automatic image-semantic anatomy detector or artistic acceptance."
+}

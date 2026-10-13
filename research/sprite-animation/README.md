@@ -1,4 +1,8 @@
-## Latest: eight-direction walking and residual-bounce QA v20
+## Latest: coordinated attack / readable gait study v23
+
+[Source comparisons, exact feedback, source-hand/weapon checks and preserved failures](combat-gait-study-v23/README.md). User accepts only Wwalking, rejects v22attack and the new one-legged v23body-only pilot as looking like falling. Seven walking views remain rejected; the fresh E redraw also fails review. Actual Witchcrafter developer2018frames, RO variants, Flare source and Saint11 tutorials inform the next grounded hand-sweep/tail blocking. No new passing attack/factory is claimed. [Durable practice](../../skills/modular-eight-direction-sprites/references/coordinated-combat-and-readable-gait.md).
+
+## Historical: eight-direction walking and residual-bounce QA v20
 
 ## Latest: RO attack paintover and preserved body holds v22
 

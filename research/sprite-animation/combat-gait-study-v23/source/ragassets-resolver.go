@@ -1,0 +1,448 @@
+package resolve
+
+import (
+	"strconv"
+	"strings"
+
+	"github.com/ragassets/gateway/internal/render/rotype"
+)
+
+// Korean path tokens used in resolved sprite/palette paths.
+const (
+	kHuman      = "인간족"  // human race
+	kDoram      = "도람족"  // doram race
+	kBodyDir    = "몸통"   // body sprite folder
+	kHeadDir    = "머리통"  // head sprite folder
+	kAccessory  = "악세사리" // accessory (headgear) folder
+	kRobe       = "로브"   // garment/robe folder
+	kHairPal    = "머리"   // head palette folder (and doram hair)
+	kBodyPal    = "몸"    // body palette folder
+	kShield     = "방패"   // shield folder
+	kMonster    = "몬스터"  // monster folder
+	kEffect     = "이팩트"  // effect sprite folder
+	kItem       = "아이템"  // item sprite folder (hat-effect sprites live here)
+	kHatEffect  = "_이펙트" // hat-effect sprite name suffix ("_effect")
+	kMerc       = "용병"   // mercenary folder
+	kHairPrefix = "머리"   // head palette filename prefix ("머리<id>_...")
+)
+
+// Resolver builds on-disk-relative paths for the sprite layers of a render.
+type Resolver struct {
+	static staticTables
+	tables Tables
+}
+
+// New returns a Resolver using the given client-derived Tables (use NopTables
+// when none are available).
+func New(tables Tables) *Resolver {
+	if tables == nil {
+		tables = NopTables{}
+	}
+	return &Resolver{static: loadStaticTables(), tables: tables}
+}
+
+func join(parts ...string) string { return strings.Join(parts, "/") }
+
+func itoa(v int) string    { return strconv.Itoa(v) }
+func utoa(v uint32) string { return strconv.FormatUint(uint64(v), 10) }
+
+// JobSpriteName returns the body sprite base name for a job.
+func (r *Resolver) JobSpriteName(jobID uint32, mado rotype.MadogearType) string {
+	if IsPlayer(jobID) {
+		if IsMadogear(jobID) && mado == rotype.MadogearSuit {
+			return AlternativeMadogearJobName(jobID)
+		}
+		j := jobID
+		if j > 4000 {
+			j -= advancedJobIndex
+		}
+		if int(j) < len(r.static.jobNames) {
+			return r.static.jobNames[j]
+		}
+		return ""
+	}
+	return r.tables.JobName(jobID)
+}
+
+// ImfName returns the head-priority imf base name for a player job.
+func (r *Resolver) ImfName(jobID uint32, gender rotype.Gender, mado rotype.MadogearType) string {
+	if !IsPlayer(jobID) {
+		return ""
+	}
+	if IsMadogear(jobID) && mado == rotype.MadogearSuit {
+		return AlternativeMadogearJobName(jobID) + "_" + gender.String()
+	}
+	j := jobID
+	if j > 4000 {
+		j -= advancedJobIndex
+	}
+	if int(j) >= len(r.static.imfNames) {
+		return ""
+	}
+	return r.static.imfNames[j] + "_" + gender.String()
+}
+
+// mountSpriteTokens are the fragments that mark a job whose body sprite is a
+// rider *on* an animal — one drawing that holds both, with the animal's head and
+// neck in front of the rider's chest. There is no client table for this: the
+// client never needed one, because it has no rule that depends on it (see
+// IsMountedJob), so the set is read off the job-name table, which names every
+// mount in the sprite it ships (페코 peco, 사자 lion, 그리폰 gryphon, 늑대 wolf,
+// 쁘띠 dragon, 알파카 alpaca, 멧돼지 boar, 타조 ostrich, 여우 fox, 켈베로스 cerberus,
+// 해태 haetae, plus the latin *_riding / *_chicken / wolf_ / madogear names).
+//
+// Deliberately absent: 포링 (poring) and 두꺼비 / frog_ (toad). Those two carry the
+// rider below the waist and leave the chest clear, so the occlusion IsMountedJob
+// exists for never happens on them.
+var mountSpriteTokens = []string{
+	"페코", "사자", "그리폰", "늑대", "쁘띠", "알파카", "멧돼지", "타조", "여우",
+	"켈베로스", "해태", "마도기어",
+	"_riding", "_chicken", "wolf_", "madogear", "peco_",
+}
+
+// IsMountedJob reports whether a player job rides a mount that is drawn in front
+// of the rider's chest, which decides whether an accessory that hangs below the
+// rider's collar is occluded by the animal (see engine.mountOccludes).
+//
+// It is keyed on the body sprite's name rather than on a job-id list because the
+// name is the only place the client records the mount at all, and a new mount
+// arrives as a new job id with the same animal name.
+func (r *Resolver) IsMountedJob(jobID uint32, mado rotype.MadogearType) bool {
+	if !IsPlayer(jobID) {
+		return false
+	}
+	if IsMadogear(jobID) {
+		return true
+	}
+	name := r.JobSpriteName(jobID, mado)
+	for _, tok := range mountSpriteTokens {
+		if strings.Contains(name, tok) {
+			return true
+		}
+	}
+	return false
+}
+
+// PlayerBodySprite returns the body sprite path.
+func (r *Resolver) PlayerBodySprite(jobID uint32, gender rotype.Gender, mado rotype.MadogearType) string {
+	if !IsPlayer(jobID) {
+		return ""
+	}
+	jobname := r.JobSpriteName(jobID, mado)
+	race := kHuman
+	if IsDoram(jobID) {
+		race = kDoram
+	}
+	return join(race, kBodyDir, gender.String(), jobname+"_"+gender.String())
+}
+
+// PlayerBodyAltSprite returns the alternative-outfit body sprite path.
+func (r *Resolver) PlayerBodyAltSprite(jobID uint32, gender rotype.Gender, costumeID uint32, mado rotype.MadogearType) string {
+	if !IsPlayer(jobID) {
+		return ""
+	}
+	jobname := r.JobSpriteName(jobID, mado)
+	costume := utoa(costumeID)
+	race := kHuman
+	if IsDoram(jobID) {
+		race = kDoram
+	}
+	return join(race, kBodyDir, gender.String(), "costume_"+costume, jobname+"_"+gender.String()+"_"+costume)
+}
+
+// PlayerHeadSprite returns the head sprite path.
+func (r *Resolver) PlayerHeadSprite(jobID, headID uint32, gender rotype.Gender) string {
+	if IsWereform(jobID) {
+		return ""
+	}
+	race := kHuman
+	if IsDoram(jobID) {
+		race = kDoram
+	}
+	return join(race, kHeadDir, gender.String(), utoa(headID)+"_"+gender.String())
+}
+
+// nonPlayerSpriteOverride maps specific non-player job ids to a sprite path that
+// differs from what jobname.lub resolves. The Windhawk (Ranger 4th-job) companions
+// are drawn by the client from class-specific effect sprites in the 이팩트
+// ("effect") folder, not the generic monster sprites jobname.lub points them at
+// (20830→몬스터/매 brown falcon, 20833→몬스터/워그 gray warg). Both 4JOB ids are
+// Windhawk-only, so the remap is safe.
+var nonPlayerSpriteOverride = map[uint32]string{
+	20830: join(kEffect, "windhawk_hawk"), // JT_4JOB_H_FALCON — dark falcon w/ red ribbons
+	20833: join(kEffect, "windhawk_wolf"), // JT_4JOB_WORG — black warg w/ green eyes
+}
+
+// NonPlayerSprite returns the body sprite path for monsters/NPCs/homun/merc.
+func (r *Resolver) NonPlayerSprite(jobID uint32) string {
+	if IsPlayer(jobID) {
+		return ""
+	}
+	if path, ok := nonPlayerSpriteOverride[jobID]; ok {
+		return path
+	}
+	jobname := r.JobSpriteName(jobID, rotype.MadogearRobot)
+	if jobname == "" {
+		return ""
+	}
+	switch {
+	case IsNPC(jobID):
+		return join("npc", jobname)
+	case IsMercenary(jobID):
+		return join(kHuman, kBodyDir, jobname)
+	case IsHomunculus(jobID):
+		return join("homun", jobname)
+	case IsMonster(jobID):
+		return join(kMonster, jobname)
+	}
+	return ""
+}
+
+// BodyPalette returns the body palette path.
+func (r *Resolver) BodyPalette(jobID uint32, paletteID int, gender rotype.Gender, mado rotype.MadogearType) string {
+	if !IsPlayer(jobID) {
+		return ""
+	}
+	pal := itoa(paletteID)
+	if IsMadogear(jobID) && mado == rotype.MadogearSuit {
+		return join(kBodyPal, AlternativeMadogearJobName(jobID)+"_"+gender.String()+"_"+pal)
+	}
+	doram := IsDoram(jobID)
+	were := IsWereform(jobID)
+	j := jobID
+	if j > 4000 {
+		j -= advancedJobIndex
+	}
+	if int(j) >= len(r.static.jobPalNames) {
+		return ""
+	}
+	name := r.static.jobPalNames[j]
+	switch {
+	case doram:
+		return join(kDoram, "body", name+"_"+gender.String()+"_"+pal)
+	case were:
+		return join(kBodyPal, name+"_"+pal)
+	default:
+		return join(kBodyPal, name+"_"+gender.String()+"_"+pal)
+	}
+}
+
+// BodyAltPalette returns the alternative-outfit body palette path.
+func (r *Resolver) BodyAltPalette(jobID uint32, paletteID int, gender rotype.Gender, costumeID uint32, mado rotype.MadogearType) string {
+	if !IsPlayer(jobID) {
+		return ""
+	}
+	pal := itoa(paletteID)
+	costume := utoa(costumeID)
+	if IsMadogear(jobID) && mado == rotype.MadogearSuit {
+		return join(kBodyPal, "costume_"+costume,
+			AlternativeMadogearJobName(jobID)+"_"+gender.String()+"_"+pal+"_"+costume)
+	}
+	doram := IsDoram(jobID)
+	j := jobID
+	if j > 4000 {
+		j -= advancedJobIndex
+	}
+	if int(j) >= len(r.static.jobPalNames) {
+		return ""
+	}
+	name := r.static.jobPalNames[j]
+	if doram {
+		return join(kDoram, "body", "costume_"+costume, name+"_"+gender.String()+"_"+pal+"_"+costume)
+	}
+	return join(kBodyPal, "costume_"+costume, name+"_"+gender.String()+"_"+pal+"_"+costume)
+}
+
+// HeadPalette returns the head palette path.
+func (r *Resolver) HeadPalette(jobID, headID uint32, paletteID int, gender rotype.Gender) string {
+	if !IsPlayer(jobID) || IsWereform(jobID) {
+		return ""
+	}
+	pal := itoa(paletteID)
+	name := kHairPrefix + utoa(headID) + "_" + gender.String() + "_" + pal
+	if IsDoram(jobID) {
+		return join(kDoram, kHairPal, name)
+	}
+	return join(kHairPal, name)
+}
+
+// HeadgearSprite returns the accessory (headgear) sprite path, or "" if unknown.
+func (r *Resolver) HeadgearSprite(headgearID uint32, gender rotype.Gender) string {
+	accName := r.tables.AccName(headgearID)
+	if accName == "" {
+		return ""
+	}
+	return join(kAccessory, gender.String(), gender.String()+accName)
+}
+
+// HatEffectSprite returns the sprite path of the hat effect a headgear plays. A
+// "hat effect" costume ships an accessory sprite that is deliberately blank —
+// every .act layer tinted alpha 0 — and puts its real visual in a separate
+// looping sprite, which the client's hat-effect table lists as type "SPR" and
+// plays at the character's head. The accessory name table is the link: view 1500
+// is "_c홍염의폭렬파동", so the sprite is 아이템/c홍염의폭렬파동_이펙트. It is
+// genderless (one file for both), and the whole client ships exactly one of them
+// today, so a caller can simply probe for the file: the name cannot collide with
+// anything else. Returns "" when the headgear id is unknown.
+func (r *Resolver) HatEffectSprite(headgearID uint32) string {
+	accName := r.tables.AccName(headgearID)
+	if accName == "" {
+		return ""
+	}
+	return join(kItem, strings.TrimPrefix(accName, "_")+kHatEffect)
+}
+
+// GarmentSprite returns a garment/robe sprite path. english selects the
+// English-named robe table; fallback returns the shared (non per-job) path used
+// by newer garments. Returns "" if the garment id is unknown.
+func (r *Resolver) GarmentSprite(jobID, garmentID uint32, gender rotype.Gender, english, fallback bool) string {
+	if !IsPlayer(jobID) || IsWereform(jobID) {
+		return ""
+	}
+	jobname := r.JobSpriteName(jobID, rotype.MadogearRobot)
+	garmentName := r.tables.RobeSprName(garmentID, english)
+	if garmentName == "" {
+		return ""
+	}
+	if fallback {
+		return join(kRobe, garmentName, garmentName)
+	}
+	return join(kRobe, garmentName, gender.String(), jobname+"_"+gender.String())
+}
+
+// GarmentPath is one candidate garment resource: the .act holding the geometry
+// and the .spr holding the images. They usually share a base, but a garment that
+// ships one shared image bank pairs a per-job act with the folder-root spr.
+type GarmentPath struct{ Act, Spr string }
+
+// GarmentCandidates returns the candidate garment act/spr pairs in priority
+// order. Garments use several folder layouts: classic per-job
+// (로브/N/<g>/<job>_<g>), nested per-job (로브/N/N/<g>/<job>_<g>, used by newer
+// costumes like c_rata_tail), and a shared single sprite (로브/N/N). The images
+// may live only at the folder root (로브/N/N.spr) while each job keeps its own
+// act, so every per-job act is also offered paired with that shared spr.
+//
+// A per-job act always outranks the folder-root one: a handful of garments
+// (wing_of_angel_move, 천사날개, c_papilio_ulysses_feather, c_giant_white_rabbit)
+// ship a complete root act+spr pair whose offsets are wrong for player bodies —
+// they sit ~28px too high — next to the correct per-job acts. Matching the root
+// pair first would silently pick those broken offsets for every job.
+//
+// The per-job spr likewise outranks the folder-root one, and that is also load
+// bearing: many garments ship a real per-job image bank that differs from their
+// root spr. Gravity does leave stale backpack sprites in those per-job slots (it
+// builds each robe folder by copying 모험가배낭), which this order would compose
+// over the right act — but the fix for that belongs to extraction, not here:
+// `extract-grf.mjs --prune-robes` deletes them by content, since a path cannot
+// tell a leftover from a genuine per-job bank. Do not reorder these to work
+// around an unpruned resources tree.
+func (r *Resolver) GarmentCandidates(jobID, garmentID uint32, gender rotype.Gender) []GarmentPath {
+	if !IsPlayer(jobID) || IsWereform(jobID) {
+		return nil
+	}
+	jobname := r.JobSpriteName(jobID, rotype.MadogearRobot)
+	g := gender.String()
+
+	var out []GarmentPath
+	seen := map[GarmentPath]bool{}
+	addName := func(name string) {
+		if name == "" {
+			return
+		}
+		classic := join(kRobe, name, g, jobname+"_"+g)
+		nested := join(kRobe, name, name, g, jobname+"_"+g)
+		shared := join(kRobe, name, name)
+		for _, p := range []GarmentPath{
+			{classic, classic}, // classic per-job pair
+			{classic, shared},  // classic per-job act over the shared image bank
+			{nested, nested},   // nested per-job pair
+			{nested, shared},   // nested per-job act over the shared image bank
+			{shared, shared},   // shared single sprite
+		} {
+			if !seen[p] {
+				seen[p] = true
+				out = append(out, p)
+			}
+		}
+	}
+	addName(r.tables.RobeSprName(garmentID, false))
+	addName(r.tables.RobeSprName(garmentID, true))
+	return out
+}
+
+// WeaponSprite returns a weapon sprite path for players and mercenaries.
+func (r *Resolver) WeaponSprite(jobID, weaponID uint32, gender rotype.Gender, mado rotype.MadogearType) string {
+	isPlayer := IsPlayer(jobID)
+	isMerc := IsMercenary(jobID)
+	if (!isPlayer || IsWereform(jobID)) && !isMerc {
+		return ""
+	}
+
+	if isPlayer {
+		doram := IsDoram(jobID)
+		isMado := IsMadogear(jobID)
+		isAltMado := isMado && mado == rotype.MadogearSuit
+
+		j := jobID
+		if j > 4000 {
+			j -= advancedJobIndex
+		}
+		if int(j) >= len(r.static.weaponNames) {
+			return ""
+		}
+		jobWeaponName := r.static.weaponNames[j]
+		if isAltMado {
+			if i := strings.IndexByte(jobWeaponName, '/'); i >= 0 {
+				jobWeaponName = jobWeaponName[:i+1] + AlternativeMadogearJobName(jobID)
+			}
+		}
+
+		weaponName := r.tables.WeaponName(weaponID)
+		if weaponName == "" && !isMado {
+			weaponID = r.tables.RealWeaponID(weaponID)
+			weaponName = r.tables.WeaponName(weaponID)
+			if weaponName == "" {
+				weaponName = "_" + utoa(weaponID)
+			}
+		}
+		if weaponName == "" && !isMado {
+			return ""
+		}
+
+		race := kHuman
+		if doram {
+			race = kDoram
+		}
+		return join(race, jobWeaponName+"_"+gender.String()+weaponName)
+	}
+
+	// Mercenary weapons are fixed per class group.
+	switch {
+	case jobID-6017 <= 9: // archer
+		return join(kHuman, kMerc, "활용병_활")
+	case jobID-6027 <= 9: // lancer
+		return join(kHuman, kMerc, "창용병_창")
+	default: // swordsman
+		return join(kHuman, kMerc, "검용병_검")
+	}
+}
+
+// ShieldSprite returns a shield sprite path.
+func (r *Resolver) ShieldSprite(jobID, shieldID uint32, gender rotype.Gender) string {
+	if !IsPlayer(jobID) || IsWereform(jobID) {
+		return ""
+	}
+	jobname := r.JobSpriteName(jobID, rotype.MadogearRobot)
+	if int(shieldID) < len(r.static.shieldNames) {
+		return join(kShield, jobname, jobname+"_"+gender.String()+r.static.shieldNames[shieldID])
+	}
+	return join(kShield, jobname, jobname+"_"+gender.String()+"_"+utoa(shieldID)+"_방패")
+}
+
+// AlternativeMadogearJobName returns the hardcoded alternate madogear job name.
+func AlternativeMadogearJobName(jobID uint32) string {
+	if jobID == 4086 || jobID == 4087 || jobID == 4112 {
+		return "마도아머" // Mechanic
+	}
+	return "meister_madogear2" // Meister
+}

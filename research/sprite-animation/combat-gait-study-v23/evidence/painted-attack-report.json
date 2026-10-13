@@ -1,0 +1,42 @@
+{
+  "schema": "motion-mechanics-report-v1",
+  "status": "REVIEW_REQUIRED",
+  "diagnostic_status": "INCONCLUSIVE",
+  "warnings": [],
+  "unknown": [
+    "frame 0: actual hand/weapon transforms unavailable",
+    "frame 0: palm/hilt point is one calibration feature, not independent grip validation",
+    "frame 0: right hand identity unresolved",
+    "frame 1: actual hand/weapon transforms unavailable",
+    "frame 1: palm/hilt point is one calibration feature, not independent grip validation",
+    "frame 1: right hand identity unresolved",
+    "frame 2: actual hand/weapon transforms unavailable",
+    "frame 2: palm/hilt point is one calibration feature, not independent grip validation",
+    "frame 2: right hand identity unresolved",
+    "frame 3: actual hand/weapon transforms unavailable",
+    "frame 3: palm/hilt point is one calibration feature, not independent grip validation",
+    "frame 3: right hand identity unresolved"
+  ],
+  "metrics": {
+    "visible_hilt_palm_gaps_px": [],
+    "projected_blade_minus_hand_deg": [
+      65.34582148828684,
+      58.2460392080622,
+      34.2157021324374,
+      20.258307051135716
+    ],
+    "blade_angle_steps_deg": [
+      -40.155605091778256,
+      -103.80816844198871,
+      -52.617203335391764
+    ],
+    "hand_angle_steps_deg": [
+      -33.05582281155364,
+      -79.7778313663639,
+      -38.65980825409008
+    ],
+    "geometry_scope": "Fixed hand-local attachment only. Wrist articulation/projection can change screen angles; no universal forearm-angle rule."
+  },
+  "production_approved": false,
+  "scope": "Computed evidence, not an automatic image-semantic anatomy detector or artistic acceptance."
+}
