@@ -1,0 +1,2155 @@
+{
+  "source_file": "research/sprite-animation/joint-tracking-ro-v30/preset-source/Rig_Medium_General.glb",
+  "source_sha256": "5f725c0f745f36078c7238968cd5c04843cbc6260689eb6e7f5e2bbd7ffdd7ad",
+  "clip": "PickUp",
+  "source_action_range_frames": [
+    0.0,
+    39.0
+  ],
+  "source_duration_ms": 1300.0,
+  "canvas": [
+    384,
+    512
+  ],
+  "camera_world_matrix": [
+    [
+      0.8320503234863281,
+      -0.2069673389196396,
+      0.5146424174308777,
+      6.0
+    ],
+    [
+      0.5547001361846924,
+      0.31045112013816833,
+      -0.7719635963439941,
+      -9.0
+    ],
+    [
+      -5.1939132106326724e-08,
+      0.92778480052948,
+      0.37311577796936035,
+      5.5
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "ortho_scale": 3.5,
+  "direction": "fixed front-three-quarter camera (semantic SE candidate, not approved game direction)",
+  "named_bones": {
+    "root": null,
+    "hips": "root",
+    "upperleg.l": "hips",
+    "lowerleg.l": "upperleg.l",
+    "foot.l": "lowerleg.l",
+    "toes.l": "foot.l",
+    "spine": "hips",
+    "chest": "spine",
+    "head": "chest",
+    "upperarm.l": "chest",
+    "lowerarm.l": "upperarm.l",
+    "wrist.l": "lowerarm.l",
+    "hand.l": "wrist.l",
+    "handslot.l": "hand.l",
+    "upperarm.r": "chest",
+    "lowerarm.r": "upperarm.r",
+    "wrist.r": "lowerarm.r",
+    "hand.r": "wrist.r",
+    "handslot.r": "hand.r",
+    "upperleg.r": "hips",
+    "lowerleg.r": "upperleg.r",
+    "foot.r": "lowerleg.r",
+    "toes.r": "foot.r"
+  },
+  "mesh_owner_names": [
+    "Mannequin_ArmLeft",
+    "Mannequin_ArmRight",
+    "Mannequin_Body",
+    "Mannequin_Head",
+    "Mannequin_LegLeft",
+    "Mannequin_LegRight",
+    "Icosphere"
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "source_time_seconds": 0.0,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/00.png",
+      "sha256": "c6d7e1688798371b4846d6bada476a5daffa4bbc38bf4d99746ccd2784be93b6",
+      "points": {
+        "head": {
+          "xy": [
+            192.0,
+            245.43731689453125
+          ],
+          "world_xyz": [
+            -3.1105547027010516e-09,
+            4.189229585449539e-08,
+            1.22782564163208
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            192.0,
+            358.8683166503906
+          ],
+          "world_xyz": [
+            -7.688810922737848e-26,
+            1.3419765743094558e-08,
+            0.39206376671791077
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            164.80767059326172,
+            258.1496276855469
+          ],
+          "world_xyz": [
+            -0.21121761202812195,
+            -0.018282577395439148,
+            1.0931611061096191
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            151.72431564331055,
+            265.4037170410156
+          ],
+          "world_xyz": [
+            -0.3881888687610626,
+            0.08593951165676117,
+            0.9653602838516235
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            124.97211456298828,
+            292.3373107910156
+          ],
+          "world_xyz": [
+            -0.5108574628829956,
+            -0.059742655605077744,
+            0.7882959842681885
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            170.07437896728516,
+            338.96522521972656
+          ],
+          "world_xyz": [
+            -0.17030826210975647,
+            -0.014741496182978153,
+            0.50565105676651
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            166.40287399291992,
+            370.40350341796875
+          ],
+          "world_xyz": [
+            -0.18217331171035767,
+            -0.042190391570329666,
+            0.2805512547492981
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.4404525756836,
+            385.65225982666016
+          ],
+          "world_xyz": [
+            -0.19087834656238556,
+            0.020624889060854912,
+            0.14523723721504211
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.4799690246582,
+            406.25267028808594
+          ],
+          "world_xyz": [
+            -0.21411865949630737,
+            -0.09191162884235382,
+            0.02592507004737854
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            219.1923065185547,
+            269.2788391113281
+          ],
+          "world_xyz": [
+            0.21121758222579956,
+            0.018282471224665642,
+            1.0931611061096191
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            250.5300521850586,
+            283.12513732910156
+          ],
+          "world_xyz": [
+            0.3779016137123108,
+            0.15445221960544586,
+            0.9827601313591003
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            260.0734176635742,
+            318.24241638183594
+          ],
+          "world_xyz": [
+            0.5208513736724854,
+            0.05763678997755051,
+            0.7882999777793884
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            213.92562103271484,
+            347.9389190673828
+          ],
+          "world_xyz": [
+            0.17030826210975647,
+            0.014741497114300728,
+            0.5056509375572205
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            218.18142700195312,
+            379.67054748535156
+          ],
+          "world_xyz": [
+            0.20825077593326569,
+            0.010274713858962059,
+            0.281810462474823
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.84393310546875,
+            396.53714752197266
+          ],
+          "world_xyz": [
+            0.23486867547035217,
+            0.06477820873260498,
+            0.14523710310459137
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.68668365478516,
+            418.8062057495117
+          ],
+          "world_xyz": [
+            0.2729945182800293,
+            -0.04364326223731041,
+            0.02594263292849064
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            192.0,
+            281.9188537597656
+          ],
+          "world_xyz": [
+            -2.1101425051739398e-09,
+            3.2735002264416835e-08,
+            0.9590290784835815
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.5305998921394348,
+          "max_z": 1.223474383354187
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.534924328327179,
+          "max_z": 1.2239444255828857
+        },
+        "Mannequin_Body": {
+          "min_z": 0.3628120720386505,
+          "max_z": 1.2299563884735107
+        },
+        "Mannequin_Head": {
+          "min_z": 1.085413932800293,
+          "max_z": 2.190077781677246
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.003042378695681691,
+          "max_z": 0.5237346291542053
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0013178924564272165,
+          "max_z": 0.5216996073722839
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 1,
+      "source_time_seconds": 0.1857142857142857,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/01.png",
+      "sha256": "ac739084d19ca8c74c5e91ddb410a01e621fd462ccce43b812778251a9e78b74",
+      "points": {
+        "head": {
+          "xy": [
+            169.89169692993164,
+            262.5205993652344
+          ],
+          "world_xyz": [
+            -0.07217896729707718,
+            -0.16418671607971191,
+            1.140793800354004
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            193.18563079833984,
+            368.5637664794922
+          ],
+          "world_xyz": [
+            0.014611187390983105,
+            -0.007305580656975508,
+            0.3263314962387085
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            145.7222671508789,
+            282.5727233886719
+          ],
+          "world_xyz": [
+            -0.2593635618686676,
+            -0.18126574158668518,
+            0.9570075869560242
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            137.54537200927734,
+            294.00746154785156
+          ],
+          "world_xyz": [
+            -0.4039398729801178,
+            -0.06517057120800018,
+            0.8016573786735535
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            119.76539611816406,
+            327.2119903564453
+          ],
+          "world_xyz": [
+            -0.43933528661727905,
+            -0.23119187355041504,
+            0.6046631336212158
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            169.6801414489746,
+            350.61891174316406
+          ],
+          "world_xyz": [
+            -0.16272419691085815,
+            -0.03097611665725708,
+            0.4269106388092041
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            160.7534523010254,
+            382.3575897216797
+          ],
+          "world_xyz": [
+            -0.18284836411476135,
+            -0.11079933494329453,
+            0.21528026461601257
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.4488410949707,
+            385.65931701660156
+          ],
+          "world_xyz": [
+            -0.19097450375556946,
+            0.020872533321380615,
+            0.14508089423179626
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.4945945739746,
+            406.26680755615234
+          ],
+          "world_xyz": [
+            -0.21422606706619263,
+            -0.09157024323940277,
+            0.02568262815475464
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            202.10245513916016,
+            279.6864471435547
+          ],
+          "world_xyz": [
+            0.15012530982494354,
+            -0.10068877786397934,
+            1.0426589250564575
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            235.7150115966797,
+            283.61163330078125
+          ],
+          "world_xyz": [
+            0.31047680974006653,
+            0.07301368564367294,
+            0.991385281085968
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            255.1098175048828,
+            314.77906799316406
+          ],
+          "world_xyz": [
+            0.4999842047691345,
+            0.027767609804868698,
+            0.8191577196121216
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            213.47012329101562,
+            356.15614318847656
+          ],
+          "world_xyz": [
+            0.17692169547080994,
+            -0.0007919117342680693,
+            0.45177924633026123
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            213.51541900634766,
+            389.20853424072266
+          ],
+          "world_xyz": [
+            0.2122817188501358,
+            -0.05327381566166878,
+            0.23369786143302917
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.86146545410156,
+            396.54845428466797
+          ],
+          "world_xyz": [
+            0.23491181433200836,
+            0.06492950022220612,
+            0.14511273801326752
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.71554565429688,
+            418.82344818115234
+          ],
+          "world_xyz": [
+            0.2730758488178253,
+            -0.04340946301817894,
+            0.025755563750863075
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            178.48103713989258,
+            296.0868682861328
+          ],
+          "world_xyz": [
+            -0.04124316945672035,
+            -0.10473836958408356,
+            0.880485475063324
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.5819166898727417,
+          "max_z": 1.1654348373413086
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.3399348258972168,
+          "max_z": 1.0908610820770264
+        },
+        "Mannequin_Body": {
+          "min_z": 0.2876250445842743,
+          "max_z": 1.1769533157348633
+        },
+        "Mannequin_Head": {
+          "min_z": 1.003119945526123,
+          "max_z": 2.0989904403686523
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.0006301600369624794,
+          "max_z": 0.4770597517490387
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0006500061717815697,
+          "max_z": 0.45462802052497864
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 2,
+      "source_time_seconds": 0.3714285714285714,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/02.png",
+      "sha256": "70887640be485fc2d9996c743ea6b0c7dab6ac54d79dab76fcf6a8442c4efba6",
+      "points": {
+        "head": {
+          "xy": [
+            150.36648559570312,
+            284.0190124511719
+          ],
+          "world_xyz": [
+            -0.11014307290315628,
+            -0.3478626608848572,
+            1.0353848934173584
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            193.7991485595703,
+            373.7088165283203
+          ],
+          "world_xyz": [
+            0.021706225350499153,
+            -0.010387231595814228,
+            0.29103657603263855
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            131.22525787353516,
+            313.89923095703125
+          ],
+          "world_xyz": [
+            -0.25985586643218994,
+            -0.3591834306716919,
+            0.7856174111366272
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            126.08977890014648,
+            326.9711151123047
+          ],
+          "world_xyz": [
+            -0.38483673334121704,
+            -0.2350001335144043,
+            0.6198694705963135
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            114.36275482177734,
+            363.14306640625
+          ],
+          "world_xyz": [
+            -0.4041478931903839,
+            -0.350553423166275,
+            0.38771191239356995
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            169.06372833251953,
+            357.35829162597656
+          ],
+          "world_xyz": [
+            -0.15871572494506836,
+            -0.04458523914217949,
+            0.38270285725593567
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            158.97883987426758,
+            388.70350646972656
+          ],
+          "world_xyz": [
+            -0.18715250492095947,
+            -0.12621289491653442,
+            0.17272090911865234
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.4404640197754,
+            385.6531295776367
+          ],
+          "world_xyz": [
+            -0.19087928533554077,
+            0.020626531913876534,
+            0.14523005485534668
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.48133087158203,
+            406.2578659057617
+          ],
+          "world_xyz": [
+            -0.2141636312007904,
+            -0.09182728826999664,
+            0.025848574936389923
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            186.2420997619629,
+            291.93426513671875
+          ],
+          "world_xyz": [
+            0.10670499503612518,
+            -0.23101580142974854,
+            0.9863401055335999
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            220.2923583984375,
+            293.25498962402344
+          ],
+          "world_xyz": [
+            0.26868414878845215,
+            -0.054360728710889816,
+            0.9536312818527222
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            252.6540069580078,
+            313.093505859375
+          ],
+          "world_xyz": [
+            0.48961272835731506,
+            0.01306034717708826,
+            0.8341845870018005
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            212.561279296875,
+            361.0015563964844
+          ],
+          "world_xyz": [
+            0.17973685264587402,
+            -0.01621515117585659,
+            0.4218670725822449
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            212.54468536376953,
+            394.09107971191406
+          ],
+          "world_xyz": [
+            0.21618269383907318,
+            -0.07108846306800842,
+            0.20455440878868103
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.8448944091797,
+            396.5396194458008
+          ],
+          "world_xyz": [
+            0.23487256467342377,
+            0.06478401273488998,
+            0.14521776139736176
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.7036895751953,
+            418.8184280395508
+          ],
+          "world_xyz": [
+            0.27304214239120483,
+            -0.04350500926375389,
+            0.025817016139626503
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            166.25839233398438,
+            311.2006072998047
+          ],
+          "world_xyz": [
+            -0.0641573891043663,
+            -0.2209947258234024,
+            0.8029167652130127
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.6183019876480103,
+          "max_z": 1.1060523986816406
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.11577022075653076,
+          "max_z": 0.9211902618408203
+        },
+        "Mannequin_Body": {
+          "min_z": 0.2404375970363617,
+          "max_z": 1.113417625427246
+        },
+        "Mannequin_Head": {
+          "min_z": 0.8043280839920044,
+          "max_z": 1.9555308818817139
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.0005079710390418768,
+          "max_z": 0.4478145241737366
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0003324202843941748,
+          "max_z": 0.41222715377807617
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 3,
+      "source_time_seconds": 0.5571428571428572,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/03.png",
+      "sha256": "fa575dac9b6150e85311059e1de0d50ab47fb3ac85de935213dceb35ad5f43c1",
+      "points": {
+        "head": {
+          "xy": [
+            148.71188735961914,
+            289.0052490234375
+          ],
+          "world_xyz": [
+            -0.09806632995605469,
+            -0.3863685131072998,
+            1.014224886894226
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            194.09053802490234,
+            373.68287658691406
+          ],
+          "world_xyz": [
+            0.021706217899918556,
+            -0.006796204950660467,
+            0.29002606868743896
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            128.95542526245117,
+            323.2541961669922
+          ],
+          "world_xyz": [
+            -0.2463744580745697,
+            -0.40737831592559814,
+            0.7358239889144897
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            124.79580688476562,
+            332.76129150390625
+          ],
+          "world_xyz": [
+            -0.3755998909473419,
+            -0.26480185985565186,
+            0.5892400741577148
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            113.47788619995117,
+            368.8223114013672
+          ],
+          "world_xyz": [
+            -0.40412652492523193,
+            -0.3614901602268219,
+            0.3495314419269562
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            169.12742614746094,
+            357.6084747314453
+          ],
+          "world_xyz": [
+            -0.15871457755565643,
+            -0.043801967054605484,
+            0.3805975914001465
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            158.9253273010254,
+            388.9336700439453
+          ],
+          "world_xyz": [
+            -0.1873890608549118,
+            -0.12651745975017548,
+            0.17107415199279785
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.4404296875,
+            385.6532974243164
+          ],
+          "world_xyz": [
+            -0.1908794343471527,
+            0.02062632329761982,
+            0.14522886276245117
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.4814224243164,
+            406.2581787109375
+          ],
+          "world_xyz": [
+            -0.2141641229391098,
+            -0.09182541817426682,
+            0.025845475494861603
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            184.93423461914062,
+            294.7772674560547
+          ],
+          "world_xyz": [
+            0.10862980782985687,
+            -0.25002071261405945,
+            0.9721815586090088
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            218.96939849853516,
+            295.44618225097656
+          ],
+          "world_xyz": [
+            0.2691750228404999,
+            -0.0714007019996643,
+            0.9432978630065918
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            252.65171813964844,
+            313.0921173095703
+          ],
+          "world_xyz": [
+            0.4895946979522705,
+            0.013059169054031372,
+            0.8341912031173706
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            212.49561309814453,
+            361.2253875732422
+          ],
+          "world_xyz": [
+            0.17978443205356598,
+            -0.017095621675252914,
+            0.4205230474472046
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            212.51863861083984,
+            394.31317138671875
+          ],
+          "world_xyz": [
+            0.21638363599777222,
+            -0.07171063870191574,
+            0.20317108929157257
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.84494018554688,
+            396.5398635864258
+          ],
+          "world_xyz": [
+            0.23487290740013123,
+            0.06478416919708252,
+            0.1452159881591797
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.70398712158203,
+            418.81884765625
+          ],
+          "world_xyz": [
+            0.2730430066585541,
+            -0.0435025654733181,
+            0.025813305750489235
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            164.56440353393555,
+            314.2582550048828
+          ],
+          "world_xyz": [
+            -0.06235545501112938,
+            -0.24457384645938873,
+            0.788679838180542
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.6213716268539429,
+          "max_z": 1.0912773609161377
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.07434260845184326,
+          "max_z": 0.870031476020813
+        },
+        "Mannequin_Body": {
+          "min_z": 0.23549556732177734,
+          "max_z": 1.0994038581848145
+        },
+        "Mannequin_Head": {
+          "min_z": 0.7641526460647583,
+          "max_z": 1.92397141456604
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.0005074608488939703,
+          "max_z": 0.4464430809020996
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.00032777327578514814,
+          "max_z": 0.4103718101978302
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 4,
+      "source_time_seconds": 0.7428571428571428,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/04.png",
+      "sha256": "62db779f459160dd4db1fadfe63f79ace7706bf8f8c18c4a689456cba84000b3",
+      "points": {
+        "head": {
+          "xy": [
+            154.03367614746094,
+            280.7935333251953
+          ],
+          "world_xyz": [
+            -0.09072677791118622,
+            -0.3317939341068268,
+            1.0581047534942627
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            193.97362518310547,
+            371.4134979248047
+          ],
+          "world_xyz": [
+            0.01853543147444725,
+            -0.0034809308126568794,
+            0.3049302101135254
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            131.87560272216797,
+            312.09083557128906
+          ],
+          "world_xyz": [
+            -0.25340890884399414,
+            -0.360839307308197,
+            0.8009340763092041
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            127.69861221313477,
+            322.0737609863281
+          ],
+          "world_xyz": [
+            -0.38156917691230774,
+            -0.22007475793361664,
+            0.6516880393028259
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            115.14377975463867,
+            357.6512451171875
+          ],
+          "world_xyz": [
+            -0.41977378726005554,
+            -0.3174893260002136,
+            0.41362622380256653
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            169.42559051513672,
+            354.7283935546875
+          ],
+          "world_xyz": [
+            -0.16060176491737366,
+            -0.037296801805496216,
+            0.39922040700912476
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            159.59674072265625,
+            386.2406463623047
+          ],
+          "world_xyz": [
+            -0.18500089645385742,
+            -0.1218254566192627,
+            0.18987920880317688
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.44147109985352,
+            385.65491485595703
+          ],
+          "world_xyz": [
+            -0.1908906102180481,
+            0.020655933767557144,
+            0.1452045440673828
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.48091888427734,
+            406.25779724121094
+          ],
+          "world_xyz": [
+            -0.2141687572002411,
+            -0.09182467311620712,
+            0.025847069919109344
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            189.6576805114746,
+            289.703369140625
+          ],
+          "world_xyz": [
+            0.12024926394224167,
+            -0.20923984050750732,
+            0.9985122084617615
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            223.44962310791016,
+            291.0860900878906
+          ],
+          "world_xyz": [
+            0.2777859568595886,
+            -0.029104482382535934,
+            0.963191032409668
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            253.74160766601562,
+            313.84605407714844
+          ],
+          "world_xyz": [
+            0.4941975474357605,
+            0.01958649232983589,
+            0.8274788856506348
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            212.89917755126953,
+            359.13275146484375
+          ],
+          "world_xyz": [
+            0.17849969863891602,
+            -0.010195157490670681,
+            0.4333460330963135
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            212.81675720214844,
+            392.22076416015625
+          ],
+          "world_xyz": [
+            0.2145126909017563,
+            -0.06523025780916214,
+            0.21600215137004852
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.84606170654297,
+            396.5386734008789
+          ],
+          "world_xyz": [
+            0.23487408459186554,
+            0.0647963210940361,
+            0.14522099494934082
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.70307159423828,
+            418.81612396240234
+          ],
+          "world_xyz": [
+            0.27304062247276306,
+            -0.04351041093468666,
+            0.025835366919636726
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            168.06349182128906,
+            308.33900451660156
+          ],
+          "world_xyz": [
+            -0.0574495904147625,
+            -0.208810955286026,
+            0.8214206099510193
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.6037598848342896,
+          "max_z": 1.1190370321273804
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.1380068063735962,
+          "max_z": 0.9355286955833435
+        },
+        "Mannequin_Body": {
+          "min_z": 0.25506341457366943,
+          "max_z": 1.1302790641784668
+        },
+        "Mannequin_Head": {
+          "min_z": 0.8427438735961914,
+          "max_z": 1.987956166267395
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.0005209201481193304,
+          "max_z": 0.4592551290988922
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0004057198530063033,
+          "max_z": 0.4285906255245209
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 5,
+      "source_time_seconds": 0.9285714285714286,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/05.png",
+      "sha256": "6ea655b568fa8ff38eb22626724f61fcebf426883e62ecee9a5d29be068e88e6",
+      "points": {
+        "head": {
+          "xy": [
+            168.04474639892578,
+            263.7950897216797
+          ],
+          "world_xyz": [
+            -0.06293246895074844,
+            -0.20081768929958344,
+            1.1457232236862183
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            193.23353576660156,
+            366.3255920410156
+          ],
+          "world_xyz": [
+            0.011063947342336178,
+            -0.0013943143421784043,
+            0.34005308151245117
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            142.01866149902344,
+            287.5293884277344
+          ],
+          "world_xyz": [
+            -0.25273820757865906,
+            -0.2368457019329071,
+            0.9405626654624939
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            136.26322174072266,
+            297.76002502441406
+          ],
+          "world_xyz": [
+            -0.3884410858154297,
+            -0.10421953350305557,
+            0.7905321717262268
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            119.09906387329102,
+            331.32325744628906
+          ],
+          "world_xyz": [
+            -0.4565185010433197,
+            -0.21362870931625366,
+            0.5646611452102661
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            169.68943405151367,
+            348.2834777832031
+          ],
+          "world_xyz": [
+            -0.16472668945789337,
+            -0.027857890352606773,
+            0.44262808561325073
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            161.4850616455078,
+            380.1546173095703
+          ],
+          "world_xyz": [
+            -0.18217703700065613,
+            -0.10279020667076111,
+            0.22898168861865997
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.44128799438477,
+            385.65474700927734
+          ],
+          "world_xyz": [
+            -0.1908884048461914,
+            0.020650291815400124,
+            0.14520812034606934
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.48342514038086,
+            406.2595901489258
+          ],
+          "world_xyz": [
+            -0.21415506303310394,
+            -0.09181440621614456,
+            0.025833413004875183
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            201.1980972290039,
+            279.5652313232422
+          ],
+          "world_xyz": [
+            0.15301741659641266,
+            -0.11617184430360794,
+            1.0493781566619873
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            234.5054168701172,
+            285.22727966308594
+          ],
+          "world_xyz": [
+            0.313453733921051,
+            0.05364178866147995,
+            0.9866273999214172
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            256.29430389404297,
+            315.6181945800781
+          ],
+          "world_xyz": [
+            0.5049406290054321,
+            0.03493022173643112,
+            0.8116840124130249
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            213.40667724609375,
+            354.506103515625
+          ],
+          "world_xyz": [
+            0.17534832656383514,
+            0.0007861665217205882,
+            0.4630577862262726
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            214.02809143066406,
+            387.46439361572266
+          ],
+          "world_xyz": [
+            0.2110874503850937,
+            -0.04516443610191345,
+            0.2435687780380249
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.8462905883789,
+            396.54007720947266
+          ],
+          "world_xyz": [
+            0.23487591743469238,
+            0.06479618698358536,
+            0.1452111005783081
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.70204162597656,
+            418.81839752197266
+          ],
+          "world_xyz": [
+            0.2730266749858856,
+            -0.04350217804312706,
+            0.025812828913331032
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            177.00238037109375,
+            295.9764862060547
+          ],
+          "world_xyz": [
+            -0.03942681476473808,
+            -0.12568533420562744,
+            0.8887131214141846
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.5692276954650879,
+          "max_z": 1.1734119653701782
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.2936500310897827,
+          "max_z": 1.0745177268981934
+        },
+        "Mannequin_Body": {
+          "min_z": 0.3008768856525421,
+          "max_z": 1.1862825155258179
+        },
+        "Mannequin_Head": {
+          "min_z": 1.0074372291564941,
+          "max_z": 2.1007680892944336
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.0005755165475420654,
+          "max_z": 0.4870668351650238
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0005175156402401626,
+          "max_z": 0.4689350128173828
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 6,
+      "source_time_seconds": 1.1142857142857143,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/06.png",
+      "sha256": "01b3be37b9d1d03357fe3bf045b30883d9fa140d070633542f3b2572ef3603c6",
+      "points": {
+        "head": {
+          "xy": [
+            184.17473602294922,
+            250.26873779296875
+          ],
+          "world_xyz": [
+            -0.022173438221216202,
+            -0.06317571550607681,
+            1.2084208726882935
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            192.3991241455078,
+            361.2132873535156
+          ],
+          "world_xyz": [
+            0.0034876263234764338,
+            -0.00031287025194615126,
+            0.3756687641143799
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            156.78529357910156,
+            266.2949981689453
+          ],
+          "world_xyz": [
+            -0.2291504144668579,
+            -0.09024841338396072,
+            1.0532262325286865
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            146.78401565551758,
+            275.0430603027344
+          ],
+          "world_xyz": [
+            -0.38903987407684326,
+            0.026333367452025414,
+            0.9140926599502563
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            123.10921096801758,
+            304.62481689453125
+          ],
+          "world_xyz": [
+            -0.4937834143638611,
+            -0.10831155627965927,
+            0.7178220748901367
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            169.94738388061523,
+            341.87657165527344
+          ],
+          "world_xyz": [
+            -0.16860876977443695,
+            -0.018855879083275795,
+            0.4859560430049896
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            164.3228302001953,
+            373.7547912597656
+          ],
+          "world_xyz": [
+            -0.18172910809516907,
+            -0.06849038600921631,
+            0.26475831866264343
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.44143676757812,
+            385.6592559814453
+          ],
+          "world_xyz": [
+            -0.19089020788669586,
+            0.02065480872988701,
+            0.14517301321029663
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.48523330688477,
+            406.2642135620117
+          ],
+          "world_xyz": [
+            -0.2141333818435669,
+            -0.09182467311620712,
+            0.025807656347751617
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            213.4917755126953,
+            271.8937072753906
+          ],
+          "world_xyz": [
+            0.1919669657945633,
+            -0.023092983290553093,
+            1.0834451913833618
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            245.66006469726562,
+            283.1455841064453
+          ],
+          "world_xyz": [
+            0.35733652114868164,
+            0.1252835988998413,
+            0.9877821207046509
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            258.8839645385742,
+            317.41429138183594
+          ],
+          "world_xyz": [
+            0.5158407092094421,
+            0.05049438029527664,
+            0.7956739068031311
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            213.78719329833984,
+            349.9768524169922
+          ],
+          "world_xyz": [
+            0.1719517558813095,
+            0.010570402257144451,
+            0.4923977851867676
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            216.29855346679688,
+            382.4261932373047
+          ],
+          "world_xyz": [
+            0.2087615728378296,
+            -0.013695266097784042,
+            0.2696414589881897
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.84713745117188,
+            396.54261779785156
+          ],
+          "world_xyz": [
+            0.23488014936447144,
+            0.06480037420988083,
+            0.14519187808036804
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.6953353881836,
+            418.8156051635742
+          ],
+          "world_xyz": [
+            0.2730162441730499,
+            -0.04356922581791878,
+            0.025853553786873817
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            187.12786102294922,
+            285.7630615234375
+          ],
+          "world_xyz": [
+            -0.013772298581898212,
+            -0.03938411921262741,
+            0.9408111572265625
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.5381045937538147,
+          "max_z": 1.2114874124526978
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.457589328289032,
+          "max_z": 1.1865596771240234
+        },
+        "Mannequin_Body": {
+          "min_z": 0.3430947959423065,
+          "max_z": 1.2198516130447388
+        },
+        "Mannequin_Head": {
+          "min_z": 1.0668463706970215,
+          "max_z": 2.171321392059326
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.0026445211842656136,
+          "max_z": 0.5121413469314575
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0006686609704047441,
+          "max_z": 0.5065961480140686
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    },
+    {
+      "index": 7,
+      "source_time_seconds": 1.3,
+      "path": "research/sprite-animation/pickup-pilot-v31/source/07.png",
+      "sha256": "008b05895a3b3680b641a5fa231e6748502ea5f4243518a0fd18b0356fa68c7c",
+      "points": {
+        "head": {
+          "xy": [
+            192.0,
+            245.43731689453125
+          ],
+          "world_xyz": [
+            -3.1105547027010516e-09,
+            4.189229585449539e-08,
+            1.22782564163208
+          ],
+          "source_bone": "head",
+          "pixel_visibility": "unverified"
+        },
+        "pelvis": {
+          "xy": [
+            192.0,
+            358.8683166503906
+          ],
+          "world_xyz": [
+            -7.688810922737848e-26,
+            1.3419765743094558e-08,
+            0.39206376671791077
+          ],
+          "source_bone": "hips",
+          "pixel_visibility": "unverified"
+        },
+        "right.shoulder": {
+          "xy": [
+            164.80767059326172,
+            258.1496276855469
+          ],
+          "world_xyz": [
+            -0.21121761202812195,
+            -0.018282577395439148,
+            1.0931611061096191
+          ],
+          "source_bone": "upperarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.elbow": {
+          "xy": [
+            151.72431564331055,
+            265.4037170410156
+          ],
+          "world_xyz": [
+            -0.3881888687610626,
+            0.08593951165676117,
+            0.9653602838516235
+          ],
+          "source_bone": "lowerarm.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.wrist": {
+          "xy": [
+            124.97211456298828,
+            292.3373107910156
+          ],
+          "world_xyz": [
+            -0.5108574628829956,
+            -0.059742655605077744,
+            0.7882959842681885
+          ],
+          "source_bone": "wrist.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.hip": {
+          "xy": [
+            170.07437896728516,
+            338.96522521972656
+          ],
+          "world_xyz": [
+            -0.17030826210975647,
+            -0.014741496182978153,
+            0.50565105676651
+          ],
+          "source_bone": "upperleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.knee": {
+          "xy": [
+            166.40287399291992,
+            370.40350341796875
+          ],
+          "world_xyz": [
+            -0.18217331171035767,
+            -0.042190391570329666,
+            0.2805512547492981
+          ],
+          "source_bone": "lowerleg.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.ankle": {
+          "xy": [
+            170.4404525756836,
+            385.65225982666016
+          ],
+          "world_xyz": [
+            -0.19087834656238556,
+            0.020624889060854912,
+            0.14523723721504211
+          ],
+          "source_bone": "foot.r",
+          "pixel_visibility": "unverified"
+        },
+        "right.toe": {
+          "xy": [
+            158.4799690246582,
+            406.25267028808594
+          ],
+          "world_xyz": [
+            -0.21411865949630737,
+            -0.09191162884235382,
+            0.02592507004737854
+          ],
+          "source_bone": "toes.r",
+          "pixel_visibility": "unverified"
+        },
+        "left.shoulder": {
+          "xy": [
+            219.1923065185547,
+            269.2788391113281
+          ],
+          "world_xyz": [
+            0.21121758222579956,
+            0.018282471224665642,
+            1.0931611061096191
+          ],
+          "source_bone": "upperarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.elbow": {
+          "xy": [
+            250.5300521850586,
+            283.12513732910156
+          ],
+          "world_xyz": [
+            0.3779016137123108,
+            0.15445221960544586,
+            0.9827601313591003
+          ],
+          "source_bone": "lowerarm.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.wrist": {
+          "xy": [
+            260.0734176635742,
+            318.24241638183594
+          ],
+          "world_xyz": [
+            0.5208513736724854,
+            0.05763678997755051,
+            0.7882999777793884
+          ],
+          "source_bone": "wrist.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.hip": {
+          "xy": [
+            213.92562103271484,
+            347.9389190673828
+          ],
+          "world_xyz": [
+            0.17030826210975647,
+            0.014741497114300728,
+            0.5056509375572205
+          ],
+          "source_bone": "upperleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.knee": {
+          "xy": [
+            218.18142700195312,
+            379.67054748535156
+          ],
+          "world_xyz": [
+            0.20825077593326569,
+            0.010274713858962059,
+            0.281810462474823
+          ],
+          "source_bone": "lowerleg.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.ankle": {
+          "xy": [
+            225.84393310546875,
+            396.53714752197266
+          ],
+          "world_xyz": [
+            0.23486867547035217,
+            0.06477820873260498,
+            0.14523710310459137
+          ],
+          "source_bone": "foot.l",
+          "pixel_visibility": "unverified"
+        },
+        "left.toe": {
+          "xy": [
+            221.68668365478516,
+            418.8062057495117
+          ],
+          "world_xyz": [
+            0.2729945182800293,
+            -0.04364326223731041,
+            0.02594263292849064
+          ],
+          "source_bone": "toes.l",
+          "pixel_visibility": "unverified"
+        },
+        "chest": {
+          "xy": [
+            192.0,
+            281.9188537597656
+          ],
+          "world_xyz": [
+            -2.1101425051739398e-09,
+            3.2735002264416835e-08,
+            0.9590290784835815
+          ],
+          "source_bone": "chest",
+          "pixel_visibility": "unverified"
+        }
+      },
+      "mesh_z_extents": {
+        "Mannequin_ArmLeft": {
+          "min_z": 0.5305998921394348,
+          "max_z": 1.223474383354187
+        },
+        "Mannequin_ArmRight": {
+          "min_z": 0.534924328327179,
+          "max_z": 1.2239444255828857
+        },
+        "Mannequin_Body": {
+          "min_z": 0.3628120720386505,
+          "max_z": 1.2299563884735107
+        },
+        "Mannequin_Head": {
+          "min_z": 1.085413932800293,
+          "max_z": 2.190077781677246
+        },
+        "Mannequin_LegLeft": {
+          "min_z": -0.003042378695681691,
+          "max_z": 0.5237346291542053
+        },
+        "Mannequin_LegRight": {
+          "min_z": -0.0013178924564272165,
+          "max_z": 0.5216996073722839
+        },
+        "Icosphere": {
+          "min_z": -1.0,
+          "max_z": 1.0
+        }
+      }
+    }
+  ],
+  "loop": false,
+  "old_own_rig_or_motion_used": false,
+  "contact_approval": false,
+  "production_pass": false,
+  "semantic_scope": "head/chest/pelvis and named limb projections are source bone heads. Source has no separate neck bone; no neck coordinate inferred."
+}

@@ -1,4 +1,8 @@
-## Latest: image-joint review, RO coverage and current presets v30
+## Latest: actual pickup paintover pilot and surface checks v31
+
+[8pose pickup GIF, source comparison, five actual imagegen attempts and strengthened visible-image diagnostics](pickup-pilot-v31/README.md). Selected candidate is not production-approved: support surfaces still slide and recovery differs from source-relative timing. Tracking abstains instead of inventing hidden joints. [Reusable findings](../../skills/modular-eight-direction-sprites/references/pickup-pilot-and-surface-tracking.md).
+
+## Historical: image-joint review, RO coverage and current presets v30
 
 [Grid tool, actual-image tracking experiments, source-bound review, 85indexed RO families, current23joint presets and reusable know-how](joint-tracking-ro-v30/README.md). Tracking remains conservative proposals/unknowns, not universal anatomy approval. [Reusable skill](../../skills/modular-eight-direction-sprites/references/image-joint-tracking-and-ro-coverage.md). Exact acceptedW protected; old own slash references excluded.
 

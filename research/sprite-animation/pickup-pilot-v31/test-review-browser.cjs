@@ -1,0 +1,10 @@
+const {chromium}=require('/opt/codex/runtimes/cua/lib/node_modules/playwright');const fs=require('fs'),assert=require('assert');
+(async()=>{const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});const p=await b.newPage({viewport:{width:1280,height:950}});let errors=[],checks=[];p.on('pageerror',e=>errors.push(e.message));await p.route('**/*',r=>r.abort());await p.setContent(fs.readFileSync(__dirname+'/source-vs-paint.html','utf8'));await p.waitForFunction(()=>window.pickupReview);checks.push('standalone Canvas viewer loaded');
+assert.equal(await p.locator('svg').count(),0);assert.equal(await p.locator('canvas').count(),2);checks.push('source and paint separate; no SVG');
+assert((await p.locator('#verdict').innerText()).includes('still fail'));checks.push('failed production status visible');
+await p.evaluate(()=>pickupReview.set(4));assert((await p.locator('#time').innerText()).includes('742.86'));checks.push('matching sampled source time');
+await p.locator('#grid').uncheck();await p.locator('#points').uncheck();checks.push('body-only review controls');
+await p.evaluate(()=>pickupReview.set(0));await p.locator('#play').click();await p.waitForFunction(()=>pickupReview.frame===7&&!pickupReview.running,{},{timeout:5000});checks.push('one-shot clock and terminal pause stop');
+await p.screenshot({path:__dirname+'/source-vs-paint-browser.png',fullPage:true});
+await p.goto('about:blank');await p.setContent(fs.readFileSync(__dirname+'/image-grid-review.html','utf8'));await p.waitForFunction(()=>window.jointReview);assert.equal(await p.locator('#joint').inputValue(),'surface.reaching_cuff');assert((await p.locator('#point').innerText()).includes('visible_surface_proxy'));checks.push('surface proxy scope displayed');
+assert.deepEqual(errors,[]);checks.push('no JavaScript errors');await b.close();fs.writeFileSync(__dirname+'/browser-qa.json',JSON.stringify({checks:checks.map(name=>({name,pass:true})),production_pass:false},null,2)+'\n');console.log(JSON.stringify({checks:checks.length,errors}));})().catch(e=>{console.error(e.message);process.exit(1)});
