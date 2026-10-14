@@ -1,4 +1,8 @@
-## Latest: passing one-key motion repair with seven unchanged keys v39
+## Latest: accepted v39, rear-camera proof and caught false positives v40
+
+[Front/rear comparison, seven real still jobs, exact source projection and stronger visible-pixel/guide checks](rear-motion-v40/README.md). The user accepts exact v39; its bytes are preserved. New rear source worlds/camera pass; new painted rear candidate stays **rejected** for26.02pxfixed-guide error despite passing phase/neck/support subchecks. Neighbor-heel ROI contamination and fitted-phase amplitude blindness are retained negative controls.21regressions/19browserchecks; no newview/hiddenanatomy/proportion/factory approval. [Reusable practice](../../skills/modular-eight-direction-sprites/references/physical-view-phase-and-guide-fidelity.md).
+
+## Historical: passing one-key motion repair with seven unchanged keys v39
 
 [New motion/before-after GIFs, exact seven-key preservation, source/trajectory/contact checks and reusable isolated-key workflow](recovery-key-v39/README.md). A genuine native existing-key edit fixes10.68pxlateralreversal to0while retaining the same foot/neck/source gates, head scale and clocks.8newtests/19browserchecks; explicit one-view agent motion review only, no user-art/proportion/all-action/view/factory approval. The v38failure remains unchanged. [Reusable practice](../../skills/modular-eight-direction-sprites/references/isolated-motion-key-repair.md).
 

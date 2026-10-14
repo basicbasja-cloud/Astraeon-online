@@ -1,0 +1,31 @@
+{
+  "native": {
+    "path": "research/sprite-animation/rear-motion-v40/body-attempt3-raw.png",
+    "sha256": "5177b1a3ffe7ccf4e99c60290671a837681aa596ef1a8e2e4b2828ee1aaaaa67"
+  },
+  "row_offsets": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      23
+    ]
+  ],
+  "method": "One shared integer row-origin correction, not individual-frame foot fitting. All four raw lower-row near soles are463 versus486 in all four upper cells; same correction also moves collar/cape/arms. No resampling. Original native atlas is retained including off-canvas noise.",
+  "near_sole_raw_y": [
+    486,
+    486,
+    486,
+    486,
+    463,
+    463,
+    463,
+    463
+  ],
+  "visible_foreground_cut_alpha128": false,
+  "clipped_nonzero_alpha_pixels": 10,
+  "clipped_max_alpha": 1,
+  "raw_alpha_failure_not_rescued": true
+}

@@ -1,0 +1,185 @@
+{
+  "actual_still_image_jobs": 7,
+  "generated_video": false,
+  "minimax_called": false,
+  "old_own_attack_used": false,
+  "jobs": [
+    {
+      "name": "rear_body1",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/body-prompt.txt",
+        "sha256": "85c59dfbeb02a61672f0a7734aab28ecf79e551468ffb1400496eaeae9967eb8"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/recovery-key-v39/renders/review/full/00.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/source-guide.png",
+          "sha256": "6619ed06b99c23d6247e72e7b82fcf0da7102bb7d89bde6b690fbc9345ec3747"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/pose-guide.png",
+          "sha256": "21fe4dd6bd3a87a9db84ff329eb9cae6304602f39344d931589ac7556ec9878b"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/body-attempt1-raw.png",
+        "sha256": "2a1afe64158923f5a56cb36e3e3c5e52603d442424cfd0b3059281531bb95a37"
+      },
+      "transparent_background": true,
+      "native_video": false
+    },
+    {
+      "name": "rear_body2",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/body-attempt2-prompt.txt",
+        "sha256": "6a218ab2f0977528594504735166e66178da382c6a49ebcdf37a859d278b17a1"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/rear-motion-v40/body-attempt1-raw.png",
+          "sha256": "2a1afe64158923f5a56cb36e3e3c5e52603d442424cfd0b3059281531bb95a37"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/pose-guide.png",
+          "sha256": "21fe4dd6bd3a87a9db84ff329eb9cae6304602f39344d931589ac7556ec9878b"
+        },
+        {
+          "path": "research/sprite-animation/recovery-key-v39/renders/review/full/00.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/body-attempt2-raw.png",
+        "sha256": "353419c3725d6fa5c403a92d96de6793d79111b790d81b5850dc51603e746e20"
+      },
+      "transparent_background": true,
+      "native_video": false
+    },
+    {
+      "name": "rear_head",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/head-prompt.txt",
+        "sha256": "4e9c580471c814d9f0e69318bcd7a499236cd43288f550e8b2899ea76117f680"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/recovery-key-v39/renders/review/full/00.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/source/00.png",
+          "sha256": "2ed09c96a75c74b4aa332d86378aa080140eb0e0ab12688b6472fb176e8161f5"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/head-attempt1-raw.png",
+        "sha256": "2f19c4456b1345db7b7300e511955990c8db2a0863907e0288fd2590f33a4772"
+      },
+      "transparent_background": true,
+      "native_video": false
+    },
+    {
+      "name": "neutral_cleanup",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/neutral-clean-prompt.txt",
+        "sha256": "0231eed48fa47a9e94f1165e2c431db41ccce182d60e50bee5e19302e194dbd9"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/rear-motion-v40/neutral-clean-input.png",
+          "sha256": "9771b07539495733c4805f92d961d59377c568713ce8fe1b099fc349c636b768"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/neutral-clean-raw.png",
+        "sha256": "2e9d9828753deb7575a4132709013d35899f87e5a2d52eb9656d596b8b3b0765"
+      },
+      "transparent_background": true,
+      "native_video": false
+    },
+    {
+      "name": "rear_body3",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/body-attempt3-prompt.txt",
+        "sha256": "b06aecfab9f8a164a45baa34073d2129bb62b6cedbaad6caa211d92a86c7e3fa"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/rear-motion-v40/painted-pose-guide.png",
+          "sha256": "b18da91466a9fef415ffa5871e446a9ac760a6895aeffb5b1af02a0604c97101"
+        },
+        {
+          "path": "research/sprite-animation/recovery-key-v39/renders/review/full/00.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/pose-guide.png",
+          "sha256": "21fe4dd6bd3a87a9db84ff329eb9cae6304602f39344d931589ac7556ec9878b"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/body-attempt3-raw.png",
+        "sha256": "5177b1a3ffe7ccf4e99c60290671a837681aa596ef1a8e2e4b2828ee1aaaaa67"
+      },
+      "transparent_background": true,
+      "native_video": false
+    },
+    {
+      "name": "repair_early_key",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/repair-key1-prompt.txt",
+        "sha256": "97fe2c4da650323a70147d9a2fef3f209b24b478e3aa226e7b149e4faed80b94"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/rear-motion-v40/repair-key1-guide.png",
+          "sha256": "c459744d9780ecbbca8cd1e886c058ab8e39143639ea704db897c878c09bcdd9"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/repair-key1.png",
+          "sha256": "078f0935a69569970aa88f8fda8636897323201606376226497d33bce9998ceb"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/repair-key1-raw.png",
+        "sha256": "b377c436c4a23b01e306d77917a0f9c2348d2e45d99073e3df12ceffc8fe3950"
+      },
+      "transparent_background": true,
+      "native_video": false
+    },
+    {
+      "name": "repair_initial_recovery",
+      "tool": "image_gen.imagegen",
+      "prompt": {
+        "path": "research/sprite-animation/rear-motion-v40/repair-key4-prompt.txt",
+        "sha256": "dad080d6f256c40e41f38360080569702e1585a9aa04a4b0db80283ef387c9e2"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/rear-motion-v40/repair-key4-guide.png",
+          "sha256": "254fa2b8f603263bb62e3ec1a7943abb7d9a5d57783958810fc542db14b513b4"
+        },
+        {
+          "path": "research/sprite-animation/rear-motion-v40/repair-key4-before.png",
+          "sha256": "6386075a193097f7bfe5eec9d9a066a2492e7769351f85f19be6e30bca76b94b"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/rear-motion-v40/repair-key4-raw.png",
+        "sha256": "7fbff0653f5c587bfebfbb98d869b9a450f7dce47d2f4bdf2e22a5f523ab2e93"
+      },
+      "transparent_background": true,
+      "native_video": false
+    }
+  ],
+  "scope": "Exact direct prompts and reference bytes of seven actual native still jobs. Guides/crops are local, not additional native generations. No unrecorded full-strip independent-frame generation claim."
+}

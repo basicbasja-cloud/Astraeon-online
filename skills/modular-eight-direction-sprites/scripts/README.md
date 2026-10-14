@@ -1,4 +1,8 @@
-# Current isolated existing-key repair verification — v0.39
+# Current physical view and phase/guide separation — v0.40
+
+[Executed rear-view study](../../../research/sprite-animation/rear-motion-v40/KNOW-HOW.md). `physical-view-source-audit.py --original OLD_SOURCE --current NEW_SOURCE --out REPORT` verifies unchanged actual world bones/clock and independently projects a second camera. `visible-boot-components.py` observes two separated visible boot components in a reviewed fixed-view band; merged/missing/clipped boots abstain and screen ordering never means anatomical LR. `view-conditioned-motion.py --contract CONTRACT --renders PASSES --out REPORT --require-motion` combines actual neck/support pixels with signed calibrated phase AND a fixed guide-displacement check using rest-origin calibration only. It deliberately exits1 for the actual26.02pxwrong rear pose even though phase-only metrics pass. NumPy/Pillow/SciPy;8source+13motion/component regressions and19browserchecks. New8pxguide budget is provisional; established6pxsupport/3pxneck/.25phase stay unchanged. Acceptedv39 remains untouched. No newrear/acting/hiddenjoint/proportion/allview/factory approval.
+
+# Historical isolated existing-key repair verification — v0.39
 
 [Executed passing repair/reproduction](../../../research/sprite-animation/recovery-key-v39/KNOW-HOW.md). `isolated-key-review.py --before-contract BEFORE --after-contract AFTER --before-renders BEFORE_PASSES --after-renders AFTER_PASSES --normalization RECEIPT --out REPORT --root REPO` checks exact seven non-target records/28actualpasses, unchanged source/head/scale/clocks/limits, actual input hashes, real target pixels and known-canvas normalization. Failure exits1; no feature/foot fitting. Combine with the frozen neck/contact/spacing tools and an explicit exact-image visual receipt.8newregressions/19browserchecks cover the one-view pilot; no production/user-art/hidden-anatomy guarantee.
 

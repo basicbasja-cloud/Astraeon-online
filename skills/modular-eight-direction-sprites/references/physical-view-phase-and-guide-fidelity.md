@@ -1,0 +1,13 @@
+# Physical views, calibrated phase and guide fidelity
+
+The [v40 executed study](../../../research/sprite-animation/rear-motion-v40/README.md) preserves user-accepted v39 and tests the same external motion from behind. Its source-camera proof passes, but its new rear artwork remains rejected. Reuse the failure fixtures and tools, not the painting as an approved source.
+
+1. Reproject the same actual world joints through a real second camera. Verify asset/PNG hashes, times, world invariance and camera coordinates. Raster mirroring does not prove a new view.
+2. Camera changes alter screen trajectories. Depth can cancel vertical crouch motion or produce a genuine small return overshoot. Do not reuse a front-view vertical rule without checking the new source projection.
+3. Use a newly authored head/body bank for the view. Keep body-with-outfit coherent; complete head style and body collar underlap still use two logical slots even with three render passes.
+4. Verify visible observations themselves. A shoe ROI can include the neighboring heel and falsely pass. A fixed-view component observer can separate two visible boots, but merged/crossing boots must abstain; screen sorting does not establish anatomical identity.
+5. Keep phase calibration separate from shape fidelity. Independently fitted X/Y ranges can make a wrong pose's timing appear correct. Retain the fixed guide adapter and measure displacement after only a rest-origin calibration. In v40, phase errors0.149/0.107 pass while26.02px geometry error fails a new provisional8px gate. Preserve that real false positive as a regression.
+6. Common row packing, static bank calibration and per-frame pose fitting are different operations. A disclosed one-row integer correction is justified only by shared packing evidence; it cannot repair arbitrary shoes. Keep original pixels and record even low-alpha clipping. Never threshold the remaining A1 speck to manufacture a raw-alpha pass.
+7. Source joint depth is not mesh visibility. Source bones cannot certify hidden painted hips/wrists. A clean neck seam, valid clocks or a software pass does not approve reach acting, proportions, contact or all views.
+
+Executed tools: [source projection audit](../scripts/physical-view-source-audit.py), [visible separated boots](../scripts/visible-boot-components.py), [phase plus fixed-guide gate](../scripts/view-conditioned-motion.py). The source/skin/boot adapters are specific to their declared camera and reviewed surfaces; they are not a universal joint detector. Read the [reproduction notes](../../../research/sprite-animation/rear-motion-v40/KNOW-HOW.md) for exact inputs, normalization, thresholds and known failures.

@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "name": "two logical slots, three ordered rendering passes",
+      "pass": true
+    },
+    {
+      "name": "actual full frame makes three drawImage calls",
+      "pass": true
+    },
+    {
+      "name": "review exported pixels reproducible across all eight keys",
+      "pass": true
+    },
+    {
+      "name": "raw8 exported pixels reproducible across all eight keys",
+      "pass": true
+    },
+    {
+      "name": "review has seven unique body drawings and matching terminal rest",
+      "pass": true
+    },
+    {
+      "name": "terminal rest matches start; near-rest is a distinct drawing",
+      "pass": true
+    },
+    {
+      "name": "slider changes frame and stops play",
+      "pass": true
+    },
+    {
+      "name": "variant switch keeps current logical frame",
+      "pass": true
+    },
+    {
+      "name": "clock selection resets one shared action state",
+      "pass": true
+    },
+    {
+      "name": "game clock reaches key four at 450ms",
+      "pass": true
+    },
+    {
+      "name": "game playback ends in terminal hold",
+      "pass": true
+    },
+    {
+      "name": "source clock reaches key three at 600ms",
+      "pass": true
+    },
+    {
+      "name": "source playback ends at 1.3s plus 600ms hold",
+      "pass": true
+    },
+    {
+      "name": "actual observed edge overlay changes canvas pixels",
+      "pass": true
+    },
+    {
+      "name": "one common positive body transform across all keys",
+      "pass": true
+    },
+    {
+      "name": "new rear head uses one fixed scale",
+      "pass": true
+    },
+    {
+      "name": "runtime binds current normalization receipt",
+      "pass": true
+    },
+    {
+      "name": "rejected guide-fidelity status remains visible",
+      "pass": true
+    },
+    {
+      "name": "no browser runtime errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "production_pass": false
+}

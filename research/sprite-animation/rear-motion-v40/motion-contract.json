@@ -1,0 +1,1206 @@
+{
+  "schema": "rear-camera-coherent-motion-v1",
+  "canvas": [
+    384,
+    512
+  ],
+  "source": {
+    "path": "research/sprite-animation/rear-motion-v40/source/source.json",
+    "sha256": "622e41210ae082af322b948e4433156f2ef8d6397f507f8bb4d2f5faad16e061"
+  },
+  "original_source": {
+    "path": "research/sprite-animation/pickup-pilot-v31/source/source.json",
+    "sha256": "6e05a7aa27db3d8d8c320891edd59864d2811b3fa807145442aa7fad5dfdff8c"
+  },
+  "head": {
+    "path": "research/sprite-animation/rear-motion-v40/head-attempt1-raw.png",
+    "sha256": "2f19c4456b1345db7b7300e511955990c8db2a0863907e0288fd2590f33a4772"
+  },
+  "head_insertion_points_native": [
+    [
+      563,
+      1000
+    ],
+    [
+      808,
+      1000
+    ]
+  ],
+  "head_scale": 0.13,
+  "body_uniform_rest_matrix": [
+    0.9463722397476341,
+    0,
+    0,
+    0.9463722397476341,
+    10.296529968454252,
+    20.06309148264984
+  ],
+  "body_rest_calibration": {
+    "raw_art_index": 6,
+    "cap_y": 169,
+    "sole_y": 486,
+    "target_sole_y": 480,
+    "cap_to_sole_height": 300,
+    "scope": "Single bank-rest calibration before motion review; not per-key fit"
+  },
+  "variants": {
+    "raw8": [
+      {
+        "index": 0,
+        "source_time_seconds": 0.0,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/06.png",
+          "sha256": "cae3c659c3c2554668f31562839b56839ea1b288eb382fd8d317f8712e7a8269"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 0,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          99.06494036558487,
+          55.60909208763667
+        ],
+        "body_collar_lip_points_native": [
+          [
+            171.9634703196347,
+            174.92694063926942
+          ],
+          [
+            203.9634703196347,
+            174.92694063926942
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          188.17994036558488,
+          185.60909208763667
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            167.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            198.92694063926942
+          ],
+          [
+            167.9634703196347,
+            198.92694063926942
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 6
+        }
+      },
+      {
+        "index": 1,
+        "source_time_seconds": 0.1857142857142857,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/01.png",
+          "sha256": "2e14a36a1dc744f27adfa6523dd47d5bdabe95ec36b7b42f4e56e7fc61e80818"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 1,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          101.18487995868344,
+          73.46668155551214
+        ],
+        "body_collar_lip_points_native": [
+          [
+            174.20353982300884,
+            193.79646017699116
+          ],
+          [
+            206.20353982300884,
+            193.79646017699116
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          190.29987995868345,
+          203.46668155551214
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            170.20353982300884,
+            193.79646017699116
+          ],
+          [
+            210.20353982300884,
+            193.79646017699116
+          ],
+          [
+            210.20353982300884,
+            217.79646017699116
+          ],
+          [
+            170.20353982300884,
+            217.79646017699116
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 1
+        }
+      },
+      {
+        "index": 2,
+        "source_time_seconds": 0.3714285714285714,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/02.png",
+          "sha256": "a68ae84a7bf0eba4041680f044c8ed818a9ead9472a9aa9916b15e2135361eca"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 2,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          89.84905562713823,
+          85.61114319989338
+        ],
+        "body_collar_lip_points_native": [
+          [
+            162.22535211267606,
+            206.62910798122067
+          ],
+          [
+            194.22535211267606,
+            206.62910798122067
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          178.96405562713824,
+          215.61114319989338
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            158.22535211267606,
+            206.62910798122067
+          ],
+          [
+            198.22535211267606,
+            206.62910798122067
+          ],
+          [
+            198.22535211267606,
+            230.62910798122067
+          ],
+          [
+            158.22535211267606,
+            230.62910798122067
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 2
+        }
+      },
+      {
+        "index": 3,
+        "source_time_seconds": 0.5571428571428572,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/03.png",
+          "sha256": "d15c38819d4a23dd8869625a613412213e54c90f433424c212ca77942bf91520"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 3,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          84.479214049396,
+          89.56759252135109
+        ],
+        "body_collar_lip_points_native": [
+          [
+            156.55121951219513,
+            210.80975609756098
+          ],
+          [
+            188.55121951219513,
+            210.80975609756098
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          173.59421404939602,
+          219.5675925213511
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            152.55121951219513,
+            210.80975609756098
+          ],
+          [
+            192.55121951219513,
+            210.80975609756098
+          ],
+          [
+            192.55121951219513,
+            234.80975609756098
+          ],
+          [
+            152.55121951219513,
+            234.80975609756098
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 3
+        }
+      },
+      {
+        "index": 4,
+        "source_time_seconds": 0.7428571428571428,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/04.png",
+          "sha256": "11af4bd61824366b09638d48db5a62c94bf2fa75a730015411ab2cf4a2e9ce7a"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 4,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          85.321145313931,
+          61.58033987992266
+        ],
+        "body_collar_lip_points_native": [
+          [
+            157.44086021505376,
+            181.23655913978496
+          ],
+          [
+            189.44086021505376,
+            181.23655913978496
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          174.436145313931,
+          191.58033987992266
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            153.44086021505376,
+            181.23655913978496
+          ],
+          [
+            193.44086021505376,
+            181.23655913978496
+          ],
+          [
+            193.44086021505376,
+            205.23655913978496
+          ],
+          [
+            153.44086021505376,
+            205.23655913978496
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 4
+        }
+      },
+      {
+        "index": 5,
+        "source_time_seconds": 0.9285714285714286,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/05.png",
+          "sha256": "7006da7a717b4bb3c93ee77ec830625d1d3fe8e5418209b26a76d8a9d169f123"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 5,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          91.65440529284703,
+          56.17706018554489
+        ],
+        "body_collar_lip_points_native": [
+          [
+            164.13300492610838,
+            175.5270935960591
+          ],
+          [
+            196.13300492610838,
+            175.5270935960591
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          180.76940529284704,
+          186.1770601855449
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            160.13300492610838,
+            175.5270935960591
+          ],
+          [
+            200.13300492610838,
+            175.5270935960591
+          ],
+          [
+            200.13300492610838,
+            199.5270935960591
+          ],
+          [
+            160.13300492610838,
+            199.5270935960591
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 5
+        }
+      },
+      {
+        "index": 6,
+        "source_time_seconds": 1.1142857142857143,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/07.png",
+          "sha256": "0bb0f5690e4d18d3011553676020e719a3c7a7d384daaf166ae9d2fb18464765"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 6,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          99.41496845425866,
+          55.18191377497371
+        ],
+        "body_collar_lip_points_native": [
+          [
+            172.33333333333334,
+            174.47555555555556
+          ],
+          [
+            204.33333333333334,
+            174.47555555555556
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          188.52996845425866,
+          185.1819137749737
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            168.33333333333334,
+            174.47555555555556
+          ],
+          [
+            208.33333333333334,
+            174.47555555555556
+          ],
+          [
+            208.33333333333334,
+            198.47555555555556
+          ],
+          [
+            168.33333333333334,
+            198.47555555555556
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 7
+        }
+      },
+      {
+        "index": 7,
+        "source_time_seconds": 1.3,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/06.png",
+          "sha256": "cae3c659c3c2554668f31562839b56839ea1b288eb382fd8d317f8712e7a8269"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/raw8-verification-atlas.png",
+          "sha256": "de8e8911d316975ae895db9a61e5c10a78287ac6030dbed5b4bbae6951ad59da"
+        },
+        "raw_art_index": 7,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          99.06494036558487,
+          55.60909208763667
+        ],
+        "body_collar_lip_points_native": [
+          [
+            171.9634703196347,
+            174.92694063926942
+          ],
+          [
+            203.9634703196347,
+            174.92694063926942
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          188.17994036558488,
+          185.60909208763667
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            167.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            198.92694063926942
+          ],
+          [
+            167.9634703196347,
+            198.92694063926942
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 6
+        }
+      }
+    ],
+    "review": [
+      {
+        "index": 0,
+        "source_time_seconds": 0.0,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/06.png",
+          "sha256": "cae3c659c3c2554668f31562839b56839ea1b288eb382fd8d317f8712e7a8269"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 0,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          99.06494036558487,
+          55.60909208763667
+        ],
+        "body_collar_lip_points_native": [
+          [
+            171.9634703196347,
+            174.92694063926942
+          ],
+          [
+            203.9634703196347,
+            174.92694063926942
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          188.17994036558488,
+          185.60909208763667
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            167.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            198.92694063926942
+          ],
+          [
+            167.9634703196347,
+            198.92694063926942
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 6
+        }
+      },
+      {
+        "index": 1,
+        "source_time_seconds": 0.1857142857142857,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/repaired-key1.png",
+          "sha256": "fb1e7b4e5170c2682c3a4bef3d7aae5961c65b453f0ca0b3c6a9c1ea7ab42d22"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 1,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          97.31068194470217,
+          67.93653739098161
+        ],
+        "body_collar_lip_points_native": [
+          [
+            170.10980392156864,
+            187.95294117647057
+          ],
+          [
+            202.10980392156864,
+            187.95294117647057
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          186.42568194470218,
+          197.9365373909816
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            166.10980392156864,
+            187.95294117647057
+          ],
+          [
+            206.10980392156864,
+            187.95294117647057
+          ],
+          [
+            206.10980392156864,
+            211.95294117647057
+          ],
+          [
+            166.10980392156864,
+            211.95294117647057
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "isolated_key",
+          "art_index": 1
+        }
+      },
+      {
+        "index": 2,
+        "source_time_seconds": 0.3714285714285714,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/02.png",
+          "sha256": "a68ae84a7bf0eba4041680f044c8ed818a9ead9472a9aa9916b15e2135361eca"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 2,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          89.84905562713823,
+          85.61114319989338
+        ],
+        "body_collar_lip_points_native": [
+          [
+            162.22535211267606,
+            206.62910798122067
+          ],
+          [
+            194.22535211267606,
+            206.62910798122067
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          178.96405562713824,
+          215.61114319989338
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            158.22535211267606,
+            206.62910798122067
+          ],
+          [
+            198.22535211267606,
+            206.62910798122067
+          ],
+          [
+            198.22535211267606,
+            230.62910798122067
+          ],
+          [
+            158.22535211267606,
+            230.62910798122067
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 2
+        }
+      },
+      {
+        "index": 3,
+        "source_time_seconds": 0.5571428571428572,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/03.png",
+          "sha256": "d15c38819d4a23dd8869625a613412213e54c90f433424c212ca77942bf91520"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 3,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          84.479214049396,
+          89.56759252135109
+        ],
+        "body_collar_lip_points_native": [
+          [
+            156.55121951219513,
+            210.80975609756098
+          ],
+          [
+            188.55121951219513,
+            210.80975609756098
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          173.59421404939602,
+          219.5675925213511
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            152.55121951219513,
+            210.80975609756098
+          ],
+          [
+            192.55121951219513,
+            210.80975609756098
+          ],
+          [
+            192.55121951219513,
+            234.80975609756098
+          ],
+          [
+            152.55121951219513,
+            234.80975609756098
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 3
+        }
+      },
+      {
+        "index": 4,
+        "source_time_seconds": 0.7428571428571428,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/repaired-key4.png",
+          "sha256": "8cc75d774630c4bb655d248957b08767ab9c90e6f313858ac22e1447fce62207"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 4,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          86.57111170134516,
+          78.175413935699
+        ],
+        "body_collar_lip_points_native": [
+          [
+            158.76165803108807,
+            198.77202072538861
+          ],
+          [
+            190.76165803108807,
+            198.77202072538861
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          175.68611170134517,
+          208.175413935699
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            154.76165803108807,
+            198.77202072538861
+          ],
+          [
+            194.76165803108807,
+            198.77202072538861
+          ],
+          [
+            194.76165803108807,
+            222.77202072538861
+          ],
+          [
+            154.76165803108807,
+            222.77202072538861
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "isolated_key",
+          "art_index": 4
+        }
+      },
+      {
+        "index": 5,
+        "source_time_seconds": 0.9285714285714286,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/05.png",
+          "sha256": "7006da7a717b4bb3c93ee77ec830625d1d3fe8e5418209b26a76d8a9d169f123"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 5,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          91.65440529284703,
+          56.17706018554489
+        ],
+        "body_collar_lip_points_native": [
+          [
+            164.13300492610838,
+            175.5270935960591
+          ],
+          [
+            196.13300492610838,
+            175.5270935960591
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          180.76940529284704,
+          186.1770601855449
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            160.13300492610838,
+            175.5270935960591
+          ],
+          [
+            200.13300492610838,
+            175.5270935960591
+          ],
+          [
+            200.13300492610838,
+            199.5270935960591
+          ],
+          [
+            160.13300492610838,
+            199.5270935960591
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 5
+        }
+      },
+      {
+        "index": 6,
+        "source_time_seconds": 1.1142857142857143,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/07.png",
+          "sha256": "0bb0f5690e4d18d3011553676020e719a3c7a7d384daaf166ae9d2fb18464765"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 6,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          99.41496845425866,
+          55.18191377497371
+        ],
+        "body_collar_lip_points_native": [
+          [
+            172.33333333333334,
+            174.47555555555556
+          ],
+          [
+            204.33333333333334,
+            174.47555555555556
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          188.52996845425866,
+          185.1819137749737
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            168.33333333333334,
+            174.47555555555556
+          ],
+          [
+            208.33333333333334,
+            174.47555555555556
+          ],
+          [
+            208.33333333333334,
+            198.47555555555556
+          ],
+          [
+            168.33333333333334,
+            198.47555555555556
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 7
+        }
+      },
+      {
+        "index": 7,
+        "source_time_seconds": 1.3,
+        "body": {
+          "path": "research/sprite-animation/rear-motion-v40/body-canonical/06.png",
+          "sha256": "cae3c659c3c2554668f31562839b56839ea1b288eb382fd8d317f8712e7a8269"
+        },
+        "raw_sheet": {
+          "path": "research/sprite-animation/rear-motion-v40/review-verification-atlas.png",
+          "sha256": "27049e1aa8f8b0b37e5843064537acdcfc59ab6580bb450b4ef191bfeba5a0e5"
+        },
+        "raw_art_index": 7,
+        "raw_sheet_kind": "Locally packed verification atlas, NOT native full-strip output",
+        "body_matrix": [
+          0.9463722397476341,
+          0,
+          0,
+          0.9463722397476341,
+          10.296529968454252,
+          20.06309148264984
+        ],
+        "head_matrix": [
+          0.13,
+          0,
+          0,
+          0.13,
+          99.06494036558487,
+          55.60909208763667
+        ],
+        "body_collar_lip_points_native": [
+          [
+            171.9634703196347,
+            174.92694063926942
+          ],
+          [
+            203.9634703196347,
+            174.92694063926942
+          ]
+        ],
+        "observed_receiver_surface_xy": [
+          188.17994036558488,
+          185.60909208763667
+        ],
+        "collar_foreground_polygon_native": [
+          [
+            167.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            174.92694063926942
+          ],
+          [
+            207.9634703196347,
+            198.92694063926942
+          ],
+          [
+            167.9634703196347,
+            198.92694063926942
+          ]
+        ],
+        "visible_surface_proxy": "Reviewed bounded skin-cap color centroid +3px; inner32px horizontal receiver, not a recovered anatomical neck joint",
+        "native_origin": {
+          "kind": "whole_strip",
+          "art_index": 6
+        }
+      }
+    ]
+  },
+  "clocks": {
+    "source": [
+      190,
+      180,
+      190,
+      180,
+      190,
+      180,
+      190,
+      600
+    ],
+    "game": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      600
+    ]
+  },
+  "terminal_hold_ms": 600,
+  "minimum_distinct_body_drawings": 7,
+  "receiver_endpoint_budget_px": 3,
+  "planted_surface_budget_px": 6,
+  "phase_warning_fraction": 0.25,
+  "recovery_overshoot_budget_px": 2,
+  "forefoot_observation_rois_native": {
+    "near": [
+      110,
+      455,
+      215,
+      500
+    ],
+    "far": [
+      215,
+      435,
+      305,
+      479
+    ]
+  },
+  "full_factory_production_pass": false,
+  "logical_slots": [
+    "body_outfit",
+    "complete_head_style"
+  ],
+  "render_passes": [
+    "body_outfit",
+    "head",
+    "body_owned_collar"
+  ],
+  "pose_map": [
+    6,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    6
+  ],
+  "selection_policy": "Native art6 reused for exact rest0/7; art7 is penultimate recovery. Early and initial-recovery keys use isolated native repairs. No final guide warp, shoe patch, per-key scale/translation or raster reflection.",
+  "packing": {
+    "path": "research/sprite-animation/rear-motion-v40/packing-receipt.json",
+    "sha256": "de37b39799fbcf2a67e8530e5a030577a1117d53bbc6ecddb328d35405e79d4f"
+  },
+  "normalization": {
+    "path": "research/sprite-animation/rear-motion-v40/normalization.json",
+    "sha256": "5bdf97279aae07f574860f51795346d576f1ca021dec0f7003b9f51b09c60b0c"
+  },
+  "draw_order": [
+    "body_outfit",
+    "head",
+    "body_owned_collar"
+  ],
+  "guide_fidelity": {
+    "source_to_display_displacement_scale": 1.561514195583596,
+    "provisional_budget_px": 8,
+    "added_after_phase_only_false_positive": true,
+    "scope": "New diagnostic gate against the previously declared guide adapter;8px is provisional and does not replace established6px support/3px neck/.25phase budgets. Both retained candidate variants fail it; never calibrate independent axis amplitudes to approve a pose."
+  }
+}
