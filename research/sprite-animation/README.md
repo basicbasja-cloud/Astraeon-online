@@ -1,4 +1,8 @@
-## Latest: actual painted-neck repair and coherent-body motion validation v36
+## Latest: original concept proportion review v37
+
+[Measured current neutral/motion-rest plate and concept comparison findings](proportion-audit-v37/README.md). Head height≈26%looks close; hairstyle/shoulder projection still needs matching-view review. Current measured ratios are not an exact original concept score: original attachment bytes are missing, as recordedv10. No new art, further blanket head shrink, animation-key fitting or proportion/production approval; prior contact failure persists. [Reusable practice](../../skills/modular-eight-direction-sprites/references/concept-proportion-review.md).
+
+## Historical: actual painted-neck repair and coherent-body motion validation v36
 
 [Corrected neutral before/after, eight-key coherent-body GIF, neck/contact checks and reusable production notes](neck-motion-v36/README.md). Head contributes skin neck only; original body owns foreground collar. Three rendering passes, two logical slots. Neutral/all8receiver checks pass; contact still fails at6.703pxnative-equivalent despite6integer-renderedpx. Eight logical exposures/six drawings with explicit rest hold;13regressions/15browserchecks do not imply motion/production acceptance. [Reusable skill](../../skills/modular-eight-direction-sprites/references/painted-neck-receivers-and-coherent-motion.md).
 

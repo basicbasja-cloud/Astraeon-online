@@ -1,0 +1,76 @@
+{
+  "schema": "static-proportion-review-v1",
+  "candidates": [
+    {
+      "name": "Corrected neutral / v36",
+      "full_alpha128_bbox": [
+        175,
+        74,
+        384,
+        482
+      ],
+      "head_alpha128_bbox": [
+        175,
+        74,
+        304,
+        190
+      ],
+      "total_visible_height_px": 408,
+      "visible_crown_to_jaw_px": 105.0,
+      "crown_to_jaw_fraction": 0.25735294117647056,
+      "heads_per_height": 3.8857142857142857,
+      "projected_head_width_px": 129,
+      "head_width_per_height": 0.3161764705882353,
+      "jaw_definition": "Manually reviewed visible chin tip in head texture; not inferred head/neck bone",
+      "jaw_uncertainty_display_px": 2,
+      "approved_against_concept": false,
+      "projected_pauldron_span_px": 101,
+      "head_width_per_projected_pauldron_span": 1.2772277227722773,
+      "pauldron_scope": "Manual outer visible armor edges; perspective-dependent, not anatomical shoulder breadth",
+      "crown_to_belt_fraction": 0.4681372549019608,
+      "near_boot_top_to_sole_fraction": 0.28431372549019607
+    },
+    {
+      "name": "Motion rest / v36 selected key 1",
+      "full_alpha128_bbox": [
+        113,
+        77,
+        322,
+        480
+      ],
+      "head_alpha128_bbox": [
+        113,
+        77,
+        241,
+        191
+      ],
+      "total_visible_height_px": 403,
+      "visible_crown_to_jaw_px": 105.05431730801115,
+      "crown_to_jaw_fraction": 0.2606806881092088,
+      "heads_per_height": 3.8361107884641723,
+      "projected_head_width_px": 128,
+      "head_width_per_height": 0.3176178660049628,
+      "jaw_definition": "Manually reviewed visible chin tip in head texture; not inferred head/neck bone",
+      "jaw_uncertainty_display_px": 2,
+      "approved_against_concept": false
+    }
+  ],
+  "exact_concept_pixel_comparison": false,
+  "matched_camera_reference_available": false,
+  "decision": "NOT_LOCKED_CONCEPT_COMPARISON_REQUIRES_MATCHED_NEUTRAL_REFERENCE",
+  "reason": "Head height is visually close; hairstyle width and shoulder projection still differ. Attachment PASS is not proportion approval.",
+  "concept_observation": {
+    "source": "User original detailed character illustrations and four-pose quality reference in conversation",
+    "exact_attachment_file_available": false,
+    "existing_gap_receipt": {
+      "path": "research/sprite-animation/quality-review-v10/evidence/prompts.json",
+      "sha256": "3b87d66c85c31929d1bcb9457fc57104ea0f5fc496df5049f4fb951d3636ed34"
+    },
+    "qualitative_comparison": "Current crown-to-jaw height looks near the concept roughly quarter-height head. Hair reads broader relative to projected shoulder armor. Current camera is more profile; do not score anatomical shoulder or exact source percentage error.",
+    "numerical_concept_target": null,
+    "user_approval": false
+  },
+  "manual_landmarks_are_not_anatomical_detection": true,
+  "animation_keys_modified": false,
+  "production_pass": false
+}

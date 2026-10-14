@@ -1,0 +1,84 @@
+{
+  "user_request": "เทียบกับภาพคอนเซ็ปเราซิว่า size ได้ยัง",
+  "visible_jaw_tip_native": [
+    551.335174064738,
+    1047.6473088118848
+  ],
+  "jaw_observation": "Manually inspected visible jaw tip at neutral output[231,179], inverse mapped to head texture; +/-2displaypx, not hidden neck joint",
+  "concept_observation": {
+    "source": "User original detailed character illustrations and four-pose quality reference in conversation",
+    "exact_attachment_file_available": false,
+    "existing_gap_receipt": {
+      "path": "research/sprite-animation/quality-review-v10/evidence/prompts.json",
+      "sha256": "3b87d66c85c31929d1bcb9457fc57104ea0f5fc496df5049f4fb951d3636ed34"
+    },
+    "qualitative_comparison": "Current crown-to-jaw height looks near the concept roughly quarter-height head. Hair reads broader relative to projected shoulder armor. Current camera is more profile; do not score anatomical shoulder or exact source percentage error.",
+    "numerical_concept_target": null,
+    "user_approval": false
+  },
+  "candidates": [
+    {
+      "name": "Corrected neutral / v36",
+      "images": {
+        "full": {
+          "path": "research/sprite-animation/neck-motion-v36/neck-both.png",
+          "sha256": "399e9276b6206f67bfa9cd1236b228e0e1ef7c71aaac09c4bfa7c997ae8520a5"
+        },
+        "head": {
+          "path": "research/sprite-animation/neck-motion-v36/neck-head.png",
+          "sha256": "61d54a3a44654587f94ef034363de5d5690bff8c736e870c4f375f85736d813a"
+        },
+        "body": {
+          "path": "research/sprite-animation/neck-motion-v36/neck-body.png",
+          "sha256": "635399de91bc439325de8528596b9d96a7471d26b5bdd9a624247ad0fbe79a17"
+        }
+      },
+      "head_matrix": [
+        0.10980246397608073,
+        -0.00658930229853616,
+        0.00658930229853616,
+        0.10980246397608073,
+        163.55877459100103,
+        67.5986582442737
+      ],
+      "visible_pauldron_span_xy": [
+        [
+          203,
+          212
+        ],
+        [
+          304,
+          211
+        ]
+      ],
+      "pauldron_uncertainty_display_px": 4,
+      "belt_center_y": 265,
+      "near_boot_top_y": 366
+    },
+    {
+      "name": "Motion rest / v36 selected key 1",
+      "images": {
+        "full": {
+          "path": "research/sprite-animation/neck-motion-v36/renders/review/full/00.png",
+          "sha256": "ddb254be6418bbafbf1eef8a2c3bcd83fb2fa2d91fabcc728fae2ee60c52e21c"
+        },
+        "head": {
+          "path": "research/sprite-animation/neck-motion-v36/renders/review/head/00.png",
+          "sha256": "17801cdefec589d4138a070c5bdee56f1f7de9b330eb761ddf217657918c48f5"
+        },
+        "body": {
+          "path": "research/sprite-animation/neck-motion-v36/renders/review/body/00.png",
+          "sha256": "6e8b315425b0c2c9e5244d42ebe69e47e624d5a26fea68d00c98732703d4a254"
+        }
+      },
+      "head_matrix": [
+        0.1080255782206399,
+        -0.020747878207094114,
+        0.020747878207094114,
+        0.1080255782206399,
+        94.2443693372392,
+        80.32064604509223
+      ]
+    }
+  ]
+}
