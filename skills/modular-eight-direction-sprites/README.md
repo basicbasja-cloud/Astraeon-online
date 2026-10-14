@@ -1,6 +1,8 @@
 # Eight-direction sprites with replaceable parts
 
-Research and reusable workflow draft v0.32, revised 2026-10-13.
+Research and reusable workflow draft v0.33, revised 2026-10-14.
+
+- [Hair replacement and appearance stability](references/hair-replacement-and-appearance-stability.md): separate complete bald head/two rear-front hair banks, exact original/body/clock preservation, opaque-skin failure control and live switching.
 
 - [Source-driven modular motion](references/source-driven-part-motion.md): one-view pickup passes bounded agent review with complete painted receivers, fixed-lengthIK, actual-pixel support/phase checks and negative controls; full factory remains pending.
 

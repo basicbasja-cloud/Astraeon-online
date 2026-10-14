@@ -1,0 +1,75 @@
+{
+  "actual_imagegen_jobs": 3,
+  "jobs": [
+    {
+      "job": "head",
+      "tool": "native image_gen.imagegen",
+      "output": {
+        "path": "research/sprite-animation/hair-swap-v33/head-raw.png",
+        "sha256": "7b58ac42406c6c9f5bb261014060d48280a48577a40a3965bc3eacd1f3963c6f"
+      },
+      "original_output_path": "/workspace/generated_images/exec-6a4c5550-5e2b-45bb-9394-edd5619fb4a1.png",
+      "prompt": {
+        "path": "research/sprite-animation/hair-swap-v33/head-prompt.txt",
+        "sha256": "b536785f0a39f8ff02d8a8183c79274298dd1da387e12fdb141013ef4432adac"
+      },
+      "input_files": [
+        {
+          "path": "research/sprite-animation/pickup-modular-v32/parts/head_hair.png",
+          "sha256": "c8a4a8dacec96279ef11a7fa0a334813f40666d43c1e289f1bf228a99c2d4286"
+        }
+      ],
+      "transparent_background": true,
+      "old_own_slash_motion_input": false
+    },
+    {
+      "job": "hair",
+      "tool": "native image_gen.imagegen",
+      "output": {
+        "path": "research/sprite-animation/hair-swap-v33/hair-atlas-raw.png",
+        "sha256": "e46022142b9a4fe1dd64c77d7b749531773ea335391fdf178e9d1ff80a5c63e0"
+      },
+      "original_output_path": "/workspace/generated_images/exec-ac6afcfd-2784-485b-8160-d77fbca5e551.png",
+      "prompt": {
+        "path": "research/sprite-animation/hair-swap-v33/hair-prompt.txt",
+        "sha256": "a4399ebded253b1c5924d3ebe82c14259692abfb8019326d7c1a882c6c408a53"
+      },
+      "input_files": [
+        {
+          "path": "research/sprite-animation/hair-swap-v33/head-raw.png",
+          "sha256": "7b58ac42406c6c9f5bb261014060d48280a48577a40a3965bc3eacd1f3963c6f"
+        },
+        {
+          "path": "research/sprite-animation/pickup-modular-v32/parts/head_hair.png",
+          "sha256": "c8a4a8dacec96279ef11a7fa0a334813f40666d43c1e289f1bf228a99c2d4286"
+        }
+      ],
+      "transparent_background": true,
+      "old_own_slash_motion_input": false
+    },
+    {
+      "job": "packing",
+      "tool": "native image_gen.imagegen",
+      "output": {
+        "path": "research/sprite-animation/hair-swap-v33/hair-atlas-repaired-raw.png",
+        "sha256": "cc97ea9fe07f9f29bc3983fbe6c4f022f3ede951ce056012cf412296b549c804"
+      },
+      "original_output_path": "/workspace/generated_images/exec-f9421e9a-715a-424c-b785-ee318e1d88c1.png",
+      "prompt": {
+        "path": "research/sprite-animation/hair-swap-v33/hair-packing-prompt.txt",
+        "sha256": "b7d79b3baa3ad65e08e8ff63b4bea2e0e3b9c5254323830c6459be37be27e6a0"
+      },
+      "input_files": [
+        {
+          "path": "research/sprite-animation/hair-swap-v33/hair-atlas-raw.png",
+          "sha256": "e46022142b9a4fe1dd64c77d7b749531773ea335391fdf178e9d1ff80a5c63e0"
+        }
+      ],
+      "transparent_background": true,
+      "old_own_slash_motion_input": false
+    }
+  ],
+  "failed_raw_atlas_retained": true,
+  "raw_generated_RGBA_unchanged": true,
+  "scope": "Fresh separate base head and front/rear hair appearance, not independently regenerated motion frames. Runtime opaque-head material policy disclosed separately."
+}

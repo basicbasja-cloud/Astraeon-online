@@ -1,4 +1,8 @@
-## Latest: passing modular pickup motion v32
+## Latest: replaceable head/two hair styles with unchanged motion v33
+
+[Two genuine hair banks, complete hidden base head, synchronized GIF/live selector, unchanged-pixel checks and reusable production notes](hair-swap-v33/README.md). User's exactv32positive smoothness feedback is preserved; new appearances restore original/body/pose/clocks and pass one-view agent review. [Reusable skill](../../skills/modular-eight-direction-sprites/references/hair-replacement-and-appearance-stability.md).
+
+## Historical: passing modular pickup motion v32
 
 [Original painted parts, passing one-view8-key motion, independent pixel/bind tools and reusable production notes](pickup-modular-v32/README.md). Actual shoe drift0px and source-relative cuff phase0.005313 pass the unchanged criteria; agent motion acceptance is distinct from user artwork approval and complete factory readiness. [Reusable skill](../../skills/modular-eight-direction-sprites/references/source-driven-part-motion.md).
 

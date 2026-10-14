@@ -1,4 +1,8 @@
-# Current modular motion / rigid texture review — v0.32
+# Current hair replacement / appearance stability — v0.33
+
+[Executed hair bank/reproduction](../../../research/sprite-animation/hair-swap-v33/KNOW-HOW.md). `hair-swap-review.py --case CASE --root REPO --out REPORT` checks bound actualRGBA outside old/new head pass unions, exact original restore, shared head/body matrices/texture hashes/depth order, source clock/pose identity, distinct silhouettes and eye regions. Counterfactual head passes/projected eye ROIs are declared authoring comparisons, not blind anatomy segmentation/eye detection. Failure exits1; stale evidence refuses.12negative/real-asset regressions/14browserchecks, live style selection preserves playback. Head-only opacity policy and packing failures retained. Same Pillow/NumPy/OpenCV environment as v32; no paid call during replay.
+
+# Historical modular motion / rigid texture review — v0.32
 
 [Executed pickup and reproduction](../../../research/sprite-animation/pickup-modular-v32/KNOW-HOW.md). `rigged-surface-observer.py --case CASE --root REPO --out REPORT` observes first-frame-calibrated rigid painted patches using fixed-window rotation-NCC, without future poses. Missing/ambiguous/stale texture abstains or errors; this is not generic anatomy detection. `modular-motion-review.py --case CASE --root REPO --out REPORT` reruns pixels/source-phase, verifies exported authored part bindings and requires a separately inspected exact-image visual receipt. Nonpassing motion exits1; passing scope is one action/view, not full factory or user approval. Existing v31generic surface checker remains unchanged.12focused regressions/13browserchecks; newpart-bank appearance comes from three actual native imagegen jobs, not manually repainted old frames.
 

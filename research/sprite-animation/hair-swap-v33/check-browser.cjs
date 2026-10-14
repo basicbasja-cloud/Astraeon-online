@@ -1,0 +1,19 @@
+const {chromium}=require('/opt/codex/runtimes/cua/lib/node_modules/playwright'),fs=require('fs'),assert=require('assert');
+(async()=>{
+ const b=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});const p=await b.newPage({viewport:{width:1100,height:950}});let errors=[],checks=[];
+ p.on('pageerror',e=>errors.push(e.message));await p.route('**/*',r=>r.abort());await p.setContent(fs.readFileSync(__dirname+'/hair-preview.html','utf8'));await p.waitForFunction(()=>hair?.ready);
+ const check=(name,pass)=>{assert(pass,name);checks.push({name,pass})};
+ check('all21 original/replaceable source textures load',await p.evaluate(()=>Object.keys(hair.data.images).length===21));
+ for(const style of ['silver','auburn','bald','original']){
+  await p.evaluate(style=>hair.select(style,3),style);check(style+' selection keeps fourth action pose',await p.evaluate(style=>hair.style===style&&hair.index===3,style));
+ }
+ let same=true;for(let i=0;i<8;i++){const url=await p.evaluate(i=>hair.frame(i,'original'),i);same=same&&Buffer.from(url.split(',')[1],'base64').equals(fs.readFileSync(__dirname+'/../pickup-modular-v32/frames/'+String(i).padStart(2,'0')+'.png'))}check('all8 original v32 frames restore byte-for-byte',same);
+ await p.evaluate(()=>hair.select('silver',3));const before=await p.locator('#view').evaluate(c=>c.toDataURL());await p.locator('#bones').check();check('guide draw changes pixels while keeping pose/style',await p.locator('#view').evaluate(c=>c.toDataURL())!==before&&await p.evaluate(()=>hair.index===3&&hair.style==='silver'));await p.locator('#bones').uncheck();
+ await p.locator('#clock').selectOption('game');await p.locator('#play').click();await p.waitForFunction(()=>hair.running&&hair.index>=2&&hair.index<7);
+ const continuity=await p.evaluate(()=>{let i=hair.index,poses=JSON.stringify(hair.poses),s=document.getElementById('style');s.value='auburn';s.dispatchEvent(new Event('change'));return hair.running&&hair.index===i&&hair.style==='auburn'&&JSON.stringify(hair.poses)===poses});check('live style change retains running action/time/pose data',continuity);await p.waitForFunction(()=>!hair.running&&hair.index===7,{},{timeout:4000});check('game clock finishes once on eighth key',await p.evaluate(()=>hair.index===7&&!hair.running));
+ await p.locator('#clock').selectOption('source');await p.locator('#play').click();await p.waitForFunction(()=>!hair.running&&hair.index===7,{},{timeout:4000});check('source clock finishes once on eighth key',await p.evaluate(()=>hair.index===7&&!hair.running));
+ check('Canvas preview without SVG visualization',await p.locator('svg').count()===0&&await p.locator('canvas').count()===2);
+ let reproduced=true;for(const style of ['original','silver','auburn','bald'])for(let i=0;i<8;i++){const data=await p.evaluate(([i,s])=>({frame:hair.frame(i,s),head:hair.headFrame(i,s)}),[i,style]);for(const [key,dir] of [['frame','frames'],['head','head-masks']])reproduced=reproduced&&Buffer.from(data[key].split(',')[1],'base64').equals(fs.readFileSync(__dirname+'/'+dir+'/'+style+'/'+String(i).padStart(2,'0')+'.png'))}check('all32fullframes and32declared head passes reproduce from live bound renderer',reproduced);
+ const material=await p.evaluate(()=>headMaterialReceipt);check('explicit opaque-head material applied to real decoded texture',material.changed_alpha_pixels>0&&material.policy.includes('alpha>=240'));
+ check('no browser exceptions',errors.length===0);await p.evaluate(()=>hair.select('auburn',3));await p.screenshot({path:__dirname+'/runtime-browser.png',fullPage:true});await b.close();fs.writeFileSync(__dirname+'/material-receipt.json',JSON.stringify(material,null,2)+'\n');fs.writeFileSync(__dirname+'/browser-qa.json',JSON.stringify({checks,errors},null,2)+'\n');console.log(JSON.stringify({checks:checks.length,errors}));
+})().catch(e=>{console.error(e.stack);process.exit(1)});
