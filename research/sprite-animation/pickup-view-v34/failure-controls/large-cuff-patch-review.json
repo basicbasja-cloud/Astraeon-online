@@ -1,0 +1,1583 @@
+{
+  "original": {
+    "surface_review": {
+      "schema": "bound-visible-surface-review-v1",
+      "markers": {
+        "surface.near_boot_toe": {
+          "range_xy_px": [
+            0,
+            0
+          ],
+          "adjacent_steps": [
+            {
+              "from": 0,
+              "to": 1,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 1,
+              "to": 2,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 2,
+              "to": 3,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 3,
+              "to": 4,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 4,
+              "to": 5,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 5,
+              "to": 6,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 6,
+              "to": 7,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            }
+          ],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        },
+        "surface.far_boot_toe": {
+          "range_xy_px": [
+            0,
+            0
+          ],
+          "adjacent_steps": [
+            {
+              "from": 0,
+              "to": 1,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 1,
+              "to": 2,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 2,
+              "to": 3,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 3,
+              "to": 4,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 4,
+              "to": 5,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 5,
+              "to": 6,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 6,
+              "to": 7,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            }
+          ],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        },
+        "surface.reaching_cuff": {
+          "range_xy_px": [
+            21,
+            39
+          ],
+          "adjacent_steps": [],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        }
+      },
+      "issues": [
+        {
+          "frame": 1,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 2,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 3,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 4,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 6,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "kind": "INSUFFICIENT_PHASE_EXCURSION"
+        }
+      ],
+      "numerical_surface_check_pass": false,
+      "anatomy_pass": false,
+      "contact_pass": false,
+      "production_pass": false,
+      "scope": "Single-reviewer visible-surface proxies, declared support budget and source-relative calibrated phase. Neither hidden joint truth nor detector accuracy/force/world contact. Calibration frames excluded from phase warning evaluation."
+    },
+    "actual_pixel_observations": {
+      "schema": "rigid-painted-surface-observer-v1",
+      "tracks": {
+        "surface.near_boot_toe": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ],
+        "surface.far_boot_toe": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ],
+        "surface.reaching_cuff": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              154,
+              291
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.2913411259651184,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.939700722694397,
+            "position_margin": 0.21696478128433228,
+            "rotation_search_match_degrees": 16,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9033586978912354,
+            "position_margin": 0.19146400690078735,
+            "rotation_search_match_degrees": 10,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9328532814979553,
+            "position_margin": 0.20824801921844482,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9319615960121155,
+            "position_margin": 0.2121720314025879,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              175,
+              330
+            ],
+            "ncc": 0.9643309116363525,
+            "position_margin": 0.23542743921279907,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9414305090904236,
+            "position_margin": 0.21953487396240234,
+            "rotation_search_match_degrees": 2,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              154,
+              291
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.2913411259651184,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ]
+      },
+      "later_pose_coordinates_used": false,
+      "hidden_anatomy_detected": false,
+      "scope": "Calibrated rigid texture patches in this part-rendered family. NCC is not an accuracy probability. Unknowns block downstream review."
+    },
+    "held_out_cuff_errors": [
+      {
+        "frame": 5,
+        "error_px": 0.265378723083315
+      },
+      {
+        "frame": 7,
+        "error_px": 0.0
+      }
+    ]
+  },
+  "silver": {
+    "surface_review": {
+      "schema": "bound-visible-surface-review-v1",
+      "markers": {
+        "surface.near_boot_toe": {
+          "range_xy_px": [
+            0,
+            0
+          ],
+          "adjacent_steps": [
+            {
+              "from": 0,
+              "to": 1,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 1,
+              "to": 2,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 2,
+              "to": 3,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 3,
+              "to": 4,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 4,
+              "to": 5,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 5,
+              "to": 6,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 6,
+              "to": 7,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            }
+          ],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        },
+        "surface.far_boot_toe": {
+          "range_xy_px": [
+            0,
+            0
+          ],
+          "adjacent_steps": [
+            {
+              "from": 0,
+              "to": 1,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 1,
+              "to": 2,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 2,
+              "to": 3,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 3,
+              "to": 4,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 4,
+              "to": 5,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 5,
+              "to": 6,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 6,
+              "to": 7,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            }
+          ],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        },
+        "surface.reaching_cuff": {
+          "range_xy_px": [
+            21,
+            39
+          ],
+          "adjacent_steps": [],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        }
+      },
+      "issues": [
+        {
+          "frame": 1,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 2,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 3,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 4,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 6,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "kind": "INSUFFICIENT_PHASE_EXCURSION"
+        }
+      ],
+      "numerical_surface_check_pass": false,
+      "anatomy_pass": false,
+      "contact_pass": false,
+      "production_pass": false,
+      "scope": "Single-reviewer visible-surface proxies, declared support budget and source-relative calibrated phase. Neither hidden joint truth nor detector accuracy/force/world contact. Calibration frames excluded from phase warning evaluation."
+    },
+    "actual_pixel_observations": {
+      "schema": "rigid-painted-surface-observer-v1",
+      "tracks": {
+        "surface.near_boot_toe": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ],
+        "surface.far_boot_toe": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ],
+        "surface.reaching_cuff": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              154,
+              291
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.2913411259651184,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.939700722694397,
+            "position_margin": 0.21696478128433228,
+            "rotation_search_match_degrees": 16,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9033586978912354,
+            "position_margin": 0.19146400690078735,
+            "rotation_search_match_degrees": 10,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9328532814979553,
+            "position_margin": 0.20824801921844482,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9319615960121155,
+            "position_margin": 0.2121720314025879,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              175,
+              330
+            ],
+            "ncc": 0.9643309116363525,
+            "position_margin": 0.23542743921279907,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9414305090904236,
+            "position_margin": 0.21953487396240234,
+            "rotation_search_match_degrees": 2,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              154,
+              291
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.2913411259651184,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ]
+      },
+      "later_pose_coordinates_used": false,
+      "hidden_anatomy_detected": false,
+      "scope": "Calibrated rigid texture patches in this part-rendered family. NCC is not an accuracy probability. Unknowns block downstream review."
+    },
+    "held_out_cuff_errors": [
+      {
+        "frame": 5,
+        "error_px": 0.265378723083315
+      },
+      {
+        "frame": 7,
+        "error_px": 0.0
+      }
+    ]
+  },
+  "bald": {
+    "surface_review": {
+      "schema": "bound-visible-surface-review-v1",
+      "markers": {
+        "surface.near_boot_toe": {
+          "range_xy_px": [
+            0,
+            0
+          ],
+          "adjacent_steps": [
+            {
+              "from": 0,
+              "to": 1,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 1,
+              "to": 2,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 2,
+              "to": 3,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 3,
+              "to": 4,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 4,
+              "to": 5,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 5,
+              "to": 6,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 6,
+              "to": 7,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            }
+          ],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        },
+        "surface.far_boot_toe": {
+          "range_xy_px": [
+            0,
+            0
+          ],
+          "adjacent_steps": [
+            {
+              "from": 0,
+              "to": 1,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 1,
+              "to": 2,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 2,
+              "to": 3,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 3,
+              "to": 4,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 4,
+              "to": 5,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 5,
+              "to": 6,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            },
+            {
+              "from": 6,
+              "to": 7,
+              "distance_px": 0.0,
+              "velocity_px_s": 0.0
+            }
+          ],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        },
+        "surface.reaching_cuff": {
+          "range_xy_px": [
+            21,
+            39
+          ],
+          "adjacent_steps": [],
+          "observation_uncertainty_px": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "anatomical_owner": "unknown"
+        }
+      },
+      "issues": [
+        {
+          "frame": 1,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 2,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 3,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 4,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "frame": 6,
+          "marker": "surface.reaching_cuff",
+          "kind": "UNKNOWN_SURFACE"
+        },
+        {
+          "kind": "INSUFFICIENT_PHASE_EXCURSION"
+        }
+      ],
+      "numerical_surface_check_pass": false,
+      "anatomy_pass": false,
+      "contact_pass": false,
+      "production_pass": false,
+      "scope": "Single-reviewer visible-surface proxies, declared support budget and source-relative calibrated phase. Neither hidden joint truth nor detector accuracy/force/world contact. Calibration frames excluded from phase warning evaluation."
+    },
+    "actual_pixel_observations": {
+      "schema": "rigid-painted-surface-observer-v1",
+      "tracks": {
+        "surface.near_boot_toe": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              195,
+              480
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.18998146057128906,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ],
+        "surface.far_boot_toe": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              268,
+              450
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.25062769651412964,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ],
+        "surface.reaching_cuff": [
+          {
+            "frame": 0,
+            "status": "visible",
+            "xy": [
+              154,
+              291
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.2913411259651184,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 1,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.939700722694397,
+            "position_margin": 0.21696478128433228,
+            "rotation_search_match_degrees": 16,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 2,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9033586978912354,
+            "position_margin": 0.19146400690078735,
+            "rotation_search_match_degrees": 10,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 3,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9328532814979553,
+            "position_margin": 0.20824801921844482,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 4,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9319615960121155,
+            "position_margin": 0.2121720314025879,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 5,
+            "status": "visible",
+            "xy": [
+              175,
+              330
+            ],
+            "ncc": 0.9643309116363525,
+            "position_margin": 0.23542743921279907,
+            "rotation_search_match_degrees": 4,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 6,
+            "status": "unknown",
+            "xy": null,
+            "ncc": 0.9414305090904236,
+            "position_margin": 0.21953487396240234,
+            "rotation_search_match_degrees": 2,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          },
+          {
+            "frame": 7,
+            "status": "visible",
+            "xy": [
+              154,
+              291
+            ],
+            "ncc": 1.0,
+            "position_margin": 0.2913411259651184,
+            "rotation_search_match_degrees": 0,
+            "uncertainty_px": 2,
+            "anatomical_owner": "unknown",
+            "method": "first-frame masked rotation-NCC; no later pose input"
+          }
+        ]
+      },
+      "later_pose_coordinates_used": false,
+      "hidden_anatomy_detected": false,
+      "scope": "Calibrated rigid texture patches in this part-rendered family. NCC is not an accuracy probability. Unknowns block downstream review."
+    },
+    "held_out_cuff_errors": [
+      {
+        "frame": 5,
+        "error_px": 0.265378723083315
+      },
+      {
+        "frame": 7,
+        "error_px": 0.0
+      }
+    ]
+  }
+}

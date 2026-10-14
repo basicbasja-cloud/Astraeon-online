@@ -1,6 +1,8 @@
 # Eight-direction sprites with replaceable parts
 
-Research and reusable workflow draft v0.33, revised 2026-10-14.
+Research and reusable workflow draft v0.34, revised 2026-10-14.
+
+- [Physical views and valid texture support](references/physical-view-and-texture-support.md): second real camera/new18activepiece bank, closed receiver/hair repairs and source/pixel/appearance checks. MiniMax paused; all8view production remains pending.
 
 - [Hair replacement and appearance stability](references/hair-replacement-and-appearance-stability.md): separate complete bald head/two rear-front hair banks, exact original/body/clock preservation, opaque-skin failure control and live switching.
 

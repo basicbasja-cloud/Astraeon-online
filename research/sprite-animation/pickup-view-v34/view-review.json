@@ -1,0 +1,3353 @@
+{
+  "schema": "directional-part-review-v1",
+  "checks": [
+    {
+      "name": "same fresh physical source and unchanged source clip/phase times",
+      "pass_": true
+    },
+    {
+      "name": "different physical camera, not reflected source skeleton",
+      "pass_": true
+    },
+    {
+      "name": "authored samples keep exact source clock",
+      "pass_": true
+    },
+    {
+      "name": "every source asset has required view, no mirrored fallback",
+      "pass_": true
+    },
+    {
+      "name": "original covers every source sample",
+      "pass_": true
+    },
+    {
+      "name": "original/0 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/0 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/0/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/0/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/0 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/0 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/1 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/1 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/1/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/1/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/1 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/1 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/2 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/2 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/2/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/2/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/2 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/2 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/3 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/3 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/3/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/3/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/3 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/3 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/4 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/4 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/4/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/4/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/4 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/4 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/5 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/5 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/5/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/5/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/5 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/5 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/6 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/6 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/6/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/6/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/6 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/6 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "original/7 canvas",
+      "pass_": true
+    },
+    {
+      "name": "original/7 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "original/7/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/head_hair bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "original/7/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "original/7 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "original/7 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver covers every source sample",
+      "pass_": true
+    },
+    {
+      "name": "silver/0 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/0 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/0/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/0 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/0 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/1 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/1 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/1/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/1 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/1 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/2 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/2 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/2/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/2 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/2 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/3 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/3 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/3/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/3 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/3 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/4 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/4 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/4/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/4 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/4 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/5 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/5 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/5/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/5 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/5 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/6 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/6 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/6/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/6 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/6 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/7 canvas",
+      "pass_": true
+    },
+    {
+      "name": "silver/7 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/hair.rear bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/hair.front bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "silver/7/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "silver/7 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "silver/7 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald covers every source sample",
+      "pass_": true
+    },
+    {
+      "name": "bald/0 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/0 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/0/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/0 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/0 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/1 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/1 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/1/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/1 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/1 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/2 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/2 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/2/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/2 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/2 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/3 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/3 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/3/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/3 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/3 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/4 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/4 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/4/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/4 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/4 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/5 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/5 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/5/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/5 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/5 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/6 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/6 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/6/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/6 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/6 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "bald/7 canvas",
+      "pass_": true
+    },
+    {
+      "name": "bald/7 exact required piece count",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/cape bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.foot bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.foot authored ankle mount",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.shin bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.shin endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.thigh bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.thigh endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/left.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/teal_panel bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/torso bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/torso endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/side_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/front_tabard bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/head.base bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.upperarm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.upperarm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.forearm bank/view/determinant",
+      "pass_": true
+    },
+    {
+      "name": "bald/7/right.forearm endpoints and anatomical side",
+      "pass_": true
+    },
+    {
+      "name": "bald/7 far cloth/near right arm ordering",
+      "pass_": true
+    },
+    {
+      "name": "bald/7 thigh covers receiving shin rim",
+      "pass_": true
+    },
+    {
+      "name": "silver/0 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/0 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/1 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/1 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/2 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/2 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/3 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/3 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/4 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/4 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/5 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/5 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/6 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/6 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "silver/7 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "bald/7 body rows unchanged by hair swap",
+      "pass_": true
+    },
+    {
+      "name": "left/hip-knee fixed length",
+      "pass_": true
+    },
+    {
+      "name": "left/knee-ankle fixed length",
+      "pass_": true
+    },
+    {
+      "name": "left/shoulder-elbow fixed length",
+      "pass_": true
+    },
+    {
+      "name": "left/elbow-wrist fixed length",
+      "pass_": true
+    },
+    {
+      "name": "right/hip-knee fixed length",
+      "pass_": true
+    },
+    {
+      "name": "right/knee-ankle fixed length",
+      "pass_": true
+    },
+    {
+      "name": "right/shoulder-elbow fixed length",
+      "pass_": true
+    },
+    {
+      "name": "right/elbow-wrist fixed length",
+      "pass_": true
+    },
+    {
+      "name": "silver/0 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/0 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "0 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "0 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/1 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/1 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "1 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "1 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/2 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/2 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "2 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "2 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/3 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/3 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "3 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "3 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/4 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/4 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "4 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "4 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/5 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/5 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "5 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "5 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/6 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/6 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "6 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "6 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    },
+    {
+      "name": "silver/7 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "bald/7 actual body pixels outside head union unchanged",
+      "pass_": true
+    },
+    {
+      "name": "7 exposed eye pixels match bald base",
+      "pass_": true
+    },
+    {
+      "name": "7 defined scalp guide covered by actual hair pixels",
+      "pass_": true
+    }
+  ],
+  "numeric_view_check_pass": true,
+  "failed_checks": [],
+  "max_bound_endpoint_error_px": 6.355287432313019e-14,
+  "actual_head_pixel_checks": [
+    {
+      "frame": 0,
+      "eye_pixels": 54,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 1,
+      "eye_pixels": 60,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 2,
+      "eye_pixels": 57,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 3,
+      "eye_pixels": 44,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 4,
+      "eye_pixels": 54,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 5,
+      "eye_pixels": 56,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 6,
+      "eye_pixels": 63,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    },
+    {
+      "frame": 7,
+      "eye_pixels": 54,
+      "eye_changed_pixels": 0,
+      "uncovered_scalp_fraction": 0.0
+    }
+  ],
+  "semantic_image_anatomy_accuracy_claim": false,
+  "production_pass": false,
+  "scope": "Declared bank/kinematics and authored eye/scalp region pixel checks. Not automatic anatomy, skin segmentation, balance, eight-direction coverage or acting approval."
+}

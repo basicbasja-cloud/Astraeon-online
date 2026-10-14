@@ -1,4 +1,8 @@
-## Latest: replaceable head/two hair styles with unchanged motion v33
+## Latest: second physical view and stronger pixel checks v34
+
+[New opposite-camera pickup, perspective-specific18activeparts, complete base head/hair, two-view GIF and reusable know-how](pickup-view-v34/README.md). MiniMax is paused. Actual pixel toe drift0px/.00763cuff phase under unchanged criteria, supported rotated-texture matching,17regressions/12browserchecks. Agentsecond-view review only; no user-new-art/all8views/fullfactory approval. [Reusable practice](../../skills/modular-eight-direction-sprites/references/physical-view-and-texture-support.md).
+
+## Historical: replaceable head/two hair styles with unchanged motion v33
 
 [Two genuine hair banks, complete hidden base head, synchronized GIF/live selector, unchanged-pixel checks and reusable production notes](hair-swap-v33/README.md). User's exactv32positive smoothness feedback is preserved; new appearances restore original/body/pose/clocks and pass one-view agent review. [Reusable skill](../../skills/modular-eight-direction-sprites/references/hair-replacement-and-appearance-stability.md).
 
