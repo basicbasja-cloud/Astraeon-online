@@ -1,0 +1,93 @@
+{
+  "actual_imagegen_jobs": 4,
+  "kind": "actual still-image generation, not provider video",
+  "jobs": [
+    {
+      "name": "head_skin_underlap",
+      "prompt": {
+        "path": "research/sprite-animation/neck-motion-v36/head-prompt.txt",
+        "sha256": "74c93e2b5bc0f3e7f63eab4458e960bad4b9365c6b5e703c76834453ac579b0a"
+      },
+      "output": {
+        "path": "research/sprite-animation/neck-motion-v36/head-skin-raw.png",
+        "sha256": "f0a1e1b10406f61ff40093746eba92e9663b6633e60b88d0fc077a057b6c9117"
+      },
+      "native_generated_filename": "exec-3032cf58-7eae-4a85-89cf-aa6bba138fd5.png",
+      "retained_known_inputs": [],
+      "full_input_manifest_retained": false,
+      "note": "Actual editing job and prompt/output retained. Full original referenced-image manifest was not retained; do not claim exact replay conditioning."
+    },
+    {
+      "name": "motion_attempt1",
+      "prompt": {
+        "path": "research/sprite-animation/neck-motion-v36/motion-prompt.txt",
+        "sha256": "e0583bf4e5196bd1c5af5b99043e7a7fe4aceaeeb4a57ee3aef4d649091940a4"
+      },
+      "output": {
+        "path": "research/sprite-animation/neck-motion-v36/motion-attempt1-raw.png",
+        "sha256": "c94c83eead52e69e4e29904fa8f77007bff81dfe11d08f351002d1f8b07c6aa6"
+      },
+      "native_generated_filename": "exec-87d2e9c1-6d33-41f8-a206-341612cdc516.png",
+      "retained_known_inputs": [
+        {
+          "path": "research/sprite-animation/body-outfit-v35/body-halo-raw.png",
+          "sha256": "27025860df185b6520d56fc54a40b21dcb5ec222e3d775aa8acf75dbe30ad53a"
+        }
+      ],
+      "full_input_manifest_retained": false,
+      "note": "Unselected. Original guide revision overwritten before freezing; initial neutral composite also subsequently re-exported with opaque material. Known body input bound, other exact input bytes are not claimed."
+    },
+    {
+      "name": "motion_attempt2",
+      "prompt": {
+        "path": "research/sprite-animation/neck-motion-v36/motion-prompt-v2.txt",
+        "sha256": "90e47384fb8f75066a80aa26ff6bf34fc5a72af008a5ee4a8684697d4abdad18"
+      },
+      "output": {
+        "path": "research/sprite-animation/neck-motion-v36/motion-attempt2-raw.png",
+        "sha256": "57be1c87a8ff95f9494a330905ee21a864d1706c3591e8e8f3f1715e13acb7eb"
+      },
+      "native_generated_filename": "exec-c7159a3e-c259-4b2a-a2dc-b3b692197bca.png",
+      "retained_known_inputs": [
+        {
+          "path": "research/sprite-animation/neck-motion-v36/motion-guide.png",
+          "sha256": "67658a4e69212d5a158c969ad8790ba13bb04e421098297166c741989e99808f"
+        },
+        {
+          "path": "research/sprite-animation/neck-motion-v36/neutral-reference.png",
+          "sha256": "c1f509e39b9016b999f8322c51b9e43362f7eb2c5686ef4f5b4b4ac5f5fd41a2"
+        }
+      ],
+      "full_input_manifest_retained": true,
+      "note": "Selected body bank; six distinct drawings selected with explicit rest holds. Known contact defect retained."
+    },
+    {
+      "name": "motion_repair",
+      "prompt": {
+        "path": "research/sprite-animation/neck-motion-v36/motion-repair-prompt.txt",
+        "sha256": "5f0acd57c23b35528ea75b884bf9351d00babc0cfbc6c8552bedf1862ec5ab05"
+      },
+      "output": {
+        "path": "research/sprite-animation/neck-motion-v36/motion-repair-raw.png",
+        "sha256": "761dd9cfe24d278a548d29169e655c80e4b40b38d290554ec9ef2c24d0e7a734"
+      },
+      "native_generated_filename": "exec-d10be31f-1963-438d-b51c-7128821d5b6a.png",
+      "retained_known_inputs": [
+        {
+          "path": "research/sprite-animation/neck-motion-v36/motion-attempt2-raw.png",
+          "sha256": "57be1c87a8ff95f9494a330905ee21a864d1706c3591e8e8f3f1715e13acb7eb"
+        },
+        {
+          "path": "research/sprite-animation/neck-motion-v36/motion-guide.png",
+          "sha256": "67658a4e69212d5a158c969ad8790ba13bb04e421098297166c741989e99808f"
+        }
+      ],
+      "full_input_manifest_retained": true,
+      "note": "Unselected: targeted request changed unrelated drawings and row placement."
+    }
+  ],
+  "minimax_called": false,
+  "old_own_attack_used": false,
+  "full_provenance_complete": false,
+  "raw_files_retained": true
+}

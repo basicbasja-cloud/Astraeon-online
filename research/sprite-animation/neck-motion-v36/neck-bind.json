@@ -1,0 +1,98 @@
+{
+  "canvas": [
+    512,
+    512
+  ],
+  "body": {
+    "path": "research/sprite-animation/body-outfit-v35/body-halo-raw.png",
+    "sha256": "27025860df185b6520d56fc54a40b21dcb5ec222e3d775aa8acf75dbe30ad53a"
+  },
+  "head": {
+    "path": "research/sprite-animation/neck-motion-v36/head-skin-raw.png",
+    "sha256": "f0a1e1b10406f61ff40093746eba92e9663b6633e60b88d0fc077a057b6c9117"
+  },
+  "body_matrix": [
+    0.24896265560165975,
+    0,
+    0,
+    0.24896265560165975,
+    141.95020746887968,
+    123.98340248962656
+  ],
+  "head_matrix": [
+    0.10980246397608073,
+    -0.00658930229853616,
+    0.00658930229853616,
+    0.10980246397608073,
+    163.55877459100103,
+    67.5986582442737
+  ],
+  "body_receiver_points_native": [
+    [
+      388,
+      250
+    ],
+    [
+      485,
+      220
+    ]
+  ],
+  "head_insertion_points_native": [
+    [
+      609,
+      1119
+    ],
+    [
+      846,
+      1061
+    ]
+  ],
+  "target_receiver_points": [
+    [
+      238.54771784232366,
+      186.2240663900415
+    ],
+    [
+      262.6970954356847,
+      178.75518672199172
+    ]
+  ],
+  "head_size_scale": 0.11,
+  "head_scale_note": "New raw head resolution: scale .11 preserves prior reviewed reduced silhouette size, not comparable directly to old .40.",
+  "fixed_rest_angle_radians": -0.05993863137154684,
+  "draw_order": [
+    "body_outfit",
+    "head",
+    "body_collar_foreground"
+  ],
+  "collar_foreground_polygon_native": [
+    [
+      383,
+      254
+    ],
+    [
+      491,
+      216
+    ],
+    [
+      509,
+      265
+    ],
+    [
+      391,
+      308
+    ]
+  ],
+  "collar_owner": "body_outfit_only",
+  "observation_method": "Manually reviewed visible painted collar/neck edges, not automatic hidden anatomy.",
+  "endpoint_budget_px": 2,
+  "source_uncertainty_px": {
+    "body": 3,
+    "head": 6
+  },
+  "prior_bad_case": {
+    "path": "research/sprite-animation/body-outfit-v35/preview/original.png",
+    "sha256": "acfb8c354705afe15eec210d45b4e3100efd50e56e1db8b945601a556a4668d5"
+  },
+  "user_new_art_approved": false
+}

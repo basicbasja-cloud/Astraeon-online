@@ -1,4 +1,8 @@
-# Current hair replacement / appearance stability — v0.33
+# Current coherent body / actual neck receiver validation — v0.36
+
+[Case and reproduction commands](../../../research/sprite-animation/neck-motion-v36/KNOW-HOW.md). `coherent-neck-motion.py --contract CONTRACT --root REPO --render-root PASSES --report REPORT` checks bound source/images, exact raw crops, common body registration, fixed positive head scale, two-point visible neck fit, actual alpha bridge and original collar pixels, raw/raster forefoot extrema and held-out phase. Default diagnostic exit0 means report computed; `--require-motion` exits1 for current real contact failure. Manual visible observations are not hidden-joint/handedness detection; production always remains false. NumPy/Pillow,13negative/real-image tests; local actual browser exports/checks require Playwright/Chromium. Three rendering passes still represent two logical equipment slots.
+
+# Historical hair replacement / appearance stability — v0.33
 
 [Executed hair bank/reproduction](../../../research/sprite-animation/hair-swap-v33/KNOW-HOW.md). `hair-swap-review.py --case CASE --root REPO --out REPORT` checks bound actualRGBA outside old/new head pass unions, exact original restore, shared head/body matrices/texture hashes/depth order, source clock/pose identity, distinct silhouettes and eye regions. Counterfactual head passes/projected eye ROIs are declared authoring comparisons, not blind anatomy segmentation/eye detection. Failure exits1; stale evidence refuses.12negative/real-asset regressions/14browserchecks, live style selection preserves playback. Head-only opacity policy and packing failures retained. Same Pillow/NumPy/OpenCV environment as v32; no paid call during replay.
 

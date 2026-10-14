@@ -1,0 +1,88 @@
+{
+  "image": {
+    "path": "research/sprite-animation/neck-motion-v36/motion-attempt1-raw.png",
+    "sha256": "c94c83eead52e69e4e29904fa8f77007bff81dfe11d08f351002d1f8b07c6aa6"
+  },
+  "status": "REJECTED_FOR_PACKING_AND_MOTION_PHASE",
+  "observations": [
+    {
+      "frame": 0,
+      "neck_cap_xy": [
+        193,
+        104
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 1,
+      "neck_cap_xy": [
+        160,
+        158
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 2,
+      "neck_cap_xy": [
+        132,
+        196
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 3,
+      "neck_cap_xy": [
+        110,
+        226
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 4,
+      "neck_cap_xy": [
+        146,
+        155
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 5,
+      "neck_cap_xy": [
+        168,
+        118
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 6,
+      "neck_cap_xy": [
+        180,
+        78
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    },
+    {
+      "frame": 7,
+      "neck_cap_xy": [
+        172,
+        72
+      ],
+      "uncertainty_px": 6,
+      "method": "manual visible neck-cap surface observation; not hidden skeleton"
+    }
+  ],
+  "source_phase_comparison": "Calibration frames0/3 against source HEAD Y. Frame4 surface fraction(155-104)/(226-104)=0.418033 versus source0.811519; discrepancy0.393486 exceeds unchanged0.25 gate.",
+  "issues": [
+    "Pose3/7 cape touches outer sheet edge: complete source silhouette not established.",
+    "Standing/recovery frame sizes and positions differ; source neck phase recovers too abruptly.",
+    "Native raw body scale differs from original neutral; never repair each frame by bbox fitting."
+  ],
+  "not_production": true
+}
