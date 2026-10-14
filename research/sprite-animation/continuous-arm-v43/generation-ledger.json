@@ -1,0 +1,194 @@
+{
+  "jobs": [
+    {
+      "name": "NW-attempt1",
+      "type": "actual native still imagegen/edit; not generated video",
+      "prompt": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-prompt.txt",
+        "sha256": "b5f4d7be9094752b8345955ab1beb37129a8ba823e405588edc9d35d550502f8"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt1-guide.png",
+          "sha256": "c3963c628dc695c8cb15655856232c95180685576a55199c5fc7f8446cf7bde7"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/approved-reference.png",
+          "sha256": "0d8c083e33b2a3744212ccdc588b12656f1d81b91d045c3a85c7c4239422b37d"
+        }
+      ],
+      "provider_original": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt1-provider-original.png",
+        "sha256": "6ddb192e637ab06a7845fd19f740fa3b3c448ff0224bf56a00de6bd64654585d"
+      },
+      "original_provider_path": "/workspace/generated_images/exec-c8ee42c1-4a5e-4d16-b330-cb4e4a2d661a.png",
+      "retained_work_copy": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt1.png",
+        "sha256": "0261a438c43635b834c6e8703fbd4a502cfa1a395daae587001efde8f6a69905"
+      },
+      "work_copy_native_bytes_equal": false,
+      "work_copy_native_rgba_pixels_equal": true,
+      "work_copy_scope": "Lossless RGBA PNG re-encode only; exact provider bytes separately retained",
+      "status": "Wrong collecting arm; reject"
+    },
+    {
+      "name": "NW-attempt2",
+      "type": "actual native still imagegen/edit; not generated video",
+      "prompt": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt2-prompt.txt",
+        "sha256": "4ba7404083571b65d5539b438cf540e4bf45cb73072b3aeb594074b49d43e6ca"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt2-guide-NW-owner.png",
+          "sha256": "efe24e59e5bd725c72e98519e69deddda192be456fa9c26e5926fbc6387c2383"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/approved-reference.png",
+          "sha256": "0d8c083e33b2a3744212ccdc588b12656f1d81b91d045c3a85c7c4239422b37d"
+        }
+      ],
+      "provider_original": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt2.png",
+        "sha256": "0bb0153adf2d73743337b92be8d312b8054743869f92c9b483e9b316addb96c7"
+      },
+      "original_provider_path": "/workspace/generated_images/exec-c1eb2be3-9ec8-4ad2-b723-2af8e0dbf71b.png",
+      "retained_work_copy": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt2.png",
+        "sha256": "0bb0153adf2d73743337b92be8d312b8054743869f92c9b483e9b316addb96c7"
+      },
+      "work_copy_native_bytes_equal": true,
+      "work_copy_native_rgba_pixels_equal": true,
+      "work_copy_scope": "Exact native file",
+      "status": "Back/front camera changes during motion; reject"
+    },
+    {
+      "name": "NW-attempt3",
+      "type": "actual native still imagegen/edit; not generated video",
+      "prompt": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt3-prompt.txt",
+        "sha256": "c3dc670eb7bd6d51412ad8196be2bfe19abe6dab68f9465ec62bbcd226aae581"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt1.png",
+          "sha256": "0261a438c43635b834c6e8703fbd4a502cfa1a395daae587001efde8f6a69905"
+        },
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt3-owner-guide.png",
+          "sha256": "e013c8e5df49b1ccc3d0de957bcfe0b85fc094114e820ec0b85d6bf03c695cc6"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/goal-normalized.png",
+          "sha256": "ebabe55873de5471071051ce82dd6936d9be6b49199b12c2cfb228cc80bb6842"
+        }
+      ],
+      "provider_original": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt3.png",
+        "sha256": "bc567586375d713c35866afc040fecf016f46c0a15e4af1c7c326031bd9b44f0"
+      },
+      "original_provider_path": "/workspace/generated_images/exec-ce47e21e-e0cd-4268-bfff-5393a5b71a69.png",
+      "retained_work_copy": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt3.png",
+        "sha256": "bc567586375d713c35866afc040fecf016f46c0a15e4af1c7c326031bd9b44f0"
+      },
+      "work_copy_native_bytes_equal": true,
+      "work_copy_native_rgba_pixels_equal": true,
+      "work_copy_scope": "Exact native file",
+      "status": "Collecting arm role still wrong; reject"
+    },
+    {
+      "name": "eight-contact",
+      "type": "actual native still imagegen/edit; not generated video",
+      "prompt": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/eight-contact-prompt.txt",
+        "sha256": "f8fbd100ab5bb2e68d8da70367747587c073bb4cfd3d256de7e7d604c0212b5e"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/eight-view-contact-owner.png",
+          "sha256": "8499a13217fb7d0f5d3579e9f2528f49c43ffea3209b23d72860affef9801786"
+        },
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/approved-neutral-identity.png",
+          "sha256": "b63e73a75081b81bd277d05e3229fa0fdc3607dc38f1f21606d06486d38123a4"
+        }
+      ],
+      "provider_original": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/eight-contact-raw.png",
+        "sha256": "4cb4e53567db8e58cbcc1f187d9612a7adac2337b7c94aec6173009a09e9f87e"
+      },
+      "original_provider_path": "/workspace/generated_images/exec-42debb47-7fd7-474e-8bba-6cd86e6693af.png",
+      "retained_work_copy": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/eight-contact-raw.png",
+        "sha256": "4cb4e53567db8e58cbcc1f187d9612a7adac2337b7c94aec6173009a09e9f87e"
+      },
+      "work_copy_native_bytes_equal": true,
+      "work_copy_native_rgba_pixels_equal": true,
+      "work_copy_scope": "Exact native file",
+      "status": "Single critical-pose eight-view appearance study only; not motion or registration approval"
+    },
+    {
+      "name": "NW-attempt4",
+      "type": "actual native still imagegen/edit; not generated video",
+      "prompt": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt4-prompt.txt",
+        "sha256": "cbd4381300752e4c89c28198539c39b91f8e071110eea5ccdb8961bb56d40aa8"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/paint/contact-refs/NW.png",
+          "sha256": "55b236eed3a1d23208bea64c76ba108900a97633153528092ce987332d7ab557"
+        },
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/guide-NW-owner.png",
+          "sha256": "e013c8e5df49b1ccc3d0de957bcfe0b85fc094114e820ec0b85d6bf03c695cc6"
+        }
+      ],
+      "provider_original": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt4.png",
+        "sha256": "229b09a123be69d36955bbfe128a6afd9c43a67edc45404c0f7557d80f256b60"
+      },
+      "original_provider_path": "/workspace/generated_images/exec-1076adf4-1a15-47bf-a7d8-a2ce3d13d2d6.png",
+      "retained_work_copy": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/NW-attempt4.png",
+        "sha256": "229b09a123be69d36955bbfe128a6afd9c43a67edc45404c0f7557d80f256b60"
+      },
+      "work_copy_native_bytes_equal": true,
+      "work_copy_native_rgba_pixels_equal": true,
+      "work_copy_scope": "Exact native file",
+      "status": "Deep overlap improved but holding arm switches on lift; reject"
+    },
+    {
+      "name": "tpose-model-reference",
+      "type": "actual native still imagegen/edit; not generated video",
+      "prompt": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/tpose-model-reference-prompt.txt",
+        "sha256": "c049e4434f8b2a7eea0961d6a994753a6ae6db0d15b0dc1d06be4178ade1c14b"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/continuous-arm-v43/approved-neutral-identity.png",
+          "sha256": "b63e73a75081b81bd277d05e3229fa0fdc3607dc38f1f21606d06486d38123a4"
+        }
+      ],
+      "provider_original": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/tpose-model-reference-raw.png",
+        "sha256": "07ac6da7c6a90972fc9c31264d345674d8c753e73521aacc0aff4473e402af8c"
+      },
+      "original_provider_path": "/workspace/generated_images/exec-696b72b0-fe04-4f6a-98c0-f29c6f752e16.png",
+      "retained_work_copy": {
+        "path": "research/sprite-animation/continuous-arm-v43/paint/tpose-model-reference-raw.png",
+        "sha256": "07ac6da7c6a90972fc9c31264d345674d8c753e73521aacc0aff4473e402af8c"
+      },
+      "work_copy_native_bytes_equal": true,
+      "work_copy_native_rgba_pixels_equal": true,
+      "work_copy_scope": "Exact native file",
+      "status": "Front-only proposed modeling input; back repeats front kneepads and is rejected"
+    }
+  ],
+  "old_own_attacks_used": false,
+  "all_native_inputs_retained": true,
+  "third_party_3d_calls_executed": 0,
+  "production_pass": false
+}

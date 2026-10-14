@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/workspace/Astraeon-sprite-research/research/sprite-animation/proportion-repair-v42/render-family-rig.py", line 38, in <module>
+    poses=[pose(i) for i in range(8)]
+           ~~~~^^^
+  File "/workspace/Astraeon-sprite-research/research/sprite-animation/proportion-repair-v42/render-family-rig.py", line 34, in pose
+    hip=hips+V([sign*.14,0,0]);ankle=V([sign*.18,.02,.14]);knee=ik(hip,ankle,.54,.52,V([sign*.17,-1,.45]));shoulder=pts['chest']+V([sign*.22,0,0]);palm=V(PALMS[i]) if side=='right' else V([.36-.10*d,-.06+.10*d,.98-.25*d]);wrist=palm+V([0,0,.06]);elbow=ik(shoulder,wrist,.30,.29,V([sign*.7,-.02,.7]));
+                                                                                                                                                                                                                                                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-sprite-research/research/sprite-animation/proportion-repair-v42/render-family-rig.py", line 25, in ik
+    if not abs(l1-l2)+1e-6<dist<l1+l2-1e-6:raise ValueError(('Unreachable',dist,l1+l2,list(a),list(b)))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('Unreachable', 0.6640913900935053, 0.59, [-0.2199999988079071, -0.1862708181142807, 0.6921426057815552], [0.0, -0.6399999856948853, 0.25999999046325684])
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/agent/.config/blender/4.3/extensions').
+Blender 4.3.2
+
+Blender quit

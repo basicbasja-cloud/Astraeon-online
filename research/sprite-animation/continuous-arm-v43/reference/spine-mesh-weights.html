@@ -1,0 +1,156 @@
+<!DOCTYPE html><html ><head>
+<meta charset="utf-8">
+<title>Blog: Mesh weight workflows</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#40a8f5">
+<meta name="msapplication-TileImage" content="/img/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#40a8f5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Planning your mesh weights makes it easy to animate complex mesh setups. This blog post explores a collection of tips to simplify setting weights."><meta name="keywords" content="Planning your mesh weights makes it easy to animate complex mesh setups. This blog post explores a collection of tips to simplify setting weights."><link rel="alternate" hreflang="x-default" href="https://esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="en" href="https://en.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="vi" href="https://vi.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="uk" href="https://uk.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="tr" href="https://tr.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="es" href="https://es.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="ru" href="https://ru.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="pt" href="https://pt.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="ko" href="https://ko.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="ja" href="https://ja.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="it" href="https://it.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="hi" href="https://hi.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="de" href="https://de.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="fr" href="https://fr.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="hr" href="https://hr.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="zh" href="https://zh.esotericsoftware.com/blog/Mesh-weight-workflows">
+<link rel="alternate" hreflang="ar" href="https://ar.esotericsoftware.com/blog/Mesh-weight-workflows"><style>@font-face{font-family:icons;src:url(/html/fonts/icons/icons3.woff2) format(woff2),url(/html/fonts/icons/icons3.woff) format(woff),url(/html/fonts/icons/icons3.ttf) format(truetype),url(/html/fonts/icons/icons3.svg?#icons) format(svg)}</style><script src="/html/jquery-2.2.0.min.js"></script><link rel="stylesheet" href="/html/min.css"><script src="/html/min.js"></script></head>
+<body>
+<header>
+<div id="top"></div>
+<div id="nav-d">
+	<h1 class="h">Esoteric Software</h1>
+	<a href="/" id="nav-d-logo"></a>
+	<nav>
+		<h2 class="h">Navigation</h2>
+		<div id="nav-d-menu">
+			<a href="/">Home</a>
+			<a href="/blog" name="bdot">Blog</a>
+			<a href="/forum/">Forum</a>
+			<a href="/support">Support</a>
+		</div>
+		<span id="nav-m-link"></span>
+		<span class="social">
+			<span id="lang"></span>
+			<a href="https://bsky.app/profile/esotericsoftware.com" title="BlueSky" class="iconfont-bluesky"></a>
+		</span>
+	</nav>
+</div>
+<div id="nav-m">
+	<div class="table">
+		<div id="nav-m-menu">
+			<a href="/">Home</a>
+			<a href="/blog" name="bdot">Blog</a>
+			<a href="/forum/">Forum</a>
+			<a href="/support">Support</a>
+		</div>
+		<div id="nav-m-spine">
+			<div>Spine</div>
+			<a href="/spine-in-depth">Features</a>
+			<a href="/spine-showcase">Showcase</a>
+			<a href="/spine-runtimes">Runtimes</a>
+			<a href="/spine-academy">Learn</a>
+			<a href="/support#Spine-FAQ">FAQ</a>
+			<a href="/spine-download">Try Now</a>
+			<a href="/spine-purchase">Purchase</a>
+		</div>
+	</div>
+</div>
+<script>blogDot(902)</script>
+<div class="nav-b">
+	<div class="nav-b-menu">
+		<a href="/spine-in-depth" class="nav-b-spine-logo"><img src="/img/core/spine_logo_bright.svg" style="width:104px;height:32px" alt="Spine"></a>
+		<a href="/spine-in-depth" class="nav-b-spine-in-depth">Features</a>
+		<a href="/spine-showcase">Showcase</a>
+		<a href="/spine-runtimes">Runtimes</a>
+		<a href="/spine-academy">Learn</a>
+		<a href="/support#Spine-FAQ">FAQ</a>
+	</div>
+	<div class="nav-b-buttons">
+		<a href="/spine-purchase" class="nav-b-buy">Purchase</a>
+		<a href="/spine-download" class="nav-b-try">Try Now</a>
+					<a href="/blog/Spine-4.3-released" class="nav-b-whats-new">What's New</a>
+			</div>
+</div>
+<div class="gradient">
+</div>
+</header>
+
+<section>
+<h1 class="h">Main Content</h1>
+<div role="main" >
+
+<div id="edge">
+<div id="content" class="posts">
+	<script>var white=true</script>
+	<div class="units-row-end">
+		<div id="content-body" class="unit-70">
+			<article>
+							<h1><a href="/blog/Mesh-weight-workflows">Mesh weight workflows</a></h1>
+				<p class="date"><span class="iconfont-clock"></span>May 18th, 2020</p>
+						<p><a href="/spine-weights">Weights</a> let you bind the vertices of a mesh to bones. Instead of using <a href="/spine-meshes#Keying">free form deformation</a> on individual vertices, you can move vertices by moving the bones they are bound too. Using bones to deform meshes makes it easier to control complex mesh setups and is much more efficient then setting deform keys.</p> <p>In our previous blog posts on <a href="/blog/mesh-creation-tips-vertex-placement">mesh creation tips</a> and <a href="/blog/a-taxonomy-of-meshes">a taxonomy of meshes</a> we've discussed the foundations of creating meshes. Here we continue our exploration by discussing workflow tips for assigning weights to your mesh vertices.</p> <h2 id='One-mesh,-multiple-outputs'><a href='#One-mesh,-multiple-outputs'>One mesh, multiple outputs</a></h2> <p>Given the same mesh, we can achieve very different results by using different bones and weights to manipulate the vertex positions.</p> <p>For example <a href="/spine-tips#5-cube1">this tip</a> shows a cube, weighted so that it pivots around the bone in the front:</p> <p><img src="/img/tips/5-cube1-250px.gif" alt=""/></p> <p>Here is the same cube mesh, with the same set of bones, but with the weights reversed so the mesh pivots around the bone in the back of the cube. The reversal is done by inverting the weights and the list of bones the mesh is weighted to.</p> <p><img src="/img/blog/weights-tips/cube-4-250px.gif" alt=""/></p> <p>Here is the same cube mesh again, but with weights set so that the cube pivots around the axis between the vertices in the left and right corners:</p> <p><img src="/img/tips/6-cube2-250px.gif" alt=""/></p> <h2 id='Planning-ahead'><a href='#Planning-ahead'>Planning ahead</a></h2> <p>In our previous blog posts on meshes, we established simple rules for placing mesh vertices based on the mesh's purpose. We can extend this purpose-based thinking to setting weights. Thankfully, we already did most of the planning when we decided the structure of the mesh.</p> <p>We've already seen some examples of this purpose-based thinking for weights in the previous section, which considered around which bones the mesh and its vertices should pivot.</p> <p>What we need to answer when setting weights is the following question: which vertices should be moved by which bone to fulfill the purpose of the mesh?</p> <p>To make our life easier, we should always strive for simplicity. When setting weights, this means we want to weight vertices to the minimum number of bones necessary for the mesh to fulfill its purpose. The fewer bones we have to deal with to manipulate a mesh, the easier it becomes to animate the mesh.</p> <p>Here's another example: we can turn our rather static cube into a bendy, jelly cube by first modifying its mesh structure to allow bending, then setting the weights so the bending can be easily controlled by a single bone. Note that this setup only allows us to bend the cube as illustrated in the GIF below. Limiting the cube's "purpose" this way allows the setup to be simple.</p> <p><img src="/img/blog/weights-tips/cube-5-250px.gif" alt=""/></p> <h2 id='Be-mindful-of-when-you-bind-meshes-to-bones'><a href='#Be-mindful-of-when-you-bind-meshes-to-bones'>Be mindful of when you bind meshes to bones</a></h2> <p>By binding meshes in animate mode, you can create advanced setups that add alternative poses which use a different configuration of bones. We've described this process in <a href="/blog/Mesh-binding-tutorial">this blog post</a>, where two different poses of the same wing are bound to the same set of bones. </p><img style="max-width:100%" class="no-borders" src="/img/blog/mesh-binding-tutorial/bird-poses.png"><p>However, for new users this freedom could be dangerous if used carelessly.</p> <p>A mesh will remember the position of the bones at the time it was bound to them. A common beginner mistake is to move a bone around, bind a mesh to it, then move the bone back to its original place. Doing this causes the vertices to move when changing the weights, as the bone position is now different from the position it had when we bound the vertices to it.</p> <p>When binding a mesh in animate mode, the chances of this accidentally happening are even higher, as we tend to move bones around a lot more in animate mode than in setup mode.</p> <p>Therefore it is almost always best to bind your meshes in setup mode, unless you specifically need to bind a mesh in animate mode to add an alternative pose.</p> <p>Fortunately, if this kind of little accident happens, it is possible to assign a new binding position to the selected mesh by pressing the <a href="/spine-weights#Update-bindings">update bindings</a> button. This will update the bone positions that the vertices "remember" to the current bone positions, discarding the previous positions.</p> <h2 id='Set-and-test-weights-in-animate-mode'><a href='#Set-and-test-weights-in-animate-mode'>Set and test weights in animate mode</a></h2> <p>Weights are set automatically the first time a mesh is bound to bones. To see the effect of our weights, we might be tempted to move the bones around in setup mode. It can be fine to move bones to see how the weights deform and then use undo, but as explained in the previous section, moving the bones in setup mode means the vertices will move when weights are adjusted.</p> <p>How can we make this process safer? By setting weights directly in animate mode! Create a test animation in which the bones that should deform the mesh are moving, then adjust the weights until you're happy with the results.</p> <p>This is especially useful when simulating depth or dealing with complex meshes. Seeing your weights in motion makes it so much easier to adjust them compared to setting them while looking at a still pose.</p> <p><img src="/img/blog/weights-tips/weights-animate-setup-250px.gif" alt=""/></p> <p>Pressing <code>Ctrl</code> (<code>Cmd</code> on Mac) temporarily pauses the animation, making it easier to select the vertices with the weights direct tool.</p> <h2 id='Start-from-extremes'><a href='#Start-from-extremes'>Start from extremes</a></h2> <p>When testing the effectiveness of the weights assigned to a mesh, always start from the extremes. That is to say, the two most opposite values or positions. We can apply this process to bone positions as well as weights, giving us two different workflows.</p> <p>The easiest way to set the weights for a mesh is to start by assigning a value of <code>100%</code> to the vertices that are on the extreme opposite ends of the movement the mesh needs to make. Next, work on getting the vertices in between to balance the mix of weights in an amount that follows the movement planned for the mesh. This applies to nearly all meshes except the <a href="/blog/a-taxonomy-of-meshes#Simple-meshes">simple meshes</a>, which are concatenated instead. </p> <p><img src="/img/blog/weights-tips/extremes1.gif" alt=""/></p> <p>For example, for meshes that are simulating depth, start with the vertices that are the farthest away from the viewer and assign the initial weights of <code>100%</code> to the bone that will control them. Next, identify the vertices that should be the closest and assign them <code>100%</code> influence to the bone that will control those. Finally, while playing a test animation, adjust the weights for the vertices in between to achieve the depth effect.</p> <p><img src="/img/blog/weights-tips/weights-animate-mode-500px.gif" alt=""/></p> <p>The other way to start from extremes consists of moving the bones controlling the mesh to positions or poses that are beyond what will actually be needed when animating. If a leg should bend, break it a little by going slightly beyond the possible angles. If a face should rotate in space, push it to the extreme limit (which sometimes can look rather comical).</p> <p><img src="/img/blog/weights-tips/raptor-leg-extreme.gif" alt=""/></p> <p>The reason to do this is that at such extremes the fine tuning of the weights becomes easier because the weights that need to be corrected stand out. Also, supporting a greater range of motion can provide the animator with more freedom.</p> <p>Often multiple passes are needed: after everything looks fine in one direction or extreme position, test the opposite extreme and fix any weights that don't look good. Then place the bones in the previous pose to see if anything went out of place when fixing the other direction. </p> <p>After everything looks good in all the extremes, the in between poses will likely already look fantastic.</p> <h2 id='Group-weights'><a href='#Group-weights'>Group weights</a></h2> <p>Another way to simplify the process of assigning weights is to find groups of weights that can have all the same weight, or close to it to start with.</p> <p>Meshes that bend only from a side view make this process quite easy. For example, if you want an arm to retain its shape in the upper part, you will need to select at least 4 vertices and weight them all to the upper arm bone. Then repeat the process for the lower part of the arm. With that out of the way, figuring out the weights for the vertices at the elbow, where the arm bends, is much easier. These can also be selected in pairs of two vertices if the mesh is tubular.</p> <p>Meshes that simulate depth are a bit trickier. Imagine dividing the mesh into several slices. The slices could be at regular intervals from the part of the mesh that is the most far away toward the part that is the closest to the viewer. Each of these slices is a group of vertices that has the same weights because it's at the same depth from the viewer.</p> <p><img src="/img/blog/weights-tips/slices-mesh-250px.gif" alt=""/></p> <p>Even if the weights won't have the exact same weights in the end, having a general approximation is still very useful before fine tuning the weights that are not quite right yet.</p> <p><img src="/img/tips/6-cube2-250px.gif" alt=""/></p> <p>This principle is similar to <a href="https://en.wikipedia.org/wiki/Parallax_scrolling">parallax scrolling</a>, where groups of images move at different speeds to simulate depth.</p> <h2 id='Start-from-the-parent'><a href='#Start-from-the-parent'>Start from the parent</a></h2> <p>When a mesh is bound to more than two bones, it is a good idea to start weighting the mesh from the bone highest in the tree hierarchy and then descending one bone at a time. If the bones are independent, meaning one bone is not parented to the other, then you can simply choose to start from one side of the mesh and progress toward the other side.</p> <p>Starting from the parent bone lets you to define the general motion first. You can then move on to the child bones to add detail to mesh sections that depend on the parent bone's weights. </p> <p><img src="/img/blog/weights-tips/parent-bone-first-cube-250px.gif" alt=""/></p> <p>For example to recreate the jelly cube, set the weights so it can bend nicely first. Next, add the weights of the the third child bone that controls the top of the cube.</p> <h2 id='Spine-can-do-the-math'><a href='#Spine-can-do-the-math'>Spine can do the math</a></h2> <p>Manually setting weights so that vertices are progressively more influenced by bones can be tedious. The quickest way to make a soft bending mesh is to weight half of its vertices <code>100%</code> to one bone, and the other half to the other bone, then box select the weights in the middle, and press the <a href="/spine-weights#Smooth">Smooth</a> button until the result satisfies you.</p> <p><img src="/img/blog/weights-tips/smooth.gif" alt=""/></p> <p>A similar result can be achieved by weighting a mesh with fewer vertices, then later adding more vertices to the mesh. Spine will automatically calculate the weights for you based on the surrounding vertices.</p> <p><img src="/img/blog/weights-tips/add-vertices-250px.gif" alt=""/></p> <h2 id='Overlapping-triangles'><a href='#Overlapping-triangles'>Overlapping triangles</a></h2> <p>When the mesh overlaps with itself, sometimes a part of the image that should be behind is instead drawn on top. When that happens you can fix it by changing the <a href="/spine-weights#Triangle-order">triangle order</a>.</p> <p>It can be useful to sort the bones a mesh is bound to so that the bone farthest away is the lowest in the list and the closest bone is at the beginning of the list. Assign vertices more weight to the bone that better represents their drawing order to resolve any overlapping issues.</p> <p>Just like weights, the order of bones in the weights view for a mesh cannot be keyed in an animation. This also means that any adjustments to the triangle order will be reflected in all animations.</p> <p><img src="/img/spine-user-guide/meshes/weights-order.gif" alt=""/></p> <h2 id='Mesh-cleanliness'><a href='#Mesh-cleanliness'>Mesh cleanliness</a></h2> <p>Unnecessary weights may be present in your mesh after calculating weights automatically, smoothing, or painting the weights on the mesh. <a href="/spine-weights#Prune">Pruning</a> these weights improves performance, reduces file size, and also makes the weights more manageable.</p> <p><img src="/img/blog/weights-tips/prune-400px.gif" alt=""/></p> <p>It may also happen that after setting the perfect weights, several vertices turn out to all have the exact same weights. Removing these extra vertices by editing the mesh and deleting them is another great way to improve performance and making weight adjustments easier.</p> <h2 id='Deform-keys-are-the-devil'><a href='#Deform-keys-are-the-devil'>Deform keys are the devil</a></h2> <p>This whole post is about weights, but what about deform keys? Many new Spine users are tempted to use <a href="/spine-meshes#Keying">deform keys</a> to deform their meshes. Deform keys are powerful and have their place, but in most cases using weights is superior for a number of reasons.</p> <p>First, keying a mesh's deform will key all the vertices together. For example, if your mesh is a head and you use deform keys to animate the ears flapping, you won't be able to come back afterward and animate moving the nose because every key to animate the ears also keyed the nose vertices. You would need to use a <a href="/spine-animating#Straight-ahead">straight ahead</a> workflow to animate both the ears and nose together. It is difficult to get this right on your first pass, and it is difficult to go back later and adjust the existing keys. The problem gets worse the more elements you want to animate in the same mesh, like the eyes or mouth.</p> <p>When using weights, you would assign vertices for the ears and nose to different bones. You then key the bones separately rather than keying the entire mesh.</p> <p>The other reason to avoid deform keys is that each deform key stores a vertex position for every bone that the vertex is weighted to. If you have 40 deform keys and 100 vertices and each vertex is weighted to 4 bones, those keys will be storing <code>40 * 100 * 4</code> = <code>16,000</code> vertex positions! This gets worse and worse as you add more meshes and deform keys and can result in your skeleton data being much larger than necessary.</p> <p><img src="/img/blog/weights-tips/deform-16000-450px.gif" alt=""/></p> <p>When using weights, you only key the bones and those keys only need to store a little bit of information.</p> <p>The movement when interpolating between deform keys is always in a straight line, while weights allow vertices to move more dynamically by using bone rotation, scale, or shear, or by having a vertex bound to multiple bones.</p> <p>Lastly, it's a bit more efficient at runtime to animate bones than it is to apply deform keys. In both cases the vertices are still transformed by the bones, but additional work is required to interpolate between the deform keys.</p> <p>So when should you use deform keys? Rarely and sparingly! They make sense if you really need to move each vertex separately and it would take many bones to do so with weights. Keep in mind that deform keys can be combined with mesh weights. Sometimes weights provide all the desired deformations, except for a specific pose where they don't quite deform as needed. In that case it can make sense to use a deform key or two to get the mesh to behave exactly as required.</p> <h2 id='Conclusion'><a href='#Conclusion'>Conclusion</a></h2> <p>We hope these tips can help you tackle weights and meshes in general and with more confidence. If you haven't already, don't forget to check the two previous blog posts exploring <a href="/blog/mesh-creation-tips-vertex-placement">mesh creation tips</a> and <a href="/blog/a-taxonomy-of-meshes">a taxonomy of meshes</a>. What would you like to learn about next? We would love to hear your thoughts on the <a href="/forum/Mesh-weight-workflows-13987">Spine forum</a>.</p>		</article><div class="page-buttons">
+		<a class="btn btn-blue" style="float:left" href="/blog/A-taxonomy-of-meshes"><i class="iconfont-arrow-left2"></i> Older</a><a class="btn btn-blue" style="float:right" href="/blog/New-Spine-Twitch-streams-2020">Newer <i class="iconfont-arrow-right2"></i></a></div><div style="clear:both"></div>		</div>
+		<div class="unit-30">
+			<aside><h1>Blog Archive</h1><ul><li><a href="/blog/Spine-Spotlight-Juliano-Castro">Spine Spotlight: Juliano Castro</a></li><li><a href="/blog/The-12-Principles-Animating-with-Spine-2">The 12 Principles - Animating with Spine #2</a></li><li><a href="/blog/Favor-Tool-Spine-workflow-tutorial">Favor Tool - Spine workflow tutorial</a></li><li><a href="/blog/Rigging-new-poses-tutorial">Rigging new poses - Spine workflow tutorial</a></li><li><a href="/blog/Weight-and-Mass-Animating-with-Spine-1">Weight and Mass - Animating with Spine #1</a></li><li><a href="/blog/Spine-v4-beta-it-has-a-curve-editor">Spine v4-beta: it has a curve editor!</a></li><li><a href="/blog/new-spine-twitch-streams-404-page">New Twitch streams: Animated 404 page</a></li><li><a href="/blog/Welcome-Sinisa">Welcome Siniša!</a></li><li><a href="/blog/Rotating-diamond-tutorial">Rotating diamond tutorial</a></li><li><a href="/blog/New-Spine-Twitch-streams-2020">New series of Spine Twitch streams</a></li><li class='current'><a href="/blog/Mesh-weight-workflows">Mesh weight workflows</a></li><li><a href="/blog/A-taxonomy-of-meshes">A taxonomy of meshes</a></li><li><a href="/blog/Mesh-creation-tips-vertex-placement">Mesh creation tips: vertex placement</a></li><li><a href="/blog/Embedding-assets-with-Spine-Web-Player">Embedding assets with Spine Web Player</a></li><li><a href="/blog/Skin-constraints-for-different-proportions">Skin constraints for different proportions</a></li><li><a href="/blog/Unity-Universal-Render-Pipeline-support">Unity Universal Render Pipeline support</a></li><li><a href="/blog/Distance-limit-setup-for-eyes">Distance limit setup for eyes</a></li><li><a href="/blog/Outline-shaders-for-spine-unity">Outline shaders for spine-unity</a></li><li><a href="/blog/Mesh-binding-tutorial">Mesh binding tutorial</a></li><li><a href="/blog/2D-and-3D-physics-for-spine-unity">2D and 3D physics for spine-unity</a></li><li><a href="/blog/Holding-a-two-handed-weapon">Holding a two-handed weapon</a></li><li><a href="/blog/spine-as3-starling-Visual-Studio-Code">spine-as3 and spine-starling development with Visual Studio Code</a></li><li><a href="/blog/Unity-Lightweight-Render-Pipeline-support">Unity Lightweight Render Pipeline support</a></li><li><a href="/blog/Spine-3-8-released">Spine 3.8 released</a></li><li><a href="/blog/Photoshop-to-Spine-script-video">Photoshop To Spine Script video</a></li><li><a href="/blog/Our-new-licensing-explained">Our new licensing explained</a></li><li><a href="/blog/Spine-UE4-UI-Integration">Spine UE4 UI integration</a></li><li><a href="/blog/Dopesheet-documentation-video">Dopesheet documentation video</a></li><li><a href="/blog/Unreal-Engine-4-quality-of-life-improvements">Unreal Engine quality of life improvements</a></li><li><a href="/blog/Spine-3-8-beta-released">Spine 3.8-beta released</a></li></ul></aside>
+		</div>
+	</div>
+</div>
+
+<script>langs.push('en');addLangs('es,fr')</script>
+
+<div class="jagged"></div>
+<div id="end">
+</div>
+
+</div>
+</div>
+</section>
+
+<footer>
+
+
+<div class="table">
+<div class="column links">
+<div>
+	<h3>Site</h3>
+	<a href="/">Home</a>
+	<a href="/blog">Blog</a>
+	<a href="/forum/viewforum.php?f=3">Forum</a>
+	<a href="/contact">Support</a>
+	<br>
+	<span class="language">English</span>
+	<a href="/site-language"><span class="iconfont-earth"></span>Choose&nbsp;language</a>
+</div>
+</div>
+<div class="column spine links">
+<div>
+	<h3 >Spine<sup class="reg">&reg;</sup></h3>
+	<a href="/spine-in-depth#Features">Features</a>
+	<a href="/spine-in-depth#Runtimes">Runtimes</a>
+	<a href="/spine-documentation">Documentation</a>
+		<a href="/spine-download">Try Now</a>
+	<a href="/spine-purchase">Purchase</a>
+</div>
+</div>
+<div class="top"><a href="javascript:scroll('top')"></a></div>
+<div class="column company">
+<div >
+	<h3>Esoteric Software<sup class="reg">&reg;</sup></h3>
+	<div class="copyright">&copy; 2013-2026 Esoteric Software LLC</div>
+	<div class="social">
+		<a href="https://bsky.app/profile/esotericsoftware.com" title="BlueSky" class="iconfont-bluesky"></a>
+	</div>
+</div>
+</div>
+</div>
+
+</footer></body></html>

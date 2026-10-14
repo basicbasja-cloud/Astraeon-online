@@ -1,0 +1,23 @@
+{
+  "parent": {
+    "path": "research/sprite-animation/forward-pickup-v41/render-target-rig.py",
+    "sha256": "b8cc034b2af287d6db5853b9d93b629603bfbb0b70d66ab2475aafcbe54685bc"
+  },
+  "replacements": {
+    "('thigh','hip','knee',.10,'olive')": "('thigh','hip','knee',.080,'olive')",
+    "('shin','knee','ankle',.088,'brown')": "('shin','knee','ankle',.066,'brown')",
+    "('upperarm','shoulder','elbow',.082,'navy')": "('upperarm','shoulder','elbow',.052,'navy')",
+    "('forearm','elbow','wrist',.075,'bronze')": "('forearm','elbow','wrist',.052,'bronze')",
+    "('shoulder',.11,'bronze')": "('shoulder',.080,'bronze')",
+    "('elbow',.078,'navy')": "('elbow',.052,'navy')",
+    "('knee',.105,'bronze')": "('knee',.080,'bronze')",
+    "('palm',.067,'brown')": "('palm',.048,'brown')",
+    "o.scale=(.23,.36,.18)": "o.scale=(.17,.29,.15)",
+    "bev.width=.09": "bev.width=.065",
+    "pelvis.scale=(.23,.16,.16)": "pelvis.scale=(.185,.135,.16)",
+    "[(pts['pelvis'],.20,.14),(pts['chest'],.23,.14)]": "[(pts['pelvis'],.18,.13),(pts['chest'],.20,.13)]",
+    "o.location=(poses[0][side+'.ankle'].x,-.055,.09)": "o.location=(poses[0][side+'.ankle'].x,-.055,.075)"
+  },
+  "scope": "New input-only proportions hypothesis. Not approved character shape; all bone poses/cameras/times unchanged. Pixel art still requires native redraw and image checks.",
+  "boot_ground_fix": "New .15high shoe uses center.075; lower bound0. First source with obsolete center.09 is retained under source-before-boot-ground."
+}

@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,hashlib
+P=Path(__file__).resolve().parent;d=P/'skinned-arm-proof';r=json.loads((d/'skin-receipt.json').read_text())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+values={kind:[a for f in r['frames'] for side in ['left','right'] for a in f['mesh_measurements'][side][kind+'_ring_area_ratios']] for kind in ['lbs','dq']}
+checks=dict(current_source_binding=r['source_sha256']==sha(P/'source/source.json'),current_render_script=r['source_script_sha256']==sha(P/'render-skinned-arms.py'),eight_ordered_keys=[f['index'] for f in r['frames']]==list(range(8)),eight_physical_views_each=all(set(f['views'])=={'S','SE','E','NE','N','NW','W','SW'} for f in r['frames']),actual_image_hashes=all(sha(P/v['path'])==v['sha256'] for f in r['frames'] for v in f['views'].values()),actual_skin_topology_retained=all(x['deformed_vertex_count']==x['base_vertex_count']==r['ring_count']*r['vertices_per_ring'] for f in r['frames'] for x in f['mesh_measurements'].values()),actual_bone_heads_tails_match_source=max(f['max_real_pose_bone_attachment_error'] for f in r['frames'])<1e-5,dq_sampled_ring_area_no_collapse=min(values['dq'])>=.95 and max(values['dq'])<=1.05,linear_blend_counterexample_exposes_collapse=min(values['lbs'])<.5)
+out=dict(checks=checks,bounded_skin_study_pass=all(checks.values()),actual_ring_area_ratios={k:[min(v),max(v)] for k,v in values.items()},scope='Actual weighted 3D surface cross-sections at25rings in8sampled poses, not whole enclosed volume, tissue anatomy, continuous-time collision, final hand art or final character production acceptance.',production_pass=False)
+(P/'skin-qa.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out));assert out['bounded_skin_study_pass']

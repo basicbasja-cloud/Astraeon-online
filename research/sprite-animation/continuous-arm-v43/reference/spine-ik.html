@@ -1,0 +1,152 @@
+<!DOCTYPE html><html ><head>
+<meta charset="utf-8">
+<title>IK constraints - Spine User Guide</title>
+<link rel="alternate" type="text/markdown" href="/spine-ik-constraints.md"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/img/favicon/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#40a8f5">
+<meta name="msapplication-TileImage" content="/img/favicon/mstile-144x144.png">
+<meta name="theme-color" content="#40a8f5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Learn how to use inverse kinematics (IK) for more expressive power in your Spine animations."><meta name="keywords" content="Learn how to use inverse kinematics (IK) for more expressive power in your Spine animations."><link rel="alternate" hreflang="x-default" href="https://esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="en" href="https://en.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="vi" href="https://vi.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="uk" href="https://uk.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="tr" href="https://tr.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="es" href="https://es.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="ru" href="https://ru.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="pt" href="https://pt.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="ko" href="https://ko.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="ja" href="https://ja.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="it" href="https://it.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="hi" href="https://hi.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="de" href="https://de.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="fr" href="https://fr.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="hr" href="https://hr.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="zh" href="https://zh.esotericsoftware.com/spine-ik-constraints">
+<link rel="alternate" hreflang="ar" href="https://ar.esotericsoftware.com/spine-ik-constraints"><style>@font-face{font-family:icons;src:url(/html/fonts/icons/icons3.woff2) format(woff2),url(/html/fonts/icons/icons3.woff) format(woff),url(/html/fonts/icons/icons3.ttf) format(truetype),url(/html/fonts/icons/icons3.svg?#icons) format(svg)}</style><script src="/html/jquery-2.2.0.min.js"></script><link rel="stylesheet" href="/html/min.css"><script src="/html/min.js"></script></head>
+<body>
+<header>
+<div id="top"></div>
+<div id="nav-d">
+	<h1 class="h">Esoteric Software</h1>
+	<a href="/" id="nav-d-logo"></a>
+	<nav>
+		<h2 class="h">Navigation</h2>
+		<div id="nav-d-menu">
+			<a href="/">Home</a>
+			<a href="/blog" name="bdot">Blog</a>
+			<a href="/forum/">Forum</a>
+			<a href="/support">Support</a>
+		</div>
+		<span id="nav-m-link"></span>
+		<span class="social">
+			<span id="lang"></span>
+			<a href="https://bsky.app/profile/esotericsoftware.com" title="BlueSky" class="iconfont-bluesky"></a>
+		</span>
+	</nav>
+</div>
+<div id="nav-m">
+	<div class="table">
+		<div id="nav-m-menu">
+			<a href="/">Home</a>
+			<a href="/blog" name="bdot">Blog</a>
+			<a href="/forum/">Forum</a>
+			<a href="/support">Support</a>
+		</div>
+		<div id="nav-m-spine">
+			<div>Spine</div>
+			<a href="/spine-in-depth">Features</a>
+			<a href="/spine-showcase">Showcase</a>
+			<a href="/spine-runtimes">Runtimes</a>
+			<a href="/spine-academy">Learn</a>
+			<a href="/support#Spine-FAQ">FAQ</a>
+			<a href="/spine-download">Try Now</a>
+			<a href="/spine-purchase">Purchase</a>
+		</div>
+	</div>
+</div>
+<script>blogDot(902)</script>
+<div class="nav-b">
+	<div class="nav-b-menu">
+		<a href="/spine-in-depth" class="nav-b-spine-logo"><img src="/img/core/spine_logo_bright.svg" style="width:104px;height:32px" alt="Spine"></a>
+		<a href="/spine-in-depth" class="nav-b-spine-in-depth">Features</a>
+		<a href="/spine-showcase">Showcase</a>
+		<a href="/spine-runtimes">Runtimes</a>
+		<a href="/spine-academy">Learn</a>
+		<a href="/support#Spine-FAQ">FAQ</a>
+	</div>
+	<div class="nav-b-buttons">
+		<a href="/spine-purchase" class="nav-b-buy">Purchase</a>
+		<a href="/spine-download" class="nav-b-try">Try Now</a>
+					<a href="/blog/Spine-4.3-released" class="nav-b-whats-new">What's New</a>
+			</div>
+</div>
+<div class="gradient">
+</div>
+</header>
+
+<section>
+<h1 class="h">Main Content</h1>
+<div role="main" >
+
+<div id="edge">
+<div id="content" class="page-spine-ik-constraints">
+
+<div class="units-row-end">
+			<div class="unit-25 toc-doc" id="toc"><div><ul><li class='title'><a href='/spine-user-guide'>Spine User Guide</a></li><li class='first'><a href='#IK-constraints'>IK constraints</a></li><li><a href='#Setup'>Setup</a></li><li><a href='#Properties'>Properties</a></li><ul><li><a href='#Parent'>Parent</a></li><li><a href='#Child'>Child</a></li><li><a href='#Target'>Target</a></li><li><a href='#Positive'>Positive</a></li><li><a href='#Compress'>Compress</a></li><li><a href='#Stretch'>Stretch</a></li><li><a href='#Uniform'>Uniform</a></li><li><a href='#Softness'>Softness</a></li><li><a href='#Mix'>Mix</a></li></ul><li><a href='#Limitations'>Limitations</a></li><li><a href='#Video'>Video</a></li><li id='toc-overlay'><span class='iconfont-arrow-right2'></span></li></ul><a href="/spine-path-constraints" style="float:right">Path constraints <i class="iconfont-arrow-right2" style="vertical-align:middle"></i></a><a href="/spine-constraints" style="float:left; padding-right: 5px"><i class="iconfont-arrow-left2" style="vertical-align:middle"></i> Constraints</a><br></div></div>
+		<div class="unit-75">
+				<article id="content-body"><h1 id='IK-constraints'><a href='#IK-constraints'>IK constraints</a></h1><div class='callout'><p>IK constraints are not available in Spine Essential.</p></div><p>An IK constraint sets bone rotations so the tip of a bone touches or points at a target bone. This has a wide variety of uses but the most common is to control limbs by moving a hand or foot.</p> <p>The usual way of animating is called FK or "forward kinematics". FK is a top-down approach: to position the hand, first the upper arm is rotated, then the lower arm. Many movements can be achieved this way, but others are difficult. For example, to keep the hand in place as the skeleton stands up, the arm bones need to be adjusted continuously. It takes many keys to keep the hand in place.</p> <p>IK or "inverse kinematics" can solve this more elegantly by using a bottom-up approach. For example, the hand position is set, then Spine automatically sets the rotation for the upper and lower arm bones.</p> <p><img src="/img/spine-user-guide/ik/ik.png" alt=""/></p> <p>IK is useful for many tasks such as keeping feet from penetrating the floor during a walk animation, adjusting the IK target at runtime to stand on uneven terrain, <a href="/forum/viewtopic.php?f=8&amp;t=2753">chickens</a>, and more.</p> <p>See the IK constraint <a href="/spine-demos#Inverse-kinematics">demo</a>, <a href="/spine-examples#IK-Constraints">example projects</a>, and <a href="/spine-tips#IK-Constraints">tips</a> for usage examples.</p> <h1 id='Setup'><a href='#Setup'>Setup</a></h1> <p>Spine IK's can constrain one or two bones. To create an IK constraint, first:</p> <ul> <li>For one bone, select the bone to constrain. After creating the IK constraint, the bone will rotate to point at the target bone.</li> <li>For two bones, select a bone to constrain and also select one of its children. After creating the IK constraint, the bones will rotate so the tip of the child bone is at the target bone.</li> </ul><p></p><div class='callout'><p>Clicking a constrained bone creates the target at the tip, ensuring the constrained bones don't move when the IK constraint is created.</p></div><p>Next, choose <code>New...</code> <code>IK Constraint</code> in the tree properties to enter choose target mode. Choose the target bone by either clicking an existing bone or click in empty space to create a new bone. Clicking a constrained bone creates the target at the tip of that bone. The target bone cannot be a descendant of the constrained bones.</p> <p><img src="/img/spine-user-guide/ik/setup.png" alt=""/></p> <blockquote> <p>Constraining three or more bones is not supported because it is nondeterministic and would be difficult to control. Instead, use multiple IK constraints or FK.</p> </blockquote> <h1 id='Properties'><a href='#Properties'>Properties</a></h1> <p>For one bone IK:</p> <p><img src="/img/spine-user-guide/ik/properties1.png" alt=""/></p> <p>For two bone IK:</p> <p><img src="/img/spine-user-guide/ik/properties2.png" alt=""/></p> <h2 id='Parent'><a href='#Parent'>Parent</a></h2> <p>This shows the first constrained bone. Clicking the bone selects it.</p> <p>A different bone can be chosen by clicking the pencil icon.</p> <h2 id='Child'><a href='#Child'>Child</a></h2><div class='callout'><p>This property will be blank for one bone IK.</p></div><p>This shows the second constrained bone. Clicking the bone selects it.</p> <p>A different bone can be chosen by clicking the pencil icon or the child bone can be cleared by clicking the <code>X</code> button.</p> <h2 id='Target'><a href='#Target'>Target</a></h2> <p>This shows the target bone. Clicking the bone selects it.</p> <p>A different bone can be chosen by clicking the pencil icon.</p> <h2 id='Positive'><a href='#Positive'>Positive</a></h2><div class='callout'><p>This property is available only for two bone IK.</p></div><p>When checked, the child bone rotates in the positive direction (counterclockwise) relative to the parent bone.</p> <p><img src="/img/spine-user-guide/ik/bend-direction.png" alt=""/></p> <p>The positive bend direction property can be <a href="/spine-keys#IK-constraints">keyed</a>.</p> <h2 id='Compress'><a href='#Compress'>Compress</a></h2><div class='callout'><p>This property is available only for one bone IK.</p></div><p>Compress causes the constrained bone to be scaled smaller when the distance to the target bone is smaller than the constrained bone's length.</p> <p>The compress property can be <a href="/spine-keys#IK-constraints">keyed</a>.</p> <h2 id='Stretch'><a href='#Stretch'>Stretch</a></h2> <p>Stretch causes the constrained bones to be scaled larger when the distance to the target bone is greater than the constrained bones' lengths.</p> <p>The stretch property can be <a href="/spine-keys#IK-constraints">keyed</a>.</p> <p>Limitations when used with two bone IK:</p> <ul> <li>The child bone's local Y translation is set to 0.</li> <li>Stretch is not applied when <a href="#Softness">softness</a> is greater than 0.</li> <li>Stretch is not applied when the parent bone has local nonuniform scale.</li> </ul><p></p> <p><img src="/img/spine-user-guide/ik/stretch-gif.gif" alt=""/></p> <h2 id='Uniform'><a href='#Uniform'>Uniform</a></h2> <p>When checked and <a href="#Compress">compress</a> or <a href="#Stretch">stretch</a> is used, the bones are scaled the same on both the X and Y axes.</p> <p><img src="/img/spine-user-guide/ik/stretch-uniform-gif.gif" alt=""/></p> <h2 id='Softness'><a href='#Softness'>Softness</a></h2><div class='callout'><p>This property is available only for two bone IK.</p></div><p>Softness slows down the bones as the constrained bones straighten. With 0 softness, IK bones may move very quickly just before the target goes out of range, which is usually undesirable.</p> <p>The softness value is the target bone's distance from the maximum reach of the bones where the bones start to slow down as they straighten. The bones won't be fully straightened until the target moves that far past the maximum reach of the bones.</p> <p>The softness property can be <a href="/spine-keys#IK-constraints">keyed</a>.</p> <p><img src="/img/spine-user-guide/ik/softness-gif.gif" alt=""/></p> <h2 id='Mix'><a href='#Mix'>Mix</a></h2> <p>See <a href="/spine-constraints#Mix">constraint mix</a>. The mix property can be <a href="/spine-keys#IK-constraints">keyed</a>.</p> <p>Often mixing FK and IK is only necessary briefly to transition to or from 0 (only FK) and 100 (only IK) during an animation. However, some situations can make use of mixing FK and IK to achieve combined motion that would otherwise be difficult to key. For example, arms waving up and down slightly using IK while also performing another animation using FK.</p> <p>When the mix is greater than 0 and less than 100, moving the target bone may cause the rotation to suddenly use the other direction. This occurs because interpolation between the bone's rotation and the constraint's rotation uses the shortest rotation direction.</p> <p>For two bone IK, when the mix is greater than 0 and the parent bone has local nonuniform scale, the child bone's local Y translation is set to 0.</p> <h1 id='Limitations'><a href='#Limitations'>Limitations</a></h1> <p>Due to the interactions of IK and <a href="/spine-bones#Bone-transforms">bone transforms</a>, a few minor limitations apply:</p> <ul> <li>The target bone cannot be a child of the constrained bones.</li> <li>For two bone IK:<ul> <li>The child bone must be an immediate child of the parent bone.</li> <li>Disabling inherit rotation, scale, and shear is not possible for either constrained bone.</li> <li>The local shear of the parent IK bone is set to 0.</li> <li>When the mix is greater than 0 and the parent bone has local nonuniform scale, the child bone's local Y translation is set to 0.</li> <li>Stretch causes the child bone's local Y translation to be set to 0.</li> <li>Stretch is not applied if softness is greater than 0.</li> <li>Stretch is not applied when the parent bone has local nonuniform scale.</li> </ul> </li> </ul><p></p> <h1 id='Video'><a href='#Video'>Video</a></h1> <p><iframe src='https://www.youtube.com/embed/sos36zmLFOc?list=PLwGl7Ikd_6GRFo7d0uRu_fN2RIlvkxW7b&controls=1&showinfo=0' frameborder='0' allowfullscreen></iframe></p> <p><a class="btn btn-blue" style="float:right" href="/spine-path-constraints">Next: Path constraints <i class="iconfont-arrow-right2" style="vertical-align:middle"></i></a> <a class="btn btn-blue" style="float:left;vertical-align:middle" href="/spine-constraints"><i class="iconfont-arrow-left2" style="vertical-align:middle"></i> Previous: Constraints</a></p><div class='toc-home'><p><a href="/spine-user-guide">Spine User Guide: Table of Contents</a></p></div></article>
+	</div>
+</div>
+
+</div>
+
+<script>langs.push('en');addLangs('es,fr')</script>
+
+<div class="jagged"></div>
+<div id="end">
+</div>
+
+</div>
+</div>
+</section>
+
+<footer>
+
+
+<div class="table">
+<div class="column links">
+<div>
+	<h3>Site</h3>
+	<a href="/">Home</a>
+	<a href="/blog">Blog</a>
+	<a href="/forum/viewforum.php?f=3">Forum</a>
+	<a href="/contact">Support</a>
+	<br>
+	<span class="language">English</span>
+	<a href="/site-language"><span class="iconfont-earth"></span>Choose&nbsp;language</a>
+</div>
+</div>
+<div class="column spine links">
+<div>
+	<h3 >Spine<sup class="reg">&reg;</sup></h3>
+	<a href="/spine-in-depth#Features">Features</a>
+	<a href="/spine-in-depth#Runtimes">Runtimes</a>
+	<a href="/spine-documentation">Documentation</a>
+		<a href="/spine-download">Try Now</a>
+	<a href="/spine-purchase">Purchase</a>
+</div>
+</div>
+<div class="top"><a href="javascript:scroll('top')"></a></div>
+<div class="column company">
+<div >
+	<h3>Esoteric Software<sup class="reg">&reg;</sup></h3>
+	<div class="copyright">&copy; 2013-2026 Esoteric Software LLC</div>
+	<div class="social">
+		<a href="https://bsky.app/profile/esotericsoftware.com" title="BlueSky" class="iconfont-bluesky"></a>
+	</div>
+</div>
+</div>
+</div>
+
+</footer></body></html>

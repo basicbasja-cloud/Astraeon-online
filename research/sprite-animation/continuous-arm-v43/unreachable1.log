@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/workspace/Astraeon-sprite-research/research/sprite-animation/continuous-arm-v43/render-source.py", line 42, in <module>
+    poses=[pose(i) for i in range(8)]
+           ~~~~^^^
+  File "/workspace/Astraeon-sprite-research/research/sprite-animation/continuous-arm-v43/render-source.py", line 38, in pose
+    elbow=ik(shoulder,grip,.29,.39,shoulder+V([sign*.15,.40,-.18]))
+  File "/workspace/Astraeon-sprite-research/research/sprite-animation/continuous-arm-v43/render-source.py", line 25, in ik
+    if not abs(l1-l2)+1e-6<dist<l1+l2-1e-6:raise ValueError(('Unreachable',dist,l1+l2,list(a),list(b)))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('Unreachable', 0.6974651559738458, 0.6799999999999999, [-0.2199999988079071, -0.08915142714977264, 1.345981240272522], [-0.2800000011920929, -0.20000000298023224, 0.6600000262260437])
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/agent/.config/blender/4.3/extensions').
+Blender 4.3.2
+
+Blender quit

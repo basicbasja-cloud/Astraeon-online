@@ -1,0 +1,206 @@
+{
+  "jobs": [
+    {
+      "name": "attempt1",
+      "type": "native still image generation/edit, NOT video",
+      "prompt": {
+        "path": "research/sprite-animation/proportion-repair-v42/attempt1-prompt.txt",
+        "sha256": "d03f11118f7d0a6da22b6dff41ad37c69d4958fc297a32c14e99299dabe8914b"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/guide-rear.png",
+          "sha256": "5690d6d38081e2f775db9174a9c69fa8d3a5da80ea24ed9d5aad085b0dae3b34"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/approved-reference.png",
+          "sha256": "0d8c083e33b2a3744212ccdc588b12656f1d81b91d045c3a85c7c4239422b37d"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/guide-owner.png",
+          "sha256": "11d00b26a3fc4dfecb8a502a302c7925b4f88cde83b17297cf6ab5e6728cf8eb"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/rear-head-identity.png",
+          "sha256": "1c8ae6f8e2405a73368a8f4a8e387e41ec87fe594f8167e5bebd146bc71913f7"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/proportion-repair-v42/attempt1-raw.png",
+        "sha256": "a3644184278f6a4dc7d5aafccb381abd208856eb64fd7bd740fde9e5f1a1afe6"
+      },
+      "original_provider_file": "/workspace/generated_images/exec-28db5361-df03-4ab3-ac99-45d313fac4b4.png",
+      "status": "Wrong near arm; foot/size drift",
+      "provider_original": {
+        "path": "research/sprite-animation/proportion-repair-v42/attempt1-raw.png",
+        "sha256": "a3644184278f6a4dc7d5aafccb381abd208856eb64fd7bd740fde9e5f1a1afe6"
+      },
+      "native_bytes_equal": true,
+      "native_rgba_pixels_equal": true
+    },
+    {
+      "name": "goal",
+      "type": "native still image generation/edit, NOT video",
+      "prompt": {
+        "path": "research/sprite-animation/proportion-repair-v42/goal-prompt.txt",
+        "sha256": "de9341e354774b7ff160bb7647c767cc94aa6e53a2d5b467603ceddf23f4ecae"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/goal-input-guide-square.png",
+          "sha256": "4c2875683b3e6570de4708f4b883a7da5a1a6ccc62a61163fcebfc551c4ab9f3"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/goal-before-goal-square.png",
+          "sha256": "91fbd1ebfa72c5edc697abd850166865ede0409fddfee96a3e08eda37a612c3a"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-attempt1.png",
+          "sha256": "6fd7fef5b9c0c27b9b9d2f6ddb00be8191ff017c43e5f3e9b8d0c8c33d13ce70"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/proportion-repair-v42/goal-raw.png",
+        "sha256": "1e58f0b2e7db0b658606733555656eb5d64e0ed948f88df756401bfacadf8040"
+      },
+      "original_provider_file": "/workspace/generated_images/exec-0da511a3-bb52-43b8-bfbc-31177742b9eb.png",
+      "status": "Existing deepest key repair, not a motion bank",
+      "provider_original": {
+        "path": "research/sprite-animation/proportion-repair-v42/goal-raw.png",
+        "sha256": "1e58f0b2e7db0b658606733555656eb5d64e0ed948f88df756401bfacadf8040"
+      },
+      "native_bytes_equal": true,
+      "native_rgba_pixels_equal": true
+    },
+    {
+      "name": "attempt2",
+      "type": "native still image generation/edit, NOT video",
+      "prompt": {
+        "path": "research/sprite-animation/proportion-repair-v42/attempt2-prompt.txt",
+        "sha256": "74fbf39c66eb294d6240424954b59828479c80f92f6db89e315cfd87da8a9237"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/attempt2-guide.png",
+          "sha256": "7cf228d582cd1a4f0dc7c708972fb43eced11fb7c9af339164c4b54f2f39df6a"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/goal-normalized.png",
+          "sha256": "ebabe55873de5471071051ce82dd6936d9be6b49199b12c2cfb228cc80bb6842"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/guide-rear.png",
+          "sha256": "5690d6d38081e2f775db9174a9c69fa8d3a5da80ea24ed9d5aad085b0dae3b34"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/approved-reference.png",
+          "sha256": "0d8c083e33b2a3744212ccdc588b12656f1d81b91d045c3a85c7c4239422b37d"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/proportion-repair-v42/attempt2-raw.png",
+        "sha256": "ae3ce5001452157d927150b955842355ae60abefc546b33741f0e2219f04fa8f"
+      },
+      "original_provider_file": "/workspace/generated_images/exec-b0d3d4d8-f168-4a04-bc8a-5967cf3c4981.png",
+      "status": "Arm improvement, registration/size failure",
+      "provider_original": {
+        "path": "research/sprite-animation/proportion-repair-v42/attempt2-raw.png",
+        "sha256": "ae3ce5001452157d927150b955842355ae60abefc546b33741f0e2219f04fa8f"
+      },
+      "native_bytes_equal": true,
+      "native_rgba_pixels_equal": true
+    },
+    {
+      "name": "rig-parts",
+      "type": "native still image generation/edit, NOT video",
+      "prompt": {
+        "path": "research/sprite-animation/proportion-repair-v42/rig-parts-prompt.txt",
+        "sha256": "f0b5130b880d2c8523bd2f4c42feacb0881d495e46fc644e7ebdfe1580aa0ad4"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/attempt2-raw.png",
+          "sha256": "ae3ce5001452157d927150b955842355ae60abefc546b33741f0e2219f04fa8f"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/approved-reference.png",
+          "sha256": "0d8c083e33b2a3744212ccdc588b12656f1d81b91d045c3a85c7c4239422b37d"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/proportion-repair-v42/rig-parts-raw.png",
+        "sha256": "6a420e0136c94b52b4933a2ffd317ee697954998d168aa9854df4716ab44f21d"
+      },
+      "original_provider_file": "/workspace/generated_images/exec-9dfe7d9a-3d64-4ace-805c-bf7b9c8f138e.png",
+      "status": "Internal kit, malformed cutout joints",
+      "provider_original": {
+        "path": "research/sprite-animation/proportion-repair-v42/rig-parts-raw.png",
+        "sha256": "6a420e0136c94b52b4933a2ffd317ee697954998d168aa9854df4716ab44f21d"
+      },
+      "native_bytes_equal": true,
+      "native_rgba_pixels_equal": true
+    },
+    {
+      "name": "boot-repair",
+      "type": "native still image generation/edit, NOT video",
+      "prompt": {
+        "path": "research/sprite-animation/proportion-repair-v42/boot-repair-prompt.txt",
+        "sha256": "fd6db5ea3b3cf92214d1729a2c3ab06c16decd60d3d00cfb8b91c59bed9fe58f"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/parts/right.foot.png",
+          "sha256": "473d3d5c2528a1d04d291b03bbe010e63618c523a46f72bdbde355bed4dda065"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/parts/left.foot.png",
+          "sha256": "060f1cfdb5bea513ca44a71980968c36e11b1d8663d5bc0f1987ff600daa6a26"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/proportion-repair-v42/right-boot-repair-raw.png",
+        "sha256": "6adf7fec21bf47623b3176c6ac66016342204f855bf1ce979a74bfc92768241b"
+      },
+      "original_provider_file": "/workspace/generated_images/exec-e2ecfd0b-31f9-4712-b022-4c263d96c049.png",
+      "status": "Far boot redraw, not mirror",
+      "provider_original": {
+        "path": "research/sprite-animation/proportion-repair-v42/right-boot-repair-raw.png",
+        "sha256": "6adf7fec21bf47623b3176c6ac66016342204f855bf1ce979a74bfc92768241b"
+      },
+      "native_bytes_equal": true,
+      "native_rgba_pixels_equal": true
+    },
+    {
+      "name": "upperarm-repair",
+      "type": "native still image generation/edit, NOT video",
+      "prompt": {
+        "path": "research/sprite-animation/proportion-repair-v42/upperarm-repair-prompt.txt",
+        "sha256": "54c41ed217345baee66714ee3e3518dc4eaed7607c64bb38cec3d0a975df97fa"
+      },
+      "direct_inputs": [
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/rig-parts-raw.png",
+          "sha256": "6a420e0136c94b52b4933a2ffd317ee697954998d168aa9854df4716ab44f21d"
+        },
+        {
+          "path": "research/sprite-animation/proportion-repair-v42/approved-reference.png",
+          "sha256": "0d8c083e33b2a3744212ccdc588b12656f1d81b91d045c3a85c7c4239422b37d"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/proportion-repair-v42/upperarm-repair-raw.png",
+        "sha256": "ae22a6b8a59498b4c754cd9398357260c32ba7d14cf023bac3d4790a5aed4e4f"
+      },
+      "original_provider_file": "/workspace/generated_images/exec-27748eec-6095-4ad6-8006-2e20d33b0c17.png",
+      "status": "Disk removal did not solve arm anatomy; user-rejected rig",
+      "provider_original": {
+        "path": "research/sprite-animation/proportion-repair-v42/upperarm-repair-raw.png",
+        "sha256": "ae22a6b8a59498b4c754cd9398357260c32ba7d14cf023bac3d4790a5aed4e4f"
+      },
+      "native_bytes_equal": true,
+      "native_rgba_pixels_equal": true
+    }
+  ],
+  "old_own_attacks_used": false,
+  "production_pass": false
+}

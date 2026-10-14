@@ -1,0 +1,70 @@
+{
+  "status": "PROPOSED_NOT_AUTHORIZED_NOT_EXECUTED",
+  "provider": "Tripo",
+  "destination": "https://openapi.tripo3d.ai",
+  "input_image": {
+    "path": "paint/model-front-candidate.png",
+    "sha256": "f2180b2a508c09b81f0864d57fc6ca41e74733c44417fa9eb80b1b69489699a5"
+  },
+  "excluded_images": [
+    "model-back-REJECTED.png",
+    "all old own attacks",
+    "all rejected v42 arm-rig images"
+  ],
+  "cli": {
+    "package": "tripo-cli",
+    "version": "0.6.1",
+    "source_tarball_sha256": "591c98f28dac2f95810c5f81be304a248913d7a6ea6b4d59c871882e0ff900fc",
+    "npm_integrity_verified_as_data_only": true,
+    "executed": false,
+    "dry_run_executed": false,
+    "static_review_files": [
+      "dist/commands/make.js",
+      "dist/core/task-service.js",
+      "dist/knowledge/chains.js",
+      "dist/knowledge/models.js",
+      "dist/knowledge/scenarios.js",
+      "dist/config/config.js"
+    ]
+  },
+  "steps": [
+    {
+      "order": 1,
+      "name": "image-to-model",
+      "endpoint": "/v3/generation/image-to-model",
+      "model_alias": "tripo-v3.1",
+      "model_wire": "v3.1-20260211",
+      "texture": true,
+      "pbr": true,
+      "estimated_credits": 30
+    },
+    {
+      "order": 2,
+      "name": "rig-check",
+      "endpoint": "/v3/animations/rig-check",
+      "estimated_credits": 0,
+      "rule": "stop if not riggable"
+    },
+    {
+      "order": 3,
+      "name": "rig",
+      "endpoint": "/v3/animations/rig",
+      "model_wire": "v2.5-20260210",
+      "spec": "mixamo",
+      "out_format": "glb",
+      "estimated_credits": 25
+    }
+  ],
+  "estimated_total_credits": 55,
+  "paid_rerolls_authorized": false,
+  "automatic_extra_steps_authorized": false,
+  "deliverables": [
+    "../skinned-character-v44/model/character-rigged.glb",
+    "../skinned-character-v44/model/original-generation.glb",
+    "../skinned-character-v44/model/preview.png",
+    "../skinned-character-v44/model/task-and-cost-receipt.json"
+  ],
+  "after_download": "Local Blender rest-basis inspection, source retarget/adaptation, actual mesh deformation and eight-view raster QA, logical body_outfit+complete_head grouping. No assertion that provider output automatically passes.",
+  "command_proposal": "npx --yes tripo-cli@0.6.1 make research/sprite-animation/continuous-arm-v43/paint/model-front-candidate.png --then rig-check,rig:spec=mixamo,out_format=glb --out research/sprite-animation/skinned-character-v44/provider-output --name astraeon-arm-proof --json --yes",
+  "validation_scope": "Static source review and documented price table only. Automatic approval blocked CLI execution; no validated dry-run JSON, account inspection, image upload, provider task or billing exists. Before any submission, run exact authorized command in dry-run mode; if model/steps/estimated cost differ, stop."
+}

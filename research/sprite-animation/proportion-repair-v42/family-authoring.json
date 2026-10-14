@@ -1,0 +1,40 @@
+{
+  "scope": "New original FAMILY SHAPE hypothesis from actual approved silhouette: higher waist, shorter torso, longer legs, shorter slender arms; one rest-family calibration, not per-frame art fitting. Not matched-camera anatomical recovery or user-approved proportions.",
+  "old": {
+    "hips_z": 0.88,
+    "hip_drop": 0.4,
+    "torso_neck": 0.72,
+    "chest": 0.55,
+    "upperleg": 0.42,
+    "lowerleg": 0.4,
+    "upperarm": 0.36,
+    "forearm": 0.35,
+    "target_y": -0.85
+  },
+  "new": {
+    "hips_z": 1.12,
+    "hip_drop": 0.62,
+    "torso_neck": 0.46,
+    "chest": 0.36,
+    "upperleg": 0.54,
+    "lowerleg": 0.52,
+    "upperarm": 0.31,
+    "forearm": 0.3,
+    "target_y": -0.57
+  },
+  "reason": "Old proxy torso projected neck179 to waist309 (~130px); approved visible collar~186/belt~265 (~79px). These surface observations motivate new shorter torso but are not hidden joint labels. Object moved closer to stay reachable with shorter arms. All new motion/shape must be inspected.",
+  "replacements": {
+    "hips=V([0,.14*d,.88-.40*d])": "hips=V([0,.14*d,1.12-.58*d])",
+    "axis*.55": "axis*.36",
+    "axis*.72": "axis*.46",
+    "ik(hip,ankle,.42,.40": "ik(hip,ankle,.54,.52",
+    "ik(shoulder,wrist,.36,.35": "ik(shoulder,wrist,.30,.29",
+    "upperleg=.42,lowerleg=.40,upperarm=.36,forearm=.35": "upperleg=.54,lowerleg=.52,upperarm=.30,forearm=.29",
+    "[-.14,-.64,.42]": "[-.14,-.50,.42]",
+    "[0,-.85,.20]": "[0,-.64,.20]",
+    "[0,-.80,.43]": "[0,-.57,.43]",
+    "[-.10,-.68,.75]": "[-.10,-.45,.75]",
+    "-.85": "-.64"
+  },
+  "first_hypothesis_rejected": "Initial .59arm/.58hipdrop/target-.64 is unreachable at peak (.664> .59). Retained renderer and actual failure log. Corrected .61arm/.62drop/target-.57 remains shorter than old .71arm and must pass actual IK."
+}

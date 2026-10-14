@@ -1,0 +1,77 @@
+{
+  "checks": [
+    {
+      "name": "actual user-rejected source now fails105degree wrist",
+      "pass_": true
+    },
+    {
+      "name": "current corrected actual source passes bounded chain checks",
+      "pass_": true
+    },
+    {
+      "name": "painted anatomy remains unknown even after source pass",
+      "pass_": true
+    },
+    {
+      "name": "changing a length label cannot fix wrist axes",
+      "pass_": true
+    },
+    {
+      "name": "hidden/missing palm cannot silently pass",
+      "pass_": true
+    },
+    {
+      "name": "missing whole distal track abstains without crashing",
+      "pass_": true
+    },
+    {
+      "name": "missing data serializes as strict JSON null rather than Infinity",
+      "pass_": true
+    },
+    {
+      "name": "zero hand vector fails",
+      "pass_": true
+    },
+    {
+      "name": "NaN joint fails",
+      "pass_": true
+    },
+    {
+      "name": "swapped complete owner tracks fail canonical world ownership",
+      "pass_": true
+    },
+    {
+      "name": "false declared arm length fails actual vector check",
+      "pass_": true
+    },
+    {
+      "name": "world position is not confused with joint-angle quality",
+      "pass_": true
+    },
+    {
+      "name": "strict real CLIs reject old, pass new source, reject production",
+      "pass_": true
+    }
+  ],
+  "cli": [
+    {
+      "label": "old",
+      "returncode": 1,
+      "stdout": "{\"checks\": {\"complete_nondegenerate_chains\": true, \"world_wrist_deviation\": false, \"world_elbow_flex\": true, \"constant_source_lengths\": true, \"declared_lengths_match_vectors\": true, \"declared_canonical_owner_frame\": true}, \"max_wrist_deviation_deg\": 105.0685894450299, \"max_elbow_flex_deg\": 123.00192147808482, \"source_arm_metrics_pass\": false, \"production_pass\": false}\n",
+      "stderr": ""
+    },
+    {
+      "label": "new",
+      "returncode": 0,
+      "stdout": "{\"checks\": {\"complete_nondegenerate_chains\": true, \"world_wrist_deviation\": true, \"world_elbow_flex\": true, \"constant_source_lengths\": true, \"declared_lengths_match_vectors\": true, \"declared_canonical_owner_frame\": true}, \"max_wrist_deviation_deg\": 2.886462105788996e-05, \"max_elbow_flex_deg\": 65.35817596297287, \"source_arm_metrics_pass\": true, \"production_pass\": false}\n",
+      "stderr": ""
+    },
+    {
+      "label": "production",
+      "returncode": 1,
+      "stdout": "{\"checks\": {\"complete_nondegenerate_chains\": true, \"world_wrist_deviation\": true, \"world_elbow_flex\": true, \"constant_source_lengths\": true, \"declared_lengths_match_vectors\": true, \"declared_canonical_owner_frame\": true}, \"max_wrist_deviation_deg\": 2.886462105788996e-05, \"max_elbow_flex_deg\": 65.35817596297287, \"source_arm_metrics_pass\": true, \"production_pass\": false}\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Source-chain regressions, not art approval"
+}

@@ -1,0 +1,7 @@
+{
+  "action": "npx latest make approved-neutral-identity.png --then rig-check,rig --dry-run --json",
+  "executed": false,
+  "automatic_review": "REJECTED",
+  "reason": "Downloads and executes an untrusted CLI with a project image argument in a third-party 3D workflow; specific payload/destination not authorized; dry-run behavior cannot be trusted.",
+  "response": "No retry, indirect execution or upload. Public npm metadata/archive fetched as DATA ONLY for static inspection; no JavaScript from that package executed. Continue local work; obtain explicit authorization before executing CLI/uploading project image."
+}
