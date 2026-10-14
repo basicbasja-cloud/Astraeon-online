@@ -1,0 +1,34 @@
+{
+  "prompt": {
+    "path": "research/sprite-animation/recovery-key-v39/repair-prompt.txt",
+    "sha256": "2857068f1ea8bdfd35db71d9c02fc65257bd080688421bc15a50cc6288785973"
+  },
+  "inputs": [
+    {
+      "path": "research/sprite-animation/recovery-key-v39/near-rest-reference.png",
+      "sha256": "43cce08dd139353545685ba7a2703e8fd1ad20798adb947d844ed80ed79b0908"
+    },
+    {
+      "path": "research/sprite-animation/recovery-key-v39/standing-reference.png",
+      "sha256": "36dafd563318c87a7d634dcc75e7dbcf5577f6124b6f85568c12bbffe664bfff"
+    }
+  ],
+  "provider": "native image_gen still edit",
+  "scope": "One existing body key repair after a whole-strip motion bank; not independent generation of every animation frame. All other seven keys immutable.",
+  "logical_square_canvas": [
+    1024,
+    1024
+  ],
+  "source_cell_canvas": [
+    384,
+    512
+  ],
+  "source_cell_scale": 2,
+  "source_cell_translation": [
+    128,
+    0
+  ],
+  "output_registration": "Only known whole-canvas resolution normalization; no bbox or foot alignment",
+  "minimax_called": false,
+  "old_own_attack_used": false
+}

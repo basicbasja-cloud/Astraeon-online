@@ -1,4 +1,8 @@
-## Latest: coherent-body contact improvement and rejected lateral recovery v38
+## Latest: passing one-key motion repair with seven unchanged keys v39
+
+[New motion/before-after GIFs, exact seven-key preservation, source/trajectory/contact checks and reusable isolated-key workflow](recovery-key-v39/README.md). A genuine native existing-key edit fixes10.68pxlateralreversal to0while retaining the same foot/neck/source gates, head scale and clocks.8newtests/19browserchecks; explicit one-view agent motion review only, no user-art/proportion/all-action/view/factory approval. The v38failure remains unchanged. [Reusable practice](../../skills/modular-eight-direction-sprites/references/isolated-motion-key-repair.md).
+
+## Historical: coherent-body contact improvement and rejected lateral recovery v38
 
 [Before/after GIFs, actual seven-drawing motion, two-axis/contact plots, five retained native jobs and reusable checks](coherent-motion-v38/README.md). Contacts improve under unchanged6pxbudget and a real intermediate replaces earlyrest. New2axisreview catches10.68pxleftwardrecoveryhitch despite limitedparentmetrics passing; combinedmotion/production remainfalse. No concept-proportion approval or finalframewarping.10new/13priorregressions,18actualbrowserchecks. [Reusable practice](../../skills/modular-eight-direction-sprites/references/coherent-motion-repair-and-two-axis-review.md).
 

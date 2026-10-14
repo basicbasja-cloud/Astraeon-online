@@ -1,4 +1,8 @@
-# Current two-axis recovery, alpha and native edit scope — v0.38
+# Current isolated existing-key repair verification — v0.39
+
+[Executed passing repair/reproduction](../../../research/sprite-animation/recovery-key-v39/KNOW-HOW.md). `isolated-key-review.py --before-contract BEFORE --after-contract AFTER --before-renders BEFORE_PASSES --after-renders AFTER_PASSES --normalization RECEIPT --out REPORT --root REPO` checks exact seven non-target records/28actualpasses, unchanged source/head/scale/clocks/limits, actual input hashes, real target pixels and known-canvas normalization. Failure exits1; no feature/foot fitting. Combine with the frozen neck/contact/spacing tools and an explicit exact-image visual receipt.8newregressions/19browserchecks cover the one-view pilot; no production/user-art/hidden-anatomy guarantee.
+
+# Historical two-axis recovery, alpha and native edit scope — v0.38
 
 [Executed repair/reproduction](../../../research/sprite-animation/coherent-motion-v38/KNOW-HOW.md). `coherent-motion-spacing.py --contract CONTRACT --motion-report PARENT --root REPO --out REPORT [--require-motion]` checks distinct/between-state recovery and a declared action-specific lateral path, plus source-time velocity diagnostics. Parent neck/contact/vertical metrics can pass while the full sequence is rejected; strictmode exits1 for the actual10.68pxleft reversal. `coherent-strip-alpha.py --sheets STRIPS --out REPORT` checks reviewed empty5x5patches with strictzeroalpha, never automatic matting. `native-strip-edit-audit.py --before STRIP --after STRIP --allowed-cells 6 --out REPORT` checks premultipliedRGBApercell, preserving invisibleRGBsemantics and reporting unintendededits. NumPy/Pillow; no pixel modification.10newreal-error/negative-controls/13unchangedpriorregressions/18browserchecks; no overallmotion/productionapproval.
 
