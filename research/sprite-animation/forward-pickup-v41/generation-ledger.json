@@ -1,0 +1,229 @@
+{
+  "retained_completed_still_outputs": 8,
+  "jobs": [
+    {
+      "id": "1",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt1-prompt.txt",
+        "sha256": "d70e21d658cd64f2b2cc39b9ce11fe7e32a1af200dae2d9321f881f2d2f7e864"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/native-inputs/rear-guide.png",
+          "sha256": "0dbf8684272ebf3b65f2fd43f1d7723980c5f13782189b3ab71edc314bdfa630"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/native-inputs/identity.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/native-inputs/joint-guide.png",
+          "sha256": "5381c51999784edb470de4401106c8eb7e2ab134027077a3a7b11c8e3d4dda87"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt1-raw.png",
+        "sha256": "3fd9a84011227ccf48e71993e93698e7a43e8bcaded001da84383a4937f557c5"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": null,
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": false
+    },
+    {
+      "id": "2",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt2-prompt.txt",
+        "sha256": "fcbf67802fcc569e720181c1ca15b3d44f890e51717537071d691183d54d60c8"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/attempt1-raw.png",
+          "sha256": "3fd9a84011227ccf48e71993e93698e7a43e8bcaded001da84383a4937f557c5"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/native-inputs/owner-guide.png",
+          "sha256": "59de798a5aadf2b74aaa99b5d70037c9abd55dca6b08ce03d52fcb1672ae5a9c"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/native-inputs/ground-correct-guide.png",
+          "sha256": "65fa286b3bcd0a82255fa327b58a19898c8ca1ad580f34e02496399ae7daa69c"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt2-raw.png",
+        "sha256": "2b03861dbb49c073fa11f28b1ec30aac89bb74d3a7f6814c21d3ad2aeaa8a501"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": null,
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": false
+    },
+    {
+      "id": "goal1",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/goal-prompt.txt",
+        "sha256": "36e3bc581988cb280c3058812330b92d1d7a8c3689e1230ce3962be323e48169"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-edit-guide.png",
+          "sha256": "37189763de78fa2f81a474a59042d87c8968339d7dbfe9c396dc3a8413cc7dbc"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-owner-reference.png",
+          "sha256": "80963e649961775476fabecec525057d0dfe2d78d3d40add9f7f353209499d39"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/goal-attempt1-raw.png",
+        "sha256": "dfdf4ff2679f2661aa92f08baee016f63da6b69a2287ef2a5e001e5d15c4bd03"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": "exec-b8b0b4a2-c613-40e7-911d-b4f34fce5ef0.png",
+      "scope": "Existing single deepest-key arm repair guide only; clipped cape/geometry not final accepted asset",
+      "selected_for_rejected_comparison": false
+    },
+    {
+      "id": "3",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt3-prompt.txt",
+        "sha256": "7eeac03284caf1ca062f1822a90fa208ac0edf3f894f072aec8fd15974d3c68f"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/attempt3-guide.png",
+          "sha256": "3394c2f5de60b5b15e062aab44a993dd5a5450abc1a0eb8f72f65a5cc4970a79"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-attempt1-raw.png",
+          "sha256": "dfdf4ff2679f2661aa92f08baee016f63da6b69a2287ef2a5e001e5d15c4bd03"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/owner-guide.png",
+          "sha256": "59de798a5aadf2b74aaa99b5d70037c9abd55dca6b08ce03d52fcb1672ae5a9c"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt3-raw.png",
+        "sha256": "fe990648ebb320b60235ee380481fe04096907fe6fdeb6c52f099096471cc2d0"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": "exec-1fe34343-a034-4feb-9e4a-b5d50a67c8fd.png",
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": false
+    },
+    {
+      "id": "4",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt4-prompt.txt",
+        "sha256": "461f88b63e42249216d1707631a5a38c50d0d7f6bedc769458afb7ed22449120"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/attempt4-guide.png",
+          "sha256": "1a08ca947d92020f6ef69df2e65ab8b3ef5cdbe220411b78a73d70cd8f232017"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/owner-guide.png",
+          "sha256": "59de798a5aadf2b74aaa99b5d70037c9abd55dca6b08ce03d52fcb1672ae5a9c"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-attempt1-raw.png",
+          "sha256": "dfdf4ff2679f2661aa92f08baee016f63da6b69a2287ef2a5e001e5d15c4bd03"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt4-raw.png",
+        "sha256": "c91992db13a036c46de2e73f7b9f90ffb34b076f407f5e8fa3d10cbfa29661b3"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": "exec-e4135b82-f00e-467d-b46d-f2f61b97ef69.png",
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": false
+    },
+    {
+      "id": "5",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt5-prompt.txt",
+        "sha256": "1b09313b512ae509c7d308cce0356da8214731d95b7d93ad6065bbd316884926"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/attempt5-guide.png",
+          "sha256": "4bb982cf957913f81d43f267fe60a198c3a2d4474fc5201915d99732aa4719e3"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/owner-guide.png",
+          "sha256": "59de798a5aadf2b74aaa99b5d70037c9abd55dca6b08ce03d52fcb1672ae5a9c"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-attempt1-raw.png",
+          "sha256": "dfdf4ff2679f2661aa92f08baee016f63da6b69a2287ef2a5e001e5d15c4bd03"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt5-raw.png",
+        "sha256": "427894aaa6df8ab3b021bcf650b47324ca3039f2a60aa70458c54d218d367b25"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": "exec-8cc6e6b1-2487-44f6-99fe-68195b15d629.png",
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": false
+    },
+    {
+      "id": "6",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt6-prompt.txt",
+        "sha256": "dd2b7be69c63e2161c0e82823ce10ea5a6f1962dcbb0002f6a7103903cbbf3cd"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/attempt6-guide.png",
+          "sha256": "591d8bfe0e3762954c78a7fba70a82133b543bdf7c33fd8f5047cff2544fdb68"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt6-raw.png",
+        "sha256": "302eafa97710537474eb398dd7d10ee53e10cb38d5f2e72b66b4e5f990ad4447"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": "exec-9d126c9f-6879-46b8-84b6-ad37e5dfff17.png",
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": true
+    },
+    {
+      "id": "7",
+      "prompt": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt7-prompt.txt",
+        "sha256": "671245b985dd0ecf401406c98b82cde502c917bd279ba47eb665bbedee7292c1"
+      },
+      "inputs": [
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/attempt7-guide.png",
+          "sha256": "1857425897b7b90f05d2dc3a2fc4b96df914f00e19e35d8fc9a4744d9cafd032"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/full-owner-guide.png",
+          "sha256": "9614702d479e08252e924d8b83968a54d1436df8df635c7113eaf1d34a86d027"
+        },
+        {
+          "path": "research/sprite-animation/forward-pickup-v41/goal-attempt1-raw.png",
+          "sha256": "dfdf4ff2679f2661aa92f08baee016f63da6b69a2287ef2a5e001e5d15c4bd03"
+        }
+      ],
+      "output": {
+        "path": "research/sprite-animation/forward-pickup-v41/attempt7-raw.png",
+        "sha256": "75ce75b3914bd7ad1e85d5f4a14d57f1adb8dd543b09b1a1ec632ee57e66293f"
+      },
+      "provider": "native imagegen still edit",
+      "source_generated_filename": "exec-43e7ad73-d88f-4dcc-804d-f105b1b7777b.png",
+      "scope": "Whole8frame still sheet; flat review only; NOT accepted motion or complete modular asset",
+      "selected_for_rejected_comparison": false
+    }
+  ],
+  "generated_video": false,
+  "minimax_called": false,
+  "old_own_attack_used": false,
+  "unknown_interrupted_goal_request": "A pre-compaction pending goal cell108 was unavailable on resume. No output/receipt from that pending job is counted or fabricated; a new actual goal request has retained inputs/output."
+}

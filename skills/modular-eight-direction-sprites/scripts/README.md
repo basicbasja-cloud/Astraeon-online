@@ -1,4 +1,12 @@
-# Current physical view and phase/guide separation — v0.40
+# Latest character size continuity — v0.41 amendment
+
+`character-size-audit.py --contract CONTRACT --out REPORT --require-size` binds exactapprovedRGBA/GIF/receipt, checks onepositiveuniformbankmatrix, actualneutralheight/ground, heldoutreturn, rawclipping andcurrenthead/bodyfamilyreview. An opaqueGIFcanvas is not aforegroundheight; legitimatecrouchheightcanchange. [Current399pxcalibration/420pxclippedreturn FAIL](../../../research/sprite-animation/forward-pickup-v41/size-locked-qa.json). No per-keyresize/body-headstretch. `visible-floor-surfaces.py` optionally observes reviewed alpha128foreground components(min100px) instead of brownmaterial; currentnewsizewindows give10/25px, stillFAIL6px. This is an observer, not pixelcleanup/anatomicalidentity. 28base+13sizecontrols/26browserchecks; currentstrictGIF/sizeexit1. [Latest know-how](../../../research/sprite-animation/forward-pickup-v41/KNOW-HOW.md#7-size-amendment--latest-user-steering).
+
+# Current approved GIF / interaction / visible floor checks — v0.41
+
+[Executed source and retained rejected art](../../../research/sprite-animation/forward-pickup-v41/KNOW-HOW.md). `approved-gif-compare.py --contract CONTRACT --out-dir OUTPUT --require-checks` decodes exact approved GIF/acceptance bindings, builds side-by-side exposures and checks current SHA-bound required supports/manual review; actual v41 exits1. `pickup-source-action.py --source SOURCE --out REPORT` checks grounded target, body/hand reach, ownership/grip, attachment, actual visibility/images and projection (source only). `visible-floor-surfaces.py --contract CONTRACT --out REPORT` observes reviewed fixed-window boot material extrema with clipping/unknown rules, never anatomical LR or hidden joint inference. v41Canvas adds20pxgrid, actual frame clocks and manual image-point export; 28negative/control regressions/21browserchecks. Native6painted feet still fail12/23px vs6px; source success does not approve art/completeparts/factory.
+
+# Historical physical view and phase/guide separation — v0.40
 
 [Executed rear-view study](../../../research/sprite-animation/rear-motion-v40/KNOW-HOW.md). `physical-view-source-audit.py --original OLD_SOURCE --current NEW_SOURCE --out REPORT` verifies unchanged actual world bones/clock and independently projects a second camera. `visible-boot-components.py` observes two separated visible boot components in a reviewed fixed-view band; merged/missing/clipped boots abstain and screen ordering never means anatomical LR. `view-conditioned-motion.py --contract CONTRACT --renders PASSES --out REPORT --require-motion` combines actual neck/support pixels with signed calibrated phase AND a fixed guide-displacement check using rest-origin calibration only. It deliberately exits1 for the actual26.02pxwrong rear pose even though phase-only metrics pass. NumPy/Pillow/SciPy;8source+13motion/component regressions and19browserchecks. New8pxguide budget is provisional; established6pxsupport/3pxneck/.25phase stay unchanged. Acceptedv39 remains untouched. No newrear/acting/hiddenjoint/proportion/allview/factory approval.
 
@@ -208,3 +216,7 @@ family-specific diagnostics never approve production. Actual failure tests are
 # RPG reference corpus audit v29
 
 `rpg-reference-audit.py --study research/sprite-animation/rpg-motion-foundation-v29 --out /tmp/rpg-corpus-audit.json` verifies source/hash bindings, native capture order/clocks/lossless RGBA, source matrices/head consistency, recipe references and optional-dash/old-attack scope. This is dataset integrity only: production_pass=false, art_anatomy_accuracy=null. See [fresh foundation](../../../research/sprite-animation/rpg-motion-foundation-v29/README.md) and `tests/test_rpg_reference_audit.py`.
+
+### Visible part dimensions
+
+`part-proportion-audit.py --contract CONTRACT --root REPO --out REPORT --require-proportions` measures reviewed, image-bound visible endpoints across18required part dimensions. Unknown occlusion/clipping, differing views/poses/protocols and missing approved comparisons block approval. Reports projected lengths, uncertainty and ratios to a fixed family height. No automatic hidden-joint/volume detection. `character-size-audit.py` recomputes the bound contract; overall height/manual review cannot bypass it. Current v41strict result is exit1.

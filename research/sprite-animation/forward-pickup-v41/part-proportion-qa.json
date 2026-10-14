@@ -1,0 +1,2798 @@
+{
+  "checks": {
+    "all_input_hashes": true,
+    "approved_images_covered_by_acceptance": true,
+    "approved_part_reference_present": true,
+    "every_candidate_compared_with_approved": true,
+    "eight_candidate_exposures": true,
+    "positive_fixed_family_height": true,
+    "every_required_part_observed": false,
+    "comparisons_present": true,
+    "all_required_comparisons_pass": false
+  },
+  "measurements": {
+    "approved0": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "MEASURED",
+        "value_px": 113.0,
+        "interval_px": [
+          109.0,
+          117.0
+        ],
+        "points": [
+          [
+            127,
+            130
+          ],
+          [
+            240,
+            130
+          ]
+        ],
+        "definition": "Visible hair horizontal slice at y130, not maximum head width or skull width",
+        "protocol": "hair_slice",
+        "covers_required_dimension": false,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.2832080200501253
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "MEASURED",
+        "value_px": 23.853720883753127,
+        "interval_px": [
+          19.853720883753127,
+          27.853720883753127
+        ],
+        "points": [
+          [
+            211,
+            289
+          ],
+          [
+            231,
+            302
+          ]
+        ],
+        "definition": "Near glove visible diagonal width",
+        "protocol": "near_glove_width",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.05978376161341636
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "MEASURED",
+        "value_px": 35.0,
+        "interval_px": [
+          31.0,
+          39.0
+        ],
+        "points": [
+          [
+            220,
+            400
+          ],
+          [
+            255,
+            400
+          ]
+        ],
+        "definition": "Near visible boot shaft at mid-shin; not anatomical bone width",
+        "protocol": "near_shaft_mid",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.08771929824561403
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "MEASURED",
+        "value_px": 30.0,
+        "interval_px": [
+          26.0,
+          34.0
+        ],
+        "points": [
+          [
+            228,
+            430
+          ],
+          [
+            258,
+            430
+          ]
+        ],
+        "definition": "Near ankle gold band projected width",
+        "protocol": "near_ankle_band",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.07518796992481203
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "MEASURED",
+        "value_px": 50.635955604688654,
+        "interval_px": [
+          46.635955604688654,
+          54.635955604688654
+        ],
+        "points": [
+          [
+            211,
+            466
+          ],
+          [
+            261,
+            458
+          ]
+        ],
+        "definition": "Near shoe toe-to-heel visible profile; front view foreshortened",
+        "protocol": "near_toe_heel",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.12690715690398158
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "MEASURED",
+        "value_px": 39.0,
+        "interval_px": [
+          35.0,
+          43.0
+        ],
+        "points": [
+          [
+            243,
+            438
+          ],
+          [
+            243,
+            477
+          ]
+        ],
+        "definition": "Near shoe upper to sole visible vertical segment",
+        "protocol": "near_shoe_height",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.09774436090225563
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate0": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "MEASURED",
+        "value_px": 112.0,
+        "interval_px": [
+          108.0,
+          116.0
+        ],
+        "points": [
+          [
+            115,
+            130
+          ],
+          [
+            227,
+            130
+          ]
+        ],
+        "definition": "Visible rear hair horizontal slice at y130, not maximum head width; skull hidden",
+        "protocol": "hair_slice",
+        "covers_required_dimension": false,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.2807017543859649
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "MEASURED",
+        "value_px": 49.0,
+        "interval_px": [
+          45.0,
+          53.0
+        ],
+        "points": [
+          [
+            152,
+            400
+          ],
+          [
+            201,
+            400
+          ]
+        ],
+        "definition": "Near visible boot shaft at mid-shin",
+        "protocol": "near_shaft_mid",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.12280701754385964
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "MEASURED",
+        "value_px": 42.2965719651132,
+        "interval_px": [
+          38.2965719651132,
+          46.2965719651132
+        ],
+        "points": [
+          [
+            163,
+            428
+          ],
+          [
+            205,
+            423
+          ]
+        ],
+        "definition": "Near ankle gold band projected width",
+        "protocol": "near_ankle_band",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.10600644602785264
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "MEASURED",
+        "value_px": 93.04837451562494,
+        "interval_px": [
+          89.04837451562494,
+          97.04837451562494
+        ],
+        "points": [
+          [
+            123,
+            454
+          ],
+          [
+            216,
+            457
+          ]
+        ],
+        "definition": "Near shoe toe-to-heel visible profile",
+        "protocol": "near_toe_heel",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.23320394615444848
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "MEASURED",
+        "value_px": 39.0,
+        "interval_px": [
+          35.0,
+          43.0
+        ],
+        "points": [
+          [
+            192,
+            438
+          ],
+          [
+            192,
+            477
+          ]
+        ],
+        "definition": "Near shoe upper to sole visible vertical segment",
+        "protocol": "near_shoe_height",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.09774436090225563
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate1": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate2": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate3": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate4": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate5": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate6": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    },
+    "candidate7": {
+      "head_width": {
+        "metric": "head_width",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Native head contour reaches raw crop boundary; visible remainder cannot establish full head dimensions"
+      },
+      "head_height": {
+        "metric": "head_height",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shoulder_breadth": {
+        "metric": "shoulder_breadth",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "torso_length": {
+        "metric": "torso_length",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "chest_width": {
+        "metric": "chest_width",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "waist_width": {
+        "metric": "waist_width",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "pelvis_width": {
+        "metric": "pelvis_width",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "upper_arm_length": {
+        "metric": "upper_arm_length",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "forearm_length": {
+        "metric": "forearm_length",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "arm_thickness": {
+        "metric": "arm_thickness",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "hand_width": {
+        "metric": "hand_width",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "thigh_length": {
+        "metric": "thigh_length",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "shin_length": {
+        "metric": "shin_length",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      },
+      "leg_thickness": {
+        "metric": "leg_thickness",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "MEASURED",
+        "value_px": 52.0,
+        "interval_px": [
+          48.0,
+          56.0
+        ],
+        "points": [
+          [
+            162,
+            390
+          ],
+          [
+            214,
+            390
+          ]
+        ],
+        "definition": "Near visible boot shaft at mid-shin",
+        "protocol": "near_shaft_mid",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.13032581453634084
+      },
+      "ankle_width": {
+        "metric": "ankle_width",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "MEASURED",
+        "value_px": 52.0,
+        "interval_px": [
+          48.0,
+          56.0
+        ],
+        "points": [
+          [
+            170,
+            418
+          ],
+          [
+            222,
+            418
+          ]
+        ],
+        "definition": "Near ankle gold band projected width",
+        "protocol": "near_ankle_band",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.13032581453634084
+      },
+      "boot_length": {
+        "metric": "boot_length",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "MEASURED",
+        "value_px": 113.11056537742175,
+        "interval_px": [
+          109.11056537742175,
+          117.11056537742175
+        ],
+        "points": [
+          [
+            117,
+            454
+          ],
+          [
+            230,
+            459
+          ]
+        ],
+        "definition": "Near shoe toe-to-heel visible profile",
+        "protocol": "near_toe_heel",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.28348512625920236
+      },
+      "boot_height": {
+        "metric": "boot_height",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "MEASURED",
+        "value_px": 45.0,
+        "interval_px": [
+          41.0,
+          49.0
+        ],
+        "points": [
+          [
+            200,
+            434
+          ],
+          [
+            200,
+            479
+          ]
+        ],
+        "definition": "Near shoe upper to sole visible vertical segment",
+        "protocol": "near_shoe_height",
+        "covers_required_dimension": true,
+        "scope": "Projected visible surface segment; not hidden joint length, volume or anatomical side inference",
+        "fraction_of_fixed_family_height": 0.11278195488721804
+      },
+      "neck_attachment": {
+        "metric": "neck_attachment",
+        "image_sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7",
+        "status": "UNKNOWN",
+        "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "projected_ratio": 0.9911504424778761,
+      "difference_px": -1.0,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.4,
+      "difference_px": 14.0,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.40988573217044,
+      "difference_px": 12.296571965113202,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.837594914610619,
+      "difference_px": 42.41241891093629,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.0,
+      "difference_px": 0.0,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "leg_thickness",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.4857142857142858,
+      "difference_px": 17.0,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.7333333333333334,
+      "difference_px": 22.0,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "boot_length",
+      "status": "UNKNOWN",
+      "projected_ratio": 2.233799363054743,
+      "difference_px": 62.474609772733096,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.1538461538461537,
+      "difference_px": 6.0,
+      "reason": "Different view/pose: projected ratio is diagnostic only; matched-view reference or independently validated projection adapter required"
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "head_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "head_height",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "shoulder_breadth",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "torso_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "chest_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "waist_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "pelvis_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "upper_arm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "forearm_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "arm_thickness",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "hand_width",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "thigh_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "shin_length",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "leg_thickness",
+      "status": "PASS",
+      "projected_ratio": 1.0612244897959184,
+      "difference_px": 3.0
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "ankle_width",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.2294140537651685,
+      "difference_px": 9.703428034886798,
+      "reason": "Uncertainty overlaps the tolerance boundary"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "boot_length",
+      "status": "FAIL",
+      "projected_ratio": 1.2156103313597155,
+      "difference_px": 20.062190861796807
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "boot_height",
+      "status": "UNKNOWN",
+      "projected_ratio": 1.1538461538461537,
+      "difference_px": 6.0,
+      "reason": "Uncertainty overlaps the tolerance boundary"
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ],
+      "metric": "neck_attachment",
+      "status": "UNKNOWN",
+      "reason": "Missing, occluded or clipped visible endpoints"
+    }
+  ],
+  "fixed_family_height_px": 399,
+  "required_metrics": [
+    "head_width",
+    "head_height",
+    "shoulder_breadth",
+    "torso_length",
+    "chest_width",
+    "waist_width",
+    "pelvis_width",
+    "upper_arm_length",
+    "forearm_length",
+    "arm_thickness",
+    "hand_width",
+    "thigh_length",
+    "shin_length",
+    "leg_thickness",
+    "ankle_width",
+    "boot_length",
+    "boot_height",
+    "neck_attachment"
+  ],
+  "part_proportion_pass": false,
+  "production_pass": false,
+  "scope": "Visible projected lengths/widths and same-view/pose size continuity only. Unknowns block approval. No volume, hidden anatomy, camera equivalence, semantic segmentation or whole-animation acting proof."
+}

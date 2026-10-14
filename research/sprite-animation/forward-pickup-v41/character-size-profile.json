@@ -1,0 +1,82 @@
+{
+  "family": "silver-scarf-v39-size-reference",
+  "user_text": "\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e2b\u0e49\u0e17\u0e31\u0e19\u0e2a\u0e2d\u0e14\u0e23\u0e31\u0e1a\u0e01\u0e31\u0e1a gif \u0e40\u0e01\u0e48\u0e32\u0e14\u0e49\u0e27\u0e22\u0e19\u0e30 \u0e41\u0e1a\u0e1a\u0e15\u0e35\u0e27\u0e43\u0e2b\u0e0d\u0e48\u0e15\u0e31\u0e27\u0e40\u0e25\u0e47\u0e01\u0e44\u0e21\u0e48\u0e40\u0e17\u0e48\u0e32\u0e01\u0e31\u0e19\u0e44\u0e21\u0e48\u0e44\u0e14\u0e49\u0e19\u0e30\u0e04\u0e23\u0e31\u0e1a",
+  "reference": {
+    "path": "research/sprite-animation/recovery-key-v39/renders/review/full/00.png",
+    "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+  },
+  "reference_gif": {
+    "path": "research/sprite-animation/recovery-key-v39/review-source.gif",
+    "sha256": "08915e1bbae675f00a465cbecdf90dfc9a03f2fcdd5467c36c8433e19fe1e7c7"
+  },
+  "approval_receipt": {
+    "path": "research/sprite-animation/rear-motion-v40/user-v39-acceptance.json",
+    "sha256": "18cfd24c16bb12ac58e2d92f93716b2bf3ae3c590129ebe1361dcd401571de86"
+  },
+  "reference_visible_extent": {
+    "known": true,
+    "bbox_xyxy": [
+      118,
+      82,
+      331,
+      480
+    ],
+    "height": 399,
+    "width": 214,
+    "bottom_y": 480,
+    "visible_boundary_pixels": 0,
+    "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+  },
+  "reference_full_head_layer": {
+    "path": "research/sprite-animation/recovery-key-v39/renders/review/head/00.png",
+    "sha256": "80e7b5e692e56034de5406548e0d93a67824be795c26aea00c3ded04c2fccab6"
+  },
+  "reference_head_layer_extent": {
+    "known": true,
+    "bbox_xyxy": [
+      118,
+      82,
+      244,
+      194
+    ],
+    "height": 113,
+    "width": 127,
+    "bottom_y": 194,
+    "visible_boundary_pixels": 0,
+    "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+  },
+  "reference_body_rest_calibration": {
+    "generation_job": 2,
+    "raw_art_index": 7,
+    "observed_cap_centroid": [
+      182.42191142191143,
+      108.94871794871794
+    ],
+    "observed_near_toe_sole_native": [
+      198,
+      488
+    ],
+    "target_near_toe_sole": [
+      211,
+      480
+    ],
+    "neck_to_sole_height": 300,
+    "all_frames_share_one_transform": true,
+    "other_jobs_receive_no_individual_registration": true
+  },
+  "calibration_native": {
+    "path": "research/sprite-animation/forward-pickup-v41/attempt6-review/native-00.png",
+    "sha256": "cbcde3b7450e75f4769fd88ad2ba876b2253d7487f8b93ffcde09d9ce5f45837"
+  },
+  "calibration_index": 0,
+  "held_out_neutral": 7,
+  "matrix": [
+    0.8343815513626834,
+    0,
+    0,
+    0.8343815513626834,
+    31.798742138364787,
+    61.9748427672956
+  ],
+  "scope": "Only current character/family: match actual approved neutral399px height and480ground with one bank-wide uniform rest calibration. This calibration cannot validate itself, recover clipping or prove head/body ratios. Held-out terminal neutral and actual head/body proof still required; no per-key fitting or stretching."
+}

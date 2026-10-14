@@ -1,4 +1,12 @@
-## Latest: accepted v39, rear-camera proof and caught false positives v40
+## Latest v41 amendment: consistent size with approved GIF
+
+[Size before/after and strict held-out check](forward-pickup-v41/README.md): approved neutral399px; oldnewreview416px. One rest-derived uniform bank scale now matches399px/ground480atkey0, but returnkey7is>=420pxandclipped, so the tool still rejects it. Head/bodyfamilyunknown; actual outlinefootdrift10/25px. [Size comparison](forward-pickup-v41/size-continuity-review.png), [GIF comparison](forward-pickup-v41/size-before-after-source.gif), [offline grid reviewer](forward-pickup-v41/approved-gif-review.html). 41Pythoncontrols/26browserchecks verify tools, not newmotion/partbank/factoryapproval.
+
+## Latest: exact approved-GIF checker and target-conditioned pickup v41
+
+[Actual GIF comparison/Canvas grid viewer, source action research and preserved failed redraws](forward-pickup-v41/README.md). Exact acceptedv39 GIF pixels/clocks are used directly. Original goal-directed source passes14bounded checks;8retained still outputs do **not** yield a passing painted motion. Native6actualrasterbootX12/23px exceeds6px, native7worse17/32;28regressions/21browserchecks establish the review tools, not newart/parts/factoryapproval. Allv30–40/W remainfrozen. [Reusable know-how](../../skills/modular-eight-direction-sprites/references/approved-gif-and-target-pickup.md).
+
+## Historical: accepted v39, rear-camera proof and caught false positives v40
 
 [Front/rear comparison, seven real still jobs, exact source projection and stronger visible-pixel/guide checks](rear-motion-v40/README.md). The user accepts exact v39; its bytes are preserved. New rear source worlds/camera pass; new painted rear candidate stays **rejected** for26.02pxfixed-guide error despite passing phase/neck/support subchecks. Neighbor-heel ROI contamination and fitted-phase amplitude blindness are retained negative controls.21regressions/19browserchecks; no newview/hiddenanatomy/proportion/factory approval. [Reusable practice](../../skills/modular-eight-direction-sprites/references/physical-view-phase-and-guide-fidelity.md).
 
@@ -158,3 +166,5 @@ The target is reliable mass production. An approved final turnaround, sprite act
 The [RO action-direction audit](../../skills/modular-eight-direction-sprites/references/ragnarok-hard-reference.md#eight-selectable-directions-versus-four-drawings) directly checks eight selected Swordman action blocks: standing, walking **and sitting** have eight distinct views; many tested other actions reuse four diagonals. An anomalous head-region sample remains explicitly documented.
 
 Iteration 5 adds an [original four-key art study](silver-scarf/art-study-v5/README.md), [primary artist/coherence research and proposed art direction](../../skills/modular-eight-direction-sprites/references/original-ro-art-direction.md), and a [tested mid-key trail-expiry repair](silver-scarf/rig-proof-v4/effect-exposure-check.json). The body retains eight poses; effect exposure no longer runs 90 ms late. The new image board is unapproved, flattened direction study, not a modular production seed.
+
+Latest v41 multi-part size review: [actual grid, measurements and unknowns](forward-pickup-v41/PART-SIZE-REVIEW.md). Height calibration does not approve width, thickness or part ratios.

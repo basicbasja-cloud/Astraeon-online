@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "approved_gif_hash": true,
+    "all_candidate_hashes": true,
+    "exact_approved_clock": true,
+    "fixed_candidate_canvas": true,
+    "comparison_gif_exact_clock": true,
+    "current_exact_image_action_review": false
+  },
+  "reference_durations_ms": [
+    190,
+    180,
+    190,
+    180,
+    190,
+    180,
+    190,
+    600
+  ],
+  "candidate_durations_ms": [
+    190,
+    180,
+    190,
+    180,
+    190,
+    180,
+    190,
+    600
+  ],
+  "reference_size": [
+    384,
+    512
+  ],
+  "candidate_size": [
+    384,
+    512
+  ],
+  "visible_metrics": {},
+  "comparison_checks_pass": false,
+  "production_pass": false,
+  "user_new_art_approval": false,
+  "scope": "Actual approved GIF pixels/clock and current bound image observations. Different-view absolute XY is not equated; phase resemblance cannot override failed source geometry, occlusion, anatomy or acting."
+}

@@ -1,0 +1,1049 @@
+{
+  "schema": "visible-part-proportions-v1",
+  "approval_receipt": {
+    "path": "research/sprite-animation/rear-motion-v40/user-v39-acceptance.json",
+    "sha256": "18cfd24c16bb12ac58e2d92f93716b2bf3ae3c590129ebe1361dcd401571de86"
+  },
+  "approved_gif": {
+    "path": "research/sprite-animation/recovery-key-v39/review-source.gif",
+    "sha256": "08915e1bbae675f00a465cbecdf90dfc9a03f2fcdd5467c36c8433e19fe1e7c7"
+  },
+  "fixed_family_height_px": 399,
+  "same_view_relative_budget": 0.08,
+  "threshold_status": "Provisional engineering review budget, not universal perceptual tolerance",
+  "frames": [
+    {
+      "id": "approved0",
+      "image": {
+        "path": "research/sprite-animation/recovery-key-v39/renders/review/full/00.png",
+        "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+      },
+      "role": "approved",
+      "index": 0,
+      "view_id": "v39_front_oblique",
+      "pose_group": "neutral",
+      "observations": {
+        "head_width": {
+          "points": [
+            [
+              127,
+              130
+            ],
+            [
+              240,
+              130
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Visible hair horizontal slice at y130, not maximum head width or skull width",
+          "protocol": "hair_slice",
+          "covers_required_dimension": false
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "points": [
+            [
+              211,
+              289
+            ],
+            [
+              231,
+              302
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near glove visible diagonal width",
+          "protocol": "near_glove_width",
+          "covers_required_dimension": true
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "points": [
+            [
+              220,
+              400
+            ],
+            [
+              255,
+              400
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near visible boot shaft at mid-shin; not anatomical bone width",
+          "protocol": "near_shaft_mid",
+          "covers_required_dimension": true
+        },
+        "ankle_width": {
+          "points": [
+            [
+              228,
+              430
+            ],
+            [
+              258,
+              430
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near ankle gold band projected width",
+          "protocol": "near_ankle_band",
+          "covers_required_dimension": true
+        },
+        "boot_length": {
+          "points": [
+            [
+              211,
+              466
+            ],
+            [
+              261,
+              458
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near shoe toe-to-heel visible profile; front view foreshortened",
+          "protocol": "near_toe_heel",
+          "covers_required_dimension": true
+        },
+        "boot_height": {
+          "points": [
+            [
+              243,
+              438
+            ],
+            [
+              243,
+              477
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near shoe upper to sole visible vertical segment",
+          "protocol": "near_shoe_height",
+          "covers_required_dimension": true
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate0",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/00.png",
+        "sha256": "620c98565a8b75131ea02f8ace2a64022aaa0f4182805f0d2cdc01404488f471"
+      },
+      "role": "candidate",
+      "index": 0,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "neutral",
+      "observations": {
+        "head_width": {
+          "points": [
+            [
+              115,
+              130
+            ],
+            [
+              227,
+              130
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Visible rear hair horizontal slice at y130, not maximum head width; skull hidden",
+          "protocol": "hair_slice",
+          "covers_required_dimension": false
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "points": [
+            [
+              152,
+              400
+            ],
+            [
+              201,
+              400
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near visible boot shaft at mid-shin",
+          "protocol": "near_shaft_mid",
+          "covers_required_dimension": true
+        },
+        "ankle_width": {
+          "points": [
+            [
+              163,
+              428
+            ],
+            [
+              205,
+              423
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near ankle gold band projected width",
+          "protocol": "near_ankle_band",
+          "covers_required_dimension": true
+        },
+        "boot_length": {
+          "points": [
+            [
+              123,
+              454
+            ],
+            [
+              216,
+              457
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near shoe toe-to-heel visible profile",
+          "protocol": "near_toe_heel",
+          "covers_required_dimension": true
+        },
+        "boot_height": {
+          "points": [
+            [
+              192,
+              438
+            ],
+            [
+              192,
+              477
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near shoe upper to sole visible vertical segment",
+          "protocol": "near_shoe_height",
+          "covers_required_dimension": true
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate1",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/01.png",
+        "sha256": "caa93a98e0bc1b68d5861ffb347d76558e942146a1b84388a3480a2cb4ab3d04"
+      },
+      "role": "candidate",
+      "index": 1,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "pickup_pose_1",
+      "observations": {
+        "head_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "ankle_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate2",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/02.png",
+        "sha256": "6f903029c4a189cb016755481ed8994006c7886214a2d1a35576fc99206cfe5b"
+      },
+      "role": "candidate",
+      "index": 2,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "pickup_pose_2",
+      "observations": {
+        "head_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "ankle_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate3",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/03.png",
+        "sha256": "4338fca6a4d4fbc24c562b8c551f6da81972144c2812fcbc5bb3ebe0bf0ba786"
+      },
+      "role": "candidate",
+      "index": 3,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "pickup_pose_3",
+      "observations": {
+        "head_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "ankle_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate4",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/04.png",
+        "sha256": "0c8ce3da594eddf58bab79a7798dd808043afde6e2f60dff0ce6677df8d3ec16"
+      },
+      "role": "candidate",
+      "index": 4,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "pickup_pose_4",
+      "observations": {
+        "head_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "ankle_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate5",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/05.png",
+        "sha256": "7a97220e8a546afd2e6501975b7bbfca67680e2dc570d56d99aa3eda241b4878"
+      },
+      "role": "candidate",
+      "index": 5,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "pickup_pose_5",
+      "observations": {
+        "head_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "ankle_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate6",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/06.png",
+        "sha256": "73c8cd05472507ee56ca5a02d8c13cea566d0f8a6835e0040f27a5d90bba8087"
+      },
+      "role": "candidate",
+      "index": 6,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "pickup_pose_6",
+      "observations": {
+        "head_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "ankle_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "boot_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    },
+    {
+      "id": "candidate7",
+      "image": {
+        "path": "research/sprite-animation/forward-pickup-v41/size-locked-review/07.png",
+        "sha256": "bbdd8909a61d2da2d52043d7b28afe6bc96629c36233a5afaa1ee9e25622aae7"
+      },
+      "role": "candidate",
+      "index": 7,
+      "view_id": "v41_rear_oblique",
+      "pose_group": "neutral",
+      "observations": {
+        "head_width": {
+          "visibility": "clipped",
+          "reason": "Native head contour reaches raw crop boundary; visible remainder cannot establish full head dimensions"
+        },
+        "head_height": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shoulder_breadth": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "torso_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "chest_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "waist_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "pelvis_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "upper_arm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "forearm_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "arm_thickness": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "hand_width": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "thigh_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "shin_length": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        },
+        "leg_thickness": {
+          "points": [
+            [
+              162,
+              390
+            ],
+            [
+              214,
+              390
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near visible boot shaft at mid-shin",
+          "protocol": "near_shaft_mid",
+          "covers_required_dimension": true
+        },
+        "ankle_width": {
+          "points": [
+            [
+              170,
+              418
+            ],
+            [
+              222,
+              418
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near ankle gold band projected width",
+          "protocol": "near_ankle_band",
+          "covers_required_dimension": true
+        },
+        "boot_length": {
+          "points": [
+            [
+              117,
+              454
+            ],
+            [
+              230,
+              459
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near shoe toe-to-heel visible profile",
+          "protocol": "near_toe_heel",
+          "covers_required_dimension": true
+        },
+        "boot_height": {
+          "points": [
+            [
+              200,
+              434
+            ],
+            [
+              200,
+              479
+            ]
+          ],
+          "visibility": "visible",
+          "reviewed_on_pixels": true,
+          "endpoint_uncertainty_px": 2,
+          "definition": "Near shoe upper to sole visible vertical segment",
+          "protocol": "near_shoe_height",
+          "covers_required_dimension": true
+        },
+        "neck_attachment": {
+          "visibility": "unknown",
+          "reason": "Not yet observed on actual pixels; clothing/occlusion and foreshortening require review"
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "frames": [
+        "approved0",
+        "candidate0"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate1"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate2"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate3"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate4"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate5"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate6"
+      ]
+    },
+    {
+      "frames": [
+        "approved0",
+        "candidate7"
+      ]
+    },
+    {
+      "frames": [
+        "candidate0",
+        "candidate7"
+      ]
+    }
+  ],
+  "annotation_method": "Agent reviewed actual coordinate grids and enlarged boot crops; visible endpoints with +/-2px each, no inferred hidden hip/joints/anatomical left-right. Other metrics explicitly unknown.",
+  "user_size_scope": "Head, shoulder/torso, arms/hands, legs/boots, attachment and ratios as well as total height. No per-part stretching or per-frame normalization."
+}

@@ -1,0 +1,286 @@
+{
+  "checks": {
+    "all_input_hashes": true,
+    "approved_reference_covered_by_acceptance": true,
+    "one_positive_uniform_bank_transform": true,
+    "declared_neutral_calibration_only": true,
+    "reference_foreground_observable": true,
+    "all_raw_frame_contours_unclipped": false,
+    "neutral_height_and_ground": false,
+    "head_body_family_review_bound": false,
+    "part_dimensions_and_ratios": false
+  },
+  "reference_visible_extent": {
+    "known": true,
+    "bbox_xyxy": [
+      118,
+      82,
+      331,
+      480
+    ],
+    "height": 399,
+    "width": 214,
+    "bottom_y": 480,
+    "visible_boundary_pixels": 0,
+    "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+  },
+  "neutral_comparison": [
+    {
+      "index": 0,
+      "role": "calibration",
+      "observed_height_px": 416,
+      "reference_height_px": 399,
+      "height_error_px": 17,
+      "bottom_y_error_px": 6,
+      "raw_complete_silhouette": true,
+      "measurement_status": "VISIBLE_EXTENT",
+      "pass_": false
+    },
+    {
+      "index": 7,
+      "role": "held_out_terminal_neutral",
+      "observed_height_px": 438,
+      "reference_height_px": 399,
+      "height_error_px": 39,
+      "bottom_y_error_px": 7,
+      "raw_complete_silhouette": false,
+      "measurement_status": "CLIPPED_LOWER_BOUND",
+      "pass_": false
+    }
+  ],
+  "all_candidate_visible_extents": [
+    {
+      "known": true,
+      "bbox_xyxy": [
+        82,
+        71,
+        343,
+        486
+      ],
+      "height": 416,
+      "width": 262,
+      "bottom_y": 486,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        52,
+        105,
+        343,
+        486
+      ],
+      "height": 382,
+      "width": 292,
+      "bottom_y": 486,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        36,
+        168,
+        348,
+        494
+      ],
+      "height": 327,
+      "width": 313,
+      "bottom_y": 494,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        34,
+        184,
+        358,
+        494
+      ],
+      "height": 311,
+      "width": 325,
+      "bottom_y": 494,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        75,
+        118,
+        358,
+        487
+      ],
+      "height": 370,
+      "width": 284,
+      "bottom_y": 487,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        25,
+        60,
+        358,
+        487
+      ],
+      "height": 428,
+      "width": 334,
+      "bottom_y": 487,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        25,
+        50,
+        353,
+        487
+      ],
+      "height": 438,
+      "width": 329,
+      "bottom_y": 487,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        113,
+        50,
+        357,
+        487
+      ],
+      "height": 438,
+      "width": 245,
+      "bottom_y": 487,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    }
+  ],
+  "raw_visible_extents": [
+    {
+      "known": true,
+      "bbox_xyxy": [
+        66,
+        24,
+        366,
+        501
+      ],
+      "height": 478,
+      "width": 301,
+      "bottom_y": 501,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        31,
+        63,
+        366,
+        501
+      ],
+      "height": 439,
+      "width": 336,
+      "bottom_y": 501,
+      "visible_boundary_pixels": 0,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        12,
+        136,
+        372,
+        511
+      ],
+      "height": 376,
+      "width": 361,
+      "bottom_y": 511,
+      "visible_boundary_pixels": 10,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        11,
+        154,
+        382,
+        511
+      ],
+      "height": 358,
+      "width": 372,
+      "bottom_y": 511,
+      "visible_boundary_pixels": 4,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        57,
+        78,
+        383,
+        502
+      ],
+      "height": 425,
+      "width": 327,
+      "bottom_y": 502,
+      "visible_boundary_pixels": 54,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        0,
+        11,
+        383,
+        502
+      ],
+      "height": 492,
+      "width": 384,
+      "bottom_y": 502,
+      "visible_boundary_pixels": 99,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        0,
+        0,
+        377,
+        502
+      ],
+      "height": 503,
+      "width": 378,
+      "bottom_y": 502,
+      "visible_boundary_pixels": 60,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    },
+    {
+      "known": true,
+      "bbox_xyxy": [
+        101,
+        0,
+        382,
+        502
+      ],
+      "height": 503,
+      "width": 282,
+      "bottom_y": 502,
+      "visible_boundary_pixels": 7,
+      "scope": "Alpha128 foreground extent; body/head neutral with no weapon/FX extending it. Not an anatomical height/width estimator."
+    }
+  ],
+  "part_proportions": null,
+  "head_body_family_status": "UNKNOWN: full-height matching alone cannot establish part dimensions, ratios or a compatible head bank",
+  "height_budget_px": 2,
+  "floor_budget_px": 2,
+  "character_size_pass": false,
+  "production_pass": false,
+  "scope": "One rest-only global size calibration and held-out neutral continuity. Crouch height/cloth width are not forced to neutral bounds. All new pixels additionally require bound multi-part proportion evidence; exact accepted masters are only an identity control."
+}

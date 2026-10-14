@@ -1,0 +1,63 @@
+{
+  "checks": {
+    "approved_gif_hash": true,
+    "all_candidate_hashes": true,
+    "exact_approved_clock": true,
+    "fixed_candidate_canvas": true,
+    "immutable_user_acceptance_binding": true,
+    "comparison_gif_exact_clock": true,
+    "declared_planted_supports_observed": true,
+    "observations_bound_to_actual_pngs": true,
+    "support_near": false,
+    "support_far": false,
+    "current_exact_image_action_review": false
+  },
+  "reference_durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    600
+  ],
+  "candidate_durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    600
+  ],
+  "reference_size": [
+    384,
+    512
+  ],
+  "candidate_size": [
+    384,
+    512
+  ],
+  "visible_metrics": {
+    "support_near": {
+      "range_xy_px": [
+        17.0,
+        5.0
+      ],
+      "scope": "Visible screen-labelled surface, not anatomical limb identity or force balance"
+    },
+    "support_far": {
+      "range_xy_px": [
+        32.0,
+        8.0
+      ],
+      "scope": "Visible screen-labelled surface, not anatomical limb identity or force balance"
+    }
+  },
+  "comparison_checks_pass": false,
+  "production_pass": false,
+  "user_new_art_approval": false,
+  "scope": "Actual approved GIF pixels/clock and current bound image observations. Different-view absolute XY is not equated; phase resemblance cannot override failed source geometry, occlusion, anatomy or acting."
+}
