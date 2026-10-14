@@ -1,0 +1,52 @@
+{
+  "actual_imagegen_jobs": 2,
+  "selected_job": "coherent_body",
+  "jobs": [
+    {
+      "job": "coherent_body",
+      "prompt": {
+        "path": "research/sprite-animation/body-outfit-v35/body-prompt.txt",
+        "sha256": "05ba71f4bb4a53287b2910b6ea16b88d6192fdd70e93f842a6621f6f9cb06d5f"
+      },
+      "output": {
+        "path": "research/sprite-animation/body-outfit-v35/body-halo-raw.png",
+        "sha256": "27025860df185b6520d56fc54a40b21dcb5ec222e3d775aa8acf75dbe30ad53a"
+      },
+      "provider_output": "/workspace/generated_images/exec-624808bd-627c-4a30-85b1-e9d7fa6b9df9.png",
+      "inputs": [
+        {
+          "path": "research/sprite-animation/registered-walk-attack-v21/walk/W/frames/00.png",
+          "sha256": "3e1aaa3ad849a68080a208676474bf7a85874f38148a9248fe97e33522ac7692"
+        },
+        {
+          "path": "research/sprite-animation/quality-review-v10/master/frames/00.png",
+          "sha256": "b04501d1fe37bc2f6b8ff5dd7cd568cf9c7c48aaf227f7f5da7210b10e487268"
+        }
+      ],
+      "purpose": "original appearance/material only; neutral pose authored fresh, no old attacks"
+    },
+    {
+      "job": "alpha_review_attempt",
+      "prompt": {
+        "path": "research/sprite-animation/body-outfit-v35/alpha-repair-prompt.txt",
+        "sha256": "11da520d42ae5996dff257ab8a28fa12e629fd65e278b210cc5ba4e889c2e371"
+      },
+      "output": {
+        "path": "research/sprite-animation/body-outfit-v35/body-alpha-attempt-raw.png",
+        "sha256": "9af108837b91848fd79e2d6164c46cfd8646723ce511d8128226f00e06f43e14"
+      },
+      "provider_output": "/workspace/generated_images/exec-33ca9286-6888-49d5-b00a-272e13e21113.png",
+      "inputs": [
+        {
+          "path": "research/sprite-animation/body-outfit-v35/body-halo-raw.png",
+          "sha256": "27025860df185b6520d56fc54a40b21dcb5ec222e3d775aa8acf75dbe30ad53a"
+        }
+      ],
+      "selected": false,
+      "reason": "Initial preview suggested halo, but actual RGBA shows exterior RGB has alpha0. First image already transparent; second redraw changes body and is not selected."
+    }
+  ],
+  "minimax_called": false,
+  "raw_art_unchanged": true,
+  "old_own_attack_used": false
+}

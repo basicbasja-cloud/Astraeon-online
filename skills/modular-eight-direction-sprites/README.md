@@ -1,6 +1,8 @@
 # Eight-direction sprites with replaceable parts
 
-Research and reusable workflow draft v0.34, revised 2026-10-14.
+Research and reusable workflow draft v0.35, revised 2026-10-14.
+
+- [RO-like body/outfit production slots](references/body-outfit-production-slots.md): user corrects limb-cutout proportions; coherent body+outfit and complete head/hair are default slots. Neutral comparison and11.1%head reduction remain proportion candidates, not accepted animation.
 
 - [Physical views and valid texture support](references/physical-view-and-texture-support.md): second real camera/new18activepiece bank, closed receiver/hair repairs and source/pixel/appearance checks. MiniMax paused; all8view production remains pending.
 

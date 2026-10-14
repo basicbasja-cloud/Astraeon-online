@@ -1,0 +1,19 @@
+Research excerpt: vthibault/roBrowser, GPL-3.0; source URL/hash in receipt.json.
+
+// Draw body, get head position
+			renderElement( this, this.files.body, 'body', _position, true );
+
+			if (this.objecttype === Entity.TYPE_PC) {
+				// Draw Head
+				renderElement( this, this.files.head, 'head', _position, false);
+
+
+// Draw Others elements
+				if (this.weapon > 0) {
+					renderElement( this, this.files.weapon, 'weapon', _position, true );
+				}
+
+				if (this.shield > 0 && !behind) {
+					renderElement( this, this.files.shield, 'shield', _position, true );
+				}
+			}

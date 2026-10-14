@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "name": "head size change alters the actual composite",
+      "pass": true
+    },
+    {
+      "name": "head reduction preserves exact body pixels and neck mount",
+      "pass": true
+    },
+    {
+      "name": "all4 head choices retain identical whole outfit pixels",
+      "pass": true
+    },
+    {
+      "name": "body contains arms and boots as one texture, no independent limb transforms",
+      "pass": true
+    },
+    {
+      "name": "one shared head mount and uniform scale",
+      "pass": true
+    },
+    {
+      "name": "actual renderer performs exactly body+head two texture draws",
+      "pass": true
+    },
+    {
+      "name": "unsupported head rejected",
+      "pass": true
+    },
+    {
+      "name": "body-only preview removes complete head",
+      "pass": true
+    },
+    {
+      "name": "white-alpha review uses actual Canvas background",
+      "pass": true
+    },
+    {
+      "name": "no browser errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

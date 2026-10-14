@@ -1,0 +1,29 @@
+{
+  "user_quote": "portion size ของแต่ละพาทแปลกมานะครับ ลองเทียบกับ art เดิมด้วยนะ แล้วแบบเดิมเราแยก part หมดแบบนี้หรอ ไม่ใช่ body with outfit หรอครับ เหมือน RO",
+  "affected_iteration": "v34",
+  "status": "USER_PROPORTION_CORRECTION_REQUIRED",
+  "bound_evidence": [
+    {
+      "path": "research/sprite-animation/pickup-view-v34/parts.json",
+      "sha256": "1e87588efebed74a6b56f3dd9e6c82902146855f4fca0f6e48493832f92f977d"
+    },
+    {
+      "path": "research/sprite-animation/pickup-view-v34/bindings.json",
+      "sha256": "337d55862a11a571b93aebf57d31b2076cdebb4df02bc6d37e2626517adadd7f"
+    },
+    {
+      "path": "research/sprite-animation/pickup-view-v34/frames/original/00.png",
+      "sha256": "bf50ef7391953d60e3c18f08a2e4f6ff783a310e743456e6dcf476267cee4459"
+    },
+    {
+      "path": "research/sprite-animation/pickup-view-v34/frames/silver/00.png",
+      "sha256": "c22b9d1d8955f370e5e7e8921251e5b2a77285a2399cc64b8db2e457fa43d350"
+    }
+  ],
+  "correction": "Default production slots body+outfit, complete head/hair style, optional headgear/weapon/shield. Rig limb parts remain internal diagnostic/authoring inputs, never mandatory gameplay slots.",
+  "not_inferred": [
+    "v35 art approval",
+    "v32 motion rejection",
+    "all poses share identical proportions from a single measurement"
+  ]
+}

@@ -1,4 +1,8 @@
-## Latest: second physical view and stronger pixel checks v34
+## Latest: body with outfit and original-art proportion correction v35
+
+[Original/v34/new coherent-body comparison, smaller-head before/after, two-slot preview and reusable know-how](body-outfit-v35/README.md). User corrects limb-cutout production to RO-likebody+outfit; separatehead style and optional equipment remain. New head11.1%smaller with body/neck unchanged,10actualbrowserchecks including2drawcalls. One neutralproportioncandidate, not newuser-art/animation approval.
+
+## Historical: second physical view and stronger pixel checks v34
 
 [New opposite-camera pickup, perspective-specific18activeparts, complete base head/hair, two-view GIF and reusable know-how](pickup-view-v34/README.md). MiniMax is paused. Actual pixel toe drift0px/.00763cuff phase under unchanged criteria, supported rotated-texture matching,17regressions/12browserchecks. Agentsecond-view review only; no user-new-art/all8views/fullfactory approval. [Reusable practice](../../skills/modular-eight-direction-sprites/references/physical-view-and-texture-support.md).
 

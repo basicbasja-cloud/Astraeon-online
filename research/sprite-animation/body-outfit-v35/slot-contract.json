@@ -1,0 +1,116 @@
+{
+  "schema": "body-outfit-slots-v1",
+  "canvas": [
+    512,
+    512
+  ],
+  "view": "A_LEFT_THREE_QUARTER_NEUTRAL_CANDIDATE",
+  "action": "neutral_proportion_study",
+  "pose_count": 1,
+  "body": {
+    "slot": "body_outfit",
+    "file": {
+      "path": "research/sprite-animation/body-outfit-v35/body-halo-raw.png",
+      "sha256": "27025860df185b6520d56fc54a40b21dcb5ec222e3d775aa8acf75dbe30ad53a"
+    },
+    "matrix": [
+      0.24896265560165975,
+      0,
+      0,
+      0.24896265560165975,
+      141.95020746887968,
+      123.98340248962656
+    ],
+    "includes": [
+      "torso",
+      "both_arms",
+      "both_hands",
+      "hips",
+      "both_legs",
+      "both_boots",
+      "armor",
+      "belt",
+      "tabards",
+      "scarf",
+      "cape"
+    ],
+    "independent_limb_transform_allowed": false
+  },
+  "head": {
+    "slot": "head_style",
+    "matrix": [
+      0.4,
+      0,
+      0,
+      0.4,
+      169.2,
+      49.599999999999994
+    ],
+    "variants": {
+      "original": {
+        "path": "research/sprite-animation/hair-swap-v33/head-original.png",
+        "sha256": "107c3d3f472107df52ff4053d4e9b9ab7e841eb3c4a231a5f6445e3f2430321e"
+      },
+      "silver": {
+        "path": "research/sprite-animation/hair-swap-v33/head-silver.png",
+        "sha256": "db0f7b5e27e13b0a854324d00a7ee8cbae284ce000cf8677a3d800f923247ca7"
+      },
+      "auburn": {
+        "path": "research/sprite-animation/hair-swap-v33/head-auburn.png",
+        "sha256": "ba30c22bc7d1c3ffc8a17fa67e14f2f47a36705c3f2ce517eee1da95eaf1b0e3"
+      },
+      "bald": {
+        "path": "research/sprite-animation/hair-swap-v33/head-bald.png",
+        "sha256": "aedc2c6617e970d8c9df49ddfac14a5ba3fd7ddd6d2f306ec853c376fffda80e"
+      }
+    },
+    "source_mount": [
+      202,
+      326
+    ],
+    "target_mount": [
+      250,
+      180
+    ],
+    "size_matrices": {
+      "corrected": [
+        0.4,
+        0,
+        0,
+        0.4,
+        169.2,
+        49.599999999999994
+      ],
+      "before": [
+        0.45,
+        0,
+        0,
+        0.45,
+        159.1,
+        33.29999999999998
+      ]
+    },
+    "size_change": {
+      "user_feedback": "\u0e02\u0e19\u0e32\u0e14\u0e2b\u0e31\u0e27\u0e21\u0e31\u0e19\u0e43\u0e2b\u0e0d\u0e48\u0e44\u0e1b\u0e2b\u0e19\u0e48\u0e2d\u0e22\u0e21\u0e31\u0e49\u0e22",
+      "previous_scale": 0.45,
+      "current_scale": 0.4,
+      "linear_reduction_fraction": 0.11111111111111105,
+      "same_neck_mount": true,
+      "body_matrix_unchanged": true
+    }
+  },
+  "other_supported_slots": [],
+  "proposed_slots": [
+    "headgear",
+    "weapon",
+    "shield",
+    "optional_back_accessory"
+  ],
+  "no_mirroring": true,
+  "body_scale_policy": "one uniform scale for the complete outfit, authored once in rest",
+  "head_scale_policy": "one shared scale for complete head-style cache; no runtime independent hair/eye resize",
+  "outfit_change_policy": "select another complete compatible body/action/view bank; never silently replace one sleeve",
+  "animation_approval": false,
+  "user_proportion_approved": false,
+  "production_pass": false
+}
