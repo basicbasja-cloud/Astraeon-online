@@ -1,0 +1,226 @@
+{
+  "prior_commit": "a02e21de19d8af4deb862a13f81091db4ccad72e",
+  "before_variant": "v36 review; 8exposures/6distinctdrawings",
+  "support": {
+    "far": {
+      "raw_surface_xy": [
+        [
+          125.0,
+          466.0
+        ],
+        [
+          123.0,
+          466.0
+        ],
+        [
+          125.0,
+          466.0
+        ],
+        [
+          131.0,
+          466.0
+        ],
+        [
+          125.0,
+          465.0
+        ],
+        [
+          124.0,
+          465.0
+        ],
+        [
+          125.0,
+          466.0
+        ],
+        [
+          125.0,
+          466.0
+        ]
+      ],
+      "rendered_surface_xy": [
+        [
+          144.0,
+          464.0
+        ],
+        [
+          142.0,
+          464.0
+        ],
+        [
+          143.0,
+          464.0
+        ],
+        [
+          148.0,
+          464.0
+        ],
+        [
+          143.0,
+          463.0
+        ],
+        [
+          143.0,
+          463.0
+        ],
+        [
+          144.0,
+          464.0
+        ],
+        [
+          144.0,
+          464.0
+        ]
+      ],
+      "raw_range_at_display_scale_px": [
+        6.702974444909929,
+        0.8378718056137411
+      ],
+      "rendered_range_px": [
+        6.0,
+        1.0
+      ],
+      "pass_": false
+    },
+    "near": {
+      "raw_surface_xy": [
+        [
+          205.0,
+          485.0
+        ],
+        [
+          200.0,
+          487.0
+        ],
+        [
+          202.0,
+          486.0
+        ],
+        [
+          207.0,
+          487.0
+        ],
+        [
+          200.0,
+          483.0
+        ],
+        [
+          201.0,
+          484.0
+        ],
+        [
+          205.0,
+          485.0
+        ],
+        [
+          205.0,
+          485.0
+        ]
+      ],
+      "rendered_surface_xy": [
+        [
+          211.0,
+          479.0
+        ],
+        [
+          206.0,
+          481.0
+        ],
+        [
+          208.0,
+          481.0
+        ],
+        [
+          212.0,
+          481.0
+        ],
+        [
+          206.0,
+          478.0
+        ],
+        [
+          207.0,
+          479.0
+        ],
+        [
+          211.0,
+          479.0
+        ],
+        [
+          211.0,
+          479.0
+        ]
+      ],
+      "raw_range_at_display_scale_px": [
+        5.865102639296188,
+        3.3514872224549643
+      ],
+      "rendered_range_px": [
+        6.0,
+        3.0
+      ],
+      "pass_": true
+    }
+  },
+  "phase": {
+    "calibration_indices": [
+      0,
+      3
+    ],
+    "held_out_indices": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7
+    ],
+    "source_normalized": [
+      0.0,
+      0.3921068004824766,
+      0.885552599615868,
+      1.0,
+      0.8115192689442813,
+      0.42135974626549944,
+      0.11089396862220989,
+      0.0
+    ],
+    "observed_normalized": [
+      0.0,
+      0.32599118942731303,
+      0.6696035242290751,
+      1.0,
+      0.7136563876651982,
+      0.2731277533039651,
+      0.0,
+      0.0
+    ],
+    "held_out_max_phase_error": 0.21594907538679287,
+    "recovery_overshoot_px": 0.0,
+    "pass_": true
+  },
+  "neck_residuals_px": [
+    2.35943667575469,
+    1.7720382744025582,
+    0.3719773377125262,
+    1.8628003609749455,
+    2.6081931750258587,
+    1.437802102121691,
+    2.35943667575469,
+    2.35943667575469
+  ],
+  "prior_motion_pass": false,
+  "criteria": {
+    "planted_surface_px": 6,
+    "receiver_endpoint_px": 3,
+    "normalized_phase": 0.25,
+    "recovery_overshoot_px": 2
+  },
+  "repair_goals": [
+    "Actual coherent-body shoe drawing, no root translation/warped frame correction",
+    "Genuine authored near-rest key6 instead of an early-rest stand-in",
+    "Source-relative descending/recovering spacing checked separately from foot extrema",
+    "Preserve separate skin-neck head and body-owned collar foreground",
+    "Preserve original latest proportion candidate; no further automatic head rescale"
+  ],
+  "full_factory_pass": false
+}

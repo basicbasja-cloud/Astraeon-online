@@ -1,4 +1,8 @@
-## Latest: original concept proportion review v37
+## Latest: coherent-body contact improvement and rejected lateral recovery v38
+
+[Before/after GIFs, actual seven-drawing motion, two-axis/contact plots, five retained native jobs and reusable checks](coherent-motion-v38/README.md). Contacts improve under unchanged6pxbudget and a real intermediate replaces earlyrest. New2axisreview catches10.68pxleftwardrecoveryhitch despite limitedparentmetrics passing; combinedmotion/production remainfalse. No concept-proportion approval or finalframewarping.10new/13priorregressions,18actualbrowserchecks. [Reusable practice](../../skills/modular-eight-direction-sprites/references/coherent-motion-repair-and-two-axis-review.md).
+
+## Historical: original concept proportion review v37
 
 [Measured current neutral/motion-rest plate and concept comparison findings](proportion-audit-v37/README.md). Head height≈26%looks close; hairstyle/shoulder projection still needs matching-view review. Current measured ratios are not an exact original concept score: original attachment bytes are missing, as recordedv10. No new art, further blanket head shrink, animation-key fitting or proportion/production approval; prior contact failure persists. [Reusable practice](../../skills/modular-eight-direction-sprites/references/concept-proportion-review.md).
 

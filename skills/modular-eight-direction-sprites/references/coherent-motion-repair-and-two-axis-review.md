@@ -1,0 +1,15 @@
+# Full-body repair needs two-axis review and edit-scope evidence
+
+[Executed v38 case](../../../research/sprite-animation/coherent-motion-v38/README.md), [detailed reproduction](../../../research/sprite-animation/coherent-motion-v38/KNOW-HOW.md).
+
+Keep coherent body-with-outfit plus a separate complete head as the logical architecture. Internal guides can use bones, stencils or neutral-derived transforms without becoming runtime equipment slots. A diagnostic pose or footprint stencil is not final artwork. Use actual original output bytes, common bank registration and actual browser passes when judging the result.
+
+One-axis motion metrics can pass while the action still hitches sideways. New `scripts/coherent-motion-spacing.py` checks a distinct penultimate drawing, a visible receiver strictly between neighboring vertical surfaces, recovery ordering and a declared action-specific lateral path. It reports source-time velocity differences without inventing an acceptance threshold. In v38contacts/neck/vertical-phase pass, but a10.68pxleft reversal keeps combined motion false. Do not approve a general motion from the old limited `motion_metrics_pass` field. Use the combined review and inspect the actual progression.
+
+Lateral monotonicity is a policy for this authored crouch's return, not a universal attack or gait rule. Define intended paths before measuring candidates; retain allowed counter-movement and contact-release states for other actions. Manual painted receiver points remain surface observations with uncertainty. They do not recover hidden joints or guarantee handedness.
+
+`scripts/coherent-strip-alpha.py` verifies declared empty patches without modifying pixels. True alpha spill differs from harmless RGB at alpha0. Preserve strict failed checks, including tiny specks in unused keys; selected coverage is a separate explicit question. Passing a few empty probes does not establish full semantic matting. `scripts/native-strip-edit-audit.py` compares premultiplied RGBA, catches unrequested frame edits and ignores invisible RGB changes. A local-edit prompt cannot guarantee untouched neighbors.
+
+Preserve complete strip requests/inputs/outputs and unchanged failed cases. A larger native output may use one rest-calibrated shared scale while keeping the same displayed body size; never fit individual keys to their footprints or head bounds. Exact raw crops, shared transforms, actual contact variation, alpha and source-relative spacing have separate authority. A proposed common row packing repair is not a pose/contact proof, and must not silently alter final art.
+
+V38selects only one native bank with8exposures/7drawings, matching rest0/7and a real intermediate. Five actual jobs,10newregressions/13unchangedpriorregressions/18browserchecks are retained. Contacts improve under the same6pxbudget; lateral recovery remains rejected. No new art/proportion/all-view/action/factory approval follows. MiniMaxpaused, oldownattacks excluded, exactW/allpublished evidence protected, sole working branch unchanged.

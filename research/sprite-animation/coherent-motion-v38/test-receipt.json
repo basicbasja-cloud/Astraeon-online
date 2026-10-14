@@ -1,0 +1,38 @@
+{
+  "runs": [
+    {
+      "script": {
+        "path": "research/sprite-animation/coherent-motion-v38/test-motion-spacing.py",
+        "sha256": "1e52f92b31afa9a08c6a47c5ae2ca515c2106b6398c7bd557426666a1a92f15e"
+      },
+      "returncode": 0,
+      "tests_run": 10,
+      "output": "test_actual_clean_alpha_preserves_unseen_rgb (__main__.Controls.test_actual_clean_alpha_preserves_unseen_rgb) ... ok\ntest_actual_local_repair_changed_unrequested_frames (__main__.Controls.test_actual_local_repair_changed_unrequested_frames) ... ok\ntest_actual_prior_standing_substitute_is_rejected (__main__.Controls.test_actual_prior_standing_substitute_is_rejected) ... ok\ntest_actual_translucent_matte_is_rejected (__main__.Controls.test_actual_translucent_matte_is_rejected) ... ok\ntest_bad_source_timestamps_are_rejected (__main__.Controls.test_bad_source_timestamps_are_rejected) ... ok\ntest_distinct_image_at_rest_is_still_not_an_intermediate (__main__.Controls.test_distinct_image_at_rest_is_still_not_an_intermediate) ... ok\ntest_identical_native_asset_preserves_visible_regions (__main__.Controls.test_identical_native_asset_preserves_visible_regions) ... ok\ntest_no_body_action_is_unknown_not_pass (__main__.Controls.test_no_body_action_is_unknown_not_pass) ... ok\ntest_real_lateral_hitch_not_hidden_by_contact_pass (__main__.Controls.test_real_lateral_hitch_not_hidden_by_contact_pass) ... ok\ntest_relabelled_same_drawing_is_not_an_intermediate (__main__.Controls.test_relabelled_same_drawing_is_not_an_intermediate) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.478s\n\nOK\n"
+    },
+    {
+      "script": {
+        "path": "research/sprite-animation/neck-motion-v36/test-neck-motion.py",
+        "sha256": "e6c37cab18bb5a63d25a5d86cea2a8c41f9b18dcf6eee7c7d9576f0572423581"
+      },
+      "returncode": 0,
+      "tests_run": 13,
+      "output": "test_actual_attached_head_passes (__main__.ActualImageControls.test_actual_attached_head_passes) ... ok\ntest_anisotropic_head_not_uniform (__main__.ActualImageControls.test_anisotropic_head_not_uniform) ... ok\ntest_declared_attachment_without_head_pixels_rejected (__main__.ActualImageControls.test_declared_attachment_without_head_pixels_rejected) ... ok\ntest_empty_support_is_unknown_not_pass (__main__.ActualImageControls.test_empty_support_is_unknown_not_pass) ... ok\ntest_gap_in_actual_render_rejected (__main__.ActualImageControls.test_gap_in_actual_render_rejected) ... ok\ntest_hash_bound_wrong_body_is_rejected (__main__.ActualImageControls.test_hash_bound_wrong_body_is_rejected) ... ok\ntest_missing_collar_foreground_rejected (__main__.ActualImageControls.test_missing_collar_foreground_rejected) ... ok\ntest_native_recovery_overshoot_is_caught (__main__.ActualImageControls.test_native_recovery_overshoot_is_caught) ... ok\ntest_per_frame_body_registration_is_rejected (__main__.ActualImageControls.test_per_frame_body_registration_is_rejected) ... ok\ntest_real_contact_failure_not_rounded_away (__main__.ActualImageControls.test_real_contact_failure_not_rounded_away) ... ok\ntest_reflected_head_not_uniform_positive (__main__.ActualImageControls.test_reflected_head_not_uniform_positive) ... ok\ntest_ten_pixel_misattachment_rejected (__main__.ActualImageControls.test_ten_pixel_misattachment_rejected) ... ok\ntest_wrong_collar_pixels_rejected (__main__.ActualImageControls.test_wrong_collar_pixels_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 3.354s\n\nOK\n"
+    }
+  ],
+  "total_tests": 23,
+  "tools": [
+    {
+      "path": "skills/modular-eight-direction-sprites/scripts/coherent-motion-spacing.py",
+      "sha256": "b13fb6dca5efb2c5efa4bb9f459e3e4692e501467237ab48628937172cf70dfa"
+    },
+    {
+      "path": "skills/modular-eight-direction-sprites/scripts/coherent-strip-alpha.py",
+      "sha256": "62f332ce04253ea32c05fb42ea1c4b979385d27758a0852930024746a0f791bd"
+    },
+    {
+      "path": "skills/modular-eight-direction-sprites/scripts/native-strip-edit-audit.py",
+      "sha256": "4a1a1709a94537053de287726aedc869d35017e703ed2f528084b45dc72095a3"
+    }
+  ],
+  "production_pass": false
+}

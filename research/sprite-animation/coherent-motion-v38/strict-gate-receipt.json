@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "skills/modular-eight-direction-sprites/scripts/coherent-motion-spacing.py",
+    "--contract",
+    "research/sprite-animation/coherent-motion-v38/motion-contract.json",
+    "--motion-report",
+    "research/sprite-animation/coherent-motion-v38/motion-qa.json",
+    "--out",
+    "research/sprite-animation/coherent-motion-v38/spacing-qa.json",
+    "--require-motion"
+  ],
+  "returncode": 1,
+  "stdout": "{\"raw8\": {\"recovery_key_pass\": false, \"production_pass\": false}, \"review\": {\"recovery_key_pass\": false, \"production_pass\": false}}\n",
+  "expected": "Reject actual lateral recovery despite limited parent metrics passing"
+}

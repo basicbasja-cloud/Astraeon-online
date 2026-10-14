@@ -1,4 +1,8 @@
-# Current coherent body / actual neck receiver validation — v0.36
+# Current two-axis recovery, alpha and native edit scope — v0.38
+
+[Executed repair/reproduction](../../../research/sprite-animation/coherent-motion-v38/KNOW-HOW.md). `coherent-motion-spacing.py --contract CONTRACT --motion-report PARENT --root REPO --out REPORT [--require-motion]` checks distinct/between-state recovery and a declared action-specific lateral path, plus source-time velocity diagnostics. Parent neck/contact/vertical metrics can pass while the full sequence is rejected; strictmode exits1 for the actual10.68pxleft reversal. `coherent-strip-alpha.py --sheets STRIPS --out REPORT` checks reviewed empty5x5patches with strictzeroalpha, never automatic matting. `native-strip-edit-audit.py --before STRIP --after STRIP --allowed-cells 6 --out REPORT` checks premultipliedRGBApercell, preserving invisibleRGBsemantics and reporting unintendededits. NumPy/Pillow; no pixel modification.10newreal-error/negative-controls/13unchangedpriorregressions/18browserchecks; no overallmotion/productionapproval.
+
+# Historical coherent body / actual neck receiver validation — v0.36
 
 [Case and reproduction commands](../../../research/sprite-animation/neck-motion-v36/KNOW-HOW.md). `coherent-neck-motion.py --contract CONTRACT --root REPO --render-root PASSES --report REPORT` checks bound source/images, exact raw crops, common body registration, fixed positive head scale, two-point visible neck fit, actual alpha bridge and original collar pixels, raw/raster forefoot extrema and held-out phase. Default diagnostic exit0 means report computed; `--require-motion` exits1 for current real contact failure. Manual visible observations are not hidden-joint/handedness detection; production always remains false. NumPy/Pillow,13negative/real-image tests; local actual browser exports/checks require Playwright/Chromium. Three rendering passes still represent two logical equipment slots.
 
