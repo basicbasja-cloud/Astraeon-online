@@ -1,0 +1,63 @@
+{
+  "native_host_image_calls": 3,
+  "billing_verified": false,
+  "zero_cost_claim": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "attempt": 1,
+      "tool": "image_gen.imagegen",
+      "raw_path": "raw/N-attempt1.png",
+      "sha256": "0762f683ce1e6b824ec0c0b36dce819ec62fdc7f7658519cad14f7c1dda39fe6",
+      "reference_order": [
+        "inputs/N-source.png",
+        "inputs/N-owners.png",
+        "inputs/accepted-v39.png",
+        "inputs/N-before-reconstructed.png"
+      ],
+      "purpose": "Whole bank correction with failed art as negative; still failed",
+      "exact_prompt_path": "prompts/N-attempt1-exact.txt",
+      "transparent_background_requested": true
+    },
+    {
+      "attempt": 2,
+      "tool": "image_gen.imagegen",
+      "raw_path": "raw/N-attempt2.png",
+      "sha256": "7f7f5a7a18e0c8fa662c4b1387fa52b6571700718d950dc89addf4d625578ec9",
+      "reference_order": [
+        "inputs/N-source.png",
+        "inputs/accepted-v39.png",
+        "inputs/N-owners.png"
+      ],
+      "purpose": "Whole bank source-first paintover, no failed-art conditioning",
+      "exact_prompt_path": "prompts/N-attempt2-exact.txt",
+      "transparent_background_requested": true
+    },
+    {
+      "attempt": 3,
+      "tool": "image_gen.imagegen",
+      "raw_path": "raw/N-attempt3.png",
+      "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c",
+      "reference_order": [
+        "raw/N-attempt2.png",
+        "inputs/N-source.png",
+        "inputs/N-owners.png"
+      ],
+      "purpose": "Targeted recovery right-glove and item visibility",
+      "exact_prompt_path": "prompts/N-attempt3-exact.txt",
+      "transparent_background_requested": true
+    }
+  ],
+  "inputs_sha256": {
+    "N-source.png": "605939af66cb32473b900fce83c53125c0d2619ee2fb2984e4492b80ec595ad0",
+    "N-owners.png": "bca2351155e09bf39bf0ef2744b58ec23911b49d2af4f4d5b7e6c80e03db4cbc",
+    "accepted-v39.png": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e",
+    "N-before-reconstructed.png": "a954e617b8d57be76d6bc4d8041bc86582327950acf83403f6a2d40ba1ce4d60"
+  },
+  "accepted_style_scope": "Exact v39 neutral bytes only, not new view approval",
+  "original_tool_outputs": [
+    "exec-baa1eabd-a948-4e65-ae58-8a1e04b583e8.png",
+    "exec-b1ea1108-5b15-49b6-b81d-f5e70a96a335.png",
+    "exec-5ccf90d7-be38-4e12-98a1-c74a23d8b988.png"
+  ]
+}

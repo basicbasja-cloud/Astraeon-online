@@ -1,3 +1,11 @@
+# Active continuation — v47, 2026-10-15
+
+User cancels transfer: continue research in this chat/on the same research branch; another motion follows only after the current pickup passes. Read `research/sprite-animation/painted-pickup-v47/README.md`, `review.json`, `manual-review.json` and its offline `review.html`.
+
+Three real native edits: attempt1 repeats wrong LEFT pickup and is rejected; source-first attempt2 stabilizes visible boot surfaces; attempt3 reveals connected RIGHT glove/gem at recovery keys5/6 while LEFT stays empty. Actual distal boot surface spans2pxY and at most1pxX with unchanged6px bounded budget. This is fixed-window pixel evidence, not semantic ankle/leg tracking. Current neutral407px/return404px vs accepted different-view399px reference, full family dimensions/socket/swaps and cape-occluded contact remain unproved. Overall production_pass=false; no next motion approved/executed. All native failures and read-only parent integrity evidence retained. Host billing unknown; no external paid providers, MiniMax still paused, old own attacks excluded.
+
+Root HANDOFF/AGENTS/main skill remain frozen because v46 inventory binds their old bytes. This CURRENT_HANDOFF paragraph is the current resume pointer. Reusable new lesson: `skills/modular-eight-direction-sprites/references/source-first-painted-recovery-v47.md`. v47 authoring is new only; after publication start fresh v48 for new art. Keep sole research branch/standing push authorization/protectedW unchanged. No transfer to a new owner is requested.
+
 # ASTRAEON — Wayfarer capital, verified art checkpoint v83
 
 ## Current verified checkpoint — layered painted crowns v83, 8 October 2026

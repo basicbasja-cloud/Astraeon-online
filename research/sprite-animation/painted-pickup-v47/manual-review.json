@@ -1,0 +1,93 @@
+{
+  "reviewer": "Agent visual inspection of raw 1536x1024 plates against v45 pose/owner plates and exact v39 identity image; not a learned joint detector",
+  "production_pass": false,
+  "chosen_attempt": 3,
+  "acceptance_scope": "No new user acceptance. Existing v39 exact one-view and protected W approvals remain separate.",
+  "findings": [
+    {
+      "attempt": 1,
+      "status": "AGENT_REJECTED_WRONG_HAND_AND_SIZE",
+      "observations": "Cyan gem is visibly in screen-left anatomical LEFT glove at keys3..6. Neutral largest-component height472px. Source-correct prompts did not repair wrong pixels."
+    },
+    {
+      "attempt": 2,
+      "status": "REVIEW_CANDIDATE_CONTACT_UNKNOWN",
+      "observations": "Source-only pose conditioning produces much steadier shoes and crouch ordering. No clear exposed held gem at keys5/6; its absence cannot certify ownership."
+    },
+    {
+      "attempt": 3,
+      "status": "BOUNDED_VISIBLE_HOLD_CORRECTION; NOT_PRODUCTION_PASS",
+      "observations": "At keys5/6 cyan gem and connected glove are visible on the screen-right forearm; screen-left glove stays empty in all8 examined images. This is a manually reviewed rear-camera observation, not a universal screen-right=anatomical-right rule.",
+      "visible_gem_pixel_regions": {
+        "key5": [
+          286,
+          312,
+          301,
+          335
+        ],
+        "key6": [
+          282,
+          311,
+          294,
+          335
+        ]
+      },
+      "ownership_basis": "Rear camera and visible shoulder-to-forearm/glove connection cross-checked against blue RIGHT in exact v45 source. Color-region coordinates identify item surface only, not wrist/grip anatomy."
+    }
+  ],
+  "per_key": [
+    {
+      "key": 0,
+      "visible_painted_review": "GEM_GROUNDED_LEFT_GLOVE_EMPTY",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 1,
+      "visible_painted_review": "GEM_GROUNDED_LEFT_GLOVE_EMPTY",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 2,
+      "visible_painted_review": "GRASP_OR_LIFT_OCCLUDED_UNKNOWN",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 3,
+      "visible_painted_review": "GRASP_OR_LIFT_OCCLUDED_UNKNOWN",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 4,
+      "visible_painted_review": "GRASP_OR_LIFT_OCCLUDED_UNKNOWN",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 5,
+      "visible_painted_review": "RIGHT_HOLD_VISIBLE_MANUAL",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 6,
+      "visible_painted_review": "RIGHT_HOLD_VISIBLE_MANUAL",
+      "hidden_joint_coordinates": null
+    },
+    {
+      "key": 7,
+      "visible_painted_review": "GEM_ABSENT_STORED_INTENT_NOT_ENGINE_PROOF",
+      "hidden_joint_coordinates": null
+    }
+  ],
+  "unresolved": [
+    "Contact/reach ownership through the cape at keys2..4 requires visibility-aware tracing; no invented hidden wrist.",
+    "Actual head/neck socket, complete_head/body_outfit separation and two-head swaps not executed.",
+    "18-dimensional family protocol not completed; current neutral component407px and return404px vs accepted different-view399px reference. No per-frame fit or crop correction.",
+    "Target-engine one-shot attach/store/end events not implemented or validated; GIF repeats solely for review."
+  ],
+  "observer_revision": "Initial y440..493 right window touched trouser/cape at key3 and correctly abstained. Retained initial report/script. Current y460..493 windows explicitly measure distal boot surfaces only. Distal X computation was already y460; thresholds unchanged6px. Never reclassified as anatomical soles/joints.",
+  "method": "Pose+owner+accepted-style refs first; rejected prior redraw only a negative comparison. Targeted native edit of successful whole bank reveals right-held item; neighboring pixels are NOT claimed unchanged.",
+  "raw_sha256": {
+    "attempt1": "0762f683ce1e6b824ec0c0b36dce819ec62fdc7f7658519cad14f7c1dda39fe6",
+    "attempt2": "7f7f5a7a18e0c8fa662c4b1387fa52b6571700718d950dc89addf4d625578ec9",
+    "attempt3": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+  }
+}

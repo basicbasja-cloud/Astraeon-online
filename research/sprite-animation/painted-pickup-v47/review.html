@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>v47 · ท่าเก็บของ — ยังไม่ผ่านทั้งหมด</title>
+<style>body{margin:24px;background:#202228;color:#eee;font:16px system-ui}main{max-width:1200px;margin:auto}button,select,label{font:inherit;margin:6px;padding:6px}canvas{background:#292b30;width:100%;height:auto}p{line-height:1.6}.status{color:#ffc96a}header{display:flex;justify-content:space-around}input{vertical-align:middle}a{color:#a8d5ff}</style>
+<main><h1>v47 · ท่าเก็บของ ทิศ N</h1>
+<p class="status">ภาพทดลอง — ยังไม่อนุมัติ production / ยังไม่ต่อท่าอื่น</p>
+<p>ซ้าย: source v45 · กลาง: ภาพเดิม v46 · ขวา: ภาพแก้ v47<br>กริดเป็นพิกัดภาพ ไม่ใช่การติดตามข้อต่อที่ซ่อนอยู่ ดูมือขวาช่วงเฟรม 6–7 และผิวรองเท้าครบทุกเฟรม</p>
+<select id="attempt" aria-label="ชุดภาพ"><option value="3">รอบ 3 · ภาพที่เลือกตรวจ</option><option value="2">รอบ 2 · มือขวาไม่เห็นของชัด</option><option value="1">รอบ 1 · ปฏิเสธ: ยังใช้มือซ้าย</option></select>
+<button id="play">เล่น</button><button id="prev">ก่อนหน้า</button><button id="next">ถัดไป</button>
+<label>เฟรม <input id="key" type="range" min="0" max="7" value="0"></label>
+<select id="speed" aria-label="ความเร็ว"><option value="1">1×</option><option value="0.25">0.25×</option></select>
+<label><input id="loop" type="checkbox">วนดู</label><label><input id="grid" type="checkbox" checked>กริด 32 px</label>
+<p id="label"></p><header><span>source</span><span>v46</span><span>v47</span></header>
+<canvas id="canvas" width="1152" height="512"></canvas>
+<p>รักษาไฟล์ RGBA และตำแหน่งเดิมทุกช่อง ไม่มีขยับ/ย่อ/แต่งรองเท้ารายเฟรม ช่วงสัมผัสที่ผ้าคลุมบังยัง UNKNOWN<br>ส่วนหัว/ลำตัว สัดส่วนทั้ง family การสลับหัว และ event ในเกมยังไม่ผ่านการพิสูจน์</p>
+<p><a href="previews/source-before-after.gif">GIF เปรียบเทียบ</a> · <a href="review.json">ผลวัดผิวภาพ</a> · <a href="manual-review.json">คำตัดสินที่ผูกกับภาพจริง</a></p></main>
+<script>
+const ms=[190,180,190,180,190,180,190,600],$=s=>document.getElementById(s),ctx=$('canvas').getContext('2d');
+let k=0,playing=false,last=0,elapsed=0,loaded=false,drawings={};
+const sources={source:'inputs/N-source.png',before:'inputs/N-before-reconstructed.png',1:'raw/N-attempt1.png',2:'raw/N-attempt2.png',3:'raw/N-attempt3.png'};
+const imagePromises=Object.entries(sources).map(async([name,path])=>{let im=new Image();im.src=path;await im.decode();drawings[name]=im});
+function paint(){if(!loaded)return;ctx.clearRect(0,0,1152,512);let x=k%4*384,y=Math.floor(k/4)*512;[drawings.source,drawings.before,drawings[$('attempt').value]].forEach((im,i)=>ctx.drawImage(im,x,y,384,512,i*384,0,384,512));if($('grid').checked){ctx.strokeStyle='#ffffff26';ctx.beginPath();for(let x=0;x<=1152;x+=32){ctx.moveTo(x,0);ctx.lineTo(x,512)}for(let y=0;y<=512;y+=32){ctx.moveTo(0,y);ctx.lineTo(1152,y)}ctx.stroke()}$('label').textContent=`เฟรม ${k+1}/8 · ${ms[k]} ms · ${playing?'กำลังเล่น':'หยุด'} · อัตราเวลา source 1900 ms`; $('key').value=k;$('play').textContent=playing?'หยุด':'เล่น'}
+function stop(){playing=false;elapsed=0;paint()}
+$('play').onclick=()=>{if(!playing&&k===7)k=0;playing=!playing;elapsed=0;last=performance.now();paint()};
+$('key').oninput=()=>{k=+$('key').value;stop()};$('prev').onclick=()=>{k=Math.max(0,k-1);stop()};$('next').onclick=()=>{k=Math.min(7,k+1);stop()};
+$('attempt').onchange=paint;$('grid').onchange=paint;$('speed').onchange=()=>{last=performance.now()};
+function tick(t){if(playing&&loaded){elapsed+=(t-last)*+$('speed').value;while(elapsed>=ms[k]&&playing){elapsed-=ms[k];if(k===7){if($('loop').checked)k=0;else{playing=false;elapsed=0}}else k++}paint()}last=t;requestAnimationFrame(tick)}
+Promise.all(imagePromises).then(()=>{loaded=true;paint();window.reviewReady=true;requestAnimationFrame(tick)}).catch(e=>{$('label').textContent=e.message;throw e});
+</script></html>
