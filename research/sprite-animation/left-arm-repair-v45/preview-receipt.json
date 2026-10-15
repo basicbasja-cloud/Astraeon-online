@@ -1,0 +1,4874 @@
+{
+  "method": "LOCAL PROCEDURAL ORIGINAL CHARACTER / full bone-weighted geometry / physically rendered eight views",
+  "script_sha256": "9696523e16d2be7e2fa7088b9f92076b1e087c0f3534f8ade56d4137d29a1374",
+  "source_sha256": "1193660f448377a4bd5f47ec9dc7a3caaa8fdfd8acca6d882a3abc9200ccdd7f",
+  "bind_vertex_errors": {
+    "left.continuous_arm": 5.078740332434722e-07,
+    "left.continuous_leg": 8.059035112255788e-08,
+    "left.sole": 6.537857940340133e-08,
+    "left.boot": 7.920075813483186e-08,
+    "left.boot_seam": 7.028863677424642e-08,
+    "left.boot_band0.042": 2.1155582166464156e-08,
+    "left.boot_band0.257": 1.3431725187092979e-08,
+    "left.knee_guard": 2.6863450374185958e-08,
+    "left.kneepad_highlight": 1.4901161193847656e-08,
+    "left.shoulder_plate": 5.251998766832682e-07,
+    "left.shoulder_rim": 5.280984981855556e-07,
+    "left.glove": 3.7120419602125964e-07,
+    "left.knuckles": 3.705540473634962e-07,
+    "left.thumb": 3.6623601565455945e-07,
+    "left.bracer_band0.1": 2.9673989222984956e-07,
+    "left.bracer_band0.8": 2.827296549232345e-07,
+    "right.continuous_arm": 2.418549254414568e-07,
+    "right.continuous_leg": 2.3992720526612725e-07,
+    "right.sole": 8.79200080126967e-08,
+    "right.boot": 8.503133215392624e-08,
+    "right.boot_seam": 8.429369702178807e-08,
+    "right.boot_band0.042": 6.828569911354542e-08,
+    "right.boot_band0.257": 6.322027276634104e-08,
+    "right.knee_guard": 6.705522537231445e-08,
+    "right.kneepad_highlight": 6.664001874625056e-08,
+    "right.shoulder_plate": 1.1403283376257097e-07,
+    "right.shoulder_rim": 1.1403283376257097e-07,
+    "right.glove": 3.425849551435189e-07,
+    "right.knuckles": 3.4118453090951773e-07,
+    "right.thumb": 3.4118453090951773e-07,
+    "right.bracer_band0.1": 2.426609178056795e-07,
+    "right.bracer_band0.8": 2.1747528790423905e-07,
+    "coherent_tunic": 1.4901161193847656e-08,
+    "tunic_front_0": 1.4901161193847656e-08,
+    "tunic_front_-0.078": 1.4901161193847656e-08,
+    "tunic_front_0.078": 1.4901161193847656e-08,
+    "waist_belt": 0.0,
+    "belt_buckle": 0.0,
+    "buckle_inset": 0.0,
+    "belt_pouch-0.2": 0.0,
+    "belt_pouch0.2": 0.0,
+    "waist_tab_cream": 0.0,
+    "waist_trim_cream": 0.0,
+    "tab_rune_cream": 0.0,
+    "waist_tab_teal": 0.0,
+    "waist_trim_teal": 0.0,
+    "tab_rune_teal": 0.0,
+    "scarf": 1.197320124506071e-07,
+    "scarf_fold": 1.197320124506071e-07,
+    "neck_skin": 1.2013700229374393e-07,
+    "cape_trim0": 1.2013700229374393e-07,
+    "cape_trim8": 1.2013700229374393e-07,
+    "cape_rune": 6.664001874625056e-08,
+    "face": 3.705119120823251e-07,
+    "ear-1": 2.457562461863554e-07,
+    "ear_inner-1": 2.425733297482089e-07,
+    "eye_ink-1": 1.2731557704981462e-07,
+    "eye_white-1": 1.2731557704981462e-07,
+    "eye_iris-1": 1.2731557704981462e-07,
+    "eye_ink-1.001": 1.228781230931777e-07,
+    "eye_glint-1": 1.2013700229374393e-07,
+    "eyebrow-1": 1.2013700229374393e-07,
+    "ear1": 2.457562461863554e-07,
+    "ear_inner1": 2.425733297482089e-07,
+    "eye_ink1": 1.2731557704981462e-07,
+    "eye_white1": 1.2731557704981462e-07,
+    "eye_iris1": 1.2731557704981462e-07,
+    "eye_ink1.001": 1.228781230931777e-07,
+    "eye_glint1": 1.2013700229374393e-07,
+    "eyebrow1": 1.2013700229374393e-07,
+    "nose": 1.3328003749250113e-07,
+    "mouth": 1.4901161193847656e-07,
+    "hair_cap": 3.65306457046606e-07,
+    "hair_crown_0": 2.6656007498500226e-07,
+    "hair_crown_1": 2.831465701112131e-07,
+    "hair_crown_2": 3.5886748369909214e-07,
+    "hair_crown_3": 2.8115454709698567e-07,
+    "hair_crown_4": 2.763314277557786e-07,
+    "hair_crown_5": 2.6213876800681594e-07,
+    "hair_crown_6": 2.8517334474630115e-07,
+    "hair_crown_7": 2.6656007498500226e-07,
+    "hair_crown_8": 2.633124149899526e-07,
+    "hair_crown_9": 2.8115454709698567e-07,
+    "hair_crown_10": 2.602375924076584e-07,
+    "hair_crown_11": 2.633124149899526e-07,
+    "hair_crown_12": 2.772777388383209e-07,
+    "hair_crown_13": 2.573418027038953e-07,
+    "hair_crown_14": 2.772777388383209e-07,
+    "hair_crown_15": 2.699743350147223e-07,
+    "hair_crown_16": 2.617530103115912e-07,
+    "hair_crown_17": 2.8619953369751126e-07,
+    "hair_crown_18": 2.6656007498500226e-07,
+    "hair_crown_19": 2.699743350147223e-07,
+    "hair_crown_20": 2.8517334474630115e-07,
+    "hair_crown_21": 2.617530103115912e-07,
+    "hair_lower_0": 3.604110068812318e-07,
+    "hair_lower_1": 3.604110068812318e-07,
+    "hair_lower_2": 3.604110068812318e-07,
+    "hair_lower_3": 2.5006834910429973e-07,
+    "hair_lower_4": 2.4870323733202393e-07,
+    "hair_lower_11": 2.4870323733202393e-07,
+    "hair_lower_12": 2.5006834910429973e-07,
+    "hair_lower_13": 3.604110068812318e-07,
+    "hair_lower_14": 3.604110068812318e-07,
+    "fringe_0": 2.6656007498500226e-07,
+    "fringe_1": 2.6656007498500226e-07,
+    "fringe_2": 2.6656007498500226e-07,
+    "fringe_3": 2.6656007498500226e-07,
+    "fringe_4": 2.6656007498500226e-07,
+    "fringe_5": 2.602375924076584e-07,
+    "fringe_6": 2.6656007498500226e-07,
+    "fringe_7": 2.6656007498500226e-07,
+    "fringe_8": 2.6656007498500226e-07,
+    "cowlick": 2.991445223161199e-07
+  },
+  "provider_calls": 0,
+  "credits": 0,
+  "slots": [
+    "body_outfit",
+    "complete_head"
+  ],
+  "objects": [
+    {
+      "name": "left.continuous_arm",
+      "slot": "body_outfit",
+      "vertices": 696,
+      "groups": [
+        "left.upperarm",
+        "left.forearm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.continuous_leg",
+      "slot": "body_outfit",
+      "vertices": 696,
+      "groups": [
+        "left.thigh",
+        "left.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.sole",
+      "slot": "body_outfit",
+      "vertices": 56,
+      "groups": [
+        "left.foot"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.boot",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.foot"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.boot_seam",
+      "slot": "body_outfit",
+      "vertices": 24,
+      "groups": [
+        "left.foot"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.boot_band0.042",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.boot_band0.257",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.knee_guard",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.kneepad_highlight",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.shoulder_plate",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.upperarm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.shoulder_rim",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.upperarm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.glove",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.hand"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.knuckles",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.hand"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.thumb",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.hand"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.bracer_band0.1",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.forearm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "left.bracer_band0.8",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "left.forearm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.continuous_arm",
+      "slot": "body_outfit",
+      "vertices": 696,
+      "groups": [
+        "right.upperarm",
+        "right.forearm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.continuous_leg",
+      "slot": "body_outfit",
+      "vertices": 696,
+      "groups": [
+        "right.thigh",
+        "right.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.sole",
+      "slot": "body_outfit",
+      "vertices": 56,
+      "groups": [
+        "right.foot"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.boot",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.foot"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.boot_seam",
+      "slot": "body_outfit",
+      "vertices": 24,
+      "groups": [
+        "right.foot"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.boot_band0.042",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.boot_band0.257",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.knee_guard",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.kneepad_highlight",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.shin"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.shoulder_plate",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.upperarm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.shoulder_rim",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.upperarm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.glove",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.hand"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.knuckles",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.hand"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.thumb",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.hand"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.bracer_band0.1",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.forearm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "right.bracer_band0.8",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "right.forearm"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "coherent_tunic",
+      "slot": "body_outfit",
+      "vertices": 192,
+      "groups": [
+        "root",
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "tunic_front_0",
+      "slot": "body_outfit",
+      "vertices": 4,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "tunic_front_-0.078",
+      "slot": "body_outfit",
+      "vertices": 4,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "tunic_front_0.078",
+      "slot": "body_outfit",
+      "vertices": 4,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "waist_belt",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "belt_buckle",
+      "slot": "body_outfit",
+      "vertices": 56,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "buckle_inset",
+      "slot": "body_outfit",
+      "vertices": 56,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "belt_pouch-0.2",
+      "slot": "body_outfit",
+      "vertices": 56,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "belt_pouch0.2",
+      "slot": "body_outfit",
+      "vertices": 56,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "waist_tab_cream",
+      "slot": "body_outfit",
+      "vertices": 5,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "waist_trim_cream",
+      "slot": "body_outfit",
+      "vertices": 48,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "tab_rune_cream",
+      "slot": "body_outfit",
+      "vertices": 4,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "waist_tab_teal",
+      "slot": "body_outfit",
+      "vertices": 5,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "waist_trim_teal",
+      "slot": "body_outfit",
+      "vertices": 48,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "tab_rune_teal",
+      "slot": "body_outfit",
+      "vertices": 4,
+      "groups": [
+        "root"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "scarf",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "scarf_fold",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "neck_skin",
+      "slot": "body_outfit",
+      "vertices": 222,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "original_cape",
+      "slot": "body_outfit",
+      "vertices": 81,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "cape_trim0",
+      "slot": "body_outfit",
+      "vertices": 72,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "cape_trim8",
+      "slot": "body_outfit",
+      "vertices": 72,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "cape_rune",
+      "slot": "body_outfit",
+      "vertices": 64,
+      "groups": [
+        "torso"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "face",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "ear-1",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "ear_inner-1",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_ink-1",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_white-1",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_iris-1",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_ink-1.001",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_glint-1",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eyebrow-1",
+      "slot": "complete_head",
+      "vertices": 24,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "ear1",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "ear_inner1",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_ink1",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_white1",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_iris1",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_ink1.001",
+      "slot": "complete_head",
+      "vertices": 33,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eye_glint1",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "eyebrow1",
+      "slot": "complete_head",
+      "vertices": 24,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "nose",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "mouth",
+      "slot": "complete_head",
+      "vertices": 24,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_cap",
+      "slot": "complete_head",
+      "vertices": 222,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_0",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_1",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_2",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_3",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_4",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_5",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_6",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_7",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_8",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_9",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_10",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_11",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_12",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_13",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_14",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_15",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_16",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_17",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_18",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_19",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_20",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_crown_21",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_0",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_1",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_2",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_3",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_4",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_11",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_12",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_13",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "hair_lower_14",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_0",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_1",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_2",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_3",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_4",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_5",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_6",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_7",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "fringe_8",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    },
+    {
+      "name": "cowlick",
+      "slot": "complete_head",
+      "vertices": 32,
+      "groups": [
+        "head"
+      ],
+      "armature": "Astraeon_Free_Local"
+    }
+  ],
+  "frames": [
+    {
+      "bank": "preview",
+      "index": 0,
+      "t": 0.0,
+      "depth": 0.0,
+      "bend_degrees": 0.0,
+      "world_points": {
+        "pelvis": [
+          0.0,
+          0.0,
+          0.949999988079071
+        ],
+        "chest": [
+          0.0,
+          0.0,
+          1.5
+        ],
+        "neck": [
+          0.0,
+          0.0,
+          1.6700000762939453
+        ],
+        "head": [
+          0.0,
+          -0.021788936108350754,
+          1.91904878616333
+        ],
+        "left.hip": [
+          0.14000000059604645,
+          0.0,
+          0.949999988079071
+        ],
+        "left.knee": [
+          0.1608838587999344,
+          -0.04950499162077904,
+          0.5334509611129761
+        ],
+        "left.ankle": [
+          0.18000000715255737,
+          0.019999999552965164,
+          0.14000000059604645
+        ],
+        "left.toe": [
+          0.18000000715255737,
+          -0.18000000715255737,
+          0.09000000357627869
+        ],
+        "left.shoulder": [
+          0.2199999988079071,
+          0.0,
+          1.5
+        ],
+        "left.elbow": [
+          0.25163939595222473,
+          0.09080138057470322,
+          1.226405382156372
+        ],
+        "left.wrist": [
+          0.2989659607410431,
+          0.03832351043820381,
+          0.9658170342445374
+        ],
+        "left.palm": [
+          0.31123581528663635,
+          0.024718137457966805,
+          0.8982570767402649
+        ],
+        "left.grip": [
+          0.3199999928474426,
+          0.014999999664723873,
+          0.8499999642372131
+        ],
+        "right.hip": [
+          -0.14000000059604645,
+          0.0,
+          0.949999988079071
+        ],
+        "right.knee": [
+          -0.1608838587999344,
+          -0.04950499162077904,
+          0.5334509611129761
+        ],
+        "right.ankle": [
+          -0.18000000715255737,
+          0.019999999552965164,
+          0.14000000059604645
+        ],
+        "right.toe": [
+          -0.18000000715255737,
+          -0.18000000715255737,
+          0.09000000357627869
+        ],
+        "right.shoulder": [
+          -0.2199999988079071,
+          0.0,
+          1.5
+        ],
+        "right.elbow": [
+          -0.33621710538864136,
+          0.004194216802716255,
+          1.2343385219573975
+        ],
+        "right.wrist": [
+          -0.3249898850917816,
+          -0.04024793952703476,
+          0.9682579636573792
+        ],
+        "right.palm": [
+          -0.3220791220664978,
+          -0.05176997929811478,
+          0.8992741107940674
+        ],
+        "right.grip": [
+          -0.3199999928474426,
+          -0.05999999865889549,
+          0.8500000238418579
+        ]
+      },
+      "object_center": [
+        0.0,
+        -0.6200000047683716,
+        0.07500000298023224
+      ],
+      "object_visible": true,
+      "bone_matrices": {
+        "root": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.949999988079071
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "torso": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            5.233759026168627e-08,
+            -0.9999999403953552,
+            0.0
+          ],
+          [
+            0.0,
+            0.9999999403953552,
+            1.611949507207555e-08,
+            0.949999988079071
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "head": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.9961947202682495,
+            -0.08715574443340302,
+            -0.02178894728422165
+          ],
+          [
+            0.0,
+            0.08715570718050003,
+            0.9961947202682495,
+            1.91904878616333
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.upperarm": [
+          [
+            -0.1625688672065735,
+            0.10910128802061081,
+            -0.9806466698646545,
+            0.2200000137090683
+          ],
+          [
+            0.9419369101524353,
+            0.31310826539993286,
+            -0.12131732702255249,
+            9.81294761004392e-08
+          ],
+          [
+            0.2938128113746643,
+            -0.9434298872947693,
+            -0.15366844832897186,
+            1.5
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.forearm": [
+          [
+            -0.08722089976072311,
+            0.1752835065126419,
+            -0.9806469082832336,
+            0.25163939595222473
+          ],
+          [
+            0.9733989834785461,
+            -0.19436249136924744,
+            -0.12131747603416443,
+            0.09080139547586441
+          ],
+          [
+            -0.2118658721446991,
+            -0.9651421308517456,
+            -0.15366852283477783,
+            1.2264055013656616
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.hand": [
+          [
+            -0.08722089976072311,
+            0.1752835214138031,
+            -0.9806469082832336,
+            0.2989659905433655
+          ],
+          [
+            0.9733989834785461,
+            -0.19436250627040863,
+            -0.12131748348474503,
+            0.038323529064655304
+          ],
+          [
+            -0.2118658870458603,
+            -0.9651421308517456,
+            -0.15366852283477783,
+            0.9658169150352478
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.thigh": [
+          [
+            -0.000634330848697573,
+            0.04972347989678383,
+            0.9987629055976868,
+            0.14000000059604645
+          ],
+          [
+            -0.9930154085159302,
+            -0.1178690493106842,
+            0.005237438715994358,
+            7.398540446956758e-09
+          ],
+          [
+            0.11798366904258728,
+            -0.9917835593223572,
+            0.04945085942745209,
+            0.949999988079071
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.shin": [
+          [
+            0.013744387775659561,
+            0.04779047518968582,
+            0.998762845993042,
+            0.1608838587999344
+          ],
+          [
+            -0.9847736954689026,
+            0.17376241087913513,
+            0.005237400531768799,
+            -0.04950498417019844
+          ],
+          [
+            -0.17329715192317963,
+            -0.9836273193359375,
+            0.04945097863674164,
+            0.5334509611129761
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.foot": [
+          [
+            -0.9999998807907104,
+            8.32415452123314e-08,
+            -1.265460269905816e-07,
+            0.17999999225139618
+          ],
+          [
+            9.247050059002504e-08,
+            -0.9701425433158875,
+            -0.24253542721271515,
+            0.019999999552965164
+          ],
+          [
+            -2.66683883864971e-08,
+            -0.24253545701503754,
+            0.9701424837112427,
+            0.13999998569488525
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.upperarm": [
+          [
+            -0.8455991148948669,
+            -0.40074867010116577,
+            -0.35265135765075684,
+            -0.21999995410442352
+          ],
+          [
+            0.3790247142314911,
+            0.014462824910879135,
+            -0.925273597240448,
+            -3.986873409189684e-08
+          ],
+          [
+            0.37590229511260986,
+            -0.9160739779472351,
+            0.13966386020183563,
+            1.5
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.forearm": [
+          [
+            -0.9348304271697998,
+            0.04158223047852516,
+            -0.3526513874530792,
+            -0.3362170457839966
+          ],
+          [
+            0.3417243957519531,
+            -0.16460052132606506,
+            -0.9252734780311584,
+            0.004194192588329315
+          ],
+          [
+            -0.09652166068553925,
+            -0.9854834675788879,
+            0.13966389000415802,
+            1.2343385219573975
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.hand": [
+          [
+            -0.9348304271697998,
+            0.04158221557736397,
+            -0.3526513874530792,
+            -0.3249898850917816
+          ],
+          [
+            0.3417244255542755,
+            -0.16460050642490387,
+            -0.9252734184265137,
+            -0.04024790972471237
+          ],
+          [
+            -0.09652166068553925,
+            -0.9854833483695984,
+            0.13966387510299683,
+            0.9682580232620239
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.thigh": [
+          [
+            0.0006342523847706616,
+            -0.049723464995622635,
+            0.998762845993042,
+            -0.14000000059604645
+          ],
+          [
+            -0.9930152893066406,
+            -0.11786903440952301,
+            -0.005237532779574394,
+            0.0
+          ],
+          [
+            0.11798363924026489,
+            -0.9917834401130676,
+            -0.04945101961493492,
+            0.949999988079071
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.shin": [
+          [
+            -0.013744384050369263,
+            -0.04779040440917015,
+            0.9987629652023315,
+            -0.16088387370109558
+          ],
+          [
+            -0.9847736954689026,
+            0.17376241087913513,
+            -0.005237427540123463,
+            -0.049504995346069336
+          ],
+          [
+            -0.17329715192317963,
+            -0.9836272597312927,
+            -0.04945109412074089,
+            0.5334509611129761
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.foot": [
+          [
+            -1.0,
+            1.7601434976199926e-08,
+            -1.3812744725782977e-07,
+            -0.18000000715255737
+          ],
+          [
+            2.5981368168004337e-08,
+            -0.9701426029205322,
+            -0.24253544211387634,
+            0.019999995827674866
+          ],
+          [
+            -3.135284032396157e-08,
+            -0.24253548681735992,
+            0.9701425433158875,
+            0.14000000059604645
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "mesh_measurements": {
+        "left.continuous_arm": {
+          "vertices": 696,
+          "min_z": 0.957480251789093,
+          "max_z": 1.517151117324829
+        },
+        "left.continuous_leg": {
+          "vertices": 696,
+          "min_z": 0.1296231746673584,
+          "max_z": 0.9607915282249451
+        },
+        "left.sole": {
+          "vertices": 56,
+          "min_z": 0.0005000047967769206,
+          "max_z": 0.05750003084540367
+        },
+        "left.boot": {
+          "vertices": 222,
+          "min_z": 0.017000025138258934,
+          "max_z": 0.1690000295639038
+        },
+        "left.boot_seam": {
+          "vertices": 24,
+          "min_z": 0.10806570202112198,
+          "max_z": 0.13299433887004852
+        },
+        "left.boot_band0.042": {
+          "vertices": 222,
+          "min_z": 0.164000004529953,
+          "max_z": 0.19999998807907104
+        },
+        "left.boot_band0.257": {
+          "vertices": 222,
+          "min_z": 0.3790000081062317,
+          "max_z": 0.4150000214576721
+        },
+        "left.knee_guard": {
+          "vertices": 222,
+          "min_z": 0.44145095348358154,
+          "max_z": 0.5974509716033936
+        },
+        "left.kneepad_highlight": {
+          "vertices": 222,
+          "min_z": 0.4774509370326996,
+          "max_z": 0.56545090675354
+        },
+        "left.shoulder_plate": {
+          "vertices": 222,
+          "min_z": 1.419000267982483,
+          "max_z": 1.5890003442764282
+        },
+        "left.shoulder_rim": {
+          "vertices": 222,
+          "min_z": 1.4430004358291626,
+          "max_z": 1.4870003461837769
+        },
+        "left.glove": {
+          "vertices": 222,
+          "min_z": 0.8518553376197815,
+          "max_z": 0.9987064003944397
+        },
+        "left.knuckles": {
+          "vertices": 222,
+          "min_z": 0.8297967314720154,
+          "max_z": 0.8982028365135193
+        },
+        "left.thumb": {
+          "vertices": 222,
+          "min_z": 0.8576683402061462,
+          "max_z": 0.9201777577400208
+        },
+        "left.bracer_band0.1": {
+          "vertices": 222,
+          "min_z": 1.181538701057434,
+          "max_z": 1.2191544771194458
+        },
+        "left.bracer_band0.8": {
+          "vertices": 222,
+          "min_z": 0.9991268515586853,
+          "max_z": 1.0367426872253418
+        },
+        "right.continuous_arm": {
+          "vertices": 696,
+          "min_z": 0.963072657585144,
+          "max_z": 1.5209681987762451
+        },
+        "right.continuous_leg": {
+          "vertices": 696,
+          "min_z": 0.12962323427200317,
+          "max_z": 0.9607917070388794
+        },
+        "right.sole": {
+          "vertices": 56,
+          "min_z": 0.0004999246448278427,
+          "max_z": 0.05749994516372681
+        },
+        "right.boot": {
+          "vertices": 222,
+          "min_z": 0.01699994131922722,
+          "max_z": 0.16899994015693665
+        },
+        "right.boot_seam": {
+          "vertices": 24,
+          "min_z": 0.10806561261415482,
+          "max_z": 0.13299426436424255
+        },
+        "right.boot_band0.042": {
+          "vertices": 222,
+          "min_z": 0.16400006413459778,
+          "max_z": 0.20000004768371582
+        },
+        "right.boot_band0.257": {
+          "vertices": 222,
+          "min_z": 0.37900006771087646,
+          "max_z": 0.4150000810623169
+        },
+        "right.knee_guard": {
+          "vertices": 222,
+          "min_z": 0.4414510130882263,
+          "max_z": 0.5974510312080383
+        },
+        "right.kneepad_highlight": {
+          "vertices": 222,
+          "min_z": 0.47745099663734436,
+          "max_z": 0.5654509663581848
+        },
+        "right.shoulder_plate": {
+          "vertices": 222,
+          "min_z": 1.4189999103546143,
+          "max_z": 1.5889999866485596
+        },
+        "right.shoulder_rim": {
+          "vertices": 222,
+          "min_z": 1.443000078201294,
+          "max_z": 1.4869999885559082
+        },
+        "right.glove": {
+          "vertices": 222,
+          "min_z": 0.8519711494445801,
+          "max_z": 1.0017646551132202
+        },
+        "right.knuckles": {
+          "vertices": 222,
+          "min_z": 0.8300097584724426,
+          "max_z": 0.8979907631874084
+        },
+        "right.thumb": {
+          "vertices": 222,
+          "min_z": 0.8672606945037842,
+          "max_z": 0.9303315877914429
+        },
+        "right.bracer_band0.1": {
+          "vertices": 222,
+          "min_z": 1.1915379762649536,
+          "max_z": 1.2239233255386353
+        },
+        "right.bracer_band0.8": {
+          "vertices": 222,
+          "min_z": 1.0052815675735474,
+          "max_z": 1.037666916847229
+        },
+        "coherent_tunic": {
+          "vertices": 192,
+          "min_z": 0.8600000143051147,
+          "max_z": 1.5699999332427979
+        },
+        "tunic_front_0": {
+          "vertices": 4,
+          "min_z": 1.0399999618530273,
+          "max_z": 1.4600000381469727
+        },
+        "tunic_front_-0.078": {
+          "vertices": 4,
+          "min_z": 1.0399999618530273,
+          "max_z": 1.4600000381469727
+        },
+        "tunic_front_0.078": {
+          "vertices": 4,
+          "min_z": 1.0399999618530273,
+          "max_z": 1.4600000381469727
+        },
+        "waist_belt": {
+          "vertices": 222,
+          "min_z": 0.9290000200271606,
+          "max_z": 1.0149999856948853
+        },
+        "belt_buckle": {
+          "vertices": 56,
+          "min_z": 0.9399999976158142,
+          "max_z": 1.00600004196167
+        },
+        "buckle_inset": {
+          "vertices": 56,
+          "min_z": 0.9539999961853027,
+          "max_z": 0.9919999837875366
+        },
+        "belt_pouch-0.2": {
+          "vertices": 56,
+          "min_z": 0.875,
+          "max_z": 0.9850000143051147
+        },
+        "belt_pouch0.2": {
+          "vertices": 56,
+          "min_z": 0.875,
+          "max_z": 0.9850000143051147
+        },
+        "waist_tab_cream": {
+          "vertices": 5,
+          "min_z": 0.5899999737739563,
+          "max_z": 0.9399999976158142
+        },
+        "waist_trim_cream": {
+          "vertices": 48,
+          "min_z": 0.5840871930122375,
+          "max_z": 0.9459999799728394
+        },
+        "tab_rune_cream": {
+          "vertices": 4,
+          "min_z": 0.6899999976158142,
+          "max_z": 0.7799999713897705
+        },
+        "waist_tab_teal": {
+          "vertices": 5,
+          "min_z": 0.5899999737739563,
+          "max_z": 0.9399999976158142
+        },
+        "waist_trim_teal": {
+          "vertices": 48,
+          "min_z": 0.5840871930122375,
+          "max_z": 0.9459999799728394
+        },
+        "tab_rune_teal": {
+          "vertices": 4,
+          "min_z": 0.6899999976158142,
+          "max_z": 0.7799999713897705
+        },
+        "scarf": {
+          "vertices": 222,
+          "min_z": 1.509000301361084,
+          "max_z": 1.6650002002716064
+        },
+        "scarf_fold": {
+          "vertices": 222,
+          "min_z": 1.5310001373291016,
+          "max_z": 1.5990002155303955
+        },
+        "neck_skin": {
+          "vertices": 222,
+          "min_z": 1.565000057220459,
+          "max_z": 1.8250000476837158
+        },
+        "original_cape": {
+          "vertices": 162,
+          "min_z": 0.6752938032150269,
+          "max_z": 1.6100001335144043
+        },
+        "cape_trim0": {
+          "vertices": 72,
+          "min_z": 0.7191479802131653,
+          "max_z": 1.6128520965576172
+        },
+        "cape_trim8": {
+          "vertices": 72,
+          "min_z": 0.7191479802131653,
+          "max_z": 1.6128520965576172
+        },
+        "cape_rune": {
+          "vertices": 64,
+          "min_z": 0.757834255695343,
+          "max_z": 0.9429237842559814
+        },
+        "face": {
+          "vertices": 222,
+          "min_z": 1.7018780708312988,
+          "max_z": 2.136219024658203
+        },
+        "ear-1": {
+          "vertices": 222,
+          "min_z": 1.8467620611190796,
+          "max_z": 1.9623206853866577
+        },
+        "ear_inner-1": {
+          "vertices": 222,
+          "min_z": 1.869836688041687,
+          "max_z": 1.935585618019104
+        },
+        "eye_ink-1": {
+          "vertices": 33,
+          "min_z": 1.8732428550720215,
+          "max_z": 1.947130560874939
+        },
+        "eye_white-1": {
+          "vertices": 33,
+          "min_z": 1.8810436725616455,
+          "max_z": 1.9389547109603882
+        },
+        "eye_iris-1": {
+          "vertices": 33,
+          "min_z": 1.881944179534912,
+          "max_z": 1.9378582239151
+        },
+        "eye_ink-1.001": {
+          "vertices": 33,
+          "min_z": 1.8848224878311157,
+          "max_z": 1.93474543094635
+        },
+        "eye_glint-1": {
+          "vertices": 222,
+          "min_z": 1.9117330312728882,
+          "max_z": 1.9256798028945923
+        },
+        "eyebrow-1": {
+          "vertices": 24,
+          "min_z": 1.9599465131759644,
+          "max_z": 1.9866340160369873
+        },
+        "ear1": {
+          "vertices": 222,
+          "min_z": 1.8467620611190796,
+          "max_z": 1.9623206853866577
+        },
+        "ear_inner1": {
+          "vertices": 222,
+          "min_z": 1.869836688041687,
+          "max_z": 1.935585618019104
+        },
+        "eye_ink1": {
+          "vertices": 33,
+          "min_z": 1.8732428550720215,
+          "max_z": 1.947130560874939
+        },
+        "eye_white1": {
+          "vertices": 33,
+          "min_z": 1.8810436725616455,
+          "max_z": 1.9389547109603882
+        },
+        "eye_iris1": {
+          "vertices": 33,
+          "min_z": 1.881944179534912,
+          "max_z": 1.9378582239151
+        },
+        "eye_ink1.001": {
+          "vertices": 33,
+          "min_z": 1.8848224878311157,
+          "max_z": 1.93474543094635
+        },
+        "eye_glint1": {
+          "vertices": 222,
+          "min_z": 1.911165714263916,
+          "max_z": 1.9251124858856201
+        },
+        "eyebrow1": {
+          "vertices": 24,
+          "min_z": 1.9599465131759644,
+          "max_z": 1.9866340160369873
+        },
+        "nose": {
+          "vertices": 222,
+          "min_z": 1.841509461402893,
+          "max_z": 1.885342001914978
+        },
+        "mouth": {
+          "vertices": 24,
+          "min_z": 1.8038181066513062,
+          "max_z": 1.8164148330688477
+        },
+        "hair_cap": {
+          "vertices": 222,
+          "min_z": 1.7782111167907715,
+          "max_z": 2.2065749168395996
+        },
+        "hair_crown_0": {
+          "vertices": 32,
+          "min_z": 2.037709951400757,
+          "max_z": 2.154658794403076
+        },
+        "hair_crown_1": {
+          "vertices": 32,
+          "min_z": 2.060502767562866,
+          "max_z": 2.2107999324798584
+        },
+        "hair_crown_2": {
+          "vertices": 32,
+          "min_z": 1.974200963973999,
+          "max_z": 2.1322827339172363
+        },
+        "hair_crown_3": {
+          "vertices": 32,
+          "min_z": 2.038482427597046,
+          "max_z": 2.205746650695801
+        },
+        "hair_crown_4": {
+          "vertices": 32,
+          "min_z": 2.017028570175171,
+          "max_z": 2.188704490661621
+        },
+        "hair_crown_5": {
+          "vertices": 32,
+          "min_z": 1.962580680847168,
+          "max_z": 2.1363039016723633
+        },
+        "hair_crown_6": {
+          "vertices": 32,
+          "min_z": 2.039372682571411,
+          "max_z": 2.2134439945220947
+        },
+        "hair_crown_7": {
+          "vertices": 32,
+          "min_z": 1.9760711193084717,
+          "max_z": 2.1511995792388916
+        },
+        "hair_crown_8": {
+          "vertices": 32,
+          "min_z": 1.9714314937591553,
+          "max_z": 2.147045612335205
+        },
+        "hair_crown_9": {
+          "vertices": 32,
+          "min_z": 2.034384250640869,
+          "max_z": 2.2077395915985107
+        },
+        "hair_crown_10": {
+          "vertices": 32,
+          "min_z": 1.958176612854004,
+          "max_z": 2.122856616973877
+        },
+        "hair_crown_11": {
+          "vertices": 32,
+          "min_z": 2.012946367263794,
+          "max_z": 2.1440656185150146
+        },
+        "hair_crown_12": {
+          "vertices": 32,
+          "min_z": 2.0409743785858154,
+          "max_z": 2.18878173828125
+        },
+        "hair_crown_13": {
+          "vertices": 32,
+          "min_z": 1.9622187614440918,
+          "max_z": 2.1198909282684326
+        },
+        "hair_crown_14": {
+          "vertices": 32,
+          "min_z": 2.032905101776123,
+          "max_z": 2.198183298110962
+        },
+        "hair_crown_15": {
+          "vertices": 32,
+          "min_z": 2.0032601356506348,
+          "max_z": 2.1709043979644775
+        },
+        "hair_crown_16": {
+          "vertices": 32,
+          "min_z": 1.968230962753296,
+          "max_z": 2.1360485553741455
+        },
+        "hair_crown_17": {
+          "vertices": 32,
+          "min_z": 2.052140235900879,
+          "max_z": 2.2197325229644775
+        },
+        "hair_crown_18": {
+          "vertices": 32,
+          "min_z": 1.990369439125061,
+          "max_z": 2.1549267768859863
+        },
+        "hair_crown_19": {
+          "vertices": 32,
+          "min_z": 2.0098915100097656,
+          "max_z": 2.167328357696533
+        },
+        "hair_crown_20": {
+          "vertices": 32,
+          "min_z": 2.074138641357422,
+          "max_z": 2.217254877090454
+        },
+        "hair_crown_21": {
+          "vertices": 32,
+          "min_z": 2.0029428005218506,
+          "max_z": 2.135988712310791
+        },
+        "hair_lower_0": {
+          "vertices": 32,
+          "min_z": 1.8720643520355225,
+          "max_z": 2.0776712894439697
+        },
+        "hair_lower_1": {
+          "vertices": 32,
+          "min_z": 1.870234727859497,
+          "max_z": 2.0794525146484375
+        },
+        "hair_lower_2": {
+          "vertices": 32,
+          "min_z": 1.865648627281189,
+          "max_z": 2.0798330307006836
+        },
+        "hair_lower_3": {
+          "vertices": 32,
+          "min_z": 1.8591245412826538,
+          "max_z": 2.078049659729004
+        },
+        "hair_lower_4": {
+          "vertices": 32,
+          "min_z": 1.8517224788665771,
+          "max_z": 2.073073625564575
+        },
+        "hair_lower_11": {
+          "vertices": 32,
+          "min_z": 1.8517224788665771,
+          "max_z": 2.073073625564575
+        },
+        "hair_lower_12": {
+          "vertices": 32,
+          "min_z": 1.8591245412826538,
+          "max_z": 2.078049659729004
+        },
+        "hair_lower_13": {
+          "vertices": 32,
+          "min_z": 1.865648627281189,
+          "max_z": 2.0798330307006836
+        },
+        "hair_lower_14": {
+          "vertices": 32,
+          "min_z": 1.870234727859497,
+          "max_z": 2.0794525146484375
+        },
+        "fringe_0": {
+          "vertices": 32,
+          "min_z": 1.9718447923660278,
+          "max_z": 2.160153388977051
+        },
+        "fringe_1": {
+          "vertices": 32,
+          "min_z": 1.9632117748260498,
+          "max_z": 2.1579012870788574
+        },
+        "fringe_2": {
+          "vertices": 32,
+          "min_z": 1.9545795917510986,
+          "max_z": 2.154210329055786
+        },
+        "fringe_3": {
+          "vertices": 32,
+          "min_z": 1.9459401369094849,
+          "max_z": 2.1481070518493652
+        },
+        "fringe_4": {
+          "vertices": 32,
+          "min_z": 1.937290906906128,
+          "max_z": 2.1414153575897217
+        },
+        "fringe_5": {
+          "vertices": 32,
+          "min_z": 1.9459401369094849,
+          "max_z": 2.1375575065612793
+        },
+        "fringe_6": {
+          "vertices": 32,
+          "min_z": 1.9545795917510986,
+          "max_z": 2.1443233489990234
+        },
+        "fringe_7": {
+          "vertices": 32,
+          "min_z": 1.9632117748260498,
+          "max_z": 2.1512227058410645
+        },
+        "fringe_8": {
+          "vertices": 32,
+          "min_z": 1.9718447923660278,
+          "max_z": 2.156102180480957
+        },
+        "cowlick": {
+          "vertices": 32,
+          "min_z": 2.136143684387207,
+          "max_z": 2.2599124908447266
+        }
+      },
+      "views": {
+        "S": {
+          "path": "renders/preview/S/00.png",
+          "sha256": "29b05ed63bedbd1c3f9803342d4691d0bd3ad7e648dd915a84b8e2e5028aab87"
+        },
+        "SE": {
+          "path": "renders/preview/SE/00.png",
+          "sha256": "11d114a43ded1d915597bdea0b34cd60919fc790295a3c5829ca5da3a7a79ea7"
+        },
+        "E": {
+          "path": "renders/preview/E/00.png",
+          "sha256": "e90b2ef8fc4272bf34d493853e14f584724613a450da34dec8b5061a8f7adde5"
+        },
+        "NE": {
+          "path": "renders/preview/NE/00.png",
+          "sha256": "3b364efe0dc75026f3f75f94ca1a0e26faf38d51a3e160531eb09424ccd471d6"
+        },
+        "N": {
+          "path": "renders/preview/N/00.png",
+          "sha256": "12b0455c9783059d512b6906fe467e5f43028f2632da146347234dcbd72cded4"
+        },
+        "NW": {
+          "path": "renders/preview/NW/00.png",
+          "sha256": "8c29f23c4a863ff8737eeb1a8237d3c857492f5d516d1ba97dd37dac63a68b7d"
+        },
+        "W": {
+          "path": "renders/preview/W/00.png",
+          "sha256": "4ae8de927edf63244a331cd0acf7286d626cfac0decfc5fe859263e7fd3d08dd"
+        },
+        "SW": {
+          "path": "renders/preview/SW/00.png",
+          "sha256": "4b2a0bce4c165321726055224efd46e10d94028a094e46ef3ce25e2079997953"
+        }
+      },
+      "projected_points": {
+        "S": {
+          "pelvis": [
+            192.0,
+            290.14955139160156
+          ],
+          "chest": [
+            192.0,
+            185.69802856445312
+          ],
+          "neck": [
+            192.0,
+            153.41299438476562
+          ],
+          "head": [
+            192.0,
+            107.78598022460938
+          ],
+          "left.hip": [
+            220.67200469970703,
+            290.14955139160156
+          ],
+          "left.knee": [
+            224.94900512695312,
+            373.05213928222656
+          ],
+          "left.ankle": [
+            228.86400604248047,
+            442.4449920654297
+          ],
+          "left.toe": [
+            228.86400604248047,
+            467.27226638793945
+          ],
+          "left.shoulder": [
+            237.0560073852539,
+            185.69802856445312
+          ],
+          "left.elbow": [
+            243.5357437133789,
+            230.69619750976562
+          ],
+          "left.wrist": [
+            253.2282257080078,
+            284.2078857421875
+          ],
+          "left.palm": [
+            255.74109649658203,
+            298.081298828125
+          ],
+          "left.grip": [
+            257.5359878540039,
+            307.9908752441406
+          ],
+          "right.hip": [
+            163.32799530029297,
+            290.14955139160156
+          ],
+          "right.knee": [
+            159.05098342895508,
+            373.05213928222656
+          ],
+          "right.ankle": [
+            155.13599395751953,
+            442.4449920654297
+          ],
+          "right.toe": [
+            155.13599395751953,
+            467.27226638793945
+          ],
+          "right.shoulder": [
+            146.9440040588379,
+            185.69802856445312
+          ],
+          "right.elbow": [
+            123.14274215698242,
+            235.82876586914062
+          ],
+          "right.wrist": [
+            125.44206619262695,
+            289.7674865722656
+          ],
+          "right.palm": [
+            126.03820037841797,
+            303.75160217285156
+          ],
+          "right.grip": [
+            126.4640007019043,
+            313.74024963378906
+          ]
+        },
+        "SE": {
+          "pelvis": [
+            184.7358741760254,
+            291.2908020019531
+          ],
+          "chest": [
+            184.7358741760254,
+            186.81967163085938
+          ],
+          "neck": [
+            184.7358741760254,
+            154.52859497070312
+          ],
+          "head": [
+            187.9014129638672,
+            108.3983154296875
+          ],
+          "left.hip": [
+            204.94457244873047,
+            283.6863555908203
+          ],
+          "left.knee": [
+            215.15128326416016,
+            364.3461608886719
+          ],
+          "left.ankle": [
+            207.81285095214844,
+            434.29176330566406
+          ],
+          "left.toe": [
+            236.86919403076172,
+            454.58281326293945
+          ],
+          "left.shoulder": [
+            216.49239349365234,
+            174.86981201171875
+          ],
+          "left.elbow": [
+            207.86769104003906,
+            220.219482421875
+          ],
+          "left.wrist": [
+            222.32324981689453,
+            269.9790496826172
+          ],
+          "left.palm": [
+            226.07098388671875,
+            282.8796844482422
+          ],
+          "left.grip": [
+            228.74794006347656,
+            292.0944366455078
+          ],
+          "right.hip": [
+            164.5271987915039,
+            298.895263671875
+          ],
+          "right.knee": [
+            168.70483016967773,
+            381.8237762451172
+          ],
+          "right.ankle": [
+            155.84765625,
+            453.8460807800293
+          ],
+          "right.toe": [
+            184.90398788452148,
+            474.13713455200195
+          ],
+          "right.shoulder": [
+            152.97936630249023,
+            198.76953125
+          ],
+          "right.elbow": [
+            135.5943489074707,
+            255.31756591796875
+          ],
+          "right.wrist": [
+            143.67161178588867,
+            307.64752197265625
+          ],
+          "right.palm": [
+            145.76570892333984,
+            321.2145538330078
+          ],
+          "right.grip": [
+            147.2614974975586,
+            330.9052734375
+          ]
+        },
+        "E": {
+          "pelvis": [
+            181.75976943969727,
+            294.024658203125
+          ],
+          "chest": [
+            181.75979232788086,
+            189.50653076171875
+          ],
+          "neck": [
+            181.75980377197266,
+            157.200927734375
+          ],
+          "head": [
+            186.22214126586914,
+            109.86590576171875
+          ],
+          "left.hip": [
+            181.62944412231445,
+            283.3346710205078
+          ],
+          "left.knee": [
+            191.74850463867188,
+            360.8808898925781
+          ],
+          "left.ankle": [
+            177.4962272644043,
+            434.2140121459961
+          ],
+          "left.toe": [
+            218.4557876586914,
+            443.64625549316406
+          ],
+          "left.shoulder": [
+            181.55498886108398,
+            172.70797729492188
+          ],
+          "left.elbow": [
+            162.92960357666016,
+            222.31561279296875
+          ],
+          "left.wrist": [
+            173.63288497924805,
+            268.20404052734375
+          ],
+          "left.palm": [
+            176.4078140258789,
+            280.1010437011719
+          ],
+          "left.grip": [
+            178.38990783691406,
+            288.5989074707031
+          ],
+          "right.hip": [
+            181.89010620117188,
+            304.7146453857422
+          ],
+          "right.knee": [
+            192.04804229736328,
+            385.45013427734375
+          ],
+          "right.ankle": [
+            177.83135604858398,
+            461.70256423950195
+          ],
+          "right.toe": [
+            218.7909164428711,
+            471.1347885131836
+          ],
+          "right.shoulder": [
+            181.96459579467773,
+            206.30508422851562
+          ],
+          "right.elbow": [
+            181.21380615234375,
+            265.66497802734375
+          ],
+          "right.wrist": [
+            190.30500411987305,
+            315.35633850097656
+          ],
+          "right.palm": [
+            192.66197204589844,
+            328.2392883300781
+          ],
+          "right.grip": [
+            194.3455352783203,
+            337.4413757324219
+          ]
+        },
+        "NE": {
+          "pelvis": [
+            184.78183364868164,
+            296.72418212890625
+          ],
+          "chest": [
+            184.78182220458984,
+            192.15963745117188
+          ],
+          "neck": [
+            184.78182220458984,
+            159.83966064453125
+          ],
+          "head": [
+            187.92707061767578,
+            111.31423950195312
+          ],
+          "left.hip": [
+            164.44281005859375,
+            289.2101593017578
+          ],
+          "left.knee": [
+            168.55491256713867,
+            364.60838317871094
+          ],
+          "left.ankle": [
+            155.74465942382812,
+            442.13865661621094
+          ],
+          "left.toe": [
+            184.61479568481445,
+            440.84120178222656
+          ],
+          "left.shoulder": [
+            152.82049942016602,
+            180.35189819335938
+          ],
+          "left.elbow": [
+            135.11672973632812,
+            235.57363891601562
+          ],
+          "left.wrist": [
+            135.81641006469727,
+            279.7412109375
+          ],
+          "left.palm": [
+            135.99781036376953,
+            291.1920623779297
+          ],
+          "left.grip": [
+            136.12738037109375,
+            299.3712463378906
+          ],
+          "right.hip": [
+            205.12085723876953,
+            304.2382049560547
+          ],
+          "right.knee": [
+            215.3009262084961,
+            381.878173828125
+          ],
+          "right.ankle": [
+            208.04500579833984,
+            461.46044921875
+          ],
+          "right.toe": [
+            236.91515350341797,
+            460.1629753112793
+          ],
+          "right.shoulder": [
+            216.74315643310547,
+            203.9674072265625
+          ],
+          "right.elbow": [
+            233.02157592773438,
+            260.93836975097656
+          ],
+          "right.wrist": [
+            237.80577850341797,
+            308.5216979980469
+          ],
+          "right.palm": [
+            239.04611206054688,
+            320.85809326171875
+          ],
+          "right.grip": [
+            239.93206787109375,
+            329.66981506347656
+          ]
+        },
+        "N": {
+          "pelvis": [
+            192.00027465820312,
+            297.83387756347656
+          ],
+          "chest": [
+            192.00027465820312,
+            193.25027465820312
+          ],
+          "neck": [
+            192.00027465820312,
+            160.92437744140625
+          ],
+          "head": [
+            192.00027465820312,
+            111.91000366210938
+          ],
+          "left.hip": [
+            163.3282585144043,
+            297.83387756347656
+          ],
+          "left.knee": [
+            159.0512466430664,
+            373.276123046875
+          ],
+          "left.ankle": [
+            155.13624572753906,
+            453.37822341918945
+          ],
+          "left.toe": [
+            155.13625717163086,
+            447.67366790771484
+          ],
+          "left.shoulder": [
+            146.94426727294922,
+            193.25027465820312
+          ],
+          "left.elbow": [
+            140.46451950073242,
+            252.18124389648438
+          ],
+          "left.wrist": [
+            130.77203750610352,
+            297.7411346435547
+          ],
+          "left.palm": [
+            128.2591667175293,
+            309.55296325683594
+          ],
+          "left.grip": [
+            126.46426391601562,
+            317.989990234375
+          ],
+          "right.hip": [
+            220.67225646972656,
+            297.83387756347656
+          ],
+          "right.knee": [
+            224.94927978515625,
+            373.27613830566406
+          ],
+          "right.ankle": [
+            228.8642578125,
+            453.37823486328125
+          ],
+          "right.toe": [
+            228.8642578125,
+            447.6736831665039
+          ],
+          "right.shoulder": [
+            237.05628204345703,
+            193.25027465820312
+          ],
+          "right.elbow": [
+            260.8575210571289,
+            244.08535766601562
+          ],
+          "right.wrist": [
+            258.5581970214844,
+            291.30079650878906
+          ],
+          "right.palm": [
+            257.96207427978516,
+            303.54185485839844
+          ],
+          "right.grip": [
+            257.53626251220703,
+            312.2854309082031
+          ]
+        },
+        "NW": {
+          "pelvis": [
+            199.21817779541016,
+            296.72418212890625
+          ],
+          "chest": [
+            199.21817779541016,
+            192.15963745117188
+          ],
+          "neck": [
+            199.21817779541016,
+            159.83966064453125
+          ],
+          "head": [
+            196.07292938232422,
+            111.31423950195312
+          ],
+          "left.hip": [
+            178.87914276123047,
+            304.2382049560547
+          ],
+          "left.knee": [
+            168.6990737915039,
+            381.878173828125
+          ],
+          "left.ankle": [
+            175.95499420166016,
+            461.46044921875
+          ],
+          "left.toe": [
+            147.08484649658203,
+            460.1629753112793
+          ],
+          "left.shoulder": [
+            167.25685501098633,
+            203.9674072265625
+          ],
+          "left.elbow": [
+            175.76756286621094,
+            262.5854034423828
+          ],
+          "left.wrist": [
+            161.31679916381836,
+            311.8331756591797
+          ],
+          "left.palm": [
+            157.5703010559082,
+            324.6011199951172
+          ],
+          "left.grip": [
+            154.89423751831055,
+            333.7210693359375
+          ],
+          "right.hip": [
+            219.55718994140625,
+            289.2101593017578
+          ],
+          "right.knee": [
+            215.44507598876953,
+            364.60838317871094
+          ],
+          "right.ankle": [
+            228.25534057617188,
+            442.13865661621094
+          ],
+          "right.toe": [
+            199.38519287109375,
+            440.84120178222656
+          ],
+          "right.shoulder": [
+            231.1794891357422,
+            180.35189819335938
+          ],
+          "right.elbow": [
+            248.66880798339844,
+            224.84774780273438
+          ],
+          "right.wrist": [
+            240.62246704101562,
+            273.63624572753906
+          ],
+          "right.palm": [
+            238.53639221191406,
+            286.28509521484375
+          ],
+          "right.grip": [
+            237.04632568359375,
+            295.3199920654297
+          ]
+        },
+        "W": {
+          "pelvis": [
+            202.24021911621094,
+            294.024658203125
+          ],
+          "chest": [
+            202.24019622802734,
+            189.50653076171875
+          ],
+          "neck": [
+            202.24019622802734,
+            157.200927734375
+          ],
+          "head": [
+            197.77787017822266,
+            109.86590576171875
+          ],
+          "left.hip": [
+            202.10989379882812,
+            304.7146453857422
+          ],
+          "left.knee": [
+            191.95195770263672,
+            385.45013427734375
+          ],
+          "left.ankle": [
+            206.1686553955078,
+            461.70256423950195
+          ],
+          "left.toe": [
+            165.2090721130371,
+            471.1347885131836
+          ],
+          "left.shoulder": [
+            202.03541564941406,
+            206.30508422851562
+          ],
+          "left.elbow": [
+            220.60189819335938,
+            260.74449157714844
+          ],
+          "left.wrist": [
+            209.81048583984375,
+            313.8603515625
+          ],
+          "left.palm": [
+            207.01272583007812,
+            327.6311492919922
+          ],
+          "left.grip": [
+            205.01431274414062,
+            337.46742248535156
+          ],
+          "right.hip": [
+            202.37054443359375,
+            283.3346710205078
+          ],
+          "right.knee": [
+            192.25149536132812,
+            360.8808898925781
+          ],
+          "right.ankle": [
+            206.5037841796875,
+            434.2140121459961
+          ],
+          "right.toe": [
+            165.5442008972168,
+            443.64625549316406
+          ],
+          "right.shoulder": [
+            202.44499969482422,
+            172.70797729492188
+          ],
+          "right.elbow": [
+            203.41216278076172,
+            214.31988525390625
+          ],
+          "right.wrist": [
+            194.30007934570312,
+            265.7257995605469
+          ],
+          "right.palm": [
+            191.93767547607422,
+            279.0532684326172
+          ],
+          "right.grip": [
+            190.250244140625,
+            288.57286071777344
+          ]
+        },
+        "SW": {
+          "pelvis": [
+            199.2641143798828,
+            291.2908020019531
+          ],
+          "chest": [
+            199.2641143798828,
+            186.81967163085938
+          ],
+          "neck": [
+            199.2641143798828,
+            154.52859497070312
+          ],
+          "head": [
+            196.0985870361328,
+            108.3983154296875
+          ],
+          "left.hip": [
+            219.4728012084961,
+            298.895263671875
+          ],
+          "left.knee": [
+            215.29518127441406,
+            381.8237762451172
+          ],
+          "left.ankle": [
+            228.15234375,
+            453.8460807800293
+          ],
+          "left.toe": [
+            199.09600067138672,
+            474.13713455200195
+          ],
+          "left.shoulder": [
+            231.02062225341797,
+            198.76953125
+          ],
+          "left.elbow": [
+            248.77947235107422,
+            247.55633544921875
+          ],
+          "left.wrist": [
+            247.98690032958984,
+            302.4572448730469
+          ],
+          "left.palm": [
+            247.78141021728516,
+            316.6908264160156
+          ],
+          "left.grip": [
+            247.63462829589844,
+            326.857666015625
+          ],
+          "right.hip": [
+            179.05543899536133,
+            283.6863555908203
+          ],
+          "right.knee": [
+            168.84872817993164,
+            364.3461608886719
+          ],
+          "right.ankle": [
+            176.18714904785156,
+            434.29176330566406
+          ],
+          "right.toe": [
+            147.13081741333008,
+            454.58281326293945
+          ],
+          "right.shoulder": [
+            167.50761795043945,
+            174.86981201171875
+          ],
+          "right.elbow": [
+            151.34128189086914,
+            218.79257202148438
+          ],
+          "right.wrist": [
+            146.5052719116211,
+            272.34222412109375
+          ],
+          "right.palm": [
+            145.25149154663086,
+            286.22544860839844
+          ],
+          "right.grip": [
+            144.3559341430664,
+            296.1420440673828
+          ]
+        }
+      },
+      "ownership_images": {}
+    },
+    {
+      "bank": "preview",
+      "index": 3,
+      "t": 0.42857142857142855,
+      "depth": 1.0,
+      "bend_degrees": 65.0,
+      "world_points": {
+        "pelvis": [
+          0.0,
+          0.14000000059604645,
+          0.47999998927116394
+        ],
+        "chest": [
+          0.0,
+          -0.35846930742263794,
+          0.712440013885498
+        ],
+        "neck": [
+          0.0,
+          -0.512541651725769,
+          0.7842851877212524
+        ],
+        "head": [
+          0.0,
+          -0.704052746295929,
+          0.94498211145401
+        ],
+        "left.hip": [
+          0.14000000059604645,
+          0.14000000059604645,
+          0.47999998927116394
+        ],
+        "left.knee": [
+          0.15730640292167664,
+          -0.27383971214294434,
+          0.4104501008987427
+        ],
+        "left.ankle": [
+          0.18000000715255737,
+          0.019999999552965164,
+          0.14000000059604645
+        ],
+        "left.toe": [
+          0.18000000715255737,
+          -0.18000000715255737,
+          0.09000000357627869
+        ],
+        "left.shoulder": [
+          0.2199999988079071,
+          -0.35846930742263794,
+          0.712440013885498
+        ],
+        "left.elbow": [
+          0.24343766272068024,
+          -0.06974180787801743,
+          0.726118803024292
+        ],
+        "left.wrist": [
+          0.2964423596858978,
+          0.04328005015850067,
+          0.4867100119590759
+        ],
+        "left.palm": [
+          0.3101842999458313,
+          0.07258201390504837,
+          0.42464107275009155
+        ],
+        "left.grip": [
+          0.3199999928474426,
+          0.09351199120283127,
+          0.3803061246871948
+        ],
+        "right.hip": [
+          -0.14000000059604645,
+          0.14000000059604645,
+          0.47999998927116394
+        ],
+        "right.knee": [
+          -0.15730640292167664,
+          -0.27383971214294434,
+          0.4104501008987427
+        ],
+        "right.ankle": [
+          -0.18000000715255737,
+          0.019999999552965164,
+          0.14000000059604645
+        ],
+        "right.toe": [
+          -0.18000000715255737,
+          -0.18000000715255737,
+          0.09000000357627869
+        ],
+        "right.shoulder": [
+          -0.2199999988079071,
+          -0.35846930742263794,
+          0.712440013885498
+        ],
+        "right.elbow": [
+          -0.19744086265563965,
+          -0.4428909420967102,
+          0.4359186291694641
+        ],
+        "right.wrist": [
+          -0.06075102090835571,
+          -0.5655049085617065,
+          0.23797492682933807
+        ],
+        "right.palm": [
+          -0.025312915444374084,
+          -0.5972937345504761,
+          0.186656191945076
+        ],
+        "right.grip": [
+          0.0,
+          -0.6200000047683716,
+          0.15000000596046448
+        ]
+      },
+      "object_center": [
+        0.0,
+        -0.6200000047683716,
+        0.07500000298023224
+      ],
+      "object_visible": true,
+      "bone_matrices": {
+        "root": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.14000000059604645
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.47999998927116394
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "torso": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -0.906307578086853,
+            -0.42261815071105957,
+            0.14000000059604645
+          ],
+          [
+            0.0,
+            0.4226181209087372,
+            -0.906307578086853,
+            0.47999998927116394
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "head": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.6427875757217407,
+            -0.7660444974899292,
+            -0.7040526866912842
+          ],
+          [
+            0.0,
+            0.7660444378852844,
+            0.6427874565124512,
+            0.9449820518493652
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.upperarm": [
+          [
+            -0.17896097898483276,
+            0.0808195099234581,
+            -0.9805310368537903,
+            0.2199999988079071
+          ],
+          [
+            -0.032059233635663986,
+            0.9956120848655701,
+            0.0879138633608818,
+            -0.35846930742263794
+          ],
+          [
+            0.9833338856697083,
+            0.04716823995113373,
+            -0.17558503150939941,
+            0.7124399542808533
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.forearm": [
+          [
+            0.004453551024198532,
+            0.1963135451078415,
+            -0.9805310368537903,
+            0.24343761801719666
+          ],
+          [
+            0.9039057493209839,
+            0.4185994565486908,
+            0.08791398257017136,
+            -0.06974184513092041
+          ],
+          [
+            0.42770856618881226,
+            -0.8866991996765137,
+            -0.1755850464105606,
+            0.7261187434196472
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.hand": [
+          [
+            0.004453508649021387,
+            0.1963135451078415,
+            -0.9805310368537903,
+            0.2964423596858978
+          ],
+          [
+            0.9039058089256287,
+            0.418599396944046,
+            0.08791392296552658,
+            0.04328005388379097
+          ],
+          [
+            0.4277085065841675,
+            -0.8866992592811584,
+            -0.1755850613117218,
+            0.48670998215675354
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.thigh": [
+          [
+            -0.10324577987194061,
+            0.04120572656393051,
+            0.9938020706176758,
+            0.14000000059604645
+          ],
+          [
+            -0.16904765367507935,
+            -0.985332727432251,
+            0.02329224906861782,
+            0.14000001549720764
+          ],
+          [
+            0.9801854491233826,
+            -0.16559509932994843,
+            0.1086970716714859,
+            0.47999998927116394
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.shin": [
+          [
+            0.0955972969532013,
+            0.056733958423137665,
+            0.9938020706176758,
+            0.15730640292167664
+          ],
+          [
+            -0.6781014800071716,
+            0.7345993518829346,
+            0.02329229563474655,
+            -0.27383968234062195
+          ],
+          [
+            -0.7287248373031616,
+            -0.6761252880096436,
+            0.10869697481393814,
+            0.4104500710964203
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "left.foot": [
+          [
+            -0.9999999403953552,
+            7.59027898311615e-08,
+            -1.5133991837501526e-07,
+            0.18000000715255737
+          ],
+          [
+            3.864988684654236e-08,
+            -0.9701427221298218,
+            -0.24253517389297485,
+            0.01999998651444912
+          ],
+          [
+            4.936009645462036e-08,
+            -0.24253523349761963,
+            0.9701424837112427,
+            0.13999998569488525
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.upperarm": [
+          [
+            -0.8914456963539124,
+            0.07779040932655334,
+            -0.44640102982521057,
+            -0.2200000137090683
+          ],
+          [
+            0.407934308052063,
+            -0.2911094129085541,
+            -0.8653582334518433,
+            -0.35846927762031555
+          ],
+          [
+            -0.19726775586605072,
+            -0.9535220265388489,
+            0.22777482867240906,
+            0.7124400734901428
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.forearm": [
+          [
+            -0.7378541231155396,
+            0.5062587857246399,
+            -0.44640108942985535,
+            -0.19744083285331726
+          ],
+          [
+            0.21195462346076965,
+            -0.4541258215904236,
+            -0.865358293056488,
+            -0.4428909420967102
+          ],
+          [
+            -0.6408171653747559,
+            -0.733124852180481,
+            0.2277747094631195,
+            0.4359185993671417
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.hand": [
+          [
+            -0.7378543019294739,
+            0.5062587261199951,
+            -0.44640105962753296,
+            -0.06075100600719452
+          ],
+          [
+            0.21195466816425323,
+            -0.4541257619857788,
+            -0.865358293056488,
+            -0.5655048489570618
+          ],
+          [
+            -0.6408173441886902,
+            -0.7331247925758362,
+            0.2277747094631195,
+            0.23797492682933807
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.thigh": [
+          [
+            0.10324569046497345,
+            -0.041205719113349915,
+            0.9938020706176758,
+            -0.14000001549720764
+          ],
+          [
+            -0.1690475195646286,
+            -0.985332727432251,
+            -0.023292290046811104,
+            0.14000001549720764
+          ],
+          [
+            0.9801852703094482,
+            -0.1655949503183365,
+            -0.10869719088077545,
+            0.47999998927116394
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.shin": [
+          [
+            -0.09559725970029831,
+            -0.05673398822546005,
+            0.9938020706176758,
+            -0.15730641782283783
+          ],
+          [
+            -0.6781014204025269,
+            0.7345991134643555,
+            -0.02329227700829506,
+            -0.27383971214294434
+          ],
+          [
+            -0.7287245988845825,
+            -0.6761250495910645,
+            -0.10869719833135605,
+            0.41045013070106506
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "right.foot": [
+          [
+            -1.0,
+            5.541369318962097e-08,
+            -1.4784745872020721e-07,
+            -0.17999999225139618
+          ],
+          [
+            4.889443516731262e-09,
+            -0.970142662525177,
+            -0.24253547191619873,
+            0.020000001415610313
+          ],
+          [
+            8.149072527885437e-09,
+            -0.24253538250923157,
+            0.9701426029205322,
+            0.14000001549720764
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "mesh_measurements": {
+        "left.continuous_arm": {
+          "vertices": 696,
+          "min_z": 0.47172707319259644,
+          "max_z": 0.7711156010627747
+        },
+        "left.continuous_leg": {
+          "vertices": 696,
+          "min_z": 0.09770555794239044,
+          "max_z": 0.5642959475517273
+        },
+        "left.sole": {
+          "vertices": 56,
+          "min_z": 0.0005000127130188048,
+          "max_z": 0.05750009045004845
+        },
+        "left.boot": {
+          "vertices": 222,
+          "min_z": 0.01700005680322647,
+          "max_z": 0.169000044465065
+        },
+        "left.boot_seam": {
+          "vertices": 24,
+          "min_z": 0.10806574672460556,
+          "max_z": 0.1329943984746933
+        },
+        "left.boot_band0.042": {
+          "vertices": 222,
+          "min_z": 0.12681221961975098,
+          "max_z": 0.22011178731918335
+        },
+        "left.boot_band0.257": {
+          "vertices": 222,
+          "min_z": 0.29810625314712524,
+          "max_z": 0.39140576124191284
+        },
+        "left.knee_guard": {
+          "vertices": 222,
+          "min_z": 0.2994760572910309,
+          "max_z": 0.43664175271987915
+        },
+        "left.kneepad_highlight": {
+          "vertices": 222,
+          "min_z": 0.30877983570098877,
+          "max_z": 0.3812662959098816
+        },
+        "left.shoulder_plate": {
+          "vertices": 222,
+          "min_z": 0.6099554896354675,
+          "max_z": 0.8170956969261169
+        },
+        "left.shoulder_rim": {
+          "vertices": 222,
+          "min_z": 0.5913133025169373,
+          "max_z": 0.8030211925506592
+        },
+        "left.glove": {
+          "vertices": 222,
+          "min_z": 0.37975889444351196,
+          "max_z": 0.519178569316864
+        },
+        "left.knuckles": {
+          "vertices": 222,
+          "min_z": 0.35659894347190857,
+          "max_z": 0.42619383335113525
+        },
+        "left.thumb": {
+          "vertices": 222,
+          "min_z": 0.4050731658935547,
+          "max_z": 0.4644060730934143
+        },
+        "left.bracer_band0.1": {
+          "vertices": 222,
+          "min_z": 0.6757310628890991,
+          "max_z": 0.7286249995231628
+        },
+        "left.bracer_band0.8": {
+          "vertices": 222,
+          "min_z": 0.5081449747085571,
+          "max_z": 0.5610389113426208
+        },
+        "right.continuous_arm": {
+          "vertices": 696,
+          "min_z": 0.21579742431640625,
+          "max_z": 0.7275152802467346
+        },
+        "right.continuous_leg": {
+          "vertices": 696,
+          "min_z": 0.09770578145980835,
+          "max_z": 0.5642960071563721
+        },
+        "right.sole": {
+          "vertices": 56,
+          "min_z": 0.0004999425727874041,
+          "max_z": 0.057499960064888
+        },
+        "right.boot": {
+          "vertices": 222,
+          "min_z": 0.01699995994567871,
+          "max_z": 0.16899995505809784
+        },
+        "right.boot_seam": {
+          "vertices": 24,
+          "min_z": 0.1080656349658966,
+          "max_z": 0.13299429416656494
+        },
+        "right.boot_band0.042": {
+          "vertices": 222,
+          "min_z": 0.1268124282360077,
+          "max_z": 0.22011201083660126
+        },
+        "right.boot_band0.257": {
+          "vertices": 222,
+          "min_z": 0.29810646176338196,
+          "max_z": 0.39140602946281433
+        },
+        "right.knee_guard": {
+          "vertices": 222,
+          "min_z": 0.2994762659072876,
+          "max_z": 0.43664199113845825
+        },
+        "right.kneepad_highlight": {
+          "vertices": 222,
+          "min_z": 0.3087800443172455,
+          "max_z": 0.3812665641307831
+        },
+        "right.shoulder_plate": {
+          "vertices": 222,
+          "min_z": 0.624330461025238,
+          "max_z": 0.807198166847229
+        },
+        "right.shoulder_rim": {
+          "vertices": 222,
+          "min_z": 0.621438205242157,
+          "max_z": 0.7488523125648499
+        },
+        "right.glove": {
+          "vertices": 222,
+          "min_z": 0.14589226245880127,
+          "max_z": 0.26847487688064575
+        },
+        "right.knuckles": {
+          "vertices": 222,
+          "min_z": 0.12584203481674194,
+          "max_z": 0.19700992107391357
+        },
+        "right.thumb": {
+          "vertices": 222,
+          "min_z": 0.14378339052200317,
+          "max_z": 0.19799798727035522
+        },
+        "right.bracer_band0.1": {
+          "vertices": 222,
+          "min_z": 0.3803960680961609,
+          "max_z": 0.45185214281082153
+        },
+        "right.bracer_band0.8": {
+          "vertices": 222,
+          "min_z": 0.24183541536331177,
+          "max_z": 0.3132915496826172
+        },
+        "coherent_tunic": {
+          "vertices": 192,
+          "min_z": 0.39000001549720764,
+          "max_z": 0.8347916603088379
+        },
+        "tunic_front_0": {
+          "vertices": 4,
+          "min_z": 0.38933998346328735,
+          "max_z": 0.565933346748352
+        },
+        "tunic_front_-0.078": {
+          "vertices": 4,
+          "min_z": 0.38933998346328735,
+          "max_z": 0.565933346748352
+        },
+        "tunic_front_0.078": {
+          "vertices": 4,
+          "min_z": 0.38933998346328735,
+          "max_z": 0.565933346748352
+        },
+        "waist_belt": {
+          "vertices": 222,
+          "min_z": 0.45900002121925354,
+          "max_z": 0.5449999570846558
+        },
+        "belt_buckle": {
+          "vertices": 56,
+          "min_z": 0.4699999988079071,
+          "max_z": 0.5360000133514404
+        },
+        "buckle_inset": {
+          "vertices": 56,
+          "min_z": 0.48399999737739563,
+          "max_z": 0.5219999551773071
+        },
+        "belt_pouch-0.2": {
+          "vertices": 56,
+          "min_z": 0.4050000011920929,
+          "max_z": 0.5149999856948853
+        },
+        "belt_pouch0.2": {
+          "vertices": 56,
+          "min_z": 0.4050000011920929,
+          "max_z": 0.5149999856948853
+        },
+        "waist_tab_cream": {
+          "vertices": 5,
+          "min_z": 0.1199999749660492,
+          "max_z": 0.4699999988079071
+        },
+        "waist_trim_cream": {
+          "vertices": 48,
+          "min_z": 0.11408719420433044,
+          "max_z": 0.47599998116493225
+        },
+        "tab_rune_cream": {
+          "vertices": 4,
+          "min_z": 0.2199999988079071,
+          "max_z": 0.3099999725818634
+        },
+        "waist_tab_teal": {
+          "vertices": 5,
+          "min_z": 0.1199999749660492,
+          "max_z": 0.4699999988079071
+        },
+        "waist_trim_teal": {
+          "vertices": 48,
+          "min_z": 0.11408719420433044,
+          "max_z": 0.47599998116493225
+        },
+        "tab_rune_teal": {
+          "vertices": 4,
+          "min_z": 0.2199999988079071,
+          "max_z": 0.3099999725818634
+        },
+        "scarf": {
+          "vertices": 222,
+          "min_z": 0.636994481086731,
+          "max_z": 0.8904231190681458
+        },
+        "scarf_fold": {
+          "vertices": 222,
+          "min_z": 0.5813063383102417,
+          "max_z": 0.8169463872909546
+        },
+        "neck_skin": {
+          "vertices": 222,
+          "min_z": 0.7130645513534546,
+          "max_z": 0.8766366839408875
+        },
+        "original_cape": {
+          "vertices": 162,
+          "min_z": 0.7996090054512024,
+          "max_z": 0.9220634698867798
+        },
+        "cape_trim0": {
+          "vertices": 72,
+          "min_z": 0.8573329448699951,
+          "max_z": 0.9359673261642456
+        },
+        "cape_trim8": {
+          "vertices": 72,
+          "min_z": 0.8573329448699951,
+          "max_z": 0.9359673261642456
+        },
+        "cape_rune": {
+          "vertices": 64,
+          "min_z": 0.8262513875961304,
+          "max_z": 0.8961511850357056
+        },
+        "face": {
+          "vertices": 222,
+          "min_z": 0.7446035146713257,
+          "max_z": 1.1453607082366943
+        },
+        "ear-1": {
+          "vertices": 222,
+          "min_z": 0.8930947780609131,
+          "max_z": 0.9852461814880371
+        },
+        "ear_inner-1": {
+          "vertices": 222,
+          "min_z": 0.8950842618942261,
+          "max_z": 0.9510829448699951
+        },
+        "eye_ink-1": {
+          "vertices": 33,
+          "min_z": 0.7894762754440308,
+          "max_z": 0.8519312143325806
+        },
+        "eye_white-1": {
+          "vertices": 33,
+          "min_z": 0.7933660745620728,
+          "max_z": 0.843964695930481
+        },
+        "eye_iris-1": {
+          "vertices": 33,
+          "min_z": 0.7961019277572632,
+          "max_z": 0.8356707096099854
+        },
+        "eye_ink-1.001": {
+          "vertices": 33,
+          "min_z": 0.7979846000671387,
+          "max_z": 0.8317035436630249
+        },
+        "eye_glint-1": {
+          "vertices": 222,
+          "min_z": 0.8155343532562256,
+          "max_z": 0.8250198364257812
+        },
+        "eyebrow-1": {
+          "vertices": 24,
+          "min_z": 0.8375129699707031,
+          "max_z": 0.8697047233581543
+        },
+        "ear1": {
+          "vertices": 222,
+          "min_z": 0.8930947780609131,
+          "max_z": 0.9852461814880371
+        },
+        "ear_inner1": {
+          "vertices": 222,
+          "min_z": 0.8950842618942261,
+          "max_z": 0.9510829448699951
+        },
+        "eye_ink1": {
+          "vertices": 33,
+          "min_z": 0.7894762754440308,
+          "max_z": 0.8519312143325806
+        },
+        "eye_white1": {
+          "vertices": 33,
+          "min_z": 0.7933660745620728,
+          "max_z": 0.843964695930481
+        },
+        "eye_iris1": {
+          "vertices": 33,
+          "min_z": 0.7961019277572632,
+          "max_z": 0.8356707096099854
+        },
+        "eye_ink1.001": {
+          "vertices": 33,
+          "min_z": 0.7979846000671387,
+          "max_z": 0.8317035436630249
+        },
+        "eye_glint1": {
+          "vertices": 222,
+          "min_z": 0.8105480670928955,
+          "max_z": 0.8200335502624512
+        },
+        "eyebrow1": {
+          "vertices": 24,
+          "min_z": 0.8375129699707031,
+          "max_z": 0.8697047233581543
+        },
+        "nose": {
+          "vertices": 222,
+          "min_z": 0.7556338310241699,
+          "max_z": 0.8055994510650635
+        },
+        "mouth": {
+          "vertices": 24,
+          "min_z": 0.7425109148025513,
+          "max_z": 0.758319616317749
+        },
+        "hair_cap": {
+          "vertices": 222,
+          "min_z": 0.8135030269622803,
+          "max_z": 1.2136996984481812
+        },
+        "hair_crown_0": {
+          "vertices": 32,
+          "min_z": 1.1270865201950073,
+          "max_z": 1.2189964056015015
+        },
+        "hair_crown_1": {
+          "vertices": 32,
+          "min_z": 1.1263642311096191,
+          "max_z": 1.2430517673492432
+        },
+        "hair_crown_2": {
+          "vertices": 32,
+          "min_z": 1.0691618919372559,
+          "max_z": 1.1842172145843506
+        },
+        "hair_crown_3": {
+          "vertices": 32,
+          "min_z": 1.1039174795150757,
+          "max_z": 1.2091628313064575
+        },
+        "hair_crown_4": {
+          "vertices": 32,
+          "min_z": 1.0642379522323608,
+          "max_z": 1.1702717542648315
+        },
+        "hair_crown_5": {
+          "vertices": 32,
+          "min_z": 0.9907443523406982,
+          "max_z": 1.1047905683517456
+        },
+        "hair_crown_6": {
+          "vertices": 32,
+          "min_z": 1.0000017881393433,
+          "max_z": 1.1294240951538086
+        },
+        "hair_crown_7": {
+          "vertices": 32,
+          "min_z": 0.9204422235488892,
+          "max_z": 1.0753084421157837
+        },
+        "hair_crown_8": {
+          "vertices": 32,
+          "min_z": 0.8835731744766235,
+          "max_z": 1.0598665475845337
+        },
+        "hair_crown_9": {
+          "vertices": 32,
+          "min_z": 0.897957444190979,
+          "max_z": 1.089065670967102
+        },
+        "hair_crown_10": {
+          "vertices": 32,
+          "min_z": 0.8324246406555176,
+          "max_z": 1.0278098583221436
+        },
+        "hair_crown_11": {
+          "vertices": 32,
+          "min_z": 0.8640210628509521,
+          "max_z": 1.0363099575042725
+        },
+        "hair_crown_12": {
+          "vertices": 32,
+          "min_z": 0.887543797492981,
+          "max_z": 1.070347547531128
+        },
+        "hair_crown_13": {
+          "vertices": 32,
+          "min_z": 0.8523889780044556,
+          "max_z": 1.0323818922042847
+        },
+        "hair_crown_14": {
+          "vertices": 32,
+          "min_z": 0.9238781929016113,
+          "max_z": 1.0928627252578735
+        },
+        "hair_crown_15": {
+          "vertices": 32,
+          "min_z": 0.9381437301635742,
+          "max_z": 1.0880228281021118
+        },
+        "hair_crown_16": {
+          "vertices": 32,
+          "min_z": 0.9535291194915771,
+          "max_z": 1.0794850587844849
+        },
+        "hair_crown_17": {
+          "vertices": 32,
+          "min_z": 1.047319769859314,
+          "max_z": 1.15862238407135
+        },
+        "hair_crown_18": {
+          "vertices": 32,
+          "min_z": 1.0453567504882812,
+          "max_z": 1.1484769582748413
+        },
+        "hair_crown_19": {
+          "vertices": 32,
+          "min_z": 1.0791285037994385,
+          "max_z": 1.1843738555908203
+        },
+        "hair_crown_20": {
+          "vertices": 32,
+          "min_z": 1.123989462852478,
+          "max_z": 1.2390449047088623
+        },
+        "hair_crown_21": {
+          "vertices": 32,
+          "min_z": 1.0780928134918213,
+          "max_z": 1.1947802305221558
+        },
+        "hair_lower_0": {
+          "vertices": 32,
+          "min_z": 1.0592197179794312,
+          "max_z": 1.1636427640914917
+        },
+        "hair_lower_1": {
+          "vertices": 32,
+          "min_z": 1.0461565256118774,
+          "max_z": 1.1534743309020996
+        },
+        "hair_lower_2": {
+          "vertices": 32,
+          "min_z": 1.0070189237594604,
+          "max_z": 1.1272634267807007
+        },
+        "hair_lower_3": {
+          "vertices": 32,
+          "min_z": 0.950875997543335,
+          "max_z": 1.0866947174072266
+        },
+        "hair_lower_4": {
+          "vertices": 32,
+          "min_z": 0.8862521648406982,
+          "max_z": 1.038582682609558
+        },
+        "hair_lower_11": {
+          "vertices": 32,
+          "min_z": 0.8862521648406982,
+          "max_z": 1.038582682609558
+        },
+        "hair_lower_12": {
+          "vertices": 32,
+          "min_z": 0.950875997543335,
+          "max_z": 1.0866947174072266
+        },
+        "hair_lower_13": {
+          "vertices": 32,
+          "min_z": 1.0070189237594604,
+          "max_z": 1.1272634267807007
+        },
+        "hair_lower_14": {
+          "vertices": 32,
+          "min_z": 1.0461565256118774,
+          "max_z": 1.1534743309020996
+        },
+        "fringe_0": {
+          "vertices": 32,
+          "min_z": 0.83856201171875,
+          "max_z": 1.0314691066741943
+        },
+        "fringe_1": {
+          "vertices": 32,
+          "min_z": 0.8391001224517822,
+          "max_z": 1.029876708984375
+        },
+        "fringe_2": {
+          "vertices": 32,
+          "min_z": 0.8372077941894531,
+          "max_z": 1.0272667407989502
+        },
+        "fringe_3": {
+          "vertices": 32,
+          "min_z": 0.8316196203231812,
+          "max_z": 1.0229511260986328
+        },
+        "fringe_4": {
+          "vertices": 32,
+          "min_z": 0.8260279893875122,
+          "max_z": 1.016282558441162
+        },
+        "fringe_5": {
+          "vertices": 32,
+          "min_z": 0.8316196203231812,
+          "max_z": 1.0119645595550537
+        },
+        "fringe_6": {
+          "vertices": 32,
+          "min_z": 0.8372077941894531,
+          "max_z": 1.0195823907852173
+        },
+        "fringe_7": {
+          "vertices": 32,
+          "min_z": 0.8391001224517822,
+          "max_z": 1.0251542329788208
+        },
+        "fringe_8": {
+          "vertices": 32,
+          "min_z": 0.83856201171875,
+          "max_z": 1.028604507446289
+        },
+        "cowlick": {
+          "vertices": 32,
+          "min_z": 1.0885388851165771,
+          "max_z": 1.183898687362671
+        }
+      },
+      "views": {
+        "S": {
+          "path": "renders/preview/S/03.png",
+          "sha256": "8d169849867eef46d6cc526c24430bbe94924a7c5655c64a255911a5b2226c67"
+        },
+        "SE": {
+          "path": "renders/preview/SE/03.png",
+          "sha256": "173a5bb0000a0a6b038091cf5398410ab999b643d2b1b5d5e3da067aa8b9ed88"
+        },
+        "E": {
+          "path": "renders/preview/E/03.png",
+          "sha256": "e761dfda1c12a7ecb56600511916ef374b6a849bfbbf5bd6c6b1e624f2250db9"
+        },
+        "NE": {
+          "path": "renders/preview/NE/03.png",
+          "sha256": "d1bfb4b2ddc670f066e2b53a26a90fe282983d6e337d3cf373e70f47d2aa5a6a"
+        },
+        "N": {
+          "path": "renders/preview/N/03.png",
+          "sha256": "ed7a2b2287a98964c991944cd31188b15cb2a867592684cdd2b2584399549c1e"
+        },
+        "NW": {
+          "path": "renders/preview/NW/03.png",
+          "sha256": "d2f7d06ec2ffaf9c885516b9f40475f38bf579a4521a244e639b1c55f2b64eb1"
+        },
+        "W": {
+          "path": "renders/preview/W/03.png",
+          "sha256": "77585d161f16d53f95f5a6e22870c3dc9bd1bacd294f2115712ece320e114379"
+        },
+        "SW": {
+          "path": "renders/preview/SW/03.png",
+          "sha256": "070b3252a161bf71d812a2c1d533789d553a2b93399717807f6c6985dfbe7a0c"
+        }
+      },
+      "projected_points": {
+        "S": {
+          "pelvis": [
+            192.0,
+            368.6759338378906
+          ],
+          "chest": [
+            192.0,
+            362.7447204589844
+          ],
+          "neck": [
+            192.0,
+            360.9114074707031
+          ],
+          "head": [
+            192.0,
+            345.07411193847656
+          ],
+          "left.hip": [
+            220.67200469970703,
+            368.6759338378906
+          ],
+          "left.knee": [
+            224.2163543701172,
+            413.60860443115234
+          ],
+          "left.ankle": [
+            228.86400604248047,
+            442.4449920654297
+          ],
+          "left.toe": [
+            228.86400604248047,
+            467.27226638793945
+          ],
+          "left.shoulder": [
+            237.0560073852539,
+            362.7447204589844
+          ],
+          "left.elbow": [
+            241.85602569580078,
+            338.0135498046875
+          ],
+          "left.wrist": [
+            252.71138763427734,
+            374.81602478027344
+          ],
+          "left.palm": [
+            255.52574157714844,
+            384.35740661621094
+          ],
+          "left.grip": [
+            257.5359878540039,
+            391.17269134521484
+          ],
+          "right.hip": [
+            163.32799530029297,
+            368.6759338378906
+          ],
+          "right.knee": [
+            159.7836456298828,
+            413.60860443115234
+          ],
+          "right.ankle": [
+            155.13599395751953,
+            442.4449920654297
+          ],
+          "right.toe": [
+            155.13599395751953,
+            467.27226638793945
+          ],
+          "right.shoulder": [
+            146.9440040588379,
+            362.7447204589844
+          ],
+          "right.elbow": [
+            151.5641098022461,
+            421.73104095458984
+          ],
+          "right.wrist": [
+            179.55818939208984,
+            468.7223129272461
+          ],
+          "right.palm": [
+            186.81591796875,
+            480.90522384643555
+          ],
+          "right.grip": [
+            192.0,
+            489.6072998046875
+          ]
+        },
+        "SE": {
+          "pelvis": [
+            164.3964500427246,
+            373.0105743408203
+          ],
+          "chest": [
+            236.81490325927734,
+            355.7607421875
+          ],
+          "neck": [
+            259.19879150390625,
+            350.428955078125
+          ],
+          "head": [
+            287.0218505859375,
+            330.2405242919922
+          ],
+          "left.hip": [
+            184.6051368713379,
+            365.4060974121094
+          ],
+          "left.knee": [
+            247.22660064697266,
+            400.0111541748047
+          ],
+          "left.ankle": [
+            207.81285095214844,
+            434.29176330566406
+          ],
+          "left.toe": [
+            236.86919403076172,
+            454.58281326293945
+          ],
+          "left.shoulder": [
+            268.5714111328125,
+            343.8108825683594
+          ],
+          "left.elbow": [
+            230.00777435302734,
+            324.3573913574219
+          ],
+          "left.wrist": [
+            221.23887634277344,
+            360.8538055419922
+          ],
+          "left.palm": [
+            218.96546173095703,
+            370.3158416748047
+          ],
+          "left.grip": [
+            217.34159088134766,
+            377.0744323730469
+          ],
+          "right.hip": [
+            144.18776321411133,
+            380.6150207519531
+          ],
+          "right.knee": [
+            201.8129425048828,
+            417.1001434326172
+          ],
+          "right.ankle": [
+            155.84765625,
+            453.8460807800293
+          ],
+          "right.toe": [
+            184.90398788452148,
+            474.13713455200195
+          ],
+          "right.shoulder": [
+            205.0583953857422,
+            367.7106018066406
+          ],
+          "right.elbow": [
+            220.57967376708984,
+            423.5658950805664
+          ],
+          "right.wrist": [
+            258.1241226196289,
+            460.357421875
+          ],
+          "right.palm": [
+            267.85787200927734,
+            469.8959732055664
+          ],
+          "right.grip": [
+            274.8105239868164,
+            476.7092056274414
+          ]
+        },
+        "E": {
+          "pelvis": [
+            153.08805084228516,
+            383.38873291015625
+          ],
+          "chest": [
+            255.17351531982422,
+            339.0444793701172
+          ],
+          "neck": [
+            286.72721099853516,
+            325.3380584716797
+          ],
+          "head": [
+            325.9482879638672,
+            294.73388671875
+          ],
+          "left.hip": [
+            152.95772552490234,
+            372.69874572753906
+          ],
+          "left.knee": [
+            237.6951141357422,
+            384.45042419433594
+          ],
+          "left.ankle": [
+            177.4962272644043,
+            434.2140121459961
+          ],
+          "left.toe": [
+            218.4557876586914,
+            443.64625549316406
+          ],
+          "left.shoulder": [
+            254.96871185302734,
+            322.2459259033203
+          ],
+          "left.elbow": [
+            195.81612396240234,
+            317.9570617675781
+          ],
+          "left.wrist": [
+            172.6201286315918,
+            359.444580078125
+          ],
+          "left.palm": [
+            166.60634994506836,
+            370.2005920410156
+          ],
+          "left.grip": [
+            162.31079864501953,
+            377.8834533691406
+          ],
+          "right.hip": [
+            153.21837615966797,
+            394.07872009277344
+          ],
+          "right.knee": [
+            237.9879913330078,
+            408.47332763671875
+          ],
+          "right.ankle": [
+            177.83135604858398,
+            461.70256423950195
+          ],
+          "right.toe": [
+            218.7909164428711,
+            471.1347885131836
+          ],
+          "right.shoulder": [
+            255.3783187866211,
+            355.84303283691406
+          ],
+          "right.elbow": [
+            272.6466751098633,
+            406.6393585205078
+          ],
+          "right.wrist": [
+            297.63050079345703,
+            433.775390625
+          ],
+          "right.palm": [
+            304.1078109741211,
+            440.81065368652344
+          ],
+          "right.grip": [
+            308.7344284057617,
+            445.8358383178711
+          ]
+        },
+        "NE": {
+          "pelvis": [
+            164.57273483276367,
+            393.64166259765625
+          ],
+          "chest": [
+            236.52713012695312,
+            322.525146484375
+          ],
+          "neck": [
+            258.767578125,
+            300.54364013671875
+          ],
+          "head": [
+            286.41233825683594,
+            259.6475830078125
+          ],
+          "left.hip": [
+            144.23371124267578,
+            386.1276397705078
+          ],
+          "left.knee": [
+            201.45751190185547,
+            376.0671691894531
+          ],
+          "left.ankle": [
+            155.74465942382812,
+            442.13865661621094
+          ],
+          "left.toe": [
+            184.61479568481445,
+            440.84120178222656
+          ],
+          "left.shoulder": [
+            204.5658187866211,
+            310.71739196777344
+          ],
+          "left.elbow": [
+            159.48280334472656,
+            322.45497131347656
+          ],
+          "left.wrist": [
+            135.46755981445312,
+            371.23094177246094
+          ],
+          "left.palm": [
+            129.24139022827148,
+            383.8765563964844
+          ],
+          "left.grip": [
+            124.79412460327148,
+            392.9091567993164
+          ],
+          "right.hip": [
+            184.91175842285156,
+            401.1556854248047
+          ],
+          "right.knee": [
+            247.16407012939453,
+            392.95294189453125
+          ],
+          "right.ankle": [
+            208.04500579833984,
+            461.46044921875
+          ],
+          "right.toe": [
+            236.91515350341797,
+            460.1629753112793
+          ],
+          "right.shoulder": [
+            268.48846435546875,
+            334.3328857421875
+          ],
+          "right.elbow": [
+            277.3974151611328,
+            381.13343811035156
+          ],
+          "right.wrist": [
+            275.2387161254883,
+            404.80641174316406
+          ],
+          "right.palm": [
+            274.6790542602539,
+            410.94383239746094
+          ],
+          "right.grip": [
+            274.27928924560547,
+            415.3277130126953
+          ]
+        },
+        "N": {
+          "pelvis": [
+            192.00025177001953,
+            397.8538360595703
+          ],
+          "chest": [
+            192.00027465820312,
+            315.7409362792969
+          ],
+          "neck": [
+            192.00027465820312,
+            290.3605499267578
+          ],
+          "head": [
+            192.00027465820312,
+            245.23724365234375
+          ],
+          "left.hip": [
+            163.3282470703125,
+            397.8538360595703
+          ],
+          "left.knee": [
+            159.78390884399414,
+            379.60191345214844
+          ],
+          "left.ankle": [
+            155.13624572753906,
+            453.37822341918945
+          ],
+          "left.toe": [
+            155.13625717163086,
+            447.67366790771484
+          ],
+          "left.shoulder": [
+            146.94426727294922,
+            315.7409210205078
+          ],
+          "left.elbow": [
+            142.14422607421875,
+            335.1007080078125
+          ],
+          "left.wrist": [
+            131.2888641357422,
+            389.22129821777344
+          ],
+          "left.palm": [
+            128.4745101928711,
+            403.25257873535156
+          ],
+          "left.grip": [
+            126.46425247192383,
+            413.27490234375
+          ],
+          "right.hip": [
+            220.67225646972656,
+            397.8538360595703
+          ],
+          "right.knee": [
+            224.21660614013672,
+            379.60191345214844
+          ],
+          "right.ankle": [
+            228.8642578125,
+            453.37823486328125
+          ],
+          "right.toe": [
+            228.8642578125,
+            447.6736831665039
+          ],
+          "right.shoulder": [
+            237.05628204345703,
+            315.7409362792969
+          ],
+          "right.elbow": [
+            232.43616485595703,
+            361.90086364746094
+          ],
+          "right.wrist": [
+            204.44208526611328,
+            390.2141342163086
+          ],
+          "right.palm": [
+            197.18435668945312,
+            397.5546112060547
+          ],
+          "right.grip": [
+            192.00027465820312,
+            402.7978057861328
+          ]
+        },
+        "NW": {
+          "pelvis": [
+            219.42725372314453,
+            393.64166259765625
+          ],
+          "chest": [
+            147.47285842895508,
+            322.525146484375
+          ],
+          "neck": [
+            125.2324104309082,
+            300.54364013671875
+          ],
+          "head": [
+            97.58766174316406,
+            259.6475830078125
+          ],
+          "left.hip": [
+            199.08824157714844,
+            401.1556854248047
+          ],
+          "left.knee": [
+            136.83592987060547,
+            392.95294189453125
+          ],
+          "left.ankle": [
+            175.95499420166016,
+            461.46044921875
+          ],
+          "left.toe": [
+            147.08484649658203,
+            460.1629753112793
+          ],
+          "left.shoulder": [
+            115.51154708862305,
+            334.3328857421875
+          ],
+          "left.elbow": [
+            153.78457260131836,
+            348.5863494873047
+          ],
+          "left.wrist": [
+            162.39889526367188,
+            403.05201721191406
+          ],
+          "left.palm": [
+            164.63224411010742,
+            417.17274475097656
+          ],
+          "left.grip": [
+            166.22748184204102,
+            427.25897216796875
+          ],
+          "right.hip": [
+            239.76628875732422,
+            386.1276397705078
+          ],
+          "right.knee": [
+            182.54247665405273,
+            376.0671691894531
+          ],
+          "right.ankle": [
+            228.25534057617188,
+            442.13865661621094
+          ],
+          "right.toe": [
+            199.38519287109375,
+            440.84120178222656
+          ],
+          "right.shoulder": [
+            179.4341812133789,
+            310.71739196777344
+          ],
+          "right.elbow": [
+            163.97050094604492,
+            359.9394989013672
+          ],
+          "right.wrist": [
+            126.41294860839844,
+            398.28519439697266
+          ],
+          "right.palm": [
+            116.67581176757812,
+            408.22666931152344
+          ],
+          "right.grip": [
+            109.72071075439453,
+            415.3277130126953
+          ]
+        },
+        "W": {
+          "pelvis": [
+            230.91194915771484,
+            383.38873291015625
+          ],
+          "chest": [
+            128.82647323608398,
+            339.0444793701172
+          ],
+          "neck": [
+            97.27278900146484,
+            325.3380584716797
+          ],
+          "head": [
+            58.051706314086914,
+            294.73388671875
+          ],
+          "left.hip": [
+            230.78162384033203,
+            394.07872009277344
+          ],
+          "left.knee": [
+            146.01202011108398,
+            408.47332763671875
+          ],
+          "left.ankle": [
+            206.1686553955078,
+            461.70256423950195
+          ],
+          "left.toe": [
+            165.2090721130371,
+            471.1347885131836
+          ],
+          "left.shoulder": [
+            128.6216812133789,
+            355.84303283691406
+          ],
+          "left.elbow": [
+            187.73064422607422,
+            355.13343811035156
+          ],
+          "left.wrist": [
+            210.82793426513672,
+            404.7154998779297
+          ],
+          "left.palm": [
+            216.81612396240234,
+            417.5701141357422
+          ],
+          "left.grip": [
+            221.09342193603516,
+            426.7519760131836
+          ],
+          "right.hip": [
+            231.04227447509766,
+            372.69874572753906
+          ],
+          "right.knee": [
+            146.3048973083496,
+            384.45042419433594
+          ],
+          "right.ankle": [
+            206.5037841796875,
+            434.2140121459961
+          ],
+          "right.toe": [
+            165.5442008972168,
+            443.64625549316406
+          ],
+          "right.shoulder": [
+            129.03127670288086,
+            322.2459259033203
+          ],
+          "right.elbow": [
+            111.72092056274414,
+            376.4873352050781
+          ],
+          "right.wrist": [
+            86.48259544372559,
+            424.4978485107422
+          ],
+          "right.palm": [
+            79.93932151794434,
+            436.9450225830078
+          ],
+          "right.grip": [
+            75.26556587219238,
+            445.8358383178711
+          ]
+        },
+        "SW": {
+          "pelvis": [
+            219.6035614013672,
+            373.0105743408203
+          ],
+          "chest": [
+            147.18509674072266,
+            355.7607421875
+          ],
+          "neck": [
+            124.80120849609375,
+            350.428955078125
+          ],
+          "head": [
+            96.9781608581543,
+            330.2405242919922
+          ],
+          "left.hip": [
+            239.81224822998047,
+            380.6150207519531
+          ],
+          "left.knee": [
+            182.1870460510254,
+            417.1001434326172
+          ],
+          "left.ankle": [
+            228.15234375,
+            453.8460807800293
+          ],
+          "left.toe": [
+            199.09600067138672,
+            474.13713455200195
+          ],
+          "left.shoulder": [
+            178.9416046142578,
+            367.7106018066406
+          ],
+          "left.elbow": [
+            224.2715835571289,
+            350.8032684326172
+          ],
+          "left.wrist": [
+            248.3426971435547,
+            393.057861328125
+          ],
+          "left.palm": [
+            254.58336639404297,
+            404.0127410888672
+          ],
+          "left.grip": [
+            259.04097747802734,
+            411.8376693725586
+          ],
+          "right.hip": [
+            199.3948745727539,
+            365.4060974121094
+          ],
+          "right.knee": [
+            136.77339935302734,
+            400.0111541748047
+          ],
+          "right.ankle": [
+            176.18714904785156,
+            434.29176330566406
+          ],
+          "right.toe": [
+            147.13081741333008,
+            454.58281326293945
+          ],
+          "right.shoulder": [
+            115.4285888671875,
+            343.8108825683594
+          ],
+          "right.elbow": [
+            106.42002868652344,
+            402.11688232421875
+          ],
+          "right.wrist": [
+            108.33733749389648,
+            453.75772857666016
+          ],
+          "right.palm": [
+            108.83442306518555,
+            467.1460952758789
+          ],
+          "right.grip": [
+            109.1894760131836,
+            476.7092056274414
+          ]
+        }
+      },
+      "ownership_images": {}
+    }
+  ],
+  "production_pass": false
+}

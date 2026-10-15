@@ -1,0 +1,706 @@
+{
+  "checks": {
+    "relaxed_arm_abduction": true,
+    "body_relative_elbow_plane": true,
+    "limited_flexion": true,
+    "no_normal_flip": true,
+    "dense_between_bake_evaluations": true,
+    "current_enabled_skin": true,
+    "weights_valid": true,
+    "actual_neutral_bind": true,
+    "source_keys_exact": true,
+    "deformed_sections_preserved": true,
+    "longitudinal_rings_not_collapsed": true,
+    "subpixel_between_key_support": true,
+    "closed_current_arm_surface": true,
+    "fixed_bone_lengths": true,
+    "real_rejected_v44_arm_now_fails": true,
+    "saved_rigs_bound": true,
+    "scripts_contract_bound": true,
+    "all_eight_physical_views": true,
+    "actual_536_capture_bytes": true,
+    "isolated_pass_contains_only_arm_surface": true,
+    "isolated_arm_has_real_surface_all_keys": true,
+    "depth_surface_never_added_over_occluders": true,
+    "independent_world_projection": true,
+    "exact_prior_display_matrix": true,
+    "all_prior_frozen_leaves_unchanged": true,
+    "accepted_W_unchanged": true,
+    "before_isolation_bound": true,
+    "free_only": true
+  },
+  "bounded_arm_source_pass": true,
+  "before": {
+    "max_abduction_degrees": 42.84678638032608,
+    "max_plane_deviation_degrees": 89.01820985892518,
+    "min_flexion_degrees": 29.679281579812464,
+    "max_flexion_degrees": 66.52111412439986,
+    "max_normal_step_degrees": 1.4393645963368542,
+    "min_ring_area_ratio": 0.9999981392806646,
+    "max_ring_area_ratio": 1.0000020033687396,
+    "min_ring_spacing_ratio": 0.9730652696782186,
+    "max_foot_vertex_drift": 5.856269955215621e-05,
+    "max_bone_length_error": 1.009977758648084e-07,
+    "max_right_socket_error": 5.040216834787304e-05
+  },
+  "after": {
+    "max_abduction_degrees": 6.263514449357449,
+    "max_plane_deviation_degrees": 11.324418467949998,
+    "min_flexion_degrees": 29.679256304783678,
+    "max_flexion_degrees": 66.99518886006037,
+    "max_normal_step_degrees": 0.20723208471427967,
+    "min_ring_area_ratio": 0.9999985963483374,
+    "max_ring_area_ratio": 1.0000016367848072,
+    "min_ring_spacing_ratio": 0.972654523656586,
+    "max_foot_vertex_drift": 5.856269955215621e-05,
+    "max_bone_length_error": 1.7325559603653673e-07,
+    "max_right_socket_error": 5.040216834787304e-05
+  },
+  "projection_max_px": 0.0003797680902837547,
+  "isolated_nonarm_pixel_count": 0,
+  "arm_visibility": [
+    {
+      "index": 0,
+      "view": "S",
+      "counts": {
+        "depth_tested": 2773,
+        "isolated": 3061
+      },
+      "visible_fraction": 0.9059131002940216,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 0,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 1163,
+        "isolated": 3142
+      },
+      "visible_fraction": 0.37014640356460854,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 0,
+      "view": "E",
+      "counts": {
+        "depth_tested": 8,
+        "isolated": 3192
+      },
+      "visible_fraction": 0.002506265664160401,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 0,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 164,
+        "isolated": 3124
+      },
+      "visible_fraction": 0.052496798975672214,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 0,
+      "view": "N",
+      "counts": {
+        "depth_tested": 2084,
+        "isolated": 3160
+      },
+      "visible_fraction": 0.6594936708860759,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 0,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3351,
+        "isolated": 3380
+      },
+      "visible_fraction": 0.9914201183431952,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 0,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3426,
+        "isolated": 3428
+      },
+      "visible_fraction": 0.9994165694282381,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 0,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3207,
+        "isolated": 3243
+      },
+      "visible_fraction": 0.9888991674375578,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 1,
+      "view": "S",
+      "counts": {
+        "depth_tested": 2590,
+        "isolated": 2924
+      },
+      "visible_fraction": 0.8857729138166894,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 1,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 971,
+        "isolated": 3045
+      },
+      "visible_fraction": 0.3188834154351396,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 1,
+      "view": "E",
+      "counts": {
+        "depth_tested": 248,
+        "isolated": 3194
+      },
+      "visible_fraction": 0.07764558547276143,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 1,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 51,
+        "isolated": 3142
+      },
+      "visible_fraction": 0.016231699554423933,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 1,
+      "view": "N",
+      "counts": {
+        "depth_tested": 1706,
+        "isolated": 3135
+      },
+      "visible_fraction": 0.5441786283891547,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 1,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3332,
+        "isolated": 3350
+      },
+      "visible_fraction": 0.9946268656716418,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 1,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3433,
+        "isolated": 3434
+      },
+      "visible_fraction": 0.9997087944088526,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 1,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3169,
+        "isolated": 3223
+      },
+      "visible_fraction": 0.9832454235184611,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 2,
+      "view": "S",
+      "counts": {
+        "depth_tested": 1726,
+        "isolated": 2171
+      },
+      "visible_fraction": 0.7950253339474896,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 2,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 78,
+        "isolated": 2864
+      },
+      "visible_fraction": 0.02723463687150838,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 2,
+      "view": "E",
+      "counts": {
+        "depth_tested": 550,
+        "isolated": 3220
+      },
+      "visible_fraction": 0.17080745341614906,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 2,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 0,
+        "isolated": 3198
+      },
+      "visible_fraction": 0.0,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 2,
+      "view": "N",
+      "counts": {
+        "depth_tested": 855,
+        "isolated": 2965
+      },
+      "visible_fraction": 0.28836424957841483,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 2,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3151,
+        "isolated": 3188
+      },
+      "visible_fraction": 0.9883939774153074,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 2,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3438,
+        "isolated": 3439
+      },
+      "visible_fraction": 0.9997092177958709,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 2,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3111,
+        "isolated": 3190
+      },
+      "visible_fraction": 0.9752351097178683,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 3,
+      "view": "S",
+      "counts": {
+        "depth_tested": 1178,
+        "isolated": 2057
+      },
+      "visible_fraction": 0.5726786582401555,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 3,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 124,
+        "isolated": 2845
+      },
+      "visible_fraction": 0.04358523725834798,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 3,
+      "view": "E",
+      "counts": {
+        "depth_tested": 473,
+        "isolated": 3226
+      },
+      "visible_fraction": 0.14662120272783633,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 3,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 90,
+        "isolated": 3204
+      },
+      "visible_fraction": 0.028089887640449437,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 3,
+      "view": "N",
+      "counts": {
+        "depth_tested": 1007,
+        "isolated": 2804
+      },
+      "visible_fraction": 0.3591298145506419,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 3,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3100,
+        "isolated": 3138
+      },
+      "visible_fraction": 0.9878903760356915,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 3,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3421,
+        "isolated": 3421
+      },
+      "visible_fraction": 1.0,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 3,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3137,
+        "isolated": 3213
+      },
+      "visible_fraction": 0.9763460939931529,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 4,
+      "view": "S",
+      "counts": {
+        "depth_tested": 1595,
+        "isolated": 2092
+      },
+      "visible_fraction": 0.7624282982791587,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 4,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 21,
+        "isolated": 2858
+      },
+      "visible_fraction": 0.00734779566130161,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 4,
+      "view": "E",
+      "counts": {
+        "depth_tested": 513,
+        "isolated": 3223
+      },
+      "visible_fraction": 0.1591684765746199,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 4,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 21,
+        "isolated": 3197
+      },
+      "visible_fraction": 0.0065686581169846735,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 4,
+      "view": "N",
+      "counts": {
+        "depth_tested": 903,
+        "isolated": 2925
+      },
+      "visible_fraction": 0.3087179487179487,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 4,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3156,
+        "isolated": 3194
+      },
+      "visible_fraction": 0.9881026925485284,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 4,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3432,
+        "isolated": 3432
+      },
+      "visible_fraction": 1.0,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 4,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3123,
+        "isolated": 3202
+      },
+      "visible_fraction": 0.9753279200499688,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 5,
+      "view": "S",
+      "counts": {
+        "depth_tested": 2309,
+        "isolated": 2699
+      },
+      "visible_fraction": 0.8555020377917747,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 5,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 680,
+        "isolated": 2947
+      },
+      "visible_fraction": 0.2307431286053614,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 5,
+      "view": "E",
+      "counts": {
+        "depth_tested": 580,
+        "isolated": 3201
+      },
+      "visible_fraction": 0.18119337706966573,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 5,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 0,
+        "isolated": 3170
+      },
+      "visible_fraction": 0.0,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 5,
+      "view": "N",
+      "counts": {
+        "depth_tested": 1228,
+        "isolated": 3091
+      },
+      "visible_fraction": 0.3972824328696215,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 5,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3273,
+        "isolated": 3290
+      },
+      "visible_fraction": 0.9948328267477203,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 5,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3444,
+        "isolated": 3445
+      },
+      "visible_fraction": 0.9997097242380262,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 5,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3124,
+        "isolated": 3195
+      },
+      "visible_fraction": 0.9777777777777777,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 6,
+      "view": "S",
+      "counts": {
+        "depth_tested": 2719,
+        "isolated": 3022
+      },
+      "visible_fraction": 0.899735274652548,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 6,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 1055,
+        "isolated": 3108
+      },
+      "visible_fraction": 0.33944658944658945,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 6,
+      "view": "E",
+      "counts": {
+        "depth_tested": 69,
+        "isolated": 3190
+      },
+      "visible_fraction": 0.021630094043887146,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 6,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 124,
+        "isolated": 3123
+      },
+      "visible_fraction": 0.03970541146333654,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 6,
+      "view": "N",
+      "counts": {
+        "depth_tested": 1960,
+        "isolated": 3159
+      },
+      "visible_fraction": 0.6204495093383983,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 6,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3345,
+        "isolated": 3368
+      },
+      "visible_fraction": 0.9931710213776722,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 6,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3426,
+        "isolated": 3431
+      },
+      "visible_fraction": 0.9985426989215972,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 6,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3178,
+        "isolated": 3226
+      },
+      "visible_fraction": 0.9851208927464352,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 7,
+      "view": "S",
+      "counts": {
+        "depth_tested": 2773,
+        "isolated": 3061
+      },
+      "visible_fraction": 0.9059131002940216,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 7,
+      "view": "SE",
+      "counts": {
+        "depth_tested": 1163,
+        "isolated": 3142
+      },
+      "visible_fraction": 0.37014640356460854,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 7,
+      "view": "E",
+      "counts": {
+        "depth_tested": 8,
+        "isolated": 3192
+      },
+      "visible_fraction": 0.002506265664160401,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 7,
+      "view": "NE",
+      "counts": {
+        "depth_tested": 164,
+        "isolated": 3124
+      },
+      "visible_fraction": 0.052496798975672214,
+      "observation": "IMAGE_ANATOMY_UNKNOWN_OCCLUDED"
+    },
+    {
+      "index": 7,
+      "view": "N",
+      "counts": {
+        "depth_tested": 2084,
+        "isolated": 3160
+      },
+      "visible_fraction": 0.6594936708860759,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 7,
+      "view": "NW",
+      "counts": {
+        "depth_tested": 3351,
+        "isolated": 3380
+      },
+      "visible_fraction": 0.9914201183431952,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 7,
+      "view": "W",
+      "counts": {
+        "depth_tested": 3426,
+        "isolated": 3428
+      },
+      "visible_fraction": 0.9994165694282381,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    },
+    {
+      "index": 7,
+      "view": "SW",
+      "counts": {
+        "depth_tested": 3207,
+        "isolated": 3243
+      },
+      "visible_fraction": 0.9888991674375578,
+      "observation": "PARTIAL_SOURCE_SURFACE_VISIBLE_NOT_IMAGE_ANATOMY_APPROVAL"
+    }
+  ],
+  "changed_frozen": [],
+  "scope": "Relaxed free LEFT arm pickup source+direct geometry captures. Numeric limits are authored action guards, not universal human anatomy. Orange visibility is actual known-mesh surface, not an arbitrary-image classifier. Full acting/artwork/collisions/user approval remain unproved.",
+  "production_pass": false
+}

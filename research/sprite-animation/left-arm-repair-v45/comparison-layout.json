@@ -1,0 +1,54 @@
+{
+  "crop_boxes": {
+    "S": [
+      205,
+      153,
+      310,
+      424
+    ],
+    "SE": [
+      166,
+      142,
+      306,
+      410
+    ],
+    "E": [
+      104,
+      140,
+      287,
+      410
+    ],
+    "NE": [
+      74,
+      148,
+      237,
+      425
+    ],
+    "N": [
+      74,
+      161,
+      179,
+      446
+    ],
+    "NW": [
+      78,
+      171,
+      217,
+      460
+    ],
+    "W": [
+      96,
+      174,
+      279,
+      459
+    ],
+    "SW": [
+      146,
+      166,
+      310,
+      444
+    ]
+  },
+  "rule": "One union-of-source-projections ROI per view shared unchanged across before/after and all phases. Uniform review reduction only; not image anatomy tracking, individual feature fit or sprite repair.",
+  "production_pass": false
+}
