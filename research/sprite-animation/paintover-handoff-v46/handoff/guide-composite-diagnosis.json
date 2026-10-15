@@ -1,0 +1,6 @@
+{
+  "issue": "Initial check wrongly expected raw decoded guide RGBA identity. Atlas preparation used source alpha_composite on transparent cells; hidden RGB at alpha0 was cleared.",
+  "diagnosis": "All128 guide cells match exact source-on-transparent alpha_composite, no visible displacement or pixel repaint. Raw painted frame crops retain exact RGBA identity.",
+  "fix": "Guide check now explicitly constructs that known composite and compares every RGBA pixel. It does not fit, threshold or ignore visible differences.",
+  "rejected_receipt": "artifact-qa-initial-hidden-rgb-FAIL.json"
+}
