@@ -1,0 +1,58 @@
+{
+  "native_jobs": [
+    {
+      "tool": "host image_gen.imagegen",
+      "prompt": "hit-prompt.txt",
+      "prompt_sha256": "89a3aca88ddbb33a89ca6dbded7bdb3ec8a2623fba7fc1fdde147ec2593b9a03",
+      "ordered_inputs": [
+        {
+          "path": "inputs/family-pickup-eight.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/external-hit-a.png",
+          "sha256": "cf68b15166881e33ee6819086da1fac19a671500cd16a771ed2fa646db17a6b1"
+        },
+        {
+          "path": "inputs/external-ro-hit.png",
+          "sha256": "23f747883d70626f47f6f6518027b46423dfb88a18cbdbe9f7c0536fdea65f0b"
+        }
+      ],
+      "raw_output": "raw/hit-eight-attempt1.png",
+      "raw_sha256": "b9d6339831880a3d0ef797501ec60238249582a08ab6a4effee8c06bc9f5e576",
+      "transparent_background_requested": true,
+      "selected": false,
+      "status": "UNSELECTED_NEW_ART_IDENTITY_CONTACT_REVIEW",
+      "reason": "Attempt1 shoe-X drift across source row; attempt2 still redraws family/shoe shapes. Neither grants production or new-motion art acceptance."
+    },
+    {
+      "tool": "host image_gen.imagegen",
+      "prompt": "hit-attempt2-prompt.txt",
+      "prompt_sha256": "c8e41c5d9ede5101d6b57ac0190e0ac5d7a12c9764fa333d672ce6b4f7a2a2d8",
+      "ordered_inputs": [
+        {
+          "path": "inputs/neutral-registration-guide.png",
+          "sha256": "48b61c11709227c2fcf48263aa765d89fd5b0d0e1d5213ce1fb32700f8b91ed9"
+        },
+        {
+          "path": "raw/hit-eight-attempt1.png",
+          "sha256": "b9d6339831880a3d0ef797501ec60238249582a08ab6a4effee8c06bc9f5e576"
+        },
+        {
+          "path": "inputs/external-hit-a.png",
+          "sha256": "cf68b15166881e33ee6819086da1fac19a671500cd16a771ed2fa646db17a6b1"
+        }
+      ],
+      "raw_output": "raw/hit-eight-attempt2.png",
+      "raw_sha256": "f41ac26d1e15cf54ef1a3a1b0e0987c21a26f4f068235542378190b150a45b44",
+      "transparent_background_requested": true,
+      "selected": false,
+      "status": "UNSELECTED_NEW_ART_IDENTITY_CONTACT_REVIEW",
+      "reason": "Attempt1 shoe-X drift across source row; attempt2 still redraws family/shoe shapes. Neither grants production or new-motion art acceptance."
+    }
+  ],
+  "host_billing_verified": false,
+  "external_paid_provider_calls": 0,
+  "selected_art_source": "Unmodified v47 neutral texture, exported by build-mesh-actions.py; native jobs below unselected",
+  "guide_scope": "neutral-registration-guide.png repeats one exact neutral8times for construction, not an eight-pose animation or external motion reference"
+}

@@ -1,0 +1,29 @@
+"""Build explicit shared authoring-row origins, not per-frame body/foot fitting."""
+from pathlib import Path
+import json,hashlib
+P=Path(__file__).resolve().parent
+(P/'inputs/sprite-clip-clock.cjs').write_bytes((P.parents[2]/'tools/sprite-clip-clock.cjs').read_bytes())
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+mapping=[('old',0),('new',0),('old',1),('new',1),('old',2),('new',2),('old',3),('new',3),('old',4),('new',4),('old',5),('new',5),('old',6),('new',6),('new',7),('old',7)]
+data={'clock_ms':[90,100,90,90,90,100,90,90,90,100,90,90,60,60,70,600],
+ 'images':{'old':'inputs/parent-eight.png','new':'inputs/midpoints-source.png'},
+ 'origins':{'old_top':[0,0],'old_bottom':[0,0],'new_top':[0,-3],'new_bottom':[0,28]},
+ 'mapping':mapping,'source_sha256':{k:sha(P/f) for k,f in {'old':'inputs/parent-eight.png','new':'inputs/midpoints-source.png'}.items()},
+ 'calibration':{'new_top':{'raw_cell':0,'visible_surface':'both planted boot bottom contours','observed_y':[488,488],'target_y':[485,486]},'new_bottom':{'raw_cell':5,'visible_surface':'both planted boot bottom contours','observed_y':[457,457],'target_y':[485,486]}},
+ 'held_out_new_cells':[1,2,3,4,6,7],
+ 'operation':'Two integer authoring-row origin corrections; scale1, no per-key fit, no foot patch, source PNG bytes unchanged; browser premultiplied-alpha rounding audited separately',
+ 'production_pass':False,'pending':'Independent rendered surface/spacing/visible contact and external reference review'}
+(P/'layout-contract.json').write_text(json.dumps(data,indent=2)+'\n')
+html='''<!doctype html><html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>16-frame pickup contact repair</title><style>body{background:#20252d;color:#eee;font:16px system-ui;margin:24px}canvas{background:#292b30;max-width:100%;height:auto}button,select,input{font:inherit;margin:6px}p{max-width:1000px;line-height:1.5}.warn{color:#ffc96a}</style><h1>ท่าก้ม 16 เฟรม · แก้ตำแหน่งวางภาพ</h1><p class="warn">ตรวจตำแหน่งพื้นเท้า · 16 เฟรม / 1.9 วินาที</p><p>ซ้าย: ชุด16เดิม · ขวา: แก้ตำแหน่งร่วมต่อแถว และใช้ท่าคั่นชุดเดียวกันทั้ง8ภาพ · คีย์หลัก8ภาพเดิม</p><canvas id="view" width="768" height="512"></canvas><p><button id="play">เล่น</button><button id="prev">ก่อนหน้า</button><button id="next">ถัดไป</button><input id="frame" type="range" min="0" max="15" value="0"><select id="speed"><option value="1">1×</option><option value="0.25">0.25×</option></select><label><input id="loop" type="checkbox">วนดู</label><label><input id="grid" type="checkbox" checked>กริด32px</label></p><p id="status"></p><script src="inputs/sprite-clip-clock.cjs"></script><script>
+const DATA=__DATA__,images={},$=s=>document.getElementById(s),ctx=$('view').getContext('2d');let k=0,ready=false,playing=false,last=0,elapsed=0;const starts=DATA.clock_ms.map((_,i)=>DATA.clock_ms.slice(0,i).reduce((s,x)=>s+x,0));
+function renderSingle(context,index,corrected=true){let[bank,i]=DATA.mapping[index];const row=Math.floor(i/4),m=DATA.origins[bank+'_'+(row?'bottom':'top')];context.setTransform(1,0,0,1,0,0);context.clearRect(0,0,384,512);if(corrected)context.drawImage(images[bank],i%4*384,row*512,384,512,m[0],m[1],384,512);else context.drawImage(images.before[index],0,0)}
+const off=document.createElement('canvas');off.width=384;off.height=512;const ox=off.getContext('2d');
+function draw(){if(!ready)return;ctx.clearRect(0,0,768,512);renderSingle(ox,k,false);ctx.drawImage(off,0,0);renderSingle(ox,k,true);ctx.drawImage(off,384,0);if($('grid').checked){ctx.strokeStyle='#ffffff2a';ctx.beginPath();for(let x=0;x<=768;x+=32){ctx.moveTo(x,0);ctx.lineTo(x,512)}for(let y=0;y<=512;y+=32){ctx.moveTo(0,y);ctx.lineTo(768,y)}ctx.stroke()}$('frame').value=k;$('status').textContent=`เฟรม${k+1}/16 · ${DATA.clock_ms[k]}ms · ${DATA.mapping[k][0]==='old'?'คีย์เดิม':'ท่าคั่น'}`;$('play').textContent=playing?'หยุด':'เล่น'}
+const clock=new SpriteClipClock({durations:DATA.clock_ms,loop:false});function stop(){clock.seek(starts[k]);playing=false;elapsed=0;draw()}
+$('frame').oninput=()=>{k=+$('frame').value;stop()};$('next').onclick=()=>{k=Math.min(15,k+1);stop()};$('prev').onclick=()=>{k=Math.max(0,k-1);stop()};$('grid').onchange=draw;$('play').onclick=()=>{if(playing){clock.cancel();playing=false}else{clock.clip.loop=$('loop').checked;clock.start();k=0;playing=true}last=performance.now();draw()};
+function tick(t){if(ready&&playing){const sample=clock.advance((t-last)*+$('speed').value);k=sample.frame;playing=sample.running;draw()}last=t;requestAnimationFrame(tick)}
+function load(path){return new Promise((resolve,reject)=>{let im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=path})}
+Promise.all([Promise.all(Object.entries(DATA.images).map(async([n,path])=>{images[n]=await load(path)})),Promise.all(Array.from({length:16},(_,i)=>load('../pickup-sixteen-v48/frames16/'+String(i).padStart(2,'0')+'.png'))).then(a=>{images.before=a})]).then(()=>{ready=true;draw();window.READY=true;requestAnimationFrame(tick)});
+window.study={data:DATA,clock,frame(i,corrected=true){renderSingle(ox,i,corrected);return off.toDataURL('image/png')},select(i){k=i;stop()},get ready(){return ready}};
+</script></html>'''
+(P/'review.html').write_text(html.replace('__DATA__',json.dumps(data,separators=(',',':'))))

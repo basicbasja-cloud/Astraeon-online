@@ -1,0 +1,5 @@
+{
+  "test_failure": "Expected at least12 unique idle rasters out of16source samples",
+  "actual": 8,
+  "diagnosis": "Source idle motion is symmetric around midpoint; corresponding rising/falling states share rasters. Sixteen samples are not sixteen independently drawn poses. Corrected check records actual unique count and rejects static output; no image changes or duplicated new drawings claimed."
+}

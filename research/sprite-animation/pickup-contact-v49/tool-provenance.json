@@ -1,0 +1,15 @@
+{
+  "tools": [
+    {
+      "root_tool": "tools/sprite-contact-review.py",
+      "snapshot": "inputs/sprite-contact-review.py",
+      "sha256": "ecfae69077f393fe36990b7d5bde2d027cc3b26299d23af8cfb3182be44c38b7"
+    },
+    {
+      "root_tool": "tools/sprite-clip-clock.cjs",
+      "snapshot": "inputs/sprite-clip-clock.cjs",
+      "sha256": "5146c15fb240f434923426c551f38462d86ca63e35a8af948b83f70a3d0e6921"
+    }
+  ],
+  "frozen_use": "Use local snapshots for historical reproduction, verify.py for read-only integrity. Generic root tools can evolve in a fresh case; never overwrite frozen case snapshots/QA."
+}

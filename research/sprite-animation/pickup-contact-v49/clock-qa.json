@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "checks": {
+    "large_delta_emits_every_event_once": true,
+    "end_is_stable": true,
+    "small_steps_match_large_delta": true,
+    "cancel_does_not_attach_or_store": true,
+    "review_seek_has_no_side_effect": true,
+    "loop_events_once_per_iteration": true,
+    "invalid_durations_events_delta_rejected": true,
+    "all16_key_boundaries": true,
+    "callback_cancel_stops_at_event_time": true,
+    "subnanosecond_valid_duration_end": true
+  },
+  "scope": "Controller clocks/events only, no art acceptance or actual inventory mutation"
+}

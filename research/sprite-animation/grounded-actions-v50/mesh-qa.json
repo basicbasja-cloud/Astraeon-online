@@ -1,0 +1,36 @@
+{
+  "pass": true,
+  "checks": {
+    "idle.relaxed_distal_pixels_identical_to_actual_rest_render": true,
+    "idle.relaxed_sixteen_samples_with_measured_unique_8": true,
+    "idle.relaxed_dense_no_fold_and_rigid_head_fixed_support": true,
+    "idle.relaxed_encoded_gif_clock_matches_player_total": true,
+    "idle.relaxed_actual_controls_all_frames_and_both_rates": true,
+    "idle.relaxed_loop_pause": true,
+    "hit.light_distal_pixels_identical_to_actual_rest_render": true,
+    "hit.light_sixteen_samples_with_measured_unique_15": true,
+    "hit.light_dense_no_fold_and_rigid_head_fixed_support": true,
+    "hit.light_encoded_gif_clock_matches_player_total": true,
+    "hit.light_actual_controls_all_frames_and_both_rates": true,
+    "hit.light_loop_pause": true,
+    "no_browser_errors": true
+  },
+  "dense_geometry": {
+    "idle.relaxed": {
+      "samples": 241,
+      "min_triangle_area_ratio": 0.9108102508236238,
+      "max_triangle_area_ratio": 1.0391733917490784,
+      "max_fixed_distal_vertex_error_px": 0,
+      "max_head_rigid_translation_error_px": 1.3877789462175583e-17
+    },
+    "hit.light": {
+      "samples": 241,
+      "min_triangle_area_ratio": 0.7466587756335651,
+      "max_triangle_area_ratio": 1.2588084215200372,
+      "max_fixed_distal_vertex_error_px": 0,
+      "max_head_rigid_translation_error_px": 2.5915322539799545e-14
+    }
+  },
+  "errors": [],
+  "scope": "Two small-motion N texture clips. No out-of-plane, hidden anatomy, seated pose, head swaps or universal production approval."
+}
