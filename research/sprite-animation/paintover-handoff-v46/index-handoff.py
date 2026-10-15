@@ -5,7 +5,7 @@ import ast, csv, hashlib, json, platform, re, subprocess
 P=Path(__file__).resolve().parent; ROOT=P.parents[2]
 def write_csv(path,rows,keys):
     with path.open('w',newline='') as f:
-        w=csv.DictWriter(f,fieldnames=keys);w.writeheader();w.writerows(rows)
+        w=csv.DictWriter(f,fieldnames=keys,lineterminator='\n');w.writeheader();w.writerows(rows)
 def main():
     out=P/'handoff';out.mkdir(exist_ok=True)
     cases=[]
@@ -19,7 +19,7 @@ def main():
     lines=['# Every retained case\n','All paths below are relative to the repository root. Historical scripts may overwrite their own evidence: inspect; do not rerun in place. The current status decisions are in 01-STATUS-AND-DECISIONS.md.\n']
     for c in cases:
         lines+=['## '+c['case']+'\n',c['title']+'\n','Entry: `'+str(c['entry'] or 'research/sprite-animation/'+c['case'])+'`\n','Documents: '+', '.join('`'+d+'`' for d in c['docs'])+'\n']
-    (out/'ALL-CASES.md').write_text('\n'.join(lines))
+    (out/'ALL-CASES.md').write_text('\n'.join(s.rstrip() for s in '\n'.join(lines).splitlines())+'\n')
     rows=[]
     paths=list((ROOT/'skills/modular-eight-direction-sprites').rglob('*.py'))+list(P.glob('*.py'))
     for p in sorted(paths):
@@ -28,7 +28,7 @@ def main():
             for n in ast.walk(tree):
                 if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='add_argument':
                     flags.extend(a.value for a in n.args if isinstance(a,ast.Constant) and isinstance(a.value,str))
-            rows.append({'path':str(p.relative_to(ROOT)),'purpose':doc[:1200],'declared_flags':' '.join(flags),'scope':'Historical diagnostic; inspect entry and strict gates; not a universal anatomy detector'})
+            rows.append({'path':str(p.relative_to(ROOT)),'purpose':re.sub(r'[ \t]+\n','\n',doc[:1200]).rstrip(),'declared_flags':' '.join(flags),'scope':'Historical diagnostic; inspect entry and strict gates; not a universal anatomy detector'})
         except (SyntaxError,UnicodeError): pass
     write_csv(out/'TOOLS.csv',rows,['path','purpose','declared_flags','scope'])
     tracked=set(subprocess.check_output(['git','ls-files'],cwd=ROOT,text=True).splitlines())

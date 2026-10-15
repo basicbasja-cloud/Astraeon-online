@@ -176,7 +176,7 @@ No case README; see parent documentation
 
 Entry: `research/sprite-animation/packages`
 
-Documents: 
+Documents:
 
 ## paintover-handoff-v46
 
@@ -328,7 +328,7 @@ No case README; see parent documentation
 
 Entry: `research/sprite-animation/silver-scarf`
 
-Documents: 
+Documents:
 
 ## source-motion-v7
 
