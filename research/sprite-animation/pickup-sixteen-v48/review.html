@@ -1,0 +1,19 @@
+<!doctype html><html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>v48 · เปรียบเทียบ 8/16 เฟรม</title>
+<style>body{margin:24px;background:#202228;color:#eee;font:16px system-ui}main{max-width:1200px;margin:auto}button,select,label{font:inherit;margin:6px;padding:6px}canvas{background:#292b30;width:100%;height:auto}p{line-height:1.6}.warn{color:#ffc96a}header{display:flex;justify-content:space-around}a{color:#a8d5ff}</style>
+<main><h1>ท่าเก็บของ · 8 เทียบ 16 เฟรม</h1><p class="warn">16 เฟรมทดลองยังไม่ผ่าน: ท่าคั่นทำให้เท้า/รูปทรงกระโดด ภาพเดิม 8 ภาพคงเดิมทุกพิกเซล</p>
+<p>ทั้งคู่ 1.9 วินาที และเริ่มคีย์เดิมเวลาเดียวกัน เพิ่มภาพวาดใหม่ 8 ภาพตามเวลาของ rig จริง<br>ซ้ายเป็น source เท่านั้น ไม่ใช่การรับรองกายวิภาคของภาพวาดหรือข้อต่อที่ผ้าคลุมบัง</p>
+<button id="play">เล่น</button><button id="prev">ก่อนหน้า</button><button id="next">ถัดไป</button><label>เวลา <input id="time" type="range" min="0" max="1899" value="0"></label><select id="speed"><option value="1">1×</option><option value="0.25">0.25×</option></select><label><input id="loop" type="checkbox">วนดู</label><label><input id="grid" type="checkbox" checked>กริด 32px</label><p id="status"></p>
+<header><span>source · 16</span><span>ภาพเดิม · 8</span><span>ภาพทดลอง · 16</span></header><canvas id="c" width="1152" height="512"></canvas>
+<p>ไม่ได้ขยับ/ย่อ/โคลนรองเท้าหรือแก้ตำแหน่งแถวในภาพสำเร็จ ช่องที่เลือกตัดตามพิกัดคงที่จากไฟล์ดิบ<br>ช่วงสัมผัสที่ถูกบัง สัดส่วน หัว/ลำตัว การสลับหัว และการใช้งานในเกมยังไม่ผ่าน จึงยังไม่ต่อท่าอื่น</p>
+<p><a href="previews/source-8-16-comparison.gif">GIF เปรียบเทียบ</a> · <a href="review.json">ผลตรวจภาพ</a> · <a href="manual-review.json">คำตัดสิน</a></p></main>
+<script>
+const $=s=>document.getElementById(s),m8=[190,180,190,180,190,180,190,600],m16=[90,100,90,90,90,100,90,90,90,100,90,90,60,60,70,600];let time=0,last=0,playing=false,ready=false,images={};
+const starts=a=>a.map((_,i)=>a.slice(0,i).reduce((s,x)=>s+x,0)),s8=starts(m8),s16=starts(m16),sample=(s,t)=>s.reduce((n,v,i)=>v<=t?i:n,0),ctx=$('c').getContext('2d');
+function draw(){if(!ready)return;let i=sample(s16,time),j=sample(s8,time);ctx.clearRect(0,0,1152,512);[images.source16[i],images.frames8[j],images.frames16[i]].forEach((im,k)=>ctx.drawImage(im,k*384,0));if($('grid').checked){ctx.strokeStyle='#ffffff26';ctx.beginPath();for(let x=0;x<=1152;x+=32){ctx.moveTo(x,0);ctx.lineTo(x,512)}for(let y=0;y<=512;y+=32){ctx.moveTo(0,y);ctx.lineTo(1152,y)}ctx.stroke()}$('status').textContent=`${Math.floor(time)}/1900 ms · เดิม ${j+1}/8 · ทดลอง ${i+1}/16`;$('time').value=time;$('play').textContent=playing?'หยุด':'เล่น'}
+function stop(){playing=false;draw()}
+$('play').onclick=()=>{if(time>=1899)time=0;playing=!playing;last=performance.now();draw()};$('time').oninput=()=>{time=+$('time').value;stop()};
+$('next').onclick=()=>{let i=sample(s16,time);time=s16[Math.min(15,i+1)];stop()};$('prev').onclick=()=>{let i=sample(s16,time);time=s16[Math.max(0,i-1)];stop()};$('grid').onchange=draw;
+const jobs=Object.entries({frames8:8,frames16:16,source16:16}).map(async([name,n])=>{images[name]=await Promise.all(Array.from({length:n},async(_,i)=>{let im=new Image();im.src=`${name}/${String(i).padStart(2,'0')}.png`;await im.decode();return im}))});
+function tick(t){if(playing){time+=(t-last)*+$('speed').value;if(time>=1900){if($('loop').checked)time%=1900;else{time=1899;playing=false}}draw()}last=t;requestAnimationFrame(tick)}
+Promise.all(jobs).then(()=>{ready=true;draw();window.reviewReady=true;requestAnimationFrame(tick)});
+</script></html>

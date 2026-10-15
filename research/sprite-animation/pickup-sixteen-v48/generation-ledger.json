@@ -1,0 +1,101 @@
+{
+  "native_host_image_calls": 4,
+  "billing_verified": false,
+  "zero_host_cost_claim": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "tool": "image_gen.imagegen",
+      "transparent_background_requested": true,
+      "raw_path": "raw/midpoints-attempt1.png",
+      "raw_sha256": "1b73f3f5e7f6612f0b28a61a53d238a3f88afadfc35932bd6f7dbc25d734b341",
+      "exact_prompt": "prompts/midpoints-attempt1.txt",
+      "references_in_order": [
+        {
+          "path": "inputs/midpoints.png",
+          "sha256": "5f01119cdd98d810cb1076c8f7191451e5fdde712df2e9c6d63b46d12b75d4d4"
+        },
+        {
+          "path": "inputs/v47-parent.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/owners.png",
+          "sha256": "251c032dc0dbe25cb44968f69fc2c3197df39f56ba3014bf63bca8ce6505ca0c"
+        },
+        {
+          "path": "inputs/accepted-v39.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        }
+      ]
+    },
+    {
+      "tool": "image_gen.imagegen",
+      "transparent_background_requested": true,
+      "raw_path": "raw/midpoints-attempt2.png",
+      "raw_sha256": "59b7a8180af175d71ed8ac5a87807d6c1e72fdba199e8ed28991418134cc1402",
+      "exact_prompt": "prompts/midpoints-attempt2.txt",
+      "references_in_order": [
+        {
+          "path": "inputs/midpoints.png",
+          "sha256": "5f01119cdd98d810cb1076c8f7191451e5fdde712df2e9c6d63b46d12b75d4d4"
+        },
+        {
+          "path": "inputs/v47-parent.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/owners.png",
+          "sha256": "251c032dc0dbe25cb44968f69fc2c3197df39f56ba3014bf63bca8ce6505ca0c"
+        }
+      ]
+    },
+    {
+      "tool": "image_gen.imagegen",
+      "transparent_background_requested": true,
+      "raw_path": "raw/midpoints-attempt3.png",
+      "raw_sha256": "2d1fc5dd998a4d501869143cb24062ac937145a63d01b942ce932d6016dbacef",
+      "exact_prompt": "prompts/midpoints-attempt3.txt",
+      "references_in_order": [
+        {
+          "path": "inputs/midpoints-floor-guide.png",
+          "sha256": "cb90eefe2c35d6879b487cc76704a5725b1b6bc33ad86f58da8de5a4ac9ce016"
+        },
+        {
+          "path": "inputs/v47-parent.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/owners.png",
+          "sha256": "251c032dc0dbe25cb44968f69fc2c3197df39f56ba3014bf63bca8ce6505ca0c"
+        }
+      ]
+    },
+    {
+      "tool": "image_gen.imagegen",
+      "transparent_background_requested": true,
+      "raw_path": "raw/recovery-quartet-attempt4.png",
+      "raw_sha256": "595959c8eed06d82e970765dc01b2dab6efc9292a826eab532690d6db30f503f",
+      "exact_prompt": "prompts/recovery-quartet-attempt4.txt",
+      "references_in_order": [
+        {
+          "path": "inputs/midpoints-recovery-quartet.png",
+          "sha256": "a2b09960ff3e2e0ba289e27d79c6efe2c1406267ffe972802bb8e0f8afbfabff"
+        },
+        {
+          "path": "inputs/v47-parent.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/owners-recovery-quartet.png",
+          "sha256": "4bb5e5c1f3cb4830f28ad4ac4a21b9629af4a21652b05245643a8dd9e1276503"
+        }
+      ]
+    }
+  ],
+  "selected_source_cells": {
+    "new0..3": "raw/midpoints-attempt2.png top row cells0..3",
+    "new4..7": "raw/recovery-quartet-attempt4.png top row cells0..3"
+  },
+  "final_registration": "Exact384x512cells only, no row shift/fit/warp/cleanup"
+}

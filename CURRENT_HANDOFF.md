@@ -1,3 +1,9 @@
+# Active continuation — v48, 2026-10-15
+
+User continues pickup and asks about more frames. Read `research/sprite-animation/pickup-sixteen-v48/README.md` and synchronized `review.html`.16exposures now preserve8exactv47keys,8new native inbetweens and everyoldkeytimestamp/1900ms; final600mshold unchanged. New8source fractional rig evaluations have projectedfootdrift~.010132px and independentprojectionresidual~.00006764px. Source proof never approves paintings.
+
+Four real native jobs retained. Full4x2 attempts repeatedly shift lower row even with floor guide. Diagnostic16 uses fixedtopquartets from attempt2+4, no fitted coordinates/soleclone/rowtranslation. Actual combined visibleboot bottomranges12/14px and UNKNOWN croppedwindows fail unchanged6px; first newrecovery rightheel also visibly lifts against plantedsource.16candidate is AGENT_REJECTED_CONTINUITY, not accepted as smoother. Currentfamily407/404vsdifferentview399/socket/occludedcontact/parts/swaps/gamegaps persist; no nextmotion. Tests bindactualoldpixels/clocks/source and fail strictrelease. v47evidence and allolder/W remainunchanged. Onlynewv48/newmethod/CURRENT change. Afterpublication newart goesfreshv49, solebranch/standingpush/MiniMaxpause/externalpaiddecline persist. Hostbillingunknown, not zerocostclaim. Newmethodnote: `skills/modular-eight-direction-sprites/references/nested-8-16-exposures-v48.md`.
+
 # Active continuation — v47, 2026-10-15
 
 User cancels transfer: continue research in this chat/on the same research branch; another motion follows only after the current pickup passes. Read `research/sprite-animation/painted-pickup-v47/README.md`, `review.json`, `manual-review.json` and its offline `review.html`.
