@@ -1,0 +1,1 @@
+Retained failed first contour. Large deep-pose shoulder contamination is visible in the embedded GIF/HTML and stored PNGs. JSON references preserve their original authoring locations and are historical receipts, not fresh executable contracts. Do not rerun or use for head swaps.

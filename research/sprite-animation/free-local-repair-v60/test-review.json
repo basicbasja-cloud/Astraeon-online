@@ -1,0 +1,82 @@
+{
+  "pass": true,
+  "controls": [
+    {
+      "name": "zero_duration",
+      "pass": true
+    },
+    {
+      "name": "negative_duration",
+      "pass": true
+    },
+    {
+      "name": "non_gif_clock_9ms",
+      "pass": true
+    },
+    {
+      "name": "float_clock",
+      "pass": true
+    },
+    {
+      "name": "bool_clock",
+      "pass": true
+    },
+    {
+      "name": "stale_sha",
+      "pass": true
+    },
+    {
+      "name": "missing_frame",
+      "pass": true
+    },
+    {
+      "name": "canvas_changed",
+      "pass": true
+    },
+    {
+      "name": "empty_frames",
+      "pass": true
+    },
+    {
+      "name": "false_16_unique_drawings",
+      "pass": true
+    },
+    {
+      "name": "hidden_RGB_does_not_count_as_new_art",
+      "pass": true
+    },
+    {
+      "name": "visible_alpha_difference_is_preserved",
+      "pass": true
+    },
+    {
+      "name": "actual_GIF_collapses_peak_hold_but_preserves_clock_and_pixels",
+      "pass": true
+    },
+    {
+      "name": "refuse_output_overwrite",
+      "pass": true
+    },
+    {
+      "name": "actual_native_all16_roundtrip",
+      "pass": true,
+      "max_premultiplied_error": 0.0
+    },
+    {
+      "name": "saved_native_layers_and_authored_clock",
+      "pass": true
+    },
+    {
+      "name": "motion_only_pass_cannot_hide_contact_failure",
+      "pass": true
+    },
+    {
+      "name": "actual_five_players_80_PNG_frames",
+      "pass": true,
+      "max_premultiplied_error": 0.9960784313725526
+    }
+  ],
+  "control_count": 18,
+  "production_pass": false,
+  "scope": "Tool guards, file roundtrip and retained art rejection; not anatomy acceptance."
+}
