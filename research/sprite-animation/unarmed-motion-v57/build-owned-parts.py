@@ -1,0 +1,20 @@
+"""Fixed rest-space ownership repair; retains upstream originals unchanged."""
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageChops
+import json,hashlib
+P=Path(__file__).resolve().parent;old=P.parent/'articulated-sprites-v54';out=P/'inputs/owned-parts';out.mkdir(exist_ok=True);records=[]
+polys={'left':[[290,217],[314,219],[328,239],[321,248],[325,272],[332,309],[334,339],[326,358],[308,358],[298,345],[302,319],[298,292],[294,280],[287,263],[280,240]],'right':[[200,217],[219,221],[228,241],[216,266],[208,279],[205,293],[201,322],[202,347],[193,359],[177,355],[170,343],[174,318],[181,287],[185,264],[184,243]]}
+for side,poly in polys.items():
+ src=old/'parts/S'/(side+'_arm.png');a=Image.open(src).convert('RGBA');m=Image.new('L',a.size);ImageDraw.Draw(m).polygon(poly,fill=255);a.putalpha(ImageChops.multiply(a.getchannel('A'),m));dest=out/('S-'+side+'_arm.png');a.save(dest);records.append({'source':str(src.relative_to(P.parent)),'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'output':str(dest.relative_to(P)),'polygon':poly,'operation':'Static arm ownership excludes neighboring cape/belt UV; no painted replacement'})
+# Reuse already generated, statically packed hidden-costume art, not hidden RGB.
+raw=old/'raw/S-parts-cleanup2.png';im=Image.open(raw).convert('RGBA').crop((384,0,864,512));native=Image.new('RGBA',(512,512));native.alpha_composite(im.resize((230,246),Image.Resampling.LANCZOS),(159,168));src=old/'parts/S/body.png';a=Image.open(src).convert('RGBA');m=Image.new('L',a.size);ImageDraw.Draw(m).polygon([[300,235],[327,245],[342,290],[341,352],[326,365],[299,305]],fill=255);native.putalpha(ImageChops.multiply(native.getchannel('A'),m));native.alpha_composite(a);dest=out/'S-body.png';native.save(dest);records.append({'source':str(src.relative_to(P.parent)),'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'native_source':str(raw.relative_to(P.parent)),'native_source_sha256':hashlib.sha256(raw.read_bytes()).hexdigest(),'output':str(dest.relative_to(P)),'native_bank_scale':.48,'native_translation':[159,168],'operation':'Existing native hidden cape/armhole underlap in fixed polygon behind exact original body; no frame-dependent fit'})
+# Walking's partially hidden rear forearms are insufficient for raised combat arms.
+# Reuse complete existing native rest modules with one fixed wrist-aligned origin.
+rawN=old/'raw/N-original-parts-attempt1.png';bank=Image.open(rawN).convert('RGBA')
+for side,cell,origin in [('left',2,[129,137]),('right',3,[200,137])]:
+ a=Image.new('RGBA',(512,512));a.alpha_composite(bank.crop((cell*384,0,(cell+1)*384,512)).resize((192,256),Image.Resampling.LANCZOS),tuple(origin));dest=out/('N-'+side+'_arm.png');a.save(dest);records.append({'source':str(rawN.relative_to(P.parent)),'source_sha256':hashlib.sha256(rawN.read_bytes()).hexdigest(),'output':str(dest.relative_to(P)),'cell':cell,'scale':.5,'translation':origin,'operation':'Complete static native rear arm and closed fist, original costume. No partial original/native shoulder overlay, no cape-edge slivers used as whole forearms. One fixed rest origin, not a frame fit.'})
+masterP=P.parent/'ro-core-views-v52/stage/idle/S/00.png';master=Image.open(masterP).convert('RGBA')
+for side,rect in [('left',[278,380,306,388]),('right',[223,380,250,388])]:
+ src=old/'parts/S'/(side+'_leg.png');a=Image.open(src).convert('RGBA');a.paste(master.crop(tuple(rect)),tuple(rect[:2]));dest=out/('S-'+side+'_leg.png');a.save(dest);records.append({'source':str(src.relative_to(P.parent)),'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'original_visible_source':str(masterP.relative_to(P.parent)),'original_visible_source_sha256':hashlib.sha256(masterP.read_bytes()).hexdigest(),'output':str(dest.relative_to(P)),'original_pants_rect':rect,'operation':'Static rest-source ownership: original trouser pixels replace leftover native kneeguard lip above original visible boot. No frame-dependent replacement.'})
+for r in records:r['output_sha256']=hashlib.sha256((P/r['output']).read_bytes()).hexdigest()
+(P/'owned-parts-ledger.json').write_text(json.dumps(records,indent=2)+'\n')

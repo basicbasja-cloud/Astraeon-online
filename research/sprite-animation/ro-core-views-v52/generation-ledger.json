@@ -1,0 +1,227 @@
+{
+  "provider": "native host image_gen",
+  "billing_verified": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "output": "raw/neutral-eight-attempt1.png",
+      "output_sha256": "e6c71698cdbe2c9d5b601a355aaffeec9b4ce78434851b729afa4a8c26bd9d99",
+      "prompt": "raw/neutral-eight-attempt1-prompt.txt",
+      "prompt_sha256": "865f42ebacda14f1c2d4197522d4c03b9ca769e2380cb79d1f1ba49659d1cccb",
+      "ordered_references": [
+        {
+          "path": "inputs/approved-front-family.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        },
+        {
+          "path": "inputs/rear-family.png",
+          "sha256": "f6e3c240eab45bcf0fea36148eab0d2332904d3b3e4d4cba714578e29b337d12"
+        },
+        {
+          "path": "inputs/neutral-eight-camera-guide.png",
+          "sha256": "b63ff269d2fd434bb9fb02cbad82f29fd7feeea5b8f43aebb735e83ccd000812"
+        }
+      ],
+      "call_arguments_reconstructed": true,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/neutral-NE-panel-fix1.png",
+      "output_sha256": "cd0712718031df6062d6c849fe8f90f60d7555869d4d6582805df745544238c0",
+      "prompt": "raw/neutral-NE-panel-fix1-prompt.txt",
+      "prompt_sha256": "8b9ea77fcc56dcba2d2f886bdd34acea0b65a37974d976f9579e3f9e321282a2",
+      "ordered_references": [
+        {
+          "path": "raw/neutral-eight-attempt1.png",
+          "sha256": "e6c71698cdbe2c9d5b601a355aaffeec9b4ce78434851b729afa4a8c26bd9d99"
+        },
+        {
+          "path": "inputs/approved-front-family.png",
+          "sha256": "66492f9a81de4c6e3bef609c700c30c5b049be3c7930a0307b0070e0ed650f1e"
+        }
+      ],
+      "call_arguments_reconstructed": true,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/neutral-alpha-fix2.png",
+      "output_sha256": "722d7668bb1869856c11676e86e07dd531c57fcadbf2f6b9809da61ea61cf080",
+      "prompt": "prompts/neutral-alpha-fix2.txt",
+      "prompt_sha256": "2502873cea4006ab8a5bf686869c84d9d2aa5bc5ea353247405d495cde0d4745",
+      "ordered_references": [
+        {
+          "path": "raw/neutral-NE-panel-fix1.png",
+          "sha256": "cd0712718031df6062d6c849fe8f90f60d7555869d4d6582805df745544238c0"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/sit-eight-attempt1.png",
+      "output_sha256": "089401f6fc9b21c4f3ecb8781912278b79b0ddb6948a931623980c91571a99e1",
+      "prompt": "prompts/sit-eight-attempt1.txt",
+      "prompt_sha256": "31df492ae5e4a3a6b9d0db0e228ecbe2d658bf175a02f9e25040645f49149d89",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-eight-canonical-preview.png",
+          "sha256": "a4a28a5a82093c61559852ac5ed21d71c1cb1f4e0df36bef96d380cc447e909e"
+        },
+        {
+          "path": "inputs/external-ro-sit-eight.png",
+          "sha256": "8e15af5a6ebebd85b64e6d0b8877d1f1953ae42d6fe1db37ddda26895a76289a"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/ready-four-attempt1.png",
+      "output_sha256": "b7ec8dfee6dccd0658fef120079b41a9811f50e0f4ccf8074a8f70e173301508",
+      "prompt": "prompts/ready-four-attempt1.txt",
+      "prompt_sha256": "e179f89b5546e6a6324f2b6d014eba29460471ad65a14f94ec579980e2c01901",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-four-repeat.png",
+          "sha256": "74f52729e1c26bd69db37f07046dc21bb35f31fef0ed63ec93b04e4d6334ce0c"
+        },
+        {
+          "path": "inputs/external-ro-ready-four.png",
+          "sha256": "66bf27df4e372e992ce4bfd0cb7ada76dc5cc91dcb9442c83c7f5d3044276f77"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/ready-head-repair2.png",
+      "output_sha256": "ef81abaa7ca89cccbd01259f036d0bc58e8502e8e2d9e7f83b08348f45537eb6",
+      "prompt": "prompts/ready-head-repair2.txt",
+      "prompt_sha256": "c65c068480023e2a3981d6c8fc95b348159c095fa49701be0a8a82fdb75fd7a7",
+      "ordered_references": [
+        {
+          "path": "raw/ready-four-attempt1.png",
+          "sha256": "b7ec8dfee6dccd0658fef120079b41a9811f50e0f4ccf8074a8f70e173301508"
+        },
+        {
+          "path": "inputs/neutral-four-repeat.png",
+          "sha256": "74f52729e1c26bd69db37f07046dc21bb35f31fef0ed63ec93b04e4d6334ce0c"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/hurt-four-attempt1.png",
+      "output_sha256": "c1c3091b5088cd8d1fc4308e337041188fa3e40bb5fcb083ad48e4914624aa61",
+      "prompt": "prompts/hurt-four-attempt1.txt",
+      "prompt_sha256": "e9fe9359b8179de30ad26822b2148579d5a3fb9b3927c0a1dd5cafd14a411bdd",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-four-repeat.png",
+          "sha256": "74f52729e1c26bd69db37f07046dc21bb35f31fef0ed63ec93b04e4d6334ce0c"
+        },
+        {
+          "path": "inputs/external-ro-hurt-four.png",
+          "sha256": "a58c7c82c1fc5345131622bac7a1c366db39433af21e32c204cffa5275a66c15"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/dead-four-attempt1.png",
+      "output_sha256": "a786368af96286f88cb4f69f7e0f50df8b93a8d53ad4d9a1fbf58fadadecbe3f",
+      "prompt": "prompts/dead-four-attempt1.txt",
+      "prompt_sha256": "3d239262b72f87a459d9430b8fbd7b22f073e6fba4d1d02c7f26383b85a23d4c",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-four-repeat.png",
+          "sha256": "74f52729e1c26bd69db37f07046dc21bb35f31fef0ed63ec93b04e4d6334ce0c"
+        },
+        {
+          "path": "inputs/external-ro-dead-four.png",
+          "sha256": "451802d029dd09f70b58d6350d8d8fa0c1b7acac0c59d3b634561f6d66c06b7a"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/skill-four-attempt1.png",
+      "output_sha256": "2451e9873a00f007fd52df07df83a1b8fb04e7a687c5e1ab3ed73fe337ba40aa",
+      "prompt": "prompts/skill-four-attempt1.txt",
+      "prompt_sha256": "44b39a89192254094c250957eeab2d92ddf3b33c1b697533bdd6884c610b74d7",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-four-repeat.png",
+          "sha256": "74f52729e1c26bd69db37f07046dc21bb35f31fef0ed63ec93b04e4d6334ce0c"
+        },
+        {
+          "path": "inputs/external-ro-skill-four.png",
+          "sha256": "55c40cfc9f5e764090ab90b220ca682d08daa4cb8a7eb329d21e233d0672503b"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/walk-W-attempt1.png",
+      "output_sha256": "82050acc12de80e29342b9526983366ab74be2d117ba4444f1bbfa0add697e2f",
+      "prompt": "prompts/walk-W-attempt1.txt",
+      "prompt_sha256": "b617188de41ee2724d74ab21341a18259154ab0be7c68110222a1f844d9f864b",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-W-eight-repeat.png",
+          "sha256": "45631ccac560d20252d1807eb20f6387c18a0abd25cd7489b4e862cb6773a380"
+        },
+        {
+          "path": "inputs/external-ro-walk-W-eight.png",
+          "sha256": "d388cca6cc18180f5637507dfa6cc5b9b8fcf1a6563cba977f2b777691d7ac18"
+        },
+        {
+          "path": "../registered-walk-attack-v21/walk/W/eight-frames.png",
+          "sha256": "9509d80005a663b61f2db0cc466ef3e1f6fb5f803a2b760b39922d8fce831e6f"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/dead-wardrobe-repair2.png",
+      "output_sha256": "820cd8235b83131ba7ec87d78368a0c917596c8e2408451235884c49cdad610a",
+      "prompt": "prompts/dead-wardrobe-repair2.txt",
+      "prompt_sha256": "0b2077b8df2e250144689852c531d7ca99ba91664dfb46dad89430a294efd49f",
+      "ordered_references": [
+        {
+          "path": "raw/dead-four-attempt1.png",
+          "sha256": "a786368af96286f88cb4f69f7e0f50df8b93a8d53ad4d9a1fbf58fadadecbe3f"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    },
+    {
+      "output": "raw/walk-S-attempt1.png",
+      "output_sha256": "cfe61917b086a6f69ec375cfb9dfe084df0e87ff37a12e0297308be646b6dfa4",
+      "prompt": "prompts/walk-S-attempt1.txt",
+      "prompt_sha256": "2ec181e4ce6ab22ef68d895a34d4a3afacedada3dd4e6c972eff1eed1d29e7ef",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-S-eight-repeat.png",
+          "sha256": "c52f80557de3f3e93f1d2c1de1c4d52d37b2effb519e2cb3541af584983cd5c9"
+        },
+        {
+          "path": "inputs/external-ro-walk-S-eight.png",
+          "sha256": "19313627fda238d2db9e6b5d74f88e5ec42a20bb16107984479b65b6e3ee74d0"
+        },
+        {
+          "path": "../registered-walk-attack-v21/walk/W/eight-frames.png",
+          "sha256": "9509d80005a663b61f2db0cc466ef3e1f6fb5f803a2b760b39922d8fce831e6f"
+        }
+      ],
+      "call_arguments_reconstructed": false,
+      "selection": "See stage-manifest/manual review; raw generation is not approval"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "view": "S",
+  "parts": {
+    "head": {
+      "source": "exact original visible head/neck crop",
+      "rect": [
+        0,
+        0,
+        512,
+        211
+      ],
+      "texture_sha256": "1312df172da8d196748c155b8bba7d5a63b7caecd030d0614072f2953cd55b2e"
+    },
+    "body": {
+      "source": "S-parts-cleanup2.png",
+      "rect": [
+        384,
+        0,
+        480,
+        512
+      ],
+      "scale": 0.48,
+      "translation": [
+        159,
+        168
+      ],
+      "texture_sha256": "e271cef0c1da3dd23320c844c008109c4cf62a38ffd5097d1c3e23ca7f3e0edb"
+    },
+    "left_arm": {
+      "native_cell": 2,
+      "scale": 0.45,
+      "translation": [
+        185,
+        158
+      ],
+      "original_visible_polygon": [
+        [
+          290,
+          217
+        ],
+        [
+          314,
+          219
+        ],
+        [
+          328,
+          239
+        ],
+        [
+          328,
+          272
+        ],
+        [
+          335,
+          310
+        ],
+        [
+          334,
+          339
+        ],
+        [
+          326,
+          358
+        ],
+        [
+          308,
+          358
+        ],
+        [
+          298,
+          345
+        ],
+        [
+          305,
+          319
+        ],
+        [
+          299,
+          287
+        ],
+        [
+          291,
+          263
+        ],
+        [
+          280,
+          240
+        ]
+      ],
+      "scope": "One static source composition with hidden native underlap, never frame-dependent shoe/head patch",
+      "texture_sha256": "473422732002d6612906c1ba5b7d040c3d51c77ac8287273240bc769393b3fe4"
+    },
+    "right_arm": {
+      "native_cell": 3,
+      "scale": 0.45,
+      "translation": [
+        135,
+        164
+      ],
+      "original_visible_polygon": [
+        [
+          200,
+          217
+        ],
+        [
+          219,
+          221
+        ],
+        [
+          228,
+          241
+        ],
+        [
+          216,
+          266
+        ],
+        [
+          211,
+          293
+        ],
+        [
+          205,
+          322
+        ],
+        [
+          202,
+          347
+        ],
+        [
+          193,
+          359
+        ],
+        [
+          177,
+          355
+        ],
+        [
+          170,
+          343
+        ],
+        [
+          174,
+          318
+        ],
+        [
+          181,
+          287
+        ],
+        [
+          185,
+          264
+        ],
+        [
+          184,
+          243
+        ]
+      ],
+      "scope": "One static source composition with hidden native underlap, never frame-dependent shoe/head patch",
+      "texture_sha256": "44d654bff621838a2666a313d68d8500d0023fc1038521adc666e17a743b73de"
+    },
+    "left_leg": {
+      "native_cell": 5,
+      "scale": 0.42,
+      "translation": [
+        205,
+        323
+      ],
+      "original_visible_polygon": [
+        [
+          256,
+          388
+        ],
+        [
+          336,
+          388
+        ],
+        [
+          336,
+          504
+        ],
+        [
+          256,
+          504
+        ]
+      ],
+      "scope": "One static source composition with hidden native underlap, never frame-dependent shoe/head patch",
+      "texture_sha256": "fe4298e33ac7e99d6063893ab21388b1d1dfa34c576768889011c910e85bd368"
+    },
+    "right_leg": {
+      "native_cell": 4,
+      "scale": 0.42,
+      "translation": [
+        167,
+        323
+      ],
+      "original_visible_polygon": [
+        [
+          177,
+          388
+        ],
+        [
+          256,
+          388
+        ],
+        [
+          256,
+          504
+        ],
+        [
+          177,
+          504
+        ]
+      ],
+      "scope": "One static source composition with hidden native underlap, never frame-dependent shoe/head patch",
+      "texture_sha256": "2496ba1e982451ba2e9695167c74f15824b013bff20f6344d58f38083f04075e"
+    }
+  },
+  "order": [
+    "right_leg",
+    "left_leg",
+    "head",
+    "body",
+    "right_arm",
+    "left_arm"
+  ],
+  "scope": "Authored rest-space selection and fixed packing. Native hidden art is not anatomically validated by source joints. Requires rest/playback review.",
+  "production_pass": false
+}

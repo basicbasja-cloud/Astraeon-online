@@ -1,0 +1,103 @@
+{
+  "view": "SW",
+  "parts": {
+    "head": {
+      "rect": null,
+      "scale": 1,
+      "translation": [
+        32,
+        0
+      ],
+      "texture_sha256": "8290d35a94656e511d9437cbf73b082ec643ad8976477e6fd148b4d9e17667aa"
+    },
+    "body": {
+      "rect": [
+        384,
+        0,
+        446,
+        512
+      ],
+      "scale": 0.56,
+      "translation": [
+        160,
+        123
+      ],
+      "texture_sha256": "662222cdb3ff22eb76d933bf0422e88d4148ebd3200eba19a41a7ed64f403af4"
+    },
+    "left_arm": {
+      "rect": [
+        848,
+        0,
+        304,
+        512
+      ],
+      "scale": 0.46,
+      "translation": [
+        215.8,
+        143
+      ],
+      "rotation_deg": 5,
+      "pivot": [
+        286,
+        230
+      ],
+      "texture_sha256": "9bda434cc2dbbd569eb071b05a70fd951141efec56e4db72371775872d0e6331"
+    },
+    "right_arm": {
+      "rect": [
+        1152,
+        0,
+        384,
+        512
+      ],
+      "scale": 0.46,
+      "translation": [
+        136,
+        145
+      ],
+      "rotation_deg": -13,
+      "pivot": [
+        213,
+        229
+      ],
+      "texture_sha256": "82d9ceae7e4d838d086457e3a5d02e5a9952727ec37ea471c30666357a099fed"
+    },
+    "left_leg": {
+      "rect": [
+        384,
+        512,
+        384,
+        512
+      ],
+      "scale": 0.44,
+      "translation": [
+        200,
+        316
+      ],
+      "texture_sha256": "ebaf9b418602eedec05b200f5765d0c45b9a7cbc13fbd1cb253b0e5901302f12"
+    },
+    "right_leg": {
+      "rect": [
+        0,
+        512,
+        384,
+        512
+      ],
+      "scale": 0.5,
+      "translation": [
+        115,
+        292
+      ],
+      "texture_sha256": "d0caa65e75b9ab27d56b806abc12d9eb32d336aad8560df1523082bc175622a1"
+    }
+  },
+  "order": [
+    "right_leg",
+    "left_leg",
+    "right_arm",
+    "body",
+    "head",
+    "left_arm"
+  ],
+  "packing_scope": "Fixed static adapter. Expanded body source crop preserves cape in empty neighboring gutter; arm source excludes that gutter. No per-frame image fit. Unreviewed."
+}

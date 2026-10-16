@@ -1,0 +1,274 @@
+{
+  "provider": "native host image_gen",
+  "billing_verified": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "output": "raw/S-empty-body-attempt1.png",
+      "output_sha256": "58d8eb4c66f3a84cb8a36dee26eb5e8781bb1b419f43230d67a7d5df4f3bdaf7",
+      "prompt": "prompts/S-empty-body-attempt1.txt",
+      "prompt_sha256": "1a89248bad38212c9fee9d1070bee99e3e1bd5b2a72d9cfb446cc977678d01d8",
+      "ordered_references": [
+        {
+          "path": "inputs/S-old-key-bank.png",
+          "sha256": "7e6e67aa7bf9432d37b5004aa72de2c11400beffed4a56003af6a1eb5e9d8a92"
+        }
+      ],
+      "selection": "Unreviewed gem-removal authoring bank, not a passed animation."
+    },
+    {
+      "output": "raw/W-empty-body-attempt1.png",
+      "output_sha256": "9e1bf52e5a59d581007ce4c281fd19357fc1887555bcd6bba4b8289bed55c61b",
+      "prompt": "prompts/W-empty-body-attempt1.txt",
+      "prompt_sha256": "283199afb114a8e49e80a5505c5d172552057d5fbdc5cfb1c6d4d834ab36f896",
+      "ordered_references": [
+        {
+          "path": "inputs/W-old-key-bank.png",
+          "sha256": "0bd9b6417fe89a1eef96d9acfab73a2651959abacf33e06622994754898cd43f"
+        }
+      ],
+      "selection": "Unreviewed eight-key seed; not passed motion, feet or family."
+    },
+    {
+      "output": "raw/S-foot-key-repair2.png",
+      "output_sha256": "3ab45685835632107c72616389d2aef658f542964566c4bd57d5dbfb406fd5f5",
+      "prompt": "prompts/S-foot-key-repair2.txt",
+      "prompt_sha256": "d9f0ceff942586f07e9e9c8d638c82567a5e2b4b6054f66f7fbc3cf078ddd34f",
+      "ordered_references": [
+        {
+          "path": "inputs/S-normalized-key-bank.png",
+          "sha256": "638827e9c28c12a1042a4fc35b10182413efbde887140b62cc0495e403da4273"
+        },
+        {
+          "path": "inputs/S-canonical-neutral.png",
+          "sha256": "eb3c1b481fc37a93000916bc0e1c9a69a2a03dd1a9531601fb678cb14e7acbe4"
+        }
+      ],
+      "selection": "Rejected: neutral and recovery head/body size changed despite shoe-alignment request. Not normalized per-frame or used as positive reference."
+    },
+    {
+      "output": "raw/E-seed-down-attempt1.png",
+      "output_sha256": "8e1600ea83376b1f221262709e182eaad2498de2b6f2e0ed2ef70eba51193523",
+      "prompt": "prompts/E-seed-down-attempt1.txt",
+      "prompt_sha256": "c1bf78ebd2ca528e90973db2424fd5659467d61d00dc609635671c25e3d8d8a5",
+      "ordered_references": [
+        {
+          "path": "inputs/E-canonical-neutral-512.png",
+          "sha256": "949f446a6d1477faf62757bf89bac3e3b80bf1cb30970168e45aa0806db1384f"
+        },
+        {
+          "path": "inputs/E-wide-full-down-four.png",
+          "sha256": "a1f1afc86d78d5f4f2fb7af0634137397bc3f185820c12311f7662e0d1840c47"
+        },
+        {
+          "path": "inputs/E-wide-owners-down-four.png",
+          "sha256": "e4263bf01c10beabf0e8d42a5ff53a520b68dde85589c177f58ff70e583a1cf5"
+        }
+      ],
+      "selection": "Unreviewed4-key wide source-guided seed"
+    },
+    {
+      "output": "raw/E-seed-up-attempt1.png",
+      "output_sha256": "09078f4e3dabd6883d3bef489343a4af637bcc7d29a2cd9c0cac13a004b696d3",
+      "prompt": "prompts/E-seed-up-attempt1.txt",
+      "prompt_sha256": "894a52918cf0bafc118f7f131a53cc7ad4ebb33e11d7b0799d3e5487a416567f",
+      "ordered_references": [
+        {
+          "path": "inputs/E-canonical-neutral-512.png",
+          "sha256": "949f446a6d1477faf62757bf89bac3e3b80bf1cb30970168e45aa0806db1384f"
+        },
+        {
+          "path": "inputs/E-wide-full-up-four.png",
+          "sha256": "1f9be3bfe9a93bfa17746aa18f1b2212c0e4e3958f621c2790b3524a0a72f132"
+        },
+        {
+          "path": "inputs/E-wide-owners-up-four.png",
+          "sha256": "978cc1bc6d4cdabb1d01fcafd95f1a1127a66e6a42daa08f344428783077ba00"
+        }
+      ],
+      "selection": "Unreviewed4-key wide source-guided seed"
+    },
+    {
+      "output": "raw/W-waist-middle-cleanup1.png",
+      "output_sha256": "4bc6efec54c407cb6afda6a0108c75d6e9b9a38872ff21bb2f7a0a12ec8d2fd7",
+      "prompt": "prompts/W-waist-middle-cleanup1.txt",
+      "prompt_sha256": "7388eddebf284823bb217962441980a3bc98f0d630f11f910553c2665eca6e5c",
+      "ordered_references": [
+        {
+          "path": "inputs/W-waist-middle-guide.png",
+          "sha256": "ee39cb44016e2eda4ff5f859b40ee7f9bbaec5dc08a408e6d5e82dbe4fbab9a6"
+        }
+      ],
+      "selection": "Unreviewed localized clothing repair. Raw container normalization, contact/motion/family/edit-scope checks required."
+    },
+    {
+      "output": "raw/W-waist-deep-cleanup1.png",
+      "output_sha256": "fc9cf59ab91da8ca8a06b74134711aad80cd30bdbad9a1d52d2c8eb58fd72848",
+      "prompt": "prompts/W-waist-deep-cleanup1.txt",
+      "prompt_sha256": "7388eddebf284823bb217962441980a3bc98f0d630f11f910553c2665eca6e5c",
+      "ordered_references": [
+        {
+          "path": "inputs/W-waist-deep-guide.png",
+          "sha256": "5a0d5bf8fdd85e8b971dcb2af1402884b6cf415544ab1c0e3fe31275ea4e8ed4"
+        }
+      ],
+      "selection": "Unreviewed localized clothing repair. Raw container normalization, contact/motion/family/edit-scope checks required."
+    },
+    {
+      "output": "raw/W-waist-middle-cleanup2.png",
+      "output_sha256": "c98e8db808d9a4f04cc052ac7c638b7ff39f57a21ecf9e853a3ae40cbe6ff787",
+      "prompt": "prompts/W-waist-middle-cleanup2.txt",
+      "prompt_sha256": "50470af6adffb7f4d412a35c0a4a9d26524b12fa2fb2f8cfca1434f0751330c6",
+      "ordered_references": [
+        {
+          "path": "raw/W-waist-middle-cleanup1.png",
+          "sha256": "4bc6efec54c407cb6afda6a0108c75d6e9b9a38872ff21bb2f7a0a12ec8d2fd7"
+        }
+      ],
+      "selection": "Awaiting localized wardrobe removal review and actual raster regression"
+    },
+    {
+      "output": "raw/W-waist-deep-cleanup2.png",
+      "output_sha256": "6bd39f44622cb67ad701e2b2591082c1a8f8f00fa2bffff58fe2f7584786ec0e",
+      "prompt": "prompts/W-waist-deep-cleanup2.txt",
+      "prompt_sha256": "50470af6adffb7f4d412a35c0a4a9d26524b12fa2fb2f8cfca1434f0751330c6",
+      "ordered_references": [
+        {
+          "path": "raw/W-waist-deep-cleanup1.png",
+          "sha256": "fc9cf59ab91da8ca8a06b74134711aad80cd30bdbad9a1d52d2c8eb58fd72848"
+        }
+      ],
+      "selection": "Awaiting localized wardrobe removal review and actual raster regression"
+    },
+    {
+      "output": "raw/W-fixture-a-attempt3.png",
+      "output_sha256": "a8f886d93b2f5239d38d008527ca991d84c56acab31f548affc8a6834c45cd33",
+      "prompt": "prompts/W-fixture-a-attempt3.txt",
+      "prompt_sha256": "47465b47f767fe3bb7ecf1370f2a882a3953082ca079b133f9cdfd5c78ae8934",
+      "ordered_references": [
+        {
+          "path": "inputs/W-fixture-a-attempt3.png",
+          "sha256": "bfdc52247f4ba1ccf24ab5aa794422103033b0235519858c08f0f358e9492740"
+        }
+      ],
+      "selection": "REJECTED: actual sole right-edge range4px exceeds2px; fixtureC crown shape differs; no active pose fitting."
+    },
+    {
+      "output": "raw/W-fixture-b-attempt3.png",
+      "output_sha256": "09ef95f54609c6e184e9a90b336912b8d3e9c58c181af8be0aec16b663b1f8dd",
+      "prompt": "prompts/W-fixture-b-attempt3.txt",
+      "prompt_sha256": "47465b47f767fe3bb7ecf1370f2a882a3953082ca079b133f9cdfd5c78ae8934",
+      "ordered_references": [
+        {
+          "path": "inputs/W-fixture-b-attempt3.png",
+          "sha256": "a728485a6057ab88164d064899af845b4d6ef9cdd386ea29b65cb5101956f800"
+        }
+      ],
+      "selection": "REJECTED: actual sole right-edge range4px exceeds2px; fixtureC crown shape differs; no active pose fitting."
+    },
+    {
+      "output": "raw/W-fixture-c-attempt3.png",
+      "output_sha256": "9d8b09dcb1a1020e5375bc68a60e7c48c599b1896ad30059d6f3316f4d0fc749",
+      "prompt": "prompts/W-fixture-c-attempt3.txt",
+      "prompt_sha256": "47465b47f767fe3bb7ecf1370f2a882a3953082ca079b133f9cdfd5c78ae8934",
+      "ordered_references": [
+        {
+          "path": "inputs/W-fixture-c-attempt3.png",
+          "sha256": "4e7cde29f3f9516b2badd14c83486c5c61342f9600e7ace390c8135df9bcaf1e"
+        }
+      ],
+      "selection": "REJECTED: actual sole right-edge range4px exceeds2px; fixtureC crown shape differs; no active pose fitting."
+    },
+    {
+      "output": "raw/S-fixture-a-cleanup1.png",
+      "output_sha256": "45b14e2294b9501cbb0ab6cf421ee6e20f23b9693a3bf251e66c4d09de08f1d7",
+      "prompt": "prompts/S-fixture-a-cleanup1.txt",
+      "prompt_sha256": "59480c0d8c78ae0af3e176df9e19c95e020e902b9ed5ea8408b5e590905fa60e",
+      "ordered_references": [
+        {
+          "path": "inputs/S-fixture-a-cleanup1-matte-guide.png",
+          "sha256": "c61f2e5bc62eb2245a27b4890b29f8b978eabdd6655ed7ef5866da268058d016"
+        }
+      ],
+      "selection": "REJECTED full-body candidate: active poses independently relocated; motionstep85px, reversal/acceleration and contact fail; fixturesA/D/E shape fail. No per-pose fits."
+    },
+    {
+      "output": "raw/S-fixture-b-cleanup1.png",
+      "output_sha256": "3c37a4391c7ea0fcd7077e12baf0d39113e1717b49ea8630068fae23550fb148",
+      "prompt": "prompts/S-fixture-b-cleanup1.txt",
+      "prompt_sha256": "59480c0d8c78ae0af3e176df9e19c95e020e902b9ed5ea8408b5e590905fa60e",
+      "ordered_references": [
+        {
+          "path": "inputs/S-fixture-b-cleanup1-matte-guide.png",
+          "sha256": "efb8ebc6501c55f879dbe230a6e69df287387239815357c7e880903fd58e404c"
+        }
+      ],
+      "selection": "REJECTED full-body candidate: active poses independently relocated; motionstep85px, reversal/acceleration and contact fail; fixturesA/D/E shape fail. No per-pose fits."
+    },
+    {
+      "output": "raw/S-fixture-c-cleanup1.png",
+      "output_sha256": "ed13eedc9d4c85767420ca4226a5f149359952b61bdda053706b241f1bec4ef3",
+      "prompt": "prompts/S-fixture-c-cleanup1.txt",
+      "prompt_sha256": "59480c0d8c78ae0af3e176df9e19c95e020e902b9ed5ea8408b5e590905fa60e",
+      "ordered_references": [
+        {
+          "path": "inputs/S-fixture-c-cleanup1-matte-guide.png",
+          "sha256": "7314b5bf90fae5d0c9cd72bc5a855a50925057ee93e6330629ee2f38066a4dc2"
+        }
+      ],
+      "selection": "REJECTED full-body candidate: active poses independently relocated; motionstep85px, reversal/acceleration and contact fail; fixturesA/D/E shape fail. No per-pose fits."
+    },
+    {
+      "output": "raw/S-fixture-d-cleanup1.png",
+      "output_sha256": "9146d645c9c498138c5fae9501c07e451f4daa02430821a0c991a8a2ee49fa7f",
+      "prompt": "prompts/S-fixture-d-cleanup1.txt",
+      "prompt_sha256": "59480c0d8c78ae0af3e176df9e19c95e020e902b9ed5ea8408b5e590905fa60e",
+      "ordered_references": [
+        {
+          "path": "inputs/S-fixture-d-cleanup1-matte-guide.png",
+          "sha256": "a19654e91d483aa4d3c13b426c0a047157e41304ed740c20bbe14b95fc58da7a"
+        }
+      ],
+      "selection": "REJECTED full-body candidate: active poses independently relocated; motionstep85px, reversal/acceleration and contact fail; fixturesA/D/E shape fail. No per-pose fits."
+    },
+    {
+      "output": "raw/S-fixture-e-cleanup1.png",
+      "output_sha256": "32bad5b9c52d28fdd8a95b5f64699cb714e4a80753c4c4683d2d9d7a98ae38d0",
+      "prompt": "prompts/S-fixture-e-cleanup1.txt",
+      "prompt_sha256": "d4faa2e7554babc2f57ce9e15f1b7f587deb62df8ec612c9c0de97a7923103cf",
+      "ordered_references": [
+        {
+          "path": "inputs/S-fixture-e-cleanup1-matte-guide.png",
+          "sha256": "6cc6ef5c58f1b355ff9e659e89bbe257ab998f34ed85f345fd109f49b08ccb8c"
+        }
+      ],
+      "selection": "REJECTED full-body candidate: active poses independently relocated; motionstep85px, reversal/acceleration and contact fail; fixturesA/D/E shape fail. No per-pose fits."
+    },
+    {
+      "output": "raw/S-pitch-head-parts1.png",
+      "output_sha256": "46e7a87754e8c7f20b55daa5c431e52852cb16c35c52e019a648af9640563c0d",
+      "prompt": "prompts/S-pitch-head-parts1.txt",
+      "prompt_sha256": "221c6b9604cae4bc3d5d9285b73c4d08cec7056f22a13e36966acd5a4217c017",
+      "ordered_references": [
+        {
+          "path": "inputs/S-pitch-heads-authoring1-matte.png",
+          "sha256": "a4ed7f6275e8e90d81a552f577b4b247b0bca487c6af9c3480f2cfe0c859c142"
+        }
+      ],
+      "selection": "Unreviewed static pitch-head parts; uniform whole-bank calibration/physical size/pose differences/alpha gates required. Not full-frame cleanup."
+    },
+    {
+      "output": "raw/S-pitched-body-parts1.png",
+      "output_sha256": "781159e3dd24d3bfb8b96aec2c3e508d70259c3b433dfe3f629ba9405c98cd66",
+      "prompt": "prompts/S-pitched-body-parts1.txt",
+      "prompt_sha256": "139ef81389c02e49fe9b06e0208acded536a264a73e4550a9f8cfe729ad11ea0",
+      "ordered_references": [
+        {
+          "path": "inputs/S-pitched-body-parts1-guide.png",
+          "sha256": "ac806a33db506e1df705c35cd2a10ce77a4234fe00ff8cbf6ed5c4aab6d44e34"
+        }
+      ],
+      "selection": "Unreviewed posed costume part bank; one neutral-only bank scale/static neck rest attachments required; never per-frame whole-body fitting."
+    }
+  ]
+}

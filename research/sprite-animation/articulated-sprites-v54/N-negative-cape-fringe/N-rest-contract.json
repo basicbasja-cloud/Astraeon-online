@@ -1,0 +1,230 @@
+{
+  "view": "N",
+  "parts": {
+    "head": {
+      "source": "original stage idle N",
+      "crop": [
+        0,
+        0,
+        512,
+        198
+      ],
+      "texture_sha256": "a3c874766b185b6a114df45418ce201d4f74af14378258f1032cc26b151f707c"
+    },
+    "body": {
+      "source": "exact original visible cape/scarf clipped with authored cape region, no filled pixels",
+      "polygon": [
+        [
+          216,
+          195
+        ],
+        [
+          294,
+          195
+        ],
+        [
+          292,
+          216
+        ],
+        [
+          292,
+          236
+        ],
+        [
+          300,
+          275
+        ],
+        [
+          313,
+          329
+        ],
+        [
+          337,
+          401
+        ],
+        [
+          306,
+          394
+        ],
+        [
+          275,
+          402
+        ],
+        [
+          244,
+          395
+        ],
+        [
+          213,
+          403
+        ],
+        [
+          177,
+          401
+        ],
+        [
+          197,
+          335
+        ],
+        [
+          210,
+          277
+        ],
+        [
+          223,
+          235
+        ],
+        [
+          224,
+          211
+        ]
+      ],
+      "hidden_body_scope": "Walking-only cape occlusion; no claim that hidden torso art is complete",
+      "texture_sha256": "80282d915f18ed90bf708b59d64c719a2cdb314e00ba6acbd50833c331fe8a9d"
+    },
+    "left_arm": {
+      "native_cell": 2,
+      "scale": 0.5,
+      "translation": [
+        139,
+        142
+      ],
+      "original_visible_arm_polygon": [
+        [
+          198,
+          208
+        ],
+        [
+          225,
+          208
+        ],
+        [
+          224,
+          237
+        ],
+        [
+          215,
+          273
+        ],
+        [
+          205,
+          310
+        ],
+        [
+          197,
+          350
+        ],
+        [
+          180,
+          350
+        ],
+        [
+          184,
+          313
+        ],
+        [
+          190,
+          273
+        ],
+        [
+          190,
+          236
+        ]
+      ],
+      "texture_sha256": "6548e174dd7a087d9d47de155faddba0c6059785886aee17cd6b06939dbe801a"
+    },
+    "right_arm": {
+      "native_cell": 3,
+      "scale": 0.5,
+      "translation": [
+        190,
+        142
+      ],
+      "original_visible_arm_polygon": [
+        [
+          291,
+          207
+        ],
+        [
+          319,
+          208
+        ],
+        [
+          333,
+          237
+        ],
+        [
+          335,
+          280
+        ],
+        [
+          339,
+          316
+        ],
+        [
+          336,
+          349
+        ],
+        [
+          317,
+          350
+        ],
+        [
+          308,
+          310
+        ],
+        [
+          300,
+          274
+        ],
+        [
+          292,
+          237
+        ]
+      ],
+      "texture_sha256": "ce721749d25bdfe390b3d1d9c1d948fe07ff96d97be4a2708a03a7dafc285e23"
+    },
+    "left_leg": {
+      "native_cell": 4,
+      "scale": 0.4,
+      "translation": [
+        158,
+        322
+      ],
+      "original_visible_region": [
+        180,
+        402,
+        256,
+        512
+      ],
+      "underlap": "Native whole-leg art above402 hidden by original cape; original visible knee/shin/boot below402 unchanged",
+      "texture_sha256": "12bc84565fd8dfeb4c19750c02e65a1eb27ffdae3fa91df1245f1f086a6e79b8"
+    },
+    "right_leg": {
+      "native_cell": 5,
+      "scale": 0.4,
+      "translation": [
+        207,
+        322
+      ],
+      "original_visible_region": [
+        256,
+        402,
+        336,
+        512
+      ],
+      "underlap": "Native whole-leg art above402 hidden by original cape; original visible knee/shin/boot below402 unchanged",
+      "texture_sha256": "beecb9a7f21a0e6c30093a88b1c7b96d6f59fea7feeaa304704fb9172c7a9bc3"
+    }
+  },
+  "order": [
+    "left_leg",
+    "right_leg",
+    "left_arm",
+    "right_arm",
+    "head",
+    "body"
+  ],
+  "scope": "Static visible-art segmentation and native underlap; no per-frame image normalization or painted correction",
+  "production_pass": false
+}

@@ -1,0 +1,23 @@
+{
+  "frame_sha256": [
+    "98582a24c769cf86b6fa7eb70517ea4ed0ea633f865f35eea9d65bea5b31bb6c"
+  ],
+  "review": {
+    "status": "agent_visual_pass",
+    "frame_sha256": [
+      "98582a24c769cf86b6fa7eb70517ea4ed0ea633f865f35eea9d65bea5b31bb6c"
+    ],
+    "observations": [
+      "Eight separate original views retain the white hair, gold armor, scarf and asymmetric cape; no mirroring. One held drawing per view is intentional, matching observed RO body idle cadence."
+    ]
+  },
+  "checks": {
+    "registration": true,
+    "appearance": true,
+    "playback": true,
+    "pose_readability": true,
+    "whole_motion": false
+  },
+  "scope": "Agent image review and actual current portable-player validation. Not user acceptance, arbitrary-character anatomy or game integration.",
+  "playback_evidence": "player-qa.json: actual current PNG/atlas rendering, all positions, clocks, controls and camera policy"
+}

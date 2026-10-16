@@ -1,0 +1,74 @@
+{
+  "provider": "native host image_gen",
+  "billing_verified": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "output": "raw/walk-W-guided-attempt1.png",
+      "output_sha256": "afff18ad13ce015d443e23c9bee0683e08e58cd46bcb899743855f650d186547",
+      "prompt": "prompts/walk-W-guided-attempt1.txt",
+      "prompt_sha256": "30a4cf4dc40dd4f8054fe020cf0e640e7f0d33be2e7ce37195c0af4bd4976da1",
+      "ordered_references": [
+        {
+          "path": "../ro-core-views-v52/inputs/neutral-W-eight-repeat.png",
+          "sha256": "45631ccac560d20252d1807eb20f6387c18a0abd25cd7489b4e862cb6773a380"
+        },
+        {
+          "path": "guides/W/full-registered-eight.png",
+          "sha256": "78f3d20364e0689caf314794737a4cfb0d14aff11296e41ae7cb2a9c7c717597"
+        },
+        {
+          "path": "guides/W/leg-owner-registered-eight.png",
+          "sha256": "0fc28da48eb1803887531864033aad6323da91d31c0fffcc37ff97aad31b5068"
+        },
+        {
+          "path": "../ro-core-views-v52/inputs/external-ro-walk-W-eight.png",
+          "sha256": "d388cca6cc18180f5637507dfa6cc5b9b8fcf1a6563cba977f2b777691d7ac18"
+        }
+      ],
+      "status": "unselected_failed_full_motion_fidelity"
+    },
+    {
+      "output": "raw/walk-W-source-first2.png",
+      "output_sha256": "17f54db06a3ae529644271ddffb72ddf8c410cf2486e129290d51abf0eb42bfe",
+      "prompt": "prompts/walk-W-source-first2.txt",
+      "prompt_sha256": "4fdf50bd99f9a64346c9fcdb27aee0f9f909a0bffee8cdd6f63cd958bc794a6d",
+      "ordered_references": [
+        {
+          "path": "guides/W/full-registered-eight.png",
+          "sha256": "78f3d20364e0689caf314794737a4cfb0d14aff11296e41ae7cb2a9c7c717597"
+        },
+        {
+          "path": "../ro-core-views-v52/neutral/W.png",
+          "sha256": "97f39d86935e7531fd6155088b4c3220a40bf14459714922bdf3272162866b81"
+        },
+        {
+          "path": "guides/W/leg-owner-registered-eight.png",
+          "sha256": "0fc28da48eb1803887531864033aad6323da91d31c0fffcc37ff97aad31b5068"
+        }
+      ],
+      "status": "unselected_failed_full_motion_fidelity"
+    },
+    {
+      "output": "raw/walk-W-lower-body-repair3.png",
+      "output_sha256": "04197664d971f4703d9f98f6dd9ecada843f51841329feee079a8a0035eaa7de",
+      "prompt": "prompts/walk-W-lower-body-repair3.txt",
+      "prompt_sha256": "409e3a6380ccde59566aabeb466333b42033bddd6c9145f8ecbeaf1de66a91e1",
+      "ordered_references": [
+        {
+          "path": "guides/W/lower-body-repair-guide.png",
+          "sha256": "68d2c9fd095018ab20505843898b9ccd4cb0701ea400a42df05ba3d3addae9d1"
+        },
+        {
+          "path": "guides/W/painted-bank-single-scale.png",
+          "sha256": "baf540a93d9912be49c35da04c2b4b27795400ac5e8dda52dc23bb118c5d281b"
+        },
+        {
+          "path": "../ro-core-views-v52/neutral/W.png",
+          "sha256": "97f39d86935e7531fd6155088b4c3220a40bf14459714922bdf3272162866b81"
+        }
+      ],
+      "status": "unselected_failed_full_motion_fidelity"
+    }
+  ]
+}

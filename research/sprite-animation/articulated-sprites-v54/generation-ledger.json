@@ -1,0 +1,221 @@
+{
+  "provider": "native host image_gen",
+  "billing_verified": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "output": "raw/W-rest-parts-attempt1.png",
+      "output_sha256": "b04886fe1b7391f4c9e114a713160850b580e8349ccadc164e7c1713c17079a7",
+      "prompt": "prompts/W-rest-parts-attempt1.txt",
+      "prompt_sha256": "d264483de5050fe0e8ab6643b4e1ee1f4b0d4a386052a00b5e75d3dcef271ee6",
+      "ordered_references": [
+        {
+          "path": "inputs/W-part-art-guide.png",
+          "sha256": "ad461a809674bef99168387678b4225c7e2f379f11bdc693e5b4eb172a31478a"
+        },
+        {
+          "path": "../ro-core-views-v52/neutral/W.png",
+          "sha256": "97f39d86935e7531fd6155088b4c3220a40bf14459714922bdf3272162866b81"
+        }
+      ],
+      "selection": "Onlyattempt1legcells4/5 andedit2body1/arms2/3 selected as static art sources; thirdrepair unselected. Exactoriginalhead frompriorneutral. See rest-contract."
+    },
+    {
+      "output": "raw/W-original-parts-edit2.png",
+      "output_sha256": "af58245ef00ac4e6bc3796e9e53033f40a8b46265b8d4fdddf2f4b3741aaa5d5",
+      "prompt": "prompts/W-original-parts-edit2.txt",
+      "prompt_sha256": "40d78616e4aa59157e67c1ab6f878d6ceaa0c3bdcbac7de1e9255ac55d920e51",
+      "ordered_references": [
+        {
+          "path": "../ro-core-views-v52/inputs/neutral-W-eight-repeat.png",
+          "sha256": "45631ccac560d20252d1807eb20f6387c18a0abd25cd7489b4e862cb6773a380"
+        },
+        {
+          "path": "inputs/W-original-parts-repair-guide.png",
+          "sha256": "e1164ae70869ea5cc459dfd11a06288b78f546eb5338215630fbe94d4dc5249c"
+        }
+      ],
+      "selection": "Onlyattempt1legcells4/5 andedit2body1/arms2/3 selected as static art sources; thirdrepair unselected. Exactoriginalhead frompriorneutral. See rest-contract."
+    },
+    {
+      "output": "raw/W-leg-proportion-repair3.png",
+      "output_sha256": "26c4ad1cc3790abce98ace3f905f792a75287817465945a62aace0bb91c2edfd",
+      "prompt": "prompts/W-leg-proportion-repair3.txt",
+      "prompt_sha256": "115c3f654b202b01b5b43804c9dad6b3de3d7f0cb7d6d62a018f197540c5bc37",
+      "ordered_references": [
+        {
+          "path": "raw/W-original-parts-edit2.png",
+          "sha256": "af58245ef00ac4e6bc3796e9e53033f40a8b46265b8d4fdddf2f4b3741aaa5d5"
+        },
+        {
+          "path": "../ro-core-views-v52/neutral/W.png",
+          "sha256": "97f39d86935e7531fd6155088b4c3220a40bf14459714922bdf3272162866b81"
+        }
+      ],
+      "selection": "Onlyattempt1legcells4/5 andedit2body1/arms2/3 selected as static art sources; thirdrepair unselected. Exactoriginalhead frompriorneutral. See rest-contract."
+    },
+    {
+      "output": "raw/E-original-parts-attempt1.png",
+      "output_sha256": "c25491ae36e21ba7f78380efc26ea1542022e09fa41587b7d99e4d67403a512a",
+      "prompt": "prompts/E-original-parts-attempt1.txt",
+      "prompt_sha256": "ad2d85d4c2653662f155544bff38cffc3d0c12442f45114c2b0e5bc1142cc563",
+      "ordered_references": [
+        {
+          "path": "../ro-core-views-v52/inputs/neutral-E-eight-repeat.png",
+          "sha256": "6f284dbaefa420fa82e8bb3e8719f1e535c3eebb45b09cc0540cd57a271c7080"
+        },
+        {
+          "path": "inputs/E-isolated-part-guide-preview.png",
+          "sha256": "fe37486af1cdd89a470e8f5d7d37875dd6bcdd0ac184307d39a1285c566556c3"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/SW-original-parts-attempt1.png",
+      "output_sha256": "93a08066c707d1da5700c70e18ed1a95ed37707ca37a161af0a0d724cf89893d",
+      "prompt": "prompts/SW-original-parts-attempt1.txt",
+      "prompt_sha256": "313e69ff8bed2e0ac649cc318d75d979c488cc0ba5cdb84dc5ee3c6b094306a6",
+      "ordered_references": [
+        {
+          "path": "../ro-core-views-v52/inputs/neutral-SW-eight-repeat.png",
+          "sha256": "cb1b7a5cd3f40901a7e59ecebd88724732a4b3bd41f8683780e9fa5b0abde9a1"
+        },
+        {
+          "path": "inputs/SW-isolated-part-guide-preview.png",
+          "sha256": "a624e62d1f48297dfebe9583bfb6f2ccdb243cde758d1e738a5792fbf5e762ad"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/S-original-parts-attempt1.png",
+      "output_sha256": "d826bed1e021754a48eef9e63cdf1f27f20708eb8fb0cefb0d2f955424aecdf3",
+      "prompt": "prompts/S-original-parts-attempt1.txt",
+      "prompt_sha256": "3d87f899f59d64143499445e1a3e41d140867c004b8e5f9c89306931f3b97c1f",
+      "ordered_references": [
+        {
+          "path": "inputs/S-canonical-eight-repeat.png",
+          "sha256": "5b20362d19b3122e807d50d46abdfaac7ff0d87d746c3fe8033e4168e75c3bbf"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/N-original-parts-attempt1.png",
+      "output_sha256": "4bac7d68907672003b96c60c6e1c7fff563beb937cae84a560af5b2e233725d5",
+      "prompt": "prompts/N-original-parts-attempt1.txt",
+      "prompt_sha256": "e8be3b432844657c5bbd5a22774c638d6e9ee7b794a96995d8a58f5548d55635",
+      "ordered_references": [
+        {
+          "path": "inputs/N-canonical-eight-repeat.png",
+          "sha256": "9a697fbd15d7789e945059209869123857d4d8e8182665e20e117513d645c302"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/NW-original-parts-attempt1.png",
+      "output_sha256": "c51cf528addc0c6abc76736e80e2b30d3f3c10761c026a5a005f83bc1b2b0338",
+      "prompt": "prompts/NW-original-parts-attempt1.txt",
+      "prompt_sha256": "46ff4f3191489e3fc4e5a043b999808bc16f9dbef3f837d01ac9a957a2c14d4c",
+      "ordered_references": [
+        {
+          "path": "inputs/NW-canonical-eight-repeat.png",
+          "sha256": "efc05793b429d55522f6c11c7a91e23da54d06f39f7bcaea1dd7618227858936"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/NE-original-parts-attempt1.png",
+      "output_sha256": "98e4b810ead3f48aa7c38f5e368fae34ca44b9c1a22e9e354ab615af2b114fc2",
+      "prompt": "prompts/NE-original-parts-attempt1.txt",
+      "prompt_sha256": "8acac05b587c669ae5fa83a1fa122da8d6f88944ea11d3ba893f098d491a7e52",
+      "ordered_references": [
+        {
+          "path": "inputs/NE-canonical-eight-repeat.png",
+          "sha256": "ede531d19b6bd589b03af17cdc56c4891f12b9aedb6b40c9178c86e10bbbe726"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/SE-original-parts-attempt1.png",
+      "output_sha256": "ef6c6b239cfcfbf4f9505f6947ddf60eaa7ea9b2bbd8fd95f944a5e7b86e7f4d",
+      "prompt": "prompts/SE-original-parts-attempt1.txt",
+      "prompt_sha256": "6e91620e259e29f6c85b2cd145a4354c45fb99e394ce60c4d6bac01b20bece18",
+      "ordered_references": [
+        {
+          "path": "inputs/SE-canonical-eight-repeat.png",
+          "sha256": "cd8731a3b489ec8fae19d23694d9e87fd763d1128bfe98b661aa2b184c412995"
+        }
+      ],
+      "selection": "Static parts used only as declared in per-view rest contract/build script. S/N/NW/NE/SE retain original visible head/body/cape/limb pixels over bounded native hidden underlap; E/SW also use selected native visible rest parts. No whole-family production approval."
+    },
+    {
+      "output": "raw/S-parts-cleanup2.png",
+      "output_sha256": "cc0ca31686d438aa31d815aae2b72f085f7afaf6e430d7754dec963facaf0a1a",
+      "prompt": "prompts/S-parts-cleanup2.txt",
+      "prompt_sha256": "1e20d00483acefe09e0791d157b09d6bb1d9e652f09bfb0d413360689e2befc8",
+      "ordered_references": [
+        {
+          "path": "raw/S-original-parts-attempt1.png",
+          "sha256": "d826bed1e021754a48eef9e63cdf1f27f20708eb8fb0cefb0d2f955424aecdf3"
+        },
+        {
+          "path": "inputs/S-canonical-eight-repeat.png",
+          "sha256": "5b20362d19b3122e807d50d46abdfaac7ff0d87d746c3fe8033e4168e75c3bbf"
+        }
+      ],
+      "selection": "Only masked hidden body underlap used. Its body redesign is not selected as visible wardrobe. Original S already shows layered front panels; preserve original visible pixels instead of imposing a new panel count."
+    },
+    {
+      "output": "raw/NW-parts-cleanup2.png",
+      "output_sha256": "639551919059026854b4612a1cc3155342c76dc1fd1578700837af6bd0656e80",
+      "prompt": "prompts/NW-parts-cleanup2.txt",
+      "prompt_sha256": "8adf92aace2f5c63f1b803aff2fc3bc28e8f1adfe9e80fae832a9af381376727",
+      "ordered_references": [
+        {
+          "path": "raw/NW-original-parts-attempt1.png",
+          "sha256": "c51cf528addc0c6abc76736e80e2b30d3f3c10761c026a5a005f83bc1b2b0338"
+        },
+        {
+          "path": "inputs/NW-canonical-eight-repeat.png",
+          "sha256": "efc05793b429d55522f6c11c7a91e23da54d06f39f7bcaea1dd7618227858936"
+        }
+      ],
+      "selection": "Clean native leg source used for static hidden underlap in NW; exact original visible limbs/cape/head retained."
+    },
+    {
+      "output": "raw/NE-parts-cleanup2.png",
+      "output_sha256": "cd5961bed425acb807761e6cc2ffd9853fb60435174ff3fecd26085d8b3c1056",
+      "prompt": "prompts/NE-parts-cleanup2.txt",
+      "prompt_sha256": "1b32fe713015a4838eabd58c551a1089dafe7158770e7b073d0139e023094604",
+      "ordered_references": [
+        {
+          "path": "raw/NE-original-parts-attempt1.png",
+          "sha256": "98e4b810ead3f48aa7c38f5e368fae34ca44b9c1a22e9e354ab615af2b114fc2"
+        },
+        {
+          "path": "inputs/NE-canonical-eight-repeat.png",
+          "sha256": "ede531d19b6bd589b03af17cdc56c4891f12b9aedb6b40c9178c86e10bbbe726"
+        }
+      ],
+      "selection": "Rejected: wrong output type, repeated full characters instead of isolated parts."
+    },
+    {
+      "output": "raw/NE-leg-cleanup3.png",
+      "output_sha256": "e385aa1ef4b683757a8c553ee85659984bc09708223b6826cef868a781f6b69b",
+      "prompt": "prompts/NE-leg-cleanup3.txt",
+      "prompt_sha256": "10e496e32deba104cc8ec73919b28d8cc3759c2527b949a2f1b930426a74c617",
+      "ordered_references": [
+        {
+          "path": "raw/NE-original-parts-attempt1.png",
+          "sha256": "98e4b810ead3f48aa7c38f5e368fae34ca44b9c1a22e9e354ab615af2b114fc2"
+        }
+      ],
+      "selection": "Clean native leg source used for static hidden underlap in NE; exact original visible limbs/cape/head retained. Hidden anatomy remains unverified."
+    }
+  ]
+}

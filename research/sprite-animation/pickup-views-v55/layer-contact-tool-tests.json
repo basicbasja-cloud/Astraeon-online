@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "checks": {
+    "real_captured_positive": true,
+    "empty_schedule": true,
+    "missing_layer": true,
+    "stale_composite": true,
+    "wrong_visible_foot_owner": true,
+    "unobservable_roi": true,
+    "oversized_rounding_budget": true,
+    "vacuous_visibility_budget": true,
+    "invalid_window_type": true,
+    "invalid_distal_band": true,
+    "translated_isolated_boot": true,
+    "empty_occluder": true,
+    "all_hidden_occluder": true
+  },
+  "positive_case_sha256": "88c2fa8f260240b31d82f61d83ba6902dcabeaeb202e09318bb593de80694408",
+  "tool_sha256": "d7a4425aebe85c4edfb2783e161651a2db4f972697dcc0a0e75d73ea7a915bce",
+  "scope": "Actual positive source/body rasters plus independent missing/stale/owner/occlusion/translated boot counterfactuals. Diagnostic mutation only; final art unchanged."
+}

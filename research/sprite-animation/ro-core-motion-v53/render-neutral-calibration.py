@@ -1,0 +1,5 @@
+from pathlib import Path
+import bpy,json,hashlib
+from bpy_extras.object_utils import world_to_camera_view
+from mathutils import Vector
+P=Path(__file__).resolve().parent;bpy.ops.wm.open_mainfile(filepath=str(P.parent/'pickup-sixteen-v48/source/parent-v45.blend'));s=bpy.context.scene;s.frame_set(1);gem=bpy.data.objects['collectible'];gem.animation_data_clear();gem.hide_render=True;s.camera=bpy.data.objects['S'];s.cycles.samples=2;s.render.resolution_x=384;s.render.resolution_y=512;s.render.resolution_percentage=100;s.render.filepath=str(P/'source/neutral-calibration-S.png');bpy.ops.render.render(write_still=True);q=world_to_camera_view(s,s.camera,Vector((0,0,0)));(P/'source/neutral-calibration-receipt.json').write_text(json.dumps({'parent_blend_sha256':hashlib.sha256((P.parent/'pickup-sixteen-v48/source/parent-v45.blend').read_bytes()).hexdigest(),'image_sha256':hashlib.sha256((P/'source/neutral-calibration-S.png').read_bytes()).hexdigest(),'ground_origin_xy':[q.x*384,(1-q.y)*512],'prop_animation_cleared':gem.animation_data is None,'prop_hidden':gem.hide_render,'source_saved':False},indent=2))

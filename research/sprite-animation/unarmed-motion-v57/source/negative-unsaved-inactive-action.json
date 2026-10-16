@@ -1,0 +1,7 @@
+{
+  "source_sha256": "a5417c6ba02b950ed7e4d98ce4a7c5f68ce5189dcefcfefae5eea4b8337ad18b",
+  "readback_error": "Original_attack1_CC0_inplace missing after reopening saved blend",
+  "cause": "Inactive Blender action had no persistent user and was dropped from saved/reloaded source",
+  "correction": "Set use_fake_user=True on every authored action and verify both after independent file reload",
+  "production_pass": false
+}

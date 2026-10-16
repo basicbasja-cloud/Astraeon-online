@@ -1,0 +1,24 @@
+{
+  "frame_sha256": [
+    "a56c38cc81fbfb563cfba2e84d9212bf35de8af75b84383a1de3537f1bb98b6a"
+  ],
+  "review": {
+    "status": "agent_visual_pass",
+    "frame_sha256": [
+      "a56c38cc81fbfb563cfba2e84d9212bf35de8af75b84383a1de3537f1bb98b6a"
+    ],
+    "observations": [
+      "All4 terminal poses reviewed: two boots and hands, original scarf/cape/armor, no neighboring atlas figure. S extraction narrowed to400px to remove actual foreign art while retaining full actor.",
+      "Terminal held state only, not a fall transition; static dead is consistent with observed RO body block."
+    ]
+  },
+  "checks": {
+    "registration": true,
+    "appearance": true,
+    "playback": true,
+    "pose_readability": true,
+    "whole_motion": false
+  },
+  "scope": "Agent image review and actual current portable-player validation. Not user acceptance, arbitrary-character anatomy or game integration.",
+  "playback_evidence": "player-qa.json: actual current PNG/atlas rendering, all positions, clocks, controls and camera policy"
+}

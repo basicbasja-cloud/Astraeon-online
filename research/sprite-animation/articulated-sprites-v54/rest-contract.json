@@ -1,0 +1,116 @@
+{
+  "canvas": [
+    512,
+    512
+  ],
+  "view": "W",
+  "parts": [
+    {
+      "name": "head",
+      "image": "../ro-core-views-v52/neutral/W.png",
+      "rect": [
+        0,
+        0,
+        384,
+        204
+      ],
+      "scale": 1,
+      "translation": [
+        32,
+        0
+      ],
+      "scope": "Exact original full visible head plus covered neck/collar overlap; crop is not proof of hidden head variants",
+      "source_sha256": "97f39d86935e7531fd6155088b4c3220a40bf14459714922bdf3272162866b81"
+    },
+    {
+      "name": "body",
+      "image": "raw/W-original-parts-edit2.png",
+      "rect": [
+        384,
+        0,
+        384,
+        512
+      ],
+      "scale": 0.6,
+      "translation": [
+        161.2,
+        92.4
+      ],
+      "source_sha256": "af58245ef00ac4e6bc3796e9e53033f40a8b46265b8d4fdddf2f4b3741aaa5d5"
+    },
+    {
+      "name": "left_arm",
+      "image": "raw/W-original-parts-edit2.png",
+      "rect": [
+        768,
+        0,
+        384,
+        512
+      ],
+      "scale": 0.6,
+      "translation": [
+        135.8,
+        97.2
+      ],
+      "source_sha256": "af58245ef00ac4e6bc3796e9e53033f40a8b46265b8d4fdddf2f4b3741aaa5d5"
+    },
+    {
+      "name": "right_arm",
+      "image": "raw/W-original-parts-edit2.png",
+      "rect": [
+        1152,
+        0,
+        384,
+        512
+      ],
+      "scale": 0.6,
+      "translation": [
+        129.2,
+        83.6
+      ],
+      "source_sha256": "af58245ef00ac4e6bc3796e9e53033f40a8b46265b8d4fdddf2f4b3741aaa5d5"
+    },
+    {
+      "name": "left_leg",
+      "image": "raw/W-rest-parts-attempt1.png",
+      "rect": [
+        0,
+        512,
+        384,
+        512
+      ],
+      "scale": 0.39,
+      "translation": [
+        169.1,
+        321.69
+      ],
+      "source_sha256": "b04886fe1b7391f4c9e114a713160850b580e8349ccadc164e7c1713c17079a7"
+    },
+    {
+      "name": "right_leg",
+      "image": "raw/W-rest-parts-attempt1.png",
+      "rect": [
+        384,
+        512,
+        384,
+        512
+      ],
+      "scale": 0.39,
+      "translation": [
+        169.1,
+        309.08
+      ],
+      "source_sha256": "b04886fe1b7391f4c9e114a713160850b580e8349ccadc164e7c1713c17079a7"
+    }
+  ],
+  "order": [
+    "right_leg",
+    "left_leg",
+    "right_arm",
+    "head",
+    "body",
+    "left_arm"
+  ],
+  "source_pack_policy": "One static uniform scale per generated source bank:edit2 .6; first leg bank .39. Fixed rest origins define source packing/rig-family placement, never keyed per-frame correction. Original head stays1:1. No temporal art is derived from failed native walk sheets.",
+  "production_pass": false
+}

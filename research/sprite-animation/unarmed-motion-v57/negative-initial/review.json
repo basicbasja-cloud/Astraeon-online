@@ -1,0 +1,9 @@
+{
+  "visual_pass": false,
+  "reasons": [
+    "Head rotation derived from projected gaze bone crosses camera axis and flips N head; use relative quaternion applied to canonical up vector",
+    "World-angle deltas relative to differing neutral arm poses preserve a constant incorrect anatomical arm offset; static source-direction/roll calibration required",
+    "Knee armor spans overlapping upper/lower UV pieces and produces visible duplicated fragments; assign joint artwork once"
+  ],
+  "scope": "Actual rejected candidate PNGs despite positive area/unclipped numeric gates. No asset approval."
+}

@@ -1,0 +1,23 @@
+{
+  "frame_sha256": [
+    "471e46040693f8dbae9ab6df5cff93cc85a5ee484fefb2c011279f1b4afa84cf"
+  ],
+  "review": {
+    "status": "agent_visual_pass",
+    "frame_sha256": [
+      "471e46040693f8dbae9ab6df5cff93cc85a5ee484fefb2c011279f1b4afa84cf"
+    ],
+    "observations": [
+      "All eight seated views show bent knees, hand/leg contact and a cape resting on the floor; same wardrobe retained. Static seated state, not a stand-to-sit transition."
+    ]
+  },
+  "checks": {
+    "registration": true,
+    "appearance": true,
+    "playback": true,
+    "pose_readability": true,
+    "whole_motion": false
+  },
+  "scope": "Agent image review and actual current portable-player validation. Not user acceptance, arbitrary-character anatomy or game integration.",
+  "playback_evidence": "player-qa.json: actual current PNG/atlas rendering, all positions, clocks, controls and camera policy"
+}

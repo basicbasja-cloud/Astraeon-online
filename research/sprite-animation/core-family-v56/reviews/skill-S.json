@@ -1,0 +1,30 @@
+{
+  "frame_sha256": [
+    "27d3a28cb4c6f0ca20b8ffc3c0146d03ad342af8b8ed82a272f1e6f1a4b822e4",
+    "8ec4d3588ec9cb239dceef8caa52724e96529372291ba042f1e0326d56b6f5af",
+    "8fb67fd7c913d15aba0558bef321d5d72beb01e94349fd5e88f3ace8e1572837",
+    "27d3a28cb4c6f0ca20b8ffc3c0146d03ad342af8b8ed82a272f1e6f1a4b822e4"
+  ],
+  "review": {
+    "status": "agent_visual_pass",
+    "frame_sha256": [
+      "27d3a28cb4c6f0ca20b8ffc3c0146d03ad342af8b8ed82a272f1e6f1a4b822e4",
+      "8ec4d3588ec9cb239dceef8caa52724e96529372291ba042f1e0326d56b6f5af",
+      "8fb67fd7c913d15aba0558bef321d5d72beb01e94349fd5e88f3ace8e1572837",
+      "27d3a28cb4c6f0ca20b8ffc3c0146d03ad342af8b8ed82a272f1e6f1a4b822e4"
+    ],
+    "observations": [
+      "All4 exposures per view inspected: neutral, preparatory hand, open casting palm, neutral return. Anatomical right is casting hand; rear-view screen side reverses naturally. No weapon or copied RO art.",
+      "Four authored exposures with held key poses, not16new drawings or motion-captured anatomical proof."
+    ]
+  },
+  "checks": {
+    "registration": true,
+    "appearance": true,
+    "playback": true,
+    "pose_readability": true,
+    "whole_motion": false
+  },
+  "scope": "Agent image review and actual current portable-player validation. Not user acceptance, arbitrary-character anatomy or game integration.",
+  "playback_evidence": "player-qa.json: actual current PNG/atlas rendering, all positions, clocks, controls and camera policy"
+}

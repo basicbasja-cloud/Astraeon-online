@@ -1,0 +1,133 @@
+{
+  "provider": "native host image_gen",
+  "billing_verified": false,
+  "external_paid_provider_calls": 0,
+  "jobs": [
+    {
+      "output": "candidates/N16-attempt1.png",
+      "output_sha256": "3e48b031a624d84d1f74648848bde73acc2e96b6ff3b3c3e00e5353b1c8e7f24",
+      "prompt": "candidates/N16-attempt1-prompt.txt",
+      "prompt_sha256": "d4b70147afb0b4164510c194125993e475a54f6feb45b381f49a9849d0497592",
+      "ordered_reference_paths": [
+        "inputs/appearance-family-eight.png",
+        "inputs/retimed-16-source-guide.png",
+        "inputs/external-ro-pickup-N.png"
+      ],
+      "references": [
+        {
+          "path": "inputs/appearance-family-eight.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/retimed-16-source-guide.png",
+          "sha256": "783aa673efa362a1fb98e3892fdb253af6a0136d2158c8e20c34a27850ff42c4"
+        },
+        {
+          "path": "inputs/external-ro-pickup-N.png",
+          "sha256": "376cf6c4ae09d827707bc62d932f02ff65aff9cf4e1854c8e6a963f59aec3211"
+        }
+      ],
+      "reference_reconstruction": "Ordered call inputs recorded in conversation and saved prompts; all paths reconciled against saved inputs"
+    },
+    {
+      "output": "candidates/N16-attempt2.png",
+      "output_sha256": "34874982ec81eb4601e32336f08eba85b71e54feccdea7bd7497d77600a1b256",
+      "prompt": "candidates/N16-attempt2-prompt.txt",
+      "prompt_sha256": "89206e68edde56522a95882f67fd4327fb203d6d41c050f65e93ad29d6e6b6f2",
+      "ordered_reference_paths": [
+        "inputs/neutral-16-registration-guide.png",
+        "inputs/retimed-16-source-guide.png"
+      ],
+      "references": [
+        {
+          "path": "inputs/neutral-16-registration-guide.png",
+          "sha256": "68b1509aab260bede2726fff758f8600cf1143b6a15a0ddb2ffa525b5ef416e4"
+        },
+        {
+          "path": "inputs/retimed-16-source-guide.png",
+          "sha256": "783aa673efa362a1fb98e3892fdb253af6a0136d2158c8e20c34a27850ff42c4"
+        }
+      ],
+      "reference_reconstruction": "Ordered call inputs recorded in conversation and saved prompts; all paths reconciled against saved inputs"
+    },
+    {
+      "output": "candidates/N-descent-attempt1.png",
+      "output_sha256": "420bb90f75340a459220dd97c6cce0a4b94fc3036cd262003bab1d39d0b35a5c",
+      "prompt": "candidates/N-descent-attempt1-prompt.txt",
+      "prompt_sha256": "a44219107bd52639f2842dee060c00f7a04bd5abe0d91a670713c9f4bc92549e",
+      "ordered_reference_paths": [
+        "inputs/appearance-family-eight.png",
+        "inputs/descent-source-eight.png"
+      ],
+      "references": [
+        {
+          "path": "inputs/appearance-family-eight.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        },
+        {
+          "path": "inputs/descent-source-eight.png",
+          "sha256": "39cb9b4e6c13dbab4d5054e5de90aaeedb295b1ebdec41cff3461511e8752817"
+        }
+      ],
+      "reference_reconstruction": "Ordered call inputs recorded in conversation and saved prompts; all paths reconciled against saved inputs"
+    },
+    {
+      "output": "candidates/N-empty-body-attempt1.png",
+      "output_sha256": "5f537bd7a7436168829fd82f84374950f9b76011320fa2c2fbf101cd2df1d2ad",
+      "prompt": "candidates/N-empty-body-attempt1-prompt.txt",
+      "prompt_sha256": "391d6c6f2e854b2f8be0de6238a92d326327301d41124229609d94a4c37031bd",
+      "ordered_reference_paths": [
+        "inputs/appearance-family-eight.png"
+      ],
+      "references": [
+        {
+          "path": "inputs/appearance-family-eight.png",
+          "sha256": "3e78544900f2f1cd3e4a696c0a1862a78ce3f50ecf0b03fcc7d8acdabf98e74c"
+        }
+      ],
+      "reference_reconstruction": "Ordered call inputs recorded in conversation and saved prompts; all paths reconciled against saved inputs"
+    },
+    {
+      "output": "candidates/N-descent-cleanup-attempt1.png",
+      "output_sha256": "98799ab6c70f9021d4a601869a59dca55012553a26bd85aba394c8fbcb3ad08b",
+      "prompt": "candidates/N-descent-cleanup-attempt1-prompt.txt",
+      "prompt_sha256": "26b8307903a18101673e51db5bb1c3ec1c9970acb4ac21994a0a8bd4a1c05023",
+      "ordered_reference_paths": [
+        "inputs/morph-descent-cleanup-preview.png",
+        "candidates/N-empty-body-attempt1.png"
+      ],
+      "references": [
+        {
+          "path": "inputs/morph-descent-cleanup-preview.png",
+          "sha256": "64388e298f772e67c2a88066a311aa9c39ee3b9663e0d21e6949ecd4dc3c31ad"
+        },
+        {
+          "path": "candidates/N-empty-body-attempt1.png",
+          "sha256": "5f537bd7a7436168829fd82f84374950f9b76011320fa2c2fbf101cd2df1d2ad"
+        }
+      ],
+      "reference_reconstruction": "Ordered call inputs recorded in conversation and saved prompts; all paths reconciled against saved inputs"
+    },
+    {
+      "output": "candidates/N-recovery-cleanup-attempt1.png",
+      "output_sha256": "a367fd6889eaee593d3d970d1be68bc4bf2893f0a47a2c40076daea107023d35",
+      "prompt": "candidates/N-recovery-cleanup-attempt1-prompt.txt",
+      "prompt_sha256": "bc9e31784dcfc28e1a485cf48bd262f7b61c7113c132f2807949b7d9e93ed029",
+      "ordered_reference_paths": [
+        "inputs/morph-recovery-cleanup-preview.png",
+        "candidates/N-empty-body-attempt1.png"
+      ],
+      "references": [
+        {
+          "path": "inputs/morph-recovery-cleanup-preview.png",
+          "sha256": "a216ecf239be20aca20e0c2e220e8b97549b6d8005fa494230ed7317e3471d7b"
+        },
+        {
+          "path": "candidates/N-empty-body-attempt1.png",
+          "sha256": "5f537bd7a7436168829fd82f84374950f9b76011320fa2c2fbf101cd2df1d2ad"
+        }
+      ],
+      "reference_reconstruction": "Ordered call inputs recorded in conversation and saved prompts; all paths reconciled against saved inputs"
+    }
+  ]
+}

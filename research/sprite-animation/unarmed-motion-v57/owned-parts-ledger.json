@@ -1,0 +1,210 @@
+[
+  {
+    "source": "articulated-sprites-v54/parts/S/left_arm.png",
+    "source_sha256": "d05981132ab22c8adf9a1ffed5615e93ba7b45971819cd954be97af45dee12cb",
+    "output": "inputs/owned-parts/S-left_arm.png",
+    "polygon": [
+      [
+        290,
+        217
+      ],
+      [
+        314,
+        219
+      ],
+      [
+        328,
+        239
+      ],
+      [
+        321,
+        248
+      ],
+      [
+        325,
+        272
+      ],
+      [
+        332,
+        309
+      ],
+      [
+        334,
+        339
+      ],
+      [
+        326,
+        358
+      ],
+      [
+        308,
+        358
+      ],
+      [
+        298,
+        345
+      ],
+      [
+        302,
+        319
+      ],
+      [
+        298,
+        292
+      ],
+      [
+        294,
+        280
+      ],
+      [
+        287,
+        263
+      ],
+      [
+        280,
+        240
+      ]
+    ],
+    "operation": "Static arm ownership excludes neighboring cape/belt UV; no painted replacement",
+    "output_sha256": "5c63b12105087df28645b9bde1e3453984264e8eeb2a0ed1ef65fdb650633518"
+  },
+  {
+    "source": "articulated-sprites-v54/parts/S/right_arm.png",
+    "source_sha256": "4fcb7cccb0cee447660949a3c6903581e1f46725a45ac659ad1a0308bf45ca64",
+    "output": "inputs/owned-parts/S-right_arm.png",
+    "polygon": [
+      [
+        200,
+        217
+      ],
+      [
+        219,
+        221
+      ],
+      [
+        228,
+        241
+      ],
+      [
+        216,
+        266
+      ],
+      [
+        208,
+        279
+      ],
+      [
+        205,
+        293
+      ],
+      [
+        201,
+        322
+      ],
+      [
+        202,
+        347
+      ],
+      [
+        193,
+        359
+      ],
+      [
+        177,
+        355
+      ],
+      [
+        170,
+        343
+      ],
+      [
+        174,
+        318
+      ],
+      [
+        181,
+        287
+      ],
+      [
+        185,
+        264
+      ],
+      [
+        184,
+        243
+      ]
+    ],
+    "operation": "Static arm ownership excludes neighboring cape/belt UV; no painted replacement",
+    "output_sha256": "52e6161add3ce2e2b6ff8c0c4a51011f1ff0bda6296f7718f89f98b58fa9abaa"
+  },
+  {
+    "source": "articulated-sprites-v54/parts/S/body.png",
+    "source_sha256": "51383d842627c739cd3732a3f8c0d69dcde2b8e5951dbd15e1a256b513c52389",
+    "native_source": "articulated-sprites-v54/raw/S-parts-cleanup2.png",
+    "native_source_sha256": "cc0ca31686d438aa31d815aae2b72f085f7afaf6e430d7754dec963facaf0a1a",
+    "output": "inputs/owned-parts/S-body.png",
+    "native_bank_scale": 0.48,
+    "native_translation": [
+      159,
+      168
+    ],
+    "operation": "Existing native hidden cape/armhole underlap in fixed polygon behind exact original body; no frame-dependent fit",
+    "output_sha256": "9cacde82e44ecbd3df3292fa197b25e4729b2c52bf77ed7bd001dab191ac5113"
+  },
+  {
+    "source": "articulated-sprites-v54/raw/N-original-parts-attempt1.png",
+    "source_sha256": "4bac7d68907672003b96c60c6e1c7fff563beb937cae84a560af5b2e233725d5",
+    "output": "inputs/owned-parts/N-left_arm.png",
+    "cell": 2,
+    "scale": 0.5,
+    "translation": [
+      129,
+      137
+    ],
+    "operation": "Complete static native rear arm and closed fist, original costume. No partial original/native shoulder overlay, no cape-edge slivers used as whole forearms. One fixed rest origin, not a frame fit.",
+    "output_sha256": "d8fc168d30d5b1af81182385eddba7516d16beaad7564df6d7d971bf9c0c092b"
+  },
+  {
+    "source": "articulated-sprites-v54/raw/N-original-parts-attempt1.png",
+    "source_sha256": "4bac7d68907672003b96c60c6e1c7fff563beb937cae84a560af5b2e233725d5",
+    "output": "inputs/owned-parts/N-right_arm.png",
+    "cell": 3,
+    "scale": 0.5,
+    "translation": [
+      200,
+      137
+    ],
+    "operation": "Complete static native rear arm and closed fist, original costume. No partial original/native shoulder overlay, no cape-edge slivers used as whole forearms. One fixed rest origin, not a frame fit.",
+    "output_sha256": "95e909d91d42c63db5f48cda221ef93ee203d9731a6cb5a331f0142a16697cf9"
+  },
+  {
+    "source": "articulated-sprites-v54/parts/S/left_leg.png",
+    "source_sha256": "fe4298e33ac7e99d6063893ab21388b1d1dfa34c576768889011c910e85bd368",
+    "original_visible_source": "ro-core-views-v52/stage/idle/S/00.png",
+    "original_visible_source_sha256": "93b6f2ff2610d4b075d9b4e9415f0cdfc7fe6e53d05f1cf9a5809bbfd53d7800",
+    "output": "inputs/owned-parts/S-left_leg.png",
+    "original_pants_rect": [
+      278,
+      380,
+      306,
+      388
+    ],
+    "operation": "Static rest-source ownership: original trouser pixels replace leftover native kneeguard lip above original visible boot. No frame-dependent replacement.",
+    "output_sha256": "71bb3c42a9f5684f2b8a14a1bc4369ee4be352beb95216484ff82ab2e5444711"
+  },
+  {
+    "source": "articulated-sprites-v54/parts/S/right_leg.png",
+    "source_sha256": "2496ba1e982451ba2e9695167c74f15824b013bff20f6344d58f38083f04075e",
+    "original_visible_source": "ro-core-views-v52/stage/idle/S/00.png",
+    "original_visible_source_sha256": "93b6f2ff2610d4b075d9b4e9415f0cdfc7fe6e53d05f1cf9a5809bbfd53d7800",
+    "output": "inputs/owned-parts/S-right_leg.png",
+    "original_pants_rect": [
+      223,
+      380,
+      250,
+      388
+    ],
+    "operation": "Static rest-source ownership: original trouser pixels replace leftover native kneeguard lip above original visible boot. No frame-dependent replacement.",
+    "output_sha256": "a97d2d2bf6f7caea507ce4f98b001a1c572d794e88ac060b5971a4573cb04bde"
+  }
+]

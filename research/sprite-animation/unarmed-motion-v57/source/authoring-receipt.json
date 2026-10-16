@@ -1,0 +1,327 @@
+{
+  "parent_blend_sha256": "5d8781bb931ac8c7a5320498c4dca38c921a79edc0a924d5d7ff8f19a92f036c",
+  "external_source_sha256": "6e25815b6d9054f7eed1d16a120a5c2a904687e923d48db565ceab4e73819af9",
+  "blend_sha256": "5a7003550046a5a2ff59e6ef11ee72e88d100c2311717da3f093b1ed32f7e454",
+  "source_coordinate_frame": "BlenderZup, anatomicalLEFT+X, forward-Y for both rigs; no mirroring",
+  "global_translation_gain_from_shoulder_to_ankle_height": 1.4347241918594873,
+  "fixed_guard_feet_world": {
+    "left": [
+      0.17999999225139618,
+      0.019999999552965164,
+      0.13999998569488525
+    ],
+    "right": [
+      -0.18000000715255737,
+      0.019999995827674866,
+      0.14000000059604645
+    ]
+  },
+  "planar_guard_hip_offset": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "constant_guard_dip_m": 0.06,
+  "guard_dip_policy": "Single whole-clip source-only original-length IK reachability clearance, roundedup1mm plus5mm knee margin; never raster/per-frame fitting",
+  "actions": {
+    "ready": {
+      "action": "Original_ready_CC0_inplace",
+      "source_clip": "Melee_Unarmed_Idle",
+      "duration_ms": 1070,
+      "source_duration_seconds": 1.0666666666666667,
+      "source_samples": 257,
+      "frame_range": [
+        1,
+        257
+      ]
+    },
+    "attack1": {
+      "action": "Original_attack1_CC0_inplace",
+      "source_clip": "Melee_Unarmed_Attack_Punch_A",
+      "duration_ms": 1170,
+      "source_duration_seconds": 1.1666666666666667,
+      "source_samples": 257,
+      "frame_range": [
+        1,
+        257
+      ]
+    }
+  },
+  "max_actual_sampled_ankle_target_error_m": 4.7158408541873706e-08,
+  "neutral_bones": {
+    "root": {
+      "head": [
+        0.0,
+        0.0,
+        0.949999988079071
+      ],
+      "tail": [
+        0.0,
+        0.05999999865889549,
+        0.949999988079071
+      ],
+      "rotation_wxyz": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "torso": {
+      "head": [
+        0.0,
+        0.0,
+        0.949999988079071
+      ],
+      "tail": [
+        0.0,
+        3.7683069109561984e-08,
+        1.6700000762939453
+      ],
+      "rotation_wxyz": [
+        0.7071067690849304,
+        0.7071067690849304,
+        0.0,
+        0.0
+      ]
+    },
+    "head": {
+      "head": [
+        0.0,
+        -0.02178894728422165,
+        1.91904878616333
+      ],
+      "tail": [
+        0.0,
+        0.07783053815364838,
+        1.9277644157409668
+      ],
+      "rotation_wxyz": [
+        0.9990482330322266,
+        0.04361938312649727,
+        0.0,
+        0.0
+      ]
+    },
+    "left.upperarm": {
+      "head": [
+        0.2200000137090683,
+        9.81294761004392e-08,
+        1.5
+      ],
+      "tail": [
+        0.25163936614990234,
+        0.09080146998167038,
+        1.226405382156372
+      ],
+      "rotation_wxyz": [
+        0.49921709299087524,
+        -0.4117010831832886,
+        -0.6382291316986084,
+        0.4170709550380707
+      ]
+    },
+    "left.forearm": {
+      "head": [
+        0.25163939595222473,
+        0.09080139547586441,
+        1.2264055013656616
+      ],
+      "tail": [
+        0.2989659309387207,
+        0.03832352161407471,
+        0.9658170938491821
+      ],
+      "rotation_wxyz": [
+        0.37574854493141174,
+        -0.561428964138031,
+        -0.5114994645118713,
+        0.5310167074203491
+      ]
+    },
+    "left.hand": {
+      "head": [
+        0.2989659905433655,
+        0.038323529064655304,
+        0.9658169150352478
+      ],
+      "tail": [
+        0.31123584508895874,
+        0.02471814677119255,
+        0.8982569575309753
+      ],
+      "rotation_wxyz": [
+        0.37574854493141174,
+        -0.561428964138031,
+        -0.5114994645118713,
+        0.5310167074203491
+      ]
+    },
+    "right.upperarm": {
+      "head": [
+        -0.21999995410442352,
+        -3.986873409189684e-08,
+        1.5
+      ],
+      "tail": [
+        -0.33621710538864136,
+        0.004194180015474558,
+        1.2343385219573975
+      ],
+      "rotation_wxyz": [
+        0.27772632241249084,
+        0.008281111717224121,
+        -0.6558196544647217,
+        0.7019259333610535
+      ]
+    },
+    "right.forearm": {
+      "head": [
+        -0.3362170457839966,
+        0.004194192588329315,
+        1.2343385219573975
+      ],
+      "tail": [
+        -0.32498985528945923,
+        -0.040247950702905655,
+        0.9682579636573792
+      ],
+      "rotation_wxyz": [
+        0.10029073059558868,
+        -0.15008850395679474,
+        -0.6384680867195129,
+        0.7481802701950073
+      ]
+    },
+    "right.hand": {
+      "head": [
+        -0.3249898850917816,
+        -0.04024790972471237,
+        0.9682580232620239
+      ],
+      "tail": [
+        -0.3220791220664978,
+        -0.05176994577050209,
+        0.8992741703987122
+      ],
+      "rotation_wxyz": [
+        0.10029073804616928,
+        -0.15008851885795593,
+        -0.6384680867195129,
+        0.7481802701950073
+      ]
+    },
+    "left.thigh": {
+      "head": [
+        0.14000000059604645,
+        7.398540446956758e-09,
+        0.949999988079071
+      ],
+      "tail": [
+        0.1608838587999344,
+        -0.04950498789548874,
+        0.5334509611129761
+      ],
+      "rotation_wxyz": [
+        0.4824281632900238,
+        -0.5166681408882141,
+        0.45643022656440735,
+        -0.5403596758842468
+      ]
+    },
+    "left.shin": {
+      "head": [
+        0.1608838587999344,
+        -0.04950498417019844,
+        0.5334509611129761
+      ],
+      "tail": [
+        0.18000005185604095,
+        0.01999998465180397,
+        0.14000001549720764
+      ],
+      "rotation_wxyz": [
+        0.5560930371284485,
+        -0.4445590078830719,
+        0.5269172191619873,
+        -0.4642047584056854
+      ]
+    },
+    "left.foot": {
+      "head": [
+        0.17999999225139618,
+        0.019999999552965164,
+        0.13999998569488525
+      ],
+      "tail": [
+        0.18000000715255737,
+        -0.18000005185604095,
+        0.09000001102685928
+      ],
+      "rotation_wxyz": [
+        2.3246595759474076e-09,
+        -3.8592759210587246e-08,
+        -0.1221831664443016,
+        0.9925075769424438
+      ]
+    },
+    "right.thigh": {
+      "head": [
+        -0.14000000059604645,
+        0.0,
+        0.949999988079071
+      ],
+      "tail": [
+        -0.1608838587999344,
+        -0.04950498789548874,
+        0.5334509611129761
+      ],
+      "rotation_wxyz": [
+        0.45643025636672974,
+        -0.5403596758842468,
+        0.4824281632900238,
+        -0.5166681408882141
+      ]
+    },
+    "right.shin": {
+      "head": [
+        -0.16088387370109558,
+        -0.049504995346069336,
+        0.5334509611129761
+      ],
+      "tail": [
+        -0.18000003695487976,
+        0.01999995857477188,
+        0.1400001049041748
+      ],
+      "rotation_wxyz": [
+        0.5269172191619873,
+        -0.4642047584056854,
+        0.5560930371284485,
+        -0.4445590376853943
+      ]
+    },
+    "right.foot": {
+      "head": [
+        -0.18000000715255737,
+        0.019999995827674866,
+        0.14000000059604645
+      ],
+      "tail": [
+        -0.18000000715255737,
+        -0.18000003695487976,
+        0.09000002592802048
+      ],
+      "rotation_wxyz": [
+        2.1107982028922834e-09,
+        -4.2689919155236566e-08,
+        -0.1221831738948822,
+        0.9925075769424438
+      ]
+    }
+  },
+  "arm_calibration": "Actual CC0 wrist relative to current source shoulder, one whole-arm length gain, original target upper/forearm lengths solved by IK with actual current CC0 elbow plane. Wrist stays aligned to forearm in original neutral hand relation for a closed fist; external wrist roll is excluded.",
+  "adaptation": "Authored in-place attack: preserve CC0 upper-body world-angle deltas and vertical pelvis motion; lock feet/orientation and planar pelvis to original neutral stance, author one source-only constant guard clearance, retain CC0 pelvisZ motion relative to guard0, analytic original-length leg IK. External full lunge/foot roll is not copied. This is not an exact external clip replay.",
+  "clock": "Blender1..257 is normalized phase; per-action duration_ms controls playback. No257newdrawings.",
+  "production_pass": false
+}

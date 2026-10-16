@@ -1,0 +1,27 @@
+{
+  "action": "dead",
+  "view": "S",
+  "observed_source": "research/sprite-animation/ro-core-views-v52/stage/dead/S/00.png",
+  "observed_sha256": "c97de9482f3ecfbf8aea26cdf8f3a50fb706e97d743dbf55b7bc58f0424ace83",
+  "manual_review": "REJECTED_FOR_ATLAS_CONTAMINATION",
+  "original_source_rect": [
+    0,
+    0,
+    416,
+    512
+  ],
+  "actor_alpha128_bbox": [
+    17,
+    211,
+    394,
+    474
+  ],
+  "foreign_alpha128_component_bbox": [
+    410,
+    320,
+    415,
+    350
+  ],
+  "foreign_component_pixels": 130,
+  "correction": "Final new family must crop original source atlas with static width400 instead of416. Whole actor retained with5px gutter, neighboring pose excluded. Existing v52 stage bytes preserved as negative. No per-frame fit, pixel repaint or anatomy fix."
+}
