@@ -1,3 +1,16 @@
+# Latest — user rejects segmented appearance; whole-body architecture v58, 2026-10-16
+
+User explicitly says character looks cut apart and knees disappear when bending. They propose RO-style body, hair+head, weapon, weapon-trail separation. This supersedes v56 appearance acceptance. Prior statements that the finite core was complete were too strong: numeric surface and connectivity gates did not establish coherent drawn anatomy. Preserve v51–v57 frozen evidence, do not rewrite old reports.
+
+Read `research/sprite-animation/whole-body-v58/README.md`, user-feedback.json and review-decision.json. New runtime boundary: one complete posed body+outfit/cape/scarf raster, one complete head+hair, optional weapon, optional weapon-trail. No runtime arms/knees/shins/boots assembly. Internal source rig remains a pose guide only. Four logical slots may need front/back passes for equipment; not all RO ACT data is a single physical body image. Pinned roBrowser source explicitly calls body443/head457/weapon509/weapon_trail510; URL/hash retained.
+
+Two real host imagegen jobs retained, no external paid calls, host billing unknown. Attempt1 has clipped hair/unregistered packing. Attempt2 improves full-body knee/thigh volume but still fails motion/contact and neutral return. Fixed equal-grid technical extraction, no per-frame fit/warp, candidate16frames only. Four-slot HTML demonstrates actual body/head draw with no limb deformers; visible RGBA recomposition proof separate from art approval. Provisional manual head masks still retain costume fragments and are NOT approved for head swaps. Read current browser/motion/contact reports; production_pass false. Never say new animation finished or expand to all actions until actual visual+motion gates pass.
+
+Same sole research branch, standing push authorization, no subagents, no main/force. work/ stays scratch. Prior files throughv57/W13 frozen. After publication next authoring freshv59. User asked a focused architecture question; explain why complete pose drawings solve the cut-body construction problem, and distinguish working layer architecture from still-rejected native motion.
+
+---
+Previous continuation (superseded appearance approval):
+
 # Current continuation — finite core completed, v51–v57, 2026-10-16
 
 Use `research/sprite-animation/core-family-v56/README.md`, KNOW-HOW.md, REFERENCES.md and `delivery/README.md` first. This entry supersedes unfinished historical entries below. Sole branch `research/modular-sprites-full-body-2026-10-11`; standing push authorization continues. No subagents. Never change main or force-push. User wants continued research with external references and reusable verification, with particular concern about16-frame pickup bounce.

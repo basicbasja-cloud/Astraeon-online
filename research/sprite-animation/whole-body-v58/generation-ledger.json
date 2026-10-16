@@ -1,0 +1,42 @@
+{
+  "jobs": [
+    {
+      "attempt": 1,
+      "tool": "host image_gen.imagegen",
+      "prompt": "Create a production sprite animation proof from the attached original silver-haired gold-scarf fantasy boy. Match this exact original character, outfit, proportions, face, painterly game-sprite rendering, colors, asymmetric gold cape on HIS LEFT (viewer right), cream tunic, teal side panel, gold armor, brown gloves and boots. Produce ONE transparent 4-column by 4-row sprite sheet, EXACTLY SIXTEEN complete full-character frames in row-major chronological order, all facing straight toward the viewer with the same slightly elevated orthographic RPG camera. No labels, no text, no grid, no scenery, no shadow, no props, no VFX, no weapon. Each cell has identical dimensions and the same world floor line, margins, fixed camera and scale. Keep BOTH entire soles at the same local pixel positions throughout. Do not center the lowered crouch by its bounding box. Start and end upright like the reference. Action is a natural bend/squat to reach one empty hand toward the ground in front of the boots, then rise: frame1 upright; frame2 slight anticipation; frame3-4 hips and knees flex smoothly; frames5-7 smoothly lower pelvis with coherent bent thighs, knees and shins; frame8 deepest bend; frame9 brief same lowest pose; frames10-14 progressively rise; frame15 nearly upright; frame16 exactly upright. RIGHT arm (viewer LEFT) reaches between and slightly ahead of the boots, other hand balances by the other thigh. Crucial drawing repair: DRAW EACH POSE AS A COMPLETE COHERENT WHOLE BODY. Never squash a standing torso over stationary upright legs, never eliminate thighs or kneecaps, never paste boots or rotate detached armor pieces. The thighs, both kneecaps, shins and boots must remain convincingly connected and have volume in every crouching pose. Head follows the neck with natural controlled forward pitch, not floating above the scarf. Preserve chest length and coherent pelvis volume with true foreshortening rather than vertical shrinking. The whole scarf and cape hang naturally under gravity and remain part of the body drawing. Arms, hands, knees and clothing may naturally occlude one another, but there must be no cut seams, detached hands, missing limbs, transparent joint holes, pinched tiny torso or telescoping knees. No additional arms or gold duplicates. This is a sixteen-pose single-pass coherent animation sheet, not a paper puppet or a concept poster. All full figures and all hair/boots/cape extremities fit fully inside their own cells on transparent background.",
+      "ordered_references": [
+        {
+          "path": "inputs/neutral-S.png",
+          "sha256": "27d3a28cb4c6f0ca20b8ffc3c0146d03ad342af8b8ed82a272f1e6f1a4b822e4"
+        }
+      ],
+      "output": "raw/whole-pickup-attempt1.png",
+      "output_sha256": "ec8b2a58df3d82b1e2f105ff49ee91abb48b779f4480cb1ef400d69fa05e7f4f",
+      "transparent_background": true,
+      "billing_verified": false,
+      "production_approved": false
+    },
+    {
+      "attempt": 2,
+      "tool": "host image_gen.imagegen",
+      "prompt": null,
+      "ordered_references": [
+        {
+          "path": "inputs/fixed-grid-16.png",
+          "sha256": "e2ee0e40b4803e512e5fd6f3e50102eeccd2405d4d6b182f141ca59120b8b882"
+        },
+        {
+          "path": "raw/whole-pickup-attempt1.png",
+          "sha256": "ec8b2a58df3d82b1e2f105ff49ee91abb48b779f4480cb1ef400d69fa05e7f4f"
+        }
+      ],
+      "output": "raw/whole-pickup-attempt2.png",
+      "output_sha256": "fbfd3a287e3ac971f0fd0d3215b94c7ba29ddfcd2f6f110d52cd120eab5bc72f",
+      "transparent_background": true,
+      "billing_verified": false,
+      "production_approved": false
+    }
+  ],
+  "external_paid_provider_calls": 0,
+  "host_cost_unknown": true
+}

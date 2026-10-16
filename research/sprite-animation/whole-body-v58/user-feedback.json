@@ -1,0 +1,24 @@
+{
+  "status": "user_rejected_segmented_appearance",
+  "supersedes_appearance_acceptance_of": [
+    "core-family-v56",
+    "pickup-views-v55",
+    "unarmed-motion-v57"
+  ],
+  "preserve_prior_bytes": true,
+  "user_report_th": "ตัวขาดๆ ก้มแล้วเข่าหาย ต้องการตัวทั้งชิ้น หัวกับผม อาวุธ เอฟเฟกต์ตามอาวุธ",
+  "root_cause_observed": "Front pickup torso/costume compression plus separately transformed upright knee/shin sprites produces missing-looking leg volume. Surface/contact and connected-component gates did not establish coherent full-body acting.",
+  "new_runtime_policy": {
+    "body_outfit": "one complete authored posed raster per exposure; includes all arms legs knees hands cape and scarf",
+    "head_hair": "one complete logical head layer, pose-appropriate art and neck registration",
+    "weapon": "separate logical layer with frame sockets and front/back occlusion",
+    "weapon_trail": "separate logical layer with explicit timing and front/back occlusion"
+  },
+  "not_a_fix": [
+    "flattening old segmented output",
+    "adding pixel patches at knees",
+    "loosening image gates",
+    "independently resizing or aligning each frame"
+  ],
+  "production_pass": false
+}
