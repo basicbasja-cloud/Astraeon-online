@@ -1,0 +1,41 @@
+{
+  "asset_id": "astraeon-whole-body-pickup",
+  "asset_type": "character",
+  "character_type": "humanoid",
+  "visual_style": "painted",
+  "views_detected": [
+    "front"
+  ],
+  "resolution": {
+    "width": 281,
+    "height": 351
+  },
+  "parts": [
+    "body_outfit",
+    "head_hair"
+  ],
+  "optional_slots": [
+    "weapon",
+    "trail"
+  ],
+  "symmetry": "asymmetric",
+  "animations": [
+    "pickup"
+  ],
+  "automatic_style_overridden": {
+    "suggested": "3d_rendered",
+    "confidence": 0.44,
+    "reason": "Actual original project art is a painted anime-style2Dsprite, not a render proof."
+  },
+  "automatic_view_overridden": {
+    "suggested": "side",
+    "correct": "front",
+    "reason": "Crouch aspect ratio heuristic is not camera evidence."
+  },
+  "uncertainty": [
+    "Thighs partly occluded by outfit.",
+    "Native foot registration and recovery timing fail.",
+    "Head masks retain costume pixels; no head-swap approval."
+  ],
+  "production_pass": false
+}

@@ -1,0 +1,45 @@
+{
+  "type": "model_agnostic_brief_not_executable_API_payload",
+  "action": "pickup",
+  "reference": "../whole-body-v58/inputs/neutral-S.png",
+  "views": [
+    "S",
+    "W",
+    "N",
+    "E"
+  ],
+  "logical_slots": [
+    "body",
+    "head",
+    "weapon",
+    "trail"
+  ],
+  "whole_body_pose_generation_required": true,
+  "camera": "fixed slightly elevated orthographic; independent authored views; no mirroring",
+  "motion": "One natural knee-and-hip bend, right-hand empty-floor reach, coherent thighs/knees/costume, return to exact neutral; planted boots. No torso squashing over standing shin sprites.",
+  "target_exposures": 16,
+  "target_authored_clock_ms": [
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    550
+  ],
+  "provider_delivery_clock_is_not_authoritative": true,
+  "route_from_skill": "Discover current first+last/keyframe video route; read model schema and price exact payload. No existing Scenario model/tool connection in this session.",
+  "postprocess_policy": "Preserve actual pose pixels and phase order. Test delivered baseline, scale and alpha before slicing. No per-frame bbox center/sole shift, palette snap or automatic mirrors.",
+  "provider_jobs_started": 0,
+  "provider_payload_sent": false,
+  "status": "prepared_not_generated"
+}

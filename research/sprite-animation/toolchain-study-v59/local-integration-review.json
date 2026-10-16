@@ -1,0 +1,53 @@
+{
+  "local_pack_integration_pass": true,
+  "actual_rgba_cells": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "upstream_double_alpha_negative_preserved": true,
+  "exact_authored_clock_pass": true,
+  "invalid_input_controls": [
+    {
+      "control": "zero_duration",
+      "rejected": true
+    },
+    {
+      "control": "fragment_slot",
+      "rejected": true
+    },
+    {
+      "control": "stale_pixels",
+      "rejected": true
+    },
+    {
+      "control": "canvas_changed",
+      "rejected": true
+    },
+    {
+      "control": "segmented_body",
+      "rejected": true
+    }
+  ],
+  "art_approval_granted": false,
+  "source_motion_still_rejected": true,
+  "dependencies": {
+    "tools/whole-body-toolchain.py": "47acb23dd1876b41c3253d358bd52aa8b24d1f75e5035888c9ec133b5550d2bc",
+    ".agents/skills/img2game2d/forge/stage5_atlas/generate_spritesheet.py": "3db73713cf28c06bad76f6c40f4c95682631b63ac73fa9b1edae0de398ecb7c9",
+    "research/sprite-animation/toolchain-study-v59/lossless-pack/atlas/frames.json": "33d197685649fb12cf4e0294f0b2cd94313208fda660d67d61586cc493ffb004",
+    "research/sprite-animation/toolchain-study-v59/lossless-pack/atlas/frames.png": "1a5d0490749efb67d5185a7fdb0299e60a894e794bbe3a194e04d3634289f464"
+  }
+}

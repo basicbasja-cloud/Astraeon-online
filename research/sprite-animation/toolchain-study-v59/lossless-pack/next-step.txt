@@ -1,0 +1,12 @@
+
+=== img2game2d · 00 ===
+Profile    : character
+Progress   : 0/20 steps done, 20 remaining
+Corrections: 0/6 total used
+
+► NEXT STEP: intake.probe
+  Command  : python3 forge/stage1_intake/probe_image.py /workspace/work/research-checkout/research/sprite-animation/whole-body-v58/frames/full/00.png
+
+After completion:
+  python3 forge/state.py mark intake.probe --state /workspace/work/research-checkout/research/sprite-animation/toolchain-study-v59/lossless-pack/.img2game2d/state.json --evidence <output-path>
+  python3 forge/next.py --state /workspace/work/research-checkout/research/sprite-animation/toolchain-study-v59/lossless-pack/.img2game2d/state.json
