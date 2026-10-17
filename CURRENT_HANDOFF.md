@@ -1,3 +1,45 @@
+# CURRENT — explicit transfer handoff v61, 2026-10-17
+
+Latest user explicitly requests a detailed handoff with file map and push now because work must transfer. This supersedes older no-partial-delivery timing rules, NOT art approval. Read `research/sprite-animation/whole-body-handoff-v61/handoff/00-START.md` first, then FILE-MAP.md, STATUS.json, REPRODUCE.md and README.md (9 embedded GIFs). Same sole branch `research/modular-sprites-full-body-2026-10-11`; no main/force/subagents. Parent4299c18. All48 production passes remain FALSE.
+
+Current transfer preserves30 built-in imagegen raw outputs/prompts/reference hashes,9 selected candidate banks,3 offline layer players, actual native files and negative evidence. Pickup S/W/E crown/contact plus actual browser/native roundtrips pass bounded checks; complete hair/collar ownership and head/body family do NOT pass. Newest S-head-fields2 protected-region test FAILS; old exactRGBA/zero-prompt claims do not imply a complete head. Ready N/E bob fails; S/W walk are8real keys/80exposures candidates;6otherwalk views,attack4,hurt4 and eligible-source freshQA remain. No full motion, universal headswap or integration approval.
+
+Four new reusable root tools: sprite-head-mask.py, sprite-head-ownership.py, sprite-layer-player.py, sprite-native-package.py. Read transfer reproduction before running archived builders: scratch paths are rebased with a fresh-only restore helper; repeated timeline PNGs recover by exact key hashes. No work/, weights, venvs or binaries committed. Frozen<=v60/W13/rootAGENTS/HANDOFF/oldskill unchanged. New authoring after this published transfer belongs in fresh v62/scratch.
+
+Builtin imagegen through monthly ChatGPT plan is already explicitly authorized; no cost re-question. External paid providers/purchases/new credits are not authorized. No new generation was performed for the transfer. Previous notes below are historical: earlier23-job counts, cost questions, mask-complete assertions and instruction to delay transfer are superseded by this entry and the v61 handoff.
+
+---
+# Historical continuation notes — superseded by current v61 transfer
+
+# LIVE CONTINUATION — new native art, 2026-10-17 (not delivered)
+
+Builtin imagegen is authorized by the latest user; do not ask cost again. Continue until all48clips pass before final delivery. Working branch/HEAD4299c18 unchanged, no push yet, noagents. Read `work/all-actions-v61/generation/checkpoint-live.md` and `generation-ledger.json` plus newer work below. New wholebodyS/W/Epickup8drawings16exposures have crown/contactPASS, correctedcompletevisible-head ownership, actual3four-slotplayers/48renderedframes pixelidentical andclock/play/slotcontrolsPASS; S/W/E SPA native4layer files actuallyexport all16frames exactvisibleRGBA+alpha+durationsPASS. Initial firstbodyemptycelnegative and concurrentEprocess timeout retained; finalEserialnative-editable3 passes. All48 NOT finished.
+
+NEW root untracked tools: sprite-head-mask.py, sprite-layer-player.py, sprite-native-package.py. Newplayer4realincorrectinputcontrolsPASS. Newnativeformatpackager writes published losslessRGBA .aseprite specification +linkedholdcels; uses supported ordinarySPAget/validate/exportsequence foractual independentroundtrip, NO Lua/capabilityoverride. Firstnative-format controlfailsmissingdestinationdirectory; fixedroottool/freshnative-format2 currentlyrunning session54275. Schema plan doesNOT support imageimport, so no scriptfallback. Publicspec matches localpinnedAseprite b3e34ac SHA31a6a805...; no binariesredistributed. Existingtoolstaysunchanged.
+
+ReadyS-candidate2/W-candidate1 have solePASS and crownrange/step1/1 and6/3. ReadyN/E-candidate1 have solePASS but crown10/6 and8/6 fail conservative6range/3step; need actualnewnative redraw, doNOTloosenbudget. S/W walk-candidate1 now8nativekeys/80timeline10ms exposures (explicit100ms/actualdrawing), genericGIFs. S uses originaljob27 exceptnewnativeleftlegkeys5/6 fromjob29; one neutral0-onlyfamilymatrix; W usesjob21keys0/2 plusjob22rest with originalfixedguideinverse. Both crownPASS2range2maxstep and<1.5horizontalstep; fullanatomy/contacts/head/native/browserreviewpending. DO NOT claim80newdrawings or newmidpointssuccess.
+
+Imagegen26+jobs now; exact23-jobledger/prompts/raw/referencehashes saved, but newerjobs24..29 mustadd. Job24 isolatedWmid0 29af2ca6... is nottruehalfwayarm/foot, reject/superseed. Job25 Wpaintover78cc7262... oldsegmentedposeguidefirst generatesmostlyplantedfeet/weakarms, unselected. Job26 WROfirst42d450b9... FAILSrow2wholecharacter/crown/soleshift~20px, reject; nevercalibrateperframe. Job27 SROwalk413a7a1a... wrongscreenrightleadrepeatedin5/6, repairneeded. Job28 a609b01f... textual5/6legrepairIGNOREStarget, reject. Job29 20c319d3... actual2panelwholebodyredraw frommarkedposeconstructionguide SELECT5/6; bothnewdrawingsleadleft, originalasymmetricteal/capeintact; not a finalmirroredcharacter. GuideONLYsymmetriclowerlegsreflection[128392256504], neverfinalpixels. Allfinalposedbodyart nativeimagegen; no runtimearms/kneesassembly, no perframefits orshoepatches.
+
+Remaining originalgoal still48finitecore9actions; do not end with partialpackage or implybackgroundwork. Need remainingwalk6views,readyhead/native/fixN/E,attack4,hurt4 and freshQAeligibleNpickup/static20/skill4. Frozenpublished<=v60/W13/rootAGENTS/HANDOFF/mainoldskill unchanged. work/ andmodels nevercommit.
+
+# USER ROUTE ANSWER — 2026-10-17
+
+User confirms their paid monthly ChatGPT plan may use built-in tools, and explicitly says continue accordingly. Builtin imagegen is authorized; do not ask cost confirmation again. No purchases/newcredits/externalpaidAPI authorization. Prior pending cost question below is RESOLVED. Resume new whole-body generation now; complete all48clips before final delivery.
+
+# ACTIVE private v61 continuation — 2026-10-17 (not delivered)
+
+Latest user: work until every core motion passes, THEN deliver. Free-only still applies. Do not respond with another partial diagnostic package as finished work. Published HEAD4299c18/v60 stays frozen. Current new work NOT committed/pushed.
+
+Read `work/all-actions-v61/checkpoint.md` first. Actual48clip/964raster audit identifies19 old segmented clips requiring replacement,25whole-pose-source eligible clips and4rest-meshhurt clips, no fresh full acceptance. Actual static/midpoint boards inspected; connected-component1 still hides floating-looking readySforearm. New free local CPU MobileSAM installed/pinned under work/free-mask-model; NEW UNTRACKED root tools/sprite-head-mask.py. Exact ownership results16v58heads +16idle/sit +4dead; Ndead needed model-input context crop to remove goldrim, returned fulloriginalcanvas, NO art transform. Actual16toolcontrols PASS; masks not automatic headswap/anatomy approval. Original body motion remains rejected. Private GIF in work/all-actions-v61/head-review-pack, NOT new body drawing. No paid/provider/imagegen calls.
+
+Async question pending (no answer yet): does free allow builtin ChatGPT image generation without buying credits/API, or local models only? Billing per builtin call not exposed; no new imagegen until route clarified. Local generation models researched but NOT installed/tried; only local segmentation model exists. Don't infer consent from time. Concrete originalseed+16sourceguide draft prepared in work/all-actions-v61/pickup-S-draft-request.json, not dispatched. If local chosen, actual local generation can be researched/installed within free scope; don't claim free tools cannot draw in principle. Continue original all-motion objective, do not mark completion or imply background work after a turn ends.
+
+Same sole research branch/standingpush, no main/force/subagents. No final v61 case published; work/ scratch nevercommit, no model binaries. RootAGENTS/HANDOFF/mainoldskill and published<=v60/W13 unchanged. New authoring can continue mutable privatev61; preserve actual failed mask attempts as evidence.
+
+---
+Previous published checkpoint:
+
 # Latest — free-only repair experiments + embedded GIF report, v60, 2026-10-16
 
 User now explicitly limits all new tooling/services to FREE and asks research, continued fixes and GIFs in reports. Preserve this limit: no paid/credit provider generation, no host imagegen while its cost is unverified. v60 uses Python/Pillow/numpy/scipy, Chromium, existing SPA/source-built Aseprite and local img2game2d only; zero purchases/jobs/uploads/credits. Existing platform/subscription billing is not claimed zero. No subagents.

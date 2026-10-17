@@ -1,0 +1,7 @@
+# Suggested continuation prompt
+
+Continue Astraeon sprite research on branch `research/modular-sprites-full-body-2026-10-11`. Read root CURRENT_HANDOFF.md and `research/sprite-animation/whole-body-handoff-v61/handoff/00-START.md`, FILE-MAP.md, STATUS.json, REPRODUCE.md, KNOW-HOW.md and the project whole-body workflow skill before editing. Latest transfer was explicitly authorized; it is unfinished, not an all48 pass.
+
+Verify the frozen transfer read-only first. New authoring belongs in fresh v62/private scratch; preserve <=v61/W13/root AGENTS.md/HANDOFF.md/old skill. Runtime is one coherent posed body, one complete head/hair, optional weapon/trail. No limb cutouts as final art, final mirroring, individual-frame fitting, shoe patches or relaxed limits. Built-in ChatGPT imagegen is authorized; no external paid services/purchases/new credits. No subagents/main/force push.
+
+First solve canonical S hair-fringe/collar ownership and inspect canonical-over-ready family/neck. Current S-head-fields2 is a real protected-region FAIL; exactRGBA and SAM point pass do not prove complete head. Then finish pickup masks/family, N/E-ready bob repair, S/W walk phase and remaining6 walk directions, attack4/hurt4 and fresh eligible-source QA. Keep exact prompts/raws, meaningful failed cases and GIF reports.8 key drawings repeated across16/24/80 exposures are not16/24/80 drawings. All48 production statuses remain false until full visual, motion, head, native and browser evidence exists. Do not infer user approval from old v56 acceptance or technical thresholds.

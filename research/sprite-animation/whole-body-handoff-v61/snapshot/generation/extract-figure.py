@@ -1,0 +1,15 @@
+from pathlib import Path
+import argparse,json,hashlib,time
+from PIL import Image,ImageDraw
+import numpy as np,torch
+from scipy.ndimage import label
+from mobile_sam import sam_model_registry,SamPredictor
+p=argparse.ArgumentParser();p.add_argument('source',type=Path);p.add_argument('--out',required=True,type=Path);p.add_argument('--crowns',required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False);raw=Image.open(a.source).convert('RGBA');assert raw.size==(1536,1024);crowns=[int(x)for x in a.crowns.split(',')];assert len(crowns)==8
+torch.set_num_threads(2);torch.set_num_interop_threads(1);model=sam_model_registry['vit_t'](checkpoint=None);cp=Path('work/free-mask-model/source/weights/mobile_sam.pt');model.load_state_dict(torch.load(cp,map_location='cpu',weights_only=True),strict=True);model.eval();predictor=SamPredictor(model);rows=[];board=Image.new('RGB',(384*4,537*2),'#343941');draw=ImageDraw.Draw(board)
+for i,top in enumerate(crowns):
+ x=i%4*384;y=i//4*512;frame=raw.crop((x,y,x+384,y+512));(a.out/'raw-frames').mkdir(exist_ok=True);frame.save(a.out/'raw-frames'/f'{i:02}.png');bg=Image.new('RGBA',frame.size,'#343941');bg.alpha_composite(frame);points=[[188,top+35],[188,top+72],[195,min(top+140,430)],[155,463],[226,463],[270,min(top+190,440)],[25,250],[350,250],[40,450],[350,450],[192,495]];labels=[1]*6+[0]*5;box=[108,top-8,312,510]
+ predictor.set_image(np.array(bg.convert('RGB')));masks,scores,_=predictor.predict(point_coords=np.array(points),point_labels=np.array(labels),box=np.array(box),multimask_output=True);options=[]
+ for j,mask in enumerate(masks):
+  ls,n=label(mask);owner=ls[points[0][1],points[0][0]];keep=(ls==owner)if owner else np.zeros_like(mask);viol=sum(bool(keep[py,px])!=bool(v)for (px,py),v in zip(points,labels));options.append((viol,-float(scores[j]),j,keep))
+ violations,_,j,mask=min(options,key=lambda q:q[:3]);figure=Image.composite(frame,Image.new('RGBA',frame.size),Image.fromarray(mask.astype('uint8')*255));(a.out/'frames').mkdir(exist_ok=True);figure.save(a.out/'frames'/f'{i:02}.png');Image.fromarray(mask.astype('uint8')*255).save(a.out/f'mask-{i:02}.png');tile=Image.new('RGBA',figure.size,'#343941');tile.alpha_composite(figure);xx=i%4*384;yy=i//4*537;board.paste(tile,(xx,yy+25));draw.text((xx+5,yy+5),f'{i} / prompt violations {violations}',fill='white');rgba=np.array(figure);ys,xs=np.where(rgba[:,:,3]>=128);bbox=[int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)];rows.append({'index':i,'points':points,'labels':labels,'box':box,'scores':scores.tolist(),'selected':j,'violations':violations,'bbox':bbox,'source_cell':[x,y,x+384,y+512],'output_sha256':hashlib.sha256((a.out/'frames'/f'{i:02}.png').read_bytes()).hexdigest(),'source_RGBA_preserved_within_mask':True});print(i,violations,bbox,flush=True)
+board.save(a.out/'board.jpg');(a.out/'extraction.json').write_text(json.dumps({'source_sha256':hashlib.sha256(a.source.read_bytes()).hexdigest(),'method':'Fixed8cell crop and wholefigure SAM mask ONLY, no geometric pose/body change, no alpha threshold cleanup, no hole fill across real limb gaps.','frames':rows,'production_pass':False},indent=2)+'\n')

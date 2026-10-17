@@ -1,0 +1,71 @@
+{
+  "pass": true,
+  "control_count": 16,
+  "controls": [
+    {
+      "name": "wrong_checkpoint_digest",
+      "pass": true
+    },
+    {
+      "name": "stale_source_SHA",
+      "pass": true
+    },
+    {
+      "name": "empty_clip",
+      "pass": true
+    },
+    {
+      "name": "missing_source",
+      "pass": true
+    },
+    {
+      "name": "positive_only_prompts",
+      "pass": true
+    },
+    {
+      "name": "point_out_of_image",
+      "pass": true
+    },
+    {
+      "name": "bool_label",
+      "pass": true
+    },
+    {
+      "name": "invalid_box",
+      "pass": true
+    },
+    {
+      "name": "invalid_context_crop",
+      "pass": true
+    },
+    {
+      "name": "point_outside_context",
+      "pass": true
+    },
+    {
+      "name": "head_box_outside_context",
+      "pass": true
+    },
+    {
+      "name": "refuse_existing_output_before_model_load",
+      "pass": true
+    },
+    {
+      "name": "actual16_sources_unchanged_disjoint_partition_exactRGBA_labels_and_single_owned_component",
+      "pass": true
+    },
+    {
+      "name": "actual_previous_gold_fragment_masks5_7_8_rejected_from_head_ownership",
+      "pass": true
+    },
+    {
+      "name": "actual_deadN_crop_keeps_absolute_canvas_exactRGBA_and_removes_prior_gold_rim",
+      "pass": true
+    },
+    {
+      "name": "confidence_never_grants_semantic_or_head_swap_approval",
+      "pass": true
+    }
+  ],
+  "production_pass": false
+}

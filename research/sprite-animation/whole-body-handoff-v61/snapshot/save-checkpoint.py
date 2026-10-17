@@ -1,0 +1,8 @@
+from pathlib import Path
+import json,hashlib,importlib.util
+root=Path.cwd();p=root/'work/all-actions-v61';frames=[]
+for i in range(16):
+ f=p/f'tool-extraction/head/{i:02}.png';frames.append({'path':str(f.relative_to(p)),'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),'duration_ms':90 if i<15 else 550})
+d={'title':'Local head ownership only / original motion still rejected','canvas':[281,351],'frames':frames,'minimum_unique_drawings':16};(p/'head-review-clip.json').write_text(json.dumps(d,indent=2)+'\n')
+s=importlib.util.spec_from_file_location('pack',root/'tools/sprite-review-pack.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.build(p/'head-review-clip.json',p/'head-review-pack')
+source=root/'work/free-mask-model/source';provenance={'upstream':'https://github.com/ChaoningZhang/MobileSAM','commit':'f706ad9c4eb7f219c00d9050e46328518ffb65d2','license':'Apache-2.0','license_sha256':hashlib.sha256((source/'LICENSE').read_bytes()).hexdigest(),'checkpoint_sha256':hashlib.sha256((source/'weights/mobile_sam.pt').read_bytes()).hexdigest(),'checkpoint_bytes':(source/'weights/mobile_sam.pt').stat().st_size,'runtime':'Python3.13 + torch2.8.0+cpu / torchvision0.23.0+cpu / timm0.9.16 / opencv-headless4.11.0.86','runtime_install':'workspace-local only; no root package changes','checkpoint_loading':'torch.load(weights_only=True,map_location=cpu), strict state dict','provider_calls':0,'imagegen_jobs':0,'purchases':0,'models_create_new_drawings':False,'scope':'Local mask proposal and binary pixel ownership only, not a new body animation.'};(p/'model-provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')

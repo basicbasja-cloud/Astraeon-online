@@ -1,0 +1,44 @@
+{
+  "date_utc": "2026-10-17",
+  "scope": "Transfer checks; no new art generation. Original native/browser live checks remain separate archived receipts.",
+  "syntax_compile_new_tools_and_transfer_helpers": "PASS",
+  "fresh_scratch_restore": {
+    "recreated_exact_timeline_PNGs": 256,
+    "historical_helpers_not_automatically_run": true,
+    "production_pass": false,
+    "existing_scratch_refused": true,
+    "player_rebuilt_from_restored_inputs": true,
+    "bad_clock_refused_before_output": true
+  },
+  "ownership_failure_reproduced": {
+    "expected_failure": true,
+    "actual_process_exit_code": 1,
+    "frames": 9,
+    "wrong_owner_pixels_per_ready_frame": [
+      24,
+      12,
+      16,
+      14,
+      19,
+      16,
+      14,
+      22
+    ]
+  },
+  "production_pass": false,
+  "all48_pass": false,
+  "read_only_integrity_check": {
+    "integrity_pass": true,
+    "imagegen_jobs": 30,
+    "candidate_clips": 9,
+    "timeline_exposures_available": 304,
+    "exact_RGBA_recompositions": 48,
+    "native_headers": 4,
+    "ordered_reference_hashes_resolved": true,
+    "production_pass": false
+  },
+  "git_diff_check": {
+    "new_tools_and_handoff_docs": "PASS",
+    "archived_original_warning": "snapshot/generation/import-ready-NE.py:23 has original whitespace-only line, deliberately retained byte-for-byte"
+  }
+}
