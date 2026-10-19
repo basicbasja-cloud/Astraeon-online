@@ -1,0 +1,5504 @@
+{
+  "schema_version": 1,
+  "character_id": "swordsman_male_v3",
+  "candidate_character_id": "swordsman-male-v3-painted",
+  "provider": "OpenAI ImageGen",
+  "status": "AI_PAINT_CANDIDATE_OWNER_APPROVAL_PENDING",
+  "source_definition": "assets/characters/swordsman-male-v3/sprite.json",
+  "identity_reference": {
+    "file": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+    "sha256": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05"
+  },
+  "master_prompt": {
+    "file": "authoring/characters/factory-v3/identities/swordsman_master_prompt_v3.txt",
+    "sha256": "001f5e1bd9aaeb9348c6e5ea85e006ee3b3260442eb610c9da0c4e0fb575ec4a"
+  },
+  "action_prompts": {
+    "Idle": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/prompts/idle.txt",
+      "sha256": "c77a3fa17fae145e04ed5e51062816996ed7ceffdbf29fc72bda999563e26b04",
+      "fidelity": "CANONICAL_RECONSTRUCTION_ORIGINAL_TEXT_NOT_RETAINED"
+    },
+    "Walk": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/prompts/walk.txt",
+      "sha256": "eea08c37fa6bf355fdc5c885c41ce5a6deba1b8b82c4f94e932404da593b8733",
+      "fidelity": "CANONICAL_RECONSTRUCTION_ORIGINAL_TEXT_NOT_RETAINED"
+    },
+    "BasicAttack": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/prompts/basicattack.txt",
+      "sha256": "e5511bd9e8f3d82b23023ba2836ea0343f53a060d5a822e1bf3c59836bb9cdcb",
+      "fidelity": "EXACT_REQUEST"
+    }
+  },
+  "selected_generation": {
+    "BasicAttack": "second user-visible generation; chosen for clearer low-sweep silhouette at game scale after transparent-edge cleanup",
+    "background_cleanup": "alpha below 128 removed and remaining alpha remapped linearly; RGB color decontamination not applied"
+  },
+  "painted_inputs": {
+    "Idle": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/raw/idle-imagegen.png",
+      "sha256": "f18b81087064004685d7cf0c2ddfcf5ec039e60fa4662dc24832348a246d6339"
+    },
+    "Walk": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/raw/walk-imagegen.png",
+      "sha256": "5efcff2ea6c2938693b4ab519678feb476885432798bcaaf7b326d9655e8f55e"
+    },
+    "BasicAttack": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/raw/basicattack-imagegen.png",
+      "sha256": "9e3f917f74401b42c1bea8354aeeb3fa27d38e082f726ffb4a6263d2399bbca3"
+    }
+  },
+  "guide_inputs": {
+    "Idle": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/guides/idle-guide.png",
+      "sha256": "6b8b25bcd00135a5863d78b4e28958b7f2bff3ccbf1fbb4b10d9c1e1e500f8af"
+    },
+    "Walk": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/guides/walk-guide.png",
+      "sha256": "9fab59853845a14b1739842e546f85cfbd0d37d4b100424f7717b30587a41101"
+    },
+    "BasicAttack": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v1/guides/basicattack-guide.png",
+      "sha256": "93ac19d001d4430393b4032b07053f5257a129d711e199da53aaee3e97f13c7d"
+    }
+  },
+  "source_motion_license": "Mesh2Motion CC0 1.0; only raster sprite guides were used as image references, not source motion files.",
+  "output_license_note": "Generated output is subject to the image provider's applicable terms; no separate CC0 claim is made for painted pixels.",
+  "normalization": {
+    "passed": true,
+    "layout": "directions_are_columns_frames_are_rows",
+    "directions": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ],
+    "actions": [
+      "Idle",
+      "Walk",
+      "BasicAttack"
+    ],
+    "cell_size": 160,
+    "sheet_size": [
+      1280,
+      1280
+    ],
+    "alpha_threshold": 128,
+    "geometry_alpha_threshold": 8,
+    "subject_cleanup": "keep largest 8-connected subject after a 4px reconnection dilation; removes detached neighboring-cell fragments",
+    "silhouette_cleanup": "clip each painted frame to its matching guide alpha silhouette dilated by 6px; removes far fringe/strays while allowing small pose and costume edge differences",
+    "uniform_character_scale": 0.752381,
+    "scale_policy": "one shared scale across all 192 cells; no independent frame resizing",
+    "alignment_policy": "translate each cell to its rendered guide bounds; preserve guide scale and in-place pose offsets",
+    "root_contract": {
+      "anchor": [
+        80,
+        132
+      ],
+      "reference_height": 88
+    },
+    "frames": [
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          41,
+          51,
+          110,
+          156
+        ],
+        "guide_bbox": [
+          49,
+          55,
+          98,
+          131
+        ],
+        "normalized_bbox": [
+          48,
+          52,
+          100,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          1
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          55,
+          50,
+          97,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          133
+        ],
+        "normalized_bbox": [
+          64,
+          52,
+          96,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          52,
+          51,
+          119,
+          154
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          107,
+          131
+        ],
+        "normalized_bbox": [
+          60,
+          54,
+          110,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          46,
+          52,
+          120,
+          149
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          113,
+          127
+        ],
+        "normalized_bbox": [
+          56,
+          54,
+          112,
+          127
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          56,
+          52,
+          133,
+          157
+        ],
+        "guide_bbox": [
+          62,
+          56,
+          113,
+          133
+        ],
+        "normalized_bbox": [
+          58,
+          54,
+          116,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          55,
+          52,
+          106,
+          158
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          95,
+          136
+        ],
+        "normalized_bbox": [
+          62,
+          56,
+          100,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          44,
+          52,
+          105,
+          159
+        ],
+        "guide_bbox": [
+          54,
+          58,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          53,
+          54,
+          99,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          44,
+          51,
+          122,
+          150
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          104,
+          128
+        ],
+        "normalized_bbox": [
+          46,
+          54,
+          105,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          46,
+          49,
+          107,
+          155
+        ],
+        "guide_bbox": [
+          52,
+          55,
+          98,
+          131
+        ],
+        "normalized_bbox": [
+          52,
+          51,
+          98,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          60,
+          48,
+          99,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          133
+        ],
+        "normalized_bbox": [
+          66,
+          51,
+          95,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          53,
+          49,
+          119,
+          155
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          107,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          52,
+          110,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          46,
+          48,
+          121,
+          151
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          113,
+          128
+        ],
+        "normalized_bbox": [
+          56,
+          51,
+          112,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          58,
+          51,
+          132,
+          157
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          114,
+          133
+        ],
+        "normalized_bbox": [
+          60,
+          53,
+          116,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          57,
+          50,
+          107,
+          159
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          97,
+          137
+        ],
+        "normalized_bbox": [
+          64,
+          55,
+          102,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          43,
+          50,
+          104,
+          160
+        ],
+        "guide_bbox": [
+          53,
+          58,
+          97,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          52,
+          98,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          45,
+          49,
+          121,
+          151
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          104,
+          129
+        ],
+        "normalized_bbox": [
+          48,
+          52,
+          105,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          45,
+          49,
+          108,
+          155
+        ],
+        "guide_bbox": [
+          51,
+          55,
+          99,
+          132
+        ],
+        "normalized_bbox": [
+          52,
+          52,
+          99,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          58,
+          50,
+          98,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          65,
+          53,
+          95,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          54,
+          49,
+          117,
+          154
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          108,
+          133
+        ],
+        "normalized_bbox": [
+          62,
+          54,
+          109,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          44,
+          50,
+          120,
+          149
+        ],
+        "guide_bbox": [
+          55,
+          53,
+          113,
+          129
+        ],
+        "normalized_bbox": [
+          56,
+          55,
+          113,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          12,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          54,
+          52,
+          133,
+          157
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          115,
+          134
+        ],
+        "normalized_bbox": [
+          58,
+          55,
+          117,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          57,
+          52,
+          107,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          94,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          58,
+          100,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          6
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          42,
+          51,
+          104,
+          158
+        ],
+        "guide_bbox": [
+          53,
+          58,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          54,
+          99,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          43,
+          50,
+          121,
+          149
+        ],
+        "guide_bbox": [
+          48,
+          57,
+          105,
+          129
+        ],
+        "normalized_bbox": [
+          47,
+          55,
+          106,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          45,
+          48,
+          108,
+          155
+        ],
+        "guide_bbox": [
+          51,
+          55,
+          99,
+          131
+        ],
+        "normalized_bbox": [
+          52,
+          50,
+          99,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          58,
+          47,
+          99,
+          157
+        ],
+        "guide_bbox": [
+          69,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          65,
+          51,
+          96,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          54,
+          48,
+          118,
+          153
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          108,
+          132
+        ],
+        "normalized_bbox": [
+          61,
+          53,
+          109,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          43,
+          48,
+          121,
+          150
+        ],
+        "guide_bbox": [
+          55,
+          53,
+          113,
+          129
+        ],
+        "normalized_bbox": [
+          54,
+          52,
+          113,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          11,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          51,
+          52,
+          132,
+          157
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          114,
+          133
+        ],
+        "normalized_bbox": [
+          57,
+          54,
+          118,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          56,
+          52,
+          107,
+          158
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          95,
+          136
+        ],
+        "normalized_bbox": [
+          62,
+          56,
+          100,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          42,
+          51,
+          104,
+          159
+        ],
+        "guide_bbox": [
+          53,
+          58,
+          98,
+          134
+        ],
+        "normalized_bbox": [
+          52,
+          53,
+          99,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          43,
+          50,
+          121,
+          151
+        ],
+        "guide_bbox": [
+          48,
+          57,
+          105,
+          128
+        ],
+        "normalized_bbox": [
+          47,
+          52,
+          106,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          46,
+          48,
+          107,
+          155
+        ],
+        "guide_bbox": [
+          50,
+          55,
+          99,
+          131
+        ],
+        "normalized_bbox": [
+          52,
+          50,
+          98,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          57,
+          48,
+          101,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          133
+        ],
+        "normalized_bbox": [
+          64,
+          51,
+          97,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          53,
+          48,
+          118,
+          153
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          107,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          53,
+          109,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          43,
+          48,
+          120,
+          149
+        ],
+        "guide_bbox": [
+          55,
+          53,
+          113,
+          128
+        ],
+        "normalized_bbox": [
+          55,
+          52,
+          113,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          12,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          51,
+          51,
+          133,
+          157
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          113,
+          133
+        ],
+        "normalized_bbox": [
+          56,
+          53,
+          118,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          55,
+          51,
+          107,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          95,
+          136
+        ],
+        "normalized_bbox": [
+          62,
+          56,
+          101,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          43,
+          50,
+          104,
+          159
+        ],
+        "guide_bbox": [
+          54,
+          58,
+          98,
+          134
+        ],
+        "normalized_bbox": [
+          53,
+          52,
+          99,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          43,
+          49,
+          122,
+          150
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          105,
+          128
+        ],
+        "normalized_bbox": [
+          47,
+          52,
+          106,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          44,
+          46,
+          107,
+          155
+        ],
+        "guide_bbox": [
+          52,
+          55,
+          99,
+          131
+        ],
+        "normalized_bbox": [
+          52,
+          49,
+          99,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          59,
+          47,
+          100,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          64,
+          51,
+          95,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          52,
+          48,
+          116,
+          154
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          107,
+          132
+        ],
+        "normalized_bbox": [
+          61,
+          52,
+          109,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          44,
+          47,
+          120,
+          150
+        ],
+        "guide_bbox": [
+          55,
+          53,
+          113,
+          129
+        ],
+        "normalized_bbox": [
+          56,
+          52,
+          113,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          12,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          52,
+          51,
+          132,
+          156
+        ],
+        "guide_bbox": [
+          60,
+          56,
+          114,
+          133
+        ],
+        "normalized_bbox": [
+          57,
+          54,
+          117,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          56,
+          48,
+          108,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          97,
+          136
+        ],
+        "normalized_bbox": [
+          63,
+          54,
+          102,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          6
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          42,
+          50,
+          104,
+          157
+        ],
+        "guide_bbox": [
+          53,
+          58,
+          98,
+          134
+        ],
+        "normalized_bbox": [
+          52,
+          53,
+          99,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          44,
+          49,
+          121,
+          151
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          105,
+          128
+        ],
+        "normalized_bbox": [
+          48,
+          52,
+          106,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          2
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          44,
+          46,
+          111,
+          156
+        ],
+        "guide_bbox": [
+          51,
+          55,
+          99,
+          132
+        ],
+        "normalized_bbox": [
+          50,
+          49,
+          100,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          3
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          55,
+          46,
+          99,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          64,
+          50,
+          97,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          52,
+          48,
+          119,
+          152
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          108,
+          133
+        ],
+        "normalized_bbox": [
+          60,
+          55,
+          110,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          7
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          44,
+          47,
+          121,
+          150
+        ],
+        "guide_bbox": [
+          55,
+          53,
+          113,
+          129
+        ],
+        "normalized_bbox": [
+          55,
+          52,
+          113,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          11,
+          5
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          50,
+          51,
+          131,
+          156
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          112,
+          134
+        ],
+        "normalized_bbox": [
+          56,
+          55,
+          117,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          56,
+          49,
+          108,
+          157
+        ],
+        "guide_bbox": [
+          68,
+          58,
+          94,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          56,
+          100,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          7
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          42,
+          50,
+          105,
+          158
+        ],
+        "guide_bbox": [
+          53,
+          58,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          54,
+          99,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          43,
+          48,
+          121,
+          150
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          105,
+          129
+        ],
+        "normalized_bbox": [
+          47,
+          52,
+          106,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          4
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "S",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          43,
+          43,
+          112,
+          149
+        ],
+        "guide_bbox": [
+          51,
+          55,
+          99,
+          131
+        ],
+        "normalized_bbox": [
+          49,
+          51,
+          101,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          8
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SW",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          56,
+          43,
+          100,
+          149
+        ],
+        "guide_bbox": [
+          69,
+          53,
+          92,
+          133
+        ],
+        "normalized_bbox": [
+          64,
+          53,
+          97,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          10
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "W",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          51,
+          44,
+          117,
+          146
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          108,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          55,
+          110,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          11
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NW",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          42,
+          44,
+          120,
+          142
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          113,
+          128
+        ],
+        "normalized_bbox": [
+          55,
+          54,
+          114,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          13,
+          10
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "N",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          49,
+          44,
+          133,
+          149
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          114,
+          133
+        ],
+        "normalized_bbox": [
+          56,
+          54,
+          119,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          10
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "NE",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          54,
+          45,
+          107,
+          150
+        ],
+        "guide_bbox": [
+          68,
+          57,
+          95,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          58,
+          101,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          13
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "E",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          43,
+          45,
+          105,
+          152
+        ],
+        "guide_bbox": [
+          53,
+          58,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          54,
+          99,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          9
+        ]
+      },
+      {
+        "action": "Idle",
+        "direction": "SE",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          43,
+          44,
+          121,
+          144
+        ],
+        "guide_bbox": [
+          48,
+          57,
+          105,
+          129
+        ],
+        "normalized_bbox": [
+          47,
+          54,
+          106,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          10
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          51,
+          55,
+          110,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          55,
+          99,
+          133
+        ],
+        "normalized_bbox": [
+          58,
+          54,
+          102,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          -1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          47,
+          53,
+          111,
+          160
+        ],
+        "guide_bbox": [
+          60,
+          55,
+          98,
+          136
+        ],
+        "normalized_bbox": [
+          57,
+          55,
+          103,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          43,
+          51,
+          123,
+          160
+        ],
+        "guide_bbox": [
+          59,
+          54,
+          106,
+          135
+        ],
+        "normalized_bbox": [
+          53,
+          53,
+          112,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          54,
+          50,
+          127,
+          160
+        ],
+        "guide_bbox": [
+          59,
+          53,
+          104,
+          134
+        ],
+        "normalized_bbox": [
+          54,
+          51,
+          109,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          0,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          60,
+          51,
+          121,
+          160
+        ],
+        "guide_bbox": [
+          64,
+          52,
+          97,
+          138
+        ],
+        "normalized_bbox": [
+          58,
+          56,
+          103,
+          138
+        ],
+        "scale": 0.752381,
+        "translation": [
+          -2,
+          5
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          56,
+          51,
+          122,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          52,
+          100,
+          140
+        ],
+        "normalized_bbox": [
+          56,
+          58,
+          106,
+          140
+        ],
+        "scale": 0.752381,
+        "translation": [
+          0,
+          7
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          46,
+          50,
+          117,
+          160
+        ],
+        "guide_bbox": [
+          54,
+          52,
+          99,
+          136
+        ],
+        "normalized_bbox": [
+          50,
+          53,
+          103,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          45,
+          52,
+          111,
+          160
+        ],
+        "guide_bbox": [
+          55,
+          54,
+          100,
+          131
+        ],
+        "normalized_bbox": [
+          52,
+          50,
+          102,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          -2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          49,
+          52,
+          110,
+          160
+        ],
+        "guide_bbox": [
+          60,
+          55,
+          99,
+          134
+        ],
+        "normalized_bbox": [
+          56,
+          53,
+          102,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          47,
+          52,
+          109,
+          160
+        ],
+        "guide_bbox": [
+          60,
+          56,
+          98,
+          136
+        ],
+        "normalized_bbox": [
+          56,
+          55,
+          103,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          44,
+          52,
+          124,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          54,
+          107,
+          136
+        ],
+        "normalized_bbox": [
+          57,
+          55,
+          113,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          11,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          62,
+          52,
+          121,
+          160
+        ],
+        "guide_bbox": [
+          66,
+          53,
+          106,
+          134
+        ],
+        "normalized_bbox": [
+          64,
+          53,
+          108,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          57,
+          53,
+          117,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          99,
+          139
+        ],
+        "normalized_bbox": [
+          58,
+          58,
+          103,
+          139
+        ],
+        "scale": 0.752381,
+        "translation": [
+          1,
+          5
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          55,
+          52,
+          117,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          52,
+          98,
+          140
+        ],
+        "normalized_bbox": [
+          56,
+          59,
+          103,
+          140
+        ],
+        "scale": 0.752381,
+        "translation": [
+          1,
+          7
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          40,
+          53,
+          117,
+          160
+        ],
+        "guide_bbox": [
+          53,
+          53,
+          98,
+          136
+        ],
+        "normalized_bbox": [
+          47,
+          55,
+          104,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          38,
+          55,
+          106,
+          160
+        ],
+        "guide_bbox": [
+          54,
+          54,
+          94,
+          131
+        ],
+        "normalized_bbox": [
+          48,
+          52,
+          99,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          -3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          49,
+          53,
+          108,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          55,
+          99,
+          133
+        ],
+        "normalized_bbox": [
+          58,
+          52,
+          102,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          -1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          48,
+          53,
+          113,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          55,
+          97,
+          135
+        ],
+        "normalized_bbox": [
+          55,
+          54,
+          102,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          46,
+          53,
+          107,
+          160
+        ],
+        "guide_bbox": [
+          65,
+          54,
+          98,
+          137
+        ],
+        "normalized_bbox": [
+          59,
+          56,
+          104,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          12,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          60,
+          52,
+          116,
+          160
+        ],
+        "guide_bbox": [
+          66,
+          52,
+          102,
+          137
+        ],
+        "normalized_bbox": [
+          63,
+          56,
+          104,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          4
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          55,
+          52,
+          115,
+          160
+        ],
+        "guide_bbox": [
+          64,
+          52,
+          96,
+          137
+        ],
+        "normalized_bbox": [
+          58,
+          56,
+          102,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          4
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          56,
+          52,
+          114,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          53,
+          97,
+          135
+        ],
+        "normalized_bbox": [
+          58,
+          54,
+          102,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          43,
+          53,
+          117,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          53,
+          97,
+          132
+        ],
+        "normalized_bbox": [
+          57,
+          51,
+          103,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          -2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          43,
+          55,
+          107,
+          160
+        ],
+        "guide_bbox": [
+          58,
+          55,
+          94,
+          131
+        ],
+        "normalized_bbox": [
+          52,
+          52,
+          99,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          -3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          50,
+          54,
+          111,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          55,
+          99,
+          132
+        ],
+        "normalized_bbox": [
+          58,
+          52,
+          104,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          -2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          48,
+          52,
+          119,
+          160
+        ],
+        "guide_bbox": [
+          60,
+          54,
+          98,
+          134
+        ],
+        "normalized_bbox": [
+          54,
+          53,
+          104,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          49,
+          51,
+          112,
+          160
+        ],
+        "guide_bbox": [
+          65,
+          52,
+          99,
+          137
+        ],
+        "normalized_bbox": [
+          59,
+          55,
+          105,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          4
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          53,
+          51,
+          107,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          98,
+          138
+        ],
+        "normalized_bbox": [
+          61,
+          56,
+          101,
+          138
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          5
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          55,
+          52,
+          114,
+          160
+        ],
+        "guide_bbox": [
+          65,
+          52,
+          96,
+          137
+        ],
+        "normalized_bbox": [
+          59,
+          56,
+          102,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          4
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          55,
+          54,
+          114,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          53,
+          100,
+          134
+        ],
+        "normalized_bbox": [
+          59,
+          54,
+          103,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          0
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          42,
+          52,
+          106,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          54,
+          96,
+          134
+        ],
+        "normalized_bbox": [
+          55,
+          53,
+          102,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          12,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          54,
+          54,
+          111,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          55,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          58,
+          55,
+          100,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          49,
+          54,
+          113,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          55,
+          99,
+          133
+        ],
+        "normalized_bbox": [
+          56,
+          53,
+          104,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          -1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          46,
+          51,
+          122,
+          160
+        ],
+        "guide_bbox": [
+          59,
+          54,
+          104,
+          131
+        ],
+        "normalized_bbox": [
+          53,
+          49,
+          110,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          -2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          48,
+          50,
+          120,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          105,
+          136
+        ],
+        "normalized_bbox": [
+          58,
+          53,
+          111,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          47,
+          50,
+          104,
+          160
+        ],
+        "guide_bbox": [
+          58,
+          52,
+          99,
+          139
+        ],
+        "normalized_bbox": [
+          61,
+          56,
+          100,
+          139
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          6
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          52,
+          50,
+          113,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          96,
+          138
+        ],
+        "normalized_bbox": [
+          57,
+          55,
+          102,
+          138
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          5
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          46,
+          51,
+          115,
+          160
+        ],
+        "guide_bbox": [
+          57,
+          54,
+          102,
+          134
+        ],
+        "normalized_bbox": [
+          54,
+          52,
+          106,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          39,
+          51,
+          112,
+          160
+        ],
+        "guide_bbox": [
+          55,
+          54,
+          97,
+          136
+        ],
+        "normalized_bbox": [
+          49,
+          54,
+          103,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          51,
+          54,
+          114,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          55,
+          102,
+          136
+        ],
+        "normalized_bbox": [
+          58,
+          56,
+          105,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          46,
+          52,
+          108,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          55,
+          99,
+          134
+        ],
+        "normalized_bbox": [
+          56,
+          53,
+          103,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          50,
+          51,
+          121,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          54,
+          106,
+          130
+        ],
+        "normalized_bbox": [
+          58,
+          48,
+          111,
+          130
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          -3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          49,
+          50,
+          118,
+          160
+        ],
+        "guide_bbox": [
+          64,
+          52,
+          108,
+          135
+        ],
+        "normalized_bbox": [
+          60,
+          52,
+          112,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          11,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          45,
+          50,
+          107,
+          160
+        ],
+        "guide_bbox": [
+          59,
+          52,
+          99,
+          139
+        ],
+        "normalized_bbox": [
+          56,
+          56,
+          103,
+          139
+        ],
+        "scale": 0.752381,
+        "translation": [
+          11,
+          6
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          54,
+          50,
+          113,
+          160
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          96,
+          139
+        ],
+        "normalized_bbox": [
+          59,
+          56,
+          102,
+          139
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          6
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          46,
+          51,
+          115,
+          160
+        ],
+        "guide_bbox": [
+          54,
+          53,
+          100,
+          134
+        ],
+        "normalized_bbox": [
+          51,
+          52,
+          103,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          38,
+          49,
+          102,
+          160
+        ],
+        "guide_bbox": [
+          52,
+          54,
+          93,
+          136
+        ],
+        "normalized_bbox": [
+          48,
+          52,
+          96,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          51,
+          53,
+          113,
+          160
+        ],
+        "guide_bbox": [
+          60,
+          55,
+          101,
+          136
+        ],
+        "normalized_bbox": [
+          57,
+          55,
+          104,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          48,
+          52,
+          108,
+          160
+        ],
+        "guide_bbox": [
+          61,
+          56,
+          98,
+          133
+        ],
+        "normalized_bbox": [
+          57,
+          52,
+          102,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          0
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          50,
+          50,
+          112,
+          160
+        ],
+        "guide_bbox": [
+          60,
+          55,
+          101,
+          130
+        ],
+        "normalized_bbox": [
+          57,
+          49,
+          104,
+          130
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          -3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          49,
+          50,
+          115,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          53,
+          98,
+          132
+        ],
+        "normalized_bbox": [
+          56,
+          49,
+          104,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          -1
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          56,
+          48,
+          104,
+          160
+        ],
+        "guide_bbox": [
+          64,
+          52,
+          97,
+          135
+        ],
+        "normalized_bbox": [
+          62,
+          51,
+          98,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          53,
+          49,
+          112,
+          160
+        ],
+        "guide_bbox": [
+          64,
+          52,
+          100,
+          135
+        ],
+        "normalized_bbox": [
+          60,
+          51,
+          104,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          2
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          47,
+          50,
+          115,
+          160
+        ],
+        "guide_bbox": [
+          59,
+          53,
+          102,
+          137
+        ],
+        "normalized_bbox": [
+          55,
+          54,
+          106,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          4
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          48,
+          48,
+          103,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          54,
+          98,
+          138
+        ],
+        "normalized_bbox": [
+          60,
+          54,
+          101,
+          138
+        ],
+        "scale": 0.752381,
+        "translation": [
+          12,
+          6
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          51,
+          52,
+          113,
+          160
+        ],
+        "guide_bbox": [
+          62,
+          55,
+          96,
+          136
+        ],
+        "normalized_bbox": [
+          56,
+          55,
+          102,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          3
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "S",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          50,
+          36,
+          107,
+          154
+        ],
+        "guide_bbox": [
+          61,
+          55,
+          99,
+          132
+        ],
+        "normalized_bbox": [
+          58,
+          49,
+          101,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          7
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SW",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          46,
+          36,
+          104,
+          153
+        ],
+        "guide_bbox": [
+          58,
+          55,
+          97,
+          134
+        ],
+        "normalized_bbox": [
+          56,
+          49,
+          100,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          10
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "W",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          48,
+          36,
+          116,
+          149
+        ],
+        "guide_bbox": [
+          58,
+          53,
+          99,
+          133
+        ],
+        "normalized_bbox": [
+          53,
+          48,
+          104,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          12
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NW",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          53,
+          34,
+          115,
+          153
+        ],
+        "guide_bbox": [
+          64,
+          53,
+          99,
+          134
+        ],
+        "normalized_bbox": [
+          58,
+          47,
+          105,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          10
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "N",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          56,
+          35,
+          114,
+          154
+        ],
+        "guide_bbox": [
+          64,
+          52,
+          96,
+          137
+        ],
+        "normalized_bbox": [
+          58,
+          47,
+          102,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          12
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "NE",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          53,
+          36,
+          115,
+          154
+        ],
+        "guide_bbox": [
+          62,
+          52,
+          100,
+          139
+        ],
+        "normalized_bbox": [
+          58,
+          50,
+          105,
+          139
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          14
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "E",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          47,
+          35,
+          113,
+          153
+        ],
+        "guide_bbox": [
+          61,
+          53,
+          102,
+          137
+        ],
+        "normalized_bbox": [
+          56,
+          48,
+          106,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          13
+        ]
+      },
+      {
+        "action": "Walk",
+        "direction": "SE",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          46,
+          36,
+          114,
+          150
+        ],
+        "guide_bbox": [
+          61,
+          54,
+          96,
+          134
+        ],
+        "normalized_bbox": [
+          55,
+          48,
+          102,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          42,
+          51,
+          112,
+          153
+        ],
+        "guide_bbox": [
+          52,
+          56,
+          98,
+          131
+        ],
+        "normalized_bbox": [
+          48,
+          54,
+          101,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          3
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          64,
+          52,
+          103,
+          152
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          66,
+          59,
+          95,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          52,
+          52,
+          119,
+          150
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          107,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          58,
+          110,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          47,
+          51,
+          123,
+          142
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          112,
+          128
+        ],
+        "normalized_bbox": [
+          56,
+          60,
+          113,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          57,
+          53,
+          125,
+          152
+        ],
+        "guide_bbox": [
+          62,
+          56,
+          112,
+          133
+        ],
+        "normalized_bbox": [
+          62,
+          59,
+          113,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          58,
+          53,
+          112,
+          153
+        ],
+        "guide_bbox": [
+          68,
+          58,
+          97,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          62,
+          103,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          49,
+          53,
+          110,
+          154
+        ],
+        "guide_bbox": [
+          54,
+          58,
+          97,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          59,
+          98,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 0,
+        "painted_input_bbox": [
+          46,
+          51,
+          119,
+          147
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          104,
+          129
+        ],
+        "normalized_bbox": [
+          48,
+          57,
+          103,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          45,
+          46,
+          105,
+          149
+        ],
+        "guide_bbox": [
+          54,
+          51,
+          98,
+          133
+        ],
+        "normalized_bbox": [
+          54,
+          56,
+          99,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          10
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          65,
+          48,
+          101,
+          149
+        ],
+        "guide_bbox": [
+          67,
+          50,
+          97,
+          136
+        ],
+        "normalized_bbox": [
+          68,
+          60,
+          95,
+          136
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          43,
+          49,
+          128,
+          148
+        ],
+        "guide_bbox": [
+          55,
+          52,
+          121,
+          134
+        ],
+        "normalized_bbox": [
+          56,
+          60,
+          120,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          13,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          32,
+          50,
+          135,
+          141
+        ],
+        "guide_bbox": [
+          54,
+          55,
+          123,
+          131
+        ],
+        "normalized_bbox": [
+          50,
+          63,
+          127,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          18,
+          13
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          57,
+          52,
+          121,
+          147
+        ],
+        "guide_bbox": [
+          62,
+          57,
+          108,
+          135
+        ],
+        "normalized_bbox": [
+          61,
+          64,
+          109,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          59,
+          53,
+          98,
+          152
+        ],
+        "guide_bbox": [
+          63,
+          57,
+          93,
+          137
+        ],
+        "normalized_bbox": [
+          64,
+          63,
+          93,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          10
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          34,
+          49,
+          121,
+          152
+        ],
+        "guide_bbox": [
+          40,
+          56,
+          105,
+          135
+        ],
+        "normalized_bbox": [
+          40,
+          58,
+          105,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 1,
+        "painted_input_bbox": [
+          28,
+          47,
+          120,
+          145
+        ],
+        "guide_bbox": [
+          38,
+          53,
+          106,
+          129
+        ],
+        "normalized_bbox": [
+          38,
+          55,
+          107,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          54,
+          49,
+          108,
+          144
+        ],
+        "guide_bbox": [
+          66,
+          56,
+          102,
+          127
+        ],
+        "normalized_bbox": [
+          64,
+          56,
+          105,
+          127
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          33,
+          53,
+          132,
+          136
+        ],
+        "guide_bbox": [
+          49,
+          59,
+          120,
+          122
+        ],
+        "normalized_bbox": [
+          48,
+          60,
+          122,
+          122
+        ],
+        "scale": 0.752381,
+        "translation": [
+          15,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          9,
+          56,
+          137,
+          146
+        ],
+        "guide_bbox": [
+          28,
+          60,
+          121,
+          130
+        ],
+        "normalized_bbox": [
+          26,
+          62,
+          122,
+          130
+        ],
+        "scale": 0.752381,
+        "translation": [
+          17,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          25,
+          51,
+          112,
+          150
+        ],
+        "guide_bbox": [
+          42,
+          58,
+          101,
+          137
+        ],
+        "normalized_bbox": [
+          39,
+          63,
+          104,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          14,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          55,
+          47,
+          112,
+          150
+        ],
+        "guide_bbox": [
+          57,
+          54,
+          94,
+          135
+        ],
+        "normalized_bbox": [
+          54,
+          58,
+          97,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          -1,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          34,
+          47,
+          130,
+          140
+        ],
+        "guide_bbox": [
+          40,
+          51,
+          108,
+          126
+        ],
+        "normalized_bbox": [
+          38,
+          56,
+          110,
+          126
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          29,
+          45,
+          148,
+          139
+        ],
+        "guide_bbox": [
+          39,
+          50,
+          129,
+          124
+        ],
+        "normalized_bbox": [
+          39,
+          53,
+          129,
+          124
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 2,
+        "painted_input_bbox": [
+          49,
+          47,
+          134,
+          144
+        ],
+        "guide_bbox": [
+          59,
+          53,
+          118,
+          127
+        ],
+        "normalized_bbox": [
+          56,
+          54,
+          120,
+          127
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          52,
+          49,
+          143,
+          140
+        ],
+        "guide_bbox": [
+          66,
+          54,
+          125,
+          125
+        ],
+        "normalized_bbox": [
+          62,
+          57,
+          130,
+          125
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          45,
+          51,
+          130,
+          132
+        ],
+        "guide_bbox": [
+          57,
+          60,
+          119,
+          120
+        ],
+        "normalized_bbox": [
+          56,
+          59,
+          120,
+          120
+        ],
+        "scale": 0.752381,
+        "translation": [
+          11,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          47,
+          52,
+          137,
+          142
+        ],
+        "guide_bbox": [
+          59,
+          62,
+          121,
+          127
+        ],
+        "normalized_bbox": [
+          56,
+          59,
+          124,
+          127
+        ],
+        "scale": 0.752381,
+        "translation": [
+          9,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          7,
+          51,
+          124,
+          148
+        ],
+        "guide_bbox": [
+          34,
+          62,
+          111,
+          135
+        ],
+        "normalized_bbox": [
+          28,
+          62,
+          116,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          21,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          20,
+          49,
+          112,
+          150
+        ],
+        "guide_bbox": [
+          36,
+          57,
+          94,
+          133
+        ],
+        "normalized_bbox": [
+          30,
+          57,
+          99,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          38,
+          46,
+          124,
+          145
+        ],
+        "guide_bbox": [
+          41,
+          52,
+          103,
+          126
+        ],
+        "normalized_bbox": [
+          40,
+          52,
+          105,
+          126
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          29,
+          44,
+          122,
+          137
+        ],
+        "guide_bbox": [
+          39,
+          49,
+          101,
+          123
+        ],
+        "normalized_bbox": [
+          35,
+          53,
+          105,
+          123
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 3,
+        "painted_input_bbox": [
+          34,
+          43,
+          146,
+          144
+        ],
+        "guide_bbox": [
+          50,
+          51,
+          123,
+          126
+        ],
+        "normalized_bbox": [
+          44,
+          50,
+          128,
+          126
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          53,
+          49,
+          123,
+          150
+        ],
+        "guide_bbox": [
+          62,
+          56,
+          111,
+          131
+        ],
+        "normalized_bbox": [
+          60,
+          55,
+          113,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          6
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          38,
+          49,
+          125,
+          146
+        ],
+        "guide_bbox": [
+          51,
+          57,
+          116,
+          126
+        ],
+        "normalized_bbox": [
+          51,
+          53,
+          116,
+          126
+        ],
+        "scale": 0.752381,
+        "translation": [
+          13,
+          4
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          38,
+          48,
+          121,
+          147
+        ],
+        "guide_bbox": [
+          51,
+          58,
+          107,
+          130
+        ],
+        "normalized_bbox": [
+          48,
+          56,
+          110,
+          130
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          62,
+          49,
+          105,
+          152
+        ],
+        "guide_bbox": [
+          62,
+          56,
+          94,
+          134
+        ],
+        "normalized_bbox": [
+          62,
+          57,
+          94,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          0,
+          8
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          39,
+          47,
+          112,
+          147
+        ],
+        "guide_bbox": [
+          48,
+          54,
+          98,
+          133
+        ],
+        "normalized_bbox": [
+          46,
+          58,
+          101,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          37,
+          41,
+          130,
+          145
+        ],
+        "guide_bbox": [
+          44,
+          52,
+          109,
+          131
+        ],
+        "normalized_bbox": [
+          42,
+          53,
+          112,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          47,
+          45,
+          124,
+          152
+        ],
+        "guide_bbox": [
+          53,
+          52,
+          109,
+          133
+        ],
+        "normalized_bbox": [
+          52,
+          52,
+          110,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 4,
+        "painted_input_bbox": [
+          57,
+          48,
+          119,
+          153
+        ],
+        "guide_bbox": [
+          66,
+          53,
+          104,
+          134
+        ],
+        "normalized_bbox": [
+          62,
+          55,
+          109,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          7
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          44,
+          45,
+          108,
+          147
+        ],
+        "guide_bbox": [
+          50,
+          55,
+          97,
+          132
+        ],
+        "normalized_bbox": [
+          50,
+          55,
+          98,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          10
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          62,
+          45,
+          101,
+          149
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          66,
+          56,
+          95,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          53,
+          44,
+          120,
+          148
+        ],
+        "guide_bbox": [
+          61,
+          52,
+          108,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          54,
+          110,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          10
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          46,
+          45,
+          124,
+          135
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          114,
+          129
+        ],
+        "normalized_bbox": [
+          56,
+          61,
+          115,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          16
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          55,
+          47,
+          126,
+          148
+        ],
+        "guide_bbox": [
+          64,
+          56,
+          112,
+          134
+        ],
+        "normalized_bbox": [
+          62,
+          58,
+          115,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          59,
+          52,
+          113,
+          151
+        ],
+        "guide_bbox": [
+          68,
+          58,
+          95,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          63,
+          101,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          46,
+          49,
+          107,
+          152
+        ],
+        "guide_bbox": [
+          52,
+          59,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          58,
+          98,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 5,
+        "painted_input_bbox": [
+          40,
+          47,
+          120,
+          144
+        ],
+        "guide_bbox": [
+          47,
+          58,
+          104,
+          129
+        ],
+        "normalized_bbox": [
+          46,
+          56,
+          106,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          9
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          43,
+          44,
+          107,
+          144
+        ],
+        "guide_bbox": [
+          51,
+          55,
+          97,
+          131
+        ],
+        "normalized_bbox": [
+          50,
+          56,
+          98,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          62,
+          45,
+          101,
+          144
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          93,
+          134
+        ],
+        "normalized_bbox": [
+          66,
+          60,
+          95,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          15
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          54,
+          45,
+          119,
+          143
+        ],
+        "guide_bbox": [
+          61,
+          52,
+          108,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          58,
+          109,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          13
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          46,
+          45,
+          123,
+          133
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          113,
+          128
+        ],
+        "normalized_bbox": [
+          56,
+          62,
+          114,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          17
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          55,
+          50,
+          126,
+          145
+        ],
+        "guide_bbox": [
+          64,
+          56,
+          112,
+          134
+        ],
+        "normalized_bbox": [
+          62,
+          63,
+          115,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          13
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          59,
+          51,
+          112,
+          148
+        ],
+        "guide_bbox": [
+          67,
+          58,
+          97,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          64,
+          102,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          3,
+          13
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          46,
+          49,
+          107,
+          148
+        ],
+        "guide_bbox": [
+          52,
+          59,
+          98,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          61,
+          98,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 6,
+        "painted_input_bbox": [
+          42,
+          47,
+          118,
+          141
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          104,
+          129
+        ],
+        "normalized_bbox": [
+          48,
+          58,
+          105,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          6,
+          11
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "S",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          42,
+          43,
+          108,
+          144
+        ],
+        "guide_bbox": [
+          52,
+          56,
+          98,
+          131
+        ],
+        "normalized_bbox": [
+          50,
+          55,
+          100,
+          131
+        ],
+        "scale": 0.752381,
+        "translation": [
+          8,
+          12
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SW",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          62,
+          43,
+          101,
+          144
+        ],
+        "guide_bbox": [
+          68,
+          53,
+          92,
+          134
+        ],
+        "normalized_bbox": [
+          66,
+          58,
+          95,
+          134
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          15
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "W",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          53,
+          44,
+          119,
+          142
+        ],
+        "guide_bbox": [
+          63,
+          52,
+          107,
+          132
+        ],
+        "normalized_bbox": [
+          60,
+          58,
+          110,
+          132
+        ],
+        "scale": 0.752381,
+        "translation": [
+          7,
+          14
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NW",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          46,
+          43,
+          121,
+          134
+        ],
+        "guide_bbox": [
+          56,
+          53,
+          112,
+          128
+        ],
+        "normalized_bbox": [
+          56,
+          60,
+          112,
+          128
+        ],
+        "scale": 0.752381,
+        "translation": [
+          10,
+          17
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "N",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          55,
+          45,
+          125,
+          143
+        ],
+        "guide_bbox": [
+          62,
+          56,
+          112,
+          133
+        ],
+        "normalized_bbox": [
+          60,
+          59,
+          113,
+          133
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          14
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "NE",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          60,
+          47,
+          114,
+          145
+        ],
+        "guide_bbox": [
+          68,
+          58,
+          97,
+          137
+        ],
+        "normalized_bbox": [
+          62,
+          63,
+          103,
+          137
+        ],
+        "scale": 0.752381,
+        "translation": [
+          2,
+          16
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "E",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          47,
+          45,
+          109,
+          146
+        ],
+        "guide_bbox": [
+          54,
+          58,
+          97,
+          135
+        ],
+        "normalized_bbox": [
+          52,
+          59,
+          99,
+          135
+        ],
+        "scale": 0.752381,
+        "translation": [
+          5,
+          14
+        ]
+      },
+      {
+        "action": "BasicAttack",
+        "direction": "SE",
+        "frame_index": 7,
+        "painted_input_bbox": [
+          44,
+          44,
+          118,
+          140
+        ],
+        "guide_bbox": [
+          48,
+          58,
+          104,
+          129
+        ],
+        "normalized_bbox": [
+          48,
+          57,
+          104,
+          129
+        ],
+        "scale": 0.752381,
+        "translation": [
+          4,
+          13
+        ]
+      }
+    ],
+    "source_height_median": 79.0,
+    "painted_height_median_before_normalization": 105.0,
+    "normalized_frame_count": 192
+  },
+  "runtime_definition": "assets/characters/swordsman-male-v3-painted/sprite.json",
+  "review_gifs": {
+    "Idle": "docs/character-factory/evidence/v3-ai-painted-idle-8-directions.gif",
+    "Walk": "docs/character-factory/evidence/v3-ai-painted-walk-8-directions.gif",
+    "BasicAttack": "docs/character-factory/evidence/v3-ai-painted-basicattack-8-directions.gif"
+  },
+  "modularity": {
+    "status": "PARTIAL_FUSED_COMPOSITE",
+    "composite_contains": [
+      "BaseBody",
+      "Hair",
+      "Outfit",
+      "Weapon"
+    ],
+    "separate_layers": [],
+    "back_accessory_default": "transparent",
+    "owner_approval": false
+  }
+}

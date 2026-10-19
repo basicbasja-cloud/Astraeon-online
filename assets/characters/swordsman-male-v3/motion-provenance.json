@@ -128,7 +128,7 @@
           59
         ],
         "output_scene": "/workspace/Astraeon-online/authoring/characters/factory-v3/motions/retargeted/basicattack.blend",
-        "output_scene_sha256": "35d8a863de6821cf68c2c4afb1b69e4d5e06a612b7603d40a6b72ccb0a4ca082",
+        "output_scene_sha256": "74f0158937087cab66ad533562149dd3f0bebb144f25b8aa3601cbad97c0cb00",
         "preview_only": false,
         "profile_id": "mesh2motion_human_glb",
         "profile_sha256": "b57bfcb718fe653de8e45ae5b60c7da309d9945b93a01992a739d81359bc2e86",
@@ -319,8 +319,8 @@
         "target_skeleton_height": 0.792,
         "time_multiplier": 1.0
       },
-      "retarget_report_sha256": "eddf5a4bdf11c3cb0aece426141c85d196f624ed4aeddec0b436ceb6dd6cb32a",
-      "retarget_scene_sha256": "35d8a863de6821cf68c2c4afb1b69e4d5e06a612b7603d40a6b72ccb0a4ca082",
+      "retarget_report_sha256": "3b53141ccfba9af0fb5aeed0438029ea12026b5eb34d23c7f586fe0801b76f90",
+      "retarget_scene_sha256": "74f0158937087cab66ad533562149dd3f0bebb144f25b8aa3601cbad97c0cb00",
       "semantic_phases": {
         "anticipation": 0.12,
         "contact": 0.5,
@@ -462,7 +462,7 @@
           64
         ],
         "output_scene": "/workspace/Astraeon-online/authoring/characters/factory-v3/motions/retargeted/idle.blend",
-        "output_scene_sha256": "8e1f1b02588986085cb836890dc8f0294731a0635d39aadf16a933f1d00572d6",
+        "output_scene_sha256": "e35bfcaa950c10beaa4943a9725829b42ec8765b19b194d0dc9f84cfb5f855bf",
         "preview_only": false,
         "profile_id": "mesh2motion_human_glb",
         "profile_sha256": "b57bfcb718fe653de8e45ae5b60c7da309d9945b93a01992a739d81359bc2e86",
@@ -653,8 +653,8 @@
         "target_skeleton_height": 0.792,
         "time_multiplier": 1.0
       },
-      "retarget_report_sha256": "923bd5ad6d36daa0c240e4ba32a7a4ad44b92ca269c25b38eef142c2e90b0bf3",
-      "retarget_scene_sha256": "8e1f1b02588986085cb836890dc8f0294731a0635d39aadf16a933f1d00572d6",
+      "retarget_report_sha256": "4001466ac7ef7d405896ec5c4dd462b46bb0a854529806adf8ce5904ab22fb9a",
+      "retarget_scene_sha256": "e35bfcaa950c10beaa4943a9725829b42ec8765b19b194d0dc9f84cfb5f855bf",
       "semantic_phases": {},
       "source_action": "Idle_Sword",
       "source_fps": 24.0,
@@ -876,7 +876,7 @@
           51
         ],
         "output_scene": "/workspace/Astraeon-online/authoring/characters/factory-v3/motions/retargeted/walk.blend",
-        "output_scene_sha256": "1051ec2b72765f6b105bd7be7afb35f294556779f2eae820fb1583103731dc06",
+        "output_scene_sha256": "7b6f225b462de26b1ddfb941919ecedee89a4f7f960958901a6106bf1b6cf65d",
         "preview_only": false,
         "profile_id": "mesh2motion_human_glb",
         "profile_sha256": "b57bfcb718fe653de8e45ae5b60c7da309d9945b93a01992a739d81359bc2e86",
@@ -1067,8 +1067,8 @@
         "target_skeleton_height": 0.792,
         "time_multiplier": 1.0
       },
-      "retarget_report_sha256": "221ec5f1379f7946c0d19d15ec2f1817545dd2fd6b1c9cd9312de123a307bc2f",
-      "retarget_scene_sha256": "1051ec2b72765f6b105bd7be7afb35f294556779f2eae820fb1583103731dc06",
+      "retarget_report_sha256": "1e432400f2448bf24ac696adf1410082ce1931d5c3ce120baaeb9b5a17b84d59",
+      "retarget_scene_sha256": "7b6f225b462de26b1ddfb941919ecedee89a4f7f960958901a6106bf1b6cf65d",
       "semantic_phases": {},
       "source_action": "Walk",
       "source_fps": 24.0,
@@ -1101,6 +1101,7 @@
   "notes": [
     "The six runtime slots are emitted, but source meshes combine BodyOutfit and HeadHair.",
     "Outfit and Headgear are explicit empty candidates because the source scene has no independent meshes for those slots.",
+    "BackAccessory defaults to an empty part; the separate cape mesh remains available as an optional alternate.",
     "This deterministic raster pass is a review candidate, not owner-approved final art."
   ],
   "owner_approved": false,
@@ -1133,8 +1134,8 @@
   },
   "runtime_admitted": false,
   "schema_version": 1,
-  "source_manifest": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/manifest.json",
-  "source_manifest_sha256": "c0720c48b244ddcaff7c5a611c699f43c1cb597f975775ff0a4a971241354b72",
+  "source_manifest": "authoring/characters/factory-v3/renders/animation-30550eb086b29449/manifest.json",
+  "source_manifest_sha256": "02497e062ccad6fc6f984d71b458cd5b94416b01b22b0b90711b3faa31a9b497",
   "source_mesh_limitations": {
     "BackAccessory": "Source Cape mesh is independently segmented.",
     "BaseBody": "Source BodyOutfit geometry combines body and outfit; this guide does not invent a split.",

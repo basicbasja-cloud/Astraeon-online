@@ -4,7 +4,7 @@
 
 Factory V3 turns the useful V2 authoring, framing, packing, validation, and runtime work into a repeatable pipeline for illustrated 2D characters. A rigged 3D character supplies pose, timing, perspective, weapon placement, depth, and consistent eight-direction guides; it is not final game art.
 
-The first Swordsman vertical slice has passed the technical pipeline through an in-game development preview: new source motions, provenance, retargeting, cleanup, sampling, 192 eight-direction guide records, six structural passes, a deterministic paint handoff, a runtime-format review candidate, and browser playback. The selected Idle, Walk, and BasicAttack still have `CANDIDATE` status. Factory V3 is **not complete**: final painted art, independent source meshes for every equipment layer, and owner approval remain outstanding.
+The first Swordsman vertical slice has passed the technical pipeline through an in-game development preview: new source motions, provenance, retargeting, cleanup, sampling, 192 eight-direction guide records, six structural passes, generated painted candidates, runtime packages, and browser playback. The selected Idle, Walk, and BasicAttack still have `CANDIDATE` status. Factory V3 is **not complete**: independent painted equipment layers, remaining actions, and owner approval remain outstanding.
 
 Current branch: `character/production-factory-v3`, based on `50583de` (`Add character factory V3 foundation and rig proof`). See [the status and handoff](PRODUCTION_FACTORY_V3_STATUS.md) and [the generated motion evidence](evidence/production-factory-v3-motion.json).
 
@@ -23,7 +23,7 @@ The bundle is pinned to Mesh2Motion repository commit `653a9698f5f315523072f1c3f
 | V3 action | Selected source action | Decision |
 |---|---|---|
 | Idle | `Idle_Sword` | Sword-ready stance reads at 160px; breathing and weight shift are subtle, so it remains a candidate. |
-| Walk | `Walk` | Alternating human gait reads at game scale, with the sword arm close to the body. |
+| Walk | `Walk` | Side views show step changes; the front view reads more subtly. Keep as a candidate pending visual approval. |
 | BasicAttack | `Sword_Attack` | Controlled, energetic low sword sweep with recovery; chosen as the fantasy attack after rejecting the prior deep forward bow. |
 
 The earlier Quaternius and CMU selections were rejected after game-scale review. Mesh2Motion `Sword_Regular_A` folded too far forward, `_B` stayed too low, and `_C` failed rotation-spike QA. Candidate decisions and evidence are tracked in [candidates.json](../../authoring/characters/factory-v3/motions/candidates.json). A Mixamo FBX profile remains available for a future supplied source; the current build does not depend on Mixamo or an account.
@@ -64,7 +64,7 @@ The detailed per-frame durations, event indices, retarget reports, source record
 - [Walk sheet](evidence/v3-game-scale-walk.png)
 - [BasicAttack sheet](evidence/v3-game-scale-basicattack.png)
 
-Current human-read review: Idle reads as a sword-ready human but its breathing remains subtle; Walk reads as a human gait; BasicAttack is a deliberate, energized fantasy sweep with controlled recovery. These are stylized game motions, not a claim of mocap realism. The selected set has not been approved by the owner.
+Current human-read review: Idle reads as a sword-ready human but its breathing remains subtle; Walk shows step changes more clearly from side views than the front; BasicAttack is a grounded fantasy sweep with controlled follow-through and recovery. These are stylized game motions, not a claim of mocap realism. The selected set has not been approved by the owner. Painted eight-direction previews are in the [current handoff](PRODUCTION_FACTORY_V3_STATUS.md).
 
 ## Camera and structural guides
 
@@ -85,17 +85,17 @@ Each of the 192 guide records contains aligned RGB, silhouette, depth, normal, b
 
 ## Paint-over stage and modular output
 
-The paint stage is provider-neutral. `PaintProvider` defines `prepare`, `paint`, `refine`, and `validate`; the implemented manual provider builds a deterministic artist handoff keyed by guide and identity hashes. The latest successful handoff is [paint job `93df90a93cbddbef28a65319`](../../authoring/characters/factory-v3/paint-jobs/93df90a93cbddbef28a65319/job.json). It carries action guides, directions, semantic events, motion provenance, identity locks, palette guidance, and source-pass hashes. No external image-generation API or local painting model is wired into the CLI yet, so no generated paint-over or final painted output is claimed.
+The paint stage is provider-neutral. `PaintProvider` defines `prepare`, `paint`, `refine`, and `validate`; the manual provider builds an artist handoff keyed by guide and identity hashes. Two ImageGen paint iterations contain eight-direction Idle, Walk, and BasicAttack sheets. Iteration 2 uses exact sharper fantasy-art prompts and is retained as a separate review candidate: [paint job `imagegen-swordsman-v2`](../../authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v2/selection.md). Its importer applies alpha cleanup, connected-component filtering, one shared scale across 192 cells, guide-root alignment, and a dilated guide-silhouette mask. The earlier v1 requests remain alongside their outputs for comparison.
 
 For internal motion review, a deterministic raster treatment builds one shared 96-color palette from all 192 guide poses, applies a 38% palette-quantization blend, a mild warm grade, low-contrast smoothing, and warm normal-derived edges. This is explicitly a **procedural review candidate**, not the final illustrated art or a substitute for the manual paint stage.
 
-The runtime definition exposes six logical slots: BaseBody, Hair, Outfit, Weapon, Headgear, and BackAccessory. Current source meshes only support BodyOutfit combined, HeadHair combined, Sword, and a separately segmented Cape. The package does not invent independent Outfit or Headgear pixels; those slots are empty placeholders. Hidden-surface correctness for arbitrary equipment removal is therefore not production-qualified. Independent painted layers and their under-surfaces must be supplied or created before modular production approval.
+The runtime definition exposes six logical slots: BaseBody, Hair, Outfit, Weapon, Headgear, and BackAccessory. Current source meshes only support BodyOutfit combined, HeadHair combined, Sword, and a separately segmented Cape. The procedural package defaults BackAccessory to a transparent part while retaining the cape as an optional alternate. The painted candidate is a single fused Body/Hair/Outfit/Weapon composite with transparent remaining slots; it is not independently customizable. The package does not invent independent Outfit or Headgear pixels. Hidden-surface correctness for equipment changes is not production-qualified. Independent painted layers and their under-surfaces must be supplied or created before modular production approval.
 
 ## Runtime integration and current QA
 
-The review package is `assets/characters/swordsman-male-v3/sprite.json`: 160×160 frames, runtime root `(80,132)`, reference height 88px, eight unmirrored directions, nine clip definitions (three selected clips and six static placeholders), schema pass, and 82,301,760 decoded atlas bytes. It is tagged `DEV_ONLY`, `PLACEHOLDER`, `NOT_FINAL_ART`, and `INTERNAL_MOTION_REVIEW_CANDIDATE`; `runtime_admitted` and owner approval are false.
+The procedural review package is `assets/characters/swordsman-male-v3/sprite.json`: 160×160 frames, runtime root `(80,132)`, reference height 88px, eight unmirrored directions, nine clip definitions (three selected clips and six static placeholders), schema pass, and 82,301,760 decoded atlas bytes. The separate painted candidates are `assets/characters/swordsman-male-v3-painted/sprite.json` and `assets/characters/swordsman-male-v3-painted-v2/sprite.json`; both use the same cell/root contract, three painted clips plus six pending placeholders, schema pass, and 20,763,712 decoded atlas bytes each. All are `DEV_ONLY`; none is approved or production-admitted.
 
-The isolated route is `?qa=1&world=court-legacy&renderer=canvas&swordsman=v3`. It loads the V3 Swordsman through Astraeon's actual runtime, plays Idle/Walk/BasicAttack, uses the clip's contact event for BasicAttack timing, and does not use V2 motion fallback. Browser review verified BasicAttack playback and return to Idle with no page or console errors. This route is development-only; normal gameplay integration, combat formulas, save logic, world systems, and production admission are unchanged.
+The current review route is `?qa=1&swordsman=v3-painted-v2` and uses the default streamed Wayfarer Capital map. It loads iteration 2 in the character creator and actual Swordsman player renderer, plays Idle/Walk/BasicAttack, and returns to Idle without V2 motion fallback. Browser review verified the correct map, safe plaza spawn, and all three clips with no page errors or failed HTTP requests. The BasicAttack contact marker is at 983ms. This route is development-only; the painted composite does not provide equipment swaps or final game admission.
 
 Latest generated evidence reports: canonical rig and source hash pass; required retarget mappings, finite transforms, root stability, and no rotation spikes pass; 192 frame/direction records and six structural passes pass; runtime schema and package validation pass; paint handoff exists. The motion production gate remains `CANDIDATE`, because numeric QA cannot approve visual quality. Final painted output, six independent layers, and owner approval are incomplete.
 

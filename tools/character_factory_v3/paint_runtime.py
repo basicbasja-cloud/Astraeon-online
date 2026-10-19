@@ -23,6 +23,7 @@ SOURCE_MODULES = {
     "weapon": ("Weapon", "Weapon"),
     "headgear": ("Headgear", None),
     "back-accessory": ("Back", "Cape"),
+    "empty-back-accessory": ("Back", None),
 }
 GUIDE_SIZE = 320
 RUNTIME_SIZE = 160
@@ -213,7 +214,9 @@ def write_strips(manifest: dict[str, Any], guide_root: Path, output_root: Path) 
     parts = {}
     for part_id, (slot, module) in SOURCE_MODULES.items():
         tags = []
-        if module == "BodyOutfit":
+        if part_id == "empty-back-accessory":
+            tags = ["NO_BACK_ACCESSORY_DEFAULT", "TRANSPARENT_OPTIONAL_BACK_SLOT"]
+        elif module == "BodyOutfit":
             tags = ["SOURCE_BODY_AND_OUTFIT_COMBINED"]
         elif module == "HeadHair":
             tags = ["SOURCE_HEAD_AND_HAIR_COMBINED"]
@@ -246,7 +249,7 @@ def write_strips(manifest: dict[str, Any], guide_root: Path, output_root: Path) 
             },
             "designLocks": [
                 "approved male swordsman identity seed",
-                "silver-lavender hair and mustard-gold cape",
+                "silver-lavender hair; no trailing cape by default; BackAccessory remains optional",
                 "right-hand narrow steel sword",
                 "softly painted warm shading; no black outline",
                 "owner review required before runtime admission",
@@ -255,7 +258,7 @@ def write_strips(manifest: dict[str, Any], guide_root: Path, output_root: Path) 
         "tags": ["DEV_ONLY", "PLACEHOLDER", "NOT_FINAL_ART", "INTERNAL_MOTION_REVIEW_CANDIDATE", "PROCEDURAL_PAINT_CANDIDATE"],
         "canvas": {"frameWidth": RUNTIME_SIZE, "frameHeight": RUNTIME_SIZE, "rootAnchorX": 80, "rootAnchorY": 132, "referenceHeight": 88},
         "slots": {"Body": "BaseBody", "Hair": "Hair", "Outfit": "Outfit", "Weapon": "Weapon", "Headgear": "Headgear", "Back": "BackAccessory"},
-        "defaultParts": {"Body": "base-body", "Hair": "hair", "Outfit": "outfit", "Weapon": "weapon", "Headgear": "headgear", "Back": "back-accessory"},
+        "defaultParts": {"Body": "base-body", "Hair": "hair", "Outfit": "outfit", "Weapon": "weapon", "Headgear": "headgear", "Back": "empty-back-accessory"},
         "drawOrder": ["Back", "Body", "Hair", "Outfit", "Weapon", "Headgear"],
         "clips": clips,
         "parts": parts,
@@ -311,6 +314,7 @@ def main() -> int:
         "notes": [
             "The six runtime slots are emitted, but source meshes combine BodyOutfit and HeadHair.",
             "Outfit and Headgear are explicit empty candidates because the source scene has no independent meshes for those slots.",
+            "BackAccessory defaults to an empty part; the separate cape mesh remains available as an optional alternate.",
             "This deterministic raster pass is a review candidate, not owner-approved final art.",
         ],
     }

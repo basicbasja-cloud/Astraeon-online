@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "tools/character_factory_v3"))
 from contracts import cache_key, motion_gate, read_json, repo_path, validate_config, validate_motion_record, validate_rig_spec
 from paint_provider import ManualHandoffProvider
 from qa import DIRECTIONS, REQUIRED_PASSES, validate_guide_manifest, validate_production_guide_manifest
+from import_painted_sheets import ACTIONS as PAINT_ACTIONS, prepare_painted_sheets
 from sample_motion import sample_clip, validate_sample_timeline
 
 
@@ -148,11 +149,34 @@ class FactoryContractTests(unittest.TestCase):
         self.assertEqual(definition["source"]["status"], "DEV_ONLY")
         self.assertFalse(definition["source"].get("approvedBy"))
         self.assertIn("INTERNAL_MOTION_REVIEW_CANDIDATE", definition["tags"])
+        self.assertEqual(definition["defaultParts"]["Back"], "empty-back-accessory")
+        self.assertIn("back-accessory", definition["parts"], "Cape must remain available as an optional alternate")
+        self.assertIn("empty-back-accessory", definition["parts"])
         for clip in definition["clips"].values():
             total = sum(clip["durations"])
             for event in clip.get("events", []):
                 self.assertLessEqual(event["timeMs"], total)
                 self.assertLess(event["frameIndex"], len(clip["durations"]))
+
+    def test_painted_candidate_passes_runtime_contract_and_keeps_review_tags(self):
+        for candidate_path in (
+            "assets/characters/swordsman-male-v3-painted/sprite.json",
+            "assets/characters/swordsman-male-v3-painted-v2/sprite.json",
+        ):
+            with self.subTest(candidate=candidate_path):
+                result = subprocess.run(
+                    ["node", str(ROOT / "tools/character_factory_v3/validate_runtime_package.cjs"), candidate_path],
+                    cwd=ROOT, capture_output=True, text=True, check=True,
+                )
+                self.assertTrue(json.loads(result.stdout)["passed"])
+                definition = read_json(ROOT / candidate_path)
+                self.assertEqual(definition["canvas"], {"frameWidth": 160, "frameHeight": 160, "rootAnchorX": 80, "rootAnchorY": 132, "referenceHeight": 88})
+                self.assertEqual(definition["defaultParts"]["Back"], "empty-back-accessory")
+                self.assertIn("FUSED_BODY_OUTFIT_HAIR_WEAPON", definition["tags"])
+                self.assertFalse(definition["source"].get("approvedBy"))
+                for action in ("Idle", "Walk", "BasicAttack"):
+                    self.assertIn("INTERNAL_VISUAL_PASS", definition["clips"][action]["tags"])
+                self.assertTrue(all("PENDING_PRODUCTION" in clip["tags"] for name, clip in definition["clips"].items() if name not in ("Idle", "Walk", "BasicAttack")))
 
     def test_cache_key_changes_with_input_hashes(self):
         args = dict(
@@ -261,6 +285,41 @@ class GuideQaTests(unittest.TestCase):
             self.assertFalse(result["passed"])
             self.assertIn("complete animated guide set", result["blocked"])
             self.assertFalse((temporary / "paint-jobs").exists())
+
+
+class PaintedSheetNormalizationTests(unittest.TestCase):
+    def test_one_scale_alpha_cleanup_and_all_192_cells(self):
+        from PIL import ImageDraw
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            painted_paths, guide_paths = {}, {}
+            for action in PAINT_ACTIONS:
+                painted = Image.new("RGBA", (640, 640), (255, 0, 255, 127))
+                guide = Image.new("RGBA", (1280, 1280), (0, 0, 0, 0))
+                for row in range(8):
+                    for column in range(8):
+                        ImageDraw.Draw(painted).rectangle((column * 80 + 10, row * 80 + 10, column * 80 + 30, row * 80 + 50), fill=(80, 100, 120, 255))
+                        ImageDraw.Draw(guide).rectangle((column * 160 + 20, row * 160 + 20, column * 160 + 60, row * 160 + 100), fill=(255, 255, 255, 255))
+                painted_paths[action] = root / f"{action}-paint.png"
+                guide_paths[action] = root / f"{action}-guide.png"
+                painted.save(painted_paths[action])
+                guide.save(guide_paths[action])
+
+            normalized, report = prepare_painted_sheets(painted_paths, guide_paths, root / "normalized")
+            self.assertEqual(report["normalized_frame_count"], 192)
+            self.assertEqual(len({frame["scale"] for frame in report["frames"]}), 1)
+            self.assertAlmostEqual(report["uniform_character_scale"], 81 / 84, places=3)
+            self.assertEqual(normalized["Idle"].getpixel((0, 0))[3], 0)
+            first_cell = normalized["Idle"].crop((0, 0, 160, 160))
+            self.assertIsNotNone(first_cell.getchannel("A").getbbox())
+            first_frame = next(frame for frame in report["frames"] if frame["action"] == "Idle" and frame["direction"] == "S" and frame["frame_index"] == 0)
+            left, top, right, bottom = first_frame["normalized_bbox"]
+            guide_left, guide_top, guide_right, guide_bottom = first_frame["guide_bbox"]
+            self.assertGreaterEqual(left, guide_left - 6)
+            self.assertGreaterEqual(top, guide_top - 6)
+            self.assertLessEqual(right, guide_right + 6)
+            self.assertLessEqual(bottom, guide_bottom + 6)
 
 
 if __name__ == "__main__":

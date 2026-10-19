@@ -18,9 +18,9 @@ const classId=cls=>cls===0?'swordsman':cls===12?'mage':null;
 function cosmetics(config,cls){const kind=classId(cls);if(!kind)throw Error('No 0.0.1 sprite class for '+cls);return {Hair:config.hair,Outfit:config.outfit==='traveler'?kind+'-traveler':config.outfit}}
 async function load(config,cls,animationIds=['Idle']){
  config=normalize(config)||defaults();const kind=classId(cls);if(!kind)throw Error('Unsupported cosmetic class');
- const visual=await scope.AstraeonModularSprites.load(`./assets/characters/${kind}-${config.bodyVariant}-001/sprite.json`,{allowDev:true,bodyVariant:config.bodyVariant,cosmeticLoadout:cosmetics(config,cls),animationIds});
+ const developmentBody=scope.AstraeonSwordsmanDevelopment?.snapshot().developmentBody;const paintedCandidate=['v3-painted','v3-painted-v2'].includes(developmentBody)&&kind==='swordsman'&&config.bodyVariant==='male';const candidateId=developmentBody==='v3-painted-v2'?'swordsman-male-v3-painted-v2':'swordsman-male-v3-painted';const definition=paintedCandidate?`./assets/characters/${candidateId}/sprite.json`:`./assets/characters/${kind}-${config.bodyVariant}-001/sprite.json`;const options={allowDev:true,bodyVariant:config.bodyVariant,animationIds};if(!paintedCandidate)options.cosmeticLoadout=cosmetics(config,cls);const visual=await scope.AstraeonModularSprites.load(definition,options);
  for(const [key,value] of Object.entries(ANATOMY))if(key in visual.compiled.definition.canvas&&visual.compiled.definition.canvas[key]!==value)throw Error('Class anatomy differs: '+key);
- for(const id of CLIPS)if(!visual.compiled.definition.clips[id]||visual.compiled.definition.clips[id].tags?.includes('PENDING_PRODUCTION'))throw Error('Incomplete animation '+id);
+ for(const id of (paintedCandidate?['Idle','Walk','BasicAttack']:CLIPS))if(!visual.compiled.definition.clips[id]||visual.compiled.definition.clips[id].tags?.includes('PENDING_PRODUCTION'))throw Error('Incomplete animation '+id);
  return visual;
 }
 let active=null,activeClass=null,activeConfig=null,selection=0,loadError=null,current='Idle',requested='Idle',clipTicket=0;

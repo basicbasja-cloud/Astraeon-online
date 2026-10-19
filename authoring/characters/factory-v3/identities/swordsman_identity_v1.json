@@ -7,11 +7,18 @@
   "locks": {
     "face": "Youthful male storybook warrior; keep eyes mostly concealed beneath swept bangs.",
     "hair": "Short tousled silver/lavender-grey hair with broad swept fringe; no redesign.",
-    "costume": "Mustard-gold short cape/scarf, dark olive/navy underlayers, bronze/gold armor, split ivory tunic, teal waist detail, tall dark boots, leather belts and gloves.",
+    "costume": "Bronze/gold armor over a split ivory tunic, dark olive/navy underlayers, teal waist detail, tall dark boots, leather belts and gloves. No trailing cape by default; BackAccessory stays optional and may be enabled as an alternate cosmetic.",
     "weapon": "Straight narrow one-handed steel sword with warm bronze/gold hilt in anatomical right hand.",
     "palette": ["silver-lavender", "mustard-gold", "bronze", "ivory", "dark olive/navy", "teal", "dark brown"],
-    "style": "Softly painted stylized 2D volumes and warm restrained shading; no hard black outline, plastic sheen, photorealism, or Ragnarok sprite copying.",
+    "style": "Crisp, polished 2D fantasy game illustration with precise small-scale edges, clear armor seams, defined facial planes, and restrained two-tone warm shading. Avoid blur, airbrush haze, noisy texture, and soft-focus edges; do not use hard black outlines, plastic sheen, photorealism, or Ragnarok sprite copying.",
     "camera": "Preserve V2 elevated game-sprite perspective and locked framing."
+  },
+  "animation_direction": {
+    "naturalism": "Keep human joint mechanics, balanced weight, readable foot contacts, and consistent weapon grip; avoid stiff or comic motion.",
+    "idle": "Sword-ready stance with quiet breathing and a small, believable weight shift.",
+    "walk": "Natural alternating footfalls, steady torso, and relaxed sword arm; no exaggerated marching.",
+    "basic_attack": "Grounded fantasy low sweep with anticipation, torso and hip weight transfer, clear contact, controlled follow-through, and a return to guard; avoid deep forward bows, flailing, or toy-like swings.",
+    "back_accessory": "No trailing cape by default. Keep BackAccessory independently toggleable as an optional cosmetic."
   },
   "paint_consistency": {
     "canonical_reference_required": true,

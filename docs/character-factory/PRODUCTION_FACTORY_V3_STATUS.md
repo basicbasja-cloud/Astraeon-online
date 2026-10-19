@@ -1,91 +1,76 @@
 # Production Factory V3 status and handoff
 
 **Branch:** `character/production-factory-v3`
-
-**Base:** `50583de` (`Add character factory V3 foundation and rig proof`)
-
 **Target:** Male Swordsman
+**Updated:** 19 October 2026
+**Overall:** `TECHNICAL_PASS / PAINTED_VISUAL_CANDIDATE / OWNER_APPROVAL_PENDING`
+**Runtime admission:** `DEV_ONLY / NOT_APPROVED`
 
-**Current state:** `TECHNICAL_PASS / INTERNAL_VISUAL_CANDIDATE / OWNER_APPROVAL_PENDING`
+The V3 pipeline now has two ImageGen-painted review iterations for Idle, Walk, and BasicAttack. Iteration 2 uses a sharper fantasy-art prompt and is packaged as its own DEV_ONLY candidate with eight-direction GIFs. It has been reviewed in the actual game on the default Wayfarer Capital map. The art remains a fused character image, motion status remains `CANDIDATE`, six other actions remain placeholders, and owner approval is pending. V3 is not production-complete.
 
-**Art/runtime admission:** `DEV_ONLY / NOT_APPROVED`
+## Progress
 
-The first three-action vertical slice now runs through source intake, retargeting, guide rendering, structural QA, paint handoff, runtime packaging, and the actual Astraeon development preview. The latest clean forced headless build used Blender 5.2.2, cache key `1b940eadbbbd308a`, and paint handoff `93df90a93cbddbef28a65319`. The selected motions are new Mesh2Motion clips, not V2 curves. The attack is now a readable fantasy sword sweep with recovery, replacing the awkward forward-bent attack. The technical route is in place; the package is not final game art and has not been owner-approved.
+### Completed
 
-## COMPLETE
+- Built the 60-bone action-free V3 Swordsman rig with stable root, eight unmirrored directions, and the six required structural guide passes.
+- Selected free Mesh2Motion `Idle_Sword`, `Walk`, and `Sword_Attack` sources from a pinned CC0 bundle. Recorded file hash, source skeleton, license evidence, retarget details, events, and frame timings. No login or credential was needed; no V2 motion fallback is used.
+- Completed the forced Blender 5.2.2 pipeline run. Preflight, retargeting, 192 guide records, six structural passes, and the procedural DEV_ONLY runtime package passed. The motion gate correctly remains blocked because all three clips are owner-review candidates.
+- Updated [the Swordsman identity lock](../../authoring/characters/factory-v3/identities/swordsman_identity_v1.json) and [master prompt](../../authoring/characters/factory-v3/identities/swordsman_master_prompt_v3.txt): illustrated fantasy style, human balance and weapon grip, a grounded low sword sweep, and no trailing cape by default. `BackAccessory` remains an optional slot.
+- Generated two painted Idle, Walk, and BasicAttack sheets with eight directions and eight frames each. The first iteration is retained for comparison. The sharper-prompt iteration has exact prompts, raw inputs, pose guides, hashes, normalized sheets, GIFs, and an import report in [paint job `imagegen-swordsman-v2`](../../authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v2/selection.md).
+- For iteration 2, removed alpha haze and disconnected cross-cell fragments, applied one shared scale (`0.724771`) across all 192 frames, aligned cells to the V3 guide contract, and trimmed pixels outside a guide silhouette dilated by 6px. The normalized character is about 79px tall in a 160×160 cell; root remains `(80,132)`.
+- Added the separate `swordsman-male-v3-painted-v2` DEV_ONLY package and a review route. Browser playback used the app's default streamed `wayfarer-regional-capital-v75` map, loaded 17 nearby world chunks, showed Idle, Walk, and BasicAttack at the safe plaza spawn, and completed with no page errors or failed requests. The attack clip contact marker is at `983ms`.
+- Set the procedural runtime default Back part to transparent. The cape remains an optional separate `BackAccessory` part in that package.
 
-- Built the 60-bone canonical V3 Swordsman rig with a stable root and zero remaining V2 actions.
-- Rebuilt and headlessly checked the rig with Blender 5.2.2; the [eight-direction rig smoke QA](../../authoring/characters/factory-v3/review/rig-smoke-f6fe30023e77/qa.json) passes all six structural passes.
-- Selected Mesh2Motion `Idle_Sword`, `Walk`, and `Sword_Attack` from a pinned CC0 source. Recorded exact source hash, license evidence, skeleton, and action provenance. No account is needed for this source.
-- The MoCap Online sampler/T.C. Sword and Mixamo candidate records are `BLOCKED_ACCESS_REQUIRED`; the tracked free Rokoko candidates are `NOT_ATTEMPTED_TIER_2`. The user allowed a free alternate source and approved Mesh2Motion, so no login or credential was needed for the current set.
-- Implemented hash-checked BVH/FBX/GLB/BLEND intake, source profiles, GLB action selection, retargeting, cleanup, semantic sampling, caching, structural QA, and a provider-neutral paint handoff.
-- Retargeted and reviewed the three selected clips. The chosen attack is an energetic low sweep with controlled recovery. Rejected Quaternius/CMU picks and Mesh2Motion `Sword_Regular_A/B/C` have reasons recorded in the candidate registry.
-- Rendered 192 guide records: eight sampled frames per action across eight real directions, with RGB, silhouette, depth, normal, body segmentation, and weapon mask. Structural QA passes.
-- Created the manual paint job [`93df90a93cbddbef28a65319`](../../authoring/characters/factory-v3/paint-jobs/93df90a93cbddbef28a65319/job.json) and the internal procedural runtime candidate.
-- Runtime schema and atlas validation pass. The V3-only development route loaded the package, played BasicAttack, followed its contact event timing, and returned to Idle without page or console errors.
-- Reviewed the [Idle](evidence/v3-game-scale-idle.png), [Walk](evidence/v3-game-scale-walk.png), and [BasicAttack](evidence/v3-game-scale-basicattack.png) eight-direction sheets at 160px game scale.
+### Current review GIFs
 
-## PARTIAL
+- [Idle, eight directions](evidence/imagegen-swordsman-v2/v3-ai-painted-idle-8-directions.gif)
+- [Walk, eight directions](evidence/imagegen-swordsman-v2/v3-ai-painted-walk-8-directions.gif)
+- [BasicAttack, eight directions](evidence/imagegen-swordsman-v2/v3-ai-painted-basicattack-8-directions.gif)
+- [BasicAttack with cape on/off, earlier procedural comparison](evidence/v3-basicattack-south-cape-compare.gif)
 
-- **Motion quality:** Idle reads human but has subtle breathing/weight shift; Walk reads as a human gait; BasicAttack reads as a stylized fantasy sword sweep. All three remain `CANDIDATE` until the owner accepts their look.
-- **Paint:** deterministic palette treatment and a complete artist handoff exist. They are review aids; final illustrated paint-over has not been produced.
-- **Modular output:** six runtime slots exist. Current geometry combines BodyOutfit and HeadHair; Outfit and Headgear have no independent source mesh. Cape and sword are separate. Empty slots do not yet prove hidden-surface or equipment-swap quality.
-- **Action coverage:** Run, Hit, Death, Dash, Guard, and SkillAction are static placeholders. This first slice covers only the required Idle, Walk, and BasicAttack.
-- **Production readiness:** the runtime package remains `DEV_ONLY`, tagged as placeholder/not-final-art, and not admitted.
+Iteration 2 improves contour definition and removes detached edge artifacts after guide-mask cleanup. Some painterly softness remains at the 160px cell size; this iteration is a review candidate, not a claim of final art quality. All three exact requests are retained. The images have not been approved by the owner.
 
-## BLOCKED
+## Still partial
 
-The current Mesh2Motion build is not blocked on source access. Production admission is blocked on external art/review inputs:
+- **Visual quality and motion:** iteration 2 is the sharper review candidate. Idle remains subtle; Walk is clearest from side views; BasicAttack reads as a grounded fantasy sweep. The owner has not approved the motion or painted art.
+- **Layering:** the painted character is one fused Body/Hair/Outfit/Weapon composite. Independent equipment layers and hidden surfaces are not present. Its empty Hair, Outfit, Weapon, Headgear, and Back slots do not imply that the fused sprite can be customized.
+- **Other actions:** Run, Hit, Death, Dash, Guard, and SkillAction are placeholders and still need free-source review and production art.
+- **Production approval:** the painted pixels are provider-generated, so no CC0 claim is made for them. The runtime package remains `DEV_ONLY`, `PLACEHOLDER`, `NOT_FINAL_ART`, and `OWNER_APPROVAL_PENDING`.
 
-1. Owner decision on the three candidate motions and the procedural appearance.
-2. A final painted, layer-separated Swordsman set with independent BaseBody, Hair, Outfit, Weapon, Headgear, and BackAccessory output. The current source geometry cannot supply separate Outfit and Headgear surfaces; those need to be authored or supplied.
+## Review route
 
-The selected motions and their evidence stay `CANDIDATE` while those inputs are pending. No V2 motion fallback is allowed.
+Use the rendered GIFs above to inspect silhouette and motion at runtime cell size. The actual game route uses the default streamed map, Wayfarer Capital:
 
-The alternative MoCap Online and Mixamo records remain access-blocked if the owner wants to use those instead. The exact required input would be the free animation archive plus its license evidence in the motion inbox. No credentials should be sent or stored.
+`?qa=1&swordsman=v3-painted-v2`
 
-## OWNER REVIEW REQUIRED
+The route shows the candidate in the character creator and actual player renderer. Browser screenshots and the QA report are in [the Wayfarer Capital evidence folder](evidence/imagegen-swordsman-v2/). It does not mark the candidate approved or production-admitted.
 
-Review the three 160px sheets linked above, especially [BasicAttack](evidence/v3-game-scale-basicattack.png), and the V3 preview route:
-
-`?qa=1&world=court-legacy&renderer=canvas&swordsman=v3`
-
-The strike is intentionally fantasy-styled and energetic rather than mocap-realistic. Choose whether the selected motion set and procedural look are acceptable for the next painted-art stage. Approval of a candidate does not approve the final painted art or production admission.
-
-## NEXT EXACT ACTION
-
-Owner: approve or reject the current Idle/Walk/BasicAttack set after reviewing the sheets and preview. If approved, provide or commission the layer-separated painted output and independent Outfit/Headgear surfaces; then run paint validation, hidden-surface/modular QA, and final runtime admission review. If rejected, identify which clip or pose should change; keep the other accepted clips and their provenance intact.
-
-## Acceptance gates
+## Remaining acceptance gates
 
 | Gate | Status | Evidence / remaining work |
 |---|---|---|
-| A — Canonical rig | **PASS** | 60 bones; zero V2 actions remain. |
-| B — New Idle/Walk/BasicAttack | **CANDIDATE** | Mesh2Motion selections; owner visual decision pending. |
-| C — Provenance/license | **PASS for candidate use** | Pinned source, CC0 evidence, local hash, action and skeleton records. |
-| D — Retarget and cleanup | **PASS** | Required mappings, finite transforms, stable root, no rotation spikes. |
-| E — Fantasy readability | **INTERNAL VISUAL CANDIDATE** | Low sweep and recovery reviewed at game scale; owner approval pending. |
-| F — Eight directions | **PASS** | 192 records, eight unmirrored views. |
-| G — Structural passes | **PASS** | Six required passes align and pass structural QA. |
-| H — Paint handoff | **PASS** | Deterministic manual handoff job exists; painted output is partial. |
-| I — Six independent painted layers | **BLOCKED** | BodyOutfit and HeadHair are combined; source has no independent Outfit or Headgear mesh. |
-| J — Runtime package | **PASS as DEV_ONLY candidate** | Schema/atlas validation passes; not production-admitted. |
-| K — In-game proof | **PASS as development-only** | V3 route played selected actions with contact timing and no browser errors. |
-| Owner approval | **PENDING** | Review current motion sheets and preview. |
+| Canonical rig | **PASS** | 60 bones, stable root, zero V2 actions. |
+| Free motion sources | **PASS for candidate use** | Mesh2Motion CC0 source and evidence recorded. |
+| Idle / Walk / BasicAttack | **CANDIDATE** | New source, retarget and painted direction set; owner visual review pending. |
+| Eight directions and structural passes | **PASS** | 192 records, six passes, unmirrored directions. |
+| Painted identity and fantasy readability | **INTERNAL VISUAL CANDIDATE** | GIFs and actual game route available; approval pending. |
+| No-cape default | **PASS for review direction** | Transparent default Back part; optional cape remains separately available in procedural package. |
+| Independent painted layers | **BLOCKED** | Current paint is fused; separate BaseBody, Hair, Outfit, Weapon, Headgear, and BackAccessory art is not supplied. |
+| Remaining six actions | **PENDING** | Static placeholders only. |
+| Runtime package | **PASS as DEV_ONLY** | Schema/atlas validation passes; no production admission. |
+| Actual game preview | **PASS as development-only** | Creator, Idle, Walk, BasicAttack, contact timing, and recovery verified in browser. |
+| Owner approval | **PENDING** | Review the three painted GIFs and accept or request changes. |
 
-## Validation checks
+## Validation record
 
 | Check | Result | Detail |
 |---|---|---|
-| Factory `--stage all --force` | **PASS** | Blender 5.2.2; rig rebuild, motion retarget/render, guide QA, paint handoff, and runtime validation passed. |
-| Initial system Blender 4.3.2 attempt | **BLOCKED** | Rejected by the project's 5.2.0 minimum-version guard; full force rebuilds with Blender 5.2.0 and 5.2.2 passed. |
-| Motion production gate | **BLOCKED by candidate status** | `passed=false` because all three selected motions remain `CANDIDATE`; this is the intended owner-approval gate, not a retarget/build failure. |
-| Python suite | **PASS** | 17 tests passed. |
-| Python compilation | **PASS** | Factory and Blender scripts compile. |
-| Runtime package validator | **PASS** | Nine clip definitions; 82,301,760 decoded atlas bytes; no schema errors. |
-| Development browser proof | **PASS** | BasicAttack playback/contact timing and return to Idle verified on the V3 route; no page or console errors. |
-| Diff whitespace check | **PASS** | `git diff --check` is clean. |
-| Failed checks | **None** | No check failed after using the required Blender version. |
-| Skipped checks | **None** | Required technical checks were run. |
+| Factory `--stage all --force` | **PASS** | Blender 5.2.2; rig, motion, guide, handoff, and procedural package stages completed. |
+| Motion production gate | **PENDING by design** | Returns `passed=false` while clips remain `CANDIDATE`; no retarget/build error. |
+| Painted importer | **PASS** | 192 cells, shared 0.752381 scale, cleanup and alignment report written to the paint job. |
+| Runtime candidate validator | **PASS** | Iteration 2: 9 clip definitions, 20,763,712 decoded atlas bytes, no schema errors. |
+| Procedural runtime validator | **PASS** | 9 clip definitions; no schema errors. |
+| Painted-sheet normalization test | **PASS** | Shared scale, alpha cleanup, full frame count, and guide-mask containment. |
+| Development browser preview | **PASS** | Default Wayfarer Capital map; no page errors or failed requests; actual player showed all three selected clips. BasicAttack contact marker is at 983ms. |
 
-See [the implementation record](PRODUCTION_FACTORY_V3.md) and [the build evidence JSON](evidence/production-factory-v3-motion.json) for mappings, timings, exact render contract, and QA results.
+See [the implementation record](PRODUCTION_FACTORY_V3.md), [build evidence](evidence/production-factory-v3-motion.json), [iteration 2 paint job](../../authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v2/imported/job.json), and [Wayfarer Capital browser report](evidence/imagegen-swordsman-v2/wayfarer-capital-review.json) for the full progression and provenance.

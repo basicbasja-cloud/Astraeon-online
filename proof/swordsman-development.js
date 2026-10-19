@@ -5,8 +5,9 @@ window.AstraeonSwordsmanDevelopmentInit=async bodyVariant=>{
  const api=window.AstraeonModularSprites;
  if(!/^[a-z][a-z0-9-]*$/.test(bodyVariant))throw Error('Invalid development body variant');
  const factoryReview=bodyVariant==='fantasy';
- const v3Review=bodyVariant==='v3';
- let url=v3Review?'./assets/characters/swordsman-male-v3/sprite.json':`./assets/characters/swordsman-${bodyVariant}-candidate/sprite.json`;
+ const v3Review=['v3','v3-painted','v3-painted-v2'].includes(bodyVariant);
+ const paintedCandidateId=bodyVariant==='v3-painted-v2'?'swordsman-male-v3-painted-v2':'swordsman-male-v3-painted';
+ let url=['v3-painted','v3-painted-v2'].includes(bodyVariant)?`./assets/characters/${paintedCandidateId}/sprite.json`:v3Review?'./assets/characters/swordsman-male-v3/sprite.json':`./assets/characters/swordsman-${bodyVariant}-candidate/sprite.json`;
  if(factoryReview){
   const root='./authoring/characters/swordsman-production/fantasy-base-01/';
   const proof=await(await fetch(root+'factory/runtime-compatibility.json?spriteDev=1&t='+Date.now(),{cache:'no-store'})).json();
