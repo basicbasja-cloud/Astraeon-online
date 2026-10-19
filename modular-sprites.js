@@ -57,6 +57,16 @@ function validateDefinition(d) {
   check(/^[A-Z][A-Za-z0-9]*$/.test(animationId),'Invalid animationId '+animationId);
   check(typeof clip.loop==='boolean','Missing loop policy '+animationId);
   check(Array.isArray(clip.durations)&&clip.durations.length>0&&clip.durations.every(positive),'Invalid timing '+animationId);
+  if(own(clip,'events')){
+   const events=clip.events,total=Array.isArray(clip.durations)?clip.durations.reduce((sum,value)=>sum+(Number.isFinite(value)?value:0),0):0;
+   check(Array.isArray(events),'Invalid semantic events '+animationId);
+   for(const event of Array.isArray(events)?events:[]){
+    check(typeof event.name==='string'&&/^[a-z][A-Za-z0-9]*$/.test(event.name),'Invalid semantic event name '+animationId);
+    check(Number.isFinite(event.phase)&&event.phase>=0&&event.phase<=1,'Invalid semantic event phase '+animationId+'/'+event.name);
+    check(Number.isInteger(event.timeMs)&&event.timeMs>=0&&event.timeMs<=total,'Invalid semantic event time '+animationId+'/'+event.name);
+    check(Number.isInteger(event.frameIndex)&&event.frameIndex>=0&&event.frameIndex<clip.durations.length,'Invalid semantic event frame '+animationId+'/'+event.name);
+   }
+  }
   if(own(clip,'cycleDistance'))check(positive(clip.cycleDistance)&&clip.loop,'Invalid locomotion cycle distance '+animationId);
   check(same(Object.keys(clip.directions||{}),DIRECTIONS),'Missing or unordered clip directions '+animationId);
   for(const direction of DIRECTIONS){

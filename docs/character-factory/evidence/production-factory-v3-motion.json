@@ -1,0 +1,640 @@
+{
+  "actions": {
+    "BasicAttack": {
+      "foot_contacts": {
+        "left": [],
+        "right": []
+      },
+      "motion_provenance": {
+        "acquisition_date": "2026-10-19",
+        "commercial_use_status": "APPROVED",
+        "duration_seconds": 1.9166666666666667,
+        "file_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+        "id": "swordsman_attack_v3_m2m_01",
+        "license_evidence": [
+          "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+          "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+        ],
+        "license_summary": "Mesh2Motion's official app repository marks its models, Blender files, rigs, and animations CC0 1.0; this exact GLB is hash-locked from commit 653a9698f5f315523072f1c3ff3496100401317b.",
+        "local_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+        "loop": false,
+        "modification_status": "RETARGETED_FOR_INTERNAL_VISUAL_REVIEW",
+        "original_filename": "human-base-animations.glb",
+        "original_fps": 24,
+        "original_skeleton": {
+          "armature": "Armature",
+          "bone_count": 66,
+          "forward_axis": "-Y",
+          "up_axis": "Z"
+        },
+        "production_status": "CANDIDATE",
+        "provider": "Mesh2Motion",
+        "retarget_permission_status": "APPROVED",
+        "source_action": "Sword_Attack",
+        "source_format": "GLB",
+        "source_title": "Mesh2Motion Human Base Animations",
+        "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+      },
+      "rendered_events": [
+        {
+          "frame_index": 1,
+          "name": "anticipationStart",
+          "phase": 0.12,
+          "time_ms": 236
+        },
+        {
+          "frame_index": 3,
+          "name": "contact",
+          "phase": 0.5,
+          "time_ms": 983
+        },
+        {
+          "frame_index": 5,
+          "name": "recoveryStart",
+          "phase": 0.84,
+          "time_ms": 1651
+        },
+        {
+          "frame_index": 7,
+          "name": "animationComplete",
+          "phase": 1.0,
+          "time_ms": 1966
+        }
+      ],
+      "retarget": {
+        "mapped_required_bones": [
+          "Chest",
+          "Clavicle.L",
+          "Clavicle.R",
+          "Foot.L",
+          "Foot.R",
+          "Forearm.L",
+          "Forearm.R",
+          "Hand.L",
+          "Hand.R",
+          "Head",
+          "Hips",
+          "Neck",
+          "Shin.L",
+          "Shin.R",
+          "Spine",
+          "Thigh.L",
+          "Thigh.R",
+          "UpperArm.L",
+          "UpperArm.R",
+          "root"
+        ],
+        "max_rendered_root_horizontal_excursion": 0.0,
+        "output_scene_sha256": "35d8a863de6821cf68c2c4afb1b69e4d5e06a612b7603d40a6b72ccb0a4ca082",
+        "passed": true,
+        "root_stable": true,
+        "source_action": "Sword_Attack",
+        "source_action_internal_name": "SOURCE_swordsman_attack_v3_m2m_01",
+        "source_bone_mapping": {
+          "Chest": "spine_03",
+          "Clavicle.L": "clavicle_l",
+          "Clavicle.R": "clavicle_r",
+          "Foot.L": "foot_l",
+          "Foot.R": "foot_r",
+          "Forearm.L": "lowerarm_l",
+          "Forearm.R": "lowerarm_r",
+          "Hand.L": "hand_l",
+          "Hand.R": "hand_r",
+          "Head": "head",
+          "Hips": "pelvis",
+          "Neck": "neck_01",
+          "Shin.L": "calf_l",
+          "Shin.R": "calf_r",
+          "Spine": "spine_01",
+          "Thigh.L": "thigh_l",
+          "Thigh.R": "thigh_r",
+          "Toe.L": "ball_l",
+          "Toe.R": "ball_r",
+          "UpperArm.L": "upperarm_l",
+          "UpperArm.R": "upperarm_r",
+          "root": "root"
+        }
+      },
+      "sampling": {
+        "duration_ms": 1966,
+        "durations_ms": [
+          232,
+          309,
+          425,
+          251,
+          406,
+          155,
+          155,
+          33
+        ],
+        "events": [
+          {
+            "frame_index": 1,
+            "name": "anticipationStart",
+            "phase": 0.12,
+            "time_ms": 236
+          },
+          {
+            "frame_index": 3,
+            "name": "contact",
+            "phase": 0.5,
+            "time_ms": 983
+          },
+          {
+            "frame_index": 5,
+            "name": "recoveryStart",
+            "phase": 0.84,
+            "time_ms": 1651
+          },
+          {
+            "frame_index": 7,
+            "name": "animationComplete",
+            "phase": 1.0,
+            "time_ms": 1966
+          }
+        ],
+        "frame_count": 8,
+        "loop": false,
+        "output_fps": 30.0,
+        "semantic_phases": {
+          "anticipation": 0.12,
+          "contact": 0.5,
+          "follow_through": 0.63,
+          "recovery": 0.84,
+          "wind_up": 0.28
+        },
+        "source_fps": 24.0
+      },
+      "selection_review": "Eight-direction 160px review shows a controlled low sword sweep and balanced recovery, replacing the old deep forward bow. It reads as a stylized human game attack; owner approval remains pending."
+    },
+    "Idle": {
+      "foot_contacts": {
+        "left": [],
+        "right": []
+      },
+      "motion_provenance": {
+        "acquisition_date": "2026-10-19",
+        "commercial_use_status": "APPROVED",
+        "duration_seconds": 2.0833333333333335,
+        "file_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+        "id": "swordsman_idle_v3_m2m_01",
+        "license_evidence": [
+          "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+          "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+        ],
+        "license_summary": "Mesh2Motion's official app repository marks its models, Blender files, rigs, and animations CC0 1.0; this exact GLB is hash-locked from commit 653a9698f5f315523072f1c3ff3496100401317b.",
+        "local_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+        "loop": true,
+        "modification_status": "RETARGETED_FOR_INTERNAL_VISUAL_REVIEW",
+        "original_filename": "human-base-animations.glb",
+        "original_fps": 24,
+        "original_skeleton": {
+          "armature": "Armature",
+          "bone_count": 66,
+          "forward_axis": "-Y",
+          "up_axis": "Z"
+        },
+        "production_status": "CANDIDATE",
+        "provider": "Mesh2Motion",
+        "retarget_permission_status": "APPROVED",
+        "source_action": "Idle_Sword",
+        "source_format": "GLB",
+        "source_title": "Mesh2Motion Human Base Animations",
+        "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+      },
+      "rendered_events": [
+        {
+          "frame_index": 7,
+          "name": "animationComplete",
+          "phase": 1.0,
+          "time_ms": 2100
+        }
+      ],
+      "retarget": {
+        "mapped_required_bones": [
+          "Chest",
+          "Clavicle.L",
+          "Clavicle.R",
+          "Foot.L",
+          "Foot.R",
+          "Forearm.L",
+          "Forearm.R",
+          "Hand.L",
+          "Hand.R",
+          "Head",
+          "Hips",
+          "Neck",
+          "Shin.L",
+          "Shin.R",
+          "Spine",
+          "Thigh.L",
+          "Thigh.R",
+          "UpperArm.L",
+          "UpperArm.R",
+          "root"
+        ],
+        "max_rendered_root_horizontal_excursion": 0.0,
+        "output_scene_sha256": "8e1f1b02588986085cb836890dc8f0294731a0635d39aadf16a933f1d00572d6",
+        "passed": true,
+        "root_stable": true,
+        "source_action": "Idle_Sword",
+        "source_action_internal_name": "SOURCE_swordsman_idle_v3_m2m_01",
+        "source_bone_mapping": {
+          "Chest": "spine_03",
+          "Clavicle.L": "clavicle_l",
+          "Clavicle.R": "clavicle_r",
+          "Foot.L": "foot_l",
+          "Foot.R": "foot_r",
+          "Forearm.L": "lowerarm_l",
+          "Forearm.R": "lowerarm_r",
+          "Hand.L": "hand_l",
+          "Hand.R": "hand_r",
+          "Head": "head",
+          "Hips": "pelvis",
+          "Neck": "neck_01",
+          "Shin.L": "calf_l",
+          "Shin.R": "calf_r",
+          "Spine": "spine_01",
+          "Thigh.L": "thigh_l",
+          "Thigh.R": "thigh_r",
+          "Toe.L": "ball_l",
+          "Toe.R": "ball_r",
+          "UpperArm.L": "upperarm_l",
+          "UpperArm.R": "upperarm_r",
+          "root": "root"
+        }
+      },
+      "sampling": {
+        "duration_ms": 2100,
+        "durations_ms": [
+          252,
+          273,
+          273,
+          252,
+          252,
+          273,
+          273,
+          252
+        ],
+        "events": [
+          {
+            "frame_index": 7,
+            "name": "animationComplete",
+            "phase": 1.0,
+            "time_ms": 2100
+          }
+        ],
+        "frame_count": 8,
+        "loop": true,
+        "output_fps": 30.0,
+        "semantic_phases": {},
+        "source_fps": 24.0
+      },
+      "selection_review": "At 160px game scale the sword-ready stance reads clearly; breathing and weight shift remain subtle, so this stays an internal candidate."
+    },
+    "Walk": {
+      "foot_contacts": {
+        "left": [
+          {
+            "end_frame": 28,
+            "end_phase": 0.56,
+            "min_height": 0.026817,
+            "start_frame": 7,
+            "start_phase": 0.14
+          },
+          {
+            "end_frame": 35,
+            "end_phase": 0.7,
+            "min_height": 0.027763,
+            "start_frame": 33,
+            "start_phase": 0.66
+          }
+        ],
+        "right": [
+          {
+            "end_frame": 3,
+            "end_phase": 0.06,
+            "min_height": 0.035869,
+            "start_frame": 0,
+            "start_phase": 0.0
+          },
+          {
+            "end_frame": 10,
+            "end_phase": 0.2,
+            "min_height": 0.027531,
+            "start_frame": 8,
+            "start_phase": 0.16
+          },
+          {
+            "end_frame": 49,
+            "end_phase": 0.98,
+            "min_height": 0.026443,
+            "start_frame": 32,
+            "start_phase": 0.64
+          }
+        ]
+      },
+      "motion_provenance": {
+        "acquisition_date": "2026-10-19",
+        "commercial_use_status": "APPROVED",
+        "duration_seconds": 1.6666666666666667,
+        "file_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+        "id": "swordsman_walk_v3_m2m_01",
+        "license_evidence": [
+          "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+          "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+        ],
+        "license_summary": "Mesh2Motion's official app repository marks its models, Blender files, rigs, and animations CC0 1.0; this exact GLB is hash-locked from commit 653a9698f5f315523072f1c3ff3496100401317b.",
+        "local_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+        "loop": true,
+        "modification_status": "RETARGETED_FOR_INTERNAL_VISUAL_REVIEW",
+        "original_filename": "human-base-animations.glb",
+        "original_fps": 24,
+        "original_skeleton": {
+          "armature": "Armature",
+          "bone_count": 66,
+          "forward_axis": "-Y",
+          "up_axis": "Z"
+        },
+        "production_status": "CANDIDATE",
+        "provider": "Mesh2Motion",
+        "retarget_permission_status": "APPROVED",
+        "source_action": "Walk",
+        "source_format": "GLB",
+        "source_title": "Mesh2Motion Human Base Animations",
+        "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+      },
+      "rendered_events": [
+        {
+          "frame_index": 0,
+          "name": "leftFootstep",
+          "phase": 0.0,
+          "time_ms": 0
+        },
+        {
+          "frame_index": 4,
+          "name": "rightFootstep",
+          "phase": 0.5,
+          "time_ms": 834
+        },
+        {
+          "frame_index": 7,
+          "name": "animationComplete",
+          "phase": 1.0,
+          "time_ms": 1668
+        }
+      ],
+      "retarget": {
+        "mapped_required_bones": [
+          "Chest",
+          "Clavicle.L",
+          "Clavicle.R",
+          "Foot.L",
+          "Foot.R",
+          "Forearm.L",
+          "Forearm.R",
+          "Hand.L",
+          "Hand.R",
+          "Head",
+          "Hips",
+          "Neck",
+          "Shin.L",
+          "Shin.R",
+          "Spine",
+          "Thigh.L",
+          "Thigh.R",
+          "UpperArm.L",
+          "UpperArm.R",
+          "root"
+        ],
+        "max_rendered_root_horizontal_excursion": 0.0,
+        "output_scene_sha256": "1051ec2b72765f6b105bd7be7afb35f294556779f2eae820fb1583103731dc06",
+        "passed": true,
+        "root_stable": true,
+        "source_action": "Walk",
+        "source_action_internal_name": "SOURCE_swordsman_walk_v3_m2m_01",
+        "source_bone_mapping": {
+          "Chest": "spine_03",
+          "Clavicle.L": "clavicle_l",
+          "Clavicle.R": "clavicle_r",
+          "Foot.L": "foot_l",
+          "Foot.R": "foot_r",
+          "Forearm.L": "lowerarm_l",
+          "Forearm.R": "lowerarm_r",
+          "Hand.L": "hand_l",
+          "Hand.R": "hand_r",
+          "Head": "head",
+          "Hips": "pelvis",
+          "Neck": "neck_01",
+          "Shin.L": "calf_l",
+          "Shin.R": "calf_r",
+          "Spine": "spine_01",
+          "Thigh.L": "thigh_l",
+          "Thigh.R": "thigh_r",
+          "Toe.L": "ball_l",
+          "Toe.R": "ball_r",
+          "UpperArm.L": "upperarm_l",
+          "UpperArm.R": "upperarm_r",
+          "root": "root"
+        }
+      },
+      "sampling": {
+        "duration_ms": 1668,
+        "durations_ms": [
+          200,
+          217,
+          217,
+          200,
+          200,
+          217,
+          217,
+          200
+        ],
+        "events": [
+          {
+            "frame_index": 0,
+            "name": "leftFootstep",
+            "phase": 0.0,
+            "time_ms": 0
+          },
+          {
+            "frame_index": 4,
+            "name": "rightFootstep",
+            "phase": 0.5,
+            "time_ms": 834
+          },
+          {
+            "frame_index": 7,
+            "name": "animationComplete",
+            "phase": 1.0,
+            "time_ms": 1668
+          }
+        ],
+        "frame_count": 8,
+        "loop": true,
+        "output_fps": 30.0,
+        "semantic_phases": {},
+        "source_fps": 24.0
+      },
+      "selection_review": "At 160px game scale the alternating gait reads as a person walking, with the sword arm kept close to the body; remains an internal candidate."
+    }
+  },
+  "character_id": "swordsman_male_v3",
+  "guides": {
+    "contact_sheets": {
+      "BasicAttack": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/contact-sheet-basicattack.png",
+      "Idle": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/contact-sheet-idle.png",
+      "Walk": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/contact-sheet-walk.png"
+    },
+    "directions": [
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N",
+      "NE",
+      "E",
+      "SE"
+    ],
+    "frame_record_count": 192,
+    "game_scale_contact_sheets": {
+      "BasicAttack": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/game-scale-contact-sheet-basicattack.png",
+      "Idle": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/game-scale-contact-sheet-idle.png",
+      "Walk": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/game-scale-contact-sheet-walk.png"
+    },
+    "manifest": "authoring/characters/factory-v3/renders/animation-1b940eadbbbd308a/manifest.json",
+    "manifest_sha256": "c0720c48b244ddcaff7c5a611c699f43c1cb597f975775ff0a4a971241354b72",
+    "mirroring": "none",
+    "qa_passed": true,
+    "structural_passes": [
+      "body_segmentation",
+      "depth",
+      "normal",
+      "rgb",
+      "silhouette",
+      "weapon_mask"
+    ]
+  },
+  "legacy_v2_motion_fallback": false,
+  "owner_approved": false,
+  "paint_candidate": {
+    "actions": {
+      "BasicAttack": 8,
+      "Idle": 8,
+      "Walk": 8
+    },
+    "layer_limits": {
+      "BackAccessory": "Source Cape mesh is independently segmented.",
+      "BaseBody": "Source BodyOutfit geometry combines body and outfit; this guide does not invent a split.",
+      "Hair": "Source HeadHair geometry combines head and hair.",
+      "Headgear": "No headgear mesh exists in the source scene.",
+      "Outfit": "No independent outfit mesh exists in the source scene.",
+      "Weapon": "Sword mesh is attached to Hand.R."
+    },
+    "palette_colors": 96,
+    "palette_source_frames": 192,
+    "placeholder_actions": [
+      "Dash",
+      "Death",
+      "Guard",
+      "Hit",
+      "Run",
+      "SkillAction"
+    ],
+    "status": "PROCEDURAL_REVIEW_CANDIDATE",
+    "stylization": "38% palette quantization blend, mild warm grade, low-contrast smoothing, warm normal-derived edges."
+  },
+  "rig": {
+    "bone_count": 60,
+    "bone_names": [
+      "root",
+      "Hips",
+      "Spine",
+      "Chest",
+      "Neck",
+      "Head",
+      "Clavicle.R",
+      "UpperArm.R",
+      "Forearm.R",
+      "Hand.R",
+      "Index1.R",
+      "Index2.R",
+      "Index3.R",
+      "Middle1.R",
+      "Middle2.R",
+      "Middle3.R",
+      "Ring1.R",
+      "Ring2.R",
+      "Ring3.R",
+      "Pinky1.R",
+      "Pinky2.R",
+      "Pinky3.R",
+      "Thumb1.R",
+      "Thumb2.R",
+      "Thumb3.R",
+      "Clavicle.L",
+      "UpperArm.L",
+      "Forearm.L",
+      "Hand.L",
+      "Index1.L",
+      "Index2.L",
+      "Index3.L",
+      "Middle1.L",
+      "Middle2.L",
+      "Middle3.L",
+      "Ring1.L",
+      "Ring2.L",
+      "Ring3.L",
+      "Pinky1.L",
+      "Pinky2.L",
+      "Pinky3.L",
+      "Thumb1.L",
+      "Thumb2.L",
+      "Thumb3.L",
+      "Cape0",
+      "Cape1",
+      "Cape2",
+      "Thigh.R",
+      "Shin.R",
+      "Foot.R",
+      "Toe.R",
+      "Thigh.L",
+      "Shin.L",
+      "Foot.L",
+      "Toe.L",
+      "CTRL_Foot.R",
+      "CTRL_Knee.R",
+      "CTRL_Foot.L",
+      "CTRL_Knee.L",
+      "CTRL_Sword"
+    ],
+    "id": "astraeon_humanoid_male_v1",
+    "remaining_action_count": 0,
+    "removed_v2_action_count": 17
+  },
+  "runtime": {
+    "action_count": 9,
+    "canvas": {
+      "frameHeight": 160,
+      "frameWidth": 160,
+      "referenceHeight": 88,
+      "rootAnchorX": 80,
+      "rootAnchorY": 132
+    },
+    "decoded_atlas_bytes": 82301760,
+    "definition": "assets/characters/swordsman-male-v3/sprite.json",
+    "definition_sha256": "d2e88b3b8651b12a00e6f652e01125bf0b6c5c877998f536daaf1ef148a654d8",
+    "schema_passed": true
+  },
+  "runtime_admitted": false,
+  "schema_version": 1,
+  "source_mesh_limitations": {
+    "BackAccessory": "Source Cape mesh is independently segmented.",
+    "BaseBody": "Source BodyOutfit geometry combines body and outfit; this guide does not invent a split.",
+    "Hair": "Source HeadHair geometry combines head and hair.",
+    "Headgear": "No headgear mesh exists in the source scene.",
+    "Outfit": "No independent outfit mesh exists in the source scene.",
+    "Weapon": "Sword mesh is attached to Hand.R."
+  },
+  "status": "INTERNAL_VISUAL_CANDIDATE_OWNER_APPROVAL_PENDING"
+}

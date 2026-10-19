@@ -1,116 +1,113 @@
 # Astraeon Production Factory V3
 
-## Purpose
+## Purpose and progression
 
-Factory V3 is an offline authoring pipeline for illustrated 2D Astraeon sprites. Blender supplies anatomy, motion, perspective, timing, grip, depth, and stable directional guides. Its 3D output is never treated as final game art. The runtime remains the existing 2D modular sprite renderer.
+Factory V3 turns the useful V2 authoring, framing, packing, validation, and runtime work into a repeatable pipeline for illustrated 2D characters. A rigged 3D character supplies pose, timing, perspective, weapon placement, depth, and consistent eight-direction guides; it is not final game art.
 
-The first target is the male Swordsman. V3 requires new, externally sourced Idle, Walk, and BasicAttack motions across S, SW, W, NW, N, NE, E, and SE. V2 action curves are excluded from every V3 production path.
+The first Swordsman vertical slice has passed the technical pipeline through an in-game development preview: new source motions, provenance, retargeting, cleanup, sampling, 192 eight-direction guide records, six structural passes, a deterministic paint handoff, a runtime-format review candidate, and browser playback. The selected Idle, Walk, and BasicAttack still have `CANDIDATE` status. Factory V3 is **not complete**: final painted art, independent source meshes for every equipment layer, and owner approval remain outstanding.
 
-## Branch and source audit
+Current branch: `character/production-factory-v3`, based on `50583de` (`Add character factory V3 foundation and rig proof`). See [the status and handoff](PRODUCTION_FACTORY_V3_STATUS.md) and [the generated motion evidence](evidence/production-factory-v3-motion.json).
 
-V3 starts from `character/production-factory-v2` at `a2e84a92b102f3cd91cc291a3425b8d6fdc0b8bb`. The V2 branch was fetched and its current head matched the checkpoint before the V3 branch was created.
+## What V3 keeps and rejects from V2
 
-V2 work retained:
+V3 evolves the V2 engineering foundation. It retains the proven orthographic framing, 320×320 guide canvas, stable root near `(160,264)`, eight real directions, modular sprite definition and atlas conventions, packers, validators, identity reference, depth/occlusion concepts, and actual runtime integration. The 60-bone canonical rig is derived from the existing Swordsman authoring setup and is copied into a V3 action-free source scene.
 
-- The Swordsman `painted-factory-02` source rig: 60 bones, separate cape/weapon/head-hair/body-outfit source groups, hand holdout, and equipment anchors.
-- The orthographic 320×320 camera, `(160,264)` root, 176-pixel source reference height, fixed scale, eight named directions, and no mirroring.
-- The V2 full-canvas modular sprite definition, metadata validators, lossless padded atlas packer, renderer, and development-only review pattern.
-- Depth ordering and complete hidden surfaces as authoring inputs. Runtime still receives ordinary 2D atlases.
-- The V2 identity authority at `authoring/characters/gait-rig-v50/approved-warrior-seed.png`, whose digest is pinned in the V3 identity lock.
+The owner rejected the look of the old V2 motion bank. V3 does not reuse its curves, frame timing, or fallback animations as production motion. The source rig manifest records 17 removed V2 actions and zero remaining actions. Old V2 work remains a technical reference and regression baseline only.
 
-V2 action curves and action timing were inspected only as technical evidence and then excluded. The saved V3 rig copy is expected to contain zero actions. The V2 motion source was Quaternius Universal Animation Library Standard 1/2; this bank is rejected for V3 and cannot be a fallback. The V2 swordsman visual candidates remain `DEV_ONLY / NOT_APPROVED`.
+## Motion source policy and current selection
 
-The V2 source groups combine `BodyOutfit` and `HeadHair`. The V3 paint handoff maps those guides into six logical runtime layers (`BaseBody`, `Hair`, `Outfit`, `Weapon`, `Headgear`, `BackAccessory`) and requires the artist to create separate, complete body and costume surfaces. V3 does not claim that the source mesh already provides those six painted layers.
+The source hierarchy is free MoCap Online candidates, legally usable Rokoko sources, CMU, Mixamo, then other compatible free mocap or animation sources. The registry marks the MoCap Online sampler, T.C. Sword, and Mixamo candidates `BLOCKED_ACCESS_REQUIRED`; using those specific candidates would require an owner-provided download and license evidence. Two tracked free Rokoko candidates remain `NOT_ATTEMPTED_TIER_2`. The user directed the search toward another free source and later approved Mesh2Motion as an option, so the current set uses Mesh2Motion's public human animation bundle; it requires no account or credential.
 
-## Canonical humanoid rig
+The bundle is pinned to Mesh2Motion repository commit `653a9698f5f315523072f1c3ff3496100401317b`. Its official repository states CC0 1.0 for the models, rigs, Blender files, and animations. The selected source is `human-base-animations.glb`, a 66-bone, Z-up, -Y-forward human rig at 24 FPS, SHA-256 `406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c`. Source URL, license evidence, acquisition record, and hash are in [LICENSE_EVIDENCE.md](../../authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md) and [the CC0 evidence](../../authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md). The source file is locally cached under the ignored `motions/raw/` directory; the pinned URL and hash allow a verified re-download.
 
-`authoring/characters/factory-v3/rigs/astraeon_humanoid_male_v1.json` pins the source rig, 60 bone names, Z-up metric coordinates, root, core torso, neck/head, bilateral arms/hands/fingers, legs/feet, cape chain, and non-deforming foot/knee/sword controls. `.R` and `.L` are anatomical sides, independent of screen direction.
+| V3 action | Selected source action | Decision |
+|---|---|---|
+| Idle | `Idle_Sword` | Sword-ready stance reads at 160px; breathing and weight shift are subtle, so it remains a candidate. |
+| Walk | `Walk` | Alternating human gait reads at game scale, with the sword arm close to the body. |
+| BasicAttack | `Sword_Attack` | Controlled, energetic low sword sweep with recovery; chosen as the fantasy attack after rejecting the prior deep forward bow. |
 
-Weapon attaches to `Hand.R`; the shield/offhand anchor is `Hand.L`; headgear uses `Head`; back accessories use `Chest`; cape uses `Cape0`. These are semantic socket mappings to existing bones, not a runtime skeleton. The source's `CTRL_Sword` remains an authoring control. The V3 Blender copy removes every V2 action and action binding before it is saved.
+The earlier Quaternius and CMU selections were rejected after game-scale review. Mesh2Motion `Sword_Regular_A` folded too far forward, `_B` stayed too low, and `_C` failed rotation-spike QA. Candidate decisions and evidence are tracked in [candidates.json](../../authoring/characters/factory-v3/motions/candidates.json). A Mixamo FBX profile remains available for a future supplied source; the current build does not depend on Mixamo or an account.
 
-## Motion acquisition and license policy
+Every imported motion has a provider, source URL and title, file hash, source format and skeleton, FPS and duration, license evidence, commercial-use and retarget permissions, modification status, and production status. Authenticated providers are never handled by storing credentials in the repo: if a chosen free source needs an interactive login, pause that acquisition and request owner assistance. Once an asset is acquired and its evidence is recorded, normal builds run from the local hash-checked file without logging into a provider.
 
-Source priority is MoCap Online, Rokoko, CMU Motion Capture Database, Mixamo, then other compatible free libraries. New Quaternius libraries are an evaluated low-priority fallback only. Every imported motion needs its own provider, title, source URL, acquisition date, original filename, SHA-256, original skeleton, source FPS, license evidence, retarget/modification status, and production approval state. Unknown or incomplete records block production.
+## Canonical rig and retargeting
 
-The first acquisition candidates are MoCap Online's free Motion Sampler for Idle/Walk comparison and free T.C. Sword sample for BasicAttack comparison. Their official pages identify FBX as a supported format, but provider-delivered files and their checkout/license receipts are pending. Candidate selection is not visual acceptance. Compare previews at source scale and game scale, recording foot contact, weight transfer, silhouette, torso mechanics, weapon coordination, retarget cleanliness, and Astraeon fit.
+The V3 canonical rig has 60 bones, stable root, hand and accessory sockets, and zero V2 actions. The Mesh2Motion profile maps source bones onto the canonical motion set:
 
-The Standard License page permits modification only to prepare an integrated user creative work and restricts redistribution of source assets. It separately requires prior written permission to use MoCap Online assets in AI applications. V3 therefore defaults to a manual paint-over handoff. Do not upload a MoCap Online motion, render, or derivative guide to an AI provider until written permission is recorded in the motion provenance.
+| Canonical | Mesh2Motion source | Canonical | Mesh2Motion source |
+|---|---|---|---|
+| `root` | `root` | `Hips` | `pelvis` |
+| `Spine` | `spine_01` | `Chest` | `spine_03` (fallback `spine_02`) |
+| `Neck` | `neck_01` | `Head` | `head` |
+| `Clavicle.L / .R` | `clavicle_l / clavicle_r` | `UpperArm.L / .R` | `upperarm_l / upperarm_r` |
+| `Forearm.L / .R` | `lowerarm_l / lowerarm_r` | `Hand.L / .R` | `hand_l / hand_r` |
+| `Thigh.L / .R` | `thigh_l / thigh_r` | `Shin.L / .R` | `calf_l / calf_r` |
+| `Foot.L / .R` | `foot_l / foot_r` | `Toe.L / .R` | `ball_l / ball_r` |
 
-No credentials are stored. If acquisition requires owner checkout or login, the owner downloads the FBX pack and uploads its original archive and receipt into `authoring/characters/factory-v3/motions/inbox/`.
+GLB import uses Blender's glTF importer and selects the action from the imported GLB action/slot. Retargeting copies mapped bone rotations onto the canonical rig, estimates height from head and toe bones, preserves the in-place root policy, and strips imported source objects/actions after baking. Cleanup validates finite transforms, required mappings, stable root, floor/contact windows, and rotation spikes. Selected clips pass these checks; rendered root horizontal excursion is zero and floor correction was not needed (maximum lift `0`).
 
-The `register_motion.py` intake tool verifies the uploaded file hash against a completed provenance record, copies the provider file byte-for-byte into the local raw-motion store, and records the path in `candidates.json`. It never approves a license or selects a motion. Raw provider files and checkout receipts are gitignored because source redistribution may be restricted and receipts may contain personal information. Preserve non-sensitive license terms and provenance with the project.
+The current Mesh2Motion stylization keeps source time (`1.0×`) and applies restrained rotation emphasis: Hips `1.02×`, Spine `1.04×`, Chest `1.05×`, upper arms `1.02×`, thighs `1.02×`, other bones `1.0×`. This preserves human joint movement while giving the fantasy strike a little more readable torso and arm action. Visual judgment remains a separate owner gate from numeric QA.
 
-`sample_motion.py` separates source FPS from sprite frame count and writes explicit durations and semantic event times. A BasicAttack sample requires reviewed anticipation, wind-up, contact, follow-through, and recovery phase markers. It refuses to invent these phases.
+## Sampling, events, and visual review
 
-## Deterministic motion pipeline
+The source runs at 24 FPS; sprite output samples at 30 FPS into eight meaningfully timed frames per action. The common eight-frame count yields 192 rendered records (`3 actions × 8 frames × 8 directions`).
 
-```text
-immutable provider source + receipt
-  → import and skeleton audit
-  → configured retarget to canonical rig
-  → root/floor/contact cleanup
-  → semantic phase annotations
-  → RPG stylization and timing edits
-  → meaningful frame sampling with explicit durations
-  → eight-direction Blender guide renders
-  → structural QA and comparison artifacts
-  → manual/approved-provider paint-over handoff
-  → six-layer painted strips
-  → existing V2 packer/schema/runtime
-```
+| Action | Duration | Loop | Events and semantic phases |
+|---|---:|---|---|
+| Idle | 2100 ms | Yes | Completion at phase `1.0` / 2100 ms. |
+| Walk | 1668 ms | Yes | Left footstep phase `0.0` / 0 ms; right footstep phase `0.5` / 834 ms; completion at 1668 ms. |
+| BasicAttack | 1966 ms | No | Anticipation start phase `.12` / 236 ms; wind-up `.28`; contact `.50` / 983 ms; follow-through `.63`; recovery starts `.84` / 1651 ms; completion at 1966 ms. |
 
-Raw source files are read-only inputs. Cleanup and stylization write new actions and provenance. Source FPS is recorded separately from final sprite frames and their per-frame durations. Combat actions support anticipation, wind-up, contact, follow-through, and recovery phases. Semantic events such as `footstep`, `attackStart`, `contact`, `recoveryStart`, `castRelease`, `itemUse`, and `animationComplete` live in clip metadata, not fixed historical frame numbers.
+The detailed per-frame durations, event indices, retarget reports, source records, and QA outputs are recorded in the motion evidence JSON. Eight-direction 160px sheets provide the visual review scale:
 
-The cache key combines source-file hash, rig hash, retarget map, cleanup/stylization settings, camera contract, placeholder-prop hash, Blender script hash, and frame-sampling settings. No output from another key may enter the same build directory.
+- [Idle sheet](evidence/v3-game-scale-idle.png)
+- [Walk sheet](evidence/v3-game-scale-walk.png)
+- [BasicAttack sheet](evidence/v3-game-scale-basicattack.png)
 
-## Rendering and paint-over
+Current human-read review: Idle reads as a sword-ready human but its breathing remains subtle; Walk reads as a human gait; BasicAttack is a deliberate, energized fantasy sweep with controlled recovery. These are stylized game motions, not a claim of mocap realism. The selected set has not been approved by the owner.
 
-Each selected source action renders the same evaluated animation state through each of the eight real camera yaws. The renderer is headless and uses the V2 orthographic camera, 320×320 canvas, and stable root. It must not mirror or independently resize a direction.
+## Camera and structural guides
 
-The guide set includes RGB, silhouette, depth, normal, body/group segmentation, and weapon mask. Pass manifests pin dimensions, camera, crop, root, frame, and content hashes. V2 source groupings inform masks but do not replace artist-owned 2D layer decomposition.
+`CAM_FantasySprite` is orthographic at 320×320 with root pixel `(160,264)`, stable common character height, and no mirroring. All eight views derive from the same sampled action state:
 
-The current Blender renderer produces an eight-direction **rest-pose rig smoke set**. It uses CPU Cycles in headless Blender and verifies the camera and pass contract. That set is intentionally rejected by the paint provider as a production paint guide. The provider only accepts a complete animation manifest containing each required action, sampled frame, and direction.
+| Direction | Yaw |
+|---|---:|
+| S | 0° |
+| SW | -45° |
+| W | -90° |
+| NW | -135° |
+| N | -180° |
+| NE | -225° |
+| E | -270° |
+| SE | +45° |
 
-`PaintProvider` exposes `prepare`, `paint`, `refine`, and `validate`. Built-in providers are manual handoff and disabled/no-op; external APIs or local models can be added without changing the renderer or runtime packer. A job packages identity reference, guide passes, palette and silhouette locks, neighboring accepted frames when available, semantic phases, event metadata, and QA findings. It preserves one Swordsman identity across frames, directions, actions, and equipment.
+Each of the 192 guide records contains aligned RGB, silhouette, depth, normal, body-segmentation, and weapon-mask passes. Manifested camera, crop, root, frame, direction, and image hashes are validated. Structural guide QA passes all six passes and eight directions; contact sheets are retained as compact review evidence.
 
-Ragnarok is not copied. It may only inform broad modular organization. No V3 AI paint-over is run while the selected MoCap license requires prior written permission for AI use.
+## Paint-over stage and modular output
 
-## Modular output and runtime
+The paint stage is provider-neutral. `PaintProvider` defines `prepare`, `paint`, `refine`, and `validate`; the implemented manual provider builds a deterministic artist handoff keyed by guide and identity hashes. The latest successful handoff is [paint job `93df90a93cbddbef28a65319`](../../authoring/characters/factory-v3/paint-jobs/93df90a93cbddbef28a65319/job.json). It carries action guides, directions, semantic events, motion provenance, identity locks, palette guidance, and source-pass hashes. No external image-generation API or local painting model is wired into the CLI yet, so no generated paint-over or final painted output is claimed.
 
-Painted output keeps the six V2 logical layers: BaseBody, Hair, Outfit, Weapon, Headgear, and BackAccessory. Empty optional slots are explicit. Each image is a full-canvas layer with complete concealed surfaces so removing a cape, sword, or helmet does not reveal holes. The authoring depth map is not a runtime dependency.
+For internal motion review, a deterministic raster treatment builds one shared 96-color palette from all 192 guide poses, applies a 38% palette-quantization blend, a mild warm grade, low-contrast smoothing, and warm normal-derived edges. This is explicitly a **procedural review candidate**, not the final illustrated art or a substitute for the manual paint stage.
 
-The planned V3 package stage will call the existing `tools/pack-modular-sprites.py`, `assets/characters/schemas/sprite-definition.schema.json`, `tools/validate-modular-metadata.cjs`, and `modular-sprites.js`. These runtime pieces are retained; V3 has not yet produced a painted package to run through them. V3 does not add runtime 3D, Blender, or AI generation. A candidate remains `DEV_ONLY` and is exposed only through a development preview.
+The runtime definition exposes six logical slots: BaseBody, Hair, Outfit, Weapon, Headgear, and BackAccessory. Current source meshes only support BodyOutfit combined, HeadHair combined, Sword, and a separately segmented Cape. The package does not invent independent Outfit or Headgear pixels; those slots are empty placeholders. Hidden-surface correctness for arbitrary equipment removal is therefore not production-qualified. Independent painted layers and their under-surfaces must be supplied or created before modular production approval.
 
-## QA and human review
+## Runtime integration and current QA
 
-Motion gates check source/license status, retarget bone coverage, finite transforms, stable root, ground contacts, grip stability, loop closure, and event timing. Render gates check eight-direction coverage/order, image dimensions, transparent alpha, root and scale stability, pass registration, pass presence, and in-frame bounds. Painted gates include silhouette, palette, limb count, hand/weapon consistency, and registration comparisons. Package gates run the V2 schema, atlas, pixel, and runtime validators.
+The review package is `assets/characters/swordsman-male-v3/sprite.json`: 160×160 frames, runtime root `(80,132)`, reference height 88px, eight unmirrored directions, nine clip definitions (three selected clips and six static placeholders), schema pass, and 82,301,760 decoded atlas bytes. It is tagged `DEV_ONLY`, `PLACEHOLDER`, `NOT_FINAL_ART`, and `INTERNAL_MOTION_REVIEW_CANDIDATE`; `runtime_admitted` and owner approval are false.
 
-Numeric QA is a filter, not visual approval. Review outputs include direction contact sheets, game-scale previews, animated and slow previews, guide/paint comparisons, and modular equipment comparisons. No tool can claim owner approval.
+The isolated route is `?qa=1&world=court-legacy&renderer=canvas&swordsman=v3`. It loads the V3 Swordsman through Astraeon's actual runtime, plays Idle/Walk/BasicAttack, uses the clip's contact event for BasicAttack timing, and does not use V2 motion fallback. Browser review verified BasicAttack playback and return to Idle with no page or console errors. This route is development-only; normal gameplay integration, combat formulas, save logic, world systems, and production admission are unchanged.
 
-## Research donor review
+Latest generated evidence reports: canonical rig and source hash pass; required retarget mappings, finite transforms, root stability, and no rotation spikes pass; 192 frame/direction records and six structural passes pass; runtime schema and package validation pass; paint handoff exists. The motion production gate remains `CANDIDATE`, because numeric QA cannot approve visual quality. Final painted output, six independent layers, and owner approval are incomplete.
 
-The donor `research/modular-sprites-full-body-2026-10-11` was reviewed at `db59cc922ed1760243ffed9f07a81b891516db27`; it was not merged wholesale.
-
-- **Adopted:** content receipts, exact frame registration, separate body/head/layer ownership, explicit `UNKNOWN`/blocked states, visible failure evidence, and human-readable comparison artifacts.
-- **Adapted:** silhouette continuity and color checks into V3 validators that verify every direction and report worst adjacent-frame changes, rather than accepting only a clip mean.
-- **Rejected:** treating an alpha-mask IoU alone as proof of good motion, inferring hidden anatomy from a view that cannot show it, or treating a clean source guide as final art.
-- **Superseded:** donor-era procedural/painted motion experiments and any old attack bank are not V3 motion sources. V3 uses a provenance-gated new external library and the V2 runtime contract.
-
-The donor's `img2game2d` package is Apache-2.0 with local patches. V3 adopts validation ideas and writes its own narrow tools rather than importing the patched package.
-
-## CLI
+## Commands
 
 ```sh
 python tools/character_factory_v3/run.py --character swordsman_male_v3 --stage preflight
-python tools/character_factory_v3/run.py --character swordsman_male_v3 --stage rig --blender /path/to/blender-5.2
-python tools/character_factory_v3/run.py --character swordsman_male_v3 --stage rig-review --blender /path/to/blender-5.2
 python tools/character_factory_v3/run.py --character swordsman_male_v3 --stage all --blender /path/to/blender-5.2
-python tools/character_factory_v3/register_motion.py --source sampler.zip --record sampler.provenance.json
+python tools/character_factory_v3/register_motion.py --source animation.fbx --record animation.provenance.json
 python tools/character_factory_v3/sample_motion.py --action Walk --clip-report walk-review.json --output walk-samples.json
+python -m unittest discover -s tests/character_factory_v3 -v
+node tools/character_factory_v3/validate_runtime_package.cjs
 ```
 
-`all` builds the action-free V3 rig and static review set, writes a deterministic blocked paint-job record, and exits with status 2 until the required external motions have been acquired, reviewed, retargeted, and assigned `APPROVED_FOR_PRODUCTION` provenance. It never falls back to V2 actions. `preflight` also returns status 2 while the motion gate is blocked. A rig-review pass report and both full-size and 160×160 contact sheets are written under `authoring/characters/factory-v3/review/`.
-
-## Current limits
-
-At this checkpoint, the V2 rig/camera contracts are audited, the action-free V3 rig and static pass proof are built, and MoCap Online candidate files are pending owner download. No V3 motion has been selected, retargeted, or visually accepted. The source-specific FBX bone map is intentionally unfilled until an acquired skeleton can be inspected. Animated eight-direction guides, a production paint job, painted modular layers, runtime package, and in-game proof remain incomplete. See `PRODUCTION_FACTORY_V3_STATUS.md` for gate status.
+The pipeline verifies selected source hashes before retargeting and does not silently switch candidates or fall back to V2. `Run`, `Hit`, `Death`, `Dash`, `Guard`, and `SkillAction` remain static review placeholders; they are outside the first required three-action slice and require separately sourced, reviewed motion before production use.

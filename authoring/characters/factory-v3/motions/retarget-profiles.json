@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "canonical": {
+    "armature": "ARM_FantasyCharacter01",
+    "root_control": "ROOT_FantasyCharacter01",
+    "up_axis": "Z",
+    "forward_axis": "-Y",
+    "target_fps": 30,
+    "root_motion_policy": "IN_PLACE_WITH_SEMANTIC_DISPLACEMENT",
+    "foot_floor_correction": true
+  },
+  "profiles": {
+    "cmu_bvh_2010": {
+      "format": "BVH",
+      "source_root_bone": "Hips",
+      "source_axes": {"up_axis": "Y", "forward_axis": "+Z"},
+      "import": {"axis_forward": "-Z", "axis_up": "Y", "global_scale": 1.0},
+      "motion_bones": {
+        "root": "Hips",
+        "Hips": "LowerBack",
+        "Spine": "Spine",
+        "Chest": "Spine1",
+        "Neck": "Neck1",
+        "Head": "Head",
+        "Clavicle.L": "LeftShoulder",
+        "UpperArm.L": "LeftArm",
+        "Forearm.L": "LeftForeArm",
+        "Hand.L": "LeftHand",
+        "Clavicle.R": "RightShoulder",
+        "UpperArm.R": "RightArm",
+        "Forearm.R": "RightForeArm",
+        "Hand.R": "RightHand",
+        "Thigh.L": "LeftUpLeg",
+        "Shin.L": "LeftLeg",
+        "Foot.L": "LeftFoot",
+        "Toe.L": "LeftToeBase",
+        "Thigh.R": "RightUpLeg",
+        "Shin.R": "RightLeg",
+        "Foot.R": "RightFoot",
+        "Toe.R": "RightToeBase"
+      },
+      "first_frame_is_added_rest_pose": true,
+      "stylization": {
+        "time_multiplier": 0.96,
+        "rotation_strength": {"default": 1.0, "Hips": 1.05, "Spine": 1.06, "Chest": 1.08, "UpperArm.L": 1.04, "UpperArm.R": 1.04, "Thigh.L": 1.03, "Thigh.R": 1.03}
+      }
+    },
+    "mixamo_fbx": {
+      "format": "FBX",
+      "source_root_bone": ["mixamorig:Hips", "Hips"],
+      "height_top_bone": ["mixamorig:Head", "Head"],
+      "height_foot_bones": [
+        ["mixamorig:LeftToeBase", "LeftToeBase"],
+        ["mixamorig:RightToeBase", "RightToeBase"]
+      ],
+      "source_axes": {"up_axis": "Y", "forward_axis": "+Z"},
+      "import": {"axis_forward": "-Z", "axis_up": "Y"},
+      "motion_bones": {
+        "root": ["mixamorig:Hips", "Hips"],
+        "Hips": ["mixamorig:Hips", "Hips"],
+        "Spine": ["mixamorig:Spine", "Spine"],
+        "Chest": ["mixamorig:Spine2", "Spine2", "mixamorig:Spine1", "Spine1"],
+        "Neck": ["mixamorig:Neck", "Neck"],
+        "Head": ["mixamorig:Head", "Head"],
+        "Clavicle.L": ["mixamorig:LeftShoulder", "LeftShoulder"],
+        "UpperArm.L": ["mixamorig:LeftArm", "LeftArm"],
+        "Forearm.L": ["mixamorig:LeftForeArm", "LeftForeArm"],
+        "Hand.L": ["mixamorig:LeftHand", "LeftHand"],
+        "Clavicle.R": ["mixamorig:RightShoulder", "RightShoulder"],
+        "UpperArm.R": ["mixamorig:RightArm", "RightArm"],
+        "Forearm.R": ["mixamorig:RightForeArm", "RightForeArm"],
+        "Hand.R": ["mixamorig:RightHand", "RightHand"],
+        "Thigh.L": ["mixamorig:LeftUpLeg", "LeftUpLeg"],
+        "Shin.L": ["mixamorig:LeftLeg", "LeftLeg"],
+        "Foot.L": ["mixamorig:LeftFoot", "LeftFoot"],
+        "Toe.L": ["mixamorig:LeftToeBase", "LeftToeBase"],
+        "Thigh.R": ["mixamorig:RightUpLeg", "RightUpLeg"],
+        "Shin.R": ["mixamorig:RightLeg", "RightLeg"],
+        "Foot.R": ["mixamorig:RightFoot", "RightFoot"],
+        "Toe.R": ["mixamorig:RightToeBase", "RightToeBase"]
+      },
+      "first_frame_is_added_rest_pose": false,
+      "stylization": {
+        "time_multiplier": 1.0,
+        "rotation_strength": {"default": 1.0, "Hips": 1.02, "Spine": 1.04, "Chest": 1.06, "UpperArm.L": 1.04, "UpperArm.R": 1.04, "Thigh.L": 1.02, "Thigh.R": 1.02}
+      }
+    },
+    "mesh2motion_human_glb": {
+      "format": "GLB",
+      "source_root_bone": "root",
+      "height_top_bone": "head",
+      "height_foot_bones": ["ball_l", "ball_r"],
+      "source_axes": {"up_axis": "Z", "forward_axis": "-Y"},
+      "import": {"coordinate_conversion": "Blender glTF importer"},
+      "motion_bones": {
+        "root": "root",
+        "Hips": "pelvis",
+        "Spine": "spine_01",
+        "Chest": ["spine_03", "spine_02"],
+        "Neck": "neck_01",
+        "Head": "head",
+        "Clavicle.L": "clavicle_l",
+        "UpperArm.L": "upperarm_l",
+        "Forearm.L": "lowerarm_l",
+        "Hand.L": "hand_l",
+        "Clavicle.R": "clavicle_r",
+        "UpperArm.R": "upperarm_r",
+        "Forearm.R": "lowerarm_r",
+        "Hand.R": "hand_r",
+        "Thigh.L": "thigh_l",
+        "Shin.L": "calf_l",
+        "Foot.L": "foot_l",
+        "Toe.L": "ball_l",
+        "Thigh.R": "thigh_r",
+        "Shin.R": "calf_r",
+        "Foot.R": "foot_r",
+        "Toe.R": "ball_r"
+      },
+      "first_frame_is_added_rest_pose": false,
+      "stylization": {
+        "time_multiplier": 1.0,
+        "rotation_strength": {"default": 1.0, "Hips": 1.02, "Spine": 1.04, "Chest": 1.05, "UpperArm.L": 1.02, "UpperArm.R": 1.02, "Thigh.L": 1.02, "Thigh.R": 1.02}
+      }
+    },
+    "oga_dummy_fbx": {
+      "format": "FBX",
+      "source_root_bone": "spine",
+      "source_axes": {"up_axis": "Z", "forward_axis": "-Y"},
+      "import": {"axis_forward": "-Z", "axis_up": "Y"},
+      "motion_bones": {
+        "root": "spine",
+        "Hips": "spine.001",
+        "Spine": "spine.002",
+        "Chest": "spine.003",
+        "Neck": "spine.004",
+        "Head": "spine.006",
+        "Clavicle.L": "shoulder.L",
+        "UpperArm.L": "upper_arm.L",
+        "Forearm.L": "forearm.L",
+        "Hand.L": "hand.L",
+        "Clavicle.R": "shoulder.R",
+        "UpperArm.R": "upper_arm.R",
+        "Forearm.R": "forearm.R",
+        "Hand.R": "hand.R",
+        "Thigh.L": "thigh.L",
+        "Shin.L": "shin.L",
+        "Foot.L": "foot.L",
+        "Toe.L": "toe.L",
+        "Thigh.R": "thigh.R",
+        "Shin.R": "shin.R",
+        "Foot.R": "foot.R",
+        "Toe.R": "toe.R"
+      },
+      "first_frame_is_added_rest_pose": false,
+      "stylization": {
+        "time_multiplier": 0.90,
+        "rotation_strength": {"default": 1.0, "Hips": 1.02, "Spine": 1.04, "Chest": 1.06, "UpperArm.L": 1.08, "UpperArm.R": 1.08, "Thigh.L": 1.04, "Thigh.R": 1.04}
+      }
+    },
+    "quaternius_knight_blend": {
+      "format": "BLEND",
+      "source_armature": "HumanArmature",
+      "source_root_bone": "Bone",
+      "height_top_bone": "Head",
+      "height_foot_bones": ["Foot.L", "Foot.R"],
+      "source_axes": {"up_axis": "Z", "forward_axis": "-Y"},
+      "motion_bones": {
+        "root": "Bone",
+        "Hips": "Hips",
+        "Spine": "Abdomen",
+        "Chest": "Torso",
+        "Neck": "Neck",
+        "Head": "Head",
+        "Clavicle.L": "Shoulder.L",
+        "UpperArm.L": "UpperArm.L",
+        "Forearm.L": "LowerArm.L",
+        "Hand.L": "Palm.L",
+        "Clavicle.R": "Shoulder.R",
+        "UpperArm.R": "UpperArm.R",
+        "Forearm.R": "LowerArm.R",
+        "Hand.R": "Palm.R",
+        "Thigh.L": "UpperLeg.L",
+        "Shin.L": "LowerLeg.L",
+        "Foot.L": "Foot.L",
+        "Thigh.R": "UpperLeg.R",
+        "Shin.R": "LowerLeg.R",
+        "Foot.R": "Foot.R"
+      },
+      "unmapped_target_bones": ["Toe.L", "Toe.R"],
+      "first_frame_is_added_rest_pose": false,
+      "stylization": {
+        "time_multiplier": 1.0,
+        "rotation_strength": {"default": 1.0, "Hips": 1.03, "Spine": 1.04, "Chest": 1.06, "UpperArm.L": 1.04, "UpperArm.R": 1.04, "Thigh.L": 1.02, "Thigh.R": 1.02}
+      }
+    }
+  }
+}

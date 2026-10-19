@@ -9,11 +9,13 @@ from typing import Any
 DIRECTIONS = ("S", "SW", "W", "NW", "N", "NE", "E", "SE")
 REQUIRED_ACTIONS = ("Idle", "Walk", "BasicAttack")
 MOTION_STATUSES = {
+    "CANDIDATE",
     "APPROVED_FOR_PRODUCTION",
     "RESEARCH_ONLY",
     "BLOCKED_LICENSE_UNKNOWN",
     "BLOCKED_ACCESS_REQUIRED",
     "REJECTED_VISUAL_QUALITY",
+    "REJECTED_RETARGET_QUALITY",
 }
 PROVENANCE_FIELDS = (
     "id",
@@ -24,7 +26,10 @@ PROVENANCE_FIELDS = (
     "original_filename",
     "file_sha256",
     "original_skeleton",
+    "source_format",
     "original_fps",
+    "duration_seconds",
+    "loop",
     "license_summary",
     "commercial_use_status",
     "retarget_permission_status",
@@ -134,19 +139,38 @@ def validate_motion_record(record: dict[str, Any]) -> list[str]:
     status = record.get("production_status")
     if status not in MOTION_STATUSES:
         errors.append(f"Invalid production status: {status}")
-    if status == "APPROVED_FOR_PRODUCTION":
-        for field in ("acquisition_date", "original_filename", "file_sha256", "original_skeleton", "original_fps", "local_path"):
+    if status in ("CANDIDATE", "APPROVED_FOR_PRODUCTION"):
+        for field in (
+            "acquisition_date", "original_filename", "file_sha256", "original_skeleton",
+            "source_format", "original_fps", "duration_seconds", "loop", "local_path",
+        ):
             if record.get(field) in (None, "", []):
-                errors.append(f"Production-approved motion is missing {field}")
+                errors.append(f"Motion is missing {field}")
+        if record.get("source_format") not in ("BVH", "FBX", "BLEND", "GLB", "GLTF", "AMC", "ASF"):
+            errors.append("Motion has an unsupported source_format")
+        if not isinstance(record.get("original_fps"), (int, float)) or record.get("original_fps", 0) <= 0:
+            errors.append("Motion has an invalid original_fps")
+        if not isinstance(record.get("duration_seconds"), (int, float)) or record.get("duration_seconds", 0) <= 0:
+            errors.append("Motion has an invalid duration_seconds")
+        if not isinstance(record.get("loop"), bool):
+            errors.append("Motion must declare a loop boolean")
         if not isinstance(record.get("license_evidence"), list) or not record.get("license_evidence"):
-            errors.append("Production-approved motion is missing retained license evidence")
+            errors.append("Motion is missing retained license evidence")
         digest = record.get("file_sha256")
         if not isinstance(digest, str) or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest.lower()):
-            errors.append("Production-approved motion has an invalid SHA-256")
+            errors.append("Motion has an invalid SHA-256")
+        archive_digest = record.get("source_archive_sha256")
+        if archive_digest is not None and (
+            not isinstance(archive_digest, str) or len(archive_digest) != 64
+            or any(c not in "0123456789abcdef" for c in archive_digest.lower())
+        ):
+            errors.append("Motion has an invalid source archive SHA-256")
+        if not isinstance(record.get("license_summary"), str) or not record.get("license_summary", "").strip():
+            errors.append("Motion is missing a license summary")
         if record.get("commercial_use_status") not in ("APPROVED", "APPROVED_WITH_LIMITS"):
-            errors.append("Production-approved motion lacks a reviewed commercial-use status")
+            errors.append("Motion lacks a reviewed commercial-use status")
         if record.get("retarget_permission_status") != "APPROVED":
-            errors.append("Production-approved motion lacks reviewed retarget permission")
+            errors.append("Motion lacks reviewed retarget permission")
     return errors
 
 

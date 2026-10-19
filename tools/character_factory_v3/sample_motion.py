@@ -17,10 +17,21 @@ FACTORY = ROOT / "authoring/characters/factory-v3"
 
 def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str, Any], default_samples: list[float]) -> dict[str, Any]:
     source_fps = float(clip.get("source_fps", 0))
-    start = float(clip.get("frame_start", 0))
-    end = float(clip.get("frame_end", 0))
-    if not math.isfinite(source_fps) or source_fps <= 0 or not math.isfinite(start + end) or end <= start:
-        raise ValueError("clip report requires a positive source_fps and frame_end greater than frame_start")
+    source_range = clip.get("source_frame_range", [clip.get("frame_start", 0), clip.get("frame_end", 0)])
+    output_range = clip.get("output_frame_range", [clip.get("frame_start", 0), clip.get("frame_end", 0)])
+    if len(source_range) != 2 or len(output_range) != 2:
+        raise ValueError("clip report requires two-element source and retarget frame ranges")
+    source_start, source_end = map(float, source_range)
+    output_start, output_end = map(float, output_range)
+    output_fps = float(clip.get("output_fps", source_fps))
+    if not all(math.isfinite(value) for value in (source_fps, source_start, source_end, output_start, output_end, output_fps)) or source_fps <= 0 or output_fps <= 0 or source_end <= source_start or output_end <= output_start:
+        raise ValueError("clip report requires positive frame rates and increasing source/retarget frame ranges")
+    selected_range = action_config.get("retarget_frame_range", [output_start, output_end])
+    if len(selected_range) != 2:
+        raise ValueError("retarget_frame_range must contain start and end frames")
+    selected_start, selected_end = map(float, selected_range)
+    if selected_start < output_start or selected_end > output_end or selected_end <= selected_start:
+        raise ValueError("retarget_frame_range must be an increasing subrange of the retargeted action")
     count = int(action_config["sample_count"])
     if count < 2:
         raise ValueError(f"{action_name} needs at least two meaningful frames")
@@ -46,17 +57,37 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
             phases = [default_samples[round(i * (len(default_samples) - 1) / (count - 1))] for i in range(count)]
         else:
             phases = [i / (count - 1) for i in range(count)]
-    source_frames = [int(round(start + phase * (end - start))) for phase in phases]
-    if len(set(source_frames)) != len(source_frames):
+    retarget_exact = [selected_start + phase * (selected_end - selected_start) for phase in phases]
+    retarget_frames = [int(round(value)) for value in retarget_exact]
+    if len(set(retarget_frames)) != len(retarget_frames):
         raise ValueError("Sampling phases collapse onto duplicate source frames; increase source duration or reduce sample_count")
-    clip_frame_count = max(1.0, end - start + 1.0)
+    source_frames = [
+        int(round(source_start + ((value - output_start) / (output_end - output_start)) * (source_end - source_start)))
+        for value in retarget_exact
+    ]
+    sampled_span_seconds = (selected_end - selected_start) / output_fps
+    terminal_hold_seconds = 0.0 if loop else 1.0 / output_fps
+    clip_duration_seconds = sampled_span_seconds + terminal_hold_seconds
+    if clip_duration_seconds <= 0:
+        raise ValueError("Selected retarget range has no positive duration")
     frame_records = []
-    for index, (phase, source_frame) in enumerate(zip(phases, source_frames)):
-        next_frame = source_frames[index + 1] if index + 1 < len(source_frames) else (source_frames[0] + clip_frame_count if loop else source_frame + 1.0)
-        duration_ms = max(1, int(round((next_frame - source_frame) * 1000.0 / source_fps)))
+    for index, (phase, source_frame, retarget_frame) in enumerate(zip(phases, source_frames, retarget_frames)):
+        next_phase = phases[index + 1] if index + 1 < len(phases) else 1.0
+        if not loop and index == len(phases) - 1 and phase >= 1.0:
+            # An endpoint sample is held for one output frame instead of
+            # receiving a meaningless 1 ms duration.
+            duration_seconds = terminal_hold_seconds
+        else:
+            duration_seconds = max(0.0, next_phase - phase) * sampled_span_seconds
+            if not loop and index == len(phases) - 1:
+                # If there is no explicit endpoint sample, keep the last pose
+                # through the end and its one-frame terminal hold.
+                duration_seconds += terminal_hold_seconds
+        duration_ms = max(1, int(round(duration_seconds * 1000.0)))
         frame_records.append({
             "frame_index": index,
             "source_frame": source_frame,
+            "retarget_frame": retarget_frame,
             "phase": round(phase, 6),
             "duration_ms": duration_ms,
         })
@@ -65,7 +96,11 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
     for event in clip.get("semantic_events", []):
         name = event.get("name")
         phase = float(event.get("phase", -1))
-        if name not in ("footstep", "attackStart", "contact", "recoveryStart", "castRelease", "itemUse", "animationComplete"):
+        if name not in (
+            "footstep", "leftFootstep", "rightFootstep", "anticipationStart", "attackStart",
+            "contact", "recoveryStart", "impact", "groundContact", "complete",
+            "castRelease", "itemUse", "animationComplete",
+        ):
             raise ValueError(f"Unsupported semantic event name: {name}")
         if not 0.0 <= phase <= 1.0:
             raise ValueError(f"Semantic event {name} must have a phase in [0,1]")
@@ -77,6 +112,9 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
         "motion_id": action_config["motion_id"],
         "source_action": clip.get("source_action"),
         "source_fps": source_fps,
+        "output_fps": output_fps,
+        "source_frame_range": [source_start, source_end],
+        "retarget_frame_range": [selected_start, selected_end],
         "loop": loop,
         "frame_count": len(frame_records),
         "duration_ms": duration_total,
@@ -84,6 +122,31 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
         "events": events,
         "frames": frame_records,
     }
+
+
+def validate_sample_timeline(timeline: dict[str, Any]) -> list[str]:
+    """Check sampled frame timing and semantic event positions before rendering."""
+    errors: list[str] = []
+    frames = timeline.get("frames", [])
+    if not frames:
+        errors.append("Sample timeline contains no frames")
+    if [item.get("frame_index") for item in frames] != list(range(len(frames))):
+        errors.append("Sample frame indices must be contiguous from zero")
+    durations = [item.get("duration_ms") for item in frames]
+    if any(not isinstance(value, (int, float)) or value <= 0 for value in durations):
+        errors.append("Every sampled frame needs a positive duration_ms")
+    duration_total = sum(value for value in durations if isinstance(value, (int, float)))
+    for event in timeline.get("events", []):
+        phase = event.get("phase")
+        time_ms = event.get("time_ms")
+        frame_index = event.get("frame_index")
+        if not isinstance(phase, (int, float)) or not 0 <= phase <= 1:
+            errors.append(f"Semantic event {event.get('name')} phase is outside [0,1]")
+        if not isinstance(time_ms, (int, float)) or not 0 <= time_ms <= duration_total:
+            errors.append(f"Semantic event {event.get('name')} time_ms is outside the sampled clip")
+        if not isinstance(frame_index, int) or not 0 <= frame_index < len(frames):
+            errors.append(f"Semantic event {event.get('name')} refers to an invalid sample frame")
+    return errors
 
 
 def main() -> int:

@@ -2,8 +2,8 @@
  * imports native court data before consumers capture town content. */
 (async()=>{
 'use strict';
-const version='102';
-function load(files){return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const script=document.createElement('script');const factoryProof=file==='proof/swordsman-development.js'&&new URLSearchParams(location.search).get('swordsman')==='fantasy';script.src=file+'?v='+version+(factoryProof?'&spriteDev=1&factoryCode=free-motion-v3':'');script.async=false;script.onload=resolve;script.onerror=()=>reject(Error('Could not load '+file));document.body.appendChild(script)})))}
+const version='103';
+function load(files){return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const script=document.createElement('script');const developmentBody=new URLSearchParams(location.search).get('swordsman');const factoryProof=file==='proof/swordsman-development.js'&&['fantasy','v3'].includes(developmentBody);script.src=file+'?v='+version+(factoryProof?'&spriteDev=1&factoryCode=free-motion-v3':'');script.async=false;script.onload=resolve;script.onerror=()=>reject(Error('Could not load '+file));document.body.appendChild(script)})))}
 try{
  await load(['icons.js','world-view.js','world-content.js']);
  {
@@ -28,7 +28,7 @@ try{
  if(developmentBody){await load(['proof/swordsman-development.js']);await window.AstraeonSwordsmanDevelopmentInit(developmentBody)}
  await load(['wardrobe.js','character-studio.js']);
  let savedAppearance;try{savedAppearance=window.AstraeonSave.normalize(JSON.parse(localStorage.getItem('astraeon-iso-v1')))}catch{}
- if(savedAppearance?.appearance&&developmentBody!=='fantasy'){await window.AstraeonWardrobe.select(savedAppearance.appearance,savedAppearance.cls);await Promise.all(['Hit','Death','Respawn'].map(id=>window.AstraeonWardrobe.prepare(id)))}
+ if(savedAppearance?.appearance&&developmentBody!=='fantasy'&&developmentBody!=='v3'){await window.AstraeonWardrobe.select(savedAppearance.appearance,savedAppearance.cls);await Promise.all(['Hit','Death','Respawn'].map(id=>window.AstraeonWardrobe.prepare(id)))}
  await load(['game.js']);
 }catch(error){const app=document.getElementById('app');app.textContent='The game could not load. Reload to retry. '+error.message;console.error(error)}
 })();

@@ -1,86 +1,440 @@
 {
-  "schema_version": 1,
-  "policy": {
-    "old_v2_motion_bank_allowed": false,
-    "source_order": ["MoCap Online", "Rokoko", "CMU Motion Capture Database", "Mixamo", "other compatible free libraries", "evaluated Quaternius fallback"],
-    "visual_acceptance_required": true,
-    "license_receipt_required": true,
-    "raw_source_immutable": true
-  },
   "candidates": [
     {
+      "ai_usage_status": "NOT_REVIEWED",
+      "commercial_use_status": "OFFICIAL_FAQ_PERMITS_ROYALTY_FREE_GAME_USE; EXACT_DOWNLOAD_RECORD_PENDING",
+      "file_sha256": null,
+      "id": "mixamo_swordsman_idle_walk_attack_2026_10",
+      "license_summary": "Adobe's Mixamo FAQ says access is free with an Adobe ID and animations may be used royalty-free in commercial video games. Retain the exact downloaded source details and review the applicable terms before production approval.",
+      "modification_status": "NOT_STARTED",
+      "original_filename": null,
+      "original_fps": null,
+      "original_skeleton": null,
+      "production_status": "BLOCKED_ACCESS_REQUIRED",
+      "provider": "Adobe Mixamo",
+      "requested_format": "FBX",
+      "retarget_permission_status": "REVIEW_REQUIRED_ON_INTAKE",
+      "roles": [
+        "Idle",
+        "Walk",
+        "BasicAttack"
+      ],
+      "source_title": "Mixamo sword-ready idle, walking, and one-handed sword attack clips",
+      "source_url": "https://www.mixamo.com/",
+      "visual_evaluation_status": "NOT_EVALUATED"
+    },
+    {
+      "acquisition_date": null,
+      "ai_usage_status": "BLOCKED_WITHOUT_PRIOR_WRITTEN_PERMISSION",
+      "commercial_use_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "file_sha256": null,
       "id": "mco_free_sampler_2026_10",
+      "license_summary": "Official page describes a free sampler with locomotion, idle and combat clips and identifies the Standard License. The exact downloaded receipt/license must be retained and checked before production approval.",
+      "modification_status": "NOT_STARTED",
+      "original_filename": null,
+      "original_fps": null,
+      "original_skeleton": null,
+      "production_status": "BLOCKED_ACCESS_REQUIRED",
       "provider": "MoCap Online",
+      "requested_format": "FBX",
+      "retarget_permission_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "roles": [
+        "Idle",
+        "Walk",
+        "BasicAttack"
+      ],
+      "source_pack_id": "MCO-UniPack-Demo",
       "source_title": "FREE MoCap Animation Sampler Pack",
       "source_url": "https://mocaponline.com/products/free-mocap-animation-pack",
-      "source_pack_id": "MCO-UniPack-Demo",
-      "requested_format": "FBX",
-      "roles": ["Idle", "Walk", "BasicAttack"],
-      "acquisition_date": null,
-      "original_filename": null,
-      "file_sha256": null,
-      "original_skeleton": null,
-      "original_fps": null,
-      "license_summary": "Official page describes a free sampler with locomotion, idle and combat clips and identifies the Standard License. The exact downloaded receipt/license must be retained and checked before production approval.",
-      "commercial_use_status": "REVIEW_REQUIRED_ON_RECEIPT",
-      "retarget_permission_status": "REVIEW_REQUIRED_ON_RECEIPT",
-      "ai_usage_status": "BLOCKED_WITHOUT_PRIOR_WRITTEN_PERMISSION",
-      "modification_status": "NOT_STARTED",
-      "production_status": "BLOCKED_ACCESS_REQUIRED",
       "visual_evaluation_status": "NOT_EVALUATED"
     },
     {
+      "acquisition_date": null,
+      "ai_usage_status": "BLOCKED_WITHOUT_PRIOR_WRITTEN_PERMISSION",
+      "commercial_use_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "file_sha256": null,
       "id": "mco_tc_sword_free_2026_10",
+      "license_summary": "Official product page describes a free sword-combat sample with its Standard License. The exact downloaded receipt/license must be retained and checked before production approval.",
+      "modification_status": "NOT_STARTED",
+      "original_filename": null,
+      "original_fps": null,
+      "original_skeleton": null,
+      "production_status": "BLOCKED_ACCESS_REQUIRED",
       "provider": "MoCap Online",
+      "requested_format": "FBX",
+      "retarget_permission_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "roles": [
+        "BasicAttack"
+      ],
+      "source_pack_id": "MCO-Sword-Demo",
       "source_title": "FREE T.C. Sword Animation MoCap Pack",
       "source_url": "https://mocaponline.com/products/tc-sword",
-      "source_pack_id": "MCO-Sword-Demo",
-      "requested_format": "FBX",
-      "roles": ["BasicAttack"],
-      "acquisition_date": null,
-      "original_filename": null,
-      "file_sha256": null,
-      "original_skeleton": null,
-      "original_fps": null,
-      "license_summary": "Official product page describes a free sword-combat sample with its Standard License. The exact downloaded receipt/license must be retained and checked before production approval.",
-      "commercial_use_status": "REVIEW_REQUIRED_ON_RECEIPT",
-      "retarget_permission_status": "REVIEW_REQUIRED_ON_RECEIPT",
-      "ai_usage_status": "BLOCKED_WITHOUT_PRIOR_WRITTEN_PERMISSION",
-      "modification_status": "NOT_STARTED",
-      "production_status": "BLOCKED_ACCESS_REQUIRED",
       "visual_evaluation_status": "NOT_EVALUATED"
     },
     {
-      "id": "rokoko_walk_run_16_free",
-      "provider": "Rokoko",
-      "source_title": "16 free walk and run cycle animations",
-      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-16-free-walk-and-run-cycle-animations",
-      "requested_format": "FBX",
-      "roles": ["Walk"],
-      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
       "commercial_use_status": "NOT_REVIEWED",
+      "id": "rokoko_walk_run_16_free",
+      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
+      "production_status": "NOT_ATTEMPTED_TIER_2",
+      "provider": "Rokoko",
+      "requested_format": "FBX",
       "retarget_permission_status": "NOT_REVIEWED",
-      "production_status": "NOT_ATTEMPTED_TIER_2"
+      "roles": [
+        "Walk"
+      ],
+      "source_title": "16 free walk and run cycle animations",
+      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-16-free-walk-and-run-cycle-animations"
     },
     {
-      "id": "rokoko_fight_13_free",
-      "provider": "Rokoko",
-      "source_title": "13 free fight animations",
-      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations",
-      "requested_format": "FBX",
-      "roles": ["BasicAttack"],
-      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
       "commercial_use_status": "NOT_REVIEWED",
+      "id": "rokoko_fight_13_free",
+      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
+      "production_status": "NOT_ATTEMPTED_TIER_2",
+      "provider": "Rokoko",
+      "requested_format": "FBX",
       "retarget_permission_status": "NOT_REVIEWED",
-      "production_status": "NOT_ATTEMPTED_TIER_2"
+      "roles": [
+        "BasicAttack"
+      ],
+      "source_title": "13 free fight animations",
+      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations"
     }
   ],
-  "selected": {"Idle": null, "Walk": null, "Run": null, "BasicAttack": null, "Hit": null, "Death": null},
-  "imported_motions": [],
   "comparison": {
-    "status": "BLOCKED_ACCESS_REQUIRED",
-    "criteria": ["weight_transfer", "foot_contact", "silhouette", "torso_mechanics", "weapon_coordination", "retarget_cleanup", "Astraeon_fit", "game_scale_readability"],
-    "render_scale": "320x320 V2 source canvas and 160x160 game preview",
-    "candidate_results": []
+    "candidate_results": [
+      {
+        "action": "Idle",
+        "decision": "Rejected at game scale: loop is too still to read as a natural sword-ready idle.",
+        "id": "swordsman_idle_v3_01",
+        "source_action": "Idle_swordRight",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "action": "Walk",
+        "decision": "Rejected at game scale: arms held out to the sides read as rigid rather than natural.",
+        "id": "swordsman_walk_v3_01",
+        "source_action": "CMU 16_15",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "action": "BasicAttack",
+        "decision": "Rejected at game scale: deep forward follow-through makes the sword strike look exaggerated.",
+        "id": "swordsman_attack_v3_01",
+        "source_action": "swordAttackJump",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "action": "Idle",
+        "decision": "Visually reviewed at 160px: readable sword-ready stance; breathing and weight shift are subtle. Kept as an internal candidate.",
+        "id": "swordsman_idle_v3_m2m_01",
+        "source_action": "Idle_Sword",
+        "status": "CANDIDATE"
+      },
+      {
+        "action": "Walk",
+        "decision": "Visually reviewed at 160px: alternating gait reads as a person walking; kept as an internal candidate.",
+        "id": "swordsman_walk_v3_m2m_01",
+        "source_action": "Walk",
+        "status": "CANDIDATE"
+      },
+      {
+        "action": "BasicAttack",
+        "decision": "Selected after eight-direction 160px review: controlled low sword sweep and balanced recovery replaces the old deep forward bow. It reads as a stylized human game attack; owner approval pending.",
+        "id": "swordsman_attack_v3_m2m_01",
+        "source_action": "Sword_Attack",
+        "status": "CANDIDATE"
+      },
+      {
+        "action": "BasicAttack",
+        "decision": "Rejected after game-scale preview: Sword_Regular_A has a deep forward fold and overhead follow-through.",
+        "id": "mesh2motion_sword_regular_a_preview",
+        "source_action": "Sword_Regular_A",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "action": "BasicAttack",
+        "decision": "Rejected after game-scale preview: Sword_Regular_B stays in a very low crouch through the strike.",
+        "id": "mesh2motion_sword_regular_b_preview",
+        "source_action": "Sword_Regular_B",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "action": "BasicAttack",
+        "decision": "Rejected: Sword_Regular_C contains a rotation spike and unstable acrobatic poses.",
+        "id": "mesh2motion_sword_regular_c_preview",
+        "source_action": "Sword_Regular_C",
+        "status": "REJECTED_RETARGET_QUALITY"
+      },
+      {
+        "id": "CMU_16_16_walk",
+        "reason": "No stable repeated foot-contact windows.",
+        "status": "REJECTED_RETARGET_QUALITY"
+      },
+      {
+        "id": "CMU_02_08_swordplay",
+        "reason": "Full sequence has no single readable game-scale sword strike.",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "id": "CMU_02_09_swordplay",
+        "reason": "Arm extensions do not read as a clear sword hit.",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "id": "OGA_dummy_walk",
+        "reason": "Right-hand sword rises over the head through the walk cycle.",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "id": "OGA_dummy_sword_attack_i",
+        "reason": "Raised sword poses without a strong readable strike arc.",
+        "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "id": "OGA_dummy_sword_attack_ii",
+        "reason": "Broad arm extension with ambiguous sword contact.",
+        "status": "REJECTED_VISUAL_QUALITY"
+      }
+    ],
+    "criteria": [
+      "weight_transfer",
+      "foot_contact",
+      "silhouette",
+      "torso_mechanics",
+      "weapon_coordination",
+      "retarget_cleanup",
+      "Astraeon_fit",
+      "game_scale_readability"
+    ],
+    "render_scale": "320x320 structural guides and 160x160 game-scale contact sheets",
+    "status": "INTERNAL_VISUAL_CANDIDATE_OWNER_APPROVAL_PENDING"
+  },
+  "imported_motions": [
+    {
+      "acquisition_date": "2026-10-19",
+      "commercial_use_status": "APPROVED",
+      "duration_seconds": 1.9166666666666667,
+      "file_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+      "id": "swordsman_attack_v3_m2m_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "Mesh2Motion's official app repository marks its models, Blender files, rigs, and animations CC0 1.0; this exact GLB is hash-locked from commit 653a9698f5f315523072f1c3ff3496100401317b.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+      "loop": false,
+      "modification_status": "RETARGETED_FOR_INTERNAL_VISUAL_REVIEW",
+      "original_filename": "human-base-animations.glb",
+      "original_fps": 24,
+      "original_skeleton": {
+        "armature": "Armature",
+        "bone_count": 66,
+        "forward_axis": "-Y",
+        "up_axis": "Z"
+      },
+      "production_status": "CANDIDATE",
+      "provider": "Mesh2Motion",
+      "retarget_permission_status": "APPROVED",
+      "source_action": "Sword_Attack",
+      "source_format": "GLB",
+      "source_title": "Mesh2Motion Human Base Animations",
+      "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+    },
+    {
+      "acquisition_date": "2026-10-19",
+      "commercial_use_status": "APPROVED",
+      "duration_seconds": 2.0833333333333335,
+      "file_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+      "id": "swordsman_idle_v3_m2m_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "Mesh2Motion's official app repository marks its models, Blender files, rigs, and animations CC0 1.0; this exact GLB is hash-locked from commit 653a9698f5f315523072f1c3ff3496100401317b.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+      "loop": true,
+      "modification_status": "RETARGETED_FOR_INTERNAL_VISUAL_REVIEW",
+      "original_filename": "human-base-animations.glb",
+      "original_fps": 24,
+      "original_skeleton": {
+        "armature": "Armature",
+        "bone_count": 66,
+        "forward_axis": "-Y",
+        "up_axis": "Z"
+      },
+      "production_status": "CANDIDATE",
+      "provider": "Mesh2Motion",
+      "retarget_permission_status": "APPROVED",
+      "source_action": "Idle_Sword",
+      "source_format": "GLB",
+      "source_title": "Mesh2Motion Human Base Animations",
+      "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+    },
+    {
+      "acquisition_date": "2026-10-19",
+      "commercial_use_status": "APPROVED",
+      "duration_seconds": 1.6666666666666667,
+      "file_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+      "id": "swordsman_walk_v3_m2m_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "Mesh2Motion's official app repository marks its models, Blender files, rigs, and animations CC0 1.0; this exact GLB is hash-locked from commit 653a9698f5f315523072f1c3ff3496100401317b.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+      "loop": true,
+      "modification_status": "RETARGETED_FOR_INTERNAL_VISUAL_REVIEW",
+      "original_filename": "human-base-animations.glb",
+      "original_fps": 24,
+      "original_skeleton": {
+        "armature": "Armature",
+        "bone_count": 66,
+        "forward_axis": "-Y",
+        "up_axis": "Z"
+      },
+      "production_status": "CANDIDATE",
+      "provider": "Mesh2Motion",
+      "retarget_permission_status": "APPROVED",
+      "source_action": "Walk",
+      "source_format": "GLB",
+      "source_title": "Mesh2Motion Human Base Animations",
+      "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+    },
+    {
+      "acquisition_date": "2026-10-19",
+      "commercial_use_status": "APPROVED",
+      "duration_seconds": 1.1666666666666667,
+      "file_sha256": "edc8036644626dbe20fbf2d2bd3b046688496962c0dacc516b3ea78f519a35e9",
+      "id": "swordsman_attack_v3_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/opengameart-lowpoly-animated-knight.html",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "OpenGameArt lists this Quaternius pack as CC0. The source page states the weapon attaches to Palm.R; retained page evidence is included.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/quaternius_lowpoly_animated_knight/Knight Character by @Quaternius/Blends/KnightCharacter.blend",
+      "loop": false,
+      "modification_status": "RETARGETED_AND_STYLIZED_FOR_V3_CANDIDATE",
+      "original_filename": "KnightCharacter.blend",
+      "original_fps": 24,
+      "original_skeleton": {
+        "armature": "HumanArmature",
+        "bone_count": 31,
+        "forward_axis": "-Y",
+        "up_axis": "Z"
+      },
+      "production_status": "REJECTED_VISUAL_QUALITY",
+      "provider": "Quaternius",
+      "retarget_permission_status": "APPROVED",
+      "source_action": "swordAttackJump",
+      "source_archive_sha256": "36aed14d0e27282bd006982e00206a852b1d8c00fc72f95c2437d9b4b5dccdb9",
+      "source_format": "BLEND",
+      "source_title": "LowPoly Animated Knight",
+      "source_url": "https://opengameart.org/content/lowpoly-animated-knight"
+    },
+    {
+      "acquisition_date": "2026-10-19",
+      "commercial_use_status": "APPROVED",
+      "duration_seconds": 3.3333333333333335,
+      "file_sha256": "edc8036644626dbe20fbf2d2bd3b046688496962c0dacc516b3ea78f519a35e9",
+      "id": "swordsman_idle_v3_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/opengameart-lowpoly-animated-knight.html",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "OpenGameArt lists this Quaternius pack as CC0. The source page states the weapon attaches to Palm.R; retained page evidence is included.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/quaternius_lowpoly_animated_knight/Knight Character by @Quaternius/Blends/KnightCharacter.blend",
+      "loop": true,
+      "modification_status": "RETARGETED_AND_STYLIZED_FOR_V3_CANDIDATE",
+      "original_filename": "KnightCharacter.blend",
+      "original_fps": 24,
+      "original_skeleton": {
+        "armature": "HumanArmature",
+        "bone_count": 31,
+        "forward_axis": "-Y",
+        "up_axis": "Z"
+      },
+      "production_status": "REJECTED_VISUAL_QUALITY",
+      "provider": "Quaternius",
+      "retarget_permission_status": "APPROVED",
+      "source_action": "Idle_swordRight",
+      "source_archive_sha256": "36aed14d0e27282bd006982e00206a852b1d8c00fc72f95c2437d9b4b5dccdb9",
+      "source_format": "BLEND",
+      "source_title": "LowPoly Animated Knight",
+      "source_url": "https://opengameart.org/content/lowpoly-animated-knight"
+    },
+    {
+      "acquisition_date": "2026-10-19",
+      "commercial_use_status": "APPROVED_WITH_LIMITS",
+      "duration_seconds": 3.916667,
+      "file_sha256": "7459cd4be169477b4e2c629075a9cde9436e37a87cdf4e774574400f4ec942d8",
+      "id": "swordsman_walk_v3_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/cmu-mocap-conversion-READMEFIRST.txt",
+        "authoring/characters/factory-v3/motions/legal-evidence/cmu-mocap-index.txt",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "CMU states free use in research and commercial projects worldwide; the conversion author imposes no additional restrictions and requests acknowledgment when publishing. The guessed first T-pose frame is excluded.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/cmu_16_15_walk/CMU_16_15_walk.bvh",
+      "loop": true,
+      "modification_status": "REST_POSE_REMOVED_RETARGETED_ROOT_NORMALIZED_LOOP_CROPPED",
+      "original_filename": "CMU_16_15_walk.bvh",
+      "original_fps": 120,
+      "original_skeleton": [
+        "Hips",
+        "LowerBack",
+        "Spine",
+        "Spine1",
+        "Neck",
+        "Neck1",
+        "Head",
+        "LeftShoulder",
+        "LeftArm",
+        "LeftForeArm",
+        "LeftHand",
+        "RightShoulder",
+        "RightArm",
+        "RightForeArm",
+        "RightHand",
+        "LeftUpLeg",
+        "LeftLeg",
+        "LeftFoot",
+        "LeftToeBase",
+        "RightUpLeg",
+        "RightLeg",
+        "RightFoot",
+        "RightToeBase"
+      ],
+      "production_status": "REJECTED_VISUAL_QUALITY",
+      "provider": "CMU Motion Capture Database conversion",
+      "retarget_permission_status": "APPROVED",
+      "source_format": "BVH",
+      "source_title": "Subject 16, clip 16_15 walk",
+      "source_url": "https://raw.githubusercontent.com/una-dinosauria/cmu-mocap/master/data/16/16_15.bvh"
+    }
+  ],
+  "policy": {
+    "active_source_scope": "Only free sources were acquired for this pass. No account-only or paid content was downloaded.",
+    "license_receipt_required": true,
+    "old_v2_motion_bank_allowed": false,
+    "owner_approval_required_for_admission": true,
+    "raw_source_immutable": true,
+    "source_order": [
+      "Free public motion files with retained license evidence",
+      "Mesh2Motion CC0 animation bundle",
+      "CMU Motion Capture Database",
+      "OpenGameArt CC0 animation sources",
+      "Quaternius CC0 animation packs"
+    ],
+    "user_steering": "Use another free public source; Mesh2Motion is allowed; search only free mocap or animation.",
+    "visual_acceptance_required": true
+  },
+  "schema_version": 1,
+  "selected": {
+    "BasicAttack": "swordsman_attack_v3_m2m_01",
+    "Death": null,
+    "Hit": null,
+    "Idle": "swordsman_idle_v3_m2m_01",
+    "Run": null,
+    "Walk": "swordsman_walk_v3_m2m_01"
   }
 }

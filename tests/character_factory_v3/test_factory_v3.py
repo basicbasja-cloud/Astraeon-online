@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -15,7 +17,7 @@ sys.path.insert(0, str(ROOT / "tools/character_factory_v3"))
 from contracts import cache_key, motion_gate, read_json, repo_path, validate_config, validate_motion_record, validate_rig_spec
 from paint_provider import ManualHandoffProvider
 from qa import DIRECTIONS, REQUIRED_PASSES, validate_guide_manifest, validate_production_guide_manifest
-from sample_motion import sample_clip
+from sample_motion import sample_clip, validate_sample_timeline
 
 
 class FactoryContractTests(unittest.TestCase):
@@ -25,6 +27,13 @@ class FactoryContractTests(unittest.TestCase):
         self.assertEqual(validate_config(config), [])
         self.assertEqual(validate_rig_spec(rig), [])
         self.assertEqual(rig["validation"]["expected_bone_count"], 60)
+
+    def test_config_actions_match_free_motion_selections(self):
+        config = read_json(ROOT / "authoring/characters/factory-v3/configs/swordsman_male_v3.json")
+        selections = read_json(ROOT / "authoring/characters/factory-v3/motions/selections.json")
+        for action in config["required_actions"]:
+            with self.subTest(action=action):
+                self.assertEqual(config["actions"][action]["motion_id"], selections["actions"][action]["motion_id"])
 
     def test_repo_path_rejects_parent_escape(self):
         with self.assertRaises(ValueError):
@@ -50,7 +59,10 @@ class FactoryContractTests(unittest.TestCase):
                 "original_filename": "walk.fbx",
                 "file_sha256": digest,
                 "original_skeleton": ["Hips", "Spine"],
+                "source_format": "FBX",
                 "original_fps": 30,
+                "duration_seconds": 1.6,
+                "loop": True,
                 "license_summary": "Commercial use and retargeting reviewed.",
                 "commercial_use_status": "APPROVED",
                 "retarget_permission_status": "APPROVED",
@@ -71,6 +83,76 @@ class FactoryContractTests(unittest.TestCase):
         result = validate_motion_record({"id": "partial", "production_status": "APPROVED_FOR_PRODUCTION"})
         self.assertTrue(any("license_evidence" in issue for issue in result))
         self.assertTrue(any("file_sha256" in issue for issue in result))
+
+    def test_canonical_rig_manifest_is_action_free(self):
+        manifest = read_json(ROOT / "authoring/characters/factory-v3/manifests/astraeon_humanoid_male_v1.rig.json")
+        self.assertEqual(manifest["bone_count"], 60)
+        self.assertEqual(manifest["remaining_action_count"], 0)
+
+    def test_imported_motion_provenance_hashes_and_evidence_are_valid(self):
+        registry = read_json(ROOT / "authoring/characters/factory-v3/motions/candidates.json")
+        records = registry["imported_motions"]
+        self.assertGreaterEqual(len(records), 3)
+        for record in records:
+            self.assertEqual(validate_motion_record(record), [], record["id"])
+            self.assertRegex(record["file_sha256"], re.compile(r"^[0-9a-f]{64}$"))
+            for evidence in record["license_evidence"]:
+                path = Path(evidence)
+                self.assertFalse(path.is_absolute())
+                self.assertNotIn("..", path.parts)
+                self.assertTrue((ROOT / path).is_file(), evidence)
+
+    def test_registered_profiles_cover_canonical_motion_bones(self):
+        profiles = read_json(ROOT / "authoring/characters/factory-v3/motions/retarget-profiles.json")["profiles"]
+        required = {
+            "root", "Hips", "Spine", "Chest", "Neck", "Head", "Clavicle.L", "UpperArm.L",
+            "Forearm.L", "Hand.L", "Clavicle.R", "UpperArm.R", "Forearm.R", "Hand.R",
+            "Thigh.L", "Shin.L", "Foot.L", "Thigh.R", "Shin.R", "Foot.R",
+        }
+        for profile_id, profile in profiles.items():
+            with self.subTest(profile=profile_id):
+                self.assertTrue(required.issubset(profile["motion_bones"]))
+
+    def test_mixamo_profile_resolves_namespaced_and_plain_fbx_bones(self):
+        profile = read_json(ROOT / "authoring/characters/factory-v3/motions/retarget-profiles.json")["profiles"]["mixamo_fbx"]
+        self.assertEqual(profile["format"], "FBX")
+        self.assertEqual(profile["source_root_bone"], ["mixamorig:Hips", "Hips"])
+        self.assertEqual(profile["motion_bones"]["Chest"], ["mixamorig:Spine2", "Spine2", "mixamorig:Spine1", "Spine1"])
+        for target, aliases in profile["motion_bones"].items():
+            with self.subTest(target=target):
+                self.assertIsInstance(aliases, list)
+                self.assertGreaterEqual(len(aliases), 2)
+        self.assertEqual(profile["height_foot_bones"][0], ["mixamorig:LeftToeBase", "LeftToeBase"])
+
+    def test_mesh2motion_glb_profile_maps_human_rig_and_separate_actions(self):
+        profile = read_json(ROOT / "authoring/characters/factory-v3/motions/retarget-profiles.json")["profiles"]["mesh2motion_human_glb"]
+        self.assertEqual(profile["format"], "GLB")
+        self.assertEqual(profile["source_root_bone"], "root")
+        self.assertEqual(profile["motion_bones"]["Hips"], "pelvis")
+        self.assertEqual(profile["motion_bones"]["Thigh.L"], "thigh_l")
+        self.assertEqual(profile["motion_bones"]["Hand.R"], "hand_r")
+        self.assertEqual(profile["height_foot_bones"], ["ball_l", "ball_r"])
+
+    def test_runtime_package_passes_the_existing_javascript_contract(self):
+        result = subprocess.run(
+            ["node", str(ROOT / "tools/character_factory_v3/validate_runtime_package.cjs"),
+             "assets/characters/swordsman-male-v3/sprite.json"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        )
+        report = json.loads(result.stdout)
+        self.assertTrue(report["passed"], report["errors"])
+        self.assertEqual(report["canvas"], {"frameWidth": 160, "frameHeight": 160, "rootAnchorX": 80, "rootAnchorY": 132, "referenceHeight": 88})
+        self.assertEqual(report["directions"], list(DIRECTIONS))
+        self.assertLess(report["decoded_atlas_bytes"], 80 * 1024 * 1024)
+        definition = read_json(ROOT / "assets/characters/swordsman-male-v3/sprite.json")
+        self.assertEqual(definition["source"]["status"], "DEV_ONLY")
+        self.assertFalse(definition["source"].get("approvedBy"))
+        self.assertIn("INTERNAL_MOTION_REVIEW_CANDIDATE", definition["tags"])
+        for clip in definition["clips"].values():
+            total = sum(clip["durations"])
+            for event in clip.get("events", []):
+                self.assertLessEqual(event["timeMs"], total)
+                self.assertLess(event["frameIndex"], len(clip["durations"]))
 
     def test_cache_key_changes_with_input_hashes(self):
         args = dict(
@@ -93,6 +175,7 @@ class SamplingTests(unittest.TestCase):
         self.assertEqual(result["source_fps"], 30)
         self.assertEqual(result["frame_count"], 8)
         self.assertTrue(all(frame["duration_ms"] > 0 for frame in result["frames"]))
+        self.assertEqual(validate_sample_timeline(result), [])
         self.assertEqual(result["events"][0]["name"], "footstep")
 
     def test_attack_sampling_requires_reviewed_phase_markers(self):
@@ -109,6 +192,9 @@ class SamplingTests(unittest.TestCase):
         result = sample_clip("BasicAttack", action, clip, [0, .12, .25, .38, .5, .62, .75, .88])
         self.assertEqual(result["frame_count"], 8)
         self.assertIn("contact", [event["name"] for event in result["events"]])
+        self.assertGreaterEqual(result["frames"][-1]["duration_ms"], 30)
+        self.assertEqual(result["duration_ms"], 1600)
+        self.assertEqual(validate_sample_timeline(result), [])
 
 
 class GuideQaTests(unittest.TestCase):

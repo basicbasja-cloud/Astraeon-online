@@ -117,6 +117,8 @@ def validate_production_guide_manifest(manifest_path: Path, required_actions: li
         errors.append("Production guides must cover the canonical unmirrored directions")
     if manifest.get("root_pixel") != [160, 264]:
         errors.append("Production guides must retain the V2 root pixel")
+    if manifest.get("status") != "INTERNAL_VISUAL_CANDIDATE_OWNER_APPROVAL_PENDING":
+        errors.append("Production guide manifest must retain its internal candidate status")
     actions = manifest.get("actions", {})
     for action in required_actions:
         if action not in actions:
@@ -125,10 +127,45 @@ def validate_production_guide_manifest(manifest_path: Path, required_actions: li
     action_names = list(actions)
     expected = set()
     for action in action_names:
-        frame_count = int(actions[action].get("frame_count", 0))
+        action_record = actions[action]
+        frame_count = int(action_record.get("frame_count", 0))
         if frame_count <= 0:
             errors.append(f"Action {action} has an invalid frame_count")
             continue
+        durations = action_record.get("durations", [])
+        if len(durations) != frame_count or any(not isinstance(value, (int, float)) or value <= 0 for value in durations):
+            errors.append(f"Action {action} must have one positive duration per sampled frame")
+        if not isinstance(action_record.get("loop"), bool):
+            errors.append(f"Action {action} is missing an explicit loop policy")
+        provenance = action_record.get("motion_provenance", {})
+        for field in ("id", "source_url", "source_format", "file_sha256", "license_evidence", "production_status"):
+            if field not in provenance:
+                errors.append(f"Action {action} motion provenance is missing {field}")
+        digest = provenance.get("file_sha256")
+        if not isinstance(digest, str) or len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest.lower()):
+            errors.append(f"Action {action} motion provenance has an invalid source hash")
+        if provenance.get("production_status") not in ("CANDIDATE", "APPROVED_FOR_PRODUCTION"):
+            errors.append(f"Action {action} motion provenance is not an eligible reviewed candidate")
+        if not isinstance(provenance.get("license_evidence"), list) or not provenance.get("license_evidence"):
+            errors.append(f"Action {action} motion provenance has no license evidence")
+        for evidence in provenance.get("license_evidence", []):
+            evidence_path = Path(evidence)
+            if evidence_path.is_absolute() or ".." in evidence_path.parts:
+                errors.append(f"Action {action} has an unsafe license evidence path")
+            elif not (Path(__file__).resolve().parents[2] / evidence_path).is_file():
+                errors.append(f"Action {action} license evidence file is missing: {evidence}")
+        events = action_record.get("events", [])
+        total_duration = sum(value for value in durations if isinstance(value, (int, float)))
+        for event in events:
+            phase = event.get("phase")
+            time_ms = event.get("time_ms")
+            frame_index = event.get("frame_index")
+            if not isinstance(phase, (int, float)) or not 0 <= phase <= 1:
+                errors.append(f"Action {action} semantic event has an invalid phase")
+            if not isinstance(time_ms, (int, float)) or not 0 <= time_ms <= total_duration:
+                errors.append(f"Action {action} semantic event has an invalid time")
+            if not isinstance(frame_index, int) or not 0 <= frame_index < frame_count:
+                errors.append(f"Action {action} semantic event has an invalid frame index")
         for frame_index in range(frame_count):
             for direction in DIRECTIONS:
                 expected.add((action, frame_index, direction))
@@ -146,6 +183,16 @@ def validate_production_guide_manifest(manifest_path: Path, required_actions: li
             errors.append(f"Frame has no positive explicit duration: {key}")
         if not isinstance(frame.get("source_frame"), (int, float)):
             errors.append(f"Frame has no source-frame reference: {key}")
+        sockets = frame.get("sockets", {})
+        for socket in ("root", "head", "hand_R", "hand_L", "back", "waist"):
+            point = sockets.get(socket)
+            if not isinstance(point, list) or len(point) != 2 or any(not isinstance(value, (int, float)) or not 0 <= value <= 320 for value in point):
+                errors.append(f"Frame has an invalid {socket} socket: {key}")
+        action_record = actions.get(action, {})
+        durations = action_record.get("durations", [])
+        if isinstance(frame.get("frame_index"), int) and 0 <= frame["frame_index"] < len(durations):
+            if frame.get("duration_ms") != durations[frame["frame_index"]]:
+                errors.append(f"Frame duration differs from the shared action timeline: {key}")
         passes = frame.get("passes", {})
         missing = [name for name in REQUIRED_PASSES if name not in passes]
         if missing:
@@ -240,5 +287,35 @@ def make_direction_contact_sheet(manifest_path: Path, output_path: Path, scale: 
                 tile = tile.resize((tile_w, tile_h), resample)
             sheet.alpha_composite(tile, (x, y))
         draw.text((x + 6, y + tile_h + 4), frame["direction"], fill=(255, 238, 185, 255))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    sheet.save(output_path, format="PNG", optimize=False)
+
+
+def make_motion_contact_sheet(manifest_path: Path, action: str, output_path: Path, scale: float = 0.5) -> None:
+    """Create an eight-direction by sampled-frame review sheet for one action."""
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    rows = sorted((frame for frame in manifest.get("frames", []) if frame.get("action") == action), key=lambda item: (item["frame_index"], DIRECTIONS.index(item["direction"])))
+    frame_count = manifest.get("actions", {}).get(action, {}).get("frame_count", 0)
+    if len(rows) != frame_count * len(DIRECTIONS):
+        raise ValueError(f"Cannot make a complete contact sheet for {action}: {len(rows)} rendered frames")
+    tile_w = int(manifest["width"] * scale)
+    tile_h = int(manifest["height"] * scale)
+    label_h = 20
+    sheet = Image.new("RGBA", (tile_w * len(DIRECTIONS), (tile_h + label_h) * frame_count), (30, 34, 46, 255))
+    from PIL import ImageDraw
+
+    draw = ImageDraw.Draw(sheet)
+    for frame in rows:
+        col = DIRECTIONS.index(frame["direction"])
+        row = frame["frame_index"]
+        x, y = col * tile_w, row * (tile_h + label_h)
+        relative = PurePosixPath(frame["passes"]["rgb"]["file"])
+        image_path = manifest_path.parent.joinpath(*relative.parts)
+        with Image.open(image_path) as image:
+            tile = image.convert("RGBA")
+            if scale != 1:
+                tile = tile.resize((tile_w, tile_h), Image.Resampling.LANCZOS)
+            sheet.alpha_composite(tile, (x, y))
+        draw.text((x + 5, y + tile_h + 3), f"{row:02d} {frame['direction']}", fill=(255, 238, 190, 255))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     sheet.save(output_path, format="PNG", optimize=False)
