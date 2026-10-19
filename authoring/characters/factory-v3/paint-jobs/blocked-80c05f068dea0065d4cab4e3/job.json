@@ -1,0 +1,96 @@
+{
+  "character_id": "swordsman_male_v3",
+  "config_sha256": "430822f9c3c25fe9a4898a0d51bf9ea241e789a6a4f9bce10b8eb2682be79da0",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "guide_manifest": null,
+  "identity_locks": {
+    "camera": "Preserve V2 elevated game-sprite perspective and locked framing.",
+    "costume": "Mustard-gold short cape/scarf, dark olive/navy underlayers, bronze/gold armor, split ivory tunic, teal waist detail, tall dark boots, leather belts and gloves.",
+    "face": "Youthful male storybook warrior; keep eyes mostly concealed beneath swept bangs.",
+    "hair": "Short tousled silver/lavender-grey hair with broad swept fringe; no redesign.",
+    "palette": [
+      "silver-lavender",
+      "mustard-gold",
+      "bronze",
+      "ivory",
+      "dark olive/navy",
+      "teal",
+      "dark brown"
+    ],
+    "style": "Softly painted stylized 2D volumes and warm restrained shading; no hard black outline, plastic sheen, photorealism, or Ragnarok sprite copying.",
+    "weapon": "Straight narrow one-handed steel sword with warm bronze/gold hilt in anatomical right hand."
+  },
+  "identity_reference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
+  "identity_reference_sha256": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05",
+  "identity_sha256": "8a40f6e16febc7b1687888d8352dea152b14508b5b17d74b34bd758f0cf91860",
+  "job_id": "80c05f068dea0065d4cab4e3",
+  "layers": [
+    "BaseBody",
+    "Hair",
+    "Outfit",
+    "Weapon",
+    "Headgear",
+    "BackAccessory"
+  ],
+  "legacy_v2_motion_fallback": false,
+  "motion_blockers": [
+    {
+      "action": "Idle",
+      "motion_id": "swordsman_idle_v3_01",
+      "reason": "no imported motion record"
+    },
+    {
+      "action": "Walk",
+      "motion_id": "swordsman_walk_v3_01",
+      "reason": "no imported motion record"
+    },
+    {
+      "action": "BasicAttack",
+      "motion_id": "swordsman_attack_v3_01",
+      "reason": "no imported motion record"
+    }
+  ],
+  "note": "Deterministic waiting record only. It is not a per-frame paint handoff; production guides require approved V3 Idle, Walk, and BasicAttack motions.",
+  "owner_visual_approval": false,
+  "painted_outputs": [],
+  "palette_lock": [
+    "silver-lavender",
+    "mustard-gold",
+    "bronze",
+    "ivory",
+    "dark olive/navy",
+    "teal",
+    "dark brown"
+  ],
+  "provider": "manual_handoff",
+  "required_actions": [
+    "Idle",
+    "Walk",
+    "BasicAttack"
+  ],
+  "schema_version": 1,
+  "semantic_events": [
+    "footstep",
+    "attackStart",
+    "contact",
+    "recoveryStart",
+    "castRelease",
+    "itemUse",
+    "animationComplete"
+  ],
+  "static_review_reference": {
+    "manifest": "authoring/characters/factory-v3/review/rig-smoke-5852ddaa72ba/manifest.json",
+    "sha256": "3eaaa4794144a16c9106b7c39908fddc4d2720b120056e5f655c8cc69f821ebf",
+    "usage": "camera and structural reference only; not an animation paint guide"
+  },
+  "status": "BLOCKED_MOTIONS_REQUIRED"
+}

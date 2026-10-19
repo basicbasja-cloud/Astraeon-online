@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "old_v2_motion_bank_allowed": false,
+    "source_order": ["MoCap Online", "Rokoko", "CMU Motion Capture Database", "Mixamo", "other compatible free libraries", "evaluated Quaternius fallback"],
+    "visual_acceptance_required": true,
+    "license_receipt_required": true,
+    "raw_source_immutable": true
+  },
+  "candidates": [
+    {
+      "id": "mco_free_sampler_2026_10",
+      "provider": "MoCap Online",
+      "source_title": "FREE MoCap Animation Sampler Pack",
+      "source_url": "https://mocaponline.com/products/free-mocap-animation-pack",
+      "source_pack_id": "MCO-UniPack-Demo",
+      "requested_format": "FBX",
+      "roles": ["Idle", "Walk", "BasicAttack"],
+      "acquisition_date": null,
+      "original_filename": null,
+      "file_sha256": null,
+      "original_skeleton": null,
+      "original_fps": null,
+      "license_summary": "Official page describes a free sampler with locomotion, idle and combat clips and identifies the Standard License. The exact downloaded receipt/license must be retained and checked before production approval.",
+      "commercial_use_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "retarget_permission_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "ai_usage_status": "BLOCKED_WITHOUT_PRIOR_WRITTEN_PERMISSION",
+      "modification_status": "NOT_STARTED",
+      "production_status": "BLOCKED_ACCESS_REQUIRED",
+      "visual_evaluation_status": "NOT_EVALUATED"
+    },
+    {
+      "id": "mco_tc_sword_free_2026_10",
+      "provider": "MoCap Online",
+      "source_title": "FREE T.C. Sword Animation MoCap Pack",
+      "source_url": "https://mocaponline.com/products/tc-sword",
+      "source_pack_id": "MCO-Sword-Demo",
+      "requested_format": "FBX",
+      "roles": ["BasicAttack"],
+      "acquisition_date": null,
+      "original_filename": null,
+      "file_sha256": null,
+      "original_skeleton": null,
+      "original_fps": null,
+      "license_summary": "Official product page describes a free sword-combat sample with its Standard License. The exact downloaded receipt/license must be retained and checked before production approval.",
+      "commercial_use_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "retarget_permission_status": "REVIEW_REQUIRED_ON_RECEIPT",
+      "ai_usage_status": "BLOCKED_WITHOUT_PRIOR_WRITTEN_PERMISSION",
+      "modification_status": "NOT_STARTED",
+      "production_status": "BLOCKED_ACCESS_REQUIRED",
+      "visual_evaluation_status": "NOT_EVALUATED"
+    },
+    {
+      "id": "rokoko_walk_run_16_free",
+      "provider": "Rokoko",
+      "source_title": "16 free walk and run cycle animations",
+      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-16-free-walk-and-run-cycle-animations",
+      "requested_format": "FBX",
+      "roles": ["Walk"],
+      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
+      "commercial_use_status": "NOT_REVIEWED",
+      "retarget_permission_status": "NOT_REVIEWED",
+      "production_status": "NOT_ATTEMPTED_TIER_2"
+    },
+    {
+      "id": "rokoko_fight_13_free",
+      "provider": "Rokoko",
+      "source_title": "13 free fight animations",
+      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations",
+      "requested_format": "FBX",
+      "roles": ["BasicAttack"],
+      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
+      "commercial_use_status": "NOT_REVIEWED",
+      "retarget_permission_status": "NOT_REVIEWED",
+      "production_status": "NOT_ATTEMPTED_TIER_2"
+    }
+  ],
+  "selected": {"Idle": null, "Walk": null, "Run": null, "BasicAttack": null, "Hit": null, "Death": null},
+  "imported_motions": [],
+  "comparison": {
+    "status": "BLOCKED_ACCESS_REQUIRED",
+    "criteria": ["weight_transfer", "foot_contact", "silhouette", "torso_mechanics", "weapon_coordination", "retarget_cleanup", "Astraeon_fit", "game_scale_readability"],
+    "render_scale": "320x320 V2 source canvas and 160x160 game preview",
+    "candidate_results": []
+  }
+}

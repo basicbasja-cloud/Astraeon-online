@@ -2,3 +2,10 @@ __pycache__/
 *.pyc
 *.blend1
 .character-tools/
+
+# Provider-delivered motion and receipts stay local: standard licenses can
+# prohibit raw source redistribution, and checkout receipts may contain PII.
+authoring/characters/factory-v3/motions/inbox/*
+authoring/characters/factory-v3/motions/raw/*
+!authoring/characters/factory-v3/motions/inbox/.gitkeep
+!authoring/characters/factory-v3/motions/raw/.gitkeep

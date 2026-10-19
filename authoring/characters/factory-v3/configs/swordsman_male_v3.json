@@ -1,0 +1,67 @@
+{
+  "id": "swordsman_male_v3",
+  "class_id": "Swordsman",
+  "status": "DEV_ONLY",
+  "rig": {
+    "id": "astraeon_humanoid_male_v1",
+    "spec": "authoring/characters/factory-v3/rigs/astraeon_humanoid_male_v1.json",
+    "scene": "authoring/characters/factory-v3/rigs/astraeon_humanoid_male_v1.blend",
+    "source_scene": "authoring/characters/swordsman-production/painted-factory-02/source-master.blend"
+  },
+  "identity": "authoring/characters/factory-v3/identities/swordsman_identity_v1.json",
+  "motion_registry": "authoring/characters/factory-v3/motions/candidates.json",
+  "required_actions": ["Idle", "Walk", "BasicAttack"],
+  "actions": {
+    "Idle": {"motion_id": "swordsman_idle_v3_01", "sample_count": 8, "loop": true},
+    "Walk": {"motion_id": "swordsman_walk_v3_01", "sample_count": 8, "loop": true},
+    "Run": {"motion_id": "swordsman_run_v3_01", "sample_count": 8, "loop": true},
+    "BasicAttack": {"motion_id": "swordsman_attack_v3_01", "sample_count": 8, "loop": false},
+    "Hit": {"motion_id": "swordsman_hit_v3_01", "sample_count": 6, "loop": false},
+    "Death": {"motion_id": "swordsman_death_v3_01", "sample_count": 10, "loop": false}
+  },
+  "render": {
+    "width": 320,
+    "height": 320,
+    "root": [160, 264],
+    "reference_height": 176,
+    "directions": ["S", "SW", "W", "NW", "N", "NE", "E", "SE"],
+    "direction_yaw_degrees": {"S": 0, "SW": -45, "W": -90, "NW": -135, "N": -180, "NE": -225, "E": -270, "SE": 45},
+    "passes": ["rgb", "silhouette", "depth", "normal", "body_segmentation", "weapon_mask"]
+  },
+  "stylization": {
+    "enabled": true,
+    "source_fps": "read_from_asset",
+    "root_normalization": true,
+    "foot_contact_review_required": true,
+    "semantic_phases": ["anticipation", "wind_up", "contact", "follow_through", "recovery"],
+    "never_overwrite_source": true
+  },
+  "semantic_events": ["footstep", "attackStart", "contact", "recoveryStart", "castRelease", "itemUse", "animationComplete"],
+  "events_by_action": {
+    "Idle": ["animationComplete"],
+    "Walk": ["footstep", "animationComplete"],
+    "Run": ["footstep", "animationComplete"],
+    "BasicAttack": ["attackStart", "contact", "recoveryStart", "animationComplete"],
+    "Hit": ["animationComplete"],
+    "Death": ["animationComplete"]
+  },
+  "sampling": {
+    "source_fps_is_separate": true,
+    "explicit_frame_durations_ms": true,
+    "default_phase_samples": [0.0, 0.12, 0.25, 0.38, 0.5, 0.62, 0.75, 0.88],
+    "combat_phases": ["anticipation", "wind_up", "contact", "follow_through", "recovery"]
+  },
+  "paint": {
+    "provider": "manual_handoff",
+    "layers": ["BaseBody", "Hair", "Outfit", "Weapon", "Headgear", "BackAccessory"],
+    "requires_identity_reference": true,
+    "ai_use_permit_required_for_mocap_online_source": true
+  },
+  "output": {
+    "modular": true,
+    "runtime_schema": "0.1",
+    "runtime_character_id": "swordsman-male-v3",
+    "runtime_admitted": false,
+    "owner_approved": false
+  }
+}
