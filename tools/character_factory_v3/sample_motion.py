@@ -47,7 +47,11 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
             raise ValueError("BasicAttack semantic phase markers must be ordered in the [0,1] clip range")
         phases = sorted(set([0.0, 1.0, *anchors]))
         while len(phases) < count:
-            phase = max((a + b) * 0.5 for a, b in zip(phases, phases[1:]))
+            split_index = max(
+                range(len(phases) - 1),
+                key=lambda index: phases[index + 1] - phases[index],
+            )
+            phase = (phases[split_index] + phases[split_index + 1]) * 0.5
             phases.append(phase)
             phases.sort()
         if len(phases) > count:
@@ -55,6 +59,11 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
     else:
         if count <= len(default_samples):
             phases = [default_samples[round(i * (len(default_samples) - 1) / (count - 1))] for i in range(count)]
+        elif loop:
+            # Keep the endpoint out of a loop: phase 1 is phase 0 again. More
+            # samples are evenly spaced over [0, 1) so the wrap gap is one
+            # normal frame instead of a shortened or duplicated endpoint.
+            phases = [i / count for i in range(count)]
         else:
             phases = [i / (count - 1) for i in range(count)]
     retarget_exact = [selected_start + phase * (selected_end - selected_start) for phase in phases]
@@ -67,10 +76,19 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
     ]
     sampled_span_seconds = (selected_end - selected_start) / output_fps
     terminal_hold_seconds = 0.0 if loop else 1.0 / output_fps
+    requested_duration_ms = clip.get("duration_ms")
+    if requested_duration_ms is not None:
+        if not isinstance(requested_duration_ms, (int, float)) or not math.isfinite(requested_duration_ms) or requested_duration_ms <= 0:
+            raise ValueError("duration_ms must be a positive finite value when supplied")
+        requested_span_seconds = requested_duration_ms / 1000.0 - terminal_hold_seconds
+        if requested_span_seconds <= 0:
+            raise ValueError("duration_ms is too short for the selected clip and terminal hold")
+        sampled_span_seconds = requested_span_seconds
     clip_duration_seconds = sampled_span_seconds + terminal_hold_seconds
     if clip_duration_seconds <= 0:
         raise ValueError("Selected retarget range has no positive duration")
     frame_records = []
+    durations_seconds: list[float] = []
     for index, (phase, source_frame, retarget_frame) in enumerate(zip(phases, source_frames, retarget_frames)):
         next_phase = phases[index + 1] if index + 1 < len(phases) else 1.0
         if not loop and index == len(phases) - 1 and phase >= 1.0:
@@ -83,15 +101,23 @@ def sample_clip(action_name: str, action_config: dict[str, Any], clip: dict[str,
                 # If there is no explicit endpoint sample, keep the last pose
                 # through the end and its one-frame terminal hold.
                 duration_seconds += terminal_hold_seconds
-        duration_ms = max(1, int(round(duration_seconds * 1000.0)))
+        durations_seconds.append(duration_seconds)
         frame_records.append({
             "frame_index": index,
             "source_frame": source_frame,
             "retarget_frame": retarget_frame,
             "phase": round(phase, 6),
-            "duration_ms": duration_ms,
         })
-    duration_total = sum(item["duration_ms"] for item in frame_records)
+    # Round cumulative boundaries rather than each duration independently so
+    # the integer frame holds sum to the source clip duration without drift.
+    elapsed_seconds = 0.0
+    previous_boundary_ms = 0
+    for item, duration_seconds in zip(frame_records, durations_seconds):
+        elapsed_seconds += duration_seconds
+        boundary_ms = int(round(elapsed_seconds * 1000.0))
+        item["duration_ms"] = max(1, boundary_ms - previous_boundary_ms)
+        previous_boundary_ms = boundary_ms
+    duration_total = previous_boundary_ms
     events = []
     for event in clip.get("semantic_events", []):
         name = event.get("name")

@@ -19,6 +19,7 @@ def main() -> None:
     parser.add_argument("--scene", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--sample-count", type=int, default=4)
+    parser.add_argument("--timeline", help="Optional sampled motion timeline JSON; preserves its exact half-open loop phases")
     parser.add_argument("--width", type=int, default=320)
     parser.add_argument("--samples", type=int, default=12)
     parser.add_argument("--directions", default="S,SW,W,NW,N,NE,E,SE")
@@ -37,7 +38,25 @@ def main() -> None:
     if not requested_directions or any(direction not in direction_yaws for direction in requested_directions):
         raise ValueError("Preview directions must be selected from S,SW,W,NW,N,NE,E,SE")
     start, end = action.frame_range
-    if args.sample_count < 2 or end <= start:
+    if args.timeline:
+        timeline_path = Path(args.timeline).resolve()
+        timeline = json.loads(timeline_path.read_text(encoding="utf-8"))
+        samples = [
+            (int(item["frame_index"]), int(item["retarget_frame"]), float(item["phase"]))
+            for item in timeline.get("frames", [])
+        ]
+        if len(samples) != int(timeline.get("frame_count", -1)) or len(samples) < 2:
+            raise ValueError("Timeline must contain its declared frame count and at least two frames")
+        if any(frame < start or frame > end for _, frame, _ in samples):
+            raise ValueError("Timeline contains a frame outside the selected retargeted action")
+    else:
+        if args.sample_count < 2 or end <= start:
+            raise ValueError("Preview needs at least two samples and an animated action")
+        samples = [
+            (sample_index, int(round(start + (end - start) * sample_index / (args.sample_count - 1))), sample_index / (args.sample_count - 1))
+            for sample_index in range(args.sample_count)
+        ]
+    if not samples:
         raise ValueError("Preview needs at least two samples and an animated action")
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
@@ -53,9 +72,8 @@ def main() -> None:
     scene.view_settings.view_transform = "Standard"
     output_root.mkdir(parents=True, exist_ok=True)
     frames = []
-    for sample_index in range(args.sample_count):
-        frame = int(round(start + (end - start) * sample_index / (args.sample_count - 1)))
-        record = {"sample_index": sample_index, "frame": frame, "phase": sample_index / (args.sample_count - 1), "directions": []}
+    for sample_index, frame, phase in samples:
+        record = {"sample_index": sample_index, "frame": frame, "phase": phase, "directions": []}
         for direction in requested_directions:
             yaw = direction_yaws[direction]
             root.rotation_euler.z = math.radians(yaw)
@@ -77,6 +95,7 @@ def main() -> None:
         "height": args.width,
         "directions": list(requested_directions),
         "mirroring": "none",
+        "timeline": str(Path(args.timeline).resolve()) if args.timeline else None,
         "frames": frames,
     }
     (output_root / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

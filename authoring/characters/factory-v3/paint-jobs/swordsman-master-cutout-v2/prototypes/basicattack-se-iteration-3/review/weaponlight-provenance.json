@@ -1,0 +1,50 @@
+{
+  "status": "REJECTED_FOR_REPEATED_CURVES_AND_TORSO_CROSSING",
+  "master_source": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-3/source/full-sheet-4x4.png",
+  "master_sha256": "9e5ca4ae62ecdb43e5f9b0f6144706e4f1dde35682b02c987a476b08e9e1ec2e",
+  "effect_source": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-3/source/weaponlight-overlay-trial-4x4.png",
+  "effect_sha256": "9bdb0e88bcd8488402d83ba495dfc0e3743880f798f6be185ce201cebd7aefaf",
+  "grid": {
+    "columns": 4,
+    "rows": 4,
+    "size_px": [
+      1254,
+      1254
+    ]
+  },
+  "strike_frames_1_based": [
+    5,
+    12
+  ],
+  "nontransparent_pixels_per_frame_alpha_gt_16": [
+    0,
+    0,
+    0,
+    0,
+    2772,
+    3329,
+    2280,
+    2232,
+    2913,
+    2798,
+    1931,
+    1831,
+    0,
+    0,
+    0,
+    0
+  ],
+  "visual_review": {
+    "result": "REJECTED",
+    "reason": "Similar curved strokes repeat across frames, cross the torso, and do not follow each frame\u2019s sword position.",
+    "tests": [
+      "composited over master",
+      "composited behind master"
+    ],
+    "runtime_imported": false
+  },
+  "files": {
+    "over_composite": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-3/review/weaponlight-composite-contact-4x4.png",
+    "behind_composite": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-3/review/weaponlight-composite-behind-contact-4x4.png"
+  }
+}

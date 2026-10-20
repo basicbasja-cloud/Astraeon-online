@@ -3,7 +3,7 @@
 'use strict';
 const DIRECTIONS = Object.freeze(['S','SW','W','NW','N','NE','E','SE']);
 const REQUIRED_LAYERS = Object.freeze(['BaseBody','Hair','Outfit','Weapon','Headgear','BackAccessory']);
-const OPTIONAL_LAYERS = Object.freeze(['Face','Offhand','Cape','CosmeticFX','Aura','ShoulderAccessory']);
+const OPTIONAL_LAYERS = Object.freeze(['Face','Offhand','Cape','CosmeticFX','WeaponLight','Aura','ShoulderAccessory']);
 const SOCKETS = Object.freeze(['root','head','hand_R','hand_L','back','waist']);
 const SHARED_CLIPS = Object.freeze(['Idle','Walk','Run','BasicAttack','SkillAction','Hit','Death']);
 const CLASS_CLIPS = Object.freeze({Swordsman:['Guard','Dash'],Mage:['CastChannel','Blink']});

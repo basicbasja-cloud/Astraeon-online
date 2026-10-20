@@ -1,8 +1,8 @@
-const CACHE = 'astraeon-static-v103';
+const CACHE = 'astraeon-static-v104';
 const WORLD_CACHE='astraeon-world-v103',ASSET_CACHE='astraeon-assets-v103';
 // Only application shell/runtime. Maps, atlases, audio and chunks are on demand.
 const FILES = ["./index.html", "./manifest.webmanifest", "./icon.svg", "./style.css?v=103", "./animation.js?v=103", "./character-motion.js?v=103", "./character-renderer.js?v=103", "./modular-sprites.js?v=103", "./combat-vfx.js?v=103", "./combat.js?v=103", "./directional-art.js?v=103", "./directional-metadata.js?v=103", "./dungeon.js?v=103", "./enemy-combat.js?v=103", "./environment-metadata.js?v=103", "./environment.js?v=103", "./exploration.js?v=103", "./game.js?v=103", "./hero-registration.js?v=103", "./icons.js?v=103", "./input.js?v=103", "./navigation.js?v=103", "./save-state.js?v=103", "./scene.js?v=103", "./skill-nodes.js?v=103", "./sprite-motion.js?v=103", "./town-structure.js?v=103", "./warrior-gait.js?v=103", "./warrior-rig.js?v=103", "./world-content.js?v=103", "./world-systems.js?v=103", "./world-view.js?v=103", "./world/v3/locomotion.js?v=103", "./world/v3/spatial.js?v=103", "./world/v3/streaming.js?v=103", "./world/v3/town-import.js?v=103", "./world/v3/warrior-registration.js?v=103", "./world/v3/renderer.js?v=103", "./vendor/three/three.module.min.js", "./vendor/three/three.core.min.js", "./world/v3/warrior-animation.json?v=103", "./world/v3/warrior-painted-locomotion.json?v=103", "./boot.js?v=103"];
-FILES.push('./wardrobe.js?v=103','./character-studio.js?v=103','./character-studio.css?v=103','./character-studio.html');
+FILES.push('./wardrobe.js?v=103','./character-studio.js?v=104','./character-studio.css?v=103','./character-studio.html');
 const LIMITS={[WORLD_CACHE]:{bytes:32*1024*1024,count:180},[ASSET_CACHE]:{bytes:64*1024*1024,count:100}};
 const inflight=new Map(),writes=new Map(),inventories=new Map();
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()))});

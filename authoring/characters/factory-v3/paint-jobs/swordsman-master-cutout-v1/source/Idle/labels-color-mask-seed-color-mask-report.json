@@ -1,0 +1,73 @@
+{
+  "status": "COLOR_MASK_LABELS_NEEDS_VISUAL_REVIEW",
+  "master": {
+    "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Idle/master-source-unregistered.png",
+    "sha256": "cf803783884a8814211c76500e08d3d0359e4addd821f9a76aa45bd9b4d3a84d"
+  },
+  "color_mask": {
+    "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Idle/mask-color-coded-v1.png",
+    "sha256": "d5af6c4dcbc91b8dff6f21bc6438ec03e3bdc4fed85a8d08c1bb8ed381270fbb",
+    "original_size": [
+      1254,
+      1254
+    ],
+    "resized_to_master": true
+  },
+  "labels": {
+    "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Idle/labels-color-mask-seed.png",
+    "sha256": "9327c33ceb209d984eafb9693b2376b85d2abcc029437d90fd68928b8b677708"
+  },
+  "preview": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/review/idle-color-mask-seed-v1-preview.png",
+  "palette_rgb": {
+    "1": [
+      0,
+      0,
+      255
+    ],
+    "2": [
+      255,
+      0,
+      255
+    ],
+    "3": [
+      0,
+      255,
+      0
+    ],
+    "4": [
+      0,
+      255,
+      255
+    ],
+    "5": [
+      255,
+      255,
+      0
+    ],
+    "6": [
+      255,
+      0,
+      0
+    ]
+  },
+  "max_color_distance": 125.0,
+  "master_visible_pixels": 400486,
+  "class_pixel_counts": {
+    "BaseBody": 25191,
+    "HeadHair": 70869,
+    "Outfit": 179409,
+    "Weapon": 10601,
+    "BackAccessory": 114410,
+    "CosmeticFX": 6,
+    "Headgear": 0
+  },
+  "color_mask_pixels_outside_master_alpha": 4885,
+  "unclassified_visible_pixels_assigned_to_base_body": 12598,
+  "unlabeled_visible_pixels": 0,
+  "label_pixels_outside_master_alpha": 0,
+  "notes": [
+    "The color mask supplies labels only; all cutout RGB and alpha pixels come unchanged from the full master.",
+    "Unclassified visible pixels are assigned to BaseBody so the source can be recomposed exactly.",
+    "Generated mask boundaries and semantic classes still require visual review before part swaps."
+  ]
+}

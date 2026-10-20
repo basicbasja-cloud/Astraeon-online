@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "status": "CUTOUT_TEMPLATE_REVIEW_ONLY",
+  "workflow": "one full-character master per action, cut into aligned layers from that same frame sheet",
+  "layout": "eight directions as columns, eight chronological frames as rows",
+  "runtime_cell_px": [
+    160,
+    160
+  ],
+  "layers": {
+    "1": {
+      "name": "BaseBody",
+      "output_folder": "BaseBody"
+    },
+    "2": {
+      "name": "HeadHair",
+      "output_folder": "Hair"
+    },
+    "3": {
+      "name": "Outfit",
+      "output_folder": "Outfit"
+    },
+    "4": {
+      "name": "Weapon",
+      "output_folder": "Weapon"
+    },
+    "5": {
+      "name": "BackAccessory",
+      "output_folder": "BackAccessory"
+    },
+    "6": {
+      "name": "CosmeticFX",
+      "output_folder": "CosmeticFX"
+    },
+    "7": {
+      "name": "Headgear",
+      "output_folder": "Headgear"
+    }
+  },
+  "actions": {
+    "Idle": {
+      "master": {
+        "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Idle/master.png",
+        "sha256": "f6e9b2318b97a020325edcf881f29bbddc7f1f1adbfcca6b4cea3a29ad909423"
+      },
+      "labels": {
+        "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Idle/labels.png",
+        "sha256": "4be1d2103357525bd26e087c8e5cd44a4d80556efc02b33f9322f79a9bcebc24"
+      },
+      "layers": {
+        "visible_source_pixels": 363448,
+        "label_pixel_counts": {
+          "BaseBody": 25656,
+          "HeadHair": 74255,
+          "Outfit": 151580,
+          "Weapon": 9481,
+          "BackAccessory": 102472,
+          "CosmeticFX": 4,
+          "Headgear": 0
+        },
+        "unassigned_visible_pixels": 0,
+        "labels_outside_master_alpha": 0,
+        "reconstruction_mismatch_pixels": 0,
+        "reconstruction": "exact pixel-for-pixel from disjoint labels; hidden surfaces are not generated"
+      }
+    },
+    "Walk": {
+      "master": {
+        "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Walk/master.png",
+        "sha256": "166605cefb762595d058459a5c3e510739884a7e37598c468cd5ed94f02e4283"
+      },
+      "labels": {
+        "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/Walk/labels.png",
+        "sha256": "0f3a29b3fafcc16425d550acaeb4b28a56a49a978457c6cd273ac2a6cf15543c"
+      },
+      "layers": {
+        "visible_source_pixels": 287882,
+        "label_pixel_counts": {
+          "BaseBody": 38506,
+          "HeadHair": 56871,
+          "Outfit": 108098,
+          "Weapon": 7651,
+          "BackAccessory": 76752,
+          "CosmeticFX": 4,
+          "Headgear": 0
+        },
+        "unassigned_visible_pixels": 0,
+        "labels_outside_master_alpha": 0,
+        "reconstruction_mismatch_pixels": 0,
+        "reconstruction": "exact pixel-for-pixel from disjoint labels; hidden surfaces are not generated"
+      }
+    },
+    "BasicAttack": {
+      "master": {
+        "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/BasicAttack/master.png",
+        "sha256": "c4fa7ff96456fc219b7ddd4adaed7996b46baca04ca1be70b7b9f63072bfc377"
+      },
+      "labels": {
+        "file": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/BasicAttack/labels.png",
+        "sha256": "784b59656c987ab28cfc02e81663f430eb4c3b967b2fe5e95521bc7f3a285859"
+      },
+      "layers": {
+        "visible_source_pixels": 322106,
+        "label_pixel_counts": {
+          "BaseBody": 46172,
+          "HeadHair": 59017,
+          "Outfit": 134078,
+          "Weapon": 5813,
+          "BackAccessory": 68602,
+          "CosmeticFX": 8424,
+          "Headgear": 0
+        },
+        "unassigned_visible_pixels": 0,
+        "labels_outside_master_alpha": 0,
+        "reconstruction_mismatch_pixels": 0,
+        "reconstruction": "exact pixel-for-pixel from disjoint labels; hidden surfaces are not generated"
+      }
+    }
+  },
+  "warnings": [
+    "Cutouts preserve only pixels visible in the master; no hidden body, scalp, or outfit surface is invented.",
+    "Draw replacement outfits or hair from these exact per-frame masks and fill concealed base surfaces before enabling swaps.",
+    "The source motion and frame order remain unchanged.",
+    "This output is review material and is not a runtime package."
+  ]
+}

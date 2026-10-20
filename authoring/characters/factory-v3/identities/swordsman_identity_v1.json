@@ -2,29 +2,40 @@
   "id": "swordsman_identity_v1",
   "reference": "authoring/characters/gait-rig-v50/approved-warrior-seed.png",
   "reference_sha256": "750ffe25056760c6ab97c3e66a3488d15aec4c875e573d9a8cef65c8f0437e05",
-  "authority": "V2 identity lock identifies this unchanged shipped crop as the approved identity seed. The V3 candidate remains unapproved.",
+  "authority": "V2 identity lock identifies this unchanged shipped crop as the approved identity seed. The owner-supplied two-view character image sets the current quality and costume-shape target. Neither reference approves the V3 candidate.",
+  "owner_supplied_visual_direction": "Use the silver-haired fantasy swordsman with bronze armor, ivory tunic, mustard-gold scarf/cloak, leather details, and sharp one-handed sword shown in the latest owner-provided images. Match its crisp linework, clear material separation, and large readable character presentation. Use open Ragnarok repositories and per-file licensed assets as practical visual references for drawing and asset separation; reuse source art only where the applicable license permits it, and keep Astraeon's master artwork original.",
   "owner_approved_v3_art": false,
   "locks": {
     "face": "Youthful male storybook warrior; keep eyes mostly concealed beneath swept bangs.",
     "hair": "Short tousled silver/lavender-grey hair with broad swept fringe; no redesign.",
-    "costume": "Bronze/gold armor over a split ivory tunic, dark olive/navy underlayers, teal waist detail, tall dark boots, leather belts and gloves. No trailing cape by default; BackAccessory stays optional and may be enabled as an alternate cosmetic.",
+    "costume": "Bronze/gold armor over a split ivory tunic, dark olive/navy underlayers, teal waist detail, tall dark boots, leather belts and gloves, plus the mustard-gold scarf and long cloak shown in the current visual reference. The default beauty render wears the cloak; BackAccessory is a fully separate optional cosmetic with a clean no-cloak variant.",
     "weapon": "Straight narrow one-handed steel sword with warm bronze/gold hilt in anatomical right hand.",
     "palette": ["silver-lavender", "mustard-gold", "bronze", "ivory", "dark olive/navy", "teal", "dark brown"],
-    "style": "Crisp, polished 2D fantasy game illustration with precise small-scale edges, clear armor seams, defined facial planes, and restrained two-tone warm shading. Avoid blur, airbrush haze, noisy texture, and soft-focus edges; do not use hard black outlines, plastic sheen, photorealism, or Ragnarok sprite copying.",
+    "style": "High-detail, crisp 2D fantasy RPG illustration at the owner reference's level of edge clarity and material definition: readable hair locks, clean face planes, carved armor seams, layered leather, cloth folds, metal reflections, and a sharp sword edge. Draw at maximum clean source resolution for reduction to the 160px runtime cell. Use legally reusable Ragnarok art only as a reference or source where its license permits. Avoid blur, low contrast, airbrush haze, noisy texture, fuzzy edges, photorealism, plastic sheen, and direct tracing of unlicensed pixels.",
     "camera": "Preserve V2 elevated game-sprite perspective and locked framing."
   },
   "animation_direction": {
     "naturalism": "Keep human joint mechanics, balanced weight, readable foot contacts, and consistent weapon grip; avoid stiff or comic motion.",
     "idle": "Sword-ready stance with quiet breathing and a small, believable weight shift.",
     "walk": "Natural alternating footfalls, steady torso, and relaxed sword arm; no exaggerated marching.",
-    "basic_attack": "Grounded fantasy low sweep with anticipation, torso and hip weight transfer, clear contact, controlled follow-through, and a return to guard; avoid deep forward bows, flailing, or toy-like swings.",
-    "back_accessory": "No trailing cape by default. Keep BackAccessory independently toggleable as an optional cosmetic."
+    "basic_attack": "Energetic, controlled fantasy low diagonal sweep with anticipation, wind-up, torso and hip weight transfer, clear contact, continuous sword arc, follow-through, and return to guard. Add a bright, tapered gold-white sword trail and compact impact glint on a separate effect layer. Avoid deep forward bows, flailing, stiff wrist-only waving, or toy-like swings.",
+    "back_accessory": "Golden scarf and cloak are present in the default visual configuration but live entirely on an independently toggleable BackAccessory layer. Keep a no-cloak configuration with no holes or pose/framing changes."
   },
   "paint_consistency": {
     "canonical_reference_required": true,
     "neighbouring_frames_required_when_available": true,
     "palette_lock_required": true,
     "independent_unrelated_frame_generation": false,
+    "authoring_workflow": "Paint one complete full-character master from the approved motion guide, then cut per-frame labelled layers from that exact master; never paint the layers as independent sheets.",
+    "master_first_groups": ["BaseBody", "HeadHair", "Outfit", "Weapon", "Headgear", "BackAccessory", "CosmeticFX"],
+    "source_motion_authority": "Keep the existing approved action, direction, camera, frame order, root, and timing. Cutouts inherit the master frame coordinates without independent transforms.",
+    "separate_layer_files_required": true,
+    "required_layers": ["BaseBody", "HeadHair", "Outfit", "Weapon", "Headgear", "BackAccessory"],
+    "combat_effect_layer": "CosmeticFX; transparent and separate from the sword, character, and equipment layers",
+    "sheet_layout": "8 directions as columns, chronological frames as rows; each part is cut from the matching full-character master frame and retains its exact canvas, root, and pixel registration",
+    "target_runtime_cell": {"size_px": [160, 160], "root_px": [80, 132], "next_layered_candidate_reference_height_px": 112},
+    "concealed_surface_policy": "Exact cutouts preserve visible master pixels. Before enabling a swap, paint concealed BaseBody surfaces under hair, outfit, and accessories so replacements never reveal holes.",
+    "current_owner_reference_policy": "Latest two owner-supplied images set crispness, outfit, and cloak direction; they do not constitute approval of the generated candidate",
     "provider_policy": "Mocap Online motion renders are guide data only. No AI provider may receive those assets without prior written permission from MoCap Online."
   }
 }

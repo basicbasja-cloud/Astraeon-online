@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools/character_factory_v3"))
@@ -18,10 +18,247 @@ from contracts import cache_key, motion_gate, read_json, repo_path, validate_con
 from paint_provider import ManualHandoffProvider
 from qa import DIRECTIONS, REQUIRED_PASSES, validate_guide_manifest, validate_production_guide_manifest
 from import_painted_sheets import ACTIONS as PAINT_ACTIONS, prepare_painted_sheets
+from audit_sprite_candidate import audit_definition
+from import_layered_sheets import ACTIONS as LAYERED_ACTIONS, CORE_LAYERS, SHEET as LAYERED_SHEET, _clean_cell, _fit_frame, _normalise, _load_sheet, _preserve_cutout_registration
+from cutout_master_sheet import cutout_master_sheet
+from label_master_from_color_mask import color_mask_to_labels
+from normalize_master_sheet import normalize_master_sheet
+from refine_headhair_labels import refine_headhair_labels
 from sample_motion import sample_clip, validate_sample_timeline
 
 
 class FactoryContractTests(unittest.TestCase):
+    def test_master_normalization_uses_one_transform_and_clears_detached_top_scraps(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            master = Image.new("RGBA", (1280, 1280), (0, 0, 0, 0))
+            labels = Image.new("L", (1280, 1280), 0)
+            for row in range(8):
+                for col in range(8):
+                    x, y = col * 160, row * 160
+                    ImageDraw.Draw(master).rectangle((x + 60, y + 30, x + 99, y + 69), fill=(190, 150, 90, 255))
+                    ImageDraw.Draw(labels).rectangle((x + 60, y + 30, x + 99, y + 69), fill=1)
+                    for px, py in ((x + 70, y + 2), (x + 71, y + 2), (x + 70, y + 3), (x + 71, y + 3)):
+                        master.putpixel((px, py), (90, 60, 40, 255))
+                        labels.putpixel((px, py), 1)
+            master_path, labels_path = root / "master.png", root / "labels.png"
+            master.save(master_path)
+            labels.save(labels_path)
+
+            output_master, output_labels = root / "normalized-master.png", root / "normalized-labels.png"
+            report = normalize_master_sheet(master_path, labels_path, output_master, output_labels,
+                                            reference_height=32, root_anchor_x=80, root_anchor_y=132,
+                                            fragment_limit=10)
+            normalized = Image.open(output_master).convert("RGBA")
+            normalized_ids = Image.open(output_labels)
+            self.assertAlmostEqual(report["shared_scale"], 0.8, places=3)
+            self.assertEqual(report["root_anchor_px"], [80, 132])
+            self.assertEqual(report["removed_detached_top_body_outfit_pixels"], 8 * 8 * 4)
+            self.assertEqual(normalized.getpixel((70, 2))[3], 0)
+            self.assertEqual(normalized_ids.getpixel((70, 2)), 0)
+            self.assertGreater(normalized.getpixel((80, 131))[3], 0)
+
+    def test_color_mask_labels_preserve_master_alpha_and_assign_unmatched_pixels_to_body(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            master = Image.new("RGBA", (1280, 1280), (0, 0, 0, 0))
+            ImageDraw.Draw(master).rectangle((10, 10, 39, 39), fill=(190, 150, 90, 255))
+            ImageDraw.Draw(master).rectangle((50, 50, 79, 79), fill=(190, 150, 90, 255))
+            ImageDraw.Draw(master).rectangle((80, 80, 109, 109), fill=(190, 150, 90, 255))
+            master_path = root / "master.png"
+            master.save(master_path)
+
+            mask = Image.new("RGB", (640, 640), (0, 0, 0))
+            draw = ImageDraw.Draw(mask)
+            # Input is half-sized to exercise full-sheet registration on resize.
+            draw.rectangle((5, 5, 19, 19), fill=(255, 0, 255))
+            draw.rectangle((25, 25, 39, 39), fill=(0, 255, 255))
+            draw.rectangle((100, 100, 110, 110), fill=(255, 255, 0))  # outside master alpha
+            mask_path = root / "mask.png"
+            mask.save(mask_path)
+            labels_path = root / "labels.png"
+            preview_path = root / "preview.png"
+
+            report = color_mask_to_labels(master_path, mask_path, labels_path, preview_path)
+            labels = Image.open(labels_path)
+            self.assertEqual(labels.size, (1280, 1280))
+            self.assertEqual(labels.getpixel((20, 20)), 2)
+            self.assertEqual(labels.getpixel((60, 60)), 4)
+            self.assertEqual(labels.getpixel((90, 90)), 1)
+            self.assertEqual(labels.getpixel((205, 205)), 0)
+            self.assertEqual(report["unlabeled_visible_pixels"], 0)
+            self.assertEqual(report["label_pixels_outside_master_alpha"], 0)
+            self.assertGreater(report["color_mask_pixels_outside_master_alpha"], 0)
+            self.assertTrue(preview_path.is_file())
+
+    def test_headhair_refinement_moves_only_nearby_warm_visible_body_pixels(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            master = Image.new("RGBA", (1280, 1280), (0, 0, 0, 0))
+            labels = Image.new("L", (1280, 1280), 0)
+            draw_master, draw_labels = ImageDraw.Draw(master), ImageDraw.Draw(labels)
+            draw_master.rectangle((70, 70, 89, 89), fill=(190, 185, 195, 255))
+            draw_labels.rectangle((70, 70, 89, 89), fill=2)
+            master.putpixel((80, 92), (210, 150, 110, 255))  # face below hair
+            labels.putpixel((80, 92), 1)
+            master.putpixel((81, 92), (100, 120, 150, 255))  # cool body pixel
+            labels.putpixel((81, 92), 1)
+            master.putpixel((100, 92), (210, 150, 110, 255))  # warm, outside ROI
+            labels.putpixel((100, 92), 1)
+            master_path, labels_path = root / "master.png", root / "labels.png"
+            output_path, preview_path = root / "refined.png", root / "preview.png"
+            master.save(master_path)
+            labels.save(labels_path)
+
+            report = refine_headhair_labels(master_path, labels_path, output_path, preview_path)
+            output = Image.open(output_path)
+            self.assertEqual(output.getpixel((80, 92)), 2)
+            self.assertEqual(output.getpixel((81, 92)), 1)
+            self.assertEqual(output.getpixel((100, 92)), 1)
+            self.assertEqual(report["moved_face_candidate_pixels"], 1)
+            self.assertTrue(preview_path.is_file())
+
+    def test_master_cutout_layers_recompose_exactly_from_one_shared_frame_sheet(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            action_dir = root / "source" / "Idle"
+            action_dir.mkdir(parents=True)
+            master = Image.new("RGBA", (1280, 1280), (0, 0, 0, 0))
+            labels = Image.new("L", (1280, 1280), 0)
+            colors = {
+                1: (120, 70, 40, 255), 2: (210, 205, 220, 255), 3: (220, 175, 80, 255),
+                4: (190, 200, 210, 255), 5: (245, 185, 45, 255), 6: (255, 245, 205, 220),
+                7: (130, 110, 80, 255),
+            }
+            for row in range(8):
+                for col in range(8):
+                    for class_id, color in colors.items():
+                        x = col * 160 + 10 + class_id * 14
+                        y = row * 160 + 20
+                        ImageDraw.Draw(master).rectangle((x, y, x + 8, y + 49), fill=color)
+                        ImageDraw.Draw(labels).rectangle((x, y, x + 8, y + 49), fill=class_id)
+            master_path = action_dir / "master.png"
+            labels_path = action_dir / "labels.png"
+            master.save(master_path)
+            labels.save(labels_path)
+            report = cutout_master_sheet(root / "source", root / "cutouts", ["Idle"])
+            self.assertEqual(report["actions"]["Idle"]["layers"]["reconstruction_mismatch_pixels"], 0)
+            self.assertEqual(report["actions"]["Idle"]["layers"]["unassigned_visible_pixels"], 0)
+            for output_name in ("BaseBody", "Hair", "Outfit", "Weapon", "BackAccessory", "CosmeticFX", "Headgear"):
+                self.assertTrue((root / "cutouts" / output_name / "idle.png").is_file())
+            cutout_sheets = {"Idle": {
+                layer: _load_sheet(root / "cutouts" / layer / "idle.png", layer, preserve_source_alpha=True)
+                for layer in CORE_LAYERS
+            }}
+            preserved, registration = _preserve_cutout_registration(cutout_sheets, ("Idle",))
+            self.assertEqual(registration["uniform_scale"], 1.0)
+            self.assertEqual(registration["registration_policy"].split(";")[0], "preserve full-master pixels, alpha, and frame coordinates")
+            self.assertEqual(preserved["Idle"]["BaseBody"].getchannel("A").getpixel((24, 20)), 255)
+
+    def test_master_cutout_rejects_visible_pixels_without_layer_labels(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            action_dir = root / "source" / "Walk"
+            action_dir.mkdir(parents=True)
+            master = Image.new("RGBA", (1280, 1280), (0, 0, 0, 0))
+            labels = Image.new("L", (1280, 1280), 0)
+            master.putpixel((8, 12), (200, 120, 80, 255))
+            master.save(action_dir / "master.png")
+            labels.save(action_dir / "labels.png")
+            with self.assertRaisesRegex(ValueError, "unlabelled pixels"):
+                cutout_master_sheet(root / "source", root / "cutouts", ["Walk"])
+
+    def test_layer_fit_applies_one_identical_transform_to_every_part(self):
+        cells = {layer: Image.new("RGBA", (160, 160), (0, 0, 0, 0)) for layer in (*CORE_LAYERS, "CosmeticFX")}
+        for layer, box in {
+            "BaseBody": (50, 30, 110, 150), "Hair": (60, 10, 100, 45),
+            "Outfit": (55, 60, 105, 115), "Weapon": (120, 75, 145, 130),
+            "BackAccessory": (20, 60, 60, 135), "CosmeticFX": (84, 48, 126, 68),
+        }.items():
+            ImageDraw.Draw(cells[layer]).rectangle(box, fill=(180, 145, 80, 255))
+        guide = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
+        ImageDraw.Draw(guide).rectangle((20, 10, 145, 150), fill=(255, 255, 255, 255))
+        fitted, report = _fit_frame(cells, (20.0, 10.0, 146.0, 151.0), 1.0)
+        self.assertEqual(report["translation"], [0, 0])
+        self.assertEqual(report["clipped_layers"], [])
+        for layer in cells:
+            with self.subTest(layer=layer):
+                self.assertEqual(fitted[layer].getchannel("A").tobytes(), cells[layer].getchannel("A").tobytes())
+
+    def test_layer_sheet_normalization_uses_112px_target_and_shared_transform(self):
+        sheets = {}
+        guides = {}
+        for action in LAYERED_ACTIONS:
+            layer_sheet = Image.new("RGBA", (LAYERED_SHEET, LAYERED_SHEET), (0, 0, 0, 0))
+            guide_sheet = Image.new("RGBA", (LAYERED_SHEET, LAYERED_SHEET), (0, 0, 0, 0))
+            for row in range(8):
+                for col in range(8):
+                    x, y = col * 160, row * 160
+                    ImageDraw.Draw(layer_sheet).rectangle((x + 50, y + 24, x + 110, y + 104), fill=(190, 150, 90, 255))
+                    ImageDraw.Draw(guide_sheet).rectangle((x + 50, y + 64, x + 110, y + 144), fill=(255, 255, 255, 255))
+            sheets[action] = {layer: layer_sheet for layer in (*CORE_LAYERS, "CosmeticFX")}
+            guides[action] = guide_sheet
+        normalized, report = _normalise(sheets, guides, reference_height=112)
+        self.assertEqual(report["frame_count"], 192)
+        self.assertEqual(report["target_reference_height_px"], 112)
+        self.assertAlmostEqual(report["uniform_scale"], 112 / 81, places=2)
+        for action in LAYERED_ACTIONS:
+            for layer in CORE_LAYERS:
+                self.assertEqual(normalized[action][layer].size, (LAYERED_SHEET, LAYERED_SHEET))
+
+    def test_layer_alpha_cleanup_keeps_disconnected_clothing_but_drops_halo_specks(self):
+        source = Image.new("RGBA", (160, 160), (220, 30, 50, 0))
+        draw = ImageDraw.Draw(source)
+        draw.rectangle((8, 8, 47, 47), fill=(190, 145, 70, 255))
+        draw.rectangle((58, 8, 73, 23), fill=(190, 145, 70, 255))
+        draw.point((82, 8), fill=(255, 0, 0, 255))
+        draw.rectangle((4, 60, 100, 150), fill=(255, 0, 0, 40))
+        cleaned = _clean_cell(source, "Outfit")
+        alpha = cleaned.getchannel("A")
+        self.assertGreater(alpha.getpixel((10, 10)), 0)
+        self.assertGreater(alpha.getpixel((60, 10)), 0)
+        self.assertEqual(alpha.getpixel((82, 8)), 0)
+        self.assertEqual(alpha.getpixel((50, 80)), 0)
+
+    def test_sprite_audit_flags_frame_jumps_without_claiming_art_approval(self):
+        with tempfile.TemporaryDirectory() as temp:
+            repository = Path(temp)
+            definition_path = repository / "assets/characters/test-swordsman/sprite.json"
+            atlas_path = repository / "assets/characters/test-swordsman/atlas.png"
+            definition_path.parent.mkdir(parents=True)
+            atlas_path.parent.mkdir(parents=True, exist_ok=True)
+            atlas = Image.new("RGBA", (32, 16 * len(DIRECTIONS)), (0, 0, 0, 0))
+            frames = {}
+            for row, direction in enumerate(DIRECTIONS):
+                for index in range(2):
+                    frame = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+                    from_x = 5 + index
+                    for y in range(3, 13):
+                        for x in range(from_x, from_x + 5):
+                            frame.putpixel((x, y), (220, 150, 60, 255))
+                    atlas.paste(frame, (index * 16, row * 16))
+                    key = f"test-swordsman_base-body_Idle_{direction}_{index:02d}"
+                    frames[key] = {"atlasId": "test-atlas", "rect": [index * 16, row * 16, 16, 16]}
+            atlas.save(atlas_path)
+            definition = {
+                "characterId": "test-swordsman",
+                "source": {"status": "DEV_ONLY"},
+                "canvas": {"frameWidth": 16, "frameHeight": 16, "rootAnchorX": 8, "rootAnchorY": 14},
+                "slots": {"Body": "BaseBody", "Hair": "Hair", "Outfit": "Outfit", "Weapon": "Weapon", "Headgear": "Headgear", "Back": "BackAccessory"},
+                "defaultParts": {"Body": "base-body", "Hair": "base-body", "Outfit": "base-body", "Weapon": "base-body", "Headgear": "base-body", "Back": "base-body"},
+                "drawOrder": ["Back", "Body", "Hair", "Outfit", "Weapon", "Headgear"],
+                "directions": list(DIRECTIONS),
+                "clips": {"Idle": {"loop": True, "durations": [100, 100], "directions": {direction: {"frames": [{"frameIndex": i, "sockets": {}} for i in range(2)]} for direction in DIRECTIONS}}},
+                "parts": {"base-body": {"slot": "Body", "frames": frames}},
+                "atlases": {"test-atlas": {"file": "assets/characters/test-swordsman/atlas.png", "width": 32, "height": 16 * len(DIRECTIONS)}},
+            }
+            definition_path.write_text(json.dumps(definition), encoding="utf-8")
+            result = audit_definition(definition_path)
+            self.assertEqual(result["review_status"], "DIAGNOSTIC_ONLY_VISUAL_REVIEW_REQUIRED")
+            self.assertAlmostEqual(result["summary"]["Idle"]["silhouette_iou_mean_across_directions"], 0.6667, places=3)
+            self.assertEqual(result["summary"]["Idle"]["directions_below_0_88_mean"], list(DIRECTIONS))
+            self.assertEqual(result["errors"], [])
+
     def test_character_and_rig_contracts_validate(self):
         config = read_json(ROOT / "authoring/characters/factory-v3/configs/swordsman_male_v3.json")
         rig = read_json(ROOT / "authoring/characters/factory-v3/rigs/astraeon_humanoid_male_v1.json")

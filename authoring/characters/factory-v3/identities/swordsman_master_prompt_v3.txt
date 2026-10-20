@@ -1,32 +1,63 @@
-Astraeon Factory V3 — Golden Swordsman master identity and motion prompt
+Astraeon V3 — Golden Swordsman identity, layered art, and motion master prompt
 
-Create the same original male fantasy Swordsman in every action, direction, and frame. Use the approved V2 crop as identity authority and the V3 structural render only as pose, perspective, timing, and root guidance. Do not copy another game's sprite design.
+Create one consistent original male fantasy Swordsman across actions, directions, frames, and interchangeable equipment. Use the two owner-supplied high-detail character images as the current visual-quality and costume-shape reference, and the approved V2 crop only as the existing identity seed. Use V3 structural renders for pose, camera, timing, registration, and motion. Use open Ragnarok source projects as practical references for character drawing, frame conventions, equipment and hair separation, directional actions, palette changes, and readable combat effects. Reuse any source art only when its own license allows it; the server or client code license does not automatically cover official game data. Keep the Astraeon master artwork original and build it through the full-frame-first, same-frame-cutout workflow.
 
-IDENTITY
-- Youthful storybook warrior with short tousled silver/lavender-grey hair and a broad swept fringe that partly hides the eyes.
-- Bronze and mustard-gold armor over a split ivory tunic, dark olive/navy underlayers, teal waist detail, brown leather belts and gloves, and tall dark boots.
-- A straight, narrow, one-handed steel sword with a warm bronze/gold hilt, held in the anatomical right hand.
-- No trailing cape by default. Keep BackAccessory separate and optional; toggling it must not alter the body, pose, or framing.
-- Preserve the V2 elevated fantasy-sprite camera, body proportions, and stable root. Use eight real unmirrored directions in this order: S, SW, W, NW, N, NE, E, SE.
+IDENTITY AND COSTUME
+- Youthful storybook warrior with tousled silver/lavender-white hair and a broad swept fringe partly hiding the eyes.
+- Bronze and polished warm-gold armor over a split ivory tunic, dark navy/olive sleeves and trousers, teal waist cloth, brown leather belts, gloves, and tall dark boots.
+- A straight, narrow, one-handed steel sword with a sculpted warm bronze/gold hilt, gripped in the anatomical right hand.
+- Include the reference's mustard-gold scarf and long golden cloak as a distinct `BackAccessory` cosmetic. The default beauty render wears it. A no-cloak configuration must remove it cleanly without changing the body, weapon, pose, camera, framing, or any other layer.
+- Preserve the elevated fantasy-sprite camera, body proportions, stable root, and eight real unmirrored directions in this order: S, SW, W, NW, N, NE, E, SE.
 
-ART DIRECTION
-- High-quality, crisp 2D fantasy RPG game illustration. Use precise small-scale edges, clear armor seams, defined facial planes, polished controlled highlights, and restrained two-tone warm shading. Keep forms clean and readable at 160px runtime-cell size.
-- Keep the palette centered on silver-lavender, mustard-gold, bronze, ivory, dark olive/navy, teal, and dark brown.
-- Avoid blur, airbrush haze, fuzzy/colored edge pixels, noisy texture, soft focus, photorealism, a 3D-render appearance, hard black outlines, plastic shine, modern tactical details, background effects, and unrelated costume or weapon changes.
+ART QUALITY
+- Match the owner reference's clear, high-detail illustrated fantasy RPG finish: crisp silhouette, controlled ink edges, individually readable hair locks, clean face and eye planes, carved armor seams, layered leather, cloth folds, metal reflections, and a sharp readable sword edge.
+- Draw the art at the largest clean source resolution available, with enough deliberate detail to survive reduction to the 160px runtime cell. Keep the character large in that cell and preserve a consistent height, foot baseline, root, contour weight, and palette in every frame and view.
+- Use deliberate hand-painted highlights and shadows with clean separations between materials. Silver-lavender, mustard-gold, bronze, ivory, navy/olive, teal, and dark brown remain identity colors.
+- Do not use blur, airbrush haze, soft-focus edges, speckle/noise, washed-out low-contrast paint, fuzzy antialiasing, photorealism, a 3D-render appearance, plastic shine, thick black cartoon outlines, modern tactical elements, or a background.
+
+AUTHORING ORDER: FULL FRAME FIRST, CUTOUT SECOND
+- Preserve the approved V3 motion. Use its exact action, frame order, direction, camera, root, and timing as the source of truth; do not redesign or independently regenerate the motion.
+- First paint one complete character master frame for each of 16 motion-guide frames and eight views. The master shows the whole finished character in that exact pose, including its head and hair, body and clothes, weapon, and cape. Keep the full 8×16 master sheet coherent in design, scale, lighting, and frame registration.
+- From that exact master sheet, cut each frame into labelled parts: `BaseBody`, `HeadHair`, `Outfit`, `Weapon`, `BackAccessory`, `Headgear`, and `WeaponLight`. The cutouts must come from the same pixels and frame; do not draw a separate full action sheet for each part.
+- Keep each cutout in its original frame coordinates. Preserve its alpha edge and exact camera/root placement. Layer cutouts back together and compare against the master before making replacement assets.
+- Use the cutout silhouettes as templates for future hair, clothing, weapon, and accessory designs. Paint concealed base surfaces where a replacement would otherwise reveal a hole; record those reconstructed pixels separately from the exact visible cutout.
+- Make blade light or a short trail a separate transparent `WeaponLight` cutout. If the master does not include it, add it later in the same per-frame coordinates without repainting or moving the character or sword.
+
+REAL, SWAPPABLE ART LAYERS
+- Cut out `BaseBody`, `HeadHair`, `Outfit`, `Weapon`, `Headgear`, `BackAccessory`, and `WeaponLight` into separate transparent assets. `HeadHair` is the initial head-and-hair cutout group; later hair choices use that exact outline and frame placement as their template.
+- The master is an authoring reference, not a runtime substitute. Keep every runtime part independently selectable. The first cutout set may contain only the visible pixels from the master; paint missing concealed surfaces before enabling any equipment or hair swap that would expose them.
+- Keep overlaps and draw order intentional. Weapon changes must leave the hand and pose unchanged; the cape must be independently toggleable; the assembled parts must reproduce the exact master before replacement art is added.
+- Create one aligned cutout sheet per layer and action from the matching master sheet. Preserve transparent pixels, source frame order, and the shared root. Do not recenter, mirror, or independently transform a cutout.
+- Follow the RO client pattern: keep `WeaponLight` independent from `Weapon`, and synchronize its action, facing, frame, offset, and draw order with the body and sword. Use only a short, narrow, tapered blade-aligned streak in strike frames and one compact contact glint; fade it quickly. Avoid the broad circular crescent and the current misaligned stroke pilot. Keep the sword sharp and unobscured; do not bake the effect into `Weapon`, `BaseBody`, or `Outfit`.
+- Every frame must use the actual source motion and order. Do not invent, duplicate, mirror, or independently recenter frames. Maintain one palette and consistent identity across the complete set.
 
 ANIMATION QUALITY
-- Every action should read as a real human body carrying a sword: believable balance, torso mechanics, foot contacts, and continuous weight transfer.
-- Idle: sword-ready stance with subtle breathing and a small believable weight shift.
-- Walk: natural alternating footfalls, steady torso, and a relaxed sword arm; avoid exaggerated marching or a sliding gait.
-- BasicAttack: deliberate, energetic fantasy low sweep with anticipation, hip and torso weight transfer, clear contact, controlled follow-through, and recovery back to guard. Avoid deep forward bows, flailing, stiff arm-only movement, and toy-like swings.
-- Preserve the actual source motion and frame order. Do not invent new poses to fill the sheet. Do not mirror directions.
+- Make every action read as a human carrying and controlling a sword: credible balance, foot contact, torso mechanics, visible weight transfer, consistent grip, and smooth arcs.
+- Idle: alert sword-ready stance with restrained breathing and a small natural weight shift.
+- Walk: alternating planted footfalls, steady torso, relaxed sword arm, and no exaggerated march or foot sliding.
+- BasicAttack: fantasy low diagonal sweep with readable anticipation, wind-up, hip/shoulder rotation, contact, follow-through, and recovery to guard. The sword travels through a clear continuous arc. Paint a dedicated direction-matched `WeaponLight` layer only in the strike frames, registered to each frame's sword position and facing. Use a short, tapered ivory-gold blade trail and one compact contact glint. No broad crescent, ring, or large glow. Keep attack strength in the body, not a loose wrist-only wave. Avoid deep forward bows, flailing, stiffness, and toy-like posing.
 
-SPRITE SHEET CONTRACT
-- For an 8x8 guide-based sheet, use directions as columns and chronological frames as rows, with no labels, cell borders, or scene background.
-- Keep one character scale across the complete action set, preserve the guide's in-place pose offsets, and align the feet/root to the established 160x160 runtime cell and (80,132) ground anchor.
-- Keep every character and weapon inside its cell, keep all 64 cells visually consistent, and use transparent pixels outside the sprite.
-- Prefer one coherent character painting across the sheet, then derive and repair modular layers from structural guides. Never claim a fused composite is independently modular.
+SPRITE AND RUNTIME CONTRACT
+- Structural guides use 320x320 pixels, root `(160,264)`, eight unmirrored views, and shared `Idle`, `Walk`, and `BasicAttack` frame timing. Sample 16 real temporal poses per action from the motion source. Looped actions cover `[0,1)` without a duplicated endpoint and the final pose must flow into frame 0. Production BasicAttack is a one-shot that recovers to guard and then returns to Idle. A looping attack GIF is allowed only as an explicit owner-review artifact to inspect its seam; label it as a review loop, never as runtime playback, and reject it if the last-to-first pose pops. Runtime cells remain 160x160 with root `(80,132)`. Target a 112px visible character height within each cell, keeping the root and foot baseline fixed to improve fine-detail clarity without changing world-space character size.
+- Sheets use directions as columns and chronological frames as rows. Every layer uses the same per-cell registration and transparent canvas; all 128 poses form a coherent action.
+- Keep the full sword, hair, cloak, and all effects inside their frame bounds. Separate blade light into a dedicated `WeaponLight` part and include empty/transparent frames outside the strike.
+- Validate composition after loading interchangeable hair, outfit, weapon, headgear, cloak, and no-cloak variants in the Astraeon renderer. Check occlusion, anchors, palette consistency, frame timing, silhouettes, foot contacts, weapon continuity, and attack readability.
 
 STATUS
-- This prompt describes the current no-cape-by-default V3 candidate direction.
-- The V3 paint and motion candidates still require owner visual approval. Do not label them approved or production-admitted.
+- These are the current visual and modular-authoring requirements. They do not approve any candidate art or motion.
+- A candidate remains development-only until its independently painted layers, game preview, motion, and owner visual review all pass. Never describe a fused composite or transparent placeholder slots as modular artwork.
+
+CURRENT PRODUCTION PROGRESSION (2026-10-20; tracking note, not art-direction content)
+- Implemented the full-frame-first, same-frame-cutout workflow and updated the V3 master prompt to enforce it.
+- Completed 8×8 full-character masters and same-frame cutouts for Idle, Walk, and BasicAttack as the first visual pilot. These eight-frame animations are below the requested smoothness bar and are not final. The replacement pass targets 16 sampled poses per action. Current pilot frames use one shared scale (`0.949153`), a 112px target character height, and root `(80,132)`.
+- The cutouts separate visible `BaseBody`, `HeadHair`, `Outfit`, `Weapon`, `BackAccessory`, and `CosmeticFX` pixels; `Headgear` is empty. A documented heuristic includes visible face pixels in the `HeadHair` label seed.
+- All three cutout sheets recompose to their masters with zero mismatched pixels. This confirms exact pixel registration only; semantic mask edges, hidden surfaces, and pose fidelity still need review.
+- Native-resolution eight-direction GIFs exist for all three actions, but their eight painted poses are below the requested smoothness bar. Idle and Walk loop; BasicAttack is a one-shot that holds its recovery pose. Loop metadata is fixed, while the painted Idle/Walk seam still pops. The eight-frame Walk seam reaches only `0.614` alpha IoU.
+- The original broad BasicAttack crescent remains preserved but is rejected. The separate `WeaponSlash` stroke pilot is also rejected: it is misaligned with the blade and crosses the character. Keep it only as a diagnostic. Replace it with a frame-synchronized `WeaponLight` layer following the RO client pattern; do not import either rejected trail.
+- Rendered 16-phase, eight-direction pose guides now exist for Idle, Walk, and BasicAttack in `paint-jobs/swordsman-master-cutout-v2/guides/`. Idle's guide seam alpha IoU is `0.969`; Walk's mean seam is `0.852` and its weakest view is `0.760`. BasicAttack is a 16-frame one-shot, with contact at frame 8 and recovery beginning at frame 13. These figures describe low-detail rig silhouettes only, not painted-art quality.
+- A detailed 16-frame SE-only BasicAttack paint trial now has a review-only looping GIF; the GIF does not change the one-shot production contract. Reject this trial because several sword pixels touch or cross cell edges, and no separate `WeaponLight` exists. Its loop-seam alpha IoU is `0.805`, with minimum adjacent-frame IoU `0.445`. See `paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-2/README.md`.
+- A second, compact low-diagonal SE trial reads more controlled, but still fails because sword pixels touch or cross cell bounds in frames 9–10 and a fragment appears in frame 11. Its review GIF copies the first guard pose into the final recovery frame to make the seam exact; production BasicAttack remains one-shot. Minimum adjacent-frame alpha IoU is `0.598`; no `WeaponLight` or cutout layers exist. See `paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-3/README.md`.
+- An effect-only `WeaponLight` trial was composited against the compact master. It repeats broad curves across frames and crosses the torso instead of following each sword path, so it is rejected. Keep the trail as a separate frame-matched layer and redraw it after the full master passes.
+- A separate SE tip-motion `WeaponLight` layer now follows the detected blade tip across strike frames 6–12 with a compact frame-8 glint. Its 2× GIF is review-only; it stays subtle, covers only SE, and uses a base master with clipped blade pixels. Do not admit it to runtime.
+- The first full-sheet ImageGen attempt was rejected for red fringes, sub-160px cells, and weak pose variation. No acceptable 16-frame painted master, frame-matched cutout set, or runtime replacement exists yet.
+- No runtime package was built from these cutouts. Paint concealed surfaces before enabling swaps that reveal them, and preview on the requested map before production admission.

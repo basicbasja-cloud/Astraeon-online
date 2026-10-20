@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "candidate": "swordsman-male-v3-layer-art-pilot-v1",
+  "provider": "OpenAI ImageGen",
+  "created": "2026-10-19",
+  "status": "SEPARATE_CONCEPT_ART_OWNER_REVIEW_PENDING",
+  "visual_references": [
+    "two owner-supplied high-detail Swordsman images in the conversation",
+    "authoring/characters/gait-rig-v50/approved-warrior-seed.png"
+  ],
+  "files": {
+    "hair": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-layer-pilot-v1/raw/hair.png",
+      "sha256": "05b9bb37fd53355734ae1ffcdc7ee581e7cd7a95aef7cdd6187907174805d879",
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "format": "PNG RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "role": "Independent hair concept; does not yet match a registered character head canvas.",
+      "registration_status": "CONCEPT_ONLY_NOT_REGISTERED"
+    },
+    "base-body": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-layer-pilot-v1/raw/base-body.png",
+      "sha256": "c05336e592117ff9794db7317836739c8eaf929db1fd9362b66671b77d216209",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "format": "PNG RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "role": "Underlying full-body concept; includes a fitted tunic, trousers, and boots.",
+      "registration_status": "CONCEPT_ONLY_NOT_REGISTERED"
+    },
+    "outfit": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-layer-pilot-v1/raw/outfit.png",
+      "sha256": "bff046319ba19412e00a16c4c59e5a3048198ac4a2342ac8701b5c289b9c8f2e",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "format": "PNG RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "role": "Independent clothing/armor concept rendered as an unoccupied wearable silhouette.",
+      "registration_status": "CONCEPT_ONLY_NOT_REGISTERED"
+    },
+    "back-accessory": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-layer-pilot-v1/raw/back-accessory.png",
+      "sha256": "284c57ced74aaa69452fe5c3538ba7c3cd45611a4c994e9df9a75acb989dc586",
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "format": "PNG RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "role": "Independent mustard-gold scarf and cloak concept.",
+      "registration_status": "CONCEPT_ONLY_NOT_REGISTERED"
+    },
+    "weapon": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-layer-pilot-v1/raw/weapon.png",
+      "sha256": "f749f545ea39b0307ff25fed6dec99eb4df0399fc5b287ab8aec04b435467f32",
+      "dimensions_px": [
+        1024,
+        1536
+      ],
+      "format": "PNG RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "role": "Independent steel sword concept; no character hand or pose registration.",
+      "registration_status": "CONCEPT_ONLY_NOT_REGISTERED"
+    },
+    "cosmetic-fx": {
+      "file": "authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-layer-pilot-v1/raw/cosmetic-fx.png",
+      "sha256": "4e2247ffc28306cfe57ea2ed0020932d34fb636d9cea647b9c1764342504a26e",
+      "dimensions_px": [
+        1536,
+        1024
+      ],
+      "format": "PNG RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "role": "Independent golden sword-trail concept; not yet animated or frame-registered.",
+      "registration_status": "CONCEPT_ONLY_NOT_REGISTERED"
+    }
+  },
+  "modularity": {
+    "separate_art_files": true,
+    "full_character_composite_created": false,
+    "animation_sheets_created": false,
+    "registered_to_common_sprite_canvas": false,
+    "runtime_ready": false,
+    "next_step": "Draw 8x8 action sheets independently for BaseBody, Hair, Outfit, Weapon, BackAccessory, and CosmeticFX, registered to the same 160x160 runtime cells and V3 motion guides. Use the layered importer; do not combine these concepts into one flattened sprite."
+  },
+  "license_note": "Generated images follow the image provider terms; no CC0 claim is made.",
+  "quality_note": "The six component concepts are original drawings guided by the owner references. They are not yet composable into an aligned character."
+}
