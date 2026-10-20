@@ -3,7 +3,7 @@
 **Branch:** `character/production-factory-v3`
 **Target:** Male Swordsman
 **Updated:** 20 October 2026
-**Overall:** `EIGHT_FRAME_PILOT_BELOW_SMOOTHNESS_BAR / THREE_16_FRAME_POSE_GUIDES_READY / SE_PAINT_CANDIDATE_REJECTED / PAINTED_MASTERS_AND_WEAPONLIGHT_PENDING`
+**Overall:** `EIGHT_FRAME_PILOT_BELOW_SMOOTHNESS_BAR / THREE_16_FRAME_POSE_GUIDES_READY / SE_SWEEP_TRAIL_REVIEW_ONLY / PAINTED_MASTERS_AND_WEAPONLIGHT_PENDING`
 **Runtime admission:** `DEV_ONLY / NOT_APPROVED`
 
 The existing painted-v2 package is still a fused composite. The owner rejected its Wayfarer Capital screenshots because that is not the requested map; they are retained only as historical development evidence and do not count as a successful current-map visual review. The owner supplied clearer art references and directed that hair, outfit, weapon, cape, and effects be drawn as independent layers. V3 remains development-only and is not production-complete.
@@ -52,6 +52,8 @@ The existing painted-v2 package is still a fused composite. The owner rejected i
 - Generated a tighter low-diagonal SE attack variant. Its review GIF locks the final recovery frame to the first guard pose, giving a `1.0` seam by construction; the production clip still plays once. This variant is also rejected because the blade clips the cell edge in frames 9–10 and a detached blade fragment appears in frame 11. Its minimum adjacent-frame alpha IoU is `0.598`; it has no `WeaponLight` or cutout layers. See [the compact SE trial](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-3/README.md).
 - Generated and composited an effect-only `WeaponLight` test for frames 5–12. It repeats similar curved strokes and crosses the torso instead of following the sword, so it is rejected and remains diagnostic. No effect art is admitted.
 - Added a separate tip-motion `WeaponLight` prototype for the compact SE trial. It follows detected blade-tip motion in frames 6–12 and adds a small contact glint at frame 8; its 2× review GIF is in the prototype README. It remains review-only because the source master clips the blade and covers only SE.
+- Re-audited the selected `Sword_Attack` source. The strongest lateral sweep is across source frames 24–33; the prior contact event at phase `0.50` / frame 8 preceded it. Retimed the candidate contact event to phase `0.63` / frame 10 / 1239ms and follow-through to `0.735`; the motion curves and sampled poses did not change.
+- Added an effect-only 4×4 `WeaponLight` atlas based on the owner's rough slash sample, then applied an original plum-gray/lavender-silver/warm-ivory gradient. Its separate transparent frames are remapped onto the actual SE strike window and shown in a one-shot GIF with a recovery hold. This is an unapproved, single-facing prototype; the base art still has red fringe and clipped blade pixels.
 - Rejected the first 16×8 full-master generation because it retained red fringes, produced sub-160px cells, and did not show enough pose change. It was not imported or cut into parts.
 - Corrected Character Studio's one-shot playback: it no longer restarts BasicAttack 700ms after completion; the preview holds the final pose and provides a Replay button. The existing sprite sampler already held one-shot clips on their final frame.
 - Created full 8×8 character masters for Idle, Walk, and BasicAttack using the fantasy swordsman identity and existing guide poses. BasicAttack includes the visible sword and a separate gold-white sweep trail. These eight-frame masters are retained for comparison, not accepted as smooth animation.
@@ -63,7 +65,7 @@ The existing painted-v2 package is still a fused composite. The owner rejected i
 
 ### Current review GIFs
 
-These GIFs still show the eight-frame paint pilot, so they are diagnostic only. Idle and Walk loop; BasicAttack plays once and holds recovery. Playback metadata is correct, but the Idle/Walk artwork still pops at the loop seam and has too few painted poses. Walk's worst seam is `0.614` silhouette IoU. Both BasicAttack trail versions are rejected. No acceptable 16-frame painted master has been produced or admitted, and no candidate has been previewed on the requested map.
+The established Idle and Walk GIFs still show the eight-frame paint pilot, so they are diagnostic only. Idle and Walk loop; BasicAttack plays once and holds recovery. Playback metadata is correct, but the Idle/Walk artwork still pops at the loop seam and has too few painted poses. Walk's worst seam is `0.614` silhouette IoU. A new SE-only plum-gray/lavender-silver/ivory sweep effect has a one-shot review GIF, but the combined master remains below acceptance because its character source has red fringe and clipped blade pixels. No acceptable 16-frame painted master has been admitted, and no candidate has been previewed on the requested map.
 
 - [Idle master-cutout GIF, eight directions](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/review/layered-v3-idle-8-directions.gif)
 - [Walk master-cutout GIF, eight directions](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/review/layered-v3-walk-8-directions.gif)
@@ -74,6 +76,8 @@ These GIFs still show the eight-frame paint pilot, so they are diagnostic only. 
 - [Idle 16-frame pose guide GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/guides/idle-motion-guide-16-8directions.gif) — rig guide only.
 - [Walk 16-frame pose guide GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/guides/walk-motion-guide-16-8directions.gif) — rig guide only.
 - [BasicAttack 16-frame pose guide GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/guides/basicattack-motion-guide-16-8directions.gif) — one-shot rig guide only.
+- [Iteration 4 SE slash and trail GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-4/review/basicattack-se-weaponlight-one-shot.gif) — one-shot review prototype; not approved art.
+- [Iteration 4 transparent WeaponLight sheet](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-4/layers/WeaponLight/weaponlight-se-4x4.png) — separate effect layer.
 - [BasicAttack full master](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/source/BasicAttack/master.png)
 
 These previous fused painted-v2 motion reviews remain available to show the earlier quality gap. They are not the new layered candidate and do not count as owner-approved art.
@@ -118,13 +122,13 @@ The route shows the candidate in the character creator and actual player rendere
 | Free motion sources | **PASS for candidate use** | Mesh2Motion CC0 source and evidence recorded. |
 | Idle / Walk / BasicAttack | **REPAINT REQUIRED** | Current eight-frame pilot GIFs show the loop/pose issues. Sixteen-frame sampling plans are ready. The compact SE-only attack GIF is for loop-seam review and is rejected for blade clipping; matching eight-direction masters and cutouts remain. |
 | Eight directions and structural passes | **PASS** | 192 records, six passes, unmirrored directions. |
-| Painted identity and fantasy readability | **REPAINT REQUIRED** | The broad crescent, `WeaponSlash`, compact SE full-master, and repeated-curve effect are rejected. A tip-motion `WeaponLight` is only a single-SE review prototype. Paint and review the trail on an accepted master in every facing. |
+| Painted identity and fantasy readability | **REPAINT REQUIRED** | Iteration 4 tests a broad low SE trail with an original plum-gray/lavender-silver/ivory gradient and aligns its peak with the source sweep. It remains review-only because the underlying SE master has red fringe and clipped blade pixels; all eight facings and a clean 16-frame master remain outstanding. |
 | Cloak toggling | **PARTIAL** | Earlier procedural on/off comparison exists. Next candidate targets a default golden cloak and transparent no-cloak variant. |
 | Frame-matched cutout layers | **CANDIDATE** | Idle, Walk, and BasicAttack masters and visible cutouts recompose with `0` pixel mismatch. Hidden surfaces and manual semantic-mask review remain. |
 | Remaining six actions | **PENDING** | Static placeholders only. |
 | Runtime package | **PASS as DEV_ONLY** | Schema/atlas validation passes; no production admission. |
 | Actual game preview | **HISTORICAL ONLY / MAP REJECTED** | Prior preview used Wayfarer Capital, which the owner said is the wrong map. New layered candidate and target-map preview are pending. |
-| Owner approval | **PENDING** | The eight-frame painted GIFs and all current trail art remain below the requested quality bar. The SE-only 16-frame masters are rejected for clipped blade pixels; the tip-motion effect is a single-facing prototype. The 16-frame eight-direction GIFs remain low-detail rig guides. |
+| Owner approval | **PENDING** | The eight-frame painted GIFs and iteration 4 trail remain below the requested quality bar. The SE-only 16-frame masters are rejected for clipped blade pixels; the 16-frame eight-direction GIFs remain low-detail rig guides. |
 
 ## Validation record
 

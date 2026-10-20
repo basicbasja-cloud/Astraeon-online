@@ -16,7 +16,10 @@
       "source_fps": 24,
       "loop": true,
       "semantic_events": [
-        {"name": "animationComplete", "phase": 1.0}
+        {
+          "name": "animationComplete",
+          "phase": 1.0
+        }
       ],
       "visual_review": "At 160px game scale the sword-ready stance reads clearly; breathing and weight shift remain subtle, so this stays an internal candidate."
     },
@@ -33,9 +36,18 @@
       "source_fps": 24,
       "loop": true,
       "semantic_events": [
-        {"name": "leftFootstep", "phase": 0.0},
-        {"name": "rightFootstep", "phase": 0.5},
-        {"name": "animationComplete", "phase": 1.0}
+        {
+          "name": "leftFootstep",
+          "phase": 0.0
+        },
+        {
+          "name": "rightFootstep",
+          "phase": 0.5
+        },
+        {
+          "name": "animationComplete",
+          "phase": 1.0
+        }
       ],
       "visual_review": "At 160px game scale the alternating gait reads as a person walking, with the sword arm kept close to the body; remains an internal candidate."
     },
@@ -54,29 +66,71 @@
       "semantic_phases": {
         "anticipation": 0.12,
         "wind_up": 0.28,
-        "contact": 0.50,
-        "follow_through": 0.63,
+        "contact": 0.63,
+        "follow_through": 0.735,
         "recovery": 0.84
       },
       "semantic_events": [
-        {"name": "anticipationStart", "phase": 0.12},
-        {"name": "contact", "phase": 0.50},
-        {"name": "recoveryStart", "phase": 0.84},
-        {"name": "animationComplete", "phase": 1.0}
+        {
+          "name": "anticipationStart",
+          "phase": 0.12
+        },
+        {
+          "name": "contact",
+          "phase": 0.63
+        },
+        {
+          "name": "recoveryStart",
+          "phase": 0.84
+        },
+        {
+          "name": "animationComplete",
+          "phase": 1.0
+        }
       ],
-      "visual_review": "Eight-direction 160px review shows a controlled low sword sweep and balanced recovery, replacing the old deep forward bow. It reads as a stylized human game attack; owner approval remains pending."
+      "visual_review": "A source-motion re-audit finds the main lateral blade sweep across source frames 24–33. The prior contact marker at phase 0.50 lands before the strongest sweep; the candidate marker is retimed to phase 0.63 (sampled frame 10, source frame 29), with follow-through at 0.735. Motion curves and sampled poses are unchanged; owner approval remains pending."
     }
   },
   "rejected_candidates": [
-    {"id": "CMU_02_08_swordplay", "status": "REJECTED_VISUAL_QUALITY", "reason": "Full clip is a loose swordplay sequence with no single readable game-scale strike segment."},
-    {"id": "CMU_02_09_swordplay", "status": "REJECTED_VISUAL_QUALITY", "reason": "Retarget is stable, but arm extensions do not read as a clear sword hit."},
-    {"id": "CMU_16_16_walk", "status": "REJECTED_RETARGET_QUALITY", "reason": "Retarget has no stable repeated foot-contact windows."},
-    {"id": "OGA_dummy_walk", "status": "REJECTED_VISUAL_QUALITY", "reason": "Walk raises the right-hand sword overhead through the cycle."},
-    {"id": "OGA_dummy_sword_attack_i", "status": "REJECTED_VISUAL_QUALITY", "reason": "Sequence reads primarily as a raised sword pose, without a strong strike arc."},
-    {"id": "OGA_dummy_sword_attack_ii", "status": "REJECTED_VISUAL_QUALITY", "reason": "Broad arm extension has weak sword contact and is ambiguous at game scale."}
+    {
+      "id": "CMU_02_08_swordplay",
+      "status": "REJECTED_VISUAL_QUALITY",
+      "reason": "Full clip is a loose swordplay sequence with no single readable game-scale strike segment."
+    },
+    {
+      "id": "CMU_02_09_swordplay",
+      "status": "REJECTED_VISUAL_QUALITY",
+      "reason": "Retarget is stable, but arm extensions do not read as a clear sword hit."
+    },
+    {
+      "id": "CMU_16_16_walk",
+      "status": "REJECTED_RETARGET_QUALITY",
+      "reason": "Retarget has no stable repeated foot-contact windows."
+    },
+    {
+      "id": "OGA_dummy_walk",
+      "status": "REJECTED_VISUAL_QUALITY",
+      "reason": "Walk raises the right-hand sword overhead through the cycle."
+    },
+    {
+      "id": "OGA_dummy_sword_attack_i",
+      "status": "REJECTED_VISUAL_QUALITY",
+      "reason": "Sequence reads primarily as a raised sword pose, without a strong strike arc."
+    },
+    {
+      "id": "OGA_dummy_sword_attack_ii",
+      "status": "REJECTED_VISUAL_QUALITY",
+      "reason": "Broad arm extension has weak sword contact and is ambiguous at game scale."
+    }
   ],
   "not_pursued": [
-    {"id": "mocap_online_free_packs", "reason": "User redirected intake to other free public sources; account-only files were not acquired."},
-    {"id": "rokoko_free_packs", "reason": "Not pursued after the free public CMU, OpenGameArt, and Quaternius sources provided motion candidates."}
+    {
+      "id": "mocap_online_free_packs",
+      "reason": "User redirected intake to other free public sources; account-only files were not acquired."
+    },
+    {
+      "id": "rokoko_free_packs",
+      "reason": "Not pursued after the free public CMU, OpenGameArt, and Quaternius sources provided motion candidates."
+    }
   ]
 }

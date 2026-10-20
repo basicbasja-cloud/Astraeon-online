@@ -56,7 +56,9 @@ The source runs at 24 FPS. The first painted pilot used eight poses per action a
 |---|---:|---|---|
 | Idle | 2100 ms | Yes | Completion at phase `1.0` / 2100 ms. |
 | Walk | 1668 ms | Yes | Left footstep phase `0.0` / 0 ms; right footstep phase `0.5` / 834 ms; completion at 1668 ms. |
-| BasicAttack | 1966 ms | No | Anticipation start phase `.12` / 236 ms; wind-up `.28`; contact `.50` / 983 ms; follow-through `.63`; recovery starts `.84` / 1651 ms; completion at 1966 ms. |
+| BasicAttack | 1966 ms | No | Anticipation start phase `.12` / 236 ms; wind-up `.28`; contact `.63` / 1239 ms; follow-through `.735`; recovery starts `.84` / 1651 ms; completion at 1966 ms. |
+
+The motion audit found the main lateral sword sweep across source frames 24–33. The earlier contact marker at phase `.50` / sampled frame 8 landed before its strongest section, so the candidate event now lands at phase `.63` / frame 10 / source frame 29. Follow-through is phase `.735`. This retimes the contact event and effect only; the selected motion curves, pose samples, and frame durations remain unchanged. The original pose-guide timeline is archived with its provenance.
 
 The existing eight-frame timing and motion evidence remain historical pilot records. The replacement per-frame timings, event indices, and phases are in the 16-frame candidate plan. Eight-direction 160px sheets provide the visual review scale:
 
@@ -64,7 +66,7 @@ The existing eight-frame timing and motion evidence remain historical pilot reco
 - [Walk sheet](evidence/v3-game-scale-walk.png)
 - [BasicAttack sheet](evidence/v3-game-scale-basicattack.png)
 
-Current human-read review of the source motion: Idle reads as a sword-ready human but its breathing remains subtle; Walk shows step changes more clearly from side views than the front; BasicAttack is a grounded fantasy sweep with controlled follow-through and recovery. These are stylized game motions, not a claim of mocap realism. The selected set has not been approved by the owner. The eight-frame painted previews are retained as an explicitly rejected smoothness pilot in the [handoff](PRODUCTION_FACTORY_V3_STATUS.md).
+Current human-read review of the source motion: Idle reads as a sword-ready human but its breathing remains subtle; Walk shows step changes more clearly from side views than the front; BasicAttack follows a lateral low sweep with controlled follow-through and recovery. The SE effect-only review pairs that motion with a broad plum-gray to lavender-silver to warm-ivory gradient trail based loosely on the owner's rough sample. These are stylized game motions, not a claim of mocap realism. The selected set has not been approved by the owner. The eight-frame painted previews are retained as an explicitly rejected smoothness pilot in the [handoff](PRODUCTION_FACTORY_V3_STATUS.md).
 
 ## Camera and structural guides
 
