@@ -1,0 +1,117 @@
+{
+  "schema": "manual-motion-weapon-alignment-review-v1",
+  "status": "REJECTED_VISUAL_QUALITY_PENDING_ATTACK_REPLACEMENT",
+  "scope": "Frame-by-frame SE comparison of rendered 3D pose guide and current painted trial. This records visible pose correspondence; it does not claim automatic hand/grip detection or validate unseen anatomy.",
+  "research_method": {
+    "reference": "research/modular-sprites-full-body-2026-10-11: skills/modular-eight-direction-sprites/references/cross-body-slash-gesture.md and scripts/weapon-pose-review.py",
+    "applied_checks": [
+      "compare visible grip-to-tip direction at each frame",
+      "check weapon continuity and visible hand attachment",
+      "reject the effect if it disguises a body or weapon-pose mismatch"
+    ],
+    "automated_pose_audit": "not run: no hand-annotated tip/grip points are bound to this generated sheet; review is visual and therefore does not claim numeric alignment scores"
+  },
+  "source_motion": {
+    "provider": "Mesh2Motion CC0 human-base-animations.glb",
+    "action": "Sword_Attack",
+    "guide": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/guides/basicattack-se-pose-guide-16-contact.png",
+    "guide_sha256": "e6deb9c9e1e6deb2008d4bb56388f86471b5d56afaf72fae1192f3750ddb62db",
+    "timeline": "authoring/characters/factory-v3/motions/retargeted/16frame-candidate/basicattack.timeline.json"
+  },
+  "painted_candidate": {
+    "iteration": 6,
+    "master_sheet": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-6/master/basicattack-se-master-4x4.png",
+    "master_sheet_sha256": "eef1545d6b9a3778681c5101e1182789af0e0b2ca11ab9af1eaba5688db95085",
+    "comparison_sheet": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-8/review/motion-guide-vs-painted-sword-4x4.png",
+    "comparison_sheet_sha256": "d15acabf7e5cbfef3bbf7b88004ee65b8f4bbaf3a8645b43c833954291768e4e",
+    "status": "rejected_diagnostic_only"
+  },
+  "frame_review": [
+    {
+      "frames": [
+        0,
+        1
+      ],
+      "guide": "guard / small forward sword presentation",
+      "painted": "frame 0 has a longer down-right blade; frame 1 opens the arm while the blade remains low",
+      "result": "weak match; sword angle and arm timing diverge"
+    },
+    {
+      "frames": [
+        2,
+        3
+      ],
+      "guide": "the guide transitions into its raised sword pose by frame 3",
+      "painted": "frame 2 is already overhead and frame 3 remains overhead",
+      "result": "transition starts early and loses the guide intermediate pose"
+    },
+    {
+      "frames": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "guide": "low forward extension; the blade remains pointed forward across several samples",
+      "painted": "horizontal forward blade is held across the same interval with little blade-angle change",
+      "result": "direction is partly similar, but the repeated hold reads as a thrust and not a lateral cut"
+    },
+    {
+      "frames": [
+        9,
+        10
+      ],
+      "guide": "blade rotates toward recovery near the body",
+      "painted": "blade sweeps up and back through noticeably different angles",
+      "result": "weapon path does not track the guide; transition looks abrupt"
+    },
+    {
+      "frames": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "guide": "short recovery to guard",
+      "painted": "several recovery blades switch between down, hidden, and guard angles",
+      "result": "silhouette / blade continuity is not consistent enough for a master"
+    }
+  ],
+  "findings": [
+    "The sword in the painted 4x4 trial does not match the guide reliably frame by frame.",
+    "The 3D source guide itself reads as a forward thrust: frames 4-8 hold a long forward extension without a distinct cross-body cut.",
+    "Trail timing cannot repair the gesture. Do not treat iteration 6 or the iteration 8 WeaponLight composite as production art.",
+    "Replace the attack motion and render a new guide before painting the high-detail 8x16 BasicAttack master and cutouts."
+  ],
+  "timing_correction": {
+    "old_contact_claim": {
+      "phase": 0.63,
+      "frame_index": 10,
+      "time_ms": 1239,
+      "status": "withdrawn"
+    },
+    "provisional_maximum_extension": {
+      "phase": 0.5,
+      "frame_index": 8,
+      "time_ms": 983,
+      "validated_hit": false
+    },
+    "follow_through": {
+      "phase": 0.63,
+      "frame_index": 10,
+      "time_ms": 1239
+    },
+    "recovery_start": {
+      "phase": 0.84,
+      "frame_index": 13,
+      "time_ms": 1651
+    },
+    "motion_curves_changed": false,
+    "sampled_poses_changed": false,
+    "frame_durations_changed": false
+  },
+  "owner_approval": "pending",
+  "runtime_approved": false
+}

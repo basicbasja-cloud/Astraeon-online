@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "selection_status": "MESH2MOTION_VISUALLY_REVIEWED_PENDING_OWNER_APPROVAL",
+  "selection_status": "BASICATTACK_REJECTED_PENDING_REPLACEMENT",
   "policy": "Free public sources only. Do not import V2 action curves, poses, timing, or fallback motion.",
   "actions": {
     "Idle": {
@@ -66,8 +66,8 @@
       "semantic_phases": {
         "anticipation": 0.12,
         "wind_up": 0.28,
-        "contact": 0.63,
-        "follow_through": 0.735,
+        "contact": 0.5,
+        "follow_through": 0.63,
         "recovery": 0.84
       },
       "semantic_events": [
@@ -77,7 +77,7 @@
         },
         {
           "name": "contact",
-          "phase": 0.63
+          "phase": 0.5
         },
         {
           "name": "recoveryStart",
@@ -88,7 +88,8 @@
           "phase": 1.0
         }
       ],
-      "visual_review": "A source-motion re-audit finds the main lateral blade sweep across source frames 24–33. The prior contact marker at phase 0.50 lands before the strongest sweep; the candidate marker is retimed to phase 0.63 (sampled frame 10, source frame 29), with follow-through at 0.735. Motion curves and sampled poses are unchanged; owner approval remains pending."
+      "visual_review": "Rejected after frame-by-frame comparison with the actual 16-frame SE guide: the sword reaches forward and remains extended across frame indices 4-8, so the action reads as a thrust rather than the requested lateral fantasy cut. Phase 0.50/frame index 8 is only a provisional maximum-extension marker, not a validated hit. Replace this source before painting a production master; curves and sampled poses are unchanged.",
+      "review_status": "REJECTED_VISUAL_QUALITY_PENDING_REPLACEMENT"
     }
   },
   "rejected_candidates": [

@@ -116,9 +116,11 @@ def main() -> int:
     parser.add_argument("--frames-dir", type=Path, required=True, help="Directory with se_00.png through se_15.png")
     parser.add_argument("--timeline", type=Path, required=True, help="16-frame timing JSON")
     parser.add_argument("--frame-map", type=Path, required=True, help="JSON list mapping 16 output frames to 4x4 source cells; null means no trail")
+    parser.add_argument("--frame-opacity-map", type=Path, help="Optional JSON list of 16 per-frame trail opacity multipliers")
     parser.add_argument("--layers-dir", type=Path, required=True, help="Output WeaponLight layer directory")
     parser.add_argument("--review-dir", type=Path, required=True, help="Output review artifact directory")
     parser.add_argument("--opacity", type=float, default=0.86, help="Trail opacity multiplier (default: 0.86)")
+    parser.add_argument("--thickness-scale-y", type=float, default=1.0, help="Vertical trail thickness multiplier (default: 1.0)")
     parser.add_argument("--scale", type=int, default=3, help="GIF preview scale (default: 3)")
     parser.add_argument("--offset-x", type=int, default=0, help="Global trail layer offset in pixels (default: 0)")
     parser.add_argument("--offset-y", type=int, default=-20, help="Global trail layer offset in pixels (default: -20)")
@@ -126,6 +128,8 @@ def main() -> int:
 
     if not 0.0 < args.opacity <= 1.0:
         parser.error("--opacity must be in (0, 1]")
+    if not 0.5 <= args.thickness_scale_y <= 2.0:
+        parser.error("--thickness-scale-y must be in [0.5, 2.0]")
     if args.scale < 1:
         parser.error("--scale must be at least 1")
 
@@ -142,6 +146,11 @@ def main() -> int:
     frame_map = json.loads(args.frame_map.read_text(encoding="utf-8"))
     if not isinstance(frame_map, list) or len(frame_map) != 16 or any(value is not None and (not isinstance(value, int) or not 0 <= value < 16) for value in frame_map):
         parser.error("--frame-map must be a 16-item JSON array of null or source cell indexes 0..15")
+    frame_opacity_map = [1.0] * 16
+    if args.frame_opacity_map:
+        frame_opacity_map = json.loads(args.frame_opacity_map.read_text(encoding="utf-8"))
+        if not isinstance(frame_opacity_map, list) or len(frame_opacity_map) != 16 or any(isinstance(value, bool) or not isinstance(value, (int, float)) or not 0.0 <= value <= 1.0 for value in frame_opacity_map):
+            parser.error("--frame-opacity-map must be a 16-item JSON array of multipliers in [0, 1]")
 
     args.layers_dir.mkdir(parents=True, exist_ok=True)
     frames_dir = args.layers_dir / "frames"
@@ -155,6 +164,12 @@ def main() -> int:
         x0, x1 = round(col * width / 4), round((col + 1) * width / 4)
         y0, y1 = round(row * height / 4), round((row + 1) * height / 4)
         trail = atlas.crop((x0, y0, x1, y1)).resize((160, 160), Image.Resampling.LANCZOS)
+        if args.thickness_scale_y != 1.0:
+            scaled_height = round(160 * args.thickness_scale_y)
+            trail = trail.resize((160, scaled_height), Image.Resampling.LANCZOS)
+            thick_canvas = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
+            thick_canvas.alpha_composite(trail, (0, (160 - scaled_height) // 2))
+            trail = thick_canvas
         gray = trail.convert("RGB").convert("L")
         color_channels = colorize_luminance(gray)
         alpha = trail.getchannel("A").point(lambda value: 0 if value < 8 else round(value * args.opacity))
@@ -167,7 +182,9 @@ def main() -> int:
     for index, source_index in enumerate(frame_map):
         normalized = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
         if source_index is not None:
-            normalized.alpha_composite(source_cells[source_index], (args.offset_x, args.offset_y))
+            source = source_cells[source_index].copy()
+            source.putalpha(source.getchannel("A").point(lambda value: round(value * frame_opacity_map[index])))
+            normalized.alpha_composite(source, (args.offset_x, args.offset_y))
         normalized.save(frames_dir / f"weaponlight_se_{index:02}.png")
         trails.append(normalized)
 
@@ -179,6 +196,7 @@ def main() -> int:
             "duration_ms": durations[index],
             "active": bbox is not None,
             "source_atlas_cell_index": source_index,
+            "frame_opacity_multiplier": frame_opacity_map[index],
             "alpha_bbox_xyxy": list(bbox) if bbox else [],
             "source_cell_xyxy": source_cell_boxes[source_index] if source_index is not None else [],
         })
@@ -219,6 +237,8 @@ def main() -> int:
         "character_frames_dir": str(args.frames_dir.resolve()),
         "timeline": str(args.timeline.resolve()),
         "timeline_sha256": sha256(args.timeline),
+        "frame_opacity_map": str(args.frame_opacity_map.resolve()) if args.frame_opacity_map else None,
+        "frame_opacity_map_sha256": sha256(args.frame_opacity_map) if args.frame_opacity_map else None,
         "normalization": {
             "source_grid": [4, 4],
             "source_size_px": [width, height],
@@ -226,6 +246,8 @@ def main() -> int:
             "color": "original plum-shadow to lavender-silver to warm-ivory gradient; source alpha preserved",
             "color_ramp_luminance_stops": COLOR_RAMP,
             "opacity_multiplier": args.opacity,
+            "per_frame_opacity_multipliers": frame_opacity_map,
+            "vertical_thickness_scale": args.thickness_scale_y,
             "alpha_below_8_removed": True,
             "output_frame_to_source_cell_map": frame_map,
             "global_offset_px": [args.offset_x, args.offset_y],

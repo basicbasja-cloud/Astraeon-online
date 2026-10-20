@@ -139,10 +139,10 @@
       },
       {
         "action": "BasicAttack",
-        "decision": "Selected after eight-direction 160px review: controlled low sword sweep and balanced recovery replaces the old deep forward bow. It reads as a stylized human game attack; owner approval pending.",
+        "decision": "Rejected after direct 16-frame SE pose-guide review: the sword reaches forward and holds through frame indices 4-8, reading as a thrust rather than a sideward cut. No replacement has been accepted.",
         "id": "swordsman_attack_v3_m2m_01",
         "source_action": "Sword_Attack",
-        "status": "CANDIDATE"
+        "status": "REJECTED_VISUAL_QUALITY"
       },
       {
         "action": "BasicAttack",
@@ -207,7 +207,7 @@
       "game_scale_readability"
     ],
     "render_scale": "320x320 structural guides and 160x160 game-scale contact sheets",
-    "status": "INTERNAL_VISUAL_CANDIDATE_OWNER_APPROVAL_PENDING"
+    "status": "BASICATTACK_REPLACEMENT_REQUIRED_IDLE_WALK_CANDIDATES_REMAIN"
   },
   "imported_motions": [
     {
@@ -232,13 +232,15 @@
         "forward_axis": "-Y",
         "up_axis": "Z"
       },
-      "production_status": "CANDIDATE",
+      "production_status": "REJECTED_VISUAL_QUALITY",
       "provider": "Mesh2Motion",
       "retarget_permission_status": "APPROVED",
       "source_action": "Sword_Attack",
       "source_format": "GLB",
       "source_title": "Mesh2Motion Human Base Animations",
-      "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb"
+      "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb",
+      "visual_evaluation_status": "REJECTED_AFTER_FRAME_BY_FRAME_GUIDE_COMPARISON",
+      "visual_evaluation_reason": "Guide frame indices 4-8 hold the weapon in forward extension; the gesture reads as a thrust, not the requested lateral fantasy slash. The motion remains useful as historical evidence only."
     },
     {
       "acquisition_date": "2026-10-19",

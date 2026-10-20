@@ -1,0 +1,75 @@
+{
+  "source_action": "Mesh2Motion Sword_Attack",
+  "timeline": "authoring/characters/factory-v3/motions/retargeted/16frame-candidate/basicattack.timeline.json",
+  "motion_alignment_report": "review/motion-alignment-review.json",
+  "cadence_audit": "review/animation-cadence-audit.json",
+  "comparison_gif": "review/motion-guide-vs-painted-trail-one-shot.gif",
+  "comparison_gif_cadence_audit": "review/motion-guide-vs-painted-trail-cadence.json",
+  "pose_review": "direct 16-frame SE guide comparison: frame indices 4-8 hold forward extension; source is rejected as thrust-like for the requested lateral fantasy cut",
+  "contact_marker": {
+    "phase": 0.5,
+    "frame_index": 8,
+    "time_ms": 983,
+    "assessment": "provisional maximum extension only; not a validated hit; old phase 0.63 claim is withdrawn"
+  },
+  "follow_through": {
+    "phase": 0.63,
+    "frame_index": 10,
+    "time_ms": 1239
+  },
+  "trail_candidate": {
+    "active_frame_indices_zero_based": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "first_emission": {
+      "phase": 0.2,
+      "frame_index": 3,
+      "time_ms": 393,
+      "opacity_multiplier": 0.2
+    },
+    "peak_emission": {
+      "phase": 0.39,
+      "frame_index": 6,
+      "time_ms": 767,
+      "opacity_multiplier": 1.0
+    },
+    "contact_hold": {
+      "phase": 0.5,
+      "frame_index": 8,
+      "time_ms": 983,
+      "opacity_multiplier": 0.64
+    },
+    "fade_end": {
+      "phase": 0.565,
+      "frame_index": 9,
+      "time_ms": 1111,
+      "opacity_multiplier": 0.25
+    },
+    "cleared_before": {
+      "phase": 0.63,
+      "frame_index": 10,
+      "time_ms": 1239
+    }
+  },
+  "gesture_assessment": "The actual guide and painted sword path fail the requested sideward slice. The broad trail is diagnostic and cannot correct the source motion.",
+  "motion_curves_changed": false,
+  "sampled_poses_changed": false,
+  "frame_durations_changed": false,
+  "appearance": {
+    "vertical_thickness_scale": 1.35,
+    "base_opacity_multiplier": 0.94,
+    "base_visible_width_px": 120,
+    "source": "../basicattack-se-iteration-8/source/weaponlight-short-sweep-imagegen.png",
+    "draw_order_reviewed": [
+      "behind character",
+      "over character"
+    ]
+  },
+  "status": "REVIEW_ONLY_REJECTED_MOTION_AND_PAINTED_SWORD_PATH"
+}

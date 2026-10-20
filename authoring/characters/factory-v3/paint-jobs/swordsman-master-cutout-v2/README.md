@@ -20,11 +20,12 @@ and Walk loop; BasicAttack plays once and holds the recovery pose.
   Mean last-to-first IoU is `0.852`; the weakest facing is `E` at `0.768`.
 - BasicAttack: [`basicattack-motion-guide-16.png`](guides/basicattack-motion-guide-16.png),
   [`basicattack-motion-guide-16-8directions.gif`](guides/basicattack-motion-guide-16-8directions.gif).
-  The original guide render used contact at frame 8. A later motion audit moved
-  the candidate contact marker to frame 10 (phase `0.63`, 1239ms); recovery
-  still begins at frame 13. Sampled poses and durations are unchanged, and the
-  original timeline is archived beside the guide provenance. This one-shot
-  does not loop. Its source timing is about 1.97 seconds.
+  Direct review of the actual SE frames finds a forward extension held through
+  frames 5–8, so this source reads as a thrust instead of the requested lateral
+  cut. The motion is rejected pending replacement. Phase `0.50` / frame 8 / 983ms
+  is only a provisional maximum-extension marker, not a validated hit; recovery
+  begins at frame 13. The sampled poses and durations are unchanged. This guide
+  remains a one-shot historical record and does not approve the motion.
 
 The alpha IoU values are pose-guide continuity diagnostics, not human motion
 or painted-art quality scores. Provenance JSON records the scene/timeline
@@ -41,12 +42,13 @@ sprite placement and timing, and Goro keeps `weaponLight` separate from
 not follow the sword. It is rejected and remains only as diagnostic evidence.
 The replacement is an independently painted `WeaponLight` layer aligned to the
 sword in each BasicAttack frame, with transparent frames outside the strike,
-and facing-aware overlap reviewed before import.
+and facing-aware overlap reviewed before import. A later frame-by-frame check
+found the current source attack itself reads as a thrust; a trail must not be
+used to hide that mismatch.
 
-A 16-frame single-SE full-master trial now has a looping review GIF so its
-last-to-first seam can be inspected. It is rejected because sword pixels touch
-or cross cell edges in frames 6–10; it has no `WeaponLight` and is not a runtime
-asset. See [the rejection record](prototypes/basicattack-se-iteration-2/README.md).
+A 16-frame single-SE full-master trial has a one-shot review GIF. It is rejected
+because sword pixels touch or cross cell edges in frames 6–10; it has no
+`WeaponLight` and is not a runtime asset. See [the rejection record](prototypes/basicattack-se-iteration-2/README.md).
 
 A second, more compact low-diagonal SE attack trial has a recovery-locked loop
 preview. It is also rejected: blade pixels reach the cell edge in frames 9–10,
@@ -58,24 +60,27 @@ not follow the blade. A separate tip-motion trace now follows the SE sword tip
 in frames 6–12, but remains review-only because the base master still clips the
 blade and the effect needs review at game scale.
 
-### Broad SE sweep trail review
+### SE motion and broad sweep trail review
 
-The owner supplied a rough 4×4 slash example. Iteration 4 uses it as a loose
+The owner supplied a rough 4×4 slash example. Iteration 8 uses it as a loose
 shape guide for a broad low horizontal sweep with an original plum-gray to
-lavender-silver to warm-ivory gradient, stored as separate
-transparent `WeaponLight` frame images. The motion audit placed contact at
-phase `0.63` / frame 10 / 1239ms, where the source clip's lateral sweep is
-strongest; source curves and sampled poses remain unchanged. The GIF plays once
-and holds the recovery pose for inspection:
+lavender-silver to warm-ivory gradient, stored as separate transparent
+`WeaponLight` frame images. It emits at frame 3, reaches full opacity at frame
+6, stays visible through the provisional frame-8 contact, fades in frame 9, and
+clears before frame 10. Thickness is 1.35×. This timing is only a review of the
+current SE guide; a separate audit rejected that guide as thrust-like. The
+overlay must not be treated as a correction to the underlying gesture. Its GIF
+plays once and holds recovery:
 
-- [One-shot SE review GIF](prototypes/basicattack-se-iteration-4/review/basicattack-se-weaponlight-one-shot.gif)
-- [Four-by-four character and trail contact sheet](prototypes/basicattack-se-iteration-4/review/weaponlight-over-contact-4x4.png)
-- [Behind-character contact sheet](prototypes/basicattack-se-iteration-4/review/weaponlight-behind-contact-4x4.png)
-- [Transparent WeaponLight layer sheet](prototypes/basicattack-se-iteration-4/layers/WeaponLight/weaponlight-se-4x4.png)
+- [One-shot SE review GIF](prototypes/basicattack-se-iteration-8/review/basicattack-se-weaponlight-one-shot.gif)
+- [Four-by-four character and trail contact sheet](prototypes/basicattack-se-iteration-8/review/weaponlight-over-contact-4x4.png)
+- [Behind-character contact sheet](prototypes/basicattack-se-iteration-8/review/weaponlight-behind-contact-4x4.png)
+- [Transparent WeaponLight layer sheet](prototypes/basicattack-se-iteration-8/layers/WeaponLight/weaponlight-se-4x4.png)
+- [Guide-to-painted sword alignment review](prototypes/basicattack-se-iteration-8/review/motion-alignment-review.json)
 
 This is still an art-direction prototype, not approved runtime art. It covers
-only SE; the underlying character master has visible red fringe and clipped
-blade pixels in the strike segment.
+only SE, and it is composed over a rejected character master with a sword path
+that does not match the source guide or the requested lateral cut.
 
 ## Repaint requirements
 

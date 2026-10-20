@@ -16,7 +16,7 @@ The owner rejected the look of the old V2 motion bank. V3 does not reuse its cur
 
 ## Motion source policy and current selection
 
-The source hierarchy is free MoCap Online candidates, legally usable Rokoko sources, CMU, Mixamo, then other compatible free mocap or animation sources. The registry marks the MoCap Online sampler, T.C. Sword, and Mixamo candidates `BLOCKED_ACCESS_REQUIRED`; using those specific candidates would require an owner-provided download and license evidence. Two tracked free Rokoko candidates remain `NOT_ATTEMPTED_TIER_2`. The user directed the search toward another free source and later approved Mesh2Motion as an option, so the current set uses Mesh2Motion's public human animation bundle; it requires no account or credential.
+The source hierarchy is free MoCap Online candidates, legally usable Rokoko sources, CMU, Mixamo, then other compatible free mocap or animation sources. The registry marks the MoCap Online sampler, T.C. Sword, and Mixamo candidates `BLOCKED_ACCESS_REQUIRED`; using those specific candidates would require an owner-provided download and license evidence. Two tracked free Rokoko candidates remain `NOT_ATTEMPTED_TIER_2`. The user directed the search toward another free source and later approved Mesh2Motion as an option, so the current Idle and Walk candidates use Mesh2Motion's public human animation bundle. Its initial `Sword_Attack` candidate is now rejected after pose-guide comparison; no replacement has been selected.
 
 The bundle is pinned to Mesh2Motion repository commit `653a9698f5f315523072f1c3ff3496100401317b`. Its official repository states CC0 1.0 for the models, rigs, Blender files, and animations. The selected source is `human-base-animations.glb`, a 66-bone, Z-up, -Y-forward human rig at 24 FPS, SHA-256 `406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c`. Source URL, license evidence, acquisition record, and hash are in [LICENSE_EVIDENCE.md](../../authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md) and [the CC0 evidence](../../authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md). The source file is locally cached under the ignored `motions/raw/` directory; the pinned URL and hash allow a verified re-download.
 
@@ -24,7 +24,7 @@ The bundle is pinned to Mesh2Motion repository commit `653a9698f5f315523072f1c3f
 |---|---|---|
 | Idle | `Idle_Sword` | Sword-ready stance reads at 160px; breathing and weight shift are subtle, so it remains a candidate. |
 | Walk | `Walk` | Side views show step changes; the front view reads more subtly. Keep as a candidate pending visual approval. |
-| BasicAttack | `Sword_Attack` | Controlled, energetic low sword sweep with recovery; chosen as the fantasy attack after rejecting the prior deep forward bow. |
+| BasicAttack | `Sword_Attack` | Rejected after direct frame-by-frame guide comparison: the sword is pushed forward and held through frame indices 4–8, so the gesture reads as a thrust. A replacement source and guide are required. |
 
 The earlier Quaternius and CMU selections were rejected after game-scale review. Mesh2Motion `Sword_Regular_A` folded too far forward, `_B` stayed too low, and `_C` failed rotation-spike QA. Candidate decisions and evidence are tracked in [candidates.json](../../authoring/characters/factory-v3/motions/candidates.json). A Mixamo FBX profile remains available for a future supplied source; the current build does not depend on Mixamo or an account.
 
@@ -56,9 +56,9 @@ The source runs at 24 FPS. The first painted pilot used eight poses per action a
 |---|---:|---|---|
 | Idle | 2100 ms | Yes | Completion at phase `1.0` / 2100 ms. |
 | Walk | 1668 ms | Yes | Left footstep phase `0.0` / 0 ms; right footstep phase `0.5` / 834 ms; completion at 1668 ms. |
-| BasicAttack | 1966 ms | No | Anticipation start phase `.12` / 236 ms; wind-up `.28`; contact `.63` / 1239 ms; follow-through `.735`; recovery starts `.84` / 1651 ms; completion at 1966 ms. |
+| BasicAttack | 1966 ms | No | Anticipation start phase `.12` / 236 ms; wind-up `.28`; provisional maximum-extension marker `.50` / 983 ms; follow-through `.63`; recovery starts `.84` / 1651 ms; completion at 1966 ms. The `.50` marker is not a validated hit because this motion is rejected. |
 
-The motion audit found the main lateral sword sweep across source frames 24–33. The earlier contact marker at phase `.50` / sampled frame 8 landed before its strongest section, so the candidate event now lands at phase `.63` / frame 10 / source frame 29. Follow-through is phase `.735`. This retimes the contact event and effect only; the selected motion curves, pose samples, and frame durations remain unchanged. The original pose-guide timeline is archived with its provenance.
+An earlier audit incorrectly described source frames 24–33 as a lateral sword sweep and moved contact to phase `.63`. Direct comparison of the actual SE guide contradicts that call: frame indices 4–8 hold a forward extension and read as a thrust. The `.63` contact claim is withdrawn. The timeline now uses `.50` only as a provisional maximum-extension marker while the attack source is rejected; no motion curves, sampled poses, or frame durations were changed. The source and guide remain historical review evidence until a suitable replacement is selected.
 
 The existing eight-frame timing and motion evidence remain historical pilot records. The replacement per-frame timings, event indices, and phases are in the 16-frame candidate plan. Eight-direction 160px sheets provide the visual review scale:
 
@@ -66,7 +66,7 @@ The existing eight-frame timing and motion evidence remain historical pilot reco
 - [Walk sheet](evidence/v3-game-scale-walk.png)
 - [BasicAttack sheet](evidence/v3-game-scale-basicattack.png)
 
-Current human-read review of the source motion: Idle reads as a sword-ready human but its breathing remains subtle; Walk shows step changes more clearly from side views than the front; BasicAttack follows a lateral low sweep with controlled follow-through and recovery. The SE effect-only review pairs that motion with a broad plum-gray to lavender-silver to warm-ivory gradient trail based loosely on the owner's rough sample. These are stylized game motions, not a claim of mocap realism. The selected set has not been approved by the owner. The eight-frame painted previews are retained as an explicitly rejected smoothness pilot in the [handoff](PRODUCTION_FACTORY_V3_STATUS.md).
+Current human-read review: Idle reads as a sword-ready human but its breathing remains subtle; Walk shows step changes more clearly from side views than the front. BasicAttack is rejected because its long forward extension reads as a thrust, not the requested lateral fantasy cut. The separate SE effect-only trial uses a broad plum-gray to lavender-silver to warm-ivory gradient; it follows the timing of the rejected guide and does not fix the body or sword gesture. The eight-frame painted previews are retained as an explicitly rejected smoothness pilot in the [handoff](PRODUCTION_FACTORY_V3_STATUS.md).
 
 ## Camera and structural guides
 
@@ -101,7 +101,7 @@ The procedural review package is `assets/characters/swordsman-male-v3/sprite.jso
 
 The historical review route is `?qa=1&swordsman=v3-painted-v2` and used the default streamed Wayfarer Capital map. It loaded iteration 2 in the character creator and Swordsman player renderer and played Idle/Walk/BasicAttack without V2 motion fallback. The owner later identified Wayfarer Capital as the wrong map for acceptance. Keep that browser run as technical evidence only; it does not satisfy the requested-map review. The BasicAttack contact marker was at 983ms. The route is development-only and the fused painted composite does not provide equipment swaps or final game admission.
 
-Latest generated evidence reports: canonical rig and source hash pass; required retarget mappings, finite transforms, root stability, and no rotation spikes pass; 192 frame/direction records and six structural passes pass; runtime schema and package validation pass; paint handoff exists. The motion production gate remains `CANDIDATE`, because numeric QA cannot approve visual quality. Final painted output, six independent layers, and owner approval are incomplete.
+Latest generated evidence reports: canonical rig and source hash pass; required retarget mappings, finite transforms, root stability, and no rotation spikes pass; 192 frame/direction records and six structural passes pass; runtime schema and package validation pass; paint handoff exists. The BasicAttack production gate is blocked because its motion source is rejected after visual review; numeric QA cannot approve visual quality. Final painted output, six independent layers, an attack replacement, and owner approval are incomplete.
 
 ## Commands
 
