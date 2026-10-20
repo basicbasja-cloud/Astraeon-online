@@ -103,6 +103,8 @@ The historical review route is `?qa=1&swordsman=v3-painted-v2` and used the defa
 
 Latest generated evidence reports: canonical rig and source hash pass; required retarget mappings, finite transforms, root stability, and no rotation spikes pass; 192 frame/direction records and six structural passes pass; runtime schema and package validation pass; paint handoff exists. The BasicAttack production gate is blocked because its motion source is rejected after visual review; numeric QA cannot approve visual quality. Final painted output, six independent layers, an attack replacement, and owner approval are incomplete.
 
+The 2026-10-20 high-resolution frame-499 pose-fit pilot was also rejected. All four guides fail the `0.78–1.12×` limb-segment preflight; the whole-body warp would stretch the painted torso `1.691–1.737×` to match the mannequin, compress a forearm to `0.509×`, and fold 29 triangles across frames 480, 493, 499, and 511. The comparison and decision are recorded in [iteration 23's pose-fit report](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/rig-highres-master-001/README.md). The next master must be painted in the exact Blender pose before same-frame cutouts; canvas registration is not a substitute for pose fit.
+
 ## Commands
 
 ```sh

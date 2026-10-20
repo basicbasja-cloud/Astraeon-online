@@ -25,6 +25,13 @@
 - [Guide-locked four-pose probe](experiments/guide-locked-four-pose-001/README.md) improves costume and identity consistency across four key poses. The exact guide match is partial, the sword is omitted, and it does not cover the in-between frames. A separate 480–483 test collapses four small motion changes into one repeated drawing and is rejected.
 - Continue from one stable character master with pose-matched registered layers or a deformation method that passes visual review. Do not use the current 32-frame normalized paintings or four-pose probe as runtime art.
 
+## High-resolution master pose-fit pilot (2026-10-20)
+
+- Tested the iteration-22 frame-499 high-resolution composite against Rokoko frames 480, 493, 499, and 511. The artwork is detailed, but its source pose is not compatible with these guides.
+- All four frames fail the `0.78–1.12×` source-to-guide limb-segment strain gate. The whole-body warp would stretch the painted torso `1.691–1.737×` to match the mannequin; forearm fits reach `0.509×`; the four rendered meshes contain 29 flipped triangles. The warped sheet visibly folds and narrows the arms/torso.
+- **Rejected:** do not reuse this composite as a whole-body warp master. The failure explains why the character looks unstable even though canvas root and output height are fixed.
+- [Pilot finding and next authoring decision](experiments/rig-highres-master-001/README.md); [comparison image](experiments/rig-highres-master-001/pose-pilot-001/review/highres-master-guide-comparison.png); [per-frame strain audit](experiments/rig-highres-master-001/pose-pilot-001/review/highres-master-guide-pilot-audit.json).
+
 ## Review files
 
 - [32-frame one-shot GIF](review/basicattack-se-one-shot.gif)
@@ -45,7 +52,7 @@
 ## Required replacement work
 
 1. Establish one high-resolution character master and preserve its body, costume, and palette through the action.
-2. Paint or deform registered cutouts against each matching Blender frame; keep `HeadHair`, body/outfit, `Weapon`, and `BackAccessory` independently editable.
+2. Make that master match its exact Blender guide pose. Before deformation, compare segment lengths to the source image; reject any source pose outside `0.78–1.12×`. Paint or deform registered cutouts against each matching Blender frame; keep `HeadHair`, body/outfit, `Weapon`, and `BackAccessory` independently editable.
 3. Keep a shared scale and root for the complete action. Verify the planted support foot and head/torso landmarks in the animated view.
 4. Measure the painted sword pivot, axis, and tip against each matching Rokoko guide. Generate the separate `WeaponLight` from that same painted blade path and keep its broad section thick and early without crossing the character.
 5. Recheck the full-resolution contact sheet and one-shot GIF, then recompose the cutouts and inspect them in the target game map before any production approval.

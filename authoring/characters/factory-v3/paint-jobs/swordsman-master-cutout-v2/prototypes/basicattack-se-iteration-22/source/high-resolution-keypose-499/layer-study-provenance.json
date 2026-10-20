@@ -1,0 +1,73 @@
+{
+  "status": "HIGH_RESOLUTION_SINGLE_POSE_LAYER_CUTOUT_STUDY; NOT_REVIEWED_FOR_RUNTIME",
+  "source_pose_frame": 499.0,
+  "canvas_px": [
+    1207,
+    1303
+  ],
+  "source_image": "../high-resolution-keypose-499/imagegen-raw/CharacterComposite.png",
+  "layers": {
+    "BaseBody.png": {
+      "file": "BaseBody.png",
+      "generated_from": "CharacterComposite.png",
+      "transparent_background": true,
+      "registered_canvas_px": [
+        1207,
+        1303
+      ]
+    },
+    "Head-Hair.png": {
+      "file": "Head-Hair.png",
+      "generated_from": "CharacterComposite.png",
+      "transparent_background": true,
+      "registered_canvas_px": [
+        1207,
+        1303
+      ]
+    },
+    "Scarf-Cape.png": {
+      "file": "Scarf-Cape.png",
+      "generated_from": "CharacterComposite.png",
+      "transparent_background": true,
+      "registered_canvas_px": [
+        1207,
+        1303
+      ]
+    },
+    "Outfit.png": {
+      "file": "Outfit.png",
+      "generated_from": "CharacterComposite.png",
+      "transparent_background": true,
+      "registered_canvas_px": [
+        1207,
+        1303
+      ]
+    },
+    "Weapon.png": {
+      "file": "Weapon.png",
+      "generated_from": "CharacterComposite.png",
+      "transparent_background": true,
+      "registered_canvas_px": [
+        1207,
+        1303
+      ]
+    },
+    "Hands.png": {
+      "file": "Hands.png",
+      "generated_from": "CharacterComposite.png",
+      "transparent_background": true,
+      "registered_canvas_px": [
+        1207,
+        1303
+      ]
+    }
+  },
+  "cleanup": "Removed only detected red-fringe pixels. BaseBody duplicate head masked to permit the separate Head-Hair layer. No layer translation or scaling was applied.",
+  "known_review_limitations": [
+    "Layer extraction placement and overlap have not yet been validated against the composite.",
+    "Weapon and hand extraction may have been reframed by image generation.",
+    "Scarf-Cape, Outfit, and BaseBody surfaces are generated layer studies and may not reconstruct all occluded pixels exactly.",
+    "This is one SE pose only; it is not the 66-frame animation and no runtime approval is claimed."
+  ],
+  "review_contact": "review/layer-placement-contact.png"
+}

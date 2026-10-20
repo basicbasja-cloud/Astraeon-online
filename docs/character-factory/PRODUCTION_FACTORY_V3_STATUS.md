@@ -190,3 +190,9 @@ The route shows the candidate in the character creator and actual player rendere
 | Adjacent 480–483 pose probe | **REJECTED** | It collapses four subtle guide changes into one repeated pose. |
 
 See [the implementation record](PRODUCTION_FACTORY_V3.md), [build evidence](evidence/production-factory-v3-motion.json), [iteration 2 paint job](../../authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v2/imported/job.json), and [Wayfarer Capital browser report](evidence/imagegen-swordsman-v2/wayfarer-capital-review.json) for the full progression and provenance.
+
+## Latest pose-fit finding (2026-10-20)
+
+- Tested one high-resolution frame-499 master against four Rokoko guides using the research fixed-mesh method. The single master is pose-incompatible: all four target poses exceed the `0.78–1.12×` limb-segment strain range, the whole-body warp would stretch the painted torso `1.691–1.737×` to match the mannequin, one forearm must compress to `0.509×`, and the mesh flips 29 triangles across the four frames.
+- The warped render is **REJECTED**. This identifies a second source of visible character instability: the source artwork pose and guide pose disagree, so fixed root and normalized height still bend the character's torso, arms, and armor.
+- Added a pose-strain preflight to the experimental high-resolution warper and documented the exact rejection in [the iteration-23 pilot report](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/rig-highres-master-001/README.md). Next art must start from a guide-matched full-frame pose, then use same-frame cutouts or only deformation that passes the strain and visual gates.

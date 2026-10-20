@@ -1,0 +1,676 @@
+{
+  "status": "HIGHRES_FIXED_MESH_POSE_PILOT_NOT_APPROVED",
+  "limb_strain_gate": "FAIL",
+  "limb_strain_failed_frames": [
+    480.0,
+    493.0,
+    499.0,
+    511.0
+  ],
+  "method_reference": "research modular-sprites-full-body candidate-06 fixed-source-triangulation",
+  "source_master": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-22/source/high-resolution-keypose-499/layers/CharacterComposite.png",
+  "source_landmarks": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/rig-highres-master-001/source/source-landmarks.json",
+  "source_pose_frame": 499,
+  "motion_manifest": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/source/rokoko-blender-guide/motion-guide-manifest.json",
+  "canvas_px": [
+    1280,
+    1280
+  ],
+  "root_xy_px": [
+    640,
+    1056
+  ],
+  "support_foot": "foot_L",
+  "guide_height_ratio": 1.1,
+  "frames": [
+    {
+      "source_frame": 480.0,
+      "root_shift_xy_px": [
+        0.0,
+        -46.881
+      ],
+      "target_body_landmarks_xy_px": {
+        "head": [
+          721.929,
+          306.27
+        ],
+        "neck": [
+          707.517,
+          383.91
+        ],
+        "waist": [
+          640.0,
+          617.286
+        ],
+        "shoulder_R": [
+          620.006,
+          438.939
+        ],
+        "elbow_R": [
+          619.422,
+          558.342
+        ],
+        "hand_R": [
+          716.08,
+          618.646
+        ],
+        "shoulder_L": [
+          744.467,
+          365.584
+        ],
+        "elbow_L": [
+          712.639,
+          421.702
+        ],
+        "hand_L": [
+          715.196,
+          531.193
+        ],
+        "hip_R": [
+          603.088,
+          623.718
+        ],
+        "knee_R": [
+          508.99,
+          809.311
+        ],
+        "foot_R": [
+          415.351,
+          982.197
+        ],
+        "hip_L": [
+          676.912,
+          610.853
+        ],
+        "knee_L": [
+          764.71,
+          803.025
+        ],
+        "foot_L": [
+          777.001,
+          1056.0
+        ]
+      },
+      "target_weapon_pivot_xy_px": [
+        716.08,
+        618.646
+      ],
+      "target_weapon_tip_xy_px": [
+        1217.404,
+        671.978
+      ],
+      "target_weapon_angle_degrees": 6.072,
+      "source_to_target_height_scale": 0.82687,
+      "pose_strain": {
+        "allowed_limb_target_to_source_ratio": [
+          0.78,
+          1.12
+        ],
+        "segments": {
+          "upper_arm_R": {
+            "source_length_after_shared_scale_px": 84.804,
+            "target_length_px": 119.404,
+            "target_to_source_ratio": 1.40801
+          },
+          "forearm_R": {
+            "source_length_after_shared_scale_px": 72.037,
+            "target_length_px": 113.927,
+            "target_to_source_ratio": 1.58152
+          },
+          "upper_arm_L": {
+            "source_length_after_shared_scale_px": 134.642,
+            "target_length_px": 64.516,
+            "target_to_source_ratio": 0.47916
+          },
+          "forearm_L": {
+            "source_length_after_shared_scale_px": 216.285,
+            "target_length_px": 109.521,
+            "target_to_source_ratio": 0.50637
+          },
+          "thigh_R": {
+            "source_length_after_shared_scale_px": 182.89,
+            "target_length_px": 208.085,
+            "target_to_source_ratio": 1.13776
+          },
+          "shin_R": {
+            "source_length_after_shared_scale_px": 327.677,
+            "target_length_px": 196.616,
+            "target_to_source_ratio": 0.60003
+          },
+          "thigh_L": {
+            "source_length_after_shared_scale_px": 170.394,
+            "target_length_px": 211.278,
+            "target_to_source_ratio": 1.23994
+          },
+          "shin_L": {
+            "source_length_after_shared_scale_px": 224.495,
+            "target_length_px": 253.273,
+            "target_to_source_ratio": 1.12819
+          }
+        },
+        "torso_neck_to_waist": {
+          "source_length_after_shared_scale_px": 143.708,
+          "target_guide_length_px": 242.946,
+          "target_to_source_ratio": 1.69055,
+          "review_note": "Preserve authored torso proportions; do not stretch the sprite to match the mannequin."
+        },
+        "failed_segments": [
+          "upper_arm_R",
+          "forearm_R",
+          "upper_arm_L",
+          "forearm_L",
+          "thigh_R",
+          "shin_R",
+          "thigh_L",
+          "shin_L"
+        ],
+        "passes_pose_strain_gate": false
+      },
+      "flipped_triangle_count": 9,
+      "source_alpha_bbox": [
+        81,
+        23,
+        1216,
+        1255
+      ],
+      "paint_alpha_bbox": [
+        161,
+        35,
+        1216,
+        1153
+      ],
+      "guide_alpha_bbox": [
+        402,
+        244,
+        854,
+        1049
+      ]
+    },
+    {
+      "source_frame": 493.0,
+      "root_shift_xy_px": [
+        0.0,
+        -67.604
+      ],
+      "target_body_landmarks_xy_px": {
+        "head": [
+          701.945,
+          248.502
+        ],
+        "neck": [
+          692.203,
+          332.83
+        ],
+        "waist": [
+          640.0,
+          594.491
+        ],
+        "shoulder_R": [
+          581.484,
+          339.672
+        ],
+        "elbow_R": [
+          488.901,
+          401.76
+        ],
+        "hand_R": [
+          552.916,
+          306.553
+        ],
+        "shoulder_L": [
+          791.892,
+          378.495
+        ],
+        "elbow_L": [
+          812.916,
+          492.306
+        ],
+        "hand_L": [
+          826.127,
+          645.15
+        ],
+        "hip_R": [
+          599.787,
+          584.999
+        ],
+        "knee_R": [
+          492.685,
+          770.994
+        ],
+        "foot_R": [
+          383.87,
+          1010.096
+        ],
+        "hip_L": [
+          680.213,
+          603.984
+        ],
+        "knee_L": [
+          693.239,
+          824.304
+        ],
+        "foot_L": [
+          705.708,
+          1056.0
+        ]
+      },
+      "target_weapon_pivot_xy_px": [
+        552.916,
+        306.553
+      ],
+      "target_weapon_tip_xy_px": [
+        433.721,
+        -223.202
+      ],
+      "target_weapon_angle_degrees": -102.68,
+      "source_to_target_height_scale": 0.890582,
+      "pose_strain": {
+        "allowed_limb_target_to_source_ratio": [
+          0.78,
+          1.12
+        ],
+        "segments": {
+          "upper_arm_R": {
+            "source_length_after_shared_scale_px": 91.338,
+            "target_length_px": 111.474,
+            "target_to_source_ratio": 1.22046
+          },
+          "forearm_R": {
+            "source_length_after_shared_scale_px": 77.587,
+            "target_length_px": 114.727,
+            "target_to_source_ratio": 1.47869
+          },
+          "upper_arm_L": {
+            "source_length_after_shared_scale_px": 145.016,
+            "target_length_px": 115.737,
+            "target_to_source_ratio": 0.79809
+          },
+          "forearm_L": {
+            "source_length_after_shared_scale_px": 232.95,
+            "target_length_px": 153.414,
+            "target_to_source_ratio": 0.65857
+          },
+          "thigh_R": {
+            "source_length_after_shared_scale_px": 196.982,
+            "target_length_px": 214.628,
+            "target_to_source_ratio": 1.08958
+          },
+          "shin_R": {
+            "source_length_after_shared_scale_px": 352.925,
+            "target_length_px": 262.698,
+            "target_to_source_ratio": 0.74435
+          },
+          "thigh_L": {
+            "source_length_after_shared_scale_px": 183.523,
+            "target_length_px": 220.705,
+            "target_to_source_ratio": 1.2026
+          },
+          "shin_L": {
+            "source_length_after_shared_scale_px": 241.793,
+            "target_length_px": 232.031,
+            "target_to_source_ratio": 0.95963
+          }
+        },
+        "torso_neck_to_waist": {
+          "source_length_after_shared_scale_px": 154.781,
+          "target_guide_length_px": 266.818,
+          "target_to_source_ratio": 1.72384,
+          "review_note": "Preserve authored torso proportions; do not stretch the sprite to match the mannequin."
+        },
+        "failed_segments": [
+          "upper_arm_R",
+          "forearm_R",
+          "forearm_L",
+          "shin_R",
+          "thigh_L"
+        ],
+        "passes_pose_strain_gate": false
+      },
+      "flipped_triangle_count": 12,
+      "source_alpha_bbox": [
+        81,
+        23,
+        1216,
+        1255
+      ],
+      "paint_alpha_bbox": [
+        138,
+        0,
+        1129,
+        1232
+      ],
+      "guide_alpha_bbox": [
+        403,
+        0,
+        835,
+        1050
+      ]
+    },
+    {
+      "source_frame": 499.0,
+      "root_shift_xy_px": [
+        0.0,
+        -64.832
+      ],
+      "target_body_landmarks_xy_px": {
+        "head": [
+          685.469,
+          245.444
+        ],
+        "neck": [
+          679.005,
+          330.461
+        ],
+        "waist": [
+          640.0,
+          597.539
+        ],
+        "shoulder_R": [
+          567.751,
+          345.914
+        ],
+        "elbow_R": [
+          471.928,
+          378.848
+        ],
+        "hand_R": [
+          483.245,
+          416.856
+        ],
+        "shoulder_L": [
+          782.145,
+          375.367
+        ],
+        "elbow_L": [
+          804.741,
+          486.634
+        ],
+        "hand_L": [
+          818.518,
+          639.059
+        ],
+        "hip_R": [
+          600.268,
+          588.551
+        ],
+        "knee_R": [
+          501.465,
+          773.858
+        ],
+        "foot_R": [
+          390.348,
+          1003.541
+        ],
+        "hip_L": [
+          679.732,
+          606.529
+        ],
+        "knee_L": [
+          680.884,
+          827.1
+        ],
+        "foot_L": [
+          701.604,
+          1056.0
+        ]
+      },
+      "target_weapon_pivot_xy_px": [
+        483.245,
+        416.856
+      ],
+      "target_weapon_tip_xy_px": [
+        592.04,
+        950.943
+      ],
+      "target_weapon_angle_degrees": 78.486,
+      "source_to_target_height_scale": 0.893955,
+      "pose_strain": {
+        "allowed_limb_target_to_source_ratio": [
+          0.78,
+          1.12
+        ],
+        "segments": {
+          "upper_arm_R": {
+            "source_length_after_shared_scale_px": 91.684,
+            "target_length_px": 101.325,
+            "target_to_source_ratio": 1.10515
+          },
+          "forearm_R": {
+            "source_length_after_shared_scale_px": 77.881,
+            "target_length_px": 39.657,
+            "target_to_source_ratio": 0.5092
+          },
+          "upper_arm_L": {
+            "source_length_after_shared_scale_px": 145.565,
+            "target_length_px": 113.538,
+            "target_to_source_ratio": 0.77998
+          },
+          "forearm_L": {
+            "source_length_after_shared_scale_px": 233.832,
+            "target_length_px": 153.046,
+            "target_to_source_ratio": 0.65451
+          },
+          "thigh_R": {
+            "source_length_after_shared_scale_px": 197.728,
+            "target_length_px": 210.002,
+            "target_to_source_ratio": 1.06207
+          },
+          "shin_R": {
+            "source_length_after_shared_scale_px": 354.262,
+            "target_length_px": 255.15,
+            "target_to_source_ratio": 0.72023
+          },
+          "thigh_L": {
+            "source_length_after_shared_scale_px": 184.218,
+            "target_length_px": 220.574,
+            "target_to_source_ratio": 1.19735
+          },
+          "shin_L": {
+            "source_length_after_shared_scale_px": 242.709,
+            "target_length_px": 229.836,
+            "target_to_source_ratio": 0.94696
+          }
+        },
+        "torso_neck_to_waist": {
+          "source_length_after_shared_scale_px": 155.368,
+          "target_guide_length_px": 269.911,
+          "target_to_source_ratio": 1.73724,
+          "review_note": "Preserve authored torso proportions; do not stretch the sprite to match the mannequin."
+        },
+        "failed_segments": [
+          "forearm_R",
+          "upper_arm_L",
+          "forearm_L",
+          "shin_R",
+          "thigh_L"
+        ],
+        "passes_pose_strain_gate": false
+      },
+      "flipped_triangle_count": 4,
+      "source_alpha_bbox": [
+        81,
+        23,
+        1216,
+        1255
+      ],
+      "paint_alpha_bbox": [
+        115,
+        20,
+        1127,
+        1230
+      ],
+      "guide_alpha_bbox": [
+        392,
+        183,
+        833,
+        1049
+      ]
+    },
+    {
+      "source_frame": 511.0,
+      "root_shift_xy_px": [
+        0.0,
+        -72.572
+      ],
+      "target_body_landmarks_xy_px": {
+        "head": [
+          644.012,
+          240.662
+        ],
+        "neck": [
+          641.412,
+          321.952
+        ],
+        "waist": [
+          640.0,
+          589.025
+        ],
+        "shoulder_R": [
+          533.143,
+          363.734
+        ],
+        "elbow_R": [
+          486.126,
+          477.819
+        ],
+        "hand_R": [
+          519.808,
+          530.872
+        ],
+        "shoulder_L": [
+          742.847,
+          332.549
+        ],
+        "elbow_L": [
+          767.046,
+          412.662
+        ],
+        "hand_L": [
+          807.545,
+          538.244
+        ],
+        "hip_R": [
+          598.716,
+          588.265
+        ],
+        "knee_R": [
+          542.621,
+          788.597
+        ],
+        "foot_R": [
+          504.098,
+          999.554
+        ],
+        "hip_L": [
+          681.284,
+          589.787
+        ],
+        "knee_L": [
+          748.746,
+          798.434
+        ],
+        "foot_L": [
+          830.48,
+          1056.0
+        ]
+      },
+      "target_weapon_pivot_xy_px": [
+        519.808,
+        530.872
+      ],
+      "target_weapon_tip_xy_px": [
+        760.514,
+        1023.48
+      ],
+      "target_weapon_angle_degrees": 63.958,
+      "source_to_target_height_scale": 0.899229,
+      "pose_strain": {
+        "allowed_limb_target_to_source_ratio": [
+          0.78,
+          1.12
+        ],
+        "segments": {
+          "upper_arm_R": {
+            "source_length_after_shared_scale_px": 92.225,
+            "target_length_px": 123.394,
+            "target_to_source_ratio": 1.33796
+          },
+          "forearm_R": {
+            "source_length_after_shared_scale_px": 78.34,
+            "target_length_px": 62.842,
+            "target_to_source_ratio": 0.80216
+          },
+          "upper_arm_L": {
+            "source_length_after_shared_scale_px": 146.424,
+            "target_length_px": 83.688,
+            "target_to_source_ratio": 0.57155
+          },
+          "forearm_L": {
+            "source_length_after_shared_scale_px": 235.212,
+            "target_length_px": 131.951,
+            "target_to_source_ratio": 0.56099
+          },
+          "thigh_R": {
+            "source_length_after_shared_scale_px": 198.895,
+            "target_length_px": 208.037,
+            "target_to_source_ratio": 1.04597
+          },
+          "shin_R": {
+            "source_length_after_shared_scale_px": 356.352,
+            "target_length_px": 214.446,
+            "target_to_source_ratio": 0.60178
+          },
+          "thigh_L": {
+            "source_length_after_shared_scale_px": 185.305,
+            "target_length_px": 219.282,
+            "target_to_source_ratio": 1.18336
+          },
+          "shin_L": {
+            "source_length_after_shared_scale_px": 244.141,
+            "target_length_px": 270.223,
+            "target_to_source_ratio": 1.10684
+          }
+        },
+        "torso_neck_to_waist": {
+          "source_length_after_shared_scale_px": 156.284,
+          "target_guide_length_px": 267.077,
+          "target_to_source_ratio": 1.70892,
+          "review_note": "Preserve authored torso proportions; do not stretch the sprite to match the mannequin."
+        },
+        "failed_segments": [
+          "upper_arm_R",
+          "upper_arm_L",
+          "forearm_L",
+          "shin_R",
+          "thigh_L"
+        ],
+        "passes_pose_strain_gate": false
+      },
+      "flipped_triangle_count": 4,
+      "source_alpha_bbox": [
+        81,
+        23,
+        1216,
+        1255
+      ],
+      "paint_alpha_bbox": [
+        120,
+        19,
+        1101,
+        1160
+      ],
+      "guide_alpha_bbox": [
+        432,
+        178,
+        832,
+        1046
+      ]
+    }
+  ],
+  "limitations": [
+    "This pilot warps a single full-character composite. Semantic BaseBody, HeadHair, Outfit, Weapon, and BackAccessory layers are not produced here.",
+    "Source body landmarks are manually annotated estimates and require adjustment against the matching guide.",
+    "The fixed triangulation can fold or distort the face, limbs, cape, and weapon; inspect every frame before extending this method.",
+    "The image is a high-resolution paint study only; runtime, weapon-light, trail, map, and owner-review gates remain open."
+  ]
+}
