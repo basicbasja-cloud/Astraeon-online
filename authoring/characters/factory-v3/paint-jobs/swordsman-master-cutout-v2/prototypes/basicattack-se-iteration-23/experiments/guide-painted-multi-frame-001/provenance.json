@@ -1,0 +1,30 @@
+{
+  "status": "REJECTED_GUIDE_PAINTOVER_CONTINUITY_STUDY",
+  "motion_source": "Rokoko SwordFight_mixamo.fbx; iteration-23 Blender SE guide",
+  "identity_reference": "../../source/identity/guide-paint-character-reference.png",
+  "review_artifacts": [
+    "review/guide-paintover-498p5-adjacent-frames.png"
+  ],
+  "frames": [
+    {
+      "source_frame": 498.0,
+      "guide": "../../source/rokoko-blender-guide/frames_1024/guide_39_src_0498.png",
+      "image": "source/swordsman_498-guide-paint.png",
+      "review": "The body pose is closer to the guide, but the painted sword points down-right instead of the guide's up-right wind-up."
+    },
+    {
+      "source_frame": 498.5,
+      "guide": "../../source/rokoko-blender-guide/frames_1024/guide_40_src_0498p5.png",
+      "image": "source/swordsman_498p5-guide-paint.png",
+      "normalized_review_cell": "source/swordsman_498p5-normalized.png",
+      "review": "The sword axis matches the guide, but the cloak and full silhouette pop against adjacent painted frames."
+    },
+    {
+      "source_frame": 499.0,
+      "guide": "../../source/rokoko-blender-guide/frames_1024/guide_41_src_0499.png",
+      "image": "source/swordsman_499-guide-paint.png",
+      "review": "The downstroke direction is broadly correct, but blade angle and body silhouette still differ from the matching guide and adjacent art."
+    }
+  ],
+  "decision": "Do not admit these frame-specific full-character generations to the master. Rebuild the action from a shared high-resolution painted master and registered layer/cutout workflow, then audit every body landmark and weapon axis against its matching Blender pose."
+}

@@ -32,6 +32,16 @@ PROXY_LENGTH = 0.82
 BACKGROUND = (242, 240, 238)
 
 
+def source_frame_label(frame: float) -> str:
+    rounded = round(frame)
+    if abs(frame - rounded) < 1e-6:
+        return f"{rounded:04d}"
+    whole = math.floor(frame)
+    fraction = frame - whole
+    fraction_digits = f"{fraction:.3f}".split(".", 1)[1].rstrip("0")
+    return f"{whole:04d}p{fraction_digits}"
+
+
 def arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fbx", type=Path, required=True)
@@ -43,7 +53,7 @@ def arguments() -> argparse.Namespace:
     argv = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else []
     args = parser.parse_args(argv)
     try:
-        args.frames = [int(value) for value in args.frames.split(",")]
+        args.frames = [float(value) for value in args.frames.split(",")]
     except ValueError as error:
         parser.error(f"invalid --frames list: {error}")
     if len(args.frames) < 2 or len(set(args.frames)) != len(args.frames):
@@ -59,6 +69,12 @@ def projected_pixel(scene: bpy.types.Scene, camera: bpy.types.Object, point: Vec
                     image_size: int) -> tuple[int, int]:
     projected = world_to_camera_view(scene, camera, point)
     return (round(projected.x * image_size), round((1.0 - projected.y) * image_size))
+
+
+def projected_float(scene: bpy.types.Scene, camera: bpy.types.Object, point: Vector,
+                    image_size: int) -> tuple[float, float]:
+    projected = world_to_camera_view(scene, camera, point)
+    return (round(projected.x * image_size, 3), round((1.0 - projected.y) * image_size, 3))
 
 
 def draw_weapon_proxy(image: Image.Image, wrist: tuple[int, int], palm: tuple[int, int],
@@ -102,7 +118,8 @@ def main() -> None:
     frames_dir.mkdir(parents=True, exist_ok=True)
     review_dir.mkdir(parents=True, exist_ok=True)
     expected_guide_names = {
-        f"guide_{index:02d}_src_{frame:04d}.png" for index, frame in enumerate(args.frames)
+        f"guide_{index:02d}_src_{source_frame_label(frame)}.png"
+        for index, frame in enumerate(args.frames)
     }
     for stale_guide in frames_dir.glob("guide_*.png"):
         if stale_guide.name not in expected_guide_names:
@@ -122,6 +139,27 @@ def main() -> None:
     action = armature.animation_data.action if armature.animation_data else None
     if action is None:
         raise RuntimeError("FBX contains no active source action")
+    landmark_bones = {
+        "head": ("mixamorig:Head", "mid"),
+        "neck": ("mixamorig:Neck", "head"),
+        "waist": ("mixamorig:Hips", "head"),
+        "shoulder_R": ("mixamorig:RightArm", "head"),
+        "elbow_R": ("mixamorig:RightForeArm", "head"),
+        "hand_R": ("mixamorig:RightHand", "mid"),
+        "shoulder_L": ("mixamorig:LeftArm", "head"),
+        "elbow_L": ("mixamorig:LeftForeArm", "head"),
+        "hand_L": ("mixamorig:LeftHand", "mid"),
+        "hip_R": ("mixamorig:RightUpLeg", "head"),
+        "knee_R": ("mixamorig:RightLeg", "head"),
+        "foot_R": ("mixamorig:RightToeBase", "tail"),
+        "hip_L": ("mixamorig:LeftUpLeg", "head"),
+        "knee_L": ("mixamorig:LeftLeg", "head"),
+        "foot_L": ("mixamorig:LeftToeBase", "tail"),
+    }
+    missing_landmarks = [bone for bone, _ in landmark_bones.values()
+                         if armature.pose.bones.get(bone) is None]
+    if missing_landmarks:
+        raise RuntimeError(f"FBX is missing required motion landmarks: {sorted(set(missing_landmarks))}")
 
     scene.render.engine = "BLENDER_WORKBENCH"
     scene.render.resolution_x = args.image_size
@@ -154,14 +192,17 @@ def main() -> None:
     thumbnails: list[Image.Image] = []
     records: list[dict[str, object]] = []
     for index, frame in enumerate(args.frames):
-        scene.frame_set(frame)
+        base_frame = math.floor(frame)
+        subframe = frame - base_frame
+        scene.frame_set(base_frame, subframe=subframe)
         bpy.context.view_layer.update()
         hips = armature.matrix_world @ hip_bone.head
         target = hips + Vector((0.0, 0.0, 0.14))
         camera.location = target + Vector((2.6, -4.6, 2.1))
         camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
         bpy.context.view_layer.update()
-        scene.render.filepath = str(frames_dir / f"guide_{index:02d}_src_{frame:04d}.png")
+        frame_label = source_frame_label(frame)
+        scene.render.filepath = str(frames_dir / f"guide_{index:02d}_src_{frame_label}.png")
         bpy.ops.render.render(write_still=True)
         guide_path = Path(scene.render.filepath)
         image = Image.open(guide_path).convert("RGBA")
@@ -173,6 +214,16 @@ def main() -> None:
         wrist_xy = projected_pixel(scene, camera, wrist, args.image_size)
         palm_xy = projected_pixel(scene, camera, palm, args.image_size)
         tip_xy = projected_pixel(scene, camera, proxy_tip, args.image_size)
+        body_landmarks: dict[str, list[float]] = {}
+        for label, (bone_name, endpoint) in landmark_bones.items():
+            bone = armature.pose.bones[bone_name]
+            if endpoint == "mid":
+                point = (bone.head + bone.tail) * 0.5
+            else:
+                point = getattr(bone, endpoint)
+            body_landmarks[label] = list(projected_float(
+                scene, camera, armature.matrix_world @ point, args.image_size
+            ))
         draw_weapon_proxy(image, wrist_xy, palm_xy, tip_xy, args.image_size)
         image.save(guide_path)
 
@@ -183,7 +234,7 @@ def main() -> None:
         thumbnails.append(thumb_rgb)
         x, y = (index % 4) * contact_size, (index // 4) * contact_size
         contact.paste(thumb_rgb, (x, y))
-        draw_contact.text((x + 5, y + 4), f"{index:02d} / {frame}f", fill=(18, 18, 18))
+        draw_contact.text((x + 5, y + 4), f"{index:02d} / {frame_label}f", fill=(18, 18, 18))
         records.append({
             "sprite_frame": index,
             "source_frame": frame,
@@ -192,14 +243,19 @@ def main() -> None:
             "right_hand_wrist_xy_px": list(wrist_xy),
             "right_hand_palm_xy_px": list(palm_xy),
             "proxy_tip_xy_px": list(tip_xy),
+            "body_landmarks_xy_px": body_landmarks,
             "proxy_angle_degrees": round(math.degrees(math.atan2(tip_xy[1] - palm_xy[1],
                                                                    tip_xy[0] - palm_xy[0])), 3),
         })
 
-    contact_path = review_dir / "rokoko-basicattack-se-guide-4x4.png"
+    contact_rows = math.ceil(len(args.frames) / 4)
+    contact_path = review_dir / f"rokoko-basicattack-se-guide-4x{contact_rows}.png"
     contact.save(contact_path)
-    frame_durations = [round((args.frames[i + 1] - args.frames[i]) * 1000 / args.fps)
-                       for i in range(len(args.frames) - 1)]
+    frame_durations = []
+    for index in range(len(args.frames) - 1):
+        elapsed_before = round((args.frames[index] - args.frames[0]) * 1000 / args.fps)
+        elapsed_after = round((args.frames[index + 1] - args.frames[0]) * 1000 / args.fps)
+        frame_durations.append(elapsed_after - elapsed_before)
     frame_durations.append(args.recovery_hold_ms)
     gif_path = review_dir / "rokoko-basicattack-se-guide-one-shot.gif"
     thumbnails[0].save(gif_path, save_all=True, append_images=thumbnails[1:],
@@ -208,14 +264,16 @@ def main() -> None:
         "action": "BasicAttack",
         "direction": "SE",
         "frame_count": len(args.frames),
-        "fps": args.fps,
+        "fps": round(args.fps / min(args.frames[i + 1] - args.frames[i]
+                                    for i in range(len(args.frames) - 1))),
+        "source_fps": args.fps,
         "loop": False,
         "duration_ms": sum(frame_durations),
         "source_id": "swordsman_attack_v3_rokoko_01",
         "source_file": args.fbx.name,
         "source_action": action.name,
         "source_frame_range": [args.frames[0], args.frames[-1]],
-        "timing_method": "source-frame spacing at source FPS with one held recovery frame",
+        "timing_method": "source-time sample spacing at source FPS with one held recovery frame",
         "recovery_hold_ms": args.recovery_hold_ms,
         "frames": [
             {
@@ -244,6 +302,8 @@ def main() -> None:
         "root_handling": "review camera follows Hips position while preserving the source body pose and facing rotation",
         "camera": "fixed SE three-quarter review camera; 1024px source frames and 320px contact cells",
         "weapon_guide": "review-only steel/gold proxy attached to RightHand wrist-to-palm axis; source FBX has no weapon mesh",
+        "body_landmarks": "screen-space projections of Mixamo head, neck, torso, shoulder, elbow, hand, hip, knee, and toe joints",
+        "body_landmark_coordinate_space": [args.image_size, args.image_size],
         "frame_durations_ms": frame_durations,
         "review_contact": str(contact_path.relative_to(output)),
         "review_gif": str(gif_path.relative_to(output)),

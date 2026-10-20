@@ -3,7 +3,7 @@
 **Branch:** `character/production-factory-v3`
 **Target:** Male Swordsman
 **Updated:** 20 October 2026
-**Overall:** `BASICATTACK_MOTION_REJECTED_THRUST_LIKE / ATTACK_REPLACEMENT_REQUIRED / WEAPONLIGHT_REVIEW_ONLY / NO_PRODUCTION_MASTER`
+**Overall:** `ROKOKO_BASICATTACK_REVIEW_CANDIDATE / HIGH_RES_REPAINT_REQUIRED / WEAPONLIGHT_REVIEW_ONLY / NO_PRODUCTION_MASTER`
 **Runtime admission:** `DEV_ONLY / NOT_APPROVED`
 
 The existing painted-v2 package is still a fused composite. The owner rejected its Wayfarer Capital screenshots because that is not the requested map; they are retained only as historical development evidence and do not count as a successful current-map visual review. The owner supplied clearer art references and directed that hair, outfit, weapon, cape, and effects be drawn as independent layers. V3 remains development-only and is not production-complete.
@@ -11,10 +11,10 @@ The existing painted-v2 package is still a fused composite. The owner rejected i
 ## Current owner direction
 
 - Use open Ragnarok client source as an architecture reference for composable body/equipment/effect layers, directional sprite actions, and palette handling. Keep Astraeon's art original; Ragnarok code being open-source does not make official game assets open assets.
-- Preserve an approved motion and first paint one whole-character master frame for each action, camera angle, and source frame. The current BasicAttack motion was rejected after guide review; replace it before painting its production master. Cut head/hair, body/outfit, sword, cape, and effects from those same exact frames; do not generate each layer independently.
+- Preserve an approved motion and first paint one whole-character master frame for each action, camera angle, and source frame. The thrust-like `Sword_Attack` remains rejected. A Rokoko SE overhead wind-up and diagonal downstroke is the current review-only replacement motion; it is not approved for production. Cut head/hair, body/outfit, sword, cape, and effects from those same exact frames; do not generate each layer independently.
 - Use the supplied high-detail swordsman images as the current illustration-quality and costume reference. The golden scarf/cloak is on a removable BackAccessory layer and appears in the default reference render.
 - Follow Ragnarok's playback rules: Idle and Walk loop without a terminal duplicate; BasicAttack plays once and transitions from a stable recovery pose. Keep `WeaponLight` separate from the sword and synchronized to action, direction, frame, and blade position, as in the Goro client renderer.
-- Build the next art pass from one 16-frame full master per action, then cut separate transparent layers from those exact frames. Do not flatten a character composite and call its empty slots modular.
+- Build the next art pass from one high-detail full master per source pose, then cut separate transparent layers from those exact frames. Use up to 64 temporal poses for a short fast move when the actual source cadence needs them. Do not flatten a character composite and call its empty slots modular.
 - Increase target art occupancy from the existing 88px reference height to 112px in the same 160px runtime cell while holding the `(80,132)` root and foot baseline. This adds source pixels for crisp detail without changing the world-space character size.
 - Current map acceptance is pending. The prior Wayfarer Capital evidence cannot be used as proof for that gate.
 
@@ -36,6 +36,10 @@ The existing painted-v2 package is still a fused composite. The owner rejected i
 - Drew a six-file transparent concept pilot for BaseBody, Hair, Outfit, BackAccessory, Weapon, and CosmeticFX. Each is a separate source image; the pilot has no full-character composite. These static concepts are not registered together or ready for the runtime.
 - Added a layered-sheet importer that accepts eight-direction sheets with variable frame rows per layer/action and applies the same scale and per-pose transform to every layer. It sets the cloak as the default cosmetic, retains a no-cloak part, and builds `WeaponLight` as its own optional runtime layer. A missing attack effect remains transparent; the rejected `WeaponSlash` sheet is ignored.
 - Tested independent ImageGen sheets for Idle and Walk, then stopped that method after review. Those mismatched images remain as diagnostics in the superseded paint job; they are not production source art.
+- Replaced the rejected thrust study with the Rokoko `SwordFight_mixamo.fbx` SE overhead wind-up, diagonal downstroke, follow-through, and recovery. Blender samples the original FBX at 63 real poses over source frames 480–511 in half-frame increments at 60 fps. The one-shot review lasts 1,330 ms and holds the final recovery pose for 300 ms.
+- Stabilized the SE study with one shared left support foot, a shared +10 px registration correction, and zero sole-baseline error in all 63 poses. Two-bone IK follows the previous solution; projected limb lengths stay within 0.78–1.12×. Head/neck/waist maximum steps are 1.05/0.96/0.93 px and the sword hand follows the guide exactly. The right elbow still moves up to 14.52 px in one 60 fps step; the non-sword hand misses by 16.82 px and the other foot by 10.40 px.
+- Rebuilt the trail as a separate original-gradient `WeaponLight`. It starts midway through the fast stroke at source frame 498.5, reaches 28 px width at frame 499, and fades after impact. The effect follows the Rokoko sword proxy and stays off the face, but it still obscures too much of the tunic.
+- The current iteration 22 is **review-only and not approved**. Its 320 px donor art is softer than the owner's reference, body and cape shapes do not yet match the motion guide, the cape remains baked into `Outfit`, and only SE is available. Review the GIF, guide comparison, trail, and pose audit in [iteration 22](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-22/README.md).
 - Added `cutout_master_sheet.py` for pixel-label cutouts from one complete eight-direction master sheet per action, with variable frame rows. It preserves each frame's camera, pose, pixels, alpha, and layer placement, and verifies exact reconstruction before any runtime import.
 - Added a small browser label editor with per-frame camera selection, zoomed mask painting, and grayscale labels export. The master and labels stay at the exact same eight-column grid before cutout.
 - Added `review_layered_sheets.py` to assemble cutouts, produce GIFs, and measure frame continuity before packaging. The Idle `0.835` and Walk `0.785` results from the abandoned independent-layer experiment are retained only to explain why that method was stopped.
@@ -65,7 +69,7 @@ The existing painted-v2 package is still a fused composite. The owner rejected i
 
 ### Current review GIFs
 
-The established Idle and Walk GIFs still show the eight-frame paint pilot, so they are diagnostic only. Idle and Walk loop; BasicAttack plays once and holds recovery. Playback metadata is correct, but the Idle/Walk artwork still pops at the loop seam and has too few painted poses. Walk's worst seam is `0.614` silhouette IoU. Iteration 8 has a one-shot SE-only trail preview and a guide-to-painted sword comparison; both remain diagnostic because the source gesture reads as a thrust and the painted sword path diverges at several frames. No acceptable 16-frame painted master has been admitted, and no candidate has been previewed on the requested map.
+The established Idle and Walk GIFs still show the eight-frame paint pilot, so they are diagnostic only. Idle and Walk loop; BasicAttack plays once and holds recovery. Playback metadata is correct, but the Idle/Walk artwork still pops at the loop seam and has too few painted poses. Walk's worst seam is `0.614` silhouette IoU. Iteration 8's one-shot SE-only trail and guide comparison are historical diagnostics; the thrust-like source was rejected and the current Rokoko motion study is in iteration 22. No acceptable full-view painted master has been admitted, and no candidate has been previewed on the requested map.
 
 - [Idle master-cutout GIF, eight directions](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/review/layered-v3-idle-8-directions.gif)
 - [Walk master-cutout GIF, eight directions](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v1/review/layered-v3-walk-8-directions.gif)
@@ -78,6 +82,7 @@ The established Idle and Walk GIFs still show the eight-frame paint pilot, so th
 - [BasicAttack 16-frame pose guide GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/guides/basicattack-motion-guide-16-8directions.gif) — one-shot rig guide only.
 - [Iteration 8 SE trail one-shot GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-8/review/basicattack-se-weaponlight-one-shot.gif) — review-only overlay on rejected art and motion.
 - [SE guide and painted-trail comparison GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-8/review/motion-guide-vs-painted-trail-one-shot.gif) — 16-frame one-shot with the same timing on both sides.
+- [Current Rokoko SE guide comparison and trail GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-22/review/rokoko-vs-swordsman-one-shot.gif) — 63 source-time poses at 60 fps; review-only.
 - [Frame-by-frame guide and painted sword comparison](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-8/review/motion-guide-vs-painted-sword-4x4.png) — diagnostic only.
 - [Sword alignment review](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-8/review/motion-alignment-review.json) — records the mismatch and replacement gate.
 - [Iteration 4 transparent WeaponLight sheet](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-4/layers/WeaponLight/weaponlight-se-4x4.png) — separate effect layer.
@@ -104,7 +109,7 @@ These previews are assembled from independently generated layer sheets. They sho
 
 ## Still partial
 
-- **Visual quality and motion:** the current eight-frame masters are below the requested smoothness bar. Sixteen-frame Idle, Walk, and BasicAttack pose guides and timing plans exist. The compact 16-frame SE trial reads as a controlled low diagonal attack, and its review GIF has a locked recovery seam, but it is rejected for blade clipping and missing effect art; it is not a painted eight-direction master. The Walk guide has a weak west/east silhouette seam; Idle is subtle. Earlier full-master trials were rejected for cell-boundary clipping, red fringes, or insufficient pose change.
+- **Visual quality and motion:** the current eight-frame masters remain below the requested smoothness bar. Idle/Walk have 16-phase guides; BasicAttack now has a 63-pose Rokoko SE review guide and a stable one-shot study. Iteration 22 is not a painted eight-direction master; its donor art is soft and does not match the motion closely enough. The Walk guide has a weak west/east silhouette seam; Idle is subtle. Earlier full-master trials were rejected for cell-boundary clipping, red fringes, or insufficient pose change.
 - **Layering:** all three actions now have exact registered visible `BaseBody`, `HeadHair`, `Outfit`, `Weapon`, `BackAccessory`, and `CosmeticFX` cutouts. `Headgear` is empty. Semantic boundaries remain heuristic and need review. Hidden surfaces have not been painted, so outfit/hair/cape swaps that expose them are not production-ready.
 - **Other actions:** Run, Hit, Death, Dash, Guard, and SkillAction are placeholders and still need free-source review and production art.
 - **Production approval:** the painted pixels are provider-generated, so no CC0 claim is made for them. The runtime package remains `DEV_ONLY`, `PLACEHOLDER`, `NOT_FINAL_ART`, and `OWNER_APPROVAL_PENDING`.
@@ -122,23 +127,23 @@ The route shows the candidate in the character creator and actual player rendere
 | Gate | Status | Evidence / remaining work |
 |---|---|---|
 | Canonical rig | **PASS** | 60 bones, stable root, zero V2 actions. |
-| Free motion sources | **PARTIAL** | Mesh2Motion CC0 evidence recorded. Idle and Walk remain candidates; the BasicAttack source is rejected and needs replacement. |
-| Idle / Walk / BasicAttack | **ATTACK SOURCE REPLACEMENT + REPAINT REQUIRED** | Idle/Walk remain candidates. BasicAttack is rejected after guide comparison as thrust-like; select a replacement motion and render a new guide before painting. Current SE sword art also fails alignment and is diagnostic only. |
+| Free motion sources | **PARTIAL** | Mesh2Motion CC0 evidence is recorded. The old thrust-like BasicAttack is rejected; the Rokoko fight clip is now the SE review candidate. |
+| Idle / Walk / BasicAttack | **REVIEW CANDIDATE + HIGH-RES REPAINT REQUIRED** | Idle/Walk remain candidates. BasicAttack now has 32 high-resolution SE paintings, but iteration 23 fails character-continuity and sword-guide checks; it lacks complete directions, accepted cutouts, and owner review. |
 | Eight directions and structural passes | **PASS** | 192 records, six passes, unmirrored directions. |
-| Painted identity and fantasy readability | **REPAINT REQUIRED** | Iteration 8 tests a broad low SE trail with an original plum-gray/lavender-silver/ivory gradient and 1.35× thickness. It remains review-only because the source guide reads as a thrust, the painted blade path does not match it reliably, and only SE is covered. |
+| Painted identity and fantasy readability | **REPAINT REQUIRED** | Iteration 22's donor art is too soft and its trail covers too much tunic. Iteration 23 improves resolution but has frame-to-frame body/cape drift, sword-angle errors, an unaligned trail, and no semantic cutouts; only SE is covered. |
 | Cloak toggling | **PARTIAL** | Earlier procedural on/off comparison exists. Next candidate targets a default golden cloak and transparent no-cloak variant. |
-| Frame-matched cutout layers | **CANDIDATE** | Idle, Walk, and BasicAttack masters and visible cutouts recompose with `0` pixel mismatch. Hidden surfaces and manual semantic-mask review remain. |
+| Frame-matched cutout layers | **CANDIDATE** | The earlier Idle, Walk, and BasicAttack pilot cutouts recompose with `0` pixel mismatch. Iteration 23 has only a separate `WeaponLight`; body, head/hair, outfit, sword, and back accessory layers are still missing. Hidden surfaces and manual semantic-mask review remain. |
 | Remaining six actions | **PENDING** | Static placeholders only. |
 | Runtime package | **PASS as DEV_ONLY** | Schema/atlas validation passes; no production admission. |
 | Actual game preview | **HISTORICAL ONLY / MAP REJECTED** | Prior preview used Wayfarer Capital, which the owner said is the wrong map. New layered candidate and target-map preview are pending. |
-| Owner approval | **PENDING** | The eight-frame painted GIFs and iteration 8 trail remain below the requested quality bar. BasicAttack motion and its painted sword path are rejected. The 16-frame eight-direction GIFs remain low-detail rig guides; an attack replacement and full 8×16 layered art remain outstanding. |
+| Owner approval | **PENDING** | The eight-frame painted GIFs and iterations 22–23 remain below the requested quality bar. The earlier thrust and its painted path are rejected; the current Rokoko motion remains review-only. The 16-frame eight-direction GIFs remain low-detail rig guides; stable high-detail layered art and a target-map preview remain outstanding. |
 
 ## Validation record
 
 | Check | Result | Detail |
 |---|---|---|
 | Factory `--stage all --force` | **PASS** | Blender 5.2.2; rig, motion, guide, handoff, and procedural package stages completed. |
-| Motion production gate | **BLOCKED** | BasicAttack is `REJECTED_VISUAL_QUALITY`; its source must be replaced before production review. |
+| Motion production gate | **BLOCKED** | Iteration 22 is a review-only SE pose study. It is not approved motion/art and lacks complete directions and a game preview. |
 | Painted importer | **PASS** | 192 cells, shared 0.752381 scale, cleanup and alignment report written to the paint job. |
 | Runtime candidate validator | **PASS** | Iteration 2: 9 clip definitions, 20,763,712 decoded atlas bytes, no schema errors. |
 | Procedural runtime validator | **PASS** | 9 clip definitions; no schema errors. |
@@ -148,5 +153,24 @@ The route shows the candidate in the character creator and actual player rendere
 | Sixteen-frame timing | **PASS: SAMPLING PLAN** | Idle, Walk, BasicAttack plans each have 16 unique frame phases. The SE-only painted trial is not a direction-complete master and has no runtime layers. |
 | Frame continuity | **DIAGNOSTIC ONLY / BELOW WARNING** | Eight-frame pilot: Idle mean/min `0.9073 / 0.7739`; Walk `0.8289 / 0.6138`; BasicAttack `0.5529 / 0.3469`. The rejected compact SE trial has minimum adjacent alpha IoU `0.598`; its `1.0` loop seam is created by locking recovery to the first guard frame. Blade clipping still fails the review. |
 | Prior browser preview | **DEVELOPMENT-ONLY / MAP REJECTED** | The attack marker at 983ms is now described as provisional maximum extension; the owner also rejected Wayfarer Capital as the wrong map. |
+
+## Latest review: iteration 23 stability findings (2026-10-20)
+
+[Iteration 23's README](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/README.md) links its 32-frame one-shot GIF, guide comparison, trail contact, and audits.
+
+- The 1280px canvas uses root `(640,1056)`, mapping to the 320px guide root `(160,264)`. The one-shot lasts 1,330ms and holds recovery for 300ms. This proves the exported canvas root is constant; it does not prove the character is stable.
+- The raw full-character paintings vary from 790px to 1,186.5px in detected head-to-floor height. The exporter compensates with per-frame scales from 0.5284 to 0.8177. The source pose and silhouette still change between frames, so this sequence is **REJECTED FOR CONTINUITY / NOT APPROVED**.
+- In the original art, frame 498.0's sword is about −43° and follows the guide; frame 498.5's sword points nearly straight down, about 90° away from its guide axis near +11°. A new full-body 498.5 guide paintover corrects the sword direction but changes the cloak and full silhouette. The guide paintovers at 498.0 and 499.0 still miss their blade axes. None is promoted to the master.
+- The 40px `WeaponLight` ribbon uses the iteration-22 research weapon path, while the iteration-23 sword is independently painted. The contact sheet shows the trail floating near the head instead of tracking the drawn blade. Regenerate it only after the painted sword and guide share a frame-matched path.
+- Iteration 23 does not yet contain registered `BaseBody`, `HeadHair`, `Outfit`, `Weapon`, and `BackAccessory` cuts. The screen-right support-foot anchoring trial shifts the character left in the cell and is rejected.
+- The next candidate must keep one master identity and shared root/scale through the action, paint or deform registered cutouts against the exact Blender guides, preserve the cape as a separate part, and pass the blade-axis and trail alignment review before a game preview.
+
+| Iteration 23 visual audit | Result | Evidence |
+|---|---|---|
+| Shared export root | **PASS AS REGISTRATION ONLY** | `(640,1056)` at 1280px; maps to `(160,264)` at 320px. |
+| Character continuity | **REJECTED** | 32 high-resolution frames need frame-specific scale factors `0.5284–0.8177`; body and cape silhouettes change. |
+| Sword-to-guide alignment | **REJECTED** | Source frame 498.5 misses the guide axis by about 90°; full-body guide paintovers at 498.0 and 499.0 also drift. |
+| WeaponLight alignment | **REJECTED** | Current trail path comes from iteration 22 and does not follow the iteration-23 sword. |
+| Semantic cutouts | **PENDING** | Only `WeaponLight` is separate; character layer cuts have not been made. |
 
 See [the implementation record](PRODUCTION_FACTORY_V3.md), [build evidence](evidence/production-factory-v3-motion.json), [iteration 2 paint job](../../authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v2/imported/job.json), and [Wayfarer Capital browser report](evidence/imagegen-swordsman-v2/wayfarer-capital-review.json) for the full progression and provenance.

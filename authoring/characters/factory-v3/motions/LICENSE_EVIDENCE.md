@@ -36,7 +36,7 @@ Retrieved 2026-10-19. This record covers free sources acquired without an accoun
 
 - Official resource page and stated game/commercial-use scope: <https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations>.
 - The selected `SwordFight_mixamo.fbx` is used only as a motion guide. Its exact archive and FBX hashes, source-page terms, missing receipt/license-file note, and AI-use limitation are documented in `legal-evidence/rokoko-13-free-fight.md`.
-- The guide preserves a source window at 30 FPS, frames 480–516. The original FBX remains local and ignored by Git. It is not yet retargeted to the canonical V3 rig.
+- The current review guide samples source frames 480–511 at 30 FPS, with additional true Blender half-frame evaluations for the 60 fps review. The original FBX remains local and ignored by Git. This pose-study retarget is not an approved canonical V3 rig action.
 
 ## Other reviewed but not selected
 
