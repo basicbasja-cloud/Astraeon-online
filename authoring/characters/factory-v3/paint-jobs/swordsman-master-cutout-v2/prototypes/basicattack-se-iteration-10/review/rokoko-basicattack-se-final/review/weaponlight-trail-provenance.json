@@ -1,0 +1,715 @@
+{
+  "status": "INTERNAL_VISUAL_CANDIDATE_OWNER_REVIEW_PENDING",
+  "action": "BasicAttack",
+  "direction": "SE",
+  "frame_count": 16,
+  "master_frame_dir": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/paintover-normalized-v1/master/frames",
+  "master_frame_sha256": [
+    "47278d49b826a29077ecfcab4185faf8fbfb3171038709d4265315d25f37b156",
+    "49668936c7349e8358d288b9f60d8b44564a2b5b1df5be8c5656fb5eb57694dd",
+    "9bc880b2f2f3237927ec7fa39459bf81c14f3cb75ae4e4aa92c676c04ac012f6",
+    "31054740f6250195dfd951e013e1bee53b1e5b5c3837d18907e5da823ef4ceb0",
+    "5df107b5204365a4c19d87279350381d7629530dca4efb8a9fff080d6aa266c5",
+    "cdb32283117c47f45263bb8f71583519b3748f7a0ba8ec5ed25f8c2aef720fab",
+    "fb659a8858c7c83f8770a8f3b9aef5105aeebefd0baa8074a09258756ecf1473",
+    "32d1f616511060097dfccd0bee4f12e874548ee9193b3a2db52ae05584ca464d",
+    "399ca84f947122c655f4d91c454cbdda49a5e1773352ca2788cd489d78f189c4",
+    "7df3adfac8a637967dc6d7dd6b443ebd84493960ff86cb6dab1d38d7c6df476d",
+    "09744c402953528c92d46920cf04f48621358d53a70b9a40afb33e5ecfd3cb5f",
+    "0243cebf7d39aa5a13d60eaa63fa4f5b520fe413ab8cd56233a404a6f0964dbd",
+    "e601a4b0ca87a0b7a9fae78e1ff5fc8b4221b19c1c2d22b6c8e570d4d8a99cb5",
+    "6b4cbc22c92ea91a8f57c6e86ea453446e62e021a103135b6b527768c1eebfeb",
+    "671d0516bd279c7fa0b36935323699c2c311ac39b71fd274540a285c75468b4e",
+    "0f41ea3e6d38b002c073b5e777b6b896b66ab20b76c2c8a9069992e664a36ece"
+  ],
+  "timeline": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/source/rokoko-blender-guide/motion-timeline.json",
+  "timeline_sha256": "d5cf2edc1cc6c5b73d04dac57818dfc62c21a427f3e3f39a97246110802ea52f",
+  "projected_rokoko_path": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/source/rokoko-blender-guide/projected-sword-path.json",
+  "projected_rokoko_path_sha256": "fc9068b94de622f729ec01beba9abdba85fb228f326fcdd8e41c7f77f221db96",
+  "art_direction": "Original thick diagonal hook ribbon, timed to Rokoko's raised-sword/downward strike; plum-gray rim, lavender-silver body and warm-ivory inner light.",
+  "frame_curves_cell_px": {
+    "6": [
+      [
+        150,
+        48
+      ],
+      [
+        154,
+        44
+      ],
+      [
+        160,
+        43
+      ],
+      [
+        166,
+        45
+      ]
+    ],
+    "7": [
+      [
+        151,
+        49
+      ],
+      [
+        174,
+        41
+      ],
+      [
+        197,
+        43
+      ],
+      [
+        211,
+        55
+      ]
+    ],
+    "8": [
+      [
+        211,
+        54
+      ],
+      [
+        224,
+        88
+      ],
+      [
+        180,
+        143
+      ],
+      [
+        143,
+        192
+      ]
+    ],
+    "9": [
+      [
+        208,
+        63
+      ],
+      [
+        226,
+        108
+      ],
+      [
+        190,
+        158
+      ],
+      [
+        162,
+        204
+      ]
+    ],
+    "10": [
+      [
+        199,
+        77
+      ],
+      [
+        212,
+        124
+      ],
+      [
+        184,
+        174
+      ],
+      [
+        174,
+        210
+      ]
+    ],
+    "11": [
+      [
+        188,
+        95
+      ],
+      [
+        202,
+        136
+      ],
+      [
+        170,
+        184
+      ],
+      [
+        156,
+        210
+      ]
+    ],
+    "12": [
+      [
+        176,
+        111
+      ],
+      [
+        190,
+        144
+      ],
+      [
+        166,
+        174
+      ],
+      [
+        159,
+        199
+      ]
+    ],
+    "13": [
+      [
+        165,
+        126
+      ],
+      [
+        178,
+        148
+      ],
+      [
+        161,
+        175
+      ],
+      [
+        156,
+        190
+      ]
+    ]
+  },
+  "width_profile": "smooth sine taper with a sharp point at both ends; max width varies by strike phase",
+  "registration_method": "Rokoko projected RightHand axis determines strike direction and phase; 2D curve is fitted to painted sword tip positions because the fantasy sword is longer than the review proxy.",
+  "composition": "WeaponLight remains an independent transparent layer. Main preview composites the effect behind the full painted character, preserving sword and glove readability.",
+  "playback": {
+    "normal_gif_duration_ms": 1800,
+    "slow_gif_duration_ms": 3600,
+    "final_recovery_hold_ms": 600,
+    "gif_loop_extension": false,
+    "gif_review_scale": 3,
+    "gif_palette_colors": 255
+  },
+  "frames": [
+    {
+      "sprite_frame": 0,
+      "source_frame": 480,
+      "source_proxy_hand_xy_px": [
+        563.291,
+        563.77
+      ],
+      "source_proxy_tip_xy_px": [
+        664.835,
+        575.301
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        93.465,
+        10.614
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 1,
+      "source_frame": 482,
+      "source_proxy_hand_xy_px": [
+        559.685,
+        562.248
+      ],
+      "source_proxy_tip_xy_px": [
+        656.126,
+        573.1
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        88.768,
+        9.989
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 2,
+      "source_frame": 485,
+      "source_proxy_hand_xy_px": [
+        554.033,
+        550.21
+      ],
+      "source_proxy_tip_xy_px": [
+        644.923,
+        554.223
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        83.658,
+        3.694
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 3,
+      "source_frame": 487,
+      "source_proxy_hand_xy_px": [
+        544.684,
+        521.26
+      ],
+      "source_proxy_tip_xy_px": [
+        624.074,
+        504.924
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        73.073,
+        -15.036
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 4,
+      "source_frame": 490,
+      "source_proxy_hand_xy_px": [
+        505.577,
+        436.622
+      ],
+      "source_proxy_tip_xy_px": [
+        540.512,
+        342.583
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        32.155,
+        -86.557
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 5,
+      "source_frame": 492,
+      "source_proxy_hand_xy_px": [
+        463.576,
+        381.051
+      ],
+      "source_proxy_tip_xy_px": [
+        434.964,
+        230.169
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        -26.336,
+        -138.877
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 6,
+      "source_frame": 494,
+      "source_proxy_hand_xy_px": [
+        447.799,
+        354.776
+      ],
+      "source_proxy_tip_xy_px": [
+        469.436,
+        24.692
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        19.916,
+        -303.82
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          150,
+          48
+        ],
+        [
+          154,
+          44
+        ],
+        [
+          160,
+          43
+        ],
+        [
+          166,
+          45
+        ]
+      ],
+      "opacity": 0.16,
+      "maximum_width_cell_px": 8.0,
+      "alpha_bounds_xyxy": [
+        149,
+        36,
+        167,
+        53
+      ]
+    },
+    {
+      "sprite_frame": 7,
+      "source_frame": 497,
+      "source_proxy_hand_xy_px": [
+        448.079,
+        370.233
+      ],
+      "source_proxy_tip_xy_px": [
+        626.893,
+        211.967
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        164.586,
+        -145.673
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          151,
+          49
+        ],
+        [
+          174,
+          41
+        ],
+        [
+          197,
+          43
+        ],
+        [
+          211,
+          55
+        ]
+      ],
+      "opacity": 0.34,
+      "maximum_width_cell_px": 17.0,
+      "alpha_bounds_xyxy": [
+        149,
+        29,
+        214,
+        60
+      ]
+    },
+    {
+      "sprite_frame": 8,
+      "source_frame": 499,
+      "source_proxy_hand_xy_px": [
+        397.479,
+        429.501
+      ],
+      "source_proxy_tip_xy_px": [
+        410.48,
+        488.129
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        11.966,
+        53.963
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          211,
+          54
+        ],
+        [
+          224,
+          88
+        ],
+        [
+          180,
+          143
+        ],
+        [
+          143,
+          192
+        ]
+      ],
+      "opacity": 0.76,
+      "maximum_width_cell_px": 45.0,
+      "alpha_bounds_xyxy": [
+        140,
+        51,
+        233,
+        195
+      ]
+    },
+    {
+      "sprite_frame": 9,
+      "source_frame": 502,
+      "source_proxy_hand_xy_px": [
+        410.201,
+        520.656
+      ],
+      "source_proxy_tip_xy_px": [
+        448.707,
+        629.219
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        35.442,
+        99.924
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          208,
+          63
+        ],
+        [
+          226,
+          108
+        ],
+        [
+          190,
+          158
+        ],
+        [
+          162,
+          204
+        ]
+      ],
+      "opacity": 0.87,
+      "maximum_width_cell_px": 48.0,
+      "alpha_bounds_xyxy": [
+        158,
+        61,
+        237,
+        207
+      ]
+    },
+    {
+      "sprite_frame": 10,
+      "source_frame": 504,
+      "source_proxy_hand_xy_px": [
+        423.768,
+        551.789
+      ],
+      "source_proxy_tip_xy_px": [
+        434.483,
+        686.869
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        9.863,
+        124.332
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          199,
+          77
+        ],
+        [
+          212,
+          124
+        ],
+        [
+          184,
+          174
+        ],
+        [
+          174,
+          210
+        ]
+      ],
+      "opacity": 0.72,
+      "maximum_width_cell_px": 42.0,
+      "alpha_bounds_xyxy": [
+        163,
+        75,
+        225,
+        213
+      ]
+    },
+    {
+      "sprite_frame": 11,
+      "source_frame": 506,
+      "source_proxy_hand_xy_px": [
+        427.642,
+        554.728
+      ],
+      "source_proxy_tip_xy_px": [
+        448.098,
+        693.317
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        18.828,
+        127.562
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          188,
+          95
+        ],
+        [
+          202,
+          136
+        ],
+        [
+          170,
+          184
+        ],
+        [
+          156,
+          210
+        ]
+      ],
+      "opacity": 0.5,
+      "maximum_width_cell_px": 34.0,
+      "alpha_bounds_xyxy": [
+        151,
+        93,
+        210,
+        213
+      ]
+    },
+    {
+      "sprite_frame": 12,
+      "source_frame": 509,
+      "source_proxy_hand_xy_px": [
+        420.16,
+        530.479
+      ],
+      "source_proxy_tip_xy_px": [
+        465.421,
+        614.894
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        41.66,
+        77.699
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          176,
+          111
+        ],
+        [
+          190,
+          144
+        ],
+        [
+          166,
+          174
+        ],
+        [
+          159,
+          199
+        ]
+      ],
+      "opacity": 0.3,
+      "maximum_width_cell_px": 25.0,
+      "alpha_bounds_xyxy": [
+        152,
+        109,
+        196,
+        201
+      ]
+    },
+    {
+      "sprite_frame": 13,
+      "source_frame": 511,
+      "source_proxy_hand_xy_px": [
+        422.734,
+        517.147
+      ],
+      "source_proxy_tip_xy_px": [
+        469.341,
+        612.658
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        42.898,
+        87.911
+      ],
+      "trail_active": true,
+      "curve_points_cell_px": [
+        [
+          165,
+          126
+        ],
+        [
+          178,
+          148
+        ],
+        [
+          161,
+          175
+        ],
+        [
+          156,
+          190
+        ]
+      ],
+      "opacity": 0.14,
+      "maximum_width_cell_px": 16.0,
+      "alpha_bounds_xyxy": [
+        152,
+        125,
+        181,
+        191
+      ]
+    },
+    {
+      "sprite_frame": 14,
+      "source_frame": 514,
+      "source_proxy_hand_xy_px": [
+        443.754,
+        505.955
+      ],
+      "source_proxy_tip_xy_px": [
+        449.073,
+        510.24
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        4.896,
+        3.944
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    },
+    {
+      "sprite_frame": 15,
+      "source_frame": 516,
+      "source_proxy_hand_xy_px": [
+        457.619,
+        503.802
+      ],
+      "source_proxy_tip_xy_px": [
+        433.953,
+        414.423
+      ],
+      "source_proxy_blade_delta_xy_px": [
+        -21.783,
+        -82.267
+      ],
+      "trail_active": false,
+      "curve_points_cell_px": [],
+      "opacity": 0,
+      "maximum_width_cell_px": 0,
+      "alpha_bounds_xyxy": []
+    }
+  ],
+  "limitations": [
+    "SE BasicAttack only; other directions and actions are not included.",
+    "The 16 painted full-character frames remain a review master; semantic cutout layers, canonical V3 retarget, and game runtime integration are not completed.",
+    "Frame artwork is an image-generation paintover and is not yet owner-approved."
+  ],
+  "outputs": {
+    "layer_contact": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/review/weaponlight-layer-contact-4x4.jpg",
+    "behind_contact": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/review/rokoko-basicattack-se-behind-contact-4x4.jpg",
+    "over_contact": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/review/rokoko-basicattack-se-over-contact-4x4.jpg",
+    "normal_one_shot": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/review/rokoko-basicattack-se-final-one-shot.gif",
+    "slow_motion_one_shot": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/review/rokoko-basicattack-se-final-slow-motion-one-shot.gif",
+    "transparent_layer_sheet": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/layers/WeaponLight/weaponlight-se-4x4.png",
+    "transparent_vertical_strip": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-10/review/rokoko-basicattack-se-final/layers/WeaponLight/weaponlight-se-16-strip.png"
+  }
+}

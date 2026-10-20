@@ -32,10 +32,16 @@ Retrieved 2026-10-19. This record covers free sources acquired without an accoun
 - The bundle contains separate `Idle_Sword`, `Walk`, and `Sword_Attack` actions on a 66-bone human skeleton at 24 FPS. All three are mapped through `mesh2motion_human_glb` to new V3 actions. The raw GLB remains local and ignored by Git.
 - The README notes some human clips originate from Quaternius. The selected bundle is licensed CC0 by the Mesh2Motion project; the old Quaternius source clips are not selected in this build.
 
+## Rokoko — 13 Free Fight Animations
+
+- Official resource page and stated game/commercial-use scope: <https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations>.
+- The selected `SwordFight_mixamo.fbx` is used only as a motion guide. Its exact archive and FBX hashes, source-page terms, missing receipt/license-file note, and AI-use limitation are documented in `legal-evidence/rokoko-13-free-fight.md`.
+- The guide preserves a source window at 30 FPS, frames 480–516. The original FBX remains local and ignored by Git. It is not yet retargeted to the canonical V3 rig.
+
 ## Other reviewed but not selected
 
 - The other Quaternius and Umplix motion files are listed in `candidates.json` with the visual or retarget reasons for rejection.
-- The downloaded MoCap Online and Rokoko pages were not used. This intake follows the user's direction to use another free source, and no account-only or paid material was acquired.
+- MoCap Online was not used. This intake follows the user's direction to choose another free source; no account-only or paid material was acquired.
 
 ## Mixamo fallback evaluated
 

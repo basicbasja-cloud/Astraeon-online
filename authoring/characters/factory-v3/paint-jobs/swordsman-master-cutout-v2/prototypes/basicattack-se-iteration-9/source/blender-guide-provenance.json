@@ -1,0 +1,76 @@
+{
+  "schema": "blender-motion-guide-paintover-v1",
+  "source_motion_id": "swordsman_attack_v3_m2m_01",
+  "action": "V3_swordsman_attack_v3_m2m_01",
+  "direction": "SE",
+  "frame_count": 16,
+  "cell_size_px": [
+    1024,
+    1024
+  ],
+  "layout": "4x4 row-major for sheets; source PNGs retain 1024x1024 canonical camera/root canvas",
+  "source_scene": "authoring/characters/factory-v3/motions/retargeted/basicattack.blend",
+  "source_scene_sha256": "74f0158937087cab66ad533562149dd3f0bebb144f25b8aa3601cbad97c0cb00",
+  "timeline": "authoring/characters/factory-v3/motions/retargeted/16frame-candidate/basicattack.timeline.json",
+  "timeline_sha256": "1544b6321100777cf2dddbb5f1d17f05f10122aabdae2e0f67f1deeb07574c5b",
+  "blender": "5.0.1 (official release; opened 5.0.2 scene read-only; did not save source blend)",
+  "render": {
+    "engine": "CYCLES",
+    "samples": 12,
+    "transparent": true
+  },
+  "frame_timing_ms": [
+    116,
+    116,
+    155,
+    154,
+    106,
+    107,
+    106,
+    106,
+    126,
+    126,
+    101,
+    102,
+    202,
+    155,
+    155,
+    33
+  ],
+  "gif_timing_ms": [
+    116,
+    116,
+    155,
+    154,
+    106,
+    107,
+    106,
+    106,
+    126,
+    126,
+    101,
+    102,
+    202,
+    155,
+    155,
+    633
+  ],
+  "final_recovery_hold_ms": 600,
+  "gif_loop_extension": false,
+  "outputs": {
+    "full_resolution_sheet": {
+      "path": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-9/source/blender-guide-se-4x4-4096.png",
+      "sha256": "366f67890dd3438b71ac0a5d2fb8af0dccd5b6a83cf09b8af90de9b5b715ae4d"
+    },
+    "review_contact_sheet": {
+      "path": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-9/review/motion-guide-se-4x4-2048.png",
+      "sha256": "f48569613fc8ef92059bac9ba89a0c5a1e2afecb56c1b1dcb35c6928135c86f2"
+    },
+    "one_shot_gif": {
+      "path": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-9/review/motion-guide-se-one-shot-1024.gif",
+      "sha256": "97c55d9ded0c05ef3caf7fdb1722d5771f24cfed2a0f5b3ae9a781b48c18f298"
+    }
+  },
+  "motion_modified": false,
+  "note": "Blender 5.0.1 logged a newer-binary warning for the 5.0.2 source. The scene was used only to render; the source file was not saved."
+}

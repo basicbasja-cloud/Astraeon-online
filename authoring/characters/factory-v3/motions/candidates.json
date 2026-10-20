@@ -86,18 +86,74 @@
       "source_url": "https://www.rokoko.com/resources/rokoko-mocap-16-free-walk-and-run-cycle-animations"
     },
     {
-      "commercial_use_status": "NOT_REVIEWED",
+      "commercial_use_status": "OFFICIAL_RESOURCE_PAGE_STATES_COMMERCIAL_USE",
       "id": "rokoko_fight_13_free",
-      "license_summary": "Rokoko's official resource page is listed as free for commercial projects; exact terms and acquisition receipt have not been reviewed.",
-      "production_status": "NOT_ATTEMPTED_TIER_2",
+      "license_summary": "Official resource page describes the pack as free and permits use in animation, VFX, games, and 3D art, including commercial projects. Archive has no separate license file or receipt; see legal-evidence/rokoko-13-free-fight.md.",
+      "production_status": "ACQUIRED_AND_REVIEWED",
       "provider": "Rokoko",
       "requested_format": "FBX",
-      "retarget_permission_status": "NOT_REVIEWED",
+      "retarget_permission_status": "SOURCE_PAGE_REVIEWED; AI-SPECIFIC TERMS NOT STATED",
       "roles": [
         "BasicAttack"
       ],
       "source_title": "13 free fight animations",
-      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations"
+      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations",
+      "source_archive_sha256": "380c9854b4ac21de8a2ee436ae3d2bbef9afddb6af3bc97345eeb49b93de7cf8"
+    },
+    {
+      "acquisition_date": "2026-10-20",
+      "ai_usage_status": "MOTION_REFERENCE_ONLY; SOURCE_PAGE_DOES_NOT_SEPARATELY_STATE_AI_TERMS",
+      "commercial_use_status": "OFFICIAL_RESOURCE_PAGE_STATES_COMMERCIAL_USE; RECEIPT_NOT_IN_ARCHIVE",
+      "duration_seconds": 1.336,
+      "file_sha256": "3f11e6470ee34c2b697eb0b49fd6ba2e3f71e360b3bfb8182ccc138e1917d036",
+      "id": "swordsman_attack_v3_rokoko_01",
+      "license_evidence": [
+        "authoring/characters/factory-v3/motions/legal-evidence/rokoko-13-free-fight.md",
+        "authoring/characters/factory-v3/motions/LICENSE_EVIDENCE.md"
+      ],
+      "license_summary": "Official resource page states free use for games/commercial projects; the downloaded archive contains no separate license file or receipt. This source is used as a pose reference only.",
+      "local_path": "authoring/characters/factory-v3/motions/raw/rokoko_13_free_fight/SwordFight_mixamo.fbx",
+      "loop": false,
+      "modification_status": "SOURCE_FRAMES_480_511_SAMPLED_16; SHARED_SCALE_AND_EXACT_320PX_FOOT_BASELINE; NOT_RETARGETED_TO_CANONICAL_V3_RIG",
+      "original_filename": "SwordFight_mixamo.fbx",
+      "original_fps": 30,
+      "original_skeleton": {
+        "armature": "mixamorig:Reference",
+        "bone_count": 52,
+        "forward_axis": "-Z",
+        "up_axis": "Y"
+      },
+      "production_status": "MOTION_GUIDE_READY; PAINTOVER_REJECTED_POSE_FIDELITY",
+      "provider": "Rokoko",
+      "retarget_permission_status": "SOURCE_PAGE_GAME_ART_USE_REVIEWED; CANONICAL_RETARGET_PENDING",
+      "source_archive_sha256": "380c9854b4ac21de8a2ee436ae3d2bbef9afddb6af3bc97345eeb49b93de7cf8",
+      "source_action": "mixamorig:Reference|clip|Base_Layer",
+      "source_format": "FBX",
+      "source_frame_range": [
+        480,
+        511
+      ],
+      "sampled_source_frames": [
+        480,
+        482,
+        485,
+        487,
+        490,
+        492,
+        494,
+        496,
+        498,
+        499,
+        500,
+        502,
+        504,
+        506,
+        509,
+        511
+      ],
+      "source_title": "Rokoko Mocap 13 Free Fight Animations — SwordFight mixamo",
+      "source_url": "https://www.rokoko.com/resources/rokoko-mocap-13-free-fight-animations",
+      "visual_evaluation_status": "BLENDER_GUIDE_REVIEWED; RAISED_SWORD_DIAGONAL_DOWNSTROKE_SELECTED; PAINTOVER_REJECTED_POSE_MISMATCH; FOOT_ROOT_BASELINE_VALIDATED"
     }
   ],
   "comparison": {
@@ -194,6 +250,13 @@
         "id": "OGA_dummy_sword_attack_ii",
         "reason": "Broad arm extension with ambiguous sword contact.",
         "status": "REJECTED_VISUAL_QUALITY"
+      },
+      {
+        "action": "BasicAttack",
+        "decision": "The Rokoko SE guide is selected for an overhead-to-diagonal-downstroke one-shot, sampled at source frames 480-511. Reject the iteration-11 paintover: its first poses and sword/arm positions do not match the guide. The painted review GIF has a fixed footwear root, but art replacement and owner review remain outstanding.",
+        "id": "swordsman_attack_v3_rokoko_01",
+        "source_action": "SwordFight_mixamo.fbx frames 480–516",
+        "status": "REJECTED_PAINTOVER_POSE_FIDELITY"
       }
     ],
     "criteria": [
@@ -207,7 +270,7 @@
       "game_scale_readability"
     ],
     "render_scale": "320x320 structural guides and 160x160 game-scale contact sheets",
-    "status": "BASICATTACK_REPLACEMENT_REQUIRED_IDLE_WALK_CANDIDATES_REMAIN"
+    "status": "ROKOKO_GUIDE_SELECTED_PAINTOVER_REPLACEMENT_REQUIRED_IDLE_WALK_CANDIDATES_REMAIN"
   },
   "imported_motions": [
     {
@@ -428,11 +491,12 @@
       "Quaternius CC0 animation packs"
     ],
     "user_steering": "Use another free public source; Mesh2Motion is allowed; search only free mocap or animation.",
-    "visual_acceptance_required": true
+    "visual_acceptance_required": true,
+    "current_basicattack_direction": "Follow the selected Rokoko motion as-is; do not force a side cut."
   },
   "schema_version": 1,
   "selected": {
-    "BasicAttack": "swordsman_attack_v3_m2m_01",
+    "BasicAttack": "swordsman_attack_v3_rokoko_01",
     "Death": null,
     "Hit": null,
     "Idle": "swordsman_idle_v3_m2m_01",

@@ -13,7 +13,6 @@ from typing import Any
 from PIL import Image
 
 
-CELL = (160, 160)
 GRID = (4, 4)
 
 
@@ -41,7 +40,10 @@ def read_opacity_map(path: Path) -> list[float]:
     return [float(value) for value in values]
 
 
-def read_transform_map(path: Path) -> list[dict[str, float] | None]:
+def read_transform_map(
+    path: Path,
+    offset_limit: float = 24,
+) -> list[dict[str, float] | None]:
     values = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(values, list) or len(values) != 16:
         raise ValueError("frame transform map must contain 16 entries")
@@ -57,12 +59,18 @@ def read_transform_map(path: Path) -> list[dict[str, float] | None]:
             raise ValueError(f"frame transform {index} must use exactly {sorted(required)}")
         if any(isinstance(value, bool) or not isinstance(value, (int, float)) for value in item.values()):
             raise ValueError(f"frame transform {index} contains a non-number")
-        if not 0.5 <= item["width_scale"] <= 1.5:
-            raise ValueError(f"frame transform {index} width_scale must be in [0.5, 1.5]")
-        if not -30 <= item["angle_degrees"] <= 30:
-            raise ValueError(f"frame transform {index} angle_degrees must be in [-30, 30]")
-        if not -24 <= item["offset_x"] <= 24 or not -24 <= item["offset_y"] <= 24:
-            raise ValueError(f"frame transform {index} offsets must be in [-24, 24]")
+        if not 0.1 <= item["width_scale"] <= 1.5:
+            raise ValueError(f"frame transform {index} width_scale must be in [0.1, 1.5]")
+        if not -60 <= item["angle_degrees"] <= 60:
+            raise ValueError(f"frame transform {index} angle_degrees must be in [-60, 60]")
+        if (
+            not -offset_limit <= item["offset_x"] <= offset_limit
+            or not -offset_limit <= item["offset_y"] <= offset_limit
+        ):
+            raise ValueError(
+                f"frame transform {index} offsets must be in "
+                f"[-{offset_limit:g}, {offset_limit:g}]"
+            )
         normalized.append({key: float(value) for key, value in item.items()})
     return normalized
 
@@ -75,6 +83,7 @@ def compose_inside_cell(
     thickness_scale_y: float,
     opacity: float,
     frame_opacity: float,
+    cell_size: int,
 ) -> tuple[Image.Image, list[int]]:
     crop = source.crop(bbox)
     width = max(1, round(base_width * transform["width_scale"]))
@@ -87,15 +96,15 @@ def compose_inside_cell(
         expand=True,
     )
 
-    center_x = round(CELL[0] / 2 + transform["offset_x"])
-    center_y = round(CELL[1] * 0.54 + transform["offset_y"])
+    center_x = round(cell_size / 2 + transform["offset_x"])
+    center_y = round(cell_size * 0.54 + transform["offset_y"])
     left = center_x - rotated.width // 2
     top = center_y - rotated.height // 2
-    canvas = Image.new("RGBA", CELL, (0, 0, 0, 0))
+    canvas = Image.new("RGBA", (cell_size, cell_size), (0, 0, 0, 0))
     src_left = max(0, -left)
     src_top = max(0, -top)
-    src_right = min(rotated.width, CELL[0] - left)
-    src_bottom = min(rotated.height, CELL[1] - top)
+    src_right = min(rotated.width, cell_size - left)
+    src_bottom = min(rotated.height, cell_size - top)
     if src_right > src_left and src_bottom > src_top:
         visible = rotated.crop((src_left, src_top, src_right, src_bottom))
         canvas.alpha_composite(visible, (max(0, left), max(0, top)))
@@ -110,35 +119,41 @@ def compose_inside_cell(
     return canvas, list(visible_bbox)
 
 
-def write_contact_sheet(frames: list[Image.Image], path: Path) -> None:
-    sheet = Image.new("RGBA", (CELL[0] * GRID[0], CELL[1] * GRID[1]), (235, 235, 235, 255))
+def write_contact_sheet(frames: list[Image.Image], path: Path, cell_size: int) -> None:
+    sheet = Image.new("RGBA", (cell_size * GRID[0], cell_size * GRID[1]), (235, 235, 235, 255))
     for index, frame in enumerate(frames):
-        sheet.alpha_composite(frame, ((index % GRID[0]) * CELL[0], (index // GRID[0]) * CELL[1]))
+        sheet.alpha_composite(frame, ((index % GRID[0]) * cell_size, (index // GRID[0]) * cell_size))
     sheet.convert("RGB").save(path)
 
 
-def write_transparent_sheet(frames: list[Image.Image], path: Path) -> None:
-    sheet = Image.new("RGBA", (CELL[0] * GRID[0], CELL[1] * GRID[1]), (0, 0, 0, 0))
+def write_transparent_sheet(frames: list[Image.Image], path: Path, cell_size: int) -> None:
+    sheet = Image.new("RGBA", (cell_size * GRID[0], cell_size * GRID[1]), (0, 0, 0, 0))
     for index, frame in enumerate(frames):
-        sheet.alpha_composite(frame, ((index % GRID[0]) * CELL[0], (index // GRID[0]) * CELL[1]))
+        sheet.alpha_composite(frame, ((index % GRID[0]) * cell_size, (index // GRID[0]) * cell_size))
     sheet.save(path)
 
 
-def write_vertical_strip(frames: list[Image.Image], path: Path) -> None:
-    strip = Image.new("RGBA", (CELL[0], CELL[1] * len(frames)), (0, 0, 0, 0))
+def write_vertical_strip(frames: list[Image.Image], path: Path, cell_size: int) -> None:
+    strip = Image.new("RGBA", (cell_size, cell_size * len(frames)), (0, 0, 0, 0))
     for index, frame in enumerate(frames):
-        strip.alpha_composite(frame, (0, index * CELL[1]))
+        strip.alpha_composite(frame, (0, index * cell_size))
     strip.save(path)
 
 
-def write_gif(frames: list[Image.Image], durations: list[int], path: Path, scale: int) -> int:
+def write_gif(
+    frames: list[Image.Image],
+    durations: list[int],
+    path: Path,
+    scale: int,
+    cell_size: int,
+) -> int:
     background = (235, 235, 235, 255)
     canvases = []
     for frame in frames:
-        canvas = Image.new("RGBA", CELL, background)
+        canvas = Image.new("RGBA", (cell_size, cell_size), background)
         canvas.alpha_composite(frame)
         if scale != 1:
-            canvas = canvas.resize((CELL[0] * scale, CELL[1] * scale), Image.Resampling.LANCZOS)
+            canvas = canvas.resize((cell_size * scale, cell_size * scale), Image.Resampling.LANCZOS)
         canvases.append(canvas.convert("RGB"))
 
     palette_source = Image.new("RGB", (canvases[0].width, canvases[0].height * len(canvases)))
@@ -181,8 +196,15 @@ def main() -> int:
     parser.add_argument("--opacity", type=float, default=0.94)
     parser.add_argument("--offset-y", type=int, default=0)
     parser.add_argument("--scale", type=int, default=3, help="Review GIF integer scale")
+    parser.add_argument("--cell-size", type=int, default=160, help="Square frame canvas in pixels")
     args = parser.parse_args()
-    if args.base_width < 1 or not 0.5 <= args.thickness_scale_y <= 2.0 or not 0.0 < args.opacity <= 1.0 or args.scale < 1:
+    if (
+        args.base_width < 1
+        or not 0.5 <= args.thickness_scale_y <= 2.0
+        or not 0.0 < args.opacity <= 1.0
+        or args.scale < 1
+        or args.cell_size < 32
+    ):
         parser.error("invalid width, thickness, opacity or review scale")
 
     source = Image.open(args.sweep_image).convert("RGBA")
@@ -199,7 +221,10 @@ def main() -> int:
         parser.error(f"timeline must contain exactly 16 frames; got {len(timeline_frames)}")
     durations = [int(frame["duration_ms"]) for frame in timeline_frames]
     opacity_map = read_opacity_map(args.frame_opacity_map)
-    transform_map = read_transform_map(args.frame_transform_map)
+    transform_map = read_transform_map(
+        args.frame_transform_map,
+        offset_limit=max(24, args.cell_size * 0.4),
+    )
     if any((opacity_map[index] == 0) != (transform_map[index] is None) for index in range(16)):
         parser.error("opacity and transform maps must mark the same active frames")
 
@@ -211,7 +236,7 @@ def main() -> int:
     trails: list[Image.Image] = []
     records: list[dict[str, Any]] = []
     for index, transform in enumerate(transform_map):
-        frame = Image.new("RGBA", CELL, (0, 0, 0, 0))
+        frame = Image.new("RGBA", (args.cell_size, args.cell_size), (0, 0, 0, 0))
         visible_bbox: list[int] = []
         if transform is not None:
             adjusted = dict(transform)
@@ -224,8 +249,15 @@ def main() -> int:
                 args.thickness_scale_y,
                 args.opacity,
                 opacity_map[index],
+                args.cell_size,
             )
-            if visible_bbox[0] < 3 or visible_bbox[1] < 3 or visible_bbox[2] > 157 or visible_bbox[3] > 157:
+            margin = max(3, round(args.cell_size * 3 / 160))
+            if (
+                visible_bbox[0] < margin
+                or visible_bbox[1] < margin
+                or visible_bbox[2] > args.cell_size - margin
+                or visible_bbox[3] > args.cell_size - margin
+            ):
                 raise ValueError(f"frame {index} trail touches the 3px safety boundary: {visible_bbox}")
         frame.save(frames_dir / f"weaponlight_se_{index:02}.png")
         trails.append(frame)
@@ -239,8 +271,8 @@ def main() -> int:
             "alpha_bbox_xyxy": visible_bbox,
         })
 
-    write_transparent_sheet(trails, args.layers_dir / "weaponlight-se-4x4.png")
-    write_vertical_strip(trails, args.layers_dir / "weaponlight-se-16.png")
+    write_transparent_sheet(trails, args.layers_dir / "weaponlight-se-4x4.png", args.cell_size)
+    write_vertical_strip(trails, args.layers_dir / "weaponlight-se-16.png", args.cell_size)
 
     poses: list[Image.Image] = []
     for index in range(16):
@@ -248,8 +280,11 @@ def main() -> int:
         if not pose_path.exists():
             parser.error(f"missing character frame: {pose_path}")
         pose = Image.open(pose_path).convert("RGBA")
-        if pose.size != CELL:
-            parser.error(f"character frames must be 160x160; {pose_path} is {pose.size}")
+        if pose.size != (args.cell_size, args.cell_size):
+            parser.error(
+                f"character frames must be {args.cell_size}x{args.cell_size}; "
+                f"{pose_path} is {pose.size}"
+            )
         poses.append(pose)
 
     behind: list[Image.Image] = []
@@ -262,10 +297,22 @@ def main() -> int:
         over_frame.alpha_composite(trail)
         over.append(over_frame)
 
-    write_contact_sheet(behind, args.review_dir / "weaponlight-behind-contact-4x4.png")
-    write_contact_sheet(over, args.review_dir / "weaponlight-over-contact-4x4.png")
-    behind_duration = write_gif(behind, durations, args.review_dir / "basicattack-se-weaponlight-behind-one-shot.gif", args.scale)
-    over_duration = write_gif(over, durations, args.review_dir / "basicattack-se-weaponlight-one-shot.gif", args.scale)
+    write_contact_sheet(behind, args.review_dir / "weaponlight-behind-contact-4x4.png", args.cell_size)
+    write_contact_sheet(over, args.review_dir / "weaponlight-over-contact-4x4.png", args.cell_size)
+    behind_duration = write_gif(
+        behind,
+        durations,
+        args.review_dir / "basicattack-se-weaponlight-behind-one-shot.gif",
+        args.scale,
+        args.cell_size,
+    )
+    over_duration = write_gif(
+        over,
+        durations,
+        args.review_dir / "basicattack-se-weaponlight-one-shot.gif",
+        args.scale,
+        args.cell_size,
+    )
     if behind_duration != over_duration:
         raise AssertionError("over/behind GIF timing differs")
 
@@ -282,7 +329,7 @@ def main() -> int:
         "transform_map": str(args.frame_transform_map.resolve()),
         "transform_map_sha256": sha256(args.frame_transform_map),
         "normalization": {
-            "canvas_px": list(CELL),
+            "canvas_px": [args.cell_size, args.cell_size],
             "base_visible_width_px": args.base_width,
             "vertical_thickness_scale": args.thickness_scale_y,
             "base_opacity_multiplier": args.opacity,
