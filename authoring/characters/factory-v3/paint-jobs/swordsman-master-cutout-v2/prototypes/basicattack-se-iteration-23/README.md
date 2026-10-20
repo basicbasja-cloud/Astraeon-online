@@ -18,6 +18,13 @@
 - A guide-based 498.5 paintover corrects the sword direction, but also changes the cape and full character silhouette. Comparable paintovers at 498.0 and 499.0 still miss their guide sword angles. The three-frame comparison is in `experiments/guide-painted-multi-frame-001/`.
 - `WeaponLight` exists as its own transparent layer, with an original plum-gray, lavender-silver, and warm-ivory gradient. The current ribbon follows the iteration-22 research weapon path, not the sword painted into these iteration-23 frames. In the composite it floats above and to the side of the character. It is rejected until the sword art and effect use the same per-frame weapon path.
 
+## Latest continuity work (2026-10-20)
+
+- [Continuity normalization 002](experiments/continuity-normalization-002/README.md) re-runs all 32 raw poses on the 1280px canvas at root `(640,1056)`. The head-to-floor output is exactly 1.1× the corresponding guide measurement in every frame; no frame is canvas-scale-limited. This fixes frame-size jumps caused by the previous canvas margin.
+- The new registration result is still **NOT APPROVED**. Its source paintings have scale factors from `0.505962` to `0.819327`, and direct visual review still shows body-pose mismatches at the lead-in and strike plus cape-shape changes. Stable root and matched height do not establish pose or character continuity.
+- [Guide-locked four-pose probe](experiments/guide-locked-four-pose-001/README.md) improves costume and identity consistency across four key poses. The exact guide match is partial, the sword is omitted, and it does not cover the in-between frames. A separate 480–483 test collapses four small motion changes into one repeated drawing and is rejected.
+- Continue from one stable character master with pose-matched registered layers or a deformation method that passes visual review. Do not use the current 32-frame normalized paintings or four-pose probe as runtime art.
+
 ## Review files
 
 - [32-frame one-shot GIF](review/basicattack-se-one-shot.gif)
@@ -26,6 +33,9 @@
 - [Painted sequence with the current trail overlay](review/basicattack-se-with-path-trail-over-4x8.jpg)
 - [Layered sequence with the current trail](review/basicattack-se-with-path-trail-layered-4x8.jpg)
 - [Normalization audit](review/normalization-audit.json)
+- [Latest 32-frame continuity audit](experiments/continuity-normalization-002/review/continuity-audit.json)
+- [Guide-locked four-pose comparison](experiments/guide-locked-four-pose-001/normalized/review/basicattack-se-guide-comparison.png)
+- [Separate sword layer proof](experiments/weapon-layer-proof-001/README.md)
 - [Trail pose audit](source/trail-input/weaponlight-pose-audit.json)
 - [32 selected Blender guides](source/rokoko-blender-guide/motion-guide-manifest.json)
 - [Painted 498.0 / guide paintover 498.5 / painted 499.0 comparison](experiments/guide-painted-multi-frame-001/review/guide-paintover-498p5-adjacent-frames.png)

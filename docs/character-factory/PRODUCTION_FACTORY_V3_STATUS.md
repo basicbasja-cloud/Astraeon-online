@@ -165,6 +165,14 @@ The route shows the candidate in the character creator and actual player rendere
 - Iteration 23 does not yet contain registered `BaseBody`, `HeadHair`, `Outfit`, `Weapon`, and `BackAccessory` cuts. The screen-right support-foot anchoring trial shifts the character left in the cell and is rejected.
 - The next candidate must keep one master identity and shared root/scale through the action, paint or deform registered cutouts against the exact Blender guides, preserve the cape as a separate part, and pass the blade-axis and trail alignment review before a game preview.
 
+## Latest owner feedback: character stability (2026-10-20)
+
+- Re-normalized the existing 32 iteration-23 poses to a 1280×1280 canvas at the shared `(640,1056)` root. All frames now match `1.1×` of their corresponding guide head-to-floor height, with zero canvas-limited frames. This removes the size jump that the previous canvas edge introduced; it is a registration result only.
+- Manual guide comparison still fails pose continuity at the lead-in and strike. The original raw paintings require source scale factors from `0.505962` to `0.819327`, and the cape/body silhouette changes between independent generations. A stable root and matched head-to-floor measurement do not make those poses or character contours stable.
+- A common 2×2 generation pass at frames 480, 493, 499, and 511 holds the costume and palette more consistently, but still misses guide landmarks at the guard and strike, omits the sword, and does not supply the in-between frames. A 480–483 probe collapses its four subtle source poses into a repeated drawing and is rejected.
+- A separate `Weapon`-layer proof at frames 498.5, 499, and 499.5 uses a hand-annotated fist pivot and a standalone high-detail sword. The three measured blade angles match their guide axes, but the full pose still misses the guide and no matching `WeaponLight` exists. This is a three-frame transform proof only.
+- Current artifacts: [32-frame continuity audit](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/continuity-normalization-002/README.md) and [four-pose probe](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/guide-locked-four-pose-001/README.md). Both are **REVIEW ONLY / NOT APPROVED**. Continue from registered pose-matched layers or a deformation approach that preserves the high-detail identity and passes native-size review.
+
 | Iteration 23 visual audit | Result | Evidence |
 |---|---|---|
 | Shared export root | **PASS AS REGISTRATION ONLY** | `(640,1056)` at 1280px; maps to `(160,264)` at 320px. |
@@ -172,5 +180,13 @@ The route shows the candidate in the character creator and actual player rendere
 | Sword-to-guide alignment | **REJECTED** | Source frame 498.5 misses the guide axis by about 90°; full-body guide paintovers at 498.0 and 499.0 also drift. |
 | WeaponLight alignment | **REJECTED** | Current trail path comes from iteration 22 and does not follow the iteration-23 sword. |
 | Semantic cutouts | **PENDING** | Only `WeaponLight` is separate; character layer cuts have not been made. |
+
+| Latest continuity check | Result | Evidence |
+|---|---|---|
+| Shared canvas/root and guide-relative height | **PASS AS REGISTRATION ONLY** | 32 poses, 1280px canvas, root `(640,1056)`, zero canvas caps, measured height ratio `0.999999–1.000001` of the requested `1.1×` guide height. |
+| Body pose and character continuity | **FAIL** | Lead-in/strike poses still miss the guides; independent source scale factors span `0.505962–0.819327`; cape/body contours drift. |
+| Common four-pose identity probe | **PARTIAL / NOT APPROVED** | Costume consistency improves at frames 480, 493, 499, 511; guide landmarks are still missed and there are no layers or sword. |
+| Three-frame separate weapon transform | **PASS AS MECHANICS ONLY** | Independent sword and fist pivot; exact axis audit for 498.5/499/499.5. Full pose and trail still fail/pending. |
+| Adjacent 480–483 pose probe | **REJECTED** | It collapses four subtle guide changes into one repeated pose. |
 
 See [the implementation record](PRODUCTION_FACTORY_V3.md), [build evidence](evidence/production-factory-v3-motion.json), [iteration 2 paint job](../../authoring/characters/factory-v3/paint-jobs/imagegen-swordsman-v2/imported/job.json), and [Wayfarer Capital browser report](evidence/imagegen-swordsman-v2/wayfarer-capital-review.json) for the full progression and provenance.

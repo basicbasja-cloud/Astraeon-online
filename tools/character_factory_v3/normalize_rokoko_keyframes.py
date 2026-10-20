@@ -281,6 +281,8 @@ def main() -> int:
     )
     parser.add_argument("--canvas-size", type=int, default=1024,
                         help="square transparent frame size; increase it to preserve scale around long weapons")
+    parser.add_argument("--minimum-frames", type=int, default=16,
+                        help="minimum poses required; lower only for a clearly labeled stability pilot")
     parser.add_argument("--canvas-margin", type=int, default=16)
     parser.add_argument("--review-gif-size", type=int, default=768)
     parser.add_argument("--recovery-hold-ms", type=int, default=300)
@@ -290,12 +292,14 @@ def main() -> int:
         parser.error("--fixed-scale and --guide-height-ratio cannot be used together")
     if args.canvas_size < 512:
         parser.error("--canvas-size must be at least 512 pixels")
+    if args.minimum_frames < 1:
+        parser.error("--minimum-frames must be positive")
 
     guide_manifest = json.loads(args.guide_manifest.read_text(encoding="utf-8"))
     guide_by_source = {float(frame["source_frame"]): frame for frame in guide_manifest["frames"]}
     raw_files = sorted(args.raw_frames.glob("swordsman_*.png"), key=parse_source_frame)
-    if len(raw_files) < 16:
-        parser.error("at least 16 individually painted poses are required")
+    if len(raw_files) < args.minimum_frames:
+        parser.error(f"at least {args.minimum_frames} individually painted poses are required")
 
     source_frames = [parse_source_frame(path) for path in raw_files]
     if any(source_frames[i] >= source_frames[i + 1] for i in range(len(source_frames) - 1)):

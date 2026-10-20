@@ -1,0 +1,24 @@
+{
+  "status": "REVIEW_ONLY_NOT_APPROVED",
+  "generator": "OpenAI ImageGen",
+  "key_pose_sheet": "painted-four-pose-sheet.png",
+  "pose_source": "../../../source/rokoko-blender-guide/motion-guide-manifest.json",
+  "pose_source_frames": [480.0, 493.0, 499.0, 511.0],
+  "identity_reference": "../../../source/identity/head-scarf-armor-reference.png",
+  "method": "One 2x2 guide paint-over generation, followed by a localized top-left guard-pose correction using the frame-480 Blender guide.",
+  "layers": {
+    "weapon": "omitted from generated body art; separate sword not yet validated",
+    "cape": "baked into full-character frames",
+    "semantic_cutouts": false
+  },
+  "adjacent_pose_probe": {
+    "input_guide_sheet": "guide-sheets/guides-480-483.png",
+    "rejected_output": "rejected/near-identical-480-483.png",
+    "reason": "The generated output collapses the four slightly different guide poses into effectively the same character posture."
+  },
+  "limitations": [
+    "Only four widely spaced key poses are present.",
+    "Pose alignment is still partial at frames 480 and 499.",
+    "No sword, WeaponLight, removable cape layer, or runtime package is included."
+  ]
+}

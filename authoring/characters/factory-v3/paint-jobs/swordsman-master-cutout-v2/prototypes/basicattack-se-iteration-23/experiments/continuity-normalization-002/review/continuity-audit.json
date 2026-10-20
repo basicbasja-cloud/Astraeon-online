@@ -1,0 +1,36 @@
+{
+  "status": "REGISTRATION_PASS_POSE_CONTINUITY_FAIL_NOT_APPROVED",
+  "source": "iteration-23 raw SE paintings aligned to the matching Rokoko Blender guide frames",
+  "frame_count": 32,
+  "source_frame_range": [480.0, 511.0],
+  "canvas_size_px": [1280, 1280],
+  "root_xy_px": [640.0, 1056.0],
+  "runtime_320_root_xy_px": [160.0, 264.0],
+  "guide_height_ratio": 1.1,
+  "canvas_scale_limited_frame_count": 0,
+  "measured_output_to_guide_height_ratio": {
+    "min": 0.999999086,
+    "median": 0.999999825,
+    "max": 1.000000571
+  },
+  "source_to_output_scale_range": [0.505962, 0.819327],
+  "one_shot_duration_ms": 1330,
+  "visual_review": {
+    "pose_fidelity": "FAIL",
+    "character_identity_continuity": "PARTIAL",
+    "cape_silhouette_continuity": "FAIL",
+    "findings": [
+      "The 32-frame guide comparison still shows major pose mismatch during the lead-in and strike.",
+      "The same gold, ivory, navy, teal, and brown identity colors recur, but body pose, clothing contours, and cape shape vary between independent paintings.",
+      "Correct canvas registration and matched head-to-floor height do not make the underlying painted poses match the motion guide."
+    ]
+  },
+  "runtime_approved": false,
+  "owner_approved": false,
+  "evidence": {
+    "one_shot_gif": "basicattack-se-one-shot.gif",
+    "contact_sheet": "basicattack-se-normalized-contact.png",
+    "guide_comparison": "basicattack-se-guide-comparison.png",
+    "normalization": "normalization-audit.json"
+  }
+}
