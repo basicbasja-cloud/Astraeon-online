@@ -1,0 +1,107 @@
+{
+  "source": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "source_fps_for_review": 24,
+  "actions": [
+    {
+      "name": "Sword_Attack",
+      "duration_seconds": 1.916667,
+      "last_key_at_24fps": 46.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Attack_RM",
+      "duration_seconds": 1.916667,
+      "last_key_at_24fps": 46.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Block",
+      "duration_seconds": 1.25,
+      "last_key_at_24fps": 30.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Dash_RM",
+      "duration_seconds": 1.583333,
+      "last_key_at_24fps": 38.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Regular_A",
+      "duration_seconds": 0.458333,
+      "last_key_at_24fps": 11.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Regular_A_Rec",
+      "duration_seconds": 0.958333,
+      "last_key_at_24fps": 23.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Regular_B",
+      "duration_seconds": 0.541667,
+      "last_key_at_24fps": 13.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Regular_B_Rec",
+      "duration_seconds": 1.0,
+      "last_key_at_24fps": 24.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Regular_C",
+      "duration_seconds": 1.666667,
+      "last_key_at_24fps": 40.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 161,
+      "all_channels_repeat_first_at_terminal_key": false,
+      "duplicate_channel_targets": 0
+    },
+    {
+      "name": "Sword_Regular_C_RM",
+      "duration_seconds": 1.666667,
+      "last_key_at_24fps": 40.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 161,
+      "all_channels_repeat_first_at_terminal_key": false,
+      "duplicate_channel_targets": 198
+    },
+    {
+      "name": "Sword_Regular_Combo",
+      "duration_seconds": 2.958333,
+      "last_key_at_24fps": 71.0,
+      "sampler_count": 198,
+      "samplers_repeating_first_at_terminal_key": 198,
+      "all_channels_repeat_first_at_terminal_key": true,
+      "duplicate_channel_targets": 0
+    }
+  ],
+  "interpretation": "Repeated terminal values and the interpolation leading into them need explicit handling for one-shot playback. They do not establish a natural recovery. Avoid C_RM duplicate-target import warnings; the unmodified C action has unique targets."
+}

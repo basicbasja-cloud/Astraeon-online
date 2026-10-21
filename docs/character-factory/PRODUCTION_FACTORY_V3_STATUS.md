@@ -3,12 +3,26 @@
 **Branch:** `character/production-factory-v3`
 **Target:** Male Swordsman
 **Updated:** 21 October 2026
-**Overall:** `BASICATTACK_MOTION_RESELECTION / HIGH_RES_REPAINT_REQUIRED / NO_PRODUCTION_MASTER`
+**Overall:** `MESH2MOTION_OVERHEAD_B_REVIEW / HIGH_RES_REPAINT_REQUIRED / NO_PRODUCTION_MASTER`
 **Runtime admission:** `DEV_ONLY / NOT_APPROVED`
 
 The existing painted-v2 package is still a fused composite. The owner rejected its Wayfarer Capital screenshots because that is not the requested map; they are retained only as historical development evidence and do not count as a successful current-map visual review. The owner supplied clearer art references and directed that hair, outfit, weapon, cape, and effects be drawn as independent layers. V3 remains development-only and is not production-complete.
 
 ## Current owner direction
+
+### Mesh2Motion selected (21 October 2026)
+
+The owner chose Mesh2Motion and authorized continued implementation. [The fresh motion/art study](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/README.md) compares A, B, C and Combo on the original source mannequin. B is the working overhead cut; its matching recovery is required. New reproducible Blender scripts sample the source at 60 fps, build a compact 60-pose one-shot, fit one fixed orthographic camera to the entire action, and record hand, foot, blade and root positions. The existing research silhouette audit is reused as a diagnostic rather than an art-quality grade.
+
+Inspection of the raw GLB confirmed that all 198 animation channels in A/B and their recoveries repeat the starting value at the terminal export key. Those resets and the reset-influenced recovery tail are excluded from the review. A trial that artificially returned the final pose to the initial image was rejected because it slid the feet across source root displacement. Current B guides preserve native root motion and finish on the source recovery instead.
+
+The compact B capture now covers all eight real directions: 60 poses each, 480 local 1024px renders, one shared orthographic scale, and initial root `(512,844.8)`. Its structural audit reports zero empty/edge-touching frames and less than 0.001 px initial-root error. [Eight-direction GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/eight-direction-guides/eight-directions-one-shot.gif). This is source-mannequin capture, not a finished illustrated sprite package.
+
+The [prepared Blender scene](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/eight-direction-guides/source-rig-eight-view-ready.blend) reopens at 60 fps with exactly eight fixed cameras, no camera animation, and `CAM_SE` active. These eight-view captures are authoritative; the earlier single-camera paint probes use a different SE angle/framing. Independent WeaponLight source guides now follow each canonical blade path, with identical world-space timing in all directions (emit 11, fastest movement 15, stop 18, fade out 22). [Source/trail eight-direction GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/source-trail-guide/eight-directions-with-trail.gif). They must not be overlaid onto the mismatched painted drafts as if approved.
+
+Four new high-detail painted key poses have been generated from full-body Blender guides. Their pose reading improves on the stick-guide studies, but cell registration, blade foreshortening and matte fringes still fail review. No continuous painted action, semantic cutout set, WeaponLight, game preview or production approval has been completed from this reset. The user's Mesh2Motion choice supersedes the older Rokoko/OGA search direction documented below.
+
+An opaque-white single-frame probe produces clean edges and closer weapon placement. Subsequent adjacent-pose batches still move boots and body proportions relative to the fixed guide anchors, so they remain unapproved paint studies. Source and painted GIFs are compared directly without per-pose figure resizing or warping. Do not use the planned 32-frame batch count as a completed-art count; the cutout review audit records how many actually exist.
 
 ### Visual regression recovery (21 October 2026)
 
