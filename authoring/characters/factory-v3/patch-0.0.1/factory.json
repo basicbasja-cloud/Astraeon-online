@@ -1,0 +1,2324 @@
+{
+  "schema_version": 1,
+  "patch": "0.0.1",
+  "status": "IN_PRODUCTION_NOT_COMPLETE",
+  "owner_scope": "Male and female for Swordsman, Mage and Archer; reusable factory and compatible cutout reuse. Per-action direction count derives from existing RO research plus explicit owner overrides.",
+  "preferred_motion_provider": "Mesh2Motion",
+  "source": {
+    "file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+    "sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+    "license_evidence": "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md"
+  },
+  "research": {
+    "branch": "research/modular-sprites-full-body-2026-10-11",
+    "commit": "db59cc922ed1760243ffed9f07a81b891516db27",
+    "indexing": "ACT groups by actionFamily*8+direction; this is indexed facing count, not proof of eight independently painted source images.",
+    "sources": [
+      "https://ragnarokresearchlab.github.io/file-formats/act/",
+      "https://github.com/rdw-archive/RagnarokFileFormats/blob/master/ACT.MD",
+      "https://github.com/kivutar/goro/blob/main/game/sprite_render.go"
+    ],
+    "owner_override": "Four real unmirrored diagonal views for physical sword/bow attacks and all casting actions, including Mage Arcane Bolt/basic attack, CastChannel and CastRelease. Latest owner instruction explicitly includes casting; this is Astraeon policy, not a universal RO claim."
+  },
+  "direction_inputs": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "four_view_attack_directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "four_view_direction_map": {
+    "S": "SE",
+    "SW": "SW",
+    "W": "SW",
+    "NW": "NW",
+    "N": "NW",
+    "NE": "NE",
+    "E": "NE",
+    "SE": "SE"
+  },
+  "canvas": {
+    "authoring": [
+      512,
+      512
+    ],
+    "source_guide": [
+      1024,
+      1024
+    ],
+    "runtime": [
+      160,
+      160
+    ],
+    "uniform_runtime_scale": 0.3125,
+    "registration": "One shared camera/scale and per-pose source-registered anatomy anchors; never fit alpha bounding boxes."
+  },
+  "parts": [
+    "HeadHair",
+    "BodyCostume",
+    "Weapon",
+    "WeaponHandOccluder",
+    "WeaponLightBack",
+    "WeaponLightFront",
+    "BackAccessory",
+    "Headgear"
+  ],
+  "reuse_policy": {
+    "shared_motion_cache": true,
+    "exact_rgba_content_addressing": true,
+    "matching_pose_camera_body_fit_and_slot_required": true,
+    "male_female_fit_is_not_interchangeable": true,
+    "no_idle_substitution_for_missing_actions": true,
+    "no_weapon_family_substitution": true,
+    "no_new_costume_claim_for_recolor": true,
+    "same_frame_layers_keep_identical_transform": true,
+    "missing_art_does_not_count_as_coverage": true
+  },
+  "classes": {
+    "Swordsman": {
+      "game_class_index": 0,
+      "game_archetype": "warrior",
+      "weapon_family": "one-handed-sword",
+      "actions": {
+        "Walk": {
+          "source_actions": [
+            "Walk"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Walk",
+          "ro_family": "walking",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Run": {
+          "source_actions": [
+            "Jog"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Jog",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Sprint": {
+          "source_actions": [
+            "Sprint"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sprint",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Hit": {
+          "source_actions": [
+            "Hit_Chest"
+          ],
+          "frames": 12,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Hit_Chest",
+          "ro_family": "hurt",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Death": {
+          "source_actions": [
+            "Death_D"
+          ],
+          "frames": 20,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Death_D",
+          "ro_family": "die",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Interact": {
+          "source_actions": [
+            "Interact"
+          ],
+          "frames": 12,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Interact",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Pickup": {
+          "source_actions": [
+            "PickUp_Table"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "PickUp_Table",
+          "ro_family": "pickup",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "ItemUse": {
+          "source_actions": [
+            "Consume"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Consume",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Sit": {
+          "source_actions": [
+            "Sitting_Enter"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sitting_Enter",
+          "ro_family": "sit",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Respawn": {
+          "source_actions": [
+            "LayToIdle"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "LayToIdle",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Idle": {
+          "source_actions": [
+            "Idle_Sword"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Idle_Sword",
+          "ro_family": "idle",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "CombatIdle": {
+          "source_actions": [
+            "Idle_Sword"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Idle_Sword",
+          "ro_family": "readyfight",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion",
+          "reuse_from": "Idle"
+        },
+        "BasicAttack": {
+          "source_actions": [
+            "Sword_Attack"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Sword_Attack",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_ATTACK_OVERRIDE",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "historical_rejection": "Earlier thrust-like rejection retained; use current native-rig compact review only as unapproved candidate.",
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "SkillAction": {
+          "source_actions": [
+            "Sword_Regular_B",
+            "Sword_Regular_B_Rec"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Sword_Regular_B",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_ATTACK_OVERRIDE",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "CastChannel": {
+          "source_actions": [
+            "Spell_Simple_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Idle",
+          "ro_family": "skill",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "CastRelease": {
+          "source_actions": [
+            "Spell_Simple_Shoot"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Shoot",
+          "ro_family": "skill",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Guard": {
+          "source_actions": [
+            "Sword_Block"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sword_Block",
+          "ro_family": "readyfight",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Dash": {
+          "source_actions": [
+            "Sword_Dash_RM"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sword_Dash_RM",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "SpinAttack": {
+          "source_actions": [
+            "Sword_Regular_Combo"
+          ],
+          "frames": 32,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Sword_Regular_Combo",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_ATTACK_OVERRIDE",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        }
+      },
+      "combat_bindings": {
+        "attack": "BasicAttack",
+        "rising-edge": "SkillAction",
+        "iron-guard": "Guard",
+        "second-wind": "CastRelease",
+        "jade-tempest": "SpinAttack",
+        "dodge": "Dash",
+        "potion": "ItemUse"
+      },
+      "unsupported": [
+        "Blink"
+      ]
+    },
+    "Mage": {
+      "game_class_index": 12,
+      "game_archetype": "mage",
+      "weapon_family": "staff",
+      "actions": {
+        "Walk": {
+          "source_actions": [
+            "Walk"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Walk",
+          "ro_family": "walking",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Run": {
+          "source_actions": [
+            "Jog"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Jog",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Sprint": {
+          "source_actions": [
+            "Sprint"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sprint",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Hit": {
+          "source_actions": [
+            "Hit_Chest"
+          ],
+          "frames": 12,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Hit_Chest",
+          "ro_family": "hurt",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Death": {
+          "source_actions": [
+            "Death_D"
+          ],
+          "frames": 20,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Death_D",
+          "ro_family": "die",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Interact": {
+          "source_actions": [
+            "Interact"
+          ],
+          "frames": 12,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Interact",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Pickup": {
+          "source_actions": [
+            "PickUp_Table"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "PickUp_Table",
+          "ro_family": "pickup",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "ItemUse": {
+          "source_actions": [
+            "Consume"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Consume",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Sit": {
+          "source_actions": [
+            "Sitting_Enter"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sitting_Enter",
+          "ro_family": "sit",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Respawn": {
+          "source_actions": [
+            "LayToIdle"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "LayToIdle",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Idle": {
+          "source_actions": [
+            "Idle_A"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Idle_A",
+          "ro_family": "idle",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "CombatIdle": {
+          "source_actions": [
+            "Spell_Simple_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Idle",
+          "ro_family": "readyfight",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "BasicAttack": {
+          "source_actions": [
+            "Spell_Simple_Shoot"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Shoot",
+          "ro_family": "skill",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion",
+          "reuse_from": "CastRelease"
+        },
+        "SkillAction": {
+          "source_actions": [
+            "Spell_Simple_Shoot"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Shoot",
+          "ro_family": "skill",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "reuse_from": "CastRelease",
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "CastChannel": {
+          "source_actions": [
+            "Spell_Simple_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Idle",
+          "ro_family": "skill",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "CastRelease": {
+          "source_actions": [
+            "Spell_Simple_Shoot"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Shoot",
+          "ro_family": "skill",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Guard": {
+          "source_actions": [
+            "Spell_Simple_Enter"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Enter",
+          "ro_family": "skill",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        },
+        "Blink": {
+          "source_actions": [
+            "Spell_Simple_Exit"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Spell_Simple_Exit",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion"
+        }
+      },
+      "combat_bindings": {
+        "attack": "BasicAttack",
+        "arcane-bolt": "BasicAttack",
+        "ember-bloom": "CastRelease",
+        "frost-ward": "Guard",
+        "aether-mend": "CastRelease",
+        "tempest": "CastRelease",
+        "dodge": "Blink",
+        "potion": "ItemUse"
+      },
+      "unsupported": [
+        "Dash"
+      ]
+    },
+    "Archer": {
+      "game_class_index": 3,
+      "game_archetype": "ranger",
+      "weapon_family": "recurve-bow",
+      "actions": {
+        "Walk": {
+          "source_actions": [
+            "Walking_A"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Walking_A",
+          "ro_family": "walking",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_MovementBasic.glb",
+          "source_provider": "KayKit"
+        },
+        "Run": {
+          "source_actions": [
+            "Running_HoldingBow"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Running_HoldingBow",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_MovementAdvanced.glb",
+          "source_provider": "KayKit"
+        },
+        "Sprint": {
+          "source_actions": [
+            "Running_HoldingBow"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Running_HoldingBow",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_MovementAdvanced.glb",
+          "source_provider": "KayKit",
+          "reuse_from": "Run",
+          "timing_variant": "same bow-carry running poses at faster distance-driven cadence"
+        },
+        "Hit": {
+          "source_actions": [
+            "Hit_A"
+          ],
+          "frames": 12,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Hit_A",
+          "ro_family": "hurt",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit"
+        },
+        "Death": {
+          "source_actions": [
+            "Death_A"
+          ],
+          "frames": 20,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Death_A",
+          "ro_family": "die",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit"
+        },
+        "Interact": {
+          "source_actions": [
+            "Interact"
+          ],
+          "frames": 12,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Interact",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit"
+        },
+        "Pickup": {
+          "source_actions": [
+            "PickUp"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "PickUp",
+          "ro_family": "pickup",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit"
+        },
+        "ItemUse": {
+          "source_actions": [
+            "Use_Item"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Use_Item",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit"
+        },
+        "Sit": {
+          "source_actions": [
+            "Sit_Floor_Down"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Sit_Floor_Down",
+          "ro_family": "sit",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_Simulation.glb",
+          "source_provider": "KayKit"
+        },
+        "Respawn": {
+          "source_actions": [
+            "Spawn_Ground"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Spawn_Ground",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit"
+        },
+        "Idle": {
+          "source_actions": [
+            "Ranged_Bow_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Idle",
+          "ro_family": "idle",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit"
+        },
+        "CombatIdle": {
+          "source_actions": [
+            "Ranged_Bow_Aiming_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Aiming_Idle",
+          "ro_family": "readyfight",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit"
+        },
+        "BasicAttack": {
+          "source_actions": [
+            "Ranged_Bow_Draw",
+            "Ranged_Bow_Release"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Draw+Ranged_Bow_Release",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_ATTACK_OVERRIDE",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit"
+        },
+        "SkillAction": {
+          "source_actions": [
+            "Ranged_Bow_Draw",
+            "Ranged_Bow_Release"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Draw+Ranged_Bow_Release",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_ATTACK_OVERRIDE",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "reuse_from": "BasicAttack",
+          "timing_variant": "longer draw hold and recovery for Piercing Arrow, same compatible body poses",
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit"
+        },
+        "CastChannel": {
+          "source_actions": [
+            "Ranged_Bow_Aiming_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Aiming_Idle",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit",
+          "reuse_from": "CombatIdle"
+        },
+        "CastRelease": {
+          "source_actions": [
+            "Ranged_Bow_Draw",
+            "Ranged_Bow_Release"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Draw+Ranged_Bow_Release",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "reuse_from": "BasicAttack",
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit"
+        },
+        "Guard": {
+          "source_actions": [
+            "Ranged_Bow_Aiming_Idle"
+          ],
+          "frames": 16,
+          "loop": true,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Aiming_Idle",
+          "ro_family": "readyfight",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit",
+          "reuse_from": "CombatIdle",
+          "game_use": "not bound to a current Archer combat skill; defensive ready-pose review only"
+        },
+        "Dash": {
+          "source_actions": [
+            "Dodge_Backward"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "Dodge_Backward",
+          "ro_family": null,
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_MovementAdvanced.glb",
+          "source_provider": "KayKit"
+        },
+        "TrapPlace": {
+          "source_actions": [
+            "PickUp"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "S",
+            "SW": "SW",
+            "W": "W",
+            "NW": "NW",
+            "N": "N",
+            "NE": "NE",
+            "E": "E",
+            "SE": "SE"
+          },
+          "pose_family": "PickUp",
+          "ro_family": "pickup",
+          "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+          "source_provider": "KayKit",
+          "reuse_from": "Pickup"
+        },
+        "ArrowRain": {
+          "source_actions": [
+            "Ranged_Bow_Draw_Up",
+            "Ranged_Bow_Release_Up"
+          ],
+          "frames": 16,
+          "loop": false,
+          "authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "direction_map": {
+            "S": "SE",
+            "SW": "SW",
+            "W": "SW",
+            "NW": "NW",
+            "N": "NW",
+            "NE": "NE",
+            "E": "NE",
+            "SE": "SE"
+          },
+          "pose_family": "Ranged_Bow_Draw_Up+Ranged_Bow_Release_Up",
+          "ro_family": "attack",
+          "direction_basis": "OWNER_FOUR_VIEW_ATTACK_OVERRIDE",
+          "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
+          "art_status": "NOT_AUTHORED",
+          "owner_approved": false,
+          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+          "source_provider": "KayKit"
+        }
+      },
+      "combat_bindings": {
+        "attack": "BasicAttack",
+        "arrow": "BasicAttack",
+        "piercing-arrow": "SkillAction",
+        "thorn-snare": "TrapPlace",
+        "field-aid": "ItemUse",
+        "arrow-rain": "ArrowRain",
+        "dodge": "Dash",
+        "potion": "ItemUse"
+      },
+      "unsupported": [
+        "Blink"
+      ]
+    }
+  },
+  "characters": [
+    {
+      "id": "swordsman-male-patch001",
+      "class": "Swordsman",
+      "body_variant": "male",
+      "anatomy_fit_id": "astraeon-male-v3",
+      "identity_status": "CONCEPT_IN_PROGRESS",
+      "runtime_admitted": false,
+      "actions": [
+        "Walk",
+        "Run",
+        "Sprint",
+        "Hit",
+        "Death",
+        "Interact",
+        "Pickup",
+        "ItemUse",
+        "Sit",
+        "Respawn",
+        "Idle",
+        "CombatIdle",
+        "BasicAttack",
+        "SkillAction",
+        "CastChannel",
+        "CastRelease",
+        "Guard",
+        "Dash",
+        "SpinAttack"
+      ],
+      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/swordsman-male-seed.png"
+    },
+    {
+      "id": "swordsman-female-patch001",
+      "class": "Swordsman",
+      "body_variant": "female",
+      "anatomy_fit_id": "astraeon-female-v3",
+      "identity_status": "CONCEPT_IN_PROGRESS",
+      "runtime_admitted": false,
+      "actions": [
+        "Walk",
+        "Run",
+        "Sprint",
+        "Hit",
+        "Death",
+        "Interact",
+        "Pickup",
+        "ItemUse",
+        "Sit",
+        "Respawn",
+        "Idle",
+        "CombatIdle",
+        "BasicAttack",
+        "SkillAction",
+        "CastChannel",
+        "CastRelease",
+        "Guard",
+        "Dash",
+        "SpinAttack"
+      ],
+      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/swordsman-female-seed.png"
+    },
+    {
+      "id": "mage-male-patch001",
+      "class": "Mage",
+      "body_variant": "male",
+      "anatomy_fit_id": "astraeon-male-v3",
+      "identity_status": "CONCEPT_IN_PROGRESS",
+      "runtime_admitted": false,
+      "actions": [
+        "Walk",
+        "Run",
+        "Sprint",
+        "Hit",
+        "Death",
+        "Interact",
+        "Pickup",
+        "ItemUse",
+        "Sit",
+        "Respawn",
+        "Idle",
+        "CombatIdle",
+        "BasicAttack",
+        "SkillAction",
+        "CastChannel",
+        "CastRelease",
+        "Guard",
+        "Blink"
+      ],
+      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/mage-male-seed.png"
+    },
+    {
+      "id": "mage-female-patch001",
+      "class": "Mage",
+      "body_variant": "female",
+      "anatomy_fit_id": "astraeon-female-v3",
+      "identity_status": "CONCEPT_IN_PROGRESS",
+      "runtime_admitted": false,
+      "actions": [
+        "Walk",
+        "Run",
+        "Sprint",
+        "Hit",
+        "Death",
+        "Interact",
+        "Pickup",
+        "ItemUse",
+        "Sit",
+        "Respawn",
+        "Idle",
+        "CombatIdle",
+        "BasicAttack",
+        "SkillAction",
+        "CastChannel",
+        "CastRelease",
+        "Guard",
+        "Blink"
+      ],
+      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/mage-female-seed.png"
+    },
+    {
+      "id": "archer-male-patch001",
+      "class": "Archer",
+      "body_variant": "male",
+      "anatomy_fit_id": "astraeon-male-v3",
+      "identity_status": "CONCEPT_IN_PROGRESS",
+      "runtime_admitted": false,
+      "actions": [
+        "Walk",
+        "Run",
+        "Sprint",
+        "Hit",
+        "Death",
+        "Interact",
+        "Pickup",
+        "ItemUse",
+        "Sit",
+        "Respawn",
+        "Idle",
+        "CombatIdle",
+        "BasicAttack",
+        "SkillAction",
+        "CastChannel",
+        "CastRelease",
+        "Guard",
+        "Dash",
+        "TrapPlace",
+        "ArrowRain"
+      ],
+      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/archer-male-seed.png"
+    },
+    {
+      "id": "archer-female-patch001",
+      "class": "Archer",
+      "body_variant": "female",
+      "anatomy_fit_id": "astraeon-female-v3",
+      "identity_status": "CONCEPT_IN_PROGRESS",
+      "runtime_admitted": false,
+      "actions": [
+        "Walk",
+        "Run",
+        "Sprint",
+        "Hit",
+        "Death",
+        "Interact",
+        "Pickup",
+        "ItemUse",
+        "Sit",
+        "Respawn",
+        "Idle",
+        "CombatIdle",
+        "BasicAttack",
+        "SkillAction",
+        "CastChannel",
+        "CastRelease",
+        "Guard",
+        "Dash",
+        "TrapPlace",
+        "ArrowRain"
+      ],
+      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/archer-female-seed.png"
+    }
+  ],
+  "sources": {
+    "mesh2motion": {
+      "file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+      "sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+      "license_evidence": "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md"
+    },
+    "General": {
+      "file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
+      "sha256": "5f725c0f745f36078c7238968cd5c04843cbc6260689eb6e7f5e2bbd7ffdd7ad",
+      "provider": "KayKit",
+      "license_evidence": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/LICENSE.txt"
+    },
+    "MovementBasic": {
+      "file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_MovementBasic.glb",
+      "sha256": "11422afd50abf7e8c92ea107e2e0bc94abd38023d6d15f55ad580347efbfa29e",
+      "provider": "KayKit",
+      "license_evidence": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/LICENSE.txt"
+    },
+    "MovementAdvanced": {
+      "file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_MovementAdvanced.glb",
+      "sha256": "8b2317cf81e3f24149e4b791c27e1932bebd46cd378ed962e7d27d642fad8c56",
+      "provider": "KayKit",
+      "license_evidence": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/LICENSE.txt"
+    },
+    "Simulation": {
+      "file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_Simulation.glb",
+      "sha256": "ab6ffeed40c8281dd0ce0506534eadf7385151f1c266643a10fa2a0f0a7ba3b1",
+      "provider": "KayKit",
+      "license_evidence": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/LICENSE.txt"
+    },
+    "CombatRanged": {
+      "file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+      "sha256": "7fef1fc0e7b0feafd34b8e12d23f514c8c1f9d068047a691b854b56f1774dff5",
+      "provider": "KayKit",
+      "license_evidence": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/LICENSE.txt"
+    },
+    "policy": "Mesh2Motion remains primary. Archer uses a coherent native bow-family rig and its compatible carrying/interaction clips to preserve two-hand grips; no pistol substitution."
+  }
+}

@@ -14,7 +14,8 @@
     "classId": {
       "enum": [
         "Swordsman",
-        "Mage"
+        "Mage",
+        "Archer"
       ]
     },
     "directions": {
@@ -169,7 +170,13 @@
             "Cape",
             "CosmeticFX",
             "Aura",
-            "ShoulderAccessory"
+            "ShoulderAccessory",
+            "WeaponLight",
+            "BodyCostume",
+            "HeadHair",
+            "WeaponHandOccluder",
+            "WeaponLightBack",
+            "WeaponLightFront"
           ]
         }
       },
@@ -188,7 +195,7 @@
     },
     "drawOrder": {
       "type": "array",
-      "minItems": 6,
+      "minItems": 3,
       "uniqueItems": true,
       "items": {
         "type": "string"
@@ -245,7 +252,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -268,7 +275,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -310,7 +317,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -333,7 +340,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -375,7 +382,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -398,7 +405,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -440,7 +447,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -463,7 +470,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -505,7 +512,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -528,7 +535,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -570,7 +577,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -593,7 +600,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -635,7 +642,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -658,7 +665,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -700,7 +707,7 @@
                           },
                           "drawOrder": {
                             "type": "array",
-                            "minItems": 6,
+                            "minItems": 3,
                             "uniqueItems": true,
                             "items": {
                               "type": "string"
@@ -723,7 +730,7 @@
                     },
                     "drawOrder": {
                       "type": "array",
-                      "minItems": 6,
+                      "minItems": 3,
                       "uniqueItems": true,
                       "items": {
                         "type": "string"
@@ -736,16 +743,6 @@
                   "additionalProperties": false
                 }
               },
-              "required": [
-                "S",
-                "SW",
-                "W",
-                "NW",
-                "N",
-                "NE",
-                "E",
-                "SE"
-              ],
               "additionalProperties": false
             },
             "tags": {
@@ -760,12 +757,30 @@
               "items": {
                 "type": "object",
                 "properties": {
-                  "name": {"type": "string", "minLength": 1},
-                  "phase": {"type": "number", "minimum": 0, "maximum": 1},
-                  "timeMs": {"type": "integer", "minimum": 0},
-                  "frameIndex": {"type": "integer", "minimum": 0}
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "phase": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "timeMs": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "frameIndex": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
                 },
-                "required": ["name", "phase", "timeMs", "frameIndex"],
+                "required": [
+                  "name",
+                  "phase",
+                  "timeMs",
+                  "frameIndex"
+                ],
                 "additionalProperties": false
               }
             },
@@ -773,6 +788,143 @@
               "type": "number",
               "exclusiveMinimum": 0,
               "description": "Optional authored world distance per full loop. Drives visual locomotion phase from actual distance; independent of gameplay equipment."
+            },
+            "authoredDirections": {
+              "oneOf": [
+                {
+                  "const": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                {
+                  "const": [
+                    "SW",
+                    "NW",
+                    "NE",
+                    "SE"
+                  ]
+                }
+              ],
+              "description": "Optional native view set. Four-view clips require an explicit eight-input facing map; no mirroring."
+            },
+            "directionMap": {
+              "type": "object",
+              "properties": {
+                "S": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "SW": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "W": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "NW": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "N": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "NE": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "E": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                },
+                "SE": {
+                  "enum": [
+                    "S",
+                    "SW",
+                    "W",
+                    "NW",
+                    "N",
+                    "NE",
+                    "E",
+                    "SE"
+                  ]
+                }
+              },
+              "required": [
+                "S",
+                "SW",
+                "W",
+                "NW",
+                "N",
+                "NE",
+                "E",
+                "SE"
+              ],
+              "additionalProperties": false
             }
           },
           "required": [
@@ -780,7 +932,61 @@
             "durations",
             "directions"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "authoredDirections": {
+                    "const": [
+                      "SW",
+                      "NW",
+                      "NE",
+                      "SE"
+                    ]
+                  }
+                },
+                "required": [
+                  "authoredDirections"
+                ]
+              },
+              "then": {
+                "required": [
+                  "directionMap"
+                ],
+                "properties": {
+                  "directions": {
+                    "required": [
+                      "SW",
+                      "NW",
+                      "NE",
+                      "SE"
+                    ],
+                    "minProperties": 4,
+                    "maxProperties": 4
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "directions": {
+                    "required": [
+                      "S",
+                      "SW",
+                      "W",
+                      "NW",
+                      "N",
+                      "NE",
+                      "E",
+                      "SE"
+                    ],
+                    "minProperties": 8,
+                    "maxProperties": 8
+                  }
+                }
+              }
+            }
+          ]
         }
       },
       "additionalProperties": false
@@ -883,6 +1089,13 @@
       "type": "string",
       "pattern": "^[a-z][a-z0-9-]*$",
       "description": "Extensible visual body identity. Absent on legacy definitions means default; does not change gameplay class."
+    },
+    "layerMode": {
+      "enum": [
+        "legacy-modular",
+        "visible-cutout"
+      ],
+      "description": "Visible-cutout mode explicitly stores head+hair and complete clothed body; it does not claim removable hidden body/clothing surfaces."
     }
   },
   "required": [

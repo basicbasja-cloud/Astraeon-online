@@ -2,11 +2,13 @@
 (function (scope) {
 'use strict';
 const DIRECTIONS = Object.freeze(['S','SW','W','NW','N','NE','E','SE']);
+const ATTACK_DIRECTIONS = Object.freeze(['SW','NW','NE','SE']);
 const REQUIRED_LAYERS = Object.freeze(['BaseBody','Hair','Outfit','Weapon','Headgear','BackAccessory']);
-const OPTIONAL_LAYERS = Object.freeze(['Face','Offhand','Cape','CosmeticFX','WeaponLight','Aura','ShoulderAccessory']);
+const CUTOUT_LAYERS = Object.freeze(['BodyCostume','HeadHair','Weapon']);
+const OPTIONAL_LAYERS = Object.freeze(['Face','Offhand','Cape','CosmeticFX','WeaponLight','Aura','ShoulderAccessory','BodyCostume','HeadHair','WeaponHandOccluder','WeaponLightBack','WeaponLightFront']);
 const SOCKETS = Object.freeze(['root','head','hand_R','hand_L','back','waist']);
 const SHARED_CLIPS = Object.freeze(['Idle','Walk','Run','BasicAttack','SkillAction','Hit','Death']);
-const CLASS_CLIPS = Object.freeze({Swordsman:['Guard','Dash'],Mage:['CastChannel','Blink']});
+const CLASS_CLIPS = Object.freeze({Swordsman:['Guard','Dash'],Mage:['CastChannel','Blink'],Archer:['CastChannel','Dash']});
 const slug = /^[a-z][a-z0-9-]*$/;
 const own = (o,k) => Object.prototype.hasOwnProperty.call(o,k);
 const same = (a,b) => JSON.stringify(a) === JSON.stringify(b);
@@ -18,6 +20,8 @@ function validateDefinition(d) {
  const check=(ok,message)=>{if(!ok)errors.push(message)};
  if(!d || typeof d!=='object' || Array.isArray(d)) return ['Definition must be an object'];
  check(d.version==='0.1','Unsupported sprite version');
+ if(own(d,'layerMode'))check(['legacy-modular','visible-cutout'].includes(d.layerMode),'Unsupported layer mode');
+ const requiredLayers=d.layerMode==='visible-cutout'?CUTOUT_LAYERS:REQUIRED_LAYERS;
  check(slug.test(d.characterId||''),'Invalid characterId');
  check(own(CLASS_CLIPS,d.classId),'Unsupported classId');
  // Body identity belongs to presentation, never to gameplay class/equipment.
@@ -37,7 +41,7 @@ function validateDefinition(d) {
  const slots=d.slots||{}, defaults=d.defaultParts||{}, parts=d.parts||{}, atlases=d.atlases||{}, clips=d.clips||{};
  check(Object.keys(parts).length>0,'Missing parts');
  check(Object.keys(atlases).length>0,'Missing atlases');
- for(const layer of REQUIRED_LAYERS)check(Object.values(slots).includes(layer),'Missing required layer '+layer);
+ for(const layer of requiredLayers)check(Object.values(slots).includes(layer),'Missing required layer '+layer);
  for(const [slot,layer] of Object.entries(slots)){
   check([...REQUIRED_LAYERS,...OPTIONAL_LAYERS].includes(layer),'Invalid layer '+slot);
   check(own(defaults,slot),'Missing default part for '+slot);
@@ -68,8 +72,18 @@ function validateDefinition(d) {
    }
   }
   if(own(clip,'cycleDistance'))check(positive(clip.cycleDistance)&&clip.loop,'Invalid locomotion cycle distance '+animationId);
-  check(same(Object.keys(clip.directions||{}),DIRECTIONS),'Missing or unordered clip directions '+animationId);
-  for(const direction of DIRECTIONS){
+  const authored=own(clip,'authoredDirections')?(Array.isArray(clip.authoredDirections)?clip.authoredDirections:[]):DIRECTIONS;
+  check(same(authored,DIRECTIONS)||same(authored,ATTACK_DIRECTIONS),'Invalid authored direction set '+animationId);
+  check(same(Object.keys(clip.directions||{}),authored),'Missing or unordered clip directions '+animationId);
+  if(!same(authored,DIRECTIONS)||own(clip,'directionMap')){
+   const map=clip.directionMap||{};
+   check(same(Object.keys(map),DIRECTIONS),'Missing facing map '+animationId);
+   for(const requested of DIRECTIONS){
+    check(authored.includes(map[requested]),'Invalid mapped facing '+animationId+'/'+requested);
+    if(authored.includes(requested))check(map[requested]===requested,'Authored facing cannot be remapped '+animationId+'/'+requested);
+   }
+  }
+  for(const direction of authored){
    const sequence=clip.directions?.[direction];
    check(sequence?.frames?.length===clip.durations?.length,'Missing frames '+animationId+'/'+direction);
    if(sequence?.drawOrder)order(sequence.drawOrder,animationId+'/'+direction);
@@ -130,16 +144,17 @@ function compile(definition) {
    index=clip.durations.length-1;for(let i=0;i<clip.durations.length;i++){if(time<clip.durations[i]){index=i;break}time-=clip.durations[i]}
   }
   if(!Number.isInteger(index)||index<0||index>=clip.durations.length)throw Error('Invalid frame index');
+  const requestedDirection=direction;direction=clip.directionMap?.[direction]||direction;
   const sequence=clip.directions[direction],frame=sequence.frames[index],order=frame.drawOrder||sequence.drawOrder||d.drawOrder;
   const layers=[];
   for(const slot of order){
    const partId=own(appearance,slot)?appearance[slot]:d.defaultParts[slot];
-   if(partId===null){if(REQUIRED_LAYERS.includes(d.slots[slot]))throw Error('Cannot remove required layer '+slot);continue}
+   if(partId===null){if((d.layerMode==='visible-cutout'?CUTOUT_LAYERS:REQUIRED_LAYERS).includes(d.slots[slot]))throw Error('Cannot remove required layer '+slot);continue}
    const part=d.parts[partId];if(!part||part.slot!==slot)throw Error('Incompatible part '+partId+' for '+slot);
    const id=frameId(d.characterId,partId,animationId,direction,index),ref=part.frames[id];
    layers.push({slot,layer:d.slots[slot],partId,frameId:id,...ref});
   }
-  return {characterId:d.characterId,classId:d.classId,bodyVariant:d.bodyVariant||'default',animationId,direction,frameIndex:index,duration:clip.durations[index],canvas:d.canvas,sockets:frame.sockets,layers};
+  return {characterId:d.characterId,classId:d.classId,bodyVariant:d.bodyVariant||'default',animationId,direction,requestedDirection,frameIndex:index,duration:clip.durations[index],canvas:d.canvas,sockets:frame.sockets,layers};
  }
  return Object.freeze({definition:d,sample,duration:animationId=>totals[animationId]});
 }
@@ -257,7 +272,7 @@ function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archet
  const p=t.position,f=t.facingDirection;
  return {RightHand:[p.x+f.y*.22,p.y-f.x*.22,p.z+1.2],LeftHand:[p.x-f.y*.22,p.y+f.x*.22,p.z+1.2],Back:[p.x-f.x*.2,p.y-f.y*.2,p.z+1.2],Hip:[p.x,p.y,p.z+.8],spriteSockets};
 }
-const api={DIRECTIONS,REQUIRED_LAYERS,OPTIONAL_LAYERS,SOCKETS,SHARED_CLIPS,CLASS_CLIPS,frameId,validateDefinition,compile,resolveCosmetics,directionFromHeading,draw,load,drawHumanoid,STATE_CLIPS};
+const api={DIRECTIONS,ATTACK_DIRECTIONS,REQUIRED_LAYERS,CUTOUT_LAYERS,OPTIONAL_LAYERS,SOCKETS,SHARED_CLIPS,CLASS_CLIPS,frameId,validateDefinition,compile,resolveCosmetics,directionFromHeading,draw,load,drawHumanoid,STATE_CLIPS};
 scope.AstraeonModularSprites=Object.freeze(api);
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
