@@ -6,7 +6,7 @@
     "Idle": {
       "motion_id": "swordsman_idle_v3_m2m_01",
       "provider": "Mesh2Motion",
-      "source_title": "Human Base Animations — Idle_Sword",
+      "source_title": "Human Base Animations \u2014 Idle_Sword",
       "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb",
       "source_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
       "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
@@ -26,7 +26,7 @@
     "Walk": {
       "motion_id": "swordsman_walk_v3_m2m_01",
       "provider": "Mesh2Motion",
-      "source_title": "Human Base Animations — Walk",
+      "source_title": "Human Base Animations \u2014 Walk",
       "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb",
       "source_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
       "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
@@ -54,7 +54,7 @@
     "BasicAttack": {
       "motion_id": "swordsman_attack_v3_m2m_01",
       "provider": "Mesh2Motion",
-      "source_title": "Human Base Animations — Sword_Attack",
+      "source_title": "Human Base Animations \u2014 Sword_Attack",
       "source_url": "https://github.com/Mesh2Motion/mesh2motion-app/blob/653a9698f5f315523072f1c3ff3496100401317b/static/animations/human-base-animations.glb",
       "source_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
       "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
@@ -89,7 +89,21 @@
         }
       ],
       "visual_review": "Rejected after frame-by-frame comparison with the actual 16-frame SE guide: the sword reaches forward and remains extended across frame indices 4-8, so the action reads as a thrust rather than the requested lateral fantasy cut. Phase 0.50/frame index 8 is only a provisional maximum-extension marker, not a validated hit. Replace this source before painting a production master; curves and sampled poses are unchanged.",
-      "review_status": "REJECTED_VISUAL_QUALITY_PENDING_REPLACEMENT"
+      "review_status": "REJECTED_VISUAL_QUALITY_PENDING_REPLACEMENT",
+      "native_rig_compact_re_evaluation": {
+        "catalog_action": "BasicAttack",
+        "status": "NEW_REVIEW_NOT_REVERSAL_OF_HISTORICAL_REJECTION"
+      }
+    },
+    "SkillOverhead": {
+      "provider": "Mesh2Motion",
+      "source_actions": [
+        "Sword_Regular_B",
+        "Sword_Regular_B_Rec"
+      ],
+      "loop": false,
+      "review_status": "SOURCE_REGISTERED_LAYERED_REVIEW_NOT_RUNTIME_APPROVED",
+      "catalog_action": "SkillOverhead"
     }
   },
   "rejected_candidates": [
@@ -133,5 +147,7 @@
       "id": "rokoko_free_packs",
       "reason": "Not pursued after the free public CMU, OpenGameArt, and Quaternius sources provided motion candidates."
     }
-  ]
+  ],
+  "owner_preferred_motion_provider": "Mesh2Motion",
+  "working_layered_action_catalog": "authoring/characters/factory-v3/configs/layered_action_catalog.json"
 }

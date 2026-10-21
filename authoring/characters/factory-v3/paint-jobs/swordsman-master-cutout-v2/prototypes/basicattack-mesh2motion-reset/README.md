@@ -84,3 +84,16 @@ python3 tools/character_factory_v3/build_mesh2motion_weaponlight.py /tmp/m2m-B-e
 ```
 
 The complete eight-view captures and the compressed eight-camera `.blend` are included for handoff; exploratory single-camera scene variants stay local and can be rebuilt. The source bundle stays immutable. Remaining production work is a registered continuous high-detail repaint, true same-frame HeadHair/body/outfit/cape/weapon cutouts, WeaponLight matched to the accepted painted sword, painted coverage of all directions, and a preview on the owner's actual map.
+
+## Current owner action split — 2026-10-21
+
+Mesh2Motion is the preferred primary source. The old four-direction B art is **SkillOverhead**, with a separately registered copy in `skill-overhead-registered/`. `basic-attack-simple/` is the new simpler native-rig Sword_Attack compact re-evaluation (historical rejection remains retained). Both are layered review assets, not runtime-admitted artwork.
+
+Rebuild both from retained sheets and explicit annotations:
+
+```bash
+python tools/character_factory_v3/layered_action_factory.py --action all
+python tools/character_factory_v3/package_layered_factory_review.py --output /workspace/outputs
+```
+
+The source/role/state contract is `authoring/characters/factory-v3/configs/layered_action_catalog.json`. See each action README for registration, source sampling, FX timing and remaining review limits.

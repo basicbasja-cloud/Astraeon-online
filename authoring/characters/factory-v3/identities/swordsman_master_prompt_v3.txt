@@ -1,7 +1,14 @@
 Astraeon V3 — Golden Swordsman identity, layered art, and motion master prompt
 
+CURRENT OWNER FACTORY DECISION (2026-10-21)
+- Mesh2Motion is the owner-preferred primary motion source. Start future action selection from its licensed immutable source library.
+- Reclassify the previous large overhead B cut as SkillOverhead, not BasicAttack. Fix source registration before reusing it.
+- BasicAttack must be a simpler single cut with a readable ready/strike/recovery, less crouching and no spin combo.
+- Rebuild both layered actions with `python tools/character_factory_v3/layered_action_factory.py --action all`. This is a review-art pipeline; source hash, license evidence, registration inputs, cutouts and sheet receipts are explicit.
+- Register manually observed pelvis anchors to fixed-camera source pelvis at one shared scale; translate every same-frame layer and trail together. Equal sheet slots and zero cutout reconstruction error do not establish temporal stability.
+
 CURRENT OWNER ATTACK DIRECTION COUNT (2026-10-21)
-- The owner corrected BasicAttack to four diagonal camera views in the requested RO-style presentation: SW, NW, NE, SE. Use four-direction-attack-review for the current gold attack experiment. Each selected view must be actually drawn from its corresponding Blender camera; do not mirror the opposite view. The current experiment has 16 poses per view and remains for owner inspection.
+- The owner corrected BasicAttack to four diagonal camera views in the requested RO-style presentation: SW, NW, NE, SE. Use configs/layered_action_catalog.json for the current action-specific reviews; the old four-direction-attack-review is the rejected unregistered SkillOverhead history. Each selected view must be actually drawn from its corresponding Blender camera; do not mirror the opposite view. The current experiment has 16 poses per view and remains for owner inspection.
 
 CURRENT OWNER ART REVIEW (2026-10-21)
 - The owner liked the sixteen-pose no-cloak continuous GIF and requested same-frame cutouts with interchangeable head/hair, complete clothed body, and weapon, plus a separate sword trail. Use no-cloak-continuous-review as the cosmetic prototype seed and modular-swaps-review for the first alternate set. This is a positive visual seed decision, not approval of all registration, runtime or eight-direction work.
@@ -10,7 +17,7 @@ CURRENT OWNER ART REVIEW (2026-10-21)
 - Cut each pose and camera view independently. HeadHair combines the visible head and hair; BodyCostume may be a complete per-pose clothed-body replacement as proposed by the owner. Do not claim a hidden naked body or independently editable clothing where none is drawn. WeaponLight must follow the current painted blade and remain an independent layer.
 
 CURRENT OWNER MOTION CHOICE (2026-10-21)
-- The owner selected Mesh2Motion. Use the immutable CC0 source library and compare Sword_Regular_A/B/C/Combo directly on its original rig before retargeting. Sword_Regular_B with its matching recovery is the working top-down cut; it is a review candidate, not owner-approved production art.
+- The owner selected Mesh2Motion. Use the immutable CC0 source library and compare Sword_Regular_A/B/C/Combo directly on its original rig before retargeting. Sword_Regular_B with its matching recovery is now SkillOverhead. The simpler native-rig Sword_Attack compact variant is a new BasicAttack re-evaluation; its older rejection remains recorded and it is not owner-approved production art.
 - Exclude the source clips' terminal reset keys and verify the matching recovery entry. Do not force a one-shot's final pixels to equal its first pose by dragging the character back across the ground. Preserve intentional source root motion and record it for eventual actor-motion integration.
 - Use the new locked-camera, full-body 1024px source guides in paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/. The compact B guide captures 60 poses at 60 fps and shortens a held follow-through. No old painted composite may be warped into these poses.
 - The four new illustrated key-pose studies still change cell framing, hand position and blade foreshortening; colored matte fringes are visible. They are studies, not approved masters or completed animation layers. Exact prompts and source provenance are recorded beside them.

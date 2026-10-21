@@ -1,0 +1,542 @@
+{
+  "status": "FOUR_DIRECTION_ATTACK_REVIEW_NOT_RUNTIME_APPROVAL",
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "frame_count_per_direction": 16,
+  "painted_pose_count": 64,
+  "mirroring": false,
+  "layout": {
+    "columns": "directions: SW, NW, NE, SE",
+    "rows": "chronological frames 0..15",
+    "cell_width": 512,
+    "cell_height": 512,
+    "sheet_width": 2048,
+    "sheet_height": 8192
+  },
+  "assets": {
+    "Master": {
+      "file": "sheets/Master.png",
+      "sha256": "ea42d9627ed78b6a49c5210d6af0e4267101b4d38524ce4f74d5f5db0f9c33a8"
+    },
+    "BodyCostume": {
+      "file": "sheets/BodyCostume.png",
+      "sha256": "d7c107f9611b45124a10adb61e63c8d40ef305ace1bad70f09b126d507ae14a0"
+    },
+    "HeadHair": {
+      "file": "sheets/HeadHair.png",
+      "sha256": "f6681c5161293272d2f978cc6555a62d891a941fb4a38cbc08b0c2c4f12f2c76"
+    },
+    "Weapon": {
+      "file": "sheets/Weapon.png",
+      "sha256": "18ccd228562ffe4bab05e0de9b01f4bed7c2b9835c94e80132a15b3d4cda4b64"
+    },
+    "WeaponHandOccluder": {
+      "file": "sheets/WeaponHandOccluder.png",
+      "sha256": "d0d93bc304151d143b7c7caa94f8e90c7cd7126af933c12e86a9762f8caf209f"
+    },
+    "WeaponLightBack": {
+      "file": "sheets/WeaponLightBack.png",
+      "sha256": "81baf94372dff700bea741bcadeebae696fd2b05063f2ad62634c0126514d444"
+    },
+    "WeaponLightFront": {
+      "file": "sheets/WeaponLightFront.png",
+      "sha256": "d7aa6adeac50aefe3cd7cc5923ce62dd497f141b7fae023fafdc7e246b774003"
+    },
+    "WeaponLight": {
+      "file": "sheets/WeaponLight.png",
+      "sha256": "5a513f9d553ed5d48c16bbbd31373d92d93bf392bd3556ab17876873dacbfaf1"
+    }
+  },
+  "durations_ms": [
+    70,
+    60,
+    70,
+    70,
+    60,
+    70,
+    70,
+    50,
+    60,
+    70,
+    70,
+    60,
+    70,
+    70,
+    60,
+    700
+  ],
+  "slow_durations_ms": [
+    210,
+    180,
+    210,
+    210,
+    180,
+    210,
+    210,
+    150,
+    180,
+    210,
+    210,
+    180,
+    210,
+    210,
+    180,
+    1000
+  ],
+  "render_order_bottom_to_top": [
+    "WeaponLightBack",
+    "BodyCostume",
+    "WeaponLightFront",
+    "HeadHair",
+    "WeaponHandOccluder",
+    "Weapon"
+  ],
+  "references_only": [
+    "Master is the full unmodified illustration; not an extra drawable layer.",
+    "WeaponLight is the merged FX reference; use the Back/Front sheets for actual depth ordering."
+  ],
+  "part_scope": "HeadHair is the visible head plus hair; BodyCostume is the complete clothed body. No hidden anatomy or separate naked-body/clothing is supplied.",
+  "trail_timing": {
+    "first_emission": 4,
+    "last_emission": 4,
+    "fade_frame": 5,
+    "fade_opacity": 0.25,
+    "clear_before": 4,
+    "clear_from": 6,
+    "maximum_recent_tip_path_fraction_of_blade": 0.65
+  },
+  "sheet_checks": [
+    {
+      "part": "Master",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "BodyCostume",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "HeadHair",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "Weapon",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "WeaponHandOccluder",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "WeaponLightBack",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "WeaponLightFront",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    },
+    {
+      "part": "WeaponLight",
+      "cells_checked": 64,
+      "visible_rgba_mismatches": 0
+    }
+  ],
+  "effect_checks": [
+    {
+      "direction": "SW",
+      "frame": 0,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 1,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 2,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 3,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 4,
+      "visible_pixels": 1803,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 5,
+      "visible_pixels": 1774,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 6,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 7,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 8,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 9,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 10,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 11,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 12,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 13,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 14,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SW",
+      "frame": 15,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 0,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 1,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 2,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 3,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 4,
+      "visible_pixels": 3406,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 5,
+      "visible_pixels": 3316,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 6,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 7,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 8,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 9,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 10,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 11,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 12,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 13,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 14,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NW",
+      "frame": 15,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 0,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 1,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 2,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 3,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 4,
+      "visible_pixels": 1077,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 5,
+      "visible_pixels": 1032,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 6,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 7,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 8,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 9,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 10,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 11,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 12,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 13,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 14,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "NE",
+      "frame": 15,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 0,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 1,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 2,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 3,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 4,
+      "visible_pixels": 4871,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 5,
+      "visible_pixels": 4818,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 6,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 7,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 8,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 9,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 10,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 11,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 12,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 13,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 14,
+      "visible_pixels": 0,
+      "edge_touch": false
+    },
+    {
+      "direction": "SE",
+      "frame": 15,
+      "visible_pixels": 0,
+      "edge_touch": false
+    }
+  ],
+  "semantic_review": "Manual boundaries and world-depth approximation remain for visual inspection; zero recomposition error does not certify semantic cutout edges.",
+  "action": "SkillOverhead"
+}

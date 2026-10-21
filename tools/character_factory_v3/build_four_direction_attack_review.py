@@ -214,10 +214,11 @@ def previews(root):
     for direction in DIRECTIONS:
         canvas=Image.new('RGB',(512,544),'#ececec');canvas.paste(views[direction][-1],(0,32));ImageDraw.Draw(canvas).text((12,10),direction+' / turntable review',fill='black');turns.append(canvas)
     turns[0].save(root/'four-direction-turntable.gif',save_all=True,append_images=turns[1:],duration=550,loop=0,disposal=2,optimize=False)
-    combined[0].save(root/'four-directions-guard.png');combined[4].save(root/'four-directions-strike.png');combined[-1].save(root/'four-directions-recovery.png')
+    contact=7 if audit.get('action')=='BasicAttack' else 4
+    combined[0].save(root/'four-directions-guard.png');combined[contact].save(root/'four-directions-strike.png');combined[-1].save(root/'four-directions-recovery.png')
 
 
-def package_sheets(root):
+def package_sheets(root,effect_frames=(4,5)):
     sheets=root/'sheets';sheets.mkdir(exist_ok=True);checks=[];assets={}
     for part in ['Master']+PARTS:
         sheet=Image.new('RGBA',(2048,8192))
@@ -242,10 +243,13 @@ def package_sheets(root):
             alpha=np.asarray(Image.open(root/direction/'WeaponLight'/f'{i:03d}.png').getchannel('A'))>8
             edge=bool(alpha[0].any() or alpha[-1].any() or alpha[:,0].any() or alpha[:,-1].any())
             if edge:raise ValueError(f'Effect clipped at {direction} {i}')
-            if i not in [4,5] and alpha.any():raise ValueError('Wind-up/recovery effect must be clear')
+            if i not in effect_frames and alpha.any():raise ValueError('Wind-up/recovery effect must be clear')
             fx_checks.append({'direction':direction,'frame':i,'visible_pixels':int(alpha.sum()),'edge_touch':edge})
     assembly=json.loads((root/'assembly-audit.json').read_text())
     manifest={'status':'FOUR_DIRECTION_ATTACK_REVIEW_NOT_RUNTIME_APPROVAL','directions':DIRECTIONS,'frame_count_per_direction':16,'painted_pose_count':64,'mirroring':False,'layout':{'columns':'directions: SW, NW, NE, SE','rows':'chronological frames 0..15','cell_width':512,'cell_height':512,'sheet_width':2048,'sheet_height':8192},'assets':assets,'durations_ms':assembly['durations_ms'],'slow_durations_ms':assembly['slow_durations_ms'],'render_order_bottom_to_top':['WeaponLightBack','BodyCostume','WeaponLightFront','HeadHair','WeaponHandOccluder','Weapon'],'references_only':['Master is the full unmodified illustration; not an extra drawable layer.','WeaponLight is the merged FX reference; use the Back/Front sheets for actual depth ordering.'],'part_scope':'HeadHair is the visible head plus hair; BodyCostume is the complete clothed body. No hidden anatomy or separate naked-body/clothing is supplied.','trail_timing':{'first_emission':4,'last_emission':4,'fade_frame':5,'fade_opacity':.25,'clear_before':4,'clear_from':6,'maximum_recent_tip_path_fraction_of_blade':.65},'sheet_checks':checks,'effect_checks':fx_checks,'semantic_review':'Manual boundaries and world-depth approximation remain for visual inspection; zero recomposition error does not certify semantic cutout edges.'}
+    manifest['trail_timing'].update(first_emission=effect_frames[0],last_emission=effect_frames[0],fade_frame=effect_frames[1],clear_before=effect_frames[0],clear_from=effect_frames[1]+1)
+    if assembly.get('action')=='BasicAttack':manifest['trail_timing']['maximum_recent_tip_path_fraction_of_blade']=.55
+    manifest['action']=assembly.get('action',assembly.get('classification','BasicAttack'))
     write_json(root/'sprite-sheets-manifest.json',manifest)
     print('PACKAGED_SHEETS',len(assets),flush=True)
 

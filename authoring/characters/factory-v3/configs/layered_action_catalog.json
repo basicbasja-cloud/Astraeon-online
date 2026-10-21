@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "character": "swordsman_male_v3",
+  "owner_preferred_motion_provider": "Mesh2Motion",
+  "source_path": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "license_evidence": "authoring/characters/factory-v3/motions/legal-evidence/mesh2motion-cc0-license.md",
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "cell_size": 512,
+  "parts": [
+    "HeadHair",
+    "BodyCostume",
+    "Weapon",
+    "WeaponHandOccluder",
+    "WeaponLightBack",
+    "WeaponLightFront"
+  ],
+  "actions": {
+    "SkillOverhead": {
+      "source_actions": [
+        "Sword_Regular_B",
+        "Sword_Regular_B_Rec"
+      ],
+      "directory": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/skill-overhead-registered",
+      "original_review": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/four-direction-attack-review",
+      "guides": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/eight-direction-guides",
+      "loop": false,
+      "poses_per_direction": 16,
+      "status": "REGISTERED_LAYERED_REVIEW",
+      "known_limits": [
+        "Approximate manual pelvis anchors",
+        "NE recovery blade foreshortening",
+        "Illustrated anatomy can still drift after translation"
+      ]
+    },
+    "BasicAttack": {
+      "source_actions": [
+        "Sword_Attack"
+      ],
+      "directory": "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple",
+      "loop": false,
+      "poses_per_direction": 16,
+      "status": "NEW_NATIVE_RIG_LAYERED_REEVALUATION",
+      "source_samples": [
+        0,
+        3,
+        6,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        25,
+        28,
+        31,
+        34,
+        37,
+        39
+      ],
+      "selection_reason": "One single cut, no spin/combo, shallower body dip than B; original-rig knuckle-based sword guide and compressed follow-through hold.",
+      "history": "Sword_Attack previously failed a retargeted/source-guide review as thrust-like. This new original-rig compact variant is an explicit re-evaluation, not reversal of that rejection or production acceptance.",
+      "known_limits": [
+        "Owner naturalness and basic-attack suitability review pending",
+        "Manual anatomy/cutout edges provisional",
+        "Per-view front/back FX staging approximate"
+      ]
+    }
+  },
+  "next_action_sources": {
+    "Idle": {
+      "source_action": "Idle_Sword",
+      "directions": 8,
+      "status": "EXISTING_MOTION_SELECTION_NOT_NEW_LAYERED_ART"
+    },
+    "Walk": {
+      "source_action": "Walk",
+      "directions": 8,
+      "status": "EXISTING_MOTION_SELECTION_NOT_NEW_LAYERED_ART"
+    },
+    "Block": {
+      "source_action": "Sword_Block",
+      "status": "SOURCE_AVAILABLE_ART_NOT_BUILT"
+    },
+    "Hit": {
+      "source_action": "Hit_Chest",
+      "status": "SOURCE_AVAILABLE_ART_NOT_BUILT"
+    },
+    "Death": {
+      "source_action": "Death_D",
+      "status": "SOURCE_AVAILABLE_ART_NOT_BUILT"
+    }
+  },
+  "gates": {
+    "owner_approved": false,
+    "runtime_admitted": false,
+    "require_same_frame_cutouts": true,
+    "registration": "fixed source camera projection, single shared scale, observed per-pose pelvis anchors; translation shared by ALL layers",
+    "export_pixel_audit_is_not_motion_acceptance": true
+  }
+}
