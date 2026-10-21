@@ -252,7 +252,7 @@ const STATE_CLIPS=Object.freeze({idle:'Idle',turn:'Idle',stop:'Idle',start:'Walk
 function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archetype='warrior'}={}) {
  const {compiled,images}=modular,definition=compiled.definition;
  if(definition.source.status==='DEV_ONLY'&&!modular.allowDev)throw Error('Development sprites are not approved runtime art');
- if(({warrior:'Swordsman',mage:'Mage'})[archetype]!==definition.classId)throw Error('Sprite class differs from gameplay archetype');
+ if(({warrior:'Swordsman',mage:'Mage',ranger:'Archer'})[archetype]!==definition.classId)throw Error('Sprite class differs from gameplay archetype');
  let animationId=modular.animationId||STATE_CLIPS[state];
  if(state==='dodge'&&definition.classId==='Mage')animationId='Blink';
  if(!definition.clips[animationId])throw Error('Missing runtime clip '+animationId);

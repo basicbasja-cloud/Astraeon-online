@@ -1,0 +1,24 @@
+{
+  "status": "REJECTED_WRONG_HAND_ATTACHMENT",
+  "target_frame_index": 11,
+  "glove_donor_frame_index": 10,
+  "body_pose_warped": false,
+  "bow_translation_px": [
+    -40,
+    2
+  ],
+  "glove_translation_px": [
+    -33,
+    10
+  ],
+  "glove_rotation_degrees": 16,
+  "hidden_surfaces_generated": false,
+  "owner_approved": false,
+  "runtime_admitted": false,
+  "limitations": [
+    "Glove is reused from adjacent matching arm orientation; compare source wrist before promotion.",
+    "Original open-hand mask and floating-bow component removed from the frame; no body redraw.",
+    "This single-frame repair is not a complete four-view action."
+  ],
+  "rejection_reason": "Moved bow to visible right release hand; source left bow arm was missing. Requires authored left arm and actual source grip, not attachment to wrong hand."
+}

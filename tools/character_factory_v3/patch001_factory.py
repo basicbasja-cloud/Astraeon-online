@@ -3,7 +3,7 @@
 Planning is never counted as authored art. Identical donor-pose jobs are shared;
 paint and cutout reuse still requires matching camera, pose and body fitting.
 """
-import argparse,concurrent.futures,hashlib,json,subprocess,sys
+import argparse,concurrent.futures,hashlib,json,struct,subprocess,sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -25,9 +25,25 @@ def plan():
             source=ROOT/a['source_file']
             if not source.is_file():raise ValueError('Missing source '+str(source))
             if filehash(source)!=approved_sources.get(a['source_file']):raise ValueError('Source differs from retained intake digest')
-            geometry={'source_file':a['source_file'],'source_sha256':filehash(source),'source_actions':a['source_actions'],'frames':a['frames'],'loop':a['loop'],'ortho_scale':3.55,'resolution':1024,'weapon':{'Swordsman':'sword','Mage':'staff','Archer':'bow'}[kind],'guide_aa':'OFF'}
-            if a['source_provider']=='KayKit':geometry['retarget_to']=config['source']['file']
-            if kind=='Mage':geometry['staff_grip_mode']='wrist-local-idle-reference'
+            geometry={'source_file':a['source_file'],'source_sha256':filehash(source),'source_actions':a['source_actions'],'frames':a['frames'],'loop':a['loop'],'ortho_scale':config.get('camera',{}).get('ortho_scale',3.55),'resolution':config['canvas']['source_guide'][0],'weapon':{'Swordsman':'sword','Mage':'staff','Archer':'bow'}[kind],'guide_aa':'OFF'}
+            if config.get('camera',{}).get('up_offset')is not None:geometry['camera_up_offset']=config['camera']['up_offset']
+            if a['source_provider']=='KayKit':
+                geometry['retarget_to']=config['source']['file']
+                geometry['closed_left_grip_revision']=1
+                geometry['bow_proxy_basis']='wrist-local-aim'if'CombatRanged'in a['source_file']else'wrist-local-carry'
+                if'CombatRanged'in a['source_file']:geometry['arrow_release_phase']=.03
+                geometry['pose_evaluation_revision']=2
+                if a['source_actions'][0]in ['Ranged_Bow_Draw','Ranged_Bow_Draw_Up']:
+                    geometry['source_ranges']={a['source_actions'][0]:[8,32]}
+                    geometry['entry_transition']={'action':'Ranged_Bow_Idle','source_frame':0,'frames':4,'method':'local-joint-TRS-interpolation; no pixel warping'}
+            else:geometry['pose_evaluation_revision']=2
+            if kind=='Archer'and a['source_provider']=='Mesh2Motion':geometry['bow_proxy_basis']='wrist-local-carry'
+            if a.get('floor_sit_adapter'):geometry['floor_sit_adapter']=a['floor_sit_adapter']
+            for transition in ['entry_transition','exit_transition']:
+                if a.get(transition):geometry[transition]=a[transition]
+            if kind=='Mage':
+                geometry.update({'staff_grip_mode':'wrist-local-prop-reference','held_staff_hand':'r','staff_arm_reference':'Idle_Lantern'})
+            if a.get('source_ranges'):geometry['source_ranges']=a['source_ranges']
             if 'Sword_Regular_B_Rec' in a['source_actions']:geometry['source_ranges']={'Sword_Regular_B':[0,8],'Sword_Regular_B_Rec':[8,22]}
             key=digest(geometry)[:20]
             job=jobs.setdefault(key,{'id':key,**geometry,'directions':[],'uses':[]})
@@ -58,7 +74,10 @@ def receipt_valid(job):
     for d in job['directions']:
         if len(data.get('views',{}).get(d,{}).get('frames',[]))!=job['frames']:return False
         for i in range(job['frames']):
-            if not(folder/d/f'{i:03d}.png').is_file():return False
+            path=folder/d/f'{i:03d}.png'
+            if not path.is_file():return False
+            with path.open('rb')as image:header=image.read(24)
+            if len(header)!=24 or header[:8]!=b'\x89PNG\r\n\x1a\n'or struct.unpack('>II',header[16:24])!=(job['resolution'],job['resolution']):return False
     return True
 
 

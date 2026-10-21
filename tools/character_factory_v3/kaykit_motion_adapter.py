@@ -20,6 +20,12 @@ class KayKitMotionAdapter:
         self.root_rest=source.matrix_world@source.data.bones['root'].head_local
         self.hips_rest=source.matrix_world@source.data.bones['hips'].head_local
         self.scale=(target.matrix_world@target.data.bones['pelvis'].head_local).z/max(.01,self.hips_rest.z)
+        # Preserve a real native closed left-hand grip rather than resetting
+        # every finger to the open bind pose during a bow release.
+        target.animation_data.action=bpy.data.actions.get('Idle_Torch_'+target.name)
+        for track in target.animation_data.nla_tracks:track.mute=True
+        bpy.context.scene.frame_set(0);bpy.context.view_layer.update()
+        self.left_grip={b.name:b.matrix_basis.copy()for b in target.pose.bones if b.name.endswith('_l')and b.name.startswith(('thumb','index','middle','ring','pinky'))}
         target.animation_data.action=None
         for track in target.animation_data.nla_tracks:track.mute=True
         self.matrix=target.matrix_world.copy()
@@ -37,6 +43,8 @@ class KayKitMotionAdapter:
             if name=='pelvis':world.translation+=((self.source.matrix_world@self.source.pose.bones['hips'].head)-self.hips_rest-root_delta)*self.scale
             bone.matrix=self.target.matrix_world.inverted()@Matrix.LocRotScale(world.translation,desired,Vector((1,1,1)))
             bpy.context.view_layer.update()
+        for name,matrix in self.left_grip.items():self.target.pose.bones[name].matrix_basis=matrix
+        bpy.context.view_layer.update()
         # Align the lowest toe to donor contact height. This is a documented
         # retarget correction, not claimed to be unchanged source motion.
         donor=min((self.source.matrix_world@self.source.pose.bones['toes.'+s].head).z for s in ['l','r'])

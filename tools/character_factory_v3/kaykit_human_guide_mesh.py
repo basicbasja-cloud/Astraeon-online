@@ -22,7 +22,9 @@ def bind_human_guide(native,source_path):
         maps.update({f'clavicle_{s}':'chest',f'upperarm_{s}':f'upperarm.{s}',f'lowerarm_{s}':f'lowerarm.{s}',f'hand_{s}':f'hand.{s}',f'thigh_{s}':f'upperleg.{s}',f'calf_{s}':f'lowerleg.{s}',f'foot_{s}':f'foot.{s}',f'ball_{s}':f'toes.{s}'})
     target_rest={n:native.matrix_world@b.matrix_local for n,b in native.data.bones.items()}
     source_pose={n:human.matrix_world@b.matrix for n,b in human.pose.bones.items()}
-    meshes=[o for o in bpy.data.objects if o not in old and o.type=='MESH']
+    meshes=[o for o in bpy.data.objects if o not in old and o.type=='MESH'and any(m.type=='ARMATURE'and m.object==human for m in o.modifiers)]
+    for obj in bpy.data.objects:
+        if obj not in old and obj.type=='MESH'and obj not in meshes:obj.hide_render=True
     if not meshes:raise ValueError('Missing human guide geometry')
     for mesh_obj in meshes:
         evaluated=mesh_obj.evaluated_get(bpy.context.evaluated_depsgraph_get());evaluated_mesh=evaluated.to_mesh();positions=[];weights=[]
@@ -31,6 +33,7 @@ def bind_human_guide(native,source_path):
             world=evaluated.matrix_world@posed_vertex.co;location=Vector();total=0.;mapped={}
             for group in vertex.groups:
                 bone=groups[group.group]
+                if bone.endswith('_leaf'):bone=bone[:-5]
                 if bone not in source_pose:continue
                 if bone.startswith('clavicle_'):bone='spine_03'
                 if bone not in maps:
@@ -45,7 +48,7 @@ def bind_human_guide(native,source_path):
                 if bone=='spine_02':target_matrix.translation=target_rest['spine'].translation.lerp(target_rest['chest'].translation,.5)
                 if bone=='head':target_matrix.translation+=Vector((0,0,.07))
                 point=target_matrix@local;location+=point*group.weight;total+=group.weight;mapped[target]=mapped.get(target,0)+group.weight
-            if total<=0:raise ValueError('Unmapped human guide vertex')
+            if total<=0:raise ValueError(f'Unmapped human guide vertex {mesh_obj.name}/{vertex.index}: {[(groups[g.group],g.weight)for g in vertex.groups]}')
             positions.append(tuple(location/total));weights.append({n:w/total for n,w in mapped.items()})
         evaluated.to_mesh_clear()
         data=bpy.data.meshes.new('NativeBowHumanGuideMesh');data.from_pydata(positions,[],[tuple(p.vertices)for p in mesh_obj.data.polygons]);data.update()

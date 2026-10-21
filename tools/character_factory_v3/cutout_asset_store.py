@@ -22,7 +22,8 @@ def register(image_path,metadata,index=None):
     for field in ['fit_id','pose_id','camera_id','root','source_reference']:
         if field not in metadata:raise ValueError('Missing compatibility field '+field)
     image=Image.open(image_path)
-    if image.mode!='RGBA'or image.size!=(512,512):raise ValueError('Cutouts must be full untrimmed 512px RGBA cells')
+    canvas=metadata.get('canvas',[512,512])
+    if list(image.size)!=canvas or image.mode!='RGBA'or canvas not in [[512,512],[768,768]]:raise ValueError('Cutouts must match an explicit full canonical 512px or 768px RGBA canvas')
     if metadata['role']in REQUIRED and not image.getbbox()and not metadata.get('occlusion_reason'):raise ValueError('Required cutout is empty without a recorded visibility reason')
     pixels=np.asarray(image).copy();pixels[pixels[:,:,3]==0]=0
     pixel_hash=hashlib.sha256(pixels.tobytes()).hexdigest();key=hashlib.sha256(canonical({'pixels':pixel_hash,'compatibility':metadata})).hexdigest()
@@ -30,7 +31,7 @@ def register(image_path,metadata,index=None):
     if not target.exists():Image.fromarray(pixels).save(target)
     index_path=STORE/'index.json';owned=index is None
     if owned:index=json.loads(index_path.read_text())if index_path.exists()else{'version':1,'assets':{},'objects':{}}
-    index['assets'][key]={'object':pixel_hash,**metadata};index['objects'][pixel_hash]={'file':str(target.relative_to(ROOT)),'rgba_sha256':pixel_hash,'canvas':[512,512]}
+    index['assets'][key]={'object':pixel_hash,**metadata};index['objects'][pixel_hash]={'file':str(target.relative_to(ROOT)),'rgba_sha256':pixel_hash,'canvas':list(image.size)}
     if owned:save_index(index)
     return key
 
@@ -41,7 +42,7 @@ def save_index(index):
 
 def resolve(asset_id,request):
     index=json.loads((STORE/'index.json').read_text());asset=index['assets'][asset_id]
-    for field in ['role','fit_id','pose_id','camera_id','root']:
+    for field in ['role','fit_id','pose_id','camera_id','root']+(['canvas']if'canvas'in asset else[]):
         if request.get(field)!=asset[field]:raise ValueError('Incompatible cutout '+field)
     path=ROOT/index['objects'][asset['object']]['file'];pixels=np.array(Image.open(path).convert('RGBA'));pixels[pixels[:,:,3]==0]=0
     if hashlib.sha256(pixels.tobytes()).hexdigest()!=asset['object']:raise ValueError('Stored pixels changed')
@@ -51,7 +52,7 @@ def resolve(asset_id,request):
 def import_frame(master_path,labels_path,part_paths):
     """Validate an artist's same-frame parts before storage (no warping)."""
     master=Image.open(master_path).convert('RGBA')
-    if master.size!=(512,512):raise ValueError('Master is not on the canonical canvas')
+    if master.size not in [(512,512),(768,768)]:raise ValueError('Master is not on a supported canonical canvas')
     # Exact label IDs: 1 body, 2 head/hair, 3 weapon, 4 back, 5 headgear.
     labels=Image.open(labels_path)
     if labels.size!=master.size or labels.mode not in ['L','P']:raise ValueError('Expected a same-frame integer label map')

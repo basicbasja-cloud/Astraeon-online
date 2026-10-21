@@ -63,7 +63,7 @@ function visualFor(cls,anim,transform,time){
   let p=progress;
   if(current==='CastChannel'){result.elapsedMs=Math.max(0,(time-anim.started)*1000);return result}
   if(['BasicAttack','SkillAction','CastRelease'].includes(current)&&Number.isFinite(anim.impactAt)){
-   const index={BasicAttack:7,SkillAction:6,CastRelease:3}[current],release=clip.durations.slice(0,index).reduce((a,b)=>a+b,0)/total,impact=Math.max(.01,Math.min(.99,anim.impactAt));
+   const index={BasicAttack:7,SkillAction:6,CastRelease:3}[current],event=clip.events?.find(e=>['impact','projectileRelease','release'].includes(e.name)),release=event?event.timeMs/total:clip.durations.slice(0,index).reduce((a,b)=>a+b,0)/total,impact=Math.max(.01,Math.min(.99,anim.impactAt));
    p=p<impact?p/impact*release:release+(p-impact)/(1-impact)*(1-release);
   }
   result.elapsedMs=p*total;

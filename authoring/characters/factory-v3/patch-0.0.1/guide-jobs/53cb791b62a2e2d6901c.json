@@ -1,0 +1,38 @@
+{
+  "id": "53cb791b62a2e2d6901c",
+  "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+  "source_sha256": "7fef1fc0e7b0feafd34b8e12d23f514c8c1f9d068047a691b854b56f1774dff5",
+  "source_actions": [
+    "Ranged_Bow_Draw_Up",
+    "Ranged_Bow_Release_Up"
+  ],
+  "frames": 16,
+  "loop": false,
+  "ortho_scale": 3.55,
+  "resolution": 1024,
+  "weapon": "bow",
+  "guide_aa": "OFF",
+  "retarget_to": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "pose_evaluation_revision": 2,
+  "source_ranges": {
+    "Ranged_Bow_Draw_Up": [
+      8,
+      32
+    ]
+  },
+  "entry_transition": {
+    "action": "Ranged_Bow_Idle",
+    "source_frame": 0,
+    "frames": 4,
+    "method": "local-joint-TRS-interpolation; no pixel warping"
+  },
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "uses": [
+    "Archer/ArrowRain"
+  ]
+}

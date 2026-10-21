@@ -52,17 +52,41 @@ def main():
         if exact:chosen=exact
         elif len(options)==1:chosen=options[0]
         else:raise ValueError(f'Ambiguous source action {name}: {[a.name for a in options]}')
+        if source_rig.animation_data.action!=chosen:
+            # Partial source clips must not inherit unkeyed channels from the last action.
+            for bone in source_rig.pose.bones:bone.matrix_basis=Matrix.Identity(4)
         source_rig.animation_data.action=chosen
         if hasattr(source_rig.animation_data,'action_slot') and chosen.slots:source_rig.animation_data.action_slot=chosen.slots[0]
         return chosen
     segments=job['source_actions'];count=1 if args.static else job['frames'];samples=[]
-    staff_local_axis=None
+    staff_local_axis=None;staff_pose={};bow_local_axes=None
+    if job.get('bow_proxy_basis')=='wrist-local-carry':
+        action(job['source_actions'][0]if adapter else'Idle_A');sc.frame_set(0);bpy.context.view_layer.update()
+        if adapter:adapter.apply()
+        q=(rig.matrix_world@rig.pose.bones['hand_l'].matrix).to_quaternion().inverted()
+        bow_local_axes=(q@Vector((0,-1,0)),q@Vector((0,0,1)))
+    elif job.get('bow_proxy_basis')=='wrist-local-aim':
+        action('Ranged_Bow_Aiming_Idle');sc.frame_set(0);bpy.context.view_layer.update()
+        if adapter:adapter.apply()
+        q=(rig.matrix_world@rig.pose.bones['hand_l'].matrix).to_quaternion().inverted()
+        aim=(rig.matrix_world@rig.pose.bones['hand_l'].head)-(rig.matrix_world@rig.pose.bones['hand_r'].head);aim.normalize()
+        up=Vector((0,0,1));up-=aim*up.dot(aim);up.normalize();bow_local_axes=(q@aim,q@up)
+    if job.get('staff_arm_reference'):
+        action(job['staff_arm_reference']);sc.frame_set(0);bpy.context.view_layer.update()
+        side=job.get('held_staff_hand','l')
+        prefixes=('upperarm_','lowerarm_','hand_','index_','middle_','ring_','pinky_','thumb_')
+        staff_pose={b.name:b.matrix_basis.copy()for b in rig.pose.bones if b.name.endswith('_'+side)and b.name.startswith(prefixes)}
+        staff_local_axis=(rig.matrix_world@rig.pose.bones['hand_'+side].matrix).to_quaternion().inverted()@Vector((0,0,1))
     if job.get('staff_grip_mode')=='wrist-local-idle-reference':
         neutral=action('Idle_A');sc.frame_set(0);bpy.context.view_layer.update()
         staff_local_axis=(rig.matrix_world@rig.pose.bones['hand_l'].matrix).to_quaternion().inverted()@Vector((0,0,1))
     intervals=job.get('source_ranges',{})
-    for i in range(count):
-        phase=0 if count==1 else i/count if job['loop'] else i/(count-1)
+    entry=job.get('entry_transition');entry_count=entry['frames']if entry and not args.static else 0
+    exit=job.get('exit_transition');exit_count=exit['frames']if exit and not args.static else 0
+    main_count=count-entry_count-exit_count
+    if main_count<2 and count>1:raise ValueError('Transition leaves no source action samples')
+    for i in range(main_count):
+        phase=0 if main_count==1 else i/main_count if job['loop'] else i/(main_count-1)
         position=phase*len(segments);segment=min(len(segments)-1,int(position));local=position-segment
         chosen=action(segments[segment]);start,end=chosen.frame_range
         if segments[segment] in intervals:start,end=intervals[segments[segment]]
@@ -71,6 +95,24 @@ def main():
         end=min(end,ends.get(segments[segment],end));f=start+(end-start)*local
         if count==1:f=start
         samples.append({'action':segments[segment],'source_frame':f,'segment_phase':local})
+    if entry_count:
+        target=samples[0].copy()
+        samples=[{**target,'transition_from':entry['action'],'transition_frame':entry.get('source_frame',0),'transition_weight':i/entry_count}for i in range(entry_count)]+samples
+    if exit_count:
+        exit_source=samples[-1].copy()
+        samples += [{'action':exit['action'],'source_frame':exit.get('source_frame',0),'segment_phase':0,'transition_from':exit_source['action'],'transition_frame':exit_source['source_frame'],'transition_weight':(i+1)/exit_count}for i in range(exit_count)]
+    def evaluate(rec):
+        action(rec['action']);f=rec['source_frame'];sc.frame_set(math.floor(f),subframe=f%1);bpy.context.view_layer.update()
+        if 'transition_from'in rec:
+            target={b.name:b.matrix_basis.copy()for b in source_rig.pose.bones}
+            action(rec['transition_from']);f=rec['transition_frame'];sc.frame_set(math.floor(f),subframe=f%1);bpy.context.view_layer.update()
+            source={b.name:b.matrix_basis.copy()for b in source_rig.pose.bones}
+            # Suspend fcurves while evaluating an authored joint-space transition.
+            source_rig.animation_data.action=None
+            for bone in source_rig.pose.bones:
+                a,qa,sa=source[bone.name].decompose();b,qb,sb=target[bone.name].decompose();w=rec['transition_weight']
+                bone.matrix_basis=Matrix.LocRotScale(a.lerp(b,w),qa.slerp(qb,w),sa.lerp(sb,w))
+            bpy.context.view_layer.update()
     proxies=[]
     def curve(name,color,radius):
         data=bpy.data.curves.new(name,'CURVE');data.dimensions='3D';data.bevel_depth=radius;data.bevel_resolution=1
@@ -81,19 +123,28 @@ def main():
     weapon=job.get('weapon','none')
     if weapon=='bow':bow=curve('BowGuide',(.36,.20,.08),.018);string=curve('StringGuide',(.82,.83,.85),.004);arrow=curve('ArrowGuide',(.67,.59,.38),.007)
     elif weapon in ['sword','staff']:shaft=curve('WeaponGuide',(.59,.69,.82)if weapon=='sword'else(.38,.21,.08),.022);cross=curve('GripCrossGuide',(.70,.41,.09),.018)
+    def contact_pose(rec):
+        if job.get('floor_sit_adapter'):
+            from floor_sit_adapter import apply_floor_sit
+            apply_floor_sit(rig,rec['segment_phase'])
+    def prop_pose():
+        for name,matrix in staff_pose.items():rig.pose.bones[name].matrix_basis=matrix
+        if staff_pose:bpy.context.view_layer.update()
     original=rig.matrix_world.copy();records=[]
     for rec in samples:
-        action(rec['action']);f=rec['source_frame'];sc.frame_set(math.floor(f),subframe=f%1);rig.matrix_world=original.copy();bpy.context.view_layer.update()
+        evaluate(rec);rig.matrix_world=original.copy();bpy.context.view_layer.update()
         if adapter:adapter.apply()
+        prop_pose();contact_pose(rec)
         rec['source_root_world']=list(rig.matrix_world@rig.pose.bones[names['root']].head)
     anchor=Vector(samples[0]['source_root_world']);anchor.z=0
     refs={};size=sc.render.resolution_x
     for direction in job['directions']:
-        folder=out/direction;folder.mkdir(exist_ok=True);r=math.radians(YAWS[direction]);offset=Vector((6*math.sin(r),-6*math.cos(r),3.1));camera.rotation_euler=(-offset).to_track_quat('-Z','Y').to_euler();up=camera.rotation_euler.to_matrix()@Vector((0,1,0));camera.location=anchor+up*(.325*cd.ortho_scale)+offset
+        folder=out/direction;folder.mkdir(exist_ok=True);r=math.radians(YAWS[direction]);offset=Vector((6*math.sin(r),-6*math.cos(r),3.1));camera.rotation_euler=(-offset).to_track_quat('-Z','Y').to_euler();up=camera.rotation_euler.to_matrix()@Vector((0,1,0));camera.location=anchor+up*job.get('camera_up_offset',.325*cd.ortho_scale)+offset
         view=[];thumbs=[]
         for i,rec in enumerate(samples):
-            action(rec['action']);f=rec['source_frame'];sc.frame_set(math.floor(f),subframe=f%1);rig.matrix_world=original.copy()
+            evaluate(rec);rig.matrix_world=original.copy()
             if adapter:adapter.apply()
+            prop_pose();contact_pose(rec)
             delta=Vector(rec['source_root_world'])-Vector(samples[0]['source_root_world']);delta.z=0
             rig.matrix_world.translation-=delta;bpy.context.view_layer.update()
             def project(v):
@@ -107,22 +158,25 @@ def main():
                     right=sum((rig.matrix_world@rig.pose.bones[n+'_01_r'].head for n in ['index','pinky']),Vector())*.5
                     aim=left-right
                 if aim.length<.08:aim=Vector((0,-1,0))
-                aim.normalize();up=Vector((0,0,1));up-=aim*aim.dot(up)
+                aim.normalize();up=Vector((0,0,1))
+                if bow_local_axes:
+                    q=(rig.matrix_world@rig.pose.bones['hand_l'].matrix).to_quaternion();aim=q@bow_local_axes[0];up=q@bow_local_axes[1]
+                up-=aim*aim.dot(up)
                 if up.length<.1:up=Vector((1,0,0))
                 up.normalize();ends=[]
                 for k in range(25):
-                    t=k/12-1;ends.append(left+up*(.52*t)+aim*(-.16*t*t+.12*abs(t)**6))
-                draw='Draw' in rec['action'] or 'Aiming' in rec['action'] or ('Release' in rec['action'] and rec['segment_phase']<.22)
-                nock=right if draw else left
+                    t=k/12-1;ends.append(left+up*(.52*t)+aim*(-.22*t*t+.07*abs(t)**6))
+                draw='Draw' in rec['action'] or 'Aiming' in rec['action'] or ('Release' in rec['action'] and rec['segment_phase']<job.get('arrow_release_phase',.22))
+                nock=right if draw else left-aim*.15
                 points(bow,ends);points(string,[ends[0],nock,ends[-1]]);points(arrow,[nock,left+aim*.40]);arrow.hide_render=not draw
                 prop={'grip':project(left),'string_nock':project(nock),'arrow_tip':project(left+aim*.40),'arrow_visible':draw}
             elif weapon in ['sword','staff']:
-                side='r'if weapon=='sword'else'l';grip=bones['hand_'+side]
+                side='r'if weapon=='sword'else job.get('held_staff_hand','l');grip=bones['hand_'+side]
                 if not kay:
                     ix=rig.matrix_world@rig.pose.bones['index_01_'+side].head;pk=rig.matrix_world@rig.pose.bones['pinky_01_'+side].head;grip=(ix+pk)*.5;axis=(ix-pk).normalized()
                 else:axis=Vector((0,0,1))
-                if weapon=='staff':axis=(rig.matrix_world@rig.pose.bones['hand_l'].matrix).to_quaternion()@staff_local_axis if staff_local_axis is not None else Vector((0,0,1))
-                extent=.8 if weapon=='sword'else 1.18;normal=axis.cross(Vector((0,-1,0))).normalized();points(shaft,[grip-axis*.12,grip+axis*extent]);points(cross,[grip+axis*.06-normal*.10,grip+axis*.06+normal*.10]);prop={'grip':project(grip),'tip':project(grip+axis*extent)}
+                if weapon=='staff':axis=(rig.matrix_world@rig.pose.bones['hand_'+side].matrix).to_quaternion()@staff_local_axis if staff_local_axis is not None else Vector((0,0,1))
+                extent=.8 if weapon=='sword'else .76;normal=axis.cross(Vector((0,-1,0))).normalized();points(shaft,[grip-axis*(.12 if weapon=='sword'else .82),grip+axis*extent]);points(cross,[grip+axis*.06-normal*.10,grip+axis*.06+normal*.10]);prop={'grip':project(grip),'tip':project(grip+axis*extent)}
             path=folder/f'{i:03d}.png';sc.render.filepath=str(path);bpy.ops.render.render(write_still=True)
             view.append({'frame':i,**rec,'actor_root_delta':list(delta),'landmarks':{n:project(v) for n,v in bones.items()},'world_landmarks':{n:list(v) for n,v in bones.items()},'weapon_guide':prop,'bone_rotations':{n:list((rig.matrix_world@rig.pose.bones[b].matrix).to_quaternion())for n,b in names.items()},'image':str(path.relative_to(out))})
             im=Image.open(path).convert('RGBA').resize((256,256));bg=Image.new('RGBA',im.size,'white');bg.alpha_composite(im);thumbs.append(bg.convert('RGB'))
@@ -136,7 +190,7 @@ def main():
         for i,d in enumerate(job['directions']):
             im=Image.open(out/d/'000.png').convert('RGBA').resize((512,512));sheet.paste(im,(i%4*512,i//4*512),im)
         sheet.save(out/'turnaround-guide.png')
-    receipt={'job':job,'source_rig':source_rig.name,'guide_rig':rig.name,'retargeting':'rest-space world rotation transfer plus toe-height correction'if adapter else'none; original rig','frame_count':count,'views':refs,'mirroring':False,'root_policy':'fixed camera; horizontal source actor-root travel extracted and recorded separately','status':'SOURCE_MANNEQUIN_GUIDE_NOT_PAINTED_ART','limitations':['Source grip, joins, terminal key behavior and foot contacts require visual review.','This shared donor guide does not prove male/female final-art fitting.','Staff proxy is constrained vertical for fitting review, not a proof of raw finger contact.']}
+    receipt={'job':job,'source_rig':source_rig.name,'guide_rig':rig.name,'retargeting':'rest-space world rotation transfer plus toe-height correction'if adapter else'none; original rig','frame_count':count,'views':refs,'mirroring':False,'root_policy':'fixed camera; horizontal source actor-root travel extracted and recorded separately','status':'SOURCE_MANNEQUIN_GUIDE_NOT_PAINTED_ART','limitations':['Source grip, joins, terminal key behavior and foot contacts require visual review.','This shared donor guide does not prove male/female final-art fitting.','Mage right prop arm is an explicit native Idle_Lantern local-pose carry adaptation; left casting motion remains from source. Staff contact still needs visual review.']}
     (out/'manifest.json').write_text(json.dumps(receipt,indent=2)+'\n')
 
 

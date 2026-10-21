@@ -48,19 +48,28 @@
   },
   "canvas": {
     "authoring": [
-      512,
-      512
+      768,
+      768
     ],
     "source_guide": [
-      1024,
-      1024
+      1536,
+      1536
     ],
     "runtime": [
-      160,
-      160
+      240,
+      240
     ],
     "uniform_runtime_scale": 0.3125,
-    "registration": "One shared camera/scale and per-pose source-registered anatomy anchors; never fit alpha bounding boxes."
+    "registration": "One shared camera/scale and per-pose source-registered anatomy anchors; never fit alpha bounding boxes.",
+    "authoring_root": [
+      384,
+      550.4
+    ],
+    "runtime_root": [
+      120,
+      172
+    ],
+    "overscan_policy": "Add 256 source pixels / 128 authoring pixels / 40 runtime pixels per side; preserve pixels-per-meter and world camera position. No pose-wise crop or resizing."
   },
   "parts": [
     "HeadHair",
@@ -402,7 +411,9 @@
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-          "source_provider": "Mesh2Motion"
+          "source_provider": "Mesh2Motion",
+          "floor_sit_adapter": "native-upper-body-floor-legs-v1",
+          "motion_note": "Native Sitting_Enter is chair-height. Explicit 3D floor adaptation lowers pelvis and solves ankles against floor; no 2D warping. Requires final mesh/contact review."
         },
         "Respawn": {
           "source_actions": [
@@ -547,7 +558,7 @@
             "Sword_Regular_B",
             "Sword_Regular_B_Rec"
           ],
-          "frames": 16,
+          "frames": 32,
           "loop": false,
           "authored_directions": [
             "SW",
@@ -572,7 +583,20 @@
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-          "source_provider": "Mesh2Motion"
+          "source_provider": "Mesh2Motion",
+          "entry_transition": {
+            "action": "Idle_Sword",
+            "source_frame": 0,
+            "frames": 4,
+            "method": "local-joint TRS interpolation"
+          },
+          "exit_transition": {
+            "action": "Idle_Sword",
+            "source_frame": 0,
+            "frames": 4,
+            "method": "local-joint TRS interpolation"
+          },
+          "motion_note": "24 native strike/recovery samples plus 4 entry and4 exit samples. Exact source start/end ready pose in diagnostic; not pixel crossfade."
         },
         "CastChannel": {
           "source_actions": [
@@ -669,7 +693,14 @@
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-          "source_provider": "Mesh2Motion"
+          "source_provider": "Mesh2Motion",
+          "source_ranges": {
+            "Sword_Block": [
+              6,
+              15
+            ]
+          },
+          "motion_note": "Use middle held-guard section, not the whole enter/parry/recover as a looping defense."
         },
         "Dash": {
           "source_actions": [
@@ -1069,7 +1100,9 @@
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-          "source_provider": "Mesh2Motion"
+          "source_provider": "Mesh2Motion",
+          "floor_sit_adapter": "native-upper-body-floor-legs-v1",
+          "motion_note": "Native Sitting_Enter is chair-height. Explicit 3D floor adaptation lowers pelvis and solves ankles against floor; no 2D warping. Requires final mesh/contact review."
         },
         "Respawn": {
           "source_actions": [
@@ -1178,9 +1211,11 @@
         },
         "BasicAttack": {
           "source_actions": [
-            "Spell_Simple_Shoot"
+            "Spell_Simple_Enter",
+            "Spell_Simple_Shoot",
+            "Spell_Simple_Exit"
           ],
-          "frames": 16,
+          "frames": 24,
           "loop": false,
           "authored_directions": [
             "SW",
@@ -1198,7 +1233,7 @@
             "E": "NE",
             "SE": "SE"
           },
-          "pose_family": "Spell_Simple_Shoot",
+          "pose_family": "SpellComplete",
           "ro_family": "skill",
           "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
           "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
@@ -1206,13 +1241,30 @@
           "owner_approved": false,
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
           "source_provider": "Mesh2Motion",
-          "reuse_from": "CastRelease"
+          "reuse_from": "CastRelease",
+          "source_ranges": {
+            "Spell_Simple_Enter": [
+              0,
+              13
+            ],
+            "Spell_Simple_Shoot": [
+              0,
+              15
+            ],
+            "Spell_Simple_Exit": [
+              0,
+              12
+            ]
+          },
+          "motion_note": "Complete raise, release and recover. Enter exporter-reset tail 14-16 and Exit reset key13 excluded after direct bone sampling."
         },
         "SkillAction": {
           "source_actions": [
-            "Spell_Simple_Shoot"
+            "Spell_Simple_Enter",
+            "Spell_Simple_Shoot",
+            "Spell_Simple_Exit"
           ],
-          "frames": 16,
+          "frames": 24,
           "loop": false,
           "authored_directions": [
             "SW",
@@ -1230,7 +1282,7 @@
             "E": "NE",
             "SE": "SE"
           },
-          "pose_family": "Spell_Simple_Shoot",
+          "pose_family": "SpellComplete",
           "ro_family": "skill",
           "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
           "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
@@ -1238,7 +1290,22 @@
           "owner_approved": false,
           "reuse_from": "CastRelease",
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-          "source_provider": "Mesh2Motion"
+          "source_provider": "Mesh2Motion",
+          "source_ranges": {
+            "Spell_Simple_Enter": [
+              0,
+              13
+            ],
+            "Spell_Simple_Shoot": [
+              0,
+              15
+            ],
+            "Spell_Simple_Exit": [
+              0,
+              12
+            ]
+          },
+          "motion_note": "Complete raise, release and recover. Enter exporter-reset tail 14-16 and Exit reset key13 excluded after direct bone sampling."
         },
         "CastChannel": {
           "source_actions": [
@@ -1273,7 +1340,8 @@
         },
         "CastRelease": {
           "source_actions": [
-            "Spell_Simple_Shoot"
+            "Spell_Simple_Shoot",
+            "Spell_Simple_Exit"
           ],
           "frames": 16,
           "loop": false,
@@ -1293,14 +1361,24 @@
             "E": "NE",
             "SE": "SE"
           },
-          "pose_family": "Spell_Simple_Shoot",
+          "pose_family": "SpellReleaseRecover",
           "ro_family": "skill",
           "direction_basis": "OWNER_FOUR_VIEW_CASTING_CONVENTION",
           "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
           "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-          "source_provider": "Mesh2Motion"
+          "source_provider": "Mesh2Motion",
+          "source_ranges": {
+            "Spell_Simple_Shoot": [
+              0,
+              15
+            ],
+            "Spell_Simple_Exit": [
+              0,
+              12
+            ]
+          }
         },
         "Guard": {
           "source_actions": [
@@ -1536,7 +1614,7 @@
         },
         "Death": {
           "source_actions": [
-            "Death_A"
+            "Death_D"
           ],
           "frames": 20,
           "loop": false,
@@ -1560,14 +1638,15 @@
             "E": "E",
             "SE": "SE"
           },
-          "pose_family": "Death_A",
+          "pose_family": "Death_D",
           "ro_family": "die",
           "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
           "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
-          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
-          "source_provider": "KayKit"
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion",
+          "motion_note": "Use preferred native human source for ground-contact action; rotational KayKit retarget showed unsuitable human ground contact in this family."
         },
         "Interact": {
           "source_actions": [
@@ -1676,7 +1755,7 @@
         },
         "Sit": {
           "source_actions": [
-            "Sit_Floor_Down"
+            "Sitting_Enter"
           ],
           "frames": 16,
           "loop": false,
@@ -1700,18 +1779,20 @@
             "E": "E",
             "SE": "SE"
           },
-          "pose_family": "Sit_Floor_Down",
+          "pose_family": "Sitting_Enter",
           "ro_family": "sit",
           "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
           "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
-          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_Simulation.glb",
-          "source_provider": "KayKit"
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion",
+          "motion_note": "Native Sitting_Enter is chair-height. Explicit 3D floor adaptation lowers pelvis and solves ankles against floor; no 2D warping. Requires final mesh/contact review.",
+          "floor_sit_adapter": "native-upper-body-floor-legs-v1"
         },
         "Respawn": {
           "source_actions": [
-            "Spawn_Ground"
+            "LayToIdle"
           ],
           "frames": 16,
           "loop": false,
@@ -1735,14 +1816,15 @@
             "E": "E",
             "SE": "SE"
           },
-          "pose_family": "Spawn_Ground",
+          "pose_family": "LayToIdle",
           "ro_family": null,
           "direction_basis": "RO_EIGHT_SLOT_FAMILY_OR_ASTRAEON_EXTENSION",
           "source_status": "SOURCE_AVAILABLE_REVIEW_REQUIRED",
           "art_status": "NOT_AUTHORED",
           "owner_approved": false,
-          "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_General.glb",
-          "source_provider": "KayKit"
+          "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+          "source_provider": "Mesh2Motion",
+          "motion_note": "Use preferred native human source for ground-contact action; rotational KayKit retarget showed unsuitable human ground contact in this family."
         },
         "Idle": {
           "source_actions": [
@@ -2319,6 +2401,52 @@
       "provider": "KayKit",
       "license_evidence": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/LICENSE.txt"
     },
-    "policy": "Mesh2Motion remains primary. Archer uses a coherent native bow-family rig and its compatible carrying/interaction clips to preserve two-hand grips; no pistol substitution."
+    "policy": "Mesh2Motion remains primary. Archer bow-family curves are KayKit CC0 retargeted to the human guide; contact review required. Archer Death/Respawn/Sit use native Mesh2Motion; floor sitting has explicit 3D contact adaptation."
+  },
+  "variant_acceptance": {
+    "required": true,
+    "owner_instruction": "After the full base set, demonstrate hairstyle and costume replacement on one complete action per class.",
+    "classes": {
+      "Swordsman": {
+        "action": "BasicAttack",
+        "views": "all four authored directions",
+        "replacements": [
+          "HeadHair",
+          "BodyCostume"
+        ],
+        "timing_camera_pose_must_match": true,
+        "preserve_independent_weapon_and_fx": true,
+        "status": "NOT_AUTHORED"
+      },
+      "Mage": {
+        "action": "CastRelease",
+        "views": "all four authored directions",
+        "replacements": [
+          "HeadHair",
+          "BodyCostume"
+        ],
+        "timing_camera_pose_must_match": true,
+        "preserve_independent_weapon_and_fx": true,
+        "status": "NOT_AUTHORED"
+      },
+      "Archer": {
+        "action": "BasicAttack",
+        "views": "all four authored directions",
+        "replacements": [
+          "HeadHair",
+          "BodyCostume"
+        ],
+        "timing_camera_pose_must_match": true,
+        "preserve_independent_weapon_and_fx": true,
+        "status": "NOT_AUTHORED"
+      }
+    },
+    "hidden_surface_policy": "Visible same-frame cutouts only. Replacement art must fill its own newly exposed areas; do not claim interchangeable scalp/hair or naked body layers that were never drawn."
+  },
+  "camera": {
+    "ortho_scale": 5.325,
+    "up_offset": 1.15375,
+    "projection_pixels_per_meter": 288.4507042253521,
+    "locked_across_actions": true
   }
 }
