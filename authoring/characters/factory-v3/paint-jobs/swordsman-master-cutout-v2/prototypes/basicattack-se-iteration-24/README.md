@@ -27,11 +27,18 @@ The paint probe has a complete blade after a wider guide capture, but it changes
 
 ## Overhead motion search (21 October 2026)
 
-- Downloaded the same author's [OpenGameArt CC0 Lowpoly Dummy Character Sword Charge Attack](https://opengameart.org/content/lowpoly-dummy-character10-animations) from its documented direct ZIP. The raw FBX is `motions/raw/oga_sword_charge_attack/Lowpoly Dummy Character Sword Charge Attack.fbx`, SHA-256 `b7fd93fdff47b2f3e11d271af42444f5ea81093270d87268db49d0257e36071b`. It raises the blade overhead, but holds the pose for many frames and turns through more than one blow; the 32-pose GIF does not yet read as a single weighted top-down cut. **Not selected.**
+- Downloaded the same author's [OpenGameArt CC0 Lowpoly Dummy Character Sword Charge Attack](https://opengameart.org/content/lowpoly-dummy-character10-animations) from its documented direct ZIP. The raw FBX is `motions/raw/oga_sword_charge_attack/Lowpoly Dummy Character Sword Charge Attack.fbx`, SHA-256 `b7fd93fdff47b2f3e11d271af42444f5ea81093270d87268db49d0257e36071b`. **Correction after inspecting all 85 source frames:** this is one overhead charge followed by a real spinning strike, an extended follow-through, and recovery. The initial 32 evenly spaced frames over-emphasized its long wind-up and follow-through holds. The decisive slash and spin occupy approximately source frames 45–55. This is a viable **spinning heavy attack study**, not merely a raised-sword pose. Its jumping/rotating support needs a separate decision before using it as the ordinary BasicAttack.
 - Reviewed the repository's CC0 Quaternius `swordAttackJump` motion. The body rises and pitches forward, but the available character clip has no registered blade, so the sword arc and hand grip cannot be validated as a single motion. **Not selected.**
 - A broader Rokoko fight source scan found torso movement outside frames 480–511, but the segment around frames 257–321 combines a lift/lower with several unrelated actions, and its sword is only a wrist-derived proxy. **Not selected.**
 - [MoCap Online's free T.C. Sword pack](https://mocaponline.itch.io/free-3d-sword-animation-pack) lists a 55 MB ZIP with FBX among its formats. Its motion is a priority for a real-performer comparison once the pack is downloaded and the actual clips can be reviewed. The site listing alone does not establish that a particular clip is a weighted overhead strike.
 - [Adobe's Mixamo](https://www.mixamo.com/) is free with an Adobe ID according to [Adobe's FAQ](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html). Search its sword-slash motions and inspect the actual FBX and sword grip before selecting one. A catalog name is not a motion pass.
+
+### Corrected Sword Charge review
+
+- [34-pose trimmed spin one-shot GIF](review/oga-sword-charge-trimmed-spin-one-shot.gif)
+- [Selected source-frame contact sheet](review/oga-sword-charge-trimmed-spin-contact.png)
+
+The 34-pose review retains original source poses in chronological order, samples the motion densely at 45–58, and skips redundant holds before and after the strike. It plays 33 ms per pose with a 250 ms recovery hold. It does not change the underlying FBX curves and is not yet an approved production animation. The sword follows the actual attached weapon through the spin; pose-painted glove, support-foot contact, trail direction, and native-size timing still require review.
 
 ## Next gate
 
