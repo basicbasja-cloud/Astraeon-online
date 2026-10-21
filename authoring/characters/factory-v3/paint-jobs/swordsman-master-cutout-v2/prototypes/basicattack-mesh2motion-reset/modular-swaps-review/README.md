@@ -43,3 +43,7 @@ python tools/character_factory_v3/build_modular_swap_viewer.py authoring/charact
 ```
 
 The assembly script verifies original frame equality, per-skin recomposition and effect bounds, and records these checks in its audit.
+
+## Separate sprite-sheet delivery
+
+`sprite-sheets-manifest.json` indexes nine transparent 2048x2048 sheets: HeadHair, BodyCostume and Weapon for each skin, two glove-occlusion support sheets, and the shared WeaponLight sheet. Every sheet uses sixteen 512x512 cells in a 4x4 chronological layout. All 144 cells were compared with their individual frame PNGs; alpha and visible RGBA match exactly. Frame rectangles, source sample indices, durations, render order and SHA256 hashes are included. The curated owner download is `astraeon-sprite-sheets.zip`.
