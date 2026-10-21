@@ -2,13 +2,19 @@
 
 **Branch:** `character/production-factory-v3`
 **Target:** Male Swordsman
-**Updated:** 20 October 2026
+**Updated:** 21 October 2026
 **Overall:** `ROKOKO_BASICATTACK_REVIEW_CANDIDATE / HIGH_RES_REPAINT_REQUIRED / WEAPONLIGHT_REVIEW_ONLY / NO_PRODUCTION_MASTER`
 **Runtime admission:** `DEV_ONLY / NOT_APPROVED`
 
 The existing painted-v2 package is still a fused composite. The owner rejected its Wayfarer Capital screenshots because that is not the requested map; they are retained only as historical development evidence and do not count as a successful current-map visual review. The owner supplied clearer art references and directed that hair, outfit, weapon, cape, and effects be drawn as independent layers. V3 remains development-only and is not production-complete.
 
 ## Current owner direction
+
+### Visual regression recovery (21 October 2026)
+
+The fixed SE Blender camera and its 1024px guide captures remain intact in `basicattack-se-iteration-23/source/rokoko-blender-guide/`. The quality regression came after guide capture: the frame-499 painted composite was warped across unrelated poses in `experiments/rig-highres-master-001/`. The warp failed the pose-strain gate on all four sampled frames and visibly distorted the body and sword. It was never admitted as runtime art.
+
+Use the [pre-warp 32-frame painted GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/review/basicattack-se-one-shot.gif) as the visual-quality recovery reference. Its high-resolution source paintings are preserved under `source/keyframes/final-master-v1/raw/`. The [shared-root normalization GIF](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/continuity-normalization-002/review/basicattack-se-one-shot.gif) is the registration diagnostic. Neither is production-ready: costume/cape continuity, sword-to-guide alignment, and frame stability still fail review. Do not replace either with the rejected warp. Correct the remaining jumps on the source-pose matched art while preserving its pixels and the locked-camera guide contract.
 
 - Use open Ragnarok client source as an architecture reference for composable body/equipment/effect layers, directional sprite actions, and palette handling. Keep Astraeon's art original; Ragnarok code being open-source does not make official game assets open assets.
 - Preserve an approved motion and first paint one whole-character master frame for each action, camera angle, and source frame. The thrust-like `Sword_Attack` remains rejected. A Rokoko SE overhead wind-up and diagonal downstroke is the current review-only replacement motion; it is not approved for production. Cut head/hair, body/outfit, sword, cape, and effects from those same exact frames; do not generate each layer independently.
