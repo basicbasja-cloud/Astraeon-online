@@ -132,10 +132,23 @@ def main():
         j=min(14,max(0,int(t)));f=t-j;grip=interpolate(grips,t)
         angle=angles[j]*(1-f)+angles[j+1]*f;length=lengths[j]*(1-f)+lengths[j+1]*f
         return grip,grip+np.array([math.cos(angle),math.sin(angle)])*length
+    def tip_path_length(begin,end):
+        points=[blade(t)[1] for t in np.linspace(begin,end,80)]
+        return sum(float(np.linalg.norm(b-a)) for a,b in zip(points,points[1:]))
+    # Emit only after the downstroke reaches the low follow-through (source
+    # frame 16), not during the preceding raised guard. Bound the afterimage
+    # by recent painted tip travel rather than keeping a long circular ribbon.
+    emission_frame=4;cap=float(lengths[emission_frame]*.65)
+    lo,hi=emission_frame-.9,float(emission_frame)
+    for _ in range(20):
+        mid=(lo+hi)/2
+        if tip_path_length(mid,emission_frame)>cap:lo=mid
+        else:hi=mid
+    ribbon_begin=hi
     for i in range(16):
         layer=Image.new('RGBA',(1024,1024));draw=ImageDraw.Draw(layer)
-        if 2<=i<=6:
-            newest=min(i,4);begin=max(1,newest-.9);times=np.linspace(begin,newest,60);fade=1 if i<=4 else (7-i)/3
+        if 4<=i<=5:
+            newest=emission_frame;begin=ribbon_begin;times=np.linspace(begin,newest,60);fade=1 if i==4 else .25
             for a,b in zip(times,times[1:]):
                 age=(b-begin)/max(.001,newest-begin); g0,t0=blade(a);g1,t1=blade(b)
                 for band in range(12):
@@ -144,7 +157,7 @@ def main():
                     alpha=int((105+125*age)*fade*(.65+.35*math.sin(math.pi*(band+.5)/12)))
                     quad=[g0+(t0-g0)*r0,g0+(t0-g0)*r1,g1+(t1-g1)*r1,g1+(t1-g1)*r0]
                     draw.polygon([tuple(p*2) for p in quad],fill=(*[int(c) for c in color],alpha))
-            if i<=4:
+            if i==4:
                 edge=[tuple(blade(t)[1]*2) for t in np.linspace(begin,newest,70)]
                 draw.line(edge,fill=(255,250,235,235),width=4)
         layer=layer.resize((512,512),Image.Resampling.LANCZOS);layer.save(fx_folder/f'{i:03d}.png');effects.append(layer)
@@ -206,6 +219,7 @@ def main():
     report['trail']['occlusion']='in front of BodyCostume, behind HeadHair, gripping-hand occluder and Weapon'
     report['trail']['angle_radians_at_sampled_poses']=angles.tolist()
     report['trail']['owner_correction']='Forward sweep requested; previous shortest-turn, behind-body ribbon rejected.'
+    report['trail'].update({'spawn':4,'last_emission':4,'last_fade':5,'interpolation':'forward angular blade sweep, bounded recent painted tip travel; no effect during raised guard','history_start_sample':ribbon_begin,'tip_path_length_px':tip_path_length(ribbon_begin,emission_frame),'tip_path_length_limit_px':cap,'length_limit_fraction_of_painted_blade':.65,'fade_alpha_after_emission':.25,'timing_owner_correction':'Emit after the downstroke has passed, not during wind-up; shorten the afterimage and remove the long lingering ribbon.'})
     report['support_layers']=['WeaponHandOccluder: visible BodyCostume glove pixels redrawn above WeaponLight; not an independent cosmetic slot']
     report['trail']['frames']=effect_frames
     (root/'modular-audit.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'frames':16,'skins':len(skins),'recomposition_mismatched_pixels':0,'configurations':len(configurations)}))
