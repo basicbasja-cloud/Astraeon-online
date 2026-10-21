@@ -6,6 +6,8 @@ The Rokoko `SwordFight_mixamo.fbx` segment at source frames 480–511 is rejecte
 
 The owner identified the OpenGameArt `Sword Attack I` and `Sword Attack II` motions as attacks. Both were compared from fixed Blender cameras. `Sword Attack II` has the clearer lateral cut and is the current **motion study**; `Sword Attack I` remains a secondary attack candidate. These motions are from the OpenGameArt Lowpoly Dummy Character CC0 package already recorded in `motions/legal-evidence/opengameart-lowpoly-dummy-character.html`.
 
+The owner subsequently specified a **top-down slash with visible body weight transfer**. Sword Attack II is a lateral cut and therefore no longer the target BasicAttack motion. The search below is open; no overhead clip has passed yet.
+
 ## Evidence
 
 - [Sword Attack I, 12-sample comparison](review/oga-sword-attack-i-motion-contact.png)
@@ -14,12 +16,22 @@ The owner identified the OpenGameArt `Sword Attack I` and `Sword Attack II` moti
 - [Sword Attack II, alternate three-quarter camera GIF](review/oga-sword-attack-ii-alternate-camera-one-shot.gif)
 - [Alternate camera 32-pose contact](review/oga-sword-attack-ii-alternate-camera-contact.png)
 - [High-detail contact paint probe, rejected](review/contact-paint-probe-rejected.png)
+- [CC0 Sword Charge Attack, 32-pose fixed-camera contact](review/oga-sword-charge-attack-motion-contact.png)
+- [CC0 Sword Charge Attack, one-shot review GIF](review/oga-sword-charge-attack-motion-one-shot.gif)
 
 The Sword Attack II review samples source frames 1–50 at 32 even intervals using a fixed orthographic camera, Blender Workbench, and a 5.2 orthographic scale. Its GIF plays the 31 motion intervals at approximately 30 fps and holds the final pose for 300 ms. This is a motion diagnostic, not a layered or runtime sprite.
 
 The alternate camera, positioned on the other three-quarter side, keeps both boots visible and the sword tip inside the frame throughout the 32-pose review. It is a stronger pose guide than the first camera, where the legs overlap. The source motion's torso and foot action still needs a native-size animated review before artwork is approved.
 
 The paint probe has a complete blade after a wider guide capture, but it changes the 3D pose, has red/yellow edge fringes, and is not an approved master. No new production art, cutout set, trail, eight-direction action, or target-map preview is accepted from iteration 24.
+
+## Overhead motion search (21 October 2026)
+
+- Downloaded the same author's [OpenGameArt CC0 Lowpoly Dummy Character Sword Charge Attack](https://opengameart.org/content/lowpoly-dummy-character10-animations) from its documented direct ZIP. The raw FBX is `motions/raw/oga_sword_charge_attack/Lowpoly Dummy Character Sword Charge Attack.fbx`, SHA-256 `b7fd93fdff47b2f3e11d271af42444f5ea81093270d87268db49d0257e36071b`. It raises the blade overhead, but holds the pose for many frames and turns through more than one blow; the 32-pose GIF does not yet read as a single weighted top-down cut. **Not selected.**
+- Reviewed the repository's CC0 Quaternius `swordAttackJump` motion. The body rises and pitches forward, but the available character clip has no registered blade, so the sword arc and hand grip cannot be validated as a single motion. **Not selected.**
+- A broader Rokoko fight source scan found torso movement outside frames 480–511, but the segment around frames 257–321 combines a lift/lower with several unrelated actions, and its sword is only a wrist-derived proxy. **Not selected.**
+- [MoCap Online's free T.C. Sword pack](https://mocaponline.itch.io/free-3d-sword-animation-pack) lists a 55 MB ZIP with FBX among its formats. Its motion is a priority for a real-performer comparison once the pack is downloaded and the actual clips can be reviewed. The site listing alone does not establish that a particular clip is a weighted overhead strike.
+- [Adobe's Mixamo](https://www.mixamo.com/) is free with an Adobe ID according to [Adobe's FAQ](https://helpx.adobe.com/creative-cloud/faq/mixamo-faq.html). Search its sword-slash motions and inspect the actual FBX and sword grip before selecting one. A catalog name is not a motion pass.
 
 ## Next gate
 
