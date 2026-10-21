@@ -220,3 +220,13 @@ See [the implementation record](PRODUCTION_FACTORY_V3.md), [build evidence](evid
 - Tested one high-resolution frame-499 master against four Rokoko guides using the research fixed-mesh method. The single master is pose-incompatible: all four target poses exceed the `0.78–1.12×` limb-segment strain range, the whole-body warp would stretch the painted torso `1.691–1.737×` to match the mannequin, one forearm must compress to `0.509×`, and the mesh flips 29 triangles across the four frames.
 - The warped render is **REJECTED**. This identifies a second source of visible character instability: the source artwork pose and guide pose disagree, so fixed root and normalized height still bend the character's torso, arms, and armor.
 - Added a pose-strain preflight to the experimental high-resolution warper and documented the exact rejection in [the iteration-23 pilot report](../../authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-23/experiments/rig-highres-master-001/README.md). Next art must start from a guide-matched full-frame pose, then use same-frame cutouts or only deformation that passes the strain and visual gates.
+
+## Owner update — optional cloak (2026-10-21)
+
+The owner permits removing the long cloak if its animation or separation reduces quality. The working art direction prioritizes the weighted Mesh2Motion cut, wrist and sword fidelity, stable body registration, and sharp artwork. Retain a short gold scarf; a long cloak is optional and must not block delivery. This changes art direction only: no replacement animation has passed visual review as a result of this update.
+
+### No-cloak art and editable-cutout follow-up
+
+Produced three crisp no-cloak pose studies and an editable OpenRaster guard master with HeadHair, visible Weapon, and combined BodyOutfit layers. Disjoint visible pixels recompose with zero mismatches. Full artifact and prompt provenance: `authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/no-cloak-study/README.md`.
+
+The no-cloak guard correction reduces manually measured grip error from about 55px to 14px at 1024px, but its blade tip is still about 39px off. The follow-through study misses the source grip by about 121px. All three are rejected for production registration. No runtime animation is replaced, no completed GIF or equipment separation is claimed, and the source-rig guide remains authoritative. Independent image generation still changes anatomy and framing; cape removal alone is insufficient.
