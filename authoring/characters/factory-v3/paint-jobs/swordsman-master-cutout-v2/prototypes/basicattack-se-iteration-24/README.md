@@ -11,9 +11,13 @@ The owner identified the OpenGameArt `Sword Attack I` and `Sword Attack II` moti
 - [Sword Attack I, 12-sample comparison](review/oga-sword-attack-i-motion-contact.png)
 - [Sword Attack II, 32-pose fixed-camera contact](review/oga-sword-attack-ii-motion-contact.png)
 - [Sword Attack II, one-shot motion GIF](review/oga-sword-attack-ii-motion-one-shot.gif)
+- [Sword Attack II, alternate three-quarter camera GIF](review/oga-sword-attack-ii-alternate-camera-one-shot.gif)
+- [Alternate camera 32-pose contact](review/oga-sword-attack-ii-alternate-camera-contact.png)
 - [High-detail contact paint probe, rejected](review/contact-paint-probe-rejected.png)
 
 The Sword Attack II review samples source frames 1–50 at 32 even intervals using a fixed orthographic camera, Blender Workbench, and a 5.2 orthographic scale. Its GIF plays the 31 motion intervals at approximately 30 fps and holds the final pose for 300 ms. This is a motion diagnostic, not a layered or runtime sprite.
+
+The alternate camera, positioned on the other three-quarter side, keeps both boots visible and the sword tip inside the frame throughout the 32-pose review. It is a stronger pose guide than the first camera, where the legs overlap. The source motion's torso and foot action still needs a native-size animated review before artwork is approved.
 
 The paint probe has a complete blade after a wider guide capture, but it changes the 3D pose, has red/yellow edge fringes, and is not an approved master. No new production art, cutout set, trail, eight-direction action, or target-map preview is accepted from iteration 24.
 
