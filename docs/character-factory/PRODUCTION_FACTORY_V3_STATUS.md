@@ -230,3 +230,7 @@ The owner permits removing the long cloak if its animation or separation reduces
 Produced three crisp no-cloak pose studies and an editable OpenRaster guard master with HeadHair, visible Weapon, and combined BodyOutfit layers. Disjoint visible pixels recompose with zero mismatches. Full artifact and prompt provenance: `authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/no-cloak-study/README.md`.
 
 The no-cloak guard correction reduces manually measured grip error from about 55px to 14px at 1024px, but its blade tip is still about 39px off. The follow-through study misses the source grip by about 121px. All three are rejected for production registration. No runtime animation is replaced, no completed GIF or equipment separation is claimed, and the source-rig guide remains authoritative. Independent image generation still changes anatomy and framing; cape removal alone is insufficient.
+
+### Continuous GIF requested for owner inspection
+
+Added `no-cloak-continuous-review/`: sixteen poses generated together, no long cloak, normal-cadence and 3x-slow one-shot GIFs, source-versus-paint comparison, original sheets and prompt provenance. Complete figure extraction avoids the uneven generated grid splitting boots/blades; four shared row packing translations are recorded rather than concealed. All 16 output figures remain in bounds. These are review drafts, not approved source registration, equipment separation or runtime replacement.
