@@ -1,0 +1,1228 @@
+{
+  "status": "DIAGNOSTIC_OWNER_REVIEW_NOT_ANATOMICAL_ACCEPTANCE",
+  "research_helper": "audit_sprite_candidate._iou and RESEARCH_IOU_WARNING",
+  "research_iou_warning": 0.88,
+  "interpretation": "Low IoU can reflect the intended fast cut; it is a review flag, not proof of jitter. Angle medians exclude near-axis/occluded blades. Manual painted endpoints are approximate.",
+  "views": [
+    {
+      "direction": "SW",
+      "adjacent_alpha_iou": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.38031
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.57308
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.50247
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.35047
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.38762
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.44627
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.59901
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.43323
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.42651
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.50393
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.63038
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.5155
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.60528
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.79768
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.70473
+        }
+      ],
+      "research_warning_pairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.38031
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.57308
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.50247
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.35047
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.38762
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.44627
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.59901
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.43323
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.42651
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.50393
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.63038
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.5155
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.60528
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.79768
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.70473
+        }
+      ],
+      "valid_median_angle_difference_degrees": 4.19,
+      "blade_frames": [
+        {
+          "frame": 0,
+          "source_frame": 0,
+          "angle_difference_degrees": 0.38,
+          "painted_steel_length_px": 70.58,
+          "source_projected_blade_length_in_1024px_guide": 134.83,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 1,
+          "source_frame": 4,
+          "angle_difference_degrees": 4.89,
+          "painted_steel_length_px": 73.76,
+          "source_projected_blade_length_in_1024px_guide": 144.32,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 2,
+          "source_frame": 8,
+          "angle_difference_degrees": 1.97,
+          "painted_steel_length_px": 78.52,
+          "source_projected_blade_length_in_1024px_guide": 165.79,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 3,
+          "source_frame": 12,
+          "angle_difference_degrees": 2.0,
+          "painted_steel_length_px": 85.7,
+          "source_projected_blade_length_in_1024px_guide": 226.89,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 4,
+          "source_frame": 16,
+          "angle_difference_degrees": 6.82,
+          "painted_steel_length_px": 65.8,
+          "source_projected_blade_length_in_1024px_guide": 200.17,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 5,
+          "source_frame": 20,
+          "angle_difference_degrees": 1.99,
+          "painted_steel_length_px": 93.13,
+          "source_projected_blade_length_in_1024px_guide": 191.32,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 6,
+          "source_frame": 24,
+          "angle_difference_degrees": 4.53,
+          "painted_steel_length_px": 81.02,
+          "source_projected_blade_length_in_1024px_guide": 170.87,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 7,
+          "source_frame": 28,
+          "angle_difference_degrees": 0.76,
+          "painted_steel_length_px": 89.84,
+          "source_projected_blade_length_in_1024px_guide": 175.88,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 8,
+          "source_frame": 31,
+          "angle_difference_degrees": 2.55,
+          "painted_steel_length_px": 92.35,
+          "source_projected_blade_length_in_1024px_guide": 186.37,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 9,
+          "source_frame": 35,
+          "angle_difference_degrees": 3.84,
+          "painted_steel_length_px": 85.48,
+          "source_projected_blade_length_in_1024px_guide": 201.34,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 10,
+          "source_frame": 39,
+          "angle_difference_degrees": 5.68,
+          "painted_steel_length_px": 88.73,
+          "source_projected_blade_length_in_1024px_guide": 209.18,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 11,
+          "source_frame": 43,
+          "angle_difference_degrees": 15.0,
+          "painted_steel_length_px": 118.36,
+          "source_projected_blade_length_in_1024px_guide": 206.97,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 12,
+          "source_frame": 47,
+          "angle_difference_degrees": 1.98,
+          "painted_steel_length_px": 105.08,
+          "source_projected_blade_length_in_1024px_guide": 197.45,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 13,
+          "source_frame": 51,
+          "angle_difference_degrees": 5.71,
+          "painted_steel_length_px": 107.2,
+          "source_projected_blade_length_in_1024px_guide": 183.88,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 14,
+          "source_frame": 55,
+          "angle_difference_degrees": 13.38,
+          "painted_steel_length_px": 108.19,
+          "source_projected_blade_length_in_1024px_guide": 170.82,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 15,
+          "source_frame": 59,
+          "angle_difference_degrees": 13.68,
+          "painted_steel_length_px": 101.83,
+          "source_projected_blade_length_in_1024px_guide": 141.37,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        }
+      ]
+    },
+    {
+      "direction": "NW",
+      "adjacent_alpha_iou": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.4413
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.66366
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.59849
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.32797
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.33239
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.59708
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.67859
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.28292
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.56553
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.4398
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.67833
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.20128
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.61475
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.76415
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.47579
+        }
+      ],
+      "research_warning_pairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.4413
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.66366
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.59849
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.32797
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.33239
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.59708
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.67859
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.28292
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.56553
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.4398
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.67833
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.20128
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.61475
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.76415
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.47579
+        }
+      ],
+      "valid_median_angle_difference_degrees": 2.84,
+      "blade_frames": [
+        {
+          "frame": 0,
+          "source_frame": 0,
+          "angle_difference_degrees": 0.25,
+          "painted_steel_length_px": 122.45,
+          "source_projected_blade_length_in_1024px_guide": 202.99,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 1,
+          "source_frame": 4,
+          "angle_difference_degrees": 2.75,
+          "painted_steel_length_px": 82.22,
+          "source_projected_blade_length_in_1024px_guide": 156.44,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 2,
+          "source_frame": 8,
+          "angle_difference_degrees": 175.76,
+          "painted_steel_length_px": 22.0,
+          "source_projected_blade_length_in_1024px_guide": 131.82,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 3,
+          "source_frame": 12,
+          "angle_difference_degrees": 4.58,
+          "painted_steel_length_px": 58.05,
+          "source_projected_blade_length_in_1024px_guide": 94.15,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 4,
+          "source_frame": 16,
+          "angle_difference_degrees": 2.54,
+          "painted_steel_length_px": 95.13,
+          "source_projected_blade_length_in_1024px_guide": 162.11,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 5,
+          "source_frame": 20,
+          "angle_difference_degrees": 14.69,
+          "painted_steel_length_px": 76.66,
+          "source_projected_blade_length_in_1024px_guide": 117.69,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 6,
+          "source_frame": 24,
+          "angle_difference_degrees": 0.37,
+          "painted_steel_length_px": 85.49,
+          "source_projected_blade_length_in_1024px_guide": 217.73,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 7,
+          "source_frame": 28,
+          "angle_difference_degrees": 6.23,
+          "painted_steel_length_px": 78.89,
+          "source_projected_blade_length_in_1024px_guide": 230.83,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 8,
+          "source_frame": 31,
+          "angle_difference_degrees": 3.55,
+          "painted_steel_length_px": 87.21,
+          "source_projected_blade_length_in_1024px_guide": 224.45,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 9,
+          "source_frame": 35,
+          "angle_difference_degrees": 4.88,
+          "painted_steel_length_px": 80.23,
+          "source_projected_blade_length_in_1024px_guide": 193.62,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 10,
+          "source_frame": 39,
+          "angle_difference_degrees": 0.98,
+          "painted_steel_length_px": 74.11,
+          "source_projected_blade_length_in_1024px_guide": 155.92,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 11,
+          "source_frame": 43,
+          "angle_difference_degrees": 5.87,
+          "painted_steel_length_px": 80.05,
+          "source_projected_blade_length_in_1024px_guide": 144.31,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 12,
+          "source_frame": 47,
+          "angle_difference_degrees": 2.74,
+          "painted_steel_length_px": 78.75,
+          "source_projected_blade_length_in_1024px_guide": 162.05,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 13,
+          "source_frame": 51,
+          "angle_difference_degrees": 2.84,
+          "painted_steel_length_px": 79.4,
+          "source_projected_blade_length_in_1024px_guide": 185.51,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 14,
+          "source_frame": 55,
+          "angle_difference_degrees": 7.12,
+          "painted_steel_length_px": 72.92,
+          "source_projected_blade_length_in_1024px_guide": 201.61,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 15,
+          "source_frame": 59,
+          "angle_difference_degrees": 0.3,
+          "painted_steel_length_px": 80.62,
+          "source_projected_blade_length_in_1024px_guide": 216.6,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        }
+      ]
+    },
+    {
+      "direction": "NE",
+      "adjacent_alpha_iou": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.42164
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.61066
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.50768
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.38834
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.44878
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.36884
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.78449
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.41012
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.53128
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.62456
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.65594
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.42334
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.45913
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.78695
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.81222
+        }
+      ],
+      "research_warning_pairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.42164
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.61066
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.50768
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.38834
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.44878
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.36884
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.78449
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.41012
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.53128
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.62456
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.65594
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.42334
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.45913
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.78695
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.81222
+        }
+      ],
+      "valid_median_angle_difference_degrees": 3.29,
+      "blade_frames": [
+        {
+          "frame": 0,
+          "source_frame": 0,
+          "angle_difference_degrees": 3.38,
+          "painted_steel_length_px": 103.02,
+          "source_projected_blade_length_in_1024px_guide": 230.9,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 1,
+          "source_frame": 4,
+          "angle_difference_degrees": 3.3,
+          "painted_steel_length_px": 81.49,
+          "source_projected_blade_length_in_1024px_guide": 230.0,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 2,
+          "source_frame": 8,
+          "angle_difference_degrees": 2.9,
+          "painted_steel_length_px": 115.26,
+          "source_projected_blade_length_in_1024px_guide": 219.1,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 3,
+          "source_frame": 12,
+          "angle_difference_degrees": 0.48,
+          "painted_steel_length_px": 121.0,
+          "source_projected_blade_length_in_1024px_guide": 216.93,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 4,
+          "source_frame": 16,
+          "angle_difference_degrees": 3.28,
+          "painted_steel_length_px": 54.92,
+          "source_projected_blade_length_in_1024px_guide": 154.51,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 5,
+          "source_frame": 20,
+          "angle_difference_degrees": 0.51,
+          "painted_steel_length_px": 101.6,
+          "source_projected_blade_length_in_1024px_guide": 219.44,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 6,
+          "source_frame": 24,
+          "angle_difference_degrees": 10.32,
+          "painted_steel_length_px": 79.56,
+          "source_projected_blade_length_in_1024px_guide": 121.03,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 7,
+          "source_frame": 28,
+          "angle_difference_degrees": 9.47,
+          "painted_steel_length_px": 37.64,
+          "source_projected_blade_length_in_1024px_guide": 54.36,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 8,
+          "source_frame": 31,
+          "angle_difference_degrees": 177.61,
+          "painted_steel_length_px": 38.63,
+          "source_projected_blade_length_in_1024px_guide": 8.6,
+          "angle_readable": false,
+          "foreshortening_review_needed": true
+        },
+        {
+          "frame": 9,
+          "source_frame": 35,
+          "angle_difference_degrees": 175.07,
+          "painted_steel_length_px": 16.49,
+          "source_projected_blade_length_in_1024px_guide": 85.6,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 10,
+          "source_frame": 39,
+          "angle_difference_degrees": 178.26,
+          "painted_steel_length_px": 13.04,
+          "source_projected_blade_length_in_1024px_guide": 146.38,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 11,
+          "source_frame": 43,
+          "angle_difference_degrees": 176.84,
+          "painted_steel_length_px": 20.4,
+          "source_projected_blade_length_in_1024px_guide": 183.42,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 12,
+          "source_frame": 47,
+          "angle_difference_degrees": 170.57,
+          "painted_steel_length_px": 16.28,
+          "source_projected_blade_length_in_1024px_guide": 203.91,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 13,
+          "source_frame": 51,
+          "angle_difference_degrees": 166.76,
+          "painted_steel_length_px": 16.76,
+          "source_projected_blade_length_in_1024px_guide": 213.34,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 14,
+          "source_frame": 55,
+          "angle_difference_degrees": 152.18,
+          "painted_steel_length_px": 16.28,
+          "source_projected_blade_length_in_1024px_guide": 217.31,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 15,
+          "source_frame": 59,
+          "angle_difference_degrees": 138.37,
+          "painted_steel_length_px": 17.12,
+          "source_projected_blade_length_in_1024px_guide": 211.39,
+          "angle_readable": false,
+          "foreshortening_review_needed": false
+        }
+      ]
+    },
+    {
+      "direction": "SE",
+      "adjacent_alpha_iou": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.70419
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.58406
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.55407
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.28978
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.36858
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.61024
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.7411
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.68219
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.58876
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.61703
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.59038
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.42436
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.64661
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.66764
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.57863
+        }
+      ],
+      "research_warning_pairs": [
+        {
+          "from": 0,
+          "to": 1,
+          "alpha_iou": 0.70419
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "alpha_iou": 0.58406
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "alpha_iou": 0.55407
+        },
+        {
+          "from": 3,
+          "to": 4,
+          "alpha_iou": 0.28978
+        },
+        {
+          "from": 4,
+          "to": 5,
+          "alpha_iou": 0.36858
+        },
+        {
+          "from": 5,
+          "to": 6,
+          "alpha_iou": 0.61024
+        },
+        {
+          "from": 6,
+          "to": 7,
+          "alpha_iou": 0.7411
+        },
+        {
+          "from": 7,
+          "to": 8,
+          "alpha_iou": 0.68219
+        },
+        {
+          "from": 8,
+          "to": 9,
+          "alpha_iou": 0.58876
+        },
+        {
+          "from": 9,
+          "to": 10,
+          "alpha_iou": 0.61703
+        },
+        {
+          "from": 10,
+          "to": 11,
+          "alpha_iou": 0.59038
+        },
+        {
+          "from": 11,
+          "to": 12,
+          "alpha_iou": 0.42436
+        },
+        {
+          "from": 12,
+          "to": 13,
+          "alpha_iou": 0.64661
+        },
+        {
+          "from": 13,
+          "to": 14,
+          "alpha_iou": 0.66764
+        },
+        {
+          "from": 14,
+          "to": 15,
+          "alpha_iou": 0.57863
+        }
+      ],
+      "valid_median_angle_difference_degrees": 1.74,
+      "blade_frames": [
+        {
+          "frame": 0,
+          "source_frame": 0,
+          "angle_difference_degrees": 0.36,
+          "painted_steel_length_px": 130.74,
+          "source_projected_blade_length_in_1024px_guide": 217.36,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 1,
+          "source_frame": 4,
+          "angle_difference_degrees": 1.75,
+          "painted_steel_length_px": 114.39,
+          "source_projected_blade_length_in_1024px_guide": 230.69,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 2,
+          "source_frame": 8,
+          "angle_difference_degrees": 3.11,
+          "painted_steel_length_px": 111.61,
+          "source_projected_blade_length_in_1024px_guide": 207.28,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 3,
+          "source_frame": 12,
+          "angle_difference_degrees": 0.76,
+          "painted_steel_length_px": 79.16,
+          "source_projected_blade_length_in_1024px_guide": 151.13,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 4,
+          "source_frame": 16,
+          "angle_difference_degrees": 0.72,
+          "painted_steel_length_px": 106.04,
+          "source_projected_blade_length_in_1024px_guide": 204.12,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 5,
+          "source_frame": 20,
+          "angle_difference_degrees": 3.1,
+          "painted_steel_length_px": 95.44,
+          "source_projected_blade_length_in_1024px_guide": 182.68,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 6,
+          "source_frame": 24,
+          "angle_difference_degrees": 0.5,
+          "painted_steel_length_px": 98.18,
+          "source_projected_blade_length_in_1024px_guide": 198.34,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 7,
+          "source_frame": 28,
+          "angle_difference_degrees": 1.79,
+          "painted_steel_length_px": 110.86,
+          "source_projected_blade_length_in_1024px_guide": 216.36,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 8,
+          "source_frame": 31,
+          "angle_difference_degrees": 5.22,
+          "painted_steel_length_px": 105.0,
+          "source_projected_blade_length_in_1024px_guide": 227.37,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 9,
+          "source_frame": 35,
+          "angle_difference_degrees": 1.92,
+          "painted_steel_length_px": 110.68,
+          "source_projected_blade_length_in_1024px_guide": 229.61,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 10,
+          "source_frame": 39,
+          "angle_difference_degrees": 1.26,
+          "painted_steel_length_px": 118.8,
+          "source_projected_blade_length_in_1024px_guide": 212.85,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 11,
+          "source_frame": 43,
+          "angle_difference_degrees": 1.73,
+          "painted_steel_length_px": 97.31,
+          "source_projected_blade_length_in_1024px_guide": 181.8,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 12,
+          "source_frame": 47,
+          "angle_difference_degrees": 5.24,
+          "painted_steel_length_px": 83.01,
+          "source_projected_blade_length_in_1024px_guide": 149.62,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 13,
+          "source_frame": 51,
+          "angle_difference_degrees": 0.75,
+          "painted_steel_length_px": 84.2,
+          "source_projected_blade_length_in_1024px_guide": 132.89,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 14,
+          "source_frame": 55,
+          "angle_difference_degrees": 0.73,
+          "painted_steel_length_px": 80.01,
+          "source_projected_blade_length_in_1024px_guide": 131.4,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        },
+        {
+          "frame": 15,
+          "source_frame": 59,
+          "angle_difference_degrees": 2.63,
+          "painted_steel_length_px": 90.61,
+          "source_projected_blade_length_in_1024px_guide": 156.62,
+          "angle_readable": true,
+          "foreshortening_review_needed": false
+        }
+      ]
+    }
+  ],
+  "known_review_items": [
+    "NE frame 8 shows a longer visible blade while the source blade projects to approximately 8.6px at 1024px; inspect and refine this foreshortened recovery pose.",
+    "Manual head/collar and blade/guard boundaries remain provisional."
+  ]
+}
