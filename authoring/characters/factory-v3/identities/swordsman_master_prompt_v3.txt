@@ -1,5 +1,10 @@
 Astraeon V3 — Golden Swordsman identity, layered art, and motion master prompt
 
+CURRENT OWNER ART REVIEW (2026-10-21)
+- The owner liked the sixteen-pose no-cloak continuous GIF and requested same-frame cutouts with interchangeable head/hair, complete clothed body, and weapon, plus a separate sword trail. Use no-cloak-continuous-review as the cosmetic prototype seed and modular-swaps-review for the first alternate set. This is a positive visual seed decision, not approval of all registration, runtime or eight-direction work.
+- Owner trail correction: the slash must sweep forward across the front of the character, not take the opposite projected arc behind the torso. Keep the grasping glove and actual blade visible above the independent effect; do not choose a shortest-angle interpolation when it reverses the intended sweep.
+- Cut each pose and camera view independently. HeadHair combines the visible head and hair; BodyCostume may be a complete per-pose clothed-body replacement as proposed by the owner. Do not claim a hidden naked body or independently editable clothing where none is drawn. WeaponLight must follow the current painted blade and remain an independent layer.
+
 CURRENT OWNER MOTION CHOICE (2026-10-21)
 - The owner selected Mesh2Motion. Use the immutable CC0 source library and compare Sword_Regular_A/B/C/Combo directly on its original rig before retargeting. Sword_Regular_B with its matching recovery is the working top-down cut; it is a review candidate, not owner-approved production art.
 - Exclude the source clips' terminal reset keys and verify the matching recovery entry. Do not force a one-shot's final pixels to equal its first pose by dragging the character back across the ground. Preserve intentional source root motion and record it for eventual actor-motion integration.

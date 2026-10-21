@@ -1,0 +1,616 @@
+{
+  "status": "OWNER_REVIEW_MODULAR_COSMETIC_PROTOTYPE",
+  "frame_count": 16,
+  "direction": "SE",
+  "parts": [
+    "BodyCostume",
+    "HeadHair",
+    "Weapon",
+    "WeaponLight"
+  ],
+  "source_master_pixels_changed": 0,
+  "original_matches_accepted_frames": true,
+  "variant_source_sha256": "abceee65820ba291c85ff32fc8e15412677104dee5e56866aa48560fd17282ea",
+  "normalization": "all parts and both skins share exactly the accepted per-frame packing translations; no per-part or alternate-pose fitting",
+  "trail": {
+    "path": "manual accepted painted sword grip/tip, independent transparent layer",
+    "spawn": 2,
+    "last_emission": 4,
+    "last_fade": 6,
+    "palette": "original plum/lavender/silver/ivory",
+    "occlusion": "in front of BodyCostume, behind HeadHair, gripping-hand occluder and Weapon",
+    "grips": [
+      [
+        303,
+        250
+      ],
+      [
+        320,
+        271
+      ],
+      [
+        328,
+        312
+      ],
+      [
+        297,
+        343
+      ],
+      [
+        198,
+        308
+      ],
+      [
+        272,
+        238
+      ],
+      [
+        267,
+        236
+      ],
+      [
+        255,
+        240
+      ],
+      [
+        244,
+        242
+      ],
+      [
+        229,
+        256
+      ],
+      [
+        249,
+        261
+      ],
+      [
+        253,
+        262
+      ],
+      [
+        244,
+        255
+      ],
+      [
+        258,
+        268
+      ],
+      [
+        265,
+        281
+      ],
+      [
+        280,
+        297
+      ]
+    ],
+    "tips": [
+      [
+        233,
+        121
+      ],
+      [
+        251,
+        159
+      ],
+      [
+        252,
+        210
+      ],
+      [
+        339,
+        260
+      ],
+      [
+        108,
+        378
+      ],
+      [
+        208,
+        144
+      ],
+      [
+        155,
+        229
+      ],
+      [
+        135,
+        271
+      ],
+      [
+        133,
+        277
+      ],
+      [
+        125,
+        322
+      ],
+      [
+        151,
+        348
+      ],
+      [
+        165,
+        332
+      ],
+      [
+        165,
+        309
+      ],
+      [
+        163,
+        296
+      ],
+      [
+        170,
+        281
+      ],
+      [
+        177,
+        278
+      ]
+    ],
+    "interpolation": "interpolated grip with angular/length blade rotation; owner-corrected consistent clockwise forward arc through frames 2-4; sampled endpoints unchanged; 0.9-frame ribbon history",
+    "angle_radians_at_sampled_poses": [
+      -2.067967956744757,
+      -2.1229493172504004,
+      4.072032515313847,
+      5.180844244652187,
+      8.763734791918694,
+      -2.1685547183879788,
+      -3.079173843593836,
+      -3.3943989454915493,
+      -3.447040304667773,
+      -3.7070765417446174,
+      -3.86760128079488,
+      -3.813555825180025,
+      -3.7411889405588106,
+      -3.4282138958152455,
+      -3.141592653589793,
+      -2.9591772465072825
+    ],
+    "owner_correction": "Forward sweep requested; previous shortest-turn, behind-body ribbon rejected.",
+    "frames": [
+      {
+        "frame": 0,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 1,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 2,
+        "visible_pixels": 46829,
+        "edge_touch": false
+      },
+      {
+        "frame": 3,
+        "visible_pixels": 3550,
+        "edge_touch": false
+      },
+      {
+        "frame": 4,
+        "visible_pixels": 20884,
+        "edge_touch": false
+      },
+      {
+        "frame": 5,
+        "visible_pixels": 20506,
+        "edge_touch": false
+      },
+      {
+        "frame": 6,
+        "visible_pixels": 20474,
+        "edge_touch": false
+      },
+      {
+        "frame": 7,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 8,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 9,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 10,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 11,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 12,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 13,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 14,
+        "visible_pixels": 0,
+        "edge_touch": false
+      },
+      {
+        "frame": 15,
+        "visible_pixels": 0,
+        "edge_touch": false
+      }
+    ]
+  },
+  "configurations": {
+    "original": {
+      "BodyCostume": "gold",
+      "HeadHair": "gold",
+      "Weapon": "gold"
+    },
+    "head-only": {
+      "BodyCostume": "gold",
+      "HeadHair": "moon",
+      "Weapon": "gold"
+    },
+    "outfit-only": {
+      "BodyCostume": "moon",
+      "HeadHair": "gold",
+      "Weapon": "gold"
+    },
+    "weapon-only": {
+      "BodyCostume": "gold",
+      "HeadHair": "gold",
+      "Weapon": "moon"
+    },
+    "all-swapped": {
+      "BodyCostume": "moon",
+      "HeadHair": "moon",
+      "Weapon": "moon"
+    }
+  },
+  "frames": [
+    {
+      "skin": "gold",
+      "frame": 0,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15982,
+        "HeadHair": 2277,
+        "Weapon": 2114
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 1,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 14950,
+        "HeadHair": 1969,
+        "Weapon": 2414
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 2,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 13098,
+        "HeadHair": 1112,
+        "Weapon": 2694
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 3,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 9439,
+        "HeadHair": 1996,
+        "Weapon": 1597
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 4,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 13915,
+        "HeadHair": 2181,
+        "Weapon": 1659
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 5,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15284,
+        "HeadHair": 1466,
+        "Weapon": 1501
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 6,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15694,
+        "HeadHair": 1845,
+        "Weapon": 1595
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 7,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 14798,
+        "HeadHair": 1406,
+        "Weapon": 1824
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 8,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 12770,
+        "HeadHair": 1330,
+        "Weapon": 1716
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 9,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 12771,
+        "HeadHair": 1335,
+        "Weapon": 1661
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 10,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11549,
+        "HeadHair": 1400,
+        "Weapon": 1993
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 11,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11359,
+        "HeadHair": 1747,
+        "Weapon": 1390
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 12,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 10069,
+        "HeadHair": 1532,
+        "Weapon": 1527
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 13,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11338,
+        "HeadHair": 1588,
+        "Weapon": 1665
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 14,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11303,
+        "HeadHair": 1632,
+        "Weapon": 1536
+      }
+    },
+    {
+      "skin": "gold",
+      "frame": 15,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11314,
+        "HeadHair": 1509,
+        "Weapon": 1688
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 0,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 16591,
+        "HeadHair": 2310,
+        "Weapon": 2275
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 1,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15197,
+        "HeadHair": 1996,
+        "Weapon": 2478
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 2,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 13265,
+        "HeadHair": 1136,
+        "Weapon": 2703
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 3,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 9696,
+        "HeadHair": 1999,
+        "Weapon": 1654
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 4,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 14359,
+        "HeadHair": 2233,
+        "Weapon": 1814
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 5,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15586,
+        "HeadHair": 1498,
+        "Weapon": 1616
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 6,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15946,
+        "HeadHair": 1865,
+        "Weapon": 1800
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 7,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 15191,
+        "HeadHair": 1424,
+        "Weapon": 2088
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 8,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 13109,
+        "HeadHair": 1329,
+        "Weapon": 1923
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 9,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 13054,
+        "HeadHair": 1362,
+        "Weapon": 1881
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 10,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11915,
+        "HeadHair": 1425,
+        "Weapon": 2270
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 11,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11618,
+        "HeadHair": 1756,
+        "Weapon": 1597
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 12,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 10604,
+        "HeadHair": 1548,
+        "Weapon": 1619
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 13,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11744,
+        "HeadHair": 1614,
+        "Weapon": 1825
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 14,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11724,
+        "HeadHair": 1644,
+        "Weapon": 1661
+      }
+    },
+    {
+      "skin": "moon",
+      "frame": 15,
+      "recomposition_mismatched_pixels": 0,
+      "part_visible_pixels": {
+        "BodyCostume": 11776,
+        "HeadHair": 1543,
+        "Weapon": 1766
+      }
+    }
+  ],
+  "limitations": [
+    "Manual semantic edges and wrist/guard occlusion require visual inspection.",
+    "BodyCostume is the complete clothed body replacement, not independently naked BaseBody and clothing.",
+    "HeadHair combines visible head and hair; separate hair-only and helmet interfaces are not supplied.",
+    "Only the reviewed sixteen SE poses are provided; no other directions are synthesized.",
+    "Trail follows manually annotated painted points; weapon edges and alternative blade alignment require review."
+  ],
+  "support_layers": [
+    "WeaponHandOccluder: visible BodyCostume glove pixels redrawn above WeaponLight; not an independent cosmetic slot"
+  ]
+}
