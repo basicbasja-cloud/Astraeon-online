@@ -1,0 +1,78 @@
+{
+  "id": "6bda06556ef8f30ba308",
+  "character": "swordsman-male-patch001",
+  "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/swordsman-male-seed.png",
+  "identity_sha256": "5d7efd1f7f04b47eb0bfc48ddb2c850d3efd5ca6ba5827872c402ab826795a0b",
+  "fit_id": "astraeon-male-v3",
+  "guide_job": "bfff1d2fddd0f40cc8f6",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "frame_count": 16,
+  "actions": [
+    "Pickup"
+  ],
+  "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
+  "master_first": true,
+  "layers_from_same_frame": [
+    "HeadHair",
+    "BodyCostume",
+    "Weapon",
+    "WeaponHandOccluder",
+    "WeaponLightBack",
+    "WeaponLightFront",
+    "BackAccessory",
+    "Headgear"
+  ],
+  "generation_policy": "one complete source strip per action/view, then same-frame cutouts; no independent layer generation",
+  "approval": {
+    "owner_approved": false,
+    "runtime_admitted": false
+  },
+  "direction_identity_references": {
+    "S": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/S.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/S-head-upper.png"
+    },
+    "SW": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/SW.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/SW-head-upper.png"
+    },
+    "W": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/W.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/W-head-upper.png"
+    },
+    "NW": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/NW.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/NW-head-upper.png"
+    },
+    "N": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/N.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/N-head-upper.png"
+    },
+    "NE": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/NE.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/NE-head-upper.png"
+    },
+    "E": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/E.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/E-head-upper.png"
+    },
+    "SE": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/SE.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/swordsman-male/SE-head-upper.png"
+    }
+  },
+  "reference_authority": {
+    "geometry": "current guide_job only",
+    "design": "matching-direction identity study; inspect view before use",
+    "generic_front_portrait_for_rear_views": false
+  }
+}

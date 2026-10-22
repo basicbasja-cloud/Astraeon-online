@@ -1,0 +1,78 @@
+{
+  "id": "cdc1e515c284927e1ead",
+  "character": "mage-male-patch001",
+  "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/mage-male-seed.png",
+  "identity_sha256": "1cc706a7395ba760641ae23016b8d3f4b9ef2a094e22296173785bea73ddf731",
+  "fit_id": "astraeon-male-v3",
+  "guide_job": "ee81833c2ae114e037e5",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "frame_count": 16,
+  "actions": [
+    "Sit"
+  ],
+  "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
+  "master_first": true,
+  "layers_from_same_frame": [
+    "HeadHair",
+    "BodyCostume",
+    "Weapon",
+    "WeaponHandOccluder",
+    "WeaponLightBack",
+    "WeaponLightFront",
+    "BackAccessory",
+    "Headgear"
+  ],
+  "generation_policy": "one complete source strip per action/view, then same-frame cutouts; no independent layer generation",
+  "approval": {
+    "owner_approved": false,
+    "runtime_admitted": false
+  },
+  "direction_identity_references": {
+    "S": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/S.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/S-head-upper.png"
+    },
+    "SW": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SW.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SW-head-upper.png"
+    },
+    "W": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/W.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/W-head-upper.png"
+    },
+    "NW": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NW.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NW-head-upper.png"
+    },
+    "N": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/N.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/N-head-upper.png"
+    },
+    "NE": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NE.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NE-head-upper.png"
+    },
+    "E": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/E.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/E-head-upper.png"
+    },
+    "SE": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SE.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SE-head-upper.png"
+    }
+  },
+  "reference_authority": {
+    "geometry": "current guide_job only",
+    "design": "matching-direction identity study; inspect view before use",
+    "generic_front_portrait_for_rear_views": false
+  }
+}

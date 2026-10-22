@@ -11,12 +11,16 @@ from mathutils import Vector,Matrix
 from bpy_extras.object_utils import world_to_camera_view
 from PIL import Image,ImageDraw
 
+IMPLEMENTATION_DIGESTS={name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ['render_patch001_guides.py','kaykit_motion_adapter.py','floor_sit_adapter.py']}
+
 YAWS={'S':0,'SW':-45,'W':-90,'NW':-135,'N':180,'NE':135,'E':90,'SE':45}
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--job',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--static',action='store_true');args=p.parse_args(sys.argv[sys.argv.index('--')+1:])
     job=json.loads(args.job.read_text());out=args.output;out.mkdir(parents=True,exist_ok=True);source=Path(job['source_file']).resolve()
+    for field,name in [('renderer_sha256','render_patch001_guides.py'),('retarget_implementation_sha256','kaykit_motion_adapter.py'),('floor_sit_implementation_sha256','floor_sit_adapter.py')]:
+        if field in job and job[field]!=IMPLEMENTATION_DIGESTS[name]:raise ValueError('Job implementation changed after planning: '+name)
     if hashlib.sha256(source.read_bytes()).hexdigest()!=job['source_sha256']:raise ValueError('Source digest mismatch')
     bpy.ops.wm.read_factory_settings(use_empty=True);bpy.ops.import_scene.gltf(filepath=str(source));sc=bpy.context.scene
     rig=max((o for o in bpy.data.objects if o.type=='ARMATURE'),key=lambda o:len(o.data.bones))
@@ -33,7 +37,7 @@ def main():
         bpy.ops.import_scene.gltf(filepath=str(Path(job['retarget_to']).resolve()))
         rig=next(o for o in bpy.data.objects if o not in old and o.type=='ARMATURE')
         from kaykit_motion_adapter import KayKitMotionAdapter
-        adapter=KayKitMotionAdapter(source_rig,rig)
+        adapter=KayKitMotionAdapter(source_rig,rig,archery_contact=job.get('archery_contact_adapter'))
     for actor in {rig,source_rig}:
         for track in actor.animation_data.nla_tracks:track.mute=True
     for obj in bpy.data.objects:
@@ -170,6 +174,7 @@ def main():
                 nock=right if draw else left-aim*.15
                 points(bow,ends);points(string,[ends[0],nock,ends[-1]]);points(arrow,[nock,left+aim*.40]);arrow.hide_render=not draw
                 prop={'grip':project(left),'string_nock':project(nock),'arrow_tip':project(left+aim*.40),'arrow_visible':draw}
+                if adapter and adapter.archery_contact:prop['archery_contact']={'method':job.get('archery_contact_adapter'),'reach':json.loads(json.dumps(adapter.contact_diagnostics))}
             elif weapon in ['sword','staff']:
                 side='r'if weapon=='sword'else job.get('held_staff_hand','l');grip=bones['hand_'+side]
                 if not kay:
@@ -178,7 +183,17 @@ def main():
                 if weapon=='staff':axis=(rig.matrix_world@rig.pose.bones['hand_'+side].matrix).to_quaternion()@staff_local_axis if staff_local_axis is not None else Vector((0,0,1))
                 extent=.8 if weapon=='sword'else .76;normal=axis.cross(Vector((0,-1,0))).normalized();points(shaft,[grip-axis*(.12 if weapon=='sword'else .82),grip+axis*extent]);points(cross,[grip+axis*.06-normal*.10,grip+axis*.06+normal*.10]);prop={'grip':project(grip),'tip':project(grip+axis*extent)}
             path=folder/f'{i:03d}.png';sc.render.filepath=str(path);bpy.ops.render.render(write_still=True)
-            view.append({'frame':i,**rec,'actor_root_delta':list(delta),'landmarks':{n:project(v) for n,v in bones.items()},'world_landmarks':{n:list(v) for n,v in bones.items()},'weapon_guide':prop,'bone_rotations':{n:list((rig.matrix_world@rig.pose.bones[b].matrix).to_quaternion())for n,b in names.items()},'image':str(path.relative_to(out))})
+            if job.get('floor_contact_preview') and i in [0,8,9,10,11,count-1]:
+                floor=Image.new('RGBA',(size,size),'white');drawing=ImageDraw.Draw(floor)
+                for k in range(-8,9):
+                    v=k*.25
+                    drawing.line([tuple(project(Vector((v,-2,0)))),tuple(project(Vector((v,2,0))))],fill=(206,212,219,255),width=2)
+                    drawing.line([tuple(project(Vector((-2,v,0)))),tuple(project(Vector((2,v,0))))],fill=(206,212,219,255),width=2)
+                floor.alpha_composite(Image.open(path).convert('RGBA'));preview=folder/'floor-contact';preview.mkdir(exist_ok=True);floor.save(preview/f'{i:03d}.png')
+            contact_world={}
+            if adapter and adapter.archery_floor_contact:
+                contact_world={'target_toes':{side:list(rig.matrix_world@rig.pose.bones['ball_'+side].head) for side in ['l','r']},'donor_toes':{side:list(source_rig.matrix_world@source_rig.pose.bones['toes.'+side].head) for side in ['l','r']},'target_elbows':{side:list(rig.matrix_world@rig.pose.bones['lowerarm_'+side].head) for side in ['l','r']},'target_palms':{side:list(sum((rig.matrix_world@rig.pose.bones[n+'_01_'+side].head for n in ['index','pinky']),Vector())*.5) for side in ['l','r']}}
+            view.append({'contact_world':contact_world,'frame':i,**rec,'actor_root_delta':list(delta),'landmarks':{n:project(v) for n,v in bones.items()},'world_landmarks':{n:list(v) for n,v in bones.items()},'weapon_guide':prop,'bone_rotations':{n:list((rig.matrix_world@rig.pose.bones[b].matrix).to_quaternion())for n,b in names.items()},'image':str(path.relative_to(out))})
             im=Image.open(path).convert('RGBA').resize((256,256));bg=Image.new('RGBA',im.size,'white');bg.alpha_composite(im);thumbs.append(bg.convert('RGB'))
         sheet=Image.new('RGB',(1024,256*math.ceil(count/4)),'white')
         for i,im in enumerate(thumbs):sheet.paste(im,(i%4*256,i//4*256))
@@ -190,7 +205,7 @@ def main():
         for i,d in enumerate(job['directions']):
             im=Image.open(out/d/'000.png').convert('RGBA').resize((512,512));sheet.paste(im,(i%4*512,i//4*512),im)
         sheet.save(out/'turnaround-guide.png')
-    receipt={'job':job,'source_rig':source_rig.name,'guide_rig':rig.name,'retargeting':'rest-space world rotation transfer plus toe-height correction'if adapter else'none; original rig','frame_count':count,'views':refs,'mirroring':False,'root_policy':'fixed camera; horizontal source actor-root travel extracted and recorded separately','status':'SOURCE_MANNEQUIN_GUIDE_NOT_PAINTED_ART','limitations':['Source grip, joins, terminal key behavior and foot contacts require visual review.','This shared donor guide does not prove male/female final-art fitting.','Mage right prop arm is an explicit native Idle_Lantern local-pose carry adaptation; left casting motion remains from source. Staff contact still needs visual review.']}
+    receipt={'job':job,'implementation_digests_at_process_start':IMPLEMENTATION_DIGESTS,'source_rig':source_rig.name,'guide_rig':rig.name,'retargeting':('rest-space rotation transfer; authored cheek-anchor arm IK and donor per-foot contact IK' if adapter and adapter.archery_floor_contact else 'rest-space world rotation transfer plus toe-height correction')if adapter else'none; original rig','frame_count':count,'views':refs,'mirroring':False,'root_policy':'fixed camera; horizontal source actor-root travel extracted and recorded separately','status':'SOURCE_MANNEQUIN_GUIDE_NOT_PAINTED_ART','limitations':['Source grip, joins, terminal key behavior and foot contacts require visual review.','This shared donor guide does not prove male/female final-art fitting.','Mage right prop arm is an explicit native Idle_Lantern local-pose carry adaptation; left casting motion remains from source. Staff contact still needs visual review.']}
     (out/'manifest.json').write_text(json.dumps(receipt,indent=2)+'\n')
 
 

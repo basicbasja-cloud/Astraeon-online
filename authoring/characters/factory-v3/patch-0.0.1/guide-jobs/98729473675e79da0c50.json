@@ -1,0 +1,46 @@
+{
+  "id": "98729473675e79da0c50",
+  "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+  "source_sha256": "7fef1fc0e7b0feafd34b8e12d23f514c8c1f9d068047a691b854b56f1774dff5",
+  "source_actions": [
+    "Ranged_Bow_Draw_Up",
+    "Ranged_Bow_Release_Up"
+  ],
+  "frames": 16,
+  "loop": false,
+  "ortho_scale": 5.325,
+  "resolution": 1536,
+  "weapon": "bow",
+  "guide_aa": "8",
+  "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+  "camera_up_offset": 1.15375,
+  "retarget_to": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "retarget_to_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "retarget_implementation_sha256": "1a86095d1e82d656e53d59949cbed70d73ed6873e9ec69c2706b67d37a7f20e3",
+  "closed_left_grip_revision": 1,
+  "bow_proxy_basis": "wrist-local-aim",
+  "arrow_release_phase": 0.03,
+  "archery_contact_adapter": "cheek-anchor-arm-IK-floor-elbow-v3",
+  "pose_evaluation_revision": 2,
+  "source_ranges": {
+    "Ranged_Bow_Draw_Up": [
+      8,
+      32
+    ]
+  },
+  "entry_transition": {
+    "action": "Ranged_Bow_Idle",
+    "source_frame": 0,
+    "frames": 4,
+    "method": "local-joint-TRS-interpolation; no pixel warping"
+  },
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "uses": [
+    "Archer/ArrowRain"
+  ]
+}

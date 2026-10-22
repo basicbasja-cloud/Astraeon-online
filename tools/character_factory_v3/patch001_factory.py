@@ -25,20 +25,27 @@ def plan():
             source=ROOT/a['source_file']
             if not source.is_file():raise ValueError('Missing source '+str(source))
             if filehash(source)!=approved_sources.get(a['source_file']):raise ValueError('Source differs from retained intake digest')
-            geometry={'source_file':a['source_file'],'source_sha256':filehash(source),'source_actions':a['source_actions'],'frames':a['frames'],'loop':a['loop'],'ortho_scale':config.get('camera',{}).get('ortho_scale',3.55),'resolution':config['canvas']['source_guide'][0],'weapon':{'Swordsman':'sword','Mage':'staff','Archer':'bow'}[kind],'guide_aa':'OFF'}
+            geometry={'source_file':a['source_file'],'source_sha256':filehash(source),'source_actions':a['source_actions'],'frames':a['frames'],'loop':a['loop'],'ortho_scale':config.get('camera',{}).get('ortho_scale',3.55),'resolution':config['canvas']['source_guide'][0],'weapon':{'Swordsman':'sword','Mage':'staff','Archer':'bow'}[kind],'guide_aa':'OFF','renderer_sha256':filehash(TOOLS/'render_patch001_guides.py')}
             if config.get('camera',{}).get('up_offset')is not None:geometry['camera_up_offset']=config['camera']['up_offset']
             if a['source_provider']=='KayKit':
                 geometry['retarget_to']=config['source']['file']
+                geometry['retarget_to_sha256']=filehash(ROOT/config['source']['file'])
+                geometry['retarget_implementation_sha256']=filehash(TOOLS/'kaykit_motion_adapter.py')
                 geometry['closed_left_grip_revision']=1
                 geometry['bow_proxy_basis']='wrist-local-aim'if'CombatRanged'in a['source_file']else'wrist-local-carry'
-                if'CombatRanged'in a['source_file']:geometry['arrow_release_phase']=.03
+                if'CombatRanged'in a['source_file']:
+                    geometry['arrow_release_phase']=a.get('arrow_release_phase',.03)
+                    geometry['archery_contact_adapter']='cheek-anchor-arm-IK-floor-elbow-v3'
+                    geometry['guide_aa']='8'
                 geometry['pose_evaluation_revision']=2
                 if a['source_actions'][0]in ['Ranged_Bow_Draw','Ranged_Bow_Draw_Up']:
                     geometry['source_ranges']={a['source_actions'][0]:[8,32]}
                     geometry['entry_transition']={'action':'Ranged_Bow_Idle','source_frame':0,'frames':4,'method':'local-joint-TRS-interpolation; no pixel warping'}
             else:geometry['pose_evaluation_revision']=2
             if kind=='Archer'and a['source_provider']=='Mesh2Motion':geometry['bow_proxy_basis']='wrist-local-carry'
-            if a.get('floor_sit_adapter'):geometry['floor_sit_adapter']=a['floor_sit_adapter']
+            if a.get('floor_sit_adapter'):
+                geometry['floor_sit_adapter']=a['floor_sit_adapter']
+                geometry['floor_sit_implementation_sha256']=filehash(TOOLS/'floor_sit_adapter.py')
             for transition in ['entry_transition','exit_transition']:
                 if a.get(transition):geometry[transition]=a[transition]
             if kind=='Mage':
@@ -53,14 +60,23 @@ def plan():
     for character in config['characters']:
         klass=config['classes'][character['class']]
         identity=ROOT/character['identity_reference']
+        direction_sheet=ROOT/character['direction_reference_sheet']
+        if not direction_sheet.is_file():raise ValueError('Missing direction identity sheet')
+        reference_name=direction_sheet.stem.removesuffix('-turnaround')
+        references=BASE/'identities/views'/reference_name
+        reference_receipt=read(references/'receipt.json')
+        if reference_receipt['source_sha256']!=filehash(direction_sheet):raise ValueError('Stale direction identity crops; regenerate them first')
         if not identity.is_file():raise ValueError('Missing character identity reference')
         for name,a in klass['actions'].items():
             # One pose family may serve multiple game actions with different
             # timing/effects. It is not re-painted and counted as new art.
             guide=bindings[character['class']+'/'+name]
-            key=digest({'identity':filehash(identity),'fit':character['anatomy_fit_id'],'guide':guide})[:20]
+            key=digest({'identity':filehash(identity),'direction_identity':filehash(direction_sheet),'direction_crop_revision':reference_receipt['head_crop_revision'],'fit':character['anatomy_fit_id'],'guide':guide})[:20]
             pj=paint_jobs.setdefault(key,{'id':key,'character':character['id'],'identity_reference':character['identity_reference'],'identity_sha256':filehash(identity),'fit_id':character['anatomy_fit_id'],'guide_job':guide,'directions':jobs[guide]['directions'],'frame_count':a['frames'],'actions':[],'status':'MISSING_PAINTED_MASTERS_AND_LABELS','master_first':True,'layers_from_same_frame':config['parts'],'generation_policy':'one complete source strip per action/view, then same-frame cutouts; no independent layer generation','approval':{'owner_approved':False,'runtime_admitted':False}})
             pj['actions'].append(name)
+            if not(references/'receipt.json').is_file():raise ValueError('Prepare view-specific identity references before planning: '+reference_name)
+            pj['direction_identity_references']={direction:{'full_view':str((references/f'{direction}.png').relative_to(ROOT)),'head_upper':str((references/f'{direction}-head-upper.png').relative_to(ROOT))}for direction in pj['directions']}
+            pj['reference_authority']={'geometry':'current guide_job only','design':'matching-direction identity study; inspect view before use','generic_front_portrait_for_rear_views':False}
     for key,job in paint_jobs.items():write(BASE/'paint-jobs'/f'{key}.json',job)
     ledger={'schema_version':1,'characters':[c['id']for c in config['characters']],'guide_jobs':jobs,'action_guide_bindings':bindings,'paint_jobs':paint_jobs,'requested_action_instances':sum(len(config['classes'][c['class']]['actions'])for c in config['characters']),'requested_pose_positions':sum(a['frames']*len(a['authored_directions'])for c in config['characters']for a in config['classes'][c['class']]['actions'].values()),'source_capture_positions_after_reuse':sum(j['frames']*len(j['directions'])for j in jobs.values()),'planning_is_not_authored_coverage':True}
     write(BASE/'ledger.json',ledger);return ledger
@@ -70,7 +86,9 @@ def receipt_valid(job):
     folder=BASE/'guides'/job['id'];manifest=folder/'manifest.json'
     if not manifest.is_file():return False
     data=read(manifest)
-    if data.get('job')!=job or data.get('frame_count')!=job['frames']:return False
+    captured=data.get('job',{})
+    geometry=lambda value:{k:v for k,v in value.items()if k not in ['uses','directions']}
+    if geometry(captured)!=geometry(job)or data.get('frame_count')!=job['frames']:return False
     for d in job['directions']:
         if len(data.get('views',{}).get(d,{}).get('frames',[]))!=job['frames']:return False
         for i in range(job['frames']):
@@ -106,7 +124,7 @@ def status(ledger):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=['plan','guides','status']);p.add_argument('--class',dest='kind',choices=['all','Swordsman','Mage','Archer'],default='all');p.add_argument('--actions',help='Comma-separated action pilot, or omit for all');p.add_argument('--workers',type=int,default=2);a=p.parse_args()
-    ledger=plan()if a.stage=='plan'or not(BASE/'ledger.json').exists()else read(BASE/'ledger.json')
+    ledger=plan()  # Re-read input/config hashes before deciding which captures are cached.
     if a.stage=='guides':
         wanted=set(a.actions.split(','))if a.actions else None
         jobs=[j for j in ledger['guide_jobs'].values()if any((a.kind=='all'or use.split('/')[0]==a.kind)and(wanted is None or use.split('/')[1]in wanted)for use in j['uses'])]

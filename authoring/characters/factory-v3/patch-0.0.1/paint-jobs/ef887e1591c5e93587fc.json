@@ -1,0 +1,78 @@
+{
+  "id": "ef887e1591c5e93587fc",
+  "character": "mage-female-patch001",
+  "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/mage-female-seed.png",
+  "identity_sha256": "aad2885241e56c7536b4dd4625bcc78f4401ae25ddeb9850085206aa80224126",
+  "fit_id": "astraeon-female-v3",
+  "guide_job": "32868fc94df18f193fb4",
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "frame_count": 16,
+  "actions": [
+    "Blink"
+  ],
+  "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
+  "master_first": true,
+  "layers_from_same_frame": [
+    "HeadHair",
+    "BodyCostume",
+    "Weapon",
+    "WeaponHandOccluder",
+    "WeaponLightBack",
+    "WeaponLightFront",
+    "BackAccessory",
+    "Headgear"
+  ],
+  "generation_policy": "one complete source strip per action/view, then same-frame cutouts; no independent layer generation",
+  "approval": {
+    "owner_approved": false,
+    "runtime_admitted": false
+  },
+  "direction_identity_references": {
+    "S": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/S.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/S-head-upper.png"
+    },
+    "SW": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SW.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SW-head-upper.png"
+    },
+    "W": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/W.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/W-head-upper.png"
+    },
+    "NW": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NW.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NW-head-upper.png"
+    },
+    "N": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/N.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/N-head-upper.png"
+    },
+    "NE": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NE.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NE-head-upper.png"
+    },
+    "E": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/E.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/E-head-upper.png"
+    },
+    "SE": {
+      "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SE.png",
+      "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SE-head-upper.png"
+    }
+  },
+  "reference_authority": {
+    "geometry": "current guide_job only",
+    "design": "matching-direction identity study; inspect view before use",
+    "generic_front_portrait_for_rear_views": false
+  }
+}

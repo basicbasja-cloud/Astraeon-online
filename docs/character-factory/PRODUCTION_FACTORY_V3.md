@@ -1,5 +1,24 @@
 # Astraeon Production Factory V3
 
+## Active patch checkpoint — 22 October 2026
+
+The latest owner scope supersedes the original single-character pilot: male/female Swordsman, Mage and Archer, all patch 0.0.1 actions, general actions in eight real directions and physical attacks/casting in four real diagonals. Mesh2Motion remains preferred; retained CC0 KayKit supplies bow clips. The previous milestones below are historical evidence, not current patch completion.
+
+Current ledger: six characters, 114 action instances, 48/48 guide jobs captured, 5,632 source positions after reuse, 96 unique paint jobs, **zero complete imported cutout jobs**. No current six-character runtime admission or owner visual approval. See [the active state](../../authoring/characters/factory-v3/patch-0.0.1/CURRENT_STATE.md).
+
+Actual bow source correction: old retarget added 0.1019 m of rear-toe lift. Authored cheek-anchor arm IK, lifted elbow hints, per-foot donor contact IK and draw/release finger states correct that defect. The actual Blender regression covers 18 poses; all 33 factory tests pass. A 64-pose four-view audit reports maximum toe-height discrepancy below 4e-7 m, zero arm reach clamp, matching ready/recovery body landmarks, correct held-arrow release at frame10, and no viewport clipping. These checks do not certify painted anatomy or weight-bearing quality.
+
+Paint progression: a correct-handed single-frame repair and coherent-sheet repair exist, but old recovery timing differs from the current guide. Independent detailed four-frame paint batches fail coherence. A full-action attempt using a generic front portrait turns the rear view toward the chest and is rejected. Matching-direction head/hood references produce a stronger NW rear-view candidate; it remains under source-fit, animation and modular-layer review. Normal/slow, game-scale and guide-versus-paint previews use one shared viewport transform, never per-frame bounding-box fitting.
+
+### Current handoff
+
+- **COMPLETE:** current source captures, actual contact regression, view-specific design-reference preparation, fixed-camera review tooling.
+- **PARTIAL:** coherent painted actions and same-frame cutouts; detailed rejected studies retained with provenance.
+- **BLOCKED:** release admission by incomplete art/quality work; no owner credential or external provider action is needed for the active path.
+- **OWNER REVIEW REQUIRED:** finished candidate animations and the final six-character runtime proof, after internal quality gates.
+- **NEXT EXACT ACTION:** finish the current four-view Archer action review, derive and inspect same-frame HeadHair/BodyCostume/Weapon/occluder cutouts, then continue the remaining patch actions and requested hairstyle/costume demonstrations. Do not count sources or paint-job manifests as finished sprites.
+
+
 ## Purpose and progression
 
 Factory V3 turns the useful V2 authoring, framing, packing, validation, and runtime work into a repeatable pipeline for illustrated 2D characters. A rigged 3D character supplies pose, timing, perspective, weapon placement, depth, and consistent eight-direction guides; it is not final game art.

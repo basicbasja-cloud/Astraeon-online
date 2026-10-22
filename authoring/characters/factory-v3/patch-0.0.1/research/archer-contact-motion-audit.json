@@ -1,0 +1,150 @@
+{
+  "status": "SOURCE_CONTACT_DIAGNOSTIC_NOT_FINAL_ART",
+  "guide_job": "4f6e96426d00fa15c9a3",
+  "shared_viewport": [
+    378,
+    454,
+    1158,
+    1234
+  ],
+  "source_fps": 24,
+  "pose_times_ms": [
+    0.0,
+    41.666666666666664,
+    83.33333333333333,
+    125.0,
+    166.66666666666666,
+    348.48484848484844,
+    530.3030303030303,
+    712.121212121212,
+    893.9393939393938,
+    1075.7575757575758,
+    1287.8787878787878,
+    1530.3030303030303,
+    1772.727272727273,
+    2015.1515151515155,
+    2257.575757575758,
+    2500.0
+  ],
+  "preview_durations_ms": [
+    42,
+    42,
+    42,
+    42,
+    182,
+    182,
+    182,
+    182,
+    182,
+    212,
+    242,
+    242,
+    242,
+    242,
+    242,
+    300
+  ],
+  "last_idle_hold_ms": 300,
+  "source_intervals": {
+    "Ranged_Bow_Draw": [
+      8,
+      32
+    ],
+    "Ranged_Bow_Release": [
+      0,
+      32.0
+    ]
+  },
+  "per_frame_image_registration": false,
+  "world_camera_disagreements": [],
+  "directions": [
+    {
+      "direction": "SW",
+      "frames": 16,
+      "max_toe_height_error_m": 3.8929283618927e-07,
+      "max_arm_reach_clamp_m": 0,
+      "first_last_body_landmark_error_m": 5.788482606278369e-07,
+      "nocked_arrow_visible_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "viewport_clipped_frames": []
+    },
+    {
+      "direction": "NW",
+      "frames": 16,
+      "max_toe_height_error_m": 3.8929283618927e-07,
+      "max_arm_reach_clamp_m": 0,
+      "first_last_body_landmark_error_m": 5.788482606278369e-07,
+      "nocked_arrow_visible_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "viewport_clipped_frames": []
+    },
+    {
+      "direction": "NE",
+      "frames": 16,
+      "max_toe_height_error_m": 3.8929283618927e-07,
+      "max_arm_reach_clamp_m": 0,
+      "first_last_body_landmark_error_m": 5.788482606278369e-07,
+      "nocked_arrow_visible_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "viewport_clipped_frames": []
+    },
+    {
+      "direction": "SE",
+      "frames": 16,
+      "max_toe_height_error_m": 3.8929283618927e-07,
+      "max_arm_reach_clamp_m": 0,
+      "first_last_body_landmark_error_m": 5.788482606278369e-07,
+      "nocked_arrow_visible_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "viewport_clipped_frames": []
+    }
+  ],
+  "limitations": [
+    "Toe joints matching donor heights is not a full mesh sole or collision audit.",
+    "Contact adaptation is authored 3D motion, not unchanged donor mocap.",
+    "Source mannequin captures are not painted sprites or final character acceptance."
+  ],
+  "owner_approved": false,
+  "runtime_admitted": false,
+  "interval_note": "Release endpoint is 32 source frames; preview pose timestamps already used actual sampled frames."
+}

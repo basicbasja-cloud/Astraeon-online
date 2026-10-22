@@ -53,12 +53,12 @@ def import_frame(master_path,labels_path,part_paths):
     """Validate an artist's same-frame parts before storage (no warping)."""
     master=Image.open(master_path).convert('RGBA')
     if master.size not in [(512,512),(768,768)]:raise ValueError('Master is not on a supported canonical canvas')
-    # Exact label IDs: 1 body, 2 head/hair, 3 weapon, 4 back, 5 headgear.
+    # Exact label IDs: 1 body, 2 head/hair, 3 weapon, 4 back, 5 headgear, 6 hand occluder.
     labels=Image.open(labels_path)
     if labels.size!=master.size or labels.mode not in ['L','P']:raise ValueError('Expected a same-frame integer label map')
     a=np.asarray(master);ids=np.asarray(labels);visible=a[:,:,3]>0
-    if np.any(visible&~np.isin(ids,[1,2,3,4,5])):raise ValueError('Visible master pixels lack semantic labels')
-    masks={role:ids==i for i,role in enumerate(['BodyCostume','HeadHair','Weapon','BackAccessory','Headgear'],1)}
+    if np.any(visible&~np.isin(ids,[1,2,3,4,5,6])):raise ValueError('Visible master pixels lack semantic labels')
+    masks={role:ids==i for i,role in enumerate(['BodyCostume','HeadHair','Weapon','BackAccessory','Headgear','WeaponHandOccluder'],1)}
     merged=np.zeros_like(a)
     for role,mask in masks.items():
         pixels=np.zeros_like(a);pixels[mask]=a[mask];image=Image.fromarray(pixels);path=part_paths[role];path.parent.mkdir(parents=True,exist_ok=True);image.save(path);merged[mask]=pixels[mask]

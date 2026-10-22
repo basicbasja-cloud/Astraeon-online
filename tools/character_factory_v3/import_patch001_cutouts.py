@@ -11,7 +11,13 @@ from PIL import Image
 from patch001_factory import BASE,ROOT,read,write,receipt_valid,digest
 from cutout_asset_store import STORE,ROLES,register,save_index,import_frame
 
-BASE_ORDER=['BackAccessory','BodyCostume','HeadHair','Weapon','Headgear']
+BASE_ORDER=['BackAccessory','BodyCostume','HeadHair','Weapon','WeaponHandOccluder','Headgear']
+
+def visible_draw_order(parts,requested=None):
+    expected={r for r in parts if r in BASE_ORDER}
+    order=requested if requested is not None else [r for r in BASE_ORDER if r in expected]
+    if not isinstance(order,list)or any(not isinstance(r,str)for r in order)or len(order)!=len(expected)or set(order)!=expected:raise ValueError('Base draw order must contain each present character role exactly once')
+    return order
 
 
 def import_job(job_id,manifest_path):
@@ -35,8 +41,8 @@ def import_job(job_id,manifest_path):
             import_frame(master_path,(manifest_path.parent/record['labels']).resolve(),targets);parts.update(targets)
         if any(r not in parts for r in ['BodyCostume','HeadHair','Weapon']):raise ValueError('Required actual visible parts are missing')
         combined=Image.new('RGBA',tuple(canvas))
-        for role in BASE_ORDER:
-            if role in parts:combined.alpha_composite(Image.open(parts[role]).convert('RGBA'))
+        draw_order=visible_draw_order(parts,record.get('base_draw_order'))
+        for role in draw_order:combined.alpha_composite(Image.open(parts[role]).convert('RGBA'))
         a=np.array(master);b=np.array(combined);visible=(a[:,:,3]>0)|(b[:,:,3]>0)
         if not np.array_equal(a[:,:,3],b[:,:,3])or not np.array_equal(a[visible],b[visible]):raise ValueError(f'Same-frame recomposition differs: {direction}/{i}')
         sockets=record.get('sockets',{})
@@ -53,7 +59,7 @@ def import_job(job_id,manifest_path):
             if role in nonempty and im.getbbox():nonempty[role]+=1
             metadata={'role':role,'canvas':canvas,'fit_id':job['fit_id'],'pose_id':pose_id,'camera_id':camera_id,'root':sockets['root'],'source_reference':str(master_path.relative_to(ROOT))if master_path.is_relative_to(ROOT)else str(master_path),'semantic_status':'IMPORTED_VISIBLE_CUTOUT_NOT_HIDDEN_ANATOMY','occlusion_reason':record.get('occlusion_reasons',{}).get(role)}
             bound[role]=register(path,metadata,index=index)
-        bindings.append({'direction':direction,'index':i,'pose_id':pose_id,'camera_id':camera_id,'sockets':sockets,'assets':bound})
+        bindings.append({'direction':direction,'index':i,'pose_id':pose_id,'camera_id':camera_id,'sockets':sockets,'base_draw_order':draw_order,'assets':bound})
     if any(n==0 for n in nonempty.values()):raise ValueError('A complete action cannot have an entirely empty required art slot')
     save_index(index);write(folder/'bindings.json',{'paint_job':job_id,'character':job['character'],'actions':job['actions'],'frames':bindings})
     write(folder/'import-receipt.json',{'paint_job':job_id,'guide_job':job['guide_job'],'input_manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),'all_frames_present':True,'frames':len(bindings),'recomposition_mismatches':0,'status':'IMPORTED_REQUIRES_VISUAL_REVIEW','owner_approved':False,'runtime_admitted':False,'hidden_surfaces_authored':False})
