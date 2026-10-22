@@ -22,7 +22,7 @@ Six eight-view identity studies exist. They are not final animation coverage. Th
 
 Existing accepted-review work under the previous Swordsman prototype remains separate because camera/timeline fitting differs. Do not blindly import it as matching these guide jobs. Mesh2Motion remains preferred; KayKit CC0 supplies actual bow clips absent from the free Quaternius Standard download.
 
-38 factory tests pass, including actual Blender retarget/contact checks. These technical results do not establish owner visual approval.
+41 factory tests pass, including actual Blender retarget/contact checks. These technical results do not establish owner visual approval.
 
 ## Owner-requested variant acceptance
 
@@ -60,7 +60,7 @@ NE explicitly holds source pose8 at timeline slot9 because the generated slot9 r
 
 NW now has sixteen same-frame HeadHair cutout proposals with exact recomposition (zero changed pixels). BodyCostume proposals still include the weapon; complete Weapon/Hand/BackAccessory boundaries and hidden costume surfaces remain unfinished. No complete import is claimed. Four-view normal/slow GIFs are available under `/workspace/outputs/archer-male-four-view-review/`.
 
-Validation:38 unittest cases pass; Python compilation succeeds. The actual Blender contact regression samples18 poses, reproduces the old0.1019m rear-toe error, and measures corrected discrepancy2.37e-7m, finite bone matrices, correct draw/release fingers and zero ready/recovery body seam. These metrics do not certify the painted frames, sole contact, natural weight transfer, or runtime readiness.
+Validation:41 unittest cases pass; Python compilation succeeds. The actual Blender contact regression samples18 poses, reproduces the old0.1019m rear-toe error, and measures corrected discrepancy2.37e-7m, finite bone matrices, correct draw/release fingers and zero ready/recovery body seam. These metrics do not certify the painted frames, sole contact, natural weight transfer, or runtime readiness.
 
 Remaining:98 complete cutout jobs, painted/source anatomical review, final trail checks, six runtime packages, and full-action hairstyle/costume variants for each class. Patch0.0.1 remains incomplete.
 
@@ -71,3 +71,7 @@ Four new female action sheets and all four male sheets are retained with exact p
 The new source guide2fed9f286cdd5c5ffbf4 and painting source4f6e96426d00fa15c9a3 have identical decoded RGBA pixels across all64 captures and exactly matching world landmarks/weapon projections. PNG file bytes differ; the pixel comparison is recorded separately.
 
 Female NE uses the same explicit pose8 hold at slot9. Raw female NE also released early; SW/SE recovery samples contain reappearing arrows and require local art correction. Female source fitting, ready/recovery pixel stability, and complete cutouts remain unapproved. These eight direction sheets are not counted as eight finished jobs. Complete import count remains zero.
+
+## Bounded local paint correction
+
+A single female SW recovery15 arrow-removal study uses an explicit3,901-pixel repair mask. Outside-mask changes are exactly zero;3,049 inside pixels change. It is not promoted: the segment between nocking hand and bow grip still needs string-mechanics review. Original master/GIFs remain unchanged. This technical repair guard prevents collateral body/head/foot changes; it does not certify the replacement artwork. All41 factory tests pass, including three local-repair regression cases.
