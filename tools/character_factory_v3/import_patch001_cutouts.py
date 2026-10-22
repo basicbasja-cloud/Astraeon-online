@@ -10,8 +10,25 @@ import numpy as np
 from PIL import Image
 from patch001_factory import BASE,ROOT,read,write,receipt_valid,digest
 from cutout_asset_store import STORE,ROLES,register,save_index,import_frame
+from register_clear_paint_candidate import validated_pose_map
 
 BASE_ORDER=['BackAccessory','BodyCostume','HeadHair','Weapon','WeaponHandOccluder','Headgear']
+
+def source_pose_maps(manifest,guide,guide_path,manifest_folder):
+    """Keep timeline slots distinct from a certified held source pose."""
+    maps={};evidence={}
+    recipes=manifest.get('pose_recipes',{})
+    if not isinstance(recipes,dict) or set(recipes)-set(guide['views']):raise ValueError('Invalid pose recipe directions')
+    for direction in guide['views']:
+        if direction not in recipes:
+            maps[direction]=list(range(guide['frame_count']));continue
+        path=(manifest_folder/recipes[direction]).resolve();recipe=read(path)
+        if recipe.get('guide_manifest_sha256')!=hashlib.sha256(guide_path.read_bytes()).hexdigest():raise ValueError('Pose recipe guide digest mismatch')
+        # Certificates in a persisted recipe resolve against the recipe itself.
+        recipe=dict(recipe);recipe['certificates']={k:str((path.parent/v).resolve())for k,v in recipe.get('certificates',{}).items()}
+        maps[direction]=validated_pose_map(recipe,guide,direction)
+        evidence[direction]={'recipe_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'source_pose_indices':maps[direction],'certificates':{k:hashlib.sha256(Path(v).read_bytes()).hexdigest()for k,v in recipe['certificates'].items()}}
+    return maps,evidence
 
 def visible_draw_order(parts,requested=None):
     expected={r for r in parts if r in BASE_ORDER}
@@ -28,11 +45,15 @@ def import_job(job_id,manifest_path):
     if manifest.get('guide_job')!=job['guide_job']or manifest.get('fit_id')!=job['fit_id']:raise ValueError('Pose/fit identity does not match the paint job')
     expected={(d,i)for d in job['directions']for i in range(job['frame_count'])};records=manifest.get('frames',[])
     if len(records)!=len(expected)or{(r['direction'],r['index'])for r in records}!=expected:raise ValueError('Missing, duplicate or unexpected pose records')
-    guide=read(BASE/'guides'/job['guide_job']/'manifest.json');folder=BASE/'cutouts'/job_id;folder.mkdir(parents=True,exist_ok=True)
+    guide_path=BASE/'guides'/job['guide_job']/'manifest.json';guide=read(guide_path)
+    pose_maps,pose_evidence=source_pose_maps(manifest,guide,guide_path,manifest_path.parent)
+    folder=BASE/'cutouts'/job_id;folder.mkdir(parents=True,exist_ok=True)
     index=read(STORE/'index.json')if(STORE/'index.json').exists()else{'version':1,'assets':{},'objects':{}}
     bindings=[];nonempty={r:0 for r in ['BodyCostume','HeadHair','Weapon']}
     for record in records:
-        direction=record['direction'];i=record['index'];reference=guide['views'][direction]['frames'][i]
+        direction=record['direction'];i=record['index'];source_i=pose_maps[direction][i]
+        if 'source_pose_index'in record and (not isinstance(record['source_pose_index'],int)or isinstance(record['source_pose_index'],bool)or record['source_pose_index']!=source_i):raise ValueError('Uncertified source pose override')
+        reference=guide['views'][direction]['frames'][source_i]
         master_path=(manifest_path.parent/record['master']).resolve();master=Image.open(master_path)
         if master.mode!='RGBA'or list(master.size)!=canvas:raise ValueError('Master must match the full canonical RGBA canvas')
         parts={r:(manifest_path.parent/p).resolve()for r,p in record.get('parts',{}).items()}
@@ -59,10 +80,10 @@ def import_job(job_id,manifest_path):
             if role in nonempty and im.getbbox():nonempty[role]+=1
             metadata={'role':role,'canvas':canvas,'fit_id':job['fit_id'],'pose_id':pose_id,'camera_id':camera_id,'root':sockets['root'],'source_reference':str(master_path.relative_to(ROOT))if master_path.is_relative_to(ROOT)else str(master_path),'semantic_status':'IMPORTED_VISIBLE_CUTOUT_NOT_HIDDEN_ANATOMY','occlusion_reason':record.get('occlusion_reasons',{}).get(role)}
             bound[role]=register(path,metadata,index=index)
-        bindings.append({'direction':direction,'index':i,'pose_id':pose_id,'camera_id':camera_id,'sockets':sockets,'base_draw_order':draw_order,'assets':bound})
+        bindings.append({'direction':direction,'index':i,'source_pose_index':source_i,'pose_id':pose_id,'camera_id':camera_id,'sockets':sockets,'base_draw_order':draw_order,'assets':bound})
     if any(n==0 for n in nonempty.values()):raise ValueError('A complete action cannot have an entirely empty required art slot')
     save_index(index);write(folder/'bindings.json',{'paint_job':job_id,'character':job['character'],'actions':job['actions'],'frames':bindings})
-    write(folder/'import-receipt.json',{'paint_job':job_id,'guide_job':job['guide_job'],'input_manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),'all_frames_present':True,'frames':len(bindings),'recomposition_mismatches':0,'status':'IMPORTED_REQUIRES_VISUAL_REVIEW','owner_approved':False,'runtime_admitted':False,'hidden_surfaces_authored':False})
+    write(folder/'import-receipt.json',{'paint_job':job_id,'guide_job':job['guide_job'],'input_manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),'pose_recipe_evidence':pose_evidence,'all_frames_present':True,'frames':len(bindings),'recomposition_mismatches':0,'status':'IMPORTED_REQUIRES_VISUAL_REVIEW','owner_approved':False,'runtime_admitted':False,'hidden_surfaces_authored':False})
     print(json.dumps({'paint_job':job_id,'imported_frames':len(bindings),'distinct_pixel_objects_in_store':len(index['objects'])}))
 
 

@@ -2,7 +2,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 global.window={};
 const api=require('../modular-sprites.js');
-const read=name=>JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/characters/'+name+'-proof/sprite.json'),'utf8'));
+const read=name=>JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/modular-contract/'+name+'.json'),'utf8'));
 const sword=read('swordsman'),mage=read('mage'),clone=()=>structuredClone(sword);
 for(const definition of [sword,mage])test(definition.classId+' resolves every clip, direction and synchronized part',()=>{
  const compiled=api.compile(definition);

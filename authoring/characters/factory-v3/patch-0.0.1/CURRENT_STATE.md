@@ -2,6 +2,14 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Runtime and visual-quality continuation — 22 October 2026
+
+The runtime bridge now routes six distinct class/sex packages, validates class-specific actions, and resolves actual skill identities rather than hotbar numbers. The exporter consumes real imported cutouts with explicit timing/events; synthetic fixtures are tests, not playable artwork. Cache105 includes the generated policy.
+
+143 individual Node checks and55 Python tests pass. Actual browser input verifies walking/attacking for three existing legacy saves with no page/resource errors; **zero new six-character packages are verified playable**. Full acceptance criteria and pinned other-branch references: `docs/character-factory/PATCH001_PLAYABLE_ACCEPTANCE.md`.
+
+Reducing each layer separately introduced3,880 pixel differences across the16 male Archer NW frames. The new shared reduction and exclusive ownership reconstructs all16 reduced masters exactly. Bounded head-edge ownership refinement moves4,728 existing pixels between layers without changing the master. These fixes do not certify semantic masks: weapons still need separation, and head/arm painting drift remains. Failed constrained/upper-body repaint studies are retained and not promoted. Certified subpixel held poses now retain their actual source pose identity on import, without moving semantic event times.
+
 ## Direction policy
 
 Physical attacks and casting use four real diagonal views, without mirroring. Casting includes CastChannel, CastRelease and Mage basic attack/SkillAction, per latest owner instruction. Other actions retain eight. See research/action-direction-decision.md.
@@ -22,7 +30,7 @@ Six eight-view identity studies exist. They are not final animation coverage. Th
 
 Existing accepted-review work under the previous Swordsman prototype remains separate because camera/timeline fitting differs. Do not blindly import it as matching these guide jobs. Mesh2Motion remains preferred; KayKit CC0 supplies actual bow clips absent from the free Quaternius Standard download.
 
-41 factory tests pass, including actual Blender retarget/contact checks. These technical results do not establish owner visual approval.
+55 factory tests pass, including actual Blender retarget/contact checks. These technical results do not establish owner visual approval.
 
 ## Owner-requested variant acceptance
 
@@ -74,4 +82,4 @@ Female NE uses the same explicit pose8 hold at slot9. Raw female NE also release
 
 ## Bounded local paint correction
 
-A single female SW recovery15 arrow-removal study uses an explicit3,901-pixel repair mask. Outside-mask changes are exactly zero;3,049 inside pixels change. It is not promoted: the segment between nocking hand and bow grip still needs string-mechanics review. Original master/GIFs remain unchanged. This technical repair guard prevents collateral body/head/foot changes; it does not certify the replacement artwork. All41 factory tests pass, including three local-repair regression cases.
+A single female SW recovery15 arrow-removal study uses an explicit3,901-pixel repair mask. Outside-mask changes are exactly zero;3,049 inside pixels change. It is not promoted: the segment between nocking hand and bow grip still needs string-mechanics review. Original master/GIFs remain unchanged. This technical repair guard prevents collateral body/head/foot changes; it does not certify the replacement artwork. All55 factory tests pass, including three local-repair regression cases.

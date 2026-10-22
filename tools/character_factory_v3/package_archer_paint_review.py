@@ -3,6 +3,7 @@ import argparse,json,shutil,sys
 from pathlib import Path
 from PIL import Image,ImageDraw
 from build_fixed_grid_sequence_review import gif
+from pack_patch001_character import downsample_partition
 
 HTML='''<!doctype html><meta charset="utf-8"><title>Archer production review</title>
 <style>body{font:16px system-ui;background:#202632;color:#eee;margin:24px}canvas{background:#ddd;width:480px;height:480px;max-width:45vw;max-height:45vw}button,select,input{margin:8px;padding:8px}a{color:#aadaff}.warning{color:#ffd18a}section{display:flex;gap:16px;flex-wrap:wrap}</style>
@@ -40,10 +41,14 @@ def package(base,outputs,destination):
         target=destination/'guide'/direction;target.mkdir(parents=True,exist_ok=True)
         for i in range(16):
             Image.open(guide/direction/f'{i:03d}.png').convert('RGBa').resize((240,240),Image.Resampling.LANCZOS).convert('RGBA').save(target/f'{i:03d}.png')
-    heads=base/'painted-candidates/archer-male-basicattack/NW/current-guide-rear-locked/head-cutouts'
-    for role in ['HeadHair','BodyCostume']:
-        target=destination/'head-study'/role;target.mkdir(parents=True,exist_ok=True)
-        for i in range(16):Image.open(heads/role/f'{i:03d}.png').convert('RGBa').resize((240,240),Image.Resampling.LANCZOS).convert('RGBA').save(target/f'{i:03d}.png')
+    heads=base/'painted-candidates/archer-male-basicattack/NW/current-guide-rear-locked/head-cutouts-edge-refined'
+    for i in range(16):
+        source_parts={role:Image.open(heads/role/f'{i:03d}.png').convert('RGBA')for role in ['BodyCostume','HeadHair']}
+        reduced,master=downsample_partition(source_parts,list(source_parts),(240,240))
+        recomposed=Image.new('RGBA',(240,240))
+        for role,part in reduced.items():
+            target=destination/'head-study'/role;target.mkdir(parents=True,exist_ok=True);part.save(target/f'{i:03d}.png');recomposed.alpha_composite(part)
+        if recomposed.tobytes()!=master.tobytes():raise ValueError('Runtime head/body seam differs from master')
     gif(canvases,destination/'four-view-normal.gif',durations);gif(canvases,destination/'four-view-slow.gif',[d*3 for d in durations])
     report={'status':'WIP_ART_REQUIRES_REVISION','durations':durations,'directions':directions,'characters':['male','female'],'timeline_slots':16,'NE_distinct_poses':15,'source_guide':guide.name,'source_equivalence_receipt':str(base/'research/archer-source-fingerprint-equivalence.json'),'complete_cutout_jobs':0,'owner_approved':False,'runtime_admitted':False,'known_defects':['Painted recovery arrows reappear in some directions; must be removed without changing body pixels.','Raw NE slot9 releases early; explicit certified pose8 hold used for this preview.','Per-frame painting drift and anatomical source fitting still require inspection.','HeadHair proposals are exclusive visible-pixel masks; BodyCostume still contains bow, gloves and quiver.','No hidden-surface costume repair, full weapon separation or runtime admission.'],'candidate_receipts':receipts}
     (destination/'review.json').write_text(json.dumps(report,indent=2)+'\n');(destination/'index.html').write_text(HTML);return report

@@ -3,7 +3,7 @@
 'use strict';
 const W=window.AstraeonWardrobe,A=window.AstraeonModularSprites;
 function mount(root,{cls=0,appearance=W.defaults(),onChange=()=>{},onReady=()=>{},gallery=false}={}){
- const paintedCandidateReview=['v3-painted','v3-painted-v2'].includes(new URLSearchParams(location.search).get('swordsman')),visibleClips=paintedCandidateReview?['Idle','Walk','BasicAttack']:W.CLIPS;
+ const paintedCandidateReview=['v3-painted','v3-painted-v2'].includes(new URLSearchParams(location.search).get('swordsman')),visibleClips=paintedCandidateReview?['Idle','Walk','BasicAttack']:W.clipsFor(cls);
  root.innerHTML=`<div class="character-customizer"><div class="sprite-stage"><canvas data-studio="canvas" width="640" height="430" aria-label="Animated character appearance"></canvas><span class="sprite-stage-label">ASTRAEON · 0.0.1</span></div><div class="studio-fields"><label>Body<select data-studio="body">${W.CATALOG.bodies.map(id=>`<option value="${id}">${id[0].toUpperCase()+id.slice(1)}</option>`).join('')}</select></label><label>Hair<select data-studio="hair">${W.CATALOG.hair.map(v=>`<option value="${v.id}">${v.name}</option>`).join('')}</select></label><label>Costume<select data-studio="outfit">${W.CATALOG.outfit.map(v=>`<option value="${v.id}">${v.name}</option>`).join('')}</select></label></div><div class="studio-motion"><label>Motion<select data-studio="motion">${visibleClips.map(id=>`<option>${id}</option>`).join('')}</select></label><label>Speed<select data-studio="speed"><option value="1">Normal</option><option value="0.25">Quarter speed</option><option value="0">Paused</option></select></label><button type="button" data-studio="replay" hidden>Replay</button><button type="button" data-studio="size">Game size</button></div><div class="studio-directions" aria-label="Facing direction">${A.DIRECTIONS.map(d=>`<button type="button" data-direction="${d}" aria-pressed="${d==='S'}">${d}</button>`).join('')}</div><label class="studio-scrub">Frame<input data-studio="frame" type="range" min="0" value="0" max="7"><output data-studio="frame-label">0 / 7</output></label><p data-studio="status" class="studio-status" role="status">Loading your character…</p>${gallery?'<canvas data-studio="gallery" class="studio-gallery" width="896" height="252" aria-label="All eight character directions"></canvas><fieldset class="studio-layers"><legend>Inspect layers</legend>'+A.REQUIRED_LAYERS.map(layer=>`<label><input type="checkbox" data-layer="${layer}" checked>${layer}</label>`).join('')+'</fieldset><details class="studio-data"><summary>Frame registration</summary><pre data-studio="data"></pre></details>':''}</div>`;
  const get=name=>root.querySelector(`[data-studio="${name}"]`),canvas=get('canvas'),ctx=canvas.getContext('2d');
  if(paintedCandidateReview){root.querySelector('.studio-fields').style.display='none';const layers=root.querySelector('.studio-layers');if(layers)layers.style.display='none';}
@@ -21,17 +21,20 @@ function mount(root,{cls=0,appearance=W.defaults(),onChange=()=>{},onReady=()=>{
   ctx.strokeStyle='#c8b87b55';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(320,357,126,32,0,0,Math.PI*2);ctx.stroke();
   A.draw(ctx,filtered(frame),sprite.images,{x:320,y:355,scale:small?70*92/76/W.ANATOMY.referenceHeight:3.1});
   get('frame').value=frame.frameIndex;get('frame-label').textContent=`${frame.frameIndex} / ${get('frame').max}`;
-  get('status').textContent=error||`${sprite.compiled.definition.classId} · ${config.bodyVariant} · ${id} · ${direction} · ${frame.duration} ms`;
-  const gc=get('gallery');if(gc){const g=gc.getContext('2d');g.clearRect(0,0,896,252);g.fillStyle='#12232d';g.fillRect(0,0,896,252);g.font='12px system-ui';g.textAlign='center';
-   for(let i=0;i<8;i++){const d=A.DIRECTIONS[i],f=sprite.compiled.sample(id,d,elapsed,{appearance:sprite.appearance,frameIndex:frame.frameIndex}),x=i%4*224+112,y=Math.floor(i/4)*126+104;A.draw(g,filtered(f),sprite.images,{x,y,scale:70*92/76/W.ANATOMY.referenceHeight});g.fillStyle='#d9c895';g.fillText(d,x,y+17)}
+  get('status').textContent=error||`${sprite.compiled.definition.classId} · ${config.bodyVariant} · ${id} · ${direction===frame.direction?direction:direction+' → '+frame.direction} · ${frame.duration} ms`;
+  const gc=get('gallery');if(gc){const authored=clip.authoredDirections||A.DIRECTIONS;gc.height=authored.length===4?126:252;const g=gc.getContext('2d');g.clearRect(0,0,896,gc.height);g.fillStyle='#12232d';g.fillRect(0,0,896,gc.height);g.font='12px system-ui';g.textAlign='center';
+   for(let i=0;i<authored.length;i++){const d=authored[i],f=sprite.compiled.sample(id,d,elapsed,{appearance:sprite.appearance,frameIndex:frame.frameIndex}),x=i%4*224+112,y=Math.floor(i/4)*126+104;A.draw(g,filtered(f),sprite.images,{x,y,scale:70*92/76/W.ANATOMY.referenceHeight});g.fillStyle='#d9c895';g.fillText(d,x,y+17)}
    get('data').textContent=JSON.stringify({anatomy:W.ANATOMY,characterId:frame.characterId,clip:id,direction,frame:frame.frameIndex,sockets:frame.sockets,drawOrder:frame.layers.map(l=>l.slot+':'+l.partId)},null,2);
   }
  }
  async function choose(){
+  const available=paintedCandidateReview?['Idle','Walk','BasicAttack']:W.clipsFor(cls),previous=get('motion').value;
+  get('motion').innerHTML=available.map(id=>`<option>${id}</option>`).join('');get('motion').value=available.includes(previous)?previous:'Idle';
   const request=++ticket;ready=false;error=null;onReady(false);fields.forEach(field=>field.disabled=true);get('status').textContent='Preparing synchronized artwork…';
   try{
    const next={version:1,bodyVariant:get('body').value,hair:get('hair').value,outfit:get('outfit').value};
    const visual=await W.load(next,cls,[get('motion').value]);if(destroyed||request!==ticket)return;
+   if(gallery&&!paintedCandidateReview){const layers=root.querySelector('.studio-layers'),roles=[...new Set(Object.values(visual.compiled.definition.slots))];layers.innerHTML='<legend>Inspect layers</legend>'+roles.map(role=>`<label><input type="checkbox" data-layer="${role}" checked>${role}</label>`).join('')}
    sprite=visual;config=next;elapsed=0;get('frame').value=0;get('frame').max=sprite.compiled.definition.clips[get('motion').value].durations.length-1;ready=true;fields.forEach(field=>field.disabled=false);onChange({...config});onReady(true);draw();
   }catch(failure){if(request!==ticket)return;error=failure.message;get('status').textContent=error;fields.forEach(field=>field.disabled=false);onReady(false);console.error(failure)}
  }
@@ -50,6 +53,6 @@ function mount(root,{cls=0,appearance=W.defaults(),onChange=()=>{},onReady=()=>{
 }
 window.AstraeonCharacterStudio=Object.freeze({mount});
 if(document.getElementById('character-studio')){
- const root=document.getElementById('character-studio'),select=document.getElementById('studio-class'),params=new URLSearchParams(location.search);select.value=params.get('class')==='mage'?'12':'0';const studio=mount(root,{gallery:true,cls:Number(select.value),appearance:W.normalize({bodyVariant:params.get('body'),hair:params.get('hair'),outfit:params.get('outfit')})});select.addEventListener('change',()=>studio.setClass(Number(select.value)));window.AstraeonCharacterReview=Object.freeze({snapshot:()=>studio.snapshot(),appearance:()=>studio.config()});
+ const root=document.getElementById('character-studio'),select=document.getElementById('studio-class'),params=new URLSearchParams(location.search);select.value=params.get('class')==='mage'?'12':params.get('class')==='archer'?'3':'0';const studio=mount(root,{gallery:true,cls:Number(select.value),appearance:W.normalize({bodyVariant:params.get('body'),hair:params.get('hair'),outfit:params.get('outfit')})});select.addEventListener('change',()=>studio.setClass(Number(select.value)));window.AstraeonCharacterReview=Object.freeze({snapshot:()=>studio.snapshot(),appearance:()=>studio.config()});
 }
 })();

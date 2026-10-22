@@ -2,8 +2,9 @@
 (function(scope){
 'use strict';
 const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o)}return o};
-const ANATOMY=freeze({frameWidth:160,frameHeight:160,rootAnchorX:80,rootAnchorY:132,referenceHeight:88,headWidth:24,headHeight:25});
-const CLIPS=freeze(['Idle','Walk','Run','Sprint','BasicAttack','SkillAction','CastChannel','CastRelease','Guard','Dash','Blink','Hit','Death','Interact','Pickup','ItemUse','Sit','Respawn']);
+const PATCH=scope.AstraeonPatch001Characters||(typeof require==='function'?require('./patch001-characters.js'):null);
+const ANATOMY=freeze({...PATCH.policy.anatomy});
+const CLIPS=freeze(['Idle','Walk','Run','Sprint','BasicAttack','SkillAction','CastChannel','CastRelease','Guard','Dash','Blink','Hit','Death','Interact','Pickup','ItemUse','Sit','Respawn','CombatIdle','SpinAttack','TrapPlace','ArrowRain']);
 const CATALOG=freeze({
  hair:[{id:'hair-native',name:'Class hairstyle',kind:'included'},{id:'silver-bob',name:'Silver tied bob',kind:'cosmetic',sku:'hair.silver-bob.001'}],
  outfit:[{id:'traveler',name:'Traveler attire',kind:'included'},{id:'astral-court',name:'Astral Court',kind:'cosmetic',sku:'costume.astral-court.001'}],
@@ -14,13 +15,14 @@ function normalize(raw){
  return {version:1,bodyVariant:CATALOG.bodies.includes(raw.bodyVariant)?raw.bodyVariant:'male',hair:CATALOG.hair.some(v=>v.id===raw.hair)?raw.hair:'hair-native',outfit:CATALOG.outfit.some(v=>v.id===raw.outfit)?raw.outfit:'traveler'};
 }
 const defaults=()=>normalize({});
-const classId=cls=>cls===0?'swordsman':cls===12?'mage':null;
-function cosmetics(config,cls){const kind=classId(cls);if(!kind)throw Error('No 0.0.1 sprite class for '+cls);return {Hair:config.hair,Outfit:config.outfit==='traveler'?kind+'-traveler':config.outfit}}
+const classId=cls=>PATCH.classFor(cls)?.id||null;
+const clipsFor=cls=>PATCH.clipsFor(cls);
+function cosmetics(config,cls){const kind=classId(cls);if(!kind)throw Error('No 0.0.1 sprite class for '+cls);return {HeadHair:config.hair,BodyCostume:config.outfit==='traveler'?kind+'-traveler':config.outfit}}
 async function load(config,cls,animationIds=['Idle']){
  config=normalize(config)||defaults();const kind=classId(cls);if(!kind)throw Error('Unsupported cosmetic class');
- const developmentBody=scope.AstraeonSwordsmanDevelopment?.snapshot().developmentBody;const paintedCandidate=['v3-painted','v3-painted-v2'].includes(developmentBody)&&kind==='swordsman'&&config.bodyVariant==='male';const candidateId=developmentBody==='v3-painted-v2'?'swordsman-male-v3-painted-v2':'swordsman-male-v3-painted';const definition=paintedCandidate?`./assets/characters/${candidateId}/sprite.json`:`./assets/characters/${kind}-${config.bodyVariant}-001/sprite.json`;const options={allowDev:true,bodyVariant:config.bodyVariant,animationIds};if(!paintedCandidate)options.cosmeticLoadout=cosmetics(config,cls);const visual=await scope.AstraeonModularSprites.load(definition,options);
- for(const [key,value] of Object.entries(ANATOMY))if(key in visual.compiled.definition.canvas&&visual.compiled.definition.canvas[key]!==value)throw Error('Class anatomy differs: '+key);
- for(const id of (paintedCandidate?['Idle','Walk','BasicAttack']:CLIPS))if(!visual.compiled.definition.clips[id]||visual.compiled.definition.clips[id].tags?.includes('PENDING_PRODUCTION'))throw Error('Incomplete animation '+id);
+ const developmentBody=scope.AstraeonSwordsmanDevelopment?.snapshot().developmentBody;const paintedCandidate=['v3-painted','v3-painted-v2'].includes(developmentBody)&&kind==='swordsman'&&config.bodyVariant==='male';const candidateId=developmentBody==='v3-painted-v2'?'swordsman-male-v3-painted-v2':'swordsman-male-v3-painted';const definition=paintedCandidate?`./assets/characters/${candidateId}/sprite.json`:PATCH.characterFor(cls,config.bodyVariant).definition;const options={allowDev:true,bodyVariant:config.bodyVariant,animationIds};if(!paintedCandidate)options.cosmeticLoadout=cosmetics(config,cls);const visual=await scope.AstraeonModularSprites.load(definition,options);
+ if(!paintedCandidate){const errors=PATCH.validatePackage(visual.compiled.definition,cls,config.bodyVariant);if(errors.length)throw Error(errors.join('; '))}
+ for(const id of (paintedCandidate?['Idle','Walk','BasicAttack']:clipsFor(cls)))if(!visual.compiled.definition.clips[id]||visual.compiled.definition.clips[id].tags?.includes('PENDING_PRODUCTION'))throw Error('Incomplete animation '+id);
  return visual;
 }
 let active=null,activeClass=null,activeConfig=null,selection=0,loadError=null,current='Idle',requested='Idle',clipTicket=0;
@@ -35,11 +37,12 @@ async function select(raw,cls){
  active=visual;activeClass=cls;activeConfig=config;current=requested='Idle';clipTicket++;pending.clear();return visual;
 }
 async function prepare(clip){
- const visual=active;if(!visual)return null;if(!CLIPS.includes(clip))throw Error('Unknown motion '+clip);
+ const visual=active;if(!visual)return null;if(!clipsFor(activeClass).includes(clip))throw Error('Unsupported class motion '+clip);
  if(!pending.has(clip))pending.set(clip,visual.ensure(clip).catch(error=>{if(active===visual){loadError=error.message;pending.delete(clip)}throw error}));
  await pending.get(clip);return active===visual?visual:null;
 }
 function actionClip(id,cls,def){
+ const bound=PATCH.actionClip(cls,def?.id)||PATCH.actionClip(cls,id);if(bound)return bound;
  if(id==='dodge')return cls===12?'Blink':'Dash';
  if(id==='potion')return 'ItemUse';if(id==='interact')return 'Interact';
  if(def?.effect==='guard')return 'Guard';
@@ -62,7 +65,7 @@ function visualFor(cls,anim,transform,time){
  if(!['Walk','Run','Sprint','Idle'].includes(current)){
   let p=progress;
   if(current==='CastChannel'){result.elapsedMs=Math.max(0,(time-anim.started)*1000);return result}
-  if(['BasicAttack','SkillAction','CastRelease'].includes(current)&&Number.isFinite(anim.impactAt)){
+  if(Number.isFinite(anim.impactAt)&&(['BasicAttack','SkillAction','CastRelease'].includes(current)||clip.events?.some(e=>['impact','projectileRelease','release'].includes(e.name)))){
    const index={BasicAttack:7,SkillAction:6,CastRelease:3}[current],event=clip.events?.find(e=>['impact','projectileRelease','release'].includes(e.name)),release=event?event.timeMs/total:clip.durations.slice(0,index).reduce((a,b)=>a+b,0)/total,impact=Math.max(.01,Math.min(.99,anim.impactAt));
    p=p<impact?p/impact*release:release+(p-impact)/(1-impact)*(1-release);
   }
@@ -71,6 +74,6 @@ function visualFor(cls,anim,transform,time){
  return result;
 }
 const snapshot=()=>({appearance:activeConfig,classId:activeClass,current,requested,error:loadError,atlases:active?Object.keys(active.images):[],anatomy:ANATOMY});
-const api={ANATOMY,CLIPS,CATALOG,normalize,defaults,classId,cosmetics,load,select,prepare,actionClip,visualFor,snapshot};
+const api={ANATOMY,CLIPS,CATALOG,clipsFor,normalize,defaults,classId,cosmetics,load,select,prepare,actionClip,visualFor,snapshot};
 scope.AstraeonWardrobe=Object.freeze(api);if(typeof module!=='undefined')module.exports=api;
 })(typeof window==='undefined'?globalThis:window);
