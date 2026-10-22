@@ -63,3 +63,11 @@ NW now has sixteen same-frame HeadHair cutout proposals with exact recomposition
 Validation:38 unittest cases pass; Python compilation succeeds. The actual Blender contact regression samples18 poses, reproduces the old0.1019m rear-toe error, and measures corrected discrepancy2.37e-7m, finite bone matrices, correct draw/release fingers and zero ready/recovery body seam. These metrics do not certify the painted frames, sole contact, natural weight transfer, or runtime readiness.
 
 Remaining:98 complete cutout jobs, painted/source anatomical review, final trail checks, six runtime packages, and full-action hairstyle/costume variants for each class. Patch0.0.1 remains incomplete.
+
+## Four-view male/female Archer paint review
+
+Four new female action sheets and all four male sheets are retained with exact prompts, raw provenance and direction references. Interactive frame/guide comparison, male NW head/body toggles, and normal/slow eight-character-view GIFs are packaged at `review/archer-basicattack/index.html`. This is a revision review, not runtime proof or an approved character package.
+
+The new source guide2fed9f286cdd5c5ffbf4 and painting source4f6e96426d00fa15c9a3 have identical decoded RGBA pixels across all64 captures and exactly matching world landmarks/weapon projections. PNG file bytes differ; the pixel comparison is recorded separately.
+
+Female NE uses the same explicit pose8 hold at slot9. Raw female NE also released early; SW/SE recovery samples contain reappearing arrows and require local art correction. Female source fitting, ready/recovery pixel stability, and complete cutouts remain unapproved. These eight direction sheets are not counted as eight finished jobs. Complete import count remains zero.

@@ -1,0 +1,2971 @@
+{
+  "status": "WIP_ART_REQUIRES_REVISION",
+  "durations": [
+    42,
+    42,
+    42,
+    42,
+    182,
+    182,
+    182,
+    182,
+    182,
+    212,
+    242,
+    242,
+    242,
+    242,
+    242,
+    300
+  ],
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "characters": [
+    "male",
+    "female"
+  ],
+  "timeline_slots": 16,
+  "NE_distinct_poses": 15,
+  "source_guide": "2fed9f286cdd5c5ffbf4",
+  "source_equivalence_receipt": "authoring/characters/factory-v3/patch-0.0.1/research/archer-source-fingerprint-equivalence.json",
+  "complete_cutout_jobs": 0,
+  "owner_approved": false,
+  "runtime_admitted": false,
+  "known_defects": [
+    "Painted recovery arrows reappear in some directions; must be removed without changing body pixels.",
+    "Raw NE slot9 releases early; explicit certified pose8 hold used for this preview.",
+    "Per-frame painting drift and anatomical source fitting still require inspection.",
+    "HeadHair proposals are exclusive visible-pixel masks; BodyCostume still contains bow, gloves and quiver.",
+    "No hidden-surface costume repair, full weapon separation or runtime admission."
+  ],
+  "candidate_receipts": {
+    "male/SW": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "SW",
+      "master_sha256": "63500f82e4044f1e7a5428f1ddefdf97b93f888140f8c3fc92fdfe679375455c",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            189,
+            260,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            70,
+            87,
+            176,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            190,
+            255,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            72,
+            87,
+            170,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            189,
+            277,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            86,
+            87,
+            172,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            190,
+            250,
+            542,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            78,
+            87,
+            170,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            230,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            74,
+            181,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            76,
+            71,
+            174,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            193,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            82,
+            71,
+            176,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            549,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            66,
+            71,
+            173,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            72,
+            71,
+            174,
+            190
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 9,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            612
+          ],
+          "runtime_alpha_bbox": [
+            76,
+            71,
+            176,
+            191
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 29.818181818181817
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            198,
+            227,
+            577,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            69,
+            176,
+            190
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            544,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            72,
+            71,
+            155,
+            191
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            210,
+            231,
+            562,
+            585
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            79,
+            151,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            190,
+            229,
+            579,
+            585
+          ],
+          "runtime_alpha_bbox": [
+            61,
+            75,
+            153,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            190,
+            236,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            63,
+            75,
+            176,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            559,
+            587
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            81,
+            173,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": null,
+      "unique_source_pose_count": 16,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "male/NW": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "NW",
+      "master_sha256": "54e5113560f256e351d2a8248b6ead61c0dfc81610e4a852e5b0f9e824426b40",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            238,
+            251,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            97,
+            85,
+            174,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            195,
+            241,
+            529,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            75,
+            83,
+            161,
+            186
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            190,
+            266,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            74,
+            86,
+            158,
+            186
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            231,
+            255,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            75,
+            86,
+            161,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            238,
+            228,
+            579,
+            614
+          ],
+          "runtime_alpha_bbox": [
+            97,
+            78,
+            166,
+            190
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            198,
+            227,
+            539,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            91,
+            79,
+            166,
+            190
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            238,
+            227,
+            536,
+            611
+          ],
+          "runtime_alpha_bbox": [
+            90,
+            75,
+            144,
+            191
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            555,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            95,
+            71,
+            164,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            223,
+            243,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            94,
+            75,
+            154,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 9,
+          "authoring_alpha_bbox": [
+            198,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            95,
+            71,
+            151,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 29.818181818181817
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            191,
+            235,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            96,
+            72,
+            161,
+            191
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            100,
+            85,
+            161,
+            192
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            300,
+            228,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            97,
+            85,
+            181,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            72,
+            160,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            97,
+            74,
+            155,
+            186
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            97,
+            75,
+            161,
+            186
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": null,
+      "unique_source_pose_count": 16,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "male/NE": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "NE",
+      "master_sha256": "d1a66dfdefaa46654db437fb822b4e11bcc96f15bae291948ee8fc6ec078452e",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            189,
+            229,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            67,
+            73,
+            172,
+            191
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            202,
+            233,
+            574,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            72,
+            72,
+            167,
+            187
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            205,
+            229,
+            572,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            72,
+            179,
+            187
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            200,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            82,
+            71,
+            167,
+            186
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            224,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            72,
+            71,
+            181,
+            189
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            189,
+            228,
+            579,
+            614
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            72,
+            181,
+            190
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            189,
+            228,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            72,
+            176,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            559,
+            603
+          ],
+          "runtime_alpha_bbox": [
+            60,
+            72,
+            174,
+            190
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            65,
+            72,
+            180,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            65,
+            72,
+            180,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            63,
+            72,
+            183,
+            195
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            189,
+            228,
+            554,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            78,
+            169,
+            195
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            63,
+            68,
+            176,
+            190
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            574,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            68,
+            178,
+            190
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            193,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            64,
+            68,
+            179,
+            189
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            568,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            84,
+            68,
+            177,
+            190
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": {
+        "guide_job": "4f6e96426d00fa15c9a3",
+        "guide_manifest_sha256": "f442f65532b94f649f26ad275b58ffa6907b60e2fc5a5a7cf161851a67b5b7f5",
+        "direction": "NE",
+        "source_pose_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "certificates": {
+          "8:9": "authoring/characters/factory-v3/patch-0.0.1/research/pose-holds/4f6e96426d00fa15c9a3-008-009.json"
+        },
+        "reason": "Explicit full-draw hold at timeline slot9; projectile release remains slot10. Fifteen distinct poses across sixteen timeline slots; source assets remain unchanged."
+      },
+      "unique_source_pose_count": 15,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "male/SE": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "SE",
+      "master_sha256": "fa1768cff4ee040a67a5a3bdfe3fad3c168fbc58fb75492a2a7cf7cede48740a",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            235,
+            259,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            84,
+            79,
+            153,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            190,
+            261,
+            574,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            80,
+            176,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            190,
+            258,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            95,
+            81,
+            179,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            190,
+            261,
+            549,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            81,
+            156,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            223,
+            227,
+            565,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            82,
+            70,
+            165,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            198,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            78,
+            70,
+            176,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            200,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            66,
+            71,
+            179,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            85,
+            71,
+            171,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            240,
+            234,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            91,
+            81,
+            176,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 9,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            71,
+            177,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 29.818181818181817
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            209,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            90,
+            71,
+            170,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            195,
+            238,
+            539,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            105,
+            83,
+            163,
+            192
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            189,
+            228,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            76,
+            76,
+            173,
+            189
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            564,
+            596
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            74,
+            174,
+            186
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            198,
+            228,
+            579,
+            597
+          ],
+          "runtime_alpha_bbox": [
+            88,
+            80,
+            165,
+            186
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            545,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            71,
+            164,
+            186
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": null,
+      "unique_source_pose_count": 16,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "female/SW": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "SW",
+      "master_sha256": "86fd9f33b2fdcfc40fe8540b2ac601bd4f93ee125a7ac1bb47a7fda576e25996",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            218,
+            227,
+            564,
+            612
+          ],
+          "runtime_alpha_bbox": [
+            89,
+            71,
+            174,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            210,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            93,
+            71,
+            178,
+            191
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            193,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            60,
+            71,
+            181,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            577,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            76,
+            71,
+            180,
+            191
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            220,
+            238,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            75,
+            73,
+            176,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            71,
+            181,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            71,
+            184,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            189,
+            228,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            56,
+            73,
+            182,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            70,
+            71,
+            181,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 9,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            71,
+            184,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 29.818181818181817
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            56,
+            68,
+            178,
+            195
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            534,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            66,
+            71,
+            164,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            213,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            71,
+            170,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            190,
+            229,
+            579,
+            601
+          ],
+          "runtime_alpha_bbox": [
+            98,
+            72,
+            179,
+            189
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            602
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            70,
+            173,
+            190
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            189,
+            236,
+            564,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            100,
+            72,
+            178,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": null,
+      "unique_source_pose_count": 16,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "female/NW": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "NW",
+      "master_sha256": "28b6fa357213c62d8f480c283d96936ec408b09ac9017ce5e03908e5dcc46650",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            220,
+            266,
+            576,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            78,
+            84,
+            170,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            192,
+            251,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            84,
+            85,
+            167,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            190,
+            258,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            88,
+            85,
+            164,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            190,
+            251,
+            546,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            84,
+            160,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            218,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            71,
+            181,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            60,
+            71,
+            177,
+            194
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            65,
+            71,
+            159,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            544,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            71,
+            168,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            88,
+            69,
+            170,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 9,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            82,
+            68,
+            170,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 29.818181818181817
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            70,
+            167,
+            192
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            192,
+            227,
+            544,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            88,
+            71,
+            162,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            240,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            87,
+            71,
+            180,
+            186
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            60,
+            71,
+            172,
+            187
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            92,
+            75,
+            176,
+            189
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            569,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            71,
+            164,
+            189
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": null,
+      "unique_source_pose_count": 16,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "female/NE": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "NE",
+      "master_sha256": "5d268c04adbcdad55bbace19087334df04388afd42fa716c07685ad892a10d1b",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            218,
+            261,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            84,
+            158,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            189,
+            242,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            86,
+            181,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            189,
+            250,
+            577,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            60,
+            83,
+            179,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            189,
+            253,
+            554,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            81,
+            85,
+            170,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            70,
+            68,
+            176,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            68,
+            178,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            193,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            68,
+            68,
+            173,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            61,
+            68,
+            165,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            68,
+            68,
+            181,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            68,
+            68,
+            181,
+            195
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            68,
+            180,
+            195
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            64,
+            68,
+            167,
+            195
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            220,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            75,
+            68,
+            167,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            76,
+            68,
+            169,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            68,
+            179,
+            183
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            559,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            61,
+            68,
+            167,
+            185
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": {
+        "guide_job": "4f6e96426d00fa15c9a3",
+        "guide_manifest_sha256": "f442f65532b94f649f26ad275b58ffa6907b60e2fc5a5a7cf161851a67b5b7f5",
+        "direction": "NE",
+        "source_pose_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "certificates": {
+          "8:9": "authoring/characters/factory-v3/patch-0.0.1/research/pose-holds/4f6e96426d00fa15c9a3-008-009.json"
+        },
+        "reason": "Explicit full-draw hold at timeline slot9; projectile release remains slot10. Fifteen distinct poses across sixteen timeline slots; source assets remain unchanged."
+      },
+      "unique_source_pose_count": 15,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    },
+    "female/SE": {
+      "status": "CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW",
+      "guide_job": "4f6e96426d00fa15c9a3",
+      "direction": "SE",
+      "master_sha256": "a007d568a75d6700d5b25efbaa1b35a5748327bf8da747eca529899baf4e2660",
+      "native_sheet_size": [
+        1254,
+        1254
+      ],
+      "uniform_source_viewport": [
+        378,
+        454,
+        1158,
+        1234
+      ],
+      "authoring_canvas": [
+        768,
+        768
+      ],
+      "authoring_viewport_extent": 390,
+      "authoring_viewport_placement": [
+        189,
+        227
+      ],
+      "authoring_root": [
+        384,
+        550.4
+      ],
+      "runtime_canvas": [
+        240,
+        240
+      ],
+      "runtime_root": [
+        120,
+        172
+      ],
+      "per_frame_fitting": false,
+      "anatomy_registration_approved": false,
+      "modular_parts_complete": false,
+      "source_pose_registered": false,
+      "frames": [
+        {
+          "index": 0,
+          "source_pose_index": 0,
+          "authoring_alpha_bbox": [
+            220,
+            255,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            76,
+            78,
+            176,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 1,
+          "source_pose_index": 1,
+          "authoring_alpha_bbox": [
+            190,
+            248,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            88,
+            77,
+            180,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 2,
+          "source_pose_index": 2,
+          "authoring_alpha_bbox": [
+            190,
+            251,
+            579,
+            615
+          ],
+          "runtime_alpha_bbox": [
+            97,
+            77,
+            179,
+            192
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 3,
+          "source_pose_index": 3,
+          "authoring_alpha_bbox": [
+            189,
+            251,
+            549,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            72,
+            77,
+            169,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 4,
+          "source_pose_index": 4,
+          "authoring_alpha_bbox": [
+            200,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            79,
+            74,
+            181,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 8.0
+        },
+        {
+          "index": 5,
+          "source_pose_index": 5,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            71,
+            179,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 12.363636363636363
+        },
+        {
+          "index": 6,
+          "source_pose_index": 6,
+          "authoring_alpha_bbox": [
+            190,
+            228,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            90,
+            74,
+            179,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 16.727272727272727
+        },
+        {
+          "index": 7,
+          "source_pose_index": 7,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            564,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            66,
+            71,
+            174,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 21.09090909090909
+        },
+        {
+          "index": 8,
+          "source_pose_index": 8,
+          "authoring_alpha_bbox": [
+            240,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            87,
+            71,
+            179,
+            193
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 25.454545454545453
+        },
+        {
+          "index": 9,
+          "source_pose_index": 9,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            63,
+            71,
+            180,
+            191
+          ],
+          "source_action": "Ranged_Bow_Draw",
+          "source_frame": 29.818181818181817
+        },
+        {
+          "index": 10,
+          "source_pose_index": 10,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            59,
+            71,
+            179,
+            191
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 2.9090909090909065
+        },
+        {
+          "index": 11,
+          "source_pose_index": 11,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            564,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            61,
+            71,
+            172,
+            193
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 8.727272727272727
+        },
+        {
+          "index": 12,
+          "source_pose_index": 12,
+          "authoring_alpha_bbox": [
+            189,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            78,
+            71,
+            176,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 14.545454545454547
+        },
+        {
+          "index": 13,
+          "source_pose_index": 13,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            69,
+            73,
+            178,
+            185
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 20.363636363636367
+        },
+        {
+          "index": 14,
+          "source_pose_index": 14,
+          "authoring_alpha_bbox": [
+            189,
+            228,
+            579,
+            617
+          ],
+          "runtime_alpha_bbox": [
+            62,
+            71,
+            180,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 26.18181818181818
+        },
+        {
+          "index": 15,
+          "source_pose_index": 15,
+          "authoring_alpha_bbox": [
+            190,
+            227,
+            559,
+            594
+          ],
+          "runtime_alpha_bbox": [
+            63,
+            71,
+            172,
+            184
+          ],
+          "source_action": "Ranged_Bow_Release",
+          "source_frame": 32.0
+        }
+      ],
+      "pose_recipe": null,
+      "unique_source_pose_count": 16,
+      "timeline_slots": 16,
+      "preview_durations_ms": [
+        42,
+        42,
+        42,
+        42,
+        182,
+        182,
+        182,
+        182,
+        182,
+        212,
+        242,
+        242,
+        242,
+        242,
+        242,
+        300
+      ],
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "limitations": [
+        "Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.",
+        "Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.",
+        "No final cutout package or game admission is claimed."
+      ]
+    }
+  }
+}
