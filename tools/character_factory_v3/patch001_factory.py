@@ -3,7 +3,7 @@
 Planning is never counted as authored art. Identical donor-pose jobs are shared;
 paint and cutout reuse still requires matching camera, pose and body fitting.
 """
-import argparse,concurrent.futures,hashlib,json,struct,subprocess,sys
+import argparse,concurrent.futures,hashlib,json,math,struct,subprocess,sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -51,6 +51,9 @@ def plan():
             if kind=='Mage':
                 geometry.update({'staff_grip_mode':'wrist-local-prop-reference','held_staff_hand':'r','staff_arm_reference':'Idle_Lantern'})
             if a.get('source_ranges'):geometry['source_ranges']=a['source_ranges']
+            if geometry.get('staff_arm_reference')or geometry.get('floor_sit_adapter'):
+                geometry['render_pose_freeze_revision']=1
+                geometry['render_pose_freeze_sha256']=filehash(TOOLS/'render_frozen_patch001_guides.py')
             if 'Sword_Regular_B_Rec' in a['source_actions']:geometry['source_ranges']={'Sword_Regular_B':[0,8],'Sword_Regular_B_Rec':[8,22]}
             key=digest(geometry)[:20]
             job=jobs.setdefault(key,{'id':key,**geometry,'directions':[],'uses':[]})
@@ -89,6 +92,20 @@ def receipt_valid(job):
     captured=data.get('job',{})
     geometry=lambda value:{k:v for k,v in value.items()if k not in ['uses','directions']}
     if geometry(captured)!=geometry(job)or data.get('frame_count')!=job['frames']:return False
+    if job.get('render_pose_freeze_revision'):
+        proof=data.get('render_pose_freeze',{});images={f'{d}/{i:03d}.png'for d in job['directions']for i in range(job['frames'])}
+        rows=proof.get('rendered_frames',[]);pngs=data.get('png_normalization',{}).get('frames',[])
+        if proof.get('revision')!=job['render_pose_freeze_revision']or proof.get('implementation_sha256')!=job['render_pose_freeze_sha256']:return False
+        if data.get('implementation_digests_at_process_start',{}).get('render_frozen_patch001_guides.py')!=job['render_pose_freeze_sha256']:return False
+        if len(rows)!=len(images)or{r.get('image')for r in rows}!=images or len(pngs)!=len(images)or{r.get('image')for r in pngs}!=images:return False
+        for row in rows:
+            if not row.get('actors'):return False
+            for actor in row['actors']:
+                error=actor.get('max_world_matrix_component_error')
+                if isinstance(error,bool)or not isinstance(error,(float,int))or not math.isfinite(error)or not 0<=error<=1e-5:return False
+        for row in pngs:
+            path=folder/row['image']
+            if row.get('visible_rgb_or_alpha_changed')is not False or not path.is_file()or filehash(path)!=row.get('normalized_sha256'):return False
     for d in job['directions']:
         if len(data.get('views',{}).get(d,{}).get('frames',[]))!=job['frames']:return False
         for i in range(job['frames']):
@@ -102,7 +119,8 @@ def receipt_valid(job):
 def render_one(job):
     if receipt_valid(job):return {'job':job['id'],'state':'CACHED_GUIDE'}
     folder=BASE/'guides'/job['id'];folder.mkdir(parents=True,exist_ok=True)
-    command=['blender','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/'render_patch001_guides.py'),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
+    entrypoint='render_frozen_patch001_guides.py'if job.get('render_pose_freeze_revision')else'render_patch001_guides.py'
+    command=['blender','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/entrypoint),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
     with(folder/'render.log').open('w')as log:result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
     if result.returncode or not receipt_valid(job):raise RuntimeError(f"Guide failed: {job['id']}; inspect {folder/'render.log'}")
     return {'job':job['id'],'state':'SOURCE_GUIDE_CAPTURED'}

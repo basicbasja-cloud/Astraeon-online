@@ -91,8 +91,11 @@ def normalize_batch(source, recipe, aspect_tolerance=0.005, white_edge_unmatting
                         'alpha_bbox': frame.getbbox(), 'touches_viewport_edge': edges,
                         'white_edge_pixels_unmatted': unmatted_pixels})
     return frames, {'status': 'FIXED_VIEWPORT_REVIEW_CANDIDATE_NOT_ACCEPTED_ART',
+                    'frame_space':recipe.get('frame_space','unspecified-source-canvas'),
+                    'canonical_root':recipe.get('canonical_root'),
                     'aspect_error': aspect_error, 'shared_viewport': recipe['viewport'],
                     'source_size': recipe['source_size'], 'frames': records,
+                    'production_blockers':[{'source_pose_index':r['source_pose_index'],'reason':'Paint touches the shared viewport edge; inspect clipping before admission'}for r in records if r['touches_viewport_edge']],
                     'per_frame_figure_fitting': False, 'source_pose_registered': False,
                     'semantic_cutouts_approved': False, 'runtime_admitted': False}
 

@@ -72,7 +72,7 @@ def import_job(job_id,manifest_path):
             value=sockets.get(socket,[])
             if not isinstance(value,list)or len(value)!=2 or any(isinstance(v,bool)or not isinstance(v,(int,float))or not math.isfinite(v)for v in value):raise ValueError('Invalid or missing finite socket '+socket)
         camera_id=digest(guide['views'][direction]['camera'])
-        pose_id=digest({'guide_job':job['guide_job'],'source_sha256':guide_job['source_sha256'],'action':reference['action'],'frame':reference['source_frame'],'landmarks':reference['world_landmarks'],'rotations':reference['bone_rotations'],'retarget_to':guide_job.get('retarget_to')})
+        pose_id=digest({'guide_job':job['guide_job'],'source_sha256':guide_job['source_sha256'],'action':reference['action'],'frame':reference['source_frame'],'landmarks':reference['world_landmarks'],'rotations':reference['bone_rotations'],'transition':{k:reference[k]for k in ['transition_from','transition_frame','transition_weight']if k in reference},'retarget_to':guide_job.get('retarget_to')})
         bound={}
         for role,path in parts.items():
             if role not in ROLES:raise ValueError('Unexpected part '+role)

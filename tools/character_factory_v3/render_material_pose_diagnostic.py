@@ -37,7 +37,12 @@ def material_reference(scene):
             face.material_index=mats[role]
 
 bpy.app.handlers.render_pre.append(material_reference)
-try:render_patch001_guides.main()
+argv=sys.argv[sys.argv.index('--')+1:];job=json.loads(Path(argv[argv.index('--job')+1]).read_text())
+try:
+    if job.get('render_pose_freeze_revision'):
+        from render_frozen_patch001_guides import run_capture
+        run_capture(render_patch001_guides.main)
+    else:render_patch001_guides.main()
 finally:
     if material_reference in bpy.app.handlers.render_pre:bpy.app.handlers.render_pre.remove(material_reference)
 argv=sys.argv[sys.argv.index('--')+1:];out=Path(argv[argv.index('--output')+1]);path=out/'manifest.json';receipt=json.loads(path.read_text());receipt['status']='NONCANONICAL_COLORED_MANNEQUIN_DIAGNOSTIC_NOT_FINAL_ART';receipt['material_diagnostic']={'handler_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'palette':PALETTE,'geometry_changed':False,'canonical_guide_replaced':False,'runtime_admitted':False};path.write_text(json.dumps(receipt,indent=2)+'\n')
