@@ -9,25 +9,34 @@ mask=binary_dilation(base,iterations=3)&((yy<291)|(yy>355))
 mask|=base
 reg=Image.new('L',(w,h));d=ImageDraw.Draw(reg)
 # Bowstring and nocked arrow, excluding visible hands and sleeves below.
-d.line([(473,132),(397,434)],fill=255,width=5)
-d.polygon([(476,287),(482,292),(467,308),(427,342),(411,344),(411,336),(457,302)],fill=255)
+d.line([(473,132),(418,342),(397,434)],fill=255,width=5)
 mask|=np.array(reg)>0
 protect=Image.new('L',(w,h));d=ImageDraw.Draw(protect)
 # Far gripping glove stays with the character; near draw glove covers the string.
-d.polygon([(425,305),(437,301),(449,299),(458,303),(460,308),(466,310),(468,315),(462,319),(461,325),(455,330),(450,334),(442,332),(438,327),(426,327)],fill=255)
+d.polygon([(425,305),(437,301),(449,299),(459,304),(460,309),(468,311),(470,316),(466,324),(461,331),(451,337),(443,335),(439,328),(426,327)],fill=255)
 d.polygon([(398,339),(410,334),(420,334),(428,338),(434,343),(436,350),(432,357),(425,361),(414,364),(399,357)],fill=255)
 mask&=np.array(protect)==0
+# Bow-only ownership remains separate from the nocked arrow.
+bow_mask=mask.copy()
 # The pale shaft visibly passes in front of the far glove.
-shaft=Image.new('L',(w,h));sd=ImageDraw.Draw(shaft);sd.line([(477,292),(421,342)],fill=255,width=3);sd.polygon([(413,334),(420,331),(431,329),(435,335),(433,342),(430,346),(423,344),(419,340)],fill=255);mask|=np.array(shaft)>0
+shaft=Image.new('L',(w,h));sd=ImageDraw.Draw(shaft);sd.line([(477,292),(423,339)],fill=255,width=3)
+# Pale feather pixels in this bounded region; exclude the brown draw glove.
+r,g,b=a[:,:,:3].astype(float).transpose(2,0,1);feather=(xx>=419)&(xx<=442)&(yy>=326)&(yy<=346)&(r>150)&(g>125)&(b>95)&(r-g<45)&(g-b<55)
+arrow_mask=(np.array(shaft)>0)|binary_dilation(feather,iterations=1);mask|=arrow_mask
 # Detached fragments in the reviewed bow region belong to the weapon.
-remaining=(a[:,:,3]>8)&~mask;labs,n=label(remaining);sizes=np.bincount(labs.ravel());sizes[0]=0;largest=sizes.argmax();isolated=(labs!=largest)&(labs>0)&(xx>390)&(xx<492)&(yy>120)&(yy<450);mask|=binary_dilation(isolated,iterations=1)&(a[:,:,3]>0)
+remaining=(a[:,:,3]>8)&~mask;labs,n=label(remaining);sizes=np.bincount(labs.ravel());sizes[0]=0;largest=sizes.argmax();isolated=(labs!=largest)&(labs>0)&(xx>390)&(xx<492)&(yy>120)&(yy<450);mask|=binary_dilation(isolated,iterations=1)&(a[:,:,3]>0)&(np.array(protect)==0)
 mask&=a[:,:,3]>0
 Image.fromarray((mask*255).astype('uint8')).save(out/'weapon-ownership.png')
-donor=np.array(Image.open(p/'weaponless-donor/detail.png').convert('RGBA'));rows=[]
+donor_image=Image.open(p/'weaponless-donor/detail.png').convert('RGBA')
+grip_donor=p/'weaponless-grip-donor/second-pass.png'
+if grip_donor.exists():
+ crop=json.loads((grip_donor.parent/'crop.json').read_text())['shared_detail_box'];x0,y0,x1,y1=crop;donor_image.paste(Image.open(grip_donor).convert('RGBa').resize((x1-x0,y1-y0),Image.Resampling.LANCZOS).convert('RGBA'),(x0,y0))
+donor_image.save(out/'bounded-hidden-donor.png');donor=np.array(donor_image);rows=[]
 for i in [0,15]:
  master_path=p/'sequence/detail'/f'{i:03d}.png';src=np.array(Image.open(master_path).convert('RGBA'));hm=np.array(Image.open(p/'manual-head-seeds/HeadHair/000.png'))[:,:,3]>0
- wm=mask&(src[:,:,3]>0)
- # Frame15 intentionally has no arrow. The mask is intersected with its unchanged original pixels.
+ wm=(mask if i==0 else bow_mask)&(src[:,:,3]>0)
+ # Frame15 has no arrow; never assign its reconstructed glove pixels to Weapon.
+ rem=(src[:,:,3]>8)&~wm;labs,n=label(rem);sizes=np.bincount(labs.ravel());sizes[0]=0;largest=sizes.argmax();isolated=(labs!=largest)&(labs>0)&(xx>390)&(xx<492)&(yy>120)&(yy<450);wm|=binary_dilation(isolated,iterations=1)&(src[:,:,3]>0)&(np.array(protect)==0)
  weapon=src.copy();weapon[~wm]=0
  head=src.copy();head[~hm]=0
  body=src.copy();body[wm|hm]=0

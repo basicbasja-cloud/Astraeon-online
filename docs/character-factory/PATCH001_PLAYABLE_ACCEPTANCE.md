@@ -114,7 +114,7 @@ six, then run ordinary gameplay and the full visual acceptance pass above.
 
 ## Continuation checks
 
-62 Python tests and146 individual Node checks pass. Three actual legacy saves
+68 Python tests and146 individual Node checks pass. Three actual legacy saves
 (class IDs0,3,12) respond to ordinary movement and attack input with no page or
 resource errors. This protects legacy compatibility; it verifies zero new patch
 characters. Certified whole-character pose holds now preserve the actual source
@@ -130,3 +130,10 @@ default. The explicit `visible-partition` mode remains for exclusive-mask studie
 Eight real Chromium pixel checks pass; their evidence is in
 `review/patch001-native-composition-20261023/`. They do not certify art boundaries,
 actual gameplay for six new packages, or complete action coverage.
+
+Actual three-part Archer NW action review:
+`review/patch001-archer-layered-action-20261023/`. Sixteen frames match the same
+source-canvas/final-resize reference; direct PNG filtering differences are retained
+in each frame report. Seven local ownership probes pass. These checks do not
+approve global masks or motion continuity. Three transparent sheets remain one
+view of one action, with partial hidden surfaces and zero complete imported jobs.

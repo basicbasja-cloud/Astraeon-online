@@ -1,0 +1,1 @@
+Historical result. Full-draw head seed included a sliver of the draw glove and omitted neck skin. Manually traced ear/neck boundary and conservative string-fringe cleanup supersede this result. Not for import.

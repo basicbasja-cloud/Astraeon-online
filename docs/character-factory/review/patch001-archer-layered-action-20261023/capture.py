@@ -1,0 +1,6 @@
+from pathlib import Path
+import json
+from playwright.sync_api import sync_playwright
+out=Path('docs/character-factory/review/patch001-archer-layered-action-20261023')
+with sync_playwright()as p:
+ b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage']);page=b.new_page(viewport={'width':1320,'height':1050});errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.goto('http://127.0.0.1:8011/docs/character-factory/review/patch001-archer-layered-action-20261023/index.html');page.wait_for_function('window.archerLayerReviewReport!==undefined',timeout=60000);report=page.evaluate('window.archerLayerReviewReport');report['page_errors']=errors;page.evaluate('window.setArcherReviewFrame(8)');page.screenshot(path=str(out/'browser.png'),full_page=True);page.locator('#weapon').uncheck();page.wait_for_timeout(100);page.screenshot(path=str(out/'weapon-removed.png'),full_page=True);page.locator('#head').uncheck();page.wait_for_timeout(100);page.screenshot(path=str(out/'head-and-weapon-removed.png'),full_page=True);(out/'report.json').write_text(json.dumps(report,indent=2)+'\n');b.close();print(json.dumps(report));assert report['status']=='ACTUAL_ACTION_RENDERING_PASS_NOT_ART_OR_GAMEPLAY_ACCEPTANCE'and not errors

@@ -1,11 +1,18 @@
-import sys,unittest
+import sys,unittest,tempfile
 from pathlib import Path
 import numpy as np
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools/character_factory_v3'))
-from track_visible_cutouts import partition_visible
+from track_visible_cutouts import partition_visible,pin_inputs,verify_inputs
 
 class TemporalCutoutPartitionTests(unittest.TestCase):
+    def test_changed_or_missing_tracking_inputs_cannot_publish_receipt(self):
+        with tempfile.TemporaryDirectory()as temp:
+            path=Path(temp)/'seed';path.write_bytes(b'original');pinned=pin_inputs([path]);verify_inputs(pinned)
+            path.write_bytes(b'changed')
+            with self.assertRaisesRegex(ValueError,'input changed'):verify_inputs(pinned)
+            path.unlink()
+            with self.assertRaisesRegex(ValueError,'input changed'):verify_inputs(pinned)
     def master(self):return Image.fromarray(np.array([[[100,20,30,255],[20,80,90,95]],[[10,50,90,200],[0,0,0,0]]],dtype=np.uint8))
     def test_overlapping_scores_have_exclusive_pixel_ownership(self):
         m=self.master();parts=partition_visible(m,np.array([[[1.,2.],[-1.,-1.]],[[2.,1.],[-1.,-1.]]]),['HeadHair','Weapon'])

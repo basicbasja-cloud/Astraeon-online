@@ -13,6 +13,13 @@ ROLES={'HeadHair','Weapon','WeaponHandOccluder','BackAccessory','Headgear'}
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def pin_inputs(paths):return {str(path.resolve()):sha(path)for path in paths}
+
+def verify_inputs(pinned):
+    for name,digest in pinned.items():
+        path=Path(name)
+        if not path.is_file()or sha(path)!=digest:raise ValueError('Tracking input changed during processing: '+name)
+
 def partition_visible(master,logits,roles,seed_masks=None):
     """Assign original RGBA pixels once; never feather the master alpha twice."""
     if master.mode!='RGBA':raise ValueError('Master must be RGBA')
@@ -46,7 +53,7 @@ def main():
     if a.output.exists():raise ValueError('Preserve existing results; choose a new output folder')
     files=sorted(a.masters.glob('*.png'))
     if not files or [f.stem for f in files]!=[f'{i:03d}'for i in range(len(files))]:raise ValueError('Expected contiguous canonical000.png sequence')
-    seed=json.loads(a.seeds.read_text());roles=seed['roles'];masters=[Image.open(f)for f in files]
+    pinned=pin_inputs(files+[a.seeds,a.checkpoint]);seed=json.loads(a.seeds.read_text());roles=seed['roles'];masters=[Image.open(f)for f in files]
     if any(im.mode!='RGBA'for im in masters):raise ValueError('Canonical masters must be RGBA')
     if any(im.size!=masters[0].size for im in masters):raise ValueError('Canvas changed across frames')
     if not roles or len(set(roles))!=len(roles)or set(roles)-ROLES:raise ValueError('Invalid tracked roles')
@@ -61,7 +68,7 @@ def main():
             if im.size!=masters[i].size:raise ValueError('Seed mask canvas mismatch')
             mask=np.asarray(im.getchannel('A')if im.mode=='RGBA'else im.convert('L'))>0
             if not mask.any():raise ValueError('Empty correction mask')
-            masks[role]=mask;used_roles.add(role);evidence.append({'index':i,'role':role,'sha256':sha(path)})
+            masks[role]=mask;used_roles.add(role);pinned.update(pin_inputs([path]));evidence.append({'index':i,'role':role,'sha256':sha(path)})
         # Run overlap and shape validation before initializing an expensive model.
         partition_visible(masters[i],np.full((len(roles),masters[i].height,masters[i].width),-1.),roles,masks)
         corrections[i]=masks
@@ -87,6 +94,7 @@ def main():
             rows.append({'index':i,'master_sha256':sha(files[i]),'visible_pixels':{r:int(np.count_nonzero(np.asarray(im)[:,:,3]))for r,im in parts.items()}})
             print(json.dumps({'frame':i,'frames':len(files)}),flush=True)
     if {r['index']for r in rows}!=set(range(len(files))):raise ValueError('Incomplete temporal proposal')
+    verify_inputs(pinned)
     receipt={'status':'TEMPORAL_VISIBLE_CUTOUT_PROPOSAL_REQUIRES_SEMANTIC_REVIEW','model_repository':'https://github.com/facebookresearch/sam2','model_revision':a.model_revision,'checkpoint_sha256':sha(a.checkpoint),'config':a.config,'device':'cpu','seed_manifest_sha256':sha(a.seeds),'correction_masks':evidence,'frames':rows,'master_pixel_changes':0,'pixel_translation':False,'hidden_surfaces_authored':False,'weapon_separated':'Weapon'in roles,'anatomy_registration_approved':False,'owner_approved':False,'runtime_admitted':False}
     (a.output/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
 

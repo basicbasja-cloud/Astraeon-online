@@ -6,7 +6,7 @@ In production; not release complete. Six characters: male/female Swordsman, Mage
 
 The runtime bridge now routes six distinct class/sex packages, validates class-specific actions, and resolves actual skill identities rather than hotbar numbers. The exporter consumes real imported cutouts with explicit timing/events; synthetic fixtures are tests, not playable artwork. Cache106 includes the generated policy.
 
-146 individual Node checks and62 Python tests pass. Actual browser input verifies walking/attacking for three existing legacy saves with no page/resource errors; **zero new six-character packages are verified playable**. Full acceptance criteria and pinned other-branch references: `docs/character-factory/PATCH001_PLAYABLE_ACCEPTANCE.md`.
+146 individual Node checks and68 Python tests pass. Actual browser input verifies walking/attacking for three existing legacy saves with no page/resource errors; **zero new six-character packages are verified playable**. Full acceptance criteria and pinned other-branch references: `docs/character-factory/PATCH001_PLAYABLE_ACCEPTANCE.md`.
 
 Reducing each layer separately introduced3,880 pixel differences across the16 male Archer NW frames. The new shared reduction and exclusive ownership reconstructs all16 reduced masters exactly. Bounded head-edge ownership refinement moves4,728 existing pixels between layers without changing the master. These fixes do not certify semantic masks: weapons still need separation, and head/arm painting drift remains. Failed constrained/upper-body repaint studies are retained and not promoted. Certified subpixel held poses now retain their actual source pose identity on import, without moving semantic event times.
 
@@ -33,6 +33,27 @@ zero recomposition changes and limited hidden-body donor pixels. Weapon/glove
 edges and head scale continuity remain under review. No complete imported jobs
 or new six-character playable packages are claimed.
 
+## Same-frame action sheets and semantic refinement —23 October2026
+
+Male Archer NW has16 HeadHair/BodyCostume/Weapon assemblies and three separate
+transparent sheets. These are one-view art proposals, not one complete four-view
+paint job. Seven explicit local ownership probes pass after correcting neck/glove
+separation, retaining fingers, and rejecting a cleanup that mislabeled a sleeve
+island as equipment. Current tracking pins input hashes throughout CPU processing.
+
+Canonical-only near-opaque matte cleanup preserves RGB and soft edges; raw art
+is retained. Limited ready/recovery hidden-body donors survive source composition.
+The real runtime draw API matches all16 cleaned masters under the same source-
+canvas/final-resize path. Direct PNG filtering differs and remains separately
+reported, up to28/255 composited channel difference. Neither comparison grants
+art quality approval.68 Python and146 Node checks pass.
+
+Source-only foot comparisons reject reusing ready boots across early poses; the
+right weighted foot moves3.15 runtime pixels even from0→1. The source toe-height
+check was never proof of a stationary foot. No incompatible body/boot copying.
+Frame002 head-only repair does not solve its upper-body dip and is not selected;
+an adjacent-frame-guided whole-pose study is in progress.
+
 ## Direction policy
 
 Physical attacks and casting use four real diagonal views, without mirroring. Casting includes CastChannel, CastRelease and Mage basic attack/SkillAction, per latest owner instruction. Other actions retain eight. See research/action-direction-decision.md.
@@ -53,7 +74,7 @@ Six eight-view identity studies exist. They are not final animation coverage. Th
 
 Existing accepted-review work under the previous Swordsman prototype remains separate because camera/timeline fitting differs. Do not blindly import it as matching these guide jobs. Mesh2Motion remains preferred; KayKit CC0 supplies actual bow clips absent from the free Quaternius Standard download.
 
-62 factory tests pass, including actual Blender retarget/contact checks. These technical results do not establish owner visual approval.
+68 factory tests pass, including actual Blender retarget/contact checks. These technical results do not establish owner visual approval.
 
 ## Owner-requested variant acceptance
 
@@ -105,4 +126,4 @@ Female NE uses the same explicit pose8 hold at slot9. Raw female NE also release
 
 ## Bounded local paint correction
 
-A single female SW recovery15 arrow-removal study uses an explicit3,901-pixel repair mask. Outside-mask changes are exactly zero;3,049 inside pixels change. It is not promoted: the segment between nocking hand and bow grip still needs string-mechanics review. Original master/GIFs remain unchanged. This technical repair guard prevents collateral body/head/foot changes; it does not certify the replacement artwork. All62 factory tests pass, including three local-repair regression cases.
+A single female SW recovery15 arrow-removal study uses an explicit3,901-pixel repair mask. Outside-mask changes are exactly zero;3,049 inside pixels change. It is not promoted: the segment between nocking hand and bow grip still needs string-mechanics review. Original master/GIFs remain unchanged. This technical repair guard prevents collateral body/head/foot changes; it does not certify the replacement artwork. All68 factory tests pass, including three local-repair regression cases.

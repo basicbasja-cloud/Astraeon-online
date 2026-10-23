@@ -3,10 +3,17 @@ import hashlib,json,sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools/character_factory_v3'))
 from import_patch001_cutouts import source_pose_maps
-from register_clear_paint_candidate import resolved_recipe,persist_pose_mapped_frames
+from register_clear_paint_candidate import resolved_recipe,persist_pose_mapped_frames,solid_interior_alpha
 from PIL import Image
 
 class PoseRecipeImportTests(unittest.TestCase):
+    def test_optional_alpha_cleanup_preserves_rgb_and_soft_edges(self):
+        im=Image.new('RGBA',(4,1));im.putdata([(10,20,30,1),(40,50,60,244),(70,80,90,253),(100,110,120,255)])
+        fixed,count=solid_interior_alpha(im,245)
+        self.assertEqual(count,1);self.assertEqual(list(fixed.getdata()),[(10,20,30,1),(40,50,60,244),(70,80,90,255),(100,110,120,255)])
+        self.assertEqual(solid_interior_alpha(im)[0].tobytes(),im.tobytes())
+        for threshold in [244,255,True]:
+            with self.assertRaises(ValueError):solid_interior_alpha(im,threshold)
     def test_detail_pngs_follow_the_same_hold_as_gif_and_master(self):
         with tempfile.TemporaryDirectory()as temp:
             frames=[Image.new('RGBA',(4,4),color)for color in ['red','blue','green']]

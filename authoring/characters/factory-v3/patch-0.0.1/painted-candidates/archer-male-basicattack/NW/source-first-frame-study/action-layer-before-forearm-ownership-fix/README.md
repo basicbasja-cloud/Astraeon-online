@@ -1,0 +1,1 @@
+Rejected semantic mask pass: connected-component cleanup transferred a sleeve island cut by the string mask into Weapon at full draw. Cleanup has been removed for action seeds. Exact master recomposition did not catch this ownership defect. Use current results only after visual review.

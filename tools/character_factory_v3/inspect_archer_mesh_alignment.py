@@ -34,7 +34,7 @@ def main():
         source.animation_data.action=chosen
         if hasattr(source.animation_data,'action_slot')and chosen.slots:source.animation_data.action_slot=chosen.slots[0]
         scene.frame_set(math.floor(frame),subframe=frame%1);bpy.context.view_layer.update()
-    first=next(iter(manifest['views'].values()))['frames'];records=[];head_states=[]
+    first=next(iter(manifest['views'].values()))['frames'];records=[];head_states=[];foot_states={role:[]for role in ['FootL','FootR']}
     for i,record in enumerate(first):
         evaluate(record['action'],record['source_frame'])
         if 'transition_from'in record:
@@ -50,6 +50,7 @@ def main():
             for role,indices in groups[obj.name].items():points[role].extend(evaluated.matrix_world@mesh.vertices[n].co for n in indices)
             evaluated.to_mesh_clear()
         head_states.append((points['HeadHair'],(target.matrix_world@target.pose.bones['head'].matrix).to_quaternion()))
+        for role,bone in [('FootL','foot_l'),('FootR','foot_r')]:foot_states[role].append((points[role],(target.matrix_world@target.pose.bones[bone].matrix).to_quaternion()))
         views={}
         for direction,view in manifest['views'].items():
             camera.location=view['camera']['location'];camera.rotation_euler=view['camera']['rotation'];bpy.context.view_layer.update();parts={}
@@ -66,6 +67,14 @@ def main():
             bound=max((x-y).length for x,y in zip(va,vb))*240/job['ortho_scale']
             angle=math.degrees(qa.rotation_difference(qb).angle)
             head_pairs.append({'from_index':i,'to_index':j,'weighted_head_vertices':len(va),'runtime_size':240,'head_vertex_delta_runtime_px_upper_bound':bound,'head_rotation_degrees':angle,'subpixel_head_reuse_candidate':bound<=.5 and angle<=5})
-    result={'status':'SOURCE_WEIGHTED_MESH_PROJECTION_DIAGNOSTIC','guide_job':job['id'],'guide_manifest_sha256':hashlib.sha256((a.guide/'manifest.json').read_bytes()).hexdigest(),'per_frame_paint_fitting':False,'source_resolution':job['resolution'],'frames':records,'head_pose_pairs':head_pairs,'limitations':['Vertex-group bounds include occluded geometry. They are not visible segmentation masks.','Painted hair and boots have their own envelopes; compare movement relative to one fixed calibration, not raw silhouette sizes.','Head reuse candidates only bound the weighted source head mesh; costume-neck seams and the illustrated hair envelope still need review.','No painted pixels were changed and no visual approval is granted.']};a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,indent=2)+'\n');print('MESH_ALIGNMENT_DIAGNOSTIC '+json.dumps({'frames':len(records),'max_replay_error_m':max(r['replay_error_m']for r in records)}),flush=True)
+    foot_pairs=[]
+    for role,states in foot_states.items():
+        for i,(va,qa)in enumerate(states):
+            for j,(vb,qb)in enumerate(states):
+                if j<=i:continue
+                if len(va)!=len(vb):raise ValueError('Weighted foot topology changed')
+                bound=max((x-y).length for x,y in zip(va,vb))*240/job['ortho_scale'];angle=math.degrees(qa.rotation_difference(qb).angle)
+                foot_pairs.append({'role':role,'from_index':i,'to_index':j,'weighted_vertices':len(va),'runtime_size':240,'vertex_delta_runtime_px_upper_bound':bound,'rotation_degrees':angle,'subpixel_foot_reuse_candidate':bound<=.5 and angle<=5})
+    result={'status':'SOURCE_WEIGHTED_MESH_PROJECTION_DIAGNOSTIC','guide_job':job['id'],'guide_manifest_sha256':hashlib.sha256((a.guide/'manifest.json').read_bytes()).hexdigest(),'per_frame_paint_fitting':False,'source_resolution':job['resolution'],'frames':records,'head_pose_pairs':head_pairs,'foot_pose_pairs':foot_pairs,'limitations':['Vertex-group bounds include occluded geometry. They are not visible segmentation masks.','Painted hair and boots have their own envelopes; compare movement relative to one fixed calibration, not raw silhouette sizes.','Head reuse candidates only bound the weighted source head mesh; costume-neck seams and the illustrated hair envelope still need review.','Foot reuse candidates exclude the calf, trouser cuff and painted boot envelope. They do not authorize replacing an entire boot or lower body.','No painted pixels were changed and no visual approval is granted.']};a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,indent=2)+'\n');print('MESH_ALIGNMENT_DIAGNOSTIC '+json.dumps({'frames':len(records),'max_replay_error_m':max(r['replay_error_m']for r in records)}),flush=True)
 
 if __name__=='__main__':main()

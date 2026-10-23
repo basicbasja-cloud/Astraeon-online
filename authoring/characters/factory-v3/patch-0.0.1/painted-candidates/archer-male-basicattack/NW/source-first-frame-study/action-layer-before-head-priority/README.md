@@ -1,0 +1,1 @@
+Historical proposal. Weapon helper initially claimed99 pixels of the reviewed head on full-draw seeds8/9. These results are rejected for current use. Seeds changed while this older run was active; use the later pinned-input run in action-layer-proposals. No import or runtime admission.

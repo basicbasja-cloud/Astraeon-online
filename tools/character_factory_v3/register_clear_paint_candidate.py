@@ -5,6 +5,7 @@ registration, individual pose scaling, or pixel body warping is performed.
 """
 import argparse,hashlib,json,sys
 from pathlib import Path
+import numpy as np
 from PIL import Image,ImageDraw
 sys.path.insert(0,str(Path(__file__).parent))
 from build_fixed_grid_sequence_review import frames_from_sheet,gif
@@ -20,6 +21,13 @@ def persist_pose_mapped_frames(frames,indices,folder):
     folder.mkdir(parents=True,exist_ok=True)
     for i,frame in enumerate(selected):frame.save(folder/f'{i:03d}.png')
     return selected
+
+def solid_interior_alpha(master,threshold=None):
+    """Restore near-opaque paint interiors; retain RGB and softer edge alpha."""
+    if threshold is None:return master,0
+    if isinstance(threshold,bool)or not isinstance(threshold,int)or not 245<=threshold<=254:raise ValueError('Interior alpha threshold must be245..254')
+    pixels=np.array(master);selected=(pixels[:,:,3]>=threshold)&(pixels[:,:,3]<255);pixels[selected,3]=255
+    return Image.fromarray(pixels),int(selected.sum())
 
 def validated_pose_map(recipe,manifest,direction):
     indices=list(range(manifest['frame_count']))
@@ -41,7 +49,7 @@ def validated_pose_map(recipe,manifest,direction):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--pose-recipe',type=Path);p.add_argument('--paint',type=Path,required=True);p.add_argument('--guide',type=Path,required=True);p.add_argument('--direction',required=True);p.add_argument('--viewport',type=int,nargs=4,required=True);p.add_argument('--timing',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--factory',type=Path,default=Path('authoring/characters/factory-v3/patch-0.0.1/factory.json'));a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--pose-recipe',type=Path);p.add_argument('--opaque-interior-threshold',type=int);p.add_argument('--paint',type=Path,required=True);p.add_argument('--guide',type=Path,required=True);p.add_argument('--direction',required=True);p.add_argument('--viewport',type=int,nargs=4,required=True);p.add_argument('--timing',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--factory',type=Path,default=Path('authoring/characters/factory-v3/patch-0.0.1/factory.json'));a=p.parse_args()
     config=json.loads(a.factory.read_text());manifest=json.loads((a.guide/'manifest.json').read_text());source_size=manifest['job']['resolution'];author_size=config['canvas']['authoring'][0];runtime_size=config['canvas']['runtime'][0]
     if manifest['frame_count']!=16:raise ValueError('This sheet adapter expects16 frames')
     if a.direction not in manifest['views']:raise ValueError('Direction not captured')
@@ -58,15 +66,15 @@ def main():
     canonical=[canonical[i] for i in pose_indices];detail=persist_pose_mapped_frames(detail,pose_indices,a.output/'detail')
     runtime=[];comparisons=[];contact=Image.new('RGBA',(1536,1536),'#e8e8e8');reports=[]
     for i,cell in enumerate(canonical):
-        master=Image.new('RGBA',(author_size,author_size));master.alpha_composite(cell,placement);d=a.output/'Master';d.mkdir(exist_ok=True);master.save(d/f'{i:03d}.png')
+        master=Image.new('RGBA',(author_size,author_size));master.alpha_composite(cell,placement);master,opaque_count=solid_interior_alpha(master,a.opaque_interior_threshold);d=a.output/'Master';d.mkdir(exist_ok=True);master.save(d/f'{i:03d}.png')
         small=master.convert('RGBa').resize((runtime_size,runtime_size),Image.Resampling.LANCZOS).convert('RGBA');d=a.output/'runtime';d.mkdir(exist_ok=True);small.save(d/f'{i:03d}.png');runtime.append(small)
         source=Image.open(a.guide/a.direction/f'{pose_indices[i]:03d}.png').convert('RGBA').resize((author_size,author_size),Image.Resampling.LANCZOS)
         pair=Image.new('RGBA',(1536,800),'#e8e8e8');pair.alpha_composite(source,(0,32));pair.alpha_composite(master,(768,32));draw=ImageDraw.Draw(pair);draw.text((16,10),'CURRENT3D GUIDE',fill='black');draw.text((784,10),'PAINT CANDIDATE - CANVAS ALIGNED, ANATOMY REVIEW PENDING',fill='black');comparisons.append(pair)
         contact.alpha_composite(master.resize((384,384)),((i%4)*384,(i//4)*384))
-        reports.append({'index':i,'source_pose_index':pose_indices[i],'authoring_alpha_bbox':master.getchannel('A').getbbox(),'runtime_alpha_bbox':small.getchannel('A').getbbox(),'source_action':manifest['views'][a.direction]['frames'][pose_indices[i]]['action'],'source_frame':manifest['views'][a.direction]['frames'][pose_indices[i]]['source_frame']})
+        reports.append({'index':i,'near_opaque_interior_pixels_restored':opaque_count,'source_pose_index':pose_indices[i],'authoring_alpha_bbox':master.getchannel('A').getbbox(),'runtime_alpha_bbox':small.getchannel('A').getbbox(),'source_action':manifest['views'][a.direction]['frames'][pose_indices[i]]['action'],'source_frame':manifest['views'][a.direction]['frames'][pose_indices[i]]['source_frame']})
     contact.save(a.output/'contact.png');gif(runtime,a.output/'game-scale-normal.gif',durations);gif(detail,a.output/'detail-normal.gif',durations);gif(detail,a.output/'detail-slow.gif',[d*3 for d in durations]);gif(comparisons,a.output/'guide-vs-paint.gif',durations)
     runtime[0].save(a.output/'game-scale-lossless.webp',save_all=True,append_images=runtime[1:],duration=durations,loop=0,lossless=True,method=4)
-    receipt={'status':'CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW','guide_job':manifest['job']['id'],'direction':a.direction,'master_sha256':hashlib.sha256(a.paint.read_bytes()).hexdigest(),'native_sheet_size':sheet_size,'uniform_source_viewport':viewport,'authoring_canvas':[author_size,author_size],'authoring_viewport_extent':extent,'authoring_viewport_placement':placement,'authoring_root':config['canvas']['authoring_root'],'runtime_canvas':[runtime_size,runtime_size],'runtime_root':config['canvas']['runtime_root'],'per_frame_fitting':False,'anatomy_registration_approved':False,'modular_parts_complete':False,'source_pose_registered':False,'frames':reports,'pose_recipe':recipe,'unique_source_pose_count':len(set(pose_indices)),'timeline_slots':len(pose_indices),'preview_durations_ms':durations,'owner_approved':False,'runtime_admitted':False,'limitations':['Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.','Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.','No final cutout package or game admission is claimed.']}
+    receipt={'status':'CANVAS_ALIGNED_PAINT_CANDIDATE_REQUIRES_ANATOMY_AND_CUTOUT_REVIEW','guide_job':manifest['job']['id'],'direction':a.direction,'master_sha256':hashlib.sha256(a.paint.read_bytes()).hexdigest(),'native_sheet_size':sheet_size,'uniform_source_viewport':viewport,'authoring_canvas':[author_size,author_size],'authoring_viewport_extent':extent,'authoring_viewport_placement':placement,'authoring_root':config['canvas']['authoring_root'],'runtime_canvas':[runtime_size,runtime_size],'runtime_root':config['canvas']['runtime_root'],'opaque_interior_threshold':a.opaque_interior_threshold,'per_frame_fitting':False,'anatomy_registration_approved':False,'modular_parts_complete':False,'source_pose_registered':False,'frames':reports,'pose_recipe':recipe,'unique_source_pose_count':len(set(pose_indices)),'timeline_slots':len(pose_indices),'preview_durations_ms':durations,'owner_approved':False,'runtime_admitted':False,'limitations':['Only the recorded source viewport has been inverted into the canonical canvas; this does not correct image-generation pose drift.','Detail preview uses shared resampling of native painted pixels, not newly authored high-resolution detail.','No final cutout package or game admission is claimed.']}
     (a.output/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps({'output':str(a.output),'guide':manifest['job']['id'],'anatomy_registration_approved':False,'modular_parts_complete':False}))
 
 if __name__=='__main__':main()

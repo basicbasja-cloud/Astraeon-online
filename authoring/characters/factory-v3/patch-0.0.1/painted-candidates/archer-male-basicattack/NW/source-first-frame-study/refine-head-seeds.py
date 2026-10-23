@@ -1,7 +1,7 @@
 from pathlib import Path
 from PIL import Image,ImageDraw
 import numpy as np,json,hashlib,cv2
-p=Path('authoring/characters/factory-v3/patch-0.0.1/painted-candidates/archer-male-basicattack/NW/source-first-frame-study');polygons={0:[[300,170],[435,170],[435,230],[421,245],[407,250],[398,265],[386,270],[369,260],[345,255],[335,247],[329,240],[319,232]],8:[[300,175],[394,175],[401,195],[402,205],[399,222],[397,240],[390,249],[387,258],[380,270],[366,269],[345,265],[331,257],[318,242],[307,225]],11:[[310,170],[437,170],[437,228],[422,245],[411,251],[402,265],[388,270],[370,260],[349,256],[340,248],[333,240],[325,231]]};out=p/'manual-head-seeds';rows=[]
+p=Path('authoring/characters/factory-v3/patch-0.0.1/painted-candidates/archer-male-basicattack/NW/source-first-frame-study');polygons={0:[[300,170],[435,170],[435,230],[421,245],[407,250],[398,265],[386,270],[369,260],[345,255],[335,247],[329,240],[319,232]],8:[[300,175],[394,175],[401,195],[402,205],[399,222],[397,240],[393,246],[388,250],[384,252],[380,254],[377,259],[376,262],[375,265],[373,268],[371,270],[368,273],[364,277],[356,272],[347,270],[335,265],[331,257],[318,242],[307,225]],11:[[310,170],[437,170],[437,228],[422,245],[411,251],[402,265],[388,270],[370,260],[349,256],[340,248],[333,240],[325,231]]};out=p/'manual-head-seeds';rows=[]
 for i,polygon in polygons.items():
  master_path=p/'sequence/detail'/f'{i:03d}.png';master=Image.open(master_path).convert('RGBA');a=np.array(master);region=Image.new('L',master.size);ImageDraw.Draw(region).polygon(polygon,fill=255);mask=(np.array(region)>0)&(a[:,:,3]>0);rgb=a[:,:,:3].astype(float);r,g,b=rgb.transpose(2,0,1)
  # Explicit chestnut-hair/green-collar boundary aid, limited to the drawn polygon.
