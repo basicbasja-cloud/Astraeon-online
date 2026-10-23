@@ -29,6 +29,9 @@ function validateDefinition(d) {
  check(same(d.directions,DIRECTIONS),'Direction order must be '+DIRECTIONS.join(','));
  const c=d.canvas||{}, w=c.frameWidth,h=c.frameHeight;
  check(Number.isInteger(w)&&positive(w)&&Number.isInteger(h)&&positive(h),'Invalid canvas dimensions');
+ const nativeComposition=own(c,'compositionWidth')||own(c,'compositionHeight');
+ const cw=nativeComposition?c.compositionWidth:w,ch=nativeComposition?c.compositionHeight:h;
+ if(nativeComposition)check(Number.isInteger(cw)&&Number.isInteger(ch)&&cw>=w&&ch>=h&&cw<=2048&&ch<=2048&&Math.abs(cw*h-ch*w)<1e-6,'Invalid source composition canvas');
  const point=p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=0&&p[0]<=w&&p[1]>=0&&p[1]<=h;
  check(point([c.rootAnchorX,c.rootAnchorY]),'Invalid ground root anchor');
  check(positive(c.referenceHeight)&&c.referenceHeight<=h,'Invalid referenceHeight');
@@ -120,7 +123,10 @@ function validateDefinition(d) {
    check(!own(ref,'duration')&&!own(ref,'frameDuration')&&!own(ref,'sockets'),'Layer timing/socket override '+id);
    check(!!atlas,'Missing atlas reference '+id);
    const r=ref.rect;
-   check(Array.isArray(r)&&r.length===4&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>=0&&r[2]===w&&r[3]===h&&r[0]+r[2]<=atlas?.width&&r[1]+r[3]<=atlas?.height,'Invalid canvas/atlas rect '+id);
+   const offset=ref.offset||[0,0];
+   const validOffset=Array.isArray(offset)&&offset.length===2&&offset.every(Number.isInteger)&&offset.every(v=>v>=0);
+   const validExtent=nativeComposition?positive(r?.[2])&&positive(r?.[3])&&validOffset&&offset[0]+r[2]<=cw&&offset[1]+r[3]<=ch:r?.[2]===w&&r?.[3]===h&&!own(ref,'offset');
+   check(Array.isArray(r)&&r.length===4&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>=0&&validExtent&&r[0]+r[2]<=atlas?.width&&r[1]+r[3]<=atlas?.height,'Invalid canvas/atlas rect '+id);
   }
   for(const id of Object.keys(frames))check(ids.has(id)&&id.startsWith(d.characterId+'_'+partId+'_'),'Unexpected/naming-invalid frame '+id);
  }
@@ -165,12 +171,49 @@ function directionFromHeading(angle,project) {
  const row=((Math.round((Math.atan2(p.y,p.x)-Math.PI/2)/(Math.PI/4))%8)+8)%8;
  return DIRECTIONS[row];
 }
+// Native cutouts may include authored surfaces hidden by another part. Compose
+// those layers before reducing them; independent reduction changes their seams.
+// Atlas trimming only restores integer source offsets, never fits a figure.
+const compositionCache=new Map(),imageIds=new WeakMap();
+let nextImageId=0,compositionBytes=0,scratch=null,scratchOwner=null;
+function makeSurface(width,height){
+ const canvas=typeof scope.OffscreenCanvas==='function'?new scope.OffscreenCanvas(width,height):scope.document?.createElement('canvas');
+ if(!canvas)throw Error('Source composition requires a canvas surface');
+ canvas.width=width;canvas.height=height;return canvas;
+}
+function sourceComposition(layers,c){
+ const imageId=image=>{if(!imageIds.has(image))imageIds.set(image,++nextImageId);return imageIds.get(image)};
+ const key=JSON.stringify([c.frameWidth,c.frameHeight,c.compositionWidth,c.compositionHeight,layers.map(({ref,image})=>[imageId(image),ref.rect,ref.offset||[0,0]])]);
+ if(compositionCache.has(key)){const hit=compositionCache.get(key);compositionCache.delete(key);compositionCache.set(key,hit);return hit}
+ const width=c.compositionWidth,height=c.compositionHeight;
+ if(!scratch||scratch.width!==width||scratch.height!==height){scratch=makeSurface(width,height);scratchOwner=null}
+ const source=scratch.getContext('2d');if(!source)throw Error('Source composition context unavailable');
+ source.clearRect(0,0,width,height);source.imageSmoothingEnabled=false;
+ for(const {ref,image}of layers){const [ox,oy]=ref.offset||[0,0];source.drawImage(image,...ref.rect,ox,oy,ref.rect[2],ref.rect[3])}
+ const bounds=layers.length?layers.reduce((b,{ref})=>{const [x,y]=ref.offset||[0,0];return[Math.min(b[0],x),Math.min(b[1],y),Math.max(b[2],x+ref.rect[2]),Math.max(b[3],y+ref.rect[3])]},[width,height,0,0]):[0,0,1,1];
+ const x=Math.max(0,bounds[0]-2),y=Math.max(0,bounds[1]-2),w=Math.min(width,bounds[2]+2)-x,h=Math.min(height,bounds[3]+2)-y;
+ // Cache a native-resolution crop, with its canonical offset. This avoids a
+ // second resize (and opacity rounding) when the game zoom or draw scale changes.
+ const image=makeSurface(w,h),target=image.getContext('2d');if(!target)throw Error('Sprite composition context unavailable');
+ target.imageSmoothingEnabled=false;target.drawImage(scratch,x,y,w,h,0,0,w,h);
+ const result={image,x,y,width:w,height:h};scratchOwner=result;compositionCache.set(key,result);compositionBytes+=w*h*4;
+ while(compositionCache.size>64||compositionBytes>16*1024*1024){const oldest=compositionCache.keys().next().value,removed=compositionCache.get(oldest);compositionCache.delete(oldest);compositionBytes-=removed.width*removed.height*4}
+ return result;
+}
+function fullComposition(result,c){
+ if(!scratch||scratch.width!==c.compositionWidth||scratch.height!==c.compositionHeight){scratch=makeSurface(c.compositionWidth,c.compositionHeight);scratchOwner=null}
+ if(scratchOwner!==result){const ctx=scratch.getContext('2d');ctx.clearRect(0,0,scratch.width,scratch.height);ctx.imageSmoothingEnabled=false;ctx.drawImage(result.image,result.x,result.y);scratchOwner=result}
+ // Restore the full canonical canvas before filtering. Filtering a cropped
+ // image directly changes the browser's sampling phase at fractional scales.
+ return scratch;
+}
 function draw(ctx,sampled,images,{x=0,y=0,scale=1}={}) {
  if(!positive(scale))throw Error('Invalid sprite scale');
  // Resolve every image first: missing parts never leave a partly painted character.
  const layers=sampled.layers.map(ref=>{const image=images[ref.atlasId];if(!image)throw Error('Atlas not loaded '+ref.atlasId);return {ref,image}});
  const c=sampled.canvas,left=x-c.rootAnchorX*scale,top=y-c.rootAnchorY*scale;
- ctx.save();try{ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';for(const {ref,image} of layers)ctx.drawImage(image,...ref.rect,left,top,c.frameWidth*scale,c.frameHeight*scale)}finally{ctx.restore()}
+ const combined=c.compositionWidth?fullComposition(sourceComposition(layers,c),c):null;
+ ctx.save();try{ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';if(combined)ctx.drawImage(combined,0,0,c.compositionWidth,c.compositionHeight,left,top,c.frameWidth*scale,c.frameHeight*scale);else for(const {ref,image} of layers)ctx.drawImage(image,...ref.rect,left,top,c.frameWidth*scale,c.frameHeight*scale)}finally{ctx.restore()}
  return Object.fromEntries(Object.entries(sampled.sockets).map(([id,p])=>[id,{x:left+p[0]*scale,y:top+p[1]*scale}]));
 }
 function resolveCosmetics(definition,cosmeticLoadout={}) {

@@ -12,6 +12,23 @@ from patch001_factory import ROOT,BASE,read
 CORE=('BodyCostume','HeadHair','Weapon')
 ORDER=('WeaponLightBack','BackAccessory','BodyCostume','HeadHair','Weapon','WeaponLightFront','WeaponHandOccluder','Headgear')
 
+def trimmed_source(im):
+    """Trim transparent storage only; retain the original integer placement."""
+    bbox=im.getchannel('A').getbbox()
+    return (im.crop(bbox),list(bbox[:2]))if bbox else(Image.new('RGBA',(1,1)),[0,0])
+
+def atlas_pages(pixels,limit=4096,padding=2):
+    """Stream one shelf-packed page at a time instead of retaining all pages."""
+    page=Image.new('RGBA',(limit,limit));x=y=padding;row=0;used=padding;placements=[]
+    for index,im in enumerate(pixels):
+        if im.width+2*padding>limit or im.height+2*padding>limit:raise ValueError('Source part exceeds atlas page')
+        if x+im.width+padding>limit:x=padding;y+=row;row=0
+        if y+im.height+padding>limit:
+            yield page.crop((0,0,used,y+row)),placements
+            page=Image.new('RGBA',(limit,limit));x=y=padding;row=0;used=padding;placements=[]
+        page.paste(im,(x,y));placements.append((index,[x,y,im.width,im.height]));x+=im.width+padding;row=max(row,im.height+padding);used=max(used,x)
+    if placements:yield page.crop((0,0,used,y+row)),placements
+
 def composed_draw_order(base_order,roles):
     base=[r for r in roles if not r.startswith('WeaponLight')]
     if len(base_order)!=len(set(base_order))or any(r not in base for r in base_order):raise ValueError('Invalid imported base draw order')
@@ -73,7 +90,8 @@ def preflight(character,config,ledger,base,timings):
     if errors:raise ValueError('Cannot package '+character['id']+'\n'+'\n'.join(errors))
     return imports
 
-def pack(character_id,timing_path,repository=ROOT,base=BASE):
+def pack(character_id,timing_path,repository=ROOT,base=BASE,*,raster_mode='source-composite'):
+    if raster_mode not in ['source-composite','visible-partition']:raise ValueError('Unknown raster mode')
     config=read(base/'factory.json');ledger=read(base/'ledger.json');character=next((c for c in config['characters']if c['id']==character_id),None)
     if character is None:raise ValueError('Unknown patch character')
     timings=read(timing_path);imports=preflight(character,config,ledger,base,timings);index=read(base/'cutout-store/index.json');klass=config['classes'][character['class']]
@@ -86,6 +104,7 @@ def pack(character_id,timing_path,repository=ROOT,base=BASE):
     if set(roles)!={r for _,b in imports.values()for f in b['frames']for r in f['assets']}|set(CORE):raise ValueError('Unknown imported role')
     part_ids={r:r.lower().replace('weaponhandoccluder','weapon-hand-occluder').replace('bodycostume','body-costume').replace('headhair','head-hair')for r in roles}
     d={'version':'0.1','characterId':character_id,'classId':character['class'],'bodyVariant':character['body_variant'],'layerMode':'visible-cutout','directions':config['direction_inputs'],'mirroring':'none','canvas':{'frameWidth':width,'frameHeight':height,'rootAnchorX':config['canvas']['runtime_root'][0],'rootAnchorY':config['canvas']['runtime_root'][1],'referenceHeight':config['canvas']['runtime_reference_height']},'source':{'status':'DEV_ONLY','camera':'factory-v3 locked orthographic camera; uniform1536-to240 full-canvas reduction','handedness':'right','reference':str((base/'factory.json').relative_to(repository))},'tags':['DEV_ONLY','PLACEHOLDER','NOT_FINAL_ART','PATCH_0_0_1_CANDIDATE'],'slots':{r:r for r in roles},'defaultParts':part_ids,'drawOrder':roles,'parts':{part_ids[r]:{'slot':r,'frames':{}}for r in roles},'atlases':{},'clips':{}}
+    if raster_mode=='source-composite':d['canvas'].update({'compositionWidth':author[0],'compositionHeight':author[1]})
     d['parts'][part_ids['HeadHair']]['cosmeticId']='hair-native';d['parts'][part_ids['BodyCostume']]['cosmeticId']=character['class'].lower()+'-traveler'
     pixels=[];unique={};recomposition=0
     def asset_image(asset_id,role,frame,fit):
@@ -111,35 +130,41 @@ def pack(character_id,timing_path,repository=ROOT,base=BASE):
                 ordered=composed_draw_order(ordered,roles)
                 # Independent FX must never be merged into the base ownership
                 # partition or they would erase the interchangeable body pixels.
-                base_order=[r for r in ordered if not r.startswith('WeaponLight')];base_parts={r:parts[r]for r in base_order};reduced,master=downsample_partition(base_parts,base_order,(width,height))
-                check=Image.new('RGBA',(width,height))
-                for r in base_order:check.alpha_composite(reduced[r])
-                if check.tobytes()!=master.tobytes():raise ValueError('Runtime base recomposition changed')
+                base_order=[r for r in ordered if not r.startswith('WeaponLight')];base_parts={r:parts[r]for r in base_order}
+                if raster_mode=='visible-partition':
+                    reduced,master=downsample_partition(base_parts,base_order,(width,height));check=Image.new('RGBA',(width,height))
+                    for r in base_order:check.alpha_composite(reduced[r])
+                    if check.tobytes()!=master.tobytes():raise ValueError('Runtime base recomposition changed')
+                else:reduced=dict(parts)
                 for r in ordered:
                     if r not in reduced:reduced[r]=parts[r].convert('RGBa').resize((width,height),Image.Resampling.LANCZOS).convert('RGBA')
-                    im=reduced[r];arr=np.array(im);arr[arr[:,:,3]==0]=0;im=Image.fromarray(arr);key=hashlib.sha256(arr.tobytes()).hexdigest()
+                    im=reduced[r];arr=np.array(im);arr[arr[:,:,3]==0]=0;im=Image.fromarray(arr);offset=None
+                    if raster_mode=='source-composite':
+                        original=im;im,offset=trimmed_source(im)
+                        if original.getchannel('A').getbbox()is None:offset=[min(author[0]-1,round(frame['sockets']['root'][0])),min(author[1]-1,round(frame['sockets']['root'][1]))]
+                        restored=Image.new('RGBA',tuple(author));restored.paste(im,tuple(offset))
+                        if restored.tobytes()!=original.tobytes():raise ValueError('Atlas trimming changed source pixels')
+                    key=hashlib.sha256(str(im.size).encode()+im.tobytes()).hexdigest()
                     if key not in unique:unique[key]=len(pixels);pixels.append(im)
                     frame_id=f'{character_id}_{part_ids[r]}_{action}_{direction}_{i:02d}';d['parts'][part_ids[r]]['frames'][frame_id]={'pixelIndex':unique[key]}
+                    if offset is not None:d['parts'][part_ids[r]]['frames'][frame_id]['offset']=offset
                 sockets={k:[v[0]*scale,v[1]*scale]for k,v in frame['sockets'].items()};seq['frames'].append({'frameIndex':i,'sockets':sockets,'drawOrder':ordered})
-    cell=width+4;columns=min(4096//cell,max(1,math.ceil(math.sqrt(len(pixels)))));per_page=columns*(4096//(height+4));pages=[]
-    for start in range(0,len(pixels),per_page):
-        count=min(per_page,len(pixels)-start);page=Image.new('RGBA',(columns*cell,math.ceil(count/columns)*(height+4)))
-        for n,im in enumerate(pixels[start:start+count]):page.paste(im,((n%columns)*cell+2,(n//columns)*(height+4)+2))
-        pages.append(page);name='page-'+str(len(pages)-1);d['atlases'][name]={'file':f'assets/characters/{character_id}/atlases/{name}.png','width':page.width,'height':page.height}
-    for part in d['parts'].values():
-        for ref in part['frames'].values():
-            n=ref.pop('pixelIndex');page,n=divmod(n,per_page);ref.update({'atlasId':'page-'+str(page),'rect':[(n%columns)*cell+2,(n//columns)*(height+4)+2,width,height]})
     verifier="const fs=require('node:fs'),api=require(process.argv[1]);const errors=api.validateDefinition(JSON.parse(fs.readFileSync(0,'utf8')));if(errors.length){process.stderr.write(errors.join('\\n'));process.exit(1)}"
-    result=subprocess.run(['node','-e',verifier,str(ROOT/'modular-sprites.js')],input=json.dumps(d),text=True,capture_output=True)
-    if result.returncode:raise ValueError('Runtime definition validation failed: '+result.stderr)
     target=repository/'assets/characters'/character_id;target.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(dir=target.parent,prefix='.packing-')as temporary:
         temp=Path(temporary);(temp/'atlases').mkdir()
-        for i,page in enumerate(pages):page.save(temp/'atlases'/f'page-{i}.png')
-        (temp/'sprite.json').write_text(json.dumps(d,indent=2)+'\n');receipt={'character':character_id,'actions':list(d['clips']),'source_paint_jobs':sorted({j['id']for j,_ in imports.values()}),'unique_pixel_frames':len(pixels),'base_recomposition_mismatches':recomposition,'status':'PACKED_CANDIDATE_REQUIRES_GAMEPLAY_VISUAL_REVIEW','owner_approved':False,'runtime_admitted':False};(temp/'package-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+        locations={}
+        for i,(page,placements)in enumerate(atlas_pages(pixels)):
+            name=f'page-{i}';page.save(temp/'atlases'/f'{name}.png');d['atlases'][name]={'file':f'assets/characters/{character_id}/atlases/{name}.png','width':page.width,'height':page.height}
+            for index,rect in placements:locations[index]={'atlasId':name,'rect':rect}
+        for part in d['parts'].values():
+            for ref in part['frames'].values():ref.update(locations[ref.pop('pixelIndex')])
+        result=subprocess.run(['node','-e',verifier,str(ROOT/'modular-sprites.js')],input=json.dumps(d),text=True,capture_output=True)
+        if result.returncode:raise ValueError('Runtime definition validation failed: '+result.stderr)
+        (temp/'sprite.json').write_text(json.dumps(d,indent=2)+'\n');receipt={'character':character_id,'actions':list(d['clips']),'source_paint_jobs':sorted({j['id']for j,_ in imports.values()}),'unique_pixel_frames':len(pixels),'base_recomposition_mismatches':recomposition,'raster_mode':raster_mode,'source_resolution_layers_preserved':raster_mode=='source-composite','status':'PACKED_CANDIDATE_REQUIRES_GAMEPLAY_VISUAL_REVIEW','owner_approved':False,'runtime_admitted':False};(temp/'package-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
         if target.exists():raise ValueError('Target exists; preserve the existing package and review replacement explicitly')
         shutil.copytree(temp,target)
     return receipt
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--character',required=True);p.add_argument('--timing',type=Path,required=True);a=p.parse_args();print(json.dumps(pack(a.character,a.timing)))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--character',required=True);p.add_argument('--timing',type=Path,required=True);p.add_argument('--raster-mode',choices=['source-composite','visible-partition'],default='source-composite');a=p.parse_args();print(json.dumps(pack(a.character,a.timing,raster_mode=a.raster_mode)))

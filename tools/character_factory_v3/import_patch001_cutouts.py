@@ -10,7 +10,7 @@ import numpy as np
 from PIL import Image
 from patch001_factory import BASE,ROOT,read,write,receipt_valid,digest
 from cutout_asset_store import STORE,ROLES,register,save_index,import_frame
-from register_clear_paint_candidate import validated_pose_map
+from register_clear_paint_candidate import validated_pose_map,resolved_recipe
 
 BASE_ORDER=['BackAccessory','BodyCostume','HeadHair','Weapon','WeaponHandOccluder','Headgear']
 
@@ -25,7 +25,7 @@ def source_pose_maps(manifest,guide,guide_path,manifest_folder):
         path=(manifest_folder/recipes[direction]).resolve();recipe=read(path)
         if recipe.get('guide_manifest_sha256')!=hashlib.sha256(guide_path.read_bytes()).hexdigest():raise ValueError('Pose recipe guide digest mismatch')
         # Certificates in a persisted recipe resolve against the recipe itself.
-        recipe=dict(recipe);recipe['certificates']={k:str((path.parent/v).resolve())for k,v in recipe.get('certificates',{}).items()}
+        recipe=resolved_recipe(recipe,path.parent)
         maps[direction]=validated_pose_map(recipe,guide,direction)
         evidence[direction]={'recipe_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'source_pose_indices':maps[direction],'certificates':{k:hashlib.sha256(Path(v).read_bytes()).hexdigest()for k,v in recipe['certificates'].items()}}
     return maps,evidence

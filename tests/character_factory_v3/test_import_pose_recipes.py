@@ -3,8 +3,22 @@ import hashlib,json,sys,tempfile,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools/character_factory_v3'))
 from import_patch001_cutouts import source_pose_maps
+from register_clear_paint_candidate import resolved_recipe,persist_pose_mapped_frames
+from PIL import Image
 
 class PoseRecipeImportTests(unittest.TestCase):
+    def test_detail_pngs_follow_the_same_hold_as_gif_and_master(self):
+        with tempfile.TemporaryDirectory()as temp:
+            frames=[Image.new('RGBA',(4,4),color)for color in ['red','blue','green']]
+            selected=persist_pose_mapped_frames(frames,[0,0,2],Path(temp))
+            for i,source in enumerate([0,0,2]):
+                self.assertEqual(Image.open(Path(temp)/f'{i:03d}.png').tobytes(),frames[source].tobytes())
+                self.assertEqual(selected[i].tobytes(),frames[source].tobytes())
+    def test_review_and_import_share_relative_certificate_resolution(self):
+        with tempfile.TemporaryDirectory()as temp:
+            p=Path(temp);recipe={'certificates':{'8:9':'../cert.json'}}
+            self.assertEqual(resolved_recipe(recipe,p/'review')['certificates']['8:9'],str((p/'cert.json').resolve()))
+            self.assertEqual(recipe['certificates']['8:9'],'../cert.json')
     def test_identity_without_recipe(self):
         guide={'frame_count':2,'views':{'NE':{}}}
         self.assertEqual(source_pose_maps({},guide,Path('unused'),Path('.')),({'NE':[0,1]},{}))

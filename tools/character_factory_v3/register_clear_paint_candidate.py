@@ -9,6 +9,18 @@ from PIL import Image,ImageDraw
 sys.path.insert(0,str(Path(__file__).parent))
 from build_fixed_grid_sequence_review import frames_from_sheet,gif
 
+def resolved_recipe(recipe,folder):
+    resolved=dict(recipe)
+    resolved['certificates']={key:str((folder/value).resolve())for key,value in recipe.get('certificates',{}).items()}
+    return resolved
+
+def persist_pose_mapped_frames(frames,indices,folder):
+    """Keep exported detail PNGs identical to the selected timeline used by GIFs."""
+    selected=[frames[i] for i in indices]
+    folder.mkdir(parents=True,exist_ok=True)
+    for i,frame in enumerate(selected):frame.save(folder/f'{i:03d}.png')
+    return selected
+
 def validated_pose_map(recipe,manifest,direction):
     indices=list(range(manifest['frame_count']))
     if recipe is None:return indices
@@ -35,7 +47,7 @@ def main():
     if a.direction not in manifest['views']:raise ValueError('Direction not captured')
     recipe=json.loads(a.pose_recipe.read_text()) if a.pose_recipe else None
     if recipe and recipe['guide_manifest_sha256']!=hashlib.sha256((a.guide/'manifest.json').read_bytes()).hexdigest():raise ValueError('Pose recipe guide digest mismatch')
-    pose_indices=validated_pose_map(recipe,manifest,a.direction)
+    pose_indices=validated_pose_map(resolved_recipe(recipe,a.pose_recipe.parent)if recipe else None,manifest,a.direction)
     viewport=a.viewport;side=viewport[2]-viewport[0]
     if side!=viewport[3]-viewport[1]:raise ValueError('Viewport must be square')
     scale=author_size/source_size;extent=round(side*scale);placement=(round(viewport[0]*scale),round(viewport[1]*scale))
@@ -43,7 +55,7 @@ def main():
     if len(durations)!=16:raise ValueError('Timeline mismatch')
     detail,records,sheet_size=frames_from_sheet(a.paint,a.output/'detail',768)
     canonical,_,_=frames_from_sheet(a.paint,a.output/'viewport-samples',extent)
-    canonical=[canonical[i] for i in pose_indices];detail=[detail[i] for i in pose_indices]
+    canonical=[canonical[i] for i in pose_indices];detail=persist_pose_mapped_frames(detail,pose_indices,a.output/'detail')
     runtime=[];comparisons=[];contact=Image.new('RGBA',(1536,1536),'#e8e8e8');reports=[]
     for i,cell in enumerate(canonical):
         master=Image.new('RGBA',(author_size,author_size));master.alpha_composite(cell,placement);d=a.output/'Master';d.mkdir(exist_ok=True);master.save(d/f'{i:03d}.png')

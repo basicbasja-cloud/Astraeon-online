@@ -63,7 +63,7 @@ The final acceptance pass must demonstrate:
 distinct package paths, class-specific motion requirements and combat bindings.
 Wardrobe and creation/studio selection use the240px padded canvas with root
 `[120,172]`. The studio inspects the actual cutout roles and distinguishes four
-authored attack/cast views from eight movement views. Application cache105
+authored attack/cast views from eight movement views. Application cache106
 includes the policy.
 
 `tools/character_factory_v3/pack_patch001_character.py` consumes complete imported
@@ -114,8 +114,19 @@ six, then run ordinary gameplay and the full visual acceptance pass above.
 
 ## Continuation checks
 
-55 Python tests and143 individual Node checks pass. Three actual legacy saves
+62 Python tests and146 individual Node checks pass. Three actual legacy saves
 (class IDs0,3,12) respond to ordinary movement and attack input with no page or
 resource errors. This protects legacy compatibility; it verifies zero new patch
 characters. Certified whole-character pose holds now preserve the actual source
 pose index during import, while the timeline slot and authored events stay fixed.
+
+## Native composition continuation — 23 October 2026
+
+The packer defaults to `source-composite`: preserve source-resolution overlapping
+cutouts, trim only transparent storage margins, retain each integer offset and
+compose on the full canonical source canvas before one final runtime resize.
+Independent-layer reduction cannot preserve hidden underlays and is not the
+default. The explicit `visible-partition` mode remains for exclusive-mask studies.
+Eight real Chromium pixel checks pass; their evidence is in
+`review/patch001-native-composition-20261023/`. They do not certify art boundaries,
+actual gameplay for six new packages, or complete action coverage.
