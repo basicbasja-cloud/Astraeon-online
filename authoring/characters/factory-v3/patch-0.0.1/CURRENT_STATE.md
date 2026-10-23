@@ -2,6 +2,23 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Earlier Swordsman retained — 23 October 2026
+
+The owner clarified that the earlier Swordsman was already visually okay. Keep
+the earlier BasicAttack and SkillOverhead illustrations as the male visual
+baseline, referenced in `factory.json`. Current Archer experiments do not
+replace that work. This is not blanket acceptance of every action/cutout edge.
+
+896 original source files are hash-pinned and unchanged. Bounded white-edge
+cleanup and documented camera/root registration produce a separate 128-pose
+review, four views per action. Body/head/weapon/hand ownership reconstructs each
+master exactly. Independent trails retain their timing. The real browser draw
+API passes all 256 base/trail comparisons with no page errors. Evidence:
+`docs/character-factory/review/patch001-preserved-swordsman-cutouts-20261023/`.
+Old source sampling is retained explicitly; no current guide identity or patch
+import is fabricated. All classes, both sexes and every patch action remain
+the goal.
+
 ## Runtime and visual-quality continuation — 22 October 2026
 
 The runtime bridge now routes six distinct class/sex packages, validates class-specific actions, and resolves actual skill identities rather than hotbar numbers. The exporter consumes real imported cutouts with explicit timing/events; synthetic fixtures are tests, not playable artwork. Cache106 includes the generated policy.

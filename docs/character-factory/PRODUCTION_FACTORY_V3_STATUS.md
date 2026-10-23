@@ -2,6 +2,13 @@
 
 ## Active patch checkpoint — 23 October 2026
 
+Owner clarification: earlier male Swordsman artwork was already visually okay.
+Preserve its BasicAttack and SkillOverhead as the baseline. The separate
+[preserved-art review](review/patch001-preserved-swordsman-cutouts-20261023/README.md)
+keeps 896 source files unchanged and checks 128 actual poses through the browser
+compositor, with 256 zero-difference base/trail comparisons. The remaining
+semantic/motion limits are recorded; this does not increment current patch imports.
+
 The latest owner scope supersedes the original single-character pilot: male/female Swordsman, Mage and Archer, all patch 0.0.1 actions, general actions in eight real directions and physical attacks/casting in four real diagonals. Mesh2Motion remains preferred; retained CC0 KayKit supplies bow clips. The previous milestones below are historical evidence, not current patch completion.
 
 Native composition now preserves full-resolution cutouts and overlapping hidden surfaces before a single final resize. Eight actual Chromium pixel checks pass with zero changed pixels. A 16-frame source-first Archer study and current temporal masks remain art proposals, with weapon/glove edges and head continuity still pending. Detail PNG/GIF held-pose mismatch is corrected. See `review/patch001-native-composition-20261023/`.

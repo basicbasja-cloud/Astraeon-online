@@ -4,6 +4,12 @@ Status: **in production; not six playable characters yet**. This report covers
 Swordsman, Mage and Archer, male and female. Selection plumbing and a valid
 source capture are not a completed playable character.
 
+The owner clarified on 23 October 2026 that the earlier Swordsman was already
+visually okay. Its existing BasicAttack/SkillOverhead drawings are retained as
+the male art baseline. See the preserved Swordsman review for camera/root and
+edge cleanup, same-frame cutouts and actual browser evidence. Current Archer
+repaint failures do not invalidate or replace those Swordsman originals.
+
 ## Scope references
 
 Read without merging or switching the working branch:
