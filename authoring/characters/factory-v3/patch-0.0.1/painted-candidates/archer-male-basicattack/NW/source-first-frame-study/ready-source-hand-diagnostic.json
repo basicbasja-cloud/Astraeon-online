@@ -1,0 +1,53 @@
+{
+  "status": "READY_POSE_SOURCE_ALIGNMENT_FAIL_REQUIRES_REPAINT",
+  "guide_job": "2fed9f286cdd5c5ffbf4",
+  "source_manifest_sha256": "f0b0463a28177a03eb4f00f28b17fadfe0765161019362748f0839ad0924d853",
+  "paint_sha256": "02e8175aba8a35caaccd41dec347021a319238acf4ba28f6979cc9155b6c1329",
+  "weighted_mesh_audit_sha256": "aa9ebcd1e2085263eb8fcf960a1f369748bfc70f9d8137afd7fd228be9a8c242",
+  "frame": 0,
+  "shared_source_viewport": [
+    378,
+    454,
+    1158,
+    1234
+  ],
+  "rows": [
+    {
+      "role": "HandL",
+      "manually_inspected_painted_glove_bounds_detail_px": [
+        425,
+        299,
+        470,
+        337
+      ],
+      "actual_weighted_source_hand_centroid_detail_px": [
+        444.4811818126083,
+        350.32184341922164
+      ],
+      "minimum_centroid_to_glove_box_distance_runtime_px": 2.11406206603859,
+      "centroid_within_painted_glove_bounds": false
+    },
+    {
+      "role": "HandR",
+      "manually_inspected_painted_glove_bounds_detail_px": [
+        397,
+        334,
+        437,
+        365
+      ],
+      "actual_weighted_source_hand_centroid_detail_px": [
+        464.217906194395,
+        354.7166695716706
+      ],
+      "minimum_centroid_to_glove_box_distance_runtime_px": 4.319247809169133,
+      "centroid_within_painted_glove_bounds": false
+    }
+  ],
+  "figure_fitting_applied": false,
+  "limitations": [
+    "Glove bounds are manually inspected diagnostic annotations, not pixel-fit targets.",
+    "Weighted source-hand centroid is not the wrist origin or exact visible grip contact. These large misses warrant repaint but do not define a universal anatomical fitting metric."
+  ],
+  "owner_approved": false,
+  "runtime_admitted": false
+}

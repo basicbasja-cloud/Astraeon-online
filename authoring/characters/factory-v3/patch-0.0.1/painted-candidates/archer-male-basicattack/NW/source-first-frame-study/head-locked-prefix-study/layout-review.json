@@ -1,0 +1,77 @@
+{
+  "status": "REJECTED_FIXED_CAMERA_LAYOUT_DRIFT",
+  "method": "Uniform 2x2 slicing and uniform canvas resizing only. Color bounds are diagnostic, never used to fit artwork.",
+  "raw_sha256": "8ffdcff891a26f162844712c6d6500a893fc5cd5f56b96fbef096f2877616a43",
+  "frames": [
+    {
+      "frame": 0,
+      "candidate_color_bounds": [
+        273,
+        28,
+        582,
+        730
+      ],
+      "reference_color_bounds": [
+        272,
+        179,
+        495,
+        705
+      ],
+      "height_ratio": 1.3346007604562737,
+      "top_displacement_px": -151
+    },
+    {
+      "frame": 1,
+      "candidate_color_bounds": [
+        217,
+        26,
+        515,
+        729
+      ],
+      "reference_color_bounds": [
+        315,
+        171,
+        502,
+        694
+      ],
+      "height_ratio": 1.344168260038241,
+      "top_displacement_px": -145
+    },
+    {
+      "frame": 2,
+      "candidate_color_bounds": [
+        266,
+        14,
+        579,
+        719
+      ],
+      "reference_color_bounds": [
+        315,
+        165,
+        508,
+        685
+      ],
+      "height_ratio": 1.3557692307692308,
+      "top_displacement_px": -151
+    },
+    {
+      "frame": 3,
+      "candidate_color_bounds": [
+        218,
+        16,
+        526,
+        717
+      ],
+      "reference_color_bounds": [
+        313,
+        164,
+        513,
+        676
+      ],
+      "height_ratio": 1.369140625,
+      "top_displacement_px": -148
+    }
+  ],
+  "runtime_admitted": false,
+  "reason": "Generated actors expand vertically and lose the fixed source framing. Do not repair with per-frame bounding-box fitting."
+}

@@ -6,6 +6,7 @@ visual approval. Every evaluated pose must reproduce the retained source rig.
 import argparse,hashlib,json,math,sys
 from pathlib import Path
 import bpy
+import numpy as np
 from mathutils import Matrix,Vector
 from bpy_extras.object_utils import world_to_camera_view
 sys.path.insert(0,str(Path(__file__).resolve().parent))
@@ -34,7 +35,7 @@ def main():
         source.animation_data.action=chosen
         if hasattr(source.animation_data,'action_slot')and chosen.slots:source.animation_data.action_slot=chosen.slots[0]
         scene.frame_set(math.floor(frame),subframe=frame%1);bpy.context.view_layer.update()
-    first=next(iter(manifest['views'].values()))['frames'];records=[];head_states=[];foot_states={role:[]for role in ['FootL','FootR']}
+    first=next(iter(manifest['views'].values()))['frames'];records=[];head_states=[];head_projections={d:[]for d in manifest['views']};foot_states={role:[]for role in ['FootL','FootR']}
     for i,record in enumerate(first):
         evaluate(record['action'],record['source_frame'])
         if 'transition_from'in record:
@@ -57,6 +58,7 @@ def main():
             for role,vertices in points.items():
                 if not vertices:raise ValueError('Missing weighted mesh group '+role)
                 projected=[world_to_camera_view(scene,camera,v)for v in vertices];xs=[q.x*job['resolution']for q in projected];ys=[(1-q.y)*job['resolution']for q in projected];parts[role]={'projected_bbox':[min(xs),min(ys),max(xs),max(ys)],'projected_vertex_centroid':[sum(xs)/len(xs),sum(ys)/len(ys)],'weighted_vertex_count':len(vertices)}
+                if role=='HeadHair':head_projections[direction].append(np.array(list(zip(xs,ys))))
             views[direction]=parts
         records.append({'index':i,'source_action':record['action'],'source_frame':record['source_frame'],'replay_error_m':error,'views':views})
     head_pairs=[]
@@ -75,6 +77,17 @@ def main():
                 if len(va)!=len(vb):raise ValueError('Weighted foot topology changed')
                 bound=max((x-y).length for x,y in zip(va,vb))*240/job['ortho_scale'];angle=math.degrees(qa.rotation_difference(qb).angle)
                 foot_pairs.append({'role':role,'from_index':i,'to_index':j,'weighted_vertices':len(va),'runtime_size':240,'vertex_delta_runtime_px_upper_bound':bound,'rotation_degrees':angle,'subpixel_foot_reuse_candidate':bound<=.5 and angle<=5})
-    result={'status':'SOURCE_WEIGHTED_MESH_PROJECTION_DIAGNOSTIC','guide_job':job['id'],'guide_manifest_sha256':hashlib.sha256((a.guide/'manifest.json').read_bytes()).hexdigest(),'per_frame_paint_fitting':False,'source_resolution':job['resolution'],'frames':records,'head_pose_pairs':head_pairs,'foot_pose_pairs':foot_pairs,'limitations':['Vertex-group bounds include occluded geometry. They are not visible segmentation masks.','Painted hair and boots have their own envelopes; compare movement relative to one fixed calibration, not raw silhouette sizes.','Head reuse candidates only bound the weighted source head mesh; costume-neck seams and the illustrated hair envelope still need review.','Foot reuse candidates exclude the calf, trouser cuff and painted boot envelope. They do not authorize replacing an entire boot or lower body.','No painted pixels were changed and no visual approval is granted.']};a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,indent=2)+'\n');print('MESH_ALIGNMENT_DIAGNOSTIC '+json.dumps({'frames':len(records),'max_replay_error_m':max(r['replay_error_m']for r in records)}),flush=True)
+    rigid_pairs=[]
+    for i in range(len(records)):
+        for j in range(i+1,len(records)):
+            views={}
+            for direction,states in head_projections.items():
+                source,target=states[i],states[j];ca,cb=source.mean(0),target.mean(0);u,_,vt=np.linalg.svd((source-ca).T@(target-cb));rotation=u@vt
+                if np.linalg.det(rotation)<0:u[:,-1]*=-1;rotation=u@vt
+                translation=cb-ca@rotation;residual=np.linalg.norm(source@rotation+translation-target,axis=1)*240/job['resolution']
+                views[direction]={'row_rotation':rotation.tolist(),'translation_source_px':translation.tolist(),'max_residual_runtime_px':float(residual.max()),'rotation_degrees':math.degrees(math.atan2(rotation[0,1],rotation[0,0]))}
+            maximum=max(v['max_residual_runtime_px']for v in views.values())
+            rigid_pairs.append({'from_index':i,'to_index':j,'views':views,'max_residual_runtime_px':maximum,'illustrated_envelope_safety_factor':1.5,'eligible_rigid_head_layout_candidate':maximum*1.5<=.5,'scale':1.,'reflection':False,'whole_pose_hold':False,'art_approved':False})
+    result={'status':'SOURCE_WEIGHTED_MESH_PROJECTION_DIAGNOSTIC','guide_job':job['id'],'guide_manifest_sha256':hashlib.sha256((a.guide/'manifest.json').read_bytes()).hexdigest(),'per_frame_paint_fitting':False,'source_resolution':job['resolution'],'frames':records,'head_pose_pairs':head_pairs,'foot_pose_pairs':foot_pairs,'rigid_head_pose_pairs':rigid_pairs,'limitations':['Vertex-group bounds include occluded geometry. They are not visible segmentation masks.','Painted hair and boots have their own envelopes; compare movement relative to one fixed calibration, not raw silhouette sizes.','Head reuse candidates only bound the weighted source head mesh; costume-neck seams and the illustrated hair envelope still need review.','Foot reuse candidates exclude the calf, trouser cuff and painted boot envelope. They do not authorize replacing an entire boot or lower body.','Rigid head candidates translate/rotate one separate head layer from source geometry only, without scaling or reflection. They do not authorize moving a complete painted body, nor certify neck seams or hair-depth occlusion.','No painted pixels were changed and no visual approval is granted.']};a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(result,indent=2)+'\n');print('MESH_ALIGNMENT_DIAGNOSTIC '+json.dumps({'frames':len(records),'max_replay_error_m':max(r['replay_error_m']for r in records)}),flush=True)
 
 if __name__=='__main__':main()
