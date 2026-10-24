@@ -47,6 +47,10 @@ def apply(masters,previous,annotations,output):
         w=subset(source(r,'Weapon'));w&=~included;h&=~w
         hand=np.zeros_like(h)
         for points in r.get('hand_occluder',[]):hand|=polygon_mask(points)
+        if r.get('hand_from_body_only'):
+            # Optional ownership restriction for same-frame palm/cuff proposals.
+            # Existing head and weapon ownership is preserved, not certified.
+            hand&=~h;hand&=~w
         if r.get('protect_gold_weapon_in_hand'):
             gold=(hsv[:,:,0]>.08)&(hsv[:,:,0]<.16)&(hsv[:,:,1]>.35)&(hsv[:,:,2]>.3)
             hand&=~(gold&w)

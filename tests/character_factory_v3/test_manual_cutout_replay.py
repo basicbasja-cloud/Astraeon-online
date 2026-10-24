@@ -44,6 +44,12 @@ class ManualCutoutReplayTests(unittest.TestCase):
         self.assertIn(6,np.unique(np.array(Image.open(source/'labels/000.png'))))
         result=replay(source/'receipt.json',self.masters,self.root/'rebuilt');self.assertEqual(len(result['role_checks']),4)
 
+    def test_body_only_palm_roi_preserves_head_and_weapon_ownership(self):
+        data=json.loads(self.annotations.read_text());data['frames'][0].update({'hand_occluder':[[[10,10],[90,10],[90,90],[10,90]]],'hand_from_body_only':True})
+        self.annotations.write_text(json.dumps(data));source=self.root/'source';apply(self.masters,self.previous,self.annotations,source)
+        labels=np.array(Image.open(source/'labels/000.png'))
+        self.assertEqual(labels[25,25],2);self.assertEqual(labels[41,45],3);self.assertEqual(labels[60,25],6)
+
     def test_other_png_compression_preserves_exact_pixel_replay(self):
         source=self.root/'source';apply(self.masters,self.previous,self.annotations,source);original_import=replayer.import_frame
         def reencode(master,labels,targets):

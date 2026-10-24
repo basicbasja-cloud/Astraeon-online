@@ -1,0 +1,159 @@
+{
+  "status": "SOURCE_ASSISTED_VISIBLE_CUTOUT_PROPOSALS_NOT_APPROVED",
+  "guide_job": "fb582c46e9b307321c03",
+  "direction": "NE",
+  "canonical_canvas": [
+    768,
+    768
+  ],
+  "model_repository": "https://github.com/facebookresearch/sam2",
+  "model_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "implementation_sha256": "da189ea87309cb8502a6896af4363ce01c18b271aa3a6b555a0b6845479002e3",
+  "complete_visible_partition": true,
+  "frames": [
+    {
+      "index": 13,
+      "source_master_sha256": "31f2967662c0511038a3f80fbe0f1a947b581a513e06cf75cb7262f369c53ce4",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            322.18725,
+            263.0824,
+            400.5,
+            347.0824
+          ],
+          "positive": [
+            [
+              387,
+              325
+            ]
+          ],
+          "negative": [
+            [
+              387.18725,
+              377.0824
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            362.2313618421052,
+            212.7906,
+            421.54905,
+            464.7419921052632
+          ],
+          "positive": [
+            [
+              409,
+              256
+            ],
+            [
+              409,
+              245
+            ]
+          ],
+          "negative": [
+            [
+              387,
+              325
+            ],
+            [
+              387.18725,
+              377.0824
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8855285048484802,
+        "Weapon": 0.7782912850379944
+      },
+      "visible_pixels": {
+        "HeadHair": 1202,
+        "Weapon": 995,
+        "BodyCostume": 20230
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 15,
+      "source_master_sha256": "078d67c26b33acb7997e8f0e3595b1da7d79fb4d3b24be43d53069acb591714a",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            320.34695,
+            262.91625,
+            445.34695,
+            346.91625
+          ],
+          "positive": [
+            [
+              385,
+              325
+            ]
+          ],
+          "negative": [
+            [
+              385.34695,
+              376.91625
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            336.0225828947369,
+            214.08345,
+            394.63135,
+            470.91215657894736
+          ],
+          "positive": [
+            [
+              390,
+              258
+            ],
+            [
+              387,
+              238
+            ]
+          ],
+          "negative": [
+            [
+              385,
+              325
+            ],
+            [
+              385.34695,
+              376.91625
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.9175524115562439,
+        "Weapon": 0.7246244549751282
+      },
+      "visible_pixels": {
+        "HeadHair": 1664,
+        "Weapon": 643,
+        "BodyCostume": 17890
+      },
+      "recomposition_mismatch_pixels": 0
+    }
+  ],
+  "failures": [],
+  "input_hashes": {
+    "/workspace/Astraeon-online/tools/character_factory_v3/propose_source_cutouts.py": "da189ea87309cb8502a6896af4363ce01c18b271aa3a6b555a0b6845479002e3",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/guides/fb582c46e9b307321c03/manifest.json": "76578b53b4fa0105b5985597bfd26333cbfbc2c4fd07347a3f063cd3f2597270",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-male-castrelease/NE/full-source-batches-20261024/assembled/retry-13-15-recipe.json": "29fb82512006efa6eace609133c8ec32a64715c249d894212bb7acbd9cf6cbaa",
+    "/workspace/.tools/SAM2/sam2.1_hiera_tiny.pt": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-male-castrelease/NE/full-source-batches-20261024/assembled/frames/013.png": "31f2967662c0511038a3f80fbe0f1a947b581a513e06cf75cb7262f369c53ce4",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-male-castrelease/NE/full-source-batches-20261024/assembled/frames/015.png": "078d67c26b33acb7997e8f0e3595b1da7d79fb4d3b24be43d53069acb591714a",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-male-castrelease/NE/full-source-batches-20261024/assembled/visible-upper-staff-retry-prompts.json": "b2ac9d74e98ffd6af08948ea53912482337059cb9f1dc36ffff3e980d95ec45f"
+  },
+  "hidden_surfaces_authored": false,
+  "source_pixels_changed": false,
+  "runtime_admitted": false,
+  "semantic_boundary_review_required": true,
+  "hand_occlusion_separated": false
+}

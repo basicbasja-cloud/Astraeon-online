@@ -11,6 +11,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from source_capture_identity import seal_source_reference
 
 
 def source_union_viewport(frames,margin,author_size):
@@ -58,7 +59,10 @@ def prepare(guide,direction,indices,columns,margin,author_size,output):
             'direction':direction,'all_source_frame_inputs':inputs,'fixed_margin_native_pixels':margin,
             'source_union_uses_all_frames_not_only_selected_keys':True,
             'per_frame_figure_fitting':False,'runtime_admitted':False}
-    (output/'viewport.json').write_text(json.dumps(recipe,indent=2)+'\n');return recipe
+    recipe_path=output/'viewport.json'
+    recipe_path.write_text(json.dumps(recipe,indent=2)+'\n')
+    seal_source_reference(recipe_path,guide)
+    return recipe
 
 
 if __name__=='__main__':

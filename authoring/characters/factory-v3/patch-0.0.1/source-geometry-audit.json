@@ -1321,7 +1321,7 @@
       ]
     },
     {
-      "job": "fc1e075e2e57fb400e34",
+      "job": "dd860dc461b465aba138",
       "uses": [
         "Swordsman/Guard"
       ],
@@ -1330,12 +1330,12 @@
       "offscreen_points": [],
       "endpoint_distance_m": {
         "root": 0.0,
-        "head": 0.0373703322348276,
-        "pelvis": 0.011814331817031856,
-        "hand_r": 0.06201122758910511,
-        "hand_l": 0.11796932048325914,
-        "foot_r": 0.0005939661471161478,
-        "foot_l": 0.0008106901596339968
+        "head": 0.0,
+        "pelvis": 0.0,
+        "hand_r": 0.0,
+        "hand_l": 0.0,
+        "foot_r": 0.0,
+        "foot_l": 0.0
       },
       "source_segment_joins": [],
       "steps": {
@@ -1348,51 +1348,51 @@
           ]
         },
         "head": {
-          "max_m": 0.006477762466797882,
-          "median_m": 0.0034873329642642168,
+          "max_m": 0.0,
+          "median_m": 0.0,
           "max_step_frames": [
-            14,
-            15
+            0,
+            1
           ]
         },
         "pelvis": {
-          "max_m": 0.0035100442974403956,
-          "median_m": 0.001753571849218629,
+          "max_m": 0.0,
+          "median_m": 0.0,
           "max_step_frames": [
-            14,
-            15
+            0,
+            1
           ]
         },
         "hand_r": {
-          "max_m": 0.011515821403795999,
-          "median_m": 0.006016896728378237,
+          "max_m": 0.0,
+          "median_m": 0.0,
           "max_step_frames": [
-            14,
-            15
+            0,
+            1
           ]
         },
         "hand_l": {
-          "max_m": 0.022225836965391408,
-          "median_m": 0.007198040355367605,
+          "max_m": 0.0,
+          "median_m": 0.0,
           "max_step_frames": [
-            14,
-            15
+            0,
+            1
           ]
         },
         "foot_r": {
-          "max_m": 0.0005324808998937247,
-          "median_m": 0.00018534195597095027,
+          "max_m": 0.0,
+          "median_m": 0.0,
           "max_step_frames": [
-            2,
-            3
+            0,
+            1
           ]
         },
         "foot_l": {
-          "max_m": 0.000481142473511554,
-          "median_m": 0.0003160983815768813,
+          "max_m": 0.0,
+          "median_m": 0.0,
           "max_step_frames": [
-            6,
-            7
+            0,
+            1
           ]
         }
       },
@@ -2500,7 +2500,8 @@
       "job": "9deff93fc539f5d49c4e",
       "uses": [
         "Mage/CombatIdle",
-        "Mage/CastChannel"
+        "Mage/CastChannel",
+        "Mage/Guard"
       ],
       "status": "GEOMETRY_DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
       "cross_camera_world_pose_difference_m": 0.0,
@@ -2802,90 +2803,6 @@
         }
       },
       "loop": false,
-      "owner_approved": false,
-      "notes": [
-        "Loop last-to-first distance represents one sample interval, not necessarily a discontinuity.",
-        "Large attack steps can be valid fast strikes; no blanket velocity threshold passes or fails human motion.",
-        "Foot bone height is not a sole-contact or weight-bearing proof."
-      ]
-    },
-    {
-      "job": "86df9c9f3c2a30fdf571",
-      "uses": [
-        "Mage/Guard"
-      ],
-      "status": "GEOMETRY_DIAGNOSTIC_REQUIRES_VISUAL_REVIEW",
-      "cross_camera_world_pose_difference_m": 0.0,
-      "offscreen_points": [],
-      "endpoint_distance_m": {
-        "root": 0.0,
-        "head": 0.0030167630526047894,
-        "pelvis": 0.006158237975225774,
-        "hand_r": 0.08608928022721117,
-        "hand_l": 0.41862524767308446,
-        "foot_r": 0.011241855068559943,
-        "foot_l": 0.01909070878167099
-      },
-      "source_segment_joins": [],
-      "steps": {
-        "root": {
-          "max_m": 0.0,
-          "median_m": 0.0,
-          "max_step_frames": [
-            0,
-            1
-          ]
-        },
-        "head": {
-          "max_m": 0.010284152882012834,
-          "median_m": 0.002083989058830263,
-          "max_step_frames": [
-            12,
-            13
-          ]
-        },
-        "pelvis": {
-          "max_m": 0.006158239067209261,
-          "median_m": 0.002606882682589693,
-          "max_step_frames": [
-            12,
-            13
-          ]
-        },
-        "hand_r": {
-          "max_m": 0.08822008801557085,
-          "median_m": 0.028423063070467113,
-          "max_step_frames": [
-            13,
-            14
-          ]
-        },
-        "hand_l": {
-          "max_m": 0.4528077758497446,
-          "median_m": 0.09005087251196593,
-          "max_step_frames": [
-            14,
-            15
-          ]
-        },
-        "foot_r": {
-          "max_m": 0.02515676269592862,
-          "median_m": 0.0002519713957111307,
-          "max_step_frames": [
-            12,
-            13
-          ]
-        },
-        "foot_l": {
-          "max_m": 0.03902831095180689,
-          "median_m": 0.0004280494111149744,
-          "max_step_frames": [
-            12,
-            13
-          ]
-        }
-      },
-      "loop": true,
       "owner_approved": false,
       "notes": [
         "Loop last-to-first distance represents one sample interval, not necessarily a discontinuity.",
@@ -4321,7 +4238,7 @@
       ]
     }
   ],
-  "captured": 49,
+  "captured": 48,
   "missing_or_stale": 0,
   "world_pose_inconsistencies": [],
   "jobs_with_offscreen_points": []

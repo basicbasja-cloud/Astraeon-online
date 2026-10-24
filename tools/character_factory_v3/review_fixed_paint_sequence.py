@@ -12,6 +12,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 from scipy.ndimage import distance_transform_edt
+from source_capture_identity import verify_source_reference
 
 
 def sha(path):
@@ -50,13 +51,13 @@ def review(guide,recipe_path,frames_folder,output,duration_ms=80):
     recipe=json.loads(recipe_path.read_text());manifest_path=guide/'manifest.json'
     manifest=json.loads(manifest_path.read_text())
     if recipe.get('frame_space')!='canonical-authoring':raise ValueError('Only direct canonical-frame recipes are accepted')
-    if recipe['guide_manifest_sha256']!=sha(manifest_path) or recipe['guide_job']!=manifest['job']['id']:raise ValueError('Source guide changed')
+    source_verification=verify_source_reference(recipe_path,guide)
     direction=recipe['direction'];indices=recipe['source_pose_indices']
     if not indices or len(indices)!=len(set(indices)):raise ValueError('Invalid pose map')
     count=manifest['frame_count']
     if len(recipe['all_source_frame_inputs'])!=count:raise ValueError('Incomplete source hash inventory')
     expected={i:sha(guide/direction/f'{i:03d}.png')for i in range(count)}
-    if {r['index']:r['sha256']for r in recipe['all_source_frame_inputs']}!=expected:raise ValueError('Source images changed')
+    if source_verification['mode']=='EXACT_DECLARED_REFERENCE_BYTES' and {r['index']:r['sha256']for r in recipe['all_source_frame_inputs']}!=expected:raise ValueError('Source images changed')
     canvas=tuple(recipe['source_size']);native=manifest['job']['resolution']
     if canvas[0]!=canvas[1] or native%canvas[0]:raise ValueError('Incompatible source canvas')
     factor=native/canvas[0];records=[];comparisons=[];painted=[]
@@ -92,7 +93,7 @@ def review(guide,recipe_path,frames_folder,output,duration_ms=80):
     for name,images,duration in [('normal.gif',painted,duration_ms),('slow.gif',painted,duration_ms*3),('source-vs-paint-slow.gif',comparisons,duration_ms*3)]:
         shared_palette_gif(images,output/name,duration)
     comparisons[0].save(output/'first-source-overlay.png')
-    report={'status':'DIAGNOSTIC_REVIEW_NOT_VISUAL_APPROVAL','direction':direction,'indices':indices,
+    report={'status':'DIAGNOSTIC_REVIEW_NOT_VISUAL_APPROVAL','direction':direction,'indices':indices,'source_capture_verification':source_verification,
             'full_source_timeline':indices==list(range(count)),'recipe_sha256':sha(recipe_path),
             'guide_manifest_sha256':sha(manifest_path),'implementation_sha256':sha(Path(__file__)),
             'preview_timing_ms':duration_ms,'preview_timing_is_not_runtime_event_authority':True,

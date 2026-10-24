@@ -9,21 +9,24 @@ from pathlib import Path
 import numpy as np
 from patch001_factory import ROOT,BASE,read,write,receipt_valid,filehash
 from import_patch001_cutouts import import_job
+from source_capture_identity import verify_source_reference
 
 ROLES=['BodyCostume','HeadHair','Weapon','WeaponHandOccluder','WeaponLightBack','WeaponLightFront']
 
 
-def prepare(source,sockets_path,output):
+def prepare(source,sockets_path,output,guide_override=None):
     if output.exists():raise ValueError('Preserve earlier intake manifests; choose a fresh destination')
     ledger=read(BASE/'ledger.json');job=next(j for j in ledger['paint_jobs'].values()if j['character']=='swordsman-male-patch001'and'BasicAttack'in j['actions'])
     capture_job=ledger['guide_jobs'][job['guide_job']]
-    if not receipt_valid(capture_job):raise ValueError('Matching completed source capture is missing')
+    capture_folder=guide_override or BASE/'guides'/job['guide_job']
+    if not receipt_valid(capture_job,folder=capture_folder):raise ValueError('Matching completed source capture is missing')
     catalog=read(ROOT/'authoring/characters/factory-v3/configs/layered_action_catalog.json');spec=catalog['actions']['BasicAttack']
     if capture_job.get('explicit_source_samples')!=spec['source_samples']or capture_job['frames']!=spec['poses_per_direction']or capture_job['source_sha256']!=catalog['source_sha256']:raise ValueError('Retained native pose contract differs')
-    manifest_path=BASE/'guides'/job['guide_job']/'manifest.json';guide=read(manifest_path);receipt=read(source/'receipt.json');verified=read(source/'verification-receipt.json')
+    manifest_path=capture_folder/'manifest.json';guide=read(manifest_path);receipt=read(source/'receipt.json');verified=read(source/'verification-receipt.json')
     if verified.get('verified_existing_images')!=896 or verified.get('original_receipt_sha256')!=filehash(source/'receipt.json'):raise ValueError('Verify all retained canonical assets before intake')
     socket_data=read(sockets_path)
-    if socket_data['guide_job']!=job['guide_job']or socket_data['guide_manifest_sha256']!=filehash(manifest_path)or socket_data['maximum_landmark_error_author_px']>1e-3:raise ValueError('Native socket verification differs')
+    if socket_data['guide_job']!=job['guide_job']or socket_data['maximum_landmark_error_author_px']>1e-3:raise ValueError('Native socket verification differs')
+    source_verification=verify_source_reference(sockets_path,capture_folder)
     socket_rows={(r['direction'],r['index']):r for r in socket_data['frames']}
     original=ROOT/spec['directory'];original_guide=read(original/'source-guides/manifest.json');views={v['direction']:v for v in receipt['frames']if v['action']=='BasicAttack'}
     if set(views)!=set(job['directions']):raise ValueError('Missing preserved source view')
@@ -46,13 +49,13 @@ def prepare(source,sockets_path,output):
     if len(records)!=len(job['directions'])*job['frame_count']:raise ValueError('Incomplete retained art timeline')
     intake={'guide_job':job['guide_job'],'fit_id':job['fit_id'],'frames':records,'provenance':'Existing earlier Swordsman artwork, exact retained native samples and documented fixed-camera canonical transform','hidden_surfaces_authored':False,'owner_approved':False,'runtime_admitted':False}
     write(output/'import-manifest.json',intake)
-    write(output/'reconciliation-proof.json',{'paint_job':job['id'],'guide_job':job['guide_job'],'retained_receipt_sha256':filehash(source/'receipt.json'),'retained_verification_sha256':filehash(source/'verification-receipt.json'),'native_sockets_sha256':filehash(sockets_path),'implementation_sha256':filehash(Path(__file__)),'frames':proof,'maximum_source_projection_error_author_px':max(max(r['source_projection_errors_author_px'].values())for r in proof),'painted_pixels_modified':False,'actions_substituted':False,'runtime_admitted':False})
+    write(output/'reconciliation-proof.json',{'paint_job':job['id'],'guide_job':job['guide_job'],'retained_receipt_sha256':filehash(source/'receipt.json'),'retained_verification_sha256':filehash(source/'verification-receipt.json'),'native_sockets_sha256':filehash(sockets_path),'source_capture_verification':source_verification,'implementation_sha256':filehash(Path(__file__)),'frames':proof,'maximum_source_projection_error_author_px':max(max(r['source_projection_errors_author_px'].values())for r in proof),'painted_pixels_modified':False,'actions_substituted':False,'runtime_admitted':False})
     return job['id'],output/'import-manifest.json'
 
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['source','sockets','output']:p.add_argument('--'+name,type=Path,required=True)
-    p.add_argument('--import-cutouts',action='store_true');a=p.parse_args();job,manifest=prepare(a.source.resolve(),a.sockets.resolve(),a.output.resolve())
+    p.add_argument('--guide-override',type=Path);p.add_argument('--import-cutouts',action='store_true');a=p.parse_args();job,manifest=prepare(a.source.resolve(),a.sockets.resolve(),a.output.resolve(),a.guide_override)
     if a.import_cutouts:import_job(job,manifest)
     else:print(json.dumps({'paint_job':job,'manifest':str(manifest)}))

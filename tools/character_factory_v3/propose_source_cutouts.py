@@ -11,6 +11,7 @@ import numpy as np
 from PIL import Image,ImageDraw
 
 from track_visible_cutouts import partition_visible,pin_inputs,verify_inputs,sha
+from source_capture_identity import verify_source_reference,reference_sidecar
 
 
 def nearest_visible(pixels,target,scope=None):
@@ -70,9 +71,11 @@ def retain_soft_edges(pixels,mask):
 def propose(guide,recipe_path,frames_folder,checkpoint,model_revision,output,annotations=None):
     if output.exists():raise ValueError('Preserve earlier proposals; choose a fresh output')
     recipe=json.loads(recipe_path.read_text());manifest_path=guide/'manifest.json';manifest=json.loads(manifest_path.read_text())
-    if recipe.get('frame_space')!='canonical-authoring' or recipe['guide_manifest_sha256']!=sha(manifest_path) or recipe['guide_job']!=manifest['job']['id']:raise ValueError('Canonical recipe and source capture must match')
+    if recipe.get('frame_space')!='canonical-authoring':raise ValueError('Canonical recipe required')
+    source_verification=verify_source_reference(recipe_path,guide)
     direction=recipe['direction'];indices=recipe['source_pose_indices'];files=[frames_folder/f'{i:03d}.png'for i in indices]
-    pinned=pin_inputs([Path(__file__),manifest_path,recipe_path,checkpoint,*files]+([annotations]if annotations else []))
+    sidecar=reference_sidecar(recipe_path)
+    pinned=pin_inputs([Path(__file__),manifest_path,recipe_path,checkpoint,*files]+([annotations]if annotations else [])+([sidecar]if sidecar.exists()else []))
     if sha(checkpoint)!='7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69' or model_revision!='2b90b9f5ceec907a1c18123530e92e794ad901a4':raise ValueError('Use the retained licensed SAM2.1 tiny implementation and checkpoint')
     manual=json.loads(annotations.read_text())if annotations else {}
     import torch
@@ -123,7 +126,7 @@ def propose(guide,recipe_path,frames_folder,checkpoint,model_revision,output,ann
         print(json.dumps({'index':index,'status':'PARTITIONED_REQUIRES_SEMANTIC_REVIEW'}),flush=True)
     for role,sheet in sheets.items():sheet.save(output/(role+'-sheet.png'))
     verify_inputs(pinned)
-    result={'status':'SOURCE_ASSISTED_VISIBLE_CUTOUT_PROPOSALS_NOT_APPROVED','guide_job':recipe['guide_job'],'direction':direction,
+    result={'status':'SOURCE_ASSISTED_VISIBLE_CUTOUT_PROPOSALS_NOT_APPROVED','guide_job':recipe['guide_job'],'direction':direction,'source_capture_verification':source_verification,
             'canonical_canvas':list(size),'model_repository':'https://github.com/facebookresearch/sam2','model_revision':model_revision,
             'checkpoint_sha256':sha(checkpoint),'implementation_sha256':sha(Path(__file__)),
             'complete_visible_partition':not failures and len(records)==len(indices),'frames':records,'failures':failures,

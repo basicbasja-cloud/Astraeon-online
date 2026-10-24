@@ -491,8 +491,8 @@
         "Swordsman/CastRelease"
       ]
     },
-    "fc1e075e2e57fb400e34": {
-      "id": "fc1e075e2e57fb400e34",
+    "dd860dc461b465aba138": {
+      "id": "dd860dc461b465aba138",
       "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
       "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
       "source_actions": [
@@ -509,8 +509,8 @@
       "pose_evaluation_revision": 2,
       "source_ranges": {
         "Sword_Block": [
-          6,
-          15
+          10,
+          10
         ]
       },
       "directions": [
@@ -1003,7 +1003,8 @@
       ],
       "uses": [
         "Mage/CombatIdle",
-        "Mage/CastChannel"
+        "Mage/CastChannel",
+        "Mage/Guard"
       ]
     },
     "ebac492fbc20b608880c": {
@@ -1094,41 +1095,6 @@
       ],
       "uses": [
         "Mage/CastRelease"
-      ]
-    },
-    "86df9c9f3c2a30fdf571": {
-      "id": "86df9c9f3c2a30fdf571",
-      "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
-      "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
-      "source_actions": [
-        "Spell_Simple_Enter"
-      ],
-      "frames": 16,
-      "loop": true,
-      "ortho_scale": 5.325,
-      "resolution": 1536,
-      "weapon": "staff",
-      "guide_aa": "OFF",
-      "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
-      "camera_up_offset": 1.15375,
-      "pose_evaluation_revision": 2,
-      "staff_grip_mode": "wrist-local-prop-reference",
-      "held_staff_hand": "r",
-      "staff_arm_reference": "Idle_Lantern",
-      "render_pose_freeze_revision": 1,
-      "render_pose_freeze_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7",
-      "directions": [
-        "S",
-        "SW",
-        "W",
-        "NW",
-        "N",
-        "NE",
-        "E",
-        "SE"
-      ],
-      "uses": [
-        "Mage/Guard"
       ]
     },
     "d85b0a911437110ac5b7": {
@@ -1730,7 +1696,7 @@
     "Swordsman/SkillAction": "f07ff44e6704e195ae4f",
     "Swordsman/CastChannel": "cd5c512a057264deee46",
     "Swordsman/CastRelease": "25df792aba736f8412fb",
-    "Swordsman/Guard": "fc1e075e2e57fb400e34",
+    "Swordsman/Guard": "dd860dc461b465aba138",
     "Swordsman/Dash": "73e08b91812650d59986",
     "Swordsman/SpinAttack": "f5c0e5456446f58e5efc",
     "Mage/Walk": "08ac2ba624238e11c741",
@@ -1749,7 +1715,7 @@
     "Mage/SkillAction": "ebac492fbc20b608880c",
     "Mage/CastChannel": "9deff93fc539f5d49c4e",
     "Mage/CastRelease": "fb582c46e9b307321c03",
-    "Mage/Guard": "86df9c9f3c2a30fdf571",
+    "Mage/Guard": "9deff93fc539f5d49c4e",
     "Mage/Blink": "d85b0a911437110ac5b7",
     "Archer/Walk": "74da7252e5e94a4ca4aa",
     "Archer/Run": "f7c697f96fc35ae6127a",
@@ -2864,13 +2830,13 @@
         "generic_front_portrait_for_rear_views": false
       }
     },
-    "06608b2c877096d6e962": {
-      "id": "06608b2c877096d6e962",
+    "1b837961fbba70d915a9": {
+      "id": "1b837961fbba70d915a9",
       "character": "swordsman-male-patch001",
       "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/swordsman-male-seed.png",
       "identity_sha256": "5d7efd1f7f04b47eb0bfc48ddb2c850d3efd5ca6ba5827872c402ab826795a0b",
       "fit_id": "astraeon-male-v3",
-      "guide_job": "fc1e075e2e57fb400e34",
+      "guide_job": "dd860dc461b465aba138",
       "directions": [
         "S",
         "SW",
@@ -4169,13 +4135,13 @@
         "generic_front_portrait_for_rear_views": false
       }
     },
-    "0651e4398e995b3071e5": {
-      "id": "0651e4398e995b3071e5",
+    "e5cf118bed9f417171c3": {
+      "id": "e5cf118bed9f417171c3",
       "character": "swordsman-female-patch001",
       "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/swordsman-female-seed.png",
       "identity_sha256": "e057014df2ab08e1820e641d51d519ecf9f5aeea623ebe9fd1e648100fee5f7c",
       "fit_id": "astraeon-female-v3",
-      "guide_job": "fc1e075e2e57fb400e34",
+      "guide_job": "dd860dc461b465aba138",
       "directions": [
         "S",
         "SW",
@@ -5261,7 +5227,8 @@
       "frame_count": 16,
       "actions": [
         "CombatIdle",
-        "CastChannel"
+        "CastChannel",
+        "Guard"
       ],
       "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
       "master_first": true,
@@ -5425,84 +5392,6 @@
         "NE": {
           "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NE.png",
           "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NE-head-upper.png"
-        },
-        "SE": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SE.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SE-head-upper.png"
-        }
-      },
-      "reference_authority": {
-        "geometry": "current guide_job only",
-        "design": "matching-direction identity study; inspect view before use",
-        "generic_front_portrait_for_rear_views": false
-      }
-    },
-    "396e2db0bb0c27ea933e": {
-      "id": "396e2db0bb0c27ea933e",
-      "character": "mage-male-patch001",
-      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/mage-male-seed.png",
-      "identity_sha256": "1cc706a7395ba760641ae23016b8d3f4b9ef2a094e22296173785bea73ddf731",
-      "fit_id": "astraeon-male-v3",
-      "guide_job": "86df9c9f3c2a30fdf571",
-      "directions": [
-        "S",
-        "SW",
-        "W",
-        "NW",
-        "N",
-        "NE",
-        "E",
-        "SE"
-      ],
-      "frame_count": 16,
-      "actions": [
-        "Guard"
-      ],
-      "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
-      "master_first": true,
-      "layers_from_same_frame": [
-        "HeadHair",
-        "BodyCostume",
-        "Weapon",
-        "WeaponHandOccluder",
-        "WeaponLightBack",
-        "WeaponLightFront",
-        "BackAccessory",
-        "Headgear"
-      ],
-      "generation_policy": "one complete source strip per action/view, then same-frame cutouts; no independent layer generation",
-      "approval": {
-        "owner_approved": false,
-        "runtime_admitted": false
-      },
-      "direction_identity_references": {
-        "S": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/S.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/S-head-upper.png"
-        },
-        "SW": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SW.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SW-head-upper.png"
-        },
-        "W": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/W.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/W-head-upper.png"
-        },
-        "NW": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NW.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NW-head-upper.png"
-        },
-        "N": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/N.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/N-head-upper.png"
-        },
-        "NE": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NE.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/NE-head-upper.png"
-        },
-        "E": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/E.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/E-head-upper.png"
         },
         "SE": {
           "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-male/SE.png",
@@ -6471,7 +6360,8 @@
       "frame_count": 16,
       "actions": [
         "CombatIdle",
-        "CastChannel"
+        "CastChannel",
+        "Guard"
       ],
       "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
       "master_first": true,
@@ -6635,84 +6525,6 @@
         "NE": {
           "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NE.png",
           "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NE-head-upper.png"
-        },
-        "SE": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SE.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SE-head-upper.png"
-        }
-      },
-      "reference_authority": {
-        "geometry": "current guide_job only",
-        "design": "matching-direction identity study; inspect view before use",
-        "generic_front_portrait_for_rear_views": false
-      }
-    },
-    "945c34dbf4089335b86f": {
-      "id": "945c34dbf4089335b86f",
-      "character": "mage-female-patch001",
-      "identity_reference": "authoring/characters/factory-v3/patch-0.0.1/identities/mage-female-seed.png",
-      "identity_sha256": "aad2885241e56c7536b4dd4625bcc78f4401ae25ddeb9850085206aa80224126",
-      "fit_id": "astraeon-female-v3",
-      "guide_job": "86df9c9f3c2a30fdf571",
-      "directions": [
-        "S",
-        "SW",
-        "W",
-        "NW",
-        "N",
-        "NE",
-        "E",
-        "SE"
-      ],
-      "frame_count": 16,
-      "actions": [
-        "Guard"
-      ],
-      "status": "MISSING_PAINTED_MASTERS_AND_LABELS",
-      "master_first": true,
-      "layers_from_same_frame": [
-        "HeadHair",
-        "BodyCostume",
-        "Weapon",
-        "WeaponHandOccluder",
-        "WeaponLightBack",
-        "WeaponLightFront",
-        "BackAccessory",
-        "Headgear"
-      ],
-      "generation_policy": "one complete source strip per action/view, then same-frame cutouts; no independent layer generation",
-      "approval": {
-        "owner_approved": false,
-        "runtime_admitted": false
-      },
-      "direction_identity_references": {
-        "S": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/S.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/S-head-upper.png"
-        },
-        "SW": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SW.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SW-head-upper.png"
-        },
-        "W": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/W.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/W-head-upper.png"
-        },
-        "NW": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NW.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NW-head-upper.png"
-        },
-        "N": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/N.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/N-head-upper.png"
-        },
-        "NE": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NE.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/NE-head-upper.png"
-        },
-        "E": {
-          "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/E.png",
-          "head_upper": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/E-head-upper.png"
         },
         "SE": {
           "full_view": "authoring/characters/factory-v3/patch-0.0.1/identities/views/mage-female/SE.png",
@@ -9036,6 +8848,6 @@
   },
   "requested_action_instances": 114,
   "requested_pose_positions": 12992,
-  "source_capture_positions_after_reuse": 5696,
+  "source_capture_positions_after_reuse": 5568,
   "planning_is_not_authored_coverage": true
 }

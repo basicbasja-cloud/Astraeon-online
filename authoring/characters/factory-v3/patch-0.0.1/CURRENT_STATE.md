@@ -2,6 +2,81 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Fresh Blender capture → real factory → runtime replay — 24 October 2026
+
+The retained male Swordsman BasicAttack has now been rebuilt against a newly
+rendered64-pose Blender capture, using a separate empty content store. All384
+part bindings,265 pixel objects, asset IDs, fitting metadata and64 pose bindings
+match the existing factory output. Both rebuilt atlas pages match exactly.
+Actual Chromium runtime drawing passes128 base/trail pixel comparisons with
+zero changed pixels and no page errors. Existing artwork/store were untouched.
+Native768px runtime captures, four-view GIF and full-color APNG use the original
+1070ms timing table and one shared review viewport. Evidence:
+`docs/character-factory/review/patch001-fresh-factory-20261024/`.
+
+An observed reproducibility defect is fixed: Blender PNG Date/RenderTime metadata
+changes raw capture-manifest hashes while pixels/poses remain identical. Sidecar
+seals are created only against original byte-pinned references, without editing
+those recipes. Fresh captures must match every recorded pose, relevant job field,
+camera and visible RGBA pixel exactly. Alpha, visible color, pose/control,
+renderer, camera or sealed-artifact changes are rejected; unsealed legacy
+references remain strict. No source/art compatibility fallback is introduced.
+
+A second new64-pose Mage source capture also matches its sealed source identity.
+Reassembly reproduces all16 frozen painted frames plus the master sheet exactly;
+frozen labels replay64 visible roles exactly. Those Mage masks remain semantically
+rejected and are not production art. Reproducibility does not fix their staff
+ownership/source-fit failures. New colored-guide/template studies improve the
+staff screen-side but retain figure-size/placement errors and remain unadmitted.
+
+159 Python tests pass, including actual Blender source/wrist regressions,
+fresh-capture identity negative tests and sealed-source assembly tests. Both
+Node test files pass. Current production count remains1/96 imported paint jobs,
+95 missing, zero complete newly verified playable six-character packages.
+All six characters and every patch action remain required. These are progress
+and factory proofs, not a completed0.0.1 release or blanket art approval.
+
+## Temporal source audit and Mage continuation — 24 October 2026
+
+Current coverage is **48/48 captured source jobs, 96 unique paint jobs,
+1 imported paint job, 95 missing and zero complete newly verified playable
+six-character packages**. Requested coverage remains 114 action instances and
+12,992 pose positions. Counts fell through genuine source reuse, not discarded
+actions: Mage Guard now reuses CombatIdle/CastChannel geometry while retaining
+its own action timing and future ward FX.
+
+The research-derived continuity diagnostic detected nine suspect source loop
+views. Swordsman Guard looped a partial recovery interval; it now holds native
+Sword_Block frame10. Mage Guard previously looped Spell_Simple_Enter; it now
+uses the already captured stable ward/ready loop. The repeated source audit
+flags zero suspect loop seams across all48 current jobs. This is a diagnostic,
+not certification of human motion or final sprite continuity. Source geometry
+checks find no stale captures, cross-camera pose differences or offscreen
+control points. Original accepted Swordsman attacks remain unchanged.
+
+Mage male CastRelease NE now has a full16-pose painted candidate assembled
+from four source-pinned fixed-viewport batches. The assembler recomputes every
+frame from its raw sheet, rejects missing/duplicate/source-stale or moved
+normalized frames, and performs no figure fitting. It is not admitted: body
+packing drift and held-staff source alignment still fail. Early frozen visible
+cutouts replay exactly but semantic removal tests reveal staff remnants and
+incomplete head masks; those mask studies are explicitly rejected.
+
+A supplementary Blender material guide now distinguishes skull/front face,
+hands, cuffs, coat, pants and boots. Sixteen poses preserve the original
+capture's alpha silhouette exactly (zero changed alpha pixels) and projected
+coordinates exactly. These are pose guides only, never final3D artwork. The
+first repaint improves the left/right staff path but enlarges the figure:
+its lower-foot extent differs by30.5–33.5 author pixels, so it is not admitted.
+A same-viewport complete design template is being tried to constrain body size.
+
+143 Python tests pass, including actual Blender source/wrist regressions, six
+fixed-batch assembly tests, six temporal tests and six material-guide tests.
+Both Node test files pass. Evidence is in `research/temporal-guide-audit-20261024/`
+and `research/mage-material-guide-20261024/`. Retained attacks, all three classes,
+both sexes, every required action, usable cutouts and actual wardrobe variants
+remain required; no final acceptance is claimed.
+
 ## Reusable head-slot continuation — 24 October 2026
 
 The shared covered-armor experiment now freezes 64 head-slot variants across

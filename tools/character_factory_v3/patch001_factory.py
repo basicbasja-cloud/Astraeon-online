@@ -91,8 +91,8 @@ def plan():
     write(BASE/'ledger.json',ledger);return ledger
 
 
-def receipt_valid(job):
-    folder=BASE/'guides'/job['id'];manifest=folder/'manifest.json'
+def receipt_valid(job,folder=None):
+    folder=Path(folder)if folder is not None else BASE/'guides'/job['id'];manifest=folder/'manifest.json'
     if not manifest.is_file():return False
     data=read(manifest)
     captured=data.get('job',{})
