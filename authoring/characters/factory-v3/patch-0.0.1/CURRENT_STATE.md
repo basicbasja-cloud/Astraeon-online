@@ -2,6 +2,47 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Selected long trail and real female cosmetic import — 24 October 2026
+
+Current mechanical coverage:48/48 captured guide families,2/96 imported cutout
+jobs,94 missing, zero complete newly verified playable characters. Both imports
+are Swordsman BasicAttack: male original art plus a female shared-armor head
+variant. This is not two complete characters and does not complete0.0.1.
+
+The requested long dragging trail now follows33 actual Blender subframes from
+native11..13, bounded at2.4blade lengths, with a55% then15% fade. It is in the
+actual current male/female imports. Male's256 non-FX bindings are unchanged;
+old bindings are archived in imports/swordsman-long-dense-basicattack-20261024.
+Fresh-capture empty-store replay matches all384 current male bindings and269
+objects. Runtime proof:128 comparisons per sex, zero changes and page errors.
+Both current actions share132 exact pixel objects; the store retains414 objects
+including historical effects. Source/master art is preserved.
+
+The female cosmetic action has64 poses and24 real separated sheets. An observed
+silver-hair/face label proposal returns old collar/arm pixels to BodyCostume.
+A fixed-scale illustrated head kit uses local rigid attachment to the refined
+painted head centers, native roll and hemisphere gating. This avoids the failed
+alpha-moment slots and several visible gaps. It is not an exact joint/anatomy
+certificate; native guide markers alone were not sufficient to fit older art.
+New assembled masters are partitioned into exact visible cuts before import.
+Semantic neck/arm/edge review remains open; no owner approval is claimed.
+
+New full16-frame Mage NE and Archer NW studies use one complete action sheet
+rather than four generation batches. They improve some staff/bow placement but
+still show foot/framing/proportion drift. Local Mage staff-only repair created
+neck/torso seams and is rejected. No Mage/Archer job was falsely imported.
+Detached-neighbor cleanup removes2995 unrelated Mage pixels while retaining
+all selected RGBA unchanged; it does not fix anatomy. An optional Archer
+material-guide render has9 alpha-edge differences and is not a canonical guide
+replacement. Original48 source captures remain intact.
+
+177 Python tests pass, including actual Blender checks. Continuous GIFs/APNGs,
+real runtime reports, source/assembly proofs and reproduction recipes are in:
+`docs/character-factory/review/patch001-long-dense-sword-trail-20261024/` and
+`docs/character-factory/review/patch001-imported-swordswoman-basicattack-20261024/`.
+Continue every required action for all three classes and both sexes; reusable
+hair/costume changes per class and actual complete-character playtests remain.
+
 ## Longer sword trail variant — 24 October 2026
 
 User requested a longer impact trail. The new source-path variant raises the

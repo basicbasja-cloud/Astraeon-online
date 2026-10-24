@@ -17,10 +17,19 @@ from source_capture_identity import sha
 from track_visible_cutouts import pin_inputs,verify_inputs
 
 
-def verify(source,sockets,fresh_guide,output):
+def verify(source,sockets,fresh_guide,output,effects=None):
     root=factory.ROOT;baseline=factory.BASE;store=asset_store.STORE
     if output.exists()or not output.resolve().is_relative_to(root):raise ValueError('Choose a fresh isolated destination under the repository root')
     output.mkdir(parents=True);job_id,intake=prepare(source,sockets,output/'intake',fresh_guide)
+    if effects is not None:
+        import os
+        selected=json.loads(intake.read_text())
+        for row in selected['frames']:
+            for role in ['WeaponLightBack','WeaponLightFront']:
+                path=effects/row['direction']/role/f"{row['index']:03d}.png"
+                if not path.is_file():raise ValueError('Incomplete selected effect profile')
+                row['parts'][role]=os.path.relpath(path,intake.parent)
+        intake.write_text(json.dumps(selected,indent=2)+'\n')
     old_bindings_path=baseline/'cutouts'/job_id/'bindings.json';old_bindings=json.loads(old_bindings_path.read_text());old_index=json.loads((store/'index.json').read_text());expected_assets={v for r in old_bindings['frames']for v in r['assets'].values()};expected_objects={old_index['assets'][key]['object']for key in expected_assets}
     manifest=json.loads(intake.read_text());original_parts=[(intake.parent/path).resolve()for r in manifest['frames']for path in [r['master'],*r['parts'].values()]];pinned=pin_inputs([old_bindings_path,store/'index.json',*original_parts])
     sandbox=output/'factory';sandbox.mkdir();shutil.copy2(baseline/'factory.json',sandbox/'factory.json');shutil.copy2(baseline/'ledger.json',sandbox/'ledger.json');(sandbox/'guides').mkdir();guide_id=manifest['guide_job'];(sandbox/'guides'/guide_id).symlink_to(fresh_guide.resolve(),target_is_directory=True);new_store=sandbox/'cutout-store'
@@ -42,4 +51,5 @@ def verify(source,sockets,fresh_guide,output):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['source','sockets','fresh-guide','output']:p.add_argument('--'+name,type=Path,required=True)
-    a=p.parse_args();r=verify(a.source.resolve(),a.sockets.resolve(),a.fresh_guide.resolve(),a.output.resolve());print(json.dumps({k:v for k,v in r.items()if k not in ['objects','source_reference_verification']}))
+    p.add_argument('--effects',type=Path)
+    a=p.parse_args();r=verify(a.source.resolve(),a.sockets.resolve(),a.fresh_guide.resolve(),a.output.resolve(),a.effects.resolve()if a.effects else None);print(json.dumps({k:v for k,v in r.items()if k not in ['objects','source_reference_verification']}))

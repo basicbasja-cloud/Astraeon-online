@@ -14,7 +14,11 @@ from track_visible_cutouts import pin_inputs,verify_inputs,sha
 def angle_difference(a,b):return (a-b+180)%360-180
 
 
-def choose_entry(entries,yaw,pitch):
+def choose_entry(entries,yaw,pitch,hemisphere_guard=False):
+    if hemisphere_guard:
+        back=abs(angle_difference(yaw,0))>90
+        entries=[e for e in entries if (abs(angle_difference(e['authored_yaw_degrees'],0))>90)==back]
+        if not entries:raise ValueError('Head library lacks the required face hemisphere')
     return min(entries,key=lambda e:angle_difference(yaw,e['authored_yaw_degrees'])**2+.65*(pitch-e['authored_pitch_degrees'])**2)
 
 
@@ -52,15 +56,32 @@ def review(library_path,slots_path,source,output,art_slots_path=None):
         (output/'library').mkdir(exist_ok=True);Image.fromarray(a).save(output/'library'/f'{i:03d}.png')
     frame_records=[];view_images={d:[]for d in directions}
     for r in rows:
-        d=r['direction'];i=r['index'];orientation=r['head_orientation'];e=choose_entry(entries,orientation['yaw_degrees'],orientation['pitch_degrees']);im,anchor=heads[e['index']]
+        d=r['direction'];i=r['index'];orientation=r['head_orientation'];e=choose_entry(entries,orientation['yaw_degrees'],orientation['pitch_degrees'],library.get('preserve_face_hemisphere',False));im,anchor=heads[e['index']]
         offset=library['direction_neck_offset_author_px'][d];target=[a+b for a,b in zip(r['sockets']['neck'],offset)];roll=orientation['roll_degrees']-e['authored_roll_degrees']
         if art_rows:target=art_rows[d,i]['neck_pivot_author_px']
-        head=attach_head(im,anchor,library['artist_scale'],roll,target);folder=output/d;(folder/'HeadHair').mkdir(parents=True,exist_ok=True);(folder/'Master').mkdir(exist_ok=True);head.save(folder/'HeadHair'/f'{i:03d}.png')
         legacy_head=Image.open(source/d/'HeadHair'/f'{i:03d}.png').convert('RGBA');old=np.array(legacy_head);rgb=old[:,:,:3].astype(float)/255;maximum=rgb.max(2);minimum=rgb.min(2)
+        if library.get('attach_to_observed_head_center'):
+            # Head-only rigid cosmetic placement; figure/root are never fitted.
+            weights=old[:,:,3].astype(float);yy,xx=np.indices(weights.shape)
+            if weights.sum()==0:raise ValueError('Empty observed head slot')
+            observed=np.array([(xx*weights).sum()/weights.sum(),(yy*weights).sum()/weights.sum()])
+            index=e['index'];origin=np.array([round((index%cols)*w/cols),round((index//cols)*h/lines)])
+            skull=np.array(e['skull_anchor_raw'])-origin
+            head=attach_head(im,skull,library['artist_scale'],roll,observed)
+            theta=math.radians(roll);rotation=np.array([[math.cos(theta),-math.sin(theta)],[math.sin(theta),math.cos(theta)]])
+            target=(observed+rotation@(np.array(anchor)-skull)*library['artist_scale']).tolist()
+        else:head=attach_head(im,anchor,library['artist_scale'],roll,target)
+        folder=output/d;(folder/'HeadHair').mkdir(parents=True,exist_ok=True);(folder/'Master').mkdir(exist_ok=True);head.save(folder/'HeadHair'/f'{i:03d}.png')
         # Draft material ownership only: the old HeadHair mask contains gold collar
         # fragments. Retain those exact pixels as a separate untransformed patch.
         saturated=(maximum-minimum)/np.maximum(maximum,1e-6)
         gold=(old[:,:,3]>0)&(rgb[:,:,0]>rgb[:,:,1]*1.05)&(rgb[:,:,1]>rgb[:,:,2]*1.45)&(saturated>.53)
+        if library.get('preserve_visible_neck_underlay'):
+            # Preserve existing visible neck/collar art in an explicitly scoped
+            # underlay. This does not invent skin behind the original head.
+            yy,xx=np.indices(old.shape[:2]);tx,ty=target
+            radius=library['visible_neck_underlay_radius_author_px']
+            gold|=(old[:,:,3]>0)&((xx-tx)**2+(yy-ty)**2<=radius**2)&(yy>=ty-4)
         patch=np.zeros_like(old);patch[gold]=old[gold];underlay=Image.fromarray(patch)
         (folder/'CollarOwnershipPatch').mkdir(exist_ok=True);underlay.save(folder/'CollarOwnershipPatch'/f'{i:03d}.png')
         composite=Image.new('RGBA',(768,768));reused={} 
