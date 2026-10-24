@@ -37,6 +37,13 @@ def visible_draw_order(parts,requested=None):
     return order
 
 
+def authored_layer_order(parts,base_order,requested=None):
+    if requested is None:return None
+    if not isinstance(requested,list)or len(requested)!=len(parts)or len(set(requested))!=len(requested)or set(requested)!=set(parts):raise ValueError('Authored layer order must contain every actual part exactly once')
+    if [r for r in requested if r in BASE_ORDER]!=base_order:raise ValueError('Authored FX order changes the declared base ordering')
+    return requested
+
+
 def import_job(job_id,manifest_path):
     config=read(BASE/'factory.json');canvas=config['canvas']['authoring'];root=config['canvas'].get('authoring_root',[256,422.4])
     ledger=read(BASE/'ledger.json');job=ledger['paint_jobs'][job_id];guide_job=ledger['guide_jobs'][job['guide_job']]
@@ -63,6 +70,7 @@ def import_job(job_id,manifest_path):
         if any(r not in parts for r in ['BodyCostume','HeadHair','Weapon']):raise ValueError('Required actual visible parts are missing')
         combined=Image.new('RGBA',tuple(canvas))
         draw_order=visible_draw_order(parts,record.get('base_draw_order'))
+        layer_order=authored_layer_order(parts,draw_order,record.get('layer_draw_order'))
         for role in draw_order:combined.alpha_composite(Image.open(parts[role]).convert('RGBA'))
         a=np.array(master);b=np.array(combined);visible=(a[:,:,3]>0)|(b[:,:,3]>0)
         if not np.array_equal(a[:,:,3],b[:,:,3])or not np.array_equal(a[visible],b[visible]):raise ValueError(f'Same-frame recomposition differs: {direction}/{i}')
@@ -80,7 +88,9 @@ def import_job(job_id,manifest_path):
             if role in nonempty and im.getbbox():nonempty[role]+=1
             metadata={'role':role,'canvas':canvas,'fit_id':job['fit_id'],'pose_id':pose_id,'camera_id':camera_id,'root':sockets['root'],'source_reference':str(master_path.relative_to(ROOT))if master_path.is_relative_to(ROOT)else str(master_path),'semantic_status':'IMPORTED_VISIBLE_CUTOUT_NOT_HIDDEN_ANATOMY','occlusion_reason':record.get('occlusion_reasons',{}).get(role)}
             bound[role]=register(path,metadata,index=index)
-        bindings.append({'direction':direction,'index':i,'source_pose_index':source_i,'pose_id':pose_id,'camera_id':camera_id,'sockets':sockets,'base_draw_order':draw_order,'assets':bound})
+        binding={'direction':direction,'index':i,'source_pose_index':source_i,'pose_id':pose_id,'camera_id':camera_id,'sockets':sockets,'base_draw_order':draw_order,'assets':bound}
+        if layer_order is not None:binding['layer_draw_order']=layer_order
+        bindings.append(binding)
     if any(n==0 for n in nonempty.values()):raise ValueError('A complete action cannot have an entirely empty required art slot')
     save_index(index);write(folder/'bindings.json',{'paint_job':job_id,'character':job['character'],'actions':job['actions'],'frames':bindings})
     write(folder/'import-receipt.json',{'paint_job':job_id,'guide_job':job['guide_job'],'input_manifest_sha256':hashlib.sha256(manifest_path.read_bytes()).hexdigest(),'pose_recipe_evidence':pose_evidence,'all_frames_present':True,'frames':len(bindings),'recomposition_mismatches':0,'status':'IMPORTED_REQUIRES_VISUAL_REVIEW','owner_approved':False,'runtime_admitted':False,'hidden_surfaces_authored':False})

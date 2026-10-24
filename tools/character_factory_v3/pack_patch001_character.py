@@ -29,9 +29,12 @@ def atlas_pages(pixels,limit=4096,padding=2):
         page.paste(im,(x,y));placements.append((index,[x,y,im.width,im.height]));x+=im.width+padding;row=max(row,im.height+padding);used=max(used,x)
     if placements:yield page.crop((0,0,used,y+row)),placements
 
-def composed_draw_order(base_order,roles):
+def composed_draw_order(base_order,roles,authored_order=None):
     base=[r for r in roles if not r.startswith('WeaponLight')]
     if len(base_order)!=len(set(base_order))or any(r not in base for r in base_order):raise ValueError('Invalid imported base draw order')
+    if authored_order is not None:
+        if not isinstance(authored_order,list)or len(authored_order)!=len(set(authored_order))or any(r not in roles for r in authored_order)or[r for r in authored_order if not r.startswith('WeaponLight')]!=base_order:raise ValueError('Invalid authored complete layer order')
+        return list(authored_order)+[r for r in roles if r not in authored_order]
     order=list(base_order)+[r for r in base if r not in base_order]
     if 'WeaponLightBack'in roles:order.insert(0,'WeaponLightBack')
     if 'WeaponLightFront'in roles:order.insert(order.index('Weapon')+1,'WeaponLightFront')
@@ -127,7 +130,9 @@ def pack(character_id,timing_path,repository=ROOT,base=BASE,*,raster_mode='sourc
                 # relationship to the weapon; missing optional roles stay empty.
                 for r in roles:
                     if r not in parts:parts[r]=Image.new('RGBA',tuple(author))
-                ordered=composed_draw_order(ordered,roles)
+                authored=frame.get('layer_draw_order')
+                if authored is not None and set(authored)!=set(frame['assets']):raise ValueError('Authored layer order omits actual imported artwork')
+                ordered=composed_draw_order(ordered,roles,authored)
                 # Independent FX must never be merged into the base ownership
                 # partition or they would erase the interchangeable body pixels.
                 base_order=[r for r in ordered if not r.startswith('WeaponLight')];base_parts={r:parts[r]for r in base_order}

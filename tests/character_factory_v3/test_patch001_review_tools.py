@@ -32,6 +32,15 @@ class FixedGridReviewTests(unittest.TestCase):
 
 
 class CutoutOcclusionRegressionTests(unittest.TestCase):
+    def test_authored_trail_stays_behind_head_weapon_and_fingers(self):
+        from import_patch001_cutouts import authored_layer_order
+        from pack_patch001_character import composed_draw_order
+        base=['BodyCostume','HeadHair','Weapon','WeaponHandOccluder'];order=['WeaponLightBack','BodyCostume','WeaponLightFront','HeadHair','Weapon','WeaponHandOccluder'];parts={r:None for r in order}
+        self.assertEqual(authored_layer_order(parts,base,order),order);self.assertEqual(composed_draw_order(base,order,order),order)
+        self.assertEqual(composed_draw_order(base,order+['Headgear'],order),order+['Headgear'])
+        with self.assertRaises(ValueError):authored_layer_order(parts,base,order[:-1])
+        with self.assertRaises(ValueError):composed_draw_order(base,order,['BodyCostume','Weapon','HeadHair','WeaponHandOccluder'])
+
     def test_exclusive_hand_label_preserves_semtransparent_source_pixels(self):
         from cutout_asset_store import import_frame
         from import_patch001_cutouts import BASE_ORDER

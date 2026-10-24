@@ -27,6 +27,12 @@ def plan():
             if filehash(source)!=approved_sources.get(a['source_file']):raise ValueError('Source differs from retained intake digest')
             geometry={'source_file':a['source_file'],'source_sha256':filehash(source),'source_actions':a['source_actions'],'frames':a['frames'],'loop':a['loop'],'ortho_scale':config.get('camera',{}).get('ortho_scale',3.55),'resolution':config['canvas']['source_guide'][0],'weapon':{'Swordsman':'sword','Mage':'staff','Archer':'bow'}[kind],'guide_aa':'OFF','renderer_sha256':filehash(TOOLS/'render_patch001_guides.py')}
             if config.get('camera',{}).get('up_offset')is not None:geometry['camera_up_offset']=config['camera']['up_offset']
+            if a.get('explicit_source_samples')is not None:
+                from render_explicit_patch001_guides import explicit_samples
+                explicit_samples({**geometry,'explicit_source_samples':a['explicit_source_samples']})
+                geometry['explicit_source_samples']=a['explicit_source_samples']
+                geometry['explicit_sampling_implementation_sha256']=filehash(TOOLS/'render_explicit_patch001_guides.py')
+                geometry['explicit_capture_png_sha256']=filehash(TOOLS/'render_frozen_patch001_guides.py')
             if a['source_provider']=='KayKit':
                 geometry['retarget_to']=config['source']['file']
                 geometry['retarget_to_sha256']=filehash(ROOT/config['source']['file'])
@@ -92,6 +98,18 @@ def receipt_valid(job):
     captured=data.get('job',{})
     geometry=lambda value:{k:v for k,v in value.items()if k not in ['uses','directions']}
     if geometry(captured)!=geometry(job)or data.get('frame_count')!=job['frames']:return False
+    if job.get('explicit_source_samples')is not None:
+        proof=data.get('sampling_override',{})
+        if proof.get('implementation_sha256')!=job['explicit_sampling_implementation_sha256']or proof.get('canonical_source_sha256')!=job['renderer_sha256']or proof.get('explicit_source_samples')!=job['explicit_source_samples']or proof.get('body_or_prop_geometry_overridden')is not False:return False
+        if data.get('implementation_digests_at_process_start',{}).get('render_explicit_patch001_guides.py')!=job['explicit_sampling_implementation_sha256']:return False
+        images={f'{d}/{i:03d}.png'for d in job['directions']for i in range(job['frames'])};png=data.get('png_normalization',{});rows=png.get('frames',[])
+        if png.get('implementation_sha256')!=job['explicit_capture_png_sha256']or len(rows)!=len(images)or{r.get('image')for r in rows}!=images:return False
+        for row in rows:
+            path=folder/row['image']
+            if row.get('visible_rgb_or_alpha_changed')is not False or not path.is_file()or filehash(path)!=row.get('normalized_sha256'):return False
+        for direction in job['directions']:
+            frames=data.get('views',{}).get(direction,{}).get('frames',[])
+            if [r.get('source_frame')for r in frames]!=job['explicit_source_samples']or any(r.get('action')!=job['source_actions'][0]for r in frames):return False
     if job.get('render_pose_freeze_revision'):
         proof=data.get('render_pose_freeze',{});images={f'{d}/{i:03d}.png'for d in job['directions']for i in range(job['frames'])}
         rows=proof.get('rendered_frames',[]);pngs=data.get('png_normalization',{}).get('frames',[])
@@ -119,7 +137,7 @@ def receipt_valid(job):
 def render_one(job):
     if receipt_valid(job):return {'job':job['id'],'state':'CACHED_GUIDE'}
     folder=BASE/'guides'/job['id'];folder.mkdir(parents=True,exist_ok=True)
-    entrypoint='render_frozen_patch001_guides.py'if job.get('render_pose_freeze_revision')else'render_patch001_guides.py'
+    entrypoint='render_explicit_patch001_guides.py'if job.get('explicit_source_samples')is not None else'render_frozen_patch001_guides.py'if job.get('render_pose_freeze_revision')else'render_patch001_guides.py'
     command=['blender','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/entrypoint),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
     with(folder/'render.log').open('w')as log:result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
     if result.returncode or not receipt_valid(job):raise RuntimeError(f"Guide failed: {job['id']}; inspect {folder/'render.log'}")

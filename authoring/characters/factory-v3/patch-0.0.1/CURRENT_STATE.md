@@ -2,6 +2,39 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Retained BasicAttack imported — 24 October 2026
+
+The accepted male Swordsman BasicAttack now has a real factory import: 64 poses,
+four views, 384 part bindings and 265 deduplicated pixel objects. Native source
+samples are explicitly [0,3,6,8,10,11,12,13,14,15,25,28,31,34,37,39].
+Guide c297971fcef09188ff60 matches the retained source geometry within
+0.000753 author pixels. No retained character drawings were repainted or warped.
+The canonical renderer is unchanged; the explicit-sampling wrapper is hash-pinned.
+Actual bone sockets are exported and validated independently.
+
+The importer and atlas packer now preserve an explicit full layer order,
+including trail layers behind the head, blade and fingers. Real Chromium runtime
+draws from the imported atlas match all 128 base/trail comparisons exactly,
+with no page errors. Review: `docs/character-factory/review/patch001-imported-swordsman-basicattack-20261024/`.
+
+Current coverage: 49/49 source guides, 1/98 imported paint jobs, 97 missing;
+zero complete newly verified playable six-character packages. Technical pixel
+identity does not certify head boundaries, anatomy or all requested animations.
+The retained SkillOverhead remains separate from the current 32-pose SkillAction.
+
+Female SE studies include exact reproducible visible cutouts (16 poses, four
+roles), a separate short post-cut trail, a navy bob hairstyle, and a newly drawn
+crimson/silver costume. Four swap combinations reuse identical weapon/glove/FX
+files. These are one-view historical uniform-sampling studies, not current
+four-view female BasicAttack completion. Other female views have source-fit and
+part-ownership failures; they are not admitted. The newest isolated-head sheets
+also fail direct pose placement and are reference studies only. Compatible
+shared starter armor is under investigation; no female fit is implicitly approved.
+
+Validation evidence: 119 Python tests pass, including actual Blender source and
+wrist render checks; both Node test files pass. Frozen cutout replay needs no
+SAM2 or image generation and checks decoded RGBA exactly.
+
 ## Earlier Swordsman retained — 23 October 2026
 
 The owner clarified that the earlier Swordsman was already visually okay. Keep

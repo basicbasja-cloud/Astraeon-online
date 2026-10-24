@@ -1,0 +1,893 @@
+{
+  "status": "SOURCE_ASSISTED_VISIBLE_CUTOUT_PROPOSALS_NOT_APPROVED",
+  "guide_job": "2e9a244f9bc5289b30a5",
+  "direction": "SW",
+  "canonical_canvas": [
+    768,
+    768
+  ],
+  "model_repository": "https://github.com/facebookresearch/sam2",
+  "model_revision": "2b90b9f5ceec907a1c18123530e92e794ad901a4",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "implementation_sha256": "da189ea87309cb8502a6896af4363ce01c18b271aa3a6b555a0b6845479002e3",
+  "complete_visible_partition": false,
+  "frames": [
+    {
+      "index": 0,
+      "source_master_sha256": "1c93f175f9ac62ec29b3792e26e4e450c65337c994fc8620cfaed7029f1ed625",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            310.8141,
+            294.90635,
+            454.8141,
+            396.90635
+          ],
+          "positive": [
+            [
+              379,
+              351
+            ]
+          ],
+          "negative": [
+            [
+              390.8141,
+              408.90635
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            260.82805,
+            412.30795,
+            326.63015,
+            483.5462
+          ],
+          "positive": [
+            [
+              296,
+              446
+            ],
+            [
+              292,
+              450
+            ]
+          ],
+          "negative": [
+            [
+              379,
+              351
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8346218466758728,
+        "Weapon": 0.7355995178222656
+      },
+      "visible_pixels": {
+        "HeadHair": 3426,
+        "Weapon": 686,
+        "BodyCostume": 15305
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 1,
+      "source_master_sha256": "626a6197bbdcbab3093610badbb82128e84e6039fd43584c6db4f9a293f51f56",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            308.2963,
+            291.86615,
+            452.2963,
+            393.86615
+          ],
+          "positive": [
+            [
+              376,
+              348
+            ]
+          ],
+          "negative": [
+            [
+              388.2963,
+              405.86615
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            237.29145,
+            389.0584,
+            303.80525,
+            447.2872
+          ],
+          "positive": [
+            [
+              271,
+              424
+            ],
+            [
+              267,
+              415
+            ]
+          ],
+          "negative": [
+            [
+              376,
+              348
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8567023873329163,
+        "Weapon": 0.8240754008293152
+      },
+      "visible_pixels": {
+        "HeadHair": 3565,
+        "Weapon": 620,
+        "BodyCostume": 15826
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 2,
+      "source_master_sha256": "7111865bcff6c7170d4ad5fc016c54a1a0c221c55736313c0e3a9b179d5678f4",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            302.2887,
+            285.4471,
+            446.2887,
+            387.4471
+          ],
+          "positive": [
+            [
+              370,
+              341
+            ]
+          ],
+          "negative": [
+            [
+              382.2887,
+              399.4471
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            229.8175,
+            347.1733,
+            316.0992,
+            409.3492
+          ],
+          "positive": [
+            [
+              268,
+              379
+            ],
+            [
+              278,
+              379
+            ]
+          ],
+          "negative": [
+            [
+              370,
+              341
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8255183696746826,
+        "Weapon": 0.8375558257102966
+      },
+      "visible_pixels": {
+        "HeadHair": 4150,
+        "Weapon": 1388,
+        "BodyCostume": 14113
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 4,
+      "source_master_sha256": "01f6185f7994882bf0813cc9ce48f0476fa391308e022308ca0a91b640def9d8",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            318.34965,
+            297.95025,
+            462.34965,
+            399.95025
+          ],
+          "positive": [
+            [
+              386,
+              354
+            ]
+          ],
+          "negative": [
+            [
+              398.34965,
+              411.95025
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            257.5711,
+            218.56295,
+            372.94715,
+            355.23175
+          ],
+          "positive": [
+            [
+              306,
+              299
+            ],
+            [
+              324,
+              275
+            ]
+          ],
+          "negative": [
+            [
+              386,
+              354
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8703354597091675,
+        "Weapon": 0.8041412234306335
+      },
+      "visible_pixels": {
+        "HeadHair": 3735,
+        "Weapon": 1371,
+        "BodyCostume": 15906
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 5,
+      "source_master_sha256": "4e3e4f30ffcd25d8cd104ad4c5eb1fb32de2e8c1e0e5765f5f2f04bae10215c1",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            339.04805,
+            316.96715,
+            483.04805,
+            418.96715
+          ],
+          "positive": [
+            [
+              407,
+              373
+            ]
+          ],
+          "negative": [
+            [
+              419.04805,
+              430.96715
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            445.7862,
+            442.1164,
+            574.71415,
+            503.1914
+          ],
+          "positive": [
+            [
+              499,
+              473
+            ],
+            [
+              521,
+              472
+            ]
+          ],
+          "negative": [
+            [
+              407,
+              373
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8218277096748352,
+        "Weapon": 0.8286468386650085
+      },
+      "visible_pixels": {
+        "HeadHair": 3885,
+        "Weapon": 1489,
+        "BodyCostume": 14738
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 6,
+      "source_master_sha256": "a163981e5e1477e5f02e991b3b41bb64b5b033976c5b8957f0c7be48f0e58c7d",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            344.8502,
+            319.77815,
+            488.8502,
+            421.77815
+          ],
+          "positive": [
+            [
+              413,
+              376
+            ]
+          ],
+          "negative": [
+            [
+              424.8502,
+              433.77815
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            440.9345,
+            451.19375,
+            589.8489,
+            520.1951
+          ],
+          "positive": [
+            [
+              501,
+              484
+            ],
+            [
+              529,
+              488
+            ]
+          ],
+          "negative": [
+            [
+              413,
+              376
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8852652311325073,
+        "Weapon": 0.8557471036911011
+      },
+      "visible_pixels": {
+        "HeadHair": 3881,
+        "Weapon": 1693,
+        "BodyCostume": 16253
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 7,
+      "source_master_sha256": "ac1c97ed04e0e9292a5c00fa2d317c5a6b88516571c8fda2bc8eb55b51958efb",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            343.9414,
+            318.8394,
+            487.9414,
+            420.8394
+          ],
+          "positive": [
+            [
+              412,
+              375
+            ]
+          ],
+          "negative": [
+            [
+              423.9414,
+              432.8394
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            443.2594,
+            447.5557,
+            592.9563,
+            510.71255
+          ],
+          "positive": [
+            [
+              504,
+              478
+            ],
+            [
+              532,
+              480
+            ]
+          ],
+          "negative": [
+            [
+              412,
+              375
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8615039587020874,
+        "Weapon": 0.8679104447364807
+      },
+      "visible_pixels": {
+        "HeadHair": 4039,
+        "Weapon": 1742,
+        "BodyCostume": 15780
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 8,
+      "source_master_sha256": "793adac4652a102dacff3dc5f531ddc24e7059ecf17a6bd8ec05e3cffd239a0e",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            344.0727,
+            317.9681,
+            488.0727,
+            419.9681
+          ],
+          "positive": [
+            [
+              412,
+              374
+            ]
+          ],
+          "negative": [
+            [
+              424.0727,
+              431.9681
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            448.82455,
+            446.03105,
+            605.0953,
+            504.563
+          ],
+          "positive": [
+            [
+              512,
+              475
+            ],
+            [
+              542,
+              476
+            ]
+          ],
+          "negative": [
+            [
+              412,
+              374
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8642282485961914,
+        "Weapon": 0.8486204147338867
+      },
+      "visible_pixels": {
+        "HeadHair": 3654,
+        "Weapon": 1926,
+        "BodyCostume": 15199
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 9,
+      "source_master_sha256": "5b3fc24f3bcf00720c07153d08536b8b2144a9bd3e7ad71651bbabe20ce65592",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            345.8897,
+            315.8634,
+            489.8897,
+            417.8634
+          ],
+          "positive": [
+            [
+              414,
+              372
+            ]
+          ],
+          "negative": [
+            [
+              425.8897,
+              429.8634
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            456.194,
+            444.48535,
+            622.2927,
+            502.0275
+          ],
+          "positive": [
+            [
+              523,
+              473
+            ],
+            [
+              556,
+              473
+            ]
+          ],
+          "negative": [
+            [
+              414,
+              372
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8548118472099304,
+        "Weapon": 0.8596111536026001
+      },
+      "visible_pixels": {
+        "HeadHair": 3552,
+        "Weapon": 1877,
+        "BodyCostume": 14818
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 10,
+      "source_master_sha256": "b2d7d0e870a38ee70a46862b97fa5a7eeccc96f876f0555776741d90aa7045d3",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            342.9761,
+            304.4129,
+            486.9761,
+            406.4129
+          ],
+          "positive": [
+            [
+              411,
+              360
+            ]
+          ],
+          "negative": [
+            [
+              422.9761,
+              418.4129
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            457.7407,
+            339.93995,
+            573.1876,
+            477.95395
+          ],
+          "positive": [
+            [
+              507,
+              421
+            ],
+            [
+              524,
+              397
+            ]
+          ],
+          "negative": [
+            [
+              411,
+              360
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8402461409568787,
+        "Weapon": 0.8397089838981628
+      },
+      "visible_pixels": {
+        "HeadHair": 3956,
+        "Weapon": 1596,
+        "BodyCostume": 13577
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 11,
+      "source_master_sha256": "0a8a12410b095523443af6b954f32027976ab94077596e0265e2d656455392db",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            333.266,
+            289.6081,
+            477.266,
+            391.6081
+          ],
+          "positive": [
+            [
+              401,
+              346
+            ]
+          ],
+          "negative": [
+            [
+              413.266,
+              403.6081
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            408.1623,
+            327.9208,
+            536.0932,
+            463.49075
+          ],
+          "positive": [
+            [
+              461,
+              408
+            ],
+            [
+              483,
+              384
+            ]
+          ],
+          "negative": [
+            [
+              401,
+              346
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.8448917865753174,
+        "Weapon": 0.8312387466430664
+      },
+      "visible_pixels": {
+        "HeadHair": 4422,
+        "Weapon": 1360,
+        "BodyCostume": 12094
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 12,
+      "source_master_sha256": "f105c8ad4ec9d703b7a9000874161ddec6c3021359b8576129cdb2406d6278f7",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            321.2762,
+            283.4269,
+            465.2762,
+            385.4269
+          ],
+          "positive": [
+            [
+              389,
+              339
+            ]
+          ],
+          "negative": [
+            [
+              401.2762,
+              397.4269
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            344.5412,
+            392.11415,
+            503.8992,
+            499.34315
+          ],
+          "positive": [
+            [
+              410,
+              453
+            ],
+            [
+              433,
+              431
+            ]
+          ],
+          "negative": [
+            [
+              389,
+              339
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.7748497724533081,
+        "Weapon": 0.6623387932777405
+      },
+      "visible_pixels": {
+        "HeadHair": 5076,
+        "Weapon": 2767,
+        "BodyCostume": 10059
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 14,
+      "source_master_sha256": "bad71010b17700ac483b605428909c1cdacf0ce917b856534f5187877ce90429",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            311.4231,
+            291.63145,
+            455.4231,
+            393.63145
+          ],
+          "positive": [
+            [
+              379,
+              348
+            ]
+          ],
+          "negative": [
+            [
+              391.4231,
+              405.63145
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            266.59875,
+            415.709,
+            347.932,
+            486.771
+          ],
+          "positive": [
+            [
+              303,
+              449
+            ],
+            [
+              311,
+              453
+            ]
+          ],
+          "negative": [
+            [
+              379,
+              348
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.7016224265098572,
+        "Weapon": 0.8056257367134094
+      },
+      "visible_pixels": {
+        "HeadHair": 6957,
+        "Weapon": 919,
+        "BodyCostume": 15743
+      },
+      "recomposition_mismatch_pixels": 0
+    },
+    {
+      "index": 15,
+      "source_master_sha256": "5b3696427ce2bf47d2d4020bed8190670419804a4639ead34080de5c446c0756",
+      "prompts": {
+        "HeadHair": {
+          "box": [
+            309.4294,
+            294.13525,
+            453.4294,
+            396.13525
+          ],
+          "positive": [
+            [
+              377,
+              350
+            ]
+          ],
+          "negative": [
+            [
+              389.4294,
+              408.13525
+            ]
+          ]
+        },
+        "Weapon": {
+          "box": [
+            265.87585,
+            409.3275,
+            321.9384,
+            481.27015
+          ],
+          "positive": [
+            [
+              279,
+              442
+            ],
+            [
+              279,
+              442
+            ]
+          ],
+          "negative": [
+            [
+              377,
+              350
+            ]
+          ]
+        }
+      },
+      "proposal_scores": {
+        "HeadHair": 0.6781931519508362,
+        "Weapon": 0.6933598518371582
+      },
+      "visible_pixels": {
+        "HeadHair": 8866,
+        "Weapon": 508,
+        "BodyCostume": 11614
+      },
+      "recomposition_mismatch_pixels": 0
+    }
+  ],
+  "failures": [
+    {
+      "index": 3,
+      "reason": "No Weapon proposal respects all manual/source prompts"
+    },
+    {
+      "index": 13,
+      "reason": "No Weapon proposal respects all manual/source prompts"
+    }
+  ],
+  "input_hashes": {
+    "/workspace/Astraeon-online/tools/character_factory_v3/propose_source_cutouts.py": "da189ea87309cb8502a6896af4363ce01c18b271aa3a6b555a0b6845479002e3",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/guides/2e9a244f9bc5289b30a5/manifest.json": "6b222ab8f73ba49bcef7f4bf3e7ea5ced0c0645c58538650db4c311fa00a0b0e",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/viewport.json": "5115574cda680318694cf1f2c18b3d90424a37bcb9373c647cf8827c78ef11ac",
+    "/workspace/.tools/SAM2/sam2.1_hiera_tiny.pt": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/000.png": "1c93f175f9ac62ec29b3792e26e4e450c65337c994fc8620cfaed7029f1ed625",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/001.png": "626a6197bbdcbab3093610badbb82128e84e6039fd43584c6db4f9a293f51f56",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/002.png": "7111865bcff6c7170d4ad5fc016c54a1a0c221c55736313c0e3a9b179d5678f4",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/003.png": "bd35cd3afe846e3a24115ef25df9898069a1608e5290424c4e9cd68b2384fe5a",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/004.png": "01f6185f7994882bf0813cc9ce48f0476fa391308e022308ca0a91b640def9d8",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/005.png": "4e3e4f30ffcd25d8cd104ad4c5eb1fb32de2e8c1e0e5765f5f2f04bae10215c1",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/006.png": "a163981e5e1477e5f02e991b3b41bb64b5b033976c5b8957f0c7be48f0e58c7d",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/007.png": "ac1c97ed04e0e9292a5c00fa2d317c5a6b88516571c8fda2bc8eb55b51958efb",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/008.png": "793adac4652a102dacff3dc5f531ddc24e7059ecf17a6bd8ec05e3cffd239a0e",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/009.png": "5b3fc24f3bcf00720c07153d08536b8b2144a9bd3e7ad71651bbabe20ce65592",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/010.png": "b2d7d0e870a38ee70a46862b97fa5a7eeccc96f876f0555776741d90aa7045d3",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/011.png": "0a8a12410b095523443af6b954f32027976ab94077596e0265e2d656455392db",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/012.png": "f105c8ad4ec9d703b7a9000874161ddec6c3021359b8576129cdb2406d6278f7",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/013.png": "583dbe7761c64fdf05eaca7cb3357590de9a15cbe4972649653ab14848ab6a5c",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/014.png": "bad71010b17700ac483b605428909c1cdacf0ce917b856534f5187877ce90429",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-female-basicattack/SW/source-union-20261024/frames/015.png": "5b3696427ce2bf47d2d4020bed8190670419804a4639ead34080de5c446c0756"
+  },
+  "hidden_surfaces_authored": false,
+  "source_pixels_changed": false,
+  "runtime_admitted": false,
+  "semantic_boundary_review_required": true,
+  "hand_occlusion_separated": false
+}
