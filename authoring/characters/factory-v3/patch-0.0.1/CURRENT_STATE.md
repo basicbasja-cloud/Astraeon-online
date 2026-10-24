@@ -2,6 +2,18 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Longer sword trail variant — 24 October 2026
+
+User requested a longer impact trail. The new source-path variant raises the
+history bound from .55 to .80 blade lengths, adds the real source11→12 interval,
+and tapers the old tail. First emission/source13, fade25%, timing1070ms and all256
+non-FX asset bindings are unchanged. All64poses were imported into an isolated
+variant store and atlas-packed; actual Chromium passes128 comparisons with zero
+differences and page errors. Separate front/back sheets and before/after GIFs:
+`docs/character-factory/review/patch001-longer-sword-trail-tapered-20261024/`.
+Baseline factory/art remain preserved. This variant does not complete0.0.1 or
+change the1/96 baseline imported-paint count. Five focused tests pass.
+
 ## Fresh Blender capture → real factory → runtime replay — 24 October 2026
 
 The retained male Swordsman BasicAttack has now been rebuilt against a newly
