@@ -2,6 +2,28 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Reusable head-slot continuation — 24 October 2026
+
+The shared covered-armor experiment now freezes 64 head-slot variants across
+four real directions, with 24 separated sprite sheets and unchanged sword,
+glove and trail files. It remains a draft, separate from the female base paint
+job. Projected native neck joints do not coincide with some earlier painted
+neck placements. A frozen 2D head-slot proposal follows the original head masks
+without moving or scaling the body. Existing gold collar fragments are retained
+as a separate ownership patch, then merged into the body slot for export.
+
+Source-head basis/neck export checks all 64 native poses within 0.0000251 author
+pixels. Frozen replay and exact composition are technical checks only. Visible
+neck gaps, approximate head angles, and foreground-arm occlusion still need
+art corrections. A later NW full-master head repaint also changes some rear
+facings and is explicitly rejected as a complete strip. None of these studies
+replaces the retained male artwork or increments female production coverage.
+
+124 Python tests pass, including five new rigid head-slot tests. The accepted
+male import is still the only imported paint job; 97 remain missing. See
+`review/swordswoman-shared-armor-sheets-20261024/README.md` for replay commands
+and precise limits. Source generation must not be mistaken for finished art.
+
 ## Retained BasicAttack imported — 24 October 2026
 
 The accepted male Swordsman BasicAttack now has a real factory import: 64 poses,

@@ -1,0 +1,10 @@
+{
+  "status": "REJECTED_AS_COMPLETE_POSE_STRIP",
+  "source_pose_count": 16,
+  "issues": [
+    "Some rear-facing source poses show a face after repaint; especially indices 8,9 and12 need manual inspection.",
+    "Body geometry is not assumed pixel-preserved despite the prompt; never replace the accepted body with this generated sheet."
+  ],
+  "usable_only_after": "Extract and verify individual head/collar candidates against retained same-pose master.",
+  "runtime_admitted": false
+}
