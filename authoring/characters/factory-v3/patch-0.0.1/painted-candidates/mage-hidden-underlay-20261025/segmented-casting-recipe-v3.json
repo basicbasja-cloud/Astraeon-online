@@ -1,0 +1,82 @@
+{
+  "direction": "NE",
+  "joint_underlap_px": 6,
+  "arm_polygons": {
+    "L": [
+      [
+        400,
+        600
+      ],
+      [
+        650,
+        600
+      ],
+      [
+        650,
+        725
+      ],
+      [
+        747,
+        759
+      ],
+      [
+        747,
+        825
+      ],
+      [
+        400,
+        825
+      ]
+    ],
+    "R": [
+      [
+        850,
+        775
+      ],
+      [
+        880,
+        750
+      ],
+      [
+        1100,
+        600
+      ],
+      [
+        1100,
+        830
+      ],
+      [
+        850,
+        830
+      ]
+    ]
+  },
+  "status": "AUTHORED_SPLIT_REQUIRES_VISUAL_ACCEPTANCE",
+  "art_joints": {
+    "UpperArm.L": [
+      742,
+      786
+    ],
+    "Forearm.L": [
+      673,
+      754
+    ],
+    "Hand.L": [
+      626,
+      731
+    ],
+    "UpperArm.R": [
+      856,
+      792
+    ],
+    "Forearm.R": [
+      905,
+      794
+    ],
+    "Hand.R": [
+      879,
+      746
+    ]
+  },
+  "art_joint_policy": "One fixed annotated paint-to-native offset per joint, reused for every target frame; no camera changes or pose-wise silhouette fitting"
+}

@@ -12,7 +12,7 @@ from patch001_factory import BASE,ROOT,read,write,receipt_valid,digest
 from cutout_asset_store import STORE,ROLES,register,save_index,import_frame
 from register_clear_paint_candidate import validated_pose_map,resolved_recipe
 
-BASE_ORDER=['BackAccessory','BodyCostume','HeadHair','Weapon','WeaponHandOccluder','Headgear']
+BASE_ORDER=['WeaponBack','BackAccessory','BodyCostume','HeadHair','Weapon','WeaponHandOccluder','Headgear']
 
 def source_pose_maps(manifest,guide,guide_path,manifest_folder):
     """Keep timeline slots distinct from a certified held source pose."""

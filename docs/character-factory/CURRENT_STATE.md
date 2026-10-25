@@ -312,3 +312,12 @@ technical reference, with source pixels/prompts/provenance preserved.
 New single high resolution Mage NE template drives a bounded 16-pose native channel cycle. Camera stays fixed; one recorded static art calibration is reused by all frames. Staff motion passes 16/16 (maximum 0.449 native px), loop seam 2.551 px versus maximum ordinary adjacent motion 3.756 px. Browser master/parts comparison passes 32/32; frozen motion implementation reproduces 83 files byte exactly. Six separated sheet slots include two empty effect slots.
 
 Visible partitions are not complete hidden surfaces: the staff remains visibly occluded at the hand, and body needs underpainting before arbitrary head/weapon swaps. No gameplay admission, no additional imported paint jobs. Ledger remains 2/96 imported, 94 missing, zero newly complete playable characters. Review: `docs/character-factory/review/patch001-native-channel-hd-20261025/`.
+
+
+## 25 October 2026 — overlapping Mage parts, hairstyle swap and game gate
+
+One Mage NE native hold has two separate hairstyle choices over the same 16-pose motion. Hidden neck pixels and a rear staff pass are retained, with independent per-role atlases and fixed native offsets. Hair fragments no longer remain in the outfit, and a cloth fragment is removed from the weapon ownership. The same 64 non-head objects are shared by both variants. Near-opaque source alpha is explicitly repaired by at most five levels; added hidden pixels do not change that reference composite.
+
+Real game source compositor: 32 poses / 64 light-dark comparisons, maximum rounding difference 1/255, no page errors. Frozen motion/initial atlas replay matches 216 files byte-for-byte; separate-role atlas replay is recorded independently. Factory tests: 239 pass; direct Node modular runtime tests: 40 pass. App static cache moves to107; world data and world/asset cache namespaces stay unchanged. Legacy saves for classes0/3/12 move and perform their proper basic action (Mage casts).
+
+Fresh character creation remains blocked: `assets/characters/swordsman-male-patch001/sprite.json` is absent and returns404. This is documented, not bypassed. Large-motion segmented casting still has shoulder/occlusion work; additional drawn costumes and camera templates need registration. No new full imported paint job or playable character: **2/96 imports,94 missing,zero newly complete characters**. Review/report assets: `docs/character-factory/review/patch001-layered-swaps-20261025/`.

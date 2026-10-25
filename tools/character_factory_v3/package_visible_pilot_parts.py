@@ -14,6 +14,18 @@ import numpy as np
 from PIL import Image
 
 ROLES = ['BodyCostume', 'HeadHair', 'Weapon', 'WeaponHandOccluder']
+DIRECTIONS = ['S','SW','W','NW','N','NE','E','SE']
+
+
+def resolve_direction(receipt, requested=None):
+    recorded = receipt.get('direction')
+    if recorded is not None and recorded not in DIRECTIONS:
+        raise ValueError('Invalid recorded camera direction')
+    if requested is not None and requested not in DIRECTIONS:
+        raise ValueError('Invalid requested camera direction')
+    if recorded is not None and requested is not None and recorded != requested:
+        raise ValueError('Requested direction differs from captured source')
+    return recorded or requested or 'NE'
 
 
 def sha(path):
@@ -87,6 +99,7 @@ def main():
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--frame-size', type=int, default=768)
     parser.add_argument('--action', default='CastRelease')
+    parser.add_argument('--direction', choices=DIRECTIONS, help='Must agree with the captured source direction')
     loops = parser.add_mutually_exclusive_group()
     loops.add_argument('--loop', action='store_true', help='Requires exactly matching first and last visible poses')
     loops.add_argument('--native-loop', action='store_true', help='Requires a frozen bounded-native-hold reuse certificate')
@@ -94,6 +107,7 @@ def main():
     if args.output.exists():
         raise ValueError('Choose a new pilot package')
     receipt = json.loads((args.source/'receipt.json').read_text())
+    direction = resolve_direction(receipt,args.direction)
     count = len(receipt['frames'])
     if not count or [r['index'] for r in receipt['frames']] != list(range(count)):
         raise ValueError('Expected a nonempty dense ordered pose sequence')
@@ -158,7 +172,7 @@ def main():
     gif_options = {'loop':0} if is_loop else {}
     preview[0].save(args.output/gif_name, save_all=True, append_images=preview[1:], duration=80, **gif_options)
     result = {'status': 'EXACT_VISIBLE_PILOT_PACKAGE_NOT_REGISTERED_CHARACTER',
-              'direction': 'NE', 'action': args.action, 'loop': is_loop,
+              'direction': direction, 'action': args.action, 'loop': is_loop,
               'loop_policy': 'bounded-native-cycle' if args.native_loop else ('identical-endpoints' if args.loop else 'once'),
               'source_receipt_sha256': sha(args.source/'receipt.json'),
               'implementation_sha256': sha(__file__), 'canvas': [size, size],

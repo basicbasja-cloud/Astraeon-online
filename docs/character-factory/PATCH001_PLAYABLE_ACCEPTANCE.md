@@ -55,7 +55,8 @@ The final acceptance pass must demonstrate:
 5. Clean HeadHair/BodyCostume/Weapon boundaries, anatomical hands gripping props,
    correct visible draw order and persistent accessories. Pixel recomposition
    alone does not certify semantic masks or hidden surfaces.
-6. Short, correctly timed independent sword trails, including foreground and
+6. Long dragging independent sword trails, following the owner-selected native
+   source path and bounded history (currently up to 2.4 blade lengths), including foreground and
    background occlusion. Back trail passes stay behind the body; front passes
    stay under the hand occluder.
 7. Save/reload and no missing resources or stale application-shell versions.

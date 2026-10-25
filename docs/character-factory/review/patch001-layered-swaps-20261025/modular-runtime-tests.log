@@ -1,0 +1,48 @@
+✔ Swordsman resolves every clip, direction and synchronized part (13.752694ms)
+✔ Mage resolves every clip, direction and synchronized part (8.358858ms)
+✔ one clip clock handles unequal durations, loop boundaries and non-looping holds (5.388708ms)
+✔ swapping a weapon changes one part while preserving shared pose, handedness and timing (5.844406ms)
+✔ direction and individual attack frame override default draw order (4.951749ms)
+✔ all screen headings resolve by named direction; legacy table indices are never reused (1.249325ms)
+✔ validation rejects missing direction (10.021526ms)
+✔ validation rejects wrong direction order (6.53744ms)
+✔ validation rejects unordered clip rows (7.10718ms)
+✔ validation rejects missing canonical frame (6.864194ms)
+✔ validation rejects duplicate frame index (7.175984ms)
+✔ validation rejects missing layer frame (5.7019ms)
+✔ validation rejects invalid frame naming (5.135045ms)
+✔ validation rejects canvas mismatch (5.275628ms)
+✔ validation rejects missing required layer (5.605635ms)
+✔ validation rejects invalid root (5.583602ms)
+✔ validation rejects root drift (10.645286ms)
+✔ validation rejects invalid socket (6.050752ms)
+✔ validation rejects missing socket (6.024277ms)
+✔ validation rejects layer timing override (10.473217ms)
+✔ validation rejects frame timing override (11.672916ms)
+✔ validation rejects invalid shared duration (12.356197ms)
+✔ validation rejects invalid locomotion distance (11.472924ms)
+✔ validation rejects non-looping locomotion distance (10.810851ms)
+✔ validation rejects missing atlas (7.291969ms)
+✔ validation rejects out of atlas (7.265919ms)
+✔ validation rejects duplicate draw slot (6.556349ms)
+✔ validation rejects mirroring (7.029492ms)
+✔ validation rejects missing proof tag (6.971846ms)
+✔ validation rejects false approval (7.06771ms)
+✔ compiled metadata cannot be edited by a caller after validation (8.002801ms)
+✔ additional sockets and split weapon slots extend the same contract (8.454162ms)
+✔ compositor draws every part with one stable root/scale and returns registered sockets (5.865136ms)
+✔ existing player adapter keeps equipment and socket contracts, and modular visuals require opt-in (6.41141ms)
+✔ authored gait distance follows world travel independently of legacy gait and equipment (8.098875ms)
+✔ atlas loading respects repository prefixes, preloads only selected clips and retries failures (19.062933ms)
+✔ body variants preserve gameplay class and resolve one logical cosmetic to body-specific parts (63.771488ms)
+✔ cosmetics switch only after readiness, failed switches retain appearance, equipment cannot select parts (17.095991ms)
+✔ movement parts sample the existing gait, while all skill VFX can share SkillAction (5.134575ms)
+✔ occluded weapon back pass is a real removable runtime layer (8.889508ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 392.175322

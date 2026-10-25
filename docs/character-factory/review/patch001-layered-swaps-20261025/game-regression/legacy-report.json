@@ -1,0 +1,29 @@
+{
+  "scope": "Legacy save compatibility only, no new patch character or sex variant admitted",
+  "cases": [
+    {
+      "class_id": 0,
+      "legacy_movement": true,
+      "legacy_attack": true,
+      "expected_basic_state": "attack",
+      "page_errors": [],
+      "resource_errors": []
+    },
+    {
+      "class_id": 3,
+      "legacy_movement": true,
+      "legacy_attack": true,
+      "expected_basic_state": "attack",
+      "page_errors": [],
+      "resource_errors": []
+    },
+    {
+      "class_id": 12,
+      "legacy_movement": true,
+      "legacy_attack": true,
+      "expected_basic_state": "cast",
+      "page_errors": [],
+      "resource_errors": []
+    }
+  ]
+}

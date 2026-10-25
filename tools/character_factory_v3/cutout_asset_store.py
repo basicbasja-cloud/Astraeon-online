@@ -10,7 +10,7 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[2]
 STORE=ROOT/'authoring/characters/factory-v3/patch-0.0.1/cutout-store'
-ROLES={'HeadHair','BodyCostume','Weapon','WeaponHandOccluder','WeaponLightBack','WeaponLightFront','BackAccessory','Headgear'}
+ROLES={'HeadHair','BodyCostume','Weapon','WeaponHandOccluder','WeaponLightBack','WeaponLightFront','BackAccessory','Headgear','WeaponBack'}
 REQUIRED={'HeadHair','BodyCostume','Weapon'}
 
 
@@ -53,12 +53,14 @@ def import_frame(master_path,labels_path,part_paths):
     """Validate an artist's same-frame parts before storage (no warping)."""
     master=Image.open(master_path).convert('RGBA')
     if master.size not in [(512,512),(768,768)]:raise ValueError('Master is not on a supported canonical canvas')
-    # Exact label IDs: 1 body, 2 head/hair, 3 weapon, 4 back, 5 headgear, 6 hand occluder.
+    # IDs 1..6 retain their legacy meanings; optional 7 is the rear weapon pass.
     labels=Image.open(labels_path)
     if labels.size!=master.size or labels.mode not in ['L','P']:raise ValueError('Expected a same-frame integer label map')
     a=np.asarray(master);ids=np.asarray(labels);visible=a[:,:,3]>0
-    if np.any(visible&~np.isin(ids,[1,2,3,4,5,6])):raise ValueError('Visible master pixels lack semantic labels')
+    allowed=[1,2,3,4,5,6]+([7]if 'WeaponBack'in part_paths else [])
+    if np.any(visible&~np.isin(ids,allowed)):raise ValueError('Visible master pixels lack semantic labels')
     masks={role:ids==i for i,role in enumerate(['BodyCostume','HeadHair','Weapon','BackAccessory','Headgear','WeaponHandOccluder'],1)}
+    if 'WeaponBack'in part_paths:masks['WeaponBack']=ids==7
     merged=np.zeros_like(a)
     for role,mask in masks.items():
         pixels=np.zeros_like(a);pixels[mask]=a[mask];image=Image.fromarray(pixels);path=part_paths[role];path.parent.mkdir(parents=True,exist_ok=True);image.save(path);merged[mask]=pixels[mask]

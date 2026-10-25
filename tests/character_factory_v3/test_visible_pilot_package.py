@@ -141,6 +141,20 @@ class VisiblePilotPackageTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'bounded native-loop reuse receipt'):
                 module.validate_native_loop(source,json.loads((source/'receipt.json').read_text()))
 
+    def test_all_native_camera_labels_are_preserved(self):
+        for direction in module.DIRECTIONS:
+            self.assertEqual(module.resolve_direction({'direction':direction}),direction)
+            self.assertEqual(module.resolve_direction({},direction),direction)
+
+    def test_camera_relabeling_is_rejected(self):
+        with self.assertRaisesRegex(ValueError,'differs from captured'):
+            module.resolve_direction({'direction':'NW'},'NE')
+        with self.assertRaisesRegex(ValueError,'Invalid recorded'):
+            module.resolve_direction({'direction':'mirrored'})
+
+    def test_legacy_unlabeled_ne_packages_remain_compatible(self):
+        self.assertEqual(module.resolve_direction({}),'NE')
+
     def test_native_loop_certificate_does_not_allow_changed_parts(self):
         with tempfile.TemporaryDirectory() as temporary:
             source,masters=self.package_fixture(Path(temporary),2)

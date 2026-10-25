@@ -201,3 +201,20 @@ test('movement parts sample the existing gait, while all skill VFX can share Ski
  api.drawHumanoid(ctx,iso,t,{modular:visual,archetype:'mage'});assert.equal(window.AstraeonSpatialView.sampledPose.column,2);
  for(const effect of ['Fire','Ice']){api.drawHumanoid(ctx,iso,t,{modular:{...visual,effect},state:'cast',archetype:'mage',progress:.4});assert.equal(window.AstraeonSpatialView.sampledPose.column,1)}
 });
+
+test('occluded weapon back pass is a real removable runtime layer',()=>{
+ const d=structuredClone(sword),front=d.defaultParts.Weapon,id='weapon-back';
+ d.slots.WeaponBack='WeaponBack';d.defaultParts.WeaponBack=id;
+ d.parts[id]=structuredClone(d.parts[front]);d.parts[id].slot='WeaponBack';
+ d.parts[id].frames=Object.fromEntries(Object.entries(d.parts[front].frames).map(([key,value])=>[key.replace('_'+front+'_','_'+id+'_'),value]));
+ d.drawOrder.unshift('WeaponBack');
+ for(const clip of Object.values(d.clips))for(const sequence of Object.values(clip.directions)){
+  if(sequence.drawOrder)sequence.drawOrder.unshift('WeaponBack');
+  for(const frame of sequence.frames)if(frame.drawOrder)frame.drawOrder.unshift('WeaponBack');
+ }
+ assert.deepEqual(api.validateDefinition(d),[]);
+ const compiled=api.compile(d),shown=compiled.sample('Idle','S',0),hidden=compiled.sample('Idle','S',0,{appearance:{WeaponBack:null}});
+ assert.equal(shown.layers[0].layer,'WeaponBack');
+ assert.deepEqual(shown.layers.slice(1),hidden.layers);
+ assert.deepEqual(shown.sockets,hidden.sockets);
+});

@@ -10,7 +10,7 @@ from PIL import Image
 from patch001_factory import ROOT,BASE,read
 
 CORE=('BodyCostume','HeadHair','Weapon')
-ORDER=('WeaponLightBack','BackAccessory','BodyCostume','HeadHair','Weapon','WeaponLightFront','WeaponHandOccluder','Headgear')
+ORDER=('WeaponLightBack','WeaponBack','BackAccessory','BodyCostume','HeadHair','Weapon','WeaponLightFront','WeaponHandOccluder','Headgear')
 
 def trimmed_source(im):
     """Trim transparent storage only; retain the original integer placement."""

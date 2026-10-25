@@ -2,7 +2,7 @@
  * imports native court data before consumers capture town content. */
 (async()=>{
 'use strict';
-const version='106';
+const version='107';
 function load(files){return Promise.all(files.map(file=>new Promise((resolve,reject)=>{const script=document.createElement('script');const developmentBody=new URLSearchParams(location.search).get('swordsman');const factoryProof=file==='proof/swordsman-development.js'&&['fantasy','v3','v3-painted','v3-painted-v2'].includes(developmentBody);script.src=file+'?v='+version+(factoryProof?'&spriteDev=1&factoryCode=free-motion-v3':'');script.async=false;script.onload=resolve;script.onerror=()=>reject(Error('Could not load '+file));document.body.appendChild(script)})))}
 try{
  await load(['icons.js','world-view.js','world-content.js']);

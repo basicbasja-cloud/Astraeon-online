@@ -49,6 +49,19 @@ class CutoutOcclusionRegressionTests(unittest.TestCase):
             import_frame(p/'master.png',p/'labels.png',parts);merged=Image.new('RGBA',(768,768))
             for role in BASE_ORDER:merged.alpha_composite(Image.open(parts[role]))
             self.assertEqual(merged.tobytes(),master.tobytes());self.assertEqual(Image.open(parts['BodyCostume']).getpixel((20,30))[3],0);self.assertEqual(Image.open(parts['WeaponHandOccluder']).getpixel((20,30))[3],150)
+    def test_rear_weapon_label_seven_preserves_source_pixels(self):
+        from cutout_asset_store import import_frame
+        from import_patch001_cutouts import BASE_ORDER
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp);master=Image.new('RGBA',(512,512));master.putpixel((20,30),(140,80,20,255))
+            labels=Image.new('L',master.size);labels.putpixel((20,30),7)
+            master.save(p/'master.png');labels.save(p/'labels.png');parts={r:p/(r+'.png')for r in BASE_ORDER}
+            import_frame(p/'master.png',p/'labels.png',parts)
+            self.assertEqual(Image.open(parts['WeaponBack']).getpixel((20,30)),(140,80,20,255))
+            self.assertEqual(Image.open(parts['Weapon']).getpixel((20,30)),(0,0,0,0))
+            with self.assertRaisesRegex(ValueError,'semantic labels'):
+                import_frame(p/'master.png',p/'labels.png',{k:v for k,v in parts.items()if k!='WeaponBack'})
+
     def test_rear_accessory_order_is_explicit_and_validated(self):
         from import_patch001_cutouts import visible_draw_order
         parts={'BodyCostume':None,'HeadHair':None,'Weapon':None,'BackAccessory':None,'WeaponHandOccluder':None,'WeaponLightFront':None};order=['BodyCostume','BackAccessory','HeadHair','Weapon','WeaponHandOccluder']
