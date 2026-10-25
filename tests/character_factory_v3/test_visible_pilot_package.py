@@ -119,6 +119,45 @@ class VisiblePilotPackageTests(unittest.TestCase):
             self.assertIn('Loop part ownership differs',result.stderr)
             self.assertFalse((root/'package').exists())
 
+    def native_certificate(self,source,masters):
+        (source/'renderer-source.py').write_text('# synthetic native-loop fixture\n')
+        receipt=json.loads((source/'receipt.json').read_text())
+        receipt.update({'status':'BOUNDED_NATIVE_HOLD_REUSE_NOT_ADMITTED','one_illustrated_template':True,
+                        'per_frame_generation':False,'whole_character_bbox_fit':False,
+                        'implementation_sha256':module.sha(source/'renderer-source.py'),
+                        'input_sha256':{str(masters/'000.png'):module.sha(masters/'000.png')},
+                        'loop_evidence':{'checked':True,'native_source_loop':True,
+                                         'field_seam_max_px':.5,'largest_adjacent_field_change_px':1}})
+        for row in receipt['frames']:
+            row.update({'deformation':{'maximum_inverse_displacement_px':1,'minimum_jacobian':1,
+                                      'maximum_jacobian':1,'maximum_control_interpolation_error_px':0},
+                        'maximum_staff_axis_inverse_error_px':0,
+                        'part_sha256':{role:module.sha(source/role/f"{row['index']:03d}.png")for role in module.ROLES}})
+        return receipt
+
+    def test_uncertified_native_loop_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);source,masters=self.package_fixture(root,2)
+            with self.assertRaisesRegex(ValueError,'bounded native-loop reuse receipt'):
+                module.validate_native_loop(source,json.loads((source/'receipt.json').read_text()))
+
+    def test_native_loop_certificate_does_not_allow_changed_parts(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source,masters=self.package_fixture(Path(temporary),2)
+            receipt=self.native_certificate(source,masters)
+            module.validate_native_loop(source,receipt)
+            Image.new('RGBA',(16,16)).save(source/'HeadHair/001.png')
+            with self.assertRaisesRegex(ValueError,'Native loop part changed'):
+                module.validate_native_loop(source,receipt)
+
+    def test_native_loop_certificate_rejects_nan_geometry(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source,masters=self.package_fixture(Path(temporary),2)
+            receipt=self.native_certificate(source,masters)
+            receipt['frames'][0]['deformation']['minimum_jacobian']=float('nan')
+            with self.assertRaisesRegex(ValueError,'deformation exceeds'):
+                module.validate_native_loop(source,receipt)
+
 
 if __name__ == '__main__':
     unittest.main()

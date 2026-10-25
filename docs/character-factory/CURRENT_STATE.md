@@ -305,3 +305,10 @@ locations checked. The Tripo CLI was downloaded through npx for its free doctor,
 device login and dry-run capabilities. No global installation, purchase or paid
 generation has been performed. Two built-in image-generation calls prepared the
 technical reference, with source pixels/prompts/provenance preserved.
+
+
+## 2026-10-25 — high detail native Mage channel draft
+
+New single high resolution Mage NE template drives a bounded 16-pose native channel cycle. Camera stays fixed; one recorded static art calibration is reused by all frames. Staff motion passes 16/16 (maximum 0.449 native px), loop seam 2.551 px versus maximum ordinary adjacent motion 3.756 px. Browser master/parts comparison passes 32/32; frozen motion implementation reproduces 83 files byte exactly. Six separated sheet slots include two empty effect slots.
+
+Visible partitions are not complete hidden surfaces: the staff remains visibly occluded at the hand, and body needs underpainting before arbitrary head/weapon swaps. No gameplay admission, no additional imported paint jobs. Ledger remains 2/96 imported, 94 missing, zero newly complete playable characters. Review: `docs/character-factory/review/patch001-native-channel-hd-20261025/`.

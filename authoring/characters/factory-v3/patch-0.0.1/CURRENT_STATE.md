@@ -372,3 +372,10 @@ Female NE uses the same explicit pose8 hold at slot9. Raw female NE also release
 ## Bounded local paint correction
 
 A single female SW recovery15 arrow-removal study uses an explicit3,901-pixel repair mask. Outside-mask changes are exactly zero;3,049 inside pixels change. It is not promoted: the segment between nocking hand and bow grip still needs string-mechanics review. Original master/GIFs remain unchanged. This technical repair guard prevents collateral body/head/foot changes; it does not certify the replacement artwork. All68 factory tests pass, including three local-repair regression cases.
+
+
+## 2026-10-25 — high detail native Mage channel draft
+
+New single high resolution Mage NE template drives a bounded 16-pose native channel cycle. Camera stays fixed; one recorded static art calibration is reused by all frames. Staff motion passes 16/16 (maximum 0.449 native px), loop seam 2.551 px versus maximum ordinary adjacent motion 3.756 px. Browser master/parts comparison passes 32/32; frozen motion implementation reproduces 83 files byte exactly. Six separated sheet slots include two empty effect slots.
+
+Visible partitions are not complete hidden surfaces: the staff remains visibly occluded at the hand, and body needs underpainting before arbitrary head/weapon swaps. No gameplay admission, no additional imported paint jobs. Ledger remains 2/96 imported, 94 missing, zero newly complete playable characters. Review: `docs/character-factory/review/patch001-native-channel-hd-20261025/`.

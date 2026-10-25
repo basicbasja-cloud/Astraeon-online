@@ -30,7 +30,9 @@ for side, suffix in [('R', 'r'), ('L', 'l')]:
     for digit in ['Index', 'Middle', 'Ring', 'Pinky', 'Thumb']:
         for index in range(1, 4):
             MAP[f'{digit}{index}.{side}'] = f'{digit.lower()}_{index:02d}_{suffix}'
-YAWS = {'SW': -45, 'NW': -135, 'NE': 135, 'SE': 45}
+YAWS = {'S': 0, 'SW': -45, 'W': -90, 'NW': -135,
+        'N': 180, 'NE': 135, 'E': 90, 'SE': 45}
+ATTACK_DIRECTIONS = ['SW','NW','NE','SE']
 
 
 def main():
@@ -38,10 +40,12 @@ def main():
     parser.add_argument('--skeleton', type=Path, required=True)
     parser.add_argument('--rig', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--directions', nargs='+', default=list(YAWS))
+    parser.add_argument('--directions', nargs='+', default=ATTACK_DIRECTIONS)
     parser.add_argument('--resolution', type=int, default=1536)
     parser.add_argument('--weapon', choices=['staff', 'bow'], default='staff')
     args = parser.parse_args(sys.argv[sys.argv.index('--') + 1:])
+    if len(set(args.directions))!=len(args.directions) or not set(args.directions).issubset(YAWS):
+        raise ValueError('Choose unique real canonical camera directions')
     if bpy.app.version[:2] != (5, 2):
         raise ValueError('Canonical rig requires Blender 5.2')
     if args.output.exists():

@@ -1,0 +1,361 @@
+{
+  "status": "BOUNDED_NATIVE_HOLD_REUSE_NOT_ADMITTED",
+  "implementation_sha256": "a9ec95715246f2b3dad9a93d8be81174ce7cc57799ed1ff4a282f30666b30c45",
+  "direction": "NE",
+  "source_template_pose": 0,
+  "input_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-native-channel-hd-20261025/normalized/Master/000.png": "ba5be106a5fb86b9aa9dd3acd474173921a476dc5f10f14babf6d9133f318f4e",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-native-channel-hd-cutouts-20261025/BodyCostume/000.png": "83219f63cfda1c52325ba5c5c6cfb10d097c63649653b7df24696acac66b4095",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-native-channel-hd-cutouts-20261025/HeadHair/000.png": "5dbcb88e2e0a5e1bde252279b5a7966d37eaec283ea9ed230f2f40ec624dd92f",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-native-channel-hd-cutouts-20261025/Weapon/000.png": "a0f80737b137a7544825a288649a21b70023d0914e3dfc4f10df619325ad9ef7",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-native-channel-hd-cutouts-20261025/WeaponHandOccluder/000.png": "ce3f51beb1df45180751815403310d49bf634e2ee0df83307da8c27e08464bfd",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-channel-eight-views-20261025/pilot-receipt.json": "271c9680222d7f70838c0adf3f00d3ef181f0a92e94fa6fafd6c283e969a9dab",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-channel-20261025-source.json": "2f72ab485030c7f99b3791c38648ad119e920dddadfccf996cd5d6436087a2ac",
+    "/workspace/Astraeon-online/authoring/characters/factory-v3/patch-0.0.1/guides/9deff93fc539f5d49c4e/manifest.json": "0cd4d0f8e62a80aa27761e56e0b49be852f8d409c22d5506f4eaa2cdf0b1a10c"
+  },
+  "one_illustrated_template": true,
+  "per_frame_generation": false,
+  "whole_character_bbox_fit": false,
+  "deformation_policy": {
+    "maximum_flow_native_px": 32,
+    "jacobian_range": [
+      0.75,
+      1.35
+    ],
+    "maximum_control_error_native_px": 0.75,
+    "maximum_staff_error_native_px": 0.75
+  },
+  "loop_evidence": {
+    "checked": true,
+    "native_source_loop": true,
+    "field_seam_max_px": 2.550910089705331,
+    "largest_adjacent_field_change_px": 3.7558316648047425,
+    "closing_pose_duplicated": false
+  },
+  "frames": [
+    {
+      "index": 0,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 0.0,
+      "master_sha256": "ba5be106a5fb86b9aa9dd3acd474173921a476dc5f10f14babf6d9133f318f4e",
+      "part_sha256": {
+        "BodyCostume": "83219f63cfda1c52325ba5c5c6cfb10d097c63649653b7df24696acac66b4095",
+        "HeadHair": "5dbcb88e2e0a5e1bde252279b5a7966d37eaec283ea9ed230f2f40ec624dd92f",
+        "Weapon": "a0f80737b137a7544825a288649a21b70023d0914e3dfc4f10df619325ad9ef7",
+        "WeaponHandOccluder": "ce3f51beb1df45180751815403310d49bf634e2ee0df83307da8c27e08464bfd"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 0.0,
+        "minimum_jacobian": 1.0,
+        "maximum_jacobian": 1.0,
+        "maximum_control_interpolation_error_px": 0.0
+      },
+      "maximum_staff_axis_inverse_error_px": 0.0,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 1,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 4.0,
+      "master_sha256": "eec575eca10ef3b2666498b26e9cca335d0beef123e5f5332019c4a4d2c341b4",
+      "part_sha256": {
+        "BodyCostume": "dc68967a8c91ff5dacb36aecfb80691fb36bb346ebcd3c494e0ac7a754216db0",
+        "HeadHair": "8802a470f82a712803e166023aafb7bbfbfd6b323a9292a6a4c91433fcf83dda",
+        "Weapon": "4d042ecbc6c219ac465709e43eb514bd42b2894728d89fd35a04457004d5c178",
+        "WeaponHandOccluder": "2ae6ae3dbd38024bef75131be55aaef481698bddc223d01331a4ea4147349180"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 3.281836878515091,
+        "minimum_jacobian": 0.945743963906814,
+        "maximum_jacobian": 1.022022138125927,
+        "maximum_control_interpolation_error_px": 0.04520735353508862
+      },
+      "maximum_staff_axis_inverse_error_px": 0.07733416213272246,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 2,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 8.0,
+      "master_sha256": "e83af224dd9af36b615096b8d88917a1fc3cf02a3a283be8c843dc75064f670f",
+      "part_sha256": {
+        "BodyCostume": "c50beb9c2ee9fddea5b6a41525fa2cc8bab312f8eb5aba2e70e711478d135b98",
+        "HeadHair": "9717db8d484ab9abba48cff32bc4ca3801fb61a23c3b799a9cebf20ded447a70",
+        "Weapon": "58c8d83740b924100f83f1a3ae90b4ddc005c4eb8cc7a3f8b667b00e45cbd9f8",
+        "WeaponHandOccluder": "b38a2d2e57921d83067faa2f7ec695609b8ed6552fe44e0ecda34dc7f1f9fb96"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 5.382429064734356,
+        "minimum_jacobian": 0.9048304174045072,
+        "maximum_jacobian": 1.0302690736556253,
+        "maximum_control_interpolation_error_px": 0.06092962690642772
+      },
+      "maximum_staff_axis_inverse_error_px": 0.13578336856861906,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 3,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 12.0,
+      "master_sha256": "ab75c4244dd8f8e5e994703765de8377a25732842fdd8170dd9223d543742bfa",
+      "part_sha256": {
+        "BodyCostume": "d30d94488dc473b226ecfb37dfc0eb2beca8d9b369ff764a859685c4c628eb69",
+        "HeadHair": "d062627c1b1fad3432bd37911883c40d399fc129f96c072a8935406f478fb664",
+        "Weapon": "02a695d40613f44c7085731fc2b0a009fe5073ea0758f5f2af2f48b90e839ad1",
+        "WeaponHandOccluder": "9a9b7ac84c2b773494d43224939fe180240ee9cb5fa81ccabc0b8ae3efa976eb"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 6.194291069805036,
+        "minimum_jacobian": 0.8839378978425089,
+        "maximum_jacobian": 1.0372115250254295,
+        "maximum_control_interpolation_error_px": 0.07635896006985961
+      },
+      "maximum_staff_axis_inverse_error_px": 0.1648577068781129,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 4,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 16.0,
+      "master_sha256": "609a2b5b65e43be5064424cf51e9ea205e0cc647552a4bc74976fe9a041cc418",
+      "part_sha256": {
+        "BodyCostume": "f3af30de29af0199a4e925f8ff82e2c8683206344b58c4a315ac2d3abc427d20",
+        "HeadHair": "bcc5ed61e39bc6e66487cb4fc39c790ceb4d41171242291ec3f2475543721716",
+        "Weapon": "c56bad4aefcfa9d74c2de3df6dee4fc778c062bb30ed8ec43ce45249b3434f75",
+        "WeaponHandOccluder": "1563ed25b732bac90df341c6181744ce5640193ba3d3a76cbde4349f8ccc301b"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 5.983005854210894,
+        "minimum_jacobian": 0.8807818131298929,
+        "maximum_jacobian": 1.0368660679564619,
+        "maximum_control_interpolation_error_px": 0.0768371379311935
+      },
+      "maximum_staff_axis_inverse_error_px": 0.1681293455232529,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 5,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 20.0,
+      "master_sha256": "09151b9071ee5e30d3d2d88cd3114a3c4b7faa4a1c87898de8b09de8e505cded",
+      "part_sha256": {
+        "BodyCostume": "917aa9f5bc7aa17499131dcf6e09dcb2d0795061714f920f835637a33bbe3380",
+        "HeadHair": "46fe2d4cc24630064551064e1b58443e3d314e87ffa44e5db7addf2346614351",
+        "Weapon": "82fd18f3da019e0df0018c0879f211fd992d83a4d6e9b48327d8c1d44701cc04",
+        "WeaponHandOccluder": "2f8263d53794a2e8083c0baf78877c40ee97ab1835845534d4b67da5e176e1d5"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 5.049040791437325,
+        "minimum_jacobian": 0.8943977289578258,
+        "maximum_jacobian": 1.0331411767023502,
+        "maximum_control_interpolation_error_px": 0.06544174614727022
+      },
+      "maximum_staff_axis_inverse_error_px": 0.14778506910499917,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 6,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 24.0,
+      "master_sha256": "4686c4d721a62e29b20458fd109d62cad4d9c7297167a4f9841692b35cfa2e2f",
+      "part_sha256": {
+        "BodyCostume": "cad4575818357a3ef71a50ac420965cc27513b5c39881a8f63891a522fe960dc",
+        "HeadHair": "ac51ff381b9e51acaf7276a663e9e28630492eb32ae562ebf90a83be3c45e42a",
+        "Weapon": "2115b85c50f0905aff0158b98b73851b68618877957cf2546cfc3b5d1822088d",
+        "WeaponHandOccluder": "6e26459fe0ca96d44325a2c9992cdc038c692bbbff1c5eb036e097be9a3e21c5"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 8.494197229548446,
+        "minimum_jacobian": 0.9273677310575581,
+        "maximum_jacobian": 1.0441006827967232,
+        "maximum_control_interpolation_error_px": 0.1116764482935242
+      },
+      "maximum_staff_axis_inverse_error_px": 0.09958076159637867,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 7,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 28.0,
+      "master_sha256": "be2c58529ceead86dfe62f441d1209caa5bce013bb54edff3532308539cd3398",
+      "part_sha256": {
+        "BodyCostume": "64e223095d395538f9b12f38475ae58216b2870dc213121fd4c52159b86443fc",
+        "HeadHair": "a1029915b2b28f0fd914839870530b658ca722ab5c72a3c65b874649345bdae0",
+        "Weapon": "b1721da2062d0b65e6ca38abb56cd99449bdf2638d0017402b0a2cc251ffe960",
+        "WeaponHandOccluder": "d219b9194b6a996fdb16e3e6ad6170dabfd6c6ad6a373fb3d78d6e2c6a7f5174"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 11.47308605617153,
+        "minimum_jacobian": 0.8901029393817604,
+        "maximum_jacobian": 1.0538124027657716,
+        "maximum_control_interpolation_error_px": 0.15654142275123523
+      },
+      "maximum_staff_axis_inverse_error_px": 0.0288125103716935,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 8,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 32.0,
+      "master_sha256": "30ca7f3489652abd5d26e7005384eb6b56b52a4d4e020b200d5287bb3c368fe3",
+      "part_sha256": {
+        "BodyCostume": "fe5af66afb690b4fefbb20f226e9c5c7f061f25b8a1f37d926e311b970eb23b8",
+        "HeadHair": "dc58ddafefcc8775aebf2d5971ed46b70a29e343e3923d1c6b25f37080304f46",
+        "Weapon": "f33388998372b21c6f87c9fc262f8bc8829842411db2250204de3a6d9f9438bb",
+        "WeaponHandOccluder": "651ad35f25336cc6d16fae898fdffa86758fb33e1e23f3098016579dfb806942"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 13.042545761855907,
+        "minimum_jacobian": 0.8590434572237654,
+        "maximum_jacobian": 1.0584344157071401,
+        "maximum_control_interpolation_error_px": 0.14847597107195049
+      },
+      "maximum_staff_axis_inverse_error_px": 0.06113621286253112,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 9,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 36.0,
+      "master_sha256": "3ea4b7f320fc0d82300b1a2e022c6dcfdd21215abf9df43cce7a6dc930758ba3",
+      "part_sha256": {
+        "BodyCostume": "8489b8f44eccd3916cfc33ace96f2c29cf3d34eb4c9a5e33803641a04f040341",
+        "HeadHair": "783ad652b11535a556f447c93140619eff4ad269c0705914e3bdb91e5d7a01fa",
+        "Weapon": "f717c60f3efc6287f40315fd1e219794155265fe08366dd2d64afd54bf45c543",
+        "WeaponHandOccluder": "e09aac72fa4fb1e5e42e0aa7fe37eb255dad129ce97c61e4d7d16644c72f58a9"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 13.910092218555809,
+        "minimum_jacobian": 0.841574974540431,
+        "maximum_jacobian": 1.0954193177908371,
+        "maximum_control_interpolation_error_px": 0.12712865881674237
+      },
+      "maximum_staff_axis_inverse_error_px": 0.15061530314148144,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 10,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 40.0,
+      "master_sha256": "b278d390453bc3379c992b77e88af926bb596442885ce6e9cd13f8971872ea97",
+      "part_sha256": {
+        "BodyCostume": "c9b067c76297a5faacdd58ad4a10337a374959ba82321b7cc67fe1cef4ac20da",
+        "HeadHair": "d58148ff232ee71687250f000eef1aec78509206f879ac60a8f510489867a76a",
+        "Weapon": "300c3b30a0778df6e32c854abf59fe850055d59df9c881e6d24c9c6ff92acde8",
+        "WeaponHandOccluder": "300975289dff8ffe9bceea7fe14fa82720867136279f4d77a905ce5bd65032a1"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 13.597225264759679,
+        "minimum_jacobian": 0.8382826719437728,
+        "maximum_jacobian": 1.1475172389743808,
+        "maximum_control_interpolation_error_px": 0.1348552833056306
+      },
+      "maximum_staff_axis_inverse_error_px": 0.2333397627561038,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 11,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 44.0,
+      "master_sha256": "381f87ee3235f487872c64e942757d3609f0f346e87d4840122cb193657611f0",
+      "part_sha256": {
+        "BodyCostume": "f25bd5432f6aece1ca0e8557fee50e9ce8bd85ee543921dd95225f4be5bca91b",
+        "HeadHair": "269bc83407a76764a4e103c545f50d4dd66a880e4130af2678defb6a59687d91",
+        "Weapon": "0a4c215090bc90c24b330ee9dd344f7252f151f6a7fcde0ddab5b82f05d36ad2",
+        "WeaponHandOccluder": "d1206f2a8ffdb5125b4102c807db47ac0ec7ff1149320a127366341068c0c37c"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 12.288214181917777,
+        "minimum_jacobian": 0.8436998217102212,
+        "maximum_jacobian": 1.1623648810874454,
+        "maximum_control_interpolation_error_px": 0.1573693645485474
+      },
+      "maximum_staff_axis_inverse_error_px": 0.25599288732343917,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 12,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 48.0,
+      "master_sha256": "146a34444405fa0f5e7066f06c1b79b1876982be447e71386012357f953b89d3",
+      "part_sha256": {
+        "BodyCostume": "b787149a62385e76d8912c06641f8ea0b983a8dc4d8fde5c05b1c14096ca3f8d",
+        "HeadHair": "18a025e040da57f8942bf3c4fd9086cfce5278481569e1fbfd5e94888b7ad188",
+        "Weapon": "6fc88877b4bf78d10c4c7c92a7b0bd531b29f05ee8f96bb573a565d21f28d3ff",
+        "WeaponHandOccluder": "547e8b2ae77e11743e3b8e1adfa1216707ca9a310bf4e2bcc73d1e1fb16675cb"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 10.525049228944217,
+        "minimum_jacobian": 0.865924473606707,
+        "maximum_jacobian": 1.1680084763137606,
+        "maximum_control_interpolation_error_px": 0.1520281626949894
+      },
+      "maximum_staff_axis_inverse_error_px": 0.2653215925930779,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 13,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 52.0,
+      "master_sha256": "afcca7d42cff1335a06fe91edcdd777ec63745ef708e8eee5bbc1643c1c39c71",
+      "part_sha256": {
+        "BodyCostume": "466af2b75a7f3842aec3cac5b31b413de5506f662cd97024169a733ae27634ec",
+        "HeadHair": "d1544103c0b0eba2fbe52b7335c4cc97fe72d37b75e2ce121decfb56da6bdfba",
+        "Weapon": "b1c7c53b20a698a5fb5953f7ae9d618ebb291151fa761b3039a4f212006371fd",
+        "WeaponHandOccluder": "f22f33ffa86ab144e809d9483358528558f7885080ce9d7fbec5bb68da3390ab"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 8.829695364026088,
+        "minimum_jacobian": 0.8984050141428024,
+        "maximum_jacobian": 1.1453539191627582,
+        "maximum_control_interpolation_error_px": 0.1338057552066848
+      },
+      "maximum_staff_axis_inverse_error_px": 0.22701222013118472,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 14,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 56.0,
+      "master_sha256": "60a14f7d02bd83a4212225222ee50ba2b1b854bd83ae185f9d4e219d165d4714",
+      "part_sha256": {
+        "BodyCostume": "d846ba4045aeebc76f7e4b00fe674bccb83a0a16ef80d5b5a5efbf672b590355",
+        "HeadHair": "0560865dbaa077833c40db3ca6766b851d40cf247c2ea0803050bb024c3773bf",
+        "Weapon": "3451f28f4e9354e5c85daf068cb0ac3f22bbfc42ca628698c42ca2602c7fbf9d",
+        "WeaponHandOccluder": "4c06d5d459814338d10c83a75b595b3b9c968bb485dd1c24196b17c1dfbbae38"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 5.901553316012208,
+        "minimum_jacobian": 0.937637356673623,
+        "maximum_jacobian": 1.0981002780374078,
+        "maximum_control_interpolation_error_px": 0.08533924272543272
+      },
+      "maximum_staff_axis_inverse_error_px": 0.15046861891470714,
+      "recomposition_changed_pixels": 0
+    },
+    {
+      "index": 15,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 60.0,
+      "master_sha256": "110de479d57a5749e4e2a6b8c9ecc2e40a9128f9bd5d1cd3f9f82d68d9ce60ac",
+      "part_sha256": {
+        "BodyCostume": "933699370cc3493eff4975a2a30df9ae1b7bb797652e34ce7280843c7f16456d",
+        "HeadHair": "d0e13ac2f52d401002d81a2bc4b561f05c0b4461ff71248e8d34e5cd80d53b8e",
+        "Weapon": "d30aaeebf62abc1cd8577093719501f8896b75641024f9cb0079cd8fb96b4b86",
+        "WeaponHandOccluder": "7a44e7e71993c5bd758d86af111285362530fed4d8386e62aaff2d3776285c43"
+      },
+      "deformation": {
+        "maximum_inverse_displacement_px": 2.550910089705331,
+        "minimum_jacobian": 0.9761437401471599,
+        "maximum_jacobian": 1.0438171089567292,
+        "maximum_control_interpolation_error_px": 0.02591180961618811
+      },
+      "maximum_staff_axis_inverse_error_px": 0.06571771198398915,
+      "recomposition_changed_pixels": 0
+    }
+  ],
+  "semantic_cutouts_approved": false,
+  "hidden_surfaces_authored": false,
+  "runtime_admitted": false,
+  "full_character_complete": false
+}
