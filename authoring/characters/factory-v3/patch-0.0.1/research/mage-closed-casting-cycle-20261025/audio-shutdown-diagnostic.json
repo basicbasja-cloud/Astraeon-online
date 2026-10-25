@@ -1,0 +1,11 @@
+{
+  "restricted_sandbox_probe": "Blender 5.2 printed completed output then hung in PulseAudio pa_write wakeup with EPERM, even with -noaudio and device None",
+  "unrestricted_probe": {
+    "exit_code": 0,
+    "stdout": "BLENDER_EXIT_SANDBOX_PROBE; Blender quit"
+  },
+  "terminated_only_completed_owned_renderer_processes": true,
+  "capture_artifacts_verified_separately": true,
+  "cycle_finalization": "--finish-only after complete PNG/skeleton/script verification",
+  "future_blender52_commands": "Run local renderer with approved sandbox escalation; do not claim an incomplete process exited successfully."
+}

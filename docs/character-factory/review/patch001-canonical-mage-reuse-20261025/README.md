@@ -14,7 +14,7 @@ This is a production checkpoint, not the final six-character delivery.
 From repository root:
 
 ```sh
-python tools/character_factory_v3/package_visible_pilot_parts.py \
+python authoring/characters/factory-v3/patch-0.0.1/review/mage-canonical-separated-sheets-20261025/renderer-source.py \
   --source authoring/characters/factory-v3/patch-0.0.1/review/mage-canonical-visible-cutouts-v6-20261025 \
   --masters authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-canonical-planted-boots-v2-20261025/frames/Master \
   --output .factory-replay/mage-visible-parts-new
@@ -23,6 +23,11 @@ python tools/character_factory_v3/capture_visible_pilot_browser.py \
 ```
 
 The raw illustrated sheet, source viewport and normalization recipe are frozen under `painted-candidates/mage-canonical-native-fingers-whole-20261024`. Image generation itself is not deterministic; the frozen-input factory replay is. Exact replay of 122 files is recorded in `research/canonical-rig-runtime-20261024/mage-visible-parts-frozen-input-replay-20261025.json`.
+
+The command uses the frozen exporter to reproduce that exact historical package.
+The current exporter also supports bounded multi-page sequences and adds page
+bindings to its metadata; its visible 16-pose output is checked separately in
+`../patch001-closed-casting-20261025/page-upgrade-pixel-replay.json`.
 
 Native source/target captures are separate research outputs with exact script snapshots. Target captures require Blender 5.2.2; original source skeleton export uses 4.3.2. `verify_canonical_pilot.py` checks frozen input digests, captured PNGs, native samples, rotation/floor tolerances, cross-camera prop identity and arrow visibility.
 

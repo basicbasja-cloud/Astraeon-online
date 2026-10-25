@@ -1,0 +1,20 @@
+{
+  "provider": "native-imagegen",
+  "initial_uncolored_trials": {
+    "prompt": "Paint IMAGE 1 directly into final-quality 2D hand-painted fantasy RPG sprite art. EXACTLY FOUR poses in ONE horizontal row, same canvas aspect 1644:683 and original cell positions/margins. The gray guide is locked anatomy and camera: trace all four poses individually, preserving head size, compact RPG proportions, shoulder/hip/ankle positions and exact boot contact points. Same male mage seen from behind NE. Anatomical right hand holds vertical staff mostly BEHIND HIS HEAD in these poses; keep its source occlusion, do NOT invent a visible raised hand on screen-right. Left arm hangs low and starts raising exactly as each guide shows. Image 2 contains MATERIAL SWATCHES ONLY: auburn layered short hair with one curled top tuft, navy coat, cream folded-down hood, small gold stars, cream/gold split coattails, black trousers, brown leather boots, wooden staff with a small cyan crystal. Same exact consistent costume across all four frames: matching belt, boot design, gold trim and stars. Rich polished anime RPG illustration shading, precise clean outlines, beautiful clear detail, NOT a filtered 3D render. Do not change body proportions, recenter, enlarge, flip or independently reposition figures. Trace source staff position in every frame, right-hand grip may be hidden. Remove loose guide triangles and gray mesh fragments. No cape, magic effects, floor, shadow, text or grid lines. Transparent background.",
+    "status": "REJECTED_COSTUME_DRIFT_NAVY_CUFFS_VS_CREAM_AND_GLOVES",
+    "outputs": {
+      "0": "exec-ec3bd7c9-4b0a-4f31-9d1c-362aadba6feb.png",
+      "4": "exec-ddeb16e0-6d1c-4a22-98df-db4e2384bf1b.png"
+    }
+  },
+  "color_guided_trials": {
+    "prompt": "Paint IMAGE 1 directly into polished 2D fantasy RPG sprite art. Exactly FOUR full-body poses in ONE horizontal row, preserve canvas aspect 1644:683, all original cell positions, margins and source anatomy. Colored geometry is LOCKED pose/proportion guidance, NOT final 3D art. IMAGE 2 is the exact existing Mage costume broken into material/detail swatches. Match it faithfully: auburn layered short hair with one curled top tuft; navy coat, CREAM folded hood; small gold stars in fixed consistent places; CREAM FOREARM CUFFS WITH GOLD TRIM on BOTH arms; BARE SKIN HANDS, absolutely NO gloves; cream/gold split coat tails; black trousers; same brown boots; carved wood staff with small cyan crystal. Do not change the sleeves/cuffs, belt or boot design across cells. This is the same male Mage viewed from behind NE. Trace all four actual poses separately, especially the low left arm and subtly changing torso/head. Right hand holds the staff mostly hidden BEHIND THE HEAD as shown; do not invent an extra visible hand or shift staff to screen-right. Preserve exact guide foot contact points and fixed figure scale. Rich crisp hand-painted anime RPG rendering with refined detail and clear contours, not filtered 3D. No extra armor, cape, gloves, spell effects, shadows, ground, text or grid. Remove the guide's detached triangular debris. Transparent background. Keep geometry and camera exactly as Image 1 while applying only the costume and illustrated finish from Image 2.",
+    "status": "PAINT_CANDIDATES_NOT_APPROVED",
+    "outputs": {
+      "0": "exec-01ef5295-084d-4435-92ce-c79cd24b5774.png",
+      "4": "exec-55315cb8-2821-4c2d-801b-486cf4002e75.png"
+    }
+  },
+  "runtime_admitted": false
+}

@@ -2,6 +2,40 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Closed native casting cycle and bounded atlas pages — 25 October 2026
+
+Coverage remains **2/96 imported jobs; 94 missing; zero complete newly verified
+characters**. This checkpoint adds no completed character or accepted new art.
+
+- Mage casting now has a captured 32-pose native cycle across four real diagonal
+  cameras: original 24 Enter/Shoot/Exit samples plus four entry and four recovery
+  poses. All 128 captures pass geometry/hash checks; every view has zero endpoint
+  matrix, projected-joint and visible-pixel differences.
+- Supplementary class-color NE guide preserves all 32 pose controls and every
+  alpha pixel. New unpublished guide PNG packaging preserves visible RGBA and
+  metadata; original capture receipts and stable identities are retained.
+- Whole-cycle paint failed the original grid extraction. Component analysis
+  recovers 32 complete figures with one measured shared lattice and no per-frame
+  fitting; bilateral foot correspondence passes 32/32 (maximum disagreement
+  7.713 native pixels). Hand/staff alignment and semantic cutouts remain open.
+  The padded regeneration invented effects and stays rejected. Earlier batch
+  painting changed leg stance. No study is imported as a complete character.
+- Raw-sheet extraction now has a separate tested padding/empty-cell gate.
+  Multi-page part export supports 32+ poses in bounded 4×4 atlas pages; loop
+  endpoints must match for both master and each independent part. The historical
+  16-pose Mage pilot retains all 120 PNG/GIF files byte-for-byte after upgrading.
+- Recovered Mage draft now exports 32 poses as 12 separated proposal sheets plus
+  two master pages. Real Chromium: 64 comparisons, zero pixel differences/page
+  errors. Right-arm/staff motion audit fails 22/32 poses, maximum 91.556 native
+  pixels even with one fixed reference offset. This is an explicit blocker;
+  exact recomposition and boot correspondence do not override it.
+- 207 factory tests pass. Evidence, native four-view and painted draft GIFs:
+  `docs/character-factory/review/patch001-closed-casting-20261025/`.
+
+Next production gate remains clean, source-aligned continuous illustrated art,
+then semantic cutouts/swaps and actual runtime admission, across all required
+actions and six characters. Native guide loop closure does not approve painting.
+
 ## Canonical motion and visible Mage sheets — 25 October 2026
 
 Mechanical coverage remains **2/96 imported jobs, 94 missing, zero complete newly verified characters**. The new Mage artifacts are isolated pilots, not admitted characters.

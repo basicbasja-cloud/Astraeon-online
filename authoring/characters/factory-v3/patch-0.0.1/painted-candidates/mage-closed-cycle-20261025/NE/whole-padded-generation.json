@@ -1,0 +1,11 @@
+{
+  "provider": "native-imagegen",
+  "prompt": "Paint directly over IMAGE 1 to create one continuous fantasy RPG Mage casting animation sprite sheet. EXACTLY 8 columns by 4 rows, 32 poses in row-major order. Preserve image 1's exact sheet aspect, pose positions, fixed camera, planted feet and shared character scale. CRITICAL: preserve ALL the large transparent margins around EVERY figure in image 1. Each figure occupies only about 65 percent of its cell height. Do not enlarge figures to fill their cells. Leave at least 12 percent transparent padding on every side of every figure including the staff top and boot soles. Every pixel of each character must stay inside its own cell; no artwork crossing a cell boundary. Image 2 defines the illustrated character identity only: auburn short layered hair, navy coat with consistent gold stars, cream hood, gold edged cream split tails, black trousers, brown boots, cream forearm cuffs, bare hands, wooden staff with cyan crystal. Same identity, detail and proportions in all 32 poses. Trace image 1's anatomical motion: empty LEFT hand rises forward for spell and returns down; RIGHT hand holds staff beside head continuously. Keep both boots planted exactly at image 1's locations. No body scaling or recentering between frames. No extra wand in empty hand. Paint polished crisp anime fantasy illustration, clear clean linework and warm material shading, not a 3D render. Transparent clean neutral antialiased edges: NO red, yellow or green contour fringes, no selection glows, no effects, no shadows, no labels, no grid lines. Include complete feet and staff in every cell. Use highest possible resolution.",
+  "references": [
+    "whole-padded-guide.png",
+    "identity-template.png"
+  ],
+  "raw_original": "/workspace/generated_images/exec-b521d226-a890-4902-962e-16a645794089.png",
+  "status": "REJECTED_UNREQUESTED_EFFECTS_AND_CELL_OVERFLOW",
+  "runtime_admitted": false
+}

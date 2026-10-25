@@ -1,0 +1,59 @@
+{
+  "id": "7a616242ac828f42ada1",
+  "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "source_actions": [
+    "Spell_Simple_Enter",
+    "Spell_Simple_Shoot",
+    "Spell_Simple_Exit"
+  ],
+  "frames": 32,
+  "loop": false,
+  "ortho_scale": 5.325,
+  "resolution": 1536,
+  "weapon": "staff",
+  "guide_aa": "OFF",
+  "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+  "camera_up_offset": 1.15375,
+  "pose_evaluation_revision": 2,
+  "staff_grip_mode": "wrist-local-prop-reference",
+  "held_staff_hand": "r",
+  "staff_arm_reference": "Idle_Lantern",
+  "source_ranges": {
+    "Spell_Simple_Enter": [
+      0,
+      13
+    ],
+    "Spell_Simple_Shoot": [
+      0,
+      15
+    ],
+    "Spell_Simple_Exit": [
+      0,
+      12
+    ]
+  },
+  "render_pose_freeze_revision": 1,
+  "render_pose_freeze_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7",
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "uses": [
+    "Research/MageClosedCastingCycle"
+  ],
+  "entry_transition": {
+    "frames": 4,
+    "action": "Idle_A",
+    "source_frame": 0
+  },
+  "exit_transition": {
+    "frames": 4,
+    "action": "Idle_A",
+    "source_frame": 0
+  },
+  "closed_cycle_profile": 1,
+  "cycle_implementation_sha256": "6bedadf53a846509b9f50a1a1d2354797a9b3562d2c6cdf21fd60bc6e37ff60e"
+}

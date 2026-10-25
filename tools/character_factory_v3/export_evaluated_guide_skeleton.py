@@ -84,6 +84,7 @@ def main():
         records.append({'index': index, 'action': row['action'], 'source_frame': row['source_frame'],
                         'segment_phase': row.get('segment_phase'),
                         'source_weapon_guide': row['weapon_guide'],
+                        'source_controls': {key: row[key] for key in ['transition_from', 'transition_frame', 'transition_weight', 'actor_root_delta'] if key in row},
                         'maximum_world_landmark_error_m': error,
                         'bones': {bone.name: {'world_matrix': [list(v) for v in rig.matrix_world @ bone.matrix],
                                              'head': list(rig.matrix_world @ bone.head),

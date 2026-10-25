@@ -46,6 +46,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['source', 'guide', 'checkpoint', 'output']:
         parser.add_argument('--' + name, type=Path, required=True)
+    parser.add_argument('--masters',type=Path,help='Explicit registered master directory; default is source/frames/Master')
+    parser.add_argument('--indices',type=int,nargs='+',help='Bounded diagnostic poses; incomplete exports cannot be packaged as a full sequence')
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError('Use a new proposal output')
@@ -59,11 +61,16 @@ def main():
     predictor = SAM2ImagePredictor(build_sam2('configs/sam2.1/sam2.1_hiera_t.yaml', str(args.checkpoint), device='cpu', apply_postprocessing=False))
     guide = json.loads((args.guide / 'pilot-receipt.json').read_text())
     rows = guide['views']['NE']['frames']
+    if args.indices is not None:
+        if len(set(args.indices))!=len(args.indices) or not set(args.indices).issubset({r['index'] for r in rows}):
+            raise ValueError('Diagnostic indices must be unique captured poses')
+        rows = [row for row in rows if row['index'] in args.indices]
     args.output.mkdir(parents=True)
     records = []
     for row in rows:
         index = row['index']
-        path = args.source / 'frames/Master' / f'{index:03d}.png'
+        master_directory = args.masters if args.masters is not None else args.source/'frames/Master'
+        path = master_directory/f'{index:03d}.png'
         digest = sha(path)
         master = Image.open(path).convert('RGBA')
         a = np.array(master)
@@ -71,8 +78,17 @@ def main():
         yy, xx = np.indices(a.shape[:2])
         hx, hy = row['landmarks']['Head']
         region = (abs(xx-hx)<115) & (yy>hy-170) & (yy<hy+12)
-        observed = (a[:, :, 3]>64) & region & (rgb[:, :, 0]>1.45*rgb[:, :, 1]) & (rgb[:, :, 1]>1.1*rgb[:, :, 2])
-        hair, seed, bounds = component(observed, 50)
+        auburn_core = (rgb[:,:,0]-rgb[:,:,1])>1.8*(rgb[:,:,1]-rgb[:,:,2])
+        observed = (a[:, :, 3]>64) & region & (rgb[:, :, 0]>1.45*rgb[:, :, 1]) & (rgb[:, :, 1]>1.1*rgb[:, :, 2]) & auburn_core
+        # The brown staff can touch the auburn hair in the illustration. Break
+        # thin shaft bridges before locating head positives; otherwise the
+        # crystal/shaft negatives contradict positive "hair" shaft pixels.
+        opened = cv2.morphologyEx(observed.astype('uint8'),cv2.MORPH_OPEN,np.ones((9,9),'uint8'))>0
+        solid_hair, seed, _ = component(opened,50)
+        hair_distance = cv2.distanceTransform((~solid_hair).astype('uint8'),cv2.DIST_L2,cv2.DIST_MASK_PRECISE)
+        hair = observed & (hair_distance<=4)
+        hair_y,hair_x = np.where(hair)
+        bounds = [int(hair_x.min()),int(hair_y.min()),int(hair_x.max()),int(hair_y.max())]
         canvas = Image.new('RGBA', master.size, '#eee')
         canvas.alpha_composite(master)
         predictor.set_image(np.array(canvas.convert('RGB')))
@@ -91,14 +107,41 @@ def main():
             center = np.array([cuff_x.mean(), cuff_y.mean()])
             selected_cuff = np.argmin((cuff_x-center[0])**2+(cuff_y-center[1])**2)
             negatives.append([int(cuff_x[selected_cuff]), int(cuff_y[selected_cuff])])
-        points = np.array([seed, *negatives], np.float32)
+        # Several observed interior hair positives prevent a single point from
+        # selecting only a curl. Keep the existing coverage and area gates.
+        interior = cv2.erode(hair.astype('uint8'),np.ones((5,5),'uint8'))>0
+        iy,ix = np.where(interior & ((xx-seed[0])**2+(yy-seed[1])**2<90**2))
+        candidates = np.stack([ix,iy],axis=1)
+        positives = [seed]
+        for _ in range(4):
+            if not len(candidates):
+                break
+            distances = np.min(np.sum((candidates[:,None,:]-np.array(positives)[None,:,:])**2,axis=2),axis=1)
+            selected_point = int(np.argmax(distances))
+            if distances[selected_point]<100:
+                break
+            positives.append(candidates[selected_point].tolist())
+        points = np.array([*positives, *negatives], np.float32)
         with torch.inference_mode():
-            masks, scores, _ = predictor.predict(point_coords=points, point_labels=np.array([1]+[0]*len(negatives)), box=np.array(box, np.float32), multimask_output=True, return_logits=True)
+            masks, scores, _ = predictor.predict(point_coords=points, point_labels=np.array([1]*len(positives)+[0]*len(negatives)), box=np.array(box, np.float32), multimask_output=True, return_logits=True)
         core = hair & ((xx-hx)**2+(yy-(hy-70))**2<55**2)
         if not core.any():
             raise ValueError('Missing observed hair core')
-        choices = [i for i in range(len(scores)) if ((masks[i]>0)&core).sum()/core.sum()>.95 and 8000<(masks[i]>0).sum()<35000]
+        # Scale the lower area bound from observed hair, rather than the pixel
+        # area of the older larger pilot. Require both independent observed
+        # auburn coverage and central-core coverage; keep the body-area cap.
+        lower_area = max(1000,.9*hair.sum())
+        upper_area = min(35000,4*hair.sum())
+        choices = [i for i in range(len(scores)) if ((masks[i]>0)&core).sum()/core.sum()>.95
+                   and ((masks[i]>0)&hair).sum()/hair.sum()>.95
+                   and lower_area<(masks[i]>0).sum()<upper_area]
         if not choices:
+            (args.output/'proposal-failure.json').write_text(json.dumps({'index':index,
+                'observed_hair_pixels':int(hair.sum()),'core_pixels':int(core.sum()),
+                'prompt_points':points.tolist(),'positive_count':len(positives),'observed_hair_bounds':bounds,
+                'candidates':[{'area':int((mask>0).sum()),'core_coverage':float(((mask>0)&core).sum()/core.sum()),
+                               'observed_hair_coverage':float(((mask>0)&hair).sum()/hair.sum()),'score':float(score)}
+                              for mask,score in zip(masks,scores)],'runtime_admitted':False},indent=2)+'\n')
             raise ValueError('No bounded complete hair proposal ' + str(index))
         selected = max(choices, key=lambda i: float(scores[i]))
         head = attached_foreground(masks[selected]>0, a[:, :, 3], seed)

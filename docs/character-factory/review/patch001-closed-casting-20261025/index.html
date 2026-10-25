@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Continuous Mage casting — draft part sheets</title>
+<style>
+body{margin:24px;background:#202329;color:#eee;font:16px system-ui}h1{font-size:22px}.panels{display:flex;gap:20px;flex-wrap:wrap}canvas{width:384px;height:384px;background:repeating-conic-gradient(#eee 0 25%,#ddd 0 50%) 0/20px 20px}button{padding:10px;margin:12px 0}pre{white-space:pre-wrap}.note{max-width:900px;color:#ffd28a}
+</style>
+<h1>Mage NE continuous casting: draft separated sheets</h1>
+<p class="note">Research draft. Foot correspondence and exact recomposition are separate checks. Hand/staff alignment, hidden surfaces, swaps, final art quality and game admission remain open.</p>
+<button id="replay" disabled>Play / pause continuous cycle</button> <span id="pose"></span>
+<div class="panels"><section><h2>Painted master</h2><canvas id="master" width="768" height="768"></canvas></section><section><h2>Separate PNG parts</h2><canvas id="parts" width="768" height="768"></canvas></section></div>
+<pre id="result">Loading page bindings…</pre>
+<script>
+const assetRoot='../../../../authoring/characters/factory-v3/patch-0.0.1/review/mage-closed-separated-sheets-20261025/';
+const roles=['WeaponLightBack','BodyCostume','WeaponLightFront','HeadHair','Weapon','WeaponHandOccluder'];
+const master=document.querySelector('#master').getContext('2d',{willReadFrequently:true});
+const parts=document.querySelector('#parts').getContext('2d',{willReadFrequently:true});
+let pack,sheets,timer,index=0,playing=false;
+function load(entry){return new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{if(image.width!==pack.sheet_size[0]||image.height!==pack.sheet_size[1])reject(Error('Sheet dimensions differ'));else resolve(image)};image.onerror=()=>reject(Error('Cannot load '+entry.path));image.src=assetRoot+entry.path})}
+function draw(i,background=false){
+ const [w,h]=pack.canvas,row=pack.frames[i],[x,y,sw,sh]=row.sheet_box;
+ for(const context of [master,parts]){context.clearRect(0,0,w,h);if(background){context.fillStyle='#eeeeee';context.fillRect(0,0,w,h)}}
+ master.drawImage(sheets.Master[row.sheet_page],x,y,sw,sh,0,0,w,h);
+ for(const role of roles)parts.drawImage(sheets[role][row.sheet_page],x,y,sw,sh,0,0,w,h);
+ document.querySelector('#pose').textContent=`Pose ${i} / ${pack.frames.length-1}; page ${row.sheet_page+1}`;
+}
+window.factoryAudit=(async()=>{
+ const response=await fetch(assetRoot+'package.json');if(!response.ok)throw Error('Package missing');pack=await response.json();
+ for(const canvas of document.querySelectorAll('canvas'))[canvas.width,canvas.height]=pack.canvas;
+ sheets=Object.fromEntries(await Promise.all(['Master',...roles].map(async role=>[role,await Promise.all(pack.pages[role].map(load))])));
+ const checks=[];
+ for(let i=0;i<pack.frames.length;i++)for(const background of [false,true]){
+  draw(i,background);const a=master.getImageData(0,0,...pack.canvas).data,b=parts.getImageData(0,0,...pack.canvas).data;let differences=0;
+  for(let p=0;p<a.length;p+=4)if(a[p]!==b[p]||a[p+1]!==b[p+1]||a[p+2]!==b[p+2]||a[p+3]!==b[p+3])differences++;
+  checks.push({pose:i,page:pack.frames[i].sheet_page,background:background?'gray':'transparent',changed_pixels:differences});
+ }
+ const result={status:checks.every(c=>c.changed_pixels===0)?'COMPOSITOR_PASS_NOT_ART_APPROVAL':'FAIL',poses:pack.frames.length,pages:pack.pages.Master.length,comparisons:checks.length,checks,art_approved:false,hidden_surfaces_approved:false,runtime_admitted:false};
+ document.querySelector('#result').textContent=JSON.stringify(result,null,2);draw(0);document.querySelector('#replay').disabled=false;return result;
+})();
+document.querySelector('#replay').onclick=()=>{playing=!playing;clearTimeout(timer);const step=()=>{draw(index);const delay=pack.frames[index].duration_ms;index=(index+1)%pack.frames.length;if(playing)timer=setTimeout(step,delay)};if(playing)step()};
+</script>
