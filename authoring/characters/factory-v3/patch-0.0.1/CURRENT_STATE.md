@@ -2,6 +2,17 @@
 
 In production; not release complete. Six characters: male/female Swordsman, Mage and Archer.
 
+## Canonical motion and visible Mage sheets — 25 October 2026
+
+Mechanical coverage remains **2/96 imported jobs, 94 missing, zero complete newly verified characters**. The new Mage artifacts are isolated pilots, not admitted characters.
+
+- Read the original Astraeon rig with verified Blender 5.2.2. Native Mesh2Motion/KayKit poses exported with all 66 donor bones and checked against retained source world landmarks; 51 canonical body/finger bones receive explicit world-rest rotations. No old actions restored.
+- Actual new canonical captures: Mage CastRelease 64 poses, Archer BasicAttack 64 poses and Mage full BasicAttack 96 poses. All four real cameras. Rotation error <=1.75e-7 rad, floor error <=1.20e-7 m, identical world prop poses across cameras. These are 3D painting guides, not final artwork.
+- Mage NE CastRelease: sixteen illustrated poses, one fixed pair of boot cutouts follows captured ankle/toe controls. No whole-character fitting. Bilinear premultiplied slot sampling avoids the bright cubic edge discovered by tests.
+- Four visible ownership layers (body, head, staff, hand occluder), plus two explicitly empty FX layers; six separate 3072px sheets and a master sheet. The refined head labels return 1037 thin cuff/shaft fragments to the body; master pixels do not change.
+- Fixed 768px export recomposes exactly. Empty-directory replay reproduces all 122 files byte-for-byte. Actual Chromium: 32 comparisons over 16 poses, zero changed pixels and page errors. 190 Python tests pass.
+- Hidden anatomy, hand/staff semantic review, swaps and the other directions remain open. Exact recomposition is not art approval. CastRelease is a one-shot excerpt; its GIF deliberately does not loop from lowered hand back to raised hand. A full native casting cycle is the next production step.
+
 ## Selected long trail and real female cosmetic import — 24 October 2026
 
 Current mechanical coverage:48/48 captured guide families,2/96 imported cutout

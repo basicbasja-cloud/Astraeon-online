@@ -1,0 +1,37 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Mage visible-parts pilot review</title>
+<style>
+body{margin:24px;background:#202329;color:#eee;font:16px system-ui}h1{font-size:22px}.panels{display:flex;gap:20px;flex-wrap:wrap}canvas{width:384px;height:384px;background:repeating-conic-gradient(#eee 0 25%,#ddd 0 50%) 0/20px 20px}button{padding:10px;margin:12px 0}pre{white-space:pre-wrap}.note{max-width:900px;color:#ffd28a}
+</style>
+<h1>Mage NE CastRelease: visible-parts pilot</h1>
+<p class="note">Draft: not a complete character or an admitted game asset. Hidden surfaces, equipment swaps and the full casting cycle remain under review.</p>
+<button id="replay" disabled>Replay one-shot action</button> <span id="pose"></span>
+<div class="panels"><section><h2>Painted master</h2><canvas id="master" width="768" height="768"></canvas></section><section><h2>Separate PNG parts</h2><canvas id="parts" width="768" height="768"></canvas></section></div>
+<pre id="result">Loading frozen sprite sheets…</pre>
+<script>
+const assetRoot='../../../../authoring/characters/factory-v3/patch-0.0.1/review/mage-canonical-separated-sheets-20261025/';
+const roles=['WeaponLightBack','BodyCostume','WeaponLightFront','HeadHair','Weapon','WeaponHandOccluder'];
+const master=document.querySelector('#master').getContext('2d',{willReadFrequently:true});
+const parts=document.querySelector('#parts').getContext('2d',{willReadFrequently:true});
+const load=name=>new Promise((resolve,reject)=>{const image=new Image();image.onload=()=>{if(image.width!==3072||image.height!==3072)reject(Error('Sheet dimensions differ'));else resolve([name,image]);};image.onerror=()=>reject(Error('Could not load '+name));image.src=assetRoot+name+'-sheet.png';});
+let sheets,timer;
+function draw(index,background=false){
+ for(const context of [master,parts]){context.clearRect(0,0,768,768);if(background){context.fillStyle='#eeeeee';context.fillRect(0,0,768,768);}}
+ const x=index%4*768,y=Math.floor(index/4)*768;
+ master.drawImage(sheets.Master,x,y,768,768,0,0,768,768);
+ for(const role of roles)parts.drawImage(sheets[role],x,y,768,768,0,0,768,768);
+ document.querySelector('#pose').textContent='Pose '+index+' / 15';
+}
+window.factoryAudit=Promise.all(['Master',...roles].map(load)).then(entries=>{
+ sheets=Object.fromEntries(entries);const checks=[];
+ for(let index=0;index<16;index++)for(const background of [false,true]){
+  draw(index,background);const a=master.getImageData(0,0,768,768).data,b=parts.getImageData(0,0,768,768).data;let differences=0;
+  for(let pixel=0;pixel<a.length;pixel+=4)if(a[pixel]!==b[pixel]||a[pixel+1]!==b[pixel+1]||a[pixel+2]!==b[pixel+2]||a[pixel+3]!==b[pixel+3])differences++;
+  checks.push({pose:index,background:background?'gray':'transparent',changed_pixels:differences});
+ }
+ const result={status:checks.every(c=>c.changed_pixels===0)?'COMPOSITOR_PASS_NOT_ART_APPROVAL':'FAIL',poses:16,comparisons:checks.length,checks,art_approved:false,hidden_surfaces_approved:false,runtime_admitted:false};
+ document.querySelector('#result').textContent=JSON.stringify(result,null,2);draw(0);document.querySelector('#replay').disabled=false;return result;
+});
+document.querySelector('#replay').onclick=()=>{clearTimeout(timer);let index=0;const step=()=>{draw(index);index++;if(index<16)timer=setTimeout(step,80);};step();};
+</script>
