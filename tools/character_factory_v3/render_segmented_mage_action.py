@@ -17,6 +17,19 @@ import derive_bounded_hold_parts as motion
 from build_occluded_underlays import composite,sha
 
 
+def remove_distant_faint_alpha(image):
+    pixels=np.array(image.convert('RGBA'));alpha=pixels[:,:,3]
+    strong=alpha>64
+    if not strong.any():raise ValueError('No meaningful source illustration')
+    labels,_=ndimage.label(strong,structure=np.ones((3,3)))
+    counts=np.bincount(labels.ravel());counts[0]=0
+    main=labels==int(counts.argmax())
+    distance=ndimage.distance_transform_edt(~main)
+    removed=(alpha>0)&(alpha<=64)&(distance>3)
+    pixels[removed]=0
+    return Image.fromarray(pixels),int(removed.sum())
+
+
 def segment_matrix(source,target):
     source=np.asarray(source,float);target=np.asarray(target,float)
     u=source[1]-source[0];v=target[1]-target[0]
@@ -36,6 +49,16 @@ def palm_matrix(source,target):
         raise ValueError('Palm plane is degenerate or changes visible side')
     linear=b@np.linalg.inv(a)
     return np.column_stack([linear,target[0]-linear@source[0]])
+
+
+def rigid_head_matrix(source,target):
+    source=np.asarray(source,float);target=np.asarray(target,float)
+    u=source[1]-source[0];v=target[1]-target[0]
+    if min(np.linalg.norm(u),np.linalg.norm(v))<2:raise ValueError('Projected head axis is degenerate')
+    u=u/np.linalg.norm(u);v=v/np.linalg.norm(v)
+    a=np.column_stack([u,[-u[1],u[0]]]);b=np.column_stack([v,[-v[1],v[0]]])
+    linear=b@a.T
+    return np.column_stack([linear,target[1]-linear@source[1]])
 
 
 def warp_affine(image,matrix,xx,yy):
@@ -95,19 +118,35 @@ def main():
     base_view=base_capture['views'][direction];view=capture['views'][direction]
     if base_view['camera']!=view['camera']:raise ValueError('Native camera changed')
     base=base_view['frames'][0];base_points=base['landmarks']
-    body=Image.open(args.template/'BodyCostume/000.png').convert('RGBA')
-    source=make_parts(body,recipe,base_points)
-    source['HeadHair']=Image.open(args.template/'HeadHair/000.png').convert('RGBA')
-    source['HandR']=Image.open(args.template/'WeaponHandOccluder/000.png').convert('RGBA')
-    source['Weapon']=Image.open(args.template/'WeaponComplete-reference.png').convert('RGBA')
-    inputs=[args.recipe,args.base_guide/'pilot-receipt.json',args.target_guide/'pilot-receipt.json',args.template/'receipt.json',args.template/'WeaponComplete-reference.png',*[args.template/r/'000.png'for r in ['BodyCostume','HeadHair','WeaponHandOccluder']]]
+    if (args.template/'kit.json').is_file():
+        kit=json.loads((args.template/'kit.json').read_text())
+        if kit['status']!='INDEPENDENT_PAINTED_ARM_KIT_NOT_ADMITTED' or kit['direction']!=direction or kit['canonical_guide_receipt_sha256']!=sha(args.base_guide/'pilot-receipt.json'):
+            raise ValueError('Independent kit differs from the source camera/rest pose')
+        source={name:Image.open(args.template/name/'000.png').convert('RGBA')for name in kit['parts_sha256']}
+        for name,digest in kit['parts_sha256'].items():
+            if sha(args.template/name/'000.png')!=digest:raise ValueError('Independent painted part changed')
+        inputs=[args.template/'kit.json',*[args.template/name/'000.png'for name in source]]
+        noise={};input_kind='independently-painted-complete-parts'
+    else:
+        body,body_noise=remove_distant_faint_alpha(Image.open(args.template/'BodyCostume/000.png'))
+        source=make_parts(body,recipe,base_points)
+        source['HeadHair']=Image.open(args.template/'HeadHair/000.png').convert('RGBA')
+        source['HandR']=Image.open(args.template/'WeaponHandOccluder/000.png').convert('RGBA')
+        source['Weapon']=Image.open(args.template/'WeaponComplete-reference.png').convert('RGBA')
+        noise={'BodyCostume':body_noise}
+        for name in ['HeadHair','HandR','Weapon']:
+            source[name],noise[name]=remove_distant_faint_alpha(source[name])
+        inputs=[args.template/'receipt.json',args.template/'WeaponComplete-reference.png',*[args.template/r/'000.png'for r in ['BodyCostume','HeadHair','WeaponHandOccluder']]]
+        input_kind='legacy-visible-cutout-split'
+    inputs += [args.recipe,args.base_guide/'pilot-receipt.json',args.target_guide/'pilot-receipt.json']
     frozen={str(p):sha(p)for p in inputs}
     keys=['Hips','Chest','Head','UpperArm.L','UpperArm.R','Foot.L','Foot.R','Toe.L','Toe.R']
     boundary=np.array([[0,0],[768,0],[1536,0],[0,768],[1536,768],[0,1536],[768,1536],[1536,1536]])
     torso_source=np.vstack([[base_points[k]for k in keys],boundary])
     yy,xx=np.mgrid[:motion.SIZE,:motion.SIZE].astype(np.float32)
     args.output.mkdir(parents=True);records=[];preview=[]
-    order=['Weapon','Torso','UpperArmR','ForearmR','HandR','HeadHair','UpperArmL','ForearmL','HandL']
+    order=recipe.get('render_order',['Weapon','Torso','UpperArmR','ForearmR','HandR','HeadHair','UpperArmL','ForearmL','HandL'])
+    if set(order)!=set(source)or len(order)!=len(set(order)):raise ValueError('Painted primitive order differs')
     selected=view['frames']
     if args.indices is not None:
         if args.indices!=sorted(set(args.indices))or any(i<0 or i>=len(selected)for i in args.indices):raise ValueError('Expected ordered unique native pose indices')
@@ -118,8 +157,14 @@ def main():
         if metrics['minimum_jacobian']<.65 or metrics['maximum_jacobian']>1.5 or metrics['maximum_inverse_displacement_px']>64:
             raise ValueError('Torso exceeds bounded casting transport')
         dx,dy=[ndimage.map_coordinates(field[:,:,i],[((yy+.5)/motion.SPACING),((xx+.5)/motion.SPACING)],order=1,prefilter=False)for i in range(2)]
-        derived={name:motion.resample_rgba(source[name],yy+dy,xx+dx)for name in ['Torso','HeadHair']}
+        derived={'Torso':motion.resample_rgba(source['Torso'],yy+dy,xx+dx)}
         transforms={}
+        head_policy=recipe.get('head_transport','torso-field')
+        if head_policy=='rigid-neck-axis':
+            matrix=rigid_head_matrix([base_points[k]for k in ['Neck','Head']],[points[k]for k in ['Neck','Head']])
+            derived['HeadHair']=warp_affine(source['HeadHair'],matrix,xx,yy);transforms['HeadHair']=matrix.tolist()
+        elif head_policy=='torso-field':derived['HeadHair']=motion.resample_rgba(source['HeadHair'],yy+dy,xx+dx)
+        else:raise ValueError('Unknown head transport policy')
         for side in ['L','R']:
             for name,joints in [('UpperArm',['UpperArm','Forearm']),('Forearm',['Forearm','Hand']),('Hand',['Hand','Index1','Pinky1'])]:
                 wrist_delta=np.asarray(recipe['art_joints']['Hand.'+side])-base_points['Hand.'+side]
@@ -139,7 +184,7 @@ def main():
     gif_options={'loop':0}if args.indices is None else {}
     preview[0].save(args.output/'segmented-casting-study.gif',save_all=True,append_images=preview[1:],duration=80,**gif_options)
     if sha(__file__)!=implementation or any(sha(p)!=v for p,v in frozen.items()):raise ValueError('Segmented action input changed during capture')
-    receipt={'status':'SEGMENTED_CASTING_DIAGNOSTIC_NOT_ADMITTED','direction':direction,'render_order':order,'input_sha256':frozen,'recipe_sha256':sha(args.recipe),'implementation_sha256':implementation,'frames':records,'partial_selection':args.indices is not None,'per_frame_generation':False,'camera_modified':False,'joint_caps_approved':False,'occlusion_approved':False,'runtime_admitted':False}
+    receipt={'status':'SEGMENTED_CASTING_DIAGNOSTIC_NOT_ADMITTED','input_kind':input_kind,'direction':direction,'render_order':order,'input_sha256':frozen,'recipe_sha256':sha(args.recipe),'implementation_sha256':implementation,'frames':records,'distant_faint_alpha_removed':noise,'partial_selection':args.indices is not None,'per_frame_generation':False,'camera_modified':False,'joint_caps_approved':False,'occlusion_approved':False,'runtime_admitted':False}
     (args.output/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
     replay=args.output/'replay';replay.mkdir()
     for name in ['render_segmented_mage_action.py','derive_bounded_hold_parts.py','build_occluded_underlays.py']:

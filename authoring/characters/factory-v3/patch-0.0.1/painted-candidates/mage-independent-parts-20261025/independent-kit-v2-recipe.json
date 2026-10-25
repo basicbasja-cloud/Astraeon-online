@@ -1,0 +1,231 @@
+{
+  "direction": "NE",
+  "source_pose_index": 0,
+  "joint_underlap_px": 5,
+  "upper_torso_end_y": 875,
+  "lower_body_start_y": 855,
+  "parts": {
+    "UpperTorso": {
+      "image": "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/armless-torso-raw.png",
+      "scale": [
+        0.72,
+        0.7764
+      ],
+      "offset": [
+        342.96,
+        310.216
+      ]
+    },
+    "LowerBody": {
+      "image": "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/BodyCostume/000.png",
+      "scale": [
+        1,
+        1
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "LeftArm": {
+      "image": "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/left-arm-raw.png",
+      "scale": [
+        0.118,
+        0.118
+      ],
+      "offset": [
+        583,
+        661.2
+      ]
+    },
+    "RightArm": {
+      "image": "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/right-arm-raw.png",
+      "scale": [
+        0.09,
+        0.09
+      ],
+      "offset": [
+        821.35,
+        680.9
+      ]
+    },
+    "HeadHair": {
+      "image": "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/HeadHair/000.png",
+      "scale": [
+        1,
+        1
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "Weapon": {
+      "image": "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/WeaponComplete-reference.png",
+      "scale": [
+        1,
+        1
+      ],
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "torso_static_registration": {
+    "source_controls": [
+      [
+        730.0,
+        785.0
+      ],
+      [
+        860.0,
+        786.0
+      ],
+      [
+        797.0,
+        745.0
+      ],
+      [
+        795.0,
+        830.0
+      ],
+      [
+        795.0,
+        899.0
+      ],
+      [
+        705.0,
+        1084.0
+      ],
+      [
+        887.0,
+        1086.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        768.0,
+        0.0
+      ],
+      [
+        1536.0,
+        0.0
+      ],
+      [
+        0.0,
+        768.0
+      ],
+      [
+        1536.0,
+        768.0
+      ],
+      [
+        0.0,
+        1536.0
+      ],
+      [
+        768.0,
+        1536.0
+      ],
+      [
+        1536.0,
+        1536.0
+      ]
+    ],
+    "native_controls": [
+      [
+        727.2,
+        765.5
+      ],
+      [
+        867.6,
+        785.7
+      ],
+      [
+        797.0,
+        745.0
+      ],
+      [
+        795.0,
+        830.0
+      ],
+      [
+        795.0,
+        899.0
+      ],
+      [
+        705.0,
+        1084.0
+      ],
+      [
+        887.0,
+        1086.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        768.0,
+        0.0
+      ],
+      [
+        1536.0,
+        0.0
+      ],
+      [
+        0.0,
+        768.0
+      ],
+      [
+        1536.0,
+        768.0
+      ],
+      [
+        0.0,
+        1536.0
+      ],
+      [
+        768.0,
+        1536.0
+      ],
+      [
+        1536.0,
+        1536.0
+      ]
+    ],
+    "metrics": {
+      "maximum_inverse_displacement_px": 29.9122713792945,
+      "minimum_jacobian": 0.8632532307765439,
+      "maximum_jacobian": 1.0438603890641,
+      "maximum_control_interpolation_error_px": 0.10357019510401831
+    },
+    "static_only": true,
+    "per_frame_fitting": false,
+    "lower_body_retained_from_y": 855
+  },
+  "render_order": [
+    "Weapon",
+    "UpperArmR",
+    "ForearmR",
+    "HandR",
+    "Torso",
+    "UpperArmL",
+    "HeadHair",
+    "ForearmL",
+    "HandL"
+  ],
+  "hidden_clothing": {
+    "donor": "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-hidden-underlay-20261025/calibrated-body-donor.png",
+    "original_weapon": "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/Weapon/000.png",
+    "region": [
+      850,
+      855,
+      890,
+      975
+    ]
+  }
+}

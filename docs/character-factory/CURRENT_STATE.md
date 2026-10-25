@@ -1,3 +1,20 @@
+# Active checkpoint — 25 October 2026
+
+Branch `character/production-factory-v3`. Work is active; the dated paused
+sections below are historical. The owner requests all actions for Swordsman,
+Mage and Archer, both sexes, real modular sprites and hairstyle/costume swaps.
+
+Latest: [independently painted Mage arms and closed native casting cycle](review/patch001-independent-parts-20261025/README.md).
+The new NE32-pose study fixes the visible-only shoulder cuts, retains whole
+weapon/hidden clothing and tests two rigid head variants through the real game
+compositor. It is not a complete class package. Imported job coverage remains
+**2/96**, and ordinary fresh-character creation is still blocked by missing
+complete sprite packages. Preserve the approved Swordsman art and long trail.
+
+See [patch0.0.1 acceptance](PATCH001_PLAYABLE_ACCEPTANCE.md) for the full gate.
+
+---
+
 # Current character-production state
 
 11 October 2026. Branch: `character/production-factory-v2`.

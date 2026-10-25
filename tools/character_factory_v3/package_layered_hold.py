@@ -26,7 +26,7 @@ def main():
     objects=[];object_roles=[];lookup={};variants={};inputs={};roles=None;direction=None
     for name,folder in args.variant:
         root=Path(folder);receipt=json.loads((root/'receipt.json').read_text())
-        if receipt['status']!='LAYERED_NATIVE_HOLD_STUDY':raise ValueError('Expected a layered native hold study')
+        if receipt['status'] not in ['LAYERED_NATIVE_HOLD_STUDY','LAYERED_NATIVE_ACTION_STUDY']:raise ValueError('Expected a layered native hold/action study')
         if roles is None:roles=receipt['render_order'];direction=receipt['direction']
         if roles!=receipt['render_order']or direction!=receipt['direction']:raise ValueError('Variant camera/order differs')
         inputs[str(root/'receipt.json')]=sha(root/'receipt.json')

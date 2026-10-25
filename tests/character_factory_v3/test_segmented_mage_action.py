@@ -4,7 +4,7 @@ import unittest
 import numpy as np
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools/character_factory_v3'))
-from render_segmented_mage_action import segment_matrix,palm_matrix,make_parts
+from render_segmented_mage_action import segment_matrix,palm_matrix,make_parts,rigid_head_matrix
 from build_occluded_underlays import composite
 
 class SegmentedMageTests(unittest.TestCase):
@@ -29,3 +29,13 @@ class SegmentedMageTests(unittest.TestCase):
                 'art_joints':landmarks,'joint_underlap_px':2,'shoulder_caps_radius_px':12}
         parts=make_parts(body,recipe,landmarks)
         self.assertEqual(composite(list(parts.values())).tobytes(),body.tobytes())
+
+    def test_rigid_head_transport_never_changes_head_scale(self):
+        source=np.array([[10,30],[10,10]],float);target=np.array([[13,34],[15,12]],float)
+        matrix=rigid_head_matrix(source,target)
+        np.testing.assert_allclose(matrix[:,:2].T@matrix[:,:2],np.eye(2),atol=1e-12)
+        np.testing.assert_allclose(matrix[:,:2]@source[1]+matrix[:,2],target[1],atol=1e-12)
+        self.assertAlmostEqual(np.linalg.det(matrix[:,:2]),1)
+    def test_degenerate_head_axis_requires_another_source(self):
+        with self.assertRaisesRegex(ValueError,'head axis'):
+            rigid_head_matrix([[0,0],[1,0]],[[0,0],[0,10]])

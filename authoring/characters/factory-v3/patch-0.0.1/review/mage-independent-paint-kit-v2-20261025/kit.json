@@ -1,0 +1,106 @@
+{
+  "status": "INDEPENDENT_PAINTED_ARM_KIT_NOT_ADMITTED",
+  "direction": "NE",
+  "source_pose_index": 0,
+  "canonical_guide_receipt_sha256": "271c9680222d7f70838c0adf3f00d3ef181f0a92e94fa6fafd6c283e969a9dab",
+  "render_order": [
+    "Weapon",
+    "UpperArmR",
+    "ForearmR",
+    "HandR",
+    "Torso",
+    "UpperArmL",
+    "HeadHair",
+    "ForearmL",
+    "HandL"
+  ],
+  "parts_sha256": {
+    "Torso": "c4c9c5fad9d522d177d31b1c34ce5e91eadfaadcd752891a61bb604e4991448f",
+    "HeadHair": "8126a8e838161df9ac5a52a03efc989cdf1627d0735c9b76ad4530533b07cc00",
+    "Weapon": "561cd633b50575b0dc088585bcfebd7db62da6b9a4d97a7a8dd59102632c6d6e",
+    "UpperArmL": "bd164dfccc389d9cc4f79f74ba393c8889bab362f10bf02b3e7ff7805a324cc2",
+    "ForearmL": "83667410af712a483d797df799031106ce6927456dff2215cf3bc8e64032bb0b",
+    "HandL": "3c8453fd6457e21057377de407766cb29a17485a929aa0a50145a1ca7958dcf5",
+    "UpperArmR": "9c8f0747fc7c768622a463d6d310b666b720958c7bab5ec689ba8a67df138bb5",
+    "ForearmR": "bf06b841b5572b9bed771b863ec826779ed9cf7ae117f4c2be1c352fcf5e7c1c",
+    "HandR": "818dda5d28f2375b790a06b8a4d307d16f717e39270fad2d5d111206df5d7c71"
+  },
+  "input_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/independent-kit-v2-recipe.json": "6f75b38c4dfb79d8e23fcc5bc6b9ae67938e189f27624513ef1160d59c867ad9",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-channel-eight-views-20261025/pilot-receipt.json": "271c9680222d7f70838c0adf3f00d3ef181f0a92e94fa6fafd6c283e969a9dab",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/armless-torso-raw.png": "db7ddb21d18d62bb3ef165dc79be36c3758f0d7a81983e2957827ab6b3ea2695",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/BodyCostume/000.png": "0f53f263aca4bf41a1153c1b330103bacee5896958ba2b5ba5b244bbeb557fc8",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/left-arm-raw.png": "886937c79ad53c23f02544637499685f6751973be0125af1c6a2f4ce9cb45ffc",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-independent-parts-20261025/right-arm-raw.png": "737701a3d0d7137b181710d48418c814451e9d02402221f26eeedb1ce38cebe0",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/HeadHair/000.png": "5219678998fbef7887dc8ede67909b1a297e3e7a6645b6c815e98c07c4961978",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/WeaponComplete-reference.png": "0778a57eb8c86156122263b1ef896865794f21d1a7927b624cf3b7d284948430",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-hidden-underlay-20261025/calibrated-body-donor.png": "350afdc3efdc4d568547e89b395145870d75e48690a0c56573064b4a717b1575",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/Weapon/000.png": "d4b5b1ab093b8c65161c1bb9d57b862e114dbc5338ff59b55df6bd2e402e5372"
+  },
+  "implementation_sha256": "eeb5131218b86fe5f7711f0190abb27adbf8be3576ae9601121f6fac00db0815",
+  "normalization": {
+    "UpperTorso": {
+      "interior_alpha_repair_pixels": 53986
+    },
+    "LowerBody": {
+      "interior_alpha_repair_pixels": 54805
+    },
+    "LeftArm": {
+      "interior_alpha_repair_pixels": 4984
+    },
+    "RightArm": {
+      "interior_alpha_repair_pixels": 3526
+    },
+    "HeadHair": {
+      "interior_alpha_repair_pixels": 12340
+    },
+    "Weapon": {
+      "interior_alpha_repair_pixels": 5669
+    }
+  },
+  "detached_cleanup": {
+    "Torso": {
+      "removed_pixels": 658,
+      "maximum_removed_alpha": 157
+    },
+    "LeftArm": {
+      "removed_pixels": 23,
+      "maximum_removed_alpha": 1
+    },
+    "RightArm": {
+      "removed_pixels": 17,
+      "maximum_removed_alpha": 1
+    },
+    "HeadHair": {
+      "removed_pixels": 427,
+      "maximum_removed_alpha": 237
+    },
+    "Weapon": {
+      "removed_pixels": 59,
+      "maximum_removed_alpha": 58
+    }
+  },
+  "static_torso_registration": {
+    "maximum_inverse_displacement_px": 29.9122713792945,
+    "minimum_jacobian": 0.8632532307765439,
+    "maximum_jacobian": 1.0438603890641,
+    "maximum_control_interpolation_error_px": 0.10357019510401831
+  },
+  "lower_body_reused": true,
+  "per_frame_fitting": false,
+  "runtime_admitted": false,
+  "hidden_clothing_repair": {
+    "pixels": 70,
+    "recipe": {
+      "donor": "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-hidden-underlay-20261025/calibrated-body-donor.png",
+      "original_weapon": "authoring/characters/factory-v3/patch-0.0.1/review/mage-layered-template-final-20261025/Weapon/000.png",
+      "region": [
+        850,
+        855,
+        890,
+        975
+      ]
+    },
+    "existing_body_pixels_changed": 0
+  }
+}
