@@ -1,3 +1,9 @@
+## Owner reaffirmed earlier tall Swordsman — 26 October 2026
+
+The earlier four-direction illustrated Swordsman is the required visual/proportion baseline for further classes. Do not replace its taller silhouette with the recent compact F01 Archer studies. Re-read the retained per-view generation prompts and the original `build_simple_attack_factory.py` / `build_four_direction_attack_review.py` before painting. The historical method painted coherent complete 16-pose sheets from original, unretargeted Mesh2Motion fixed-camera guides, then cut each frame into BodyCostume (all limbs together), HeadHair and Weapon; same-frame hand overlap and separate trails follow. This is not independently generated limb assembly, nor proof of exact traced anatomy. The owner's current exact-guide paintover requirement still applies.
+
+Fresh read-only checks preserve all 896 original files and verify 128 exact core recompositions. New isolated headless-body generation is not the production route: its collar gap and costume drift fail review. The new rig-bound bow V2 also fails visual review because the resting bow tilts incorrectly. These studies remain unadmitted. Continue from a coherent complete painted master before segmentation, using the old tall Swordsman identity/proportions and source-camera discipline. See `docs/character-factory/review/restore-tall-swordsman-baseline-20261026/`. Patch coverage remains 2/96 jobs and zero newly complete characters.
+
 # Patch 0.0.1 production checkpoint
 
 ## Current Archer source candidate — grounded support V3, 26 October 2026
