@@ -1,0 +1,27 @@
+{
+  "status": "REJECTED_CAMERA_AND_BACKGROUND",
+  "layout": "4 columns x 2 rows",
+  "direction_order": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "source_guide": "torso-eight-native-guide-sheet.png",
+  "style_reference": "body-underpaint-raw.png",
+  "transparent_background": true,
+  "prompt": "Create a production fantasy 2D game modular COSTUME TORSO sprite atlas, transparent background, EXACTLY EIGHT torso-only pieces in a 4 columns by 2 rows grid. Reference 1 is the authoritative fixed-camera anatomical template sheet: trace each corresponding torso's location, scale, outline, tilt and viewing angle exactly, leave the large transparent margins unchanged. Row-major camera order S, SW, W, NW, N, NE, E, SE. These are eight actual camera views of the same torso, NOT eight arbitrary redesigns. Reference 2 gives the beautiful crisp painted navy-blue mage fabric, cream shoulder cowl, gold star embroidery, brown gold-edged belt and cream-and-navy hanging coat panels. Redraw that SAME costume onto all eight guide silhouettes. Paint full hidden clothing under head and arms as complete clean closed costume modules. No head, no hair, no skin, no hands, no arms or sleeves below the shoulder cap, no legs, no boots, no staff or weapons. Tiny closed navy sleeve sockets at shoulders are okay. Neck opening should be fabric collar, not skin. Entire belt and hanging tabard/coat skirts must remain, with clean complete hems. Do not copy the grey mesh's jagged armor shards or low polygon texture. Crisp elegant hand-painted anime fantasy game finish, subtle dark outlines, sharp gold trim, clear cloth folds, consistent costume geometry and colors across camera angles, studio sprite asset quality. NO text, NO labels, NO shadows outside assets, NO grid lines. Preserve all eight template positions and equal scale; do not enlarge to fill the cells. Use the whole 4x2 atlas once, not a single torso.",
+  "raw_sha256": "c4bb623468f3b5ee751eff2cee648624e2e9d38f15c52229055053456d77dedf",
+  "raw_file": "torso-eight-raw-20261026.png",
+  "review_findings": [
+    "N view incorrectly repeats a front costume view",
+    "SW and NE duplicate similar view rather than their actual guide cameras",
+    "Decorative background and glow instead of transparent isolated assets",
+    "Generated placement and scale differ from native guide cells"
+  ],
+  "runtime_admitted": false
+}

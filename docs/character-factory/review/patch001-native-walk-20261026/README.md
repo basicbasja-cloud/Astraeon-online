@@ -29,3 +29,11 @@ Staff and hand grip anchors are bound to native controls. Shoe endpoint proximit
 - [Immutable guide cache deduplication](guide-cache-storage-proof.json): byte-identical captures retain every path and hash, sharing read-only inodes. Editable artwork and motion sources were not deduplicated.
 
 Run the review from the repository root with an HTTP server and open this folder's index.html. The preview uses source game composition code and the separate native walking atlas.
+
+## Editable sprite sheets
+
+[Ten full-resolution role sheets and source manifest](../../../../authoring/characters/factory-v3/patch-0.0.1/review/mage-walk-editor-sheets-20261026): 160 verified native cells. Male and female share three complete non-head role sheets byte for byte.
+
+## Rejected eight-view costume attempt
+
+The subsequent eight-view torso drawing attempt failed visual review: the back view repeated the front, opposite camera views were duplicated, and a decorative background remained. It is retained with a rejection receipt for provenance and is not admitted to the atlas or gameplay. Native eight-camera grey guides remain valid; those costume drawings must be redone.
