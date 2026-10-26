@@ -1,5 +1,14 @@
 # Production Factory V3 status and handoff
 
+## Latest actual state — 26 October 2026
+
+Still 2/96 actual imported jobs, both Swordsman BasicAttack, and zero complete newly admitted characters. Mage native walking and casting pilots remain studies; 10 lossless male/female walking role sheets now contain 160 verified native cells. Archer weapon/hand ownership and recovery-arrow defects remain open. The latest eight-view Mage costume drawing is rejected for incorrect camera views and background.
+
+Production of the complete six-character factory is blocked by workspace capacity: approximately 160 MiB free on the 32 GB filesystem. The measured current native-pose output projects to roughly 5.4 GiB for remaining pose positions before reuse, excluding source drawings, sheets, atlases, replay scratch and Git. This is an estimate, not a minimum. A small pilot still fits, but full scope does not. Expand to 64 GB or provide a persistent volume with at least 20 GiB free. No original art or source guide is removed.
+
+See `docs/character-factory/review/patch001-three-class-readiness-20261026/` for the per-character/action/direction matrix, receipts policy, measured capacity and resume sequence. Historical status sections below do not supersede this state.
+
+
 ## Active patch checkpoint — 23 October 2026
 
 Owner clarification: earlier male Swordsman artwork was already visually okay.
