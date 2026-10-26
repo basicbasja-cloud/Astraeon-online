@@ -1,5 +1,13 @@
 # Production Factory V3 status and handoff
 
+## Owner correction: whole posed body cutouts — 26 October 2026
+
+The production illustration units are **BodyCostume (complete clothed body including arms, hands and legs), HeadHair, and Weapon**, cut from the same coherent posed frame and actual camera direction. Keep optional same-frame hand occluders and front/back effects where necessary. Reuse means registered frame/view cutouts, shared motion guides, and matching complete costume/head/weapon replacements.
+
+The new dismembered Archer assembly is rejected by the owner: shoulder/arm placement is visibly wrong. Its head/torso/leg/right-arm proposals are diagnostic drafts, not production components or accepted progress. Resume the coherent whole-action route, then cut the three main parts and inspect their recomposition, grip and hidden boundaries. Preserve the previously approved Swordsman work. No further limb-template generation belongs in the active workflow.
+
+ActionForge upload research contains 84 actual animations (85 declared IDs; fps_test has no track). All 84 fixed-camera source captures are complete, with 4,086 native-time samples after correcting idle_no_loop to one-shot playback. Source research and the 48-action reusable skeleton library do not increase actual sprite imports: still 2/96 jobs, zero newly complete playable characters.
+
 ## Reusable rig and motion preference — 26 October 2026
 
 The owner reaffirmed Mesh2Motion as the preferred motion source. Retain it as the default; record any retained archery fallback separately. Scope remains all three classes, both sexes, reusable sprite parts and rig, smooth source-aligned actions.

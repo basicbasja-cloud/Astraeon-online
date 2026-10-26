@@ -1,0 +1,1888 @@
+{
+  "status": "SHARED_RIG_BINDINGS_NOT_FINISHED_CHARACTER_PACKAGES",
+  "profiles": [
+    {
+      "id": "swordsman-male-patch001",
+      "class": "Swordsman",
+      "sex": "male",
+      "shared_skeleton": true,
+      "class_or_sex_specific_mesh_supplied": false,
+      "actions": {
+        "Walk": {
+          "source_job": "4e519e1eadc69aaf28a2",
+          "action_name": "CF_Swordsman_Walk__4e519e1eadc69aaf28a2",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Run": {
+          "source_job": "3f5722303217b9a62469",
+          "action_name": "CF_Swordsman_Run__3f5722303217b9a62469",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sprint": {
+          "source_job": "02ff5913bddb92359571",
+          "action_name": "CF_Swordsman_Sprint__02ff5913bddb92359571",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Hit": {
+          "source_job": "97bca857f2dea9909fa2",
+          "action_name": "CF_Swordsman_Hit__97bca857f2dea9909fa2",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Death": {
+          "source_job": "b4421844b7f8320ff87c",
+          "action_name": "CF_Swordsman_Death__b4421844b7f8320ff87c",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 20,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Interact": {
+          "source_job": "50e07e71c24783cf2f8b",
+          "action_name": "CF_Swordsman_Interact__50e07e71c24783cf2f8b",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Pickup": {
+          "source_job": "bfff1d2fddd0f40cc8f6",
+          "action_name": "CF_Swordsman_Pickup__bfff1d2fddd0f40cc8f6",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ItemUse": {
+          "source_job": "153ad126686c6bcd4a58",
+          "action_name": "CF_Swordsman_ItemUse__153ad126686c6bcd4a58",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sit": {
+          "source_job": "0535d2617be8cc5e1a57",
+          "action_name": "CF_Swordsman_Sit__0535d2617be8cc5e1a57",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Respawn": {
+          "source_job": "c07c2a99d96e3d73641f",
+          "action_name": "CF_Swordsman_Respawn__c07c2a99d96e3d73641f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Idle": {
+          "source_job": "66e9a75a30c509584e5f",
+          "action_name": "CF_Swordsman_Idle__66e9a75a30c509584e5f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CombatIdle": {
+          "source_job": "66e9a75a30c509584e5f",
+          "action_name": "CF_Swordsman_Idle__66e9a75a30c509584e5f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "BasicAttack": {
+          "source_job": "c297971fcef09188ff60",
+          "action_name": "CF_Swordsman_BasicAttack__c297971fcef09188ff60",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SkillAction": {
+          "source_job": "f07ff44e6704e195ae4f",
+          "action_name": "CF_Swordsman_SkillAction__f07ff44e6704e195ae4f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 32,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastChannel": {
+          "source_job": "cd5c512a057264deee46",
+          "action_name": "CF_Swordsman_CastChannel__cd5c512a057264deee46",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastRelease": {
+          "source_job": "25df792aba736f8412fb",
+          "action_name": "CF_Swordsman_CastRelease__25df792aba736f8412fb",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Guard": {
+          "source_job": "dd860dc461b465aba138",
+          "action_name": "CF_Swordsman_Guard__dd860dc461b465aba138",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Dash": {
+          "source_job": "73e08b91812650d59986",
+          "action_name": "CF_Swordsman_Dash__73e08b91812650d59986",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SpinAttack": {
+          "source_job": "f5c0e5456446f58e5efc",
+          "action_name": "CF_Swordsman_SpinAttack__f5c0e5456446f58e5efc",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 32,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        }
+      }
+    },
+    {
+      "id": "swordsman-female-patch001",
+      "class": "Swordsman",
+      "sex": "female",
+      "shared_skeleton": true,
+      "class_or_sex_specific_mesh_supplied": false,
+      "actions": {
+        "Walk": {
+          "source_job": "4e519e1eadc69aaf28a2",
+          "action_name": "CF_Swordsman_Walk__4e519e1eadc69aaf28a2",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Run": {
+          "source_job": "3f5722303217b9a62469",
+          "action_name": "CF_Swordsman_Run__3f5722303217b9a62469",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sprint": {
+          "source_job": "02ff5913bddb92359571",
+          "action_name": "CF_Swordsman_Sprint__02ff5913bddb92359571",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Hit": {
+          "source_job": "97bca857f2dea9909fa2",
+          "action_name": "CF_Swordsman_Hit__97bca857f2dea9909fa2",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Death": {
+          "source_job": "b4421844b7f8320ff87c",
+          "action_name": "CF_Swordsman_Death__b4421844b7f8320ff87c",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 20,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Interact": {
+          "source_job": "50e07e71c24783cf2f8b",
+          "action_name": "CF_Swordsman_Interact__50e07e71c24783cf2f8b",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Pickup": {
+          "source_job": "bfff1d2fddd0f40cc8f6",
+          "action_name": "CF_Swordsman_Pickup__bfff1d2fddd0f40cc8f6",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ItemUse": {
+          "source_job": "153ad126686c6bcd4a58",
+          "action_name": "CF_Swordsman_ItemUse__153ad126686c6bcd4a58",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sit": {
+          "source_job": "0535d2617be8cc5e1a57",
+          "action_name": "CF_Swordsman_Sit__0535d2617be8cc5e1a57",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Respawn": {
+          "source_job": "c07c2a99d96e3d73641f",
+          "action_name": "CF_Swordsman_Respawn__c07c2a99d96e3d73641f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Idle": {
+          "source_job": "66e9a75a30c509584e5f",
+          "action_name": "CF_Swordsman_Idle__66e9a75a30c509584e5f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CombatIdle": {
+          "source_job": "66e9a75a30c509584e5f",
+          "action_name": "CF_Swordsman_Idle__66e9a75a30c509584e5f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "BasicAttack": {
+          "source_job": "c297971fcef09188ff60",
+          "action_name": "CF_Swordsman_BasicAttack__c297971fcef09188ff60",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SkillAction": {
+          "source_job": "f07ff44e6704e195ae4f",
+          "action_name": "CF_Swordsman_SkillAction__f07ff44e6704e195ae4f",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 32,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastChannel": {
+          "source_job": "cd5c512a057264deee46",
+          "action_name": "CF_Swordsman_CastChannel__cd5c512a057264deee46",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastRelease": {
+          "source_job": "25df792aba736f8412fb",
+          "action_name": "CF_Swordsman_CastRelease__25df792aba736f8412fb",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Guard": {
+          "source_job": "dd860dc461b465aba138",
+          "action_name": "CF_Swordsman_Guard__dd860dc461b465aba138",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Dash": {
+          "source_job": "73e08b91812650d59986",
+          "action_name": "CF_Swordsman_Dash__73e08b91812650d59986",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SpinAttack": {
+          "source_job": "f5c0e5456446f58e5efc",
+          "action_name": "CF_Swordsman_SpinAttack__f5c0e5456446f58e5efc",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 32,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        }
+      }
+    },
+    {
+      "id": "mage-male-patch001",
+      "class": "Mage",
+      "sex": "male",
+      "shared_skeleton": true,
+      "class_or_sex_specific_mesh_supplied": false,
+      "actions": {
+        "Walk": {
+          "source_job": "08ac2ba624238e11c741",
+          "action_name": "CF_Mage_Walk__08ac2ba624238e11c741",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Run": {
+          "source_job": "a8aa83f2495147c2363b",
+          "action_name": "CF_Mage_Run__a8aa83f2495147c2363b",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sprint": {
+          "source_job": "01f0c4995b49cc74d8be",
+          "action_name": "CF_Mage_Sprint__01f0c4995b49cc74d8be",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Hit": {
+          "source_job": "3917403d4c7c55143e1b",
+          "action_name": "CF_Mage_Hit__3917403d4c7c55143e1b",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Death": {
+          "source_job": "271ac59cc3a8139b17fc",
+          "action_name": "CF_Mage_Death__271ac59cc3a8139b17fc",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 20,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Interact": {
+          "source_job": "15f1c1296e10e84dd8d3",
+          "action_name": "CF_Mage_Interact__15f1c1296e10e84dd8d3",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Pickup": {
+          "source_job": "d2a4404bf93e32017fca",
+          "action_name": "CF_Mage_Pickup__d2a4404bf93e32017fca",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ItemUse": {
+          "source_job": "a85091408327b0755788",
+          "action_name": "CF_Mage_ItemUse__a85091408327b0755788",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sit": {
+          "source_job": "5be729a6f240b329d7a2",
+          "action_name": "CF_Mage_Sit__5be729a6f240b329d7a2",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Respawn": {
+          "source_job": "d2179553a6a99517c6bc",
+          "action_name": "CF_Mage_Respawn__d2179553a6a99517c6bc",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Idle": {
+          "source_job": "04323f89d18da6c7b117",
+          "action_name": "CF_Mage_Idle__04323f89d18da6c7b117",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CombatIdle": {
+          "source_job": "9deff93fc539f5d49c4e",
+          "action_name": "CF_Mage_CombatIdle__9deff93fc539f5d49c4e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "BasicAttack": {
+          "source_job": "ebac492fbc20b608880c",
+          "action_name": "CF_Mage_BasicAttack__ebac492fbc20b608880c",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 24,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SkillAction": {
+          "source_job": "ebac492fbc20b608880c",
+          "action_name": "CF_Mage_BasicAttack__ebac492fbc20b608880c",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 24,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastChannel": {
+          "source_job": "9deff93fc539f5d49c4e",
+          "action_name": "CF_Mage_CombatIdle__9deff93fc539f5d49c4e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastRelease": {
+          "source_job": "fb582c46e9b307321c03",
+          "action_name": "CF_Mage_CastRelease__fb582c46e9b307321c03",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Guard": {
+          "source_job": "9deff93fc539f5d49c4e",
+          "action_name": "CF_Mage_CombatIdle__9deff93fc539f5d49c4e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Blink": {
+          "source_job": "d85b0a911437110ac5b7",
+          "action_name": "CF_Mage_Blink__d85b0a911437110ac5b7",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        }
+      }
+    },
+    {
+      "id": "mage-female-patch001",
+      "class": "Mage",
+      "sex": "female",
+      "shared_skeleton": true,
+      "class_or_sex_specific_mesh_supplied": false,
+      "actions": {
+        "Walk": {
+          "source_job": "08ac2ba624238e11c741",
+          "action_name": "CF_Mage_Walk__08ac2ba624238e11c741",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Run": {
+          "source_job": "a8aa83f2495147c2363b",
+          "action_name": "CF_Mage_Run__a8aa83f2495147c2363b",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sprint": {
+          "source_job": "01f0c4995b49cc74d8be",
+          "action_name": "CF_Mage_Sprint__01f0c4995b49cc74d8be",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Hit": {
+          "source_job": "3917403d4c7c55143e1b",
+          "action_name": "CF_Mage_Hit__3917403d4c7c55143e1b",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Death": {
+          "source_job": "271ac59cc3a8139b17fc",
+          "action_name": "CF_Mage_Death__271ac59cc3a8139b17fc",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 20,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Interact": {
+          "source_job": "15f1c1296e10e84dd8d3",
+          "action_name": "CF_Mage_Interact__15f1c1296e10e84dd8d3",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Pickup": {
+          "source_job": "d2a4404bf93e32017fca",
+          "action_name": "CF_Mage_Pickup__d2a4404bf93e32017fca",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ItemUse": {
+          "source_job": "a85091408327b0755788",
+          "action_name": "CF_Mage_ItemUse__a85091408327b0755788",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sit": {
+          "source_job": "5be729a6f240b329d7a2",
+          "action_name": "CF_Mage_Sit__5be729a6f240b329d7a2",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Respawn": {
+          "source_job": "d2179553a6a99517c6bc",
+          "action_name": "CF_Mage_Respawn__d2179553a6a99517c6bc",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Idle": {
+          "source_job": "04323f89d18da6c7b117",
+          "action_name": "CF_Mage_Idle__04323f89d18da6c7b117",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CombatIdle": {
+          "source_job": "9deff93fc539f5d49c4e",
+          "action_name": "CF_Mage_CombatIdle__9deff93fc539f5d49c4e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "BasicAttack": {
+          "source_job": "ebac492fbc20b608880c",
+          "action_name": "CF_Mage_BasicAttack__ebac492fbc20b608880c",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 24,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SkillAction": {
+          "source_job": "ebac492fbc20b608880c",
+          "action_name": "CF_Mage_BasicAttack__ebac492fbc20b608880c",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 24,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastChannel": {
+          "source_job": "9deff93fc539f5d49c4e",
+          "action_name": "CF_Mage_CombatIdle__9deff93fc539f5d49c4e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastRelease": {
+          "source_job": "fb582c46e9b307321c03",
+          "action_name": "CF_Mage_CastRelease__fb582c46e9b307321c03",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Guard": {
+          "source_job": "9deff93fc539f5d49c4e",
+          "action_name": "CF_Mage_CombatIdle__9deff93fc539f5d49c4e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Blink": {
+          "source_job": "d85b0a911437110ac5b7",
+          "action_name": "CF_Mage_Blink__d85b0a911437110ac5b7",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        }
+      }
+    },
+    {
+      "id": "archer-male-patch001",
+      "class": "Archer",
+      "sex": "male",
+      "shared_skeleton": true,
+      "class_or_sex_specific_mesh_supplied": false,
+      "actions": {
+        "Walk": {
+          "source_job": "74da7252e5e94a4ca4aa",
+          "action_name": "CF_Archer_Walk__74da7252e5e94a4ca4aa",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Run": {
+          "source_job": "f7c697f96fc35ae6127a",
+          "action_name": "CF_Archer_Run__f7c697f96fc35ae6127a",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sprint": {
+          "source_job": "f7c697f96fc35ae6127a",
+          "action_name": "CF_Archer_Run__f7c697f96fc35ae6127a",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Hit": {
+          "source_job": "2951f04273b61c029e2e",
+          "action_name": "CF_Archer_Hit__2951f04273b61c029e2e",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Death": {
+          "source_job": "701056f33166c7be5df3",
+          "action_name": "CF_Archer_Death__701056f33166c7be5df3",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 20,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Interact": {
+          "source_job": "bc4f99139bdc2f64418b",
+          "action_name": "CF_Archer_Interact__bc4f99139bdc2f64418b",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Pickup": {
+          "source_job": "8d1b1238d24534f10ee7",
+          "action_name": "CF_Archer_Pickup__8d1b1238d24534f10ee7",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ItemUse": {
+          "source_job": "3a465f8dbf050c115807",
+          "action_name": "CF_Archer_ItemUse__3a465f8dbf050c115807",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sit": {
+          "source_job": "d2d87f418fe0dd64774e",
+          "action_name": "CF_Archer_Sit__d2d87f418fe0dd64774e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Respawn": {
+          "source_job": "4f5230901186c86c73d4",
+          "action_name": "CF_Archer_Respawn__4f5230901186c86c73d4",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Idle": {
+          "source_job": "9343950c201f39c5d662",
+          "action_name": "CF_Archer_Idle__9343950c201f39c5d662",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CombatIdle": {
+          "source_job": "4957790ae70997ab03f5",
+          "action_name": "CF_Archer_CombatIdle__4957790ae70997ab03f5",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "BasicAttack": {
+          "source_job": "2fed9f286cdd5c5ffbf4",
+          "action_name": "CF_Archer_BasicAttack__2fed9f286cdd5c5ffbf4",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SkillAction": {
+          "source_job": "2fed9f286cdd5c5ffbf4",
+          "action_name": "CF_Archer_BasicAttack__2fed9f286cdd5c5ffbf4",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastChannel": {
+          "source_job": "4957790ae70997ab03f5",
+          "action_name": "CF_Archer_CombatIdle__4957790ae70997ab03f5",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastRelease": {
+          "source_job": "65389153791578ff6f57",
+          "action_name": "CF_Archer_CastRelease__65389153791578ff6f57",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Guard": {
+          "source_job": "4957790ae70997ab03f5",
+          "action_name": "CF_Archer_CombatIdle__4957790ae70997ab03f5",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Dash": {
+          "source_job": "ccccee08276de33af088",
+          "action_name": "CF_Archer_Dash__ccccee08276de33af088",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "TrapPlace": {
+          "source_job": "8d1b1238d24534f10ee7",
+          "action_name": "CF_Archer_Pickup__8d1b1238d24534f10ee7",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ArrowRain": {
+          "source_job": "98729473675e79da0c50",
+          "action_name": "CF_Archer_ArrowRain__98729473675e79da0c50",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        }
+      }
+    },
+    {
+      "id": "archer-female-patch001",
+      "class": "Archer",
+      "sex": "female",
+      "shared_skeleton": true,
+      "class_or_sex_specific_mesh_supplied": false,
+      "actions": {
+        "Walk": {
+          "source_job": "74da7252e5e94a4ca4aa",
+          "action_name": "CF_Archer_Walk__74da7252e5e94a4ca4aa",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Run": {
+          "source_job": "f7c697f96fc35ae6127a",
+          "action_name": "CF_Archer_Run__f7c697f96fc35ae6127a",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sprint": {
+          "source_job": "f7c697f96fc35ae6127a",
+          "action_name": "CF_Archer_Run__f7c697f96fc35ae6127a",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Hit": {
+          "source_job": "2951f04273b61c029e2e",
+          "action_name": "CF_Archer_Hit__2951f04273b61c029e2e",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Death": {
+          "source_job": "701056f33166c7be5df3",
+          "action_name": "CF_Archer_Death__701056f33166c7be5df3",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 20,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Interact": {
+          "source_job": "bc4f99139bdc2f64418b",
+          "action_name": "CF_Archer_Interact__bc4f99139bdc2f64418b",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 12,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Pickup": {
+          "source_job": "8d1b1238d24534f10ee7",
+          "action_name": "CF_Archer_Pickup__8d1b1238d24534f10ee7",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ItemUse": {
+          "source_job": "3a465f8dbf050c115807",
+          "action_name": "CF_Archer_ItemUse__3a465f8dbf050c115807",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Sit": {
+          "source_job": "d2d87f418fe0dd64774e",
+          "action_name": "CF_Archer_Sit__d2d87f418fe0dd64774e",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Respawn": {
+          "source_job": "4f5230901186c86c73d4",
+          "action_name": "CF_Archer_Respawn__4f5230901186c86c73d4",
+          "source_motion_provider": "Mesh2Motion",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Idle": {
+          "source_job": "9343950c201f39c5d662",
+          "action_name": "CF_Archer_Idle__9343950c201f39c5d662",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CombatIdle": {
+          "source_job": "4957790ae70997ab03f5",
+          "action_name": "CF_Archer_CombatIdle__4957790ae70997ab03f5",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "BasicAttack": {
+          "source_job": "2fed9f286cdd5c5ffbf4",
+          "action_name": "CF_Archer_BasicAttack__2fed9f286cdd5c5ffbf4",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "SkillAction": {
+          "source_job": "2fed9f286cdd5c5ffbf4",
+          "action_name": "CF_Archer_BasicAttack__2fed9f286cdd5c5ffbf4",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastChannel": {
+          "source_job": "4957790ae70997ab03f5",
+          "action_name": "CF_Archer_CombatIdle__4957790ae70997ab03f5",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "CastRelease": {
+          "source_job": "65389153791578ff6f57",
+          "action_name": "CF_Archer_CastRelease__65389153791578ff6f57",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Guard": {
+          "source_job": "4957790ae70997ab03f5",
+          "action_name": "CF_Archer_CombatIdle__4957790ae70997ab03f5",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "Dash": {
+          "source_job": "ccccee08276de33af088",
+          "action_name": "CF_Archer_Dash__ccccee08276de33af088",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "TrapPlace": {
+          "source_job": "8d1b1238d24534f10ee7",
+          "action_name": "CF_Archer_Pickup__8d1b1238d24534f10ee7",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "S",
+            "SW",
+            "W",
+            "NW",
+            "N",
+            "NE",
+            "E",
+            "SE"
+          ],
+          "production_timing_authored": false
+        },
+        "ArrowRain": {
+          "source_job": "98729473675e79da0c50",
+          "action_name": "CF_Archer_ArrowRain__98729473675e79da0c50",
+          "source_motion_provider": "KayKit_retained_fallback",
+          "source_pose_count": 16,
+          "sprite_authored_directions": [
+            "SW",
+            "NW",
+            "NE",
+            "SE"
+          ],
+          "production_timing_authored": false
+        }
+      }
+    }
+  ],
+  "action_bindings": 114,
+  "unique_native_actions": 48,
+  "final_art_approval": false
+}

@@ -1,5 +1,9 @@
 # Astraeon Production Factory V3
 
+## Active owner correction — 26 October 2026
+
+Use complete posed **BodyCostume**, **HeadHair**, and **Weapon** cutouts per actual source frame and camera view. BodyCostume includes arms, hands and legs drawn coherently together. Optional same-frame hand occluders and front/back effects remain supported. Do not assemble final art from separately generated limbs. The latest fragmented Archer assembly is rejected for disconnected shoulder/arm anatomy; stop that route and resume coherent whole-action painting followed by same-frame cuts. Mesh2Motion remains preferred.
+
 ## Active patch checkpoint — 22 October 2026
 
 The latest owner scope supersedes the original single-character pilot: male/female Swordsman, Mage and Archer, all patch 0.0.1 actions, general actions in eight real directions and physical attacks/casting in four real diagonals. Mesh2Motion remains preferred; retained CC0 KayKit supplies bow clips. The previous milestones below are historical evidence, not current patch completion.

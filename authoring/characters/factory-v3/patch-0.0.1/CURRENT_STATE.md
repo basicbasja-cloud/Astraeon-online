@@ -1,5 +1,9 @@
 # Patch 0.0.1 production checkpoint
 
+## Active owner correction — 26 October 2026
+
+Use complete posed **BodyCostume**, **HeadHair**, and **Weapon** cutouts per actual source frame and camera view. BodyCostume includes arms, hands and legs drawn coherently together. Optional same-frame hand occluders and front/back effects remain supported. Do not assemble final art from separately generated limbs. The latest fragmented Archer assembly is rejected for disconnected shoulder/arm anatomy; stop that route and resume coherent whole-action painting followed by same-frame cuts. Mesh2Motion remains preferred.
+
 ## Reusable rig and motion preference — 26 October 2026
 
 The owner reaffirmed Mesh2Motion as the preferred motion source. Retain it as the default; record any retained archery fallback separately. Scope remains all three classes, both sexes, reusable sprite parts and rig, smooth source-aligned actions.
