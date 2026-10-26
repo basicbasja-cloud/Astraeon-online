@@ -17,7 +17,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def split_frame(master, annotation, transform):
+def split_frame(master, annotation, transform, head_source=None):
     rgba = np.array(master.convert('RGBA'))
     visible = rgba[:, :, 3] > 0
     scale, offset = transform['scale'], np.array(transform['offset'])
@@ -28,6 +28,18 @@ def split_frame(master, annotation, transform):
     head = Image.new('L', master.size)
     ImageDraw.Draw(head).polygon([xy(p) for p in annotation['head_polygon']], fill=255)
     head = (np.array(head) > 0) & visible
+    if head_source is not None:
+        if head_source.size != master.size:
+            raise ValueError('Head proposal canvas does not match its master')
+        proposed = np.array(head_source.convert('RGBA'))
+        selected = proposed[:, :, 3] > 0
+        if np.any(proposed[selected] != rgba[selected]):
+            raise ValueError('Head proposal is not from these same master pixels')
+        head = selected & visible
+    if annotation.get('head_clip_polygon'):
+        clip = Image.new('L', master.size)
+        ImageDraw.Draw(clip).polygon([xy(point) for point in annotation['head_clip_polygon']], fill=255)
+        head &= np.array(clip) > 0
     if annotation.get('head_material_profile') == 'chestnut-archer-v1':
         # Identity-specific observed colors, bounded by an artist's head region.
         # The actual facial skin component supplies the chin; no guessed body
@@ -92,6 +104,10 @@ def split_frame(master, annotation, transform):
     pd = ImageDraw.Draw(protect)
     for polygon in annotation.get('hand_polygons', []):
         pd.polygon([xy(p) for p in polygon], fill=255)
+    if annotation.get('hands_occlude_head'):
+        # A visible draw hand can cross the face in rear/side cameras. Preserve
+        # that same-frame glove with the complete body, rather than the hair.
+        head &= ~(np.array(protect) > 0)
     hand = (np.array(protect) > 0) & visible & ~head
     weapon = (np.array(weapon) > 0) & visible & ~head & ~hand
     masks = {'HeadHair': head, 'Weapon': weapon,
@@ -136,7 +152,14 @@ def main():
         i = item['index']
         source = args.frames/f'{i:03d}.png'
         master = Image.open(source).convert('RGBA')
-        parts, labels, record = split_frame(master, item, data['cell_to_frame'])
+        head_source = None
+        if item.get('same_frame_head_proposal'):
+            reference = item['same_frame_head_proposal']
+            proposal_path = Path(reference['path'])
+            if sha(proposal_path) != reference['sha256']:
+                raise ValueError('Pinned head proposal changed')
+            head_source = Image.open(proposal_path).convert('RGBA')
+        parts, labels, record = split_frame(master, item, data['cell_to_frame'], head_source)
         for role, image in parts.items():
             folder = args.output/role
             folder.mkdir(exist_ok=True)

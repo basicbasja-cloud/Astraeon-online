@@ -49,6 +49,41 @@ class RangedVisibleCutoutTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'facial skin'):
             split_frame(master, annotation, {'scale': 1, 'offset': [0, 0]})
 
+    def test_explicit_foreground_hand_stays_body_when_crossing_head(self):
+        master, annotation = self.sample()
+        annotation['hands_occlude_head'] = True
+        annotation['hand_polygons'].append([[12, 6], [18, 6], [18, 9], [12, 9]])
+        parts, labels, report = split_frame(master, annotation, {'scale': 1, 'offset': [0, 0]})
+        self.assertEqual(labels.getpixel((15, 7)), 1)
+        self.assertEqual(parts['HeadHair'].getpixel((15, 7))[3], 0)
+        self.assertEqual(parts['BodyCostume'].getpixel((15, 7)), master.getpixel((15, 7)))
+        self.assertEqual(report['recomposition_mismatches'], 0)
+
+    def test_external_head_must_preserve_the_same_source_pixels(self):
+        master, annotation = self.sample()
+        head = master.copy()
+        head.putpixel((8, 8), (255, 0, 255, 255))
+        with self.assertRaisesRegex(ValueError, 'same master pixels'):
+            split_frame(master, annotation, {'scale': 1, 'offset': [0, 0]}, head)
+
+    def test_external_head_keeps_its_partial_alpha(self):
+        master, annotation = self.sample()
+        head = Image.new('RGBA', master.size)
+        head.putpixel((8, 8), master.getpixel((8, 8)))
+        parts, labels, report = split_frame(master, annotation, {'scale': 1, 'offset': [0, 0]}, head)
+        self.assertEqual(parts['HeadHair'].tobytes(), head.tobytes())
+        self.assertEqual(labels.getpixel((8, 8)), 2)
+        self.assertEqual(report['recomposition_mismatches'], 0)
+
+    def test_visible_boundary_clip_changes_ownership_not_master_pixels(self):
+        master, annotation = self.sample()
+        annotation['head_clip_polygon'] = [[5, 3], [15, 3], [15, 10], [5, 10]]
+        parts, labels, report = split_frame(master, annotation, {'scale': 1, 'offset': [0, 0]})
+        self.assertEqual(labels.getpixel((8, 7)), 2)
+        self.assertEqual(labels.getpixel((20, 7)), 1)
+        self.assertEqual(parts['BodyCostume'].getpixel((20, 7)), master.getpixel((20, 7)))
+        self.assertEqual(report['recomposition_mismatches'], 0)
+
 
 if __name__ == '__main__':
     unittest.main()

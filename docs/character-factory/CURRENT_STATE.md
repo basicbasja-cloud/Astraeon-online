@@ -1,3 +1,13 @@
+## Mage frame-bounce gate — 26 October 2026
+
+Eight new coherent Mage spell sheets are retained as unadmitted drafts. Complete-component extraction prevents internal grid lines cutting boots/staff; assigned RGBA pixels round-trip exactly. One-foot registration is insufficient: both-visible-sole diagnostics detect nonrigid drift in three groups and ambiguous observations in four. Female SW passes only this narrow measurement; no group receives art or runtime approval. No frozen-leg or independent-limb workaround is permitted. See `docs/character-factory/review/patch001-mage-continuity-audit-20261026/README.md` for original-placement GIFs and exact limits. Coverage remains **2/96**, zero newly complete characters.
+
+## Archer four-view complete-master cleanup — 26 October 2026
+
+All 128 coherent Archer master frames have reviewed enclosed-air background cleanup. The latest V2 set removes 152,310 background pixels, preserves protected interiors, and reuses earlier SE bow-air annotations for narrow gaps. Both sexes now have complete-master recovery repair in all four attack cameras: all 66 source bone matrices match poses 0/15, and only the arrow corridor changes relative to the reused first pose. Lower-body endpoint pixels match; 120 other cleaned inputs remain unchanged. Native fixed-viewport normal/slow GIFs are recorded.
+
+Part tooling now validates actual same-frame RGBA head pixels, explicit body/hand negative prompts, and manually traced head ownership boundaries. NW proposals still contain some body/equipment contamination and are **not approved**. Final registration, intermediate pose/placement/timing, other-view parts, hidden surfaces, swaps, remaining actions and runtime admission remain open. Runtime coverage remains **2/96**, zero newly complete characters. [Report and GIFs](review/patch001-archer-four-view-recovery-20261026/README.md).
+
 ## Tall original guide library and Archer recovery checkpoint — 26 October 2026
 
 The original 66-bone Mesh2Motion human guide is packaged with 48 sampled actions / 796 poses, eight cameras and nine verified sockets in Blend/GLB. Motion selection retains appropriate normal attacks versus skills. Archer male/female now have coherent sixteen-frame paint sheets in all four attack views. SE has same-frame three-part cutouts, pelvis placement, native part sheets and an identical-source-pose recovery repair with bounded arrow removal. Source pose equality, protected body pixels and exact sheet/recomposition checks are recorded. All 896 original Swordsman files remain unchanged.

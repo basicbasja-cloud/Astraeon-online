@@ -2,26 +2,45 @@
 import argparse,json,hashlib,sys
 from pathlib import Path
 import numpy as np
-import cv2
 from PIL import Image,ImageDraw
+
+
+def respects_head_points(mask, points, positive_count):
+    coordinates = np.rint(np.asarray(points)).astype(int)
+    if ((coordinates[:, 0] < 0) | (coordinates[:, 0] >= mask.shape[1]) |
+            (coordinates[:, 1] < 0) | (coordinates[:, 1] >= mask.shape[0])).any():
+        raise ValueError('Head prompt lies outside the source canvas')
+    included = mask[coordinates[:, 1], coordinates[:, 0]]
+    return bool(included[:positive_count].all() and not included[positive_count:].any())
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--frames',type=Path,required=True);p.add_argument('--annotations',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--model-root',type=Path,default=Path('/workspace/.tools/MobileSAM'));a=p.parse_args()
     import torch
+    import cv2
     torch.set_num_threads(2);sys.path.insert(0,str(a.model_root))
     from mobile_sam import sam_model_registry,SamPredictor
     cp=a.model_root/'weights/mobile_sam.pt';model=sam_model_registry['vit_t'](checkpoint=None);model.load_state_dict(torch.load(cp,map_location='cpu',weights_only=True));model.eval();predictor=SamPredictor(model)
     annotations=json.loads(a.annotations.read_text());records=[];a.output.mkdir(parents=True,exist_ok=True);contact=Image.new('RGBA',(1536,1536),'#353b45')
     for item in annotations['frames']:
         i=item['index'];im=Image.open(a.frames/f'{i:03d}.png').convert('RGBA');pixels=np.array(im);scale=im.width/annotations['canvas'];box=np.array(item['box'],float)*scale
-        backdrop=Image.new('RGBA',im.size,'white');backdrop.alpha_composite(im);predictor.set_image(np.array(backdrop.convert('RGB')))
+        backdrop=Image.new('RGBA',im.size,'white');backdrop.alpha_composite(im)
         points=np.array(item['positive']+item['negative'],np.float32)*scale;labels=np.array([1]*len(item['positive'])+[0]*len(item['negative']))
-        masks,scores,_=predictor.predict(point_coords=points,point_labels=labels,box=box,multimask_output=True)
+        if annotations.get('crop_to_head'):
+            padding=round(annotations.get('crop_padding',16)*scale)
+            crop=[max(0,int(box[0])-padding),max(0,int(box[1])-padding),min(im.width,int(box[2])+padding),min(im.height,int(box[3])+padding)]
+            predictor.set_image(np.array(backdrop.crop(crop).convert('RGB')))
+            local_points=points-np.array(crop[:2]);local_box=box-np.array(crop[:2]*2)
+            local_masks,scores,_=predictor.predict(point_coords=local_points,point_labels=labels,box=local_box,multimask_output=True)
+            masks=np.zeros((len(local_masks),im.height,im.width),bool)
+            masks[:,crop[1]:crop[3],crop[0]:crop[2]]=local_masks
+        else:
+            predictor.set_image(np.array(backdrop.convert('RGB')))
+            masks,scores,_=predictor.predict(point_coords=points,point_labels=labels,box=box,multimask_output=True)
         yy,xx=np.indices(pixels.shape[:2]);x0,y0,x1,y1=box;scope=(xx>=x0-4)&(xx<=x1+4)&(yy>=y0-4)&(yy<=y1+4)&(pixels[:,:,3]>0);candidates=[]
         for mask,score in zip(masks,scores):
             mask=mask&scope
-            valid=all(mask[min(im.height-1,round(pt[1])),min(im.width-1,round(pt[0]))] for pt in points[:len(item['positive'])])
+            valid=respects_head_points(mask,points,len(item['positive']))
             candidates.append((float(score) if valid else -1,mask))
         score,head=max(candidates,key=lambda r:r[0])
         # Bounded warm-color prior separates this brown-haired identity from green
@@ -46,7 +65,9 @@ def main():
             count,components=cv2.connectedComponents(head.astype(np.uint8))
             hair=points[0];seed=components[round(hair[1]),round(hair[0])]
             if seed:head=components==seed
-        if score<0:raise ValueError(f'No proposal includes all head positives in frame {i}')
+        if score<0:
+            (a.output/'failed-prompt.json').write_text(json.dumps({'index':i,'source_sha256':hashlib.sha256((a.frames/f'{i:03d}.png').read_bytes()).hexdigest(),'positive':item['positive'],'negative':item['negative'],'reason':'No proposal satisfies all positive and negative points','runtime_admitted':False},indent=2)+'\n')
+            raise ValueError(f'No proposal respects all positive/negative head points in frame {i}')
         h=pixels.copy();h[~head]=0;b=pixels.copy();b[head]=0
         for role,array in [('HeadHair',h),('BodyCostume',b)]:
             d=a.output/role;d.mkdir(exist_ok=True);Image.fromarray(array).save(d/f'{i:03d}.png')
@@ -55,6 +76,8 @@ def main():
         preview=Image.new('RGBA',im.size,'#353b45');preview.alpha_composite(Image.fromarray(h));contact.alpha_composite(preview.resize((384,384)),((i%4)*384,(i//4)*384))
         rec={'index':i,'proposal_score':score,'source_sha256':hashlib.sha256((a.frames/f'{i:03d}.png').read_bytes()).hexdigest(),'head_pixels':int(head.sum()),'recomposition_mismatch_pixels':different};records.append(rec);print(json.dumps(rec),flush=True)
     contact.save(a.output/'heads-contact.png')
+    (a.output/'annotations-source.json').write_bytes(a.annotations.read_bytes())
+    (a.output/'proposal-source.py').write_bytes(Path(__file__).read_bytes())
     (a.output/'receipt.json').write_text(json.dumps({'status':'HEAD_MASK_PROPOSALS_REQUIRE_BOUNDARY_REVIEW','roles':['HeadHair','BodyCostume'],'weapon_separated':False,'bodycostume_note':'Contains weapon until separate same-frame mask is authored; not an importable layer package.','checkpoint_sha256':hashlib.sha256(cp.read_bytes()).hexdigest(),'source_pixels_redrawn':False,'source_pose_registered':False,'frames':records,'owner_approved':False,'runtime_admitted':False},indent=2)+'\n')
 
 if __name__=='__main__':main()
