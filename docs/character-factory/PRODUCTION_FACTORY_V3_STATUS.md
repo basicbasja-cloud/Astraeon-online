@@ -1,5 +1,15 @@
 # Production Factory V3 status and handoff
 
+## Current Archer source candidate — grounded support V3, 26 October 2026
+
+Use `research/archer-anchored-support-v3-20261026/` and `rig-kits/archer-grounded-support-v3-20261026/` for the next Archer BasicAttack paintover study. V3 fixes measured floating/sliding feet and preserves all32 anatomical knee bend planes;64 actual camera captures and16-pose Blend/GLB reopen checks are complete. It is an explicit3D adaptation, not unchanged original motion. **V2 anchored support is rejected for reversed knee poles.** Neither contact checks nor tests approve final character art. Continue exact per-frame paintover, then same-frame BodyCostume / HeadHair / Weapon cuts; the rejected full sheet and limb assembly remain unusable. Coverage is still2/96 imported jobs, zero complete new playable characters. See `docs/character-factory/review/patch001-archer-leg-contact-20261026/`.
+
+## Latest owner correction: exact frame paintover — 26 October 2026
+
+Required order: **rig motion → paint over the exact actual frame/camera guide → cut BodyCostume / HeadHair / Weapon for that frame → recompose**. A generated whole sheet is not proof of tracing the guide. The latest Archer 16-frame coherent-native-v2 sheet is rejected for leg/boot shape drift. Stop its segmentation and promotion. Separately generated limbs remain rejected. Preserve approved Swordsman art.
+
+The leg audit also measured a target-rig defect: the right boot sole touches the floor while the left floats 0.0063–0.0422 m over this action. Original donor left toe height stays nearly constant; whole-body lowest-vertex floor alignment did not preserve both target boot contacts. A separate 3D leg-IK correction is being reviewed before repainting; camera/upper-body preservation must be checked. No new art or character is approved by this diagnosis.
+
 ## Owner correction: whole posed body cutouts — 26 October 2026
 
 The production illustration units are **BodyCostume (complete clothed body including arms, hands and legs), HeadHair, and Weapon**, cut from the same coherent posed frame and actual camera direction. Keep optional same-frame hand occluders and front/back effects where necessary. Reuse means registered frame/view cutouts, shared motion guides, and matching complete costume/head/weapon replacements.

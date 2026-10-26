@@ -2487,5 +2487,24 @@
       "scope": "Male earlier action artwork; not blanket acceptance of all actions, female art, semantic boundaries or gameplay.",
       "current_guide_sampling_compatibility": "BasicAttack reconciled to the retained 16 native samples. SkillAction still has a separate 32-pose guide contract and is not blindly imported from the 16-pose historical SkillOverhead."
     }
+  },
+  "illustration_contract": {
+    "owner_confirmed": "2026-10-26",
+    "production_units": {
+      "BodyCostume": "Complete coherent posed clothed body including torso, arms, hands and legs.",
+      "HeadHair": "Head and hair from the same frame and camera.",
+      "Weapon": "Weapon from the same frame and camera; retain attached hand occlusion separately where needed."
+    },
+    "authoring_method": "Rig motion > exact same-camera paintover for each actual frame > same-frame BodyCostume/HeadHair/Weapon cutouts > recomposition. Check both feet and all anatomy before segmentation.",
+    "separately_generated_limb_assembly_for_final_art": false,
+    "optional_same_frame_layers": [
+      "WeaponHandOccluder",
+      "WeaponLightBack",
+      "WeaponLightFront",
+      "BackAccessory",
+      "Headgear"
+    ],
+    "reuse": "Only matching pose, camera and body fit; complete replacement head/costume/weapon follows the same posed master.",
+    "whole_sheet_generation_is_not_exact_paintover_evidence": true
   }
 }

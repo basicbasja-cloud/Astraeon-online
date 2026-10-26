@@ -1,0 +1,31 @@
+{
+  "status": "AUTHORED_SUPPORT_ANCHOR_PLAN_REQUIRES_MOTION_REVIEW",
+  "policy": "Static standing bow shot; both support ankles anchored in XY. Preserve upper body and foot orientation. This is an authored motion adaptation, not unchanged source motion.",
+  "feet": {
+    "L": {
+      "ankle_xy_world_m": [
+        0.16185216650565204,
+        0.1730102707994033
+      ],
+      "maximum_extension_ratio": 0.95,
+      "solver_success": true,
+      "minimum_reach_margin_squared_m2": 1.1102230246251565e-16,
+      "maximum_original_ankle_xy_travel_m": 0.05890849644666624
+    },
+    "R": {
+      "ankle_xy_world_m": [
+        -0.1490600270890781,
+        0.49585509882445644
+      ],
+      "maximum_extension_ratio": 0.95,
+      "solver_success": true,
+      "minimum_reach_margin_squared_m2": -2.731148640577885e-14,
+      "maximum_original_ankle_xy_travel_m": 0.2918838675169116
+    }
+  },
+  "source_controls": "authoring/characters/factory-v3/patch-0.0.1/research/archer-paired-boot-contact-v1-20261026/pose-controls.json",
+  "source_controls_sha256": "660cca6165fa862c17b9dc46ab6343705961ed3bc09bfadb78e8d70b9d3b4b1a",
+  "implementation_sha256": "e272ec8e3bb5ed71f4ec5e9fd7b92a72f0d33735e561f42919f4d1eead7233bb",
+  "source_motion_changed": true,
+  "runtime_admitted": false
+}
