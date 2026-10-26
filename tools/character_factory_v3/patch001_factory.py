@@ -83,6 +83,10 @@ def plan():
             key=digest({'identity':filehash(identity),'direction_identity':filehash(direction_sheet),'direction_crop_revision':reference_receipt['head_crop_revision'],'fit':character['anatomy_fit_id'],'guide':guide})[:20]
             pj=paint_jobs.setdefault(key,{'id':key,'character':character['id'],'identity_reference':character['identity_reference'],'identity_sha256':filehash(identity),'fit_id':character['anatomy_fit_id'],'guide_job':guide,'directions':jobs[guide]['directions'],'frame_count':a['frames'],'actions':[],'status':'MISSING_PAINTED_MASTERS_AND_LABELS','master_first':True,'layers_from_same_frame':config['parts'],'generation_policy':'rig motion > exact frame/camera paintover of one coherent clothed body > same-frame HeadHair/BodyCostume/Weapon cutouts > recomposition; no separately generated limb assembly','approval':{'owner_approved':False,'runtime_admitted':False}})
             pj['actions'].append(name)
+            contract=config.get('illustration_contract',{})
+            if contract.get('baseline_reference'):pj['visual_baseline_reference']=contract['baseline_reference']
+            if contract.get('original_guide_rig_reference'):pj['authoring_guide_rig_reference']=contract['original_guide_rig_reference']
+            if contract.get('motion_selection_reference'):pj['motion_selection_reference']=contract['motion_selection_reference']
             if not(references/'receipt.json').is_file():raise ValueError('Prepare view-specific identity references before planning: '+reference_name)
             pj['direction_identity_references']={direction:{'full_view':str((references/f'{direction}.png').relative_to(ROOT)),'head_upper':str((references/f'{direction}-head-upper.png').relative_to(ROOT))}for direction in pj['directions']}
             pj['reference_authority']={'geometry':'current guide_job only','design':'matching-direction identity study; inspect view before use','generic_front_portrait_for_rear_views':False}

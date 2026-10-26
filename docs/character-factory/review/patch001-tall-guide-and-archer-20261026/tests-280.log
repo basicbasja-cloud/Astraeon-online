@@ -1,0 +1,9 @@
+....................................................................................................../workspace/Astraeon-online/tests/character_factory_v3/test_import_pose_recipes.py:13: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  self.assertEqual(count,1);self.assertEqual(list(fixed.getdata()),[(10,20,30,1),(40,50,60,244),(70,80,90,255),(100,110,120,255)])
+..................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 280 tests in 45.958s
+
+OK
+Actual Blender: {"status": "PASS", "sampled_poses": 18, "old_retarget_max_toe_error_m": 0.10190723277628422, "corrected_max_toe_error_m": 2.3655593395233154e-07, "ready_recovery_seam_m": 0.0, "grip_states_checked": true, "finite_matrices_checked": true, "stale_diagnostics_checked": true}
+ACTUAL_RENDER_FREEZE {"status": "PASS", "resolution": 512, "right_wrist": [220, 233], "baseline_wrist_alpha": 0, "fixed_wrist_alpha": 255, "camera_and_source_landmarks_unchanged": true}

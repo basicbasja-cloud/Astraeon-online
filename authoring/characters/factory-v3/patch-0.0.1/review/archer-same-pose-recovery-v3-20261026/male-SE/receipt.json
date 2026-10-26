@@ -1,0 +1,114 @@
+{
+  "status": "SOURCE_IDENTICAL_BODY_RECOVERY_REUSE_WITH_LOCAL_ARROW_REPAIR",
+  "source_pose_indices": [
+    0,
+    15
+  ],
+  "bone_count": 66,
+  "maximum_source_bone_matrix_error": 5.960464477539062e-07,
+  "changed_pixels_in_reused_first_pose": 529,
+  "explicit_shared_background_pixels_removed": 549,
+  "protected_pixel_changes": 0,
+  "head_pixels_identical_to_first": true,
+  "lower_body_pixels_identical_to_first": true,
+  "source_replay_sha256": "fddbbd713b87becd1c1e40dea20eec54e93406251a65782f1109798e69e2d14e",
+  "correction_sha256": "60235035a8c0677b40e1983e14f1713ed2f139db1f2b190b0e373549401ad0e5",
+  "registered_receipt_sha256": "6c72c4a82762f307cf6d8f79d8f6290b36d384fa83be19bffeacf151b85ef94b",
+  "annotations_sha256": "ecc540775acf61d0995e240318bedf889c2171ceeaab2fd3369d2282bf63e755",
+  "implementation_sha256": "1b6c22305355c966ce7dc5b9e292ff27ef781df2d9748c0216b68fb16c432923",
+  "normalization": {
+    "status": "FIXED_VIEWPORT_REVIEW_CANDIDATE_NOT_ACCEPTED_ART",
+    "frame_space": "unspecified-source-canvas",
+    "canonical_root": null,
+    "aspect_error": 0.000494774574645418,
+    "shared_viewport": [
+      174,
+      155,
+      319,
+      327
+    ],
+    "source_size": [
+      512,
+      512
+    ],
+    "frames": [
+      {
+        "source_pose_index": 0,
+        "source_box": [
+          0.0,
+          0.0,
+          1151.0,
+          1366.0
+        ],
+        "alpha_bbox": [
+          186,
+          155,
+          319,
+          327
+        ],
+        "touches_viewport_edge": true,
+        "white_edge_pixels_unmatted": 0
+      }
+    ],
+    "production_blockers": [
+      {
+        "source_pose_index": 0,
+        "reason": "Paint touches the shared viewport edge; inspect clipping before admission"
+      }
+    ],
+    "per_frame_figure_fitting": false,
+    "source_pose_registered": false,
+    "semantic_cutouts_approved": false,
+    "runtime_admitted": false
+  },
+  "recomposition_mismatches": 0,
+  "sprite_sheets": {
+    "Master": {
+      "path": "Sheets/Master.png",
+      "sha256": "5c417bc8ba01808be8aa04139b41d127ff1b84ee5daee647f03a5f518dfa53c8",
+      "columns": 4,
+      "rows": 4,
+      "frame_size": [
+        768,
+        768
+      ],
+      "frame_count": 16
+    },
+    "BodyCostume": {
+      "path": "Sheets/BodyCostume.png",
+      "sha256": "ab90e1929badd5fcdfdb1751b753e2b6456bd071a0d1dc9d377ad2c24005260a",
+      "columns": 4,
+      "rows": 4,
+      "frame_size": [
+        768,
+        768
+      ],
+      "frame_count": 16
+    },
+    "HeadHair": {
+      "path": "Sheets/HeadHair.png",
+      "sha256": "d64509969b0269f5c62d721571df67de012c77280f31b8cffe353a394e344c3d",
+      "columns": 4,
+      "rows": 4,
+      "frame_size": [
+        768,
+        768
+      ],
+      "frame_count": 16
+    },
+    "Weapon": {
+      "path": "Sheets/Weapon.png",
+      "sha256": "5fd8c9af0e3b33d484e62950cca5aeb8b7e57a5ec7100e71f24642a60f2bb789",
+      "columns": 4,
+      "rows": 4,
+      "frame_size": [
+        768,
+        768
+      ],
+      "frame_count": 16
+    }
+  },
+  "semantic_cutouts_approved": false,
+  "all_frame_smoothness_approved": false,
+  "runtime_admitted": false
+}

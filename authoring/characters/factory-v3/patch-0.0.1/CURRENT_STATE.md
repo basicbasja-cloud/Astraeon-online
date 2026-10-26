@@ -1,3 +1,9 @@
+## Tall original guide library and Archer recovery checkpoint — 26 October 2026
+
+The original 66-bone Mesh2Motion human guide is packaged with 48 sampled actions / 796 poses, eight cameras and nine verified sockets in Blend/GLB. Motion selection retains appropriate normal attacks versus skills. Archer male/female now have coherent sixteen-frame paint sheets in all four attack views. SE has same-frame three-part cutouts, pelvis placement, native part sheets and an identical-source-pose recovery repair with bounded arrow removal. Source pose equality, protected body pixels and exact sheet/recomposition checks are recorded. All 896 original Swordsman files remain unchanged.
+
+**Still active, not accepted:** intermediate pose/placement drift, release-arm foreshortening, semantic cutout cleanup, other-view registration, hidden surfaces, all-action coverage, swaps and runtime admission remain unfinished. Imported coverage stays **2/96**, zero newly complete characters. See [the illustrated checkpoint](../../../../docs/character-factory/review/patch001-tall-guide-and-archer-20261026/README.md) for normal/slow GIFs and exact limitations.
+
 ## Owner reaffirmed earlier tall Swordsman — 26 October 2026
 
 The earlier four-direction illustrated Swordsman is the required visual/proportion baseline for further classes. Do not replace its taller silhouette with the recent compact F01 Archer studies. Re-read the retained per-view generation prompts and the original `build_simple_attack_factory.py` / `build_four_direction_attack_review.py` before painting. The historical method painted coherent complete 16-pose sheets from original, unretargeted Mesh2Motion fixed-camera guides, then cut each frame into BodyCostume (all limbs together), HeadHair and Weapon; same-frame hand overlap and separate trails follow. This is not independently generated limb assembly, nor proof of exact traced anatomy. The owner's current exact-guide paintover requirement still applies.

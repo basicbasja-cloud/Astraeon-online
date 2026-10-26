@@ -15,6 +15,8 @@ def main():
     p.add_argument('--controls-library',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--glb-name',default='sampled-native-actions.glb')
+    p.add_argument('--blend-name',default='sampled-native-actions.blend')
+    p.add_argument('--original-guide-replays',action='store_true')
     p.add_argument('--repository-root',type=Path,default=Path(__file__).resolve().parents[2])
     a=p.parse_args(sys.argv[sys.argv.index('--')+1:])
     if a.output.exists():raise ValueError('Preserve previous verification')
@@ -25,7 +27,8 @@ def main():
     expected=manifest['outputs'].get(glb.name)
     if expected is None:
         export=json.loads(glb.with_suffix('.export.json').read_text())
-        if export['source_blend_sha256']!=manifest['outputs']['sampled-native-actions.blend']:
+        if Path(a.blend_name).name!=a.blend_name:raise ValueError('Choose a Blend inside the library')
+        if export['source_blend_sha256']!=manifest['outputs'][a.blend_name]:
             raise ValueError('GLB source library differs')
         expected=export['output_sha256']
     if hashlib.sha256(binary).hexdigest()!=expected:raise ValueError('GLB changed')
@@ -36,7 +39,7 @@ def main():
     bpy.ops.wm.read_factory_settings(use_empty=True)
     bpy.ops.import_scene.gltf(filepath=str(glb.resolve()))
     rigs=[o for o in bpy.context.scene.objects if o.type=='ARMATURE']
-    if len(rigs)!=1 or len(rigs[0].data.bones)!=60:raise ValueError('GLB skeleton differs')
+    if len(rigs)!=1 or len(rigs[0].data.bones)!=manifest.get('bone_count',60):raise ValueError('GLB skeleton differs')
     rig=rigs[0];scene=bpy.context.scene;results=[]
     root=a.repository_root.resolve()
     for row in manifest['actions']:
@@ -45,7 +48,13 @@ def main():
         action=candidates[0];rig.animation_data_create();rig.animation_data.action=action
         rig.animation_data.action_slot=action.slots[0]
         entry=next(j for j in source['jobs']if j['job']==row['job'])
-        controls=json.loads((root/entry['controls']).read_text())['views']['NE']['frames']
+        if a.original_guide_replays:
+            replay=a.controls_library/'source'/(row['job']+'.json')
+            if hashlib.sha256(replay.read_bytes()).hexdigest()!=row['source_replay_sha256']:raise ValueError('Original guide replay changed')
+            original=json.loads(replay.read_text())['frames']
+            controls=[{'world_matrices':{name:bone['world_matrix']for name,bone in frame['bones'].items()}}for frame in original]
+        else:
+            controls=json.loads((root/entry['controls']).read_text())['views']['NE']['frames']
         first,last=action.frame_range
         worst=0.;position_error=0.;worst_bone=None
         for index,frame in enumerate(controls):
