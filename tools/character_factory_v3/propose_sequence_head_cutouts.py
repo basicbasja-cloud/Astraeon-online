@@ -21,7 +21,9 @@ def main():
     torch.set_num_threads(2);sys.path.insert(0,str(a.model_root))
     from mobile_sam import sam_model_registry,SamPredictor
     cp=a.model_root/'weights/mobile_sam.pt';model=sam_model_registry['vit_t'](checkpoint=None);model.load_state_dict(torch.load(cp,map_location='cpu',weights_only=True));model.eval();predictor=SamPredictor(model)
-    annotations=json.loads(a.annotations.read_text());records=[];a.output.mkdir(parents=True,exist_ok=True);contact=Image.new('RGBA',(1536,1536),'#353b45')
+    annotations=json.loads(a.annotations.read_text());indices=[row['index'] for row in annotations['frames']]
+    if not indices or indices != list(range(len(indices))):raise ValueError('Head annotations must cover contiguous ordered frames beginning at zero')
+    records=[];a.output.mkdir(parents=True,exist_ok=True);contact=Image.new('RGBA',(1536,((len(annotations['frames'])+3)//4)*384),'#353b45')
     for item in annotations['frames']:
         i=item['index'];im=Image.open(a.frames/f'{i:03d}.png').convert('RGBA');pixels=np.array(im);scale=im.width/annotations['canvas'];box=np.array(item['box'],float)*scale
         backdrop=Image.new('RGBA',im.size,'white');backdrop.alpha_composite(im)

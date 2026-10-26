@@ -1,4 +1,7 @@
 import sys
+import json
+import tempfile
+from unittest.mock import patch
 import unittest
 from pathlib import Path
 
@@ -6,10 +9,42 @@ import numpy as np
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'tools/character_factory_v3'))
-from build_ranged_visible_cutouts import split_frame
+from build_ranged_visible_cutouts import split_frame, sequence_layout, main
 
 
 class RangedVisibleCutoutTests(unittest.TestCase):
+    def test_twenty_four_pose_parts_cannot_clip_after_frame_fifteen(self):
+        self.assertEqual(sequence_layout([{'index': i} for i in range(24)]), (2048, 3072))
+
+    def test_sixteen_pose_sheet_dimensions_remain_unchanged(self):
+        self.assertEqual(sequence_layout([{'index': i} for i in range(16)]), (2048, 2048))
+
+    def test_duplicate_or_missing_frame_annotations_fail(self):
+        for items in [[], [{'index': 0}, {'index': 0}], [{'index': 0}, {'index': 2}]]:
+            with self.assertRaisesRegex(ValueError, 'contiguous'):
+                sequence_layout(items)
+
+    def test_export_retains_last_of_twenty_four_frames(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            frames = root/'frames'; frames.mkdir()
+            items = []
+            for index in range(24):
+                image = Image.new('RGBA', (512, 512))
+                image.putpixel((100, 100), (120, 70, 30, 254))
+                image.save(frames/f'{index:03d}.png')
+                items.append({'index': index, 'head_polygon': [[95, 95], [105, 95], [105, 105], [95, 105]],
+                              'weapon_paths': [], 'hand_polygons': []})
+            annotations = root/'annotations.json'
+            annotations.write_text(json.dumps({'frames': items, 'cell_to_frame': {'scale': 1, 'offset': [0, 0]}}))
+            output = root/'output'
+            with patch.object(sys, 'argv', ['cutouts', '--frames', str(frames), '--annotations', str(annotations), '--output', str(output)]):
+                main()
+            with Image.open(output/'HeadHair-sheet.png') as sheet:
+                self.assertEqual(sheet.size, (2048, 3072))
+                self.assertEqual(sheet.getpixel((3*512+100, 5*512+100)), (120, 70, 30, 254))
+            self.assertTrue((output/'HeadHair/023.png').is_file())
+
     def sample(self):
         pixels = np.zeros((32, 32, 4), dtype=np.uint8)
         pixels[3:29, 5:27] = [110, 80, 50, 213]

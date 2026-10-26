@@ -135,6 +135,13 @@ def split_frame(master, annotation, transform, head_source=None):
     }
 
 
+def sequence_layout(items, columns=4):
+    indices = [row['index'] for row in items]
+    if not indices or indices != list(range(len(indices))):
+        raise ValueError('Annotations must cover contiguous ordered frames beginning at zero')
+    return columns*512, ((len(indices)+columns-1)//columns)*512
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['frames', 'annotations', 'output']:
@@ -143,15 +150,18 @@ def main():
     if args.output.exists():
         raise ValueError('Choose a fresh visible-cutout proposal destination')
     data = json.loads(args.annotations.read_text())
+    sheet_size = sequence_layout(data['frames'])
     args.output.mkdir(parents=True)
-    sheets = {r: Image.new('RGBA', (2048, 2048)) for r in ['BodyCostume', 'HeadHair', 'Weapon']}
-    head_review = Image.new('RGB', (1200, 600), '#343a43')
-    part_review = Image.new('RGB', (1200, 1200), '#343a43')
+    sheets = {r: Image.new('RGBA', sheet_size) for r in ['BodyCostume', 'HeadHair', 'Weapon']}
+    head_review = Image.new('RGB', (1200, ((len(data['frames'])+7)//8)*300), '#343a43')
+    part_review = Image.new('RGB', (1200, ((len(data['frames'])+3)//4)*300), '#343a43')
     records = []
     for item in data['frames']:
         i = item['index']
         source = args.frames/f'{i:03d}.png'
         master = Image.open(source).convert('RGBA')
+        if master.size != (512, 512):
+            raise ValueError('Expected fixed 512-pixel master canvas')
         head_source = None
         if item.get('same_frame_head_proposal'):
             reference = item['same_frame_head_proposal']

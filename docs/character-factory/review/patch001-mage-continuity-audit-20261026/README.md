@@ -53,3 +53,16 @@ Do not reuse frozen legs, stretch body parts, independently fit per-frame crops
 or treat a segmentation reconstruction score as semantic approval. Remaining
 work includes reviewed boot association, full body/head/staff stability,
 recovery pose/timing, semantic cuts, swap proofs and all other actions.
+
+## Factory capacity correction
+
+The visible-part exporter previously allocated a fixed 16-frame sheet and review
+canvas. It now allocates rows for the actual frame count, including all 24 Mage
+poses. Annotation indices must be contiguous and unique, and masters must retain
+the recorded 512 canvas. A regression test exports 24 complete synthetic frames
+and verifies the final pose exists at its exact native sheet coordinate. Head
+proposal contacts also allocate all rows. This capacity fix does not approve the
+Mage draft cutouts or painted animation.
+
+All [896 preserved Swordsman files](preserved-swordsman-check.json) were rehashed
+with zero mismatches after this work.
