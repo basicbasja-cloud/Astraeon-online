@@ -1,5 +1,9 @@
 # Patch 0.0.1 production checkpoint
 
+## Storage cleanup update — 26 October 2026
+
+The owner authorized deletion of unnecessary files. Removed 8,704 untracked obsolete generated guide PNGs from 74 superseded jobs, reclaiming 6.37 GB (5.93 GiB). All 48 active guide jobs / 5,568 expected images remain present. Current art, part sprites, motion sources, canonical rig and tracked files were retained. About 6.1 GiB is now free: **the immediate storage blocker below is resolved**. Production can resume. Six-character completeness is still 2/96 imported jobs and zero complete newly admitted characters. Details: `docs/character-factory/review/cleanup-20261026/`.
+
 ## Latest actual state — 26 October 2026
 
 Still 2/96 actual imported jobs, both Swordsman BasicAttack, and zero complete newly admitted characters. Mage native walking and casting pilots remain studies; 10 lossless male/female walking role sheets now contain 160 verified native cells. Archer weapon/hand ownership and recovery-arrow defects remain open. The latest eight-view Mage costume drawing is rejected for incorrect camera views and background.

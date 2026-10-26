@@ -1,5 +1,7 @@
 # Three-class production readiness — 26 October 2026
 
+**Storage update:** the owner subsequently authorized cleanup. Evicting obsolete guide caches recovered 6.37 GB; the immediate capacity blocker described below is resolved. See [cleanup and preservation evidence](../cleanup-20261026/README.md). The six-character production status is still incomplete.
+
 **INCOMPLETE.** Scope remains Swordsman, Mage and Archer, male and female, all patch 0.0.1 actions. General/movement views use eight actual cameras; attacks and casting use four actual diagonals. No missing animation is substituted.
 
 This report reads actual factory import receipts and per-pose bindings. It does not count guide captures, draft sheets, compositor checks or illustrative GIFs as finished actions.
