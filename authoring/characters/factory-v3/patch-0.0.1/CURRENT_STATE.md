@@ -1,5 +1,12 @@
 # Patch 0.0.1 production checkpoint
 
+## Reusable rig and motion preference — 26 October 2026
+
+The owner reaffirmed Mesh2Motion as the preferred motion source. Retain it as the default; record any retained archery fallback separately. Scope remains all three classes, both sexes, reusable sprite parts and rig, smooth source-aligned actions.
+
+A portable shared authoring rig now opens in Blender and GLB with 60 bones, 8 fixed cameras, 10 live sockets and embedded textures. Two overlapping source faces are preserved by splitting six indices; no faces, UV/material surfaces or weights are removed. The saved native Mesh2Motion walk example matches 16 × 51 bone matrices after reopening. This is a reference rig and one editable motion, not six finished meshes or all action sets. See `docs/character-factory/review/patch001-reusable-rig-20261026/`. Current admitted coverage remains 2/96 jobs and zero newly complete characters.
+
+
 ## Storage cleanup update — 26 October 2026
 
 The owner authorized deletion of unnecessary files. Removed 8,704 untracked obsolete generated guide PNGs from 74 superseded jobs, reclaiming 6.37 GB (5.93 GiB). All 48 active guide jobs / 5,568 expected images remain present. Current art, part sprites, motion sources, canonical rig and tracked files were retained. About 6.1 GiB is now free: **the immediate storage blocker below is resolved**. Production can resume. Six-character completeness is still 2/96 imported jobs and zero complete newly admitted characters. Details: `docs/character-factory/review/cleanup-20261026/`.

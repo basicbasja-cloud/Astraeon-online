@@ -1,0 +1,55 @@
+{
+  "status": "ROUNDTRIP_SKELETON_SKIN_AND_SOCKETS_PASS",
+  "checks": [
+    {
+      "format": "blend",
+      "bones": 60,
+      "cameras": 8,
+      "sockets": 10,
+      "socket_pose_cases": 3,
+      "maximum_live_socket_matrix_error": 2.384185791015625e-07,
+      "meshes": [
+        {
+          "name": "F01_BodyOutfit",
+          "vertices": 8541,
+          "binding": "skinned_armature",
+          "unweighted_vertices": 0,
+          "max_weight_sum_error": 4.701541911344975e-08
+        },
+        {
+          "name": "F01_HeadHair",
+          "vertices": 1910,
+          "binding": "skinned_armature",
+          "unweighted_vertices": 0,
+          "max_weight_sum_error": 0
+        }
+      ]
+    },
+    {
+      "format": "glb",
+      "bones": 60,
+      "cameras": 8,
+      "sockets": 10,
+      "socket_pose_cases": 3,
+      "maximum_live_socket_matrix_error": 4.76837158203125e-07,
+      "meshes": [
+        {
+          "name": "F01_BodyOutfit",
+          "vertices": 15293,
+          "binding": "skinned_armature",
+          "unweighted_vertices": 0,
+          "max_weight_sum_error": 1.2293457984924316e-07
+        },
+        {
+          "name": "F01_HeadHair",
+          "vertices": 4639,
+          "binding": "skinned_armature",
+          "unweighted_vertices": 0,
+          "max_weight_sum_error": 0
+        }
+      ]
+    }
+  ],
+  "final_art_approval": false,
+  "complete_character_claim": false
+}
