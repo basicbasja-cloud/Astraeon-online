@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "compared_pngs": 80,
+  "byte_differences": [],
+  "command": [
+    "python",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-painted-native-walk-v4-20261026/replay/replace_native_shoe_patches.py",
+    "--source",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-painted-native-walk-v2-20261025",
+    "--guide",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-walk-image-guide-20261025",
+    "--controls",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-walk-controls-v2-20261025/pose-controls.json",
+    "--masks",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-old-right-boot-masks-v2-20261026",
+    "--templates",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-right-boot-templates-20261026",
+    "--template-pose-map",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-walk-sequence-20261025/foot-template-pose-map.json",
+    "--background-completion-indices",
+    "7",
+    "--output",
+    "/tmp/mage-walk-replay-20261026"
+  ]
+}

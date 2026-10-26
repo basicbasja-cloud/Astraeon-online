@@ -40,11 +40,16 @@ def observed_crystal(image,head_y):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--paint',type=Path,required=True)
-    parser.add_argument('--guide',type=Path,required=True)
+    source=parser.add_mutually_exclusive_group(required=True)
+    source.add_argument('--guide',type=Path)
+    source.add_argument('--controls',type=Path,help='Canonical numeric pose export; does not claim image capture')
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--tolerance',type=float,default=12)
     args = parser.parse_args()
-    capture = json.loads((args.guide/'pilot-receipt.json').read_text())
+    source_path=args.controls if args.controls else args.guide/'pilot-receipt.json'
+    capture = json.loads(source_path.read_text())
+    if args.controls and capture.get('status')!='NUMERIC_CANONICAL_POSES_NOT_IMAGE_CAPTURE':
+        raise ValueError('Expected frozen canonical numeric poses')
     if capture['weapon']!='staff' or args.tolerance<=0:
         raise ValueError('Staff capture and positive motion tolerance required')
     view = capture['views']['NE'];rows=[];offset=None
@@ -68,7 +73,8 @@ def main():
               'maximum_motion_error_native_px':max(r['motion_error_native_px'] for r in rows),
               'passed_poses':sum(r['motion_gate_passed'] for r in rows),
               'motion_gate_passed':all(r['motion_gate_passed'] for r in rows),
-              'guide_receipt_sha256':hashlib.sha256((args.guide/'pilot-receipt.json').read_bytes()).hexdigest(),
+              'guide_receipt_sha256':None if args.controls else hashlib.sha256(source_path.read_bytes()).hexdigest(),
+              'numeric_controls_sha256':hashlib.sha256(source_path.read_bytes()).hexdigest()if args.controls else None,
               'implementation_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'runtime_admitted':False}
     args.output.write_text(json.dumps(report,indent=2)+'\n')

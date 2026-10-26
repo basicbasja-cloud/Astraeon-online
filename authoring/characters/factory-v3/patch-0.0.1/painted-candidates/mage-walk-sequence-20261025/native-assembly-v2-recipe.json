@@ -1,0 +1,53 @@
+{
+  "restore_collar_from_hand_role_frames": [
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "classification_basis": "Manual inspection of all16 hand-role thumbnails; these masks contain the cream neck cowl, not a separate visible fist. Restoration remains subject to full composite review.",
+  "constant_painted_asset_scale": 0.9,
+  "calibration_basis": "One constant illustration scale from pose0 native head/foot span; applied identically across all16 poses. No silhouette-based per-frame resizing.",
+  "reviewed_foreign_components": {
+    "10": {
+      "source_rgba_sha256": "e5dd53292cee716eb3aab1d0051ea309e98614e885d698f4988ea3d6eade17a8",
+      "classification": "Detached old staff segments / old hair pixels, manually inspected against unchanged full body",
+      "components": [
+        {
+          "area": 258,
+          "bbox": [
+            696,
+            944,
+            703,
+            992
+          ]
+        },
+        {
+          "area": 146,
+          "bbox": [
+            694,
+            917,
+            703,
+            940
+          ]
+        }
+      ]
+    },
+    "15": {
+      "source_rgba_sha256": "003cad61d1e3e00c1f009e34094c3144fa7ba26b3d4b650d6157b98aedbb6457",
+      "classification": "Detached old staff segments / old hair pixels, manually inspected against unchanged full body",
+      "components": [
+        {
+          "area": 305,
+          "bbox": [
+            697,
+            674,
+            720,
+            707
+          ]
+        }
+      ]
+    }
+  }
+}

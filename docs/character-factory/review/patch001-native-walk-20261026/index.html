@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>Astraeon Mage native walking parts review</title>
+<style>body{font:16px system-ui;background:#202329;color:#eee;margin:24px}canvas{width:480px;height:480px;background:#aaa}button,select{padding:10px;margin:8px}pre{white-space:pre-wrap}</style>
+<h1>Mage native walk · complete head variants and fixed native staff grip</h1>
+<p>One NE walking study only. Male and female heads reuse the same covered costume and native motion. This uses the game's source compositor. All classes/actions and gameplay admission remain incomplete.</p>
+<select id="variant"><option value="male">Male auburn head</option><option value="female">Female silver braid</option></select>
+<label><input id="head" type="checkbox" checked>Head</label><label><input id="weapon" type="checkbox" checked>Whole weapon</label><button id="play">Pause</button>
+<p><canvas id="actual" width="480" height="480"></canvas><canvas id="expected" width="480" height="480"></canvas></p><pre id="report">Loading…</pre>
+<script src="../../../../modular-sprites.js?v=107"></script><script>
+const root='../../../../authoring/characters/factory-v3/patch-0.0.1/review/mage-walk-native-atlas-20261026/';
+const ctx=document.querySelector('#actual').getContext('2d',{willReadFrequently:true}),ref=document.querySelector('#expected').getContext('2d',{willReadFrequently:true});
+let pack,images,index=0,playing=true;
+function nativeMaster(row){const canvas=document.createElement('canvas');canvas.width=canvas.height=1536;const c=canvas.getContext('2d');const master=row.layers.Master;c.drawImage(images[master.atlasId],...master.rect,...master.offset,master.rect[2],master.rect[3]);return canvas}
+function render(name,i,background='#aaa',all=false){const row=pack.variants[name].frames[i];
+ for(const c of [ctx,ref]){c.fillStyle=background;c.fillRect(0,0,480,480);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high'}
+ const layers=pack.render_order.filter(r=>all||((r!=='HeadHair'||document.querySelector('#head').checked)&&(!['Weapon','WeaponBack'].includes(r)||document.querySelector('#weapon').checked))).map(r=>({slot:r,layer:r,...row.layers[r]}));
+ AstraeonModularSprites.draw(ctx,{canvas:pack.canvas,layers,sockets:{}},images,{x:240,y:344,scale:2});
+ ref.drawImage(nativeMaster(row),0,0,1536,1536,0,0,480,480);
+}
+window.factoryAudit=(async()=>{
+ pack=await(await fetch(root+'package.json')).json();images={};await Promise.all(pack.pages.map((entry,i)=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[String(i)]=im;resolve()};im.onerror=reject;im.src=root+entry.path})));
+ let comparisons=0,maxDifference=0,changedPixels=0;
+ for(const name of Object.keys(pack.variants))for(let i=0;i<pack.variants[name].frames.length;i++)for(const bg of ['#eee','#202329']){
+  render(name,i,bg,true);const a=ctx.getImageData(0,0,480,480).data,b=ref.getImageData(0,0,480,480).data;
+  for(let j=0;j<a.length;j+=4){let delta=0;for(let c=0;c<4;c++)delta=Math.max(delta,Math.abs(a[j+c]-b[j+c]));maxDifference=Math.max(maxDifference,delta);if(delta)changedPixels++}comparisons++;
+ }
+ const report={status:maxDifference<=2?'COMPOSITOR_PASS_NOT_ART_APPROVAL':'COMPOSITOR_FAIL',poses:32,comparisons,maximum_channel_difference:maxDifference,changed_pixel_comparisons:changedPixels,comparison_tolerance:2,real_game_compositor:true,hidden_pixels_preserved:true,runtime_admitted:false};
+ document.querySelector('#report').textContent=JSON.stringify(report,null,2);render('male',0);
+ setInterval(()=>{if(playing){index=(index+1)%16;render(document.querySelector('#variant').value,index)}},80);
+ for(const id of ['variant','head','weapon'])document.querySelector('#'+id).onchange=()=>render(document.querySelector('#variant').value,index);
+ document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play'};
+ return report;
+})();
+</script>

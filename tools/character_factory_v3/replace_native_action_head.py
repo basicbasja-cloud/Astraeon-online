@@ -27,7 +27,8 @@ def main():
     a=p.parse_args()
     if a.output.exists():raise ValueError('Choose a fresh head variant')
     public=json.loads((a.source/'receipt.json').read_text());motion=json.loads((a.motion/'receipt.json').read_text())
-    if public['status']!='LAYERED_NATIVE_ACTION_STUDY'or public['source_receipt_sha256']!=sha(a.motion/'receipt.json'):raise ValueError('Head motion differs from public source')
+    same_source=a.source.resolve()==a.motion.resolve()
+    if public['status']!='LAYERED_NATIVE_ACTION_STUDY'or(not same_source and public.get('source_receipt_sha256')!=sha(a.motion/'receipt.json')):raise ValueError('Head motion differs from public source')
     head=Image.open(a.head).convert('RGBA')
     if head.size!=(1536,1536):raise ValueError('Replacement head must use the canonical native canvas')
     frozen={str(path):sha(path)for path in [a.head,a.source/'receipt.json',a.motion/'receipt.json']}
