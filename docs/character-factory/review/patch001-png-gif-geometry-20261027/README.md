@@ -77,3 +77,13 @@ The bottom GIF runs its own clock; it is not synchronized to the slider.
 and native PNG strips. Chromium evidence is for source rendering at fixed scale,
 not a full gameplay scene or completed class package. Coverage remains **2/96**
 imported jobs, **zero newly complete characters**.
+
+## Additional Archer encoding check
+
+All **128 Archer** complete-master/GIF frame-view comparisons also best match
+at zero offset, with zero viewport clipping (maximum average palette error below
+0.501/255). See [the Archer evidence](archer-audit/geometry-audit.json). This
+checks encoding geometry only; it does not approve intermediate Archer anatomy,
+semantic cuts or gameplay timing. The actual Chromium raster comparison above
+covered Mage only. The current preserved Swordsman was not rerun through this
+new PNG/GIF auditor; its earlier 896-file preservation evidence still applies.
