@@ -108,3 +108,7 @@ are provisional diagnostics, not verified anatomical contacts and not grounds
 to stop the whole goal. Correct master anatomy, improve source controls, and
 continue independent engineering work. Do not lower acceptance standards or
 claim a failed image as approved. Previous blocker report is historical.
+
+## Active continuation — target gaze and ownership checkpoint (27 October 2026)
+
+347 tests pass. A new isolated Mage gaze study captures 24 poses × 4 real cameras at1536px, protects all64 non-head bones and verifies all66 bone matrices during rendering. It records candidate reusable head pose families; production adoption and painted neck/head seam review are pending. Eighteen Archer head ownership keys are reviewed (566 pixels returned to body/rest), not all96 remaining-view frames. Four coherent single-frame Mage painting studies share one fit and pass the narrow visible-sole diagnostic, but head/costume continuity remains open. Goal ACTIVE, coverage unchanged at2/96 technical imports and0/6 newly complete characters. See `review/patch001-target-gaze-and-semantic-cutouts-20261027/README.md`.
