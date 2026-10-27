@@ -56,6 +56,10 @@ def plan():
                 if a.get(transition):geometry[transition]=a[transition]
             if kind=='Mage':
                 geometry.update({'staff_grip_mode':'wrist-local-prop-reference','held_staff_hand':'r','staff_arm_reference':'Idle_Lantern'})
+                profile=a.get('staff_reference_grip_profile',klass.get('staff_reference_grip_profile'))
+                if profile:
+                    if profile!='knuckle-axis-up-v1':raise ValueError('Unknown staff grip profile')
+                    geometry.update({'staff_reference_grip_profile':profile,'staff_grip_alignment_revision':1,'staff_grip_alignment_sha256':filehash(TOOLS/'render_staff_grip_study.py'),'staff_grip_alignment_math_sha256':filehash(TOOLS/'staff_grip_alignment.py')})
             if a.get('source_ranges'):geometry['source_ranges']=a['source_ranges']
             if geometry.get('staff_arm_reference')or geometry.get('floor_sit_adapter'):
                 geometry['render_pose_freeze_revision']=1
@@ -103,6 +107,8 @@ def receipt_valid(job,folder=None):
     if not manifest.is_file():return False
     data=read(manifest)
     captured=data.get('job',{})
+    from validate_staff_grip_capture import valid_staff_grip_capture
+    if not valid_staff_grip_capture(job,data):return False
     geometry=lambda value:{k:v for k,v in value.items()if k not in ['uses','directions']}
     if geometry(captured)!=geometry(job)or data.get('frame_count')!=job['frames']:return False
     if job.get('explicit_source_samples')is not None:
@@ -144,8 +150,8 @@ def receipt_valid(job,folder=None):
 def render_one(job):
     if receipt_valid(job):return {'job':job['id'],'state':'CACHED_GUIDE'}
     folder=BASE/'guides'/job['id'];folder.mkdir(parents=True,exist_ok=True)
-    entrypoint='render_explicit_patch001_guides.py'if job.get('explicit_source_samples')is not None else'render_frozen_patch001_guides.py'if job.get('render_pose_freeze_revision')else'render_patch001_guides.py'
-    command=['blender','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/entrypoint),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
+    entrypoint='render_explicit_patch001_guides.py'if job.get('explicit_source_samples')is not None else'render_staff_grip_study.py'if job.get('staff_grip_alignment_revision')else'render_frozen_patch001_guides.py'if job.get('render_pose_freeze_revision')else'render_patch001_guides.py'
+    command=['blender','--disable-autoexec','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/entrypoint),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
     with(folder/'render.log').open('w')as log:result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
     if result.returncode or not receipt_valid(job):raise RuntimeError(f"Guide failed: {job['id']}; inspect {folder/'render.log'}")
     return {'job':job['id'],'state':'SOURCE_GUIDE_CAPTURED'}

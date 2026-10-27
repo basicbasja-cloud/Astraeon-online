@@ -1,3 +1,17 @@
+## Corrected source staff grip — 27 October 2026
+
+Goal ACTIVE. Actual Blender source hand review identified a lantern-reference
+wrist orientation unsuitable for upright staff grip. A pinned authored
+forearm/wrist adaptation now keeps the staff aligned with the actual finger
+axis in all96 BasicAttack/SkillAction source captures. Actual24-pose /66-bone
+replay matches positions and rotations. Mage source families are being
+recaptured; Swordsman/Archer geometry identities and original artwork remain.
+The female24-pose paint correction fixes holding side but still fails body and
+staff continuity review. Its stable earlier lower-body pixels are retained as
+the frame-specific repair source, not replaced with frozen legs. No new art
+admission:2/96 imported jobs,0/6 complete new characters.339 tests passed.
+See [source grip proof and normal/slow GIFs](review/patch001-staff-grip-20261027/README.md).
+
 ## Owner resumed production — 27 October 2026
 
 Goal is ACTIVE again; previous painting blocker is historical. New Mage SW

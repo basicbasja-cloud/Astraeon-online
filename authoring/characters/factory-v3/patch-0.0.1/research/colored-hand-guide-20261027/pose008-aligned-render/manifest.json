@@ -1,0 +1,249 @@
+{
+  "job": {
+    "id": "mage-staff-grip-aligned-study",
+    "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+    "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+    "source_actions": [
+      "Spell_Simple_Shoot"
+    ],
+    "frames": 1,
+    "loop": false,
+    "ortho_scale": 5.325,
+    "resolution": 6144,
+    "weapon": "staff",
+    "guide_aa": "8",
+    "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+    "camera_up_offset": 1.15375,
+    "pose_evaluation_revision": 2,
+    "staff_grip_mode": "wrist-local-prop-reference",
+    "held_staff_hand": "r",
+    "staff_arm_reference": "Idle_Lantern",
+    "source_ranges": {
+      "Spell_Simple_Shoot": [
+        0.6521739130434778,
+        0.6521739130434778
+      ]
+    },
+    "render_pose_freeze_revision": 1,
+    "render_pose_freeze_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7",
+    "directions": [
+      "SW"
+    ],
+    "uses": [
+      "STUDY_ONLY"
+    ],
+    "hand_color_guide_revision": 1,
+    "staff_grip_alignment_revision": 1,
+    "staff_grip_alignment_sha256": "ad88eee9332ee5beef8addc5b4c590d0492aeacc6e16b7efc12c8f5b9f0dd6b7"
+  },
+  "implementation_digests_at_process_start": {
+    "render_patch001_guides.py": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+    "kaykit_motion_adapter.py": "1a86095d1e82d656e53d59949cbed70d73ed6873e9ec69c2706b67d37a7f20e3",
+    "floor_sit_adapter.py": "245dfa8025dcd36d867ee21d78a35aeb4ab3af7995903982289dcd24d73babb1",
+    "render_staff_grip_study.py": "ad88eee9332ee5beef8addc5b4c590d0492aeacc6e16b7efc12c8f5b9f0dd6b7",
+    "render_frozen_patch001_guides.py": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7"
+  },
+  "source_rig": "Armature",
+  "guide_rig": "Armature",
+  "retargeting": "none; original rig",
+  "frame_count": 1,
+  "views": {
+    "SW": {
+      "camera": {
+        "location": [
+          -3.8681607246398926,
+          -3.8681609630584717,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.0939044952392578,
+          1.331205794485868e-07,
+          -0.7853983044624329
+        ],
+        "ortho_scale": 5.324999809265137,
+        "fixed": true
+      },
+      "frames": [
+        {
+          "contact_world": {},
+          "frame": 0,
+          "action": "Spell_Simple_Shoot",
+          "source_frame": 0.6521739130434778,
+          "segment_phase": 0,
+          "source_root_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actor_root_delta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landmarks": {
+            "root": [
+              3071.9996,
+              4403.2006
+            ],
+            "head": [
+              3037.2034,
+              2830.767
+            ],
+            "pelvis": [
+              3024.2556,
+              3461.5554
+            ],
+            "hand_r": [
+              2775.0359,
+              3140.6027
+            ],
+            "hand_l": [
+              3727.9893,
+              3091.9818
+            ],
+            "foot_r": [
+              2721.8624,
+              4257.4206
+            ],
+            "foot_l": [
+              3334.8263,
+              4271.9938
+            ]
+          },
+          "world_landmarks": {
+            "root": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              -0.02024366706609726,
+              0.022405780851840973,
+              1.5331894159317017
+            ],
+            "pelvis": [
+              0.027964042499661446,
+              0.08648356795310974,
+              0.8768048286437988
+            ],
+            "hand_r": [
+              -0.44939976930618286,
+              -0.08541204035282135,
+              1.4271082878112793
+            ],
+            "hand_l": [
+              0.16105717420578003,
+              -0.6429880857467651,
+              1.455220341682434
+            ],
+            "foot_r": [
+              -0.16185909509658813,
+              0.2673031985759735,
+              0.10369226336479187
+            ],
+            "foot_l": [
+              0.19510942697525024,
+              -0.12703649699687958,
+              0.1031283363699913
+            ]
+          },
+          "weapon_guide": {
+            "grip": [
+              2819.792,
+              3168.4852
+            ],
+            "tip": [
+              2794.377,
+              2342.2328
+            ]
+          },
+          "bone_rotations": {
+            "root": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              0.6187517642974854,
+              0.6659990549087524,
+              -0.3159599304199219,
+              -0.2715896666049957
+            ],
+            "pelvis": [
+              0.6054150462150574,
+              0.7152890563011169,
+              -0.2622675895690918,
+              -0.23032565414905548
+            ],
+            "hand_r": [
+              0.2171943634748459,
+              0.026694921776652336,
+              0.0874420627951622,
+              0.9718374013900757
+            ],
+            "hand_l": [
+              0.17265211045742035,
+              0.5243610739707947,
+              -0.31733593344688416,
+              -0.7710607051849365
+            ],
+            "foot_r": [
+              0.24598746001720428,
+              -0.8952013850212097,
+              0.3584733307361603,
+              -0.09798793494701385
+            ],
+            "foot_l": [
+              0.2644607722759247,
+              -0.9631419777870178,
+              0.04755081236362457,
+              -0.01252834778279066
+            ]
+          },
+          "image": "SW/000.png"
+        }
+      ]
+    }
+  },
+  "mirroring": false,
+  "root_policy": "fixed camera; horizontal source actor-root travel extracted and recorded separately",
+  "status": "SOURCE_MANNEQUIN_GUIDE_NOT_PAINTED_ART",
+  "limitations": [
+    "Source grip, joins, terminal key behavior and foot contacts require visual review.",
+    "This shared donor guide does not prove male/female final-art fitting.",
+    "Mage right prop arm is an explicit native Idle_Lantern local-pose carry adaptation; left casting motion remains from source. Staff contact still needs visual review."
+  ],
+  "render_pose_freeze": {
+    "revision": 1,
+    "implementation_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7",
+    "rendered_frames": [
+      {
+        "image": "SW/000.png",
+        "actors": [
+          {
+            "actor": "Armature",
+            "source_action": "Spell_Simple_Shoot",
+            "bones": 66,
+            "max_world_matrix_component_error": 3.2782554626464844e-07
+          }
+        ]
+      }
+    ],
+    "source_action_samples_changed": false,
+    "policy": "Disable animation reevaluation after computing adapted local bone bases; no anatomical/pose interpolation."
+  },
+  "png_normalization": {
+    "policy": "Clear only alpha-zero RGB and losslessly compress; preserve all visible RGB and every alpha value.",
+    "frames": [
+      {
+        "image": "SW/000.png",
+        "original_sha256": "f5d84cdec792c34a4c432af1148225af1075008ebaf8791541aa7a049c062f0e",
+        "normalized_sha256": "4c7a7333eaea625b23e7e867cd7e9a7ddcc22771086c998e218dcdb21d46a1ed",
+        "bytes_before": 9418196,
+        "bytes_after": 1158660,
+        "visible_rgb_or_alpha_changed": false
+      }
+    ]
+  }
+}

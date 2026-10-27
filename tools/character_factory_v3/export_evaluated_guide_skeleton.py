@@ -12,6 +12,9 @@ from pathlib import Path
 import sys
 import tempfile
 
+# Blender executes --python scripts without adding their directory to sys.path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -79,13 +82,16 @@ def main():
                  'hand_r': 'hand_r', 'hand_l': 'hand_l', 'foot_r': 'foot_r', 'foot_l': 'foot_l'}
         error = max(abs(float((rig.matrix_world @ rig.pose.bones[bone].head)[axis]) - row['world_landmarks'][key][axis])
                     for key, bone in names.items() for axis in range(3))
+        from mathutils import Quaternion
+        rotation_error=max(abs(float((rig.matrix_world@rig.pose.bones[bone].matrix).to_quaternion().normalized().to_matrix()[r][c])-float(Quaternion(row['bone_rotations'][key]).normalized().to_matrix()[r][c])) for key,bone in names.items() for r in range(3) for c in range(3))
+        if rotation_error>1e-5:raise ValueError('Evaluated source joint rotations differ: '+str(rotation_error))
         if error > 2e-6:
             raise ValueError('Evaluated source world landmarks differ: ' + str(error))
         records.append({'index': index, 'action': row['action'], 'source_frame': row['source_frame'],
                         'segment_phase': row.get('segment_phase'),
                         'source_weapon_guide': row['weapon_guide'],
                         'source_controls': {key: row[key] for key in ['transition_from', 'transition_frame', 'transition_weight', 'actor_root_delta'] if key in row},
-                        'maximum_world_landmark_error_m': error,
+                        'maximum_world_landmark_error_m': error,'maximum_joint_rotation_component_error':rotation_error,
                         'bones': {bone.name: {'world_matrix': [list(v) for v in rig.matrix_world @ bone.matrix],
                                              'head': list(rig.matrix_world @ bone.head),
                                              'tail': list(rig.matrix_world @ bone.tail)}
@@ -94,7 +100,14 @@ def main():
     scope = {'__name__': 'skeleton_metadata_export', '__file__': str(renderer),
              '_record_skeleton': record,
              '_existing_image': lambda direction, index: source / direction / f'{index:03d}.png'}
-    exec(compile(instrument(renderer.read_text()), str(renderer), 'exec'), scope)
+    tree=instrument(renderer.read_text())
+    if job.get('staff_grip_alignment_revision'):
+        from render_staff_grip_study import instrument as grip_instrument
+        from staff_grip_alignment import apply_reference_staff_grip
+        if job.get('staff_grip_alignment_math_sha256')!=sha(Path(__file__).with_name('staff_grip_alignment.py')):raise ValueError('Staff grip replay helper differs')
+        scope['_align_reference_staff_grip']=apply_reference_staff_grip
+        tree=grip_instrument(ast.unparse(tree))
+    exec(compile(tree, str(renderer), 'exec'), scope)
     with tempfile.TemporaryDirectory(prefix='astraeon-skeleton-export-') as scratch:
         directory = Path(scratch)
         temporary_job = {**job, 'directions': [args.direction]}
