@@ -39,7 +39,7 @@ def main():
     if args.output.exists():raise ValueError('Choose a new inventory destination')
     args.output.mkdir(parents=True);(args.output/'inventory.json').write_text(json.dumps(report,indent=2)+'\n')
     with (args.output/'inventory.csv').open('w',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=list(report['rows'][0]));writer.writeheader();writer.writerows(report['rows'])
+        writer=csv.DictWriter(f,fieldnames=list(report['rows'][0]),lineterminator='\n');writer.writeheader();writer.writerows(report['rows'])
     print(json.dumps({k:v for k,v in report.items() if k not in ['rows','note']}))
 
 if __name__=='__main__':main()
