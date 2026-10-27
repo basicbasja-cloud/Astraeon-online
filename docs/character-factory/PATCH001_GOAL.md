@@ -1,7 +1,7 @@
 # Active goal: playable patch 0.0.1 characters
 
 Owner instruction: 2026-10-27. Continue until the agreed plan is fulfilled.
-This goal is ACTIVE, not complete. Current imported coverage is 2/96 jobs;
+This goal is BLOCKED on precise pilot-master painting, not complete. Current imported coverage is 2/96 jobs;
 zero newly complete characters. Source motion, tests, imports and exact pixel
 reconstruction alone do not constitute acceptance.
 
@@ -85,3 +85,11 @@ Mage reuse metadata was corrected in c8188e4b; stage 0 remains incomplete.
 
 Next: enforce reuse checks in planning, produce truthful per-action gate coverage,
 then qualify the six-character size references before further master production.
+
+## Current critical-path blocker
+
+Source-constrained painting has not met the geometry gate after full-sheet,
+coordinate-guided single-pose and marked-floor local corrections. Latest local
+patches remain rejected and unmerged. See review/patch001-mage-local-paint-blocker-20261027
+for images and measurements. Unblock with precise complete-master correction or
+corrected pilot artwork; do not fake acceptance by warping limbs or weakening gates.
