@@ -1,3 +1,17 @@
+## Owner resumed production — 27 October 2026
+
+Goal is ACTIVE again; previous painting blocker is historical. New Mage SW
+full24-frame pilot has actual-source-time normal/slow GIFs and unchanged-grid
+whole-master outputs. Batch size/design variation remains open; no new runtime
+admission.114-action inventory resolves all96 paint jobs and separates source
+presence from imports and art/gameplay approval. An isolated head-envelope
+mesh study preserves source animation/skeleton data and feet, verified by actual
+Blender capture; it does not replace the baseline or production guides.
+See `docs/character-factory/review/patch001-resumed-production-20261027/README.md`.
+Coverage remains2/96, zero newly complete characters. Continue improving pilot
+master stability and qualifying the six-fit size standard; do not stop the
+whole objective on unverified raster-sole component metrics.
+
 ## PNG versus GIF / compositor audit — 27 October 2026
 
 Mage source-art drift is not GIF-only. All 192 decoded GIF crops and all 192 actual Chromium game-compositor outputs best match their fixed source PNGs at zero offset (±1px diagnostic); no review clipping. Fixed 512 master / 320 native preview canvases do not certify stable drawn anatomy. One-shot PNG playback is now the default in a new frame inspector, avoiding forced last-to-first wraps. Mage remains unadmitted; no full gameplay scene was exercised. Final runtime body height and anatomy consistency against the tall Swordsman still require approval. See `docs/character-factory/review/patch001-png-gif-geometry-20261027/README.md` for measurements, browser screenshots and the PNG inspector. Coverage **2/96**, zero newly complete characters.
