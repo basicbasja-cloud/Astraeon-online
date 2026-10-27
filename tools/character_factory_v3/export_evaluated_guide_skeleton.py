@@ -49,6 +49,34 @@ def instrument(source):
     return ast.fix_missing_locations(tree)
 
 
+def replay_guide_profiles(tree, job):
+    """Replay explicitly pinned guide studies before recording joint matrices."""
+    fit = bool(job.get('hero_fit_study'))
+    gaze = bool(job.get('target_gaze_study'))
+    if gaze and not fit:
+        raise ValueError('Target gaze replay requires its captured character fit')
+    if not fit:
+        return tree
+    required = {'hero_fit_study_helper_sha256': 'hero_fit_guide_study.py'}
+    if gaze:
+        required.update({'target_gaze_study_helper_sha256': 'target_gaze_guide_study.py',
+                         'target_gaze_study_renderer_sha256': 'render_target_gaze_guide_study.py'})
+    else:
+        required['hero_fit_study_renderer_sha256'] = 'render_hero_fit_guide_study.py'
+    for field, filename in required.items():
+        if job.get(field) != sha(Path(__file__).with_name(filename)):
+            raise ValueError('Captured guide profile implementation differs: ' + field)
+    hooks = [node for node in ast.walk(tree)
+             if isinstance(node, ast.FunctionDef) and node.name == 'prop_pose']
+    if len(hooks) != 1:
+        raise ValueError('Expected exactly one guide-profile pose boundary')
+    code = 'from hero_fit_guide_study import apply_fit\napply_fit(rig,job)'
+    if gaze:
+        code += '\nfrom target_gaze_guide_study import apply_target_gaze\napply_target_gaze(rig,job)'
+    hooks[0].body.extend(ast.parse(code).body)
+    return ast.fix_missing_locations(tree)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-guide', type=Path, required=True)
@@ -107,6 +135,7 @@ def main():
         if job.get('staff_grip_alignment_math_sha256')!=sha(Path(__file__).with_name('staff_grip_alignment.py')):raise ValueError('Staff grip replay helper differs')
         scope['_align_reference_staff_grip']=apply_reference_staff_grip
         tree=grip_instrument(ast.unparse(tree))
+    tree=replay_guide_profiles(tree,job)
     exec(compile(tree, str(renderer), 'exec'), scope)
     with tempfile.TemporaryDirectory(prefix='astraeon-skeleton-export-') as scratch:
         directory = Path(scratch)
@@ -121,6 +150,7 @@ def main():
                'source_file': job['source_file'], 'source_sha256': job['source_sha256'],
                'source_renderer_sha256': sha(renderer), 'implementation_sha256': sha(__file__),
                'blender': bpy.app.version_string, 'rest_bones': rest, 'frames': records,
+               'replayed_guide_profiles': {key:job[key] for key in ['hero_fit_study','target_gaze_study'] if key in job},
                'source_files_modified': False, 'runtime_admitted': False}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(receipt, indent=2) + '\n')

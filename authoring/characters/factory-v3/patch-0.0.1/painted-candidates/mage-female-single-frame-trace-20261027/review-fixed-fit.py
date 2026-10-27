@@ -23,7 +23,9 @@ def soles(im):
 
 def normalize(index):
     path=PAINT/f'raw{index:03d}.png'
-    return normalize_batch(Image.open(path),{'grid':[1,1],'source_size':[768,768],'viewport':[224,224,576,576],'source_pose_indices':[index]})[0][0]
+    sequence=json.loads((PAINT/'sequence-reference-recipe.json').read_text())
+    viewport=sequence['canonical_viewport768']if index in sequence['indices']else[224,224,576,576]
+    return normalize_batch(Image.open(path),{'grid':[1,1],'source_size':[768,768],'viewport':viewport,'source_pose_indices':[index]})[0][0]
 
 def guide(index):
     return Image.open(GUIDE/'SW'/f'{index:03d}.png').convert('RGBA').resize((768,768),Image.Resampling.LANCZOS)
@@ -38,8 +40,8 @@ def main():
     if not .8<scale<1.2:
         raise ValueError('Unexpected global fit requires explicit review')
     records=[]
-    indices=[i for i in [0,8,22,23]if(PAINT/f'raw{i:03d}.png').exists()]
-    contact=Image.new('RGBA',(768*len(indices),768),'#ddd')
+    indices=[i for i in range(24)if(PAINT/f'raw{i:03d}.png').exists()]
+    contact=Image.new('RGBA',(384*6,384*((len(indices)+5)//6)),'#ddd')
     for slot,index in enumerate(indices):
         im=normalize(index)
         im=im.convert('RGBa').transform((768,768),Image.Transform.AFFINE,(1/scale,0,-float(translation[0])/scale,0,1/scale,-float(translation[1])/scale),Image.Resampling.BICUBIC).convert('RGBA')
@@ -51,7 +53,7 @@ def main():
         overlay=guide(index)
         a=im.getchannel('A').point(lambda value:round(value*.6));faded=im.copy();faded.putalpha(a);overlay.alpha_composite(faded)
         overlay.save(OUT/'Overlays'/f'{index:03d}.png')
-        contact.alpha_composite(im,(slot*768,0));ImageDraw.Draw(contact).text((slot*768+200,280),f'{index}: study, NOT admitted',fill='black')
+        contact.alpha_composite(im.crop((192,256,576,640)),((slot%6)*384,(slot//6)*384));ImageDraw.Draw(contact).text(((slot%6)*384+4,(slot//6)*384+5),f'{index}: study, NOT admitted',fill='black')
         records.append({'index':index,'raw_sha256':hashlib.sha256((PAINT/f'raw{index:03d}.png').read_bytes()).hexdigest(),'whole_frame_integer_translation':delta.tolist(),'source_raster_soles':expected.tolist(),'painted_raster_soles':actual.tolist(),'sole_errors_authoring_px':errors.tolist(),'calibration_pose_not_independent_validation':index==reference,'narrow_two_visible_sole_check_within3_authoring_px':bool(errors.max()<=3),'anatomy_grip_costume_continuity_approved':False})
     contact.convert('RGB').save(OUT/'key-contact.jpg',quality=98)
     (OUT/'receipt.json').write_text(json.dumps({'status':'SINGLE_FRAME_GUIDE_TRACE_STUDY_NOT_PRODUCTION','calibration_pose':reference,'shared_scale':scale,'shared_translation':translation.tolist(),'same_scale_all_poses':True,'per_frame_body_or_limb_warp':False,'calibration_note':'One provisional guide/body fit from the first available pose22; hold fixed for every later pose. Raster sole checks are not full anatomical acceptance.','frames':records,'full24_complete':False,'runtime_admitted':False},indent=2)+'\n')

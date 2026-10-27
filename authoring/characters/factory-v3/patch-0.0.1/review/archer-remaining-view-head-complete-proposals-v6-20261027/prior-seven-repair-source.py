@@ -1,0 +1,14 @@
+from pathlib import Path
+import json,hashlib,shutil
+import numpy as np
+from PIL import Image,ImageDraw
+from scipy import ndimage
+b=Path('authoring/characters/factory-v3/patch-0.0.1/review');src=b/'archer-remaining-view-head-complete-proposals-v4-20261027';out=b/'archer-remaining-view-head-complete-proposals-v5-20261027';out.mkdir(exist_ok=True);receipt=json.loads((src/'proposal-receipt.json').read_text());specs=json.loads((src/'native-exceptions.json').read_text())['frames']
+for r in receipt['frames']:
+ sex,view,i=r['sex'],r['view'],r['index'];master=b/'archer-coherent-recovery-masters-v2-20261026'/sex/view/'Master'/f'{i:03d}.png';assert hashlib.sha256(master.read_bytes()).hexdigest()==r['master_sha256'];dest=out/sex/view;dest.mkdir(parents=True,exist_ok=True);(dest/'BodyRest').mkdir(exist_ok=True)
+ if (sex,view,i)not in [('male','SW',7),('female','SW',7)]:
+  shutil.copy2(src/sex/view/f'{i:03d}.png',dest/f'{i:03d}.png');shutil.copy2(src/sex/view/'BodyRest'/f'{i:03d}.png',dest/'BodyRest'/f'{i:03d}.png');r['same_input_proposal_reused_from_v4']=True;continue
+ a=np.array(Image.open(master).convert('RGBA'));candidate=src/'Candidates'/f'{sex}-{view}-{i:03d}-2.png';mask=np.array(Image.open(candidate))>0;spec=specs[f'{sex}/{view}/{i:03d}'];exclude=Image.new('L',(512,512));ImageDraw.Draw(exclude).polygon([tuple(q)for q in spec['exclude']],fill=255);mask&=np.array(exclude)==0
+ labels,n=ndimage.label(mask,structure=np.ones((3,3)));sizes=np.bincount(labels.ravel());sizes[0]=0;main=labels==sizes.argmax();mask&=ndimage.distance_transform_edt(~main)<=3;mask&=a[:,:,3]>0
+ head=a.copy();head[~mask]=0;rest=a.copy();rest[mask]=0;Image.fromarray(head).save(dest/f'{i:03d}.png');Image.fromarray(rest).save(dest/'BodyRest'/f'{i:03d}.png');re=Image.new('RGBA',(512,512));re.alpha_composite(Image.fromarray(rest));re.alpha_composite(Image.fromarray(head));visible=a[:,:,3]>0;assert np.array_equal(np.array(re)[visible],a[visible]);assert np.array_equal(np.array(re)[:,:,3],a[:,:,3]);r.update({'selected':2,'selected_score':float(r['scores'][2]),'selection_basis':'Native candidate inspection: preserve visible face; subtract annotated forearm, remove disconnected fragments. Automated candidate prompt gate was not passed; explicit reviewed ownership proposal override, not runtime acceptance.','candidate_sha256':hashlib.sha256(candidate.read_bytes()).hexdigest(),'native_annotation':spec,'visible_recomposition_mismatch_pixels':0,'semantic_approved':False,'master_modified':False,'head_area':int(mask.sum())})
+receipt.update({'status':'96_SAME_FRAME_HEAD_PROPOSALS_REQUIRE_FINAL_OCCLUSION_REVIEW','runtime_admitted':False,'semantic_approved':False});(out/'proposal-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');(out/'native-exceptions.json').write_bytes((src/'native-exceptions.json').read_bytes());(out/'repair-source.py').write_bytes(Path(__file__).read_bytes())

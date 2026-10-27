@@ -47,6 +47,16 @@ class TargetGazeGuideStudyTests(unittest.TestCase):
             self.assertTrue(all(actor['bones']==66 and actor['max_world_matrix_component_error']<=1e-5 for frame in rendered for actor in frame['actors']))
             self.assertEqual(len(manifest['staff_grip_adaptation']['rendered_grip_checks']),3)
             self.assertFalse(proof['runtime_admitted'])
+            # Metadata replay must use the same fit and gaze rather than raw mocap.
+            evaluated=folder/'evaluated.json'
+            command=['blender','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/'export_evaluated_guide_skeleton.py'),'--','--source-guide',str(output),'--direction','SW','--output',str(evaluated)]
+            with(folder/'replay.log').open('w')as log:
+                result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,timeout=180)
+            self.assertEqual(result.returncode,0,(folder/'replay.log').read_text()[-2400:])
+            replay=json.loads(evaluated.read_text());self.assertEqual(len(replay['frames']),3)
+            self.assertTrue(all(len(frame['bones'])==66 for frame in replay['frames']))
+            self.assertTrue(all(frame['maximum_world_landmark_error_m']<=2e-6 and frame['maximum_joint_rotation_component_error']<=1e-5 for frame in replay['frames']))
+            self.assertIn('target_gaze_study',replay['replayed_guide_profiles'])
         self.assertEqual(sha(SOURCE),original)
 
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,6 @@
+from pathlib import Path
+import json
+from playwright.sync_api import sync_playwright
+out=Path('docs/character-factory/review/patch001-full-pilot-head-replay-20261027')
+with sync_playwright()as p:
+ browser=p.chromium.launch(executable_path="/usr/bin/chromium",headless=True,args=['--no-sandbox','--disable-dev-shm-usage']);page=browser.new_page(viewport={'width':1100,'height':1000},device_scale_factor=1);errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.goto('http://127.0.0.1:8767/'+str(out)+'/index.html',wait_until='networkidle');page.wait_for_function('window.factoryAudit !== undefined',timeout=90000);result=page.evaluate('window.factoryAudit');result['browser']=browser.version;result['page_errors']=errors;result['url_path']=str(out/'index.html');(out/'browser-report.json').write_text(json.dumps(result,indent=2)+'\n');page.select_option('#group','mage/female/SW');page.evaluate('window.ownershipStudy.render(8)');page.screenshot(path=str(out/'browser-mage.png'));page.select_option('#group','archer/female/SE');page.evaluate('window.ownershipStudy.render(8)');page.screenshot(path=str(out/'browser-archer.png'));browser.close();print(json.dumps({'status':result['status'],'frames':result.get('frames'),'max_mismatch_pixels':max((r['mismatchPixels']for r in result.get('records',[])),default=None),'page_errors':errors}))
