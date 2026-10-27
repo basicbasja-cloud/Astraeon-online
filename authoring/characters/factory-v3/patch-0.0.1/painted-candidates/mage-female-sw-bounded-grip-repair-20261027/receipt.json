@@ -1,0 +1,20 @@
+{
+  "status": "REJECTED_BOUNDARY_AND_REGISTRATION_REPAIR_STUDY",
+  "source_guide": "fcfd5fa441325973a7db",
+  "source_pose": 8,
+  "input_hashes": {
+    "original-pose008.png": "f8c3a50429ace81551e23abc02f1810432d46b54a29fc9908d1b8f504f03540c",
+    "guide-pose008.png": "582dbb8dbdc1b9776a0904e7baf5b64b71644302fdbf296fa7d906b95fafe0b4",
+    "raw.png": "4557465c123ec0ab0652fc10968d1c2bc70c055610df93de064440452af29e19",
+    "registered-repaint.png": "bfdb807572994eb311e8038278e6ebb9c6d0a3cd8a617a1075fdf2a7e987b9eb",
+    "repair-mask.png": "b8ef923f894350c8df80e7e92b50448d9a1407c48c8c7d020beeed289f51ba10",
+    "bounded-master008.png": "bda96e8c199b266d3babb828930831e8e40c8285fab8c166c7a2ce28ca3159ee"
+  },
+  "reasons": [
+    "New holding side is correct but repaint changed torso/head proportions",
+    "Explicit repair mask leaves part of old crystal and visible cloth seams",
+    "Outside-mask pixel protection alone does not certify coherent anatomy"
+  ],
+  "runtime_admitted": false,
+  "full_master_art_approved": false
+}

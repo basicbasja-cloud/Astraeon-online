@@ -1,0 +1,24 @@
+<!doctype html><html lang="th"><meta charset="utf-8"><title>Archer NW cutout review</title>
+<style>body{font:16px system-ui;background:#252d37;color:#eee;margin:20px}button,label{margin:8px}button,input{font:inherit}canvas{display:block;max-width:100%;height:auto;border:1px solid #789}a{color:#9ddaff}p{max-width:1000px}</style>
+<h1>Archer NW · ตรวจชั้นภาพชายและหญิง</h1>
+<p>ชุดตรวจไดคัทจากภาพ master เดียวกัน ยังไม่ใช่ตัวละครที่พร้อมเล่นครบทุกท่า ไม่มีการปรับสเกลหรือตำแหน่งแยกเฟรม</p>
+<button id="play">เล่นหนึ่งครั้ง</button><label>เฟรม <input id="frame" type="range" min="0" max="15" value="0"><output id="number">0</output></label>
+<label><input id="slow" type="checkbox">ช้า ×3</label><label>พื้นหลัง <input id="background" type="color" value="#dddddd"></label>
+<div id="slots"></div><canvas id="stage" width="1024" height="512"></canvas><p id="status">กำลังโหลดภาพ…</p>
+<p>80ms ต่อ sample ใช้ตรวจภาพเท่านั้น จังหวะโจมตีจริงและการกลับ ready ยังต้องตรวจแยก เปิด/ปิดแต่ละ slot เพื่อตรวจเศษภาพและการบัง มือบังอาวุธเป็นชั้นเสริมจากเฟรมเดียวกัน</p>
+<script src="../../../../modular-sprites.js"></script><script>
+const roles=['BodyCostume','HeadHair','Weapon','WeaponHandOccluder'],sexes=['male','female'],images={},masters={},enabled=new Set(roles),stage=document.querySelector('#stage'),ctx=stage.getContext('2d'),slider=document.querySelector('#frame');
+const base='../../../../authoring/characters/factory-v3/patch-0.0.1/review/',parts=base+'archer-NW-head-semantic-repair-20261027/',source=base+'archer-coherent-recovery-masters-v2-20261026/';
+const canvas={frameWidth:512,frameHeight:512,compositionWidth:512,compositionHeight:512,rootAnchorX:256,rootAnchorY:448};let frame=0,playing=false,start=0;
+const key=(s,r,i)=>s+'/'+r+'/'+i;
+function sample(s,i,selected=roles){return{canvas,sockets:{root:[256,448]},layers:selected.map(r=>({atlasId:key(s,r,i),rect:[0,0,512,512],offset:[0,0]}))}}
+function render(i){frame=i;slider.value=i;document.querySelector('#number').value=i;ctx.fillStyle=document.querySelector('#background').value;ctx.fillRect(0,0,1024,512);sexes.forEach((s,col)=>{AstraeonModularSprites.draw(ctx,sample(s,i,[...enabled]),images,{x:col*512+256,y:448,scale:1});ctx.fillStyle='#555';ctx.fillText(s+' NW / '+i+' / DRAFT',col*512+10,20)});}
+for(const role of roles){const label=document.createElement('label'),box=document.createElement('input');box.type='checkbox';box.checked=true;box.onchange=()=>{box.checked?enabled.add(role):enabled.delete(role);render(frame)};label.append(box,role);document.querySelector('#slots').append(label)}
+slider.oninput=()=>{playing=false;render(Number(slider.value))};document.querySelector('#background').oninput=()=>render(frame);document.querySelector('#play').onclick=()=>{playing=true;start=performance.now();render(0)};
+function load(url,target,id){return new Promise((resolve,reject)=>{const im=new Image;im.onload=()=>{target[id]=im;resolve()};im.onerror=()=>reject(Error(url));im.src=url})}
+function verify(){const actual=document.createElement('canvas'),expected=document.createElement('canvas');actual.width=expected.width=512;actual.height=expected.height=512;const a=actual.getContext('2d',{willReadFrequently:true}),e=expected.getContext('2d',{willReadFrequently:true}),records=[];
+ for(const s of sexes)for(let i=0;i<16;i++){a.clearRect(0,0,512,512);e.clearRect(0,0,512,512);AstraeonModularSprites.draw(a,sample(s,i),images,{x:256,y:448,scale:1});e.drawImage(masters[s+'/'+i],0,0);const x=a.getImageData(0,0,512,512).data,y=e.getImageData(0,0,512,512).data;let mismatch=0;for(let p=0;p<x.length;p+=4)if(x[p]!==y[p]||x[p+1]!==y[p+1]||x[p+2]!==y[p+2]||x[p+3]!==y[p+3])mismatch++;records.push({sex:s,frame:i,mismatchPixels:mismatch})}
+ return{status:records.every(r=>r.mismatchPixels===0)?'COMPOSITOR_PASS_NOT_ART_APPROVAL':'FAIL',poses:32,comparisons:records.length,records,gameplayAdmission:false,perFrameFit:false};}
+Promise.all(sexes.flatMap(s=>Array.from({length:16},(_,i)=>[...roles.map(r=>load(parts+s+'/cutouts/'+r+'/'+String(i).padStart(3,'0')+'.png',images,key(s,r,i))),load(source+s+'/NW/Master/'+String(i).padStart(3,'0')+'.png',masters,s+'/'+i)]).flat())).then(()=>{window.factoryAudit=verify();window.archerCutoutReview={render,images,masters};document.querySelector('#status').textContent=window.factoryAudit.status+' · 32 เฟรม · ยังไม่ผ่านท่าครบ/การเล่นจริง';render(0)}).catch(e=>{window.factoryAudit={status:'FAIL',error:String(e)};document.querySelector('#status').textContent=String(e)});
+function tick(now){if(playing){const step=document.querySelector('#slow').checked?240:80;render(Math.min(15,Math.floor((now-start)/step)));if(now-start>=16*step)playing=false}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+</script></html>

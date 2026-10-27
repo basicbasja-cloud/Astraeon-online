@@ -1,3 +1,15 @@
+## Archer NW cutout ownership and Mage source coverage — 27 October 2026
+
+Goal ACTIVE. All15 Mage source families now have corrected-grip captures
+(1,792 pose/view images); all48 guide jobs validate locally. Factory suite340
+tests passes. Archer NW male/female32-frame cutouts return bracer/sleeve/hood
+fragments from HeadHair to BodyCostume and separate same-frame hand occlusion.
+Actual Chromium game-compositor checks all32 full recompositions with zero
+pixel mismatches/page errors. Other cameras, body fit/anatomy, timing, hidden
+surfaces, swaps and full gameplay remain open. No new art admission:2/96
+technical imports,0/6 complete new characters.
+See [cutout report and GIFs](review/patch001-archer-head-ownership-20261027/README.md).
+
 ## Corrected source staff grip — 27 October 2026
 
 Goal ACTIVE. Actual Blender source hand review identified a lantern-reference

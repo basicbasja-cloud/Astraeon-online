@@ -17,8 +17,9 @@ not unchanged mocap. The source GLB and canonical renderer remain unchanged.
 
 The production BasicAttack/SkillAction guide captured all 24 poses in four
 views. The proof checks actual staff-axis and grip-axis distance on all96
-renders. Actual Blender4.3 replay also matches 24 evaluated poses /66 bones;
-both world positions and joint rotations are verified. See [measurements](guide-proof.json).
+renders. Actual Blender4.3 replay exports66 bones for24 poses;
+all seven landmark-joint positions and rotations recorded by the source guide
+are checked against that capture. See [measurements](guide-proof.json).
 
 The factory pins the adapter and math hashes, rejects missing/stale grip
 evidence, and regenerates Mage source families without changing the
@@ -50,7 +51,12 @@ python tools/character_factory_v3/patch001_factory.py guides --class Mage --acti
 python -m unittest discover -s tests/character_factory_v3
 ```
 
-339 tests passed, including actual Blender contact/freeze checks. These tests
+340 tests passed, including actual Blender contact/freeze checks. These tests
 do not establish painted-art or gameplay acceptance. The refreshed inventory
 lists114 logical actions /96 unique paint jobs; PNG presence is separate from
 art, cutout, swap and gameplay approval.
+
+All15 Mage guide families have now completed fresh captures:1,792 pose/view
+images, all receipts and actual grip checks valid. The full source library is
+48/48 locally captured guide jobs. This remains source coverage, not art approval.
+See `all-mage-captures.json`.
