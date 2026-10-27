@@ -1,3 +1,7 @@
+## PNG versus GIF / compositor audit — 27 October 2026
+
+Mage source-art drift is not GIF-only. All 192 decoded GIF crops and all 192 actual Chromium game-compositor outputs best match their fixed source PNGs at zero offset (±1px diagnostic); no review clipping. Fixed 512 master / 320 native preview canvases do not certify stable drawn anatomy. One-shot PNG playback is now the default in a new frame inspector, avoiding forced last-to-first wraps. Mage remains unadmitted; no full gameplay scene was exercised. Final runtime body height and anatomy consistency against the tall Swordsman still require approval. See `docs/character-factory/review/patch001-png-gif-geometry-20261027/README.md` for measurements, browser screenshots and the PNG inspector. Coverage **2/96**, zero newly complete characters.
+
 ## Mage frame-bounce gate — 26 October 2026
 
 Eight new coherent Mage spell sheets are retained as unadmitted drafts. Complete-component extraction prevents internal grid lines cutting boots/staff; assigned RGBA pixels round-trip exactly. One-foot registration is insufficient: both-visible-sole diagnostics detect nonrigid drift in three groups and ambiguous observations in four. Female SW passes only this narrow measurement; no group receives art or runtime approval. No frozen-leg or independent-limb workaround is permitted. See `docs/character-factory/review/patch001-mage-continuity-audit-20261026/README.md` for original-placement GIFs and exact limits. Coverage remains **2/96**, zero newly complete characters.

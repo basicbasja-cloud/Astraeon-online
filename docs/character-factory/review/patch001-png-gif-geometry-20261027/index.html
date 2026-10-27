@@ -1,0 +1,26 @@
+<!doctype html><html lang="th"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PNG / GIF geometry inspection</title>
+<style>body{font:16px system-ui;background:#202831;color:#eee;margin:24px}button,select,input{font:inherit;padding:6px;margin:5px}canvas,img{display:block;max-width:100%;height:auto;border:1px solid #778;margin:12px 0}p{max-width:950px}a{color:#9ddaff}label{white-space:nowrap}</style>
+<h1>ตรวจ PNG ผ่านตัววาดเกม เทียบกับ GIF</h1>
+<p>ชุดทดลอง Mage ยังไม่ผ่านคุณภาพและยังไม่ได้นำเข้าเกม ตัวบนใช้ PNG และ <code>AstraeonModularSprites.draw</code> จริง โดยคง viewport และสเกลเดียวกันทุกเฟรม ตัวล่างคือ GIF เดิม ไม่มีการ fit ขนาดตัวละครแต่ละเฟรม</p>
+<label>เพศ <select id="sex"><option value="male">ชาย</option><option value="female">หญิง</option></select></label>
+<button id="play">หยุด PNG</button><label><input id="repeat" type="checkbox">วนซ้ำเพื่อเทียบ GIF (โหมดตรวจ)</label><label>เฟรม <input id="frame" type="range" min="0" max="23" value="0"><output id="number">0</output></label>
+<p>PNG: เล่นหนึ่งครั้งเป็นค่าเริ่มต้น · 80ms ต่อเฟรม พักท้าย 240ms; ลูกศรซ้าย/ขวาเลื่อนตรวจทีละเฟรม (GIF เล่นแยกเวลา ไม่ได้ล็อกจังหวะกับ slider)</p>
+<h2>PNG ผ่านตัววาดเดียวกับเกม</h2><canvas id="png" width="1280" height="348"></canvas>
+<h2>GIF เดิม</h2><img id="gif" width="1280" height="348" alt="GIF diagnostic"><p id="status">กำลังโหลด PNG…</p>
+<p>กรอบแคนวาสและสเกลคงที่ ไม่ได้แปลว่าสัดส่วนที่วาดอยู่ข้างในคงที่ทั้งหมด ตรวจเท้า หัว เข่า และช่วงกลับท่าด้วยตาเพิ่มเติม</p>
+<script src="../../../../modular-sprites.js"></script><script>
+const canvas=document.querySelector('#png'),ctx=canvas.getContext('2d'),slider=document.querySelector('#frame'),sex=document.querySelector('#sex'),directions=['SW','NW','NE','SE'];
+const images={},events=[]; let playing=true,frame=0,epoch=performance.now();
+const layout={frameWidth:320,frameHeight:320,compositionWidth:320,compositionHeight:320,rootAnchorX:160,rootAnchorY:280};
+function render(index){frame=index;slider.value=index;document.querySelector('#number').value=index;ctx.fillStyle='#dcdcd8';ctx.fillRect(0,0,1280,348);ctx.fillStyle='#222';ctx.font='10px sans-serif';events.length=0;
+ directions.forEach((view,col)=>{const id=sex.value+'-'+view;ctx.fillText(sex.value+' '+view+' | '+String(index).padStart(2,'0')+' | DRAFT',col*320+5,16);
+ const sample={canvas:layout,sockets:{root:[160,280]},layers:[{atlasId:id,rect:[index%4*320,Math.floor(index/4)*320,320,320],offset:[0,0]}]};
+ AstraeonModularSprites.draw(ctx,sample,images,{x:col*320+160,y:308,scale:1});events.push({view,frame:index,sourceRect:sample.layers[0].rect,destination:[col*320,28,320,320],scale:1,root:[col*320+160,308]});});return events;}
+window.spriteGeometryReview={render,events,images,get ready(){return Object.keys(images).length===8},select(value){sex.value=value;return render(frame)}};
+slider.oninput=()=>{playing=false;document.querySelector('#play').textContent='เล่น PNG';render(Number(slider.value));};
+sex.onchange=()=>{document.querySelector('#gif').src=sex.value+'-normal.gif';epoch=performance.now();render(0)};
+document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'หยุด PNG':'เล่น PNG';if(frame===23)render(0);epoch=performance.now()-frame*80};
+document.onkeydown=e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();playing=false;document.querySelector('#play').textContent='เล่น PNG';render((frame+(e.key==='ArrowRight'?1:23))%24)}};
+Promise.all(['male','female'].flatMap(s=>directions.map(v=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[s+'-'+v]=im;resolve()};im.onerror=reject;im.src=s+'-'+v+'-native.png'})))).then(()=>{document.querySelector('#gif').src=sex.value+'-normal.gif';document.querySelector('#status').textContent='โหลดครบ 8 PNG: 192 เฟรม · native viewport 320×320 · ไม่มี per-frame scaling';render(0);requestAnimationFrame(tick)});
+function tick(now){if(playing){const length=23*80+240,elapsed=now-epoch;render(Math.min(23,Math.floor((document.querySelector('#repeat').checked?elapsed%length:elapsed)/80)));if(elapsed>=length&&!document.querySelector('#repeat').checked){playing=false;document.querySelector('#play').textContent='เล่น PNG'}}requestAnimationFrame(tick)}
+</script></html>
