@@ -1,3 +1,15 @@
+## Painting-reference preflight and isolated guide fit — 27 October 2026
+
+Goal ACTIVE. A recent experimental Mage crop cut guide foreground in24/24
+poses; original full guide PNGs remain intact. Reference preparation now
+rejects clipped/edge-touching bodies and props before writing output, with
+per-frame hashes and margin evidence.346 tests pass. A separate0.75 torso /
+1.3 head guide fit preserves source sampling/camera and lower-body matrices;
+it is a proposal, not a production change or final3D character. Controlled
+key-pose painting/upper-body corrections remain under review. Coverage stays
+2/96 technical imports,0/6 newly complete characters.
+See [reference checks, guide GIFs and fit limits](review/patch001-reference-preflight-20261027/README.md).
+
 ## Archer NW cutout ownership and Mage source coverage — 27 October 2026
 
 Goal ACTIVE. All15 Mage source families now have corrected-grip captures

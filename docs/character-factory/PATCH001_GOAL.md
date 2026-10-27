@@ -83,10 +83,17 @@ compositor draws and 320 Mage/Archer GIF crops introduce no extra translation
 in the recorded diagnostic. These checks do not approve anatomy or gameplay.
 Mage reuse metadata was corrected in c8188e4b; stage 0 remains incomplete.
 
-Next: enforce reuse checks in planning, produce truthful per-action gate coverage,
-then qualify the six-character size references before further master production.
+Current inventory resolves114 logical actions /96 paint jobs. All48 original
+source-guide jobs validate locally; this does not establish six fitted or
+painted characters. The new source-reference preflight rejects clipped
+body/weapon crops;346 factory tests pass. The guide-only torso/head fit study
+is isolated and not adopted in production.
 
-## Current critical-path blocker
+Next: qualify the six-character anatomy/size references, repair the Mage/Archer
+pilot masters with protected same-frame pixels, and close the complete pilot
+workflow before expanding those paintings across the remaining actions.
+
+## Historical painting failure — goal continues
 
 Source-constrained painting has not met the geometry gate after full-sheet,
 coordinate-guided single-pose and marked-floor local corrections. Latest local

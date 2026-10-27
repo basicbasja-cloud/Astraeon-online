@@ -1,0 +1,794 @@
+{
+  "job": {
+    "id": "sword130-guide-fit-study",
+    "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+    "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+    "source_actions": [
+      "Sword_Attack"
+    ],
+    "frames": 16,
+    "loop": false,
+    "ortho_scale": 5.325,
+    "resolution": 768,
+    "weapon": "sword",
+    "guide_aa": "OFF",
+    "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+    "camera_up_offset": 1.15375,
+    "explicit_source_samples": [
+      0,
+      3,
+      6,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      25,
+      28,
+      31,
+      34,
+      37,
+      39
+    ],
+    "explicit_sampling_implementation_sha256": "aee91c4ec67fa3c87609dee3f863a6a7ce1f5496b0ed0cbb4264d3119102b23a",
+    "explicit_capture_png_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7",
+    "pose_evaluation_revision": 2,
+    "directions": [
+      "SW",
+      "NW",
+      "NE",
+      "SE"
+    ],
+    "uses": [
+      "Swordsman/BasicAttack"
+    ],
+    "hero_fit_study": {
+      "torso_length_scale": 0.75,
+      "head_scale": 1.3,
+      "basis": "Isolated source-guide fit proposal, no new sprite admission; all original lower-body matrices protected."
+    },
+    "hero_fit_study_renderer_sha256": "bb0e7c8e7acf03aece3bba206efb4a1cd082bdd12b33eb788a374739114b72b9",
+    "hero_fit_study_helper_sha256": "a5950ca3b7e877fffd5ac9856e42d6e6d05ddb0f1e2d1c8b5a4fdf60bc251e26",
+    "render_pose_freeze_revision": 1,
+    "render_pose_freeze_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7"
+  },
+  "implementation_digests_at_process_start": {
+    "render_patch001_guides.py": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+    "kaykit_motion_adapter.py": "1a86095d1e82d656e53d59949cbed70d73ed6873e9ec69c2706b67d37a7f20e3",
+    "floor_sit_adapter.py": "245dfa8025dcd36d867ee21d78a35aeb4ab3af7995903982289dcd24d73babb1",
+    "render_frozen_patch001_guides.py": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7"
+  },
+  "source_rig": "Armature",
+  "guide_rig": "Armature",
+  "retargeting": "none; original rig",
+  "frame_count": 1,
+  "views": {
+    "SW": {
+      "camera": {
+        "location": [
+          -3.8681607246398926,
+          -3.8681609630584717,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.0939044952392578,
+          1.331205794485868e-07,
+          -0.7853983044624329
+        ],
+        "ortho_scale": 5.324999809265137,
+        "fixed": true
+      },
+      "frames": [
+        {
+          "contact_world": {},
+          "frame": 0,
+          "action": "Sword_Attack",
+          "source_frame": 0.0,
+          "segment_phase": 0,
+          "source_root_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actor_root_delta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landmarks": {
+            "root": [
+              384.0,
+              550.4001
+            ],
+            "head": [
+              378.1534,
+              391.7966
+            ],
+            "pelvis": [
+              376.7349,
+              448.2962
+            ],
+            "hand_r": [
+              308.2131,
+              438.23
+            ],
+            "hand_l": [
+              456.155,
+              447.9044
+            ],
+            "foot_r": [
+              340.239,
+              532.1792
+            ],
+            "foot_l": [
+              416.8593,
+              533.9938
+            ]
+          },
+          "world_landmarks": {
+            "root": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              -0.0361444465816021,
+              0.021183907985687256,
+              1.243264079093933
+            ],
+            "pelvis": [
+              0.03820483013987541,
+              0.10944302380084991,
+              0.7429136037826538
+            ],
+            "hand_r": [
+              -0.25872424244880676,
+              0.4844100773334503,
+              0.7929638028144836
+            ],
+            "hand_l": [
+              0.36336028575897217,
+              -0.34416207671165466,
+              0.7928990721702576
+            ],
+            "foot_r": [
+              -0.1618127077817917,
+              0.26728928089141846,
+              0.10366754233837128
+            ],
+            "foot_l": [
+              0.19519537687301636,
+              -0.12700992822647095,
+              0.10312946885824203
+            ]
+          },
+          "weapon_guide": {
+            "grip": [
+              298.2801,
+              450.8933
+            ],
+            "tip": [
+              288.478,
+              466.1316
+            ]
+          },
+          "bone_rotations": {
+            "root": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              0.5700739026069641,
+              0.7597384452819824,
+              -0.27028125524520874,
+              -0.1573570966720581
+            ],
+            "pelvis": [
+              0.7080376744270325,
+              0.6742093563079834,
+              -0.1496805101633072,
+              -0.14737778902053833
+            ],
+            "hand_r": [
+              0.5660246014595032,
+              -0.05527443811297417,
+              -0.5577479004859924,
+              0.604547917842865
+            ],
+            "hand_l": [
+              0.15876394510269165,
+              -0.4165499210357666,
+              -0.2327130138874054,
+              0.8643638491630554
+            ],
+            "foot_r": [
+              0.2459825724363327,
+              -0.8951988816261292,
+              0.3584780991077423,
+              -0.09800531715154648
+            ],
+            "foot_l": [
+              0.26448681950569153,
+              -0.9631296992301941,
+              0.04763113334774971,
+              -0.01261769887059927
+            ]
+          },
+          "image": "SW/000.png"
+        }
+      ]
+    },
+    "NW": {
+      "camera": {
+        "location": [
+          -3.868161201477051,
+          3.8681607246398926,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.093904733657837,
+          6.438192912128216e-08,
+          -2.3561947345733643
+        ],
+        "ortho_scale": 5.324999809265137,
+        "fixed": true
+      },
+      "frames": [
+        {
+          "contact_world": {},
+          "frame": 0,
+          "action": "Sword_Attack",
+          "source_frame": 0.0,
+          "segment_phase": 0,
+          "source_root_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actor_root_delta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landmarks": {
+            "root": [
+              383.9998,
+              550.4003
+            ],
+            "head": [
+              385.5255,
+              393.7801
+            ],
+            "pelvis": [
+              368.9423,
+              458.5429
+            ],
+            "hand_r": [
+              360.9837,
+              483.5827
+            ],
+            "hand_l": [
+              382.0419,
+              415.6827
+            ],
+            "foot_r": [
+              373.243,
+              557.2042
+            ],
+            "foot_l": [
+              377.046,
+              522.1028
+            ]
+          },
+          "world_landmarks": {
+            "root": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              -0.0361444465816021,
+              0.021183907985687256,
+              1.243264079093933
+            ],
+            "pelvis": [
+              0.03820483013987541,
+              0.10944302380084991,
+              0.7429136037826538
+            ],
+            "hand_r": [
+              -0.25872424244880676,
+              0.4844100773334503,
+              0.7929638028144836
+            ],
+            "hand_l": [
+              0.36336028575897217,
+              -0.34416207671165466,
+              0.7928990721702576
+            ],
+            "foot_r": [
+              -0.1618127077817917,
+              0.26728928089141846,
+              0.10366754233837128
+            ],
+            "foot_l": [
+              0.19519537687301636,
+              -0.12700992822647095,
+              0.10312946885824203
+            ]
+          },
+          "weapon_guide": {
+            "grip": [
+              365.851,
+              498.5712
+            ],
+            "tip": [
+              474.0807,
+              468.6293
+            ]
+          },
+          "bone_rotations": {
+            "root": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              0.5700739026069641,
+              0.7597384452819824,
+              -0.27028125524520874,
+              -0.1573570966720581
+            ],
+            "pelvis": [
+              0.7080376744270325,
+              0.6742093563079834,
+              -0.1496805101633072,
+              -0.14737778902053833
+            ],
+            "hand_r": [
+              0.5660246014595032,
+              -0.05527443811297417,
+              -0.5577479004859924,
+              0.604547917842865
+            ],
+            "hand_l": [
+              0.15876394510269165,
+              -0.4165499210357666,
+              -0.2327130138874054,
+              0.8643638491630554
+            ],
+            "foot_r": [
+              0.2459825724363327,
+              -0.8951988816261292,
+              0.3584780991077423,
+              -0.09800531715154648
+            ],
+            "foot_l": [
+              0.26448681950569153,
+              -0.9631296992301941,
+              0.04763113334774971,
+              -0.01261769887059927
+            ]
+          },
+          "image": "NW/000.png"
+        }
+      ]
+    },
+    "NE": {
+      "camera": {
+        "location": [
+          3.868161201477051,
+          3.8681607246398926,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.093904733657837,
+          -6.438192912128216e-08,
+          2.3561947345733643
+        ],
+        "ortho_scale": 5.324999809265137,
+        "fixed": true
+      },
+      "frames": [
+        {
+          "contact_world": {},
+          "frame": 0,
+          "action": "Sword_Attack",
+          "source_frame": 0.0,
+          "segment_phase": 0,
+          "source_root_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actor_root_delta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landmarks": {
+            "root": [
+              384.0002,
+              550.4003
+            ],
+            "head": [
+              389.8467,
+              390.3961
+            ],
+            "pelvis": [
+              391.2653,
+              462.1198
+            ],
+            "hand_r": [
+              459.7871,
+              459.3598
+            ],
+            "hand_l": [
+              311.8452,
+              449.702
+            ],
+            "foot_r": [
+              427.7612,
+              542.0546
+            ],
+            "foot_l": [
+              351.1409,
+              540.3778
+            ]
+          },
+          "world_landmarks": {
+            "root": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              -0.0361444465816021,
+              0.021183907985687256,
+              1.243264079093933
+            ],
+            "pelvis": [
+              0.03820483013987541,
+              0.10944302380084991,
+              0.7429136037826538
+            ],
+            "hand_r": [
+              -0.25872424244880676,
+              0.4844100773334503,
+              0.7929638028144836
+            ],
+            "hand_l": [
+              0.36336028575897217,
+              -0.34416207671165466,
+              0.7928990721702576
+            ],
+            "foot_r": [
+              -0.1618127077817917,
+              0.26728928089141846,
+              0.10366754233837128
+            ],
+            "foot_l": [
+              0.19519537687301636,
+              -0.12700992822647095,
+              0.10312946885824203
+            ]
+          },
+          "weapon_guide": {
+            "grip": [
+              469.72,
+              467.5548
+            ],
+            "tip": [
+              479.5222,
+              383.4339
+            ]
+          },
+          "bone_rotations": {
+            "root": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              0.5700739026069641,
+              0.7597384452819824,
+              -0.27028125524520874,
+              -0.1573570966720581
+            ],
+            "pelvis": [
+              0.7080376744270325,
+              0.6742093563079834,
+              -0.1496805101633072,
+              -0.14737778902053833
+            ],
+            "hand_r": [
+              0.5660246014595032,
+              -0.05527443811297417,
+              -0.5577479004859924,
+              0.604547917842865
+            ],
+            "hand_l": [
+              0.15876394510269165,
+              -0.4165499210357666,
+              -0.2327130138874054,
+              0.8643638491630554
+            ],
+            "foot_r": [
+              0.2459825724363327,
+              -0.8951988816261292,
+              0.3584780991077423,
+              -0.09800531715154648
+            ],
+            "foot_l": [
+              0.26448681950569153,
+              -0.9631296992301941,
+              0.04763113334774971,
+              -0.01261769887059927
+            ]
+          },
+          "image": "NE/000.png"
+        }
+      ]
+    },
+    "SE": {
+      "camera": {
+        "location": [
+          3.8681607246398926,
+          -3.8681609630584717,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.0939044952392578,
+          -1.331205794485868e-07,
+          0.7853983044624329
+        ],
+        "ortho_scale": 5.324999809265137,
+        "fixed": true
+      },
+      "frames": [
+        {
+          "contact_world": {},
+          "frame": 0,
+          "action": "Sword_Attack",
+          "source_frame": 0.0,
+          "segment_phase": 0,
+          "source_root_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "actor_root_delta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landmarks": {
+            "root": [
+              384.0,
+              550.4001
+            ],
+            "head": [
+              382.4744,
+              388.4126
+            ],
+            "pelvis": [
+              399.0576,
+              451.8731
+            ],
+            "hand_r": [
+              407.0161,
+              414.0071
+            ],
+            "hand_l": [
+              385.9579,
+              481.9237
+            ],
+            "foot_r": [
+              394.7569,
+              517.0296
+            ],
+            "foot_l": [
+              390.9538,
+              552.2688
+            ]
+          },
+          "world_landmarks": {
+            "root": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              -0.0361444465816021,
+              0.021183907985687256,
+              1.243264079093933
+            ],
+            "pelvis": [
+              0.03820483013987541,
+              0.10944302380084991,
+              0.7429136037826538
+            ],
+            "hand_r": [
+              -0.25872424244880676,
+              0.4844100773334503,
+              0.7929638028144836
+            ],
+            "hand_l": [
+              0.36336028575897217,
+              -0.34416207671165466,
+              0.7928990721702576
+            ],
+            "foot_r": [
+              -0.1618127077817917,
+              0.26728928089141846,
+              0.10366754233837128
+            ],
+            "foot_l": [
+              0.19519537687301636,
+              -0.12700992822647095,
+              0.10312946885824203
+            ]
+          },
+          "weapon_guide": {
+            "grip": [
+              402.1488,
+              419.8768
+            ],
+            "tip": [
+              293.9191,
+              380.9361
+            ]
+          },
+          "bone_rotations": {
+            "root": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              0.5700739026069641,
+              0.7597384452819824,
+              -0.27028125524520874,
+              -0.1573570966720581
+            ],
+            "pelvis": [
+              0.7080376744270325,
+              0.6742093563079834,
+              -0.1496805101633072,
+              -0.14737778902053833
+            ],
+            "hand_r": [
+              0.5660246014595032,
+              -0.05527443811297417,
+              -0.5577479004859924,
+              0.604547917842865
+            ],
+            "hand_l": [
+              0.15876394510269165,
+              -0.4165499210357666,
+              -0.2327130138874054,
+              0.8643638491630554
+            ],
+            "foot_r": [
+              0.2459825724363327,
+              -0.8951988816261292,
+              0.3584780991077423,
+              -0.09800531715154648
+            ],
+            "foot_l": [
+              0.26448681950569153,
+              -0.9631296992301941,
+              0.04763113334774971,
+              -0.01261769887059927
+            ]
+          },
+          "image": "SE/000.png"
+        }
+      ]
+    }
+  },
+  "mirroring": false,
+  "root_policy": "fixed camera; horizontal source actor-root travel extracted and recorded separately",
+  "status": "SOURCE_MANNEQUIN_GUIDE_NOT_PAINTED_ART",
+  "limitations": [
+    "Source grip, joins, terminal key behavior and foot contacts require visual review.",
+    "This shared donor guide does not prove male/female final-art fitting.",
+    "Mage right prop arm is an explicit native Idle_Lantern local-pose carry adaptation; left casting motion remains from source. Staff contact still needs visual review."
+  ],
+  "render_pose_freeze": {
+    "revision": 1,
+    "implementation_sha256": "37742b45ef5575726e6f5410944164200c2eb521f4321f6a631373bc9d1c14f7",
+    "rendered_frames": [
+      {
+        "image": "SW/000.png",
+        "actors": [
+          {
+            "actor": "Armature",
+            "source_action": "Sword_Attack_Armature",
+            "bones": 66,
+            "max_world_matrix_component_error": 4.172325134277344e-07
+          }
+        ]
+      },
+      {
+        "image": "NW/000.png",
+        "actors": [
+          {
+            "actor": "Armature",
+            "source_action": "Sword_Attack_Armature",
+            "bones": 66,
+            "max_world_matrix_component_error": 4.172325134277344e-07
+          }
+        ]
+      },
+      {
+        "image": "NE/000.png",
+        "actors": [
+          {
+            "actor": "Armature",
+            "source_action": "Sword_Attack_Armature",
+            "bones": 66,
+            "max_world_matrix_component_error": 4.172325134277344e-07
+          }
+        ]
+      },
+      {
+        "image": "SE/000.png",
+        "actors": [
+          {
+            "actor": "Armature",
+            "source_action": "Sword_Attack_Armature",
+            "bones": 66,
+            "max_world_matrix_component_error": 4.172325134277344e-07
+          }
+        ]
+      }
+    ],
+    "source_action_samples_changed": false,
+    "policy": "Disable animation reevaluation after computing adapted local bone bases; no anatomical/pose interpolation."
+  },
+  "png_normalization": {
+    "policy": "Clear only alpha-zero RGB and losslessly compress; preserve all visible RGB and every alpha value.",
+    "frames": [
+      {
+        "image": "SW/000.png",
+        "original_sha256": "1bbb3d549ed27f24c69f49930c88aa8c1746183b5c273eef8f314d28d3b2c6f4",
+        "normalized_sha256": "9c3beff5f773478dee8cd4b2cc11312a85649fdf9c874677edd8a7db3eff2e89",
+        "bytes_before": 288284,
+        "bytes_after": 30965,
+        "visible_rgb_or_alpha_changed": false
+      },
+      {
+        "image": "NW/000.png",
+        "original_sha256": "f9f4d0793d921503851f7e35ef8ab44f7464b08a3d0bf736e2cfc5423550418b",
+        "normalized_sha256": "1f85dcad73f43eaadd6ea568e0bf74f19b6177aefafca057727d428d5b272422",
+        "bytes_before": 285562,
+        "bytes_after": 26971,
+        "visible_rgb_or_alpha_changed": false
+      },
+      {
+        "image": "NE/000.png",
+        "original_sha256": "50f5db335c2803565f72412e2e675a3fb4d7eff274a538a613571e3e2781fd9a",
+        "normalized_sha256": "bfad549897ea5c3f83e56995c1b0421008f5a5c0b70966f54e6513397c2a8bbb",
+        "bytes_before": 288106,
+        "bytes_after": 30463,
+        "visible_rgb_or_alpha_changed": false
+      },
+      {
+        "image": "SE/000.png",
+        "original_sha256": "1998d6dd89221dd28808f2f6743674ef710a14f3b734cbf447ce3ba13fc2d331",
+        "normalized_sha256": "6fccb7814669befcef70f2ef1920fdf8be932c1e30ba50b2085ae44acc56c079",
+        "bytes_before": 286905,
+        "bytes_after": 27696,
+        "visible_rgb_or_alpha_changed": false
+      }
+    ]
+  }
+}

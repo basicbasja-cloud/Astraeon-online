@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python",
+    "tools/character_factory_v3/prepare_clear_guide_batches.py",
+    "--guide",
+    "authoring/characters/factory-v3/patch-0.0.1/guides/fcfd5fa441325973a7db",
+    "--output",
+    "/tmp/mage-cropped-reference-must-reject-20261027",
+    "--viewport",
+    "500",
+    "500",
+    "1100",
+    "1100"
+  ],
+  "exit_code": 1,
+  "output_was_not_created": true,
+  "diagnostic": "ValueError: Shared viewport clips or touches a source body/weapon; include every pose before painting",
+  "invalid_crop_rejected": true
+}
