@@ -92,6 +92,9 @@ def plan():
             pj['reference_authority']={'geometry':'current guide_job only','design':'matching-direction identity study; inspect view before use','generic_front_portrait_for_rear_views':False}
     for key,job in paint_jobs.items():write(BASE/'paint-jobs'/f'{key}.json',job)
     ledger={'schema_version':1,'characters':[c['id']for c in config['characters']],'guide_jobs':jobs,'action_guide_bindings':bindings,'paint_jobs':paint_jobs,'requested_action_instances':sum(len(config['classes'][c['class']]['actions'])for c in config['characters']),'requested_pose_positions':sum(a['frames']*len(a['authored_directions'])for c in config['characters']for a in config['classes'][c['class']]['actions'].values()),'source_capture_positions_after_reuse':sum(j['frames']*len(j['directions'])for j in jobs.values()),'planning_is_not_authored_coverage':True}
+    from audit_reuse_bindings import audit as audit_reuse_bindings
+    reuse_report=audit_reuse_bindings(config,ledger)
+    if not reuse_report['passed']:raise ValueError('Declared reuse conflicts with actual source jobs: '+json.dumps(reuse_report))
     write(BASE/'ledger.json',ledger);return ledger
 
 
