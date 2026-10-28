@@ -28,7 +28,18 @@ def register(image_path,metadata,index=None):
     pixels=np.asarray(image).copy();pixels[pixels[:,:,3]==0]=0
     pixel_hash=hashlib.sha256(pixels.tobytes()).hexdigest();key=hashlib.sha256(canonical({'pixels':pixel_hash,'compatibility':metadata})).hexdigest()
     folder=STORE/'objects';folder.mkdir(parents=True,exist_ok=True);target=folder/(pixel_hash+'.png')
-    if not target.exists():Image.fromarray(pixels).save(target)
+    if target.is_symlink():raise ValueError('Stored cutout object must not be a symlink')
+    if target.exists():
+        # A filename alone does not prove that a shared object is intact.
+        # Reject damage before publishing any binding to it.
+        try:
+            with Image.open(target) as existing:
+                if existing.mode!='RGBA' or existing.size!=image.size:raise ValueError('Stored cutout object has invalid format or dimensions')
+                stored=np.asarray(existing).copy()
+        except (OSError,ValueError) as exc:raise ValueError('Stored cutout object is unreadable or invalid') from exc
+        stored[stored[:,:,3]==0]=0
+        if hashlib.sha256(stored.tobytes()).hexdigest()!=pixel_hash:raise ValueError('Stored cutout object pixels changed')
+    else:Image.fromarray(pixels).save(target)
     index_path=STORE/'index.json';owned=index is None
     if owned:index=json.loads(index_path.read_text())if index_path.exists()else{'version':1,'assets':{},'objects':{}}
     index['assets'][key]={'object':pixel_hash,**metadata};index['objects'][pixel_hash]={'file':str(target.relative_to(ROOT)),'rgba_sha256':pixel_hash,'canvas':list(image.size)}
