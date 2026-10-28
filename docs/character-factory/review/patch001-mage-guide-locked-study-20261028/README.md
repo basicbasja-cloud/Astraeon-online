@@ -1,0 +1,5 @@
+# Mage locked-guide paintover study — rejected
+
+A targeted four-pose paintover was requested using the same locked SW rig guide frames 002, 003, 006 and 010, plus the female Mage design. The prompt explicitly constrained every joint and staff position to its same-frame guide. The [guide / painting / overlay](guide-comparison.jpg) shows that the resulting staff and hand positions still differ from the guide, especially in later rows. Painted feet and joints are not certified. A single common scale and offset is used for inspection; the fit is not validated registration. The result is rejected, not imported or used to replace the masters. Four poses do not establish motion continuity.
+
+The candidate, prompt, inputs and overlay producer are preserved locally under `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-guide-locked-four-pose-20261028/` and `review/mage-guide-locked-four-pose-20261028/`. [Receipt](receipt.json) records output hash and diagnostic common fit. Image generation model and seed were not exposed. Coverage is unchanged at 2/96 technical imports and 0/6 complete characters.
