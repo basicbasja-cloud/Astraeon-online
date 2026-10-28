@@ -1,0 +1,5 @@
+# Archer NW frame 011 far-hand study — rejected
+
+A targeted complete-master repaint used the existing male Archer NW 011 master and its same-frame rig guide. The requested far arm and glove visibly grip the bow in the generated candidate, while the other hand is open. The output also changes body size and placement relative to the earlier frame. Its head, legs, grip, bow string, guide alignment and continuity against adjacent frames have not passed. It is **rejected as a production master** and has not been cut into parts or used in game.
+
+[Original, candidate, and guide overlay](compare.jpg) uses one whole-canvas resize per input solely for diagnosis; it is not a calibrated fit or proof of alignment. [Receipt](receipt.json) records the raw output and input hashes. Prompt and generated raw image are under `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/archer-nw011-far-hand-study-20261028/`. Model and seed were not exposed. No source artwork was overwritten. Coverage remains 2/96 technical imports and 0/6 complete characters.
