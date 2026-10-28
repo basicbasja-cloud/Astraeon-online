@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "tools/character_factory_v3"))
 from contracts import cache_key, motion_gate, read_json, repo_path, validate_config, validate_motion_record, validate_rig_spec
 from paint_provider import ManualHandoffProvider
 from qa import DIRECTIONS, REQUIRED_PASSES, validate_guide_manifest, validate_production_guide_manifest
-from import_painted_sheets import ACTIONS as PAINT_ACTIONS, prepare_painted_sheets
+from import_painted_sheets import ACTIONS as PAINT_ACTIONS, prepare_painted_sheets, write_candidate
 from audit_sprite_candidate import audit_definition
 from import_layered_sheets import ACTIONS as LAYERED_ACTIONS, CORE_LAYERS, SHEET as LAYERED_SHEET, _clean_cell, _fit_frame, _normalise, _load_sheet, _preserve_cutout_registration
 from cutout_master_sheet import cutout_master_sheet
@@ -371,49 +371,40 @@ class FactoryContractTests(unittest.TestCase):
         self.assertEqual(profile["motion_bones"]["Hand.R"], "hand_r")
         self.assertEqual(profile["height_foot_bones"], ["ball_l", "ball_r"])
 
-    def test_runtime_package_passes_the_existing_javascript_contract(self):
-        result = subprocess.run(
-            ["node", str(ROOT / "tools/character_factory_v3/validate_runtime_package.cjs"),
-             "assets/characters/swordsman-male-v3/sprite.json"],
-            cwd=ROOT, capture_output=True, text=True, check=True,
-        )
-        report = json.loads(result.stdout)
-        self.assertTrue(report["passed"], report["errors"])
-        self.assertEqual(report["canvas"], {"frameWidth": 160, "frameHeight": 160, "rootAnchorX": 80, "rootAnchorY": 132, "referenceHeight": 88})
-        self.assertEqual(report["directions"], list(DIRECTIONS))
-        self.assertLess(report["decoded_atlas_bytes"], 80 * 1024 * 1024)
-        definition = read_json(ROOT / "assets/characters/swordsman-male-v3/sprite.json")
+    def test_retired_v3_guide_preview_is_archived_and_preserved(self):
+        candidate = "swordsman-male-v3"
+        self.assertFalse((ROOT / "assets/characters" / candidate).exists())
+        archive = ROOT / "authoring/characters/factory-v3/unused" / candidate
+        path = archive / "sprite.json"
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), "5872d665f51c8d4a4bee881fbe6c5b55115f6e0cba7ffca1bd5e5494fb110311")
+        definition = read_json(path)
         self.assertEqual(definition["source"]["status"], "DEV_ONLY")
-        self.assertFalse(definition["source"].get("approvedBy"))
         self.assertIn("INTERNAL_MOTION_REVIEW_CANDIDATE", definition["tags"])
-        self.assertEqual(definition["defaultParts"]["Back"], "empty-back-accessory")
-        self.assertIn("back-accessory", definition["parts"], "Cape must remain available as an optional alternate")
-        self.assertIn("empty-back-accessory", definition["parts"])
-        for clip in definition["clips"].values():
-            total = sum(clip["durations"])
-            for event in clip.get("events", []):
-                self.assertLessEqual(event["timeMs"], total)
-                self.assertLess(event["frameIndex"], len(clip["durations"]))
+        for atlas in definition["atlases"].values():
+            self.assertTrue((archive / "atlases" / Path(atlas["file"]).name).is_file())
+        validation = "const fs=require('fs');const api=require('./modular-sprites.js');const e=api.validateDefinition(JSON.parse(fs.readFileSync(process.argv[1])));if(e.length){console.error(e);process.exit(1)}"
+        subprocess.run(["node", "-e", validation, str(path)], cwd=ROOT, capture_output=True, text=True, check=True)
 
-    def test_painted_candidate_passes_runtime_contract_and_keeps_review_tags(self):
-        for candidate_path in (
-            "assets/characters/swordsman-male-v3-painted/sprite.json",
-            "assets/characters/swordsman-male-v3-painted-v2/sprite.json",
-        ):
-            with self.subTest(candidate=candidate_path):
-                result = subprocess.run(
-                    ["node", str(ROOT / "tools/character_factory_v3/validate_runtime_package.cjs"), candidate_path],
-                    cwd=ROOT, capture_output=True, text=True, check=True,
-                )
-                self.assertTrue(json.loads(result.stdout)["passed"])
-                definition = read_json(ROOT / candidate_path)
-                self.assertEqual(definition["canvas"], {"frameWidth": 160, "frameHeight": 160, "rootAnchorX": 80, "rootAnchorY": 132, "referenceHeight": 88})
-                self.assertEqual(definition["defaultParts"]["Back"], "empty-back-accessory")
+    def test_retired_painted_candidates_are_archived_and_unavailable_to_runtime(self):
+        archived = ROOT / "authoring/characters/factory-v3/unused"
+        candidates = {
+            "swordsman-male-v3-painted": "17babba4bebc7589912ceb58b116ba7baa9e4bbde6b6204db515f1221a29cf5a",
+            "swordsman-male-v3-painted-v2": "81e12b648d8a99152033985544eeb7f8d44811d0b9ef1d592b0fc6b5a7336f49",
+        }
+        for candidate, digest in candidates.items():
+            with self.subTest(candidate=candidate):
+                self.assertFalse((ROOT / "assets/characters" / candidate).exists())
+                path = archived / candidate / "sprite.json"
+                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), digest)
+                definition = read_json(path)
                 self.assertIn("FUSED_BODY_OUTFIT_HAIR_WEAPON", definition["tags"])
                 self.assertFalse(definition["source"].get("approvedBy"))
-                for action in ("Idle", "Walk", "BasicAttack"):
-                    self.assertIn("INTERNAL_VISUAL_PASS", definition["clips"][action]["tags"])
-                self.assertTrue(all("PENDING_PRODUCTION" in clip["tags"] for name, clip in definition["clips"].items() if name not in ("Idle", "Walk", "BasicAttack")))
+                for atlas in definition["atlases"].values():
+                    self.assertTrue((archived / candidate / "atlases" / Path(atlas["file"]).name).is_file())
+        self.assertTrue((ROOT / "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SE/Master/000.png").is_file())
+        for candidate in [*candidates, "swordsman-male-v3"]:
+            with self.assertRaisesRegex(ValueError, "Retired character IDs"):
+                write_candidate(ROOT, ROOT / "unused-output", candidate, ROOT / "missing.json", {})
 
     def test_cache_key_changes_with_input_hashes(self):
         args = dict(

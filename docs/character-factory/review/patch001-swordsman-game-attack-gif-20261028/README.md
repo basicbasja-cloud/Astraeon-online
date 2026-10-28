@@ -1,5 +1,7 @@
 # Development Swordsman BasicAttack: game capture limit
 
+**Historical evidence:** the small V3 development previews were retired and moved to `authoring/characters/factory-v3/unused` at the owner’s request. The old V3 preview URLs and capture commands no longer launch them. Use the original tall Swordsman as the visual baseline.
+
 This GIF was captured from the actual Wayfarer Capital game canvases with the explicitly selected `v3-painted-v2` candidate. It plays once, because BasicAttack is a one-shot. The script records each observed new animation row/column and its game timestamp while the action plays.
 
 ![Observed game frames](attack-game.gif)

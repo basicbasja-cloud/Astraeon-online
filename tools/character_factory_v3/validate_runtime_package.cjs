@@ -5,7 +5,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const repository = path.resolve(__dirname, '../..');
-const definitionPath = path.resolve(process.argv[2] || path.join(repository, 'assets/characters/swordsman-male-v3/sprite.json'));
+if (!process.argv[2]) throw new Error('Specify a runtime definition explicitly');
+const definitionPath = path.resolve(process.argv[2]);
 if (!definitionPath.startsWith(repository + path.sep)) {
   throw new Error('Runtime definition must stay inside the repository');
 }

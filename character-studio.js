@@ -3,11 +3,10 @@
 'use strict';
 const W=window.AstraeonWardrobe,A=window.AstraeonModularSprites;
 function mount(root,{cls=0,appearance=W.defaults(),onChange=()=>{},onReady=()=>{},gallery=false}={}){
- const paintedCandidateReview=['v3-painted','v3-painted-v2'].includes(new URLSearchParams(location.search).get('swordsman')),visibleClips=paintedCandidateReview?['Idle','Walk','BasicAttack']:W.clipsFor(cls);
+ const visibleClips=W.clipsFor(cls);
  root.innerHTML=`<div class="character-customizer"><div class="sprite-stage"><canvas data-studio="canvas" width="640" height="430" aria-label="Animated character appearance"></canvas><span class="sprite-stage-label">ASTRAEON · 0.0.1</span></div><div class="studio-fields"><label>Body<select data-studio="body">${W.CATALOG.bodies.map(id=>`<option value="${id}">${id[0].toUpperCase()+id.slice(1)}</option>`).join('')}</select></label><label>Hair<select data-studio="hair">${W.CATALOG.hair.map(v=>`<option value="${v.id}">${v.name}</option>`).join('')}</select></label><label>Costume<select data-studio="outfit">${W.CATALOG.outfit.map(v=>`<option value="${v.id}">${v.name}</option>`).join('')}</select></label></div><div class="studio-motion"><label>Motion<select data-studio="motion">${visibleClips.map(id=>`<option>${id}</option>`).join('')}</select></label><label>Speed<select data-studio="speed"><option value="1">Normal</option><option value="0.25">Quarter speed</option><option value="0">Paused</option></select></label><button type="button" data-studio="replay" hidden>Replay</button><button type="button" data-studio="size">Game size</button></div><div class="studio-directions" aria-label="Facing direction">${A.DIRECTIONS.map(d=>`<button type="button" data-direction="${d}" aria-pressed="${d==='S'}">${d}</button>`).join('')}</div><label class="studio-scrub">Frame<input data-studio="frame" type="range" min="0" value="0" max="7"><output data-studio="frame-label">0 / 7</output></label><p data-studio="status" class="studio-status" role="status">Loading your character…</p>${gallery?'<canvas data-studio="gallery" class="studio-gallery" width="896" height="252" aria-label="All eight character directions"></canvas><fieldset class="studio-layers"><legend>Inspect layers</legend>'+A.REQUIRED_LAYERS.map(layer=>`<label><input type="checkbox" data-layer="${layer}" checked>${layer}</label>`).join('')+'</fieldset><details class="studio-data"><summary>Frame registration</summary><pre data-studio="data"></pre></details>':''}</div>`;
  const get=name=>root.querySelector(`[data-studio="${name}"]`),canvas=get('canvas'),ctx=canvas.getContext('2d');
- if(paintedCandidateReview){root.querySelector('.studio-fields').style.display='none';const layers=root.querySelector('.studio-layers');if(layers)layers.style.display='none';}
- const fields=['body','hair','outfit','motion','speed','frame'].map(get);let config=W.normalize(appearance)||W.defaults(),sprite=null,direction='S',elapsed=0,last=0,ticket=0,ready=false,small=paintedCandidateReview,destroyed=false,frame=null,error=null;if(small)get('size').textContent='Inspect size';
+ const fields=['body','hair','outfit','motion','speed','frame'].map(get);let config=W.normalize(appearance)||W.defaults(),sprite=null,direction='S',elapsed=0,last=0,ticket=0,ready=false,small=false,destroyed=false,frame=null,error=null;
  get('body').value=config.bodyVariant;get('hair').value=config.hair;get('outfit').value=config.outfit;
  const disabled=()=>[...root.querySelectorAll('input[data-layer]:not(:checked)')].map(input=>input.dataset.layer);
  const filtered=f=>({...f,layers:f.layers.filter(l=>!disabled().includes(l.layer))});
@@ -28,13 +27,13 @@ function mount(root,{cls=0,appearance=W.defaults(),onChange=()=>{},onReady=()=>{
   }
  }
  async function choose(){
-  const available=paintedCandidateReview?['Idle','Walk','BasicAttack']:W.clipsFor(cls),previous=get('motion').value;
+  const available=W.clipsFor(cls),previous=get('motion').value;
   get('motion').innerHTML=available.map(id=>`<option>${id}</option>`).join('');get('motion').value=available.includes(previous)?previous:'Idle';
   const request=++ticket;ready=false;error=null;onReady(false);fields.forEach(field=>field.disabled=true);get('status').textContent='Preparing synchronized artwork…';
   try{
    const next={version:1,bodyVariant:get('body').value,hair:get('hair').value,outfit:get('outfit').value};
    const visual=await W.load(next,cls,[get('motion').value]);if(destroyed||request!==ticket)return;
-   if(gallery&&!paintedCandidateReview){const layers=root.querySelector('.studio-layers'),roles=[...new Set(Object.values(visual.compiled.definition.slots))];layers.innerHTML='<legend>Inspect layers</legend>'+roles.map(role=>`<label><input type="checkbox" data-layer="${role}" checked>${role}</label>`).join('')}
+   if(gallery){const layers=root.querySelector('.studio-layers'),roles=[...new Set(Object.values(visual.compiled.definition.slots))];layers.innerHTML='<legend>Inspect layers</legend>'+roles.map(role=>`<label><input type="checkbox" data-layer="${role}" checked>${role}</label>`).join('')}
    sprite=visual;config=next;elapsed=0;get('frame').value=0;get('frame').max=sprite.compiled.definition.clips[get('motion').value].durations.length-1;ready=true;fields.forEach(field=>field.disabled=false);onChange({...config});onReady(true);draw();
   }catch(failure){if(request!==ticket)return;error=failure.message;get('status').textContent=error;fields.forEach(field=>field.disabled=false);onReady(false);console.error(failure)}
  }

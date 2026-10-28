@@ -1,5 +1,7 @@
 # Swordsman V3 development candidate in the game
 
+**Historical evidence:** the small V3 development previews were retired and moved to `authoring/characters/factory-v3/unused` at the owner’s request. The old V3 preview URLs and capture commands no longer launch them. Use the original tall Swordsman as the visual baseline.
+
 The existing player-renderer browser test now has an explicit `--allow-pending-v3` mode for `v3-painted-v2`. Its default strict mode still expects a real Run and SkillAction. The development mode records the candidate's actual pending behavior instead of hanging while waiting for an unavailable clip.
 
 In Wayfarer Capital, Chromium checked Idle, movement in all eight directions, BasicAttack, equipment-state independence and a mobile viewport. It captured [one BasicAttack frame](basic-attack.png). When gameplay entered Run, the development renderer used Walk; [the fallback capture](run-walk-fallback.png) and [results](results.json) record this. SkillAction remains pending and was not captured. No page errors were reported. The still captures do not establish natural motion, trail timing, seamless transitions or art approval.
