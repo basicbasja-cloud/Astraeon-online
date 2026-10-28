@@ -1,9 +1,9 @@
-# Patch 0.0.1 character goal — paused
+# Patch 0.0.1 character goal — active
 
-**Source of truth:** [PATCH001_MASTER_PLAN.md](PATCH001_MASTER_PLAN.md). The owner paused implementation to review the plan. Older ACTIVE statements below are historical; resume only on a new owner instruction.
+**Source of truth:** [PATCH001_MASTER_PLAN.md](PATCH001_MASTER_PLAN.md). The owner resumed implementation after reviewing the plan. Older checkpoint statements below are historical; current coverage requires fresh evidence.
 
 Owner instruction: 2026-10-27. Continue until the agreed plan is fulfilled.
-This goal is paused by owner instruction and is not complete. Current imported coverage is 2/96 jobs;
+This goal is active by owner instruction and is not complete. Current imported coverage is 2/96 jobs;
 zero newly complete characters. Source motion, tests, imports and exact pixel
 reconstruction alone do not constitute acceptance.
 
@@ -164,3 +164,8 @@ The opt-in `v3-painted-v2` browser probe now checks the development player in Wa
 ## Owner correction — retire the wrong V3 previews (28 October 2026)
 
 The owner reaffirmed the original tall four-direction Swordsman as the visual baseline and requested removal of the unrelated small development character. In the current working tree, the three `swordsman-male-v3*` runtime preview packages were moved intact into `authoring/characters/factory-v3/unused` and their old development URL selections were disabled; these moves and code changes were not committed or pushed when the owner paused work. Original Swordsman masters/cutouts and motion guides remain preserved. Prior V3 screenshots and captures are historical evidence, not the character to use. The Mage source-frame bounce and size drift are still unresolved; no visual or runtime acceptance is claimed. Goal is paused for plan review, 0/6 newly complete characters and 2/96 technical imports.
+
+
+## Owner resumed after plan review (28 October 2026)
+
+The owner instructed continuation through the full plan and requested a push and GitHub report at each completed checkpoint. This workspace retains the previously recorded staged preview renames and unstaged edits, including `render_canonical_part_guides.py`. The separate handoff branch `handoff/character-factory-reviewed-20261028` contains a filtered work-in-progress snapshot; it is not a visual or gameplay approval. The remote production branch advanced with a report from another workspace where those files were unavailable. Preserve both histories and the current working tree. Fresh audit: 896/896 baseline hashes match, eight declared pose reuse bindings pass source checks, and coverage inventory remains 114 logical actions / 96 paint jobs / 2 technical imports / 0 completed characters. Mage source-frame drift and size shift remain open.
