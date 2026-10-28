@@ -1,5 +1,7 @@
 # Mage neck continuity — work in progress
 
+**Do not use this layered preview as final art:** its staff-front layer contains hair and costume. See the [own-frame recovery diagnostic](../patch001-mage-own-frame-head-recovery-20261028/README.md) for a preview without the shared-head gap.
+
 The prior shared-head preview had clearly transparent gaps below the chin, notably frames 7–9, 11–14, 16, 18–21. It was rejected. The requested patch remains **incomplete: 0/6 newly complete characters and 2/96 technical imports**.
 
 This study adds individually generated, bounded neck/collar underpainting in 12 affected frames, retaining the source head and staff pixels. The generated patch is translated locally to align the collar; neither the body nor a limb is resized or frozen. Positions are preliminary: optimizing a gap-region metric is **not** visual or anatomy acceptance. The source head had a 14-pixel staff fragment; ownership was returned to the original frame's body/rest and the fragment was removed from the head asset.
