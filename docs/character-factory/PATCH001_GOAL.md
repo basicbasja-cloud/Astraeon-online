@@ -174,3 +174,12 @@ The owner instructed continuation through the full plan and requested a push and
 ## Retirement handoff and Mage landmark study (28 October 2026)
 
 The retirement handoff was merged to the remote production branch at `be31a085015155b81bfa6ca8584ebd5779a699c6`; local HEAD and the original staged/unstaged changes remain untouched. Reconcile deliberately before replaying. The shared sprite adapter now selects Sprint instead of silently substituting Run (commit `9e8aab8328dbdf561d0d13aacb9fcfc56f8db522`; 49 Node tests passed). Two adjacent landmark-guided Mage master candidates were visually rejected due to scale/anatomy/hand drift; see `review/patch001-mage-landmark-pair-20261028`. Neither candidate is admitted. Technical coverage remains 2/96 jobs and 0/6 characters complete.
+
+
+## Preserved Swordsman NW registration study (28 October 2026)
+
+The preserved male BasicAttack is now reviewable as a four-view, 16-frame rig-landmark GIF using its actual imported layers and long sword trail; no art was admitted. A bounded NW frame-15 candidate applies one horizontal −8 authoring-pixel translation to the whole master and every same-frame part. It is unapproved and not imported. Hair-centroid versus source-head residual from frames 14→15 fell from 2.592 to 0.092 runtime px, but the visible lower-component versus source foot-R residual is 1.0102 runtime px and the painted-foot association is not verified. Do not round or treat that result as a contact pass.
+
+Blender replay of the retained source mesh matches frozen guide geometry and camera, and tracks the same 26 low-band skin vertices per side. Source frame 14→15 median screen displacement is left (−0.0468,+0.0169) runtime px and right (−2.1971,+1.0101) px. Source foot-surface points do not by themselves identify painted sole pixels or prove intended planted contact. A whole-frame translation moves both painted feet, so the candidate remains pending painted landmark/geometry review, full action and real transition checks. See `docs/character-factory/review/patch001-swordsman-nw-source-foot-mesh-20261028/` and `patch001-swordsman-nw-registration-proposal-20261028/`. No source master or runtime binding was overwritten.
+
+An Archer male NW frame-11 same-frame far-hand repaint visibly clarifies bow grip but changes size/placement and is rejected; see `review/patch001-archer-nw011-far-hand-study-20261028/`. Mage and Archer masters still require true guide and temporal approval. Coverage remains 2/96 technical imports and 0/6 complete characters.

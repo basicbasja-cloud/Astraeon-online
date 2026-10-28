@@ -4,6 +4,13 @@
 
 **สถานะ ณ วันที่ 28 ตุลาคม 2026:** เจ้าของอ่านแผนและสั่งให้ดำเนินการต่อ งานย้าย preview ที่ไม่ใช้ถูกรวมเข้า branch งานหลักบน GitHub แล้ว; workspace นี้ยังคง staged/unstaged changes เดิมไว้และ HEAD ใน workspace ยังไม่ได้เลื่อนไปตาม remote ไม่มีตัวละครใหม่ที่ครบทุกท่า
 
+### ผลตรวจล่าสุดที่ต้องใช้ต่อ
+
+- นักดาบตัวสูง BasicAttack มี GIF overlay guide ครบ 4 ทิศและ candidate แก้ registration เฉพาะ NW เฟรม 15; candidate ยังไม่ผ่าน ไม่ได้ import และไม่ได้เขียนทับต้นแบบ
+- Blender replay ตรวจผิว mesh เท้าของ source ตรง guide แล้ว แต่ยังจับคู่จุดสัมผัสกับบูตในภาพวาดไม่ได้ จึงยังรับรองเกณฑ์ 1 runtime pixel ไม่ได้; ห้ามปัดค่าหรือเดาจุดให้ผ่าน
+- ภาพทดลองแก้มือจับธนู Archer NW เฟรม 11 มีขนาดและตำแหน่งเปลี่ยน ยังไม่ผ่าน; Mage ยังเด้งและเปลี่ยนสัดส่วนใน master
+- รายงานล่าสุดมี GIF, ข้อมูล source/hash, วิธีผลิตซ้ำ และข้อจำกัดใน `docs/character-factory/review/patch001-swordsman-nw-source-foot-mesh-20261028/` และ `patch001-swordsman-nw-registration-proposal-20261028/`
+
 ### เป้าหมายและสถานะจริง
 
 ส่งตัวละคร Swordsman, Mage และ Archer ชาย/หญิง รวม 6 ตัว ที่มีท่าครบตาม `factory.json`, ใช้ในเกมได้จริง และมี factory ผลิตซ้ำ/เปลี่ยนชิ้นส่วนได้
