@@ -193,3 +193,7 @@ A same-frame V3 ownership proposal moves visible guard/hilt pixels to Weapon and
 ## NW frame-15 alternative sword study (28 October 2026)
 
 A single-frame NW alternative sword was generated and composed over the unapproved V3 underpaint candidate. The other layers match that candidate exactly, and the annotated grip pixel is covered by both sword and hand. The single-frame equipment-toggle GIF and inputs are in `docs/character-factory/review/patch001-swordsman-nw15-alternate-sword-20261028/`. This is **not** a coherent four-view variant, semantic or visual approval, trail proof, runtime admission or game test. All other frames, views, mask edges, anatomy and hidden surfaces remain open; no production binding was changed. Coverage remains 2/96 technical imports and 0/6 completed characters.
+
+## Cutout preservation and reuse integrity (28 October 2026)
+
+The importer refuses an existing cutout output, and the content-addressed store verifies an existing object's RGBA dimensions and pixel hash before reuse. These protect prior work and detect damaged shared objects; they do not make a failed fresh import atomic. The complete factory suite passed 400 tests, and an isolated retained-guide replay reproduced 64 poses and 384 bindings across 269 objects with matching IDs and metadata. See `review/patch001-cutout-import-preservation-20261028/` and `review/patch001-cutout-store-integrity-20261028/`. Neither checkpoint approves art or admits a runtime package; 2/96 technical imports and 0/6 finished characters remain.
