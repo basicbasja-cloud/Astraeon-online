@@ -46,7 +46,12 @@ def authored_layer_order(parts,base_order,requested=None):
 
 def import_job(job_id,manifest_path):
     config=read(BASE/'factory.json');canvas=config['canvas']['authoring'];root=config['canvas'].get('authoring_root',[256,422.4])
-    ledger=read(BASE/'ledger.json');job=ledger['paint_jobs'][job_id];guide_job=ledger['guide_jobs'][job['guide_job']]
+    ledger=read(BASE/'ledger.json');job=ledger['paint_jobs'][job_id]
+    folder=BASE/'cutouts'/job['id']
+    # Imports own this whole directory, including derived labels and receipts.
+    # Never overwrite a prior or partially attempted import implicitly.
+    if folder.exists() or folder.is_symlink():raise ValueError('Cutout import target already exists; choose a fresh isolated destination')
+    guide_job=ledger['guide_jobs'][job['guide_job']]
     if not receipt_valid(guide_job):raise ValueError('Matching complete source guide is missing')
     manifest=read(manifest_path)
     if manifest.get('guide_job')!=job['guide_job']or manifest.get('fit_id')!=job['fit_id']:raise ValueError('Pose/fit identity does not match the paint job')
@@ -54,7 +59,7 @@ def import_job(job_id,manifest_path):
     if len(records)!=len(expected)or{(r['direction'],r['index'])for r in records}!=expected:raise ValueError('Missing, duplicate or unexpected pose records')
     guide_path=BASE/'guides'/job['guide_job']/'manifest.json';guide=read(guide_path)
     pose_maps,pose_evidence=source_pose_maps(manifest,guide,guide_path,manifest_path.parent)
-    folder=BASE/'cutouts'/job_id;folder.mkdir(parents=True,exist_ok=True)
+    folder.mkdir(parents=True,exist_ok=False)
     index=read(STORE/'index.json')if(STORE/'index.json').exists()else{'version':1,'assets':{},'objects':{}}
     bindings=[];nonempty={r:0 for r in ['BodyCostume','HeadHair','Weapon']}
     for record in records:
