@@ -110,6 +110,22 @@ test('existing player adapter keeps equipment and socket contracts, and modular 
  assert.deepEqual(result.RightHand,[2,2.78,1.2]);assert.deepEqual(result.spriteSockets.root,iso(2,3,0));
  assert.throws(()=>api.drawHumanoid(ctx,iso,t,{modular,archetype:'mage'}),/class differs/);
 });
+test('sprint requests its own clip and never silently substitutes Run',()=>{
+ const compiled=api.compile(sword),modular={compiled,allowDev:true,images:{}};
+ const t={position:{x:0,y:0,z:0},facingDirection:{x:0,y:1},rotation:0,state:'sprint',speed:1};
+ assert.equal(api.STATE_CLIPS.sprint,'Sprint');
+ assert.throws(()=>api.drawHumanoid(context(),(x,y,z)=>({x,y:y-z}),t,{modular,archetype:'warrior'}),/Missing runtime clip Sprint/);
+ const d=clone();d.clips.Sprint=structuredClone(d.clips.Run);
+ for(const part of Object.values(d.parts))for(const [id,frame] of Object.entries({...part.frames})){
+  if(id.includes('_Run_'))part.frames[id.replace('_Run_','_Sprint_')]=structuredClone(frame);
+ }
+ const sprint=api.compile(d);let sampledClip=null;
+ const visual={compiled:{...sprint,sample(...args){sampledClip=args[0];return sprint.sample(...args)}},allowDev:true,images:Object.fromEntries(Object.keys(d.atlases).map(id=>[id,{}]))};
+ require('../world-view.js');window.AstraeonSpatialView={assemblingActor:true};
+ api.drawHumanoid(context(),(x,y,z)=>({x,y:y-z}),t,{modular:visual,archetype:'warrior'});
+ assert.equal(window.AstraeonSpatialView.sampledPose.clip,'modular/'+d.characterId);
+ assert.equal(sampledClip,'Sprint');
+});
 test('authored gait distance follows world travel independently of legacy gait and equipment',()=>{
  const d=clone();d.clips.Walk.cycleDistance=.78;
  const compiled=api.compile(d),modular={compiled,allowDev:true,images:Object.fromEntries(Object.keys(d.atlases).map(id=>[id,{}]))};

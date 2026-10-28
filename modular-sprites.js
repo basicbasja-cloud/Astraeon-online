@@ -291,7 +291,7 @@ async function load(url,{allowDev=false,animationIds=['Idle'],bodyVariant,appear
  await Promise.all(animationIds.map(ensure));
  return Object.freeze({compiled,images,allowDev,ensure,setAppearance,keepAnimations,get appearance(){return active}});
 }
-const STATE_CLIPS=Object.freeze({idle:'Idle',turn:'Idle',stop:'Idle',start:'Walk',walk:'Walk',run:'Run',sprint:'Run',attack:'BasicAttack',cast:'SkillAction',hit:'Hit',death:'Death',guard:'Guard',dodge:'Dash',dash:'Dash',channel:'CastChannel',blink:'Blink'});
+const STATE_CLIPS=Object.freeze({idle:'Idle',turn:'Idle',stop:'Idle',start:'Walk',walk:'Walk',run:'Run',sprint:'Sprint',attack:'BasicAttack',cast:'SkillAction',hit:'Hit',death:'Death',guard:'Guard',dodge:'Dash',dash:'Dash',channel:'CastChannel',blink:'Blink'});
 function drawHumanoid(ctx,iso,t,{modular,scale=1,state=t.state,progress=0,archetype='warrior'}={}) {
  const {compiled,images}=modular,definition=compiled.definition;
  if(definition.source.status==='DEV_ONLY'&&!modular.allowDev)throw Error('Development sprites are not approved runtime art');
