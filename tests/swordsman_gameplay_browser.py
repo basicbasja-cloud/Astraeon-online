@@ -3,7 +3,7 @@ import argparse
 import base64
 import json
 from pathlib import Path
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Error as PlaywrightError, sync_playwright
 
 def capture_action(page, clip, key, state, column, output):
     page.evaluate('async clip=>{await AstraeonSwordsmanDevelopment.prepare(clip)}', clip)
@@ -35,8 +35,11 @@ def capture_action(page, clip, key, state, column, output):
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--url', default='http://127.0.0.1:8011')
 parser.add_argument('--body', default='male')
+parser.add_argument('--allow-pending-v3', action='store_true', help='Record explicit V3 pending/fallback clips; do not claim a complete character')
 parser.add_argument('--output', type=Path, default=Path('/tmp/astraeon-swordsman-gameplay'))
 args = parser.parse_args(); args.output.mkdir(parents=True, exist_ok=True)
+if args.allow_pending_v3 and args.body != 'v3-painted-v2':
+    parser.error('--allow-pending-v3 currently supports the v3-painted-v2 development candidate')
 errors = []; samples = {}
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', headless=True,
@@ -81,11 +84,28 @@ with sync_playwright() as p:
         page.keyboard.up('Alt')
         page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Idle"')
     page.keyboard.down('d')
-    page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Run"')
-    page.screenshot(path=str(args.output/'Run.png')); page.keyboard.up('d')
+    if args.allow_pending_v3:
+        page.wait_for_function('AstraeonQA.snapshot().animation.state==="run" && AstraeonSwordsmanDevelopment.snapshot().currentClip==="Walk"')
+        run_result = {'gameplay_state':'run', 'rendered_clip':'Walk', 'status':'PENDING_RUN_USING_WALK_FALLBACK'}
+        page.screenshot(path=str(args.output/'Run-WalkFallback.png'))
+    else:
+        page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Run"')
+        run_result = True
+        page.screenshot(path=str(args.output/'Run.png'))
+    page.keyboard.up('d')
     page.wait_for_function('AstraeonSwordsmanDevelopment.snapshot().currentClip==="Idle"')
     attack_capture = capture_action(page, 'BasicAttack', 'f', 'attack', 6, args.output/'BasicAttack.png')
-    skill_capture = capture_action(page, 'SkillAction', '4', 'cast', 6, args.output/'SkillAction.png')
+    if args.allow_pending_v3:
+        try:
+            page.evaluate('async()=>{await AstraeonSwordsmanDevelopment.prepare("SkillAction")}')
+        except PlaywrightError as error:
+            if 'Clip has not passed visual production' not in str(error):
+                raise
+            skill_capture = {'status':'PENDING_SKILL_NOT_CAPTURED'}
+        else:
+            skill_capture = capture_action(page, 'SkillAction', '4', 'cast', 6, args.output/'SkillAction.png')
+    else:
+        skill_capture = capture_action(page, 'SkillAction', '4', 'cast', 6, args.output/'SkillAction.png')
     appearance = page.evaluate('AstraeonSwordsmanDevelopment.snapshot().appearance')
     # Leave the game first: its pagehide handler intentionally flushes the
     # live save. Writing a fixture immediately before reload would be replaced.
@@ -101,9 +121,9 @@ with sync_playwright() as p:
     page.screenshot(path=str(args.output/'mobile.png'))
     assert not errors, errors
     report = {'bodyVariant':args.body,'classId':'Swordsman','explicitDevelopmentFlag':True,
-              'actualPlayerRenderer':True,'idle':idle,'walkDirections':samples,'run':True,'basicAttack':attack_capture,'skillAction':skill_capture,
+              'actualPlayerRenderer':True,'idle':idle,'walkDirections':samples,'run':run_result,'basicAttack':attack_capture,'skillAction':skill_capture,
               'gameplayEquipmentIndependent':True,'mobileViewport':[390,844],
               'ownerApproval':'NOT_APPROVED','errors':errors}
     (args.output/'results.json').write_text(json.dumps(report, indent=2)+'\n')
     browser.close()
-print('PASS explicit Swordsman player: Idle, eight Walk directions, Run, BasicAttack, SkillAction, equipment independence and mobile capture')
+print('PASS development player checks; inspect results.json for explicit pending clips and visual limitations' if args.allow_pending_v3 else 'PASS explicit Swordsman player: Idle, eight Walk directions, Run, BasicAttack, SkillAction, equipment independence and mobile capture')
