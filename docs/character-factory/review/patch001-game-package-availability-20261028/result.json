@@ -1,0 +1,90 @@
+{
+  "status": "GAME_CREATION_PACKAGE_AVAILABILITY_DIAGNOSTIC",
+  "repository_checkout": "sparse checkout; HEAD tree inspected individually for each requested path",
+  "packages": [
+    {
+      "class": "swordsman",
+      "sex": "male",
+      "path": "/assets/characters/swordsman-male-patch001/sprite.json",
+      "http_status": 404,
+      "present_in_head_tree": false
+    },
+    {
+      "class": "swordsman",
+      "sex": "female",
+      "path": "/assets/characters/swordsman-female-patch001/sprite.json",
+      "http_status": 404,
+      "present_in_head_tree": false
+    },
+    {
+      "class": "mage",
+      "sex": "male",
+      "path": "/assets/characters/mage-male-patch001/sprite.json",
+      "http_status": 404,
+      "present_in_head_tree": false
+    },
+    {
+      "class": "mage",
+      "sex": "female",
+      "path": "/assets/characters/mage-female-patch001/sprite.json",
+      "http_status": 404,
+      "present_in_head_tree": false
+    },
+    {
+      "class": "archer",
+      "sex": "male",
+      "path": "/assets/characters/archer-male-patch001/sprite.json",
+      "http_status": 404,
+      "present_in_head_tree": false
+    },
+    {
+      "class": "archer",
+      "sex": "female",
+      "path": "/assets/characters/archer-female-patch001/sprite.json",
+      "http_status": 404,
+      "present_in_head_tree": false
+    }
+  ],
+  "classes": [
+    {
+      "class": "Swordsman",
+      "selected": "0",
+      "create_disabled": true,
+      "hint": "Swordsman \u00b7 Resolve \u00b7 Base Skills + one compatible Node per skill"
+    },
+    {
+      "class": "Mage",
+      "selected": "12",
+      "create_disabled": true,
+      "hint": "Mage \u00b7 Mana \u00b7 Base Skills + one compatible Node per skill"
+    },
+    {
+      "class": "Archer",
+      "selected": "3",
+      "create_disabled": true,
+      "hint": "Archer \u00b7 Focus \u00b7 Base Skills + one compatible Node per skill"
+    }
+  ],
+  "http_errors": [
+    {
+      "url": "http://127.0.0.1:8011/assets/characters/swordsman-male-patch001/sprite.json",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8011/assets/characters/swordsman-male-patch001/sprite.json",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8011/assets/characters/mage-male-patch001/sprite.json",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8011/assets/characters/archer-male-patch001/sprite.json",
+      "status": 404
+    }
+  ],
+  "page_errors": [],
+  "gameplay_tested": false,
+  "visual_acceptance": false,
+  "runtime_admitted": false
+}
