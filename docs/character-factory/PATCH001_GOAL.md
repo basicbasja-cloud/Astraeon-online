@@ -1,7 +1,9 @@
-# Active goal: playable patch 0.0.1 characters
+# Patch 0.0.1 character goal — paused
+
+**Source of truth:** [PATCH001_MASTER_PLAN.md](PATCH001_MASTER_PLAN.md). The owner paused implementation to review the plan. Older ACTIVE statements below are historical; resume only on a new owner instruction.
 
 Owner instruction: 2026-10-27. Continue until the agreed plan is fulfilled.
-This goal is ACTIVE again by owner instruction, not complete. Current imported coverage is 2/96 jobs;
+This goal is paused by owner instruction and is not complete. Current imported coverage is 2/96 jobs;
 zero newly complete characters. Source motion, tests, imports and exact pixel
 reconstruction alone do not constitute acceptance.
 
@@ -158,3 +160,7 @@ The runtime packer no longer accepts a longer imported timeline by silently sele
 ## Active continuation — explicit V3 gameplay probe (28 October 2026)
 
 The opt-in `v3-painted-v2` browser probe now checks the development player in Wayfarer Capital without waiting for an unavailable Run clip. It recorded eight walking directions and one BasicAttack frame, with no page errors; Run is explicitly recorded as Walk fallback and SkillAction as pending. This is not a seamless-motion, trail or six-character package approval. See `review/patch001-swordsman-development-gameplay-20261028`; goal remains ACTIVE at0/6 newly complete characters and2/96 technical imports.
+
+## Owner correction — retire the wrong V3 previews (28 October 2026)
+
+The owner reaffirmed the original tall four-direction Swordsman as the visual baseline and requested removal of the unrelated small development character. In the current working tree, the three `swordsman-male-v3*` runtime preview packages were moved intact into `authoring/characters/factory-v3/unused` and their old development URL selections were disabled; these moves and code changes were not committed or pushed when the owner paused work. Original Swordsman masters/cutouts and motion guides remain preserved. Prior V3 screenshots and captures are historical evidence, not the character to use. The Mage source-frame bounce and size drift are still unresolved; no visual or runtime acceptance is claimed. Goal is paused for plan review, 0/6 newly complete characters and 2/96 technical imports.
