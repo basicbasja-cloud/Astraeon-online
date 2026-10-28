@@ -1,0 +1,28 @@
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+import numpy as np
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'tools/character_factory_v3'))
+from propose_sword_nw15_weapon_ownership_v2 import build, BASE, ORDER
+
+class SwordOwnershipV2Tests(unittest.TestCase):
+ def test_same_frame_recomposes_and_body_return_is_nonempty(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   out=Path(tmp)/'candidate';report=build(out)
+   self.assertTrue(report['master_rgba_exact']);self.assertFalse(report['art_approved']);self.assertFalse(report['runtime_admitted'])
+   self.assertGreater(report['transferred_pixels_by_prior_role']['WeaponHandOccluder_to_BodyCostume'],0)
+   old=BASE/'review/preserved-swordsman-canonical-cutouts-20261023/BasicAttack/NW'
+   orig=np.array(Image.open(old/'BodyCostume/015.png').convert('RGBA'));new=np.array(Image.open(out/'layers/BodyCostume.png').convert('RGBA'))
+   self.assertGreater(np.count_nonzero((orig[:,:,3]==0)&(new[:,:,3]>0)),0)
+   self.assertEqual(Image.open(out/'layers/HeadHair.png').convert('RGBA').tobytes(),Image.open(old/'HeadHair/015.png').convert('RGBA').tobytes())
+   composite=Image.new('RGBA',(768,768))
+   for role in ORDER:composite.alpha_composite(Image.open(out/'layers'/f'{role}.png').convert('RGBA'))
+   self.assertEqual(composite.tobytes(),Image.open(out/'master.png').convert('RGBA').tobytes())
+ def test_existing_output_is_not_overwritten(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   with self.assertRaisesRegex(ValueError,'fresh'):build(Path(tmp))
+
+if __name__=='__main__':unittest.main()
