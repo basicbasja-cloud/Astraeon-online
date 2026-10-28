@@ -154,3 +154,7 @@ A real Chromium creation-screen check shows all six configured patch001 sprite-d
 ## Active continuation — sequence-length gate (28 October 2026)
 
 The runtime packer no longer accepts a longer imported timeline by silently selecting the prefix in a requested direction. Each requested view must have exactly the target action's indices; additional real directions can still be present. The new regression and full factory suite pass (369 tests, including Blender). This is a technical gate, not pose/visual/semantic approval. See `review/patch001-runtime-sequence-preflight-20261028`; goal remains ACTIVE at0/6 newly complete characters and2/96 technical imports.
+
+## Active continuation — explicit V3 gameplay probe (28 October 2026)
+
+The opt-in `v3-painted-v2` browser probe now checks the development player in Wayfarer Capital without waiting for an unavailable Run clip. It recorded eight walking directions and one BasicAttack frame, with no page errors; Run is explicitly recorded as Walk fallback and SkillAction as pending. This is not a seamless-motion, trail or six-character package approval. See `review/patch001-swordsman-development-gameplay-20261028`; goal remains ACTIVE at0/6 newly complete characters and2/96 technical imports.
