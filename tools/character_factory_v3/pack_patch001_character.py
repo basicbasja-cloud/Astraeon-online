@@ -84,7 +84,12 @@ def preflight(character,config,ledger,base,timings):
         receipt=read(folder/'import-receipt.json');binding=read(folder/'bindings.json')
         expected={(d,i)for d in klass['actions'][action]['authored_directions']for i in range(klass['actions'][action]['frames'])};actual={(f['direction'],f['index'])for f in binding['frames']}
         if any(not set(CORE)<=set(f.get('assets',{})) for f in binding['frames']):errors.append(action+': required visible cutout slot missing');continue
-        if receipt.get('paint_job')!=job['id']or binding.get('paint_job')!=job['id']or binding.get('character')!=character['id']or len(actual)!=len(binding['frames'])or receipt.get('guide_job')!=job['guide_job']or not receipt.get('all_frames_present')or receipt.get('recomposition_mismatches')!=0 or not expected<=actual:errors.append(action+': stale or incomplete import');continue
+        # Additional directions can be shared when each requested view has the
+        # complete same sequence. Never silently truncate a longer source
+        # action to its prefix: a matching name is not a pose/timing proof.
+        requested_directions=set(klass['actions'][action]['authored_directions'])
+        requested_records={(d,i)for d,i in actual if d in requested_directions}
+        if receipt.get('paint_job')!=job['id']or binding.get('paint_job')!=job['id']or binding.get('character')!=character['id']or len(actual)!=len(binding['frames'])or receipt.get('guide_job')!=job['guide_job']or not receipt.get('all_frames_present')or receipt.get('recomposition_mismatches')!=0 or requested_records!=expected:errors.append(action+': stale, incomplete or incompatible imported sequence');continue
         try:
             validate_timing(klass['actions'][action],timings[action])
             if action in ['BasicAttack','SkillAction','SpinAttack','ArrowRain','TrapPlace','CastRelease']and not any(e.get('name')in ['impact','projectileRelease','release']for e in timings[action].get('events',[])):raise ValueError('Missing explicit contact/release marker')

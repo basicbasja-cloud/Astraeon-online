@@ -41,6 +41,28 @@ class RuntimePackTests(unittest.TestCase):
         with tempfile.TemporaryDirectory()as temp:
             for character in config['characters']:
                 with self.assertRaisesRegex(ValueError,'actual cutout import missing'):preflight(character,config,ledger,Path(temp),{})
+    def test_preflight_does_not_truncate_longer_source_sequence(self):
+        character={'id':'mage-test','class':'Mage'}
+        action={'frames':2,'loop':False,'authored_directions':['SW']}
+        config={'classes':{'Mage':{'actions':{'CastRelease':action}}}}
+        job={'id':'source','character':'mage-test','guide_job':'guide','actions':['CastRelease']}
+        ledger={'paint_jobs':{'source':job}}
+        timing={'CastRelease':{'durations':[50,50],'events':[{'name':'release','timeMs':50,'phase':.5,'frameIndex':1}]}}
+        roles={'BodyCostume':'a','HeadHair':'b','Weapon':'c'}
+        with tempfile.TemporaryDirectory() as tmp:
+            base=Path(tmp);folder=base/'cutouts/source';folder.mkdir(parents=True)
+            receipt={'paint_job':'source','guide_job':'guide','all_frames_present':True,'recomposition_mismatches':0}
+            (folder/'import-receipt.json').write_text(json.dumps(receipt))
+            def save(indices):
+                frames=[{'direction':d,'index':i,'assets':roles} for d,i in indices]
+                (folder/'bindings.json').write_text(json.dumps({'paint_job':'source','character':'mage-test','frames':frames}))
+            save([('SW',0),('SW',1),('SW',2)])
+            with self.assertRaisesRegex(ValueError,'incompatible imported sequence'):
+                preflight(character,config,ledger,base,timing)
+            # Another real camera does not change this view's complete timeline.
+            save([('SW',0),('SW',1),('NW',0),('NW',1)])
+            self.assertIn('CastRelease',preflight(character,config,ledger,base,timing))
+
     def test_runtime_policy_is_generated_from_current_factory_contract(self):
         config=json.loads((ROOT/'authoring/characters/factory-v3/patch-0.0.1/factory.json').read_text());self.assertEqual((ROOT/'patch001-characters.js').read_text(),render(config))
     def test_complete_synthetic_import_packs_into_valid_runtime_metadata(self):
