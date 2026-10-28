@@ -1,0 +1,7 @@
+from pathlib import Path
+from PIL import Image
+import numpy as np,json,hashlib
+from scipy import ndimage
+p=Path('authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-staff-alternate-pilot-20261028');source=p/'raw.png';a=np.array(Image.open(source).convert('RGBA'));labels,n=ndimage.label(a[:,:,3]>0,structure=np.ones((3,3)));sizes=np.bincount(labels.ravel());sizes[0]=0;main=labels==sizes.argmax();removed=(a[:,:,3]>0)&~main
+if removed.any()and int(a[:,:,3][removed].max())>16:raise ValueError('Detached significant visible pixels require visual review')
+a[~main]=0;a[a[:,:,3]==0]=0;y,x=np.where(main);bounds=[max(0,int(x.min())-8),max(0,int(y.min())-8),min(a.shape[1],int(x.max())+9),min(a.shape[0],int(y.max())+9)];Image.fromarray(a).crop(tuple(bounds)).save(p/'staff-cutout.png');receipt={'status':'INDEPENDENT_STAFF_VISIBLE_ASSET_DRAFT_NOT_ATTACHED_TO_RIG','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'cutout_sha256':hashlib.sha256((p/'staff-cutout.png').read_bytes()).hexdigest(),'source_canvas':[a.shape[1],a.shape[0]],'crop_bounds':bounds,'detached_faint_pixels_removed':int(removed.sum()),'max_removed_alpha':int(np.array(Image.open(source).convert('RGBA'))[:,:,3][removed].max())if removed.any()else 0,'foreground_scale_changed':False,'hand_behind_staff_underpainting_not_completed':True,'grip_anchor_not_calibrated':True,'runtime_admitted':False};(p/'cutout-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');(p/'extract-source.py').write_bytes(Path(__file__).read_bytes());print(json.dumps(receipt))
