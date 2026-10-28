@@ -1,0 +1,12 @@
+from pathlib import Path
+from PIL import Image,ImageDraw
+import numpy as np,json,hashlib,sys
+import torch
+sys.path.insert(0,'/workspace/.tools/SAM2')
+from sam2.build_sam import build_sam2
+from sam2.sam2_image_predictor import SAM2ImagePredictor
+torch.set_num_threads(3)
+b=Path('authoring/characters/factory-v3/patch-0.0.1');src=b/'review/mage-staff-body-underlay-pilot-v2-20261028/Master000-underpaint.png';out=b/'review/mage-underpaint000-head-sam-study-20261028';out.mkdir(exist_ok=False);cp=Path('/workspace/.tools/SAM2/sam2.1_hiera_tiny.pt');im=Image.open(src).convert('RGBA');a=np.array(im);background=Image.new('RGBA',im.size,'#ddd');background.alpha_composite(im);crop=(320,300,430,410);box=(339,319,405,382);pos=[[362,340],[380,348],[382,369]];neg=[[382,382],[405,380],[340,379]];predictor=SAM2ImagePredictor(build_sam2('configs/sam2.1/sam2.1_hiera_t.yaml',str(cp),device='cpu',apply_postprocessing=False));predictor.set_image(np.array(background.crop(crop).convert('RGB')));masks,scores,_=predictor.predict(point_coords=np.array(pos+neg)-np.array(crop[:2]),point_labels=np.array([1]*len(pos)+[0]*len(neg)),box=np.array(box)-np.array(crop[:2]*2),multimask_output=True);page=Image.new('RGBA',(1200,450),'#ddd');rows=[]
+for i,m in enumerate(masks):
+ full=np.zeros((768,768),bool);full[crop[1]:crop[3],crop[0]:crop[2]]=m;full&=a[:,:,3]>0;h=a.copy();h[~full]=0;Image.fromarray(h).save(out/f'head-{i}.png');Image.fromarray(full.astype('uint8')*255).save(out/f'mask-{i}.png');bg=Image.new('RGBA',(768,768),'#ddd');bg.alpha_composite(Image.fromarray(h));tile=bg.crop((335,310,415,390)).resize((400,400),Image.Resampling.NEAREST);ImageDraw.Draw(tile).text((4,4),f'proposal {i}, score {scores[i]:.2f}',fill='black');page.alpha_composite(tile,(i*400,0));rows.append({'index':i,'score':float(scores[i]),'pixels':int(full.sum()),'positive_included':[bool(full[y,x])for x,y in pos],'negative_included':[bool(full[y,x])for x,y in neg]})
+page.crop((0,0,1200,400)).convert('RGB').save(out/'contact.jpg',quality=98);(out/'receipt.json').write_text(json.dumps({'status':'SAME_FRAME_HEAD_PROPOSALS_NEED_MANUAL_SEMANTIC_REVIEW','source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'checkpoint_sha256':hashlib.sha256(cp.read_bytes()).hexdigest(),'crop':crop,'box':box,'positive':pos,'negative':neg,'proposals':rows,'runtime_admitted':False},indent=2)+'\n');(out/'producer.py').write_bytes(Path(__file__).read_bytes());print(json.dumps(rows))

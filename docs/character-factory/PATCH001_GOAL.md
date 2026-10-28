@@ -136,3 +136,11 @@ The visibly disconnected shared head was addressed in a 24-frame study with twel
 ## Active continuation — Mage separate staff single-frame pilot (28 October 2026)
 
 An independently painted clean staff and a visually different crescent variant have been composed with a bounded same-frame staff-free underpaint and protected glove for Mage female SW frame000. Four visible role proposals plus hand occluder reproduce their underpaint master exactly; a fresh rebuild matches five RGBA outputs and the single-frame weapon swap changes no pixels outside the weapon union. Head boundary, hidden surfaces, actual guide grip alignment, all other frames/directions, game transitions and swaps remain unapproved. This is not a complete action. See `review/patch001-mage-weapon-swap-single-frame-20261028/README.md`. Goal remains active, coverage0/6 newly complete characters and2/96 technical imports.
+
+## Active continuation — Mage frame000 same-frame head ownership (28 October 2026)
+
+The same-frame staff-underpainted Mage female SW frame000 now has a revised head proposal: upper original hair ownership is retained and detached lower mask components return to the body/collar. Its BodyCostume, HeadHair, Weapon and WeaponHandOccluder reconstruct the underpaint master without the weapon; both staff variants reuse the same non-weapon files. Five RGBA exports reproduce exactly. Head/collar semantics, hidden surfaces, grip, other frames/directions, gameplay, motion continuity and all other characters remain open. See `review/patch001-mage-head-ownership-single-frame-20261028/README.md`; coverage is unchanged at0/6 and2/96.
+
+## Active continuation — Mage foot audit (28 October 2026)
+
+Two own-frame bounded shoe paintings for Mage female SW frame005, including a source-guide contact-marked attempt, did not improve the raster sole alignment diagnostic and are rejected as fixes. Source ankle landmarks are close to the painted ankles; the diagnostic is affected by toe shape and is not a certified contact landmark. Do not move or freeze a leg to satisfy it. See `review/patch001-mage-foot-paint-failed-audit-20261028/README.md`. Continue with reviewed contact landmarks and motion continuity; no coverage change.
