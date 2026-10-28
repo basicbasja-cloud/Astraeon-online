@@ -20,9 +20,9 @@ const clipsFor=cls=>PATCH.clipsFor(cls);
 function cosmetics(config,cls){const kind=classId(cls);if(!kind)throw Error('No 0.0.1 sprite class for '+cls);return {HeadHair:config.hair,BodyCostume:config.outfit==='traveler'?kind+'-traveler':config.outfit}}
 async function load(config,cls,animationIds=['Idle']){
  config=normalize(config)||defaults();const kind=classId(cls);if(!kind)throw Error('Unsupported cosmetic class');
- const developmentBody=scope.AstraeonSwordsmanDevelopment?.snapshot().developmentBody;const paintedCandidate=['v3-painted','v3-painted-v2'].includes(developmentBody)&&kind==='swordsman'&&config.bodyVariant==='male';const candidateId=developmentBody==='v3-painted-v2'?'swordsman-male-v3-painted-v2':'swordsman-male-v3-painted';const definition=paintedCandidate?`./assets/characters/${candidateId}/sprite.json`:PATCH.characterFor(cls,config.bodyVariant).definition;const options={allowDev:true,bodyVariant:config.bodyVariant,animationIds};if(!paintedCandidate)options.cosmeticLoadout=cosmetics(config,cls);const visual=await scope.AstraeonModularSprites.load(definition,options);
- if(!paintedCandidate){const errors=PATCH.validatePackage(visual.compiled.definition,cls,config.bodyVariant);if(errors.length)throw Error(errors.join('; '))}
- for(const id of (paintedCandidate?['Idle','Walk','BasicAttack']:clipsFor(cls)))if(!visual.compiled.definition.clips[id]||visual.compiled.definition.clips[id].tags?.includes('PENDING_PRODUCTION'))throw Error('Incomplete animation '+id);
+ const definition=PATCH.characterFor(cls,config.bodyVariant).definition;const options={allowDev:true,bodyVariant:config.bodyVariant,animationIds,cosmeticLoadout:cosmetics(config,cls)};const visual=await scope.AstraeonModularSprites.load(definition,options);
+ const errors=PATCH.validatePackage(visual.compiled.definition,cls,config.bodyVariant);if(errors.length)throw Error(errors.join('; '));
+ for(const id of clipsFor(cls))if(!visual.compiled.definition.clips[id]||visual.compiled.definition.clips[id].tags?.includes('PENDING_PRODUCTION'))throw Error('Incomplete animation '+id);
  return visual;
 }
 let active=null,activeClass=null,activeConfig=null,selection=0,loadError=null,current='Idle',requested='Idle',clipTicket=0;

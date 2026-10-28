@@ -1,5 +1,7 @@
 # Patch 0.0.1 character packages in the real game
 
+**Historical evidence:** the small V3 development previews were retired and moved to `authoring/characters/factory-v3/unused` at the owner’s request. The old V3 preview URLs and capture commands no longer launch them. Use the original tall Swordsman as the visual baseline.
+
 A read-only Chromium check loaded the normal game creation screen, selected Swordsman, Mage and Archer in turn, and observed that **Begin your journey is disabled for all three**. The six class/sex `sprite.json` paths referenced by the current patch registry returned HTTP 404. `git cat-file` also found that each path is absent from the current HEAD tree, so these six missing files are not solely a consequence of this sparse checkout. The creation UI attempted the default male package for each class; female package availability was checked by direct HTTP and Git-tree probes, not through gameplay.
 
 [Mage creation screenshot](mage-creation.png) · [Swordsman](swordsman-creation.png) · [Archer](archer-creation.png) · [HTTP, tree and UI results](result.json)

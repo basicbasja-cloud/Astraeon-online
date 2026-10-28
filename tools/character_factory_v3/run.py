@@ -470,6 +470,8 @@ def build_motion_pipeline(character_id: str, blender: str, force: bool = False) 
         qa["game_scale_contact_sheets"][action] = str(game_sheet.relative_to(REPO_ROOT))
     write_json(qa_path, qa)
 
+    if config["output"]["runtime_character_id"] in {"swordsman-male-v3", "swordsman-male-v3-painted", "swordsman-male-v3-painted-v2"}:
+        raise RuntimeError("Retired preview runtime ID: choose a new approved character output; preserved motion guides remain available")
     paint_handoff = ManualHandoffProvider().prepare(
         repo_root=REPO_ROOT,
         config_path=config_path,

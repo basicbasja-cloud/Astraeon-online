@@ -16,14 +16,14 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['skeleton','rig','reference-guide','output']:p.add_argument('--'+name,type=Path,required=True)
-    p.add_argument('--groups',nargs='+',required=True);p.add_argument('--directions',nargs='+',default=['NE']);a=p.parse_args(sys.argv[sys.argv.index('--')+1:])
+    p.add_argument('--mesh-name',default='F01_BodyOutfit');p.add_argument('--groups',nargs='+',required=True);p.add_argument('--directions',nargs='+',default=['NE']);a=p.parse_args(sys.argv[sys.argv.index('--')+1:])
     if a.output.exists():raise ValueError('Choose a fresh isolated anatomy guide')
     reference=json.loads((a.reference_guide/'pilot-receipt.json').read_text());core=a.reference_guide/'renderer-source.py'
     if len(a.directions)!=len(set(a.directions))or set(a.directions)-set(reference['views']):raise ValueError('Unknown or duplicate real camera direction')
     if sha(core)!=reference['implementation_sha256']or sha(a.rig)!=reference['rig_sha256']:raise ValueError('Frozen camera/rig implementation changed')
     frozen={str(f):sha(f)for f in [a.skeleton,a.rig,a.reference_guide/'pilot-receipt.json',core]};implementation=sha(__file__);counts=[]
     def render_part(scene,rig,camera,frame):
-        body=bpy.data.objects['F01_BodyOutfit'];indices={body.vertex_groups[n].index for n in a.groups if n in body.vertex_groups}
+        body=bpy.data.objects[a.mesh_name];indices={body.vertex_groups[n].index for n in a.groups if n in body.vertex_groups}
         if len(indices)!=len(a.groups):raise ValueError('Canonical mesh is missing selected anatomical weights')
         depsgraph=bpy.context.evaluated_depsgraph_get();evaluated=body.evaluated_get(depsgraph);mesh=evaluated.to_mesh(preserve_all_data_layers=True,depsgraph=depsgraph)
         weights=[sum(g.weight for g in vertex.groups if g.group in indices)for vertex in mesh.vertices]
@@ -51,7 +51,7 @@ def main():
     sys.argv=[sys.argv[0],'--','--skeleton',str(a.skeleton),'--rig',str(a.rig),'--output',str(a.output),'--directions',*a.directions,'--weapon',reference['weapon']];scope['main']()
     internal=a.output/'pilot-receipt.json';receipt=json.loads(internal.read_text());internal.unlink()
     if sha(__file__)!=implementation or any(sha(Path(k))!=v for k,v in frozen.items()):raise ValueError('Native anatomy inputs changed')
-    receipt.update({'status':'ISOLATED_NATIVE_ANATOMY_GUIDE_NOT_FINAL_ART','groups':a.groups,'selected_geometry':counts,'input_sha256':frozen,'canonical_implementation_sha256':sha(core),'implementation_sha256':implementation,'camera_changed':False,'rig_modified':False,'runtime_admitted':False})
+    receipt.update({'status':'ISOLATED_NATIVE_ANATOMY_GUIDE_NOT_FINAL_ART','mesh_name':a.mesh_name,'groups':a.groups,'selected_geometry':counts,'input_sha256':frozen,'canonical_implementation_sha256':sha(core),'implementation_sha256':implementation,'camera_changed':False,'rig_modified':False,'runtime_admitted':False})
     (a.output/'part-guide-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n');(a.output/'part-renderer-source.py').write_bytes(Path(__file__).read_bytes())
     print('ISOLATED_NATIVE_PART_CAPTURES',len(counts),flush=True)
 

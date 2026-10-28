@@ -29,7 +29,7 @@ CELL = 160
 SHEET = CELL * len(DIRECTIONS)
 ALPHA_THRESHOLD = 128
 GEOMETRY_ALPHA_THRESHOLD = 8
-DEFAULT_CANDIDATE = "swordsman-male-v3-painted"
+RETIRED_CANDIDATES = frozenset({"swordsman-male-v3", "swordsman-male-v3-painted", "swordsman-male-v3-painted-v2"})
 EMPTY_PARTS = {
     "empty-hair": "Hair",
     "empty-outfit": "Outfit",
@@ -278,6 +278,8 @@ def write_candidate(
     source_definition_path: Path,
     normalized: dict[str, Image.Image],
 ) -> Path:
+    if candidate_id in RETIRED_CANDIDATES:
+        raise ValueError("Retired character IDs cannot be regenerated in the runtime directory")
     definition = make_definition(json.loads(source_definition_path.read_text(encoding="utf-8")), candidate_id)
     staging = output_root / "runtime-source"
     for part_id in definition["parts"]:
@@ -339,7 +341,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository", type=Path, default=Path(__file__).resolve().parents[2])
     parser.add_argument("--source-definition", type=Path, required=True)
-    parser.add_argument("--candidate-id", default=DEFAULT_CANDIDATE)
+    parser.add_argument("--candidate-id", required=True)
     parser.add_argument("--output-root", type=Path, required=True)
     parser.add_argument("--evidence-dir", type=Path, required=True)
     parser.add_argument("--master-prompt", type=Path, required=True)
