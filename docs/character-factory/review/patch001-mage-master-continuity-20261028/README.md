@@ -1,0 +1,9 @@
+# Mage SW master continuity and staff-underpaint studies
+
+Frame 002 and frame 003 show visible changes in character proportions, head/hair and costume even though the projected source guide head moves only about 0.3 authoring pixel, the pelvis about 0.5 pixel and each ankle less than 0.1 pixel. Other joints do move and neither an ankle point nor a sole statistic proves planted contact. Comparing the painted images at the same viewport identifies an art-continuity problem that has to be resolved before expanding the cutouts.
+
+[Original frames and rejected frame 003 redraw](body-comparison.jpg) · [frame 002 staff underpaint](staff-underpaint-002.jpg) · [frame 003 staff underpaint after expanding the mask](staff-underpaint-003.jpg) · [24-frame own-head diagnostic GIF](../patch001-mage-own-frame-head-recovery-20261028/own-frame-normal.gif)
+
+The attempted frame 003 redraw used the same-frame rig overlay and previous frame as references. Its body, hair and costume still vary substantially, so it is **rejected** and has not replaced any master. Frame 003's initial staff mask also left the crystal tip behind; the expanded-mask retry removes that visible remnant, but both staff underpaints remain studies tied to unapproved masters. Neither their hand ownership nor an animation sequence is approved.
+
+Raw images, prompts, input hashes, masks and producer scripts are retained under `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-frame003-body-continuity-study-20261028`, the corresponding `mage-staff-body-underlay-frame002/003-20261028` candidates, and matching `review` directories. Rebuild the body comparison with `python authoring/characters/factory-v3/patch-0.0.1/review/mage-frame003-body-continuity-study-20261028/producer.py`. Generation model and seed are not exposed. Coverage remains **0/6 newly complete characters, 2/96 technical imports**; none of these studies is admitted to game.
