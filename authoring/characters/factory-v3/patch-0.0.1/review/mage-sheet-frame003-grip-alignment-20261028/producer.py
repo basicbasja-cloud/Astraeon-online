@@ -1,0 +1,10 @@
+from pathlib import Path
+from PIL import Image,ImageDraw
+import hashlib,json,numpy as np
+b=Path('authoring/characters/factory-v3/patch-0.0.1');p=b/'painted-candidates/mage-sheet-frame003-grip-alignment-20261028';o=b/'review/mage-sheet-frame003-grip-alignment-20261028';base=Image.open(p/'target.png').convert('RGBA');raw=Image.open(p/'raw.png').convert('RGBA').convert('RGBa').resize((1024,1024),Image.Resampling.LANCZOS).convert('RGBA');mask=Image.open(p/'mask.png').convert('L');result=Image.composite(raw,base,mask);result.save(o/'candidate.png');a=np.asarray(base);z=np.asarray(result);changed=np.any(a!=z,axis=2);assert not np.any(changed & (np.asarray(mask)==0));guide=Image.open(p/'guide.png').convert('RGBA');page=Image.new('RGBA',(1600,440),'#ddd')
+for j,(name,im) in enumerate([('guide',guide),('source',base),('proposed edit',result),('guide + edit',result)]):
+ tile=Image.new('RGBA',(400,400),'#ddd')
+ if j==3:
+  tile.alpha_composite(guide.resize((400,400),Image.Resampling.LANCZOS));im=im.copy();im.putalpha(im.getchannel('A').point(lambda x:x//2))
+ tile.alpha_composite(im.resize((400,400),Image.Resampling.LANCZOS));ImageDraw.Draw(tile).text((2,2),name,fill='black');page.alpha_composite(tile,(j*400,0))
+page.convert('RGB').save(o/'comparison.jpg',quality=97);sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest();(o/'receipt.json').write_text(json.dumps({'status':'REJECTED_STAFF_REMAINS_MISALIGNED_WITH_GUIDE','visual_findings':['Staff shaft and gripping hand remain visibly displaced relative to the guide despite the targeted edit.','The source four-pose sheet itself lacks intermediate frames and is unapproved.'],'raw_sha256':sha(p/'raw.png'),'input_sha256':sha(p/'inputs.json'),'mask_sha256':sha(p/'mask.png'),'changed_pixels':int(changed.sum()),'outside_mask_changed':0,'whole_sequence_approved':False,'runtime_admitted':False},indent=2)+'\n');(p/'generation-provenance.json').write_text(json.dumps({'raw_sha256':sha(p/'raw.png'),'input_sha256':sha(p/'inputs.json'),'prompt_sha256':sha(p/'prompt.txt'),'model_and_seed':'not exposed'},indent=2)+'\n')
