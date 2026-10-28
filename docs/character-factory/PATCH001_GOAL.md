@@ -120,3 +120,7 @@ All24 Mage SW raw paintings are saved; own-frame anatomy, robe and shoe continui
 ## Active continuation — filtered cutout support (28 October 2026)
 
 368 factory tests pass. Matching source-part mask coverage to the bicubic master filters reduces old hair edge residue in the Mage 24-frame study; mixed boundaries, neck/collar, staff occlusion and body continuity still need repair. Archer bow proposal has64/96 provisional curves and32 unresolved, with string, arrow and hand ownership unfinished. No new runtime admission; coverage remains2/96 technical imports and0/6 newly complete characters. See `review/patch001-filtered-head-and-bow-study-20261028/README.md`.
+
+## Owner correction — detached head (28 October 2026)
+
+The user rejected the shared-head preview because the neck is visibly disconnected. The v7 shared-head preview is rejected and must not be admitted. `review/mage-female-own-frame-head-recovery-20261028` reconstructs each of the24 original masters from that frame's own HeadHair and BodyRest with zero visible RGBA mismatch, so the invented head/body assembly is removed. Those source paintings still have temporal anatomy drift and do not establish a working replaceable-head variant. Author the missing neck/collar surfaces in the affected frame masters, review weapon occlusion and all transitions, and complete all three classes and both sexes before final delivery. Goal remains active; no new runtime coverage is claimed.
