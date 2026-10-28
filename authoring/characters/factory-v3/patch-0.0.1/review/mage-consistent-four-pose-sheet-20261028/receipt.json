@@ -1,0 +1,84 @@
+{
+  "status": "REJECTED_SOURCE_GUIDE_ALIGNMENT_NOT_PASSED",
+  "visual_findings": [
+    "Staff and hand alignment vary from the guide under a single shared fit, including the shift from frame 002 to 003.",
+    "Four sampled poses omit intermediate frames and cannot establish temporal or foot-contact continuity."
+  ],
+  "raw_sha256": "601f195d1020e2c77d20d5490e559caf1efabfd2d17d15b90812e1c447c04220",
+  "inputs_sha256": "28088464537755b60a2f9371b1e3cb4b9fb0799e9848f958f7729888df4f5f8f",
+  "common_fit_for_all_cells": {
+    "scale": 1.17,
+    "offset": [
+      121,
+      212
+    ],
+    "note": "diagnostic visual fit using first cell staff and outer bounds; not source registration approval"
+  },
+  "frames": [
+    {
+      "frame": 2,
+      "guide_bbox_alpha128": [
+        311,
+        220,
+        650,
+        932
+      ],
+      "paint_bbox_alpha128": [
+        261,
+        220,
+        674,
+        933
+      ]
+    },
+    {
+      "frame": 3,
+      "guide_bbox_alpha128": [
+        311,
+        217,
+        691,
+        932
+      ],
+      "paint_bbox_alpha128": [
+        279,
+        219,
+        694,
+        938
+      ]
+    },
+    {
+      "frame": 6,
+      "guide_bbox_alpha128": [
+        311,
+        204,
+        758,
+        932
+      ],
+      "paint_bbox_alpha128": [
+        237,
+        214,
+        716,
+        912
+      ]
+    },
+    {
+      "frame": 10,
+      "guide_bbox_alpha128": [
+        313,
+        201,
+        761,
+        932
+      ],
+      "paint_bbox_alpha128": [
+        272,
+        213,
+        736,
+        920
+      ]
+    }
+  ],
+  "per_frame_fit": false,
+  "missing_intermediate_frames": true,
+  "head_body_guide_and_grip_reviewed": false,
+  "semantic_cutouts": false,
+  "runtime_admitted": false
+}
