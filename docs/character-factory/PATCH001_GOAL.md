@@ -169,3 +169,8 @@ The owner reaffirmed the original tall four-direction Swordsman as the visual ba
 ## Owner resumed after plan review (28 October 2026)
 
 The owner instructed continuation through the full plan and requested a push and GitHub report at each completed checkpoint. This workspace retains the previously recorded staged preview renames and unstaged edits, including `render_canonical_part_guides.py`. The separate handoff branch `handoff/character-factory-reviewed-20261028` contains a filtered work-in-progress snapshot; it is not a visual or gameplay approval. The remote production branch advanced with a report from another workspace where those files were unavailable. Preserve both histories and the current working tree. Fresh audit: 896/896 baseline hashes match, eight declared pose reuse bindings pass source checks, and coverage inventory remains 114 logical actions / 96 paint jobs / 2 technical imports / 0 completed characters. Mage source-frame drift and size shift remain open.
+
+
+## Retirement handoff and Mage landmark study (28 October 2026)
+
+The retirement handoff was merged to the remote production branch at `be31a085015155b81bfa6ca8584ebd5779a699c6`; local HEAD and the original staged/unstaged changes remain untouched. Reconcile deliberately before replaying. The shared sprite adapter now selects Sprint instead of silently substituting Run (commit `9e8aab8328dbdf561d0d13aacb9fcfc56f8db522`; 49 Node tests passed). Two adjacent landmark-guided Mage master candidates were visually rejected due to scale/anatomy/hand drift; see `review/patch001-mage-landmark-pair-20261028`. Neither candidate is admitted. Technical coverage remains 2/96 jobs and 0/6 characters complete.
