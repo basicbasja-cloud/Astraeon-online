@@ -1,0 +1,64 @@
+{
+  "status": "SINGLE_FRAME_ALTERNATE_WEAPON_PROPOSAL_NOT_APPROVED",
+  "character": "swordsman-male",
+  "direction": "NW",
+  "frame": 15,
+  "source_crop_author_px": [
+    320,
+    430,
+    470,
+    580
+  ],
+  "generated_resolution": [
+    1254,
+    1254
+  ],
+  "mapping": "full 1254-square crop uniformly resampled into the recorded 150-square authoring crop; no per-frame bbox fitting",
+  "source_points_author_px": {
+    "weapon_grip": [
+      353.9799386900417,
+      486.41572390969907
+    ],
+    "weapon_guard": [
+      364.8450704225352,
+      482.66912676056336
+    ],
+    "weapon_tip": [
+      448.169014084507,
+      453.9367323943662
+    ]
+  },
+  "alternate_alpha_at_grip": 255,
+  "hand_alpha_at_grip": 255,
+  "alternate_alpha_at_original_tip": 193,
+  "non_weapon_layers_byte_identical": true,
+  "source_modified": false,
+  "pose_or_canvas_changed": false,
+  "art_approved": false,
+  "runtime_admitted": false,
+  "model_and_seed": "not exposed",
+  "preview": "three-state single-frame asset toggle, not an animation loop",
+  "source_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/layers/WeaponLightBack.png": "4969b58a1b0895fca393e36f8a9b5a86562d236dccb936df7d4082012485123b",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/layers/BodyCostume.png": "cfbf62c8b8d1c586c5aa37f6feea9da056b3d0c7470c19edc196fd44e3c5d6e2",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/layers/WeaponLightFront.png": "4969b58a1b0895fca393e36f8a9b5a86562d236dccb936df7d4082012485123b",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/layers/HeadHair.png": "3dca27f2a75070dc602ce38a64c9ed17b94bc9c82130331c91c679929a4fd033",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/layers/Weapon.png": "2c91710cf35858926f798d1445b19ab918644efcb93ec11f9371fe6272e01ccd",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/layers/WeaponHandOccluder.png": "e5bcefb7709e877bff76e20685df54ed8aca74baa707c2e6c3fe160fba71f5dd",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/master.png": "2241957810001cdc660ae01795e30f26ec96506d511dd130841ea06626f8a3bf",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-nw15-underpaint-v3-proposal-20261028/receipt.json": "fd3110e9ff00b5afaa7e2de57aad04284e3fb29941e284452c46fc34636f5658",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-nw15-alternate-sword-20261028/donor.png": "baabdf4dcb7c4858fa5bcc217bdca3a124e6c4d7f423bbce17c7e665508f6de4",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-nw15-alternate-sword-20261028/reference.png": "55fc5ec44ecc2b5de7992c263900b926e684225b8edf0e57265cbe03ec02ab4a",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-nw15-alternate-sword-20261028/prompt.txt": "a4d1ac647b63aa3f626d147bf5f727aa39e215ad800ae9eb6ad7f04678f0a37b",
+    "authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/NW/annotations.generated.json": "a8b55efb2fe59b3b45f68a349e8d15890c17655909668acd8eabcf8e9f3550de",
+    "authoring/characters/factory-v3/patch-0.0.1/review/preserved-swordsman-canonical-cutouts-20261023/receipt.json": "96f590b1d4604696752027276d1b21fdbe19f4893b448ffd135cd81c80f63d32",
+    "tools/character_factory_v3/propose_sword_nw15_underpaint_v3.py": "2ca257d3974782bf9516433dbf1f5f44c9c4c6f823c4e3919a71e8642dd32d28",
+    "tools/character_factory_v3/propose_sword_nw15_alternate_weapon.py": "8e4e74ac49567a977d7420d5cbebfd0198f430989c8f6af13fe5e4838918b3e8"
+  },
+  "limitations": [
+    "Coverage at a point is not proof of correct grip anatomy or occlusion.",
+    "Underpaint, ownership, alpha edges and the generated sword require visual review.",
+    "One frame/view only: no coherent weapon animation, 4-direction set, actual game test or reusable variant is established.",
+    "Trail alignment for the alternate weapon is not verified."
+  ]
+}

@@ -188,3 +188,8 @@ An Archer male NW frame-11 same-frame far-hand repaint visibly clarifies bow gri
 ## NW frame-15 weapon ownership and underpaint proposals (28 October 2026)
 
 A same-frame V3 ownership proposal moves visible guard/hilt pixels to Weapon and returns selected visible cloth/forearm/leg pixels from WeaponHandOccluder to BodyCostume. A generated masked underpaint proposal fills 483 pixels solely underneath opaque original weapon pixels; the sword-on master remains byte-identical. These are one-frame NW drafts, **not semantic or variant approval**. Hidden/antialiased regions, mask edges, alternate weapon, other frames, foot contact, transitions and gameplay remain open. Inputs, hashes, cropped generation prompt, layered candidates, tests and limits are in `docs/character-factory/review/patch001-swordsman-nw15-underpaint-v3-20261028/`. No runtime binding was changed. Coverage remains 2/96 technical imports and 0/6 complete characters.
+
+
+## NW frame-15 alternative sword study (28 October 2026)
+
+A single-frame NW alternative sword was generated and composed over the unapproved V3 underpaint candidate. The other layers match that candidate exactly, and the annotated grip pixel is covered by both sword and hand. The single-frame equipment-toggle GIF and inputs are in `docs/character-factory/review/patch001-swordsman-nw15-alternate-sword-20261028/`. This is **not** a coherent four-view variant, semantic or visual approval, trail proof, runtime admission or game test. All other frames, views, mask edges, anatomy and hidden surfaces remain open; no production binding was changed. Coverage remains 2/96 technical imports and 0/6 completed characters.
