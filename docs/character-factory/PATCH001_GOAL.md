@@ -124,3 +124,7 @@ All24 Mage SW raw paintings are saved; own-frame anatomy, robe and shoe continui
 ## Owner correction — detached head (28 October 2026)
 
 The user rejected the shared-head preview because the neck is visibly disconnected. The v7 shared-head preview is rejected and must not be admitted. `review/mage-female-own-frame-head-recovery-20261028` reconstructs each of the24 original masters from that frame's own HeadHair and BodyRest with zero visible RGBA mismatch, so the invented head/body assembly is removed. Those source paintings still have temporal anatomy drift and do not establish a working replaceable-head variant. Author the missing neck/collar surfaces in the affected frame masters, review weapon occlusion and all transitions, and complete all three classes and both sexes before final delivery. Goal remains active; no new runtime coverage is claimed.
+
+## Continued after owner asked why work stopped
+
+Continue the active goal without treating source-frame recovery as a finished deliverable. Native Archer female/NE frame003 has a manually annotated same-frame bow/arrow/string proposal in `review/archer-female-ne003-native-bow-study-v2-20261028`. Visible recomposition has zero mismatches; review still shows residual bow/string/arrow pixels on BodyCostume and the head fringe boundary is unapproved. Hidden bow under the gripping hand is not authored. This frame is not accepted for a swappable weapon or counted toward coverage. Mage own-frame masters still vary in head/torso scale and need bounded painting before any head reuse.
