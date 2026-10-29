@@ -1,0 +1,60 @@
+{
+  "status": "BOUNDED_SW02_REPAINT_PROPOSALS_NOT_APPROVED",
+  "projection_sha256": "3729501f1dd94f0b6d984b62f93d0b4dcda906a27f85345188b26d7fd52702d2",
+  "source_guide_point_tile": [
+    349.4801183897873,
+    712.984107072326
+  ],
+  "mask_rectangle": [
+    180,
+    470,
+    465,
+    750
+  ],
+  "donor_crop_source_rect": [
+    130,
+    430,
+    490,
+    790
+  ],
+  "records": [
+    {
+      "label": "source",
+      "input_sha256": "6c15f1a7f24dedbd3e1510d43116f8c49becf235ba1841423ec57daed4814882",
+      "changed_pixels": 0,
+      "outside_mask_changed_pixels": 0,
+      "nearest_brown_pixel": [
+        324,
+        670
+      ],
+      "brown_proxy_distance_runtime_px": 6.1263753591115
+    },
+    {
+      "label": "v1",
+      "input_sha256": "436e64d69d1663058a9876a17aa9b6e26c858ba72901495e27aa4cf9bff9092b",
+      "changed_pixels": 75622,
+      "outside_mask_changed_pixels": 0,
+      "nearest_brown_pixel": [
+        335,
+        697
+      ],
+      "brown_proxy_distance_runtime_px": 2.6442919185620366
+    },
+    {
+      "label": "v2",
+      "input_sha256": "78d7fc76a8dda168498c7f5b5f46d8e4eec466fa2c59130716f39d4a54b38153",
+      "changed_pixels": 60351,
+      "outside_mask_changed_pixels": 0,
+      "nearest_brown_pixel": [
+        344,
+        705
+      ],
+      "brown_proxy_distance_runtime_px": 1.187286006893375
+    }
+  ],
+  "limitations": [
+    "Nearest brown pixel is a color proxy; source skin vertex is not an identified painted sole.",
+    "Mask can affect knee/costume and create seams; no whole-sequence contact or anatomy acceptance.",
+    "No alpha, part cutouts, other directions, variant or runtime admission."
+  ]
+}
