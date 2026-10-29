@@ -1,0 +1,95 @@
+{
+  "status": "SPARSE_FULL_FRAME_Y_REGISTRATION_PROPOSAL_NOT_APPROVED",
+  "frames": [
+    {
+      "frame": 2,
+      "paint_sha256": "4ed756a1c9ab9fd2dd7ce7daf41fc75b7be866f92c776689ec23d23094056281",
+      "guide_sha256": "59da83fbb4ec9e4cf5721903b41d210d55c1b3efc89a234a45ae3da58e832534",
+      "proxy_before_base_y": {
+        "bottom_y": 297,
+        "bottom_x_mean": 246.5909090909091,
+        "pixels": 1296
+      },
+      "shared_y": 17,
+      "additional_y": 4,
+      "sole_proxy_after_y": 318,
+      "proxy_x_mean": 246.5909090909091
+    },
+    {
+      "frame": 4,
+      "paint_sha256": "93d1e7aee40ccbf2873ff47c59e53a6235b8bc5bfabbcfa191721844da71e8c1",
+      "guide_sha256": "0c4815c4d0f4813e200ecada95c6c3f6113ff80638505e42d40e18a024d28e57",
+      "proxy_before_base_y": {
+        "bottom_y": 281,
+        "bottom_x_mean": 244.68,
+        "pixels": 1083
+      },
+      "shared_y": 17,
+      "additional_y": 20,
+      "sole_proxy_after_y": 318,
+      "proxy_x_mean": 244.68
+    },
+    {
+      "frame": 6,
+      "paint_sha256": "56aa4b285a3141fe43ee45351338f5099995dce4294e06dffdcdfe222514b61a",
+      "guide_sha256": "96b70d320f63eb7f264ef261e7df0298d9bf96bbdaf63f1bd8c5d5566fa7c8a2",
+      "proxy_before_base_y": {
+        "bottom_y": 288,
+        "bottom_x_mean": 241.0,
+        "pixels": 1330
+      },
+      "shared_y": 17,
+      "additional_y": 13,
+      "sole_proxy_after_y": 318,
+      "proxy_x_mean": 241.0
+    },
+    {
+      "frame": 8,
+      "paint_sha256": "98bd6e8338b8c4fbba0dfbbe956a8939f4772203cd83f07658450587201ab992",
+      "guide_sha256": "430a38036d0e8f62910656c51583dac92dc07f94be71bd254e1c1db6aa76e49d",
+      "proxy_before_base_y": {
+        "bottom_y": 301,
+        "bottom_x_mean": 236.66666666666666,
+        "pixels": 2144
+      },
+      "shared_y": 17,
+      "additional_y": 0,
+      "sole_proxy_after_y": 318,
+      "proxy_x_mean": 236.66666666666666
+    },
+    {
+      "frame": 16,
+      "paint_sha256": "88aa45a0709f52130a5e93c980794d4cbc62d35d7b225df2c5dfa0f26eb76f2c",
+      "guide_sha256": "6a8e33fd7c6950fb91a70b8325a5a74429f65db55f0373eb64b560f0ca21adbe",
+      "proxy_before_base_y": {
+        "bottom_y": 301,
+        "bottom_x_mean": 236.68421052631578,
+        "pixels": 2260
+      },
+      "shared_y": 17,
+      "additional_y": 0,
+      "sole_proxy_after_y": 318,
+      "proxy_x_mean": 236.68421052631578
+    }
+  ],
+  "reference_frame": 8,
+  "shared_tile_resize": [
+    384,
+    384
+  ],
+  "brown_foot_proxy_roi": [
+    210,
+    230,
+    270,
+    350
+  ],
+  "baseline_y": 17,
+  "horizontal_translation": 0,
+  "source_modified": false,
+  "runtime_admitted": false,
+  "limitations": [
+    "Brown pixels in the ROI are not a validated anatomical sole feature; boot shape and occlusion can change.",
+    "X drift, body proportions, sword alignment, foot contact, intermediate frames and gameplay remain unverified.",
+    "Only five nonadjacent frames in one direction; cannot be used as animation."
+  ]
+}
