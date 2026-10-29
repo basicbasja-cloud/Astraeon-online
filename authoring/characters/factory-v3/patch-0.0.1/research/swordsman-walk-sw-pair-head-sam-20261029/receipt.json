@@ -1,0 +1,237 @@
+{
+  "status": "HEAD_PROPOSALS_REQUIRE_SEMANTIC_REVIEW",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "source_crop": [
+    350,
+    120,
+    600,
+    300
+  ],
+  "head_box": [
+    400,
+    140,
+    565,
+    270
+  ],
+  "positive_negative_points": [
+    [
+      470,
+      185
+    ],
+    [
+      470,
+      220
+    ],
+    [
+      370,
+      220
+    ]
+  ],
+  "labels": [
+    1,
+    1,
+    0
+  ],
+  "records": [
+    {
+      "frame": 0,
+      "sheet": "paint-00-01.png",
+      "sheet_sha256": "1e6d2773f98860722dbea28131b4732749d8c4703cc2b92bdbe210b956543763",
+      "proposals": [
+        {
+          "mask": 0,
+          "score": 0.9069158434867859,
+          "area": 9550,
+          "centroid": [
+            471.94575916230366,
+            216.4543455497382
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 1,
+          "score": 0.9010536670684814,
+          "area": 6431,
+          "centroid": [
+            477.68434147099987,
+            205.98118488570984
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 2,
+          "score": 0.9279612302780151,
+          "area": 7362,
+          "centroid": [
+            474.90043466449333,
+            206.07063298016843
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 1,
+      "sheet": "paint-00-01.png",
+      "sheet_sha256": "1e6d2773f98860722dbea28131b4732749d8c4703cc2b92bdbe210b956543763",
+      "proposals": [
+        {
+          "mask": 0,
+          "score": 0.9178165197372437,
+          "area": 9310,
+          "centroid": [
+            469.8295381310419,
+            215.4672395273899
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 1,
+          "score": 0.8842025995254517,
+          "area": 6680,
+          "centroid": [
+            472.8056886227545,
+            205.1118263473054
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 2,
+          "score": 0.9130718111991882,
+          "area": 7441,
+          "centroid": [
+            471.87461362720063,
+            206.56430587286656
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 2,
+      "sheet": "paint-02-03.png",
+      "sheet_sha256": "40349e11a08ca2f2e57369aadf04487c30f74f1564a48e208042918e3f5dbf02",
+      "proposals": [
+        {
+          "mask": 0,
+          "score": 0.8347491025924683,
+          "area": 13417,
+          "centroid": [
+            478.93128121040473,
+            228.07430871282702
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 1,
+          "score": 0.9318487644195557,
+          "area": 6589,
+          "centroid": [
+            496.49430869631203,
+            200.02064046137502
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 2,
+          "score": 0.9560866951942444,
+          "area": 7153,
+          "centroid": [
+            495.7389906333007,
+            199.7073954983923
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 3,
+      "sheet": "paint-02-03.png",
+      "sheet_sha256": "40349e11a08ca2f2e57369aadf04487c30f74f1564a48e208042918e3f5dbf02",
+      "proposals": [
+        {
+          "mask": 0,
+          "score": 0.8619375228881836,
+          "area": 9877,
+          "centroid": [
+            459.249569707401,
+            213.16745975498634
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 1,
+          "score": 0.9188162088394165,
+          "area": 6309,
+          "centroid": [
+            463.25978760500874,
+            198.28340466000952
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "mask": 2,
+          "score": 0.9539353847503662,
+          "area": 7250,
+          "centroid": [
+            462.8713103448276,
+            199.29489655172415
+          ],
+          "seeds_in_mask": [
+            true,
+            true,
+            false
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Masks can include scarf or omit facial features; centroid is not an anatomical landmark.",
+    "Four frames of one view; no full walk, floor contact, alpha, cutout, or runtime approval."
+  ]
+}

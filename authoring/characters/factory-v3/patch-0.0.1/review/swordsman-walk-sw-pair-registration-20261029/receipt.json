@@ -1,0 +1,64 @@
+{
+  "status": "WHOLE_FRAME_REGISTRATION_PROPOSAL_NOT_APPROVED",
+  "frames": [
+    {
+      "frame": 0,
+      "source_sha256": "1e6d2773f98860722dbea28131b4732749d8c4703cc2b92bdbe210b956543763",
+      "mask_sha256": "adacd19743ffc106fd080e232f004dea7388f9888c7658ab14c26f93fa09ffc7",
+      "translation_source_tile_px": [
+        0,
+        0
+      ],
+      "head_proxy_residual_from_frame00_runtime_px": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "frame": 1,
+      "source_sha256": "1e6d2773f98860722dbea28131b4732749d8c4703cc2b92bdbe210b956543763",
+      "mask_sha256": "13a70d3792137466ae3b9d3a9a8b43cae9fc695d3b13dbb3b22a904baf9e4604",
+      "translation_source_tile_px": [
+        7,
+        0
+      ],
+      "head_proxy_residual_from_frame00_runtime_px": [
+        -0.04493613337721522,
+        -0.040504838409320815
+      ]
+    },
+    {
+      "frame": 2,
+      "source_sha256": "40349e11a08ca2f2e57369aadf04487c30f74f1564a48e208042918e3f5dbf02",
+      "mask_sha256": "1f7a5b4f332105ce076c9bcc13214074fe02a21412c75d4e5a7d47fb9bfd78cb",
+      "translation_source_tile_px": [
+        -13,
+        4
+      ],
+      "head_proxy_residual_from_frame00_runtime_px": [
+        -0.004178207037431432,
+        -0.01989928962022861
+      ]
+    },
+    {
+      "frame": 3,
+      "source_sha256": "40349e11a08ca2f2e57369aadf04487c30f74f1564a48e208042918e3f5dbf02",
+      "mask_sha256": "45e24747255d3c99c7cf3a4ee32ba76c5bcf3cd8e179700423f7776a6ebdcfe1",
+      "translation_source_tile_px": [
+        21,
+        -1
+      ],
+      "head_proxy_residual_from_frame00_runtime_px": [
+        -0.0358040844291546,
+        -0.010541723188627566
+      ]
+    }
+  ],
+  "guide_sha256": "a32cdca9a91411e1f3df8b14e4735caa2ed58cdea149929676ab8094d6c4b6d6",
+  "limitations": [
+    "SAM hair centroid may omit face, and is not an anatomical head or socket landmark.",
+    "A shared full-frame shift can improve hair registration while worsening foot contact and weapon position.",
+    "Only four frames in one direction; the GIF repeats a partial sequence, not a walk loop.",
+    "No alpha, semantic cutouts, variants, gameplay or runtime admission."
+  ]
+}
