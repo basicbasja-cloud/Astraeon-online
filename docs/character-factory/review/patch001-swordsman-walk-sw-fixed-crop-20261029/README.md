@@ -1,0 +1,9 @@
+# Swordsman male Walk SW — fixed-crop draft, 2026-10-29
+
+This is a new 16-frame whole-sheet paintover study using the Mesh2Motion Walk SW guide and the matching Swordsman identity. A fixed source rectangle `(420, 520, 1116, 1216)` was applied identically to all 1536×1536 guide frames, retaining the complete figure, before putting each frame into the 384×384 review grid. It is a source-study crop, not a change to the guide camera or character transform. The prompt and raw generated sheet are retained in `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-male-walk-sw-fixed-crop-20261029/`. The image model and seed were not exposed.
+
+[Guide and draft animation](comparison.gif) displays each 16-frame sequence side by side at a diagnostic 85 ms/frame. Both grids are resized as whole sheets, with no per-frame fitting. The initial simple dark-foreground bounds are now closer to the magnified guide than the earlier rejected sheet, but include hair, costume and weapon and are not anatomical measurements. For frame 0 the guide bounds are `[129,72,268,333]`, draft `[114,60,270,336]` in a 384px slot; edge deltas over the sequence are in [receipt.json](receipt.json). Their variation requires landmark and contact review, not automatic stabilization. One can see differences in arm, foot and sword silhouettes; no frame or grip has been certified.
+
+This draft still has a white background and has not been segmented, cut into validated same-frame layers, matched to guide landmarks, approved for loop continuity, or tested in the game. It does not count as a completed Walk action or character. No baseline or runtime data was modified.
+
+Reproduction: `python3 tools/character_factory_v3/review_swordsman_sw_walk_fixed_crop.py --output <fresh-directory>`. A second run reproduced the GIF and receipt byte-for-byte; that verifies the preview from the saved sheet, not the image-generation process or its quality.
