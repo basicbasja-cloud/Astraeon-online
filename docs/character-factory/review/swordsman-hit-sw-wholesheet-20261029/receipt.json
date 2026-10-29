@@ -1,0 +1,37 @@
+{
+  "status": "DRAFT_NOT_APPROVED",
+  "source_crop": [
+    448,
+    520,
+    1088,
+    1160
+  ],
+  "frames": 12,
+  "same_source_pose_00_vs_11_foreground_difference": [
+    {
+      "union_pixels": 17363,
+      "mean_rgb_delta_in_union": 0.0,
+      "different_pixels_in_union": 0
+    },
+    {
+      "union_pixels": 26195,
+      "mean_rgb_delta_in_union": 63.54409874658013,
+      "different_pixels_in_union": 26193
+    }
+  ],
+  "whole_sheet_resize": [
+    1536,
+    1152
+  ],
+  "input_sha256": {
+    "square-guide.png": "5c0cb8266ee406a09a6c70cabdc2036cd7f9409506576c84b5e56b66433a2df4",
+    "square-paint.png": "cf5d8767f18312b7268e86f6cabf2d54ba8f619a1a791be52bfeb80a6df8c765"
+  },
+  "limitations": [
+    "One SW view; seven other Hit directions missing.",
+    "Generated sheet is not 768px of per-frame artwork and white background has not been extracted.",
+    "Review GIF repeats a one-shot for inspection; timing and transition are not gameplay validation.",
+    "Foreground comparison includes costume, sword and shading and is not a landmark or one-shot transition acceptance.",
+    "No anatomy/contact, grip, layer, variant or runtime acceptance."
+  ]
+}
