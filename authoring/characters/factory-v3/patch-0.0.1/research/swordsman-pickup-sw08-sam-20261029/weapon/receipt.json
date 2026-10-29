@@ -1,0 +1,82 @@
+{
+  "status": "SAM2_WEAPON_MASK_CANDIDATES_NOT_APPROVED",
+  "source_sha256": "98bd6e8338b8c4fbba0dfbbe956a8939f4772203cd83f07658450587201ab992",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "crop": [
+    560,
+    910,
+    850,
+    1060
+  ],
+  "box": [
+    580,
+    950,
+    820,
+    1040
+  ],
+  "points": [
+    [
+      720,
+      995
+    ],
+    [
+      640,
+      1000
+    ],
+    [
+      620,
+      935
+    ],
+    [
+      760,
+      950
+    ]
+  ],
+  "labels": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "proposals": [
+    {
+      "index": 0,
+      "score": 0.7049784064292908,
+      "pixels": 7010,
+      "seeds_in_mask": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 1,
+      "score": 0.8917582035064697,
+      "pixels": 3444,
+      "seeds_in_mask": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 2,
+      "score": 0.9136517643928528,
+      "pixels": 4343,
+      "seeds_in_mask": [
+        true,
+        true,
+        false,
+        false
+      ]
+    }
+  ],
+  "source_modified": false,
+  "runtime_admitted": false,
+  "limitations": [
+    "A score does not certify sword/hand/boot boundary or hidden handle.",
+    "One frame only; no valid weapon swap or game action."
+  ]
+}

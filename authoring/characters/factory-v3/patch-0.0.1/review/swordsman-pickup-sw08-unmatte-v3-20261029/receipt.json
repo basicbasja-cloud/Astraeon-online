@@ -1,0 +1,37 @@
+{
+  "status": "BOUNDED_UNMATTE_DRAFT_NOT_APPROVED",
+  "source_sha256": "98bd6e8338b8c4fbba0dfbbe956a8939f4772203cd83f07658450587201ab992",
+  "old_keyed_master_sha256": "abeeb6904c9ea48e4ac1965be1ed84c8d5efb04da08d69ac7d2aad5edcc49d0c",
+  "reviewed_white_gap_seeds_source_px": [
+    [
+      667,
+      931
+    ],
+    [
+      505,
+      905
+    ],
+    [
+      600,
+      969
+    ],
+    [
+      592,
+      981
+    ]
+  ],
+  "changed_source_edge_pixels": 3829,
+  "newly_assigned_resample_pixels": 260,
+  "white_recomposite_max_channel_difference": 5,
+  "white_recomposite_changed_pixels": 1302549,
+  "keyed_master_exact_recomposition": true,
+  "source_modified": false,
+  "runtime_admitted": false,
+  "limitations": [
+    "Only near-white edge pixels and explicitly seeded gaps were estimated; white foreground may be misclassified and other enclosed gaps may remain.",
+    "New resampling pixels inherit the nearest previous label and may belong to a different slot.",
+    "White recomposition cannot establish correct alpha on dark scenes.",
+    "Existing head/collar and sword/boot ownership is provisional.",
+    "One frame only; hidden surfaces, variants and temporal behavior are absent."
+  ]
+}

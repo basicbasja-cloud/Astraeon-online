@@ -1,0 +1,84 @@
+{
+  "status": "SAM2_HEAD_MASK_CANDIDATES_REQUIRE_SEMANTIC_REVIEW",
+  "source_sha256": "98bd6e8338b8c4fbba0dfbbe956a8939f4772203cd83f07658450587201ab992",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "model_config": "configs/sam2.1/sam2.1_hiera_t.yaml",
+  "device": "cpu",
+  "crop_source_px": [
+    690,
+    590,
+    930,
+    800
+  ],
+  "head_box_source_px": [
+    750,
+    620,
+    900,
+    770
+  ],
+  "point_coords_source_px": [
+    [
+      820,
+      680
+    ],
+    [
+      785,
+      735
+    ],
+    [
+      770,
+      705
+    ],
+    [
+      735,
+      700
+    ]
+  ],
+  "point_labels": [
+    1,
+    1,
+    1,
+    0
+  ],
+  "proposals": [
+    {
+      "index": 0,
+      "score": 0.9264175295829773,
+      "mask_pixels": 13098,
+      "seeds_in_mask": [
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "index": 1,
+      "score": 0.8296838998794556,
+      "mask_pixels": 7626,
+      "seeds_in_mask": [
+        true,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 2,
+      "score": 0.935303270816803,
+      "mask_pixels": 11595,
+      "seeds_in_mask": [
+        true,
+        true,
+        false,
+        false
+      ]
+    }
+  ],
+  "source_modified": false,
+  "runtime_admitted": false,
+  "limitations": [
+    "Scores and positive seeds do not certify separation of head from scarf or body.",
+    "Masks are suggestions; background alpha, weapon, hidden surfaces and other frames remain unverified."
+  ]
+}
