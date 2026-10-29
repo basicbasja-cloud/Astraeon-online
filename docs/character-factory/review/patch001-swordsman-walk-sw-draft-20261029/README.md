@@ -1,0 +1,9 @@
+# Swordsman male Walk SW — rejected study, 2026-10-29
+
+A single 4×4 painted sheet was generated from the existing 16-frame Mesh2Motion Walk SW guide and the same-direction identity image. The output is a draft, not a runtime asset or approved master. The image model and seed were not exposed. Sources, prompt, raw output and GIF are retained under `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-male-walk-sw-20261029/`.
+
+**Rejected:** the model enlarged and repositioned the figures instead of preserving the locked guide framing. With each full sheet uniformly displayed on a 1536×1536 canvas (384×384 per slot), a simple RGB<230 foreground bounding box in frame 0 is 119 px high in the guide and 270 px in the generated sheet. This diagnostic includes sword and garment; it is not an anatomical height measurement. The draft's foreground top moves from y=86 in frame 0 to y=47 in frame 15, and the bottom changes from 356 to 316; this is not acceptable evidence of fixed registration. The white background also needs a real extraction process, not an assumed alpha mask. No scaling or bbox fitting was used to force it into the factory.
+
+The GIF uses all 16 generated grid cells, one common whole-sheet resize, and 85 ms per frame for inspection; timing is not certified against the guide. It is a looping diagnostic and does not demonstrate gameplay readiness. The source guide, original character, and runtime bindings are unchanged. Fixing the generation/paintover method and checking actual guide landmarks, body consistency, same-frame cutouts, loop seam and gameplay remain necessary.
+
+Game Development Studio's `game-dev` CLI was not available in this environment; this study used the existing repository guide and the available image generation tool. No Studio capture or package is claimed.
