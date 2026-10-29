@@ -1,0 +1,9 @@
+# Swordsman Pickup source motion — review 2026-10-29
+
+The configured Mesh2Motion source is `PickUp_Table`. In the retained SW guide, the actor barely bends and reaches near the waist; it does not depict reaching the floor. The game invokes Pickup for exploration claims, so a ground-object pickup may need a different gesture, depending on the object. [Current guide GIF](swordsman-pickup-sw.gif) and [16-frame contact sheet](swordsman-pickup-sw-contact.png) show the actual retained sword guide; the GIF is diagnostic at 80 ms/frame with a final pause and repeats for inspection, not the game's 0.65-second playback contract.
+
+The guide's `world_landmarks` show minimum wrist-origin z values 0.9255 m for right and 0.8969 m for left over the SW sequence. These numbers are rig-space wrist origins, not fingertip or prop contact measurements. In the existing KayKit Archer `PickUp` guide the right-wrist minimum is 0.6619 m, but that motion uses the right hand for the pickup and the left for the bow. The Swordsman holds his sword in the right hand, so adopting it directly would conflict with that grip and still has no demonstrated floor contact.
+
+A retained ActionForge `fixing_kneeling` source visibly kneels and reaches lower ([source contact sheet](actionforge-fixing-kneeling-source-contact.png)); it is a long repair gesture, not a certified pickup, and must be tested for left-hand reach, sword grip, timing, floor contact, retargeting and recovery before consideration. No source mapping was changed and no artwork was admitted. Do not paint the current table pickup as a validated ground pickup.
+
+Separately, the existing temporal source diagnostic ran on all 18 male Swordsman guide jobs (19 configured actions, including the Idle/CombatIdle shared guide). It flagged zero loop resets by its numerical heuristic. This does not certify visual continuity, planted feet, grip, or one-shot transitions. No character or action is completed by this review.
