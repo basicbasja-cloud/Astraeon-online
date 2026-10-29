@@ -1,0 +1,210 @@
+{
+  "status": "ONE_TRANSFORM_DIAGNOSTIC_NOT_POSE_APPROVAL",
+  "scale": 0.7587301587301587,
+  "translation_px": [
+    47.22063492063492,
+    45.33968253968254
+  ],
+  "calibration": "first-frame foreground height, horizontal center, bottom; applied identically to all nine cells",
+  "threshold": "minimum RGB <230",
+  "rows": [
+    {
+      "frame": 0,
+      "guide_foreground_bbox": [
+        133,
+        81,
+        249,
+        320
+      ],
+      "calibrated_foreground_bbox": [
+        127,
+        81,
+        255,
+        320
+      ],
+      "edge_delta_px": [
+        -6,
+        0,
+        6,
+        0
+      ]
+    },
+    {
+      "frame": 1,
+      "guide_foreground_bbox": [
+        132,
+        86,
+        249,
+        320
+      ],
+      "calibrated_foreground_bbox": [
+        126,
+        84,
+        258,
+        319
+      ],
+      "edge_delta_px": [
+        -6,
+        -2,
+        9,
+        -1
+      ]
+    },
+    {
+      "frame": 2,
+      "guide_foreground_bbox": [
+        127,
+        98,
+        249,
+        320
+      ],
+      "calibrated_foreground_bbox": [
+        130,
+        92,
+        264,
+        322
+      ],
+      "edge_delta_px": [
+        3,
+        -6,
+        15,
+        2
+      ]
+    },
+    {
+      "frame": 3,
+      "guide_foreground_bbox": [
+        115,
+        115,
+        257,
+        320
+      ],
+      "calibrated_foreground_bbox": [
+        92,
+        100,
+        263,
+        312
+      ],
+      "edge_delta_px": [
+        -23,
+        -15,
+        6,
+        -8
+      ]
+    },
+    {
+      "frame": 4,
+      "guide_foreground_bbox": [
+        105,
+        138,
+        264,
+        320
+      ],
+      "calibrated_foreground_bbox": [
+        93,
+        118,
+        280,
+        311
+      ],
+      "edge_delta_px": [
+        -12,
+        -20,
+        16,
+        -9
+      ]
+    },
+    {
+      "frame": 5,
+      "guide_foreground_bbox": [
+        102,
+        164,
+        270,
+        320
+      ],
+      "calibrated_foreground_bbox": [
+        100,
+        140,
+        301,
+        313
+      ],
+      "edge_delta_px": [
+        -2,
+        -24,
+        31,
+        -7
+      ]
+    },
+    {
+      "frame": 6,
+      "guide_foreground_bbox": [
+        103,
+        188,
+        275,
+        324
+      ],
+      "calibrated_foreground_bbox": [
+        85,
+        135,
+        283,
+        284
+      ],
+      "edge_delta_px": [
+        -18,
+        -53,
+        8,
+        -40
+      ]
+    },
+    {
+      "frame": 7,
+      "guide_foreground_bbox": [
+        104,
+        203,
+        273,
+        327
+      ],
+      "calibrated_foreground_bbox": [
+        84,
+        139,
+        287,
+        282
+      ],
+      "edge_delta_px": [
+        -20,
+        -64,
+        14,
+        -45
+      ]
+    },
+    {
+      "frame": 8,
+      "guide_foreground_bbox": [
+        104,
+        206,
+        275,
+        334
+      ],
+      "calibrated_foreground_bbox": [
+        102,
+        141,
+        302,
+        285
+      ],
+      "edge_delta_px": [
+        -2,
+        -65,
+        27,
+        -49
+      ]
+    }
+  ],
+  "source_sha256": {
+    "guide-contact.png": "35c766ee79c017d082ff169661306a7701e771f4dc9d33f3cd01679816baf275",
+    "generated-sheet.png": "b6f2cece9a603738158ca751a89bacd16a2aa92f256ad59773779e4bdd4e27c7"
+  },
+  "limitations": [
+    "Foreground bounds include weapon and costume and are not anatomical landmarks.",
+    "White background remains; transformed draft is not a master or cutout.",
+    "Nine frames and one view only; no motion, contact or game approval."
+  ]
+}
