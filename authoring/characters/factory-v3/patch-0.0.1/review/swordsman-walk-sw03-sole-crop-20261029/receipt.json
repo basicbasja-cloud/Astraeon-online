@@ -1,0 +1,47 @@
+{
+  "status": "BOUNDED_SW03_REPAINT_PROPOSAL_NOT_APPROVED",
+  "source_sha256": "9816c80e948bc103926843daa2f2b01576f349e23413939d5e8fa64cf60865f2",
+  "donor_sha256": "887500a3f960a3df61a3b4ec881278b1da963625015a90e88734e354ac1f06cb",
+  "projection_sha256": "3729501f1dd94f0b6d984b62f93d0b4dcda906a27f85345188b26d7fd52702d2",
+  "source_guide_point_tile": [
+    343.46803809856544,
+    688.1199794856981
+  ],
+  "mask_rectangle": [
+    180,
+    460,
+    465,
+    730
+  ],
+  "donor_crop_source_rect": [
+    130,
+    420,
+    490,
+    780
+  ],
+  "changed_pixels": 71000,
+  "outside_mask_changed_pixels": 0,
+  "records": [
+    {
+      "label": "source",
+      "nearest_brown_pixel": [
+        344,
+        641
+      ],
+      "brown_proxy_distance_runtime_px": 5.77747949587063
+    },
+    {
+      "label": "proposal",
+      "nearest_brown_pixel": [
+        343,
+        679
+      ],
+      "brown_proxy_distance_runtime_px": 1.1196200499926883
+    }
+  ],
+  "limitations": [
+    "Brown pixel is a color proxy; selected source skin vertex is not a verified painted sole.",
+    "Mask may alter knee/costume and create seams; other frames and full sequence remain unapproved.",
+    "No alpha, semantic parts, variants or runtime admission."
+  ]
+}
