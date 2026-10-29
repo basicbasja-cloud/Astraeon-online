@@ -197,3 +197,7 @@ A single-frame NW alternative sword was generated and composed over the unapprov
 ## Cutout preservation and reuse integrity (28 October 2026)
 
 The importer refuses an existing cutout output, and the content-addressed store verifies an existing object's RGBA dimensions and pixel hash before reuse. These protect prior work and detect damaged shared objects; they do not make a failed fresh import atomic. The complete factory suite passed 400 tests, and an isolated retained-guide replay reproduced 64 poses and 384 bindings across 269 objects with matching IDs and metadata. See `review/patch001-cutout-import-preservation-20261028/` and `review/patch001-cutout-store-integrity-20261028/`. Neither checkpoint approves art or admits a runtime package; 2/96 technical imports and 0/6 finished characters remain.
+
+## Priority: finish one Swordsman first (29 October 2026)
+
+The immediate deliverable is **one complete, polished male Swordsman**, using the preserved tall Swordsman as the visual baseline. Finish and verify its full Patch 0.0.1 action set, correct 8/4-direction coverage, stable scale and motion, same-frame BodyCostume/HeadHair/Weapon cutouts, weapon grip and trail, usable variants, reproducible source and actual gameplay. Record progress and evidence on GitHub. Existing technical imports and single-frame studies are not acceptance of the character. Keep all other classes and the female characters in the overall plan; apply the validated workflow to them after this character passes.
