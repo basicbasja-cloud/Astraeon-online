@@ -1,0 +1,144 @@
+{
+  "status": "PROVISIONAL_SINGLE_FRAME_LABELS_NOT_APPROVED",
+  "source_sha256": "98bd6e8338b8c4fbba0dfbbe956a8939f4772203cd83f07658450587201ab992",
+  "input_size": [
+    1254,
+    1254
+  ],
+  "canvas": [
+    768,
+    768
+  ],
+  "shared_tile_resize": [
+    384,
+    384
+  ],
+  "tile_offset": [
+    192,
+    257
+  ],
+  "background_rule": "8-connected source pixels with all RGB >=250 from image boundary; remaining pixels opaque before resizing",
+  "manual_head_polygon_source_px": [
+    [
+      754,
+      666
+    ],
+    [
+      773,
+      643
+    ],
+    [
+      800,
+      626
+    ],
+    [
+      834,
+      626
+    ],
+    [
+      863,
+      640
+    ],
+    [
+      883,
+      666
+    ],
+    [
+      891,
+      690
+    ],
+    [
+      885,
+      722
+    ],
+    [
+      868,
+      746
+    ],
+    [
+      851,
+      762
+    ],
+    [
+      828,
+      765
+    ],
+    [
+      809,
+      758
+    ],
+    [
+      789,
+      749
+    ],
+    [
+      770,
+      736
+    ],
+    [
+      758,
+      716
+    ],
+    [
+      752,
+      691
+    ]
+  ],
+  "manual_weapon_polygons_source_px": [
+    [
+      [
+        631,
+        982
+      ],
+      [
+        805,
+        983
+      ],
+      [
+        815,
+        995
+      ],
+      [
+        802,
+        1008
+      ],
+      [
+        630,
+        1007
+      ]
+    ],
+    [
+      [
+        596,
+        1017
+      ],
+      [
+        608,
+        1034
+      ],
+      [
+        670,
+        971
+      ],
+      [
+        662,
+        957
+      ]
+    ]
+  ],
+  "boot_color_return_source_pixels": 92,
+  "visible_pixels_by_role": {
+    "BodyCostume": 10324,
+    "HeadHair": 1339,
+    "Weapon": 551
+  },
+  "exact_same_frame_recomposition": true,
+  "source_modified": false,
+  "limitations": [
+    "White-key may remove highlights or leave halos; edge colors/alpha require visual correction.",
+    "Manual polygons and the boot-color heuristic may include incorrect skin, garment, hand or sword-edge ownership.",
+    "Hidden surfaces and hand-weapon occlusion are not authored; replacement is not validated.",
+    "The +17px tile registration is a proposal, not a confirmed contact anchor.",
+    "Only one frame and view; motion and gameplay unverified."
+  ]
+}
