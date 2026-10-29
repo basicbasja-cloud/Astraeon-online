@@ -201,3 +201,9 @@ The importer refuses an existing cutout output, and the content-addressed store 
 ## Priority: finish one Swordsman first (29 October 2026)
 
 The immediate deliverable is **one complete, polished male Swordsman**, using the preserved tall Swordsman as the visual baseline. Finish and verify its full Patch 0.0.1 action set, correct 8/4-direction coverage, stable scale and motion, same-frame BodyCostume/HeadHair/Weapon cutouts, weapon grip and trail, usable variants, reproducible source and actual gameplay. Record progress and evidence on GitHub. Existing technical imports and single-frame studies are not acceptance of the character. Keep all other classes and the female characters in the overall plan; apply the validated workflow to them after this character passes.
+
+## Swordsman Pickup investigation, 29 October 2026
+
+The configured table-height Pickup is not a validated ground pickup. An isolated native Mesh2Motion kneeling study now has a 35-source-sample, eight-view rig proposal with bounded upper-body/arm/leg adjustments; see `review/patch001-swordsman-pickup-35frame-20261029/`. Its sampled mesh/foot, hand and thin-blade diagnostics improved, but real sole and knee contact, full blade/hilt and costume clearance, 35-sample timing, grip, item contact, wrist, transitions and gameplay remain open. The production action mapping was not changed.
+
+The first nine-pose paintover from that guide has clear guide-relative size and placement errors and was rejected: `review/patch001-swordsman-pickup-paintover-20261029/`. Do not import it or count it as a completed action. Continue improving pose-accurate painting and temporal consistency before same-frame cutout and runtime admission. Full Swordsman coverage and the six-character patch goal remain incomplete.
