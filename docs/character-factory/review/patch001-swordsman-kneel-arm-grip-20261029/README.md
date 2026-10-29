@@ -20,3 +20,5 @@ python3 -m unittest discover -s tests/character_factory_v3 -p 'test_kneel*study.
 ```
 
 Wrapper SHA-256: `523c76e57414d688425d500ef52f2ad7ad5526e1f49ff2861950daa01390ac6e`. Canonical renderer SHA-256: `618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19`. No source rig, original baseline, production ledger or runtime asset was modified. This study does not satisfy the request for all playable Swordsman actions.
+
+The wrapper at this original checkpoint is pinned by the commit that introduced this report. A subsequent checkpoint adds an optional geometry diagnostic; use that later checkpoint and its documented hash when reproducing the added clearance study.

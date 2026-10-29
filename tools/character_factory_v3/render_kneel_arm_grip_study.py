@@ -18,6 +18,7 @@ def validate(job):
  axis=job.get('study_arm_axis');angle=job.get('study_arm_degrees')
  if axis not in ('X','Y','Z') or type(angle) not in (int,float) or not math.isfinite(angle) or abs(angle)>50:raise ValueError('Expected a finite bounded single-axis arm adjustment')
  if type(job.get('study_closed_fingers',False)) is not bool:raise ValueError('Expected an explicit boolean for the grip study')
+ if type(job.get('study_blade_clearance',False)) is not bool:raise ValueError('Expected an explicit boolean for blade clearance diagnostics')
  samples=job['study_source_frames']
  if samples[0]!=0 or samples[-1]!=156:raise ValueError('Study envelope assumes the preserved original endpoints')
 
@@ -44,6 +45,30 @@ def main():
         bpy.context.view_layer.update()
 """
  source=source.replace(POSE,POSE+addition)
+ clearance_records=[]
+ if job.get('study_blade_clearance',False):
+  if job.get('weapon')!='sword':raise ValueError('Blade diagnostics require a sword')
+  from mathutils.bvhtree import BVHTree
+  def sample_clearance(direction,frame,grip,axis,bones):
+   depsgraph=bpy.context.evaluated_depsgraph_get();objects=[o for o in bpy.context.scene.objects if o.type=='MESH' and not o.hide_render]
+   if len(objects)!=1 or objects[0].name!='Mannequin':raise ValueError('Unexpected visible study geometry')
+   obj=objects[0];tree=BVHTree.FromObject(obj,depsgraph);inverse=obj.matrix_world.inverted()
+   # Start beyond the grip and guard: this is a thin proxy centerline, not a blade mesh.
+   a=grip+axis*.12;b=grip+axis*.8;local_a=inverse@a;local_b=inverse@b;delta=local_b-local_a;length=delta.length
+   hit,normal,index,distance=tree.ray_cast(local_a,delta.normalized(),length)
+   # Positive control: a line through the torso should intersect the evaluated mesh.
+   control_a=bones['head']+type(axis)((0,0,.3));control_b=bones['pelvis']-type(axis)((0,0,.3))
+   control_start=inverse@control_a;control_delta=(inverse@control_b)-control_start
+   control_hit,_,_,_=tree.ray_cast(control_start,control_delta.normalized(),control_delta.length)
+   nearest=[]
+   for i in range(18):
+    point=a.lerp(b,i/17);result=tree.find_nearest(inverse@point)
+    if result[0] is None:raise ValueError('Empty mannequin BVH')
+    nearest.append((point-(obj.matrix_world@result[0])).length)
+   clearance_records.append({'direction':direction,'frame':frame,'blade_centerline_start_offset_m':.12,'blade_centerline_end_offset_m':.8,'centerline_surface_hit':hit is not None,'first_hit_world':list(obj.matrix_world@hit) if hit is not None else None,'minimum_sampled_surface_distance_m':min(nearest),'torso_positive_control_hit':control_hit is not None})
+  marker="            path=folder/f'{i:03d}.png';sc.render.filepath=str(path);bpy.ops.render.render(write_still=True)"
+  if source.count(marker)!=1:raise ValueError('Canonical output point changed')
+  source=source.replace(marker,"            sample_clearance(direction,i,grip,axis,bones)\n"+marker)
  @persistent
  def freeze(scene):
   for actor in [o for o in bpy.data.objects if o.type=='ARMATURE' and o.animation_data and o.animation_data.action]:
@@ -55,7 +80,12 @@ def main():
    error=max((max(abs((actor.matrix_world@b.matrix)[r][c]-world[b.name][r][c]) for r in range(4) for c in range(4)) for b in actor.pose.bones),default=0.)
    if error>1e-5:raise ValueError('Frozen study pose changed')
  bpy.app.handlers.render_pre.append(freeze)
- try:exec(compile(source,str(CANONICAL),'exec'),{'__name__':'__main__','__file__':str(CANONICAL)})
+ try:
+  scope={'__name__':'__main__','__file__':str(CANONICAL)}
+  if job.get('study_blade_clearance',False):scope['sample_clearance']=sample_clearance
+  exec(compile(source,str(CANONICAL),'exec'),scope)
+  if job.get('study_blade_clearance',False):
+   output=Path(args[args.index('--output')+1]);(output/'blade-clearance-diagnostic.json').write_text(json.dumps({'status':'THIN_CENTERLINE_VS_EVALUATED_MANNEQUIN_NOT_FULL_COLLISION_APPROVAL','records':clearance_records},indent=2)+'\n')
  finally:
   if freeze in bpy.app.handlers.render_pre:bpy.app.handlers.render_pre.remove(freeze)
 if __name__=='__main__':main()
