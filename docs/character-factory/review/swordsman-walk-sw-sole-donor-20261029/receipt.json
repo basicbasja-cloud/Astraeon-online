@@ -1,0 +1,71 @@
+{
+  "status": "DONOR_NOT_APPROVED",
+  "projection_sha256": "3729501f1dd94f0b6d984b62f93d0b4dcda906a27f85345188b26d7fd52702d2",
+  "input_sha256": {
+    "source.png": "5f713dbb8345363fa7f39f6edcc11d01658e8121d9427fbca5a8475e90b09baa",
+    "donor.png": "7e0392bbdcc8ba38f218477e5ac59f52dfda6502f801c2287040c269feeea999"
+  },
+  "records": [
+    {
+      "frame": 2,
+      "image": "before",
+      "source_skin_point_tile": [
+        349.4801183897873,
+        712.984107072326
+      ],
+      "nearest_brown_pixel": [
+        324,
+        670
+      ],
+      "distance_tile_px": 49.96868913592552,
+      "distance_runtime_px": 6.1263753591115
+    },
+    {
+      "frame": 2,
+      "image": "donor",
+      "source_skin_point_tile": [
+        349.4801183897873,
+        712.984107072326
+      ],
+      "nearest_brown_pixel": [
+        306,
+        679
+      ],
+      "distance_tile_px": 55.1855074153825,
+      "distance_runtime_px": 6.7659796295635255
+    },
+    {
+      "frame": 3,
+      "image": "before",
+      "source_skin_point_tile": [
+        343.46803809856544,
+        688.1199794856981
+      ],
+      "nearest_brown_pixel": [
+        344,
+        641
+      ],
+      "distance_tile_px": 47.12298218700919,
+      "distance_runtime_px": 5.77747949587063
+    },
+    {
+      "frame": 3,
+      "image": "donor",
+      "source_skin_point_tile": [
+        343.46803809856544,
+        688.1199794856981
+      ],
+      "nearest_brown_pixel": [
+        321,
+        649
+      ],
+      "distance_tile_px": 45.11303061156529,
+      "distance_runtime_px": 5.531050821880187
+    }
+  ],
+  "limitations": [
+    "Closest brown pixel is a coarse color proxy, not an anatomical sole or contact.",
+    "Projected lowest skin vertex can change and may be occluded or differ from painted footwear.",
+    "No continuous motion, grounded contact, cutouts, variants, gameplay or production acceptance."
+  ]
+}

@@ -1,0 +1,7 @@
+# Swordsman Walk SW: rear-boot target repaint attempt
+
+**Rejected donor; no pixels admitted.** A two-frame generated repaint was guided by circles on the projected selected source skin points. The requested correction did not reliably move the rear boots to those points. [Frame 02](frame02.png), [frame 03](frame03.png), and the [two-frame comparison](two-frame-review.gif) show orange source points and cyan nearest brown-pixel proposals; the GIF is not a walk loop.
+
+A coarse brown-pixel distance from source point to candidate changes in frame 02 from 6.13 to 6.77 runtime px and frame 03 from 5.78 to 5.53 runtime px. These values are **provisional warnings**, not ankle, sole or contact measurements: color pixels can belong to a different part, selected source vertices can differ between poses, and footwear shapes need not coincide with skin. They do not justify acceptance, and generation alone did not resolve the visible discrepancy.
+
+Inputs, prompt and unmodified donor are under `painted-candidates/swordsman-walk-sw-sole-repair-20261029/`. Generator model and seed were unavailable. Reproduce the review with `python tools/character_factory_v3/audit_swordsman_walk_sole_donor.py --output /tmp/walk-sole-donor-review` and run `python -m unittest discover -s tests/character_factory_v3 -p test_swordsman_walk_sole_donor.py -v`. Two focused helper checks passed. Source masters and runtime remain unchanged; 2/96 technical imports and 0/6 complete characters remain.
