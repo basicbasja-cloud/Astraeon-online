@@ -1,0 +1,180 @@
+{
+  "status": "SAM_MASK_CENTROID_DIAGNOSTIC_NOT_ANATOMICAL_APPROVAL",
+  "frames": [
+    8,
+    16
+  ],
+  "guide_sha256": "c85cfd6aa3174fa6a7a12d41a339c6bc143c8a0c24383891998976f19a605928",
+  "common_canvas_scale": "384px crop from 768px guide; runtime factor 240/768",
+  "results": [
+    {
+      "mask_candidate": 0,
+      "frame16_variant": "original",
+      "frame08": {
+        "centroid_tile_px": [
+          250.34984412682894,
+          231.1825341682612
+        ],
+        "mask_source_pixels": 13098,
+        "source_bbox": [
+          753,
+          626,
+          889,
+          773
+        ],
+        "sha256": "b939f2c5e86e5d310204c35424daa0cc687b3472239e2497fe51f6354970d320"
+      },
+      "frame16": {
+        "centroid_tile_px": [
+          250.91139813198902,
+          224.6533195480393
+        ],
+        "mask_source_pixels": 12310,
+        "source_bbox": [
+          756,
+          604,
+          888,
+          743
+        ],
+        "sha256": "ee35f277e381c595f7fb5c9a075c868beaedf7ad21fc582e62eb95c7a2746f44"
+      },
+      "paint_centroid_delta_tile_px": [
+        0.561554005160076,
+        -6.5292146202219215
+      ],
+      "source_head_delta_tile_px": [
+        -1.5196000000000254,
+        3.2327000000000226
+      ],
+      "difference_runtime_px": 3.1191535786862654
+    },
+    {
+      "mask_candidate": 0,
+      "frame16_variant": "bounded",
+      "frame08": {
+        "centroid_tile_px": [
+          250.34984412682894,
+          231.1825341682612
+        ],
+        "mask_source_pixels": 13098,
+        "source_bbox": [
+          753,
+          626,
+          889,
+          773
+        ],
+        "sha256": "b939f2c5e86e5d310204c35424daa0cc687b3472239e2497fe51f6354970d320"
+      },
+      "frame16": {
+        "centroid_tile_px": [
+          250.72219346179656,
+          232.2483244873236
+        ],
+        "mask_source_pixels": 10980,
+        "source_bbox": [
+          756,
+          636,
+          884,
+          763
+        ],
+        "sha256": "7cac9ab5f45230255829e0e83207ed40cb8d08c9f3d2524e52c2981e55216e5a"
+      },
+      "paint_centroid_delta_tile_px": [
+        0.37234933496762324,
+        1.065790319062387
+      ],
+      "source_head_delta_tile_px": [
+        -1.5196000000000254,
+        3.2327000000000226
+      ],
+      "difference_runtime_px": 0.8989452288951192
+    },
+    {
+      "mask_candidate": 2,
+      "frame16_variant": "original",
+      "frame08": {
+        "centroid_tile_px": [
+          251.65077671245032,
+          230.52028737019546
+        ],
+        "mask_source_pixels": 11595,
+        "source_bbox": [
+          762,
+          626,
+          889,
+          762
+        ],
+        "sha256": "7da41f750db5c7c685432db7581856164ee8f0b5ccb276b37d402871abfb2dad"
+      },
+      "frame16": {
+        "centroid_tile_px": [
+          251.94615252406308,
+          224.1477001378813
+        ],
+        "mask_source_pixels": 11219,
+        "source_bbox": [
+          761,
+          607,
+          888,
+          742
+        ],
+        "sha256": "a1e59666976e4453dcda5d380e0130de8136bc37b5dec9d8ef423e15eb84d339"
+      },
+      "paint_centroid_delta_tile_px": [
+        0.2953758116127574,
+        -6.372587232314174
+      ],
+      "source_head_delta_tile_px": [
+        -1.5196000000000254,
+        3.2327000000000226
+      ],
+      "difference_runtime_px": 3.054768301552778
+    },
+    {
+      "mask_candidate": 2,
+      "frame16_variant": "bounded",
+      "frame08": {
+        "centroid_tile_px": [
+          251.65077671245032,
+          230.52028737019546
+        ],
+        "mask_source_pixels": 11595,
+        "source_bbox": [
+          762,
+          626,
+          889,
+          762
+        ],
+        "sha256": "7da41f750db5c7c685432db7581856164ee8f0b5ccb276b37d402871abfb2dad"
+      },
+      "frame16": {
+        "centroid_tile_px": [
+          251.60932919082575,
+          230.221438249394
+        ],
+        "mask_source_pixels": 9291,
+        "source_bbox": [
+          759,
+          636,
+          884,
+          752
+        ],
+        "sha256": "90e82fcb726617bdaaed7aeae4e50d89b70617f050552bbd5a25310b8ece3c05"
+      },
+      "paint_centroid_delta_tile_px": [
+        -0.04144752162457621,
+        -0.29884912080146364
+      ],
+      "source_head_delta_tile_px": [
+        -1.5196000000000254,
+        3.2327000000000226
+      ],
+      "difference_runtime_px": 1.1963801988789566
+    }
+  ],
+  "limitations": [
+    "SAM candidates have different omissions and may include scarf or omit ear; area and centroid are not anatomy.",
+    "Only two non-adjacent key poses; foot, body, in-betweens and game remain unverified."
+  ],
+  "runtime_admitted": false
+}
