@@ -15,4 +15,8 @@ class HiltStudiesTests(unittest.TestCase):
    im=Image.new('RGBA',(768,768))
    for role in underpaint.ORDER:im.alpha_composite(Image.open(out/'layers'/f'{role}.png').convert('RGBA'))
    self.assertEqual(im.tobytes(),Image.open(out/'master.png').convert('RGBA').tobytes())
+ def test_closed_fist_donor_stays_under_opaque_weapon(self):
+  donor=ROOT/'authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-pickup-sw08-hilt-fist-20261029/donor.png'
+  with tempfile.TemporaryDirectory() as tmp:
+   out=Path(tmp)/'fist';r=underpaint.build(out,donor);mask=np.array(Image.open(out/'underpaint-mask.png'))>0;w=np.array(Image.open(underpaint.BASE/'layers/Weapon.png').convert('RGBA'));self.assertGreater(r['inserted_pixels'],0);self.assertTrue(np.all(w[:,:,3][mask]==255));self.assertTrue(r['original_sword_on_master_exact'])
 if __name__=='__main__':unittest.main()
