@@ -1,0 +1,9 @@
+# Male Swordsman SkillAction SW: eight key poses
+
+**Draft only; not an animation, cutout, or playable action.** The requested skill uses Mesh2Motion `Sword_Regular_B` and `Sword_Regular_B_Rec` as a 32-frame one-shot, distinct from the existing 16-frame BasicAttack. The fixed-camera SW source frames 00, 04, 08, 12, 16, 20, 24 and 31 were placed in a 4×2 contact sheet with the same source crop and painted together with the tall Swordsman seed as identity reference. The generator's model and seed were not exposed; the generated sheet and prompt are retained.
+
+The [labeled comparison](keypose-comparison.gif) holds each **nonadjacent still** for review; it is not a motion preview. Artwork broadly follows the eight poses, but pose 04's painted sword reaches substantially closer to the top edge than the guide (foreground bound y=5 versus y=33 on a 384-pixel tile), and pose 16 changes visible shoulder appearance. Head, hand, boot, grip and character registration need anatomical review; foreground bounds are not landmarks and include sword/clothing. No other 24 frames, other three skill views, correct FX, recovery into gameplay, separate cutouts or variants are present. The sheet cannot be accepted or expanded as a final master without correction.
+
+Regenerate the exact guide contact from source frames with `python tools/character_factory_v3/build_swordsman_skill_sw_keypose_guide.py --output /tmp/skill-sw-guide.png`. The replay matched the retained guide SHA-256. Produce the comparison with `python tools/character_factory_v3/review_swordsman_skill_sw_keyposes.py --output /tmp/skill-sw-review`. These commands reproduce the review, not the stochastic painting.
+
+The baseline and runtime remain unchanged. Three focused review-tool checks passed. Overall coverage remains 2/96 technical imports and 0/6 complete characters.

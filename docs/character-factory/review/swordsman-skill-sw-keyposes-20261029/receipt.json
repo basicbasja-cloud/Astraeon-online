@@ -1,0 +1,144 @@
+{
+  "status": "DRAFT_NOT_ACCEPTED",
+  "poses": [
+    0,
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    31
+  ],
+  "measurements": [
+    {
+      "pose": 0,
+      "guide_bbox": [
+        77,
+        95,
+        287,
+        332
+      ],
+      "draft_bbox": [
+        48,
+        81,
+        293,
+        338
+      ]
+    },
+    {
+      "pose": 4,
+      "guide_bbox": [
+        127,
+        33,
+        245,
+        348
+      ],
+      "draft_bbox": [
+        122,
+        5,
+        255,
+        358
+      ]
+    },
+    {
+      "pose": 8,
+      "guide_bbox": [
+        119,
+        117,
+        250,
+        352
+      ],
+      "draft_bbox": [
+        98,
+        114,
+        252,
+        363
+      ]
+    },
+    {
+      "pose": 12,
+      "guide_bbox": [
+        136,
+        194,
+        361,
+        354
+      ],
+      "draft_bbox": [
+        127,
+        185,
+        364,
+        362
+      ]
+    },
+    {
+      "pose": 16,
+      "guide_bbox": [
+        34,
+        176,
+        328,
+        356
+      ],
+      "draft_bbox": [
+        19,
+        159,
+        332,
+        356
+      ]
+    },
+    {
+      "pose": 20,
+      "guide_bbox": [
+        104,
+        140,
+        313,
+        350
+      ],
+      "draft_bbox": [
+        94,
+        124,
+        313,
+        349
+      ]
+    },
+    {
+      "pose": 24,
+      "guide_bbox": [
+        128,
+        93,
+        293,
+        341
+      ],
+      "draft_bbox": [
+        103,
+        73,
+        293,
+        341
+      ]
+    },
+    {
+      "pose": 31,
+      "guide_bbox": [
+        77,
+        95,
+        287,
+        332
+      ],
+      "draft_bbox": [
+        48,
+        79,
+        291,
+        336
+      ]
+    }
+  ],
+  "inputs_sha256": {
+    "guide.png": "273dc9c1b9ec03308eaefecbe2f57ffa1a9fef80115cfa293fae6771e5a648ac",
+    "generated.png": "b561fe80755ee9ad54456100d721edd9b16d0bcc16cc94e942f7af916ed99919"
+  },
+  "limitations": [
+    "Only eight nonadjacent images out of 32 SW frames.",
+    "Foreground bounds include hair, clothing and sword; they are not anatomical landmarks. Source labels are excluded in the top-left 35x24 pixels.",
+    "Paint may have changed anatomy, registration, sword and costume; no motion, cutouts or runtime certification."
+  ]
+}
