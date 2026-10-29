@@ -9,6 +9,10 @@ def reach_weight(source_frame):
  if not math.isfinite(source_frame):raise ValueError('Invalid source frame')
  return max(0.,min(1.,(source_frame-10.)/15.,(150.-source_frame)/15.))
 
+def leg_weight(source_frame):
+ if not math.isfinite(source_frame):raise ValueError('Invalid source frame')
+ return max(0.,min(1.,source_frame/15.,(156.-source_frame)/15.))
+
 def apply(rig,source_frame,depth,inward=0.):
  import bpy
  from mathutils import Matrix,Vector

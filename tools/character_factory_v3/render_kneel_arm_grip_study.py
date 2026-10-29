@@ -27,6 +27,8 @@ def validate(job):
  if type(wrist) not in (int,float) or not math.isfinite(wrist) or abs(wrist)>45:raise ValueError('Expected a bounded left wrist angle')
  spine=job.get('study_spine_x_degrees',0.)
  if type(spine) not in (int,float) or not math.isfinite(spine) or abs(spine)>20:raise ValueError('Expected a bounded spine angle')
+ thigh=job.get('study_right_thigh_degrees',0.);thigh_axis=job.get('study_right_thigh_axis','X')
+ if thigh_axis not in ('X','Y','Z') or type(thigh) not in (int,float) or not math.isfinite(thigh) or abs(thigh)>15:raise ValueError('Expected a bounded right thigh angle')
  samples=job['study_source_frames']
  if samples[0]!=0 or samples[-1]!=156:raise ValueError('Study envelope assumes the preserved original endpoints')
 
@@ -48,6 +50,11 @@ def main():
  source=source.replace(INTERVALS,grip_reference+INTERVALS)
  addition="""        t=sc.frame_current_final
         weight=max(0.,min(1.,t/30.,(156.-t)/26.))
+        if job.get('study_right_thigh_degrees',0.):
+            from kneel_pickup_reach_study import leg_weight
+            thigh=rig.pose.bones['thigh_r']
+            thigh.matrix_basis=thigh.matrix_basis @ Matrix.Rotation(math.radians(job['study_right_thigh_degrees'])*leg_weight(t),4,job.get('study_right_thigh_axis','X'))
+            bpy.context.view_layer.update()
         if job.get('study_spine_x_degrees',0.):
             from kneel_pickup_reach_study import reach_weight
             spine=rig.pose.bones['spine_01']
@@ -66,7 +73,7 @@ def main():
             bpy.context.view_layer.update()
 """
  source=source.replace(POSE,POSE+addition)
- clearance_records=[]
+ clearance_records=[];foot_indices={}
  if job.get('study_blade_clearance',False):
   if job.get('weapon')!='sword':raise ValueError('Blade diagnostics require a sword')
   from mathutils.bvhtree import BVHTree
@@ -74,6 +81,11 @@ def main():
    depsgraph=bpy.context.evaluated_depsgraph_get();objects=[o for o in bpy.context.scene.objects if o.type=='MESH' and not o.hide_render]
    if len(objects)!=1 or objects[0].name!='Mannequin':raise ValueError('Unexpected visible study geometry')
    obj=objects[0];tree=BVHTree.FromObject(obj,depsgraph);inverse=obj.matrix_world.inverted()
+   if not foot_indices:
+    for side in ('l','r'):
+     groups={g.index for g in obj.vertex_groups if g.name in ('foot_'+side,'ball_'+side,'ball_leaf_'+side)}
+     foot_indices[side]=[v.index for v in obj.data.vertices if sum(g.weight for g in v.groups if g.group in groups)>=.5]
+     if not foot_indices[side]:raise ValueError('Missing foot skin vertices')
    # Start beyond the grip and guard: this is a thin proxy centerline, not a blade mesh.
    a=grip+axis*.12;b=grip+axis*.8;local_a=inverse@a;local_b=inverse@b;delta=local_b-local_a;length=delta.length
    hit,normal,index,distance=tree.ray_cast(local_a,delta.normalized(),length)
@@ -86,6 +98,10 @@ def main():
     lowest_vertex=min(mesh.vertices,key=lambda vertex:(evaluated.matrix_world@vertex.co).z)
     lowest_index=lowest_vertex.index;lowest_world=list(evaluated.matrix_world@lowest_vertex.co);lowest_mesh_z=lowest_world[2]
     weights=sorted(({'bone':obj.vertex_groups[g.group].name,'weight':g.weight} for g in obj.data.vertices[lowest_index].groups),key=lambda x:-x['weight'])[:4]
+    feet={}
+    for side,indices in foot_indices.items():
+     vertex=min((mesh.vertices[i] for i in indices),key=lambda v:(evaluated.matrix_world@v.co).z)
+     feet[side]={'vertex_index':vertex.index,'world_m':list(evaluated.matrix_world@vertex.co),'candidate_vertices':len(indices)}
    finally:evaluated.to_mesh_clear()
    nearest=[]
    for i in range(18):
@@ -93,7 +109,7 @@ def main():
     if result[0] is None:raise ValueError('Empty mannequin BVH')
     nearest.append((point-(obj.matrix_world@result[0])).length)
    tips={name:list(rig.matrix_world@rig.pose.bones[name].tail) for name in ('index_03_l','middle_03_l','ring_03_l','pinky_03_l','thumb_03_l')}
-   clearance_records.append({'direction':direction,'frame':frame,'blade_centerline_start_offset_m':.12,'blade_centerline_end_offset_m':.8,'blade_start_world_m':list(a),'blade_end_world_m':list(b),'proxy_radius_m':.022,'lowest_proxy_height_over_z0_m':min(a.z,b.z)-.022,'lowest_evaluated_mesh_vertex_z_m':lowest_mesh_z,'lowest_vertex_index':lowest_index,'lowest_vertex_world_m':lowest_world,'lowest_vertex_skin_weights':weights,'left_distal_bone_tails_world_m':tips,'left_reach':reach_info,'centerline_surface_hit':hit is not None,'first_hit_world':list(obj.matrix_world@hit) if hit is not None else None,'minimum_sampled_surface_distance_m':min(nearest),'torso_positive_control_hit':control_hit is not None})
+   clearance_records.append({'direction':direction,'frame':frame,'blade_centerline_start_offset_m':.12,'blade_centerline_end_offset_m':.8,'blade_start_world_m':list(a),'blade_end_world_m':list(b),'proxy_radius_m':.022,'lowest_proxy_height_over_z0_m':min(a.z,b.z)-.022,'lowest_evaluated_mesh_vertex_z_m':lowest_mesh_z,'lowest_vertex_index':lowest_index,'lowest_vertex_world_m':lowest_world,'lowest_vertex_skin_weights':weights,'foot_skin_low_points':feet,'left_distal_bone_tails_world_m':tips,'left_reach':reach_info,'centerline_surface_hit':hit is not None,'first_hit_world':list(obj.matrix_world@hit) if hit is not None else None,'minimum_sampled_surface_distance_m':min(nearest),'torso_positive_control_hit':control_hit is not None})
   marker="            path=folder/f'{i:03d}.png';sc.render.filepath=str(path);bpy.ops.render.render(write_still=True)"
   if source.count(marker)!=1:raise ValueError('Canonical output point changed')
   source=source.replace(marker,"            sample_clearance(direction,i,grip,axis,bones,rig,dict(study_reach_info))\n"+marker)
