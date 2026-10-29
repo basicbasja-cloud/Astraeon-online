@@ -1,0 +1,48 @@
+{
+  "status": "FOUR_FRAME_CANDIDATE_NOT_APPROVED",
+  "frames": [
+    {
+      "frame": 0,
+      "translation_source_tile_px": [
+        0,
+        0
+      ],
+      "image_sha256": "8757fc2644d12f754837ab13e69fb61104342b3ac78f0f7e7d950db9677e5d38"
+    },
+    {
+      "frame": 1,
+      "translation_source_tile_px": [
+        7,
+        0
+      ],
+      "image_sha256": "fc9816ce9c767dfa22817486268ba5412ebc3fc3c67ebcd1bf45e25619e6da9c"
+    },
+    {
+      "frame": 2,
+      "translation_source_tile_px": [
+        -13,
+        4
+      ],
+      "image_sha256": "6c15f1a7f24dedbd3e1510d43116f8c49becf235ba1841423ec57daed4814882"
+    },
+    {
+      "frame": 3,
+      "translation_source_tile_px": [
+        21,
+        -1
+      ],
+      "image_sha256": "9816c80e948bc103926843daa2f2b01576f349e23413939d5e8fa64cf60865f2"
+    }
+  ],
+  "inputs_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-walk-sw-pair-registration-20261029/receipt.json": "02e99f2c5a5618d6edcee54fce4f4486bbf20f58372413f578b6ea538e4f5ecf",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-walk-sw-rearleg-repair-20261029/candidate.png": "9ea7f03a9d7adb1fe68fb1a2bca4ac9ba18b962f62909a4e2a819919b29211d0",
+    "authoring/characters/factory-v3/patch-0.0.1/review/swordsman-walk-sw03-rearleg-repair-20261029/candidate.png": "5a9fc2f253bd8ef5bca814f2559094de3f1593a9791a0727dc77fcfd6d432724"
+  },
+  "limitations": [
+    "Head registration is driven by an unverified hair centroid; near-zero proxy residual is by construction.",
+    "Foot markers are bone origins, not measured painted ankles or sole contacts.",
+    "Only four frames of one direction; repeated GIF is not a complete walk.",
+    "Alpha extraction, cutouts, variants, game timing and runtime remain unapproved."
+  ]
+}
