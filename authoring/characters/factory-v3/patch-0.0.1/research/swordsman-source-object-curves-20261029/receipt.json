@@ -1,0 +1,188 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "factory_sha256": "7af28501ea2123f95179521f5a518d7a6832dedcd9e95fb84b2049dacd3eb328",
+  "implementation_sha256": "7d5430e04befd60c322775f14cda918d9ce088b034d35f534b5263762b2bc726",
+  "rig": "Armature",
+  "actions": {
+    "Consume": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        32.0
+      ],
+      "object_channels": []
+    },
+    "Death_D": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        52.0
+      ],
+      "object_channels": []
+    },
+    "Hit_Chest": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        10.0
+      ],
+      "object_channels": [
+        {
+          "path": "location",
+          "index": 0,
+          "key_count": 2,
+          "key_min": 0.2651699185371399,
+          "key_max": 0.2651699185371399
+        },
+        {
+          "path": "location",
+          "index": 1,
+          "key_count": 2,
+          "key_min": 0.16000035405158997,
+          "key_max": 0.16000035405158997
+        },
+        {
+          "path": "location",
+          "index": 2,
+          "key_count": 2,
+          "key_min": 0.5758761167526245,
+          "key_max": 0.5758761167526245
+        }
+      ]
+    },
+    "Idle_Sword": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        50.0
+      ],
+      "object_channels": []
+    },
+    "Interact": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        60.0
+      ],
+      "object_channels": []
+    },
+    "Jog": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        28.0
+      ],
+      "object_channels": []
+    },
+    "LayToIdle": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        36.0
+      ],
+      "object_channels": []
+    },
+    "PickUp_Table": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        25.0
+      ],
+      "object_channels": []
+    },
+    "Sitting_Enter": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        39.0
+      ],
+      "object_channels": []
+    },
+    "Spell_Simple_Idle": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        64.0
+      ],
+      "object_channels": []
+    },
+    "Spell_Simple_Shoot": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        15.0
+      ],
+      "object_channels": []
+    },
+    "Sprint": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        20.0
+      ],
+      "object_channels": []
+    },
+    "Sword_Attack": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        46.0
+      ],
+      "object_channels": []
+    },
+    "Sword_Block": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        30.0
+      ],
+      "object_channels": []
+    },
+    "Sword_Dash_RM": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        38.0
+      ],
+      "object_channels": []
+    },
+    "Sword_Regular_B": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        13.0
+      ],
+      "object_channels": []
+    },
+    "Sword_Regular_B_Rec": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        24.0
+      ],
+      "object_channels": []
+    },
+    "Sword_Regular_Combo": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        71.0
+      ],
+      "object_channels": []
+    },
+    "Walk": {
+      "status": "FOUND",
+      "frame_range": [
+        0.0,
+        40.0
+      ],
+      "object_channels": []
+    }
+  },
+  "limitations": [
+    "Key values do not bound all Bezier interpolation or determine whether source motion is meaningful.",
+    "No mesh-to-proxy, armature parent, gameplay, contact, pose, art or motion quality is validated.",
+    "Only configured Swordsman sources were examined; other classes and experiments require separate audit."
+  ]
+}
