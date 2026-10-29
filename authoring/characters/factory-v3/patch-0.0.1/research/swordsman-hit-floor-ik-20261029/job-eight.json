@@ -1,0 +1,43 @@
+{
+  "id": "swordsman-hit-floor-ik-preserve-idle-eight",
+  "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "source_actions": [
+    "Hit_Chest"
+  ],
+  "frames": 20,
+  "loop": false,
+  "ortho_scale": 5.325,
+  "resolution": 768,
+  "weapon": "sword",
+  "guide_aa": "OFF",
+  "camera_up_offset": 1.15375,
+  "pose_evaluation_revision": 2,
+  "directions": [
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N",
+    "NE",
+    "E",
+    "SE"
+  ],
+  "uses": [
+    "Swordsman/Hit"
+  ],
+  "freeze_source_object_transform": true,
+  "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+  "source_ranges": {
+    "Hit_Chest": [
+      0,
+      9
+    ]
+  },
+  "exit_transition": {
+    "action": "Idle_Sword",
+    "source_frame": 0,
+    "frames": 8
+  },
+  "floor_ik_experiment": true
+}
