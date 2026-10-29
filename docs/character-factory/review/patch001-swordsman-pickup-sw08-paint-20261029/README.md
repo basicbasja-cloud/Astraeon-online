@@ -1,0 +1,7 @@
+# Swordsman Pickup SW frame 08 — single-frame paint study
+
+A targeted single-frame edit of the exact source guide and the preserved SW Swordsman identity produced a more closely framed candidate than the earlier nine-pose sheet. The raw source, guide crop and exact prompt are retained in `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-pickup-sw08-single-20261029/`; image model and seed were not exposed. It is still a **draft**, not a master or accepted art.
+
+At a common 384×384 display scale, dark-foreground bounds of the guide are `[104,206,275,334]` and the generated draft `[102,191,273,317]`. The comparison includes costume, hair and sword, so it is not a skeletal measurement. [Unregistered overlay](raw-overlay.png) and [whole-image +17px vertical translation study](translation-study.png) are provided. The second is a diagnostic proposal to compare placement, not an established ground-contact anchor or approved transform. The images show closer broad pose, but shoulder, hand, sword and lower-body placement need landmark and anatomy review. One image cannot establish 35-frame consistency or gameplay quality.
+
+The background is white, without verified alpha; it has not been split into matching HeadHair, BodyCostume and Weapon. No source art, guide, ledger or runtime binding changed. Preserve this candidate for a bounded cutout/continuity evaluation; do not treat it as an action or character delivered.
