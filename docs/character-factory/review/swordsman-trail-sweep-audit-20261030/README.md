@@ -21,3 +21,9 @@ The next viable correction needs confirmed hand and blade endpoints across the p
 Native path: `authoring/characters/factory-v3/patch-0.0.1/research/swordsman-attack-dense-path-11-15-20261030/receipt.json` and `tools/character_factory_v3/export_swordsman_attack_dense_path.py`. Proposed FX generators are `propose_swordsman_live_sweep_trail.py`, `propose_swordsman_layered_sweep_trail.py`, and `propose_swordsman_interpolated_sweep.py` under the same tools directory. Their receipts describe source hashes and limitations; the interpolated receipt is included here.
 
 `python -m unittest discover -s tests/character_factory_v3 -p test_interpolated_sweep_study.py`: 3 passed. These tests check interpolation, malformed inputs and history bounds; they do not certify visual correctness. No runtime asset or animation was changed, and no gameplay validation was performed.
+
+## Painted endpoint inspection
+
+[Contact sheet of painted frames 5–9 and existing grip/tip annotations](weapon-annotations.png): red marks grip, cyan marks tip. In NW frame 8 the blade is extremely short in projection and overlaps the figure; the marked tip is difficult to verify from the painted pixels. This weakens the frame-specific registration in precisely the view where the interpolated ribbon breaks. It does not establish whether the underlying pose or marker is wrong. Inspect the native 3D blade and correct/verify the painted grip and tip together before accepting a new FX curve. The markers are existing annotations, not newly approved landmarks.
+
+Reproduce the contact sheet into a fresh path with `python tools/character_factory_v3/render_swordsman_weapon_annotation_audit.py --output /tmp/swordsman-weapon-annotations.png`.
