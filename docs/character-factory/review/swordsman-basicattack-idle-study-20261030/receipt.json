@@ -1,0 +1,37 @@
+{
+  "status": "RIG_TRANSITION_STUDY_NOT_APPROVED",
+  "attack_manifest_sha256": "ce7c023fd1a118d3c232156e025384f6d812da4780042765dd2e324216e6bfd0",
+  "idle_manifest_sha256": "9e5aefd70498076774628c1f486b3b9d066412da5bd7f1be8e99de5b85db3969",
+  "candidate_manifest_sha256": "7ed53127b3dbe0c82fedbebbf536cebf75b251212ab67064b299491efa89cdeb",
+  "directions": {
+    "SW": {
+      "attack_16_max_world_landmark_error_m": 0.0,
+      "attack_16_max_rotation_error_deg": 2.4148365394514667e-06,
+      "endpoint_idle_max_world_landmark_error_m": 2.1073424255447017e-07,
+      "blend_tip_max_step_runtime_px": 1.1315388534017818
+    },
+    "NW": {
+      "attack_16_max_world_landmark_error_m": 0.0,
+      "attack_16_max_rotation_error_deg": 2.4148365394514667e-06,
+      "endpoint_idle_max_world_landmark_error_m": 2.1073424255447017e-07,
+      "blend_tip_max_step_runtime_px": 1.3457067330321681
+    },
+    "NE": {
+      "attack_16_max_world_landmark_error_m": 0.0,
+      "attack_16_max_rotation_error_deg": 2.4148365394514667e-06,
+      "endpoint_idle_max_world_landmark_error_m": 2.1073424255447017e-07,
+      "blend_tip_max_step_runtime_px": 1.349749635349097
+    },
+    "SE": {
+      "attack_16_max_world_landmark_error_m": 0.0,
+      "attack_16_max_rotation_error_deg": 2.4148365394514667e-06,
+      "endpoint_idle_max_world_landmark_error_m": 2.1073424255447017e-07,
+      "blend_tip_max_step_runtime_px": 0.6955766331174847
+    }
+  },
+  "limitations": [
+    "Recorded landmarks and selected bone rotations are not every mesh vertex or a painted master.",
+    "Joint blend, contact, grip, timing, trail and actual runtime transition are unapproved.",
+    "Review GIF repeats a one-shot at illustrative timing."
+  ]
+}
