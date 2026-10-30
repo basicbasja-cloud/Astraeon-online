@@ -25,14 +25,20 @@ def mapped_path(samples,annotations):
   if max(np.linalg.norm(results[k*16][j]-np.asarray(ann['weapon_'+name])) for j,name in enumerate(('grip','tip')))>1e-5:raise ValueError('interpolated key mismatch')
  return results,{'scales':scales,'angles_radians':angles.tolist()}
 
-def build(out):
+def build(out, overrides_path=None):
  if out.exists() or out.is_symlink():raise ValueError('choose fresh output')
- dense=json.loads(live.DENSE.read_text());imports=json.loads(live.IMPORT.read_text());registration=json.loads(live.REG.read_text());timing=json.loads((live.SOURCE/'assembly-audit.json').read_text())['durations_ms']
+ overrides=json.loads(overrides_path.read_text()) if overrides_path else {};dense=json.loads(live.DENSE.read_text());imports=json.loads(live.IMPORT.read_text());registration=json.loads(live.REG.read_text());timing=json.loads((live.SOURCE/'assembly-audit.json').read_text())['durations_ms']
  if dense.get('status')!='DENSE_SOURCE_PATH_NOT_TRAIL_APPROVAL' or dense['sample_count_per_view']!=65 or len(imports['frames'])!=64:raise ValueError('unexpected source')
  out.mkdir(parents=True);before={};after={};records=[]
  for direction in live.DIRS:
   native=dense['views'][direction];ann=json.loads((live.SOURCE/direction/'annotations.generated.json').read_text())['frames'];mapping=next(x for x in registration['frames'] if x['action']=='BasicAttack' and x['direction']==direction)['frames'];frames={x['index']:x for x in imports['frames'] if x['direction']==direction}
   if len(frames)!=16 or any(abs(v['source_frame']-(11+i/16))>1e-7 for i,v in enumerate(native)):raise ValueError('invalid source path')
+  for key,fields in overrides.get(direction,{}).items():
+   index=int(key)
+   if index not in (5,6,7,8,9) or set(fields)-{'weapon_grip','weapon_tip'}:raise ValueError('invalid annotation override')
+   for name,point in fields.items():
+    if len(point)!=2 or any(not isinstance(v,(int,float)) or not math.isfinite(v) for v in point):raise ValueError('invalid point')
+    ann[index][name]=point
   path,calibration=mapped_path(native,[ann[i] for i in (5,6,7,8,9)]);reference_blade=float(np.linalg.norm(np.asarray(ann[7]['weapon_tip'])-ann[7]['weapon_grip']));cap=2.4*reference_blade;effects={};fxrole='WeaponLightBack' if direction in ('NW','NE') else 'WeaponLightFront'
   for i,opacity in ((7,1.),(8,.55),(9,.15)):
    end={7:32,8:48,9:64}[i];history=bounded_path(path[:end+1],cap);fx=transform(paint(history),mapping[i]['camera_scale'],mapping[i]['canvas_translation'])
@@ -58,8 +64,8 @@ def build(out):
   boards.append(board)
  boards[0].save(out/'comparison.gif',save_all=True,append_images=boards[1:],duration=timing,loop=0,optimize=False,disposal=2)
  for i in (7,8,9):boards[i].save(out/f'frame{i:02}.png')
- proof={'status':'INTERPOLATED_ART_CALIBRATION_SWEEP_NOT_APPROVED','dense_path_sha256':sha(live.DENSE),'import_manifest_sha256':sha(live.IMPORT),'implementation_sha256':sha(__file__),'records':records,
+ proof={'status':'INTERPOLATED_ART_CALIBRATION_SWEEP_NOT_APPROVED','dense_path_sha256':sha(live.DENSE),'import_manifest_sha256':sha(live.IMPORT),'implementation_sha256':sha(__file__),'annotation_overrides_sha256':sha(overrides_path) if overrides_path else None,'records':records,
         'limitations':['Interpolated 2D fits through painted endpoints are an approximation, not native 3D blade geometry or trajectory.', 'Painted grip/tip annotations, foot/wrist anatomy, trail front/back staging, speed and actual gameplay timing are unverified.', 'Source path is not extrapolated, but width, fade, fixed history cap and draw order are artistic choices.', 'No FX or runtime asset was admitted.']}
  (out/'receipt.json').write_text(json.dumps(proof,indent=2)+'\n');return proof
 if __name__=='__main__':
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args();print(json.dumps(build(a.output)))
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);p.add_argument('--overrides',type=Path);a=p.parse_args();print(json.dumps(build(a.output,a.overrides)))
