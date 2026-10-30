@@ -1,0 +1,110 @@
+{
+  "status": "UNAPPROVED_ALTERNATE_WEAPON_SEGMENTATION",
+  "source_sha256": "4f9cd86f3da790e35c9dbce0476f45abfe7ace91ccb073b03d5d4d0531b607fb",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "script_sha256": "d6357c7fbe721695f75a5020689725d5917b176779fa64efdf02f2a3e63d9231",
+  "points": [
+    [
+      420,
+      741
+    ],
+    [
+      565,
+      648
+    ],
+    [
+      710,
+      555
+    ],
+    [
+      844,
+      470
+    ],
+    [
+      386,
+      760
+    ],
+    [
+      520,
+      780
+    ],
+    [
+      600,
+      510
+    ],
+    [
+      780,
+      590
+    ],
+    [
+      250,
+      845
+    ]
+  ],
+  "labels": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "records": [
+    {
+      "index": 0,
+      "score": 0.6096994876861572,
+      "pixels": 84733,
+      "seeds": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 1,
+      "score": 0.7215916514396667,
+      "pixels": 56059,
+      "seeds": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 2,
+      "score": 0.7573833465576172,
+      "pixels": 57507,
+      "seeds": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "limitations": [
+    "SAM binary masks are suggestions and can include glove, background or garment; scores are not semantic approval.",
+    "Generated sword position, scale and hand grip must be inspected against locked master.",
+    "Original alpha, other frames, occlusion, variants and gameplay remain unverified."
+  ]
+}

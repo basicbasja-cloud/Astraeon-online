@@ -1,0 +1,78 @@
+{
+  "status": "UNAPPROVED_ALTERNATE_POMMEL_SEGMENTATION",
+  "source_sha256": "4f9cd86f3da790e35c9dbce0476f45abfe7ace91ccb073b03d5d4d0531b607fb",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "script_sha256": "4d1215f035ed50e17d43ade0e1fbe89519c0986d41e86a2230f70dae50ed33c0",
+  "points": [
+    [
+      135,
+      930
+    ],
+    [
+      160,
+      917
+    ],
+    [
+      230,
+      850
+    ],
+    [
+      110,
+      990
+    ],
+    [
+      205,
+      940
+    ]
+  ],
+  "labels": [
+    1,
+    1,
+    0,
+    0,
+    0
+  ],
+  "records": [
+    {
+      "index": 0,
+      "score": 0.6835787892341614,
+      "pixels": 4959,
+      "seeds": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 1,
+      "score": 0.7170330882072449,
+      "pixels": 2128,
+      "seeds": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "index": 2,
+      "score": 0.8257051110267639,
+      "pixels": 3522,
+      "seeds": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "limitations": [
+    "SAM binary masks are suggestions and can include glove, background or garment; scores are not semantic approval.",
+    "Generated sword position, scale and hand grip must be inspected against locked master.",
+    "Original alpha, other frames, occlusion, variants and gameplay remain unverified."
+  ]
+}
