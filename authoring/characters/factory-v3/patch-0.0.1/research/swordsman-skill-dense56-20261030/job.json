@@ -1,0 +1,49 @@
+{
+  "id": "swordsman-skill-dense56-fourviews-study",
+  "source_file": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+  "source_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+  "source_actions": [
+    "Sword_Regular_B",
+    "Sword_Regular_B_Rec"
+  ],
+  "frames": 56,
+  "loop": false,
+  "ortho_scale": 5.325,
+  "resolution": 768,
+  "weapon": "sword",
+  "guide_aa": "OFF",
+  "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+  "camera_up_offset": 1.15375,
+  "pose_evaluation_revision": 2,
+  "entry_transition": {
+    "action": "Idle_Sword",
+    "source_frame": 0,
+    "frames": 8,
+    "method": "local-joint TRS interpolation"
+  },
+  "exit_transition": {
+    "action": "Idle_Sword",
+    "source_frame": 0,
+    "frames": 8,
+    "method": "local-joint TRS interpolation"
+  },
+  "source_ranges": {
+    "Sword_Regular_B": [
+      0,
+      8
+    ],
+    "Sword_Regular_B_Rec": [
+      8,
+      22
+    ]
+  },
+  "directions": [
+    "SW",
+    "NW",
+    "NE",
+    "SE"
+  ],
+  "uses": [
+    "Swordsman/SkillAction"
+  ]
+}
