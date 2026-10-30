@@ -1,0 +1,7 @@
+# Swordsman BasicAttack NW 003: manual blade recovery
+
+**Rejected as a production asset.** A manually drawn polygon recovers much of the visible blade from the original same-frame master and places it above the prior sword-free underpainting together with the legacy Weapon and WeaponHandOccluder. The [comparison](comparison.png) restores the previously missing tip visually, but differs from the original in **1,378 RGBA pixels**, including **338 alpha pixels**. The [isolated blade](blade-isolation.png) includes some neighboring scarf/skin edge colors, the full hilt is not independently separated, and the legacy layers still contain mixed semantics. Exact recomposition and genuine weapon swaps therefore fail.
+
+The masks, experimental pixels, difference mask and receipt with source hashes are under `authoring/characters/factory-v3/patch-0.0.1/research/swordsman-nw003-blade-recovery-20261030/`. No canonical, game or original data was replaced. Refine blade and hilt boundaries from the original master, author correct transparent edges/hidden surfaces, and demonstrate both exact reconstruction and visual replacement before accepting a frame.
+
+Reproduce in a fresh path: `python tools/character_factory_v3/propose_swordsman_nw003_blade_recovery.py --output /tmp/nw003-blade-recovery`. Counts compare native 512px RGBA directly against the original master. They do not measure perceived quality, hand anatomy, animation or gameplay.
