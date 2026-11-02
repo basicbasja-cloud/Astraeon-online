@@ -1,0 +1,30 @@
+{
+  "status": "TRANSPARENT_MASK_PATCH_NOT_APPROVED",
+  "inputs_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-hit-sw000-bounded-repair-20261102/draft.png": "ad9e43b774ed51564e29ddbf3d6412861fbe909d0f93a1064598cd79184f687d",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-hit-sw000-close-transparent-20261102/raw.png": "467f25d557dbd9ef4079545873bd474166a8ef831f40a0e599b9d9c6043794f8",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-hit-sw000-close-transparent-20261102/source-blade-mask.png": "d16a90862d8ccba12d5a983da83a4ce87f342fb1863b21f2ffcb2b7992678bc0",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-hit-sw000-close-transparent-20261102/source-targets.json": "0b53dbbc7cf3acdfd2b2ca17ee5eaa9832e9a526c5b431af00bfff3f9f3432c7"
+  },
+  "script_sha256": "886a7ae4dea21b7b5362ae70204256c3b1121fccf346bbc51600284873d1c91e",
+  "mask_pixels": 921,
+  "outside_mask_difference": 0,
+  "opaque_to_transparent_pixels": 53,
+  "transparent_to_opaque_pixels": 0,
+  "manual_tip_raw_px": [
+    806,
+    404
+  ],
+  "guide_tip_raw_px": [
+    798.6485231999999,
+    428.2876488000003
+  ],
+  "tip_error_runtime_px": 0.7904660257369929,
+  "manual_uncertainty_raw_px": 4,
+  "limitations": [
+    "The 53 opaque-to-transparent pixels may include arm/body, not solely the former blade; inspect semantic ownership.",
+    "SAM blade and its dilation may include costume/glove; compare edges and seams frame by frame.",
+    "Manual donor tip and finger-derived guide proxy do not validate real socket, hand, anatomy or foot contacts.",
+    "One source master draft, one direction, no cutouts, variants, animation or gameplay."
+  ]
+}
