@@ -1,0 +1,50 @@
+{
+  "status": "INTAKE_ROLLBACK_REGRESSION_REPRODUCED_AND_FIXED_NOT_ART_APPROVAL",
+  "baseline_commit": "ad0bf2b",
+  "baseline_implementation_sha256": {
+    "cutout_asset_store.py": "4e88de88fba378f0872155670a8a248d9452f35fb37dda9ad27025ed20f7e911",
+    "import_patch001_cutouts.py": "738af3ffba5a0df45b8299c56a633d8a9fb40853452d0028b48596da485c8577"
+  },
+  "current_implementation_sha256": {
+    "cutout_asset_store.py": "cc7cad750796bf8458c32247914a5b09e06c9faafe25c94751f5676aa427071d",
+    "import_patch001_cutouts.py": "7471b30bb252234a72c2e1cc3b153c3c317e15b3d0e5d4f4d6e51c087968c5f3"
+  },
+  "replay_implementation_sha256": "25f92ee9d8967b8f4c901e7a7fda059d848c616524bb6c7be20187839eb16ecf",
+  "late_validation_failure": {
+    "before": {
+      "error": "Same-frame recomposition differs: SW/1",
+      "partial_import_folder_left": true,
+      "new_shared_object_files_left": 3,
+      "original_index_unchanged": true
+    },
+    "after": {
+      "error": "Same-frame recomposition differs: SW/1",
+      "partial_import_folder_left": false,
+      "new_shared_object_files_left": 0,
+      "original_index_unchanged": true
+    }
+  },
+  "successful_fixture_binding_ids_and_metadata_unchanged": true,
+  "successful_fixture": {
+    "bindings_sha256": "e5b700406102682e6fab476f79d395afc5b2455c9d90168b83116600962ce71d",
+    "index_sha256": "c029e2ce898aec4174804889a456adc9ec2ebe620ec1fb5f2b4c7faddf1699c3",
+    "frames": 2,
+    "assets": 15,
+    "receipt": {
+      "paint_job": "job",
+      "guide_job": "guide",
+      "input_manifest_sha256": "71d9bb5fda19565c2f02623cda35687337830aad2d1bab96fa72bdeba9127235",
+      "pose_recipe_evidence": {},
+      "all_frames_present": true,
+      "frames": 2,
+      "recomposition_mismatches": 0,
+      "status": "IMPORTED_REQUIRES_VISUAL_REVIEW",
+      "owner_approved": false,
+      "runtime_admitted": false,
+      "hidden_surfaces_authored": false,
+      "staged_import_revision": 1
+    }
+  },
+  "synthetic_fixture_only": true,
+  "new_art_or_gameplay_approval": false
+}

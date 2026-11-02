@@ -1,0 +1,34 @@
+{
+  "status": "TECHNICAL_CHECKPOINT_NOT_ART_OR_GAMEPLAY_APPROVAL",
+  "selected_tests_run": 34,
+  "failures": 0,
+  "errors": 0,
+  "covered_test_files": [
+    "test_cutout_import_transaction.py",
+    "test_cutout_import_preservation.py",
+    "test_cutout_store_integrity.py",
+    "test_import_pose_recipes.py",
+    "test_patch001_review_tools.py"
+  ],
+  "full_factory_suite_rerun": false,
+  "old_new_replay_proof_byte_identical": true,
+  "fresh_artifact_rebuilds": [
+    {
+      "component": "swordsman-walk-local-weapon-refs-20261102",
+      "files_identical": 7
+    },
+    {
+      "component": "swordsman-walk-local-weapon-20261102",
+      "files_identical": 5
+    }
+  ],
+  "protected_baseline_hashes_matched": 896,
+  "new_accepted_actions": 0,
+  "new_complete_characters": 0,
+  "new_gameplay_tests": 0,
+  "implementation_sha256": {
+    "import_patch001_cutouts.py": "7471b30bb252234a72c2e1cc3b153c3c317e15b3d0e5d4f4d6e51c087968c5f3",
+    "cutout_asset_store.py": "cc7cad750796bf8458c32247914a5b09e06c9faafe25c94751f5676aa427071d",
+    "propose_walk_local_weapon_edit.py": "3647546c66faccb3e8f84ebf0f72df058fdb8aa271e3c5a8ca550977c17a644d"
+  }
+}

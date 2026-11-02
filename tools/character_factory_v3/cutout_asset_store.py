@@ -3,7 +3,7 @@
 Sharing file bytes is separate from permission to swap a part into another pose.
 No missing part is synthesized, and no hidden anatomy is claimed.
 """
-import argparse,hashlib,json
+import argparse,hashlib,json,tempfile
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -17,38 +17,74 @@ REQUIRED={'HeadHair','BodyCostume','Weapon'}
 def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':')).encode()
 
 
-def register(image_path,metadata,index=None):
+def validate_object(path,pixel_hash,canvas):
+    """Verify an immutable object before reusing or publishing its binding."""
+    if path.is_symlink():raise ValueError('Stored cutout object must not be a symlink')
+    try:
+        with Image.open(path) as existing:
+            if existing.mode!='RGBA' or list(existing.size)!=list(canvas):raise ValueError('Stored cutout object has invalid format or dimensions')
+            stored=np.asarray(existing).copy()
+    except (OSError,ValueError) as exc:raise ValueError('Stored cutout object is unreadable or invalid') from exc
+    stored[stored[:,:,3]==0]=0
+    if hashlib.sha256(stored.tobytes()).hexdigest()!=pixel_hash:raise ValueError('Stored cutout object pixels changed')
+
+
+def register(image_path,metadata,index=None,staging_dir=None):
+    """Optionally prepare new PNGs in a private batch, keeping final object IDs.
+
+    A staged registration never writes the shared store or its index. The caller
+    must validate the whole batch and publish the staged objects before its index.
+    """
+    if staging_dir is not None and index is None:raise ValueError('Staged registration needs a caller-owned index')
     if metadata.get('role')not in ROLES:raise ValueError('Unknown cutout role')
     for field in ['fit_id','pose_id','camera_id','root','source_reference']:
         if field not in metadata:raise ValueError('Missing compatibility field '+field)
-    image=Image.open(image_path)
     canvas=metadata.get('canvas',[512,512])
-    if list(image.size)!=canvas or image.mode!='RGBA'or canvas not in [[512,512],[768,768]]:raise ValueError('Cutouts must match an explicit full canonical 512px or 768px RGBA canvas')
-    if metadata['role']in REQUIRED and not image.getbbox()and not metadata.get('occlusion_reason'):raise ValueError('Required cutout is empty without a recorded visibility reason')
-    pixels=np.asarray(image).copy();pixels[pixels[:,:,3]==0]=0
+    with Image.open(image_path) as image:
+        if list(image.size)!=canvas or image.mode!='RGBA'or canvas not in [[512,512],[768,768]]:raise ValueError('Cutouts must match an explicit full canonical 512px or 768px RGBA canvas')
+        if metadata['role']in REQUIRED and not image.getbbox()and not metadata.get('occlusion_reason'):raise ValueError('Required cutout is empty without a recorded visibility reason')
+        pixels=np.asarray(image).copy()
+    pixels[pixels[:,:,3]==0]=0
     pixel_hash=hashlib.sha256(pixels.tobytes()).hexdigest();key=hashlib.sha256(canonical({'pixels':pixel_hash,'compatibility':metadata})).hexdigest()
-    folder=STORE/'objects';folder.mkdir(parents=True,exist_ok=True);target=folder/(pixel_hash+'.png')
+    folder=STORE/'objects';target=folder/(pixel_hash+'.png')
     if target.is_symlink():raise ValueError('Stored cutout object must not be a symlink')
     if target.exists():
-        # A filename alone does not prove that a shared object is intact.
-        # Reject damage before publishing any binding to it.
-        try:
-            with Image.open(target) as existing:
-                if existing.mode!='RGBA' or existing.size!=image.size:raise ValueError('Stored cutout object has invalid format or dimensions')
-                stored=np.asarray(existing).copy()
-        except (OSError,ValueError) as exc:raise ValueError('Stored cutout object is unreadable or invalid') from exc
-        stored[stored[:,:,3]==0]=0
-        if hashlib.sha256(stored.tobytes()).hexdigest()!=pixel_hash:raise ValueError('Stored cutout object pixels changed')
-    else:Image.fromarray(pixels).save(target)
+        validate_object(target,pixel_hash,canvas)
+    else:
+        destination=Path(staging_dir)/(pixel_hash+'.png')if staging_dir is not None else target
+        if destination.exists() or destination.is_symlink():validate_object(destination,pixel_hash,canvas)
+        else:
+            destination.parent.mkdir(parents=True,exist_ok=True)
+            Image.fromarray(pixels).save(destination)
     index_path=STORE/'index.json';owned=index is None
     if owned:index=json.loads(index_path.read_text())if index_path.exists()else{'version':1,'assets':{},'objects':{}}
-    index['assets'][key]={'object':pixel_hash,**metadata};index['objects'][pixel_hash]={'file':str(target.relative_to(ROOT)),'rgba_sha256':pixel_hash,'canvas':list(image.size)}
+    index['assets'][key]={'object':pixel_hash,**metadata};index['objects'][pixel_hash]={'file':str(target.relative_to(ROOT)),'rgba_sha256':pixel_hash,'canvas':list(canvas)}
     if owned:save_index(index)
     return key
 
 
+def _replace_bytes(path,data):
+    """Keep older temporary files untouched and publish one complete JSON file."""
+    path.parent.mkdir(parents=True,exist_ok=True)
+    temporary=None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent,prefix='.index-',suffix='.tmp',delete=False) as stream:
+            temporary=Path(stream.name);stream.write(data)
+        temporary.replace(path)
+    finally:
+        if temporary is not None:temporary.unlink(missing_ok=True)
+
+
 def save_index(index):
-    STORE.mkdir(parents=True,exist_ok=True);path=STORE/'index.json';temporary=STORE/'index.json.tmp';temporary.write_text(json.dumps(index,indent=2)+'\n');temporary.replace(path)
+    _replace_bytes(STORE/'index.json',(json.dumps(index,indent=2)+'\n').encode())
+
+
+def restore_index_bytes(previous):
+    """Rollback an exclusively owned import commit, preserving the old bytes."""
+    path=STORE/'index.json'
+    if path.is_symlink():raise ValueError('Store index must not be a symlink')
+    if previous is None:path.unlink(missing_ok=True)
+    elif not path.exists()or path.read_bytes()!=previous:_replace_bytes(path,previous)
 
 
 def resolve(asset_id,request):

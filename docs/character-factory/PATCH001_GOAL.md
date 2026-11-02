@@ -1,5 +1,26 @@
 # Patch 0.0.1 character goal — active
 
+## Continued intake rollback and bounded Walk retouch (2 November 2026)
+
+After the owner requested continuation, the importer was repaired so an invalid
+late frame does not leave a partial new import or unindexed shared objects.
+The pre-fix replay leaves a folder and3 objects; the changed version leaves
+neither. Successful synthetic fixture bindings/IDs/metadata remain byte-identical;
+34 selected tests pass. This is handled-exception rollback, not crash-atomic
+storage or art acceptance.896 protected baseline hashes still match. See
+[intake evidence and limitations](review/patch001-cutout-import-rollback-20261102/README.md).
+
+Three enlarged same-frame Walk weapon retouches were requested. SW004 returned
+one output; a bounded proposal changes0 pixels outside its explicit mask but
+still misses the source endpoint (approximately6.16 runtime px, not a contact
+score) and is unapproved. SW008 andSW012 were rejected by the image service at
+input with HTTP400 `moderation_blocked`, category `violence`; no outputs or
+substitute frames were admitted, and no bypass was attempted. Exact prompts,
+reference hashes, request IDs and [PNG comparisons](review/swordsman-walk-local-weapon-20261102/README.md)
+are retained. No source pose, camera, original master or runtime asset changed.
+All6 characters remain incomplete; no new accepted action or gameplay result.
+Owner authorization remains in force and is not the missing prerequisite.
+
 ## Full authorization; Walk source replay and master control gap (2 November 2026)
 
 The owner explicitly authorized all necessary work and checkpoint reports until

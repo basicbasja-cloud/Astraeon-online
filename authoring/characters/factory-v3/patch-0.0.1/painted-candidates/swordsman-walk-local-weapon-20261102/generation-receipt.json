@@ -1,0 +1,40 @@
+{
+  "status": "ONE_REVIEW_OUTPUT_TWO_PROVIDER_REJECTIONS_NO_PRODUCTION_ADMISSION",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": "not exposed",
+  "prompt_sha256": "e48f16360eeed95510702ea3803cc1dd2c68247e8af1a7c29e6783e8a395a7c6",
+  "input_sha256": {
+    "4": "830ba4eee1c3a7e907cb9e1fb8163e2fea455c5dc5bd398a9e919cfe6d10bf4c",
+    "8": "19d5cefa757b7646e85a518e9ee80cd0c51327cb696cd1ca86afe332fa7c16fa",
+    "12": "76f6ca7d91f552e47daa9b49c55739bb31a3af591fc26bbee821cafc366adc3a"
+  },
+  "completed": {
+    "4": {
+      "raw_sha256": "9f548c1224f99232ecbd7f12ca1a2dd1116f92d18dc20f5ffb3f410c0a853daf",
+      "native_canvas": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "failed": {
+    "8": {
+      "http_status": 400,
+      "code": "moderation_blocked",
+      "category": "violence",
+      "stage": "input",
+      "request_id": "4e47e889-64b9-495e-94d1-3e8b2afaca29"
+    },
+    "12": {
+      "http_status": 400,
+      "code": "moderation_blocked",
+      "category": "violence",
+      "stage": "input",
+      "request_id": "f0ee4c2e-614e-4c7d-8ce6-4355750df227"
+    }
+  },
+  "failure_workaround_attempted": false,
+  "source_art_approval": false,
+  "runtime_admitted": false
+}
