@@ -1,0 +1,51 @@
+{
+  "status": "HEAD_MASK_PROPOSALS_NOT_APPROVED",
+  "source_sha256": "e9c217735cc929731e9b5d01a21558a83e2341338f025ff0937dc83d24fcc0b0",
+  "checkpoint_sha256": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+  "script_sha256": "759d3aabdb20463f913a853576de7c5265026b7155145c4df25e96e1d9817396",
+  "points": [
+    [
+      249.0,
+      175.0
+    ],
+    [
+      256.0,
+      194.0
+    ],
+    [
+      276.0,
+      197.0
+    ],
+    [
+      250.0,
+      215.0
+    ]
+  ],
+  "labels": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "proposals": [
+    {
+      "index": 0,
+      "score": 0.2826031446456909,
+      "pixels": 11284
+    },
+    {
+      "index": 1,
+      "score": 0.8185701370239258,
+      "pixels": 1385
+    },
+    {
+      "index": 2,
+      "score": 0.8680746555328369,
+      "pixels": 1531
+    }
+  ],
+  "limitations": [
+    "SAM masks can include arm, scarf or omit face/neck; scores do not establish semantic ownership.",
+    "Underpainting, hilt, alpha edges, other frames, asset swaps and gameplay remain unapproved."
+  ]
+}
