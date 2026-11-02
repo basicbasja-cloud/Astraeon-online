@@ -1,5 +1,12 @@
 # GitHub issue report pending
 
+**Resolved, 2 November 2026:** the owner explicitly authorized the report and
+continued six-character production. The report was posted successfully as
+[issue comment6571119024](https://github.com/basicbasja-cloud/Astraeon-online/issues/2#issuecomment-6571119024).
+The authorization covers further checkpoint reports to the same issue; do not
+ask for the same permission again. The historical rejection and draft below are
+retained for traceability. Posting permission does not certify artwork quality.
+
 Destination requested by the owner: <https://github.com/basicbasja-cloud/Astraeon-online/issues/2>.
 
 The checkpoint was committed and pushed as `35c66e7`. Posting its report through

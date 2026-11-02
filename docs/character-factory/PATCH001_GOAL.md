@@ -1,5 +1,30 @@
 # Patch 0.0.1 character goal — active
 
+## Full authorization; Walk source replay and master control gap (2 November 2026)
+
+The owner explicitly authorized all necessary work and checkpoint reports until
+all six characters are complete. The pending issue report was posted as
+[comment6571119024](https://github.com/basicbasja-cloud/Astraeon-online/issues/2#issuecomment-6571119024);
+do not ask for the same reporting permission again.
+
+The original native Walk job was replayed twice:128 poses across eight cameras,
+plus eight contact sheets, match decoded RGBA exactly. Metadata-only sealing
+produces130 byte-identical package files while preserving all RGBA bytes. Five
+new full-sequence/key/correction image attempts remain unapproved. The earlier
+key12 lateral-ankle diagnosis was withdrawn after enlarged inspection: that
+feature is knee/shin and the ankle is occluded. Visible blade endpoints still
+miss source controls; the sword-only request also changes164,528 visible pixels
+outside generous weapon windows. No sole-contact pass, cutout, variant, action
+or new gameplay result is claimed. The current reference-only image interface
+has not closed the required master-geometry gate; additional approvals are not
+the missing prerequisite.
+
+Three focused sealing tests pass;194 deterministic package/reference/review
+files reproduce byte-for-byte.896 protected baseline hashes remain unchanged.
+See [evidence, correction, reproduction and capability limits](review/swordsman-walk-source-controls-20261102/README.md).
+Goal remains incomplete at0/6 characters, with the historical2/96 technical
+imports unchanged. Do not expand rejected art or lower the acceptance criteria.
+
 ## Full preserved BasicAttack ownership inspection (2 November 2026)
 
 The tall male Swordsman's complete 64-frame SW/NW/NE/SE BasicAttack sequence now
