@@ -1,0 +1,29 @@
+{
+  "status": "TWO_SLOT_SINGLE_FRAME_NOT_APPROVED",
+  "inputs_sha256": {
+    "body": "d7858a7376953acbf86dcd3186be27f60b47624d8050be49bc24652700bbe7ce",
+    "head_original": "5568202d3d5279cf37808b856e84510ecc54ab89fcdf05cb35fe1c3d671badac",
+    "head_alternate": "569904b481062135df1ddae580f1d4845aa71eef084aa28d8d2f5d27b2993b44",
+    "weapon_original": "484f38c7a41e7b8e5ef37b7b3f63a2e2d03be8d6d4c5f3979b68899e2fad2fc9",
+    "weapon_alternate": "b53d928545b60b55ef85403b52ef1d289ae506b13ba1031c30e64e36d77faa6d",
+    "hand_alternate": "828351836afbc6f069106417c8e0e76c8f26e768929800aab569cb32b32975d7"
+  },
+  "script_sha256": "728362260b177cc91375ea1a434042bbbb2694ccfeb95fdd2d2c38ae9de0a53b",
+  "outputs_sha256": {
+    "head0-weapon0": "7b3836e23b9a9c076fff356a421808eda52f86fff49fd41319e1089c9dead084",
+    "head1-weapon0": "fbc7300db4d55da9c6622b3b61ced092299047ac58f9d4d7fee7b195aba14f66",
+    "head0-weapon1": "40d3646bf122f9c01df68edd8c2cf25585bbb193a9770536c67f5ccaf25d07a2",
+    "head1-weapon1": "15fa59983c8aaf3d5e424f8b021361a905a0f3bed6567c375fe46d754e48eea1"
+  },
+  "outside_slot_union_differences": {
+    "head_change_weapon0": 0,
+    "head_change_weapon1": 0,
+    "weapon_change_head0": 0,
+    "weapon_change_head1": 0
+  },
+  "limitations": [
+    "Head/weapon masks and hand occlusion contain uncertain pixels; head/collar and blade edges require visual review.",
+    "No same-frame underpainting exists for every possible variant shape.",
+    "Four still combinations do not validate animation, direction coverage, gameplay or a complete character."
+  ]
+}
