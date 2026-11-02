@@ -316,6 +316,53 @@
     768,
     768
   ],
+  "resolution_qualification": {
+    "status": "NATIVE_CROP_RESOLUTION_ONLY_NOT_ART_APPROVAL",
+    "sheet_size": [
+      1448,
+      1086
+    ],
+    "grid": [
+      4,
+      3
+    ],
+    "source_canvas": [
+      1536,
+      1536
+    ],
+    "source_crop": [
+      448,
+      520,
+      1088,
+      1160
+    ],
+    "authoring_canvas": [
+      768,
+      768
+    ],
+    "raw_slot_size": [
+      362.0,
+      362.0
+    ],
+    "canonical_viewport": [
+      224.0,
+      260.0,
+      544.0,
+      580.0
+    ],
+    "canonical_viewport_size": [
+      320.0,
+      320.0
+    ],
+    "native_pixels_per_authoring_pixel_xy": [
+      1.13125,
+      1.13125
+    ],
+    "requires_upsampling": false,
+    "native_resolution_sufficient": true,
+    "canvas_padding_counted_as_drawn_detail": false,
+    "anatomy_or_contact_approved": false
+  },
   "transparent_pixel_count": 1176477,
   "per_frame_fit_or_repair_performed": false,
   "first_last_painted_slot_rgba_different_pixels": 36421,
@@ -331,12 +378,13 @@
     "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-hit-snapshot-wholesheet-20261102/guide.png": "a37d176d10daae1af6091ce1080b5c11d099a8fe0ca7f2c5544cddab94abe1b3",
     "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-hit-snapshot-wholesheet-20261102/source-manifest.json": "3148342111dc1c985dcce7965e6dd48685ebe886b3c163f74e425dc70b860413"
   },
-  "implementation_sha256": "b76a23c8227163a0765620df19a5e38b6bed8c3e4040ce78026b58f0d886cb79",
+  "implementation_sha256": "6c9fed722a13cf5618a53183548b6646325c2578528b50f212fa63ece416395e",
+  "resolution_qualification_implementation_sha256": "be726ec392a0a402cc89060945e3ecd68fd9a645ff0395f7a337468c181b2117",
   "limitations": [
     "Projected bone origins are not sole contacts; no sole-contact pass is claimed.",
-    "Manual painted tip annotations are approximate, with +/-3 native pixels per point.",
+    "Manual painted tip annotations have a 3-native-pixel radial uncertainty.",
     "Native time units and diagnostic preview timing are not approved gameplay timing.",
     "Dense sampling preserves the native return segment and does not repair its velocity change.",
-    "This single SW draft has neither native768 detail, verified geometry, other directions, semantic layers nor runtime acceptance."
+    "The cropped native detail can downsample into authoring768, but geometry, other directions, semantic layers and runtime remain unapproved."
   ]
 }

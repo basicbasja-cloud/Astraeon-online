@@ -4,6 +4,11 @@ The repaired guide is now checked through the native source's complete recovery,
 and a new whole-sheet painting attempt is retained as rejected production art.
 Neither result completes an action or character.
 
+**Resolution correction:** the former362-vs768 rejection is withdrawn. The
+640px source crop maps to a320px viewport inside the768px authoring canvas.
+Its362 native pixels therefore downsample at320/362, without inventing detail.
+The draft remains rejected for geometry; see the latest [qualification and repair](../first-swordsman-pilot-repairs-20261102/README.md).
+
 ## What the source actually does
 
 A headless Blender 4.3.2 audit evaluates 97 distinct native samples: the previous
@@ -35,7 +40,9 @@ One image edit used the corrected source contact sheet and protected tall male
 Swordsman identity together, requesting all12 poses in one4×3 sheet with real
 3072×2304 detail, transparency and unchanged source placement. It returned an
 RGBA1448×1086 sheet: **362×362 native pixels per slot**, below the768×768 authoring
-requirement. No enlarged pixels are claimed as newly drawn detail. The service
+full-canvas size. This comparison alone was incorrect: the fixed crop maps to
+a320×320 canonical viewport. Its native detail is sufficient for that viewport;
+no enlargement is needed. No enlarged pixels are claimed as newly drawn detail. The service
 exposes neither model/seed nor a native size/pose/mask parameter in this tool;
 the requested size was textual and this response did not honor it. This single
 result does not establish every possible provider output size.
@@ -76,7 +83,7 @@ importer emits duplicate-fcurve warnings for the unrelated Sword_Regular_C_RM
 clip; those messages are retained in the Blender log, not hidden as a clean log.
 
 No original master, factory plan, shared renderer, runtime asset or acceptance
-flag changed. This single SW draft lacks native768 detail, exact geometry,
+flag changed. This single SW draft has sufficient cropped detail but lacks exact geometry,
 seven other directions, semantic cutouts, underpaint, variants and gameplay.
 No sole-contact pass or actual gameplay test is claimed. Completion remains
 **0/6 characters**, with historical2/96 technical imports unchanged and not

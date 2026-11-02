@@ -1,5 +1,24 @@
 # Patch 0.0.1 character goal — active
 
+## Owner priority: finish the first complete character (2 November 2026)
+
+The owner explicitly says to continue until1/6. Prioritize the preserved tall
+male Swordsman through all19 logical actions (18 paint jobs,2080 unique view/pose
+positions), cutouts, variants and actual gameplay before returning to the other
+five. Coverage is still0/6; no partial frame or technical check counts as1/6.
+
+Correct the earlier resolution diagnosis: the362px Hit slots represent a640px
+source crop, which maps to320px inside the768px authoring canvas. Native detail
+is sufficient by downsampling; a raw362-vs768 comparison was incorrect. Four
+qualification tests pass. A further coherent12-frame repair still misses source
+blade tips by about9.73/7.07/9.73 runtime px (manual0.83px uncertainty). Geometry,
+not native crop detail, remains unapproved. A BasicAttack SE001 repair moves220
+hair pixels from Weapon to HeadHair with exact master recomposition; all10
+repair files reproduce byte-for-byte. The rest of the sequence and source/sole,
+underpaint, variants and gameplay gates remain open. No production assets or
+approval flags change; all896 protected hashes match. See [first-character
+requirements, corrections and concrete repairs](review/first-swordsman-pilot-repairs-20261102/README.md).
+
 ## Native Hit recovery audited; new paint rejected (2 November 2026)
 
 A97-sample native audit matches the12 recorded Hit landmark sets exactly and

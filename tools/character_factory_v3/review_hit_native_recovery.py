@@ -9,6 +9,7 @@ from PIL import Image,ImageDraw
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from qualify_cropped_paint_resolution import qualify
 
 ROOT=Path(__file__).resolve().parents[2]
 BASE=ROOT/'authoring/characters/factory-v3/patch-0.0.1'
@@ -54,7 +55,14 @@ def build(audit,candidate,output):
     with Image.open(candidate/'guide.png')as image:guide=image.convert('RGB')
     if paint.size!=(1448,1086)or guide.size!=(1536,1152):raise ValueError('Unexpected exact sheet grid')
     manifest=source['views']['SW']['frames'];frames=[];native=362
-    manual={0:[235.,131.],7:[240.,161.],11:[236.,131.]};tip_results={}
+    manual={0:[235.,131.],7:[240.,161.],11:[236.,131.]}
+    annotation=candidate/'manual-tip-annotations.json'
+    if annotation.exists():
+        recorded=json.loads(annotation.read_text())
+        if recorded['raw_sha256']!=sha(candidate/'raw.png')or recorded['native_slot']!=[362,362]or recorded['radial_uncertainty_native_px']!=3:raise ValueError('Invalid native tip annotations')
+        manual={int(k):v for k,v in recorded['tips'].items()}
+    elif candidate.name!='swordsman-hit-snapshot-wholesheet-20261102':raise ValueError('New candidates require manual tip annotations')
+    tip_results={}
     for i in range(12):
         x=i%4;y=i//4
         rgba=paint.crop((x*native,y*native,(x+1)*native,(y+1)*native))
@@ -86,6 +94,7 @@ def build(audit,candidate,output):
         'matches_twelve_recorded_pose_world_landmarks_max_m':data['max_recorded_landmark_world_error_m'],
         'native_interval_diagnostics':metrics,'manual_painted_tip_diagnostics':tip_results,
         'native_sheet_canvas':list(paint.size),'native_slot':[362,362],'target_slot':[768,768],
+        'resolution_qualification':qualify(list(paint.size),[4,3],[1536,1536],[448,520,1088,1160],[768,768]),
         'transparent_pixel_count':int((np.asarray(paint)[:,:,3]==0).sum()),'per_frame_fit_or_repair_performed':False,
         'first_last_painted_slot_rgba_different_pixels':int(np.any(first!=last,axis=2).sum()),
         'first_last_difference_is_not_anatomical_or_semantic_score':True,
@@ -93,11 +102,12 @@ def build(audit,candidate,output):
         'completed_characters':0,'new_gameplay_tests':0,'gif_loop_extension':False,
         'input_sha256':{str(p.relative_to(ROOT)):sha(p)for p in (audit,candidate/'raw.png',candidate/'guide.png',candidate/'source-manifest.json')},
         'implementation_sha256':sha(Path(__file__)),
+        'resolution_qualification_implementation_sha256':sha(Path(__file__).with_name('qualify_cropped_paint_resolution.py')),
         'limitations':['Projected bone origins are not sole contacts; no sole-contact pass is claimed.',
-                       'Manual painted tip annotations are approximate, with +/-3 native pixels per point.',
+                       'Manual painted tip annotations have a 3-native-pixel radial uncertainty.',
                        'Native time units and diagnostic preview timing are not approved gameplay timing.',
                        'Dense sampling preserves the native return segment and does not repair its velocity change.',
-                       'This single SW draft has neither native768 detail, verified geometry, other directions, semantic layers nor runtime acceptance.']}
+                       'The cropped native detail can downsample into authoring768, but geometry, other directions, semantic layers and runtime remain unapproved.']}
     (output/'proof.json').write_text(json.dumps(summary,indent=2)+'\n')
     return summary
 
