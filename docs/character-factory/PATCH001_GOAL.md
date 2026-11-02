@@ -1,5 +1,21 @@
 # Patch 0.0.1 character goal — active
 
+## Hit source render consistency repaired (2 November 2026)
+
+The explicit Swordsman Hit wrapper now locks each render to the exact declared
+object/bone snapshot, with unchanged source fcurve/key/mute fingerprints. Across
+96 poses and66 bones each, diagnostic render drift drops from29.47003 to0.000016
+runtime pixels. The verified capture is adopted for Swordsman Hit only:1 guide
+and2 pending paint records rebound,47 guides/94 paint records unchanged, totals
+114/48/96 unchanged.33 selected tests pass; the broader28-test legacy module has
+11 missing-file errors in this sparse checkout and does not pass. All896
+protected baseline hashes match. See [native PNGs, normal/slow previews, source
+proof and limitations](review/swordsman-hit-render-snapshot-20261102/README.md).
+This fixes source render consistency only. Reset tail, transitions, true sole
+contact, painted masters, cutouts, variants and actual gameplay remain open.
+No new accepted action or completed character: **0/6**; historical2/96 technical
+imports unchanged. Owner authorization remains in force.
+
 ## Continued intake rollback and bounded Walk retouch (2 November 2026)
 
 After the owner requested continuation, the importer was repaired so an invalid

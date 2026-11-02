@@ -1,0 +1,203 @@
+test_cache_key_changes_with_input_hashes (test_factory_v3.FactoryContractTests.test_cache_key_changes_with_input_hashes) ... ok
+test_canonical_rig_manifest_is_action_free (test_factory_v3.FactoryContractTests.test_canonical_rig_manifest_is_action_free) ... ERROR
+test_character_and_rig_contracts_validate (test_factory_v3.FactoryContractTests.test_character_and_rig_contracts_validate) ... ERROR
+test_color_mask_labels_preserve_master_alpha_and_assign_unmatched_pixels_to_body (test_factory_v3.FactoryContractTests.test_color_mask_labels_preserve_master_alpha_and_assign_unmatched_pixels_to_body) ... ok
+test_config_actions_match_free_motion_selections (test_factory_v3.FactoryContractTests.test_config_actions_match_free_motion_selections) ... ERROR
+test_headhair_refinement_moves_only_nearby_warm_visible_body_pixels (test_factory_v3.FactoryContractTests.test_headhair_refinement_moves_only_nearby_warm_visible_body_pixels) ... ok
+test_imported_motion_provenance_hashes_and_evidence_are_valid (test_factory_v3.FactoryContractTests.test_imported_motion_provenance_hashes_and_evidence_are_valid) ... ERROR
+test_layer_alpha_cleanup_keeps_disconnected_clothing_but_drops_halo_specks (test_factory_v3.FactoryContractTests.test_layer_alpha_cleanup_keeps_disconnected_clothing_but_drops_halo_specks) ... ok
+test_layer_fit_applies_one_identical_transform_to_every_part (test_factory_v3.FactoryContractTests.test_layer_fit_applies_one_identical_transform_to_every_part) ... ok
+test_layer_sheet_normalization_uses_112px_target_and_shared_transform (test_factory_v3.FactoryContractTests.test_layer_sheet_normalization_uses_112px_target_and_shared_transform) ... ok
+test_master_cutout_layers_recompose_exactly_from_one_shared_frame_sheet (test_factory_v3.FactoryContractTests.test_master_cutout_layers_recompose_exactly_from_one_shared_frame_sheet) ... ok
+test_master_cutout_rejects_visible_pixels_without_layer_labels (test_factory_v3.FactoryContractTests.test_master_cutout_rejects_visible_pixels_without_layer_labels) ... ok
+test_master_normalization_uses_one_transform_and_clears_detached_top_scraps (test_factory_v3.FactoryContractTests.test_master_normalization_uses_one_transform_and_clears_detached_top_scraps) ... ok
+test_mesh2motion_glb_profile_maps_human_rig_and_separate_actions (test_factory_v3.FactoryContractTests.test_mesh2motion_glb_profile_maps_human_rig_and_separate_actions) ... ERROR
+test_mixamo_profile_resolves_namespaced_and_plain_fbx_bones (test_factory_v3.FactoryContractTests.test_mixamo_profile_resolves_namespaced_and_plain_fbx_bones) ... ERROR
+test_motion_gate_requires_real_hash_and_license_evidence (test_factory_v3.FactoryContractTests.test_motion_gate_requires_real_hash_and_license_evidence) ... ok
+test_production_approval_requires_evidence_fields (test_factory_v3.FactoryContractTests.test_production_approval_requires_evidence_fields) ... ok
+test_registered_profiles_cover_canonical_motion_bones (test_factory_v3.FactoryContractTests.test_registered_profiles_cover_canonical_motion_bones) ... ERROR
+test_repo_path_rejects_parent_escape (test_factory_v3.FactoryContractTests.test_repo_path_rejects_parent_escape) ... ok
+test_retired_painted_candidates_are_archived_and_unavailable_to_runtime (test_factory_v3.FactoryContractTests.test_retired_painted_candidates_are_archived_and_unavailable_to_runtime) ...
+  test_retired_painted_candidates_are_archived_and_unavailable_to_runtime (test_factory_v3.FactoryContractTests.test_retired_painted_candidates_are_archived_and_unavailable_to_runtime) (candidate='swordsman-male-v3-painted') ... ERROR
+  test_retired_painted_candidates_are_archived_and_unavailable_to_runtime (test_factory_v3.FactoryContractTests.test_retired_painted_candidates_are_archived_and_unavailable_to_runtime) (candidate='swordsman-male-v3-painted-v2') ... ERROR
+test_retired_v3_guide_preview_is_archived_and_preserved (test_factory_v3.FactoryContractTests.test_retired_v3_guide_preview_is_archived_and_preserved) ... ERROR
+test_sprite_audit_flags_frame_jumps_without_claiming_art_approval (test_factory_v3.FactoryContractTests.test_sprite_audit_flags_frame_jumps_without_claiming_art_approval) ... ok
+test_manual_provider_rejects_static_rig_smoke (test_factory_v3.GuideQaTests.test_manual_provider_rejects_static_rig_smoke) ... ERROR
+test_static_guide_manifest_checks_every_direction_and_pass (test_factory_v3.GuideQaTests.test_static_guide_manifest_checks_every_direction_and_pass) ... ok
+test_static_manifest_rejects_path_escape (test_factory_v3.GuideQaTests.test_static_manifest_rejects_path_escape) ... ok
+test_one_scale_alpha_cleanup_and_all_192_cells (test_factory_v3.PaintedSheetNormalizationTests.test_one_scale_alpha_cleanup_and_all_192_cells) ... ok
+test_attack_sampling_requires_reviewed_phase_markers (test_factory_v3.SamplingTests.test_attack_sampling_requires_reviewed_phase_markers) ... ok
+test_walk_sampling_keeps_source_fps_separate_and_sets_durations (test_factory_v3.SamplingTests.test_walk_sampling_keeps_source_fps_separate_and_sets_durations) ... ok
+
+======================================================================
+ERROR: test_canonical_rig_manifest_is_action_free (test_factory_v3.FactoryContractTests.test_canonical_rig_manifest_is_action_free)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 326, in test_canonical_rig_manifest_is_action_free
+    manifest = read_json(ROOT / "authoring/characters/factory-v3/manifests/astraeon_humanoid_male_v1.rig.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/manifests/astraeon_humanoid_male_v1.rig.json'
+
+======================================================================
+ERROR: test_character_and_rig_contracts_validate (test_factory_v3.FactoryContractTests.test_character_and_rig_contracts_validate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 263, in test_character_and_rig_contracts_validate
+    config = read_json(ROOT / "authoring/characters/factory-v3/configs/swordsman_male_v3.json")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/configs/swordsman_male_v3.json'
+
+======================================================================
+ERROR: test_config_actions_match_free_motion_selections (test_factory_v3.FactoryContractTests.test_config_actions_match_free_motion_selections)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 270, in test_config_actions_match_free_motion_selections
+    config = read_json(ROOT / "authoring/characters/factory-v3/configs/swordsman_male_v3.json")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/configs/swordsman_male_v3.json'
+
+======================================================================
+ERROR: test_imported_motion_provenance_hashes_and_evidence_are_valid (test_factory_v3.FactoryContractTests.test_imported_motion_provenance_hashes_and_evidence_are_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 331, in test_imported_motion_provenance_hashes_and_evidence_are_valid
+    registry = read_json(ROOT / "authoring/characters/factory-v3/motions/candidates.json")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/motions/candidates.json'
+
+======================================================================
+ERROR: test_mesh2motion_glb_profile_maps_human_rig_and_separate_actions (test_factory_v3.FactoryContractTests.test_mesh2motion_glb_profile_maps_human_rig_and_separate_actions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 366, in test_mesh2motion_glb_profile_maps_human_rig_and_separate_actions
+    profile = read_json(ROOT / "authoring/characters/factory-v3/motions/retarget-profiles.json")["profiles"]["mesh2motion_human_glb"]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/motions/retarget-profiles.json'
+
+======================================================================
+ERROR: test_mixamo_profile_resolves_namespaced_and_plain_fbx_bones (test_factory_v3.FactoryContractTests.test_mixamo_profile_resolves_namespaced_and_plain_fbx_bones)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 355, in test_mixamo_profile_resolves_namespaced_and_plain_fbx_bones
+    profile = read_json(ROOT / "authoring/characters/factory-v3/motions/retarget-profiles.json")["profiles"]["mixamo_fbx"]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/motions/retarget-profiles.json'
+
+======================================================================
+ERROR: test_registered_profiles_cover_canonical_motion_bones (test_factory_v3.FactoryContractTests.test_registered_profiles_cover_canonical_motion_bones)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 344, in test_registered_profiles_cover_canonical_motion_bones
+    profiles = read_json(ROOT / "authoring/characters/factory-v3/motions/retarget-profiles.json")["profiles"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/motions/retarget-profiles.json'
+
+======================================================================
+ERROR: test_retired_painted_candidates_are_archived_and_unavailable_to_runtime (test_factory_v3.FactoryContractTests.test_retired_painted_candidates_are_archived_and_unavailable_to_runtime) (candidate='swordsman-male-v3-painted')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 398, in test_retired_painted_candidates_are_archived_and_unavailable_to_runtime
+    self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), digest)
+                                    ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/unused/swordsman-male-v3-painted/sprite.json'
+
+======================================================================
+ERROR: test_retired_painted_candidates_are_archived_and_unavailable_to_runtime (test_factory_v3.FactoryContractTests.test_retired_painted_candidates_are_archived_and_unavailable_to_runtime) (candidate='swordsman-male-v3-painted-v2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 398, in test_retired_painted_candidates_are_archived_and_unavailable_to_runtime
+    self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), digest)
+                                    ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/unused/swordsman-male-v3-painted-v2/sprite.json'
+
+======================================================================
+ERROR: test_retired_v3_guide_preview_is_archived_and_preserved (test_factory_v3.FactoryContractTests.test_retired_v3_guide_preview_is_archived_and_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 379, in test_retired_v3_guide_preview_is_archived_and_preserved
+    self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), "5872d665f51c8d4a4bee881fbe6c5b55115f6e0cba7ffca1bd5e5494fb110311")
+                                    ^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/unused/swordsman-male-v3/sprite.json'
+
+======================================================================
+ERROR: test_manual_provider_rejects_static_rig_smoke (test_factory_v3.GuideQaTests.test_manual_provider_rejects_static_rig_smoke)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Astraeon-online/tests/character_factory_v3/test_factory_v3.py", line 507, in test_manual_provider_rejects_static_rig_smoke
+    result = ManualHandoffProvider().prepare(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/paint_provider.py", line 37, in prepare
+    config = read_json(config_path)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Astraeon-online/tools/character_factory_v3/contracts.py", line 44, in read_json
+    with path.open("r", encoding="utf-8") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/Astraeon-online/authoring/characters/factory-v3/configs/swordsman_male_v3.json'
+
+----------------------------------------------------------------------
+Ran 28 tests in 8.010s
+
+FAILED (errors=11)

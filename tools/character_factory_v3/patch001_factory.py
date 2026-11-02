@@ -3,7 +3,7 @@
 Planning is never counted as authored art. Identical donor-pose jobs are shared;
 paint and cutout reuse still requires matching camera, pose and body fitting.
 """
-import argparse,concurrent.futures,hashlib,json,math,struct,subprocess,sys
+import argparse,concurrent.futures,hashlib,json,math,struct,subprocess,sys,tempfile
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -65,6 +65,9 @@ def plan():
                 geometry['render_pose_freeze_revision']=1
                 geometry['render_pose_freeze_sha256']=filehash(TOOLS/'render_frozen_patch001_guides.py')
             if 'Sword_Regular_B_Rec' in a['source_actions']:geometry['source_ranges']={'Sword_Regular_B':[0,8],'Sword_Regular_B_Rec':[8,22]}
+            if a.get('render_snapshot_profile'):
+                from render_hit_snapshot_guides import planned_geometry
+                geometry=planned_geometry(geometry,a['render_snapshot_profile'])
             key=digest(geometry)[:20]
             job=jobs.setdefault(key,{'id':key,**geometry,'directions':[],'uses':[]})
             job['directions']=[d for d in config['direction_inputs']if d in set(job['directions'])|set(a['authored_directions'])]
@@ -109,6 +112,8 @@ def receipt_valid(job,folder=None):
     captured=data.get('job',{})
     from validate_staff_grip_capture import valid_staff_grip_capture
     if not valid_staff_grip_capture(job,data):return False
+    from validate_render_snapshot_capture import valid_render_snapshot_capture
+    if not valid_render_snapshot_capture(job,data,folder):return False
     geometry=lambda value:{k:v for k,v in value.items()if k not in ['uses','directions']}
     if geometry(captured)!=geometry(job)or data.get('frame_count')!=job['frames']:return False
     if job.get('explicit_source_samples')is not None:
@@ -149,7 +154,21 @@ def receipt_valid(job,folder=None):
 
 def render_one(job):
     if receipt_valid(job):return {'job':job['id'],'state':'CACHED_GUIDE'}
-    folder=BASE/'guides'/job['id'];folder.mkdir(parents=True,exist_ok=True)
+    folder=BASE/'guides'/job['id']
+    if job.get('render_snapshot_revision'):
+        from render_hit_snapshot_guides import validate_job
+        validate_job(job)
+        if folder.exists()or folder.is_symlink():raise RuntimeError('Preserve the incomplete snapshot capture before retrying: '+str(folder))
+        folder.parent.mkdir(parents=True,exist_ok=True)
+        command=['blender','--disable-autoexec','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/'render_hit_snapshot_guides.py'),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
+        with tempfile.NamedTemporaryFile(mode='w',dir=folder.parent,prefix='.'+job['id']+'-',suffix='.render.log',delete=False)as log:
+            log_path=Path(log.name);result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
+        if folder.is_dir():
+            target=folder/'render.log'
+            if not target.exists():log_path.rename(target);log_path=target
+        if result.returncode or not receipt_valid(job):raise RuntimeError('Snapshot guide failed; inspect '+str(log_path))
+        return {'job':job['id'],'state':'SOURCE_GUIDE_CAPTURED'}
+    folder.mkdir(parents=True,exist_ok=True)
     entrypoint='render_explicit_patch001_guides.py'if job.get('explicit_source_samples')is not None else'render_staff_grip_study.py'if job.get('staff_grip_alignment_revision')else'render_frozen_patch001_guides.py'if job.get('render_pose_freeze_revision')else'render_patch001_guides.py'
     command=['blender','--disable-autoexec','-b','-t','2','--python-exit-code','1','--python',str(TOOLS/entrypoint),'--','--job',str(BASE/'guide-jobs'/f"{job['id']}.json"),'--output',str(folder)]
     with(folder/'render.log').open('w')as log:result=subprocess.run(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
