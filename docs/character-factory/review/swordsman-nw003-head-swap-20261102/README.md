@@ -18,3 +18,5 @@ python -m unittest discover -s tests/character_factory_v3 -p 'test_nw003_three_s
 ```
 
 The focused test passed exact master reconstruction, outside-union preservation, and overwrite refusal. Production and runtime assets remain unchanged; no action or character is complete.
+
+[Still-frame equipment toggle](still-swap.gif) alternates the original and draft hairstyle. It is **not** an animation or a proof of temporal stability.
