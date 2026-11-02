@@ -1,5 +1,19 @@
 # Patch 0.0.1 character goal — active
 
+## Native Hit recovery audited; new paint rejected (2 November 2026)
+
+A97-sample native audit matches the12 recorded Hit landmark sets exactly and
+confirms all66 bone matrices at source10 equal source0. The0–10 source return
+is interpolated, with a sharper final speed change; densification alone does
+not repair it. Slot011 is source10, not source11. One new coherent12-frame
+SW paint edit returns real transparency but only362px per slot despite the
+requested768; visible blade tips miss source controls by about9.73/6.91/9.92
+runtime px (manual0.83px uncertainty, not sole-contact measurements). It is
+rejected and unimported. No master, plan, source motion or runtime binding
+changed. All896 protected hashes match. See [source plots, exact prompt,
+PNG/GIF comparisons and reproduction](review/swordsman-hit-native-recovery-20261102/README.md).
+Coverage stays0/6 complete characters; historical2/96 technical imports unchanged.
+
 ## Hit source render consistency repaired (2 November 2026)
 
 The explicit Swordsman Hit wrapper now locks each render to the exact declared
