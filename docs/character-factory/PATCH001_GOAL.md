@@ -1,5 +1,20 @@
 # Patch 0.0.1 character goal — active
 
+## Full preserved BasicAttack ownership inspection (2 November 2026)
+
+The tall male Swordsman's complete 64-frame SW/NW/NE/SE BasicAttack sequence now
+has native full-canvas master / weapon-off / weapon-only boards and one-shot
+normal/slow previews. Visual review finds blade/hilt residues across the views,
+nearly intact blades in several weapon-off frames, and a head-colored fragment
+in SE001 Weapon. All64 core recompositions and hand-overlay preservation checks
+pass, but this is not semantic approval. The896 protected baseline hashes match;
+25 diagnostic files reproduce byte-for-byte. No original, renderer or runtime
+asset changed, and no gameplay test or new action/variant acceptance is claimed.
+See [full review and reproduction](review/swordsman-basicattack-all-view-ownership-20261102/README.md).
+Coverage remains0/6 completed characters and the previously reported2/96 technical
+imports. Continue correcting source-accurate masters and complete same-frame
+weapon/hand boundaries before expanding production or admitting packages.
+
 **Source of truth:** [PATCH001_MASTER_PLAN.md](PATCH001_MASTER_PLAN.md). The owner resumed implementation after reviewing the plan. Older checkpoint statements below are historical; current coverage requires fresh evidence.
 
 Owner instruction: 2026-10-27. Continue until the agreed plan is fulfilled.
