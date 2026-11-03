@@ -1,0 +1,5 @@
+# SkillAction SW pose 26: guide-led redraw experiment
+
+Status: **single-pose draft, not accepted**. The generator received matching 768px crops of guide and previous painting, requested to follow the guide coordinates and use the previous painting for identity. [Comparison](comparison.png) shows guide, previous paint, redraw from left to right. The new output was resized once for this comparison; model and seed were not exposed. It is an unrestricted complete-pose redraw, not a pixel-masked patch, despite the historical directory name. It must not overwrite the baseline.
+
+The new image still needs reviewed anatomical landmarks, registration against the native guide, sword grip, hand orientation, neighboring frames and game-scale motion. A similar looking single pose does not demonstrate the requested precision or temporal stability. No 56-frame painting, 4-view skill, trail, same-frame parts, variants or gameplay is established. The source and prompt are retained in `painted-candidates/swordsman-skill-sw26-bounded-redraw-20261103`. Overall coverage remains 2/96 technical imports and 0/6 completed characters.
