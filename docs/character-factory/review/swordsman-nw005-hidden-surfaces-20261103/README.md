@@ -19,3 +19,7 @@ python3 -m unittest discover -s tests/character_factory_v3 -p 'test_nw005*.py' -
 ```
 
 Next: author and inspect the exposed neck/scarf for a real alternate weapon, resolve antialiased boundaries and front-hand occlusion, then repeat per frame and direction. Check the actual animation and gameplay before declaring any action complete.
+
+### Second underpaint proposal
+
+The current script also proposes a broader nonwhite donor region: 138 pixels rather than the previous 99. `scarf-comparison-v2.png` shows the hole is visually reduced. This remains unapproved: the broader filter can assign hair to BodyCostume, the generated donor may not match neighboring frames, and antialiased edges still require correction. The original 99-pixel receipt records the earlier script hash; reproduce that historical result using the script at commit `304565b29f5dd6b73db4df1b8a84245e9ee1b1c0`. The current command above reproduces v2.

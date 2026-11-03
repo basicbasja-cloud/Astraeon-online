@@ -18,7 +18,7 @@ def build(out, scarf_dir):
     full[170:250,220:300] = donor
     yy,xx=np.indices((512,512))
     r,g,b=full.astype(int).transpose(2,0,1)
-    mask=(xx>=235)&(xx<277)&(yy>=220)&(yy<242)&(parts['Weapon'][:,:,3]==255)&(parts['BodyCostume'][:,:,3]==0)&(parts['HeadHair'][:,:,3]==0)&(r>g*1.15)&(g>b*1.15)&(r>70)
+    mask=(xx>=235)&(xx<277)&(yy>=220)&(yy<242)&(parts['Weapon'][:,:,3]==255)&(parts['BodyCostume'][:,:,3]==0)&(parts['HeadHair'][:,:,3]==0)&(full.min(axis=2)<220)
     parts['BodyCostume'][mask,:3]=full[mask]
     parts['BodyCostume'][mask,3]=255
     canvas=Image.new('RGBA',(512,512))
@@ -35,7 +35,7 @@ def build(out, scarf_dir):
         bg=Image.new('RGBA',(512,512),'#777');bg.alpha_composite(layer);board.paste(bg.crop((220,170,300,250)).resize((400,400),Image.Resampling.NEAREST).convert('RGB'),(i*400,25));d.text((i*400+3,3),label,fill='white')
     board.save(out/'without-weapon-comparison.png')
     digest=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-    receipt={'status':'SINGLE_FRAME_UNAPPROVED_DRAFT','underpaint_pixels':int(mask.sum()),'master_sha256':digest(scarf.SRC/'Master/005.png'),'donor_sha256':digest(hair.DONOR),'body_input_sha256':digest(scarf_dir/'BodyCostume.png'),'weapon_sha256':digest(scarf_dir/'Weapon.png'),'script_sha256':digest(Path(__file__)),'rgba_mismatch':0,'limitations':['Donor is generated and not a recovered hidden surface; scarf boundary and continuity require visual review.','Semi-transparent blade edges and uncovered areas may still have holes.','One frame only; no alternate weapon, animation or gameplay validated.']}
+    receipt={'status':'SINGLE_FRAME_UNAPPROVED_DRAFT','underpaint_pixels':int(mask.sum()),'master_sha256':digest(scarf.SRC/'Master/005.png'),'donor_sha256':digest(hair.DONOR),'body_input_sha256':digest(scarf_dir/'BodyCostume.png'),'weapon_sha256':digest(scarf_dir/'Weapon.png'),'script_sha256':digest(Path(__file__)),'rgba_mismatch':0,'limitations':['Donor is generated and not a recovered hidden surface; scarf boundary and continuity require visual review. The nonwhite filter can put hair pixels into BodyCostume.','Semi-transparent blade edges and uncovered areas may still have holes.','One frame only; no alternate weapon, animation or gameplay validated.']}
     (out/'receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
     return receipt
 
