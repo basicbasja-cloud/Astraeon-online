@@ -11,7 +11,9 @@ import os
 from huggingface_hub import snapshot_download
 base_repo=os.environ.get('ASTRA_BASE_REPO','stable-diffusion-v1-5/stable-diffusion-v1-5')
 base_revision=os.environ.get('ASTRA_BASE_REVISION','451f4fe16113bff5a5d2269ed5ad43b0592e9a14')
-items=[(base_repo,base_revision,['model_index.json','scheduler/*','tokenizer/*','text_encoder/config.json','text_encoder/model.fp16.safetensors','unet/config.json','unet/diffusion_pytorch_model.fp16.safetensors','vae/config.json','vae/diffusion_pytorch_model.fp16.safetensors']),('lllyasviel/control_v11p_sd15_canny','115a470d547982438f70198e353a921996e2e819',['config.json','diffusion_pytorch_model.fp16.safetensors'])]
+control_repo=os.environ.get('ASTRA_CONTROL_REPO','lllyasviel/control_v11p_sd15_canny')
+control_revision=os.environ.get('ASTRA_CONTROL_REVISION','115a470d547982438f70198e353a921996e2e819')
+items=[(base_repo,base_revision,['model_index.json','scheduler/*','tokenizer/*','text_encoder/config.json','text_encoder/model.fp16.safetensors','unet/config.json','unet/diffusion_pytorch_model.fp16.safetensors','vae/config.json','vae/diffusion_pytorch_model.fp16.safetensors']),(control_repo,control_revision,['config.json','diffusion_pytorch_model.fp16.safetensors'])]
 for repo,revision,patterns in items:print(snapshot_download(repo,revision=revision,allow_patterns=patterns,max_workers=2),flush=True)
 PY
 printf 'Research setup: %s\n' "$astra_root"
