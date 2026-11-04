@@ -1,0 +1,38 @@
+{
+  "status": "HELD_OUT_WALK_KEYPOSE_COMPARISON_NOT_ACCEPTED",
+  "lora_sha256": "07f405599af188b951832b2a0d5bf2c8bd554bb6ffea8a0ca50737c5335e0787",
+  "script_sha256": "a8f1eeda952109556f9c619703b5b9d99265fd3378ba05cfad851a7007e000d7",
+  "art_sha256": "8d711b15c44215a69f69869596c260f2753d1c55cae3ba016bc78dd191a1df44",
+  "guide_sha256": "c1e887fb710bece6e967e5d43ece0841dc22e401ef6823ee7ee66251b4264b3a",
+  "base_revision": "a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917",
+  "control_revision": "9ae9f970358db89e211b87c915f9535c6686d5ba",
+  "prompt": "astraeon swordsman, hand-painted 2D anime RPG sprite, crisp ink outlines and cel shading, young stylized face, spiky silver lavender hair, mustard gold scarf, small bronze shoulder pauldrons and bronze forearm bracers, ivory CLOTH central tunic framed by dark navy CLOTH jacket, brown leather chest harness, ivory cloth tabard panels edged gold, closed brown LEATHER GLOVES covering the hands and all fingers, olive cloth trousers, brown leather boots with bronze knee guards, one straight steel sword, plain white background",
+  "negative_prompt": "extra limbs, extra fingers, duplicate sword, cropped, blurry, bad anatomy, background, text, masked face, bare hands, exposed fingers, golden breastplate, metal chest plate, photorealistic, 3d render",
+  "profile": "cloth",
+  "frames": [
+    {
+      "frame": 0,
+      "mode": "base",
+      "seed": 20261104,
+      "output_sha256": "69ecd6999f5fce06703972945de2e6027ea2d6189ee6d0473236a148527c8cf7",
+      "seconds": 122.11
+    },
+    {
+      "frame": 0,
+      "mode": "identity",
+      "seed": 20261104,
+      "output_sha256": "b01cf001e7e165b5b9c9d79cd279f35584fdd2ea5144f10c14edea986043340b",
+      "seconds": 122.37
+    }
+  ],
+  "lora_scale": 0.8,
+  "strength": 0.3,
+  "steps": 20,
+  "seconds": 245.34,
+  "limitations": [
+    "Sparse key poses, not a full animation.",
+    "No geometry, identity or temporal pass is inferred.",
+    "Control omits blade, face and fingers; visible grip must be reviewed.",
+    "Training used original BasicAttack; this Walk motion was not in the training set."
+  ]
+}

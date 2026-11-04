@@ -6,7 +6,11 @@ Base: `Lykon/dreamshaper-8` revision `a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917`,
 
 Training completed in 1,019.12 seconds on the available CPU. All 1,594,368 trainable values are finite. Loss and gradient norm were finite in all 96 steps. A separate initial three-step run and the full run produced exactly the same first-three loss/gradient values. The full 96-step run has not been rerun for identical final weights; optimization metrics do not establish image quality or geometry.
 
-The first held-out Walk A/B pair shows a visible adapter effect, but still changes the chest, gloves and facial style from the protected character. It is not suitable for production. Remaining sparse key-pose comparisons are being captured; no full animation, segmentation, variant or game acceptance follows from training. Initial caption wording describes bronze gauntlets but does not explicitly describe closed brown leather gloves, which must be addressed in subsequent controlled conditioning rather than interpreted as success.
+All four held-out Walk A/B keys (00/03/08/15) were captured with matched input, seed and control. The adapter changes the result, but the painted chest, hands, face and armor remain inconsistent with the protected design. **The outputs are rejected for production.**
+
+A longer costume caption was found to exceed CLIP's 77-token context, silently dropping intended constraints. That trial is retained as a failed diagnostic. The new caption contract rejects truncation before model loading. The corrected cloth caption uses 59 tokens and its negative caption 46. Corrected DreamShaper and a compatible Anything V5 base still alter costume/body details; neither is accepted. The adapter was trained on DreamShaper; transfer to Anything V5 is an experiment, not an approved interchangeable base. No further sparse model trials are scheduled from these results.
+
+[All captured outputs and receipts](../../../../authoring/characters/factory-v3/patch-0.0.1/research/swordsman-identity-lora-20261104/held-out/) remain available. Anything V5 is pinned to `stablediffusionapi/anything-v5` revision `095f2abb647d239d7988e34ea236d20153f11573`; its original safetensors were SHA-verified and converted to temporary fp16 files without pickle. The setup receipt records both hashes. A different public model returned HTTP 401 and was not used. The helper never changes credentials or bypasses access controls.
 
 ## Replay
 

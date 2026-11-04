@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Swordsman whole-master review</title>
+<style>
+body{margin:24px;background:#14232c;color:#edf1ea;font:16px system-ui}main{max-width:1200px;margin:auto}h1{font-size:24px}.controls{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}label{display:grid;gap:5px}select,button,input{font:inherit;padding:7px}canvas{background:#aaa;display:block;max-width:100%;height:auto}#master{width:768px}#runtime{width:240px;image-rendering:pixelated}#runtime.zoom{width:720px}.warning{color:#f2c67b}a{color:#9dd9f7}#status{white-space:pre-wrap}aside{display:flex;gap:24px;align-items:start;flex-wrap:wrap}#reference{width:200px;height:auto;background:white}button{cursor:pointer}
+</style>
+<main><h1>Swordsman · complete Walk SW master</h1>
+<p class="warning">Candidate review. Other views, anatomical contacts, cutouts and gameplay have not passed.</p>
+<p>Sixteen actual Mesh2Motion poses. Every whole master uses the same crop, scale and root. No independently assembled limbs.</p>
+<div class="controls"><label>Playback<select id="speed" disabled><option value="0">Paused</option><option value="1">Native motion timing</option><option value="0.25">Quarter speed</option></select></label><button id="previous" disabled>Previous frame</button><button id="next" disabled>Next frame</button><button id="replay" disabled>Play complete cycle</button><label>Background<select id="background"><option value="#bcbcbc">Gray</option><option value="#f3f3f3">Light</option><option value="#132530">Dark</option></select></label><label><input type="checkbox" id="guide">Guide overlay</label><label><input type="checkbox" id="onion">Previous frame overlay</label><label><input type="checkbox" id="root">Root marker</label></div>
+<label>Frame <input id="frame" type="range" min="0" max="15" value="0" disabled><output id="frame-label">0 / 15</output></label>
+<p id="status" role="status">Loading all sixteen whole masters…</p>
+<canvas id="master" width="768" height="768" aria-label="Whole painted master at fixed authoring coordinates"></canvas>
+<h2>Runtime raster · 240 × 240</h2><p>Same frame and root, one uniform reduction. Display zoom changes only CSS size.</p>
+<button id="zoom">Toggle 3× display zoom</button><canvas id="runtime" width="240" height="240" aria-label="Native runtime raster"></canvas>
+<h2>Protected design reference</h2><aside><img id="reference" alt="Original tall Swordsman design; not a replacement animation"><p>Reference shown for design only. Original protected files remain intact.</p></aside>
+<p><a id="normal">Native timing GIF</a> · <a id="slow">Slow GIF</a> · <a id="receipt">Coordinates and open gates</a> · <a href="character-factory.html">Retained layered factory</a></p>
+</main><script src="swordsman-master-review.js"></script></html>

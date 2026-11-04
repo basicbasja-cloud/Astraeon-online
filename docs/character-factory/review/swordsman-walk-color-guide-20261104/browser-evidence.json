@@ -1,0 +1,1024 @@
+{
+  "authority": "our-run",
+  "confidence": "observed",
+  "coverage": {
+    "examined": 6,
+    "status": "complete",
+    "total": 6
+  },
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "linux-x86_64"
+  },
+  "id": "ev_d69452fb2c167eb3a20c6bf42ef78803139d3f8c3feec4c11af2fe5565897a7e",
+  "limitations": [
+    {
+      "code": "controlled_run",
+      "message": "This is one controlled run of scripted steps; different steps or timing would show different behaviour."
+    },
+    {
+      "code": "values_not_kept",
+      "message": "Request/response bodies are reduced to outlines, cookies and auth headers are dropped, and declared secrets are redacted in every encoding."
+    }
+  ],
+  "links": [],
+  "locations": [
+    {
+      "kind": "url",
+      "value": "about:blank"
+    }
+  ],
+  "operation": "web_walkthrough_record",
+  "params": {
+    "action_count": 6,
+    "endpoint": "http://127.0.0.1:34965",
+    "launched": true,
+    "sensitive_value_declarations": 0
+  },
+  "result": {
+    "aborted": null,
+    "action_count": 6,
+    "browser": {
+      "cleanup": "closed",
+      "product": "Chrome/151.0.7922.173",
+      "started_by": "craft-anything"
+    },
+    "environment": {
+      "requested": {
+        "bypass_service_workers": true,
+        "color_scheme": "light",
+        "device_scale_factor": 1.0,
+        "height": 1000,
+        "locale": "en-US",
+        "reduced_motion": true,
+        "timezone": "UTC",
+        "width": 1280
+      },
+      "settings": {
+        "locale": "applied",
+        "media": "applied",
+        "service_workers": "applied",
+        "timezone": "applied",
+        "viewport": "applied"
+      }
+    },
+    "events": {
+      "dropped": 0,
+      "families": [
+        "console",
+        "page_errors"
+      ],
+      "items": [],
+      "unavailable": []
+    },
+    "final_artifacts": {
+      "dom": {
+        "bytes": 3694,
+        "sha256": "666d59fea287802279d6a82ab4e8ba158641ad06b57bd55642522dabe81d43f6",
+        "state": "captured",
+        "text": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"icon\" href=\"data:,\"><title>Swordsman whole-master review</title>\n<style>\nbody{margin:24px;background:#14232c;color:#edf1ea;font:16px system-ui}main{max-width:1200px;margin:auto}h1{font-size:24px}.controls{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}label{display:grid;gap:5px}select,button,input{font:inherit;padding:7px}canvas{background:#aaa;display:block;max-width:100%;height:auto}#master{width:768px}#runtime{width:240px;image-rendering:pixelated}#runtime.zoom{width:720px}.warning{color:#f2c67b}a{color:#9dd9f7}#status{white-space:pre-wrap}aside{display:flex;gap:24px;align-items:start;flex-wrap:wrap}#reference{width:200px;height:auto;background:white}button{cursor:pointer}\n</style>\n</head><body data-ready=\"true\" data-frame=\"2\"><main><h1>Swordsman \u00b7 complete Walk SW master</h1>\n<p class=\"warning\">Candidate review. Other views, anatomical contacts, cutouts and gameplay have not passed.</p>\n<p>Sixteen actual Mesh2Motion poses. Every whole master uses the same crop, scale and root. No independently assembled limbs.</p>\n<div class=\"controls\"><label>Playback<select id=\"speed\"><option value=\"0\">Paused</option><option value=\"1\">Native motion timing</option><option value=\"0.25\">Quarter speed</option></select></label><button id=\"previous\">Previous frame</button><button id=\"next\">Next frame</button><button id=\"replay\">Play complete cycle</button><label>Background<select id=\"background\"><option value=\"#bcbcbc\">Gray</option><option value=\"#f3f3f3\">Light</option><option value=\"#132530\">Dark</option></select></label><label><input type=\"checkbox\" id=\"guide\">Guide overlay</label><label><input type=\"checkbox\" id=\"onion\">Previous frame overlay</label><label><input type=\"checkbox\" id=\"root\">Root marker</label></div>\n<label>Frame <input id=\"frame\" type=\"range\" min=\"0\" max=\"15\" value=\"0\"><output id=\"frame-label\">2 / 15</output></label>\n<p id=\"status\" role=\"status\">Walk \u00b7 SW \u00b7 source 5f \u00b7 painted frame 2\nAll 16 masters predecoded \u00b7 104.1667 ms \u00b7 one fixed 768 canvas \u2192 240 raster\nWHOLE_MASTER_CANDIDATE_NOT_RUNTIME_ADMITTED \u00b7 overlay tools do not change the underlying masters</p>\n<canvas id=\"master\" width=\"768\" height=\"768\" aria-label=\"Whole painted master at fixed authoring coordinates\"></canvas>\n<h2>Runtime raster \u00b7 240 \u00d7 240</h2><p>Same frame and root, one uniform reduction. Display zoom changes only CSS size.</p>\n<button id=\"zoom\">Toggle 3\u00d7 display zoom</button><canvas id=\"runtime\" width=\"240\" height=\"240\" aria-label=\"Native runtime raster\"></canvas>\n<h2>Protected design reference</h2><aside><img id=\"reference\" alt=\"Original tall Swordsman design; not a replacement animation\" src=\"http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/research/swordsman-walk-ip-baseline-reference-20261104/reference.png\"><p>Reference shown for design only. Original protected files remain intact.</p></aside>\n<p><a id=\"normal\" href=\"http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/normal.gif\">Native timing GIF</a> \u00b7 <a id=\"slow\" href=\"http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/slow.gif\">Slow GIF</a> \u00b7 <a id=\"receipt\" href=\"http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/receipt.json\">Coordinates and open gates</a> \u00b7 <a href=\"character-factory.html\">Retained layered factory</a></p>\n</main><script src=\"swordsman-master-review.js\"></script>\n</body></html>",
+        "truncated": false
+      },
+      "screenshot": {
+        "bytes": 128075,
+        "height": 1000,
+        "media_type": "image/png",
+        "sha256": "f05f5b1be7839499fba8b225efd63529c69c632375bb627b084d49537daea51f",
+        "width": 1280
+      }
+    },
+    "keep_bodies": {
+      "header_values": false,
+      "request_body": false,
+      "response_body": false
+    },
+    "network": {
+      "request_count": 36,
+      "requests": [
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "2909",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Document",
+          "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "3149",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/proof/swordsman-master-review.js"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "application/json",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "4953",
+              "content-type": "application/json",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Fetch",
+          "url": "http://127.0.0.1:8769/proof/swordsman-master-review.json"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "71431",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "69005",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "67383",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "63188",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/003.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "66910",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/004.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "65769",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/005.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "68832",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/006.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "71402",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/007.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "74257",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/008.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "74184",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/009.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "70882",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/010.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "72164",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/011.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "69659",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/012.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "69978",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/013.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "70255",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/014.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "73523",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw-color-guide-20261104/review/masters/015.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1123320",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1122251",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1122491",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1123058",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/003.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1120774",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/004.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1118272",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/005.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1125669",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/006.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1130044",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/007.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1131305",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/008.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1131555",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/009.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1129342",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/010.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1128399",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/011.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1123738",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/012.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1129256",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/013.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1125334",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/014.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1121932",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/guides/4e519e1eadc69aaf28a2/SW/015.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "128158",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/patch-0.0.1/research/swordsman-walk-ip-baseline-reference-20261104/reference.png"
+        }
+      ]
+    },
+    "secret_redactions": 0,
+    "secrets_hidden": 0,
+    "start_url": "about:blank",
+    "starting_storage": {
+      "cookies_set": [],
+      "failed": [],
+      "storage_entries_set": 0
+    },
+    "steps": [
+      {
+        "action": "goto",
+        "index": 0,
+        "status": "ok",
+        "step_id": "load-16-native-timed-masters",
+        "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+      },
+      {
+        "action": "click",
+        "index": 1,
+        "status": "ok",
+        "step_id": "frame1",
+        "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+      },
+      {
+        "action": "click",
+        "index": 2,
+        "status": "ok",
+        "step_id": "frame2",
+        "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+      },
+      {
+        "action": "click",
+        "index": 3,
+        "status": "ok",
+        "step_id": "source-overlay",
+        "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+      },
+      {
+        "action": "click",
+        "index": 4,
+        "status": "ok",
+        "step_id": "previous-frame-overlay",
+        "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+      },
+      {
+        "action": "wait",
+        "index": 5,
+        "status": "ok",
+        "step_id": "settle",
+        "url": "http://127.0.0.1:8769/proof/swordsman-master-review.html"
+      }
+    ]
+  },
+  "subject": {
+    "kind": "website",
+    "name": "about:blank"
+  },
+  "summary": "Ran 6 of 6 scripted step(s) on about:blank."
+}

@@ -1,0 +1,78 @@
+{
+  "status": "HELD_OUT_WALK_KEYPOSE_COMPARISON_NOT_ACCEPTED",
+  "lora_sha256": "07f405599af188b951832b2a0d5bf2c8bd554bb6ffea8a0ca50737c5335e0787",
+  "script_sha256": "af4a26bdb8912dd9ca274e8934e644bb92327181ce036f926beb0ff16666e99f",
+  "art_sha256": "8d711b15c44215a69f69869596c260f2753d1c55cae3ba016bc78dd191a1df44",
+  "guide_sha256": "c1e887fb710bece6e967e5d43ece0841dc22e401ef6823ee7ee66251b4264b3a",
+  "base_revision": "a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917",
+  "control_revision": "9ae9f970358db89e211b87c915f9535c6686d5ba",
+  "prompt": "astraeon swordsman, full body illustrated fantasy game character, silver lavender hair, golden scarf, bronze armor and gauntlets, dark navy sleeves, cream tabard with gold borders, olive trousers, brown leather boots, steel sword, white background",
+  "frames": [
+    {
+      "frame": 0,
+      "mode": "base",
+      "seed": 20261104,
+      "output_sha256": "0fda29ea45f6a40d4ca9e6ac063e0670fb3283a8963f7af22d9f2e3736a0bf03",
+      "seconds": 123.09
+    },
+    {
+      "frame": 0,
+      "mode": "identity",
+      "seed": 20261104,
+      "output_sha256": "27b04a04a955e79a8dabf7a0f3e03a9c8e3f5070f73af4bf2a0ab21039ab5334",
+      "seconds": 122.28
+    },
+    {
+      "frame": 3,
+      "mode": "base",
+      "seed": 20261107,
+      "output_sha256": "b9c15f8b7a0a1393ed0f574447b461cb52c2f7ce36e6d15f9cac784ab471fd98",
+      "seconds": 122.02
+    },
+    {
+      "frame": 3,
+      "mode": "identity",
+      "seed": 20261107,
+      "output_sha256": "73d984dc5007bf21dbcd64a895b1265d93d6f9aa0edbfa44e1d4ccb58a12af49",
+      "seconds": 122.82
+    },
+    {
+      "frame": 8,
+      "mode": "base",
+      "seed": 20261112,
+      "output_sha256": "e2efb5dec34f457cb524a46e75246c666146dd5da1b5a2a6dff336eeb5cd3d8e",
+      "seconds": 120.64
+    },
+    {
+      "frame": 8,
+      "mode": "identity",
+      "seed": 20261112,
+      "output_sha256": "b8337a4565e9a64c7f62954be38014868e04f76fbe37e204f9cbed8f050383a1",
+      "seconds": 122.98
+    },
+    {
+      "frame": 15,
+      "mode": "base",
+      "seed": 20261119,
+      "output_sha256": "4301670e5c134add489b5664bb6b19da4252ae85babedc229dd97d8e04d6f871",
+      "seconds": 121.66
+    },
+    {
+      "frame": 15,
+      "mode": "identity",
+      "seed": 20261119,
+      "output_sha256": "43c0ff279ae1183f288519ee9f86b6ced73a081d73377367d9452108f4467a6d",
+      "seconds": 121.98
+    }
+  ],
+  "lora_scale": 0.8,
+  "strength": 0.3,
+  "steps": 20,
+  "seconds": 980.79,
+  "limitations": [
+    "Sparse key poses, not a full animation.",
+    "No geometry, identity or temporal pass is inferred.",
+    "Control omits blade, face and fingers; visible grip must be reviewed.",
+    "Training used original BasicAttack; this Walk motion was not in the training set."
+  ]
+}

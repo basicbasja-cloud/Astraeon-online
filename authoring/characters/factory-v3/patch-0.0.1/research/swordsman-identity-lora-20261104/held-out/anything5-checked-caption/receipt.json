@@ -1,0 +1,45 @@
+{
+  "status": "HELD_OUT_WALK_KEYPOSE_COMPARISON_NOT_ACCEPTED",
+  "lora_sha256": "07f405599af188b951832b2a0d5bf2c8bd554bb6ffea8a0ca50737c5335e0787",
+  "script_sha256": "0e97f5617c80ecf5443427c96afb4f5709e910f81465a4dc8beab3189d8ba466",
+  "art_sha256": "8d711b15c44215a69f69869596c260f2753d1c55cae3ba016bc78dd191a1df44",
+  "guide_sha256": "c1e887fb710bece6e967e5d43ece0841dc22e401ef6823ee7ee66251b4264b3a",
+  "base_repo": "stablediffusionapi/anything-v5",
+  "base_revision": "095f2abb647d239d7988e34ea236d20153f11573",
+  "base_setup_receipt_sha256": "0cdbe1eb83e0a0e9923223daf4c0b812b400a4ab29f2983b88ef669f4a9d0175",
+  "init_mode": "unapproved_painted_draft",
+  "init_crop": null,
+  "color_guide_proof_sha256": null,
+  "control_revision": "9ae9f970358db89e211b87c915f9535c6686d5ba",
+  "prompt": "astraeon swordsman, hand-painted anime RPG sprite, silver hair, gold scarf, ivory cloth tunic, navy jacket, leather harness, bronze pauldrons and bracers, closed brown leather gloves, ivory tabard, olive trousers, brown boots, sword, white background",
+  "negative_prompt": "extra limbs, extra fingers, duplicate sword, cropped, blurry, bad anatomy, background, text, masked face, bare hands, exposed fingers, golden breastplate, metal chest plate, photorealistic, 3d render",
+  "profile": "cloth",
+  "caption_tokens": {
+    "prompt": 59,
+    "negative_prompt": 46,
+    "limit": 77
+  },
+  "modes": [
+    "identity"
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "mode": "identity",
+      "seed": 20261104,
+      "output_sha256": "b76bd1da49c052f8c3180d78c160f2f6c481a3bea2989819c5e39de408e3b04b",
+      "seconds": 123.42
+    }
+  ],
+  "lora_scale": 0.8,
+  "strength": 0.3,
+  "steps": 20,
+  "seconds": 124.31,
+  "limitations": [
+    "Sparse key poses, not a full animation.",
+    "No geometry, identity or temporal pass is inferred.",
+    "Control omits blade, face and fingers; visible grip must be reviewed.",
+    "Training used original BasicAttack with DreamShaper; use on another compatible SD1.5 base is an unapproved transfer experiment.",
+    "This Walk motion was not in the training set."
+  ]
+}

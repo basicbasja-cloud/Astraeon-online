@@ -1,0 +1,39 @@
+{
+  "status": "HELD_OUT_WALK_KEYPOSE_COMPARISON_NOT_ACCEPTED",
+  "lora_sha256": "07f405599af188b951832b2a0d5bf2c8bd554bb6ffea8a0ca50737c5335e0787",
+  "script_sha256": "ac54e783da65f8bf067fc6e0411f06e1cdeb2dfed094cd956a2c5256da9ee5d5",
+  "art_sha256": "8d711b15c44215a69f69869596c260f2753d1c55cae3ba016bc78dd191a1df44",
+  "guide_sha256": "c1e887fb710bece6e967e5d43ece0841dc22e401ef6823ee7ee66251b4264b3a",
+  "base_revision": "a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917",
+  "control_revision": "9ae9f970358db89e211b87c915f9535c6686d5ba",
+  "prompt": "astraeon swordsman, hand-painted anime RPG sprite, silver hair, gold scarf, ivory cloth tunic, navy jacket, leather harness, bronze pauldrons and bracers, closed brown leather gloves, ivory tabard, olive trousers, brown boots, sword, white background",
+  "negative_prompt": "extra limbs, extra fingers, duplicate sword, cropped, blurry, bad anatomy, background, text, masked face, bare hands, exposed fingers, golden breastplate, metal chest plate, photorealistic, 3d render",
+  "profile": "cloth",
+  "caption_tokens": {
+    "prompt": 59,
+    "negative_prompt": 46,
+    "limit": 77
+  },
+  "modes": [
+    "identity"
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "mode": "identity",
+      "seed": 20261104,
+      "output_sha256": "6424c4397050d937ad808d7b01f4f7739f79e46ca4bdd324590ea06d6c68de78",
+      "seconds": 124.73
+    }
+  ],
+  "lora_scale": 0.8,
+  "strength": 0.3,
+  "steps": 20,
+  "seconds": 125.52,
+  "limitations": [
+    "Sparse key poses, not a full animation.",
+    "No geometry, identity or temporal pass is inferred.",
+    "Control omits blade, face and fingers; visible grip must be reviewed.",
+    "Training used original BasicAttack; this Walk motion was not in the training set."
+  ]
+}
