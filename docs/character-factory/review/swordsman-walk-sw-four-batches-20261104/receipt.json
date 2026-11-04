@@ -1,0 +1,165 @@
+{
+  "status": "FOUR_BATCH_DRAFT_NOT_ACCEPTED",
+  "input_sha256": {
+    "batch-0.png": "d7d3293bb4c850e23fbc4568d026459c304ef100375175d1d04eec59b60cb67e",
+    "batch-1.png": "289c6aa6ba96d76d599f14fa4f4bb096e2f3deb5415a5df8ecb023809bf59184",
+    "batch-2.png": "0873e3f8f6ec0542089736ae83e93ec91a5d50984d582d4dcf60a92ff72d0abe",
+    "batch-3.png": "d40c1f58984a2a1139427bf633a6c24d1f903576b951842c21bd421e840b16d9",
+    "walk-guide-batch-0-20261104.png": "a564b30bdc75307f3ee4c9fb964a936b717eba7ef982311271e68236725161c8",
+    "walk-guide-batch-1-20261104.png": "021308cb9ea4a5d7c1aede3176aaa16a16e7a8580e2320f2afb9af157ef4b6f6",
+    "walk-guide-batch-2-20261104.png": "dea28d7cf813ff62e9dc487051c59d9e10178afb9e81ff9d843054591beb53b1",
+    "walk-guide-batch-3-20261104.png": "107b538d43b766f0e4f95a7838bb285088c9daafd88d71372a80aad6d219ce32"
+  },
+  "implementation_sha256": "cf5b6a554b922c71733d129c5ec16c06998c92a1ae1ec882874459ea52dfab71",
+  "frame_stats": [
+    {
+      "frame": 0,
+      "foreground_bbox": [
+        105,
+        57,
+        251,
+        314
+      ]
+    },
+    {
+      "frame": 1,
+      "foreground_bbox": [
+        105,
+        57,
+        254,
+        314
+      ]
+    },
+    {
+      "frame": 2,
+      "foreground_bbox": [
+        106,
+        56,
+        245,
+        322
+      ]
+    },
+    {
+      "frame": 3,
+      "foreground_bbox": [
+        111,
+        55,
+        247,
+        322
+      ]
+    },
+    {
+      "frame": 4,
+      "foreground_bbox": [
+        124,
+        43,
+        245,
+        319
+      ]
+    },
+    {
+      "frame": 5,
+      "foreground_bbox": [
+        123,
+        43,
+        239,
+        315
+      ]
+    },
+    {
+      "frame": 6,
+      "foreground_bbox": [
+        130,
+        43,
+        261,
+        324
+      ]
+    },
+    {
+      "frame": 7,
+      "foreground_bbox": [
+        119,
+        43,
+        258,
+        331
+      ]
+    },
+    {
+      "frame": 8,
+      "foreground_bbox": [
+        115,
+        56,
+        254,
+        322
+      ]
+    },
+    {
+      "frame": 9,
+      "foreground_bbox": [
+        114,
+        55,
+        254,
+        322
+      ]
+    },
+    {
+      "frame": 10,
+      "foreground_bbox": [
+        110,
+        55,
+        246,
+        334
+      ]
+    },
+    {
+      "frame": 11,
+      "foreground_bbox": [
+        113,
+        55,
+        237,
+        334
+      ]
+    },
+    {
+      "frame": 12,
+      "foreground_bbox": [
+        135,
+        53,
+        245,
+        304
+      ]
+    },
+    {
+      "frame": 13,
+      "foreground_bbox": [
+        129,
+        53,
+        247,
+        304
+      ]
+    },
+    {
+      "frame": 14,
+      "foreground_bbox": [
+        130,
+        36,
+        255,
+        294
+      ]
+    },
+    {
+      "frame": 15,
+      "foreground_bbox": [
+        115,
+        36,
+        255,
+        298
+      ]
+    }
+  ],
+  "limitations": [
+    "Bounding boxes include weapon and costume; no anatomical landmark, foot-contact or size approval.",
+    "Separate batches may drift at their seams; no frame-specific fitting is used.",
+    "Background is not extracted; no part segmentation, seven views, variants or gameplay."
+  ]
+}
