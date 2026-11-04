@@ -1,0 +1,706 @@
+{
+  "authority": "our-run",
+  "confidence": "observed",
+  "coverage": {
+    "examined": 5,
+    "status": "complete",
+    "total": 5
+  },
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "linux-x86_64"
+  },
+  "id": "ev_30860a71aac48b8e01a441a0da53404bbb53048248554503ae87a7b56969c549",
+  "limitations": [
+    {
+      "code": "controlled_run",
+      "message": "This is one controlled run of scripted steps; different steps or timing would show different behaviour."
+    },
+    {
+      "code": "values_not_kept",
+      "message": "Request/response bodies are reduced to outlines, cookies and auth headers are dropped, and declared secrets are redacted in every encoding."
+    }
+  ],
+  "links": [],
+  "locations": [
+    {
+      "kind": "url",
+      "value": "about:blank"
+    }
+  ],
+  "operation": "web_walkthrough_record",
+  "params": {
+    "action_count": 5,
+    "endpoint": "http://127.0.0.1:37125",
+    "launched": true,
+    "sensitive_value_declarations": 0
+  },
+  "result": {
+    "aborted": null,
+    "action_count": 5,
+    "browser": {
+      "cleanup": "closed",
+      "product": "Chrome/151.0.7922.173",
+      "started_by": "craft-anything"
+    },
+    "environment": {
+      "requested": {
+        "bypass_service_workers": true,
+        "color_scheme": "light",
+        "device_scale_factor": 1.0,
+        "height": 1000,
+        "locale": "en-US",
+        "reduced_motion": true,
+        "timezone": "UTC",
+        "width": 1280
+      },
+      "settings": {
+        "locale": "applied",
+        "media": "applied",
+        "service_workers": "applied",
+        "timezone": "applied",
+        "viewport": "applied"
+      }
+    },
+    "events": {
+      "dropped": 0,
+      "families": [
+        "console",
+        "page_errors"
+      ],
+      "items": [],
+      "unavailable": []
+    },
+    "final_artifacts": {
+      "dom": {
+        "bytes": 8088,
+        "sha256": "b8602349a82e4197db4d25a1e7ae853c8faddab9bbbd172bc5ce5307ccf7d294",
+        "state": "captured",
+        "text": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"icon\" href=\"data:,\"><title>Astraeon character factory review</title>\n<style>body{background:#14232c;color:#edf1ea;font:16px system-ui;margin:24px}main{max-width:1100px;margin:auto}h1{font-size:24px}.controls{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0}label{display:grid;gap:5px}button,select,input{font:inherit;padding:7px}canvas{background:#d7d7d7;width:min(100%,640px);height:auto;display:block}.warning{color:#f2c67b}#status{white-space:pre-wrap}fieldset label{display:inline-flex;margin:8px}button{cursor:pointer}#integrity-results{max-height:320px;overflow:auto;font-size:12px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;text-align:left;border-bottom:1px solid #456}#guide-image{width:min(100%,512px);background:#ddd}details{margin:24px 0}#queue-scroll{overflow:auto}</style>\n</head><body><main><h1>Character factory \u00b7 retained Swordsman</h1><p class=\"warning\">Development review \u2014 original tall artwork, incomplete character package. No runtime approval.</p>\n<div class=\"controls\"><label>Action<select id=\"action\"><option value=\"SkillOverhead\">SkillOverhead</option><option value=\"BasicAttack\">BasicAttack</option><option value=\"SkillSwapPrototype\">SkillSwapPrototype</option></select></label><label>Authored direction<select id=\"direction\"><option value=\"SW\">SW</option><option value=\"NW\">NW</option><option value=\"NE\">NE</option><option value=\"SE\">SE</option></select></label><label>Head + hair<select id=\"head\" disabled=\"\"><option value=\"gold\">gold</option></select></label><label>Body + costume<select id=\"body\" disabled=\"\"><option value=\"gold\">gold</option></select></label><label>Weapon<select id=\"weapon\" disabled=\"\"><option value=\"gold\">gold</option></select></label><label>Playback<select id=\"speed\"><option value=\"0\">Paused</option><option value=\"1\">Source review speed</option><option value=\"0.25\">Quarter speed</option></select></label><button id=\"replay\" type=\"button\">Replay once</button><button id=\"previous\" type=\"button\">Previous frame</button><button id=\"next\" type=\"button\">Next frame</button></div>\n<label>Frame <input id=\"frame\" type=\"range\" min=\"0\" max=\"15\" value=\"0\"><output id=\"frame-label\">2 / 15</output></label><label><input id=\"onion\" type=\"checkbox\">Previous-frame onion skin (review only)</label><fieldset id=\"layers\"><label><input type=\"checkbox\" data-role=\"WeaponLightBack\">WeaponLightBack</label><label><input type=\"checkbox\" data-role=\"BodyCostume\">BodyCostume</label><label><input type=\"checkbox\" data-role=\"WeaponLightFront\">WeaponLightFront</label><label><input type=\"checkbox\" data-role=\"HeadHair\">HeadHair</label><label><input type=\"checkbox\" data-role=\"WeaponHandOccluder\">WeaponHandOccluder</label><label><input type=\"checkbox\" data-role=\"Weapon\">Weapon</label></fieldset><canvas id=\"stage\" width=\"512\" height=\"512\" aria-label=\"Same-frame layered character\"></canvas><p id=\"status\" role=\"status\">BasicAttack \u00b7 SW \u00b7 frame 2 \u00b7 60 ms\nOne shot, holds final frame \u00b7 fixed 512 \u00d7 512 source canvas\nOwner naturalness and basic-attack suitability review pending\nManual anatomy/cutout edges provisional\nPer-view front/back FX staging approximate\nPrevious frame overlay enabled</p><p>Every layer shares the original frame canvas. Four real attack views; no mirroring. Cosmetic options appear only for matching pose sets.</p><a href=\"../docs/character-factory/PATCH001_MASTER_PLAN.md\">Production plan and acceptance gates</a><details id=\"integrity\"><summary>Check retained master and cutout reconstruction</summary><p>Checks all 128 original attack/skill frame views. Pixel equality does not approve anatomy, grip, trail or hidden surfaces.</p><button type=\"button\" id=\"check-integrity\">Check original cutouts</button><p id=\"integrity-status\" role=\"status\">Not checked in this session.</p><pre id=\"integrity-results\"></pre></details><details id=\"production\"><summary>Production queue \u00b7 all 19 Swordsman actions per body</summary><p>Guide coverage and technical cutout receipts are separate from art and gameplay approval.</p><label>Body target<select id=\"queue-body\"><option value=\"male\">Male</option><option value=\"female\">Female</option></select></label><p id=\"queue-status\" role=\"status\">19 target actions \u00b7 1 technical receipts \u00b7 art/gameplay acceptance pending \u00b7 896 protected source files verified</p><div id=\"queue-scroll\"><table><thead><tr><th>Action</th><th>Required views \u00d7 frames</th><th>Guide PNGs</th><th>Cutout intake</th><th>Visual/gameplay gate</th><th>Inspect source</th></tr></thead><tbody id=\"queue-rows\"><tr><td>Walk</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Run</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Sprint</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Hit</td><td>8 \u00d7 12</td><td>96 / 96</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Death</td><td>8 \u00d7 20</td><td>160 / 160</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Interact</td><td>8 \u00d7 12</td><td>96 / 96</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Pickup</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>ItemUse</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Sit</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Respawn</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Idle</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>CombatIdle</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>BasicAttack</td><td>4 \u00d7 16</td><td>64 / 64</td><td>Technical receipt present</td><td>Pending \u00b7 historical review 16 frames</td><td><button type=\"button\">Guide</button></td></tr><tr><td>SkillAction</td><td>4 \u00d7 32</td><td>128 / 128</td><td>Missing intake</td><td>Pending \u00b7 historical review 16 frames</td><td><button type=\"button\">Guide</button></td></tr><tr><td>CastChannel</td><td>4 \u00d7 16</td><td>64 / 64</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>CastRelease</td><td>4 \u00d7 16</td><td>64 / 64</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Guard</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>Dash</td><td>8 \u00d7 16</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr><tr><td>SpinAttack</td><td>4 \u00d7 32</td><td>128 / 128</td><td>Missing intake</td><td>Pending</td><td><button type=\"button\">Guide</button></td></tr></tbody></table></div><section id=\"guide-panel\" hidden=\"\"><h2 id=\"guide-title\">Source guide only</h2><div class=\"controls\"><label>Guide direction<select id=\"guide-direction\"></select></label><button id=\"guide-previous\" type=\"button\">Previous guide frame</button><button id=\"guide-next\" type=\"button\">Next guide frame</button><label>Guide frame<input id=\"guide-frame\" type=\"range\" min=\"0\" value=\"0\"></label></div><p id=\"guide-status\" role=\"status\"></p><img id=\"guide-image\" alt=\"Blender motion guide; not final character art\"></section></details></main><script src=\"character-factory.js\"></script><script src=\"swordsman-production-queue.js\"></script>\n</body></html>",
+        "truncated": false
+      },
+      "screenshot": {
+        "bytes": 124823,
+        "height": 1000,
+        "media_type": "image/png",
+        "sha256": "cc09798500dc10db66a5eaa3dd1953f7f3253844048bf5635680666bedd097b2",
+        "width": 1280,
+        "saved_as": "onion.png"
+      }
+    },
+    "keep_bodies": {
+      "header_values": false,
+      "request_body": false,
+      "response_body": false
+    },
+    "network": {
+      "request_count": 23,
+      "requests": [
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "4130",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Document",
+          "url": "http://127.0.0.1:8769/proof/character-factory.html"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "6914",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/proof/character-factory.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "2719",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/proof/swordsman-production-queue.js"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "application/json",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "433789",
+              "content-type": "application/json",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Fetch",
+          "url": "http://127.0.0.1:8769/proof/character-factory-catalog.json"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "application/json",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "37003",
+              "content-type": "application/json",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Fetch",
+          "url": "http://127.0.0.1:8769/proof/swordsman-production-queue.json"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1096",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponLightBack/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "42129",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/BodyCostume/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1096",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponLightFront/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "8700",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/HeadHair/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "2952",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponHandOccluder/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "3118",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/Weapon/000.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1096",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponLightBack/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "43689",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/BodyCostume/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1096",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponLightFront/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "8688",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/HeadHair/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "3308",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponHandOccluder/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "2243",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/Weapon/001.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1096",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponLightBack/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "40929",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/BodyCostume/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1096",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponLightFront/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "8913",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/HeadHair/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "3294",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/WeaponHandOccluder/002.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "2246",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "http://127.0.0.1:8769/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/basic-attack-simple/SW/Weapon/002.png"
+        }
+      ]
+    },
+    "secret_redactions": 0,
+    "secrets_hidden": 0,
+    "start_url": "about:blank",
+    "starting_storage": {
+      "cookies_set": [],
+      "failed": [],
+      "storage_entries_set": 0
+    },
+    "steps": [
+      {
+        "action": "goto",
+        "index": 0,
+        "status": "ok",
+        "step_id": "open-final-engine",
+        "url": "http://127.0.0.1:8769/proof/character-factory.html"
+      },
+      {
+        "action": "click",
+        "index": 1,
+        "status": "ok",
+        "step_id": "frame1",
+        "url": "http://127.0.0.1:8769/proof/character-factory.html"
+      },
+      {
+        "action": "click",
+        "index": 2,
+        "status": "ok",
+        "step_id": "frame2",
+        "url": "http://127.0.0.1:8769/proof/character-factory.html"
+      },
+      {
+        "action": "click",
+        "index": 3,
+        "status": "ok",
+        "step_id": "previous-frame-overlay",
+        "url": "http://127.0.0.1:8769/proof/character-factory.html"
+      },
+      {
+        "action": "wait",
+        "index": 4,
+        "status": "ok",
+        "step_id": "settle",
+        "url": "http://127.0.0.1:8769/proof/character-factory.html"
+      }
+    ]
+  },
+  "subject": {
+    "kind": "website",
+    "name": "about:blank"
+  },
+  "summary": "Ran 5 of 5 scripted step(s) on about:blank."
+}
