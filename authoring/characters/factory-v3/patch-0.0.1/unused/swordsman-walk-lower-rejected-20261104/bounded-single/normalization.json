@@ -1,0 +1,48 @@
+{
+  "status": "FIXED_VIEWPORT_REVIEW_CANDIDATE_NOT_ACCEPTED_ART",
+  "frame_space": "authoring",
+  "canonical_root": [
+    384,
+    550.4
+  ],
+  "aspect_error": 0.0,
+  "shared_viewport": [
+    280,
+    420,
+    480,
+    620
+  ],
+  "source_size": [
+    768,
+    768
+  ],
+  "frames": [
+    {
+      "source_pose_index": 0,
+      "source_box": [
+        0.0,
+        0.0,
+        1254.0,
+        1254.0
+      ],
+      "alpha_bbox": [
+        323,
+        420,
+        448,
+        562
+      ],
+      "touches_viewport_edge": true,
+      "white_edge_pixels_unmatted": 145
+    }
+  ],
+  "production_blockers": [
+    {
+      "source_pose_index": 0,
+      "reason": "Paint touches the shared viewport edge; inspect clipping before admission"
+    }
+  ],
+  "per_frame_figure_fitting": false,
+  "source_pose_registered": false,
+  "semantic_cutouts_approved": false,
+  "runtime_admitted": false
+}

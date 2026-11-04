@@ -36,8 +36,11 @@ def main():
      point/=len(face.vertices)
      if not weights:continue
      bone=max(weights,key=weights.get);normal=obj.matrix_world.to_3x3()@face.normal;role='cloth'
-     if bone=='head':
-      anchor=rig.matrix_world@rig.data.bones[bone].head_local;axis=(rig.matrix_world.to_3x3()@(rig.data.bones[bone].tail_local-rig.data.bones[bone].head_local)).normalized();role='hair' if (point-anchor).dot(axis)>.10 else 'skin'
+     if bone.startswith('head'):
+      # The upper skull is weighted to head_leaf in this native mesh. Use the
+      # actual head origin for both groups, rather than classifying the leaf as
+      # navy cloth or measuring its offset from the top-of-skull leaf itself.
+      head=rig.data.bones['head'];anchor=rig.matrix_world@head.head_local;axis=(rig.matrix_world.to_3x3()@(head.tail_local-head.head_local)).normalized();role='hair' if (point-anchor).dot(axis)>.10 else 'skin'
      elif bone.startswith('neck'):role='scarf'
      elif bone.startswith(('hand_','index_','middle_','ring_','pinky_','thumb_')):role='leather'
      elif bone.startswith('lowerarm_'):role='bronze'

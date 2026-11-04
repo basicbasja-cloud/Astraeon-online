@@ -33,3 +33,19 @@ Use a fresh output. The review can be regenerated from the preserved sheet; a ge
 [Verification](verification.json): all16 master hashes reproduce from the preserved sheet with the shared transform; all896 protected baseline hashes match. GIFs decode to16 distinct frames, normal cycle1,670ms and slow/guide cycle5,000ms. The slight normal-cycle difference is centisecond quantization.
 
 [Craft Anything Chromium evidence](browser-evidence.json) and [capture](browser.png): all16 masters/guides loaded, actual frame2 reached via two steps, source and previous-frame overlays toggled. Six scripted steps completed, no recorded console/page errors or HTTP failures. This does not approve contact geometry or gameplay.
+
+## Follow-up correction was rejected
+
+Fixed heel/toe sets now follow the same rest-mesh vertex IDs through all16 poses. This avoids the changing lowest-vertex identity in earlier diagnostics. [Trace](fixed-source-features.json) records selection, skinning, source/camera hashes and every world/projected coordinate. The selected points must still be associated with visible painted boot features; they do not certify contact or a clothed character fit.
+
+Three lower-body painting proposals were inspected. A pair still altered pose/costume; a single-region paint introduced proportions/appearance and boundary differences; a whole16-pose lower crop introduced row/crop offsets. **All are rejected** and kept under `patch-0.0.1/unused/swordsman-walk-lower-rejected-20261104`. Existing factory `normalize_fixed_viewport_batch.py` and `apply_local_paint_repair.py` produced the bounded single-frame candidate:8,190 changed pixels, zero changes outside the mask. That technical scope check did not make the art acceptable. The complete SW master candidate and runtime bindings were not replaced.
+
+[Rejected comparison](rejected-boundary-comparison.png) · [Reasons and source hashes](lower-repair-rejections.json)
+
+Do not repeat the same sparse/diffusion or whole-crop repaint inputs. Resolve the character-fit and visible painted feature correspondence against the protected original, then make coherent whole-master corrections. None of the follow-up proposals closes an acceptance gate or adds an action.
+
+## Factory fixes after the rejected paint proposals
+
+- Color controls incorrectly treated `head_leaf` faces as navy cloth. The wrapper now classifies both head groups against the actual head bone;208 upper-skull faces receive the silver reference color. This is a bald pose scaffold with color hints, not actual hair geometry. The new16-frame capture preserves every alpha silhouette and projected landmark exactly (zero mismatches/error). Both wrapper versions are pinned alongside their separate captures; the earlier paint inputs are not silently replaced.
+- The existing `apply_local_paint_repair.py` CLI now rejects an output that replaces an input, rejects preexisting PNG/receipt files, loads one pinned input snapshot and checks that inputs remain unchanged before publication. Fresh outputs use exclusive creation. On copied fixtures, same-input/existing-output cases are rejected, all inputs remain identical and the fresh repair matches the prior algorithm's pixels. Publication of PNG+receipt remains two writes, not a fully atomic pair. [Checks](repair-preservation-checks.json).
+- The earlier remote checkpoint's100 unchanged paths match Git blob hashes; two report files advanced locally afterward and are included in the follow-up checkpoint. The local staged patch remains intact.

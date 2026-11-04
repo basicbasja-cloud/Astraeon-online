@@ -3,7 +3,7 @@
 This is local texture repair, not animation generation or anatomical validation.
 Never promote the output solely because the outside-mask comparison passes.
 """
-import argparse,hashlib,json
+import argparse,hashlib,json,io
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -22,6 +22,18 @@ def apply_repair(original,repaint,mask):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--original',type=Path,required=True);p.add_argument('--repaint',type=Path,required=True);p.add_argument('--mask',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    out,report=apply_repair(Image.open(a.original),Image.open(a.repaint),Image.open(a.mask));a.output.parent.mkdir(parents=True,exist_ok=True);out.save(a.output)
-    report.update({'status':'LOCAL_REPAIR_CANDIDATE_REQUIRES_BOUNDARY_REVIEW','inputs':{name:{'path':str(path),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}for name,path in [('original',a.original),('repaint',a.repaint),('mask',a.mask)]},'owner_approved':False,'runtime_admitted':False})
-    a.output.with_suffix('.receipt.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
+    receipt_path=a.output.with_suffix('.receipt.json')
+    inputs=[('original',a.original),('repaint',a.repaint),('mask',a.mask)]
+    if any(a.output.resolve()==path.resolve() or receipt_path.resolve()==path.resolve() for _,path in inputs):raise ValueError('Repair output cannot replace an input')
+    if any(path.exists() or path.is_symlink() for path in (a.output,receipt_path)):raise ValueError('Choose a fresh repair output and receipt')
+    snapshots={name:path.read_bytes() for name,path in inputs}
+    pins={name:{'path':str(path),'sha256':hashlib.sha256(snapshots[name]).hexdigest()}for name,path in inputs}
+    out,report=apply_repair(*(Image.open(io.BytesIO(snapshots[name]))for name,_ in inputs))
+    if any(hashlib.sha256(path.read_bytes()).hexdigest()!=pins[name]['sha256']for name,path in inputs):raise ValueError('Repair input changed during processing')
+    report.update({'status':'LOCAL_REPAIR_CANDIDATE_REQUIRES_BOUNDARY_REVIEW','inputs':pins,'owner_approved':False,'runtime_admitted':False})
+    a.output.parent.mkdir(parents=True,exist_ok=True)
+    # Exclusive creation also catches a file appearing after the fresh-path
+    # preflight. Never use this command to overwrite an earlier master study.
+    with a.output.open('xb') as stream:out.save(stream,format='PNG')
+    with receipt_path.open('x') as stream:stream.write(json.dumps(report,indent=2)+'\n')
+    print(json.dumps(report))

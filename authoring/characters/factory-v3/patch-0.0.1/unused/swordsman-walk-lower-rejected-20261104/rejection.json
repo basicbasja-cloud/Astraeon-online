@@ -1,0 +1,39 @@
+{
+  "status": "REJECTED_NOT_RUNTIME_ADMITTED",
+  "source_master_candidate": "painted-candidates/swordsman-walk-sw-color-guide-20261104",
+  "results": {
+    "pair": "Leg geometry and costume details still differ; not adopted.",
+    "single": "Bounded composition preserves outside pixels but changes leg proportions, shin detail and produces visible transition/appearance differences; rejected.",
+    "all16": "Fixed-grid lower-body proposals introduce row/crop offsets and different armor/stride; not normalized into production masters."
+  },
+  "bounded_scope": {
+    "protected_pixel_changes": 0,
+    "changed_pixels": 8190,
+    "mask_scope_is_not_art_approval": true
+  },
+  "lessons": [
+    "Source foot-band averages are fixed feature definitions, not proven visible painted boot contacts.",
+    "Barefoot guide and stylized armored boot volume require a reviewed body-fit and visible point correspondence before numerical contact acceptance.",
+    "Do not force paint to a bare-mesh point by deforming limbs or fitting silhouette bounds.",
+    "Batch crop/row offsets are another source of registration error and must not be interpreted as motion.",
+    "New painting tools have not yet satisfied source-relative anatomy, appearance and temporal constraints."
+  ],
+  "sha256": {
+    "pair-guide.png": "0614b95468de95a3d1451eef288a415fac3c4ee19b36eb36314851df441cf7f7",
+    "single-guide.png": "d84e90b089e52feb35ab4d41fdef87c37b9b0e787f1b4796e038a03728409c4e",
+    "single-00.png": "0128a9c1f0bf68d8663d5842b499c87465b5225f53b984be74f6cb87ebbede46",
+    "pair-00-03.png": "bc9dfae378e5b0ff404c3a39de083879cfe8164bffec8a2939efb4115099fbba",
+    "all16-guide.png": "7869af81e68b08b59abdfed8a920fcd591998aee59207ebec6e791a5c60b58c1",
+    "all16-lower.png": "07860f5eae612417dfce0fa568c52b440e4ef0c2448a97c15f04a8512b069a71",
+    "bounded-single/mask.png": "6bae162d3aa16257241d951a4a692b05f812233708212e397cb8e2b308c83eaa",
+    "bounded-single/master.receipt.json": "e885d28464dc5db2c2dee11501e7b9eda3272f3cd18534aecb2ee12d3885e110",
+    "bounded-single/compare.png": "3102cb29a06f81c0a1dfb393fe2208585f98a8304fd9347697fe5346a91b6cc3",
+    "bounded-single/mask-recipe.json": "2227ccdbfba32051aba2ee30b4e850ce3aa448f086f711119112ad83df4cebcd",
+    "bounded-single/normalization.json": "f16723b798101b4fb7f9af15cd7c8251acc35cfb211f698cf6cd49f666364f1a",
+    "bounded-single/repaint.png": "65c2752eae63c40818c92fb92b43eb0337374384bb0ba8282b43257864315cf4",
+    "bounded-single/viewport.json": "277d25d0879bc2d66ef7cb5b63b28953f542b8f90efd22aeab1f1e9f0a41d575",
+    "bounded-single/master.png": "b470c66b749423b2e358ed1a2a509a5c6e10e37b72e1bbc00eafc567fdd84ec0"
+  },
+  "no_more_same_input_regeneration": true,
+  "coverage_change": false
+}
