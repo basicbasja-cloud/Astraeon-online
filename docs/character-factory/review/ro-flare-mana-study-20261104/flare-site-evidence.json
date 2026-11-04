@@ -1,0 +1,504 @@
+{
+  "operation": "web_walkthrough_record",
+  "authority": "our-run",
+  "confidence": "observed",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "linux-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "controlled_run",
+      "message": "This is one controlled run of scripted steps; different steps or timing would show different behaviour."
+    },
+    {
+      "code": "values_not_kept",
+      "message": "Request/response bodies are reduced to outlines, cookies and auth headers are dropped, and declared secrets are redacted in every encoding."
+    }
+  ],
+  "result": {
+    "aborted": null,
+    "action_count": 1,
+    "browser": {
+      "cleanup": "closed",
+      "product": "Chrome/151.0.7922.173",
+      "started_by": "craft-anything"
+    },
+    "environment": {
+      "requested": {
+        "bypass_service_workers": true,
+        "color_scheme": "light",
+        "device_scale_factor": 1.0,
+        "height": 800,
+        "locale": "en-US",
+        "reduced_motion": true,
+        "timezone": "UTC",
+        "width": 1100
+      },
+      "settings": {
+        "locale": "applied",
+        "media": "applied",
+        "service_workers": "applied",
+        "timezone": "applied",
+        "viewport": "applied"
+      }
+    },
+    "events": {
+      "dropped": 0,
+      "families": [
+        "console",
+        "page_errors"
+      ],
+      "items": [],
+      "unavailable": []
+    },
+    "network": {
+      "request_count": 12,
+      "requests": [
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "1553",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 24
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Document",
+          "url": "https://www.flarerpg.org/"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/css",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "1669",
+              "content-type": "text/css",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 25
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 2
+              }
+            }
+          },
+          "status": 200,
+          "type": "Stylesheet",
+          "url": "https://www.flarerpg.org/css/main.css"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "16899",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 25
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "https://www.flarerpg.org/js/htmx.min.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "765",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 24
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "https://www.flarerpg.org/js/lightbox.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/jpeg",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-length": "1121558",
+              "content-type": "image/jpeg",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 22
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://www.flarerpg.org/wp-content/uploads/2026/05/empyrean_2.jpg"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/jpeg",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-length": "613248",
+              "content-type": "image/jpeg",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 21
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://www.flarerpg.org/images/games/shadowrush/shadowrush_1.jpg"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/jpeg",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-length": "211702",
+              "content-type": "image/jpeg",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 21
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://www.flarerpg.org/wp-content/uploads/2018/03/2018-02-06-154916_1280x720_scrot.jpg"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "121",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 23
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "XHR",
+          "url": "https://www.flarerpg.org/parts/header.html"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "441",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 24
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "XHR",
+          "url": "https://www.flarerpg.org/parts/nav.html"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-encoding": "gzip",
+              "content-length": "234",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 24
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "XHR",
+          "url": "https://www.flarerpg.org/parts/footer.html"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-length": "10670",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 20
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://www.flarerpg.org/images/flare_logo.png"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "content-length": "18999",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 20
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 2
+              }
+            }
+          },
+          "status": 200,
+          "type": "Other",
+          "url": "https://www.flarerpg.org/images/favicon.png"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "action": "goto",
+        "index": 0,
+        "status": "ok",
+        "step_id": "flare-site",
+        "url": "https://www.flarerpg.org/"
+      }
+    ]
+  },
+  "screenshot": {
+    "bytes": 333735,
+    "height": 800,
+    "media_type": "image/png",
+    "sha256": "4dd62130c1de75f60dc68ded7e45fff0f19f7ca9619463a05f79d7b7b4d64ae6",
+    "width": 1100,
+    "saved_as": "flare-site.png"
+  }
+}

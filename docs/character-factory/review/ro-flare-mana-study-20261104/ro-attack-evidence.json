@@ -1,0 +1,160 @@
+{
+  "operation": "web_walkthrough_record",
+  "authority": "our-run",
+  "confidence": "observed",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "linux-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "controlled_run",
+      "message": "This is one controlled run of scripted steps; different steps or timing would show different behaviour."
+    },
+    {
+      "code": "values_not_kept",
+      "message": "Request/response bodies are reduced to outlines, cookies and auth headers are dropped, and declared secrets are redacted in every encoding."
+    }
+  ],
+  "result": {
+    "aborted": null,
+    "action_count": 1,
+    "browser": {
+      "cleanup": "closed",
+      "product": "Chrome/151.0.7922.173",
+      "started_by": "craft-anything"
+    },
+    "environment": {
+      "requested": {
+        "bypass_service_workers": true,
+        "color_scheme": "light",
+        "device_scale_factor": 1.0,
+        "height": 800,
+        "locale": "en-US",
+        "reduced_motion": true,
+        "timezone": "UTC",
+        "width": 1100
+      },
+      "settings": {
+        "locale": "applied",
+        "media": "applied",
+        "service_workers": "applied",
+        "timezone": "applied",
+        "viewport": "applied"
+      }
+    },
+    "events": {
+      "dropped": 0,
+      "families": [
+        "console",
+        "page_errors"
+      ],
+      "items": [
+        {
+          "kind": "console",
+          "level": "error",
+          "sequence": 1,
+          "step_index": 0,
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "unavailable": []
+    },
+    "network": {
+      "request_count": 2,
+      "requests": [
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "access-control-allow-origin": {
+                "value_length": 1
+              },
+              "alt-svc": {
+                "value_length": 21
+              },
+              "cache-control": "public, max-age=31536000, immutable",
+              "content-length": "7838",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 70
+              },
+              "server": {
+                "value_length": 5
+              },
+              "via": {
+                "value_length": 9
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Document",
+          "url": "https://assets.latam-tools.com.br/gif?job=1&head=1&weapon=1&action=40"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/plain",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "alt-svc": {
+                "value_length": 21
+              },
+              "cache-control": "public, max-age=300, must-revalidate",
+              "content-length": "19",
+              "content-type": "text/plain; charset=utf-8",
+              "date": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "via": {
+                "value_length": 9
+              },
+              "x-content-type-options": "nosniff",
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 404,
+          "type": "Other",
+          "url": "https://assets.latam-tools.com.br/favicon.ico"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "action": "goto",
+        "index": 0,
+        "status": "ok",
+        "step_id": "ro-attack",
+        "url": "https://assets.latam-tools.com.br/gif?job=1&head=1&weapon=1&action=40"
+      }
+    ]
+  },
+  "screenshot": {
+    "bytes": 8096,
+    "height": 800,
+    "media_type": "image/png",
+    "sha256": "40d2e27a0141c26758c57e91b0085a94681ae015fd7d30d4d8acabcb5bcbff62",
+    "width": 1100,
+    "saved_as": "ro-attack.png"
+  }
+}
