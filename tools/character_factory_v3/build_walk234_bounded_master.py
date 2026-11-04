@@ -9,7 +9,9 @@ JOB=ROOT/'authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsm
 POLYGONS={2:[(95,240),(168,233),(199,250),(199,275),(188,297),(178,325),(95,325)],3:[(95,236),(171,233),(199,252),(194,275),(182,297),(175,320),(95,320)],4:[(95,230),(168,226),(192,250),(184,275),(173,297),(165,317),(95,317)]}
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def build(out):
- if out.exists():raise ValueError('Choose fresh output')
+ if out.exists() or out.is_symlink():raise ValueError('Choose fresh output')
+ if sha(BASE)!='8d711b15c44215a69f69869596c260f2753d1c55cae3ba016bc78dd191a1df44':raise ValueError('Baseline changed')
+ if sha(JOB/'proposal.png')!='4f31181017763696f86f14300e3cbf4a8988f4d20d5f2e80e6597e87f727e8cf':raise ValueError('Proposal changed')
  base=Image.open(BASE).convert('RGB').resize((1536,1536),Image.Resampling.LANCZOS)
  proposal=Image.open(JOB/'proposal.png').convert('RGB').resize((1536,512),Image.Resampling.LANCZOS)
  result=base.copy();out.mkdir(parents=True);receipt=[]
