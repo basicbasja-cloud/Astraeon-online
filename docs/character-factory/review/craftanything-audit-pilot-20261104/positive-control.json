@@ -1,0 +1,48 @@
+{
+  "authority": "original-files",
+  "confidence": "derived",
+  "coverage": {
+    "examined": 1,
+    "status": "complete",
+    "total": 1
+  },
+  "environment": {
+    "clean_room": false,
+    "engine": "builtin",
+    "engine_version": "0.3.0",
+    "host": "linux-x86_64"
+  },
+  "id": "ev_e8e596d5dacdfeb62bd7dda779dc0342f8a927d67409e51bbfedc5eae7a646dd",
+  "limitations": [],
+  "links": [],
+  "locations": [],
+  "operation": "web_pixels_compare",
+  "params": {
+    "after_sha256": "66ab2c1fac036472231212e0d5fd5bb4bb613ad14536dcec36aa8d905e9c34df",
+    "before_sha256": "ee689e4d9f4dc9663a86cf4f344c5afb2995bc448a8a0df1d5a4d00efc0096af",
+    "common_area": false,
+    "tolerance": 0
+  },
+  "result": {
+    "changed_bounding_box": {
+      "height": 10,
+      "width": 11,
+      "x": 10,
+      "y": 10
+    },
+    "comparable": true,
+    "difference_fraction": 0.01953125,
+    "differing_pixels": 20,
+    "height": 32,
+    "identical": false,
+    "max_channel_delta": 255,
+    "tolerance": 0,
+    "total_pixels": 1024,
+    "width": 32
+  },
+  "subject": {
+    "kind": "comparison",
+    "name": "screenshots"
+  },
+  "summary": "20 of 1024 pixel(s) differ (max channel delta 255)."
+}

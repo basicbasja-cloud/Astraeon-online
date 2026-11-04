@@ -1,0 +1,347 @@
+{
+  "authority": "our-run",
+  "confidence": "observed",
+  "coverage": {
+    "examined": 2,
+    "status": "complete",
+    "total": 2
+  },
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "linux-x86_64"
+  },
+  "id": "ev_07b7e17ac176a569750dd8c18cf848278e40e6a3dec4303962cd8159f884d018",
+  "limitations": [
+    {
+      "code": "controlled_run",
+      "message": "This is one controlled run of scripted steps; different steps or timing would show different behaviour."
+    },
+    {
+      "code": "values_not_kept",
+      "message": "Request/response bodies are reduced to outlines, cookies and auth headers are dropped, and declared secrets are redacted in every encoding."
+    }
+  ],
+  "links": [],
+  "locations": [
+    {
+      "kind": "url",
+      "value": "about:blank"
+    }
+  ],
+  "operation": "web_walkthrough_record",
+  "params": {
+    "action_count": 2,
+    "endpoint": "http://127.0.0.1:33429",
+    "launched": true,
+    "sensitive_value_declarations": 0
+  },
+  "result": {
+    "aborted": null,
+    "action_count": 2,
+    "browser": {
+      "cleanup": "closed",
+      "product": "Chrome/151.0.7922.173",
+      "started_by": "craft-anything"
+    },
+    "environment": {
+      "requested": {
+        "bypass_service_workers": true,
+        "color_scheme": "light",
+        "device_scale_factor": 1.0,
+        "height": 720,
+        "locale": "en-US",
+        "reduced_motion": true,
+        "timezone": "UTC",
+        "width": 1280
+      },
+      "settings": {
+        "locale": "applied",
+        "media": "applied",
+        "service_workers": "applied",
+        "timezone": "applied",
+        "viewport": "applied"
+      }
+    },
+    "events": {
+      "dropped": 0,
+      "families": [
+        "console",
+        "page_errors"
+      ],
+      "items": [
+        {
+          "kind": "console",
+          "level": "error",
+          "sequence": 1,
+          "step_index": 0,
+          "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+        },
+        {
+          "kind": "console",
+          "level": "error",
+          "sequence": 2,
+          "step_index": 0,
+          "text": ""
+        },
+        {
+          "kind": "console",
+          "level": "error",
+          "sequence": 3,
+          "step_index": 0,
+          "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+        }
+      ],
+      "unavailable": []
+    },
+    "final_artifacts": {
+      "dom": {
+        "bytes": 2693,
+        "sha256": "b657e557c73101ab0c31816fa453ba02750ba9b47d5a50654134821a22d2b7bc",
+        "state": "captured",
+        "text": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>ASTRAEON modular sprite proof</title><link rel=\"stylesheet\" href=\"./proof/sprite-preview.css\"></head>\n<body>\n<main>\n <h1>Modular character development preview</h1>\n <p class=\"warning\">DEV_ONLY \u00b7 NOT_FINAL_ART \u2014 production candidates and geometric proofs require owner visual review.</p>\n <form id=\"controls\">\n  <label>Character definition <select id=\"character\"><option value=\"swordsman-proof\">Swordsman contract proof</option><option value=\"swordsman-male-candidate\">Swordsman \u00b7 male production candidate</option><option value=\"mage-proof\">Existing Mage contract proof</option></select></label>\n  <label>Animation <select id=\"animation\"></select></label>\n  <label>Direction <select id=\"direction\"><option value=\"S\">S</option><option value=\"SW\">SW</option><option value=\"W\">W</option><option value=\"NW\">NW</option><option value=\"N\">N</option><option value=\"NE\">NE</option><option value=\"E\">E</option><option value=\"SE\">SE</option></select></label>\n  <label>Frame <input id=\"frame\" type=\"range\" min=\"0\" value=\"0\"><output id=\"frame-label\">0</output></label>\n  <label>Playback <select id=\"playback\"><option value=\"0\">Paused</option><option value=\"1\">Normal</option><option value=\"0.25\">Quarter speed</option></select></label>\n  <label>Weapon cosmetic <select id=\"weapon\"><option value=\"weapon\">Default</option><option value=\"weapon-alt\">Alternate</option></select></label>\n  <label><input id=\"gameplay-scale\" type=\"checkbox\">Gameplay scale</label>\n  <label><input id=\"sockets\" type=\"checkbox\" checked=\"\">Show sockets</label>\n </form>\n <fieldset id=\"layers\"><legend>Inspect layers</legend><label><input type=\"checkbox\" data-layer=\"BaseBody\">BaseBody</label><label><input type=\"checkbox\" data-layer=\"Hair\">Hair</label><label><input type=\"checkbox\" data-layer=\"Outfit\">Outfit</label><label><input type=\"checkbox\" data-layer=\"Weapon\">Weapon</label><label><input type=\"checkbox\" data-layer=\"Headgear\">Headgear</label><label><input type=\"checkbox\" data-layer=\"BackAccessory\">BackAccessory</label></fieldset>\n <canvas id=\"sprite\" width=\"720\" height=\"520\" aria-label=\"Synchronized sprite preview\"></canvas>\n <pre id=\"status\" role=\"status\">Cannot load sprite definition ./assets/characters/swordsman-proof/sprite.json</pre>\n <p>Layer visibility is a preview tool. Runtime appearances retain every required logical layer. Production artwork needs owner review.</p>\n</main>\n<script src=\"./world-view.js\"></script><script src=\"./modular-sprites.js\"></script><script src=\"./character-renderer.js\"></script><script src=\"./proof/sprite-preview.js\"></script>\n\n</body></html>",
+        "truncated": false
+      },
+      "screenshot": {
+        "bytes": 50059,
+        "height": 720,
+        "media_type": "image/png",
+        "sha256": "4f8e64f087edb7a6c13083908ed3285151580c420941e0fb09f2f6a0828642c3",
+        "width": 1280,
+        "saved_as": "browser.png"
+      }
+    },
+    "keep_bodies": {
+      "header_values": false,
+      "request_body": false,
+      "response_body": false
+    },
+    "network": {
+      "request_count": 8,
+      "requests": [
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1997",
+              "content-type": "text/html",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Document",
+          "url": "http://127.0.0.1:8769/sprite-preview.html"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/css",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "745",
+              "content-type": "text/css",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Stylesheet",
+          "url": "http://127.0.0.1:8769/proof/sprite-preview.css"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "6168",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/world-view.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "25755",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/modular-sprites.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "1213",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/character-renderer.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-length": "5530",
+              "content-type": "text/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "http://127.0.0.1:8769/proof/sprite-preview.js"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "connection": {
+                "value_length": 5
+              },
+              "content-length": "335",
+              "content-type": "text/html;charset=utf-8",
+              "date": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 404,
+          "type": "Fetch",
+          "url": "http://127.0.0.1:8769/assets/characters/swordsman-proof/sprite.json?spriteDev=1"
+        },
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "connection": {
+                "value_length": 5
+              },
+              "content-length": "335",
+              "content-type": "text/html;charset=utf-8",
+              "date": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 29
+              }
+            }
+          },
+          "status": 404,
+          "type": "Other",
+          "url": "http://127.0.0.1:8769/favicon.ico"
+        }
+      ]
+    },
+    "secret_redactions": 0,
+    "secrets_hidden": 0,
+    "start_url": "about:blank",
+    "starting_storage": {
+      "cookies_set": [],
+      "failed": [],
+      "storage_entries_set": 0
+    },
+    "steps": [
+      {
+        "action": "goto",
+        "index": 0,
+        "status": "ok",
+        "step_id": "open-existing-sprite-preview",
+        "url": "http://127.0.0.1:8769/sprite-preview.html"
+      },
+      {
+        "action": "select",
+        "index": 1,
+        "status": "ok",
+        "step_id": "pause",
+        "url": "http://127.0.0.1:8769/sprite-preview.html"
+      }
+    ]
+  },
+  "subject": {
+    "kind": "website",
+    "name": "about:blank"
+  },
+  "summary": "Ran 2 of 2 scripted step(s) on about:blank."
+}
