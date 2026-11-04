@@ -1,0 +1,1 @@
+{"headless": true, "no_sandbox": true, "timeout_secs": 35, "actions": [{"kind": "goto", "url": "https://manaplus.org/", "wait_ms": 1800, "step_id": "mana-site"}], "capture": {"at_end": ["screenshot", "dom"], "events": ["page_errors", "console"]}, "capture_network": true, "environment": {"width": 1100, "height": 800}}

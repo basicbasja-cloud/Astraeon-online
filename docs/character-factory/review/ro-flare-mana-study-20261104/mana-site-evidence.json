@@ -1,0 +1,1061 @@
+{
+  "operation": "web_walkthrough_record",
+  "authority": "our-run",
+  "confidence": "observed",
+  "environment": {
+    "clean_room": false,
+    "engine": "cdp",
+    "engine_version": "1.3",
+    "host": "linux-x86_64"
+  },
+  "limitations": [
+    {
+      "code": "controlled_run",
+      "message": "This is one controlled run of scripted steps; different steps or timing would show different behaviour."
+    },
+    {
+      "code": "values_not_kept",
+      "message": "Request/response bodies are reduced to outlines, cookies and auth headers are dropped, and declared secrets are redacted in every encoding."
+    }
+  ],
+  "result": {
+    "aborted": null,
+    "action_count": 1,
+    "browser": {
+      "cleanup": "closed",
+      "product": "Chrome/151.0.7922.173",
+      "started_by": "craft-anything"
+    },
+    "environment": {
+      "requested": {
+        "bypass_service_workers": true,
+        "color_scheme": "light",
+        "device_scale_factor": 1.0,
+        "height": 800,
+        "locale": "en-US",
+        "reduced_motion": true,
+        "timezone": "UTC",
+        "width": 1100
+      },
+      "settings": {
+        "locale": "applied",
+        "media": "applied",
+        "service_workers": "applied",
+        "timezone": "applied",
+        "viewport": "applied"
+      }
+    },
+    "events": {
+      "dropped": 0,
+      "families": [
+        "console",
+        "page_errors"
+      ],
+      "items": [],
+      "unavailable": []
+    },
+    "network": {
+      "request_count": 33,
+      "requests": [
+        {
+          "initiator": "other",
+          "method": "GET",
+          "mime_type": "text/html",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+              "cf-cache-status": {
+                "value_length": 7
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-encoding": "zstd",
+              "content-type": "text/html; charset=utf-8",
+              "date": {
+                "value_length": 29
+              },
+              "expires": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "pragma": {
+                "value_length": 8
+              },
+              "report-to": {
+                "value_length": 249
+              },
+              "server": {
+                "value_length": 5
+              },
+              "server-timing": {
+                "value_length": 60
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              },
+              "x-powered-by": {
+                "value_length": 48
+              }
+            }
+          },
+          "status": 200,
+          "type": "Document",
+          "url": "https://manaplus.org/"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/css",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "public, max-age=31536000",
+              "cf-cache-status": {
+                "value_length": 7
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-encoding": "gzip",
+              "content-type": "text/css; charset=utf-8",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 34
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "pragma": {
+                "value_length": 6
+              },
+              "report-to": {
+                "value_length": 247
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 5
+              },
+              "x-powered-by": {
+                "value_length": 48
+              }
+            }
+          },
+          "status": 200,
+          "type": "Stylesheet",
+          "url": "https://manaplus.org/lib/exe/css.php?t=vector&tseed=a29d0715486fe602e89ac72c8d7eab33"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "260",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 243
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/plugins/translation/flags/en.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "360",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 247
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/plugins/translation/flags/es.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "366",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 245
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/plugins/translation/flags/fr.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "366",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 241
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/plugins/translation/flags/ja.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "369",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 241
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/plugins/translation/flags/pt.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "361",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 239
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/plugins/translation/flags/ru.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "280",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 241
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 3
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/tpl/vector/static/img/button-rss.png"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "248",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 18
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 235
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/tpl/vector/static/img/button-vector.png"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "427",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 235
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/tpl/vector/static/img/button-dw.png"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "accept-ranges": {
+                "value_length": 5
+              },
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "max-age=432000",
+              "cf-cache-status": {
+                "value_length": 4
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "321",
+              "content-type": "image/png",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 19
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 243
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/tpl/vector/user/button-xhtml.png"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/gif",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "alt-svc": {
+                "value_length": 19
+              },
+              "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+              "cf-cache-status": {
+                "value_length": 7
+              },
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-length": "42",
+              "content-type": "image/gif",
+              "date": {
+                "value_length": 29
+              },
+              "expires": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "pragma": {
+                "value_length": 8
+              },
+              "report-to": {
+                "value_length": 241
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 5
+              },
+              "x-powered-by": {
+                "value_length": 48
+              }
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "https://manaplus.org/lib/exe/indexer.php?id=start&1793786989"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "application/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "cache-control": "public",
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-encoding": "zstd",
+              "content-type": "application/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "expires": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 239
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-content-type-options": "nosniff",
+              "x-envoy-upstream-service-time": {
+                "value_length": 2
+              },
+              "x-frame-options": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "https://manaplus.org/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "application/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "cache-control": "public",
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-encoding": "zstd",
+              "content-type": "application/javascript",
+              "date": {
+                "value_length": 29
+              },
+              "expires": {
+                "value_length": 29
+              },
+              "nel": {
+                "value_length": 62
+              },
+              "report-to": {
+                "value_length": 233
+              },
+              "server": {
+                "value_length": 5
+              },
+              "vary": {
+                "value_length": 15
+              },
+              "x-content-type-options": "nosniff",
+              "x-envoy-upstream-service-time": {
+                "value_length": 2
+              },
+              "x-frame-options": {
+                "value_length": 4
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "https://manaplus.org/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "text/javascript",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "access-control-allow-origin": {
+                "value_length": 1
+              },
+              "cache-control": "public, max-age=86400",
+              "cf-ray": {
+                "value_length": 20
+              },
+              "content-encoding": "gzip",
+              "content-type": "text/javascript;charset=UTF-8",
+              "cross-origin-resource-policy": "cross-origin",
+              "date": {
+                "value_length": 29
+              },
+              "etag": {
+                "value_length": 13
+              },
+              "last-modified": {
+                "value_length": 29
+              },
+              "server": {
+                "value_length": 5
+              },
+              "x-envoy-upstream-service-time": {
+                "value_length": 2
+              }
+            }
+          },
+          "status": 200,
+          "type": "Script",
+          "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAANQTFRF9vb2AAsjqgAAAApJREFUCB1jYAAAAAIAAc/INeUAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAsCAMAAACT+SJTAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFdQTFRF+fn49/f2+/v89vf3/v79/v3+/v/++fj4/fz89/f4+fr5/f79/Pv8+Pn59/b2+/v7/f38+Pj4+vr5+vr7/Pz8+fn59vb29/j4+vr6/v7+/f399/f3////vR8U6wAAADxJREFUeNotwgcOgCAURMEnKnawYr3/Od38kBm+zHObmoqBx8y07OIYiWxyyUrPITDRsHBKx2tKCgKJ9AOMswMINl/fOQAAAABJRU5ErkJggg=="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAANQTFRFp9f5cVVvXwAAAApJREFUCB1jYAAAAAIAAc/INeUAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAANCAMAAABW4lS6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFAFKM////QIUK9QAAAAJ0Uk5T/wDltzBKAAAAGklEQVR42mJgBAEGokgGBjBGBxBxsBqAAAMACHwALd5r8ygAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "type": "Image",
+          "url": "https://manaplus.org/lib/tpl/vector/static/3rd/dokuwiki/tocdot2.gif"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGBQTFRF////AGb/AGbMmcz/M5nMZpnM////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7feQVwAAAAd0Uk5T////////ABpLA0YAAAA6SURBVHjaJMtBDgBABARBs4P/P3kbfZCKEE3aAmUFLVu5fCQfGQ7nciTV0GW9zp4Ds+B5SMcLfgEGADSKAPVZzedhAAAAAElFTkSuQmCC"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF6urp2djV5eXj9vb2vb27o6GcycfDiIqF////+/v48fDt6efisa6qqKej////srKySLxA9wAAAA90Uk5T//////////////////8A1NyYoQAAAElJREFUeNosxgEOgDAIQ1FGGWVOx/1vKxibJv/JOWeTWpE6I9htjdmW1uNWFmpSw2+hEIm4hqMYSzmBaCIXbH/0BYgXjf/sFWAAoukCvAp2p6IAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAALCAMAAABxsOwqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGBQTFRF78mOboqv0K93R2uZ4a1a5rp2N2mnMmGd/Pr4k6zMMFySTXWr2Jg157Vn4Zst9unUl6a836ZMr7CwooVQPXGwpLnW5KQ/vMne+O/gXXiV6+zt5Orx1t7n7/Dwgpm5////xZOJMQAAACB0Uk5T/////////////////////////////////////////wBcXBvtAAAAY0lEQVR42hzKSQKAIAwEwWAMQUBBQdzN/38p0pepw4DI3vVzH0RADBCNpTOVYaZAxYefZaQyNZplqrXDeiTv07EJ3C67uGR0F7yo9bAyYwSFrJ1iywoi19HW2gjPiy11fgIMAJ51Bh79zDO4AAAAAElFTkSuQmCC"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAMAAADeMYNYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGBQTFRFyuf7xeX6vuL6td76qtn5+vv79/n7rtr5/Pz84vH7sNv6weP60en7qNf56vX74PD77fb7zuj77/b8stz65/P78/j88ff83e/7uuD61ev79Pj75PL72Oz72+370+v7uN/6UiPZnwAAAD1JREFUeNpNwccBgCAABMFFMaMIZkz9d+k9naH+LbTUxMJKZGRg1pMGz8bNxcGDI4AY7cjY9SVn0pZKrfYfcHYCb27V9m8AAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkAQMAAAB94sgjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAANQTFRF////p8QbyAAAAAxJREFUCB1jYBgeAAAAyAABP2UdiQAAAABJRU5ErkJggg=="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkCAMAAABw8qpSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFpQTFRF/P3++fv9+vz+6vT46vP49/r9+Pv9p9f57PT6+/z+7PT59vr98/j77vb69Pn89Pn76vL48ff67fT68ff77vX6/v//9fr86PL4+/3+7/b68vf7/f7+/v7/////unDFUAAAADpJREFUeNrFwoURg0AAALDgLi3SYvuvyR9LcInrZYvzcTzgrxIHUZDLNFa9QWs3+dh0Zl+lWiI1+iluKncJSLF7CNkAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAQBAMAAAAlsQiEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACpQTFRF9vf3/v/++fr5/Pv8+/v7/f38+Pj4+fn59vb2+vr6/v7+/f399/f3////Hp8+5gAAACVJREFUCNdjaGBoYDjAkACEBQwKDBMYHBgMGAIYNgDhAoYLDBcAdIAIAfO0JnYAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAAAAAC4QtCeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAP9bkSK1AAAAaklEQVQI12P4///u3NrauXf/AwHD//05YLAfxLmbl7/n48c9+Xn3gZxJYDGg/BQgpyznC4jzJacMmVOMrgxowMFPnw5CDIAZnbMLxAFaWl09txrEY/gPAe87gTwY5//PmTmr4Jz/f699BgAmIHmp1XxJagAAAABJRU5ErkJggg=="
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "type": "Image",
+          "url": "https://manaplus.org/lib/tpl/vector/user/logo.png"
+        },
+        {
+          "initiator": "parser",
+          "method": "GET",
+          "mime_type": "image/png",
+          "response_headers": {
+            "credentials_present": [],
+            "kept": {
+              "content-type": "image/png"
+            }
+          },
+          "status": 200,
+          "type": "Image",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAABCAMAAAA7MLYKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAEtQTFRF29vb2tra4ODg6urq5OTk4uLi6+vr7e3t7Ozs8PDw5+fn4+Pj4eHh3d3d39/f6Ojo5eXl6enp8fHx8/Pz8vLy7+/v3Nzc2dnZ2NjYnErj7QAAAD1JREFUeNq0wQUBACAMALDj7hf6JyUFGxzEnYhC9GaNPG1xVffGDErk/iCigLl1XV2xM49lfAxEaSM+AQYA9HMKuv4liFQAAAAASUVORK5CYII="
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "type": "Script",
+          "url": "https://manaplus.org/lib/exe/js.php?t=vector&tseed=a29d0715486fe602e89ac72c8d7eab33"
+        },
+        {
+          "initiator": "script",
+          "method": "GET",
+          "type": "Script",
+          "url": "https://manaplus.org/lib/exe/jquery.php?tseed=23f888679b4f1dc26eef34902aca964f"
+        }
+      ]
+    },
+    "steps": [
+      {
+        "action": "goto",
+        "index": 0,
+        "status": "ok",
+        "step_id": "mana-site",
+        "url": "https://manaplus.org/"
+      }
+    ]
+  },
+  "screenshot": {
+    "bytes": 101402,
+    "height": 800,
+    "media_type": "image/png",
+    "sha256": "cc06f34b9d7785949dc86dc86f2908eedaa3a145b5719b659f8f20412be2161e",
+    "width": 1100,
+    "saved_as": "mana-site.png"
+  }
+}
