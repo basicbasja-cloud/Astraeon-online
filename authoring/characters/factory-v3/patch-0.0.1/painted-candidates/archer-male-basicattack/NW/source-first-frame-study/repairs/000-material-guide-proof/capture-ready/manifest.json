@@ -1,0 +1,330 @@
+{
+  "job": {
+    "id": "2fed9f286cdd5c5ffbf4-idle-material-diagnostic",
+    "source_file": "authoring/characters/factory-v3/motions/raw/kaykit-cc0/Rig_Medium_CombatRanged.glb",
+    "source_sha256": "7fef1fc0e7b0feafd34b8e12d23f514c8c1f9d068047a691b854b56f1774dff5",
+    "source_actions": [
+      "Ranged_Bow_Idle"
+    ],
+    "frames": 16,
+    "loop": false,
+    "ortho_scale": 5.325,
+    "resolution": 3072,
+    "weapon": "bow",
+    "guide_aa": "8",
+    "renderer_sha256": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+    "camera_up_offset": 1.15375,
+    "retarget_to": "authoring/characters/factory-v3/motions/raw/mesh2motion/human-base-animations.glb",
+    "retarget_to_sha256": "406eb0a8dc4ab366e623b79b6e3005a4951392e1bda78ae39c1099d31147733c",
+    "retarget_implementation_sha256": "1a86095d1e82d656e53d59949cbed70d73ed6873e9ec69c2706b67d37a7f20e3",
+    "closed_left_grip_revision": 1,
+    "bow_proxy_basis": "wrist-local-aim",
+    "arrow_release_phase": 0.03,
+    "archery_contact_adapter": "cheek-anchor-arm-IK-floor-elbow-v3",
+    "pose_evaluation_revision": 2,
+    "source_ranges": {
+      "Ranged_Bow_Idle": [
+        0,
+        0
+      ]
+    },
+    "directions": [
+      "NW"
+    ],
+    "uses": [
+      "Archer/BasicAttack",
+      "Archer/SkillAction",
+      "Archer/CastRelease"
+    ],
+    "source_guide_manifest_sha256": "f0b0463a28177a03eb4f00f28b17fadfe0765161019362748f0839ad0924d853",
+    "material_diagnostic_only": true,
+    "canonical_source_pose_index": 0,
+    "pose_equivalence_basis": "canonical entry transition weight0 is exact Ranged_Bow_Idle frame0; verify actual geometry after capture"
+  },
+  "implementation_digests_at_process_start": {
+    "render_patch001_guides.py": "618d7728b3304572d0211644ca21d8a94092e784d48432db324abb2d6a5e1e19",
+    "kaykit_motion_adapter.py": "1a86095d1e82d656e53d59949cbed70d73ed6873e9ec69c2706b67d37a7f20e3",
+    "floor_sit_adapter.py": "245dfa8025dcd36d867ee21d78a35aeb4ab3af7995903982289dcd24d73babb1"
+  },
+  "source_rig": "Rig_Medium",
+  "guide_rig": "Armature",
+  "retargeting": "rest-space rotation transfer; authored cheek-anchor arm IK and donor per-foot contact IK",
+  "frame_count": 1,
+  "views": {
+    "NW": {
+      "camera": {
+        "location": [
+          -3.868161201477051,
+          3.8681607246398926,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.093904733657837,
+          6.438192912128216e-08,
+          -2.3561947345733643
+        ],
+        "ortho_scale": 5.324999809265137,
+        "fixed": true
+      },
+      "frames": [
+        {
+          "contact_world": {
+            "target_toes": {
+              "l": [
+                0.09469291567802429,
+                -0.04128396883606911,
+                0.025949247181415558
+              ],
+              "r": [
+                -0.2831554710865021,
+                0.36255013942718506,
+                0.025870338082313538
+              ]
+            },
+            "donor_toes": {
+              "l": [
+                0.17131082713603973,
+                -0.14506250619888306,
+                0.02594922110438347
+              ],
+              "r": [
+                -0.25537747144699097,
+                0.18256118893623352,
+                0.025870338082313538
+              ]
+            },
+            "target_elbows": {
+              "l": [
+                0.21482892334461212,
+                -0.10962444543838501,
+                1.1860703229904175
+              ],
+              "r": [
+                -0.29947370290756226,
+                0.17280538380146027,
+                1.2582300901412964
+              ]
+            },
+            "target_palms": {
+              "l": [
+                0.0793372243642807,
+                -0.4046309292316437,
+                0.9997336864471436
+              ],
+              "r": [
+                -0.21880492568016052,
+                -0.1821974664926529,
+                1.1385643482208252
+              ]
+            }
+          },
+          "frame": 0,
+          "action": "Ranged_Bow_Idle",
+          "source_frame": 0,
+          "segment_phase": 0,
+          "source_root_world": [
+            0.0,
+            0.0,
+            6.705522537231445e-08
+          ],
+          "actor_root_delta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landmarks": {
+            "root": [
+              1535.9991,
+              2201.6011
+            ],
+            "head": [
+              1497.9543,
+              1464.0886
+            ],
+            "pelvis": [
+              1459.1721,
+              1798.0959
+            ],
+            "hand_r": [
+              1672.814,
+              1626.2839
+            ],
+            "hand_l": [
+              1623.7998,
+              1595.7338
+            ],
+            "foot_r": [
+              1420.0326,
+              2272.9238
+            ],
+            "foot_l": [
+              1462.0757,
+              2148.8132
+            ]
+          },
+          "world_landmarks": {
+            "root": [
+              0.0,
+              0.0,
+              6.705522537231445e-08
+            ],
+            "head": [
+              -0.04513847082853317,
+              0.138401061296463,
+              1.5060067176818848
+            ],
+            "pelvis": [
+              -4.731528058243839e-09,
+              0.1883334219455719,
+              0.8560801148414612
+            ],
+            "hand_r": [
+              -0.2506808638572693,
+              -0.08470649272203445,
+              1.1831320524215698
+            ],
+            "hand_l": [
+              0.0856102854013443,
+              -0.3008446991443634,
+              1.040914535522461
+            ],
+            "foot_r": [
+              -0.205048605799675,
+              0.4893285632133484,
+              0.11452558636665344
+            ],
+            "foot_l": [
+              0.07485746592283249,
+              0.10635790973901749,
+              0.11450223624706268
+            ]
+          },
+          "weapon_guide": {
+            "grip": [
+              1668.6964,
+              1598.5811
+            ],
+            "string_nock": [
+              1645.3449,
+              1616.6231
+            ],
+            "arrow_tip": [
+              1730.967,
+              1550.4694
+            ],
+            "arrow_visible": false,
+            "archery_contact": {
+              "method": "cheek-anchor-arm-IK-floor-elbow-v3",
+              "reach": {
+                "floor": {
+                  "pelvis_drop_m": 0.0,
+                  "toe_height_errors_m": {
+                    "l": -4.0978193283081055e-08,
+                    "r": -6.705522537231445e-08
+                  }
+                }
+              }
+            }
+          },
+          "bone_rotations": {
+            "root": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "head": [
+              0.6782475113868713,
+              0.734607458114624,
+              0.0021206929814070463,
+              0.018103590235114098
+            ],
+            "pelvis": [
+              0.6304848790168762,
+              0.7231990098953247,
+              -0.234638512134552,
+              -0.15625864267349243
+            ],
+            "hand_r": [
+              0.22644953429698944,
+              -0.6551729440689087,
+              0.06534554809331894,
+              -0.7177736759185791
+            ],
+            "hand_l": [
+              0.1378757506608963,
+              -0.7462388277053833,
+              -0.11023876070976257,
+              0.6418452858924866
+            ],
+            "foot_r": [
+              0.2554044723510742,
+              -0.9277002811431885,
+              0.26266545057296753,
+              -0.07174736261367798
+            ],
+            "foot_l": [
+              0.2643333971500397,
+              -0.9621010422706604,
+              -0.06448370963335037,
+              0.018201863393187523
+            ]
+          },
+          "image": "NW/000.png"
+        }
+      ]
+    }
+  },
+  "mirroring": false,
+  "root_policy": "fixed camera; horizontal source actor-root travel extracted and recorded separately",
+  "status": "NONCANONICAL_COLORED_MANNEQUIN_DIAGNOSTIC_NOT_FINAL_ART",
+  "limitations": [
+    "Source grip, joins, terminal key behavior and foot contacts require visual review.",
+    "This shared donor guide does not prove male/female final-art fitting.",
+    "Mage right prop arm is an explicit native Idle_Lantern local-pose carry adaptation; left casting motion remains from source. Staff contact still needs visual review."
+  ],
+  "material_diagnostic": {
+    "handler_sha256": "b0b3aab780937de4413595b79eb2044ec26c5fbd8bf0d46f129d0b32ce65a33d",
+    "palette": {
+      "head": [
+        0.65,
+        0.42,
+        0.27,
+        1
+      ],
+      "cloth": [
+        0.17,
+        0.25,
+        0.12,
+        1
+      ],
+      "sleeve": [
+        0.76,
+        0.71,
+        0.57,
+        1
+      ],
+      "glove": [
+        0.2,
+        0.095,
+        0.035,
+        1
+      ],
+      "pants": [
+        0.2,
+        0.23,
+        0.12,
+        1
+      ],
+      "boot": [
+        0.23,
+        0.12,
+        0.055,
+        1
+      ]
+    },
+    "geometry_changed": false,
+    "canonical_guide_replaced": false,
+    "runtime_admitted": false
+  }
+}

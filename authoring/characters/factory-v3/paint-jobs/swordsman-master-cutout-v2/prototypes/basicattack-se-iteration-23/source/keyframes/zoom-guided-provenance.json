@@ -1,0 +1,69 @@
+{
+  "status": "REVIEW_ONLY_NOT_APPROVED",
+  "purpose": "Repair selected sword-angle poses after side-by-side comparison showed the unzoomed identity reference was overpowering the Blender sword guide.",
+  "method": "Individual high-resolution repaint from a fixed 900x900 crop of the corresponding Blender guide, resized to 1024x1024; a head-only crop is used only for face and hair identity.",
+  "guide_crop_xyxy": [
+    60,
+    0,
+    960,
+    900
+  ],
+  "guide_crop_resize_px": [
+    1024,
+    1024
+  ],
+  "guide_crop_resample": "Lanczos",
+  "identity_reference": "source/identity/head-only-reference.png",
+  "art_reference": "silver-lavender layered hair, gold scarf/cape, navy sleeves, white tunic, olive trousers, bronze-gold armor, brown gloves/boots; exact source pose and weapon vector retained.",
+  "frames": [
+    {
+      "source_frame": 488,
+      "proxy_angle_degrees": -31.921,
+      "guide_png": "frames_1024/guide_16_src_0488.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_488.png",
+      "output_png": "source/keyframes/raw/swordsman_488.png"
+    },
+    {
+      "source_frame": 489,
+      "proxy_angle_degrees": -54.293,
+      "guide_png": "frames_1024/guide_18_src_0489.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_489.png",
+      "output_png": "source/keyframes/raw/swordsman_489.png"
+    },
+    {
+      "source_frame": 490,
+      "proxy_angle_degrees": -69.007,
+      "guide_png": "frames_1024/guide_20_src_0490.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_490.png",
+      "output_png": "source/keyframes/raw/swordsman_490.png"
+    },
+    {
+      "source_frame": 493,
+      "proxy_angle_degrees": -102.68,
+      "guide_png": "frames_1024/guide_26_src_0493.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_493.png",
+      "output_png": "source/keyframes/raw/swordsman_493.png"
+    },
+    {
+      "source_frame": 498,
+      "proxy_angle_degrees": -43.191,
+      "guide_png": "frames_1024/guide_39_src_0498.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_498.png",
+      "output_png": "source/keyframes/raw/swordsman_498.png"
+    },
+    {
+      "source_frame": 498.5,
+      "proxy_angle_degrees": 10.886,
+      "guide_png": "frames_1024/guide_40_src_0498p5.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_498p5.png",
+      "output_png": "source/keyframes/raw/swordsman_498p5.png"
+    },
+    {
+      "source_frame": 499,
+      "proxy_angle_degrees": 78.486,
+      "guide_png": "frames_1024/guide_41_src_0499.png",
+      "zoom_guide_png": "source/rokoko-guide-zoom/zoom_source_499.png",
+      "output_png": "source/keyframes/raw/swordsman_499.png"
+    }
+  ]
+}

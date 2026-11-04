@@ -1,0 +1,21 @@
+{
+  "status": "PER_FRAME_ART_STILL_REQUIRES_REGISTRATION_AND_SEMANTIC_REVIEW",
+  "frames": {
+    "0": "whole figure candidate; head/weapon cuts and hidden surfaces pending",
+    "5-original": "rejected early full-draw right hand",
+    "5-strict-v2": "rejected costume and head-scale drift",
+    "5-local-edit-v3": "body hand-pose candidate; generated arrow is reversed/duplicated and must not be used as Weapon",
+    "8": "body candidate; nock/grip and arrow geometry pending",
+    "10-local-edit-v2": "upper-body local edit candidate; needs projected-joint inspection",
+    "12-local-edit-v2": "rejected elongated forearm/hand perspective",
+    "body-000-underlay": "rejected as whole-body layer: body was reframed/elongated; do not composite as-is"
+  },
+  "production_units": [
+    "BodyCostume",
+    "HeadHair",
+    "Weapon"
+  ],
+  "independent_limb_templates_allowed": false,
+  "new_complete_actions": 0,
+  "runtime_admitted": false
+}

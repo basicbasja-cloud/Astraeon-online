@@ -1,0 +1,67 @@
+{
+  "status": "SOURCE_IDENTICAL_BODY_RECOVERY_REUSE_WITH_LOCAL_ARROW_REPAIR",
+  "source_pose_indices": [
+    0,
+    15
+  ],
+  "bone_count": 66,
+  "maximum_source_bone_matrix_error": 5.960464477539062e-07,
+  "changed_pixels_in_reused_first_pose": 529,
+  "protected_pixel_changes": 0,
+  "head_pixels_identical_to_first": true,
+  "lower_body_pixels_identical_to_first": true,
+  "source_replay_sha256": "fddbbd713b87becd1c1e40dea20eec54e93406251a65782f1109798e69e2d14e",
+  "correction_sha256": "60235035a8c0677b40e1983e14f1713ed2f139db1f2b190b0e373549401ad0e5",
+  "registered_receipt_sha256": "6c72c4a82762f307cf6d8f79d8f6290b36d384fa83be19bffeacf151b85ef94b",
+  "annotations_sha256": "b698d540a694445840e15a5d11a5dd1b5b90ec9af2702f74e53a84a481b6e8ae",
+  "implementation_sha256": "95007073c14c0a489c4c764785dcb2af2a8cc667a1b4bb60a741226310db693b",
+  "normalization": {
+    "status": "FIXED_VIEWPORT_REVIEW_CANDIDATE_NOT_ACCEPTED_ART",
+    "frame_space": "unspecified-source-canvas",
+    "canonical_root": null,
+    "aspect_error": 0.000494774574645418,
+    "shared_viewport": [
+      174,
+      155,
+      319,
+      327
+    ],
+    "source_size": [
+      512,
+      512
+    ],
+    "frames": [
+      {
+        "source_pose_index": 0,
+        "source_box": [
+          0.0,
+          0.0,
+          1151.0,
+          1366.0
+        ],
+        "alpha_bbox": [
+          186,
+          155,
+          319,
+          327
+        ],
+        "touches_viewport_edge": true,
+        "white_edge_pixels_unmatted": 0
+      }
+    ],
+    "production_blockers": [
+      {
+        "source_pose_index": 0,
+        "reason": "Paint touches the shared viewport edge; inspect clipping before admission"
+      }
+    ],
+    "per_frame_figure_fitting": false,
+    "source_pose_registered": false,
+    "semantic_cutouts_approved": false,
+    "runtime_admitted": false
+  },
+  "recomposition_mismatches": 0,
+  "semantic_cutouts_approved": false,
+  "all_frame_smoothness_approved": false,
+  "runtime_admitted": false
+}

@@ -1,0 +1,66 @@
+{
+  "status": "STATIC_BODY_CAMERA_TEMPLATES_REQUIRE_ANATOMICAL_REGISTRATION",
+  "input_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-four-view-hd-20261025/front-body-pair-raw.png": "fdcbae441b954ad50e4ed7c3655968338454bd51833a2541831a27d80f22eacb",
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-four-view-hd-20261025/body-camera-normalization.json": "4b0163fc828cb55cf62561167709cf51dbe51eb65f2932e5ffaf264e3b996225",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-channel-eight-views-20261025/pilot-receipt.json": "271c9680222d7f70838c0adf3f00d3ef181f0a92e94fa6fafd6c283e969a9dab",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-channel-eight-views-20261025/SW/000.png": "b11595ff7106214c2445182e0753ead5798828f9bd609c80c338054846d68a67",
+    "authoring/characters/factory-v3/patch-0.0.1/research/canonical-mage-channel-eight-views-20261025/SE/000.png": "b34933b654c5324a0e8d5370cbe94addb193d3cafbede785fc6a5739bca22d4e"
+  },
+  "implementation_sha256": "850ce9cd94cb755e25e2d5b6a4136e27bf50f72c3de3404425323fecb2637f65",
+  "common_art_scale": 0.8,
+  "per_frame_fitting": false,
+  "camera_changed": false,
+  "frames": [
+    {
+      "direction": "SW",
+      "source_pose_index": 0,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 0.0,
+      "body_sha256": "2e3281ddcd189b83f0502d1ba61fa6f19003b2276d5dac549ecc2990f7f5c0ef",
+      "static_offset": [
+        153.6,
+        220.16
+      ],
+      "native_camera": {
+        "location": [
+          -3.8681607246398926,
+          -3.8681609630584717,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.0939044952392578,
+          1.331205794485868e-07,
+          -0.7853983044624329
+        ],
+        "ortho_scale": 5.324999809265137
+      }
+    },
+    {
+      "direction": "SE",
+      "source_pose_index": 0,
+      "source_action": "Spell_Simple_Idle",
+      "source_frame": 0.0,
+      "body_sha256": "b64bd205cfd1bb6f2ace680e2653b727488e62d3549070d800a7ab9da85412c1",
+      "static_offset": [
+        105.6,
+        220.16
+      ],
+      "native_camera": {
+        "location": [
+          3.8681607246398926,
+          -3.8681609630584717,
+          4.125021457672119
+        ],
+        "rotation": [
+          1.0939044952392578,
+          -1.331205794485868e-07,
+          0.7853983044624329
+        ],
+        "ortho_scale": 5.324999809265137
+      }
+    }
+  ],
+  "source_pose_alignment_approved": false,
+  "runtime_admitted": false
+}

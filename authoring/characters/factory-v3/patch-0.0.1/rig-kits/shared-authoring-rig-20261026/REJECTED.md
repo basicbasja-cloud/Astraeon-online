@@ -1,0 +1,1 @@
+Rejected derived draft: glTF exporter found duplicate faces and automatically validated its in-memory copy after the Blender file had been saved. The outputs are not admitted; disposable draft Blend/GLB files were removed during the user-authorized cleanup. Original canonical rig remains unchanged. Manifest and packaging source are retained for provenance.

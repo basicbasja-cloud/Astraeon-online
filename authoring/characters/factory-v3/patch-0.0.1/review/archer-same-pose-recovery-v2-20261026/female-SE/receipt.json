@@ -1,0 +1,68 @@
+{
+  "status": "SOURCE_IDENTICAL_BODY_RECOVERY_REUSE_WITH_LOCAL_ARROW_REPAIR",
+  "source_pose_indices": [
+    0,
+    15
+  ],
+  "bone_count": 66,
+  "maximum_source_bone_matrix_error": 5.960464477539062e-07,
+  "changed_pixels_in_reused_first_pose": 425,
+  "explicit_shared_background_pixels_removed": 0,
+  "protected_pixel_changes": 0,
+  "head_pixels_identical_to_first": true,
+  "lower_body_pixels_identical_to_first": true,
+  "source_replay_sha256": "fddbbd713b87becd1c1e40dea20eec54e93406251a65782f1109798e69e2d14e",
+  "correction_sha256": "33d213d7b2c63a4ffcd3d1686d505e8f59b9a30dd8a3197c064593cb516c2a4e",
+  "registered_receipt_sha256": "ff3b17eb27c865f9ac380447c35ff090d0b0834a0c3f58e126c4f26ded0d6879",
+  "annotations_sha256": "78f8dc566dd424dfcfa1028e0d2d2bd0e1f3377bdad34a7ab0eb0acf5cc6b025",
+  "implementation_sha256": "8dfe7817d89a21ea67e38c073a3105235398e089b5f26f69190950c2b5a17525",
+  "normalization": {
+    "status": "FIXED_VIEWPORT_REVIEW_CANDIDATE_NOT_ACCEPTED_ART",
+    "frame_space": "unspecified-source-canvas",
+    "canonical_root": null,
+    "aspect_error": 0.0010359627053425635,
+    "shared_viewport": [
+      165,
+      150,
+      310,
+      330
+    ],
+    "source_size": [
+      512,
+      512
+    ],
+    "frames": [
+      {
+        "source_pose_index": 0,
+        "source_box": [
+          0.0,
+          0.0,
+          1125.0,
+          1398.0
+        ],
+        "alpha_bbox": [
+          179,
+          150,
+          310,
+          330
+        ],
+        "touches_viewport_edge": true,
+        "white_edge_pixels_unmatted": 0
+      }
+    ],
+    "production_blockers": [
+      {
+        "source_pose_index": 0,
+        "reason": "Paint touches the shared viewport edge; inspect clipping before admission"
+      }
+    ],
+    "per_frame_figure_fitting": false,
+    "source_pose_registered": false,
+    "semantic_cutouts_approved": false,
+    "runtime_admitted": false
+  },
+  "recomposition_mismatches": 0,
+  "semantic_cutouts_approved": false,
+  "all_frame_smoothness_approved": false,
+  "runtime_admitted": false
+}

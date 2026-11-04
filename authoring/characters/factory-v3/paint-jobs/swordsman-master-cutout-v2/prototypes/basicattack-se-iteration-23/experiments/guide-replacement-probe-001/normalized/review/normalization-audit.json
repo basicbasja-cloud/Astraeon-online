@@ -1,0 +1,73 @@
+{
+  "status": "REVIEW_ONLY_NOT_APPROVED",
+  "root_xy_px": [
+    640.0,
+    1056.0
+  ],
+  "canvas_size_px": [
+    1280,
+    1280
+  ],
+  "target_head_to_floor_px": 600.0,
+  "scale_is_frame_specific": true,
+  "scale_mode": "guide_relative_head_to_floor",
+  "fixed_clip_scale": null,
+  "guide_height_ratio": 1.1,
+  "support_foot_screen": "right",
+  "root_and_scale_source": "matching Rokoko head-to-floor projection and detected painted head/boot anchors; support foot selected by screen side",
+  "alpha_resize": "premultiplied RGBA, Lanczos; alpha <= 5 and saturated red markup removed",
+  "frames": [
+    {
+      "sprite_frame": 0,
+      "source_frame": 480.0,
+      "raw_png": "swordsman_480.png",
+      "scale": 0.524745,
+      "requested_scale": 0.524745,
+      "canvas_scale_cap": 0.835344,
+      "canvas_scale_limited": false,
+      "canvas_scale_limiting_axis": null,
+      "scale_mode": "guide_relative_head_to_floor",
+      "guide_head_to_floor_px": 545.258,
+      "target_root_xy": [
+        640.0,
+        1056.0
+      ],
+      "source_root_xy": [
+        890.998,
+        1184.0
+      ],
+      "support_foot_screen": "right",
+      "source_head_to_floor_px": 1143.0,
+      "hair_top_y": 41,
+      "boot_regions": [
+        {
+          "area": 17213.0,
+          "sole_x": 890.9979879275654,
+          "sole_y": 1184.0
+        },
+        {
+          "area": 14022.0,
+          "sole_x": 320.2519083969466,
+          "sole_y": 1136.0
+        }
+      ],
+      "removed_saturated_red_pixels": 4070,
+      "translation_xy": [
+        172,
+        435
+      ],
+      "unclipped_output_alpha_bbox": [
+        245,
+        454,
+        743,
+        1059
+      ],
+      "output_alpha_bbox": [
+        246,
+        454,
+        742,
+        1059
+      ]
+    }
+  ]
+}

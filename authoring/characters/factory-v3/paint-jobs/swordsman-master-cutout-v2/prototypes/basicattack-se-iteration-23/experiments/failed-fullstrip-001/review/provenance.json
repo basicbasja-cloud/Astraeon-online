@@ -1,0 +1,634 @@
+{
+  "status": "REVIEW_ONLY_NOT_APPROVED",
+  "source_strip": "source/generated/rokoko-16pose-strip-raw.png",
+  "alpha_cleanup": "Set alpha <= 2% to transparent before frame extraction; removes only near-transparent red contamination.",
+  "grid": {
+    "columns": 4,
+    "rows": 4,
+    "input_sheet_px": [
+      887,
+      1774
+    ],
+    "cell_boundaries_x": [
+      0,
+      222,
+      444,
+      665,
+      887
+    ],
+    "cell_boundaries_y": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ]
+  },
+  "normalization": {
+    "output_cell_px": [
+      320,
+      512
+    ],
+    "shared_scale": 1.1,
+    "shared_root_anchor_xy": [
+      160,
+      500
+    ],
+    "frame_translation": "vertical baseline registration; horizontal cell center fixed; no per-frame resizing"
+  },
+  "frame_count": 16,
+  "timing": {
+    "source_fps": 30,
+    "frame_durations_ms": [
+      67,
+      67,
+      67,
+      67,
+      67,
+      67,
+      67,
+      67,
+      42,
+      42,
+      17,
+      17,
+      33,
+      100,
+      250,
+      300
+    ],
+    "gif_frame_durations_ms": [
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      70,
+      40,
+      40,
+      10,
+      10,
+      30,
+      100,
+      250,
+      300
+    ],
+    "gif_duration_ms": 1340,
+    "final_recovery_hold_ms": 300,
+    "loop_extension": false
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "source_grid_cell": [
+        0,
+        0
+      ],
+      "source_crop_xyxy": [
+        0,
+        0,
+        222,
+        444
+      ],
+      "source_cell_size_px": [
+        222,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 443,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        13
+      ],
+      "alpha_bbox_xyxy": [
+        41,
+        155,
+        282,
+        501
+      ],
+      "alpha_pixels": 39942
+    },
+    {
+      "frame": 1,
+      "source_grid_cell": [
+        1,
+        0
+      ],
+      "source_crop_xyxy": [
+        222,
+        0,
+        444,
+        444
+      ],
+      "source_cell_size_px": [
+        222,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 443,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        13
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        155,
+        282,
+        501
+      ],
+      "alpha_pixels": 41123
+    },
+    {
+      "frame": 2,
+      "source_grid_cell": [
+        2,
+        0
+      ],
+      "source_crop_xyxy": [
+        444,
+        0,
+        665,
+        444
+      ],
+      "source_cell_size_px": [
+        221,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 443,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        13
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        155,
+        282,
+        501
+      ],
+      "alpha_pixels": 38528
+    },
+    {
+      "frame": 3,
+      "source_grid_cell": [
+        3,
+        0
+      ],
+      "source_crop_xyxy": [
+        665,
+        0,
+        887,
+        444
+      ],
+      "source_cell_size_px": [
+        222,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 443,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        13
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        154,
+        270,
+        501
+      ],
+      "alpha_pixels": 39582
+    },
+    {
+      "frame": 4,
+      "source_grid_cell": [
+        0,
+        1
+      ],
+      "source_crop_xyxy": [
+        0,
+        444,
+        222,
+        887
+      ],
+      "source_cell_size_px": [
+        222,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        501
+      ],
+      "alpha_pixels": 45293
+    },
+    {
+      "frame": 5,
+      "source_grid_cell": [
+        1,
+        1
+      ],
+      "source_crop_xyxy": [
+        222,
+        444,
+        444,
+        887
+      ],
+      "source_cell_size_px": [
+        222,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        501
+      ],
+      "alpha_pixels": 46975
+    },
+    {
+      "frame": 6,
+      "source_grid_cell": [
+        2,
+        1
+      ],
+      "source_crop_xyxy": [
+        444,
+        444,
+        665,
+        887
+      ],
+      "source_cell_size_px": [
+        221,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        501
+      ],
+      "alpha_pixels": 49049
+    },
+    {
+      "frame": 7,
+      "source_grid_cell": [
+        3,
+        1
+      ],
+      "source_crop_xyxy": [
+        665,
+        444,
+        887,
+        887
+      ],
+      "source_cell_size_px": [
+        222,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        501
+      ],
+      "alpha_pixels": 50115
+    },
+    {
+      "frame": 8,
+      "source_grid_cell": [
+        0,
+        2
+      ],
+      "source_crop_xyxy": [
+        0,
+        887,
+        222,
+        1330
+      ],
+      "source_cell_size_px": [
+        222,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        44,
+        14,
+        282,
+        502
+      ],
+      "alpha_pixels": 51978
+    },
+    {
+      "frame": 9,
+      "source_grid_cell": [
+        1,
+        2
+      ],
+      "source_crop_xyxy": [
+        222,
+        887,
+        444,
+        1330
+      ],
+      "source_cell_size_px": [
+        222,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        502
+      ],
+      "alpha_pixels": 51016
+    },
+    {
+      "frame": 10,
+      "source_grid_cell": [
+        2,
+        2
+      ],
+      "source_crop_xyxy": [
+        444,
+        887,
+        665,
+        1330
+      ],
+      "source_cell_size_px": [
+        221,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        502
+      ],
+      "alpha_pixels": 47791
+    },
+    {
+      "frame": 11,
+      "source_grid_cell": [
+        3,
+        2
+      ],
+      "source_crop_xyxy": [
+        665,
+        887,
+        887,
+        1330
+      ],
+      "source_cell_size_px": [
+        222,
+        443
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 442,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        14
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        14,
+        282,
+        502
+      ],
+      "alpha_pixels": 50248
+    },
+    {
+      "frame": 12,
+      "source_grid_cell": [
+        0,
+        3
+      ],
+      "source_crop_xyxy": [
+        0,
+        1330,
+        222,
+        1774
+      ],
+      "source_cell_size_px": [
+        222,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 420,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        38
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        38,
+        282,
+        503
+      ],
+      "alpha_pixels": 46715
+    },
+    {
+      "frame": 13,
+      "source_grid_cell": [
+        1,
+        3
+      ],
+      "source_crop_xyxy": [
+        222,
+        1330,
+        444,
+        1774
+      ],
+      "source_cell_size_px": [
+        222,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 418,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        40
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        40,
+        281,
+        503
+      ],
+      "alpha_pixels": 46277
+    },
+    {
+      "frame": 14,
+      "source_grid_cell": [
+        2,
+        3
+      ],
+      "source_crop_xyxy": [
+        444,
+        1330,
+        665,
+        1774
+      ],
+      "source_cell_size_px": [
+        221,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 423,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        35
+      ],
+      "alpha_bbox_xyxy": [
+        43,
+        35,
+        282,
+        504
+      ],
+      "alpha_pixels": 44481
+    },
+    {
+      "frame": 15,
+      "source_grid_cell": [
+        3,
+        3
+      ],
+      "source_crop_xyxy": [
+        665,
+        1330,
+        887,
+        1774
+      ],
+      "source_cell_size_px": [
+        222,
+        444
+      ],
+      "shared_scale": 1.1,
+      "source_boot_baseline_y": 420,
+      "output_root_anchor_xy": [
+        160,
+        500
+      ],
+      "translation_xy": [
+        38,
+        38
+      ],
+      "alpha_bbox_xyxy": [
+        38,
+        38,
+        282,
+        503
+      ],
+      "alpha_pixels": 46971
+    }
+  ],
+  "limitations": [
+    "Generated strip is a 16-pose visual candidate; its poses require full-frame comparison against Blender source.",
+    "The output included near-transparent pure-red RGB under alpha <= 3; alpha cleanup removes these pixels.",
+    "No modular layer extraction has been approved from this strip.",
+    "The source image was divided into fixed grid cells; normalization preserves the shared scale and uses a common boot baseline."
+  ]
+}

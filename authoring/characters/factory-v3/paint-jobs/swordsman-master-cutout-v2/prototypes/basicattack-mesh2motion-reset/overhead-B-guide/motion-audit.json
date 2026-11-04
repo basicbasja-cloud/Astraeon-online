@@ -1,0 +1,202 @@
+{
+  "status": "MOTION_GUIDE_DIAGNOSTIC_NOT_ART_APPROVAL",
+  "frames": 111,
+  "camera_locked": {
+    "location": [
+      3.0,
+      -5.0,
+      3.9499998092651367
+    ],
+    "rotation": [
+      1.0821540355682373,
+      -4.156195387849948e-09,
+      0.5404196381568909
+    ],
+    "type": "ORTHO",
+    "scale": 3.4000000953674316
+  },
+  "source_pose_steps": {
+    "head": {
+      "max_step_source_px": 43.301,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "pelvis": {
+      "max_step_source_px": 43.501,
+      "frame_pair": [
+        105,
+        106
+      ]
+    },
+    "upperarm_r": {
+      "max_step_source_px": 39.515,
+      "frame_pair": [
+        4,
+        5
+      ]
+    },
+    "lowerarm_r": {
+      "max_step_source_px": 78.183,
+      "frame_pair": [
+        25,
+        26
+      ]
+    },
+    "hand_r": {
+      "max_step_source_px": 138.874,
+      "frame_pair": [
+        26,
+        27
+      ]
+    },
+    "upperarm_l": {
+      "max_step_source_px": 46.048,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "lowerarm_l": {
+      "max_step_source_px": 46.716,
+      "frame_pair": [
+        105,
+        106
+      ]
+    },
+    "hand_l": {
+      "max_step_source_px": 47.758,
+      "frame_pair": [
+        105,
+        106
+      ]
+    },
+    "thigh_l": {
+      "max_step_source_px": 43.766,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "thigh_r": {
+      "max_step_source_px": 43.2,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "calf_l": {
+      "max_step_source_px": 44.328,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "calf_r": {
+      "max_step_source_px": 41.218,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "foot_l": {
+      "max_step_source_px": 46.105,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "foot_r": {
+      "max_step_source_px": 40.279,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "ball_l": {
+      "max_step_source_px": 46.507,
+      "frame_pair": [
+        106,
+        107
+      ]
+    },
+    "ball_r": {
+      "max_step_source_px": 39.678,
+      "frame_pair": [
+        106,
+        107
+      ]
+    }
+  },
+  "segment_joins": [
+    {
+      "frames": [
+        12,
+        13
+      ],
+      "segments": [
+        "authored_windup",
+        "Sword_Regular_B"
+      ],
+      "head_step_px": 7.511,
+      "pelvis_step_px": 2.456,
+      "hand_step_px": 13.924
+    },
+    {
+      "frames": [
+        40,
+        41
+      ],
+      "segments": [
+        "Sword_Regular_B",
+        "authored_recovery_join"
+      ],
+      "head_step_px": 1.578,
+      "pelvis_step_px": 0.77,
+      "hand_step_px": 1.055
+    },
+    {
+      "frames": [
+        44,
+        45
+      ],
+      "segments": [
+        "authored_recovery_join",
+        "Sword_Regular_B_Rec"
+      ],
+      "head_step_px": 0.813,
+      "pelvis_step_px": 0.488,
+      "hand_step_px": 0.374
+    },
+    {
+      "frames": [
+        102,
+        103
+      ],
+      "segments": [
+        "Sword_Regular_B_Rec",
+        "authored_guard_settle"
+      ],
+      "head_step_px": 10.007,
+      "pelvis_step_px": 10.181,
+      "hand_step_px": 8.586
+    }
+  ],
+  "frames_touching_canvas_edge": [
+    29,
+    30
+  ],
+  "shared_alpha_bounds": [
+    0,
+    265,
+    631,
+    956
+  ],
+  "first_last_pixel_difference_count": 0,
+  "first_last_max_landmark_delta_px": 0.0,
+  "adjacent_alpha_iou_min": 0.3397189136965415,
+  "adjacent_alpha_iou_mean": 0.7944432163154472,
+  "research_iou_warning": 0.88,
+  "interpretation": "The research 0.88 silhouette warning is a diagnostic; intentional fast strikes change silhouettes. Fixed root or matching endpoint does not establish human weight transfer or art quality."
+}

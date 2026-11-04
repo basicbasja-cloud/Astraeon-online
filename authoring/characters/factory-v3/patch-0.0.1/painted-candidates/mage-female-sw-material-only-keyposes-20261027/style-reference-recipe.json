@@ -1,0 +1,46 @@
+{
+  "patches": [
+    {
+      "role": "HeadHair",
+      "source": "canonical female pose000",
+      "crop": [
+        328,
+        318,
+        400,
+        387
+      ]
+    },
+    {
+      "role": "Fabric and trim",
+      "source": "masked-inpaint raw high-detail donor",
+      "crop": [
+        470,
+        550,
+        600,
+        745
+      ]
+    },
+    {
+      "role": "Robe material",
+      "source": "masked-inpaint raw high-detail donor",
+      "crop": [
+        210,
+        835,
+        385,
+        1105
+      ]
+    },
+    {
+      "role": "Boot material",
+      "source": "masked-inpaint raw high-detail donor",
+      "crop": [
+        300,
+        1075,
+        440,
+        1254
+      ]
+    }
+  ],
+  "contains_full_body_pose": false,
+  "purpose": "Identity and materials only; all posed anatomy from complete Blender guides."
+}

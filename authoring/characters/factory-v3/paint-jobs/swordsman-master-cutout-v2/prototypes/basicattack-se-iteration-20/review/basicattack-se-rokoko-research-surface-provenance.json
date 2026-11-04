@@ -1,0 +1,4018 @@
+{
+  "status": "REVIEW_ONLY_ROKOKO_DELTAS_RESEARCH_SURFACES; OWNER_REVIEW_PENDING",
+  "motion_source": "Rokoko Mixamo sword attack, sampled by the iteration-14 Blender guide",
+  "surface_method": "Adapted research candidate-06 semantic BaseBody/Outfit surface painter; right arm, legs, hair and sword are separate authored layers.",
+  "source_template": "research candidate-06 SE modular master; the source action is not reused",
+  "research_surface_source": "/workspace/Astraeon-online/authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-se-iteration-12/source/research-template/research-build-source.py",
+  "source_pose_lock": "The source SE pose is proportion-blended toward the measured first Rokoko pose, then each native source frame applies its matching normalized motion delta without sparse resampling.",
+  "initial_pose_fit_ratio": 1.0,
+  "limb_solver": "2D two-bone inverse kinematics with a locked bend side per limb throughout the clip; every segment uses one fixed length scale throughout the clip, and an endpoint moves only when the target is outside the reachable range",
+  "root_policy": "in-place; support-foot screen projection is normalized to the source root and pixel baseline is corrected to root y",
+  "root_xy": [
+    160.0,
+    264
+  ],
+  "limb_length_scale": 1.12,
+  "shared_pixel_root_correction_y": 10,
+  "removed_red_fringe_pixels": 3911,
+  "removed_skin_pixels_below_ground": 2738,
+  "weapon_transform": "rigid authored blade; pivot follows the limb-aware painted right hand; angle delta follows the Rokoko proxy",
+  "playback": {
+    "frame_count": 32,
+    "source_duration_ms": 1323,
+    "gif_duration_ms_with_recovery_hold": 1320,
+    "gif_loop_extension": false,
+    "source_frame_range": [
+      480,
+      511
+    ],
+    "source_sample_spacing_frames": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "limitations": [
+    "The research source art is a review template and remains below the owner reference quality bar.",
+    "The source template starts in a lower, more closed stance than the Rokoko guide; this retarget preserves the first painted pose and cannot remove that initial pose mismatch.",
+    "Cape and outfit remain one source layer; this iteration does not reconstruct hidden cape surfaces.",
+    "Only the SE direction is painted; all-direction acceptance remains open."
+  ],
+  "frames": [
+    {
+      "sprite_frame": 0,
+      "source_frame": 480,
+      "root_shift_xy_px": [
+        0.0,
+        -17.708
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          175.62,
+          91.607
+        ],
+        "neck": [
+          172.345,
+          109.252
+        ],
+        "waist": [
+          157.0,
+          162.292
+        ],
+        "shoulder_R": [
+          152.456,
+          121.759
+        ],
+        "elbow_R": [
+          147.406,
+          151.73
+        ],
+        "hand_R": [
+          174.291,
+          162.601
+        ],
+        "shoulder_L": [
+          180.743,
+          105.087
+        ],
+        "elbow_L": [
+          168.051,
+          115.509
+        ],
+        "hand_L": [
+          174.09,
+          142.726
+        ],
+        "hip_R": [
+          148.611,
+          163.754
+        ],
+        "knee_R": [
+          147.064,
+          216.699
+        ],
+        "foot_R": [
+          105.943,
+          245.227
+        ],
+        "hip_L": [
+          165.389,
+          160.83
+        ],
+        "knee_L": [
+          203.003,
+          199.268
+        ],
+        "foot_L": [
+          188.137,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 0.0,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          174.291,
+          172.601
+        ],
+        "blade_tip_xy": [
+          242.788,
+          179.888
+        ],
+        "blade_angle_degrees": 6.072,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        77,
+        71,
+        245,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 1,
+      "source_frame": 481,
+      "root_shift_xy_px": [
+        0.0,
+        -17.97
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          175.028,
+          90.921
+        ],
+        "neck": [
+          171.951,
+          108.696
+        ],
+        "waist": [
+          157.0,
+          162.03
+        ],
+        "shoulder_R": [
+          151.858,
+          121.105
+        ],
+        "elbow_R": [
+          146.804,
+          151.076
+        ],
+        "hand_R": [
+          173.604,
+          162.156
+        ],
+        "shoulder_L": [
+          180.908,
+          104.997
+        ],
+        "elbow_L": [
+          169.85,
+          117.138
+        ],
+        "hand_L": [
+          176.356,
+          144.246
+        ],
+        "hip_R": [
+          148.546,
+          163.417
+        ],
+        "knee_R": [
+          146.588,
+          216.348
+        ],
+        "foot_R": [
+          105.655,
+          245.146
+        ],
+        "hip_L": [
+          165.454,
+          160.643
+        ],
+        "knee_L": [
+          202.84,
+          199.303
+        ],
+        "foot_L": [
+          187.827,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 0.0,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          173.604,
+          172.156
+        ],
+        "blade_tip_xy": [
+          241.99,
+          180.422
+        ],
+        "blade_angle_degrees": 6.892,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        76,
+        70,
+        244,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 2,
+      "source_frame": 482,
+      "root_shift_xy_px": [
+        0.0,
+        -18.083
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          174.582,
+          90.446
+        ],
+        "neck": [
+          171.705,
+          108.314
+        ],
+        "waist": [
+          157.0,
+          161.917
+        ],
+        "shoulder_R": [
+          151.418,
+          120.603
+        ],
+        "elbow_R": [
+          146.339,
+          150.569
+        ],
+        "hand_R": [
+          173.1,
+          161.742
+        ],
+        "shoulder_L": [
+          181.184,
+          105.207
+        ],
+        "elbow_L": [
+          172.84,
+          119.351
+        ],
+        "hand_L": [
+          178.853,
+          146.573
+        ],
+        "hip_R": [
+          148.479,
+          163.2
+        ],
+        "knee_R": [
+          146.052,
+          216.111
+        ],
+        "foot_R": [
+          105.239,
+          245.078
+        ],
+        "hip_L": [
+          165.521,
+          160.635
+        ],
+        "knee_L": [
+          202.801,
+          199.397
+        ],
+        "foot_L": [
+          187.399,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 0.0,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          173.1,
+          171.742
+        ],
+        "blade_tip_xy": [
+          241.554,
+          179.433
+        ],
+        "blade_angle_degrees": 6.411,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        76,
+        70,
+        243,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 3,
+      "source_frame": 483,
+      "root_shift_xy_px": [
+        0.0,
+        -18.059
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          174.126,
+          90.104
+        ],
+        "neck": [
+          171.458,
+          108.021
+        ],
+        "waist": [
+          157.0,
+          161.941
+        ],
+        "shoulder_R": [
+          150.93,
+          120.113
+        ],
+        "elbow_R": [
+          145.854,
+          150.081
+        ],
+        "hand_R": [
+          172.632,
+          161.212
+        ],
+        "shoulder_L": [
+          181.335,
+          105.647
+        ],
+        "elbow_L": [
+          178.532,
+          121.828
+        ],
+        "hand_L": [
+          181.401,
+          149.558
+        ],
+        "hip_R": [
+          148.402,
+          163.109
+        ],
+        "knee_R": [
+          145.615,
+          216.003
+        ],
+        "foot_R": [
+          104.835,
+          245.015
+        ],
+        "hip_L": [
+          165.598,
+          160.774
+        ],
+        "knee_L": [
+          202.86,
+          199.553
+        ],
+        "foot_L": [
+          186.839,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 0.0,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          172.632,
+          171.212
+        ],
+        "blade_tip_xy": [
+          241.075,
+          178.99
+        ],
+        "blade_angle_degrees": 6.483,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        76,
+        69,
+        243,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 4,
+      "source_frame": 484,
+      "root_shift_xy_px": [
+        0.0,
+        -17.876
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          173.639,
+          89.97
+        ],
+        "neck": [
+          171.151,
+          107.889
+        ],
+        "waist": [
+          157.0,
+          162.124
+        ],
+        "shoulder_R": [
+          150.343,
+          119.662
+        ],
+        "elbow_R": [
+          145.001,
+          149.583
+        ],
+        "hand_R": [
+          171.979,
+          160.221
+        ],
+        "shoulder_L": [
+          181.478,
+          106.457
+        ],
+        "elbow_L": [
+          182.342,
+          122.856
+        ],
+        "hand_L": [
+          183.93,
+          150.689
+        ],
+        "hip_R": [
+          148.307,
+          163.154
+        ],
+        "knee_R": [
+          144.697,
+          215.998
+        ],
+        "foot_R": [
+          103.963,
+          245.075
+        ],
+        "hip_L": [
+          165.694,
+          161.094
+        ],
+        "knee_L": [
+          203.024,
+          199.807
+        ],
+        "foot_L": [
+          186.041,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 2.584,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          171.979,
+          170.221
+        ],
+        "blade_tip_xy": [
+          240.567,
+          176.602
+        ],
+        "blade_angle_degrees": 5.315,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        76,
+        69,
+        242,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 5,
+      "source_frame": 485,
+      "root_shift_xy_px": [
+        0.0,
+        -17.865
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          173.561,
+          89.708
+        ],
+        "neck": [
+          171.002,
+          107.607
+        ],
+        "waist": [
+          157.0,
+          162.135
+        ],
+        "shoulder_R": [
+          149.681,
+          118.802
+        ],
+        "elbow_R": [
+          143.859,
+          148.633
+        ],
+        "hand_R": [
+          171.265,
+          158.113
+        ],
+        "shoulder_L": [
+          182.221,
+          107.069
+        ],
+        "elbow_L": [
+          183.866,
+          123.408
+        ],
+        "hand_L": [
+          186.779,
+          151.134
+        ],
+        "hip_R": [
+          148.17,
+          162.939
+        ],
+        "knee_R": [
+          143.26,
+          215.678
+        ],
+        "foot_R": [
+          102.8,
+          245.136
+        ],
+        "hip_L": [
+          165.83,
+          161.331
+        ],
+        "knee_L": [
+          203.066,
+          200.135
+        ],
+        "foot_L": [
+          184.926,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 5.84,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          171.265,
+          168.113
+        ],
+        "blade_tip_xy": [
+          240.105,
+          170.571
+        ],
+        "blade_angle_degrees": 2.045,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        76,
+        69,
+        242,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 6,
+      "source_frame": 486,
+      "root_shift_xy_px": [
+        0.0,
+        -18.209
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          173.443,
+          88.866
+        ],
+        "neck": [
+          170.737,
+          106.746
+        ],
+        "waist": [
+          157.0,
+          161.791
+        ],
+        "shoulder_R": [
+          148.625,
+          117.105
+        ],
+        "elbow_R": [
+          142.0,
+          146.768
+        ],
+        "hand_R": [
+          170.055,
+          154.111
+        ],
+        "shoulder_L": [
+          183.345,
+          107.367
+        ],
+        "elbow_L": [
+          185.56,
+          123.639
+        ],
+        "hand_L": [
+          189.441,
+          151.246
+        ],
+        "hip_R": [
+          148.019,
+          162.267
+        ],
+        "knee_R": [
+          141.417,
+          214.822
+        ],
+        "foot_R": [
+          101.628,
+          245.179
+        ],
+        "hip_L": [
+          165.981,
+          161.315
+        ],
+        "knee_L": [
+          202.842,
+          200.475
+        ],
+        "foot_L": [
+          183.579,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 9.271,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          170.055,
+          164.111
+        ],
+        "blade_tip_xy": [
+          238.857,
+          160.754
+        ],
+        "blade_angle_degrees": -2.793,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        75,
+        68,
+        241,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 7,
+      "source_frame": 487,
+      "root_shift_xy_px": [
+        0.0,
+        -18.858
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          173.272,
+          87.504
+        ],
+        "neck": [
+          170.502,
+          105.411
+        ],
+        "waist": [
+          157.0,
+          161.142
+        ],
+        "shoulder_R": [
+          147.424,
+          114.613
+        ],
+        "elbow_R": [
+          139.461,
+          143.945
+        ],
+        "hand_R": [
+          168.201,
+          147.82
+        ],
+        "shoulder_L": [
+          184.852,
+          107.47
+        ],
+        "elbow_L": [
+          187.415,
+          123.691
+        ],
+        "hand_L": [
+          191.887,
+          151.208
+        ],
+        "hip_R": [
+          147.89,
+          161.213
+        ],
+        "knee_R": [
+          138.173,
+          213.281
+        ],
+        "foot_R": [
+          99.808,
+          245.42
+        ],
+        "hip_L": [
+          166.11,
+          161.07
+        ],
+        "knee_L": [
+          202.315,
+          200.839
+        ],
+        "foot_L": [
+          181.928,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 12.396,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          168.201,
+          157.82
+        ],
+        "blade_tip_xy": [
+          235.675,
+          143.956
+        ],
+        "blade_angle_degrees": -11.611,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        75,
+        67,
+        238,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 8,
+      "source_frame": 488,
+      "root_shift_xy_px": [
+        0.0,
+        -19.74
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          173.017,
+          85.776
+        ],
+        "neck": [
+          170.301,
+          103.767
+        ],
+        "waist": [
+          157.0,
+          160.26
+        ],
+        "shoulder_R": [
+          146.101,
+          111.393
+        ],
+        "elbow_R": [
+          136.422,
+          140.205
+        ],
+        "hand_R": [
+          165.401,
+          139.12
+        ],
+        "shoulder_L": [
+          186.638,
+          107.457
+        ],
+        "elbow_L": [
+          189.354,
+          123.653
+        ],
+        "hand_L": [
+          194.087,
+          151.126
+        ],
+        "hip_R": [
+          147.78,
+          159.857
+        ],
+        "knee_R": [
+          131.278,
+          210.188
+        ],
+        "foot_R": [
+          96.779,
+          246.446
+        ],
+        "hip_L": [
+          166.22,
+          160.663
+        ],
+        "knee_L": [
+          201.541,
+          201.218
+        ],
+        "foot_L": [
+          180.049,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 14.578,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          165.401,
+          149.12
+        ],
+        "blade_tip_xy": [
+          223.868,
+          112.698
+        ],
+        "blade_angle_degrees": -31.921,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        75,
+        65,
+        228,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 9,
+      "source_frame": 489,
+      "root_shift_xy_px": [
+        0.0,
+        -20.728
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          172.451,
+          83.823
+        ],
+        "neck": [
+          169.786,
+          101.991
+        ],
+        "waist": [
+          157.0,
+          159.272
+        ],
+        "shoulder_R": [
+          144.6,
+          107.91
+        ],
+        "elbow_R": [
+          133.18,
+          136.077
+        ],
+        "hand_R": [
+          161.206,
+          128.627
+        ],
+        "shoulder_L": [
+          188.255,
+          107.259
+        ],
+        "elbow_L": [
+          190.994,
+          123.451
+        ],
+        "hand_L": [
+          195.763,
+          150.918
+        ],
+        "hip_R": [
+          147.707,
+          158.35
+        ],
+        "knee_R": [
+          120.203,
+          203.616
+        ],
+        "foot_R": [
+          94.096,
+          246.315
+        ],
+        "hip_L": [
+          166.293,
+          160.194
+        ],
+        "knee_L": [
+          200.569,
+          201.635
+        ],
+        "foot_L": [
+          177.932,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 15.924,
+        "foot_R": 2.056,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          161.206,
+          138.627
+        ],
+        "blade_tip_xy": [
+          201.409,
+          82.693
+        ],
+        "blade_angle_degrees": -54.293,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        75,
+        63,
+        222,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 10,
+      "source_frame": 490,
+      "root_shift_xy_px": [
+        0.0,
+        -21.613
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          171.943,
+          81.887
+        ],
+        "neck": [
+          169.338,
+          100.343
+        ],
+        "waist": [
+          157.0,
+          158.387
+        ],
+        "shoulder_R": [
+          143.421,
+          104.862
+        ],
+        "elbow_R": [
+          130.421,
+          132.335
+        ],
+        "hand_R": [
+          155.427,
+          117.65
+        ],
+        "shoulder_L": [
+          189.537,
+          107.104
+        ],
+        "elbow_L": [
+          192.251,
+          123.3
+        ],
+        "hand_L": [
+          196.979,
+          150.774
+        ],
+        "hip_R": [
+          147.71,
+          156.955
+        ],
+        "knee_R": [
+          119.604,
+          201.85
+        ],
+        "foot_R": [
+          92.929,
+          244.196
+        ],
+        "hip_L": [
+          166.29,
+          159.82
+        ],
+        "knee_L": [
+          199.582,
+          202.056
+        ],
+        "foot_L": [
+          175.853,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.446,
+        "foot_R": 4.65,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          155.427,
+          127.65
+        ],
+        "blade_tip_xy": [
+          180.105,
+          63.338
+        ],
+        "blade_angle_degrees": -69.007,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        75,
+        61,
+        223,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 11,
+      "source_frame": 491,
+      "root_shift_xy_px": [
+        0.0,
+        -22.256
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          171.443,
+          80.388
+        ],
+        "neck": [
+          168.931,
+          99.133
+        ],
+        "waist": [
+          157.0,
+          157.744
+        ],
+        "shoulder_R": [
+          142.81,
+          102.536
+        ],
+        "elbow_R": [
+          131.6,
+          130.787
+        ],
+        "hand_R": [
+          148.771,
+          107.417
+        ],
+        "shoulder_L": [
+          190.499,
+          107.352
+        ],
+        "elbow_L": [
+          193.01,
+          123.581
+        ],
+        "hand_L": [
+          197.393,
+          151.112
+        ],
+        "hip_R": [
+          147.77,
+          155.949
+        ],
+        "knee_R": [
+          120.916,
+          201.604
+        ],
+        "foot_R": [
+          95.422,
+          244.672
+        ],
+        "hip_L": [
+          166.23,
+          159.538
+        ],
+        "knee_L": [
+          198.721,
+          202.394
+        ],
+        "foot_L": [
+          174.157,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.548,
+        "foot_R": 5.045,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          148.771,
+          117.417
+        ],
+        "blade_tip_xy": [
+          158.958,
+          49.291
+        ],
+        "blade_angle_degrees": -81.495,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        74,
+        48,
+        224,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 12,
+      "source_frame": 492,
+      "root_shift_xy_px": [
+        0.0,
+        -22.679
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          171.285,
+          79.199
+        ],
+        "neck": [
+          168.867,
+          98.17
+        ],
+        "waist": [
+          157.0,
+          157.321
+        ],
+        "shoulder_R": [
+          143.009,
+          100.651
+        ],
+        "elbow_R": [
+          153.722,
+          72.207
+        ],
+        "hand_R": [
+          141.512,
+          98.511
+        ],
+        "shoulder_L": [
+          191.141,
+          107.618
+        ],
+        "elbow_L": [
+          193.43,
+          123.88
+        ],
+        "hand_L": [
+          197.438,
+          151.468
+        ],
+        "hip_R": [
+          147.821,
+          155.323
+        ],
+        "knee_R": [
+          122.618,
+          201.91
+        ],
+        "foot_R": [
+          98.682,
+          245.863
+        ],
+        "hip_L": [
+          166.18,
+          159.319
+        ],
+        "knee_L": [
+          198.023,
+          202.657
+        ],
+        "foot_L": [
+          172.828,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.724,
+        "foot_R": 5.143,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          141.512,
+          108.511
+        ],
+        "blade_tip_xy": [
+          128.846,
+          40.801
+        ],
+        "blade_angle_degrees": -100.595,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        74,
+        38,
+        224,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 13,
+      "source_frame": 493,
+      "root_shift_xy_px": [
+        0.0,
+        -22.888
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          171.078,
+          78.478
+        ],
+        "neck": [
+          168.864,
+          97.643
+        ],
+        "waist": [
+          157.0,
+          157.112
+        ],
+        "shoulder_R": [
+          143.701,
+          99.198
+        ],
+        "elbow_R": [
+          159.684,
+          73.346
+        ],
+        "hand_R": [
+          137.208,
+          91.671
+        ],
+        "shoulder_L": [
+          191.521,
+          108.022
+        ],
+        "elbow_L": [
+          193.567,
+          124.316
+        ],
+        "hand_L": [
+          197.162,
+          151.961
+        ],
+        "hip_R": [
+          147.861,
+          154.954
+        ],
+        "knee_R": [
+          123.938,
+          202.211
+        ],
+        "foot_R": [
+          101.21,
+          246.8
+        ],
+        "hip_L": [
+          166.139,
+          159.269
+        ],
+        "knee_L": [
+          197.623,
+          202.87
+        ],
+        "foot_L": [
+          171.934,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.801,
+        "foot_R": 5.346,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          137.208,
+          101.671
+        ],
+        "blade_tip_xy": [
+          122.088,
+          34.467
+        ],
+        "blade_angle_degrees": -102.68,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        74,
+        32,
+        223,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 14,
+      "source_frame": 494,
+      "root_shift_xy_px": [
+        0.0,
+        -22.926
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          170.234,
+          78.117
+        ],
+        "neck": [
+          167.984,
+          97.416
+        ],
+        "waist": [
+          157.0,
+          157.074
+        ],
+        "shoulder_R": [
+          143.817,
+          98.355
+        ],
+        "elbow_R": [
+          163.179,
+          74.927
+        ],
+        "hand_R": [
+          137.206,
+          87.825
+        ],
+        "shoulder_L": [
+          191.034,
+          107.937
+        ],
+        "elbow_L": [
+          192.955,
+          124.247
+        ],
+        "hand_L": [
+          196.338,
+          151.919
+        ],
+        "hip_R": [
+          147.882,
+          154.891
+        ],
+        "knee_R": [
+          124.537,
+          202.436
+        ],
+        "foot_R": [
+          102.354,
+          247.299
+        ],
+        "hip_L": [
+          166.118,
+          159.257
+        ],
+        "knee_L": [
+          197.445,
+          202.971
+        ],
+        "foot_L": [
+          171.523,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.807,
+        "foot_R": 5.509,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          137.206,
+          97.825
+        ],
+        "blade_tip_xy": [
+          141.503,
+          29.075
+        ],
+        "blade_angle_degrees": -86.424,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        74,
+        27,
+        223,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 15,
+      "source_frame": 495,
+      "root_shift_xy_px": [
+        0.0,
+        -23.042
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          169.497,
+          77.789
+        ],
+        "neck": [
+          167.019,
+          97.144
+        ],
+        "waist": [
+          157.0,
+          156.958
+        ],
+        "shoulder_R": [
+          143.713,
+          97.688
+        ],
+        "elbow_R": [
+          168.916,
+          80.699
+        ],
+        "hand_R": [
+          140.713,
+          87.448
+        ],
+        "shoulder_L": [
+          190.346,
+          107.664
+        ],
+        "elbow_L": [
+          192.373,
+          123.961
+        ],
+        "hand_L": [
+          195.938,
+          151.61
+        ],
+        "hip_R": [
+          147.897,
+          154.796
+        ],
+        "knee_R": [
+          124.784,
+          202.454
+        ],
+        "foot_R": [
+          102.82,
+          247.425
+        ],
+        "hip_L": [
+          166.103,
+          159.12
+        ],
+        "knee_L": [
+          197.067,
+          203.092
+        ],
+        "foot_L": [
+          170.872,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.537,
+        "foot_R": 5.599,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          140.713,
+          97.448
+        ],
+        "blade_tip_xy": [
+          174.127,
+          37.211
+        ],
+        "blade_angle_degrees": -60.982,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        73,
+        36,
+        223,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 16,
+      "source_frame": 496,
+      "root_shift_xy_px": [
+        0.0,
+        -23.029
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          168.596,
+          77.522
+        ],
+        "neck": [
+          166.39,
+          96.902
+        ],
+        "waist": [
+          157.0,
+          156.971
+        ],
+        "shoulder_R": [
+          143.463,
+          97.456
+        ],
+        "elbow_R": [
+          171.314,
+          85.285
+        ],
+        "hand_R": [
+          142.598,
+          89.336
+        ],
+        "shoulder_L": [
+          189.91,
+          107.278
+        ],
+        "elbow_L": [
+          192.198,
+          123.54
+        ],
+        "hand_L": [
+          196.205,
+          151.129
+        ],
+        "hip_R": [
+          147.91,
+          154.818
+        ],
+        "knee_R": [
+          124.755,
+          202.456
+        ],
+        "foot_R": [
+          102.752,
+          247.407
+        ],
+        "hip_L": [
+          166.09,
+          159.124
+        ],
+        "knee_L": [
+          196.871,
+          203.224
+        ],
+        "foot_L": [
+          170.38,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 15.979,
+        "foot_R": 5.616,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          142.598,
+          99.336
+        ],
+        "blade_tip_xy": [
+          187.347,
+          46.967
+        ],
+        "blade_angle_degrees": -49.487,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        73,
+        46,
+        223,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 17,
+      "source_frame": 497,
+      "root_shift_xy_px": [
+        0.0,
+        -22.85
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.726,
+          77.418
+        ],
+        "neck": [
+          165.91,
+          96.781
+        ],
+        "waist": [
+          157.0,
+          157.15
+        ],
+        "shoulder_R": [
+          142.544,
+          97.997
+        ],
+        "elbow_R": [
+          153.686,
+          69.718
+        ],
+        "hand_R": [
+          139.248,
+          94.868
+        ],
+        "shoulder_L": [
+          189.471,
+          107.199
+        ],
+        "elbow_L": [
+          191.897,
+          123.441
+        ],
+        "hand_L": [
+          196.135,
+          150.995
+        ],
+        "hip_R": [
+          147.955,
+          155.023
+        ],
+        "knee_R": [
+          124.589,
+          202.558
+        ],
+        "foot_R": [
+          102.385,
+          247.411
+        ],
+        "hip_L": [
+          166.045,
+          159.278
+        ],
+        "knee_L": [
+          196.862,
+          203.352
+        ],
+        "foot_L": [
+          170.091,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 15.626,
+        "foot_R": 5.036,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          139.248,
+          104.868
+        ],
+        "blade_tip_xy": [
+          190.836,
+          59.221
+        ],
+        "blade_angle_degrees": -41.504,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        57,
+        222,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 18,
+      "source_frame": 498,
+      "root_shift_xy_px": [
+        0.0,
+        -22.569
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.43,
+          77.561
+        ],
+        "neck": [
+          165.934,
+          96.913
+        ],
+        "waist": [
+          157.0,
+          157.431
+        ],
+        "shoulder_R": [
+          141.679,
+          98.993
+        ],
+        "elbow_R": [
+          119.753,
+          77.945
+        ],
+        "hand_R": [
+          129.871,
+          105.122
+        ],
+        "shoulder_L": [
+          189.443,
+          107.386
+        ],
+        "elbow_L": [
+          191.773,
+          123.642
+        ],
+        "hand_L": [
+          195.85,
+          151.221
+        ],
+        "hip_R": [
+          147.99,
+          155.323
+        ],
+        "knee_R": [
+          124.47,
+          202.782
+        ],
+        "foot_R": [
+          102.122,
+          247.562
+        ],
+        "hip_L": [
+          166.01,
+          159.539
+        ],
+        "knee_L": [
+          197.131,
+          203.4
+        ],
+        "foot_L": [
+          170.255,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 15.804,
+        "foot_R": 3.602,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          129.871,
+          115.122
+        ],
+        "blade_tip_xy": [
+          180.092,
+          67.976
+        ],
+        "blade_angle_degrees": -43.191,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        57,
+        222,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 19,
+      "source_frame": 499,
+      "root_shift_xy_px": [
+        0.0,
+        -22.196
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.334,
+          77.783
+        ],
+        "neck": [
+          165.865,
+          97.105
+        ],
+        "waist": [
+          157.0,
+          157.804
+        ],
+        "shoulder_R": [
+          140.58,
+          100.617
+        ],
+        "elbow_R": [
+          112.43,
+          89.154
+        ],
+        "hand_R": [
+          121.374,
+          116.74
+        ],
+        "shoulder_L": [
+          189.306,
+          107.311
+        ],
+        "elbow_L": [
+          191.505,
+          123.585
+        ],
+        "hand_L": [
+          195.359,
+          151.195
+        ],
+        "hip_R": [
+          147.97,
+          155.762
+        ],
+        "knee_R": [
+          124.126,
+          203.058
+        ],
+        "foot_R": [
+          101.471,
+          247.685
+        ],
+        "hip_L": [
+          166.03,
+          159.847
+        ],
+        "knee_L": [
+          197.695,
+          203.317
+        ],
+        "foot_L": [
+          171.001,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.197,
+        "foot_R": 2.681,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          121.374,
+          126.74
+        ],
+        "blade_tip_xy": [
+          135.123,
+          194.238
+        ],
+        "blade_angle_degrees": 78.486,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        58,
+        222,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 20,
+      "source_frame": 500,
+      "root_shift_xy_px": [
+        0.0,
+        -21.843
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.131,
+          78.494
+        ],
+        "neck": [
+          165.524,
+          97.791
+        ],
+        "waist": [
+          157.0,
+          158.157
+        ],
+        "shoulder_R": [
+          139.776,
+          103.068
+        ],
+        "elbow_R": [
+          109.406,
+          101.86
+        ],
+        "hand_R": [
+          120.741,
+          128.553
+        ],
+        "shoulder_L": [
+          188.62,
+          107.142
+        ],
+        "elbow_L": [
+          190.749,
+          123.426
+        ],
+        "hand_L": [
+          194.484,
+          151.053
+        ],
+        "hip_R": [
+          147.892,
+          156.227
+        ],
+        "knee_R": [
+          123.716,
+          203.355
+        ],
+        "foot_R": [
+          100.748,
+          247.821
+        ],
+        "hip_L": [
+          166.108,
+          160.087
+        ],
+        "knee_L": [
+          198.492,
+          203.023
+        ],
+        "foot_L": [
+          172.452,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.521,
+        "foot_R": 2.231,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          120.741,
+          138.553
+        ],
+        "blade_tip_xy": [
+          167.64,
+          189.005
+        ],
+        "blade_angle_degrees": 47.09,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        58,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 21,
+      "source_frame": 501,
+      "root_shift_xy_px": [
+        0.0,
+        -21.553
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.29,
+          78.848
+        ],
+        "neck": [
+          165.337,
+          98.156
+        ],
+        "waist": [
+          157.0,
+          158.447
+        ],
+        "shoulder_R": [
+          139.695,
+          104.494
+        ],
+        "elbow_R": [
+          110.443,
+          112.746
+        ],
+        "hand_R": [
+          122.343,
+          139.192
+        ],
+        "shoulder_L": [
+          187.723,
+          106.212
+        ],
+        "elbow_L": [
+          190.051,
+          122.468
+        ],
+        "hand_L": [
+          194.123,
+          150.047
+        ],
+        "hip_R": [
+          147.755,
+          156.847
+        ],
+        "knee_R": [
+          123.705,
+          204.04
+        ],
+        "foot_R": [
+          100.858,
+          248.568
+        ],
+        "hip_L": [
+          166.245,
+          160.048
+        ],
+        "knee_L": [
+          199.267,
+          202.496
+        ],
+        "foot_L": [
+          174.456,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.556,
+        "foot_R": 1.567,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          122.343,
+          149.192
+        ],
+        "blade_tip_xy": [
+          156.114,
+          209.229
+        ],
+        "blade_angle_degrees": 60.642,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        59,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 22,
+      "source_frame": 502,
+      "root_shift_xy_px": [
+        0.0,
+        -21.376
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.483,
+          79.084
+        ],
+        "neck": [
+          165.504,
+          98.347
+        ],
+        "waist": [
+          157.0,
+          158.624
+        ],
+        "shoulder_R": [
+          140.288,
+          105.614
+        ],
+        "elbow_R": [
+          113.66,
+          120.269
+        ],
+        "hand_R": [
+          125.667,
+          146.667
+        ],
+        "shoulder_L": [
+          187.257,
+          105.446
+        ],
+        "elbow_L": [
+          189.909,
+          121.653
+        ],
+        "hand_L": [
+          194.532,
+          149.145
+        ],
+        "hip_R": [
+          147.686,
+          157.351
+        ],
+        "knee_R": [
+          124.086,
+          204.769
+        ],
+        "foot_R": [
+          101.662,
+          249.512
+        ],
+        "hip_L": [
+          166.314,
+          159.898
+        ],
+        "knee_L": [
+          199.918,
+          201.887
+        ],
+        "foot_L": [
+          176.62,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 16.231,
+        "foot_R": 1.276,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          125.667,
+          156.667
+        ],
+        "blade_tip_xy": [
+          148.999,
+          221.479
+        ],
+        "blade_angle_degrees": 70.201,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        59,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 23,
+      "source_frame": 503,
+      "root_shift_xy_px": [
+        0.0,
+        -21.262
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          167.159,
+          79.304
+        ],
+        "neck": [
+          165.168,
+          98.503
+        ],
+        "waist": [
+          157.0,
+          158.738
+        ],
+        "shoulder_R": [
+          140.561,
+          106.892
+        ],
+        "elbow_R": [
+          116.928,
+          126.003
+        ],
+        "hand_R": [
+          128.196,
+          152.724
+        ],
+        "shoulder_L": [
+          186.208,
+          104.548
+        ],
+        "elbow_L": [
+          189.244,
+          120.687
+        ],
+        "hand_L": [
+          194.517,
+          148.062
+        ],
+        "hip_R": [
+          147.702,
+          157.804
+        ],
+        "knee_R": [
+          124.965,
+          205.643
+        ],
+        "foot_R": [
+          103.355,
+          250.785
+        ],
+        "hip_L": [
+          166.298,
+          159.673
+        ],
+        "knee_L": [
+          200.323,
+          201.321
+        ],
+        "foot_L": [
+          178.541,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 15.803,
+        "foot_R": 0.992,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          128.196,
+          162.724
+        ],
+        "blade_tip_xy": [
+          140.239,
+          230.547
+        ],
+        "blade_angle_degrees": 79.931,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        72,
+        59,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 24,
+      "source_frame": 504,
+      "root_shift_xy_px": [
+        0.0,
+        -21.154
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "foot_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          165.758,
+          79.196
+        ],
+        "neck": [
+          164.075,
+          98.363
+        ],
+        "waist": [
+          157.0,
+          158.846
+        ],
+        "shoulder_R": [
+          140.138,
+          107.848
+        ],
+        "elbow_R": [
+          119.185,
+          129.867
+        ],
+        "hand_R": [
+          129.561,
+          156.947
+        ],
+        "shoulder_L": [
+          184.534,
+          103.5
+        ],
+        "elbow_L": [
+          187.87,
+          119.58
+        ],
+        "hand_L": [
+          193.652,
+          146.852
+        ],
+        "hip_R": [
+          147.736,
+          158.221
+        ],
+        "knee_R": [
+          125.745,
+          206.407
+        ],
+        "foot_R": [
+          104.84,
+          251.88
+        ],
+        "hip_L": [
+          166.264,
+          159.471
+        ],
+        "knee_L": [
+          200.65,
+          200.822
+        ],
+        "foot_L": [
+          180.312,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 15.219,
+        "foot_R": 0.695,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          129.561,
+          166.947
+        ],
+        "blade_tip_xy": [
+          134.547,
+          235.65
+        ],
+        "blade_angle_degrees": 85.849,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        71,
+        59,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 25,
+      "source_frame": 505,
+      "root_shift_xy_px": [
+        0.0,
+        -21.083
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          163.869,
+          79.186
+        ],
+        "neck": [
+          162.578,
+          98.27
+        ],
+        "waist": [
+          157.0,
+          158.917
+        ],
+        "shoulder_R": [
+          139.028,
+          108.641
+        ],
+        "elbow_R": [
+          119.43,
+          131.872
+        ],
+        "hand_R": [
+          130.431,
+          158.704
+        ],
+        "shoulder_L": [
+          182.899,
+          102.544
+        ],
+        "elbow_L": [
+          186.643,
+          118.534
+        ],
+        "hand_L": [
+          193.117,
+          145.65
+        ],
+        "hip_R": [
+          147.744,
+          158.481
+        ],
+        "knee_R": [
+          130.317,
+          208.499
+        ],
+        "foot_R": [
+          107.019,
+          252.793
+        ],
+        "hip_L": [
+          166.256,
+          159.354
+        ],
+        "knee_L": [
+          201.05,
+          200.361
+        ],
+        "foot_L": [
+          182.155,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 14.168,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          130.431,
+          168.704
+        ],
+        "blade_tip_xy": [
+          136.763,
+          237.296
+        ],
+        "blade_angle_degrees": 84.726,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        70,
+        59,
+        220,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 26,
+      "source_frame": 506,
+      "root_shift_xy_px": [
+        0.0,
+        -20.947
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          162.123,
+          79.32
+        ],
+        "neck": [
+          161.176,
+          98.294
+        ],
+        "waist": [
+          157.0,
+          159.053
+        ],
+        "shoulder_R": [
+          137.54,
+          109.008
+        ],
+        "elbow_R": [
+          117.889,
+          132.195
+        ],
+        "hand_R": [
+          130.893,
+          158.116
+        ],
+        "shoulder_L": [
+          181.857,
+          101.868
+        ],
+        "elbow_L": [
+          185.92,
+          117.78
+        ],
+        "hand_L": [
+          192.936,
+          144.761
+        ],
+        "hip_R": [
+          147.71,
+          158.698
+        ],
+        "knee_R": [
+          136.592,
+          210.485
+        ],
+        "foot_R": [
+          109.835,
+          252.779
+        ],
+        "hip_L": [
+          166.29,
+          159.407
+        ],
+        "knee_L": [
+          201.672,
+          199.909
+        ],
+        "foot_L": [
+          184.323,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 12.662,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          130.893,
+          168.116
+        ],
+        "blade_tip_xy": [
+          141.085,
+          236.241
+        ],
+        "blade_angle_degrees": 81.491,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        70,
+        59,
+        220,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 27,
+      "source_frame": 507,
+      "root_shift_xy_px": [
+        0.0,
+        -20.788
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          160.57,
+          79.389
+        ],
+        "neck": [
+          159.854,
+          98.249
+        ],
+        "waist": [
+          157.0,
+          159.212
+        ],
+        "shoulder_R": [
+          135.891,
+          108.892
+        ],
+        "elbow_R": [
+          115.157,
+          131.115
+        ],
+        "hand_R": [
+          130.554,
+          155.69
+        ],
+        "shoulder_L": [
+          181.262,
+          101.271
+        ],
+        "elbow_L": [
+          185.549,
+          117.124
+        ],
+        "hand_L": [
+          192.944,
+          144.003
+        ],
+        "hip_R": [
+          147.671,
+          158.893
+        ],
+        "knee_R": [
+          141.751,
+          211.528
+        ],
+        "foot_R": [
+          113.158,
+          252.604
+        ],
+        "hip_L": [
+          166.329,
+          159.531
+        ],
+        "knee_L": [
+          202.404,
+          199.416
+        ],
+        "foot_L": [
+          186.924,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 10.988,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          130.554,
+          165.69
+        ],
+        "blade_tip_xy": [
+          147.919,
+          232.349
+        ],
+        "blade_angle_degrees": 75.399,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        69,
+        59,
+        220,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 28,
+      "source_frame": 508,
+      "root_shift_xy_px": [
+        0.0,
+        -20.788
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          159.388,
+          79.424
+        ],
+        "neck": [
+          158.768,
+          98.167
+        ],
+        "waist": [
+          157.0,
+          159.212
+        ],
+        "shoulder_R": [
+          134.479,
+          108.494
+        ],
+        "elbow_R": [
+          112.453,
+          129.438
+        ],
+        "hand_R": [
+          129.906,
+          152.598
+        ],
+        "shoulder_L": [
+          180.937,
+          100.931
+        ],
+        "elbow_L": [
+          185.446,
+          116.722
+        ],
+        "hand_L": [
+          193.22,
+          143.495
+        ],
+        "hip_R": [
+          147.636,
+          158.907
+        ],
+        "knee_R": [
+          146.582,
+          211.864
+        ],
+        "foot_R": [
+          116.855,
+          252.126
+        ],
+        "hip_L": [
+          166.364,
+          159.516
+        ],
+        "knee_L": [
+          203.035,
+          198.855
+        ],
+        "foot_L": [
+          190.034,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 9.102,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          129.906,
+          162.598
+        ],
+        "blade_tip_xy": [
+          156.065,
+          226.322
+        ],
+        "blade_angle_degrees": 67.681,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        68,
+        59,
+        220,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 29,
+      "source_frame": 509,
+      "root_shift_xy_px": [
+        0.0,
+        -21.286
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          158.413,
+          79.08
+        ],
+        "neck": [
+          157.859,
+          97.727
+        ],
+        "waist": [
+          157.0,
+          158.714
+        ],
+        "shoulder_R": [
+          133.381,
+          107.698
+        ],
+        "elbow_R": [
+          110.187,
+          127.341
+        ],
+        "hand_R": [
+          128.863,
+          149.526
+        ],
+        "shoulder_L": [
+          180.569,
+          100.262
+        ],
+        "elbow_L": [
+          185.306,
+          115.986
+        ],
+        "hand_L": [
+          193.466,
+          142.643
+        ],
+        "hip_R": [
+          147.617,
+          158.453
+        ],
+        "knee_R": [
+          150.295,
+          211.352
+        ],
+        "foot_R": [
+          120.127,
+          251.285
+        ],
+        "hip_L": [
+          166.383,
+          158.976
+        ],
+        "knee_L": [
+          203.12,
+          198.253
+        ],
+        "foot_L": [
+          193.491,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 7.157,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          128.863,
+          159.526
+        ],
+        "blade_tip_xy": [
+          160.913,
+          220.5
+        ],
+        "blade_angle_degrees": 62.272,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        68,
+        59,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 30,
+      "source_frame": 510,
+      "root_shift_xy_px": [
+        0.0,
+        -22.316
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          157.87,
+          78.283
+        ],
+        "neck": [
+          157.339,
+          96.853
+        ],
+        "waist": [
+          157.0,
+          157.684
+        ],
+        "shoulder_R": [
+          132.77,
+          106.513
+        ],
+        "elbow_R": [
+          108.764,
+          125.155
+        ],
+        "hand_R": [
+          128.578,
+          146.33
+        ],
+        "shoulder_L": [
+          180.296,
+          99.296
+        ],
+        "elbow_L": [
+          185.18,
+          114.975
+        ],
+        "hand_L": [
+          193.588,
+          141.555
+        ],
+        "hip_R": [
+          147.613,
+          157.498
+        ],
+        "knee_R": [
+          153.04,
+          210.186
+        ],
+        "foot_R": [
+          123.186,
+          250.354
+        ],
+        "hip_L": [
+          166.387,
+          157.871
+        ],
+        "knee_L": [
+          202.445,
+          197.772
+        ],
+        "foot_L": [
+          196.872,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 5.618,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          128.578,
+          156.33
+        ],
+        "blade_tip_xy": [
+          160.694,
+          217.269
+        ],
+        "blade_angle_degrees": 62.21,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        67,
+        58,
+        221,
+        266
+      ]
+    },
+    {
+      "sprite_frame": 31,
+      "source_frame": 511,
+      "root_shift_xy_px": [
+        0.0,
+        -24.131
+      ],
+      "length_limited_joints": [
+        "elbow_R",
+        "elbow_L",
+        "hand_L",
+        "knee_R",
+        "knee_L"
+      ],
+      "segment_length_ratios": {
+        "shoulder_R-elbow_R": 1.12,
+        "elbow_R-hand_R": 1.12,
+        "shoulder_L-elbow_L": 1.12,
+        "elbow_L-hand_L": 1.12,
+        "hip_R-knee_R": 1.12,
+        "knee_R-foot_R": 1.12,
+        "hip_L-knee_L": 1.12,
+        "knee_L-foot_L": 1.12
+      },
+      "landmarks_xy": {
+        "head": [
+          157.912,
+          76.696
+        ],
+        "neck": [
+          157.321,
+          95.171
+        ],
+        "waist": [
+          157.0,
+          155.869
+        ],
+        "shoulder_R": [
+          132.714,
+          104.667
+        ],
+        "elbow_R": [
+          108.421,
+          122.933
+        ],
+        "hand_R": [
+          129.684,
+          142.653
+        ],
+        "shoulder_L": [
+          180.374,
+          97.579
+        ],
+        "elbow_L": [
+          185.258,
+          113.258
+        ],
+        "hand_L": [
+          193.666,
+          139.838
+        ],
+        "hip_R": [
+          147.617,
+          155.697
+        ],
+        "knee_R": [
+          154.816,
+          208.172
+        ],
+        "foot_R": [
+          126.113,
+          249.171
+        ],
+        "hip_L": [
+          166.383,
+          156.042
+        ],
+        "knee_L": [
+          200.602,
+          197.531
+        ],
+        "foot_L": [
+          200.291,
+          262.0
+        ]
+      },
+      "support_foot": "L",
+      "ik_bend_branch_signs": {
+        "elbow_R": 1,
+        "elbow_L": 1,
+        "knee_R": -1,
+        "knee_L": -1
+      },
+      "endpoint_reach_error_px": {
+        "hand_R": 0.0,
+        "hand_L": 4.707,
+        "foot_R": 0.0,
+        "foot_L": 0.0
+      },
+      "baseline_before_pixel_correction_y": 254,
+      "baseline_detector": "warm_brown_footwear_band",
+      "pixel_root_correction_y": 10,
+      "baseline_after_shared_correction_y": 264,
+      "root_pixel_error_after_shared_correction": 0,
+      "weapon_path": {
+        "pivot_xy": [
+          129.684,
+          152.653
+        ],
+        "blade_tip_xy": [
+          159.926,
+          214.543
+        ],
+        "blade_angle_degrees": 63.958,
+        "source_authored_blade_length_px": 68.884
+      },
+      "output_alpha_bbox_xyxy": [
+        67,
+        57,
+        221,
+        266
+      ]
+    }
+  ]
+}

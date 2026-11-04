@@ -1,0 +1,92 @@
+{
+  "id": "astraeon_humanoid_male_v1",
+  "version": 1,
+  "source_scene": "authoring/characters/swordsman-production/painted-factory-02/source-master.blend",
+  "source_scene_sha256": "0310356a2cb978b309aaa4f7fd95de2d5c5264b912bd540f3618edff9f314273",
+  "blender_min_version": "5.2.0",
+  "source_actions_removed": true,
+  "reuse_scope": {
+    "intended_classes": ["Swordsman", "Mage", "Archer", "Thief", "Merchant", "Acolyte", "AdvancedHumanoidClass", "HumanoidNPC"],
+    "shared_skeleton_not_shared_mesh": true,
+    "mesh_policy": "Replace or bind class-specific meshes to this rig; do not build a new class-specific skeleton for ordinary humanoids."
+  },
+  "coordinate_system": {
+    "up_axis": "Z",
+    "forward_axis": "-Y",
+    "units": "metric",
+    "source_height_blender_units": 0.944,
+    "anatomical_side_rule": "Bone suffix .R/.L means anatomical side and never screen side."
+  },
+  "bone_naming_rules": {
+    "anatomical_suffixes": [".R", ".L"],
+    "controls_prefix": "CTRL_",
+    "deforming_bone_names_are_stable": true,
+    "source_bone_map_is_explicit": true
+  },
+  "root": "root",
+  "skeleton_object": "ARM_FantasyCharacter01",
+  "root_control_object": "ROOT_FantasyCharacter01",
+  "bones": [
+    "root", "Hips", "Spine", "Chest", "Neck", "Head",
+    "Clavicle.R", "UpperArm.R", "Forearm.R", "Hand.R",
+    "Index1.R", "Index2.R", "Index3.R", "Middle1.R", "Middle2.R", "Middle3.R",
+    "Ring1.R", "Ring2.R", "Ring3.R", "Pinky1.R", "Pinky2.R", "Pinky3.R",
+    "Thumb1.R", "Thumb2.R", "Thumb3.R",
+    "Clavicle.L", "UpperArm.L", "Forearm.L", "Hand.L",
+    "Index1.L", "Index2.L", "Index3.L", "Middle1.L", "Middle2.L", "Middle3.L",
+    "Ring1.L", "Ring2.L", "Ring3.L", "Pinky1.L", "Pinky2.L", "Pinky3.L",
+    "Thumb1.L", "Thumb2.L", "Thumb3.L",
+    "Cape0", "Cape1", "Cape2",
+    "Thigh.R", "Shin.R", "Foot.R", "Toe.R",
+    "Thigh.L", "Shin.L", "Foot.L", "Toe.L",
+    "CTRL_Foot.R", "CTRL_Knee.R", "CTRL_Foot.L", "CTRL_Knee.L", "CTRL_Sword"
+  ],
+  "anchor_bones": {
+    "root": "root",
+    "head": "Head",
+    "weapon_right_hand": "Hand.R",
+    "offhand_or_shield": "Hand.L",
+    "back_accessory": "Chest",
+    "headgear": "Head",
+    "cape": "Cape0",
+    "left_foot_control": "CTRL_Foot.L",
+    "right_foot_control": "CTRL_Foot.R",
+    "weapon_authoring_control": "CTRL_Sword"
+  },
+  "render_contract": {
+    "canvas": [320, 320],
+    "root_pixel": [160, 264],
+    "reference_height_px": 176,
+    "orthographic_camera": "CAM_FantasySprite",
+    "camera_ortho_scale_source": 1.9609036445617676,
+    "direction_order": ["S", "SW", "W", "NW", "N", "NE", "E", "SE"],
+    "direction_yaw_degrees": {"S": 0, "SW": -45, "W": -90, "NW": -135, "N": -180, "NE": -225, "E": -270, "SE": 45},
+    "mirroring": "none"
+  },
+  "logical_runtime_layers": ["BaseBody", "Hair", "Outfit", "Weapon", "Headgear", "BackAccessory"],
+  "source_grouping_notes": {
+    "BodyOutfit": "The source mesh is combined. The paint-over handoff must split BaseBody and Outfit and fill concealed surfaces.",
+    "HeadHair": "The source mesh is combined. The paint-over handoff must produce a complete Hair layer and preserve the identity-locked face/head.",
+    "Cape": "Mapped to the logical BackAccessory layer; the source has complete underlying body pixels for removal checks.",
+    "Weapon": "The source sword is a structural prop only. Hand.R is the grip anchor; the source hand remains the occlusion owner."
+  },
+  "validation": {
+    "expected_bone_count": 60,
+    "required_chains": [
+      ["root", "Hips", "Spine", "Chest", "Neck", "Head"],
+      ["Clavicle.R", "UpperArm.R", "Forearm.R", "Hand.R"],
+      ["Clavicle.L", "UpperArm.L", "Forearm.L", "Hand.L"],
+      ["Hips", "Thigh.R", "Shin.R", "Foot.R", "Toe.R"],
+      ["Hips", "Thigh.L", "Shin.L", "Foot.L", "Toe.L"],
+      ["Chest", "Cape0", "Cape1", "Cape2"]
+    ],
+    "expected_actions_after_v3_strip": 0,
+    "expected_mirroring": false
+  },
+  "provenance": {
+    "source_branch": "character/production-factory-v2",
+    "source_commit": "a2e84a92b102f3cd91cc291a3425b8d6fdc0b8bb",
+    "source_art_status": "DEV_ONLY / NOT_APPROVED",
+    "v3_action_policy": "All V2 actions and action metadata are deleted from the V3 rig copy. Imported V3 motions must have separate source files and provenance."
+  }
+}

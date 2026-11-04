@@ -1,0 +1,46 @@
+{
+  "status": "ANNOTATED_VISIBLE_ROLES_NOT_SWAP_READY",
+  "frames": [
+    {
+      "index": 0,
+      "sha256": {
+        "BodyCostume": "8be0705b15f2c561508af3410a05babbf45e1b63b3614edeedb69eb58ec7cd73",
+        "Weapon": "c14fc15095bcb9d85d2ff1e5f426b6b318a286efb42f41250a548b0ac5bfb83f",
+        "HeadHair": "66336bfc28e652c114bd528453d58521f8e239f987fac190e5e9fa113d70701d",
+        "WeaponHandOccluder": "1ec4d9e108d23ef76e8bdb0d12f6b506326ae5939a8b8f549ecaba9c646d6438"
+      },
+      "semantic_proposals": {
+        "HeadHair": {
+          "candidate": 2,
+          "score": 0.9300071001052856,
+          "visible_pixels": 15819
+        },
+        "Weapon": {
+          "candidate": 2,
+          "score": 0.826147198677063,
+          "visible_pixels": 8763
+        },
+        "WeaponHandOccluder": {
+          "candidate": 2,
+          "score": 0.8020917773246765,
+          "visible_pixels": 2031
+        }
+      },
+      "source_sha256": "1f96a94aa8b5595ee9859de1f1bffa5ed6a8f6704df9681b63b1141e8d089aab",
+      "recomposition_changed_pixels": 0
+    }
+  ],
+  "priority": [
+    "Weapon",
+    "HeadHair",
+    "WeaponHandOccluder"
+  ],
+  "input_sha256": {
+    "authoring/characters/factory-v3/patch-0.0.1/painted-candidates/mage-walk-sequence-20261025/first-pose-cutout-annotations.json": "118eba83f4ec3e813aac90ba32ddcea1b2c47595b1d41481e50b944b10a69181",
+    "/workspace/.tools/SAM2/sam2.1_hiera_tiny.pt": "7402e0d864fa82708a20fbd15bc84245c2f26dff0eb43a4b5b93452deb34be69",
+    "authoring/characters/factory-v3/patch-0.0.1/review/mage-painted-walk-registered-20261025/Master/000.png": "1f96a94aa8b5595ee9859de1f1bffa5ed6a8f6704df9681b63b1141e8d089aab"
+  },
+  "implementation_sha256": "32ed1b0e93be7482c4830153d48ef0bc2ecbd80e963ce7a3b25c63b0dbfd1e78",
+  "hidden_surfaces_authored": false,
+  "runtime_admitted": false
+}

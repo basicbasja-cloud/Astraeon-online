@@ -1,0 +1,1 @@
+Rejected as a frame0 paint reference. --static skips the entry transition and captures Draw8, whereas canonical timeline0 is the exact Idle0 entry endpoint. World landmark disagreement0.2669m. A separate verified ready capture is required. Not final art or a canonical guide replacement.
