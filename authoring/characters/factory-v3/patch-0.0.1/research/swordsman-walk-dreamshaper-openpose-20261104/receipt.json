@@ -1,0 +1,27 @@
+{
+  "status": "SINGLE_FRAME_RESEARCH_NOT_ACCEPTED",
+  "base_revision": "a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917",
+  "control_revision": "9ae9f970358db89e211b87c915f9535c6686d5ba",
+  "inputs": {
+    "init.png": "cb0bd839f1a8fab7d4397fad58bf9b790c76cce5f580c07bf55834563dd43d84",
+    "guide.png": "3b8bf59bbf4c5e3760fa596db976cd06f5568255d13a72930b49c6ee149e07d0",
+    "openpose.png": "3bb306c8e923d7faf94111bc0ced830b82a43d5fc5a0813c6e5c42465c8ee328"
+  },
+  "script_sha256": "b2607d92778c7227054fcad9c502607389c7fa82dd4b74dbbae5dbf63d3aa5df",
+  "output_sha256": "493ddd087570873bfd86fd1dd1c583631d260090f0fc8b79b3d0add6bb76d889",
+  "seed": 20261104,
+  "strength": 0.25,
+  "controlnet_conditioning_scale": 0.7,
+  "num_inference_steps": 20,
+  "guidance_scale": 5.0,
+  "dtype": "float16",
+  "device": "cpu",
+  "seconds": 115.46,
+  "prompt": "full body fantasy swordsman, silver hair, gold scarf, bronze armor, dark navy tunic, cream tabard, brown boots, steel sword, illustrated game sprite, clean white background",
+  "negative_prompt": "extra limbs, extra fingers, duplicate sword, cropped, blurry, bad anatomy, background, text",
+  "limitations": [
+    "Single image, not motion or temporal consistency.",
+    "Canny silhouette is not skeleton, grip or contact control.",
+    "No parts, variants or gameplay."
+  ]
+}
