@@ -1,0 +1,31 @@
+{
+  "status": "SINGLE_FRAME_RESEARCH_NOT_ACCEPTED",
+  "base_revision": "a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917",
+  "control_revision": "9ae9f970358db89e211b87c915f9535c6686d5ba",
+  "ip_adapter_revision": "018e402774aeeddd60609b4ecdb7e298259dc729",
+  "adapter_sha256": "a1c250be40455cc61a43da1201ec3f1edaea71214865fb47f57927e06cbe4996",
+  "embedding_sha256": "2af5c6221fea35d955140e7666c2a6bdb6beb58d67f8531214272086b21c9a08",
+  "inputs": {
+    "init.png": "cb0bd839f1a8fab7d4397fad58bf9b790c76cce5f580c07bf55834563dd43d84",
+    "guide.png": "3b8bf59bbf4c5e3760fa596db976cd06f5568255d13a72930b49c6ee149e07d0",
+    "openpose.png": "3bb306c8e923d7faf94111bc0ced830b82a43d5fc5a0813c6e5c42465c8ee328"
+  },
+  "script_sha256": "59599b02b121528cc8dc671cd4ac5ea0e24a884f8da5903827aa27bfda7d4c3e",
+  "output_sha256": "f6f1bd550355dd01088aada18fcdac4d2ccc400b36c114dc9e04986f9b9ccdd3",
+  "seed": 20261104,
+  "strength": 0.2,
+  "controlnet_conditioning_scale": 1.0,
+  "ip_adapter_scale": 1.0,
+  "num_inference_steps": 20,
+  "guidance_scale": 5.0,
+  "dtype": "float16",
+  "device": "cpu",
+  "seconds": 91.89,
+  "prompt": "full body fantasy swordsman, silver hair, gold scarf, bronze armor, dark navy tunic, cream tabard, brown boots, steel sword, illustrated game sprite, clean white background",
+  "negative_prompt": "extra limbs, extra fingers, duplicate sword, cropped, blurry, bad anatomy, background, text",
+  "limitations": [
+    "Single pose, not an animation.",
+    "Projected skeleton omits weapon/fingers and does not guarantee contact.",
+    "No cutouts, variants or gameplay."
+  ]
+}
