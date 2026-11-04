@@ -1,0 +1,15 @@
+# Walk SW frame 00 — CPU Canny ControlNet experiment
+
+**Research only; neither result is accepted.** With user authorization to install tools, Diffusers 0.36.0, Transformers 4.57.3 and Accelerate 1.12.0 were installed in temporary storage, using the existing CPU PyTorch environment. No GPU is available. The 512px guide was reduced to Canny edges and applied as a condition to an img2img pass initialized from a Walk batch draft. [Comparison](comparison.png), left to right: guide, input art, strength 0.50/conditioning 0.80, strength 0.25/conditioning 0.40. Both use seed 20261104 and the same input.
+
+The first result loses the character and has transparent-looking incomplete limbs. The second preserves more of the silhouette but changes costume, facial appearance and leg detail relative to the input and has not been certified against anatomical landmarks. It is only one frame, not an animation; Canny contours do not guarantee skeleton, contact, sword grip or temporal consistency. Do not import either into the factory or count as a finished action. Input, outputs and receipts are under `patch-0.0.1/research/swordsman-walk-canny-control-20261104/`; original master and runtime assets were untouched.
+
+Base model: `stable-diffusion-v1-5/stable-diffusion-v1-5` revision `451f4fe16113bff5a5d2269ed5ad43b0592e9a14`, model card lists `creativeml-openrail-m`. Control: `lllyasviel/control_v11p_sd15_canny` revision `115a470d547982438f70198e353a921996e2e819`, model card lists `openrail` / CreativeML OpenRAIL M. Review the upstream licenses for use and redistribution. Models are downloaded into temporary storage, not committed; workspace disk space was insufficient for durable copies. Temporary storage may disappear on restart.
+
+Recreate research environment, using a fresh temporary root with at least 3 GB and existing `/workspace/.venvs/astraeon-cutouts/bin/python` CPU PyTorch: `bash tools/character_factory_v3/setup_walk_controlnet_cpu.sh`. Its output identifies model snapshot paths. Example:
+
+```sh
+HF_HUB_OFFLINE=1 PYTHONPATH=/tmp/astra-controlnet-replay/py /workspace/.venvs/astraeon-cutouts/bin/python tools/character_factory_v3/propose_walk_canny_control.py --base /tmp/astra-controlnet-replay/cache/hub/models--stable-diffusion-v1-5--stable-diffusion-v1-5/snapshots/451f4fe16113bff5a5d2269ed5ad43b0592e9a14 --control /tmp/astra-controlnet-replay/cache/hub/models--lllyasviel--control_v11p_sd15_canny/snapshots/115a470d547982438f70198e353a921996e2e819 --inputs authoring/characters/factory-v3/patch-0.0.1/research/swordsman-walk-canny-control-20261104 --output /tmp/walk-control-v2 --strength 0.25 --conditioning 0.4 --steps 20
+```
+
+The current script records parameters, source hashes and output hash. `receipt.json` was produced before parameters were exposed as CLI options and pins that historical script hash; `receipt-v2.json` pins the current script. Reproduction was not rerun and exact cross-platform pixel identity is not established. Coverage remains 2/96 technical imports and 0/6 completed characters.
