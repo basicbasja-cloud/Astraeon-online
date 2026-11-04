@@ -1,0 +1,5 @@
+# Research adapter, not a released character
+
+Derived from Lykon/dreamshaper-8, revision a7e52b98680b1ba8ff7bce97c7f9f2e2e5337917, under CreativeML OpenRAIL-M. The upstream model card and license are included. This is a rank-8 UNet attention adapter trained for 96 steps on sixteen retained original Astraeon Swordsman BasicAttack master images, four original diagonal cameras. The full base model is not distributed here. Base-model use restrictions remain applicable to this adapter and its derivatives.
+
+Modification: CPU LoRA fine-tuning with frozen base, VAE and text encoder. Adapter only; no model architecture or text-token embedding change. Source files, prompt, fixed training crop, training recipe hash, seed and logs are recorded alongside the weights. Training used the original body/costume design and did not alter any source artwork. This is not proof of identity preservation, pose accuracy, temporal stability or game readiness. Held-out motion evaluation is required before any art production use.
