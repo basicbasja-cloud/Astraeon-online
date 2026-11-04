@@ -1,0 +1,7 @@
+# Walk SW frame 03 — targeted leg edit
+
+**Rejected, no master modified.** Following the [16-frame source-point review](../swordsman-walk-sw-sheet-feet-20261104/README.md), an image edit was asked to move only the raised rear boot toward the matching guide while retaining the rest of the same master. [Guide, input and result](comparison.png). The image generator visibly repainted the face, armor, hand, sword and other upper-body detail, so the result does not meet the protected-region requirement and has not been spliced into the sequence. This attempt does not establish correct foot position or animation continuity.
+
+The images and prompt are stored under `authoring/characters/factory-v3/patch-0.0.1/painted-candidates/swordsman-walk-sw03-targeted-20261104/`; the protected identity reference is the same `swordsman-walk-ip-baseline-reference-20261104/reference.png` used in the preceding review. Input SHA-256 `e12a23675e84e410f50e7c7a919eb9f9d66b80b40b3d6be9fca3771c6194b416`, guide `9d78dc9a761b617bc406dc608de2cdb6a48d1313cffc54e4309219ed4f4bf8b1`, output `4d7e74145d44a0153cafb83f52bcb127f8ef666168f7124b858bb9b7a0310914`. Model revision and seed were not exposed. A diagnostic resizes the result to the 768px input and computes the mean absolute RGB difference in the upper 480 rows: [3.2055, 3.0610, 3.2712] over the entire area including white background; this is evidence that pixels changed, not a perceptual identity or anatomy score.
+
+No part cutouts or runtime assets were created. Coverage remains 2/96 technical imports, 0/6 completed characters.
