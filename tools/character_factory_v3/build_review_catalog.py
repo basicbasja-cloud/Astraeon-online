@@ -13,10 +13,10 @@ def build():
   key=p.relative_to(ROOT).as_posix();hashes[key]=hashlib.sha256(p.read_bytes()).hexdigest();return '../'+key
  order=['WeaponLightBack','BodyCostume','WeaponLightFront','HeadHair','WeaponHandOccluder','Weapon']
  for name,a in source['actions'].items():
-  folder=ROOT/a['directory'];audit=json.loads((folder/'assembly-audit.json').read_text());views={}
+  folder=ROOT/a['directory'];masters={d:[asset(folder/d/'Master'/f'{i:03}.png') for i in range(16)] for d in source['directions']};audit=json.loads((folder/'assembly-audit.json').read_text());views={}
   for d in source['directions']:
    views[d]={'gold':{role:[asset(folder/d/role/f'{i:03}.png') for i in range(16)] for role in order}}
-  actions[name]={'label':name,'loop':a['loop'],'durations':audit['durations_ms'],'order':order,'views':views,'limits':a['known_limits']}
+  actions[name]={'label':name,'loop':a['loop'],'durations':audit['durations_ms'],'order':order,'views':views,'masters':masters,'limits':a['known_limits']}
  swap=ROOT/'authoring/characters/factory-v3/paint-jobs/swordsman-master-cutout-v2/prototypes/basicattack-mesh2motion-reset/modular-swaps-review'
  audit=json.loads((swap.parent/'no-cloak-continuous-review/assembly-audit.json').read_text());order2=['BodyCostume','WeaponLight','HeadHair','WeaponHandOccluder','Weapon'];skins={}
  for skin in ('gold','moon'):
