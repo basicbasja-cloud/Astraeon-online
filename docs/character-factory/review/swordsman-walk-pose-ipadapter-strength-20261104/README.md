@@ -1,0 +1,7 @@
+# Walk SW 00 — pose/reference conditioning balance
+
+**Single-frame draft rejected.** With the same seed, input and reference embedding as the previous lower-strength trial, a new CPU run used img2img strength 0.20, pose scale 1.0, reference scale 1.0 and 20 steps. [Guide, initial art, earlier 0.10 result, new 0.20 result](comparison.png). The new image still changes the hand, armor and costume from the protected design; pose, sword grip, motion continuity and contact are not approved. It does not justify producing the rest of the motion from these settings.
+
+The first attempt ended without an output or retained error; no cause was established. A second run with logs produced the saved result and receipt. Raw result and receipt are under `research/swordsman-walk-pose-ipadapter-strength-20261104/`. The runner accepts `--pose-scale` and records its hash at process start. `runner-v2.py` in the previous research directory preserves the exact runner for the earlier 0.10 result. The original art and runtime are unchanged; coverage remains 2/96 technical imports and 0/6 completed characters.
+
+Use the setup in `../swordsman-walk-pose-ipadapter-20261104/README.md` and run the same command with `--strength 0.2 --steps 20 --ip-scale 1.0 --pose-scale 1.0` into a fresh output directory. The result itself has not been rerun for exact reproducibility. Model licenses, temporary installation and one-frame limitations remain as documented there.
